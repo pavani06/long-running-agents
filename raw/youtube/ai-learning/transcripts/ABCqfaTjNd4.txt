@@ -1,0 +1,79 @@
+this is the single best prompt that I've ever created it's taken months to curate and to test and I love it what does it
+do it tells chaty PT to write great prompts for me every single time now this is a prompt to create a prompt and
+this prompt even includes an example of the type of prompt we want Chach to create so stick with me here I know it's
+a bit meta so let's jump into the prompt and I'll explain how it works and why it works so well we're going to start out with the context as usual
+we are going to create one of the best chat GPD prompts ever written I like to be dramatic here just to set the stage the best prompt includes comprehensive
+details to fully inform the large language model of the prompts goals required areas of expertise domain knowledge preferred format target
+audience references examples and the best approach to accomplish the objective based on this and the
+following information you'll be able to write this exceptional prompt Okay so we've set stage with a great context for
+chubbt to move forward next now that we've created the context let's jump into the role we say you an llm prompt
+generation expert you are known for creating extremely detailed prompts that result in llm outputs far exceeding typical llm responses and we say this
+because we don't want just average and as you know by now llms look for the best average word in the sequence to
+continue on with its writing writing and a way for us to get better output is to put some details like this outputs far
+exceeding typical llm responses then we say the prompts you write leave nothing to question because they are both highly
+thoughtful and extensive okay next let's jump into the action so this is a nice numbered list to keep everything
+sequential and ordered before you begin writing this prompt you will First Look to receive the prompt topic or theme if
+I don't provide the topic theme for you please request it so in some cases actually in most cases when I use this I don't actually have the topic or theme
+written out and so I input this particular prompt to create a prompt and then it says okay what do you want this prompt to be about and then I put in
+those specific details you'll see this live and in action when we put this prompt to the test number two once you clear about the topic or theme please
+review the format and example provided below which we'll review in just a moment if necessary The Prompt should include fill-in the blank elements for
+the user to populate based on their needs so in some cases you might give it a topic and a theme but you haven't given it some of the other necessary
+ingredients for it to be successful so it's going to put brackets around these unknown elements that you can then populate when you're going to put the
+created prompt into catp again to make it actually create your result for you then we say take a deep breath and take
+it one step at a time I just like this because it tells chbt that you really want it to focus and think about this before it's moving forward and then
+finally you say once you've ingested all the information write the best prompt ever created excellent okay next let's
+move into format this is where things get a little bit meta because we're using a craft format to create a craft
+prompt and so I'm actually using the format as I'm writing about the format so in this case we say for
+organizational purposes you'll use the acronym called craft where each of the letters of the acronym craft represent a section of the prompt your format and
+section descriptions for this prompt developments are as follows I talk about the context I talk about the role talk
+about the action talk about the format and this again is important this refers to the structural Arrangement or
+presentation style of the llm generated content it determines how information is
+organized displayed or encoded to specific user preferences or requirements format types include an
+essay a table a coding language plain text markdown a summary a list Etc now if you've seen any of my other videos before you know that I have a resources
+guide that's free and ungated on my website the link of course is in the description of this video head over there and you can see a whole ton of
+different examples of format types that you can use lastly here we talk about the target audience as uh the T element
+of the format and this says this will be the ultimate consumer of the output that your prompt creates it can include demographic information geographic
+information languages spoken reading level preferences Etc okay so now we've told chaty PT what format we want the
+prompt to be in now we have to tell chaty PT who the target audience is for this prompt and of course the target audience for this prompt creation is
+chat pt40 or chat1 if you're using a different llm like gemini or deep seek
+or claw whatever it might be you can just drop that in here I don't know that it really matters one way or the other typically I found that this thing kind
+of gets it as a quick aside I always have new tricks that I'm testing across my businesses and I can easily drop those tips into an email to share with
+folks so you guessed it I'm sending out email for people who are interested in my latest prompts workflow automations or business tools that I've been using
+successfully it'll also be covering broader marketing and business operational tips for things like cold Outreach SEO social media email
+management meeting notes PID campaigns and a whole bunch more candidly there's a lot of hidden gems out there and I'm happy to share the ones I've been
+collecting over the years so if you're interested sign up via the link in the description and I'll see you there so next we're going to move into the
+example by saying here is an example of a craft prompt for your reference and then I put in all of the craft
+sections with specific examples of how they would work this gives chat a really good sense for what the output should
+look like uh many people call this example writing tuning or echoing I just call it an example for the sake I'm not
+going to include the example in the description section of this YouTube video because it's too many characters
+and we run out of room and then finally we say please reference the example I've just provided for your output again take a deep breath and take it one step at a
+time awesome all right so next thing I'm going to do here is Commander control a I'm going to copy this whole thing cool
+I'm going to go to a chat dialogue here and start a new chat dialogue I'm going to paste it
+controller command V and now you can see I've got the entire prompt including the
+example here in this guy cool all right so with that we push
+play and the first thing it's going to ask of me is provide the topic or theme for the prompt so in this case I'm just
+going to copy and paste topic that I like here and we'll get started okay so the prompt I've created here is please
+create a prompt to write a 600 plus word essay about the Industrial Revolution for a 10th grade audience let's see what sort of prompt it comes up with and I'm
+going to speed this up so you don't have to wait for it to generate but it looks like it's doing pretty well okay let's look at this thing this is excellent so
+it's giv me the context the role the action the format and the target audience as requested you notice that the action is done in a nice list format
+you've got the context here uh which is the framing up of what we're actually looking to accomplish the role is a
+history teacher with 20 years of experience teaching and writing teaching and writing expertise and it just looks like everything is exactly what we've
+got exactly what we want okay so now I'm going to grab this little copy button here and we're going to create a new
+chat starting from scratch with that prompt that we just created so the cool
+thing about this is now I can jump into elements of the prompt that it's created and I can add any elements or
+ingredients or remove things specific to what I think is a little more pertin to the outcome I'm trying to achieve so in
+this case I'm going to say use short paragraphs and logical progression of ideas to ensure Clarity I'm going to change that to used
+mixed with one paragraph exceeding
+10 senses analogical progression of ideas to ensure Clarity CL examples Etc Great okay so that should
+do it now we've got the prompt that we want to write this essay and off we go
+excellent and you notice here that it started with creating a canvas for us so we have the ability to edit text within
+this essay to change certain elements of it I will have a separate video on the canvas application which is relatively
+new for us now it came out in December of 2024 but I'll have a separate video on that all right so let's look through
+the output here and I really like it so fantastic all right so why would we
+write such a lengthy prompt to create content I mean the prompt is almost longer than the output than the result
+we see here well the answer is we're not writing a lengthy prompt we're just copy pasting a prompt to create a prompt it's
+asking us what we want that prompt to be written about we're inputting information there and then it's creating a really robust prompt on our behalf so
+we're not doing much work at all we're basically just copying this prompt dropping it in pushing enter filling in
+the topic and the theme or any other details we want to embed within the prompt that it's going to create for us and then we get that great prompt output
+now we take that copied into a new chat dialogue and we get a really wonderful result based on a fully robust detailed
+thorough prompt I hope that's helpful for you appreciate your time and we'll see you next time

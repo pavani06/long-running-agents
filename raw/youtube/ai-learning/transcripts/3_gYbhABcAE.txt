@@ -1,0 +1,253 @@
+[music]
+Okay, cool. Awesome. Hi. Hi everyone. Uh
+my name is Phillip. I work at DeepMind.
+Uh everything related to agents on
+Gemini or Gemini API. So if you have
+some questions afterwards, some
+concerns, some bugs, some issue, please
+let me know. Uh we're going to talk
+today 10 minutes about why engineers
+struggle to build agents and I see this
+every day internally at Google but also
+externally at Google and I brought five
+example on like what's really different
+to how we built traditional software a
+few years ago and to now how we build
+agents and if we like on a high level
+compare them right when we wrote
+software uh we created a spec a PRD
+wrote code sometimes created tests to
+make sure our code works we deployed it
+and and our user use it. And when
+building agents, things are a little bit
+different. Uh we define instructions on
+what we want our agent to do. We run it.
+We observe what it does. We maybe adjust
+our prompts. Maybe we adjust our tools.
+We run it again. And we have like this
+iterative loop of how can we improve and
+make our agent way more reliable, which
+is very different to how we build
+software. And like something I like to
+compare it to is like traditional
+software is more like we acted as a
+traffic controller, right? We had
+control over the street lights or how
+fast you can go, which road you can use
+basically how the car drives. And now
+with agents, we are more of a
+dispatcher. We tell the agent, hey, I
+want to go to London and I'm from like
+Germany. I could use the train. I could
+fly. I could use my car and go like
+under the water. And it's more about
+okay we define the goal on what we want
+the agent to do but we don't define the
+exact step the agent needs to take to
+achieve that goal. And I mean every one
+of you has probably seen in their coding
+agent that sometimes it does something
+very weird but at the end it achieves
+the outcome and that's what we want to
+do. So starting with the first example
+text is our new state. I mean
+traditionally we had data structures and
+everything was kind of mapped to boolean
+or to like flags we could check. So
+initially when we created for example a
+deep research agent deep research agent
+returns a plan to you okay I'm going to
+research this and that and traditional
+software we might have had an accept
+plan or deny plan but we couldn't catch
+semantic meaning and now what we have
+with LLMs is they can understand the
+semantic meaning so for example if I
+have a deep research um request on like
+doing some market research I can approve
+the initial plan, but I can also on the
+same time provide additional
+information. So maybe I want to focus on
+like the US market and ignore
+California. Uh maybe I want to provide
+something additional and not have like
+this multiple steps, right?
+Traditionally I would probably set
+decline and then it has a follow-up. I
+might needed to provide more input,
+create a new plan and continue. And
+another good example is everything
+related to memory and personal
+personalization we do cannot really be
+mapped to data structures right the
+example I here have is like um I'm from
+Europe so I mostly use Celsius but what
+if I would like to use Fahrenheit for
+cooking right previously we might had
+some flex on like the user profile is
+Celsius or is Europe or use Fahrenheit
+but I couldn't like dynamically adjust
+based on the user preference based on
+what they provide. So really it's all
+about text and context. I mean could be
+images, video or audio as well but we no
+longer are really operating in those
+clear structured data concepts. The
+other thing is we should start handing
+over control and the the trap or the
+example which we might had from like
+previous customer support is like when a
+user reached out. Hey, I want to cancel
+my subscription. I might have had a
+classification model which kind of
+classified the intent. Okay, the user
+wants to churn and then I had a
+predefined workflow of okay, do you try
+to sell it? Do you cancel the
+subscription? But there was no like
+dynamic kind of option to to react to it
+dynamically. And maybe instead of like
+um going through the subscription cancel
+flow, what if your agent like kind of
+tries to understand the meaning and like
+offers something uh in except to like
+the the subscription and the user
+changes their mind and now you have like
+a whole different intent and it's very
+hard to model all of those differences
+and uniquests and to do like all of
+those stateful workflows we had before.
+So we need to like trust into the LLM or
+like hand over control that we are no
+longer working in those purely
+deterministic um environments.
+The third one is errors are just inputs.
+So if something in your agent flow
+fails, we need to treat it as a normal
+input as very similar to a user input.
+In go we already do this, right? uh
+function call can be an error or can be
+a value and we treat them kind of
+equally and we have to do this for
+agents very similarly. In the past, HTTP
+requests were very cheap. When some
+search, some product search failed, you
+just rerun your request. You redid all
+of the work, which was okay. But now, if
+you have like an agent which takes 5
+minutes, 15 minutes and something in the
+flow breaks and you would start all
+over, you would need to you need to
+spend a lot of compute again to like do
+all of the previous steps and you also
+might lose the existing context. So we
+cannot like just start over the whole
+process. We need to kind of understand
+and treat errors differently. Provide
+them back to the model. Maybe have some
+other workarounds, some additional
+checks that we basically keep going
+forward in the flow and not like
+starting over from the beginning.
+The fourth uh example or step is like we
+need to move from unit test to evolves.
+So when building software before right
+we wrote integration tests, unit tests,
+smoke tests and all kind of different
+tests. And we assume that when we
+provide input A for our code B, we will
+always get C as an output. And that's no
+longer the case with agent. Agents are
+non-deterministic. We cannot always
+guarantee that the same input will lead
+to the same steps and the same result.
+So we need to move from unit tests to
+eval. We need to test how often
+something works because agents are only
+successful if they are really reliable.
+Right? If you have a customer agent and
+the same prompt only works one out of 10
+times, it's nothing really you want to
+put in production and it becomes very
+flaky. So we need to test on evals on
+how many times it passes and compared to
+traditional software results are very
+subjective. Right? An outcome can be
+very different if you ask it to create a
+research report. If you ask it to create
+a customer feedback kind of scenario and
+we need more like qualifying uh feedback
+um LLM as a judge or human expert for
+example is a good way and we always need
+to trace what the agent is doing but we
+need to create on the output. We maybe
+the agent decides for like one user it
+needs to do like four more steps to do
+more research than for the other user.
+It consumes maybe a few more tokens but
+at the end the outcome is really what we
+need to measure and want to measure in
+terms of uh success.
+And then the last part is uh agents
+evolve and APIs don't. And if you have
+worked on the back end and if you have
+built an API, you might have seen a lot
+of methods API endpoints which feel very
+self-explaining to you like delete item
+feels very self-explaining if you're
+working on like the product API but an
+agent doesn't see the code an agent
+doesn't have the context and the
+background from all those years from you
+working on the API. So we need to build
+APIs or tools which are really agent
+ready which are self-documenting with
+semantic interfaces. I would assume if
+you have like a product micros service
+and you have delete item endpoint with
+an ID you don't need to like define a
+dock string what the ID is or what
+happens if something fails but our
+agents only see like the function
+schemas and the dock strings and the
+tool definition. So on the first look
+they don't really see what the delete
+item method does. That's why we need to
+really adjust to hey we need methods
+tools which are written for agents to be
+used and not assume longear developer
+expertise and people who have built the
+API.
+So to to summarize everything we need to
+give trust but we also verify we should
+stop fighting the model. You should not
+like try to force the model into this
+one specific workflow with step one do
+this, step two do the other thing. We
+need to preserve meaning. Um everything
+is a context now. We no longer have
+those very well-defined data structures
+for all of our applications. We need to
+design for recovery. Models are not
+perfect. Agents are not perfect.
+Especially if we have longer running
+agents, there will be some very weird
+things happening. So you need to design
+for recovery. We need to evaluate and
+then don't only assert agents are not
+100% reliable. We need to find the right
+balance between how many times our run
+need to be successful to provide it to
+the user. And last but not least, build
+to delete. Um the bitter lesson is what
+every one of us is learning is like
+software is disposable. We are going to
+rebuild many many times the same things
+with better models, better agents.
+things will change and um yes um it's
+also available on my blog so if you want
+to like look a bit deeper with some code
+examples and if not if you have any
+questions feel free to to reach out to
+me and perfect on time. Thanks.
+[music]

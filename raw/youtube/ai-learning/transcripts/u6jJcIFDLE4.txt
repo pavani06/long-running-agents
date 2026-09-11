@@ -1,0 +1,401 @@
+[music]
+Uh, okay. So, I'm Suba. I head AI
+engineering at ZS. Uh,
+I'm Ablash. I'm director of AI
+engineering at CS.
+So, ZS, we are a tech firm. We work with
+many of the top companies in the world,
+including a lot of the top farmers
+actually. Um so today's talk I think we
+wanted to as I think already introduced
+right we wanted to talk from our
+experience right building multi-agent
+pipelines uh what are the mistakes we
+did right and what did we learn and how
+did we fix them so um so I'm going to
+orient it more on pharma commercial
+domain and for people in the room
+probably who are not aware quickly u
+pharma has two main functions one is R&D
+right the drug discovery right uh and
+the clinical trials part and then
+there's a commercial how do you take a
+drug to a patient basically and and
+Within commercial there are different
+functions like once you create a drug
+right um what is the performance of a
+brand how is the drug performing in
+different markets right uh then there
+are things right your field force your
+reps how effectively are they engaging
+uh right with everyone there are things
+around patient journey how a patients
+are adopting a drug right I think if
+there is any therapy switch which is
+happening so as you can think about
+there is a lot of analytics which really
+happens in a commercial domain and how
+do typically analysts
+So there are four steps right what
+analysts do right so first there is
+always something called a signal
+detection right so signal can be
+something like okay the prescription is
+what a doctor is writing maybe is there
+is there a drop in the prescription so
+that's a signal so once you got a signal
+the second thing what an analyst does is
+why is this signal really failing what
+is the reason for it so is it like there
+is a competitor drug which has come in
+because of that is it is it reducing is
+it is it because maybe a payer coverage
+for the drug has reduced or maybe the
+the reps on the ground there's no proper
+uh they're actually not taking the
+benefits to the doctors
+and once you arrive at the reason the
+next step becomes okay what is the
+action do you take so if reps suppose if
+reps the coverage is not good in a
+particular region should do we have to
+increase that
+and once you do that what is the what is
+the outlook right is my brand is my
+sales performance is is it going to
+improve right so these are the four
+things which happens
+now for some of the top farmers what we
+have done is how do we in an agentic way
+right I think how do we actually mimic
+this this analytics work so what we did
+we built agents for every step right
+signal detection we said okay we'll have
+an agent for signal detection it'll
+identify identify the signals for me
+second what are the root cause right for
+the signals right so in this case we
+have two agents one we call it a source
+localization so for example if my sales
+is dropping at a national level is it
+because it's dropping at say a
+particular region or is it dropping for
+a payer
+So we need to understand that we we are
+trying to identify the source of it and
+then once we understand what is the real
+reason right I think the the sales
+performance has gone down that's another
+agent the driver attribution agent and
+then the last step is your synthesis
+right so depending on the cause now what
+is action you have to take and what is
+outlook like typically how an analyst
+used to do and all of this we used to
+have an orchestrator agent which
+connects all these agents together
+so now what happened once we had the
+system what did it generate right It
+generates something an information
+packet like this, right? It clearly
+tells you the signal, right? So, first
+it says maybe my brand's prescriptions
+have dropped 18% in some territory,
+right? In some time frame, maybe four
+weeks. It then tells you the reason why
+did it why did it drop, right? The
+reason it says because
+a payer actually, right, the coverage
+for this drug has actually they moved it
+to a lower tier. So, for patients, it's
+expensive actually to to buy this drug.
+the action it says okay because doctors
+are writing less prescriptions maybe
+send more sales reps to talk to doctors
+right and increase the number of
+prescriptions which you're writing and
+then if you take this action maybe your
+outlook your sales performance is going
+to increase so all of this looks good
+high level but then if you if you look
+at at it closely it's not very coherent
+right the cause is right it identified
+the right cause right because patients
+can't afford the d drug right but the
+action it said it didn't really focus is
+on the payer part, the insurance part of
+it, right? It just said reps, right?
+Focus more reps actually, right? And
+then the outlook because the action is
+wrong, the outlook is not going to
+match. So at each level, if you see it
+is actually derived the right fact, but
+then there is no single agent which is
+owning which understands the end to-end
+picture basically.
+So why did this happen? Like why did it
+fail, right? So obviously it's not the
+LLM which failed, right? It's the way
+how we split the work, right? because we
+tried mimicking the analyst behavior and
+we did it. The first first key issue is
+like a language model is actually
+determining your signals. So signals
+like things like your sales drop is a
+simple information which you can use
+statistical methods to actually go and
+fetch this information. You don't need a
+language model actually right to fetch
+this information.
+Second is as your multi- aents there's a
+lot of context handoff which is
+happening and context is actually
+getting lost at each of these handoffs.
+So for example, the driver attribution
+agent is actually determining the right
+cost. But then the next agent, the
+synthesis agent is actually is not able
+to understand why is that right the the
+payers are finding the drug to be
+expensive. It's not understanding the
+weightage of an insurance coverage going
+going down. So that is a key information
+right which is getting lost. And the
+last big piece is there's no shared
+understanding of the business domain
+knowledge for all these agents. All
+these agents don't understand metrics
+right so things like TRX the number of
+transa number of prescriptions which a
+doctor writes right what are the
+relationships between them why does it
+go up or down so those are the the
+reasons so then what did we do uh so I
+called Abilash to come and solve for
+this okay
+uh thank you SA
+so we had like three problems uh so we
+thinking how are we going to solve this
+uh our first instinct was we'll go back
+to the drawing board we'll start
+designing it again. So maybe the
+topology was wrong, the skills were
+wrong, the tools were wrong, or maybe
+the maybe we have to define a better
+handoff, design a better handoff or a
+better schema between agents.
+But we took a step back. We didn't do
+any of that. We like all of us, we went
+back to cloud code. So we opened a very
+plain empty directory. I rent cloud code
+then give it just bash and the database
+then give it an actual signal which we
+identified then started observing what
+it is doing. So while we look at what
+code does, we are able to figure out fix
+for all the three issues we discussed
+the first the first part.
+So what was happening is the agent was
+looking at data and deciding on a
+signal.
+Sometimes it's applied some statistical
+methods. Sometimes it's barely look at
+the data and say this is a signal.
+Sometimes it's actually a signal.
+Sometimes it's a noise. This is
+something we don't want an agent to do.
+This is a completely deterministic
+workflow. So we separated it out from
+the agentic system. So we built a pure
+deterministic workflow with different
+statistical methods. We put guard rails,
+we put thresholds, we put
+prioritization.
+Everything happened before the agent
+even kickstarts. So we run an automated
+pipeline which scans through the data
+identify signals for each of the KPA. Is
+anything happening with that? any
+anomalies which is happening any trend
+which is very uh any trend which is
+baking based on that we identified a
+signal we put it on a queue the moment a
+signal comes to the queue the agent
+wakes up so the agent's dope is to
+investigate not to identify
+the second part
+so mainly the issue which we previously
+what sub was mentioning there is no
+coherence in the output which the agents
+produced
+so we started consolidating we Look at
+how cloud code operates. It's able to do
+a lot of operations. So we started
+designing around that. So it's
+repeatedly writing a function and
+querying database. So we give it a tool
+for that.
+So this consolidated the entire process
+into a single agent. That doesn't mean
+that we didn't do parallelism. We still
+do parallelism. What we removed is do we
+need distributed reasoning? We didn't by
+the judgment to be distributed between
+agents that we wanted to consolidate to
+a single agent. So that what exactly
+what we did. Then occasionally we
+observed cloud code it's launching sub
+aents dynamically for a very particular
+focused task. So we did the same thing
+because if suppose you want to
+understand if rep activity in a
+particular region that's an
+investigation which you need to run that
+you can still delegate to a sub agent
+you can get back the uh results back not
+the reasoning or the judgment that is
+still controlled by the by the main
+agent but the investigation part of it
+we did we're delegating it to a sub
+agent. So these are some of the things
+we kept based on observing what code was
+do cloud code was doing. So that give us
+a more lighter architecture than what
+was initially there. But still it
+doesn't solve the problem. That's why
+you see a knowledge graph in the
+diagram.
+So it still doesn't have the business
+context. It still doesn't understand all
+the entities, the domain, the KPIs, how
+do they relate to each other.
+So that's something we wanted to solve
+for because the agent was looking at
+data looking at tables then trying to
+infer the relationship that which was
+not scalable and it often produce
+relationship which is which is not
+actually exist in the data.
+So what we did so we've been in this
+working in this field for a lot
+whole lot of years. So we've been doing
+this for our clients. So we had a lot of
+domain experts who understand the farmer
+domain very well. We're doing commercial
+analytics for the clients. So we start
+sat with them start building a knowledge
+graph. We start trying to map out the
+domain.
+So we are able to build a knowledge
+graph. We are able to identify different
+entities their relationship between
+that. So if you see there are like
+geographic entities, there are payers.
+How how geographic is connect to a payer
+or an account? How does this connect to
+a brand? Then from B brand or payer, how
+does it go to a KPI? How does a KPI
+relate to like a uh secondary KPI,
+tertiary KPI? How does one KPI drives
+another KPI? So, we started mapping out
+all of this information and then
+creating our our knowledge graph.
+Once you have the knowledge graph, then
+we wanted to let the agent to navigate
+the knowledge graph. So, the knowledge
+graph is not just something the agent
+looks up for data. It is a control plane
+for the agent.
+So, what do I mean by that? So the
+knowledge graphs dictates what the agent
+can look into, what path it can take,
+what investigation hypothesis uh it can
+evaluate.
+So for example, if you when you do this
+analysis, the root of the problem say
+something like your TRX is declining at
+a national level. This could be when you
+do source localization. So that's our uh
+contract for how to find the bear. It
+might happen within a region. It could
+be concentrated in a territory. it would
+be concentrated in a combination of a
+territory or a payer or an account. So
+there are whole lot of dimensions which
+the agent needs to evaluate. Now it's a
+lot of permission permutation
+combination. So the knowledge graphs
+gauge the agent on how to find where
+this is concentrated.
+Then the why why part of it why it is
+happening. When you figure out that okay
+something is concentrated at say the
+decline is concentrated at a particular
+region. Now you need to figure out the
+why. This is where where the uh KPS and
+the relations comes in. Once the agent
+is able to narrow down the where then
+it's able to go and figure out the u
+figure out the why part of it, which KPS
+is driving what
+graph acts as the control surface. So
+agent every edge is a hypothesis. So the
+agent can go and evaluate that hypothes
+hypothesis. Uh it doesn't go outside of
+this. So that gives a more bounded
+surface for the agent to investigate.
+So like everyone was mentioning about
+loop. So we also build a loop. So what
+the agent does? So the agent first start
+with an entity. It goes to the graph.
+It looks at the neighborhood of the
+graph. Then it it figures out the edges.
+So it's got some hypothesis. It will go
+it'll go back to the original data.
+evaluate that hypothesis. Look at the
+actual numbers. Then reason over it.
+Then it will it will either find it find
+it contradicting or it finding
+supporting the the evidence supporting
+the hypothesis. If it's supporting it,
+it started traversing through the graph.
+So this repeats this until it ran out of
+all the hypothesis or it's able to
+figure out the root cause. So this this
+concludes this run. this runs and it'll
+be able to figure out the uh root cause
+of the problem.
+So once we build this so maybe like
+after like 50 plus turns a whole lot of
+tokens it's able to produce something an
+analyst uh was able to produce maybe in
+three or four weeks in like maybe 20 30
+minutes. Thank you.
+So just to wrap it up um key takeaways
+first thing is I think we should not be
+introducing human constraints or design
+constraints into architecture. I think
+let the architecture be derived actually
+number one. Second I think any complex
+workflows will have deterministic parts
+and agentic parts. Don't let agents
+actually run the deterministic part.
+Right? So I think we need to break break
+that off.
+The third you need to have one agent
+right which owns the reasoning end to
+end right this agent can actually take
+the call to use sub agents tools skills
+to actually spawn off other other tasks
+basically right but you need one agent
+to own the the reasoning and the last
+probably the most important I think
+graph cannot be treated just as a lookup
+player I think graph has to be treated
+as a control plane which the agent uses
+to navigate and takes the next decisions
+basically
+okay with that I I think thank you.
+Thanks. Thanks for telling me this.
+[applause]
+[music]

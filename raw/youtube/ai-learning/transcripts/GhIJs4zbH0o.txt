@@ -1,0 +1,372 @@
+Stargate, put that name down in your books 'cause I think you're gonna hear a lot about it in the future.
+A new American company that will invest $500 billion, at least in AI infrastructure. The data centers are actually under construction.
+The first of them are under construction in Texas.
+The Abilene location, which is our first location, Abilene is a town on the western central Plains of Texas.
+We kind of scratch and fight for everything good that comes our way.
+I had people reaching out and they said, when is the president gonna come see you? And I said, well, he hasn't texted me yet so.
+I'm thrilled we get to do this in the United States of America. I think this will be the most important project of this era. Welcome to Abilene, Texas.
+This is the site of Project Stargate.
+A very mysterious, much talked about, much speculated about project that brings together OpenAI, SoftBank, Oracle.
+If it all comes together building after building on this red dirt behind me will be filled with chips that'll power the AI revolution.
+What we're undergoing right now is sort of the largest infrastructure build in human history.
+It's gonna create new ways of doing business, it's gonna create new ways of invention and it's gonna really drive humanity forward. I was in the real estate business.
+These buildings, these are big, beautiful buildings, are gonna employ a lot of people. How do you personally grapple with the pace of it all?
+It does feel like it's going very fast.
+I certainly think if I could like transport myself back three years ago, it would seem like unimaginable progress.
+This is amazing explosive growth of intelligence that's coming in our decade. Everything will change.
+When Stargate was first announced there was a lot of skepticism. A lot of people thought it's just too big to be true. So this is your very first look.
+Hello. Hey Emily. Thank you so much for having us. Welcome to Abilene. It's so awesome to be here. Yeah, it's all happening.
+I know. How many people are on this site Today we have about 2200 people on site.
+The guy at the heart of the Stargate Build in Abilene is Chase Lochmiller.
+He's the founder of Crusoe, the little known data center startup, overseeing this massive project. We started construction here last June, June of 2024.
+This was just a com, a complete barren field right? There was So there was nothing here in June. There were a bunch of mesquite trees and bushes and brush.
+Stargate is so mysterious. What actually is happening here?
+What will eventually be here is eight separate buildings all containing very large clusters of fully interconnected GPUs.
+Yep. We're gonna do a tour of some of that. This is gonna get us around that whole 1200 acre campus. Hey, we're going on an adventure.
+It's like getting around Jurassic Park. I love that. Alright, let's go offroading. Yeah! I feel like we're going on a data center safari.
+It is much like a data center safari Crusoe eight planned buildings will hold up
+to 400,000 chips, which would make this one of the world's largest known compute clusters.
+The partners behind Stargate, OpenAI, Oracle and SoftBank have committed a hundred billion dollars to the project so far
+and claim they're prepared to put in five times that as they expand to multiple sites.
+This first site in Abilene has been dubbed Project Ludicrous as in Ludicrous speed. Ludicrous speed, which is appropriate.
+The whole thing is supposed to be done by mid 2026. Are you round the clock? 24 hours a day? We're, we're round the clock.
+It is very much a 24 7 operation.
+We're trying to deliver on, you know, the fastest schedule that a a hundred megawatt or greater data center's ever been built. So why the ludicrous rush?
+Well, because Stargate is part of a much larger AI race.
+Companies like Microsoft, Meta, Google, Amazon, and xAI are all building AI data centers of their own at sites across the US and beyond.
+Each company wants to have the most capable AI being used by the most people and they've committed tens of billions of dollars to make it happen.
+There's no reason we won't scale up our computing a hundred thousand times in a few years. I'm good for my 80 billion, right? I'm going to spend $80 billion building out Azure.
+The downside of being behind is that you're out of position for like the most important technology for the next 10 to 15 years.
+But beyond just making better AI, many tech leaders want to be the first to create AGI artificial general intelligence.
+A super smart agent that can think and learn just like a human if not better.
+Large language models like ChatGPT have gotten more capable as the technology's evolved.
+So the hope is that adding an astronomical amount of compute will make them even more capable.
+Take me back to the beginning before Stargate, what did you start seeing that made you realize we need more compute, more power, more connectivity.
+Yeah, That you were hitting a limit and needed to scale. We used to think a lot about the compute.
+We would need to train the models and what we didn't use to think about as much as how much people were gonna use these models.
+And we did think about it, it just turned out people want use the models much more than we imagined.
+And a couple of years ago, maybe after the launch of GPT 4 in chatGPT, it really started to hit like, oh man, this is,
+this is like gone from a lot of compute to like the biggest infrastructure project in history.
+And out of that emerged Stargate, Why call it Stargate?
+It began as a code name and sometimes code name stick, But it means something, right?
+Oh, The design of one of the very early layouts of a data center looked a little bit like Stargate from the, from the show.
+How did you get to talking with Masayoshi Son and Larry Ellison and how did you all come together?
+I did two kind of long trips around the world and a lot of it was to talk to developers and governments, but a lot of it was also to just really try to like get my head around the supply chain.
+On one of those trips I met with Masa and we got to speaking about, you know, what it would take to do compute at this kind of scale. Hi Masa. It's so nice to see you.
+What conversations did you have with Sam that led to Stargate?
+Well, we have a shared vision of AGI coming soon and we need compute Of all the bets you could make.
+Why this? Why Stargate?
+Well, I, I believe in the vision that this AI the AGI will change the mankind's life
+in every aspect and we are lucky to see this enormous revolution and I, I'd like to be part of that and get excited.
+Last month I came to celebrate your winning and promise that we will invest $100 billion.
+And you told me, oh Masa go for 200. Now I came back with 500.
+Explain the math to us. How does it all add up to needing $500 billion?
+Well, that covers the capacity we think we need for the next few years given our growth projections.
+The, the interesting question is, if we had a, if we knew how to get a trillion dollars right now, if we don't, would we be able to deploy that profitably in the next few years?
+And I'm not sure about that, but I feel confident we can like make 500 billion of value back. Alright, so what are we seeing?
+There's many forklifts and there's many cranes, there's many dump trucks, there's many excavators. New creatures emerge at every turn.
+Are most of the workers from Abilene?
+We're a very large employer here in Abilene, but we, we have brought in a lot of labor from outside the city and outside the state.
+We actually have workers from seven different states. I've never built anything of this scale.
+It's one of the underappreciated aspects of AI is actually just the physical infrastructure that's needed. This is awesome. Awesome.
+I love it. We're building stuff. Yes.
+There's 155 vehicles that are moving dirt moving earth right now.
+There's something so satisfying about seeing lots of dirt being moved.
+Yeah, yeah, absolutely. If you look at that crane, like this red crane That's a 600 ton crane.
+So, I have no like, how does that compare to other cranes? It's, it can lift a lot. It can, it can lift a lot of weight. I mean 600 ton, that's like a hundred elephants, right?
+This is actually happening around the world.
+Data centers are being built in Malaysia and Japan and France.
+I, I think the demand for compute infrastructure, it's not a US phenomenon, it is a global phenomenon.
+A lot of countries had actually decided that data centers are, are critical infrastructure that must be accelerated.
+So if, if hyperscalers are going to Malaysia or Japan, is that competition for you? We don't really see it as competition.
+We, we kind of see it as, you know, just an overall growth of the sector.
+We think we have, you know, a lot of unique ways of doing it and a lot of value to add in the, in the process.
+But, you know, pretty just excited by everything happening in the space.
+Lochmiller's path to leading the Stargate build has been circuitous.
+He's climbed five of the so-called seven summits, the tallest mountain on each continent and worked in physics and finance.
+Tell me about your journey before Crusoe.
+You grew up in Denver, you started out using AI as a trader on Wall Street.
+Yeah, we were big early adopters of deep learning using these multi-layer neural networks to predict returns for certain securities.
+And, you know, we found them to be fairly effective.
+I had high conviction that AI was gonna transform everything. It sort of always felt like this, this meta science.
+Lochmiller eventually left finance to get into crypto, not in the get rich quick hyping meme coins way, but in the hundreds of computers solving math problems way.
+His idea was to build Bitcoin mining operations near oil rigs, taking advantage of a quirk in the oil drilling process.
+When an oil company drills for oil, one of the associated byproducts of that is natural gas.
+And when they don't have access to a pipeline, all of this associated gas is just being burned off on site.
+And so we had this concept that instead of trying to bring that gas to a market where you can sell it, we could bring a market to the gas.
+We could build these mobile and modular data centers and bring them directly to the wellhead and then use that power to power the data center.
+It was a good idea with unfortunate timing. The crypto market crashed. You then went from bitcoin mining to AI.
+It almost sounds like going from one hype cycle to another.
+Yeah, it may seem like that from the outside, but I, I'll say that, you know, from very early on we, we had planned to build an AI infrastructure business.
+So what do Bitcoin mining and AI data centers have in common?
+Number one, they, they both consume a tremendous amount of energy.
+Number two, they're both more location agnostic than traditional data centers.
+Northern Virginia is largely perceived to be sort of the center of the world for data centers today. That's data center 1.0. Right?
+That's data center 1.0.
+Virginia's data center alley is where the first generation of cloud computing was built close to the government agencies that created the original internet.
+Those data centers are full of CPUs, basic computer chips that power everyday things like social media streaming.
+And the cloud. Stargate, on the other hand, is part of a new era of data centers full of GPUs.
+The special advanced chips needed to power AI and do lots of tasks at once. So this is the inside of a data center.
+This is the inside of a data center under construction. Okay. They're going to be...
+Very active construction. It is a very active construction site. So you can take 'em through one of these. Okay. Yeah. And then move the hallway. Okay. People look like they were working very hard and fast.
+People never love when I show up for data center visits.
+No. Why? It's not my area of expertise and yet I have opinions. And so people are like, okay, you know yeah, leave us alone.
+So we are gonna go to one of the GPU data halls where they'll, there will be a very large cluster of Blackwell GPUs Blackwell is the newest AI optimized chip from Nvidia.
+Once the eight buildings of Project Ludicrous are complete, Each of them will hold up to 50,000 chips to be installed by Stargate partner Oracle.
+Wow. This is where the GPUs will going. This is where the GPUs are going. I've been waiting for this. This is where the AI factory will be.
+All right. This is what an AI factory looks like And it truly is like a factory.
+But the difference is the, the end product that gets manufactured here is intelligence.
+And the sooner this AI factory starts up the better for OpenAI.
+In March, the company rolled out a new and improved image generator for chatGPT, which quickly became almost too popular to handle.
+I've seen viral moments, but I have never seen anyone have to deal with an influx of usage like this.
+You added a million users in an hour or something like that. Yeah, I mean more, some hours. But yeah, it was like un unprecedented wild.
+And also like making an image is not a, it's not exactly like a low compute task the way we we do it with the new image gen. You tweeted that the GPUs were melting you.
+Yeah. I didn't realize people were gonna take that. Literally.
+I, I, I mean I get that it was a joke, but it's..
+They're running very hot, but like the metal is not actually melting. So we had to do a lot of very unnatural things. We had to, you know, borrow compute capacity from research.
+We had to slow down some other features.
+'cause it's not like we have like hundreds of thousands of GPUs sitting around just like spinning idly.
+If we had more GPUs, we would be more able to handle demand surges like this. So it's that directly linked.
+Yeah. You know, more compute means we can give you more ai.
+So one of the things to just take note of is just the amount of stuff happening overhead.
+You can kind of see these very large pipes that distribute cold water to, to the individual trips, to cool them down.
+The water is needed because GPUs run very hot and keeping them cool typically involves an evaporation process that can consume millions of gallons of water per day.
+That's raised concerns about the sustainability of this AI boom.
+With Stargate though, Crusoe says it's bypassed this problem using what's called a closed loop system, which keeps the water permanently encased within pipes.
+You can put a million gallons in and then you don't need more forever. Yeah, that's, that's essentially right. We, we basically fill it one time and then we're done.
+And that's something we can easily coordinate with the city in terms of, you know, getting a million gallons of water one time.
+It's a far different ask than, you know, asking for a million gallons an hour or some other crazy request, which could be the case if you had an open loop cooler architecture.
+So once this is all built, what's the grand vision?
+Give people tools to let them do whatever they're gonna do better.
+People will use it and unleash their creative energy and make all sorts of stuff that you and I love, or some stuff that we don't, or stuff to just entertain themselves.
+Personally, the area I'm most excited about is AI for scientific discovery. You know, we're not there yet, but we're not far away.
+I think 2025 will be a world where we have agents do a lot of work, but work of the kind of work things we already know how to do.
+I'm hopeful that 2026 will be a big year of like really new scientific progress.
+Hmm. But in order for that to happen, buildings full of chips aren't enough.
+You also need energy, lots and lots of energy that could be a problem for the climate and a limiting factor in the growth of AI.
+Sam Altman's been hunting for more compute for a while now and it seems like energy is a big constraint. Can you explain that? Like what are the limits?
+Let me sort of put this in perspective for you.
+If you look at a data center 20 years ago, an individual rack in the data center would typically be budgeted to consume between like two and four kilowatts.
+Today with the latest and greatest configuration from Nvidia, you know, we budget 130 kilowatts per rack.
+So you're talking about almost two orders of magnitude increase.
+To put it another way, asking chatGPT a question uses about 10 times as much energy as a Google search.
+It is a complete transformation in terms of the amount of infrastructure required to support this workload. And so that has become the major bottleneck.
+So AI data centers can't be located just anywhere.
+You need a location with lots of available power and West Texas happens to fit the bill.
+We came to Abilene honestly because it's a community that's very rich in low cost and clean energy.
+A lot of wind development has happened in and around the Abilene region and what they lack is actually demand for power.
+That created a massive opportunity for AI, which is so hungry for power in this moment.
+This is the first 200 megawatt substation right over here. There's gonna be developed an incremental one gigawatt substation.
+So the total power capacity for the site will be a total of 1.2 gigawatts. All right, so we're talking bigger than a gigawatt. Bigger than a gigawatt. Yeah.
+Everybody seems to want a gigawatt or more these days, If that sounds like a lot.
+Well, it is enough to power about 750,000 homes, 2,600 Tesla model threes or 100 million LED light bulbs.
+There's a funny Back to the Future quote where he says 1.21 gigawatts wait 21 gigawatts.
+And because it's 1.2 gigawatts, it's kind of a funny, As more and more AI data centers come online in the next few years, they'll add many gigawatts of demand to an already overstressed grid.
+According to one estimate, data centers could consume more than 8% of America's electricity by 2035.
+And while the International Energy Agency predicts renewables will meet about half that demand, the rest will mostly come from coal and gas.
+Crusoe is even building its own gas power plant on site as a backup. Every major tech company has this net zero pledge by 2030.
+Are our AI ambitions running directly counter to our climate goals?
+It's complicated. My personal perspective is we're, you know, none of those pledges are gonna be met by 2030.
+And there's ways of kind of fudging it where like, you know, you're buying a bunch of recs or offsets, but the actual energy that's being used,
+there's no way it's gonna get to a hundred percent carbon free power production to power all of the AI infrastructure that's being developed. It's just, it's just like fundamentally not possible.
+So the tech companies are lying or fudging it? That's a, that's a good question. You're good.
+No, look, I, I mean I think, I think a lot of these goals were ambitious and, and a lot of the goals predated the demand that people are experiencing from AI infrastructure.
+So I think AI has actually kind of changed their, changed their path.
+Now the optimist in me says that while it may get worse, before it gets better, there is light at the end of the tunnel.
+And I think the fact that AI is a massive tool for invention, it's actually gonna accelerate the development.
+A lot of, a lot of new technologies, the fact that we're building a lot of new infrastructure that requires a lot of energy actually provides this massive
+opportunity for AI to be one of the early adopters of new energy solutions.
+Things like small modular reactors, geothermal, nuclear fusion.
+You know, the fact that, you know, AI has a massive demand for energy, puts it in a position to actually intentionally decide
+what does the energy infrastructure look like that's gonna power it.
+For now, Stargate seems to have the resources it needs to accomplish its goals, but with huge investments come huge risks.
+Bloomberg's Brody Ford has been following Stargate and the many ways it could go wrong or right for the Stargate partners and for the city of Abilene.
+Thanks for coming on the dream. Yeah, thank you. We got the cactus right behind you too. I love it. Yeah. What's your impression of Stargate?
+It's happening, right?
+I mean there's a lot of naysayers on the internet that nothing of it about it's real, but it's clear. I mean, it is a massive project.
+The fact that they're talking about having, you know, a gigawatt of capacity live in about two years. It's an ambitious target.
+And seeing that in person kind of showed how frantic the whole thing feels. A gigawatt is huge. Oh, it's huge. It's comically big, right?
+I mean nobody was saying these kind of numbers two years ago.
+Yeah. How does this compare to other big tech projects in other places? We've been tracking a lot of the big data center projects.
+I mean, data center spending has ramped in the last couple years, the past 200 billion in CapEx in the last year.
+I think two big projects that people are really watching right now is here in Abilene for Stargate and Elon's build out in Memphis.
+Both have been thought to be the largest computing clusters at various moments, depending on who you ask.
+But I think what unites them is just the fact that they need so many chips and it's the amount of labor coming into them.
+This is, to me a very big thing.
+$500 billion Stargate project I think is gonna be something that's very special.
+The number $500 billion. Is that for real?
+I don't think anybody thinks they're gonna hit 500 billion. Maybe I will eat my words. No, I came back.
+SoftBank has a reputation for buying toward the top for getting into projects once the hype cycle is already pretty advanced,
+I'm very confident we don't need $500 billion in one day. We go step by step. Okay.
+So we are, we are very confident to make it happen.
+This is a lot of money and you know, not all of your bets have paid off. Where do you get your conviction?
+Well, you know, sometime I get crazy over excited and I make mistake.
+Like WeWork and you know, I have many scars, but when you have a conviction and a passion, you,
+you actually learn more from those mistakes and the scars and that will make you stronger.
+Where's the money going? Like who's the real winner here?
+So yeah, I think we've all seen Nvidia stock go up an insane number and said, whoa, how is that spending ramping so heavily?
+It's these data centers, right?
+I mean in what we saw today, 400,000 chips, that's conservatively 15 $20 billion AI holds incredible promise for all of us.
+Let's talk about Oracle. Yes. Like what is Oracle's role?
+For a long time, you know, the leaders in offering cloud infrastructure forever was, you know, Amazon, Microsoft, to lesser extent Google. People weren't taking Oracle seriously for a long time.
+But with the AI boom they have shown they're able to make these really vast data centers quickly.
+And so their role here is essentially putting in the servers, putting in the fiber optic cable and getting that compute over to open ai.
+I mean, the underlying theme here is that OpenAI and companies like it need as much computing power as they can.
+They're looking for creative ways to, you know, conjure up those funds.
+And Oracle is a company that says, oh God, do you wanna pay us to build out these data centers? Absolutely, count us in. The sizes keep getting bigger.
+Yeah. And bigger. Is there a chance we're overbuilding? Do we need all this?
+God, every single day somebody has a different take, right? Every single day like we saw with DeepSeek, right?
+That, wait a second, do we really need all of this infrastructure For those not obsessively following every twist and turn in the AI race?
+DeepSeek is a Chinese company whose own AI model went viral in January.
+Their AI performed at a similar level to leading US models, but used far fewer computing resources.
+This raised the question, are Stargate scale mega projects really necessary?
+DeepSeek appears to have found a more efficient way to power AI.
+Was that a moment of rethink for you and are you doing anything differently now?
+I think the DeepSeek team is very talented and did a lot of good things.
+I don't think they've figured out something like way more efficient than what we figured out.
+But do you think there is a more efficient way to power AI? Oh, I'm sure. I'm sure we will.
+We have made incredible efficiency strides year over year and I'm sure we'll keep doing that in the future. So if that's the case, why are you building all this?
+If we had an AI that we could offer at one 10th of the price of current ai, I think people would use it 20 times as much and we would still need twice as much compute to satisfy the then current demand.
+Some companies seem less, sure.
+Microsoft for example, announced that it was pausing or canceling several data center builds in the US and abroad.
+A lot of folks worry that we aren't that far from seeing some kind of pullback, some kind of wall.
+It's kind of like how all the big tech companies were hiring every single person they could in 2020, 2021. Then at one point they started firing people.
+And I think we're at this point where every time a lease gets canceled for a data center, people wonder, oh, did we hit this moment?
+Do we really need all of this infrastructure? Is there really a payoff in the end?
+Are folks going to use these tools enough that it's gonna pay for all of this build out?
+How confident are you that OpenAI is going to be a financially sustainable and profitable enough company to justify all of this investment?
+It's looking like we're doing really well.
+I mean, like we have to, we are definitely doing something unprecedented.
+You know, it seems like a, I like, I feel confident in the bed. It doesn't mean something can't go wrong.
+What are the risks? I mean, maybe, you know, people stop wanting to like pay for AI services and then we have a difficult financial position.
+What do you say to the people out there who think this is a massive boondoggle?
+Look, I mean, I think there's always gonna be doubters, but I, I think the, again, i, the, the, the money piece.
+I think so long as AI is delivering value to society, the money will be there to build the infrastructure.
+I have no concerns around that.
+Even if it's not all a hundred percent accounted for today, that money is there and there's a lot of money that wants to invest in this category.
+What we're undergoing right now is sort of the largest infrastructure build in human history, right?
+This is like where we built the interstate hi highway system, you know, that enabled massive interstate commerce and transportation and catalyzed this massive boom in the US economy.
+What's happening in AI infrastructure is we're building the super highway system that's gonna enable modern intelligence systems, that's gonna create all sorts of new job categories that don't even exist today.
+It's gonna create new ways of doing business, it's gonna create new ways of invention and it's gonna really drive humanity forward.
+The data center boom isn't just affecting the AI business. There are local impacts too across the country.
+Places like Abilene are trying to attract data center projects and the jobs and tax revenue that come with them.
+I make a dollar a year being mayor, so I've, I've gotta have another business.
+So your side business is still the pest control? Okay. Yeah, I'm a hard killer. How would you describe Abilene?
+Well, Abilene, it's an old railroad town, you know, so we have lots of Western heritage, but that doesn't mean that we don't want to grow and, and, you know, look forward to the future.
+We want our city to grow and, and we look forward to these opportunities that are coming to us. What have you heard about the Stargate project?
+It, it could quite possibly be the largest AI data center in the world, and that excites me, need to know that we're gonna be a front runner in technology right here in West Texas.
+I've spent the last couple of months looking at some of these biggest projects. I'm trying to see what documents we can find.
+How have these, you know, some of the world's largest, most powerful companies been interacting with these local municipalities.
+Largely what we have found is that these local towns are willing to forego quite a bit of tax revenue, quite a bit of control to be able
+to bring these big companies. Then What is Abilene giving up to have Stargate here.
+So what Abilene agreed to with Stargate with this data center is 85% of tax revenue off the property tax wiped.
+So they're, they're they're losing out on 85%.
+Yeah, I mean I'm sure they would say, and the developers would say that you're still getting a lot of property tax revenue and that's probably true, right?
+But these are pretty tough deals being struck, right?
+I mean, I think a lot of these smaller towns did not take place in the tech boom of the last 20 years. All of those jobs went to the coasts, right.
+And I think there's a lot of local city leaders who want to be able to say, we're a part of this and they're willing to strike some pretty extreme deals to make it happen.
+You're giving up 85% in in tax revenue. Yeah, we're getting 15% of billions of dollars. So that's the way I look at it, right?
+It it is a large tax increase. We're talking millions of dollars on an annual basis.
+It's gonna help us to pave streets, to hire police officers to do the things cities due.
+When you were negotiating, did you feel like there was a risk they could go elsewhere? Like were you worried about not winning the deal?
+Whenever you're attracting a prospect, yes, you always worry about that, but at the same time, if it wasn't gonna work for both parties, we weren't gonna lay down and just get run over by these people either.
+How many jobs do you think Stargate will really create? Well, I'll tell you what I've heard.
+So somewhere between 4 and 1200 there's gonna be security.
+There's gonna be maintenance, you know, they're gonna have grass. People are gonna mow grass out there.
+So there's gonna be all kinds of jobs that go with something that large too. Other than just the technical jobs.
+We think about tech investments and tech campuses as kind of these thousands of high paying jobs with, they're really kind of boosting local economy.
+Once data centers are completed, it's often not a lot of full-time workers. How many people does it really take to run a data center?
+Like I keep thinking about that scene in Silicon Valley and there's one guy in that data center.
+There's really no difference between day and night down here. So it makes things easy. There are gonna be quite a few people here.
+I know you're looking for a specific number from me. I know, but I can't give it to you. What if they don't create as many jobs as you hope for?
+You know, I don't know a lot about AI centers or how many people they employ.
+I mean, I'm gonna be honest about that, but you know, they're still building the facility.
+They're still putting million, billions of dollars into the economy and so we are just trusting, you know, we have to have a little trust with these partnerships.
+We're in downtown Abilene right now. It's really windy. I can see why this is a good place for wind power.
+Ah, we just wanted to talk to people to see what they think about Stargate, if they've heard of it.
+So we're gonna go try to find some folks and not blow away. So have you heard of Stargate? I have Until recently, I had not. Have you heard of Stargate?
+No.
+It was announced by Trump and that's, that's kind of really all that I've heard.
+I know that it has to do with AI and is supposed to bring maybe a lot of people to Abilene. It's gonna be a big server farm. Yeah. And, and employ quite a few people.
+What do you think about that? Oh, Computers are good things. I'm a computer guy. Did that in the Army. I invented computers. Oh, you invented computers?
+Yeah. So what do you hope it brings to ay?
+I would love to see more people here and especially like it would help local businesses. For Abilene, for West Texas.
+I think it creates a, a, a huge stream of jobs that aren't readily available.
+Meth and alcohol addiction is huge in this area because one of the only jobs available is oil and gas.
+And so this adds something different and, and hopefully breaks some of those cycles.
+Do you have any concerns like about like how much power they're gonna use or water and, You know, I know that AI takes up a lot of power to use, but I'm not too sure what exactly it'll do to Abilene.
+I, I feel like I'm not concerned on that side of things. It's gonna use a lot of power. Does that concern you? That's all good. What's wrong with that?
+No, it might put some stress on the Abilene grid. They need to increase the grid then. What do you think about ai?
+So AI has terrified me for 20 years.
+I think there are so many questions that we don't have answers to when it comes to AI. I think we're biting up way more than we can chew. Do you use AI at all?
+I actually do use ai. Yeah. Our professors at ACU sometimes recommend that we use it.
+I think it's a good thing. I think it can be used two ways, either creatively or kind of a crutch.
+So how do you feel about the fact that Abilene's gonna be the site of this big development?
+I love, I love jobs coming to Abilene, but I, I'm not excited about it.
+Where are we going and how do you even fight it?
+The big picture to me is AI's gonna take over and then where are we as humans? You know, it just, it, it terrifies me.
+It honestly just terrifies me.
+Well, mixed reviews, there's definitely a lot of questions.
+We'll have to see how the project pans out and it's gonna happen over years. So it could be a while before we know for sure.
+There is this lofty promise that AI data centers are gonna create thousands and thousands of jobs. Meantime, AI is destroying jobs elsewhere.
+Yeah, and I feel like even, you know, there is serious anxiety out there. People are scared. Totally.
+Even among the best engineers and technologists, people are scared. What do you say to those people? AI is for sure going to change a lot of jobs.
+Totally take some jobs away, create a bunch of new ones.
+This is like the kind of, this is what happens with technology.
+And in fact, if, I think if you look at the history of the world, like that's just been happening for a long time. The thing I think the world is not ready for.
+Like people have maybe abstractly thought like, okay, it's gonna be a better programmer than me.
+It's gonna be, you know, better at customer support and whatever.
+I don't think the world has really had the humanoid robots moment yet.
+Like the first day you're like walking down the street and there's like seven robots that walk past you doing things or whatever. It's gonna feel very sci-fi.
+And I don't think that's very far away from like a visceral like, oh man, this is gonna do a lot of things that people used to do.
+So, so yeah, it's coming and we, we have always tried to just be super honest about what we think the impact may be. Realizing that we'll be wrong on a lot of details.
+Lately, predicting the future of AI seems harder than usual.
+In a few moments I will sign a historic executive order, instituting reciprocal tariffs.
+President Trump's tariffs and the increasing volatility of geopolitics have created potential challenges for the AI infrastructure boom
+and shaken up the race to dominate AI between the US and China. Technology faces rising costs.
+Building these data centers just got conceivably more expensive. It's very difficult to immediately decouple.
+Uncertainty is bad for business. Instead of moving forward, people have war rooms about, oh, what's tomorrow gonna look like?
+Former diplomat, Anja Manuel and Bloomberg, Shirin Ghaffary have been closely watching how this could impact projects like Stargate.
+How much does the AI and data center supply chain depend on China?
+Yeah, so a lot of the materials that are used to build data centers, a lot of those materials actually come from China, right? Aluminum, steel. China's a major manufacturer.
+That could be an area of impact on raising construction center costs.
+Now on the chip side, that's a much bigger higher cost for these companies, right? And that there's a lot more uncertainty.
+The most sophisticated chips are manufactured in Taiwan, Korea, Japan often brought to China
+to be integrated into all of the electronics that are in all of our pockets.
+This is a really complex, totally international supply chain.
+And I think the takeaway for everyone is you cannot just break the international trading system. And we cannot be a country that lives in autarky.
+We're always gonna depend on others. What does Stargate mean for the US China tech race? I think it's one critical step in so many steps.
+When you look at the race that's on between the US and China.
+We're in a real race. The Chinese are giving us a run for their money. China's right behind us. I mean they're, we're very, very close.
+50% of the world's AI researchers are Chinese.
+That doesn't mean we can't collaborate with the Chinese and certainly means we should keep talking to them.
+But where you used to have some level of trust and some level of communication, now you don't have it.
+And I worry that the tariffs not directly, but indirectly are making us lose that kind of trust.
+Now that we're in this position, there's obviously this tension between the US and China.
+Is this an opportunity to do it a different way to build data centers a different way? I think that's exactly right. This is an opportunity to do it differently.
+What I would like to see is that more advanced manufacturing of the most sophisticated chips happens here.
+And I think TSMC is doing some of that. Others, the CHIPS Act really helped.
+Also, going back to Stargate, those data centers and all of the AI training and the AI inference shouldn't just be happening in the United States.
+It be happening in friendly allied countries as well.
+Iceland, Greenland, the Nordics that have lots of geothermal power should be a part of it. Europe should be a part of it.
+Japan, our friends in Asia, Singapore, there's really an opportunity here to have a community of like-minded countries that are doing this together.
+Is President Trump alienating many countries that would be our allies in this endeavor?
+Yes. Some of our friends and allies feel a little bit alienated. I hope ultimately that won't be the case.
+I think increasingly the administration will understand how important our partners are and how much they add to us.
+And so I actually believe will come out okay in the end.
+There are still many questions about where the business of AI is headed.
+The expense of building and running these data centers makes it tough to turn a profit. OpenAI, for example, ran a $5 billion loss in 2024.
+And there's no guarantee that simply adding huge amounts of compute will make AI models smart and reliable enough to be truly transformative.
+So as solid and substantial as Stargate might seem, it's surrounded by uncertainty about how smart AI can get,
+which bets will pay off and what kind of future we're creating. The tech industry goes through booms and busts.
+AI goes through winters and springs. How long is this boom gonna last... I think this boom has quite a bit of legs to it.
+You just sort of look at the long-term investments that the biggest companies in the world are, are making in this.
+And I think, you know, even with things coming out like DeepSeek you know, I think everybody's pretty unanimous in terms of we're staying the course.
+What's required for AI to scale is a lot more infrastructure and there's a bigger risk to underinvestment than over investment.
+If ChatGPT were to discover a Stargate, a futuristic wormhole that we could all travel through what's on the other side?
+If ChatGPT could like transport us to the future? Yeah. I mean, no, no, no one knows, right?
+Do I think I could have sat here in 1905 and told you what we were about to discover in physics and that 40 years later we would like have an atomic bomb?
+Definitely not.
+And I, I think I am way too self-aware of my own limitations to sit here and try to say I can like tell you what's on the other side of that wormhole. I have no idea.
+But net. Net good. Yes.
+Up and down. Not better in every way, but yeah, I think up to the right, yeah, up into the right with some choppiness.

@@ -1,0 +1,1450 @@
+Thanks a lot. And then nice to
+see everyone here. And thanks a lot for
+inviting me here.
+So my name is Jiayuan,
+and then I'm currently a member of technical
+staff at Amazon FAR
+and then soon will join
+UPenn as a system officer. So today, I'm going to talk
+about integrated learning
+and planning with
+neuro-symbolic concepts. So I want to start
+from the broad question
+of how can we build a
+general-purpose physical intelligence? That is, some system
+that can perceive,
+can understand language,
+that can take actions in the physical world. So one of the option to
+approach this giant problem
+is you think about intelligence
+as fitting functions to some data sets. So for scan of
+physical intelligence
+you say, I want to
+build a policy pi that maps from my historical
+observations to the next action
+to take. And to build do that you
+collect some data sets by teleoperation or
+different kind of techniques.
+And this is taken by
+a lot of the companies here in the West Coast. For example, this
+is a video released
+by a company called Physical
+Intelligence training their robot to fold boxes. And then to solve
+this particular task,
+you need 100 hours of training
+data just for folding boxes. And recently in order
+to show the generality
+of such kind of
+approach, people have been trying to deploy such
+kind of system on excavators. They are training their system
+to generate joystick commands
+to control an excavator
+to do some task for them. And this is the
+original Twitter post,
+but I want just to highlight
+one of the sentences from it, which you want to get.
+Here's our first demo, we
+collect 200 demonstrations for that simple, I would say,
+excavator manipulation tasks.
+So overall, we have
+seen a lot of success of data fitting approach. But overall, they still
+have low data efficiency,
+meaning that you
+need a lot of data to learn a relatively simple
+task as a peer to human.
+And also they have limited
+multitask performance. That is, usually
+this policy is only
+optimized for solving one
+task pretty well, but lack of generality.
+So I want to make a contrast
+between that kind of paradigm with what humans can do.
+I would argue humans can
+learn from one example and generalize reliably
+to different states
+and different goals. So again, looking at the
+excavator as an example, so let's just watch this video.
+OK, a very smart trick of
+manipulating some objects on the ground. I guess you probably have never
+seen such kind of manipulation
+before ever in your life. And despite that you might not
+be able to actually operates
+an excavator, this
+five ton machine, but I assume everyone
+could already get some idea about this.
+And after some practice, you
+can also solve it yourself.
+And another dimension is
+generality or generalization to different kinds of goals.
+So if you think about
+house cleaning job, you're constantly facing
+different kinds of goals, incorporating different
+kinds of objects,
+and you can still
+solve all of them. And here is another
+example showing
+how generalizable human
+manipulations are. So this is a physical game
+that you can play yourself.
+You have a bunch of
+objects on the table, and you pick two of them,
+holding them one with each hand.
+And in this case,
+the cap and the pen. And the task here is
+you want to pick up
+a third object from the
+table without using your hand to touch them, but use the tool
+that you're currently holding.
+So this is a trial by a human,
+trying to use a pen and a cap to lift up a glass.
+This is probably a
+task you have never seen before, ever in your
+life, and probably something you would never see
+after and never want
+to solve ever in your life. But by just looking
+at the situation,
+you can already make
+some plans internally, and by watching other people
+showing it to you once, you can make a trial yourself
+and adapt and eventually
+maybe solve the task
+very competently. So I would argue,
+what do we want
+for robotics is some system can
+match this level of human level performance.
+That is, they can learn from
+very few demonstrations, some new capabilities
+and be able to generalize
+across different
+kind of scenarios. So in today's talk,
+I'm going to show you
+some of my work aiming
+at a new paradigm for solving such
+kind of problem, trying to achieve building
+AI that can learn from very
+few demonstrations on
+the order of 1 to 10 and generalize reliably out of
+distribution to novel states,
+to novel objects,
+and to novel goals. The central idea
+here is to combine machine learning
+and policy learning
+and everything with planning. So it starts from
+this high level
+view of thinking about physical
+intelligence as a combination of world modeling and planning.
+So if you look at
+this scene as humans, you not only see the
+pixels or patches.
+What you see is that first of
+all, there are objects there. And objects, they have
+properties, they have shapes,
+poses, materials, and so on. And you not only
+understand the state
+in such kind of an
+abstract way, you also understand different actions. Starting from the current
+state you can say,
+what are possible actions that I
+can do in the current situation? You can say, OK,
+if I push the glass
+slightly to the left with
+my pen, what will happen? Basically, you're able to
+enumerate possible actions
+that you can do, and also
+imagine before execution, imagine what will happen
+if you take that action.
+And such kind of
+paradigm, you can use with a
+search-based algorithm, trying to get a plan to
+eventually solve the task.
+So this idea is when you're
+facing a task, instead of saying I'm directly following
+a policy, but instead
+what you have is a world
+model, that is how you model, what are the actions
+that you have,
+and then what are the
+outcome of these actions, and do a planning with them. So we'll say the
+key idea is to plan
+with such kind of compositional
+abstraction of states and actions, to
+solve the problem and to achieve the generality.
+And you will see
+later what I will call such kind of
+compositional abstraction over states and actions,
+neuro-symbolic concepts.
+So all of this is
+a bit abstract, but now I'm going to talk to you
+about the details and then more
+the technical contents about it. So the entire talk is
+outlined as follows. I'm going to first
+introduce some basic ideas
+of neuro-symbolic action models
+with applications in one-shot. Skill learning.
+And then we're going to
+add more reasoning into it in the language space and
+about spatial reasoning
+with applications in more
+complex instruction following. And then finally,
+we're going to talk about how we can
+build neuro-symbolic
+planning-compatible action
+models with applications in long-horizon plan.
+So now let's get
+into the first part. So I want to start
+from talking about,
+how should we model an action? So for example, for
+a single task pick,
+I want to pick an entity
+using one of my hands, so how should we
+really represent the body-- the content of it?
+One of the
+straightforward approach is you say this is a policy from
+your current state to the target action, and if you
+follow that policy,
+you will be picking
+up that object. But there's one limitation of
+this kind of approach or issue.
+If you look at this
+previous example of using two tools to pick up
+a certain object on the table,
+you can say, OK, let me try
+to use three separate skills or actions to achieve this goal. The first one is pick up
+the pen, pick up the cap,
+and then pivot the glass
+and then pick it up. The issue is the particular
+way that you pick up your pen
+actually should be dependent
+on how later on you want to pivot the
+glass, because not grasping pose of the
+same pen of the same cap
+would work if later on
+want to pivot the glass and then pick it
+up from the table.
+So this means that if you learn
+those three policies completely separately and directly just
+execute them one by one,
+you will not be able
+to solve the task. What do we call this is they
+cannot be directly stitched
+together to solve
+the final task. So this is one of
+the limitation, that it's loose of
+compositionality.
+So another option to think
+about action generation
+is you think about
+action generation as a constrained optimization.
+So again, for the
+simple task of pick up a plate from this
+kitchen counter.
+You can say my goal is
+to generate trajectories that satisfy, first of
+all, some path constraints.
+I want to have my robot
+stay within my joint limits. I want to avoid collision
+with other objects
+in the environment. And then I have some
+subgoal constraints, like eventually I want
+to be holding the target.
+What this formulation
+bring us is now you can compose multiple
+actions because it's basically
+adding up the constraints
+temporally and spatially.
+So for example, if you want
+to pick up the plate and then place it onto the rack.
+Again, you have the same
+set of path constraints. You want to stay
+within joint limits. You want to avoid collision. And you have the first
+subgoal which you
+want to be holding the target. And then second of all, you want
+to have the plate on the rack.
+And mathematically,
+this can be written down as a constraint
+optimization problem saying,
+I'm giving you
+the current state, which compose of the joint
+position, the object position, and so on.
+I want to find two trajectories,
+t1 and t2, and two states, s1
+and s2. Minimize some cost, let's
+say the total length of my trajectory.
+Subject to the dynamics of the
+system, like starting from s0. If I execute t1, I'm
+reaching state s1,
+and then if I execute
+t2, I reach state s2. Other constraints,
+like my trajectory
+should be collision-free. Other subgoal constraints, like
+I want to be holding the target.
+I want to continue
+holding the target while I'm moving to the rack. And then finally having
+the plate on the rack.
+So all those constraints
+can be categorized into several categories. Some of them are rigid-body
+dynamics, some of them
+are some geometric
+constraints, and some of them are more task-relevant
+constraints.
+So what this view gives
+you is that now you can think about learning could
+happen in two different levels.
+You can say in order to learn
+how to accomplish the task, the first step is
+I want to learn what are the set of constraints
+I need to follow in order
+to solve this task. And second of all,
+how can I generate those trajectories or
+states, or grasping poses,
+or those continuous values that
+will satisfy those constraints. And we'll soon see what
+is the usage of this.
+And another thing is now
+some of those constraints can be modeled with
+human-built models.
+For example, for
+rigid-body physics we can just use physical
+simulators for them.
+For some geometric constraints,
+we can use motion planner to find solutions to them. We don't have to learn
+everything from data.
+And only for the important thing
+like those task-relevant pieces, we're going to learn
+them from data.
+So I want to ground all those
+things in a concrete example. Let's say we want to learn
+how to hang an object
+from a single example. So let's say this is the
+demonstration that I'm giving to you.
+Someone is picking up this
+hanger and put it on a rod.
+Now, I want to generalize this
+skill to a completely unseen situation where the task is to
+put the mug onto the mug tree.
+And here this problem is
+challenging because if you think
+about this as you want to pick
+the grasping pose on the target, and then a hanging pose of
+the object on the mug tree,
+and then really, those
+things are jointly constraining each other
+because not every grasping pose, for example,
+if you're grasping
+the mug from the handle,
+then there will be no space to put that onto the mug tree.
+So this is a very classical
+robotics manipulation problem.
+A lot of approaches have been
+proposed to solve this problem. One of them is you just rely
+on model-based planning.
+That is a search over
+possible trajectories for moving the object until
+you find a successful path.
+But this is very slow. A more modern
+learning-based approach operates as the following.
+You do some unsupervised
+learning and some policy learning afterwards. Usually the idea is that
+you collect a large data
+set of possible mugs, and you
+train some geometric feature on top of it. And then based on
+this feature, you
+train another policy that
+generates the robot actions. But first of all,
+the performance
+is still not really
+satisfactory. And then second
+of all, you really need a lot of data for
+different kinds of mugs
+and it does not transfer
+across category very well. So based on the frameworks
+that we had before,
+now we can decompose the
+problem into two parts. The first set is that we
+want to learn in order to solve this hanging task,
+what are the set of constraints
+I need to follow? This is equivalent to detecting
+what is the sequence of contacts
+that I need to make between my
+robot and different objects. In the first step, I want to
+make contact with the mug,
+and then I want to
+have the mug having a contact with the mug tree. And second of all
+is how can I compute
+what are the contact positions
+I need to be making contacts?
+So our solution
+to this problem is we're doing a
+constrained optimization with visual
+correspondence guidance.
+So on the top left there
+is the demonstration, and also I'm highlighting
+the point that is the contact
+point in the demonstration. What you need is
+you want to say,
+if I want to manipulate
+the target object, what is a similar point
+on that target object so
+that I should make contact on? It's like for example, looking
+at the hanger position, what is the corresponding functional
+points on the target object
+would have the same affordance? And this can be solved with a
+lot of different approaches.
+And the particular
+approach we're using is we use some
+pre-trained visual feature and then we compute the visual
+feature correspondence there.
+We're using DINOv2 in
+this particular case. But this is not enough because
+if you visualize this heat
+map of what is the most
+probable point to make contact, it's very noisy, and a lot
+of the proposals are wrong.
+So you should only
+use this as a guidance and verify them with
+a model-based planning
+to go through the
+entire motion planning and grasping analysis and
+then stability analysis so
+that you can make sure what
+is the good contact points. But this gives you a gigantic
+speedup over a blind search
+baseline that is enumerating
+randomly sample possible contact points on the object.
+And this gives you this one-shot
+generalization to those novel scenario, like
+picking up this mug
+and then place it
+onto the mug tree.
+And then of course, here we're
+relying on some models to do some heavy lifting for us,
+including we use model for 3D
+reconstruction, we use a
+physical simulator to help us to test if a contact
+is stable or not.
+And this generalizes
+to other kinds of mugs and also different
+kind of kitchenware.
+This is another very interesting
+result that I want to show. We 3D printed some alphabetical
+shapes and we say, OK,
+hang those alphabetical
+shapes onto the mug tree. And then this is a nice
+set because first of all,
+they look very different
+from mugs or from hangers that I've seen there. But also they have a lot
+of diversity in terms
+of geometric structure. And you can see our
+model is deciding
+on where they want to pick up
+and then where to place to hang.
+You can also benchmark this. If you say, I do
+one-shot policy learning,
+and if you stress test
+it on this completely unseen alphabetical shapes,
+the performance is like 0.
+Of course, if you have
+more demonstration, it will be better and better. If you use the visual
+correspondence using
+the visual feature to help
+you to do the policy learning, you get slightly
+better performance, but still far away from perfect.
+And our model overall
+give you over 90% success rate on this
+particular test set.
+So to quickly
+summarize, we have been
+talking about this idea
+of doing one-shot learning of generalizable actions, which
+is we can learn from one or very
+few demonstrations
+and generalize to different kinds of objects in
+different kinds of situations.
+The principle here is we are
+combining neural representations to give us some guidance
+about functional
+correspondence,
+and physical models to do the stability analysis,
+this kind of thing for us,
+within this constraint
+optimization framework by integrating them,
+and then we get the best of both
+worlds, which is
+both efficient
+and generalizable. So, the approach that I've
+been talking about so far
+can also be extended to slightly
+longer horizon manipulation tasks too. So here I'm teaching
+my robot using
+two sticks to rotate
+an object on the table and push it and lift it up.
+And then each with just
+one single demonstration. And now I ask the robot to
+operate on a new scenario
+with completely unseen targets. This is a different
+letter, and pick it up.
+And the model is automatically
+generalize individual skills and then compose them together
+to finally lift it up.
+So this is similar
+to the ABC pick up, but also in a very
+constrained setting like, all the objects
+are relatively simple
+and then they are rigid, but
+still, some initial sign of life about how far or
+how generalizable
+this kind of approach can go.
+So, so far, all
+those demonstrations have been relatively
+short horizon. We have been talking
+about a few objects
+making contact with each other. Of course, if you want to
+have more general purpose robot that can work
+in your household,
+this is not sufficient. So we need to add
+more to the system. And in the next
+part of the talk,
+I'm going to briefly mention
+how we can extend this framework by integrating some more
+machine learning components,
+in this particular
+case, diffusion models, to help us to do some
+spatial reasoning.
+We're looking at a particular
+manipulation problem, which is setting up tables. So suppose that I'm giving
+this language instruction,
+let's say, let's set
+up a breakfast table, and then there's no snack today.
+And then this is what you
+would expect from the robot. And this probably is challenging
+because a lot of time,
+you have to learn from
+this human's preferences, and also you have limited
+data for this kind of problem
+settings, and then there
+are relatively long horizon. If you want to set up
+a table, it usually takes minutes of manipulation
+and a lot of variabilities.
+So if you use the same tool,
+which is constant optimization, trying to think
+about this problem,
+you can say the
+problem is essentially, I want to find the object poses
+that satisfy some constraints,
+that is, some spatial
+constraints among each other. In this particular
+case, let's say,
+our goal is given the
+shapes of different objects like the apple, the plate,
+the spoon and everything,
+I want to find the pose
+of each one of them subject to the apple is
+on the left of the plate,
+the spoon is on the
+right of the plate, and then maybe the mug is next
+to it and then something else.
+And this can be
+better visualized in a graphical
+structure, that is
+I want to find the pose
+of all these objects, subject to some constraints
+among each other.
+So again, if you formulate the
+problem in this particular way,
+now you get the leverage. Now learning can
+happen at two levels. You say, I want to find
+the set of constraints
+I need to satisfy if I want to
+set up a table following humans instruction. And it is worth noting that what
+are the constraints, like which
+object should be placed
+on the left of which, is actually common
+sense knowledge.
+So you can actually leverage
+those pre-trained large language models or visual
+language model to help
+you to output those kind
+of common sense knowledge
+instead of learning everything
+from robot demonstrations.
+So the entire system
+looked like the following. So starting from some language
+goals and some initial image
+containing all
+the object shapes, we have a vision
+language model that
+generates what we call an
+abstract spatial relationship graph, that is, for
+each individual objects,
+what are their
+spatial relationships? And we have a finite library
+of possible relationships,
+like left, right, horizontally
+aligned, vertically split or things like that.
+And then during this
+synthesis procedure, you can also provide
+additional examples showing what is your preference.
+For example, we can
+say OK, so I mean, I come from a Chinese
+family, so I can say,
+I give you some examples
+about how my family usually set up our dining table.
+And after that, we use what we
+call a compositional diffusion model, which I will
+introduce in the next slide,
+to actually generate the
+pose of all the objects. And then subsequently,
+how can I control my robot
+to move the object
+to the target pose. I don't have enough time
+to talk about the details
+about this graph generation
+procedure, but at a high level we are using some program
+synthesis technique to generate the layouts.
+Now I want to dive into this
+compositional diffusion models, which takes as input this
+graphical structure, which
+is totally symbolic and it
+generates continuous values, in this case, the
+pose of the objects.
+How do we do it? For each of the
+relationship we have we--
+For each kind of
+the relationship, for example, left, we have a
+dedicated model, a diffusion
+model trained on it. So for people who are
+not familiar with that, you can think about diffusion
+model takes as input
+the pose of objects,
+the shape of objects, and output and energy value.
+So by the way, this is not like
+a very standard formulation of diffusion model,
+but I will soon
+talk about what is the
+relation between them. But for now for a minute think
+about there's a scalar energy
+function that quantifies how
+well does my input, which is the shape and the pose,
+satisfy this constraint, which
+is A is left of B. And then if you look at the
+original optimization problem,
+you can write it down as
+a minimization problem. That is, given the
+shape of object,
+you want to find the pose
+of objects which minimizes the summation of all the
+energy functions over all
+the constraints that you have. And in practice, this
+diffusion model is not exactly
+predicting the energy value,
+which is a single scalar, but they're predicting the
+gradients over the inputs,
+so that if I move this
+object slightly to the left, then it will be more
+subject to A is left of B.
+So in practice those
+things are predicting some gradients over the inputs.
+And then we can basically
+combine those diffusion models by adding up those gradients
+to solve the original problem.
+So here is a
+visualization of it. So this is what a gradient
+field or an energy field would look like for a
+learning diffusion model.
+So for example, if you
+say I have my diffusion model for
+near-front-edge, then this means that when you're close
+to the edge of the table,
+your energy value is lower. And then you also
+have the gradients pointing towards closer
+to you to the table.
+And then for other
+kind of constraints, like this one is left-of
+the other, this one is right-of the other,
+you have different kinds
+of energy fields
+and the gradients. And the optimization takes in
+place where basically you add up
+all those energy
+landscapes together and also the
+gradients all together
+to form a new composed field. And then this is
+one of the example. And from there, you find the
+minimum value or the value that
+minimizes the energy
+function and which gives you the position of the
+target object that you want.
+And then I'm skipping a lot
+of technical details here, but the particular technique
+for us to draw samples from it
+is called, unadjusted
+Langevin dynamics. And then we actually
+have some proofs
+that our method is more
+simplified from actually sampling from the
+target distribution,
+but it's an unbiased sample. You can take a look
+at the paper to see more details about the
+mathematics behind it.
+But a high-level
+idea is that once you have trained your
+individual models for each of your kinds of
+relationships, now
+for new set of relationships,
+you can just compose them at inference time without
+additional training
+to generate
+placements of objects. And this approach
+could work in a lot
+of different diverse scenarios,
+for example, for study desks, for coffee tables,
+for dining tables.
+And we also managed to do real
+robot execution by integrating additional motion constraints.
+So for example, in this
+case, we have our robots have two arms actually set up
+on both sides of the table.
+And each robot actually
+has their own workspace. So when you're
+planning, you also need to take into
+consideration the motion
+constraints of these robots. The left robot can
+only put objects on the left-hand
+side of the table.
+And then we have a bunch assets
+for the robots to set up. And then the robot first
+synthesize the plan
+that it is subject
+to all the motion constraints of the
+robots, and also all the geometric constraints,
+spatial relationships
+that is predicted by the
+large language model, and then we can execute them.
+This is accelerated
+video, but eventually it can set up the table for you. And you can give it a
+diverse set of instructions
+and then they can follow.
+So here I'm showing you
+a very simple extension by extending the previous
+constraint optimization
+framework with more machine
+learning components, in this particular case,
+diffusion models, so that we
+can achieve learning
+from few demonstrations and then generalize
+to new things and then new kind of
+spatial reasoning tasks.
+The principle here is we're
+composing neural diffusion models within this
+neuro-symbolic constraint
+optimization framework. And we're leveraging
+large language models
+for some common sense knowledge. And of course, currently
+I'm primarily showing you
+examples in spatial reasoning. But of course, the
+same thing could be extended to diffusion models
+of actions of trajectories
+and so on.  So, so far our reasoning
+is still about spatial.
+But in order to really
+solve long horizon tasks you need reason about
+things temporally.
+So therefore in the
+next part of the talk I'm going to talk
+about neuro-symbolic
+planning-compatible
+action models.  So let me clarify the problem
+setting we're looking at here.
+We're trying to do learning to
+solve long-horizon planning. Let's say we have
+some data which
+is in our case,
+10 demonstrations about a particular task. In this case, pick up the --
+sorry, the dish soap
+and then do some pouring and then clean the
+place and so on. And each demo here only show
+you how to wash a single plate.
+And our goal is to
+make long-horizon sense with different kind of obstacles
+or even different kind of plates
+in a similar scenario. This is one of the
+example where we are asking our model
+to watch two plates
+and then sort on the rack. So there's one particular aspect
+makes this task challenging is
+because you actually need
+to reason deliberately about in which order you
+want to wash these plates,
+because the movements of
+the further away plates will actually be blocked
+by the initial position
+of the first plate. So your model cannot say in
+arbitrary order wash this plate
+and then put them onto the rack,
+but I need to actually think about if the space
+allows me to do it.
+So how can we achieve this?
+The high-level idea is
+we want to use language to help us to make sense
+of long-horizon plans shown
+in the demonstration. So again, starting from
+some demonstration video, the first thing we do is
+we're using video language
+models, back in the
+days Gemini, to help us segment the entire trajectory
+into several segments.
+And each segment, they will
+also give it some action name, like this one is picking up,
+that one is adjust or something.
+And then we'll be using some
+vision models to help us to segment those point clouds,
+those raw observations,
+into 3D point clouds so that
+I can do few-shot learning on.
+And then what this gives
+you is for each step in your demonstration,
+you can say,
+here are all the
+relevant, sorry, here are all the
+relevant objects involved in each individual
+step, and then
+you get the trajectory of
+those object point clouds. And of course, your
+robot hand too.
+So what do you get if you
+have a data set like that?
+For example, 10
+demonstrations, is a few demos on the order of 1 to 10
+for each individual skill
+or each individual action like
+pick up you want to learn.
+So because we want
+to do planning, we not only need to how
+can we execute a task, but as I briefly
+mentioned before,
+and you also need
+to know what will happen if I take this action. So basically each action
+will be modeled in two parts.
+The first part is what we call
+the trajectory constraints. That is, how can I generate the
+trajectory that will pick up
+the object or place the object? And another one is,
+what is the future state
+where the objects will be
+after I execute this action?
+So to operationalize
+this, what we have is we have the input to the trajectory
+constraint satisfaction model
+is the initial
+position of the gripper and also the object
+point clouds.
+And then we train a
+diffusion model on top of it to generate possible
+trajectories.
+Some of the time it's
+placing the book on the left. Some of the time it's placing
+the book on the right. This depends on what
+is the data coverage
+you have in your demonstration.  The second piece of model
+takes the initial state,
+like the gripper position,
+and the original point cloud, and also you
+inferred trajectory,
+to predict what will happen,
+in this particular case, where those points will be at
+after I execute this policy
+or execute this trajectory. Of course, other state
+changes, like this
+is vertical line or
+some other things could be also
+incorporating this model. But here, let's just focus
+on the geometric parts of it,
+like how the object
+pose will change.
+Now giving a new
+scenario, let's say, I want to place this
+book onto the shelf.
+What I can do is
+that I can first come up with a high-level plan,
+or what we call a task skeleton.
+That is a sequence of
+actions you want to take, but without deciding what
+is exactly the trajectory
+you need to execute. And you can internally simulate.
+If I take this particular
+trajectory, what will happen? For example, if you adjust this
+pink book towards the left,
+then the pink book
+will be rotated and then it will be touching
+the left-hand side of the shelf.
+You can also enumerate the next
+action based on this state, saying, OK, after
+that, if I place
+my book following
+that trajectory, will it succeed or not? In this particular
+case, it will fail
+because now the point
+cloud of the book will now be colliding with
+the point cloud of that clock.
+So this is not a feasible plan. So due to collision.
+So now that means
+that you need to try a different possible trajectory. And in this case,
+let's say this time
+you sample a trajectory that is
+placing the book on the left, and then this time it succeeded.
+And you can execute it. First pick up the
+book from the table,
+push the pink book
+towards the left, and then finally do the
+insertion of the new green book.
+OK, so what do we
+really stress here
+is the generalization
+of such kind of policy. In particular, we are
+training our policy
+on the following scenarios. First of all, all the objects
+that are axis-aligned. They are in a well set up table.
+And second of all, at most,
+the total height of the books
+are two. And we are testing it in various
+different kind of scenarios,
+including new
+heights, like there are more books, new
+position orientation
+of different objects. These are different XY position
+or different orientation
+of things. And also in scenarios
+with novel obstacles you have never seen before.
+And you can see our model
+is capable of finding plans in all different
+kinds of situations. Where if you directly
+train a policy model
+that solves the entire task end
+to end, it's not able to do it. And we have more
+comparison in the paper.
+Here is an extended version of
+the mug tree hanging experiment that we see in the very
+beginning of the talk.
+So here we're
+collecting some data to hang different kinds of
+mugs onto this mug tree. And then we have 10
+demonstrations per mug.
+But for each demonstration, you
+will only hang one of the mugs.
+But now if you had to hang all
+the mugs onto the mug tree, you not only need to be
+proficient in hanging
+a single mug, but
+also you need to make some plan about which mug
+should go onto which branch.
+And also the order
+of them, so that you make sure that a
+future hanged mug won't be colliding
+with the existing mug.
+And our model is making some
+deliberate plans about this and then execute them
+in the physical world.
+And then here's
+another example having different set of mugs in
+different initial states
+and so on.
+So what I've seen in
+this part of the talk is we enable few-shot
+learning of action models
+and then use planning
+to combine them together by using trajectory samplers to
+sample possible trajectories,
+and then using our
+transition model to predict the future before we
+actually execute them,
+and then select what is the
+best sequence of action to act. And then the advantage
+of such kind of system
+is, again, you can learn
+from very few demonstrations and in general as reliably
+to a wider variety of different situations.
+The principle here
+is we're composing
+some neural
+trajectory generation models using very similar
+framework as the diffusion
+models we talked about before,
+and transition models also learned within this
+neuro-symbolic planning
+framework. And to put those things
+in more modern words,
+it's like we're combining
+neural trajectory generation models with word models
+to help us do the planning
+and then select the best plan. And also here we are leveraging
+large vision and language models
+to do a lot of heavy
+lifting for us, including segmenting relevant
+objects, and also teaching
+you some common sense knowledge,
+but all at the symbolic level. But put that into the
+learning framework
+to make learning more efficient
+and then put the planning more generalizable.
+So overall in today's talk, I've
+been talking about this idea neuro-symbolic concepts.
+And we are talking about
+learning and planning with neuro-symbolic
+concepts to enable more data-efficient learning,
+such as learning actions
+from a single or very
+few demonstrations, and with generalization to
+completely unseen objects
+and states and possible goals. So someone might argue, OK,
+so all the examples that
+are shown here are in
+relatively low data regimes. So now in the era of foundation
+models, should I ever
+still care about this or
+will this problem just be natural outcome of large
+models trained on larger data.
+So before I really
+end, I want to give some of my
+self-reflection on how I think about this kind of
+framework of neuro-symbolism
+in the era of foundation models. And I will show you
+why this kind of idea
+is still very, very important
+and actually very useful, especially for
+academic research.
+First of all, so far
+I've been showing you neuro-symbolic
+algorithmic framework
+to help you to achieve some
+particular application, but there's a lot of
+scientific aspects about it.
+Basically, neuro-symbolic
+system provides insights into the scientific
+understanding of tasks and learning.
+What do I mean by that is
+using this kind of framework allows you to not treating
+your data or your task
+or your model as a black
+box, but it gives you insight lens into it, such that
+you can analyze actually using
+related techniques that I
+just talked about in this talk to analyze the expressiveness
+of big neural networks,
+including graph neural
+networks or transformers. And also we can talk
+about for a problem,
+let's say, I want
+to learn to hang or I want to learn
+to wash dishes. How hard are they? You can talk about
+the parameterize
+the circuit complexity
+for those models. And then they will
+also have impact
+or have implications
+on how much data do you need in order to
+train such kind of model,
+or is it even possible to
+train such kind of model to be very capable for the task,
+using a finite amount of data.
+This is what we call
+identifiability problem in machine learning.
+And also robotics is not just a
+simple machine learning problem,
+but eventually it will become
+a system engineering problem due to data availability
+and also latency reasons,
+just simply. Any practical robot system
+should be a compositional system
+that combine of high-level
+planning, lower level control and so on.
+So neuro-symbolic systems
+provide a principled way to think about the integration
+of all different pieces,
+including perception, memory
+tracking, planning, and control. And reason here,
+building on some
+of the insights we got in
+developing some of our process systems, we're open
+sourcing this new framework
+called Retriever. It's a programming model for
+closed-loop robot agents.
+And then it is based
+on the principle of you want to have
+asynchronous robot action,
+and also you want to do
+time explicit typing. That is for each of the modules,
+for example, high-level modules
+or low-level
+control modules, you want to explicitly annotate
+what is their control frequency and how they should
+be composed together.
+And this is a demo
+that is playing close to real speed, of a
+system that is able to run plans
+where the task is to season
+the stick and then also track memory. In this case, they're
+searching in different drawers
+to find the target. And then finally, having
+robot action control. And all those things
+are only 2x playback.
+So our system because of it's
+asynchronous execution and then
+time explicit typing,
+so it's really, really efficient and
+also very smooth.
+Another thing is now we have
+better and better foundation model for all different
+kind of tasks.
+We have better computer vision
+models, language models, and also action models.
+Now it becomes more and
+more important to compose different kind of systems
+with principled algorithms
+of probabilistic
+reasoning or planning compared to just a
+simple chain of thoughts.
+So what do I mean by that
+is, so far in this talk, you have been looking
+at I building,
+here are the features
+that I care about, I'm learning some action models
+for hanging, for grasping, for washing plates, and
+I'm composing them together
+using some search algorithm
+or inference algorithms. If you scale this
+up, you can imagine
+what you would need is what we
+call a model orchestrator that tell you what are the
+set of constraints
+or what are the features,
+what are the action models you would care about
+in a particular environment. And also having models that
+can recognize object states,
+that can generate possible
+trajectories, and so on. So for example,
+this is the context,
+like I want to wash this plate. And I have models
+that can tell me what are possible states,
+features, and action models
+that I should care about. And for each one
+of them, I could have models I can take
+as input, my sensor
+input, and some concept
+that I care about, and generate different
+kinds of outputs,
+like a Boolean label or a
+pose, a trajectory or even forces, and so on.
+And for robotics, one thing
+I'm really excited about is how we can build novel
+paradigms for training
+such a model from diverse data. So, for example, if you
+think about object detection or classification,
+you don't necessarily
+need robot action data
+to supervise on it. But at test time you can
+say all this model can
+be composed together using
+a principled neuro-symbolic reasoning algorithm such
+as constraint satisfaction.
+And this is
+analogous to nowadays you heard a lot of this
+word called agent hardness.
+You have different agents
+that can do small tasks, but you still need
+to have a system that can really compose
+them together to solve
+a more complicated task. And neuro-symbolism gives
+you a lot of insights into how to design
+such kind of system.
+And finally about data. So actually robot
+data, as we all know,
+is very, very hard, very
+challenging to collect. And another
+perspective to put it
+is we really hope we can
+have continual learning capability of some
+self-improving models for task
+generation, planning,
+and policy learning. So what do I mean by that is
+currently most of the demos
+that I show, no matter how
+generalizable they are, they still say human provides
+some data to the system
+and they learn from it
+very efficiently, now we can solve more problems. But what we really
+hope is you say,
+you start from some basic
+compositional systems, basic compositional
+foundation models,
+now you use the reasoning
+and planning and maybe exploration algorithms that have
+developed to get new capability,
+and then to get new
+experience in the world. And hopefully, this
+can become the data
+to train the next generation
+of foundation models, which will then become the basis
+for the future iteration.
+With that, this is a
+framework that starting from the basic capabilities,
+like basic abilities
+for recognizing objects,
+for pick and place, for some other small skills, and
+then really explore yourself,
+and then find new
+capabilities, and then refine your model further and further.
+So again, this thing
+is already happening I would say in for
+example, agent research or in just vision language
+model research where people are
+composing different kind
+of foundation models with different
+kind of capability, but distill the
+knowledge into each other
+to get even stronger capability. For example, starting
+from a vision language model that can only give you
+labels for an object given
+some conversation history, and a
+model that can do segmentation, for example, segment
+anything models,
+you can distill the
+knowledge into each other to get a model that can support
+promptable segmentation.
+That is, we can give it
+arbitrary text instructions and then it can give
+you segmentation maps.
+So overall, I've been
+talking about this framework that I've been
+building in the past about neuro-symbolic
+concepts to enable
+more data-efficient learning
+and better generalization. I would say this is a new
+bet for generally intelligent
+systems, which really
+bridges our understanding of intelligence. That is how we think about
+the modularity of them,
+how we think about the
+fundamental hardness, the complexity of
+them, and leverage those insights into
+our building process
+to build better
+and better systems. So with all that, I want
+to thank all the funding
+agencies that funds most of
+these projects during my PhD study, and my advisors and
+collaborators, and also
+some of the mentees of
+mine during my PhD who contributed to this work. With all that, thanks,
+everyone, for listening.
+[APPLAUSE]
+I'm happy to take
+questions if there are any. Yes. I'm wondering what
+are the common sense
+knowledge at symbolic level,
+or using this infinite or do large language model
+today have enough common sense
+knowledge at symbolic level? I think it depends on what do
+you mean by symbolic level.
+Because you can also describe
+fine-grained geometric things with a super, super long
+paragraphs, I think.
+I would say we're still
+far away from leveraging the full repertoire of
+existing semantic knowledge
+in those large
+models in robotics, whereas you're far
+away from having that as a bottleneck for us.
+Yeah.  So in the example with the
+box being placed on the shelf,
+you mentioned that future
+states were being generated, like predicted from outcomes.
+And I was wondering how would
+those future states evaluate it, like successes or failures?
+By evaluation, do
+you mean how do we evaluate the quality of them? Do you mean, like how
+were they predicting?
+Like, how did you
+determine that that was a successful or desirable
+end state for [INAUDIBLE].
+Oh, I see, I see. So in that particular
+system, what
+we do is we're using a
+visual language model to help us to generate the
+task skeleton that we know
+can achieve the
+task-relevant part of it. And then the future
+state prediction
+is only handling the
+physical feasibility parts. Like, there's no collision
+and things are stable and things like that.
+So basically again,
+they do different work, like the visual
+language model is
+using all its semantic knowledge
+to talk about some task or goal level understanding.
+And then the transition
+model we learned, and also the trajectory is more
+handling the low-level control
+part. We're making sure everything
+is physically feasible. Yeah. So what is the diffusion
+policy [INAUDIBLE]?
+Sorry, what is the
+diffusion policy? [INAUDIBLE] Oh, because what you need is you
+need to model, not only generate
+a single possible
+trajectory to do this task, because if you want to put
+a bunch of-- let's say, put
+a bunch of books onto the
+bookshelf, you need to say, here are possible ways
+or possible places
+that I can place the book. So basically, you need
+a probabilistic model of possible trajectories
+or possible target poses.
+And that is modeled
+with a diffusion model. Got you. OK. Thank you.
+Yeah. [INAUDIBLE] for
+example, the first robot put the clock over here
+and put the book first.
+Yeah, that's possible. That would be a secondary
+byproduct [INAUDIBLE] that maybe some are
+desirable, some are not.
+How do you think about maybe
+either during or after the fact, helping the model to
+figure out why [INAUDIBLE],
+and to verify [INAUDIBLE],
+or figuring out that it's not learning
+the wrong thing, but you don't want
+it [INAUDIBLE]?
+Yeah, that's a
+very good question.  By the way, I'm sorry.
+I'm not sure if people over the
+internet can hear the questions. But the question
+was, in the task
+of putting books
+onto the bookshelf, another option is
+that you can remove
+the clock from the
+bookshelf and then place the book at its location. And then the question is, how
+can you verify or make sure
+that the model is choosing
+the correct behavior or the preferred behavior?
+This is a very good question. Honestly, we didn't
+do much exploration in this particular work.
+One thing I will
+say is possible is you can say human preferences
+are just additional utility
+functions that you
+should factorize into the overall
+planning framework. For example, you
+can say, OK, well,
+I'm placing all those books. I would prefer to put them
+together next to each other, other than spread it out
+over the entire bookshelf.
+And that is actually
+another important reason why you want to have such a real
+compositional system, where you
+have learned to generate
+possible book placement, poses, and trajectories.
+But at inference time, you can
+factor in additional constraints from either user preferences or
+additional physical constraints
+and find a solution
+that simultaneously satisfies all of them. Yeah, that's one of the
+possible ways to implement that.
+Oh, yes. Yes, please.
+Thanks for a great talk. So I'm wondering what's the-- I guess in terms
+of planning time,
+are you guys planning open-loop
+trajectories and execute? So do you think it's possible
+to do it in a closed-loop,
+or it takes too long to test? Actually, in this particular
+video, where we're showing,
+it's already closed-loop
+a closed-loop execution in the retriever example, where
+there's some model doing some
+high-level planning for us,
+which operates at, for example, 0.5 hertz-- 2 seconds per iteration--
+and then something
+like a memory tracking system
+that is operating at 1 hertz. But all of those systems
+are still keep predicting,
+keep adjusting based
+on the new observations that they get from
+the environment. So, for example,
+here, after opening--
+let me go back to
+the beginning-- so after the opening in the
+left drawer, actually, it didn't see the chili pepper.
+So I need to update
+my memory and also my plan to explore
+a different drawer.
+So all those things are
+executed in the closed-loop. And in the previous
+work of sorting books,
+we didn't do that
+closed-loop execution, but it's definitely
+possible to do it. And then previously,
+we weren't able
+to do that because if you
+want to actually do them asynchronously, there are a
+lot of engineering challenges
+because different
+modules actually operate at different speeds. And then they need to sync
+up the states together.
+And then that was a challenge
+with standard sequential programming models. And that's part of the
+reason why we developed
+this new framework to do this. Yeah. [INAUDIBLE]
+I was wondering, for
+this specific experiment, did you have a simulation
+environment that you're testing,
+or how do you [INAUDIBLE]? If we want to test
+[INAUDIBLE], what is the best way to [INAUDIBLE]?
+Yeah, the question was
+for this particular demo-- do we have corresponding
+simulation experiments with it?
+Yes, we do have-- not exactly this particular
+SIM setup, but similar things, set up in the simulation
+so that you can also
+run throughout the
+system in simulation. Yes. [INAUDIBLE] Yes. OK. Thank you.
+Yeah. OK.
+I was curious. You didn't say very much
+about the neural aspect of why this is neurosymbolic.
+Can you enlarge a
+little bit on that? Yeah. The question was like, what
+is the neural aspect of this? So basically, all the works
+I've been talking about,
+there is a symbolic
+structure that is helping you to structure
+what is your reasoning process.
+I want to find values to satisfy
+all these sets of constraints. Let's say some of
+the constraints
+are about geometry,
+like avoid collision. Some of the constraints
+are about task, like I want to have the object
+at a particular location,
+or I want to have this
+object stable in hand at a particular location. And then the
+symbolic part is all
+about that graphical structure
+of that constraint graph. And then each individual--
+let's say edge of that
+graph-- is associated actually with a neural network because
+you need neural network
+models to help you to generate
+object poses or grasping poses
+or contact points that can
+satisfy those constraints.
+And the important thing is that
+overall, these neural networks do not operate on themselves,
+like I make my prediction,
+you make your prediction. But overall, they are
+integrated together, saying I want to have
+values that simultaneously
+satisfy all the constraints. And then that is what the
+composition inference algorithm
+does. Yeah, great question. Thanks
+I think we have to
+wrap up at 4:00. OK. Thank you. [APPLAUSE]

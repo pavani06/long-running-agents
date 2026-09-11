@@ -1,0 +1,340 @@
+Today I'm going to be showing you guys how I built this AI marketing team with just one AI agent. So as you can see
+this agent has access to these six tools. It can create videos, LinkedIn and blog posts, create images, edit
+those images, and also search through its image database. And working from left to right here, these are what the workflows look like. So this is the
+creating videos. This is LinkedIn posts. This is blog posts. This is creating an image. This is editing an image. And
+then this is searching the image database. So there are a lot of resources that you'll need if you want to plug this in. different templates,
+all these different workflows, and I'll show you guys how to download all that for free and set it all up near the end of the video. But first, let's get into
+a live demo, and then we'll break down the builds. And of course, I'll also touch on pricing and what it actually costs to run this whole system. So, as
+you can see, we communicate with our agent here through Telegram, and that can be either voice or text. So, I'm going to move this over to the side
+here. I'm going to open up my Telegram. As you can see, here's a video that we had it create earlier for us, but I'm going to ask it to create an image for
+us. Create an image for a flyer for cat food. And there's a flash sale. Okay, so
+we just sent that off. You can see it's transcribing that audio, hitting the marketing team agent, and it's going to hit its create image tool. And right
+now, that workflow is processing. And I'll check back in a sec when we get that image. Okay, looks like it just finished up. As you can see, we just got
+our message. Here's your flyer image for cat food with flash sale. Um, looks like it's a pretty cool image of a cat. Now,
+let's say we wanted to edit that and make it a little more realistic. So before we ask it to edit that quickly, let's just take a look at first of all
+in our log. We now have a new image which was cat food/sale. It's an image. Here's the prompt and here's the link
+that it got where we can click into it and it's the image that's in our Google Drive. But anyways, let's have it make that a little more realistic. So can you
+edit that image and make it more realistic? Send that off. It's going to use its image database to grab the
+actual image to edit. And now it's going to go edit that. And I'll check back in when we get that edited image. Okay, so
+that just finished up. And just so you guys are aware, it takes about a minute per image and per edit. So, let's take a
+look. As you can see, now we have the updated, more realistic flyer. It's a very realistic looking orange cat eating cat food. And there's a flash sale. And
+we can also see that if we go to our marketing team log, we have the new picture right here. And it's a type edit. We have the prompt. And then we
+also have the link for our Google Drive with the new image. Okay. Now, let's try one of these content creation ones. Can
+you please create a blog post about the effect of sleep on productivity? All right. We'll send that off. So anyways,
+this workflow was inspired by a actual full workflow video that I did a few days back. I'll tag that right up here.
+And I basically had that doing LinkedIn content. Obviously, it's doing some research, creating the post, and then
+it's creating an image prompt, and then it's getting that image for us. And then we're logging it, sending the content, all that kind of stuff. So, if you want
+to see that full breakdown, watch the video up here. Okay, so the agent just finished up. Let's click into this
+Telegram, and we'll see what we got. Here's our graphic. Well-rested minds get more done. You can see it has some up arrows and stuff like that. And then
+we have our actual blog post. And at the bottom, it includes some references for us. And if we click into our log, we can
+see that we have our actual blog post. And you can see I did the same example earlier. And this is what the picture looked like. So this one was a different
+type of graphic that had some more statistics in there. But then this one that we just did looks like this. And they're both still very good graphics
+that I would definitely feel confident posting with a blog. But as you can see, this is the most recent run. We got a
+title, we have a type, which was post, and then we have the actual post content over here. And then finally, let's just
+do a quick video. So, can you please create a video of a beaver building a house? So, we'll send that off and we'll
+see what happens. And then while this is running, I just wanted to explain something to you guys here. So, it's calling the video workflow, which looks
+like this. And this run takes typically 2 to 3 minutes, maybe even a little more. We have these weights
+because we have to wait for the images to be generated as well as the videos to be generated. And so, what actually happens is the actual marketing agent
+right here, as you can see, it's waiting. this guy times out and then we don't get a response back right here. So
+what I've done is we actually get the response in the form of this workflow. So this is where it will download the video, send it to us on telegram and
+then also log the outputs. So it's just the way n kind of works right now with subflows having weight steps where right
+now it's waiting on the agent level rather than the tool level. So it's going to error right here, but you'll
+see we still get the actual video in our telegram. So I'll just show you guys that once this run finishes up. Okay,
+looks like that just finished up. And as you can see, the Telegram node here failed because the agent aired out, but
+obviously you can see that we still got the video. So, let's click into this and watch it real
+quick. We got some nice sound effects. Okay, looks like he's building
+a dam, not a house. I was kind of hoping for more of an actual house, but either
+way, there we go. At the end, he's got a finished house. Anyways, just to show you guys that the run actually did finish up. I'll switch over to
+executions of the faceless video tab. Let me just refresh this here. So, you can see that this thing succeeded and the message that came in was a beaver
+building a house showing the beaver gathering sticks, blah blah blah. And then it goes through the process of actually creating that video with sound
+effects. So, anyways, I know it's not perfect because of this aspect, which I'm sure is currently working on, as
+well as the fact that the beaver doesn't look the exact same in all four of the clips, but that can be kind of worked on
+with prompting and other aspects. But, this is kind of a great template to get you started. Okay, so now that we've seen a demo and how some of these tools
+work, we're going to get into sort of breaking down all the workflows. But before that, just wanted to mention if you want to get all these resources for
+free, you can do so by joining my free school community. Link for that's down in the description. You can search for the title of the video or click on
+YouTube resources and you'll find the post associated with this video. And when you click on it, you can have the JSON right here to download. And
+there'll also be the link to the Google sheet template you'll need and the Creatmate rendering template you'll need. And more towards the end of the
+video, I'll actually show you like what you need to do and how you need to set everything up because you'll have to download these six different workflows
+and make sure they're plugged in as well. But now, let's get into the actual breakdown. Okay, so just to kick us off here, let's talk about the actual
+marketing team agent and what it's getting as well as what we're telling it to do. So it can get voice or text. So
+what we did is we standardized both of these outputs here and it gets fed into the agent in a field called text. So we
+just reference that as JSON.ext. basically just meaning if it's voice or if we type the agent will still be able
+to look at it as if it's the same. And then we can see the actual system prompt which is not too difficult for how many
+tools it has. We said overview you are a marketing team AI agent. Your job is to help the users create edit images based
+on the request or create content. The next thing I always like to do is tell it what tools it has and when to use each one. And as you can see this is
+very very simply laid out. Create image. Use this to create an image. Edit image. Use this to edit an image. The user
+might also say make rather than edit. So like for example, if I asked it to create an image for me and then I said, you know, make that more realistic, it
+would know to edit. Then we gave it the image database. Use this to search in the image database. Blog post, LinkedIn
+post, video, and then also the think tool, which if you aren't aware of what that is, it's just this think tool down here. I made a video. I'll tag it right
+up here. But anyways, we're just telling it what tools it has and when to use each one very simply. And then just a
+few instructions like if the user asks to edit that image or make that something this indicates that they want
+to edit the last image in the database, the most recent one. So we can either use its memory to grab that image ID to
+pass over to actually edit it or it can search the database and just grab the last one. And finally, if the user
+requests a blog post or a LinkedIn post, use the tools and then output here's the post you requested. Hope you enjoy it
+because we have that actual workflow sending over the content of the post. So we just don't want it to get sent over twice. Then finally, we just wanted to
+return everything as a clickable link in our Telegram. And as you can see, we're able to click into all of this stuff in our Telegram, whether it's an image, if
+it's an edit, whatever it is, we just want to be able to actually click into it. Cool. So, that's basically all that's going on here. Um, you know, it's
+getting the input from Telegram and it's responding in Telegram. But then where the magic really happens are these six tools down here. So, let's start off
+with the create image tool. Obviously, we called it create image. Call this tool to create an image. And then what we did is we linked our workflow. So
+when you guys download the create image workflow, you'll basically just have to choose from a list and search, you know, whatever you name it. I named mine
+create image and then all you have to do is search for that and then just make sure you link the correct workflow to call. So from there, we set up workflow
+inputs. So we basically just told this this main agent, what do you send over to this sub workflow? And the way that
+you specify that is in this create image subworkflow, it has to start with a when executed by another workflow trigger
+because it's being called by a main agent. And in this trigger, you can choose the input. So rather than doing
+accept all data, we defined three fields we want, which are the image title, the image prompt, and then the Telegram chat
+ID. So we can actually send it back to Telegram. So when you actually define those three fields in this trigger, then
+you'll have these workflow input options pop up in your call nadn workflow tool for your agent. And then what we did is
+we used this button right here, which lets the model define sort of how to fill in this parameter. We told it to
+fill in the image title parameter with the title of the image. Should be no more than four words. We told it to fill in the image prompt with the image
+requested by the user. And then for the chat ID, we're just using a dynamic variable that's coming from the Telegram
+chat trigger. So when we talk to this Telegram, I'll just I'll just do something real quick. I'm just going to say hi. We'll see that it gets the input
+even though it was text. It responds to us and says, you know, hi. But then what it does is it basically has this chat ID
+right here in our Telegram. And then that's what we pass over to this workflow right here. You can see now
+it's that dynamic variable that gets passed over and we can reference that later in this workflow to actually send
+the photo back to the right spot. Anyways, let's just click into the execution that we did for this live demo so we can see data moving through. The
+first thing is an image prompt agent. And as you can see, this was the cat food/ flash sale. So we give it the image prompt from that main workflow.
+And then we have a system prompt here which basically is just telling it how to make a text image prompt. Not going
+to read this whole thing. If you guys download the template, you'll obviously have this in there. We basically just wanted it to be, you know, very
+descriptive, have the main subject, the background, the style, any additional details like that. And then you can see
+over here, it spits out a cheerful, attention-grabbing flyer designed to appeal to pet owners, blah blah blah. And it just tells the image model, which
+we're using Chatchabt's new image model, which is insane, how to make the image. And so this is where we format that HTTP
+request to OpenAI's image generation model. So I'm not going to go too into the weeds of setting up this request and
+how that all works, but I've made a pretty much a full video on it and I'll tag that right up here if you want to go check that out. But anyways, we're
+basically just passing over the image prompt right here. And you can see this is where we're using the new image model. But we're passing over that image
+prompt from that previous agent. And what it spits out is basically a really huge like base 64 JSON string. And my
+computer's lagging because it's so big. And all we want to do is we want to take that JSON string and turn that into a
+binary data that's actually a picture. So that's why we use this convert to file node. We're dragging in this this
+field right here. All I did was drag that in like that. And then we're telling it to output it in a field called data which we get right here. And
+if I click on view, we can see the actual image that it generated for us. And then because we have binary and we
+want to do two things with the binary. I split the paths. So the first thing it's going to do because n when you split paths, it's going to work from top to
+bottom. The first thing that it does is send the picture back to us in Telegram. And then what we do is we want to write
+to our drive and our Google sheet. So all we did in here was we said, "Hey, here's our chat ID. This is what we
+pulled in from that trigger." As you can see, we're referencing the when executed by another workflow trigger. And then we
+just said we're going to send over a binary file. It's in the field called data. As you can see, data is right here. And then we just send that over.
+Simple as that. And then what we do is we take that binary data and we want to upload it to our Google Drive. So, the
+file name, I basically just pulled in the title that that the main agent sent over. I put the title.png. I chose the
+folder in my drive. And if you guys are having trouble setting up your Google credentials, um, check out this tutorial I made right up here. Anyways, this got
+put in our drive as cat food/sale. And if I go into my Google Drive right here, I can see cat food/ flash sale flyer.
+And I click into it and it is our cat food picture. And here's a little illusion. You can also see the other one right here, which is the edited one, is
+the one that we asked it to make it more realistic. Cool. So after it's put into our Google Drive, we then just want to
+log that output in our sheet. So once again, we're signing in with Google. We
+are referencing the document called marketing team log, the first sheet. And then we're just mapping what columns we
+want to send over. So we have title, type, request, ID, link, and post. For this one, I just left the post blank,
+but the title, I pulled in the title from that first trigger. All I would do is I scroll all the way down on this lefth hand side to the trigger, and I
+just dragged in image title right here. The type I fixed in here that this is always going to be type image. For the
+request, I dragged in the image prompt. For the ID, I went to the Google Drive ID, which is what we need in order to
+later edit it. And I dragged in the ID right here down there. And then for the link, I grabbed the web view link from
+Google Drive, which it would have been found right here, which basically lets us actually view it. And that's what the
+main agent would send back in Telegram and say, "Hey, here's the image. You can click on this link if you want to look at it." Okay, so that was the create
+image workflow. Now let's take a look at the edit image workflow. So it's very similar in the sense of we're referencing a workflow. We're defining
+certain inputs which are the image, the request, the chat ID, and the picture ID. And this is important because with
+the OpenAI's endpoint for editing an image, you have to send one in, and then you say, "Hey, can you edit that?" So
+like here's a good example of making sure that they stay sort of like consistent. So this first one, I asked it to make a crocodile lifting weights.
+And you can see it has like, you know, it's got two two dumbbells. Actually, this one's a little messed up. It's got these signs in the background. And then
+what I can do is I can ask it to edit that image and it's going to keep it, you know, sort of similar. So you can see here it was an edit. The request was
+add headphones on the crocodile's head. And now it's like the same picture pretty much except for now he just has
+headphones. So that's how you can do editing an image rather than just creating a new one. Anyways, this is the
+kind of stuff we're passing over. Let me open up this workflow and we'll look at the live run and break it down. Okay, so
+here's the run that you guys saw in the demo. It was the cat food flash sale flyer and it said make the image more
+realistic. And if you remember in the demo, it was able to pass over the correct picture ID because what it did
+is it searched the database first and then it sent over the correct picture ID. Anyways, now we have that right ID
+and what we can do is we can download that file from our Google Drive. So it sends in that ID. We click view. We can
+see that it's the correct one. And now this is the one that we can send to OpenAI to edit. So that's why the next
+step is we're hitting OpenAI's endpoint. This time instead of using the generation endpoint, we're using the
+edit endpoint. And then all we're doing is we're sending over the binary file right here called data. We're sending
+over the prompt which says make the flyer more realistic with a lifelike photograph of a cat enjoying delicious
+cat food. Blah blah blah. And then it was able to say, "Okay, here's the picture. Here's the request. Um, here's
+your new image basically." And it does the exact same thing. It spits out a nasty string of B 64. So then we convert
+it once again. As you can see, we convert it. We get the actual new edit image which is right here. And then we
+do the exact same thing in the sense of we send it to Telegram and then we write to drive and we write to sheets. Okay.
+So now let's take a look at this search images tool which is an interesting one. So the idea here is there's there's two
+things you can kind of do. So let me just quickly open this up. So we'll take a look at it. The idea here was that you
+could say, hey, like remember that image I made a while ago about the crocodile? Can can I look at that? and you could
+ask, you know, get my crocodile picture and it would send it over to you. Or the other case is where you need to make an
+edit on an image and all you need is that image ID. So, let me explain what I mean by that. When this workflow gets
+called, it's going to send over the intent, which is either going to be does the user want to get an image or does
+the user want to edit an image? Because that will kind of change how the workflow works. Then, of course, we have the image title that gets passed over.
+Whether you're getting or you're editing, you still need to know what image you're going to get or edit. And then of course we're pretty much always
+passing over that Telegram chat ID so we can send stuff back to the user. But anyways, hopping back into the workflow.
+Let's open up the live execution real quick that we saw in the demo, which this one basically was just getting an
+image and passing that um picture ID back to the main workflow. So when this workflow triggered, we got the intent
+was edit. The image was the cat food/ flash sale and then of course the chat ID. And then we pass it into an image
+search agent where we say, "Hey, here's the title of the image." And all you need to do is you are an image retrieval
+agent. You need to look in your image database tool and return the name, ID, and the link of the image. But if you
+can't find one, you would output not found. And so over here, it outputs the name, ID, and and the image, and then a
+status. The status would be not found if it couldn't find that picture in the database. And that's why we have a structured output down here to actually
+define, hey, here's how you should output information. And then here is the tool, the image database tool where
+we're basically just giving it access to that sheet. And actually, it's called marketing team log. I switched the name, but it would just be searching through
+it. And then it would have all the information it needs. And then it would basically just output whatever we're looking for. And then we have two if
+checks here. So the first one basically says is the status not found. If that's true, you're going to go up here and
+return to the main agent and say image wasn't found in the database. But if the image is found, you're going to move on
+to this next check, which is basically saying, what's the intent of the user? If the intent is just to get an image,
+then you're going to go down this branch where you'll download that file and just send the content over. But if the intent
+is to actually edit an image, we don't need to send the photo. We just need to send the the image ID back to that main
+workflow. So in this case, the intent was edit. It passes down this way. And then what we send back over to the main
+agent is the image ID as well as the image name. And then it can basically say, "Okay, here's the image ID. I'm
+just going to send that over to the edit image tool." And now it has all the information it needs to actually go make
+that edit. Okay, cool. Let's just keep chugging along here. I'm only going to review one of these because they're
+basically the exact same thing. The prompting is just a little different. You can download both of them, of course, and the full video about the
+LinkedIn post one I'll I'll plug up here. But anyways, let's look at the blog posting one. So, very similar. We
+referenced the workflow that we plugged in. We are sending over a blog topic which is defined by the model. It says
+the topic of the blog. We're defining the target audience. So the target audience for the blog because the content will be written in a way that's
+kind of tailored towards this target audience. And then of course we're sending over the chat ID. So here's what this workflow looks like. And as you can
+see in the trigger, we define those things over here. Same as the other ones. And let's click into the execution we saw in the demo. So what got passed
+over here was the effect of sleep on productivity. It was tailored towards working professionals and students. and
+then our chat ID. And first we hit a blog posting agent which has access to Tavali to do web search. And let's take
+a look real quick at what it's getting in its system prompt. So we're passing it in the topic of the blog and the
+target audience. So as you can see right here, this is what it's looking at. And then in order to actually make that blog
+post, it has to read through its system prompt which says, "You are an AI agent specialized in creating professional,
+educational, and engaging blog articles based on the topic provided by the user. The objective is to always begin by
+conducting real-time web search using Tavali. The blog article should be written to appeal towards the provided
+target audience. So anyways, we just tell it like how to do its research, how to start the blog, all this kind of
+stuff. And then we make sure that it uses its sources at the bottom as a clickable link and then just a quick example workflow of like order of
+operations type of thing. But then as you can see, it spits out a full blog post for us. You can see there's a few sources down here at the bottom and a
+little reminder which is a well-rested mind is a productive mind. So it basically takes this blog post and we're
+just going to feed that into the next agent which is a image prompt agent. So we're saying hey here's the blog post. As you can see it's getting the entire
+blog post and then we say using that post make a sort of a graphic or a
+visual that will go really well with that post. So that's why in some of the examples you'd see there's like statistics in the visual or you know it
+really aligns with the actual content and that's the whole goal, right? So, not going to read this whole thing, but
+basically we're just telling it to read and analyze the post, identify the main message, like what are some key highlights, and then make a text image
+prompt for that blog post, and then pretty much you're going to output that that image prompt right here. But we
+have it outputting a title as well as a prompt because we want to use a title later. So, anyways, we're doing that
+again with a structured output parser where we're saying output a title and output a prompt. And that's exactly what it did. So, then we can use them later.
+You'll see what I'm talking about down here. Anyways, this next step is the exact same as creating an image. We're hitting
+the same endpoint for creating an image. We're just passing in the prompt that came from the previous one. And if you
+see these little functions in here where you see like the variable with the dotreplace, I I need to change this so
+all of them have that. But basically, in an HTTP request, if you're passing over double quotes, it's going to fail. So
+right here, you can see there's like single quotes. And if I wouldn't have had this function, it would have made double quotes here and it probably would
+have failed. So this is just a good check to replace those with single quotes. So anyways, obviously we're
+converting that to binary, right? As you can see right here, here is our graphic for that blog. We're sending that in.
+We're sending the photo and then we're also sending the blog content. So this is two different steps. The first one is we're sending the binary data. And then
+the second one is we're sending the actual text content. They're both obviously using the same chat ID, but
+this one is the output from the blog post agent. And the previous one is just the binary data that's right here. Then
+of course we're writing to drive into sheets because we want to have those images to access later. So same thing we're uploading to drive. We're using
+the title right here to title that picture. So this is why we wanted to have the image prompt agent spit out a
+title and a prompt. So there's the title and then pretty much same thing here when we're logging that back into
+sheets. So like I said, this is the exact same flow for the LinkedIn one. The only difference is that we have
+different writing style in this agent for LinkedIn posts and then we have different writing style here for the text image generation. Um just so the
+LinkedIn graphics are a little bit different than like a more of a general blog graphic. Cool. And then the last one we have is the video generation. So
+clicking into here, let's take a look at what we're passing over. This one's a little simpler on this front, but the actual workflow is probably the most um
+complicated. But we're just passing over a topic of the video as well as the chat ID. So here's what the workflow looks
+like. This was inspired by another one I did a full video on it where I did faceless shorts. So, if you want to
+check that one out, I'll tag that right up here. But anyways, let's click into the execution from the demo and we'll watch that data move through. So, what
+we got sent over was a beaver building a house showing the beaver gathering sticks, arranging them by a riverbank, creating a dam, all this kind of stuff,
+and the chat ID. And what we wanted to do is basically what we're doing is, as you
+can see, there's four items passing through. We're basically creating four images and four 5-second long videos and
+rendering it all together in a 20 second clip. So the image prompt agent we are
+basically feeding in that video topic and then we told it this long system prompt here is basically you're a master
+visual story structuring agent. Your task is to take a given short video topic which is about the beaver building
+a house and you need to create four parts that are cohesive and you're going to turn those four parts into a text
+image generation prompt. But also we had to give it a output parser. So whenever we do that we have to flick on this
+little box right here that says um require specific output format. And we just gave it part one, part two, part
+three, part four. And you can see that's how it outputs over here. And so even though we have those four parts, it's still only one item. So that's why we
+use the split out to turn in, you know, these four parts and one item into actually four different items so that we
+can create four different images and videos for each of these little image prompts. So that's exactly what happens
+next. We're hitting PI API's endpoint in order to generate those images. So, like I said in the full video where I did on
+faceless shorts, you'll see a little bit more in depth about how I set this up, but basically we're just hitting the endpoint for Flux image generation. We
+are sending over the image prompt. And as you can see, this is going to send over four requests. So, the first one is a stocky beaver. The second one is the
+same detailed beaver. The third one is a close-up dramatic scene where he's placing sticks. And then the fourth one is he has the actual home. And so,
+that's how it creates four different images. You can see that right here. What happens is it spits out, you know, all of these are still pending, so it
+takes a little bit to actually generate them. And so that's why we wait for 90 seconds and then we're just basically making a request to a different endpoint
+as a get where we're going to just go check on the status um of these requests. And now you can see they're
+all completed and we have like a link to the actual picture, which would be right here, we have image URL. If I just go to
+this, you can see this is one of the images about our beaver. And so one thing to keep in mind, optimally, you
+probably want to have this set up to be polling where you're not just waiting 90 seconds and just taking a guess because
+if it's not done after 90 seconds, the workflow wouldn't be complete and you'd pass over, you know, maybe three of the
+images are done, but the fourth one isn't and you just would be missing one. So polling basically just means you'd be checking and if they're not done, you'd
+loop back, wait a little bit, and check again. And that just kind of ensures that you don't move on from this step until all four images are done. If you
+want to see a quick example of that, I did a little example in a fire call video. I'll tag that right up here. Anyways, from there we have those images
+and they come through as URLs. And then we're hitting runway to turn those URL images into videos. So what we're
+passing over here in the body request is the prompt image. And as you can see, we're sending over the URL. And there's
+going to be four different URLs. And then we're sending over prompt text, which helps the model turn the images into a video. And this prompt text is
+the same one that we used in the text image generation. And now we're just using it again for the imagetovideo
+generation because obviously like this kind of has like a little story involved. Anyways, what this one does is
+it spits out four IDs and then later again we have to wait for them to actually be generated and then we're going to check if those IDs are done
+yet. And so when they are done after about 60 to 90 seconds, you can see all of these statuses are succeeded. And
+then we get the outputs in the form of a link which if I clicked into this one, this would be an actual video. But of
+course there's no sound effects yet. So that's kind of the next step is we have to make a sound effect for each clip and then we want to render everything
+together. Okay. So the way we do that is with a sound agent. So what I did here is I passed over each scene
+individually. So scene one, scene two, scene three, scene four. And then what we told it in its system prompt is that
+you're a master sound prompt generator. Your task is to create vivid immersive sound prompts based on the given scene.
+And they should all just kind of be like background sound effects. And as you can see, it spits out these four different outputs, which are all just like
+different sound effect prompts. and we're going to feed those in to 11 Labs to turn this text into a 5-second clip
+of sound. So that's why right here we are sending a request to 11 Labs. We're basically saying, "Hey, here's the text
+that you're going to turn into a sound effect." And then right here you can see we have four different clips and they're all 5 seconds long of sound effects. So
+I know I'm going through this a little fast, but don't want this video to be too long. And I have a full breakdown of the video that I sort of linked earlier.
+So definitely check that out if you want to understand a little bit more of what's going on. But this is the final step down here where we're rendering it
+and then logging it back. So we're merging everything together so we can have those four items with, you know,
+here's the video and here's the audio. And so that's what we get right here. You can see we have four items and all
+of their success messages, the different links we need. And then we just basically wanted to clean it up and split it out. So now we have here's item
+one and basically here's the audio for item one and here's the video for item one. And then we have all four of those
+so that we can really easily pass it into this create a mate template right here. So all we're doing is we're passing over the four variables down
+here. So once you have my Cremate template script, once you're in creatate, all you have to do is go to
+the source editor up here. You'll paste in that script right here. And then you'll click on um use template API
+integration and then you'll hit this curl command. And then all you have to do is when you're in Nitn, you'll just want to import your curl to this HTTP
+request and paste that in there. And then you'll have your template ready to go. And then you would just basically drag in, you know, I need the four video
+sources right here and the four audio sources right here, which are the web content link
+sources. So, as you can see, they just kind of count up from zero to three, which means we have all four and then we
+have pretty much everything we need to stitch it all together and create a mate. And so, this is like very similar
+to when we're creating the images and videos where it comes through and says, "Hey, okay, like basically we're processing it." So, we have to wait for
+25 seconds and then we're just going to go hit that endpoint to download the URL that it gives us and we get the URL from
+that previous step and then it comes back as you can see with a full video
+that actually has the sound effects rendered there. So, then because we have the video right here as binary, we're
+just going to send that back to us in Telegram. And then we create a title real quick and then we put that title
+and everything else we need in the log. Okay, so that was kind of how all of these different tools work. And
+apologies if I went a little fast. I just didn't want this video to go too long. But now let's talk about pricing
+real quick and then how you can actually set this up in your own NAN. Okay, so here's a little doc I threw together
+about the pricing of the system. So obviously Naden is where we're pretty much hosting all this. So if you're on
+the cloud, which in this video I'm using the cloud, so it's about, you know, the 27 bucks a month or whatever that plan
+is. Um, so you've got that cost. The first thing I'll touch on is the image creation. So, we're using pretty much
+the new OpenAI, which is the GPT image one, which is the pretty much the same generation model as in the chat GPT40.
+And so, this is about 19 to 20 cents per image, as well as 19 to 20 cents per image edit. And we also are using this
+model in the um LinkedIn and blog posting agents as well. So, just keep
+that in mind. That's going to be about 20 cents per run for those. But in that create image endpoint, you also have the
+option to use the different models like Dolly 2 or Dolly 3, which are a little bit cheaper. The prices are listed right here. Um, and as you can see, like if we
+go into the request, there's a parameter right here called model. And this is where you could switch out that model if you wanted it to be cheaper. You could
+even have that be dynamic if you wanted your agent to say, okay, you know, like what type of thing are we doing? Let's use a cheaper model, whatever it is. But
+then, anyways, in the video creation workflow, when we're creating those images, we're using Flux through PI API,
+which is about 1 and a half cents per image. So, that's like obviously a much cheaper route. Okay. Now, for video
+creation, we're using Runway, which is about 25 cents per 5-second video clip. I think it's 50 cents for a 10-second
+clip, but we're making four 5second long clips. So, it's about a dollar per run there. And you also have to add on the
+cost of the um images. Okay. And then for Creative, I'm currently on the free
+trial, which gives you 50 free credits. And if you see here, I've got, you know, three successful renders, and I've used
+three of my 50 credits. So, I I'm assuming that means like one credit per 20 second render. But then down here,
+um, when I did some research, it said 2,000 credits was suitable for approximately 200 videos. Actually, if I click back into create a mate and I go
+to upgrade my plan, you can see this is, uh, 2,000 credits and 200 plus videos or 2,000 images. So, not exactly sure
+there, but so far I've done three renders and it seems three credits. Then for sound effects, we're using 11 Labs.
+And on the starter plan of five bucks a month, you're going to get a generous amount of credits. You probably won't even run through that. I haven't had to
+upgrade my plan yet. So, that's about five bucks a month. And then for all of the text generation and reasoning for all the different workflows and agents,
+I've been using 4.1 mini and 4.1 for this entire workflow. I've obviously been doing that through Open Router, but
+they're not too bad. So 41 is $2 for a million input tokens, eight bucks for a million output tokens, and 41 mini is 40
+cents for a million input tokens, and $1.60 for a million output tokens. Anyways, I'll have this document
+attached in the free school community with all the other resources you need. Okay, so when it actually comes to setting all this up, first step is
+you'll go to the Free School community and you'll have to get the resources. So you'll join the Free School community.
+You can either search for the title of the video or if you click on YouTube resources and look for the post associated with this video, you can find
+all of the JSON templates in here and you'll have to download those. So there'll be seven total workflows, you
+know, the main agent and the six tools. And you'll have to import each of those into an individual workflow. So you'll come up here, click import from file.
+Once you click on that workflow, the JSON workflow, it will pop up like this and you'll have it all set up. I'll also
+have like a setup guide somewhere over here which will tell you the different things you need to grab like your API keys or whatever it is. And then you
+have to like configure the workflows. So when you import the search images workflow, you'll have to come into here
+and make sure that it's referencing the one that you want. So you'll have to make sure like whatever you name it in your instance, if it's called search
+images, you'll just have to make sure you click on it and that it's linked. And you can always check by clicking on this to open up that workflow in a new
+tab. So, of course, you'll have all your different API keys to plug in like your OpenAI, your Open Router, your Google
+Drive, your Google Sheets, all that. But the next step really would be to do the Google Sheets template. So, I'll have a
+link to this template in the community as well. You'll have to click on file and you'll make a copy and then you can
+just like have that in your own Google suite and use that to log everything. You know, the names will always be consistent. So, when you run it, it
+should basically update this automatically and you'll be good to go there. And then, of course, you'll have to get the creatate template which will
+look like this. I'll post that in there as well. And you'll just open up a new template when you're in CreativeMate, start from scratch, open up the source
+editor, and paste that in there. And then you can click on use template API integration, and then you'll import that curl into the faceless video step down
+here where you want to actually render the video together. You'll import that curl command, and it will have everything filled out. You'll just need
+to drag in the variables. Or what you could do is leave all the variables here and you just need to switch out the template ID from your creatate. And then
+I think the only other thing you need to plug in is like your Telegram credential. Um, hopefully I'm not missing anything, but like I said, I'll
+have like a setup guide and then you should be good to go to start running this thing and using this agent. And so if you're a complete beginner or you
+have a little bit of experience, but you're looking to take your knowledge a little further, then definitely check out my paid community. The link for that will be down in the description. We got
+a great community of over 1100 members who are using Nen and building automations every day. We've got a classroom section with a full course on
+building agents, different deep dive topics like vector databases and APIs and HTTP requests, as well as some
+step-by-step builds. Um, and then we have five live calls per week, which are always recorded to make sure you're never getting stuck. And currently
+working on a few new courses that will help someone that's a complete beginner sort of start with the foundations and then work their way up to automating
+processes. Anyways, would love to see you guys in the community. Would love to see you on a live call. But that's going to do it for this video. If you enjoyed
+this one or you learned something new, definitely give it a like. Helps me out a ton. And as always, appreciate you guys making it to the end of this one.
+I'll see you in the next video. Thanks.

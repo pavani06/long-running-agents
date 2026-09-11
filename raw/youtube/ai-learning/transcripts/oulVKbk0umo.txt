@@ -1,0 +1,582 @@
+I just saw the future of AI agents and I'm not 
+even overselling it. I had the founder of Lindy AI
+show us new stuff around how to use plain English 
+to do vibe marketing, to build out AI agents that
+make you money and make you more productive. 
+A lot of people have promised this. A lot of
+people have promised AI agent platforms that do 
+this, but it is finally here and this opens the
+door for fully autonomous companies that are run 
+by agents. And that was science fiction, you know,
+literally a few weeks ago. It's not anymore. I 
+can't wait for you to see how the new Lindy AI
+works and how it uses agent swarms, something 
+called computer use. And it's going to change
+the game. So tune in. When it comes to AI agents, 
+Flo, you're probably one of my first calls that
+I make. And today's an extremely special episode 
+because, Flo, what are we going to learn today? We
+are going to talk about the two major things we're 
+announcing today, which are the agent builder and
+computer use. So the agent builder makes it 
+super easy to build the agents and computer
+use makes the agents basically able to do pretty 
+much anything that you can do on the computer.
+So I think, we've been talking to you and I, Greg, 
+about the AI agents for a while now, and they've
+been sort of immature. These two things are a 
+big, big, big step forward with AI agents. Okay,
+because there's a lot of episodes on AI agents 
+on YouTube and X, including some of mine, where
+I'm , or me and people are , this is insane, this 
+is insane. Flo, is this actually insane? If people
+stick to the end of this episode, will they be , 
+my mind is blown? Look, I don't mean to sound too
+grandiloquent. the tech is new, right? That's the 
+reality of it. I think we're , you know, we are
+driving as an industry towards what we're talking, 
+what we're calling the Macintosh of AI agents,
+right? So we've been stuck in the terminal days of 
+personal computers. It's , yes, it's insane. Yes,
+it's really cool. But , it's really hard to use. 
+And I think that's one of the main concerns people
+have about AI agents. It's just super hard to use 
+and to create and leverage this new technology.
+So yes, this is a really, really, really big 
+step forward because now you're going to be
+able to create really complex AI agents really 
+simply. It's you just talk to it. It's , hey,
+I want you to do X moving forward and this and 
+that, and you just have a conversation. And it's
+effectively an AI agent creating an AI agent for 
+you. The two concerns people have about AI agents
+are number one, too hard, can't figure it out. I'm 
+not an engineer, I don't have the time for that.
+Number two, it doesn't integrate with my tools. 
+we're basically solving 90% of both problems
+today. So look, we don't have AGI yet, but yes, 
+it's a really, really big step forward. Okay,
+you have my attention. I'm intrigued. All right, 
+let me see my screen then. So I'll talk about
+marketing, I can talk about sales, and I can talk 
+about customer support. Those are three really big
+use cases. Support is a trade for world. It's just 
+yesterday, I was catching up with a friend And
+he's spending $12,000 a month on customer support. 
+And this is after optimization. He's got a bunch
+of VAs in the Philippines. And he's in the process 
+of replacing all of that by Lindy. And until now,
+he was holding back because he was , yeah, 
+but they do so much. It's more than just
+answering a ticket. , yes, we've been doing 
+the RAG thing, the retrieval thing. , yes,
+if you ask a question about a refund policy or 
+a return policy, we can answer that, no problem.
+But very often, they check your order status. 
+on Shopify or they issue a refund on Stripe.
+There's all sorts of things that it does. So now 
+with computer use, you can't do it. It's , okay,
+you receive a support ticket or they're asking 
+for a refund. You insert a human into the loop,
+probably at that point. You're going to receive 
+notifications every so often. It's , boss, I'm
+about to issue this refund. Yeah or nay? And then 
+say yay. And it just goes on Stripe or , hey,
+check the order status on Shopify. It goes on 
+Shopify. It can do all of that stuff for you. So
+support is just such an easy one. Especially for 
+e-commerce businesses, if you have a little bit of
+seasonality, it's not just about the money saving. 
+It's just easier to operate a business that's
+backed by AI agents than a business that's backed 
+by humans. Because yes, AI agents are not perfect,
+but at least they're consistent. If you've got a 
+need to work once, it is going to work a thousand
+times. Whereas humans, you never know. And they 
+don't scale. They quit on you. They start slacking
+off. They start sometimes stealing from you. 
+So it's, you know, AI agents that you can just
+put it on the tablet and forget about it and then 
+move on to another part of your business to focus
+on. So support is just a total no-brainer. Sales, 
+we have so many sales agents. So I'll start with
+a huge caveat. I want to be real. , and I think 
+that's one thing I really love with your podcast,
+Greg, is , I feel there's so much, again, 
+grandiloquent promises out there that are
+empty promises. And I feel the AI SDR, frankly, 
+is one of them. if you think you can just spin
+up an AI SDR agent and click a button and then 
+infinite pipeline is going to come through your
+door you're out of your mind this is just not 
+how it works it is still a lot of work if you
+don't have an adbound motion even if you hire the 
+human SDR and you don't have an adbound motion you
+should expect I think 40% chance that they never 
+succeed and even if they do succeed you should
+expect a couple of months of heavy iteration and 
+this is not because the human is dumb It's just,
+it's hard. There's a lot of iteration. But once 
+you have figured it out, yes, AI SDRs can be very
+effective. My recommendation is that I think 
+an AI SDR is basically supplementing a human
+SDR. So that's the whole ad bound thing. I think 
+the way of the future is you should hire a person
+full-time who is basically 10x more effective 
+than they would be if they were alone, but you
+still need a person full-time to manage your AI 
+SDR agents. and so here with computer use the
+things that we are unlocking with our AISDRs, man 
+I feel I'm going to get banned from LinkedIn but
+LinkedIn, LinkedIn DMs so you've got to have a lot 
+of touches so you know we send an email to people,
+we send them a text message, we can do that if 
+they have opt-in, you've got to collect opt-in,
+that's a legal thing, but if they have opt-in we 
+make them a phone call, the agents can do that,
+and then we hit them on LinkedIn, so it's just 
+all of these touches and it all happens inside
+a single workflow. And LinkedIn actually turns 
+out it's the most effective, at least for now. So
+outreach is a really big one. Nurturing is another 
+really big one. So we jump on these calls and a
+good win rate, if you've got a sales team, is 25, 
+30%. So it means at best you're going to lose only
+70% of your deals. But those are actually really 
+good leads. They jumped on the call with you. that
+have the beginning of a relationship and so forth. 
+And so what we do is when a deal is lost we log it
+in the spreadsheet And then we have an AI agent 
+that nurtures the lost deals And so what it does
+is in that spreadsheet, we log the use case that 
+this person had. And then this AI agent observes
+two categories of events. It observes, did we 
+just win a deal in a similar use case or in a
+similar industry? So if we're in touch with , 
+I don't know, a B2B SaaS finance company of 50
+people. And then we close another company that's 
+also B2B SaaS finance 50 people. the AI agent is
+going to observe that win. So , , fuck, we won 
+one. We're going to go back to that guy. So it
+looks at the spreadsheet. It's , , there's one guy 
+here. I'm going to go back to him. And , Bob, how
+have you been? I was just thinking about you. We 
+just closed another business. It's , most likely
+they know about them because they might even be 
+competitors, right? So now they'll be the FOMO,
+right? So that's one. And the other kind of 
+event it observes is the releases. So again,
+we basically talk to the agent or it observes 
+our change logs and so forth. And it's , hey,
+okay, we're releasing agent builders and we're 
+releasing computer use. And so we also have that
+last reason in the thing. So it's , , we couldn't 
+integrate with, we've got a lot of customers in
+healthcare. That's one reason I'm so excited about 
+computer use because these guys, they have this
+a healthcare record management systems. And these 
+systems do not offer APIs, Epic and stuff. And if
+they do, it costs $100,000. you have to go through 
+a year-long review process. It's a nightmare. With
+computer use, you're basically going through the 
+back door. And so right here, this nurturing agent
+is going to look , aha, it's , Bob, last time we 
+spoke, you wanted to integrate with your Epic EMR.
+Computer use just came out. We can do it now. Do 
+you want to book a call? Can we build from scratch
+a full-on agent showing computer use just from 
+scratch? Yeah. let me think of a use case that
+we could go after. Let's just do a simple use 
+case that's going to DM people on LinkedIn. I'm
+going to go here. Before you even do this, 99.9% 
+of people are not DMing people on LinkedIn. 99.9%,
+including myself. But I know that if I probably 
+reach out to people on LinkedIn, DM, I would
+probably close more business. I'm just not doing 
+it because in my mind it's cringe and I don't want
+to think about it. But if I could spin this up and 
+it works, that's a huge unlock for me. So I just
+want to preface it with that. 100%. And I think 
+that's one thing we hear very often. People are
+always , agents are coming for our jobs. Sure, 
+maybe over the long term, but in practice right
+now, what we're seeing is a lot of people who just 
+do stuff they wouldn't do before. , we know we
+should post on LinkedIn. We don't do it because 
+it's really hard to automate and it's kind of
+cringe and we don't want to think about it. Okay, 
+so for now, I'm just going to make it manual,
+but I could be , hey, every time I ping you on 
+Slack or every time someone submits a form or
+every time someone gets added to this spreadsheet, 
+hit them up on LinkedIn. For now, I'm just going
+to be , when I send you a message with a LinkedIn 
+profile, I want you to send them a DM on LinkedIn
+asking if they would be interested in AI agent 
+services. Tailor your DM to the person's profile.
+and I'm going to be , I want you to use computer 
+use to send a DM on LinkedIn asking if they would
+be interested in the agent sources. And the reason 
+I'm doing that is because we also have LinkedIn
+integrations that, this is the ironic part, 
+by the way, people think, and I thought that
+API integrations would just be the bomb. That's 
+just universally better. Actually, computer use
+very often works better. So it's , hey, okay. 
+So when you send me a message, it's confirming.
+It's , yeah, you want me to do that and start a 
+computerization and do all of that stuff. , yep.
+this is crazy dude you've been building this 
+for a while so you probably are numb to it but
+the fact that you can just literally talk to it 
+and it's building it live this is the dream oh
+yeah I agree I mean we have been thank you Greg 
+you're right I've become a little numb to it but
+yeah I mean this has been what we've been working 
+two wheels for the last three years straight up
+this has always been the vision you tell it what 
+you want to do and it just does it for you. You
+shouldn't have to be an engineer. It's just doing 
+it. Dude, you're going to put all the N8N bros
+out of business. Look, we do have some competitors 
+that I think are unnecessarily complex. All right,
+it's done. I've created your LinkedIn DM at your 
+agent. When you send a message to the LinkedIn
+profile URL, and if I inspect the agent here, it's 
+, all right, you're going to send me a message. If
+the message contains a LinkedIn profile URL, I'm 
+going to start a computer session. And then you
+are helping to send a personalized LinkedIn 
+DM to a prospect about AI agent services.
+We are going to redact here because what I need to 
+do is I need to enter, and this is not going to be
+here in production, but I have a computer ID here 
+that I need to use for it to have my logins. You
+can see it even named the agent. It's LinkedIn DM 
+outreach agent. I'm going to save this and let's
+do it. Greg I'm gonna spam you man oh I liked 
+it when I was DMing not getting the DM wait a
+minute you know the tweet is I didn't realize the 
+leopard eating people's faces would eat my faces
+exactly okay so the LinkedIn the condition passed 
+it's starting a computer we should probably do
+something in the meanwhile because again the big 
+problem is it's not a big problem but it's just
+slow this is gonna be a pain in the butt Yeah, 
+I mean, while it's doing that, we can, I mean,
+brainstorm other ideas to just give people a 
+sense of what sort of things that they could
+be creating. Yeah. Oh, actually, it's not that 
+slow. Let me just open the browser and then we
+can tab away once it starts being boring. All 
+right. We did it. Open phone is my shared phone
+number. We is my assistant. I still have a human 
+assistant. All right. And so you can take control.
+And when you've taken control, you can then 
+release control and let the agent know, , hey,
+I just did something. So here I'm going to be , 
+I just loved it. I feel I'm watching the future,
+dude. , this is crazy. Yes. It is. And 
+again, it's early. I always want to be
+careful to, , be real with people. But, , it's 
+working. Yeah. It's interesting because I was
+so excited about ChatGPT. when it came out, 
+because to me that was a glimpse of the future,
+but what it was missing was the agent builder 
+the workflow There was only so far it could
+go Yeah 100 I think being able to plug it to your 
+applications also via APIs and being able to give
+it to different triggers is really powerful. And 
+then being able to have this state transition.
+In the case of my ex to LinkedIn, it's the same 
+agent, but it moves from stage to stage and that
+makes it a lot more reliable. because otherwise, 
+, operator is just, it's surprising. , it's not
+good enough to do a lot of this stuff, even 
+simple tasks this. But here, you're, , holding
+its hand ever so slightly. , you can see I'm 
+not telling it click-by-click what to do,
+but I'm still, , all right, step one, you're 
+going to check my tutorial. Step two, you're
+going to check on LinkedIn. And if any of these 
+steps is screwing up, I can really pinpoint where
+it's doing that, , what step of this workflow, 
+and I can update the workflow. And from a prompt
+perspective, , do you have any advice on how to 
+create optimized prompts for Lindy? None. The
+agent builder takes care of all of that for you. 
+I mean, you've seen me create this agent. It's
+not rocket science. I just talk to it I talk to 
+an intern and it just figures it out. And again,
+that's the beauty of it. It's , oh, okay, it's 
+found your profile. And now it's going to... ,
+fuck, you don't have DMs. You're in a photo. Let's 
+see if you can figure this out. But this is a good
+example of what I mean by, , that's the advantage 
+is, , you have this double mode of, , this double
+loop of, , you can edit the agent and the agent's 
+instructions and you can see the agent operate.
+And it's sort of ping pong between these two 
+modes. Because if the agent screws up when it
+operates, you can just go in these instructions 
+and you're , okay, , keep this in mind moving
+forward. Okay, so now it's looking at your, 
+, profile to, , know how to pitch you. Yeah,
+I disabled messages. Okay. From random people. I 
+think it's going to become smarter and smarter.
+Yeah, it's looking for the message button. I think 
+it's just going to give up. But it's interesting
+to see. , I want to see what happens. And then 
+we can always bug someone else after this. , it's
+not dumb. Message Greg is right here. Oh, you 
+know why? Because I have LinkedIn recruiter.
+It's kind of messed up how LinkedIn does that. , 
+you've disabled DMs, but with LinkedIn recruiter,
+it's fine because I'm paying for it. So he's 
+probably going to ask me to log into a LinkedIn
+recruiter account. Oh, my God. All right, Greg. 
+Are you interested in the AI services? I might
+be after this DM, man. And so, again, you saw me 
+create this agent. It took me literally, I mean,
+we can look at the recording, but two minutes, if 
+that, two to three minutes or something that, it's
+not going to be perfect first shot. It's working. 
+So that's always something. But you're going to
+want to iterate on the copy that it writes the 
+DMs for and so forth. So I think for, and this
+is what you said earlier, I introduced the human 
+in the loop, not just because it's imperfect,
+but also because there's a dose of subjectivity. 
+And so I think that's where we are with AI agents
+now. It's we're sort of graduating from the phase 
+of , hey, it screws up, and we're moving towards
+the phase of , no, it's just subjective. And 
+sometimes it does lack common sense. Wait, dude,
+this is crazy. Hi, Greg. Just listen to your 
+Startup Ideas podcast. Love how you're always
+spotting opportunities to, quote unquote, get the 
+juices flowing in the entrepreneurial space. As
+someone managing a portfolio of Internet companies 
+at Late Checkout, I imagine you're consistently
+looking for ways to scale operations efficiently 
+across your ventures. As a matter of fact,
+I am. I've been working with portfolio CEOs 
+who are using AI agents to automate repetitive
+tasks lead qualification, customer support, and 
+content creation, freeing up their teams to focus
+on the high-impact work that actually moves the 
+needles. Given your background scaling companies
+from islands to advising TikTok, you probably see 
+the potential for AI to handle operational heavy
+lifting while founders focus on strategy and 
+growth. It's true. Would you be interested in
+a quick chat about how other portfolio companies 
+are leveraging AI agents? Ooh, I'd love that. I'd
+love to share some specific use cases that might 
+be relevant for your portfolio. That's actually
+really smart. Dude, are you kidding me? Still 
+shot. Are you kidding me? This is when it's all
+wealthy, Greg. , you know, being a founder sucks. 
+This is the highlight of , it's you build Kudas
+products and you're grinding on it for three 
+years. And at some point it clicks. And , look,
+it's more 1% of the way there. It's in your inbox. 
+Dude, did you hear that? That was, someone just
+messaged me on LinkedIn. I wonder who it is. And 
+so again, now I can chain it with , I could find
+your phone number. And I could be , hey, send him 
+a text message to be , Greg, I just hit you up on
+LinkedIn. And if you opted in, I could also make 
+you a phone call. Right? And now it could, I'm in,
+there you go. So I can, I could now iterate on 
+this agent to go , hey, if they say they're in,
+look at my Google Calendar. Offer them times. Send 
+them an invite and so forth. So if you wanted to
+do that, you would go back to Flow Editor and 
+just prompt it? Is that what you'd do? Basically,
+yeah. I would be , okay, after that, you're going 
+to wait for an hour or something that. And then
+you're going to wait for 12 hours and then 48 
+hours and something that. And every time you
+wake up after waiting, you check if there was a 
+reply if there was a reply and if they said that
+in you check my availabilities on my calendar and 
+you send the availabilities and you go back and
+forth until you found an availability that works 
+so this is why you start really small and then
+you iterate and that's why I'm saying it's not 
+in five minutes one click you're going to have
+infinite pipeline but you know you sit down 
+for half a day or so and it's not complicated
+anymore. It's just a matter of iterating. And 
+in the end, I can show you, in the end you have,
+I'll show you this example of an agent or this 
+example of an agent. What else do I have? This
+example is really good. As you iterate, and again, 
+you build your way to wield it, but your agents
+end up becoming really complex and really, really, 
+really powerful. So you start small. It's really
+simple to get started. And , this is an agent that 
+they use for recording because that's how I spend
+half my time. and that's what it does. And this 
+is actually not even that complex of an agent,
+but little by little, you just keep iterating and 
+iterating and iterating, and you land here. This
+is one of my favorite agents, my chief of staff 
+agent that just live in this thing all day. So
+this is one of my more complex ones. This is my 
+CRM manager agent. So this one I just talk to all
+day, and it logs the stuff in my CRM, it retrieves 
+the stuff from my CRM. So that's where you end
+up after you've really iterated on your agents. 
+Incredible. Dude, you've done it. You've done it
+again. I don think I ever had someone on actually 
+no I never had anyone on the podcast where I this
+is the future I need to invest somehow and I need 
+to get involved So that I think the reason I say
+that is I've been playing with a lot of these 
+tools, and they've been close, but this is the
+closest thing I've seen to what I had in my mind, 
+which is prompt it to workflows and agent flows,
+and then having a computer go and actually go and 
+fulfill that task. So for me, what's going through
+my mind flow, just to be frank, is how do I take 
+stock of, we have a bunch of companies that we're
+running, all the tasks that we're doing, how we 
+can productize it, and where is there an unfair
+advantage and where there's our opportunity 
+to actually be more productive and make more
+money? Yeah, I always use the Factorio image. I 
+don't know if people, your listeners are familiar
+with Factorio, but it's this factory simulation 
+video game. But I really do think, and I've been
+using this image for years, I really do think 
+the business of the future looks Factorio. So
+you end up thinking of your business as , open a 
+Figma, a FigJam, just whiteboard it out. , okay,
+my business is basically this pipeline. Every 
+business is basically a pipeline. And then you
+just take stock of , where am I spending most 
+money? Where am I spending most time? What is
+the current bottleneck of the business? And let me 
+just overwhelm the bottleneck with the agents. I
+have a top of funnel problem. I don't struggle 
+to close people once they're in the funnel,
+but they struggle to get top of funnel. Okay. 
+Marketing agents. I'm going to spin up a bunch
+of agents that create a ton of content. We'll, we 
+have a VO3 integration that's coming. So you could
+totally have an agent that's , Hey, I want you 
+to post a hundred videos on TikTok and Instagram
+every day. And then I'm going to give you feedback 
+about the videos, and then you should learn. You
+can very much prompt your agent to be , hey, also 
+every day, you could have another agent do that.
+I want you to look back at your videos, views 
+history, and see what clicks. And then I want
+you to maintain a Google Doc with your learnings 
+so far that you just keep iterating on. And then
+the other agent that creates the videos consults 
+this Google Doc every day. So you could totally do
+that. I was , okay, I've solved my top of funnel 
+problem. Now I have a bottom of funnel problem.
+People are a pain in the ass to support. I'm just 
+going to overwhelm the bottleneck with AI agents,
+and I'm going to solve that, and I'm never going 
+to touch a support ticket again. And just keep
+doing that. People don't understand. And I have 
+been careful during this entire conversation
+to not be overly grandiloquent. I hope people 
+recognize that. I have been saying for years, the
+fully autonomous company is coming. And I don't 
+mean that as a grandiloquent, this is coming in 20
+years. I'm , no, no, no, no, no. This is coming 
+now. in the next two years, perhaps. I think
+in the next, as early as 12 months, I do think 
+we're going to see people create fully autonomous
+agentic companies. I mean, when I see something 
+this, it makes sense, right? So of course there's
+going to be kinks in the product as you're rolling 
+it out. this is the first day that it's live. But,
+you know, I think that if you have an idea and 
+you have distribution and you have a plan to get
+more distribution, you create these vibe marketing 
+agents and LinkedIn DMs and you , what is, what is
+a business? If you think about it, it's customer 
+acquisition and fulfillment of the product or
+service. Right. So if you, of course it's going 
+to be autonomous at some point. Because if you
+could figure out how to create AI agents that are 
+automating the distribution, we've just seen right
+now, and you can figure out how you can create 
+AI agents and automations to do the fulfillment,
+then why wouldn't there be an autonomous company? 
+Yeah, the building blocks are here. This is no
+longer a sci-fi thing. It's , yeah, it's here. So 
+my Lindy recruiter, for example, okay, this is a
+Lindy recruiter that I use. And so I can show you, 
+I'm , hey, find me, I feel bad for the guys at
+Zapier. I the guys at Zapier. But I'm , hey, find 
+me 20 software engineers working at Zapier in the
+US. And it's , all right, I'm going to find the 
+people. And it's , perfect, I found 20 software
+engineers. Here's the list. And if I look, I 
+can look at their LinkedIn. and moving forward,
+I'm going to be able to, I created this one before 
+we had computer use. I should update it to now DM
+them on LinkedIn. But it's , okay, this is a bunch 
+of software engineers at Zapier. Okay, found them.
+And if you look at the timestamps, okay, this 
+was at 6.30 p.m. Okay. And so it's , all right,
+I found these guys. Who do you want me to reach 
+out to? Which of these candidates would you me
+to reach out to? I'm , yeah, all of them. This 
+is a correct list. This is awesome. Do it. And
+it's , okay, I'm going to do it. It keeps track 
+of its campaigns because sometimes I get banned
+on Gmail because I just sent too many emails. And 
+so they're , okay. And then we have this feature
+called agent swarms. So it's , it just pins up 
+a swarm of 20 sub-agents. And if you look here,
+so this was at 6.34. Okay, so I kicked off 
+the search at 6.31. Three minutes later,
+I had emails going out. Okay, 20 of them. And 
+the first thing this sub-agent is doing is it's
+searching if I've reached out to this guy before. 
+So it's , no, you've not reached out. And then it
+sends an email. and then it wakes up, sends 
+follow-up emails, sends follow-up emails. It
+just doesn't let it go. So I have the fulfillment 
+part of the equation going. I could totally just
+also spin up another Lindy that goes on LinkedIn 
+jobs or whatever and looks for companies that are
+recruiting and sends them a message to be , yo, 
+I saw you were recruiting. I'm an AI agent. Maybe
+I actually think that would be part of it. It's 
+, I'm an AI agent. I can help you recruit for a
+tenth of the price. Just tell me, yes. And you 
+don't even have to sign up. Here's your Stripe
+link. You don't even have to look at the LinkedIn 
+interface. You'll just try Plank. Let me know when
+you've done it, and then I'll start reaching out 
+to people for you. Dude, thanks for coming on and
+sharing this with us and giving us the exclusive 
+on this. I appreciate that. I appreciate you being
+real, honestly. It's just not over-promising. and 
+how do people get started and start building using
+Lindy? Yeah, you go to lindy.ai slash Greg that 
+entitles you to a couple thousand free credits
+and yeah, you can just get started immediately. 
+Okay, so if they go to that link, they get a
+few thousand free credits. So I'll include that 
+in the show notes then so people can go there,
+check it out. and I'm going to be sharing this 
+with my team and I hope to build some cool stuff
+yeah love it let me know what you think and by 
+the way people I love having Flo on the show so
+people in the comment section let me know if 
+you want to have Flo come back on the show
+to go deeper on some other workflows that we 
+could be building together so let me know in
+the comment section would really appreciate 
+that and flow. I love Prashan. Thanks, Greg.

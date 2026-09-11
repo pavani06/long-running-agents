@@ -1,0 +1,855 @@
+Maybe after the industrial revolution, this is the biggest thing. But at the same time, I'm a little grounded in the
+fact that this is still early innings. If you're a model company, you may have a winner's curse. You may have done all
+the hard work, done unbelievable innovation, except it's kind of like one
+copy [music] away from that being commoditized. We didn't want to just be a host for one company and have just a
+massive book of business with one customer. [music] That that's not a business. You can't build an infrastructure that's optimized for one
+model. If you did that, you're one tweak away. Some like breakthrough that [music] happens and your entire network
+topology goes out of the window. Then that's a scary thing. Our business, which today is an enduser tools
+business, will become essentially an [music] infrastructure business in support of agents doing work. The thing
+that you have to think [music] through is not what you do in the next 5 years, but what do you do for the next 50.
+Today we are interviewing Satya Nadella. We being me and Dylan Patel who is
+founder of semi analysis. Satya, welcome. Thank you. It's great. Thanks for coming over at Atlanta.
+Yeah, thank you for giving us a tour of uh the new facility. It's been really cool to see. Absolutely. Satya and Scott Guthrie, Microsoft's EVP
+[music] of cloud and AI, give us a tour of their brand new Fairwater 2 data center, the current most powerful in the
+world. We try to 10x the training [music] capacity every 18 to 24 months. And so
+this would be effectively a 10x increase 10x from what GPD5 was trained with. And so to put in perspective, the number of
+optics, the network optics in this building is almost as much as all of
+Azure across all our data centers 2 and a half years ago. It's kind of what 5 million network connections.
+You've got all this bandwidth between different sites in a region and between the two regions. So is this like a big
+bet on scaling in the future that you anticipate in the future there's going to be some huge model that needs to require two whole different regions to
+train the goal is to be able to kind of aggregate these flops for a large training job and then put these things
+together across size right and the reality is you'll use it for uh
+training and then you'll use it for data gen you'll use it for inference in all sort of ways it's not like it's going to
+be used only for one workload forever water four which you're going to see under construction nearby.
+Yeah. We'll also be on that one pedits [music] network. Yep. So that we can actually link the two at a very high rate. And then basically we
+do the IWAN connecting to Milwaukee where we have multiple other fair waters being built. Literally you can see the the model
+parallelism and the data parallelism. It's kind of built for um essentially
+the training jobs, the pods, the super pods across this campus. And then with
+the van, you can go to the Wisconsin data center and literally run a training
+job with all of them getting aggregated. And what we're seeing right here is this is a cell with no servers in it yet. No
+racks. How many uh racks are in a cell? Let me think about it. We don't necessarily share that per se, but but
+we let me The reason I asked [laughter] you'll see upstairs you can start
+counting. We'll let you start counting. How many cells are there in this building? That part also I can't tell you. Well, division is easy, right?
+My god, it's kind of loud. Are you looking at this like now I see where my money is going? [laughter]
+It's kind of like I run a software company. Welcome to the software company. How big is the design space once you've
+decided to use GB200's and NVIL? How many other decisions are there to be made? There is coupling from the model
+architecture to what is the physical plan that's optimized
+and it's also scary in that sense which is hey there's going to be a new chip that will come out which obviously I
+mean you take Vera Rubin ultra I mean that's going to have power density that's going to be so different with
+cooling requirements that are going to be so different right so you kind of don't want to just build all to one spec
+so that goes back a little to I think the dialogue we'll have which is you want to be scaling in time
+as opposed to scale once and then be stuck with it. When you look at all the past technological transitions whether it be
+you know railroads or the internet or you know replaceable parts and translization uh the cloud all of these
+things each revolution has gotten much faster in the time it goes from technology discover to ramp and
+pervasiveness through the economy. Many folks who have been on Darkesh's podcast believe this is sort of the final uh
+technological revolution or transition and this time is very very different. Um and at least so far in the markets it's
+sort of you know in three years we've already skyrocketed to you know hyperscalers are doing $500 billion of capex next year which is a scale that's
+un unmatched to prior revolutions in terms of speed and the end state seems
+to be quite different. How how do you your your framing of this seems quite different than sort of the I would say
+the AI bro who is who is quite um you know AGI is coming and you know I'd like
+to understand that more. Yeah. I mean look I I I start with the excitement that I also feel for maybe
+after the industrial revolution this is the biggest thing. Um and so therefore I I I I I start with that premise. uh but
+at the same time I'm a little grounded in the fact that uh this is still early innings. Uh we've built some very useful
+things. We're seeing some great properties. These scaling laws seem to be working. Um and I'm optimistic that
+they'll continue to work right. Some of it is um you know it does require real science breakthroughs but it's also a
+lot of engineering and what have you. But that said, I also sort of take the
+view that you know even what has been happening in the last 70 years of computing uh has also been a march uh
+that has helped us move um you know with as I said you know I like one of the
+things that Raj ready has as a metaphor for what AI is right he's a he's a
+turing award winner out of CMU um and he's always I think he had this even
+pre- AGI but he had this metaphor of AI should either be a guardian angel or a
+cognitive amplifier. I love that uh it's a simple way to think about what this is
+ultimately what is its human utility? It is going to be a cognitive amplifier uh
+and a guardian angel. And so if I sort of view it that way, I view it as a tool. But then you can also go very
+mystical about it and say, "Wow, this is you know more than a tool. It does all these things which only humans did so
+far." But that has been the case with many technologies in the past. only humans did a lot of things and then we add tools that did them.
+I guess we don't have to get wrapped up in their definition here, but maybe one way to think about it is like maybe it
+takes 5 years, 10 years, 20 years. At some point eventually a machine is producing Satya tokens, right? And the
+Microsoft board thinks that Satia tokens are worth a lot. How much how much are you wasting of his [laughter] of like economic value by
+interviewing Satya? You cannot afford the API cost of Satia tokens. Um but so you know whatever you
+want to call it is that are the SATA tokens a tool or an agent whatever. Um right now if you have models that cost
+on the order of dollars or cents per million tokens there's just an enormous room for expansion uh a margin expansion
+there where sad a million tokens of SA are like worth a lot um and where does
+that margin go and what level of that margin is Microsoft involved in is a
+question I have. So I think um in in some sense this goes back a band to
+essentially what's the economic growth picture going to really look like? Um what's the firm going to look like?
+What's productivity going to look like? And that to me is where again if the industrial revolution created after
+whatever 70 years of diffusion is when you started seeing the economic growth, right? it took that's the other thing to
+remember is um even if the tech is diffusing fast uh this time around for
+true economic growth to appear it has to sort of diffuse to a point where the work the work artifact and the workflow
+has to change and so that's kind of one place where I think uh the change management required for a corporation to
+truly change I think is something we shouldn't discount so I think going forward do humans and the tokens they
+produce get higher leverage, right? Uh whether it's the Dark Cesh or the Dylan
+tokens of the future. I mean, think about the amount of techn would you be able to run semi analysis or this
+podcast without technology? No chance, right? I mean, the scale that you have been able to achieve, no chance. So, the
+question is what's that scale? Is it going to be 10xed with something that comes through? Uh absolutely. uh and
+therefore within your ramp to some revenue number or your ramp to some audience number or what have you and so
+that I think is what's going to happen right I mean the the point is uh that's whatever what took 70 years maybe 150
+years for the industrial revolution may happen in 20 years 25 years that's a better way to like I would love to
+compress what happened in 200 years of the industrial revolution into 20-year period if you're lucky
+so Microsoft historically has been perhaps you know the greatest software company the largest software as a
+service company you know you've gone through a transition in the past where you used to sell Windows licenses and discs of Windows or Microsoft and now
+you sell you know subscriptions to 365 or um as as we go from sort of you know
+that transition to where your business is today um there's also a transition going after that right uh software as a
+service incredibly low incremental cost per user uh there's a lot of R&D there's a lot customer acquisition cost. This is
+why not Microsoft but the SAS companies have underperformed massively in the markets because the cogs of AI is just
+so high and that just completely breaks how these business models work. How do you as a as as a as perhaps the
+greatest software company um software as a service company transition Microsoft to this new age where COGS matters a lot
+um and and the incremental cost per users is different right because right now you're charging hey it's 20 bucks
+for a co-pilot. Yeah. So I think that this is a it's a great question because in some sense the business models themselves I think the
+levers are going to remain similar right which is if I look at the the if if you look at the menu of models uh starting
+from like say consumer all the way right there will be some ad unit uh there will be some transaction there will be some
+device gross margin for somebody who builds an AI device um uh there will be subscriptions consumer and enterprise uh
+and then there'll be consumption right so I still think that that's kind of how those are all the meters. To your point,
+what is a subscription? Up to now, people like subscriptions because they can budget for them, right? They are
+essentially entitlements to some consumption rights that come encapsulated in a subscription. So that
+I think is what in some sense it becomes a pricing decision. Uh so how much consumption is in you are entitled to is
+if you look at all the coding subscriptions that's kind of what they are, right? and they kind of have the pro tier, the standard tier and what
+have you. And so I think that's how the pricing will uh you know and the margin
+structures will get tiered. Um the interesting thing is having at Microsoft
+the good news for us is we kind of are in that business uh all in across all
+those meters. in fact that at a as a portfolio level uh we pretty much have
+consumption subscriptions uh to all of the other consumer levers as well. Um and then I think time will
+tell which of these models make sense in what categories. Um, one thing on the
+SAS side since you brought up which I think a lot about is uh take uh Office 365 or Microsoft 365. I mean man having
+a low RPO is great because here here's an interesting thing right during the transition from server to cloud one of
+the questions we used to ask ourselves is oh my god if all we did was just basically move the same users who were
+using let's call it our office licenses and our servers at that time office servers right to the cloud and we had
+cogs this is going to basically not only shrink our margins uh but we'll be fundamentally a nonprofitable I mean
+less profitable company except What happened was the move to the cloud expanded the market like crazy. Uh right
+I mean we sold a few servers in India didn't sell much whereas in the cloud suddenly everybody in India also could
+afford fractionally buying uh servers. The IT costs I in fact the biggest thing
+I had not realized for example was the amount of money people were spending
+buying storage underneath SharePoint. In fact, EMC's biggest segment may have
+been storage servers for SharePoint. All that sort of dropped in the cloud
+because nobody had to go buy in fact it was working capital. I mean basically it is cash flow out right and so it
+expanded the market massively. So this AI thing will be that right. So if you
+take coding um what we built with GitHub and VS code
+in over whatever decades uh suddenly the coding assistant is that big in one year
+and so that I think is what's going to happen as well which is the market expands massively. M I I guess there's a
+question of the market will expand. Will the parts of the revenue that touch Microsoft expand? So copilot is an
+example where if you look uh early this year I think uh I guess according to
+Dylan's numbers um the co-pilot revenue github co-pilot revenue was like 500
+million or something like that and then u there were like no close competitors whereas now you have claude code cursor
+and copilot with around similar revenue around a billion and then codeex is catching up around 700 800 million and
+so the question is across all the services that Microsoft has access to what is the advantage that mic Microsoft's equivalents of Copilot have.
+Yeah, by the way, I love this chart. You know, I love this chart for so many reasons. One is we're still on the top.
+[laughter] Um, second is all these companies that are listed here are all companies that
+have been born in the last four or five years. Yeah, that to me is the best sign, right? Which is if you have new competitors,
+new existential problems, when you say, man, who's it now? Claude's going to kill you. Cursor is going to kill you.
+It's not Borland, right? So, thank God. like that means we are in the right direction but this is it right the fact
+that we went from nothing to this scale is the market expansion so this is like
+the cloud-like stuff this fundamentally this category of coding and AI is
+probably going to be one of the biggest categories right it is a software factory category in fact it may be
+bigger than knowledge work so I kind of want to keep myself open-minded about I mean we're going to
+have tough competition I think that's your point which I think is a great on uh but man like I'm glad we have we
+parlayed uh what we had into this and now we have to compete and so in the
+compete side uh even in the last quarter we just we did our quarterly uh announcement I think we grew from 20 to
+26 million subs right so I feel good about our sub growth uh and where the direction of travel on that is but the
+more interesting thing that has happened is guess where all the repos of all these other guys uh who are generating
+lots and lots of code go to they go to GitHub so it GitHub is at an all-time
+high in terms of repo creation PRs everything so that in some sense we want
+to keep that open by the way that means we want to have that right because we don't want to conflate that with our own
+growth right the interestingly enough we're getting one developer joining GitHub a second or something that is the
+stat I think and then 80% of them just fall into some GitHub copilot uh workflow just because there are and by
+the way many of these things will even use some of our coding code review agents which are by default on just
+because you can use it. So we'll have many many structural shots at this. The
+thing that we're also going to do is what we did with git g get the primitives of github whether starting
+with git to issues to actions these are powerful lovely things because they kind
+of are all built around your repo. So we want to extend that last week at GitHub
+Universe. That's kind of what we did, right? So we said agent HQ was the conceptual thing that we said we're
+going to build out. This is where for example you have a thing called mission control and you go to mission control
+and now I can fire off sometimes I describe it as the cable TV of all these AI agents because I'll have essentially
+packaged into one subscription codeex claude um you know cognition
+staff anyone's agents gro all of them will be there so I get one package and
+then I can literally go issue a task steer them so they'll all be working in
+their independent branches. Uh I can monitor them. Uh so I literally have
+because I think that's going to be one of the biggest places of innovation, right? Because right now I want to be able to use multiple agents. I want to
+be able to then digest the output of the multiple agents. I want to be able to then keep a h a handle on my repo. So if
+there's some some kind of a heads up display that needs to be built and then for me to quickly steer and triage what
+the coding agents have generated that to me between VS code GitHub and all of
+these new primitives we'll build uh as mission control I think uh with a control plane observability I mean think
+about every uh one who is going to deploy all this will require a whole host of observability of what agent did
+what at what time to what code base so I feel that's the opport opportunity uh
+and at the end of the day your point is well taken which is we better be competitive and innovate and if we don't
+yes we will get toppled but I like the chart at least as long as we're on the top even with competition
+the key point here is sort of that GitHub will keep growing irregardless of whose coding agent wins but that that
+market only grows at you know call it 10 15 20% which is way above GDP it's a great compounder but these AI coding
+agents have grown from you know call it $500 million run rate at the end of last year which was basically ally just
+GitHub copilot to now the current run rate across you know GitHub copilot cloud code cursor cognition wind surflet
+uh codeex open codeex that's that's that's run rating at 56 billion now um
+for the for the Q4 of of this year that's a 10x right and and when you look at hey what's the TAM of of software
+agents is it is it the $2 trillion of wages you pay people or is it is it is it something beyond that uh because
+every company in the will now be able to, you know, develop software more. No question Microsoft takes a slice of
+that, but you've gone from near 100% or certainly way above 50% to, you know,
+sub 25% market share in just one year. What is the sort of confidence that people can get that Microsoft
+there's no again it goes back a little bit D to sort of there's no birthright here that we should have any confidence
+other than to say hey we should go innovate and knowing the the lucky break
+we have in some sense is that uh this category is going to be a lot bigger than anything we had high share in let's
+let me say it that way right in some sense you could say man we kind of had high share in VS code we had high share
+in the repos for with GitHub uh uh and that was a good market but the point is
+even having a decent share in what is a much more expansive market right I mean you could say we had a high share in
+client server server computing we have much lower share than that in hypers
+scale but is it a much bigger business by orders of magnitude so at least
+there's existence proof that Microsoft's been okay uh even if our share position
+has not been as strong as it was uh as long as the markets we're competing in
+creating more value and there are multiple winners. Uh so I think that's the stuff but I I I take your point that
+ultimately it all means you have to get competitive. So I watch that every quarter and so that's why I think what
+I'm very optimistic that uh what we're going to do with GitHub HQ and or agent
+HQ turning GitHub into a place where all these agents come uh as I said we'll
+have multiple shots on goal on there right it it need not be that hey some of these guys can succeed along with us uh
+and so it doesn't need to be just one winner uh and one subscription
+I I guess the reason to focus on this question is that it's not just about GitHub but fundamentally about office
+and all the other software that Microsoft offers which is that one vision you could have about how I proceeds is that look the models are
+going to keep being hobbled then you'll need this direct visible um observability all the time and another
+vision is over time these models can now they're doing tasks that take two minutes in the future they'll be doing tasks that next be tasks that take 10 30
+minutes in the future maybe they're doing days worth of work autonomously and then the model companies are
+charging thousands of dollars maybe for access to really a co-orker which could use any UI to communicate with their
+human and so forth and migrate between platforms. So if we're getting closer to that, why aren't the model companies
+that are just getting more and more profitable, the ones that are taking all the margin, why is the the place where
+the scaffolding happens, which becomes less and less relevant as a as become more cap capable going to be that important? And that goes to, you know,
+office as it exists now versus co-workers that are just doing knowledge work. Great point. I mean I think that's a I
+mean for example I mean this is where you know does all the value migrate just to uh the model um and uh or does the
+you know the does it get split between the scaffolding um and the model and
+what have you I think that uh time will tell but my my fundamental point also is the incentive structure gets clear right
+which is if you take um let's take uh let's take information work or take even coding u already in fact one of favorite
+settings I have uh in GitHub copilot is called auto um right which will just
+optimize in fact I buy a subscription the auto one will start picking and
+optimizing for what I am asking it to do uh and it could even be fully autonomous
+and it could sort of arbitrage the tokens available across multiple models to go get a task done so if that is the
+that means that if you take that argument the commodity there will be models
+uh and especially with open source models you can pick a checkpoint and you can take a bunch of your data and you're
+seeing it right I think all of us will start you whether it's from cursor or from Microsoft you'll start seeing some
+in-house models even uh which will and then you'll offload most of your uh task
+to it so I think that one argument is if you win the scaffolding uh which today
+is dealing with all the hobbling problems or the uh the jaggedness of this intelligence problems which you
+kind of have to um if you win that then you will vertically integrate yourself into the model just because you will
+have the liquidity of the data and what have you and there are enough and more checkpoints that are going to be available. uh that's the other thing
+right so structurally I think there will always be an open- source model uh that
+will be fairly capable in the world that you could then use as long as you have
+something that you can use that uh with which is data uh and a scaffolding right so I can make the argument that oh my
+god uh if you're a model company you may be you may have a winner's curse you may have done all the hard work done
+unbelievable innovation except it's kind of like one copy uh away from that being
+commoditized and then the person who has the data for grounding and context
+engineering um and the liquidity of data can then go take that checkpoint and
+train it. So I think the argument can be made both ways. Unpacking sort of what you said, there's two views of the world, right? One is
+that models, there's so many different models out there. Open source exists. There will be differences between the
+models that will drive some level of, you know, who wins and who doesn't, but the scaffolding is what enables you to
+win. The other view is that actually models are the key IP and yes, we're in
+a very everyone's in a tight race and there's some, you know, hey, I can use anthropic or open AAI and you can see
+this in the revenue charts, right? like OpenAI's revenue started skyrocketing once they finally had a code model similar capabilities to anthropic
+although in different ways. Um there's a view that like the model companies are actually the ones that
+garner all the margin right because you know if you look across this year at least on entropic their gross margins on
+inference went from you know well below 40% to north of 60 right by the end of the year um the these the margins are
+expanding [clears throat] there despite hey more Chinese open source models than ever hey open's competitive hey Google's
+competitive hey x Grock is now competitive right all these all these companies are now competitive and yet despite this the margins have expanded
+at the model layer significantly. Um h how do you think about the it's a it's a great question. I I think
+that the one thing is perhaps a few years ago people were saying oh I can just wrap a model and build a successful
+company. Uh and that I think is probably gotten debunked just because the model
+capabilities um and with tools use in particular. But the interesting thing is there's no
+like when I look at Office 365. Let's take even this little thing we built called Excel agent. It's interesting
+right? Excel agent is not a UI level wrapper. It's actually a model that is
+in the middle tier. Uh in this case because we have all the IP from the the
+GPT family. uh we are taking that and putting it into the core middle tier of
+the office system to both teach it what it means to natively understand Excel
+everything in it. So it's not just hey I just have a pixel level understanding I have an full understanding of all the
+native artifacts of Excel uh both when I see it like because if you think about it if I'm going to give it some
+reasoning task right I need to even fix the reasoning mistakes I make and so that means I need to both not just see
+the pixels I need to be able to see oh I got that formula wrong and I need to understand that and then so to some
+degree that's all being done not at the UI wrapper level with some prompt but it's being done in the middle tier by
+teaching it all the tools of Excel, right? So, I'm giving it even essentially a markdown to teach it the
+skills of what it means to be a sophisticated Excel user. So, it's a weird thing that it it goes back a
+little bit to AI brain, right? Which is you're building not just Excel. You are
+now business logic in its traditional sense. You're taking the Excel business logic in the traditional sense and
+wrapping essentially a cognitive layer to it using this model which knows how
+to use the tool. So in some sense, Excel will come with an analyst bundled in and
+with all the tools used. That's the type of stuff that'll get built by everybody. So even for the
+model companies, they'll have to compete, right? So if they price stuff high, uh guess what? If I'm a builder of
+a tool like this, I'll substitute you. I may use you for a while. And so as long as there's competition, there's always a
+winner take all thing, right? If there's going to be one model that is better than everybody else with massive distance, yes, that's a winner take all.
+As long as there's going to be competition where there's multiple models just like hypers scale competition and there's an open- source
+check, uh there is enough room here uh to go build value on top of models.
+Uh but at Microsoft, the way I look at it and say is uh we are going to be in the hypers scale business which will
+support multiple models. we will have access to open AI models for uh you know
+seven more years which we will innovate on top of so royalty I mean essentially I think of ourselves as having a
+frontier class model uh that we can use and innovate on with full uh flexibility
+and we'll build our own models uh with Mai um and and so we will always have a
+model level and then we'll build these whether it's in security whether it's in knowledge work whether it's in coding or
+in science we will build our own applications scaffolding which will be model forward right it won't be a
+wrapper on a model but the model will be wrapped into uh the application I have
+so many questions about the other things you mentioned but before we move on to those topics um I still wonder whether
+this is like not forwardlooking on AI capabilities where you're imagining models like they exist today where yeah
+I can you have to like it takes a screenshot of your screen but it can't like look inside each cell and what the formula is and I think the better mental
+audited here is like look a human just imagine that these models actually will be able to actually use a computer as
+well as a human and a human knowledge worker who is using Excel can look into the formulas can you know use
+alternative software can migrate data between office 365 and another piece of software if the migration is necessary
+etc so that's kind of what I'm saying but if that's the case then the integration with Excel doesn't matter
+that much don't worry about the Excel integration after all Excel was built as a tool for
+anal analysts. Great. So, whoever is this AI that is an analyst should have
+tools that they can computer, right? Just the way a human can use a computer, that's their tool.
+The the tool is the computer. Right. Right. So, that so all I'm saying is I'm building an analyst as as essentially an
+AI agent uh which happens to come with an a priority knowledge of how to use
+all of these analytical tools. But is it is it something maybe just just to make sure we're talking about the same thing.
+Um is it a thing that a hum like me using Excel as a podcast
+completely autonomous? So just imagine I work like so we should now maybe sort of lay out how I think the future of the
+company is right. uh the future of the company would be the tools business which I have a computer I use Excel and
+in fact in the future I'll even have a co-pilot and that co-pilot will also have agents right that's still I am I
+you know it's still me steering everything and everything is coming back so that's kind of one world
+then the second world is the company just literally provisions a computing
+resource for an AI agent and that is working fully autonomously
+that fully autonomous agent will have essentially embodied set of those same
+tools, right? Uh that are available to it, right? So this AI tool that comes in also has not
+just a raw computer uh because it's going to be more token efficient to use tools to get stuff done. In fact, I kind
+of look at it and say our business which today is an enduser tools business will become essentially an infrastructure
+business in support of agents doing work. Is there another way to think about it? Right? So if one of the things
+that you'll see us do in in in fact like all the stuff we built underneath M365
+still is going to be very relevant uh you need someplace to store it someplace
+to do archival someplace to do discovery someplace to manage all of these
+activities even if you're an AI agent. So that's so it's kind of a new infrastructure. So ju just to make sure
+I understand you're saying like look theoretically a future AI that has actual computer use which is all these
+companies are working on model companies are working right now could use even if it's not partnered with Microsoft or under our umbrella could use Microsoft
+software but you're saying we're going to give them if if you're working with our infrastructure we're going to give you like lower level access that makes
+it more efficient for you to do the same things you could have otherwise done anyways. 100%. I mean so the entire thing in in
+fact the way the you know like what happened is we had servers then there was virtualization and they had many
+more servers. So that's another way to think about this which is hey don't think of this the tool as the end thing
+what is the entire substrate underneath that tool that humans use and that
+entire substrate is the bootstrap for the AI agent as well because the AI agent needs a computer that's kind of
+one like you know so in fact one of the fascinating things we're seeing a significant amount of growth is all
+these guys who are doing these office artifacts and and what have you as autonomous agents and so on want to
+provision Windows 365 right? They really want to be able to provision a computer for these agents. Uh and so absolutely
+and that's where I think we're going to have essentially an enduser computing infrastructure business which I think is
+going to just keep growing because guess what it's going to grow faster than the number of users. So in fact that's kind
+of one of the other questions people ask me is hey what happens to the per user business at least the early signs may be
+the way to think about the per user business is not just per user it's per agent and if you sort of say it's per
+user and per agent the key is what's the stuff to provision for every agent a
+computer u a set of security things around it an identity around it uh and
+all those things observability and so on are the management layers and that's I think all going to get baked into that
+the way to frame it at least the way I currently think about it and I'd like to hear your you know your view is that
+uh these model companies are all building environments to train their models to use Excel or Amazon shopping
+or whatever whatever it is book flights um but at the same time they're also
+training these models to do migration from because that that is probably the most immediate uh valuable thing right
+converting mainframe based systems to standard cloud systems converting um
+Excel databases into real databases uh with SQL, right? Or or converting um you
+know what is done in Word and Excel to something that is more programmatic and more efficient in a classical sense that
+can actually be done by humans as well. It's just not cost-ffective for the software developer to do that. That
+seems to be what everyone is going to do with AI for the next, you know, few years at least to massively drive value.
+Um h how does Microsoft fit into that? if the models can utilize the tools
+themselves to migrate to something and yes Microsoft has you know a leadership position in databases and in storage and
+and in all these other categories but the use of say a office ecosystem is
+going to be significantly less just like potentially the use of a mainframe ecosystem could be potentially less now mainframes have grown for the last two
+decades actually even though no one talks about them anymore they've still grown 100% I [laughter] agree with that how does how does that flow forward
+I mean at the end of the day This is not about sort of hey u there is going to be a significant amount of time where
+there's going to be a hybrid world right because people are going to be using the tools that are going to be working with agents that have to use tools and by the
+way they have to communicate with each other what's the artifact I generate that then a human needs to see so like
+all of these things will be real considerations in any place so the outputs input so I don't think it'll just be about oh I migrate it off right
+but the bottom line is I have to live in this hybrid world so let's but that doesn't fully answer your question because there can be a real new
+efficient frontier where I it's just agents working with agents uh and completely optimizing and even when
+agents are working with agents what are the primitives that are needed uh do you need a storage system
+uh does that storage system need to have eiscocovery does that eiscocovery do you need to have observability do you need
+to have an identity system that is going to use multiple models with all having one identity system so these are all the
+core underlying rails we have today for what are office systems or what have
+you. Uh and that's what I think we will have in the future as well. You talked about databases, right? I mean take you
+know man I would love all of Excel to have a database backend, right? In fact I would love for all that to happen
+immediately. Uh and that database is a good database. I mean databases in fact will be a big thing that'll grow. uh in
+fact if I think about all of the office artifacts uh being structured better the
+ability to do the joins between structured and unstructured better because of the agenting what that'll grow the underlying what is
+infrastructure business it happens the consumption of that is all being driven by agents you could say all that is just
+in time generated software by a model company that could also be true if we we will be one such model company too uh
+and so we will build in so the competition could be uh that we will build a model plus all the
+infrastructure and provision it and then there will be competition between a bunch of those folks who can do that. H
+um I guess speaking of model companies you say okay we will also be one of the not only will we have the infrastructure
+we'll have the model itself right now Microsoft AI's most recent model that was released 2 months ago is 36 and
+Shabbat arena and there's a I mean you obviously have the IP rights to open so
+there's a question of first to the extent you agree with that it seems to be behind why is that the case
+especially given the fact that you could um you theoretically have the right to just like fork open's monor repo or
+distill on their models Um yeah, especially if it's a big part of your strategy that we need to have a leading
+model company. Yeah. I mean, so first of all, we are absolutely going to use the OpenAI
+models uh to the maximum uh across all of our products, right? I mean, that's I think the core thing that we're going to
+continue to do all the way for the next seven years. Uh and not just use it uh
+but then add value to it. That's kind of where the analyst in this Excel agent and these are all things that we will do
+where you know we'll do I'll you know RL fine-tuning we'll do some mid-training runs on top of a GPT family where we
+have unique data assets and build capability um the MI model the way I think we're
+going to think about it is the the good news here in fact with the new agreement is even we can be very very clear that
+we're going to build a worldclass super intelligence team and go after it with high ambition but that at the same time.
+We're also going to use this time to be smart about how to use both these things. So that means we will on one end
+be very product focused on on the other end be very research focused. In other words, uh because we have access uh to
+the GPT family. The last thing I don't want to do is use my flops in a way that
+is just duplicative and doesn't add much value. So I want to be able to take uh the flops that we use to generate a GPT
+family [snorts] and maximize its value while my MAI flops are being used for
+let's take the image model that we launched which I think just launched uh it's a number nine in the uh image arena
+you know we're using it you know both for cost optimization it's on copilot it's in Bing and we're going to use that
+we have a audio model in copilot which it's got personality and what have you
+optimized it for our product So we will do those even on the LM Marina we started on the text one I think it was
+it debuted at night 13 and by the way it was it was done only on whatever 15,000
+uh H100s and so it was a very small model and uh so it was again to prove out uh the core capability the
+instruction following and everything else which but you know we wanted to make sure we can match what was state-of-the-art and so that shows us
+given scaling laws what we are capable of doing if you gave more flops to it right so the next thing we will is an
+omni model where we will take sort of the work we've done in audio, what we've done in image and what we've done in
+text, that'll be the next pit stop on the MAI side. So when I think about the MAI road map, we're going to build a
+first class super intelligence team. We're going to continue to drop and do on in the open some of these models,
+they will either be in our products being used because they're going to be latency friendly, cogs friendly, or what
+have you, or they'll have some special capability. and we will do real research in order to be ready for some next five,
+six, seven, eight break breakthroughs uh that are all needed on this march towards super intelligence. So I think
+that's and while exploiting the advantage we have of having the GPT
+family that we can work on top of as well. Say we roll forward seven years uh you no longer have access to open AI models.
+what does one get confidence or what does Microsoft do to make sure they are leading or have a leading AI lab right
+today you know it's it's all open has developed many of the breakthroughs whether it be scaling or reasoning or
+Google's developed all the breakthroughs like transformers uh but but it it is also a big talent game right you know
+you've seen meta spend you know north of20 billion on talent right uh you've seen anthropic uh poach the entire blue
+shift reasoning team from Google last year you've seen meta poach a large reasoning and post training team from
+Google more recently. These these sorts of talent wars are very capital intensive. They're the ones that, you
+know, arguably, you know, if you're spending hundred billion dollars on infrastructure, you should also spend, you know, x amount of money on on the
+people using the infrastructure so that they're more efficiently making these new breakthroughs. what what confidence
+can one get that you know hey Microsoft will have a team that's world class that can make these breakthroughs and you
+know once you decide to turn on the money faucet you know you're being a bit capital efficient right now which is which is smart it seems uh to not waste
+money doing duplicative work but once you decide you need to you know how how can one say oh yeah now you can shoot up
+to where the top five model well look I mean at the at the end of the day we're going to build a world-class team and we already have a
+world-class team that's beginning to be sort of assembled right Mustafa coming in. We have Karen. We have Amar
+Subramanyan who did a lot of the post training at Gemini. Tufi who is at Microsoft. Nando who did a lot of the
+multimedia work at Deep Mind is there. And so we're going to build a worldclass team. And in fact I think later this
+week even Mustafa published some you know a little more clarity on what our lab is going to go do. Um I think the
+thing that I want uh the world to know perhaps uh is we are going to build the
+infrastructure that'll support multiple models. Uh you know uh we because from a
+hypers scale perspective we want to build the most scaled infrastructure fleet that's capable of supporting all
+the models the world needs whether it's from open source or whether it's obviously from open AI and others and so that's kind of one job. Second is in our
+own model capability. We will absolutely use the open AI model in our products and we will start building our own
+models and we may like in in GitHub copilot anthropic is used. So we will even have other frontier models that are
+going to be wrapped into our products as well. So I think that that's kind of how at least each time at the end of the day
+the eval of the product as it meets a particular task or a job is what matters
+and we'll sort of back from there into the vertical integration needed. uh
+knowing that as long as you're service you know you're serving the market well with the product you can always cost
+optimize there there's a question going forward so right now we have models that have this distinction between training and
+inference and one could argue that there's like a smaller and smaller difference between the different models
+um going forward if you're really expecting something like human level intelligence humans learn on the job you
+know if you think about your last 30 years what makes s token so valuable it's the last 30 years of wisdom and experience you've gained at Microsoft
+Um and we will eventually have models if they get to human level which will have this ability to continuously learn on
+the job and that will drive so much value to the model company that is ahead at least in my view because you have
+copies of one model broadly deployed through the economy learning how to do every single job and unlike humans they
+can amalgamate their learnings to that model. So there's this sort of continuous learning sort of exponential
+feedback loop um which almost looks like a sort of intelligence explosion. uh if
+that happens and Microsoft isn't the leading model company by that time
+doesn't then this uh you know you're saying well we substitute one model for another etc matter less because it's
+just like this one model knows how to do every single job of the economy the other long tale of don't
+yeah no I think your point about if there's one model that is the only model that is most broadly deployed in the
+world and it sees all the data and it does continuous learning that's game set match and you know is shut right I mean
+the the reality at least I see um is the
+world even today for all the dominance of any one model it's not the case um
+it's like take any take coding there's multiple models in fact every day it's
+less the case where there is not one model that is getting deployed broadly in fact there's multiple models that are
+getting deployed it's kind of like databases right it's always the thing it's like hey can one database be the one that just is used everywhere except
+it's not uh there are multiple types of databases that are getting deployed uh for different use cases. So I think that
+there is going to be some network effects of continual learning or data you you know I'll call liquidity that
+any one model has. Uh is it going to happen in all domains? I don't think so. Is it going to happen in all geos? I
+don't think so. Is it going to happen in all segments? I don't think so. It'll happen in all categories at the same time. I don't think so. So therefore I
+feel like the design space is so large uh that there's plenty of opportunity
+but your fundamental point is having a capability which is at the infrastructure layer, model layer and at
+the scaffolding layer and then to be able to compose these things not just as a vertical stack but to be able to
+compose each thing for what its purpose is. Right? You can't build an infrastructure that's optimized for one model. If you do that what if you go
+fall behind? In fact, all the infrastructure you built will be a waste, right? You kind of need to build
+an infrastructure that's capable of supporting multiple sort of families and lineages of models. Otherwise, the
+capital you put in which is optimized for one model architecture. That means you're one tweak away from some like
+breakthrough that happens for somebody else and your entire network topology goes out of the window. Then that's a scary thing, right? So therefore, you
+kind of want the infrastructure to support whatever may come. in fact in your own model family and other model
+families and you got to be open if you if you're serious about the hypers scale business you got to be serious about that right um if you're serious about
+being a model company you've got to basically say hey what are the ways people can actually do things on top of
+the model so that I can have an ISV ecosystem unless I'm thinking I'll own every category that just can't be that
+then you won't have an API business and that by definition will mean you'll never be uh a platform company that's
+going to be successfully deployed everywhere right So therefore the industry structure is so such that it
+will really force people to specialize and [snorts] that in that specialization
+a company like Microsoft should compete in each layer by its merits uh but not
+think that this is all about all a road to game set match where I just compose vertically all these layers. That's that
+just doesn't happen. So according to Dylan's numbers, there's going to be half a trillion in AI capex next year
+alone, and labs are already spending billions of dollars to snag top researcher talent. But none of that
+matters if there's not enough highquality data to train on. Without the right data, even the most advanced
+infrastructure and world-class talent won't translate into end value for the
+user. That's where Libox comes in. Libox produces highquality data at massive
+scale, powering any capability that you want your model to have. It doesn't matter whether you need a coding agent
+that needs detailed feedback on multi-our trajectories or a robotics model that needs thousands of samples on
+everyday tasks or a voice agent that can also perform real world actions for the user like booking them a flight. To be
+clear, this isn't just off-the-shelf data. Labelbox can design and launch a custom production scale data pipeline in
+48 hours and they can get you tens of thousands of targeted examples in weeks.
+Reach out at labelbox.com/darkh. All right, back to Satia.
+So last year Microsoft was on path to be the largest infrastructure provider uh
+by far. You were the earliest in 23. So you you went out there, you acquired all the resources in terms of leasing data center, starting construction, securing
+power, everything. You guys were on pace to beat Amazon in 26 or 27. Um but
+certainly by 28, you were going to beat them. Um since then, you you know, in let's call it the second half of last
+year, Microsoft did this big pause, right, where they let go of a bunch of leasing sites that they were going to
+take, which then Google, Meta, um Amazon, in some cases, Oracle, uh took
+these sites. We're sitting in one of the largest data centers in the world. So obviously it's not everything. You guys are expanding like crazy. Uh but there
+are sites that you just stopped working on. Why why did you do this? Right. Yeah. I mean the fundamental thing we
+this goes back a little bit to what is the hypers scale business all about right which is one of the key decisions
+we made was that if you're going to build out Azure to be fantastic for all
+sort of stages of AI uh from training to mid-training to data genen to inference
+we just need fungibility uh of the fleet um and and so that entire thing caused
+us not to basically go build a a whole lot of capacity with a particular set of
+generations. Uh because the other thing that you got to realize is having actually for up to now 10xed every 18
+months enough training capacity for the various open AI models. uh we realize that um the key is to stay on that path
+but the more important thing is to actually have a balance to not just train but to be able to serve these
+models all around the world because at the end of the day the rate of monetization is what then will allow us
+to even keep uh funding and then the infrastructure was going to need us to support as I said multiple models and
+what have you. So once we said that that's the case since then we just course corrected to where the path we're
+on right if I look at the path we're on is we're doing lot more starts now uh we're also buying up as much capacity as
+we can whether it's to build whether it's to lease or even GPUs as a service but we're building it for where we see
+the demand uh and the serving needs and our training needs and we didn't want to
+just be a host for one company uh and have just a massive book of business
+with one customer that that's not a business right that is sort of uh you know you should be vertically integrated with that company uh and so given the
+the thing that openai was going to be a successful independent company which is fantastic right I think it's makes sense
+right and even meta may use third party capacity but ultimately they're all going to be first party uh for anyone
+who has large scale they'll be you know they'll be a hyperscaler on their own and so to me was to build out a hypers
+scale fleet and our own research compute. Uh and that's what the adjustment was. Um you know and then and
+so I feel very very good. Oh by the way the other thing is I didn't want to get stuck with massive scale of one
+generation. I mean we just saw the the GB200s. I mean the GB300's are coming right and by the time I get to Vera
+Rubin Ver Rubin ultra guess what the data center is going to look very different because the power per rack
+power per row is going to be so different uh the cooling requirements are going to be so different and that
+that means I don't want to just go build out like a whole number of gigawatts that are only for one generation one
+family and so I think the pacing matters and the funibility and the location
+matters uh the workload diversity matters, customer diversity matters and that's
+what we're building towards. The other thing that we've learned a lot is um every AI workload does require not only
+the AI accelerator but it requires a whole lot of other things right and in fact a lot of the margin structure for
+us will be in those other things and so therefore we want to build out Azure as
+being fantastic for the long tail of the workloads because that's the hypers scale business while knowing that we've
+got to be super competitive starting with the bare metal for the highest end training And but that can't crowd out
+the rest of the business, right? Because we're not in the business of just doing five contracts with five customers being
+their bare metal service. That's not a a Microsoft business. That may be a business for someone else and that's a
+good thing. What we have said is we are in the hypers scale business which is at the end of the day a longtail business
+uh for AI workloads and in order to do that we will have some leading bare
+metal as a service capabilities for a set of models including our own uh and
+that I think is the balance you see the another sort of question that comes around this whole fungeibility topic is
+okay it's not where you want it right you would rather have it in a good population center like Atlanta we're
+here um there there's there's There's also the question of like well how much does that matter if as the horizon of AI
+tasks grows well actually you know 30 seconds for a reasoning prompt or you
+know 30 minutes for a deep research or you know it's going to be hours for software agents at some point um and
+days and so on and so forth the time to human interaction why does it matter if it's if it's a great it's a great
+question a location A B or C that's exactly right so in fact that's one of the other reasons why we want to think about like hey what is an Azure
+region look like and what is the in fact the networking between Azure regions. So this is where uh I think as the model
+capabilities evolve and I think the usage of these tokens whether it's synchronously or asynchronously evolves
+and in fact you don't want to be out of position right then on top of that by the way what are the data residency laws
+right where do I like I mean the entire EU thing uh for us where we literally had to create an EU data boundary
+basically meant that you can't just round trip a call to wherever even if it's asynchronous and so therefore you
+need to have maybe regional things that are high density and then the power costs and so on. But you're 100% right
+in bringing up that the topology as we build out uh will have to evolve one for
+tokens per dollar per watt uh what are the economics overlay that with what is the usage
+pattern um usage pattern in terms of synchronous asynchronous but also what is the compute storage because the
+latencies may matter for certain things uh the storage better be there if I have a Cosmos DB close to this for session
+data or even for an autonomous thing then that also has to be somewhere close to it and so on. So I think that all of
+those considerations is what will shape uh the hypers scale business. M you know prior to the pause you were you
+were you you know versus you know what we had forecasted for you by 28 you're going to be like 12 13 gawatt and now
+we're at you know 9 and a half or so right but you know something that's even more relevant right and it's it's you
+know I just want you to like more concretely state that this is the business you don't want to be in but like Oracle is going from like 1/5if
+your size to bigger than you by end of 2027 and while it's not a Microsoft
+level quality of return on invested capital right they're still making 35%
+gross margins, right? sort of the question is like does it is it isn't it is it is it you know hey it's not
+Microsoft's business to maybe do this but you've created a hyperscaler now by refusing this business by giving away
+the right of first refusal whatever I'm not first of all I don't I don't want to take away any thing from the success
+Oracle has had in building their business and I wish them well and so the thing that I think I've answered for you
+is it didn't make sense for us uh to go be a host for one model company uh with
+limited time horizon RPO let's let's just put it that way right the thing that you have to think through is not
+what you do in the next 5 years but what do you do for the next 50 uh because that's kind of what I we made our set of
+decisions um I feel very good about our open AI partnership and what we're doing we have a decent book a book book of
+business we wish them a lot of success in fact we are buyers even of Oracle capacity we wish them success but you
+know at this point. I think the industrial logic for what we're trying to do is pretty clear which is it's not
+about like chasing I first of all I track by the way your uh things whether it's the AWS or the Google and ours
+which I think is super useful uh but doesn't mean I got to chase those uh I
+have to chase them for not just uh the gross margin that they may represent in a period of time you know does m what
+what is this book of business that Microsoft uniquely can go clear which makes sense for us to clear and that's
+what we'll do. I I guess I have a question even stepping back from this of okay I I take your point that it's a
+better business to be in all else equal to have a long tale of customers you can have higher margin from rather than just
+serving bare metal to a few labs but then there's a question of okay which way is the industry evolving and so if
+we believe we're on the path to smarter and smarter AIs then why isn't the shape of the industry that the open AIs and
+anthropics and deep minds are the platform which the long tale of
+enterprises are actually doing business with where they need bare metal but like they are the platform. What is the
+longtail that is directly using Azure um because you know you you want to use the
+general going to be available on Azure right? So any workload that says hey I want to use
+um you know some open source model and an open AI model like I mean if you go to Azure foundry today you have all
+these models that you can provision buy PTUs get a cosmos DB get a SQL DB get
+some storage get some compute that's what a real workload looks like a real workload is not just hey I did an API
+call to a model a real workload needs all of these things to go build an app
+or instantiate an application in fact the model companies need that right to build anything it's just not like I have
+a token factory I have to have all of these things that's the hypers scale business uh and it's not any one model
+but all these models and so if you want grock plus let's say uh open AI plus an
+open source model come to Azure foundry provision them build your application here is a database that's kind of what
+the business is uh you there is a separate business called just selling raw bare metal services to model
+companies and that's the argument about how much of that business you want to be in and not be in and what is that it's a
+very different segment of the business which we are in and we also have limits to how much of it is going to crowd out
+the rest of it. Uh but that's kind of at least the way I look at it. So, so there's there's sort of two questions
+here, right? Like why why couldn't you just do both is one and then the other one is um given, you know, our our
+estimates on what your capacity is in 2028 is 3 and a half gigawatts lower. Sure, you could have dedicated that to
+OpenAI training and inference capacity, but you could have also dedicated that to hey the this three and a half
+gigawatts is actually just running Azure is running Microsoft 365 that's running GitHub copilot. it doesn't actually I
+could have built it and not given it to open AAI or I may want to build it in a different location. I may want to build it in UAE.
+I may want to build it in India. I may want to build it in Europe. Right? So one of the other things is as I said like where we have real capacity
+constraints right now are given the regulatory needs and the data sovereignty needs. We got to build all over the world. Uh it's first of all
+state side capacity is super important and we're going to build everything. But one of the things is when I look out to 2030 uh I have a sort of a global view
+of what does Microsoft shape of business by first party and third party third party segmented by the frontier collabs
+and their how much they want versus the inference capacity we want to build for multiple models um and our own research
+compute needs right so that's all what's going into my calculus versus saying hey
+um I think you're rightfully pointing out the pause but the pause was not done because we said oh my god we don't want
+to build that we realized that oh we want to build what we want to build
+slightly differently uh by both workload type as well as geo type and timing as
+well like we'll keep ramping up our gigawatts and the question is at what pace and in what location and in what
+sort of how do I write even the mos's law on it right which is do I really want to overbuild 3 and a half in 27 or
+do I want to spread that in 2728 knowing even one of the biggest learnings we had even with Nvidia is their pace increased
+uh in terms of their model I mean their migrations so that was a big factor I didn't want to go get stuck for four
+years 5 years of depreciation on one uh generation and I wanted to just basically buy like in fact Jensen's
+advice to me was two things one is hey get on the speed of light execution that's why I think even the execution in
+this Atlanta data center I mean like in 90 days right between when we get it and to hand off to a real workload. that's
+sort of real speed of light execution on their front and so I wanted to get good at that and then that way then I'm
+building this each generation and scaling uh and then every 5 years then
+you have a much more balanced so it becomes really literally like a flow uh
+for a large scale industrial operation like this where you suddenly are not lopsided where you built up a lot in one
+time and then you take a ma massive hiatus because you're stuck with all this to your point in one location which
+may be great for training, may not be great for infants because I can't serve even if it's like it's all asynchronous,
+but Europe ain't going to let me round trip to Texas. So, that's all of the things. How do I rationalize this statement with
+what you've done over the last few weeks? You've announced deals with Iris Energy, um with Nebius, um and Lambda
+Labs, and there's a few more coming as well. Uh you're you're going out there and securing capacity that you're
+renting from the Neoclouds, um rather than having built it yourself. What was the what was I think it's it's fine for us because we
+now have you know when you have line of sight to demand which can be served where people are building it it's great
+in fact we'll even have I would say you know we will take leases we will take
+build to suite we'll take even GPUs as a service where we don't have capacity but we need capacity and someone else has
+that uh and by the way I would even sort of welcome every Neocloud to just be part of our marketplace uh because again
+guess what if if they go bring their capacity into our marketplace. That customer who comes through Azure will
+use the Neocloud which is a great win for them and we'll use compute, storage, databases, all the rest from Azure. So
+I'm not at all thinking of this as just a you know hey I should just gobble up all of that myself. M um so you
+mentioned the how the you know you're depreciating this asset that's 5 six
+years and this is the majority of the you know 75% of the TCO of a data center
+and Jensen is taking a 75% margin on that so what all the hyperscalers are
+trying to do is develop their own accelerator so that they can reduce this overwhelming cost for um uh equipment to
+increase their margins. Yeah. And then and then like you know when you look at where they are right Google's way ahead of everyone else
+right they've been doing it for the longest they're going to make something like 5 to 7 million chips right of their own TPUs you look at Amazon they're
+trying to make 3 to 5 million but when we look at what you know Microsoft is is ordering of their own chips it's it's
+it's way below that number um you've had a program for just as long what's going
+on with your internal good question so so the couple of things one is the thing that is the biggest
+competitor for any new accelerator is kind of even the previous generation of Nvidia right I mean in a fleet what I'm
+going to look at is the overall TCO so the bar I have even for our own and which by the way you know I was just
+looking at the data for Maya 200 which looks great um a except that one of the
+things that we learned even on the compute side right which is we had a lot of Intel then we introduced AMD and then
+we introduced cobalt and so that's kind of how we scaled it and so we have good
+um sort of existence proof of at least in core compute on how to build your own silicon and then manage a fleet where
+all three are at play in some balance. Uh because by the way even Google's buying Nvidia and so is uh Amazon. It
+makes sense because Nvidia is innovating and it's the general purpose thing. All models run on it. Uh and customer demand
+is there because if you build your own vertical thing, you better have your own model uh which is you know either going
+to use it for training or inference and you have to generate your own demand for it or subsidize the demand for it. So
+therefore you want to uh make sure um you scale it appropriately. So the way we're going to go do it is um have a
+closed loop between our own MAI models and our silicon because I feel like
+that's the that's what gives you the birthright to really do your own silicon right where you literally have uh
+designed the micro architecture with what you're doing and then you keep pace with your own models. Um in our case the
+the good news here is OpenAI has a program uh which we have access to. Um and so therefore to think that Microsoft
+is not going to have something that's what level of access do you have to that all of it. You just get the IP for all of that. So
+the only IP you don't have is a consumer hardware. That's it. Oh wow. Okay. Yeah.
+Interesting. [laughter] Yeah. And by the way we gave them a bunch of IP as well to bootstrap them.
+Right. So this is one of the reasons why they had a mass because we built all these supercomputers together uh or we
+built it for them and they uh benefited from it rightfully so and uh and now as
+they innovate even at the system level we get access to all of it uh and uh we
+first wants to want to instantiate what they build uh for them uh but then we'll
+extend it and so to think that we don't have and so if anything the way I I think about to your question is
+Microsoft wants wants to be a fantastic I'll call it speed of light execution
+partner for Nvidia because quite frankly that fleet uh is life itself. I'm not
+worried about I mean obviously Jensen is doing super well with his margins but the TCO has many dimensions to it and I
+want to be great at that TCO. Uh on top of that, I want to be able to sort of
+really work with the OpenAI lineage uh and the MAI lineage and the system
+design knowing that we have the IP rights on both ends. Uh speaking of rights, one thing you
+know, you had an interview a couple days ago uh where you said that we have rights to the the new agreement you made
+with OpenAI. have right the exclusivity to the stateless API calls that OpenAI
+makes and we were sort of confused about if there's any state whatsoever. I mean you were just mentioning a second ago
+that all these complicated workloads that are coming up are going to require memory and databases and storage and so
+forth and is that now not stateless of chat GPT is storing stuff on that's the reason why so the the thing
+the business the strategic decision we made and also accommodating for the
+flexibility open AI needed in order to be able to procure compute for essentially think of open AI having um a
+pass business and a SAS business SAS business is chat GPT that pass business is their API.
+That API is Azure exclusive. The SAS business, they can run it
+anywhere and they can partner with anyone they want to to build SAS products. So if they want to partner and the
+partner wants to use a a stateless API, then Azure is the place where they can get the stateless API.
+It seems like there's a way for them to make you you know build the product together and and it's a state.
+No, even that they'll have to come to Azure. Okay. So if it is any partner and so so fundamentally you know so again
+this is done in the spirit of what is it that we valued as part of our partnership and we made sure while at
+the same time we were good partners to open AAI given all the flexibility they need. So for example, Salesforce wants
+to integrate OpenAI. It's not through an API. They actually work together, train a model together, deploy it on let's say
+Amazon. Now is that is that allowed or uh or do they have to use for any custom agreement like that? They
+will have to come run it. There are some few exceptions to US government and so on that we made, but other than that,
+they'll have to come to Azure. So as s explained, as AI agents get more capable, you're going to need more and
+more observability into what they're doing. You're going to need to catch them when they're making mistakes. You're going to need highle summaries of
+what they're doing and you're going to need a picture of how everything that they're doing fits together. This is exactly what Code Rabbit provides. You
+just make a normal pull request and Code Rabbit automatically reviews the PR. It generates a summary of changes so you
+can understand exactly what the PR's author was intending and it uses the context from your full code base to
+provide line by line feedback on how things could be improved. This is helpful whether you're reviewing a PR
+from a co-orker or an agent. In either case, Code Rabbit will write up its thoughts and flag any issues so that
+your teammate or your agent can [music] go fix them. I've noticed that when I'm coding with agents, Code Rabbit catches
+a lot of mistakes that the models make by default. [music] For example, the models have a bad habit of using old
+versions of libraries. So, in one session, I watch Code Rabbit [music] cache a call to an old model, figure out
+what the new version was, and then suggest that improvement. Go to code rabbit.a a/4
+to learn more. Stepping back, a question I have is, you know, when we were walking back and forth with the factory, one of the
+things we're talking about is, you know, Microsoft, you can think of it as a software business, but now it's really becoming an industrial business. Uh,
+there's all this capex, there's all this construction, and if you just look over the last two um two years, your sort of
+capex is like tripled. And maybe you extrapolate that forward. It just actually just becomes this huge
+industrial uh explosion. Well, their hyperscalers are taking loans, right? Meta's Meta's done a $20 billion loan at Louisiana. They've take
+they've done a corporate loan. It seems clear everyone's free cash flow is going to zero. Um which is which I'm sure Amy
+is like going to beat you up for for even if you even try to do that. But like uh what what what's happening? I
+mean I think I think the structural change um is what you're referencing
+which I think is massive right which is I I describe it as we are now a capital intensive business and a knowledge
+intensive business and in fact we have to use our knowledge to increase the ROIC on the capital spend right because
+that's kind you know look the hardware guys have done a great job uh of marketing the morals law which I think is unbelievable and it's great but if
+you even look I think some of the stats I even did in my earnings call which is for a given GPT family right uh the
+improvement software improvements of really throughput in terms of tokens per dollar per watt that we're able to get
+uh you know quarter over quarter year over year is massive uh right so it's 5x
+10x maybe 40x in some of these cases right just because uh how you can optimize that's sort of knowledge intens
+intensity coming to bring out capital efficiency so that at at some level the that's what
+we have to master. What does it mean? Like somebody people ask me what was the difference between uh you know a classic
+oldtime host and a hyperscaler it was software. So yes it is capital intensive
+but as long as you have systems knowhow software capability to optimize by
+workload by fleet that's why I think when when we say fungeibility there's so much software in it. It's
+just not about the fleet, right? It's kind of the ability to evict a workload, you know, and then schedule another
+workload. Can I like manage the that algorithm of scheduling around u that is
+the type of stuff that we have to be world class at? And so yes, so I think we'll still remain a software company.
+Uh but yes, this is a different business. Um and we're going to manage. Look, I think at the end of the day, uh
+the cash flow that Microsoft has allows us to have um both these arms firing,
+you know, uh well, it seems like in the short term you have more sort of um credence on things
+taking a while, being more jagged, but in the maybe in the long term, you think like the people who say talk about AGI
+and ASI are correct like Sam Sam will be right, but eventually. Um and I I have a broader question about what makes sense
+for a hyperscaler to do given that you have to invest massively in this thing
+which depreciates over 5 years. So so you if you have 2040 timelines to the kind of thing that somebody like Sam
+anticipates in three years um you know what what is a reasonable thing for you to do in that world? there needs to be
+an allocation uh to I'll call it research compute
+that needs to be done like you did R&D right so that's the best way to even
+account for it quite frankly we should think of it as just R&D expense and you should say hey what's the research
+computer and know how do you want to scale it um and let's [clears throat] even say it's an order of magnitude scale um in
+some period pick your thing is it two years is it 16 months what have you Right. So that's sort of one piece which
+is kind of that's kind of table stakes. That's R&D expenses and the rest is all
+demand driven. Right. I mean ultimately you can you have to build ahead of demand but you better have a demand uh
+uh plan uh that doesn't go completely offkilter. Do you buy so these labs are
+now projecting revenues of 100 billion in 2728 uh and they're projecting you know
+revenue keeps growing at this rate of like 3x 2x a year a lot in the marketplace right there's
+all kinds of incentives right now and and rightfully so right I mean what what do you expect an independent lab that is
+sort of trying to raise money to do right they have to put some numbers out there such that they can actually go
+raise money so that they can pay their bills for compute and what have you and it's And it's good thing I someone's
+going to take some risk and put it in there and they've shown traction. It's not like it's all risk without seeing
+the fact that they've been performing whether it's open AAI, whether it's anthropic. So I feel great about what they've done.
+Uh and we have massive book of business with these Japs. So therefore uh that's all good.
+But overall ultimately there's two simple things. One is you got to allocate for R&D. You
+brought up even talent. You got to like the talent for AI is at a premium. You got to spend there. You got to spend on
+compute. So in some sense researcher to GPU ratios have to be high. Uh that is
+sort of what it takes to be a leading R&D company in this world. Uh and that's
+something that needs to scale. Um and you have to have a balance sheet that allows you to scale that long before
+it's conventional wisdom and so on. So that's kind of one thing. But the other
+is all about sort of knowing how to forecast as we look across the world right
+America has dominated many tech stacks right um the US owns Windows right
+through Microsoft which is deployed even in China right that's the main operating system um of course there's Linux which
+is open source but you know Windows is deployed everywhere in China on personal computers um you look at you look at
+word it's it's deployed everywhere you look at all these various technologies it's deployed everywhere the thing that is quite unique and and and Microsoft
+and other companies have grown elsewhere, right? they've built they're building data centers in Europe and in India and in and in all these other you
+know in Southeast Asia and in Latam in Africa right all of these different places you're building capacity but this
+seems quite different right you know to today the political aspect of technology
+of compute you know you know the US administration didn't care about the dotcom bubble right um it seems like the
+US administration as well as every other administration around the world cares a lot about AI and the question is you
+know we we're in sort of a bipolar world at least with US and China but Europe and and India and all these other
+countries are are saying no actually we're going to have sovereign AI as well. How does Microsoft navigate, you
+know, the difference of the 90s where it's like there's one country in the world that matters, right? It's America and we do our companies sell everywhere
+and therefore Microsoft benefits massively to a world where it is bipolar where hey Microsoft can't just
+necessarily have the right to win all of Europe or India or you know Singapore. There's actually sovereign AI efforts.
+What what is your thought process here and how do you think about this? It's it's I think a super you know critical
+um piece which is um I think that the key key priority for the US tech sector
+and the US government is to ensure that we not only do leading innovative work
+but we also collectively build trust around the world on our tech stack right
+because I always say the United States is just an unbelievable place It's just unique in history, right? It's 4% of the
+world's population, 25% of the GDP, and 50% of the market cap. And I think you
+should think about those ratios and uh really and reflect on it. that 50%
+happens because quite frankly the trust the world has in the United States
+whether it's its capital markets or whether it's its technology and and its stewardship of what matters at any given
+time in terms of leading uh sector. So if that is broken uh then that's not a
+good day for the United States. And so if we start with that which I think the you know President Trump gets, the White
+House, David Sachs, everyone uh really I think gets it. Uh and so therefore I
+applaud anything that the United States government and the tech sector jointly
+does to quite frankly for example put our own capital at risk collectively as
+an industry in every part of the world. Right? So I would like in fact the USG to take credit for foreign direct
+investment by American companies all over the world right it's kind of like uh least talked about but the best
+marketing that the United States should be doing is it's not just about all the foreign direct investment coming into
+the United States but the most leading sector which is these AI factories are
+all being created all over the world by whom by America and American companies and so you start there and Then you even
+build other agreements around it which are around their continuity, their
+legitimate sovereignty concerns around whether it's data residency, whether it's even what happens um uh for them to
+have real agency and guarantees uh on privacy and so on and so that in fact
+our European commitments I think are worth reading. Right? So we made a series of commitments to Europe on how
+we will really govern our hypers scale investment there uh such that really
+European uh union and the European countries have sovereignty. We're also building sovereign clouds in in France
+and in Germany. We have something called sovereign services on Azure which literally give people key management
+services along with confidential computing including confidential computing in GPUs which we've done great
+innovative work with Nvidia. Um and so I think I feel very very good about being
+able to build both technically and through policy this trust in the
+American tech stack. M and how do you see the shaking out as you know you do have this uh network effect with
+learning and things on the model level maybe you have equivalent things at the hyperscaler level as well and do you
+expect that the countries will say look it's clearly one model or a couple models are the best and so we're going to use them but we're going to have some
+laws around well the weights have to be hosted in our country or do you expect that there will be uh this push to have
+it has to be a model trained in our country maybe an analogy here is like people would you know the semiconductor is very important to the economy and
+people would like to have their sort of sovereign semiconductors but like TSMC is just better and so semiconductors are
+so important to the economy that you will just go to Taiwan and buy the semiconductors you have to will it be like that with AI or is there
+um ultimately I think what matters is the use of AI in their economy to create
+economic value right I mean that's the uh the diffusion theory which is ultimately it's not the leading sector
+but it's the ability to use the leading technology to create your own comparative advantage right so that I
+think will fundamentally be the core driver but that said they will want continuity
+of that right so in some sense that's one of the reasons why I believe there's always going to be a check a little bit
+to sort of some of your points on hey can this one model have all the runaway
+deployment that's why open source is always going to be there they will be by definition uh multiple models that'll be
+one way like it's kind of the you know that's one way for people to sort of demand continuity and not have
+concentration risk is another way to say it is right um and so you say hey I want multiple models and then I want an open
+source so I feel uh as long as that's there every country will feel like okay
+I don't have to worry about deploying the best model and broadly diffusing because I can always take uh what is my
+data and my liquidity and move it uh to another model whether it's open source
+or from another country or what have you. So concentration risk um and sovereignty right which is really
+agency those are the two things I think that'll drive the market structure. The the thing about this is that this
+doesn't exist for semiconductors, right? You know, all refrigerators, cars have chips made in Taiwan.
+It didn't exist until now. Until now, everybody is now like like even even then, right, America, you
+know, if Taiwan is cut off, there is there are no more cars, there are no more refrigerators. TSMC Arizona is not
+replacing any real fraction of the production. Like there it is. It there the sovereignty is a bit of like a a
+scam, if you will, right? I mean, it's it's worthwhile having it. It's important to have it, but it's not a real it's not real sovereignty, right?
+And we're a global economy. We don't we I think it's kind of like Dylan saying, hey, at this point, we've not learned
+anything about sort of uh what resilience means and what one needs to
+do, right? So, it's kind of any nation state, including the United
+States at this point, will do what it takes to be more self-sufficient on some
+of these critical supply chains. So I as a multinational company have to
+think about that as a first class requirement right if I don't then I'm not respecting what is in the sort of
+policy interests of that country long term right and I'm not saying they won't make practical decisions in the short
+term right absolutely I mean the globalization can't just be rewound right I mean all these capital investments cannot be made uh in in a
+way at the pace at which at the same time you have to kind of like if I think about it, right? If somebody showed up
+in Washington and said, "Hey, you know, you know what? We're not going to build any semiconductor plans, they're going
+to be kicked out of the United States." Um, and and the same thing is going to be the true in every other country, too.
+Uh, and so therefore, I think we have to as companies respect what the lessons
+learned are. Um, you know, whether it's, you know, you could say the pandemic woke us up or whatever. But
+nevertheless, people are saying, "Look, globalization was fantastic. uh it helped the supply chains be
+globalized and be super efficient but there's such a thing called resilience and we are happy you know we want
+resilience and so therefore that feature will get built at what [snorts] pace I
+think you point you're making it can't be like you can't snap your fingers and say all the TSMC plants now are all in
+Arizona and with all of the capability they're not going to be but is there a plan there will be a plan and should we
+respect that absolutely and so I I feel that's the world I want to meet the world where it is and what it wants to
+do going forward as opposed to say hey we have a point of view that doesn't respect your view. M so ju just to make
+sure I understand the idea here is each country will want some kind of data
+residency privacy etc. And Microsoft is especially privileged here because you have relationships with these countries
+who have expertise in setting up these kinds of sovereign data centers and
+therefore Microsoft is uniquely fit for a world with um more sovereignty requirements.
+Yeah. I mean I I I don't want to sort of describe it as somehow we're uniquely privileged. Uh I would just say I think
+of that as a business requirement that we have been doing all the hard work all these decades and we plan to and so my
+answer to Dylan's previous question was I take these you know whether it's in the United States quite frankly uh when
+you know when the white house and the USG says hey we want you to allocate
+more of your I don't know wafer starts to uh uh fabs in the US we take that
+seriously. or whether it is data center and the EU boundary, we take that seriously. So to
+me, um respecting what I think are legitimate reasons why countries care
+about sovereignty and building for it as a software and a physical plant is what
+I I would say we are going to do. And as we go to like the bipolar world, right, US, China. Yeah. Um there is there is a
+lot around, you know, American tech does not, you know, it's not just you versus Amazon, um or you versus, you know, anthropic or
+you versus Google. Yeah. There is a whole host of competit competition. How
+does how does America rebuild the trust? What do you do to rebuild the trust to say actually no, American companies will
+be the main provider for you? Um and how do you think about competition with up and cominging Chinese companies whether
+it be you know bite dance and Alibaba or Deepseek and Moonshot and so just add to the question one
+concern is look we're talking about how AI is becoming this sort of industrial capex race uh where you're just rapidly
+having to build quickly across all those supply chain when you hear that at least till now you just think about China
+right this is like their comparative advantage and especially if we're not going to moonshot to ASI next year but
+we it's going to be this decades of buildouts and infrastructure and so forth, how do you deal with Chinese
+competition? Are they privileged in that world? Yeah. So, it's a great qu. I mean, in fact, you just made the point of why I
+think trust in American tech is probably the most important feature. It's not
+even the model capability. Maybe it is like can I trust you the
+company? Can I trust you? Your country and its institutions to be a long-term
+supplier may be the thing that wins the world. That's a good note to end on.
+Yeah, Satia, thank you for doing this. Thank you so much. Thank you. It's such a pleasure. Such a pleasure.
+It's awesome. It's like, man, you two guys are like quite the team. [laughter] Hey everybody, I hope you enjoyed that
+episode. If you did, the most helpful thing you can do is just share it with other people who you think might enjoy
+it. It's also helpful if you leave a rating or a comment on whatever platform you're listening on. If you're
+interested in sponsoring the podcast, you can reach out at dwarcash.com/advertise.
+Otherwise, I'll see you on the next one.

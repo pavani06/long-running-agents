@@ -1,0 +1,309 @@
+If you're tired of setting up manual
+HTTP requests, then this is the video
+for you because today I'm going to show
+you guys how to connect to community
+nodes. Whether you are hosted on Naden
+cloud, self-hosted in the cloud, or
+locally hosted. And a community node is
+just a node that a member of the
+community has built because it solves a
+specific problem or adds more
+functionality that Naden doesn't
+natively have. So, let's get into it.
+All right, so here is an article that
+Naden released last week that says
+community nodes are now available on
+Naden cloud, which is great because
+previously you had to be self-hosting
+the community version of NAND if you
+wanted to use these nodes. And as you
+can see down here, they're starting with
+just 25 nodes that are some of the most
+used community-built packages and
+partner supported integrations. And
+they're going to be expanding the
+library gradually, bringing on more
+verified nodes so that we can connect to
+pretty much anything a lot easier. Now,
+they talk a little bit more about why
+they're investing in the ecosystem.
+community nodes have been extremely
+successful over the past couple months
+and then it's going to spotlight a few
+of the community nodes that will be
+available on cloud like tavly pdfge
+browser flow we've got 11 labs we've got
+ser api so let's get into our end cloud
+and check it out one thing to note at
+the top of the article is that it says
+you must be on version 1.94 or later so
+if I go into my noden and I click on my
+admin panel in the bottom left down here
+we can see that I'm currently running
+1.94.1 so I'm good but what we have to
+do is click on settings and we have to
+go down here to verify community nodes
+and turn that on. And then we have to
+hit save changes. So this is going to
+basically restart our workspace. So make
+sure you have your workflow saved and
+everything. And if I go back to my
+dashboard, it's going to say that it's
+basically spinning it back up. It's
+making the changes right now. And then
+once it is green, we'll be able to click
+open and we'll launch back into our
+Naden environment. All right, so we're
+green. I'm going to go ahead and open up
+my workspace. And now that I'm back in
+my environment, what we can do is go
+down here to settings. And we'll see we
+have a new option down here that says
+community nodes, which would not have
+been there before. And it says you can
+install community and partner built node
+packages that have been verified by NAN
+directly from the panel. So rather than
+having to come here to install it like
+you would if you were self-hosting the
+community edition, you can just do it
+straight from the panel. So let's hop
+into a workflow and take a look. All
+right, so here we are in a workflow. And
+what I have done is I've connected to
+Tavi using an HTTP request. And if you
+guys have been watching my channel for a
+while, you've probably seen me connect
+to Tavi a ton. It basically lets your
+agents search the web with real-time
+articles, that kind of stuff. And what
+we had to do inside this HTTP request is
+we had to go to Tavi. We had to go to
+the API documentation and we had to set
+up all this stuff with all these
+different parameters. As you can see, we
+put in all this information. We have our
+parameters and what we asked was what is
+AI automation? And then here we get our
+actual answer. And then over here, we
+get a result with an actual URL. But
+what we're able to do now with the
+community nodes is if I move this nasty
+HTTP request out of the way and I click
+on the plus. If I search for Tavi, we
+can see right here that we have a Tavi
+community node. And if I hover over the
+check mark, it says this is an official
+node maintained by Tavi. So I'll click
+on that. And what we have to do is
+install it. So I'm just going to click
+install node. This is going to take like
+10 seconds. It doesn't take long at all.
+Now you can see that we have it
+installed. If I go into the actual
+community nodes of our cloud, you can
+see that this is the one that we have.
+This is where you could go ahead and
+look at documentation or uninstall this
+package. But now that we have it
+installed, what we can do is we can use
+that search endpoint, which is exactly
+the one that I used back in this
+previous HTTP request right up here. And
+so now it's pretty cool. We have a
+native node that has the little Tavi
+logo and everything. And all I have to
+do in here is I have to put in a
+credential and a search query. And then
+we have the option to add all these
+other things that we had in the actual
+request right here. But we don't have to
+deal with the actual body parameter.
+Let's say we wanted to um you know do a
+different topic. we have the option of
+general, news or finance. Or let's say
+we wanted to do max results. We can just
+put in a number and it's way more easy
+to look at. So first thing I do is I'd
+want to create a credential. So I'd
+click on create a credential and all I
+have to do is plug in my API key. So
+I'll go to Tavi and I'll just copy this
+key right here. Hit save and we'll be
+good to go there. And then I just need
+to type in a search term. So I'm just
+going to type in what is AI automation
+just so we can see the same thing as
+what we did earlier. And now we're
+running it. It is a community node as
+you can see. You can see we get back
+this result. We don't have an answer
+probably because we did different
+results, but we have five different URLs
+and they're all going to tell us about
+what AI automation is. And what's really
+nice about these community nodes is a
+lot of times I see people have issues
+with the authentication because with
+Tavi specifically in your
+authentication, you have to put in
+bearer space API key. But as you guys
+saw in this native node, when you create
+your credential, all you have to do is
+give your API key. So whoever built this
+community node is handling all of that
+kind of stuff on the back end. Okay.
+Okay, so let's look at one more real
+quick. If I go come down here and let's
+try the 11 Labs. So you can see interact
+with 11 Labs API. What we have to do, of
+course, is install it. All right, there
+we go. So we just installed the 11 Labs
+API. And now let's see what I want to do
+is let's do convert text to speech. So
+as you can see, everything's already
+configured. We just have to put in a few
+things. So what I'm going to do first is
+my credential. So all I had to do was
+paste in my 11 Labs API key. I didn't
+have to mess with bearer space or X-API-
+or anything like that. I just threw in
+my API key and now we're good to go. And
+what I can do is choose from a list of
+voices rather than just having to go and
+get like a voice ID. So we can see I
+have Nate Herk, I have Jarvis, I have
+Archer, I have all this kind of stuff.
+Let's do one with Rachel and then the
+actual text for 11 Labs to turn into
+speech. So here we're going to have
+Rachel say community nodes. Wow. We'll
+run this and we'll see what we got. All
+right. I just downloaded the file that I
+got from 11 Labs. Let's hear it.
+Community nodes. Wow. Okay. So that's
+just to prove that we actually were able
+to access 11 Labs API server. And
+another thing I wanted to mention is
+just because it's a community node
+doesn't mean that you can't have
+triggers or agent tools as well. So for
+example, if I click on the plus under
+our AI agent, what we can see is that if
+I want to do the Tavi again, but this
+time use it as a tool. We see right here
+we have our community tool which is part
+of that Tavly package, which of course
+was this one that we just used down
+here. This is the official Tavly one.
+And then this is the tool that is part
+of that package. And so of course I
+could click under there and I could add
+it to the workflow. And now we have our
+Tavly tool that we can hook up to our AI
+agent. And we already have our
+credentials saved because we just set it
+up with this package. And then when it
+comes to triggers, you basically would
+just have to play around to see if the
+community node that you're trying to use
+has a trigger. So if I came into this
+workflow and I just typed in trigger, we
+can see we have a ton of different
+triggers. Um, looks like this one right
+here, Swift Gum, is one of the official
+ones that is a community node. I also
+noticed earlier that we had one called
+chat data, which lets you take action in
+chat data, but also it can be used as a
+trigger down here. So, they've got it
+all. Okay. So, now we're in my
+self-hosted version of Niten and I'm
+going to do the same thing. Go down to
+settings and click on community nodes.
+And like I said, now it's a little
+different because we can install
+community nodes straight from here. And
+it's super super simple. All you do is
+click on install. And then you could
+just basically type in the name that you
+need of the package or you could come
+here and click on browse and you could
+look at all these other naden community
+node packages. And I'll also include a
+link to this GitHub repo in the
+description, which is the top 100
+community nodes. And it has different
+categories like communication and
+messaging, document and content
+generation, browser automation, data
+processing, API and cloud integrations,
+this kind of stuff. What I'm going to do
+is because we did an example with
+Tableau earlier, I'm just going to use
+that exact one that we used, but this
+time in a self-hosted environment. So I
+would come here, I could click on this,
+which would take us to the mpm site for
+this actual community node. And it's
+really easy. All I'm going to have to do
+is go here and copy that. Go back into
+Naden, paste that in there, hit the
+check mark, and then click install. And
+so now we have our Tavi node installed.
+I can go back out of here and open up a
+new workflow. And so now in this new
+workflow, if I come in here and I type
+in Tavi, you can see that we're going to
+have two. So the first one is the
+verified one from NAN that's maintained
+by Tavi, which is the one that we just
+saw an example of. We could come in here
+and we could install it. Or we can see
+that we have this other one that we just
+installed. in this little block means
+that it is a community node from a
+package that we installed ourselves. And
+we could click in here and we could do
+the exact same thing where we could
+either search or extract. And then the
+only difference would be if you were
+running Nadin locally, you couldn't just
+come here to your settings and go to
+community nodes and install one by
+typing in the name because you need to
+install the actual node package
+somewhere that your local ended can
+access. So according to Naden's
+documentation, what you need to do is if
+you want to manually install the
+community node using npm, you will have
+to access your docker shell, which is
+you just get into your nitn environment,
+create a directory for naden nodes if it
+doesn't already exist. Otherwise, just
+navigate to it. And then you just have
+to run the npm install command and it
+will already be there. So according to
+the tavly node that we just looked at,
+you would basically just have to run
+this command and all of the other nodes
+will have the mpm command right there.
+And then of course you can go look at
+the GitHub repo for this community node
+if you need some more information. And
+then when you restart n it should be
+there when you type into the node panel
+for that node you're looking for. All
+right, so that is going to do it for
+this one. Hope you guys enjoyed and hope
+you get in there and play around with
+some community nodes, see the value in
+that. If you guys want to see a video on
+some automations using different
+community nodes or some of the most
+useful ones, let me know. I'd love to
+throw that together for you. Anyways, as
+always, I appreciate you guys making it
+to the end of the video and I'll see you
+in the next one. Thanks everyone.

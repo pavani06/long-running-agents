@@ -1,0 +1,173 @@
+all right so for some time I've been
+thinking how to use these llms and some
+agentic workflow to help me stay up to
+date with news around topics that I'm
+interested in I'm interested in things
+like rag systems AI agents llms
+reasoning llms and so forth now I use
+cloud a lot for things like writing but
+if you use cloud. online it doesn't have
+access to a web browser none of those
+tools chat GPD does offer that but I use
+cloud a lot for writing and what I've
+been interested in doing is creating a
+tool that I can leverage to help me stay
+up to dat with all the news that happens
+today there's so much happening
+especially for AI agents there's a lot
+of things right there's a lot of tools
+there's a lot of research it's really
+hard to stay up to date with things and
+when I use this search tools most of
+these tools are very bad so I would like
+to create something that is more
+personalized to what I want to look for
+the information that I want and so what
+I did was I actually use a bunch of mCP
+servers so you can see that I have set
+them up here and there's a bunch of
+tools that come available with that so
+the servers I have set up here are
+GitHub so some integration with GitHub I
+also have Brave web search which we will
+use as our main web search tool so what
+I want to do here so the first thing I
+want to do you can see here in my prompt
+I started Cloud this is cloud desktop
+and I just started a simple prompt
+search for the top 20 lat a agent news
+make sure to include links to sources
+use the following format so these are
+the formats and because cloud is now
+connected to these servers it has access
+to all of these tools and the mCP
+servers have all the definitions for
+capabilities and so on cloud canot
+interact with those tools and so now it
+can interact with brave web search for
+example so you can see here that it did
+a query so it sent a query to the brave
+search API all of that has been
+configured and so I get some news here
+now whether these are the latest news
+remains to be verified because again
+when you use these web search tools
+there's many ways how you can prompt
+them right and so maybe this will need
+to be improved but that's not the point
+of the video here I just wanted to do a
+quick demo of how awesome it is to build
+with Cloud along with these mCP servers
+all right so that integration is done
+you can see here that we got a summary
+and we got it in the format that we want
+we want the source we can actually click
+on the links we got a bunch of news here
+that might be interesting so for
+instance this one I think is interesting
+this one as well Dev agents raised some
+money and so on so I can definitely
+improve this list but anyways so this is
+the first try of me doing this I
+followed up with a prompt and I told it
+now create a new repo AI agents to add
+these news articles as markdown so what
+is this about basically what I did was I
+hooked up another mCP server to my cloud
+desktop here and so now I can use all of
+these tools available from this MCB
+server so now it can create repositories
+it can push files and so on so you see
+where I'm going with this essentially
+what I'm doing is now I have an easy way
+to just like prompt Cloud collect news
+that I want refine them if I have to
+refine them and then just dump those
+news into Maybe a markone file you a
+GitHub repo and then now I can share
+this as well right so it's not just
+useful for me but it's useful for my
+community as well and this whole thing
+was automated right I just needed to ask
+it like this now I could literally go
+and automate this whole process as well
+I'm sure I could figure out a way how to
+set up a tool to do some automation but
+I still want to be able to curate the
+news and so on I do newsletters and so
+on so I think that's useful for me so
+I'm not interested to do that now but
+that's something that could be done I
+think very easily with this concept of
+mCP servers all right so what does this
+do what's the outcome of all of this
+well as I said I was interested in
+connecting an GitHub MCB server and
+pushing all of the news all of these
+ones into that MCV server so now I can
+update that and I can share that with
+the community and so on well I was still
+need to do creation but that wasn't the
+point of this first demo this is the
+first time I'm trying this I could
+definitely add more things to this and
+it did that for for me I didn't have to
+go and create a repository I didn't have
+to do that manually it just created it
+for me I just had to prompt it like this
+so what is the result of that this is a
+result of what I just did because it has
+access to GitHub and I had to set up
+that I had to set up a personal token
+out of that but once I have that mCP
+server set up it can create repositories
+on its own so it actually created this
+one so that agent that I just set up
+created this one and created this
+repository called AI agents and then it
+summarized the news and this is how it
+summarized it now I didn't see how it
+actually summarized it in Cloud but I
+can see the output here and you can see
+that the links are actually working too
+take a look at the links yeah it takes
+me right to the news here uh this one is
+October 21st again the challenge with
+using the tools like Brave web search
+and so on is that you still need to do a
+bit more fine tuning on the search
+itself right like the search is not
+perfect but the workflow works and
+that's a good first step yeah so I'm
+excited about that I can now do a lot of
+this now keep track of news you know
+write notes I can Implement a lot of
+different things so this this was just a
+first initial idea because I actually
+had to go and set up the MCV servers had
+to set up that stuff and it took a bit
+of time because there were some issues
+and this stuff is just getting started
+really exciting stuff now let me know if
+you would like to see me break down all
+the steps on how you might be able to do
+this if this is interesting for you let
+me know in the comments and and what I
+will do is I'm actually working on some
+more advanced use cases as well I'm sure
+I can put together something where I go
+through all the details the issues that
+I found how to fix them and so on but
+I'm excited about this I think entopic
+has done a great job with the mCP stuff
+and I think for building things like
+this it makes sense for us to be able to
+integrate you know not only Cloud but
+other tools as well like our idees and
+these other tools that we use on a daily
+basis to do this kind of autom
+you know this is useful for me and I'm
+sure it's useful for a lot of people so
+let me know in the comments if you'll
+like me to break this down I'll see you
+all in the next one

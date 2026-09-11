@@ -1,0 +1,384 @@
+Hi everyone. Uh thank you so much for uh coming over and listening to my topic
+today. Uh I'm Tjis. I am going to present an open-source project that I
+personally worked on. Um it's called Headroom and it's my first time in Minneapolis. So I would like to take
+this opportunity to thank uh you know the Linux Foundation for inviting me here. Um as well as all of you who have
+traveled from different parts of the world. Um, it's great to see the power of open source. It's great to see that
+even if even when we're seeing AI churn and produce code uh at each breath, we
+still value the foundations and the ethos of open source. So, thank you for that. Um, with that in mind, I'll get
+started. Um, so Headroom um is this project that started around four months
+ago and the idea was very simple. I use a lot of cloud code and there's no shame
+in admitting that I use a lot of it. I ran out of tokens every day. I used to
+pull my hair that when will the clock reset and can I now start using more tokens. That is where I decided you know
+what I have no idea where the tokens are going. So let me try to cut open and see
+where tokens are being spent and can I give myself some extra headroom when it
+comes to tokens. So that was where the project started. Um who am I? Um I'm
+Tjis uh in California. I go by Tahas uh and I work at Netflix as a senior
+engineer. My day job is building the data storage that makes recommendations
+possible. So when you click on Netflix, when you like something, when you don't like something, when you watch
+something, when you skip something, I capture all of that data. I store it in a way that makes it easy for
+recommendation models to recommend you the latest movies or shows based on that. But that's my day job. Headroom is
+what I do after I do everything at Netflix. And um Headroom essentially started off with just me uh trying to
+solve my own problem for clot code. And as you can imagine, Python gets most of
+the work done when you're working for yourself. So um I started headroom with Python uh for just clot code. But it
+found some resonance with the community and people started extending it left, right, and center. And I was very
+excited. I was like, "Yay, it's it has OpenClaw integration. it has uh you know codeex integration and then I realized
+they make it so hard for you to integrate with different providers. So Headroom has now grown from just its
+Python base to now trying to implement a Rust implementation in the in just 4
+months since it has been open sourced. We are at 1900 GitHub stars thanks to the community. We have 30 plus
+contributors from across the world. um and my background being in data infrastructure and storage helped me uh
+build some of the core pieces of headroom that I'll try to cover in this session.
+Let's first talk about the problem that exists everywhere nowadays. Uh just with
+a show of hands, how many of you use clot code? How many of you use Codeex? The same
+bunch, I guess, like me. How many of you use anything that's out there that can save you tokens?
+All right then. So, uh, great. Thank you. So, the token, u, when I started
+looking at, uh, you know, where my money is being spent, um, I realized that, um,
+in my [clears throat] clock code sessions, like in one of the sessions, I was asking, you know, my CPU usage, uh,
+went high in one particular session and that crashed my laptop. So, can you find
+from the logs, you know, where that happened? And I realized that there was a tool call made to read the log files.
+The entire log file was pulled into the context window. That is wasteful because
+90% of it is waste and garbage that I don't care about. And then I realized,
+you know, if it is happening with one log file, this can extend to other pieces. Let's say database, you're
+making a call to a database to get some information. The structure of the data that is returned is JSON. And let's say
+you get multiple entries, 80% of them are waste. You just care about the 20%
+that really answer the user's query. Most of the literature on token
+compression has been focused on user prompt compression. So if I use very
+flowery language, it'll try to condense my prompt into something that's semantically similar and it calls it
+token compression. But I realized that 90% of my coding workflow involves
+anything but the user prompt. There are local reads that are happening to code files. There are external tool calls.
+There are like web pages that are being read. There are archive papers that are being read. And I realized that one
+sizefits-all will not work here. So that is where I started digging into where tokens are being spent. And as you can
+see here, uh most of the agents token budget is really noise.
+And um I looked around. I looked at you know what have other people done to solve this problem. Some of you may be
+familiar with some of these tools but if not these are great tools to get to know. The first one is these providers
+like OpenAI and Claude provide you prefix caching and compaction. In simple
+words, when you run out of enough of your context window, they will summarize
+or they will compact. It is extremely lossy in nature as you can imagine. Um
+and the other thing is they have restricted the entire knowledge that you've captured in your context window
+to a flat wall of text because when you compact something you're just representing it in a markdown file.
+That's a lot of information loss if you think about it and that's what providers natively provide. The other thing is u
+how many of you are familiar with KV cache? Okay, a lot of you. But um when you
+whenever you talk to Claude or you use a coding agent, you think that you're
+saying something, it's responding with something. You're saying something else, it's responding with something else. It's actually not you saying a new
+sentence. It's everything that you've said till now and it has responded till now all going again in the call. So it's
+a contiguous appended array of all your historical messages that goes again to
+the LLM. And now you can think about it. Every time you just say a high after everything you've said till now, it's
+everything that you've said till now plus that high that goes to an LLM. As you can imagine, 99% of it is things
+that you've already sent. So what the providers do is they have this concept of prefix caching. They say that if
+you've sent us all of this data before and you're sending it again to us, we
+will charge you just 10% of the cost and we'll cash that information. But even if
+you change a little bit within that entire window, it is not a hit. It's not
+a cash hit. So we will penalize you for the entire window. So these are nuances
+that every provider sort of hides in their documentation um and that's what
+they expose for you to take benefit of. There are other projects like RTK. Has anybody used RTK? Oh, nice. Uh RTK is uh
+a token killer in some ways. In simple words, let's say you're using clot code
+and you say, you know what, my GitHub PR failed. Can you go investigate what's the failure and fix it? it'll issue a
+lot of GitHub CLIs. Now, the CLI that it issues by default are not really
+compressed outputs. So, many of the CLI have d-mpress as an option which
+compresses what you see on your screen and it's not verbose. So, RTK is this smart tool that looks at all the
+different CLIs that your clot code or codeex can call and tries to compress them at at the point at which you're
+making the call. Lean CTX is lean context. It's another variant of it. And then there are some commercial companies
+like compressor and token company. These are Y combinator funded companies. And what they expose is an API in the cloud.
+You call compress. You give it a payload and it gives you a compressed output back. Because all of these providers
+have different nuances of the harness. It is impossible to integrate these into
+your daily workflows. So that is where headroom was uh started where I wanted
+the same experience as all these combined with the idea that it should
+work on your laptop as a proxy very simple pip install. It should just work out of the box. Um and that is how it
+differentiates. And the other aspect of it which I'll get into later is it is reversible compression. Um now how can
+compression be reversible? Uh you may ask. And it's it's a very it's it's sort
+of a marketing term here because uh it's really the fact that you compress something but you inject information to
+the LLM saying that if you need more here is a tool call you can do so. So if the LLM wants to get the original
+context back because you compress too aggressively it can actually make a tool call and fetch that. That is how it is
+reversible. Uh so in essence it's a local compression
+layer between the agent and the model and it shrinks everything in between
+whether it's your tool calls whether it's your uh file reads uh whether it's
+it's some glob or GP data whether depending on the type of tool call also
+uh it has six compressors that we'll try to get to four deploy modes and no data leaves your box so it runs on your
+laptop So here is at a very high level. Sorry
+for the size of the text here. Uh a lot of this information is already present in um in the GitHub repo. Um and also
+just a caveat these slides were made using claude aai/design. So if you've not tried it, it's a
+fantastic tool. Put your GitHub repo there and say I need I need slides to be made. Maybe you can put headroom in
+front of it and it'll save some tokens. uh but u it has three stages here. Uh
+and the stages are I I'll explain I'll try to explain it in simple words. The first is cash aligner. What does that
+mean? Just like I explained if you have everything packed and cached your
+provider will only charge you 10%. But if you change even a single thing in
+that previous huge array then you get a cash miss. Now, what could be things
+that you change? If your system prompt, which you probably don't have control over, contains a date field or contains
+some UYU ID that changes per session, you've effectively you're effectively getting a cache miss every single time.
+That will blow up your costs. So what cache aligner does is it looks at your system prompt your tools and it tries to
+extract fields that are dynamic in nature take it out from there and put it towards the end so that you still get
+cache hit for a majority part of your session. The second one is content
+router. So once you've done all of that you have a you have payload that you want to send to the LLM. If you try to
+apply the same logic of compression it doesn't work. I tried that. That was the simplest model I built. It just did not
+work. I realized that you need different types of compressors per type of data. A
+lot of coding agents look at files that are already code. So code has this natural structure of uh and you can use
+a parsing for code. So we use a based compressors for coding for code files
+and we use JSON compressors for JSON data. We use a DOM compressor for all
+the DOMs and other things that you get from web pages. Similarly, you can extend and build many more compressors
+here. Um, I'll I'll try to go over some of them in the next few slides. But once
+you're done with these compressors, you then try to fit them together in the context. This is where knowledge of
+different harnesses comes into play. For example, in Claude, uh, and I'll give
+you this example because I got burnt by that. Uh, how many of you know prefix cache settings in Claude?
+Perfect. Nobody knows it. Awesome. So, by default, Claude has a prefix cache
+setting of 5 minutes. What does that mean? It means that while you're interacting with your session and if
+you're within 5 minute boundary of continuous interaction, it'll give you the nice sweet deal of 10% of the
+pricing. But as soon as you switch over to the sixth minute, it'll charge you
+for the entire huge array of tokens. What's interesting is that this 5 minute
+is also not in your control technically because if cla decides that it has to fork off a sub agent to perform your
+task, the sub aent has its own prefix cache. So by the time the sub aent comes
+back, you've already exhausted your five minutes. Uh and this is a neat trick that I've personally experienced. is
+they play quite a lot where they'll even for a simple thing they'll just create a sub agent try to make it more than 5
+minutes so that I I pay a lot there's another setting that they expose but it's hidden in their documentation it is
+a 1 hour TTL not a 5 minute TTL but the catch is you pay two times the cost for
+your rights to get 90% savings for your reads so for every user depending on
+your coding style. Depending on how often do you come back and resume a session or how interactive your sessions
+are, one choice may be better than the other choice. Um, in Headroom, we are trying to expose that. Uh, I have a PR
+that I have to push now, but it'll look at your historical sessions and it'll automatically set that environment
+variable for you so that your token savings are more. And this was just the nuance of claude
+codeex exposes extremely different APIs and ways to do this. And then you have
+Gemini which is still trying to figure out according to me what it wants to do
+because it's extremely confusing to get it to work uh with all these settings. Um open code allows you to work with
+external models but some of them do not you know play well with some of these settings. So we are trying in headroom
+to get open code to work properly so that it can work uh you know for multiple users. Another nuance is uh I
+don't know if you know but claude has subscription model and API model. So if you subscribe to a $200 plan you can use
+it for cla code until some point and then you fall back to APIs if you want
+to use it but they go through different paths. So it's the short of it is it's
+extremely complex to get it working for all combinations that these providers expose. Um and finally we have the CCR.
+CCR is this uh technique called uh compress cache and retrieve. uh it's the
+reversibility where if you are giving a JSON payload to claude you will compress
+it and squash it and put a marker there saying that if the LLM wants to uncompress it or open this it should
+make a tool call. This way we get compression as well as reversability. And CCR is that local storage that
+stores that reversible original context so that the LLM can get and retrieve that.
+Um and there are four ways in which you can integrate it. Uh if you want to use
+it in your lang chain, AGNO and other pipelines, you can just call a compress command with messages. Uh the simplest
+thing that people try to do is headroom wrap claude or headroom wrap codeex. Uh
+this will work. It'll start off the proxy on your local machine and it'll route all the calls through it. It also
+has an MCP server that allows it to retrieve uh these tools.
+So let's try to go under the hood a bit. uh there are 11 uh hooks and in short um
+whenever you're talking to claude or open AAI whether you're using coding agents or not there are different hooks
+that are exposed by them uh these hooks are good interception points if you want to build a harness these hooks tell you
+what to call before the session starts what to call before a tool call or after a tool call and headroom tries to
+integrate intelligently with all these hooks um so it's it's a overview of the hooks
+Um but based on different types of compressors um it will actually show you
+different crushers or compressors that we use. Uh so for JSON we use smart crusher that gives us 83 to 95% savings
+uh in the best case. For source code we use the code compressor and so on and so forth. The last part is interesting
+which is what if I have nothing of all these what do I do? Does it go uncompressed? Um, initially when I
+started Headroom, I used LLM Lingua. How many of you are familiar with LLM Lingua? Okay. So, LLM Lingua is an
+open-source project by Microsoft that is only used for text compression. Um, it
+did not give me great performance. So, I created my own called compress model. Uh, it's an open- source model and in
+very simple terms, what it does is it looks at your payload and decides should
+I keep a token or should I remove a token. That's it. It's not fancy. It's not a summarizer. It's an encoder only
+model. So, it is not generating text. It's just weighing the different tokens
+and deciding if the presence of a token or an absence of a token impacts the output or not. And it it gives us
+compression for text. Uh, and this one is the smart crusher
+algorithm. This one is a very basic one that we've kept in open source, but it has evolved over time. Uh in simple
+words, we look at your JSON payload. We look at the user's prompt. We decide which are the fields that the user cares
+about or the response cares about. Which are the outliers? What is the standard mean and standard deviation across all
+the different fields in the JSON? And we then squash the unimportant ones. um it
+will try to also um based on your
+compression let's say you compressed it too much and the next time the LLM had
+to fall back and retrieve the original or uncompress it we have a learning mechanism that will detect that and the
+next time it'll compress less so that you you're intelligently learning how much to compress the data
+the code compressor is a simple one you have a lot of code in your files uh and
+a lot of it could be stripped away. Uh so generally if you have an LSP uh it's
+your code will not be read directly. Uh so cursor for example will not do a gp over your code if you try to ask it a
+question but claude will. Um and what this does is it uses the structured um
+nature of code to compress it intelligently. There is support for different languages um at the bottom.
+And the next one is compress base. Uh so like I said, this is an encoder only
+model. That means it only looks at text and it tries to give them a weight on
+every token in the text. Um and we've trained it on agentic traces. LLM lingua
+the original model that Microsoft had was trained on meeting summaries. But
+meeting summaries are not a good representative of what I do with my coding uh agents. So I uh trained it on
+coding agents data. It's not the best model to be very honest. But that's where the opportunity lies to make it
+even better. Um it's open source at the moment and we are trying to go for a version two where we can try to learn
+more about different coding agents and make it better.
+So this is cache aligner which I kind of briefly explained but the idea was that
+if you have a like if your message in
+your agents uh has date or other dynamic fields it it is almost always a prefix
+cash miss so you pay a lot of money and we try to move it towards the end. Um and this shows the different discounts
+that different providers provide have. So anthropic if you uh specify
+cache_cont control tags which we take care of automatically in headroom it gives you a 90% discount. Openai doesn't
+expose any such tag but it gives you a 50% discount. Uh and Google uh has
+cached content which almost doesn't work well but it gives you a 75% discount if
+it works well. And uh the next one is um
+so we actually um this this shows that we can retrieve the data from the CCR
+system. It CCR works not just for JSON data. I explained it using JSON but even
+if you use compress base or code or any other compressor CCR allows you to fetch
+it. Now if you think about it, it works on your laptop but it is only it's
+ephemeral too. We cannot keep having the original context stay forever in in CCR.
+So CCR is backed by local Reddus and SQite and it has a 5m minute TTL. So if
+you're looking for data that is older than 5 minutes, we'll have to configure the TTL separately. But it comes at the cost of storage.
+So let me go to a demo and
+is it starting? Yeah. Okay.
+if it works. Okay, so you will not probably be able to see but there's headroom wrap claude at the bottom. It
+starts cla um and I just put it put a basic question you know um how does it
+work and can you find data you will notice claude is doing its stuff in parallel but very quickly
+you'll notice that this is working on your local machine um and this is the cost savings and token savings you will
+see so you have to go to localhost 8787 which is the port you will notice the savings uh you will notice the cache
+prefix hits um and this is the same demo that is on the GitHub website as well.
+So you can check it out there too. But uh I have typically uh seen our users
+save 20 to 30%. Uh it is a function of the tool calls that they do. Uh the
+other thing is we have reached 200 billion tokens saved. To put that into
+perspective that is $700,000 of money saved for our users. And we
+have telemetry that is opt in which means 200 billion is the minimum that
+people are willing to share with us. There are many people that don't want the telemetry to go away and the telemetry is nothing but token saved. We
+don't look at any data but u that tells you that different providers are
+charging that much money for bloat. Uh there's another demo I have uh which
+is around memory. So we have a mode called memory and you'll notice that there are three tabs here. The first two
+have memory but the last one doesn't. So if I just say you know what I want to remember that I like dark mode in one tab which has memory. U the other one
+you can ask what do I prefer and it'll say you know what you like dark mode. But the third one is the basic one which
+does not remember anything. So u this when I when I built this demo this
+was an older demo. Claude did not have memory MD. Claude has since included memory.mmd. But there's a lot of value
+in this because today when you work across agents, you know, there are companies that say that they uh will,
+you know, you have a cloud-based knowledge graph where you can save
+information from your claw session and use it in your codec session. This is a
+very basic one. It uses SQLite on your laptop. It stores a simple graph of your
+memory from one coding session. let's say cloud code and then when you open up codeex it actually um you know bridges
+between the SQLite database and the agent MD or memory MD file so it syncs them and your new agent can also use the
+same memory if you can extend this forward let's say you want to build it
+as a managed offering you can use learnings from one person's agents and
+pass that memory to another person as
+So these are some of the numbers that we were able to get from our community. Um they tried different agentic workloads
+not just coding agents. So these are across agents like I have another demo which shows you the power of edroom even
+without coding agents. But you'll notice that uh different types of edroom is
+great when you have a lot of data to process but you need a very small piece of it. And um it's not great when
+everything is important. Um all of this will only work if it's
+accurate. If it's not accurate, there's no point of compressing anything. So we try to benchmark it across different
+accuracy frameworks. This is still ongoing. the eval are still ongoing and there's a great opportunity for folks
+that are interested to contribute to it as well where we try to measure it versus the baseline and the hope was
+because we have reversibility we should be the same. The other interesting part is when you compress tokens you're not
+saving money you're actually saving latency and you're actually uh saving accuracy. Uh one of our users is using
+headroom in their voice uh agent. The whole idea is um let's say I'm using a
+voice agent and I say can you do deep research for this product from my competitor. The voice agent calls an LLM
+because you have a text uh you have a speech to text text to LLM. The LLM spits an output and that output is then
+converted to speech. So in that middle phase where you're sending data to an LLM which has to make tool calls that's
+where they've put headroom and their whole value proposition was latency because if you use a voice agent today
+generally the latency is 300 milliseconds. Human perceptible latency
+is 200 milliseconds which means when someone is responding within 200 milliseconds we feel like it's a human
+that's talking to us. So their entire game is to get that latency down and that's where headroom is helping. And
+when you think about accuracy as context windows grow I mean we have all seen that the accuracy drops significantly.
+So uh by compressing tokens and being intelligent about what we put into the context window accuracy is also
+benefited. Um so where is this going you know we have built something very basic uh works
+for coding agents but like I said we have a compressor that's trained on some
+agentic workloads. We are now working to see how we can have compressors per domain. So you can look at financial
+data. It has very different characteristics of compression. You cannot just remove numbers from there or
+clauses. But medical data is again separate from that. The other one is like I said voice agents are using it.
+Uh another um use case is image uh and video. One of our users goes to
+factories, they wear glasses and they record what someone is doing to different machines and that entire video
+that is recorded is sent to uh Claude. Per video it charges $3 to upload it and
+the output of Claude is a set set of instructions on how to operate the machine. They are using headroom uh an
+image variant of headroom which chops the image or chops the video into pieces
+and then uses headroom to compress tokens and the cost is down to $.2 per upload. Uh the last part is interesting
+which is um provenence for every token. Provenence is this attribute that you
+can confirm and say what has gone into a context window and from where did you
+get that information. So because headroom is sitting in the middle between LLMs and agents, we can actually
+track the source of data and that metadata and this cannot live in a foundation model because they don't care
+where your data is coming from and you could use three different model providers. Even if you pass them metadata, you are left to the mercy of
+the provider to keep it around. So companies want to keep this metadata uh
+and this memory inhouse. That's where we are trying to see how headroom um will
+work and that new project we will open source very soon. It's called headlight. Uh and it'll try to u it'll try to focus
+on context provenence with a very simple idea that most of the observability
+today open telemetry open lmetry I am never able to pronounce that uh is built
+for humans to consume. If you uh like most of the dashboards are for us to consume but a year out from now agents
+will consume telemetry data. So the telemetry output should be token efficient for agents to use. That is the
+genesis of headlight and we are using it to track uh every token that goes into headroom.
+And this is the last demo that I have. It shows how headroom helps beyond just coding agents. Here we are trying to use
+document compression. So it's a financial document, a 10K document, 190 pages. And you will notice that we have
+34% reduction in tokens. Uh and we tried to measure the accuracy asking it a very
+weird question and it still answered it properly. So it works across different types of agents.
+uh instead of you typing the GitHub repo, you can please scan this code uh
+and try it, break it, send PRs, fix PRs. Thank you so much. [applause]
+And we have exactly 10 minutes for questions and answers. Perfect. It was a
+concurrent one. Both of you did it at the same time. I'll go with him first.
+How does your token compression layer distinguish between compressible content
+and non compressible content authorization metadata such as rob
+access control claims deny rules and delegated identity context?
+Great question. I'll repeat the question. How does headroom differentiate between compressible
+content and non-compressible content? uh like for example some uh authorization
+data, some PII, PHI maybe as well as some identifiers. So headroom by default
+uh at least we have a PR route that tries to remove PII, PHI and identity
+data before we try to compress anything. So we do not try to touch it. We do not try to compress it. Um and we our
+compress base model is trained to not compress those fields. So whenever we
+see a UU ID um and other things or like a link we try to not compress it at all.
+Um the other thing is let's say that we do compress something like that. We have reversibility to help us because uh the
+MCP like the LLM will make an MCP call to retrieve whatever we've compressed
+and we keep that around. So that way we protect ourselves against compressing any such identity information. Thank
+you. Yes. Um we use cloud code at work. Will we get in trouble if we use
+headroom? Ah great question. So uh the question is um if cloud code is used at work uh will
+you get into trouble if you use headroom? Um so a lot of uh people at work do not directly talk to claude.
+They have a proxy that sits in the middle. It could be a light LLM proxy or it could be some bedrock uh proxy. So
+the challenge is how do you integrate headroom with that? uh because you don't want a proxy and a proxy and then you
+know a call to claude. So we are working to see how we can integrate well with light LLM in terms of just the privacy
+and the security because we do not capture any data. It lives on your laptop. We do not uh like there's no
+data that is shared. Uh the even the optin telemetry for us is the number of tokens that we've saved you. That's it.
+Like we look at we try to look at what compressors are used but we do not capture that. We give you the ability to
+run stats uh and your dashboard that shows you, you know, you use the code
+compressor more than the JSON compressor. Um all of those statistics and the reason we do that is so that if
+you find a bug, you can tell us and share us share with us what you ran into. Uh so that it helps us debug. But
+in terms of uh like Netflix has many teams that are using headroom today, so there is no data leakage of any sorts.
+Thank you. Uh yes. How does the LLM know when it needs to compress something because it doesn't
+have missing anything? Yes. Uh great question. The question is
+how does the LLM know when it needs to compress or decompress something because it doesn't have any understanding of the
+data. Um and the answer is that's the um the way MCP interestingly works is when
+you declare a tool um you actually give an explanation of call this tool
+whenever blah blah blah blah blah. So when we have headroom retrieve as the MCP tool that we register we say that if
+you're not able to find information or if something is compressed out from this
+payload call this MCP tool and in the in the squashed data compressed data that
+we provide to the LLM we also embed an ID with which they have to call. So the
+LLM is intelligent enough that when it comes across something like this it actually makes the tool call. Um and the
+LLM um does that and it also bumps up the some stats that we have to show us
+that it actually did this retrieve call and that we use to compress less next time. Um we tried this with uh GPT 4
+mini or 40 mini which is very small very old model and it still worked pretty
+well trying to call that uh retrieve tool called with the ID. So um that is like a very uh that I mean everything
+around headroom is based on that little thing. Will the LLM be smart enough to call that? Um in practical usage we've
+seen that 99% of the times the LLM doesn't call because it doesn't need it. It finds its answers other uh on other
+places. So uh hopefully that answers your question. Any other question?
+Yes. Yeah. My question is if you're running multiple models on your own device and
+we use something like headroom to do compression. Does that also
+help with like lowering electricity costs in running? Yeah.
+Local. Yeah. I'll repeat the question. If you have local models and if you're using headroom with that, does that help
+energy or electricity costs? And the answer is yes. Because if you are um
+compressing tokens, you're using less of the context window uh and energy cost is
+uh like it scales with the context window usage. Um and also um because it's doing local tool calls, it's
+avoiding some tool calls. Um there is a lot of energy savings. We don't have statistics on that because a lot of our
+users are people that are really burnt by token costs more than anything else. And these are Claude code and CEX users
+and Gemini users. I think there was a hand there. Yes, I think yours was before that.
+How do you uh measure accuracy? Yes. Uh the question is how do we measure accuracy? Um we've seen that um
+first of all it's anecdotal. Most mostly it's anecdotal uh that you know yeah it
+seemed to have done its job. Now how do you know whether it it went around in circles to come to an answer or did it
+get it in the first shot? For that there are accuracy benchmarks which is what we tried to cover that show us that for
+different types of coding tasks uh these benchmarks with and without headroom show the same numbers. So that tells us
+that it did not go around in circles. It did not waste time trying to understand what tokens are where and which tools to
+call because these benchmark numbers also cover how quickly can you converge to a goal. So that gives us good signals
+on accuracy. But eval is a very big field and the success of headroom rests
+on us being able to get that right. So we are a lot of our PRs and issues are
+around how can we make evals better. Yeah. And there's a question there as well. Yes. Um, so you mentioned you have
+like several teams at Netflix using this, but it's a local first tool, right? And I'm wondering how
+we're thinking about providing a platform to like enable
+providing a workflow to developers across organizally.
+Yeah. Yeah, the question is uh Headroom today works on a laptop for a user. What does
+it take to scale it to an organization and what pieces would change? So, we've built Headroom as an interface
+implementation mechanism where you can plug in different pieces and the things that would change are you know our
+memory or our CCR is local only. Those things will change because they will
+then sit let's say if you're running on AWS you will have RDS or something that backs them. We've tried to use
+components that are easily interchangeable across different cloud providers so that you can all you have
+to do is just plug in these different providers. The other thing is that our learnings and observability today we use
+open telemetry uh to spit out observability data that we don't collect but you know an organization may want to
+route it to their open telemetry collector Prometheus Langfuse Langmith all these other systems that's again a
+plug-in that's available. So it in principle should be uh like it should be
+easy to get these different pieces slotted in. Uh some of our community members have are also working on PII PHI
+removal from prompts and from tools. So those become again plugins that you can use uh Nightfall AI or Google's DLP
+providers to remove uh some of these PII information.
+I be I will be able to take one more question. So, uh, I can meet you after
+the call. I'll go with the lady. How are you thinking about drift? I
+mean, I'm assuming that when you check for accuracy now, that's a relatively
+heavy process, but obviously the models are always coming out and will be doing
+that periodically over time. And how does that? Yes. Uh, the question is how do we uh
+tackle drift? uh if we you know evaluate today uh do we have a way to measure
+these evaluations? Uh so we have a weekly job that does this today and that
+protects us against unintended drifts but the goal is that every uh check-in
+that we do. We want to be able to evaluate a drift with the base model
+versus our own uh original accuracy measurements. Um it's just that a it's
+expensive to run it every single check-in. So we try to run it at every major version bump or minor version bump
+that we have. Um but that is something that we still need to think about. You
+know, uh I'll be honest, we don't have a good story there. Uh so would help if you know folks can bring in their
+opinions and thoughts there. But thank you so much for joining me today. I really appreciate your time

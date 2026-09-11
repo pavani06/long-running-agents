@@ -1,0 +1,409 @@
+My grill me skills and grill with docs
+have been out there for a while now and
+people all around the world are using
+them as a replacement for plan mode in
+agents. However, I sometimes hear from
+people using them like CEX just ask me
+200 questions. This issue here and I
+kind of went a little bit. The idea of
+these skills is that they relentlessly
+question you. Is that they continually
+ask you questions until you reach a
+shared understanding about something.
+And what that does is it relies on the
+skill of the person answering the
+questions. The person answering the
+questions, in other words, you using the
+grill me skill need to be good at
+planning. You need to understand things
+like scope. You need to have a sense of
+what questions require what level of
+fidelity to answer. And this is why I
+want to make this video. I want to make
+you really good at using these skills.
+Because these skills themselves are
+really not super long, and they're
+designed to aid you as an engineer, not
+replace you as an engineer. So, I've got
+a list of nine things that people get
+wrong with these skills. But before we
+do that, we're going to look at a few
+lenses for how to understand those
+failure modes because if we don't
+understand them in the correct way,
+we're not going to be able to change
+them. Now, if you like the way I teach
+and you like the thing I'm teaching
+about, then you are going to really
+enjoy my AI coding for real engineers
+cohort, which the next one starts on
+June 1st. It has only one day and 11
+hours left for 30% off. So, definitely
+you want to get on that. Hopefully, I
+can post this video today so you have
+time to actually purchase it. So, let's
+get started. The first thing to consider
+here is that when we go into a grilling
+session, what we're really trying to do
+is answer questions. There are probably
+some things that we don't know about the
+thing that we're going to build. Now,
+these questions come at different levels
+of fidelity that are required to answer.
+I'm taking this language from Ryan
+Singer's amazing book, Shape Up.
+Highfidelity questions are questions
+where you need a really zoomed in,
+really detailed, highfidelity image in
+order to understand it. And that might
+mean, for instance, how will this piece
+of UI feel when we're using it? Should
+we split all of these form fields into
+multiple different pages or should we
+have one enormous form where we fill
+them in? The only real way you're going
+to get kind of understanding of that is
+a highfidelity prototype or actually
+building the whole thing. Whereas
+lowfidelity questions are questions that
+you don't need a highfidelity kind of
+prototype or image to answer. Things
+like what should what URL should this
+route live on or things like that. You
+really just need to answer the question.
+And the first failure mode I see with
+the grill me skills is trying to answer
+highfidelity questions during a grilling
+session. In other words, there are
+questions that are grillable, in other
+words, answerable in a grilling session,
+and questions that are ungrable,
+questions that are not answerable in a
+grilling session. So then what do you do
+when you encounter an ungrable question?
+When the question is about feel, when
+you need to actually see something
+higher fidelity in order to answer it.
+Well, the thing I tend to do is I tend
+to have a prototyping handoff. So, let's
+imagine that in my first session here in
+the blue, I've done some grilling and I
+reach an ungrable question, a question
+that I need to see in a higher fidelity.
+What I do is I use the handoff skill
+which I will link to below to hand off
+to a prototyping session where I will
+then spend another session kind of just
+prototyping on that question seeing it
+in a higher fidelity and then whatever I
+learn from that I will hand off back to
+the original grilling session so that I
+can continue with the grillable
+questions. So that's what a lot of my
+sessions look like where you have a
+grill with docks, you then hand off to a
+prototype session and you hand off back
+to the original grill with dock session.
+That's how I answer those more higher
+fidelity questions. The next concept we
+need to understand here is scope. How
+large a thing you are grilling. If the
+thing you're grilling is too big, then
+you're going to end up hitting two
+problems. First of all, if the scope is
+too large, then you're probably going to
+have highfidelity questions that are
+kind of hidden in there. that is quite
+hard to answer without actually seeing
+the full thing. It's always easier to
+build off of something that you know
+works and that you've done a good job on
+rather than trying to endlessly plan
+scope out into the future. This is what
+a lot of people hit when they try to
+schedule, you know, days and days of
+tasks for their AI to work on is that
+they end up with crap because they
+aren't building on a foundation that
+they are aligned with. In other words,
+they've tried to sort of push out too
+far into the future without building on
+something solid. There's also a
+practical constraint here. If you end up
+grilling on too large a thing, you're
+going to end up hitting the dumb zone of
+the model. Sure, you might start your
+grilling session with a, you know,
+nearly empty context window, but as you
+keep going and going and going, okay,
+you've hardly got to the thing that
+you're, you know, not even answered half
+the questions yet, and we're still
+hitting the dumb zone up here. at which
+point you might need to hand off or
+compact or do something a little bit
+awkward. All of which could have been
+avoided if you've just picked a smaller
+scope to start with and then you'd be
+able to comfortably grill within the
+smart zone. For those who don't know,
+about 120K is where I estimate most
+state-of-the-art models, that's where
+their dumb zone begins. And so you got
+to keep a really keen eye on your
+context window in order to make sure you
+don't push past that because the model
+will start getting too strained uh kind
+of in its attention relationships and
+start making stupider decisions. What
+this basically means is if you start out
+with a large scope like this, which is
+probably too big for the agent to
+handle. Instead, it might be better to
+ahead of time ask the agent to break
+down this scope into smaller scopes
+which you can then grill on individually
+and answer all of those questions. The
+next lens I want you to look at here is
+whether you're being passive or whether
+you're being active with the agent and
+specifically in your grilling sessions.
+Many of these huge grilling sessions
+that I see people having, I worry that
+they're being too passive with the
+agent. When I'm doing grilling, I'm
+always quite active, always trying to
+lead the conversation. And remember,
+it's a conversation, not an interview.
+the agent is asking you these questions,
+but you know, it is your job to figure
+out where you're going and figure out
+the scope and keep things on track. And
+so, if you're being too passive, then
+it's very easy for the agent to just do
+stupid things with the interview, like
+ask you 540 questions, explode the
+scope, ask questions about stuff that
+are way too low fidelity. You have to
+take an active hand. But it's also
+possible to be too active to just keep
+grilling on something that is just too
+low fidelity when you need to actually
+build something to see the thing in
+action. And so there are two failure
+modes hidden here. Being too passive, in
+other words, sitting back too much, and
+actually being a bit too pigheaded and
+not getting to code fast enough. So it's
+important to consider when you're using
+these skills where you fall on this
+axis, whether you're too passive or
+whether you're actually just a bit too
+pushy and active. Another failure mode
+here is that people don't value the
+thing that they're creating during the
+grilling session, which is that when
+you're answering these questions, when
+you're growing this context window with
+really valuable, you know, answers that
+you've given, design decisions that
+you've taken, this little blue bit of
+context window here is incredibly
+valuable. Now, usually your goal here is
+that if you've got enough budget left,
+then you can immediately start going
+ahead and implementing. In other words,
+you plan for a little while and then you
+go, okay, let's just implement this. We
+don't need to hand off. we've got enough
+space left in the context window to just
+implement it based on the design
+decisions I've already taken. However,
+if you're already at the point where you
+need to, you know, quit out of this, you
+need to basically hand off, then it's
+probably time to make a PRD. My two PRD
+skill is a nice way of creating a
+handoff document that's kind of more
+tailored to engineering, which can be
+useful on a multi session or just a
+single session. But one crazy thing I've
+seen people getting wrong is they
+actually clear the context first and
+they create a new context window and
+just run 2pd in there. This is totally
+crazy to me. What are you doing? You've
+created this incredible session here
+where you've got this, you know, 100,000
+tokens of really good design decisions
+and you're just going to chuck it away.
+Every grilling session, every decision
+that you make in that session is so
+valuable. You know, that should be
+recorded somewhere and either turned
+into code or put into like a handoff
+document that you can kind of refer to
+later. It is really important that you
+don't just chuck away the stuff inside
+the grilling session. I think probably
+this is just a skill issue. People need
+to be a lot more aware of context
+management about kind of the decisions
+they're making in terms of clearing,
+compacting, handing off. So, yeah, that
+was a crazy one for me. Make sure you
+preserve the decisions that you've made
+in your grilling session and create some
+kind of handoff artifact about them.
+Another thing people get wrong is that
+they use too dumb a model for grilling.
+Understanding which questions are low
+fidelity, understanding which questions
+are high fidelity, figuring out what the
+right questions to ask to prompt you to
+make a stronger design, that is
+something you need a good model for. If
+we think about where models draw their
+knowledge from, there are kind of two
+sources. The first one is their
+contextual knowledge. the stuff that you
+have passed them specifically in their
+context. This might be from reading
+files or from user prompts or from
+research they do by, you know, calling
+tools and bringing the tool results
+back. But there's also their parametric
+knowledge, the things that they were
+trained to see and understand. This is
+much less reliable, but it is kind of
+what we're relying on here. We're
+relying on the model's innate
+understanding of systems and
+applications to prompt us with good
+ideas of things we might not have
+considered yet. Because if we had
+considered them, then we'd have passed
+them in as contextual knowledge. But
+we're relying on its kind of innate
+understanding in order to provide us
+with off-the-wall suggestions, strange
+ideas. Now, when you're relying on
+parametric knowledge like this, you need
+a model with lots of parameters. And
+that is usually what the big frontier
+models have. And not only that, but
+they're also, you know, top-of-the-line
+trained. They are also just more capable
+than smaller models. And so using too
+dumber a model is a really common
+failure mode I see during grilling
+because we're so reliant on parametric
+knowledge. What most people don't know
+is you can actually use a kind of dumber
+model for implementation because most of
+the information you're passing there is
+contextual. You know, by the time you
+get to implementation, you've usually
+got a detailed implementation plan.
+You're passing in the relevant files in
+the codebase. So, it's got some things
+to copy. You know, not a lot of that is
+parametric. It's mostly contextual.
+Finally, and this is a dead simple one,
+but so many people don't do this. You
+should grill multiple sessions in
+parallel. Usually, the way it works is
+I'm grilling one session and then I, you
+know, type something to it or usually
+I'm dictating to it. I answer its
+question and then I go over into the
+other other session that's usually
+finished by that point. I answer its
+question and then I go back to the
+original session and I just bounce
+around like this. People say this is,
+you know, context switching, but really
+it's just managing two separate Slack
+threads at the same time. You know, it's
+really not that hard. And sure, you're
+making a lot of highlevel decisions
+here, but this is really the only way I
+found of increasing throughput and
+getting more planning done in less time.
+Usually, I max out at two sessions here,
+unless one of them is doing a
+particularly longunning task like some
+research, in which case I will try three
+uh if I'm feeling spicy and feeling high
+energy, but mostly two is my limit. But
+either way, I'm doubling my throughput
+and it feels pretty nice to do and you
+should definitely be doing this if you
+have the mental capacity for it. I also
+think that grilling is something that
+you do get better at and as you get
+better at it, you can add more
+throughput and more parallelism. So,
+let's summarize all the things we
+learned. We learned that grilling is
+primarily about questions. We have
+lowfidelity questions and highfidelity
+questions. Low fidelity can be answered
+just by a question and answer. In other
+words, it's a grillable question, but
+highfidelity ones are ungrillable. You
+may need to go into a prototype mode by
+using handoff to hand off to a
+prototyping session to just figure out
+that question or maybe that question and
+a bunch of others and then go back to
+the original grilling to continue.
+Figuring out the correct scope of the
+work is essential. If you try to grill
+too much, then you will end up just kind
+of blowing through your context window,
+burning your own stamina, and you won't
+have anything to show for it. If you're
+too passive in your grilling sessions,
+then you're just going to sit there
+while the computer just says, you know,
+bombards you with more and more
+questions. But if you're too active,
+then you might end up just grilling
+endlessly on low-fidelity questions when
+what you really need is just to get to
+code. You need a smart model so that you
+can rely on its parametric information
+to give you better suggestions and give
+you better questions to answer. And
+finally, I would recommend grilling two
+sessions at once. Once you've mastered
+these basics and you understand what
+each session is doing, you should be
+able to flip between them really nicely,
+and probably you could even go up to
+four if you have a more plastic brain
+than I do. Overall, thanks for watching,
+pals. And if you enjoyed this, then
+you'll really enjoy my AI coding cohort
+for real engineers, which is woo, one
+day, 10 hours left to get it at a
+discount. You get a bunch of video
+content and interactive exercises
+organized in a way for maximum speed and
+maximum efficiency of learning. you get
+me to answer your questions in office
+hours and in the Discord chat. You know,
+it's great. By the way, if you dug this
+video, uh my YouTube is exploding
+recently. So, thank you all for that. I
+massively appreciate it. I really enjoy
+making these videos. I'm loving making
+the skills. I think we're up to we just
+beat Gary Tan's Gstack in terms of
+number of stars, which is wild to me.
+And if you have an idea for a video you
+want me to make next, then let me know
+about it because I thrive off your
+suggestions and your ideas. So thanks
+for watching and I will see you very

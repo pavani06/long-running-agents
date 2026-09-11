@@ -1,0 +1,334 @@
+Good morning everyone. It's great to be
+here. [clears throat] I'm Magna and this
+is Rash. We lead the agentic AI platform
+and initiatives at Uber. Today we're
+going to be sharing our journey of
+moving MCPS from a promising protocol to
+operating this at massive scale across
+thousands of engineers, services, and
+agents. And we're also going to cover
+some of our challenges similar to what
+James was mentioning actually. what some
+of our solutions were, what are some of
+the lessons we learned along the way,
+and a quick look at what we are planning
+for the near future.
+Okay, let's get started by grounding
+this in scale. At Uber, we have more
+than 5,000 engineers with more than 90%
+of them using AI every single month for
+agentic workflows. And this does not yet
+include all of the non-engineering
+folks, thousands of them who are also
+now uh trying agentic workflows. So this
+is no longer a pilot program at Uber.
+It's the new standard for how we work.
+The reality is of a company this big is
+really that we have more than 10,000
+services. Our knowledge is spread across
+this very complex landscape. Without
+MCPS, every agent has to rediscover how
+to interact with each service. And on
+top of this, we are now seeing more
+than,500
+agents just internally monthly active
+and over 60,000 executions per week. And
+this is um very high demand as you can
+see very high velocity. But without
+standardization, this starts becoming
+chaotic very quickly. And so MCPS are
+not just like uh important. They really
+are what make AI usable at Uber. And at
+this scale, the standard MCP challenges
+become a lot more amplified. The first
+class of problems that we saw was around
+the development life cycle. Without a
+central framework or guidance, there was
+no standard way to develop and deploy
+these MCP servers at Uber. So we had a
+lot of teams building out these custom
+integrations independently and most of
+this was nonreusable.
+We also had everybody trying to figure
+out how to solve the very same problems
+in silos of their own. The simple truth
+was if you can't manage the development
+life cycle, you just can't trust it in
+production. And at Uber, security is
+non-negotiable. But with these many
+bespoke ways of doing things, governance
+started becoming a very immediate
+concern for us. We needed complete
+visibility into the call patterns and
+who was accessing what data. And in
+reality, it takes us humans a lot more
+effort to break things. But with agents,
+as you know, it's a lot faster, it's a
+lot quicker, and the blast radius is a
+lot higher. So we had to make sure that
+there was no unauthorized access to any
+data or any of our critical endpoints
+and services even unknowingly. We also
+had to account for any risks that we
+would have with some of the third party
+MCPs around data handling because Uber
+does use a lot of external systems. Now
+the last class of problems that we saw
+was around discovery and quality. How
+does an agent or even an engineer find
+the right MCP? And not just any MCP,
+something that is reliable, has high
+performance and is safe. Battles just
+don't fail. They also degrade the agent
+performance at the end of the day.
+Our solution was we built MCP gateway
+and registry. Think of this as the
+control plane for all MCP interactions
+at Uber. With this, we move to a
+config-driven approach. We now translate
+all Uber service endpoints into MCP
+tools automatically. Service owners
+which are basically the experts still
+stay in control of which tools actually
+get exposed and they also fine-tune the
+descriptions for the LLMs. This removes
+a lot of duplication and also enforces
+consistency for us across the board. And
+the other thing we also did is we
+followed a different strategy for how we
+treat and enable thirdparty MCPS versus
+our in-house MCPS. We introduced a lot
+more levels of gating, scanning and
+rigorous checks for the external systems
+compared to our own trusted internal
+systems. We also deprecated all one-off
+standard playground environments that
+people started you know uh spawning off
+and everything is now centrally
+committed and managed in code. We also
+introduced a central registry. Um this
+is the single source of truth to
+discover all the MCPS at Uber and their
+versions. And we did all of this with
+security and privacy built in every
+single layer. we integrated into our
+authorization service centrally. So
+there was no access to any data that is
+actually not supposed to be there. The
+other thing we also did is we inter uh
+integrated with our PII redactor service
+and this automatically redacted any of
+our sensitive data too. We also do
+periodic code scanning both at diff
+commit time as well as in our code
+periodically to make sure that we are
+detecting any bad patterns any you know
+endpoint exposures unknowingly or any of
+the risky tool metadata.
+We also have full observability and
+guard rails both to block any mutable
+endpoints that can bring down critical
+services for us but also to have
+extensive logging and uh metrics and
+tracing for all the operations.
+And let's take a quick look at what this
+gateway architecture looks like. There
+are two critical components to this
+gateway. The first one is the
+orchestrator which is responsible for
+generating the MCP definitions from the
+10,000 plus service IDL at Uber. And
+then we have the gateway service which
+serves these MCP servers and also allows
+the service owners to update the MCP
+definitions. Let's quickly walk through
+what this uh actually how this actually
+works. The gateway orchestrator crawls
+all of these IDLs which are proto and
+thrift files. Then it calls an LLM to
+generate MCP tool descriptions. This is
+based on the message names and comments
+and then it stores this in our object
+storage. The gateway service then has a
+conflict provider that's going to pick
+up these definitions and serves these
+MCP servers to the different consumers
+we have at Uber. whether it's a no code
+agent platform or SDKs or coding agents
+and as I mentioned earlier service
+owners can update all of these
+definitions which then triggers creating
+a diff which is basically a pull request
+and the diff is then scanned by our
+engineering securityurities unified
+scanning APIs and if there are no issues
+everything is good then the scan report
+is attached to the diff and the diff is
+committed and deployed to our object
+storage and this is then again available
+to be picked up by the gateway service
+which exposes it to the consumers. Now
+I'm going to hand it off to Rush to talk
+more about how we use MCPS and
+consumption in more detail.
+Thanks Magna.
+So let's talk about how are MCPs used at
+Uber. Um there's actually three main
+surfaces at Uber that use MCPs. One is
+our Uber agent builder uh which is a no
+code solution for building uh agents at
+Uber. Uh this uh agents are usually
+internal agents and uh they're used for
+productivity uh for team uh workflow
+automation and so on. There is thousands
+of these uh that are active on a monthly
+basis at Uber right now and this they're
+growing very rapidly across the board.
+The next uh surface is our Uber agent
+SDK. Uber agent SDK along with all the
+uh Uber agent platform functionality
+like managed memory, managed uh chat
+history, uh orchestration
+uh is our code first solution for
+building agents at Uber. Uh some of our
+top use cases use this uh SDK. Uh those
+top use cases include our grocery
+assistant agent, our care uh auto care
+coordination agent as well as our
+customer support agent. If you interact
+with our customer support, you'll see
+this in action. And then finally, we
+have our coding agents. The coding
+agents uh as you know their cloud code,
+their cursor, they're companions to uh
+our developers uh to build software at
+Uber. And on top of that, we have
+minions, which is our background agent
+that's built on uh cloud as well, the
+cloud harness as well. And uh it's
+actually producing about 1,800
+uh code changes a week right now. And it
+is being used by all of these are being
+used by 95% of our engineers across
+Uber.
+Okay. So let's dive into uh a bit more
+details about how these are actually
+incorporated to each one of these
+surfaces. The MCPS are incorporated in
+here. Um I'll start with the agent
+builder. So for agent builder, if you
+want to use an MCP, you can mention the
+MCP uh server name uh as an app mention
+inside the system instructions. So you
+can actually scope the MCP within system
+instructions. For example, if I want to
+search for something, uh I can say
+uh if a user asks for this, use the atmc
+server for use search, which is our
+internal search tool to return
+information. Now, as all of you know and
+it's been brought up in previous uh
+presentations,
+these things can hallucinate and maybe
+not pick the right tool. So what we've
+done is we actually allow you to pick
+the specific tools from the MCP server
+so that the LM doesn't have to make a
+decision there. Uh this makes the agent
+more reliable. Uh and then to further
+make it more reliable uh we have the
+capability to do uh parameter overrides.
+So what that means is the LM doesn't
+have to make a decision even to pass in
+a parameter anymore. We can scope the
+parameter to something static instead.
+Again this is through no code UI. So the
+just making it easier for his users to
+do this is highly important and again
+makes agent more reliable.
+Okay. So talking about uh so that was
+Uber agent builder and how it's used in
+Uber agent SDK. It's somewhat similar.
+Um, we have a config YAML uh a YAML
+config uh file that we use there and you
+can put in the MCP name and the
+identifier field and then you can also
+select the tools that you want or pick
+the tools you want and put that in the
+config and on top of that you can also
+override parameters in the same way. You
+put all this in the configuration. The
+SDK automatically loads these tools and
+makes it available to the agent with
+those specific configurations.
+On the coding agent side, we have our
+AIFX CLI tool. Basically what AFX lets
+you do is to add your MCP um
+by running the MCP ad command and then
+this MCP server whether it's remote or
+local is available to both cloud code as
+well as cursor or any other IDE uh based
+agent that uh we have available at Uber.
+Okay, so that's what we've done so far
+and how we're using MCPS. uh I want to
+talk about our road map and how we're
+essentially focused in the near future
+uh on improving the quality of these MCP
+servers and then simplifying discovery.
+Um
+we want to extend our MCP registry to
+include more uh evaluation information.
+We want to surface the highest quality
+MCP servers to our users. So doing uh by
+by exposing the evaluation metrics by
+including the SLA service SLAs's for
+these MCPs this includes reliability and
+availability of the service that's how
+we surface these are the this is the
+right MCP this is a higher tier M or
+lower tier MCP that you can use that's
+most reliable uh we also want to we are
+working on adding a tool search tool
+that was actually mentioned earlier uh
+again that helps uh us uh help helps us
+with improve the accuracy of tool
+discovery by making it so that it's
+discovered automatically and it's also
+loaded on demand. That also helps us
+with context bloat reduces context
+bloats as well. So that's again
+something we are focused on introducing
+to our registry and our our MCP tools uh
+as kind of an MCM omncp tool. Uh and
+then obviously evaluations is something
+we're building into the registry and uh
+our overall agent platform has
+evaluations built for agents as well.
+The other thing as everybody knows about
+is skills right the skills are uh
+becoming more and more important uh at
+Uber you can think of them as recipes
+for using his MCPS. So we want to make
+them sharable not just across Uber but
+across different teams at Uber. uh we
+want to be able to have processes that
+can be shared and conventions that can
+be shared across Uber through these
+skills and then we want to introduce
+evaluations to these skills. That means
+we want to be able to evaluate the
+output quality. We want to be able to uh
+evaluate the correctness of skill
+invocation and we want to be able to AB
+test these skills. So if I have a
+different version of the same skill,
+which one performs better? So we want to
+have those informations.
+So that's a bit about where we are today
+and where we're going to go in the near
+future. Um if you want to connect with
+us, please connect with us at the this
+event. And if you don't get we don't get
+a chance to meet here, please connect
+with us on LinkedIn. Thank you.
+[applause]

@@ -1,0 +1,461 @@
+Contextualizando Foundation AI ou
+Foundation Models ou ainda modelos de
+fundação com o nosso lindo português,
+são aqueles modelos de inteligência
+artificial treinados em uma quantidade
+absurda de dados que servem como base
+para uma infinidade de outras
+aplicações. Imagine que ele é como
+aquela massa básica de bolo que
+dependendo do como você adiciona depois,
+você pode virar um bolo de chocolate, de
+cenoura, hum, gostoso, né? de laranja ou
+ficar no bolo simples mesmo.
+É exatamente essa versatilidade que
+mudou o paradigma da utilização dos
+modelos de IA, porque antes era preciso
+treinar o modelo específico para cada
+uma dessas coisas. Agora é possível
+pegar um foundation model e fazer apenas
+ali um ajuste fino para ele virar
+especialista. Mas para conhecer como
+esses modelos são criados, suas
+características, benefícios, desafios e
+até mesmo qual é a diferença, olha só
+que a gente vai falar sobre um
+foundation model, um modelo tradicional,
+um LLM e até uma IA generativa, você vai
+precisar ficar com a gente nesse vídeo
+do dicionário do programador.
+Eu sou Vanessa e esse aqui é Gabriel e
+você seja muito bem-vindo nesse quadro
+onde a cada episódio a gente desvenda
+ali um termo, uma tecnologia ou uma
+simples palavrinha desse incrível mundo
+da tecnologia. Os termos relacionados à
+inteligência artificial não param de
+surgir e é normal nós confundirmos aí
+alguns deles. Mas fica calmo que nós
+estamos aqui para te ajudar nessa sopa
+de letrinhos. Nosso único pedido é que
+você se inscreva aqui no canal e deixe o
+like no final do vídeo.
+O termo Foundation Models foi cunhado em
+2021 por pesquisadores do Center Force
+Research on Foundation Models da
+Stanford University e do Institute of
+Human Center Artificial Intelligence.
+Eles mesmos caracterizaram esses modelos
+como uma mudança de paradigma e
+descreveram da seguinte forma:
+"Um foundation model é incompleto, mas
+serve como base comum a partir de qual
+muitos modelos específicos de tarefas
+são construídos por meio de adaptação.
+Também escolhemos o termo base para
+conotar a importância da estabilidade
+arquitetônica, segurança e proteção.
+Fundações mal construídas são a receita
+para desastre e fundações bem executadas
+são uma base confiável para aplicações
+futuras. Essa definição é linda. E o
+Foundation AI é considerado uma quebra
+de paradigma, porque ele pode concluir
+tarefas para as quais não foi
+explicitamente treinado. Ou seja, uma
+empresa ela não precisa criar um modelo
+do zero. Ela utiliza um modelo base que
+vai acelerar a implementação, reduzir a
+complexidade do desenvolvimento e também
+custos. E depois ela pode adaptar para
+usos específicos com fine tunning,
+ajuste com dados proprietários e até
+integração com sistemas corporativos.
+Ah, mas eu lembrei de uma coisa. Falando
+aqui de uma fundação sólida e
+estratégica, a gente tem aqui um exemplo
+muito bom no Brasil. O LIN é o
+foundation dei da TOTS. É o primeiro
+modelo de fundação brasileiro focado
+100% no mercado B2B. Pois é, o LIM
+funciona como uma infraestrutura mestre
+para sustentar e toda a criação e
+governança de agentes inteligentes,
+sendo possível orquestrar e escalar IA
+com o nível de controle, segurança e
+eficiência que o mundo corporativo
+exige. Tudo isso com total aderência ao
+contexto das empresas brasileiras.
+É, mas tem um detalhe técnico que eu
+quero destacar que faz toda a diferença,
+tá? O LIN ele foi desenvolvido sob o
+conceito de ANI. Você conhece esse
+termo? artificial narrow intelligence ou
+inteligência artificial especializada.
+Em vez daquela IA genérica que tenta
+saber ali de tudo um pouco, ANI, ele
+foca em ter um alto nível de
+especialização, ou seja, ela é
+extremamente eficiente e precisa em uma
+função determinada.
+E o LIN traz grandes diferenciais,
+começando pelo agnosticismo de modelos.
+Isso significa que o seu agent builder
+permite criar desde agentes
+pequenininhos para tarefas simples até
+gigantes para processos bem complexos. O
+que dá uma previsibilidade de custos
+interessante
+e performance que a gente não encontra
+mais em modelos genéricos.
+Outro ponto é a estrutura proprietária
+com data flywheel. Quanto mais você usa
+o sistema, mais inteligente e eficiente
+ele fica através desse aprendizado
+contínuo. Tudo isso rodando em uma
+arquitetura com segurança nativa, onde a
+governança e a proteção de dados já
+fazem parte ali da fundação do LIN e não
+são apenas uma camada inserida depois.
+Mas não é só isso, não, tá? O LINIM
+ainda é flexível, ele se adapta a
+qualquer porte de empresa ou segmento,
+entregando uma escalabilidade real. Você
+pode colocar milhares de agentes para
+rodar processos diferentes,
+simultaneamente, sem nunca comprometer o
+desempenho ou a rastreabilidade que o
+ambiente corporativo exige.
+Nós deixamos um link na descrição para
+você conhecer o link e tudo que a Tot tá
+preparando para esse futuro da IA nas
+empresas e projetos. Então não deixa de
+conferir.
+Agora que você já tá super entendido
+sobre o que é o Foundation Model, mas eu
+aposto que ainda rolam algumas dúvidas.
+Por exemplo, qual a diferença entre um
+modelo de fundação e um LLM? ou de um
+modelo tradicional ou ainda de uma IA
+generativa. Calma aí que é agora que a
+gente vai te explicar.
+Olha só essa tabela de comparações, né?
+Com ela você consegue perceber que,
+embora todos esses termos tenham uma
+ligação, que eles têm ali as suas
+diferenças. Por exemplo, um LLM é um
+tipo importante de foundation model, mas
+ele não é o único. A principal diferença
+entre o LLM e o foundation é o tipo de
+dados em que eles são baseados. Os LLMs,
+que são os Larg language models, são
+treinados em grandes quantidades de
+texto e código. O Foundation pode ter
+isso, imagem, áudio, vídeo e até a
+combinação de tudo isso.
+Já os modelos tradicionais são ainda
+mais específicos. Por exemplo, ele pode
+ter sido treinado com dados de uma
+doença para identificá-la ali no exame
+de raio X. Nesse caso, o modelo só vai
+saber fazer isso e ele não vai ser
+adaptável. E quanto a diferença em
+relação à IA generativa? Então aí a
+generativa é a função que um Fation pode
+executar. É a capacidade de criar novos
+conteúdos como textos, imagens ou até
+código, que a gente tem visto bastante.
+Você precisa ter em mente que, embora a
+maioria dos modelos de fundação mais
+conhecidos seja utilizado para tarefas
+generativas, eles podem ser adaptados
+para outros fins, como classificação ou
+análise complexa, por exemplo.
+Bom, nós já falamos aqui sobre tipos de
+modelo base, né? Mas nós vamos descrever
+aqui cada um deles para você, começando
+pelos famosos LLMs, que são esses
+modelos especializados em entender e
+gerar linguagem humana, sendo excelentes
+em tarefas como tradução, resumo de
+textos e interações com chatbots.
+Vai anotando aí, ó, os modelos
+multimodais que são treinados em
+diversos tipos de dados, incluindo
+texto, imagens e áudios, eles podem
+analisar e gerar conteúdo em várias
+modalidades. Temos os Gams ou redes
+adversárias generativas, que são focadas
+na criação de dados sintéticos, como
+imagens e vídeos realistas, mas que
+geram através ali de uma disputa entre
+duas redes neurais, o gerador, que tenta
+criar dados novos, e o discriminador,
+que tenta identificar o que é real do
+que é artificial. Essa dinâmica de
+competição faz com que o modelo se torne
+cada vez mais preciso, sendo muito
+utilizado para restaurar fotos antigas,
+criar avatares e até gerar cenários
+complexos em jogos. Tudo isso sem
+precisar de supervisão humana direta
+durante o aprendizado dessa base de
+conhecimento.
+E por fim, os modelos de visão
+computacional, treinados para
+interpretar e extrair ali informações do
+mundo visual, como imagens e vídeos.
+Eles aprendem padrões complexos que
+permitem identificar objetos, reconhecer
+rostos, descrever cenas e até detectar
+ali anomalias em exames médicos ou em
+peças industriais. E você já pensou como
+esses modelos gigantescos são treinados?
+A resposta simples é aprendizado
+autossupervisionado. Em vez de ter ali
+um humano para rotular cada dado, o que
+seria completamente inviável, o próprio
+modelo aprende sozinho, tentando
+adivinhar partes que foram escondidas ou
+mascaradas nos dados de entrada. Esse é
+um processo de várias etapas. Primeiro
+vem a coleta e preparação, que é a
+limpeza aí do ruído de um volume absurdo
+de dados. Depois, a escolha da
+arquitetura, que hoje em dia, quase
+sempre é baseada em Transformers, mas
+também pode envolver redes
+convolucionais. Falei certo? Acho que
+sim. Dependendo do tipo de dado.
+Sim. Com arquitetura pronta, o modelo
+entra no treinamento autvisionado para
+aprender ali padrões e estruturas por
+conta própria. Só depois é feito o
+ajuste fino, que é acomodar ali uma
+especialização pro modelo em uma tarefa
+bem específica.
+E para fechar tem ali o alinhamento e
+segurança. É aqui que entram técnicas
+como o RLHF, onde humanos dão feedback
+para garantir que a IA seja útil, segura
+e não saia por aí falando o que não
+deve. Depois de testado e aprovado, o
+modelo está pronto para ser utilizado no
+mundo real. Nós já citamos aqui vários
+benefícios na utilização de um
+foundation model, como versatilidade,
+eficiência, acurácia, relação custo,
+benefício e escalonabilidade. Mas eu vou
+destacar aqui mais alguns para vocês. O
+time to value ou tempo para escalar mais
+rápido. Isso porque os modelos de
+fundação eles eliminam as fases de
+desenvolvimento e pré-treinamento e
+ainda permitem que as empresas
+personalizem e implementem modelos
+ajustados de forma rápida. Mas tem outro
+benefício que é o acesso aos dados.
+Aquele caminhão de informações que são
+utilizadas no treinamento. É provável
+que a empresa nem tenha tantos dados
+disponíveis para esse processo. E ainda
+tem a precisão e o desempenho, né?
+Porque os Foundation Models já foram
+testados quanto a qualidade e
+desempenho.
+Empresas que optam em utilizar
+Foundation AI, entre outros benefícios,
+tem aí também ganhos na automação de
+tarefas, em análise de grande volume de
+dados, ganhos de produtividade,
+escalabilidade, aceleração na inovação e
+podem até tirar proveito daquela
+personalização da experiência, ou seja,
+adaptando as interações, os produtos e
+os serviços de acordo com o perfil de
+cada um dos seus clientes. E eu tenho
+certeza que você já conhecem e até
+utiliza alguns dos foundations AI aí
+mais famosos. E a gente pode citar aqui,
+ó, o Gemini, que é o modelo multimodal
+do Google, os modelos GPTS da Openii, os
+modelos Sonetos da Antropic, tem também
+a família Lhama da Meta, que é de código
+aberto e tem muitos outros, tá? Como já
+citamos também o LIN, o Foundation AI da
+Totos, que é específico para empresas.
+Com tantos modelos disponíveis, a
+pergunta que fica é: qual deles escolher
+pro projeto? Infelizmente não existe uma
+resposta única e correta para essa
+pergunta, né? Não tem um modelo que é
+uma espécie de bala de prata e que vai
+atender em todos os casos.
+Uma das possibilidades é adotar o maior
+modelo possível que atende as mais
+diversas tarefas. Esses modelos, por
+padrão, tem uma janela bem grande de
+contexto, o que é ótimo.
+Só para você saber, a janela de contexto
+é o limite máximo de informações que um
+modelo de A consegue manter na memória e
+processar de uma só vez durante a
+interação. Mas o maior modelo tem também
+o maior custo computacional,
+complexidade e muitas vezes também o
+maior valor.
+Por isso, o ideal é seguir essas dicas
+para poder escolher bem. O primeiro
+passo é o básico, definir onde o modelo
+será utilizado. Você precisa saber, por
+exemplo, se quer resumir textos
+jurídicos ou gerar código. Se você não
+sabe o que você quer, qualquer modelo
+vai servir, mas provavelmente vai custar
+mais caro e entregar menos.
+Durante a sua pesquisa, você vai
+descobrir que existem modelos treinados
+para analisar sentimentos, para resumir
+documentos, para tradução e por aí vai.
+Quanto mais próximo do seu objetivo,
+melhor o resultado você terá com o
+modelo escolhido.
+Depois cria aí uma listinha de modelos
+que vão atender a essas necessidades, se
+é para linguagens, imagens, geração de
+vídeo e etc. Daí, com essa lista em mão,
+você vai ter que identificar em cada um
+desses modelos o tamanho, qual é o custo
+deles, o risco, qual é o número de
+parâmetros, os contextos e até os
+métodos de deploimment.
+Agora não tem jeito não, viu? você vai
+ter que realizar testes para saber qual
+deles vai ter ali a melhor precisão,
+maior confiabilidade e melhor
+performance. Você precisa checar também
+se o modelo permite ajustes finos com os
+seus dados privados e se ele segue as
+normas de governança.
+Por isso, escolher o modelo correto vai
+sim fazer tanta diferença. Mas além dos
+benefícios, existem também desafios que
+usuários e deves precisam superar, como
+viés e imparcialidade. Infelizmente aí o
+modelo pode herdar e até amplificar
+vieses e preconceitos vindos dos dados
+de treinamento.
+Alucinações, informações que parecem
+corretas, mas que não são. infelizmente,
+e a generativa, principalmente, tende a
+mentir com muita propriedade
+e alto custo computacional, isso aqui é
+super importantíssimo, tanto pro
+treinamento quanto pra manutenção dos
+modelos de base. Isso gera preocupações
+financeiras e dependendo até ambientais.
+Privacidade e segurança de dados. Existe
+um risco de exposição de informações
+sensíveis ou segredos industriais se os
+dados enviados para justifo ou via
+prompt forem utilizado para treinar
+futuras versões do modelo ou se não
+houver governança entre onde esses dados
+são armazenados. E sim, a maioria das
+ferramentas de A, como chatpt e cloud
+nos planos gratuitos e até nos planos
+pagos mais simples, tem em seus termos
+de uso a autorização para utilizar os
+seus dados do seu promp aí que você faz
+para treinamento. Por isso, tome muito
+cuidado com o que você está entregando
+aí para elas. E ainda podemos citar como
+desafio a falta de interpretabilidade.
+Muitas vezes é difícil entender porque o
+modelo tomou uma decisão específica ou
+chegou em um determinado resultado. É
+aquela chamada caixa preta. Isso
+dificulta a depuração e o controle nas
+aplicações.
+Quando se trata de empresas, elas ainda
+devem ter cuidados extras, tá? Com a
+governança de dados, onde é preciso
+definir políticas e processos para
+garantir qualidade, organização e
+controle sobre os dados que são
+utilizados. A integração com o contexto
+do negócio. É preciso adaptar o uso da
+inteligência artificial à realidade e
+aos objetivos da empresa. Vai ser
+necessário monitorar possíveis
+distorções e inconsistências geradas
+pelos modelos. Isso será a base para
+manter a qualidade das respostas. O
+importante do Foundation Model é poder
+ensinar o contexto de negócio para ele.
+Nós podemos dizer que existem aqui três
+principais níveis de fazer isso: Hag,
+fine tunning e prompt engineering
+avançado.
+O primeiro nível e o mais usado hoje é o
+hagner, que é o retrieval aumentation. A
+gente tem vídeo sobre isso, inclusive,
+mas de forma simples, imagina que em vez
+de reensinar tudo pro modelo, você dá
+ele a um manual de consultas em tempo
+real. O sistema busca informação nos
+seus documentos e entrega paraa IA
+apenas o que ela precisa para responder
+aquela pergunta específica. O segundo
+nível é o fine tunning ou ajuste fino.
+Aqui a gente mexe de leve ali nos
+neurônios do modelo, treinando ele com
+um conjunto menor de dados específicos
+para ele aprender o que o modelo de base
+não tinha originalmente.
+E temos também o Prompt Engineering
+avançado, onde as empresas podem criar
+sistemas de fi shot learning. Elas, por
+exemplo, passam exemplos reais de
+entrada e saída dentro do próprio
+promptão
+de resposta esperado, sem que você
+precise mexer em uma linha de código de
+treinamento.
+Outro ponto importante é o MCP, que é
+uma forma de você conectar a IA com os
+dados da sua base. No final das contas,
+a maioria das empresas acabam usando uma
+mistura de tudo isso. Elas utilizam o
+hag ali para trazer dados atualizados, o
+fine tuning para garantir que a IA fale
+a linguagem da marca e respeite as
+regras do negócio e também o MCP para
+conseguir acessar os dados. E tudo isso
+cria uma solução que é potente na base e
+personalizada no topo.
+Agora diz aqui para mim se esse vídeo te
+ajudou de alguma forma a clarear aí a
+sua mente e diz também se você já está
+usando aí algum foundation modelo.
+Pois é, nós estamos curiosos aqui para
+saber como é que você tá usando e
+aplicando isso na prática. Conheça
+também o Linho Foundation e da Totos e
+ele é uma solução poderosa pra área B2B.
+O link tá aqui na descrição.
+A gente se vê no próximo vídeo,
+combinado?
+Até lá.
+Tchau. Se você quer se aprofundar ainda
+mais nesse mundo, clica aqui do lado no
+nosso vídeo sobre agentes de A. Eles são
+os próximos passos e já é já é presente,
+né? Depois que você já tem ali uma
+fundação sólida.
+Além dele, tem vários outros vídeos na
+playlist do dicionário do programador
+sobre inteligência artificial, tá? Você
+pode assistir o de rádio, o de MCP, ACP,
+engenharia de prompt e por aí vai.
+Então vai.

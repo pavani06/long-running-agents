@@ -1,0 +1,145 @@
+Boris, it's great to see you in person. Thank you so much for being here. Yeah, thanks. Good. I want to start with your background.
+You are the creator of Cloud Code, but how did you actually get into this role?
+What does your day-to-day look like? And tell us about sort of your journey here.
+You lived in Japan, you worked at Instagram. Take us to where you are now and where you started.
+Yeah, I so I've been in tech a long time. Uh I I started by just starting startups and the first few companies I worked at were startups that I started
+and kind of like started with friends and it was always like pretty small. I did Y Combinator pretty early. So I was the first engineer that joined a Y
+Combinator startup. I think it was like their second or third batch. Oh wow. So super early on. Yeah.
+Um so yeah, just been in startups for a while and uh at some point I did a bunch of other stuff. I was at a big company for a little bit. So I spent like seven
+years at Meta. Um at Meta I was one of the tech leads for Instagram and I was also responsible for code quality across all the code bases.
+Okay. And I feel like in all these different roles, the thing that I've learned is I love to build product.
+And to build really good product, the thing I need to do is to make engineers really productive because if you're not productive, it's really hard to make products and apps and you know, things that people love.
+So within Anthropic though, when you got to Anthropic, how did CL how was cloud code born? Maybe take us through the journey of actually how it was maybe incubated and built within the company.
+Yeah, totally. So I I was living in Japan and I realized that uh this there's this totally insane thing
+happening and I have to be a part of it because if it doesn't go well, it's uh not going to be very good. Like this thing has to be safe and it has to be
+kind of done the right way. This is a totally uh game-changing technology. Yeah.
+Um, and so I came to Anthropic and the team that I joined was the Anthropic Labs team and we actually the team kind of served its purpose and we kind of
+disbanded it and now we brought it back and Mike Kger who was one of the founders of Instagram now he's leading that team again. Uh, and that hire you.
+Uh, it was actually Ben who's one of the founders. Okay, got it. Um, but yeah, worked with Mike. Okay.
+And we uh produced four things on the team. So one was cloud code, one was MCP, uh one was skills, and one was the
+desktop app. And you can kind of see this like from the very beginning at Enthropic, like going back many years, there's just been this focus on
+enterprise and safety and coding. And that's what led to us building these things, you know, a year and a half ago, uh starting to work on it like two years
+ago or whatever. So this focus, I think, was always very clear and it just obviously led to these products.
+And then flash forward to today. So we're here at the developer conference or developer day for cloud code. What have you guys announced and how does
+that change the game for anthropic and cloud uh cloud code. Just tell us you boil down what the actual updates are and the significance.
+Yeah, so today no model announcements, no big product announcements there.
+There's a few things on the managed agent side uh with an API. This is really exciting. So it's a way for developers to build on the platform and
+they can more easily build agents and so we give them a bunch of tools just to make that really easy and really smooth.
+Um we also announced a bunch of compute uh so Colossus 1 is now going to be dedicated to you know serving anthropic customers and very excited to partner
+with SpaceX and just get a bunch more compute online so we can serve customers.
+That has been massive news and compute has just been such a big headline and the the race to get compute. How much of a factor is that in what you can
+actually build on your team and the demand for compute?
+Our growth has just been explosive. It's been outpacing every estimate we have.
+And here at Anthropic, it's really important for us to be responsible with the way that we manage capacity, with the way that we manage everything that
+we build on. Responsibility is just, you know, it's it's just the way that we think about the job. And so for us, when there's a certain amount of demand from customers, we need a certain amount of
+compute to fill that demand. the demand has exploded and so now there's a lot more compute online and even more coming online so we can meet this.
+What does that look like? Do you have to go to Dario? Who do you go to to say I need more compute for this specific project I'm working at? And I would
+think there's sort of an opportunity cost where you might have to take resources or compute from another area. How do you guys balance that internally?
+Yeah, I mean we generally just focus on the long term. You know, in the long term there's some amount of comput that goes to product, some amount of compute that goes to research. This is overall
+the balance and the most important thing is that over the long term it's a really good balance and uh that we're not you know buying like a ton of compute we're
+not going to use and we're not under buying comput. Um so it's about it's just about this balance and keeping it healthy.
+So agents that's just been such a big theme for anthropic a big theme that's been talked about today.
+How do you see that evolving and how much of our work in the future do you think will actually be offloaded to these AI agents? When you talk to the
+average person on the street and you ask them how do you use AI, I think a lot of people are going to be thinking of chat bots or something. And this is like, you know, as a programmer, this is what AI
+for me was 2 years ago. And engineers are always the first adopters. And so about a year and a half ago, what started to happen is we released quad
+code. And the way that engineers started writing code has just completely transformed because it used to be you write code by hand and use essentially a
+text editor and you write code the same way you would a word document or something. Now you talk to your agents and they write your code and at any
+moment in time I have like a few agents or sometimes thousands of agents running that are doing my work and it's amazing because I can think of ideas. I can
+figure out the next thing. I can talk to customers and they do the part that I don't enjoy. This is what is going to happen for every kind of work that can
+happen on a computer over the next few years.
+The first thing that we're doing here is co-work. And this is the first product.
+So everyone that's not a coder can experience it. And the way this started is uh it's actually a funny story. We
+released cloud code and about 6 months in people started using it for things that are not coding. And as a product person, this is like the coolest thing
+that you can see because this is market demand in action. You have a product, people want to use it for something else. You should build for that. You should like supply, you know, build the
+product that they actually want. And so we started people we started seeing people use it for things that are you know like data analytics uh project management. There was some guy on
+Twitter using it to grow tomato plants like monitoring a webcam to to grow the plants and monitor the nutrients. And so it was pretty obvious that we need to
+build some kind of product in the space and co-work is that product and it's just taking off even more quickly than cloud code did in the early days.
+It's interesting. I think you're really on to something. The fact that developers and what Anthropic has done is probably multiple years ahead of how
+average people actually use AI. With that in mind, what are you seeing on the ground that should inform how enterprises, how companies, and how
+individuals think about where AI is going? I was reading this uh Harvard Business School case study from the early '9s and it was talking about why
+is it that computers are here but we haven't seen the productivity benefits and it was just like such a cool like
+snapshot of the past and the point the article made was in order to benefit from the productivity benefits you have
+to restructure your entire business process so computers are at the center.
+It's not enough to have these old filing cabinets and then there's a computer sitting somewhere in the corner.
+Actually, it has to be the computer at the center. And this is what we're seeing within anthropic. For us, claude is at the center of everything that we do. This is what we're seeing with our
+most sophisticated customers. They are restructuring everything about their business to put claiming because what they're seeing is
+productivity improving not just a few percentage points, which is what I used to see in my old job when I worked on developer productivity. It's improving
+hundreds of percentage points and the rate at which it's improving is growing.
+So, it's this total phase change. But the thing you have to do is you have to transform the way your business operates and then you get the benefits.
+Why is corporate America not quite there yet? It doesn't seem like the average company has seen that level of productivity yet.
+There's a lot of companies that are starting to see this. So, you know, it's still early, but there's a lot of companies, you know, like uh you know, like like like uh like Shopify and you
+know, like many many customers that we have from you know, tiny startups to like the largest enterprises that are that are benefiting from this. It's even
+at the point now like NASA was using cloud code to plot the course for the Mars rover. And so I think on coding we're actually starting to see the
+adoption everywhere from Fortune 100 to the tiniest startups to individual developers on the weekends. And now we're starting to see the same trend for knowledge work. It's going to take time.
+So I would expect this to take 6 to 12 months or something. And we're going to see a lot more usage across every company.
+Does that mean cost savings? And I think one of the elephants in the room when we talk about this is employment. And I'm sure people listening to this might think that's not great news for my job.
+Um what do you think it actually means for the bigger economy?
+The thing that we're seeing right now is this is creating opportunity. In the long term, it's hard to predict and you know there's a lot of economists that work on this. In the short term, the
+thing that we're seeing is people are freed up. So you don't have to do the toilome work that you don't want to do.
+For me as an engineer, this is things like debugging and it's like writing writing a lot of code and just like having to think really hard about kind of how exactly this program works. I'm
+also using co-work a lot. So for example, I'm traveling a little bit for code with quad and it booked all my plane tickets. I didn't have to do this.
+I just asked co-work and it booked the plane tickets while I did something else.
+I think about the impact for software companies in particular, which we've seen this massive selloff and just knee-jerk reactions honestly whenever Anthropic announces an update. What does
+it mean for companies who rely on that as their moat? If whether it's booking travel, whether it's you know subscriptions for software, what is the impact for that sector in particular?
+I think there's some modes that are going away and this is things uh you know for example like switching costs because claude can just write software
+for you and it can make it really easy to switch from you know one software to another software but actually a lot of the old modes are just as powerful as they were before. um everything is
+accelerated, everything is going faster but the modes are still in play.
+Do you guys want to be the front end to that? Because I think about whether it's you know apps that have been built or these companies themselves is there a world in which claude or anthropic would
+actually be the front door and and sort of own that customer relationship.
+We think about it in multiple ways. So for us, we want to own the customer relationship for some things that we do, but we also want to be fair. And so
+actually all of the tools that we build are available to developers so they can also build on top of the same stack that we use. And you know, for example, cloud code, it's built on this thing we call
+the cloud agent SDK. It's also built on the entropic API. Both of these are available for any developer in the world to build on. And we see thousands of
+developers building businesses and building startups on the same stack that we use ourselves.
+What does it mean for the app store? Is there a future where you're just spinning up an app in real time and you don't necessarily even need a new app?
+What does what does that look like, you know, five 10 years down the road?
+Oh man, this is a good question. I'd love to talk to the people that work on app stores and and get their take on that. Um what does it mean in your day-to-day?
+You said you still do write code. Um how has it changed your life?
+About six months ago, what happened is all of the code that I writ that that that I used to have uh written by hand now Qua writes. And so to me like as an
+engineer like I still think of this as writing code but actually quad is writing all the code and I prompt quad.
+So I talk to Quad and I'm like hey like let's build this feature. It builds a feature and it show it tests it and then it shows me and I'm like yeah that's good or no like make this change
+and then it makes the change and this is what coding looks like. And I think for an increasing share of developers this transition started back in November of
+last year with Opus 4.5. It's accelerated with Opus 4.6 and 4.7. And now actually for a lot of developers in the world this is what coding looks like.
+What does this mean for the future of software developers or even you know an entrylevel student who's coming out of out of one of the top universities let's
+say are we is that going away? I mean will people just not will that job just not exist?
+My prediction is software is going to be a basic skill the same way that reading and writing is. In the 1400s people mostly didn't know how to read and write and then now most people are literate.
+It's a fundamental skill we need in modern society. I think being able to write code is going to be the same thing. You talk to quad and it writes stuff for you. At the same time, you
+need professionals that are extra good at this. And this is, you know, there are professional writers. I heard you're working on a book. Um, I wrote a book.
+There are people that professionally write. And this is still an important role, but everyone in this room can write. And this is just a really important skill for modern society. And
+there's all these things that we can do as a society. We would not have been able to do if people were not literate.
+we can do far bigger, far more ambitious things.
+So, this is a printing press moment in history. That's my feeling. Wow, that's big. That is really massive.
+And I think that's a good way to put it in perspective. Um, pivoting a little bit. Anthropic has competed for top talent. I'm sure even people like you
+have been recruited by, you know, mega cap tech companies, Anthropic, OpenAI have just been battling. Does that change the talent war? If if the bar is
+lowering for for software engineers, is that going to change and and make it less important to have the top engineers at a certain company?
+Um, I think it's actually still really important to have good people. Um, sometimes it's engineers, sometimes it's product managers, sometimes it's designers, whatever it is, you still want the best people that matters a lot.
+What about security? Mythos has become such a big topic. Um, how are you thinking as we move toward to towards a world where the AI agents are doing a
+lot more to make sure that there are not vulnerabilities and that you can trust the agent in a certain way?
+It's extremely important. Security is one of the top things that we care about as a company. For us, safety is the most important thing and there's a lot of
+different dangers when it comes to safety. Security is one of them. We've now reached a point where the models are exceptional at finding vulnerabilities in every kind of software that exists.
+This just like this was not the case even 3 months ago. This is a phase change in the way security works. The threat models are new. The way the the
+dynamics are totally new. And for us, the thing that we're focused on is making it so the good guys have the best model first so they can defend software.
+They can find the vulnerabilities. They can patch it before the bad guys can get access to it.
+Do you expect Mythos to to roll out more widely to a broader group of, you know, say developers that are in this room?
+We have no plans to roll out mythos broadly.
+Fair enough. I mean, but can can the average person trust that they can really give all of their work to an AI agent? I think that there is sort of
+this disconnect of wanting some sort of human intervention if something does go wrong.
+Yeah. I mean, it's a every task is different, you know, like you you kind of you you learn the balance. One of the things that I have to relearn with every
+new model is it just gets better and better and better and better. And I think sometimes people forget if you use the model, you know, a year ago and it
+didn't work very well, but then you use it today, it's just such a big difference. And so I think that one suggestion I would have is just like keep trying it. Every new model release,
+it's completely different. It gets more and more capable. So just keep trying it and and see if it works.
+What about competition? OpenAI has really also tried to move into this space. How important is the developer community to staying ahead? And if you
+are ahead, how far do you think uh how far of a lead do you think you have versus some of the others out there?
+Yeah, Kate, for us, developers have always been the top focus. Coding has always been the top focus. Enterprise has always been the top focus. And that focus isn't changing. So for us, I talk
+to users every day. I build the things as a developer that I would use that is also useful for other developers. Um, and this just is not changing. But
+how important is this group? It seems like the this these are the people that are going to go out and maybe build the companies of the future. Is it how would you describe sort of the the relevance of this group that's here today?
+Developers are extremely important.
+Yeah, it's exciting. It's like for us it's it's just developers and enterprise. That's the focus.
+What advice would you give to somebody coming out of college? You studied economics, is that right? Yeah.
+What would you do today if you were, you know, maybe a junior in college looking at a future as you described that's completely different from what we experienced even 5 years ago?
+I would say two things. One is learn to use the tools. Don't be afraid of agents. Don't be afraid of AI. lean in and try the stuff and see how to use it.
+Learn how to use it. See what works for you. The second thing is uh if you're entrepreneurial at all, go start a startup. There's there's never been a
+better time to start a startup. This is like it's going to be the golden age.
+There's so much innovation that's happening now and there's even more that's about to happen. So now's the just the best time ever.
+Are there too many startups with that in mind? We talk to a lot of venture capital investors. It seems like everybody's sort of starting a startup right now. I would not be surprised if
+within 10 years there's like 10 times more startups than there are today. 100 times more.
+Super interesting. Well, Boris, thank you so much. We appreciate your time. It's great to see you in person. Yeah. Thank you, kid.

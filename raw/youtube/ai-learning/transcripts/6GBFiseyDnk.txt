@@ -1,0 +1,133 @@
+so over the past month I've built two AI apps that are now live and are going to make me millions of dollars in 2025 and this is the first one it's it's called
+clonify and it basically can clone any single person in the entire world here's a quick example folks let me tell you about maple syrup it's tremendous
+absolutely tremendous we we also have this stock Investments app that can literally tell us about any stock in the world so this is Tesla for example and if I go should I buy this stock it'll
+give me all of this information and there's also insider trading information and all of this fun stuff and today we're going to be building this thing called cal. and I stumbled across this
+app the other day because this YouTube channel that I follow made a podcast of the founder and they're making $1.12 million a month by selling this calorie
+tracking app and today you and I are going to build it from scratch and we're going to make it a little bit better than what they're already selling with
+their own cal. app and we're going to do it completely with no code in this entire video and when this video is done guys we're then going to show you how to
+add authentication how to add stripe payments and how to actually start receiving payments from your applications like we have on our own
+apps here now looking at this app what are the functionalities functionalities is that you take a picture of your food and it'll give you the calories protein
+carbs and fat in your meal and so we're going to be doing that and we're also going to be charting it into a graph let's head into bolt and let's get this
+baby started so I'm going to write I want to build a web app based Cal
+tracker sent to chat GPT bond with a
+sentence and the macro nutrients in fat and
+carbs so we're just going to send that first prompt in and we're going to let bolt cook that up real quick so for you guys to actually do this the only other
+thing you need other than bolt is your own chat GPT API key or Claud API key or whatever large language model that you like to use and in this case we're going
+to be using the open AI uh API key that can do a multimodal function where it can take pictures and text and so that's how we're going to you know make this
+thing work so the first thing that it did for us was build up the environment for us to actually add our API key so I'm just going to quickly go into the environment and add in our API key so
+I'm literally just going to pass the API key to bolt right here in the description and I'm going to say this is
+my open AI key add it to the EMV okay cool so it did that for us but I already
+noticed one error that it did and that's that it's using the wrong open AI model right now it's using the vision preview model and that model doesn't exist
+anymore so if we go here and we see that the model is the GPT for vision we need to change that to GPT 40 so we're just
+going to write the GPT 4 Vision preview is deprecated use the
+GPT 40 model instead it is
+multimodal and works well for this use case so yeah guys when I was practicing this that was an absolute nightmare so
+that's going to save us a whole bunch of time and we saw right there that the model was actually correct so if we go into this open AIT we now see that it's
+calling the uh GPT 40 um AI model so that works well and so it updated all of the information so that looks good so
+now we can try uploading our first meal um we're going to upload this Sal bow so we're just going to click open and as we can see nothing happens when we click
+open so we're just going to let chat GPT know about that when I click
+open time span okay so it added all of those new dependencies um let's see how things look okay so now we have the take photo
+button which is really nice we're going to add in the image again we're going to see what happens open that up so there was an error analyzing the
+food but basically what we can do to fix this is go into chat gpt's docs and send in the correct um the correct Json
+script that we need so we're just going to go um open AI docs and we're going to go to
+this API reference so we're going to go into this create chat completion so inside of this create chat completion you guys can see here that there's all
+of these different types of inputs or requests that we can create so right now my prediction is that it's doing this default request where we got to do the
+image input request so we're going to copy this image input request and then we're going to send
+that to bolt so we're just going to write this is the image input
+request necessary for the GPT 40
+model okay let's try uploading
+okay so tempt that fix okay so I think I found the error guys so you see here in
+the URL it's changing it to a base 64 image and sometimes and basically what's that doing it's just condensing the image but we don't actually need to do
+that so if this doesn't work that's what we're going to tell it to fix next so we're going to try opening it oh it's actually analyzing now okay
+okay look at that that's so it worked okay awesome so we just got an update on our app now so we have a salad bowl with
+a softboiled egg broccoli cherry tomatoes couscous red bell peppers almonds hummus and greens so was able to identify everything that was on the bowl
+of food it was able to identify that it had 400 total calories 15 g of protein 20 G of fat and 40 G of carbs now we're
+going to make this even more fine-tuned because our users are going to to be told how to take the pictures of their food and so we're going to tell these
+users hey you should be taking a picture of your food from one foot away every single time so we're going to let the AI know that so we're going to say okay
+that worked but now for more consistent food analys uh food macro uh macros
+analysis the plate okay so now it added that in the text right so here in our text prompt if we go back to open aits we can say this
+image we can see that this IM was taken from approximately 1ot away from the plate of fluid please analyze the food and respond with only a Json object in
+this exact format and then it gives us all of that information that we were asking for and then since it's coming back in a Json format we can pass off
+the information wherever we need it to go so it also now notifies the user how they should be taking uh how far they should be from when they take the photo
+if they use the real time so if I click take photo it's going to pull up my realtime camera which is really sick and it shows that the functionality is
+perfect so um we're going to now send in another type of food so we're going to send in this steak open that
+up analyzing our food and we got the response so the response again was a 400
+calories 50 g of protein 25 G of fat and zero carbs so one mistake that we can already see guys is that it lost the um
+previous meal so I need to now write it I need to now let it know to keep track of all the meals so I need you you to
+create another tab that has the daily macros
+that a user needs to hit in order to achieve their
+goals also save all of the food that the
+user inputs in a 24hour time span
+okay so we're getting there we're getting there okay so it updated it back with this daily macro goals like form but we basically just needed to have uh
+four different categories that we're going to edit so the the daily macro
+goals form needs to just have four options to choose
+from calories fat protein and carbs and we're going to send that in okay so so now we're going to test that out so we're going to write 2,000 calories
+um 170 g of protein 50 or 75 G of fat and 100 G of carbs so we're going to set
+that as our macro goals okay perfect so that worked so now the food that the user is adding into the app it can now track it and compare it to their daily
+macro goals we can then update whether or not they achieved their goals on a given day in a calendar so now we can add a calendar into this entire
+dashboard as well so now we're going to write once a user submits the their goals make a calendar
+page and add that calendar page as a directory in the
+Navar when a user has a day that um
+achieves the daily macro goals then turn that day on the calendar
+to Green if they miss their daily macro goals
+turn that day on the calendar to Red okay so we're just going to send
+that in we'll see what happens okay cool so it updated now we have our calendar page so we're going to open that up and we can see that it has all of these different calendars and it also has a
+little um key chart here that'll tell us whether the goals were met on a day goals were missed on a day or there was no data on a given day so that's perfect
+um there's still some more information we can add to the calendar like it doesn't have the month for example but that's fine we're now going to go into this track food and we're going to see
+what happens in terms of comparing these macros to the total daily macros that we have achieved so we're going to upload
+um a photo of this pizza we going to see what happens so it's analyzing our food okay it gave us uh 285 calories 12
+g of protein 10 G of fat and 36 G of carbs so I'm I'm not sure exactly how accurate that is that should have been more calories but again that's something
+we can fine-tune a bit and then also this isn't updating here in in the daily macro goals so we need to actually um
+you know update that as well so it starts showing us the progression bar that we're getting towards our daily macro goals to achieve whatever Fitness
+goal that we want to achieve um so let's add a couple more functionalities right so on the track food page I want you to
+list the date today is
+December 4th so the information the user inputs will be
+charted for December 4th there should be a timer on the track food page that
+shows how much time is left before the new day
+of food tracking begins okay so let's see what happens there we're going to be looking for a
+timer we're going to be looking for a couple other things uh like the date and we'll see what happens here okay perfect so now it has the date it also has the
+time until the next day and then we can start adding in our food and so another way that this information can be tracked is when we start adding uh user
+authentication so when a user signs in we then pull up their information of all the food that they've been eating and their entire calendar of history that
+they've been eating as well um and so that's how that'll end up keeping track of things and then once this timer runs out then that daily tracker will then
+move on to that next day so right now I'm I'm assuming that it's on December 4th so um now I'm going to write since
+it's December 4th when
+I upload food on the track Food Bar it should also
+update on the calendar page on the 4th of the
+month so now let's see what happens so we're going to upload that uh bowl of salad again um analyzing our
+food okay so we got the pie chart back with the calories the protein whatever boom so now we're looking in the calendar and this is a red calendar
+block because it still hasn't met the goals of the uh day so to meet the goals of the day let's see what happens if we just upload all of the food that we need
+to hit those macro goals and okay so we are over the 2,000 calories but we're still not over the protein goal so now
+let's add in the eggs uh the salad with eggs again okay boom so 2,500 calories
+over 170 g of protein over 75 G of fat and over 100 G of carbs so now if we go to the calendar page this page should be
+green so now that um the goals have been met this should turn green so we're just going to update it now and say uh daily
+macro goals are surpassed on a given day turn that
+calendar block to Green okay so it just updated that so it
+still has all of the food that we just updated it with and we're going to go to our calendar and as you guys can see the goals have now been Sur past on the day
+now these aren't good macros that you actually want to be hitting right these are just an example but now you guys can see that the functionality actually
+works and this countdown will continue so now we can also see how this works and we can say okay let's assume it is
+now December 5th store all of the December 4th
+food and let's now start adding meals for the next day so let's see what
+happens so I'll help you update the application to handle the transition to December 5th we'll need to modify the datetime display component to use a
+controlled date to add the ability to view historical entries very interesting so it's actually giving us the ability
+to now change what time it is um and we can kind of start inputting stuff at different dates so that's pretty cool it's obviously not something you want
+your users to have access to but since we're testing things out like obviously that's fine okay perfect so it actually did more than what I asked right because
+this is now December 4th and it has all of our uh information of our food but I'm guessing if I go here to December 5th which isn't which is in the future
+which I guess doesn't exist um we can then add in more information so that's really dope because we can actually go back in time as well and we can we can
+look at the historical data and obviously there's no historical data for any of these days but eventually there's going to be historical data and you can start tracking on the days that you did
+bad and you did good so that's even more functionality that I didn't even ask for that we got so now guys we can upload an image that tracks our calories our
+protein our fat our carbs it also Compares it to our daily macro goals tracker which we can update whenever we want and then it'll also put that into a
+calendar that'll let us know how consistent we are on a given month in or month out and there's so many more things that we can add into this like
+adding a whole workout plan adding a whole notification tracker so a user isn't uploading or updating the app with information we can send it a push
+notification via text or via email to be like hey like use our app like you downloaded it now use it um and so
+there's all these these different features that we can add but couple of things that I love that we already we're already able to do here was we have this timer and we also have this beautiful
+pie chart and we can even take things a whole 10 steps further because we are just check we are just scratching the surface of what's possible with this
+Vision multimodal tool because we can then have it track all of the different ingredients that we use right so we can also have it um identify whether we're
+using harmful chemicals or not whether we're using seed oils and there's so many different ways that we can go about this and you can even sell this to
+influencers and that's a whole part of our business model with our fitness automations agency and so this is already pretty functional but what you
+guys are going to see next in the next video is we're going to add in user Authentication so that they can sign in and so when a user signs in they should
+then be able to see only the information that they have been inputting right so if this is user a and this is December
+4th when user B Signs in on December 4th they shouldn't have any of this information because they haven't uploaded any food and so once that
+functionality is set up then that can happen and then on the back end we can have a pricing page where people start paying you on a monthly subscription for your service and so if you guys are
+interested in how all of works as well as how to deploy a website that's going to be available in the no code academy with a specialized tutorial and then
+later on it'll be uploaded here on YouTube literally used the exact functionality of a $1.1 million a month app and we put that into our own bolt.
+new uh application

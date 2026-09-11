@@ -1,0 +1,1578 @@
+Please join me in
+welcoming Ben Horowitz. [APPLAUSE] Thank you.
+So how many of
+you heard the song that was playing right before? Does anyone know the
+name of that song?
+Yeah. "We Are the World." Yes, that's correct. "We Are the World" is a
+1985 single by a supergroup
+of musicians that all
+came together to raise-- It was a charity single
+that was produced
+to help raise funds for
+the famine in Ethiopia, I believe, in 1985,
+Lionel Richie made a
+good documentary on it if you're interested. Correct. Yeah, yeah. The reason I'm bringing
+it up is because Ben
+is known for many things. He's the founder of Andreessen
+Horowitz, co-founder of Andreessen Horowitz.
+I'm very lucky to have called
+him my boss for a few years. Yeah. He's also been a founder or CEO.
+He's built several
+technology companies. He's behind one of the reasons
+venture capital still exists today after many
+moments when there
+were times when
+it got threatened, including the SVB
+financial crisis. But the thing I've learned most
+about Ben is from a documentary
+that Ben told me to watch
+about a year and a half ago. Yeah, yeah, yeah,
+Triple OG, yeah, yeah. It's called The
+Greatest Night in Pop.
+And I would really
+recommend folks who haven't read it-- sorry,
+watched it to go watch, And we're going to
+put it in the reading
+assignment for this class. It's on Netflix so
+anyone can go watch it. But it is the documentary about
+the making of that song you just
+heard, "We Are the World." And there's somebody
+in the documentary that you'll observe if you watch
+it by the name of Quincy Jones.
+How many people have
+heard of Quincy Jones? OK, About 30%. So we need to school of
+kids a little bit on it.
+Yeah, he was the greatest--
+And I didn't-- Great human being. Great human being, and more
+importantly, great leader.
+Yeah. Well, that was the
+thing he could do. He was the best at
+handling super talented,
+difficult to handle
+people of all times. No question. Yep. And you can see it in the doc. Yep.
+There's a moment in the
+documentary where the camera is following Quincy around.
+And he's walking into the studio
+where the musicians all are. And he points to the top of the
+door, and he says, read that.
+And there's a sign
+above the door that he's scrawled on a piece of
+paper, and he's stuck up there.
+This is at around midnight
+before the recording session supposed to start. And it says, check
+your ego at the door.
+I think it says, leave
+your ego at the door. Yeah, yeah. Leave your ego at
+the door, sorry. Yeah, yeah. And if I had to summarize
+Ben Horowitz in one line,
+I would say he's the
+Quincy Jones of technology. That's a lot. High bar. Yeah, yeah.
+That's hard to take that credit. He is. amazing, yeah. Ben thank you is
+known for many things,
+but I think the
+thing he will be most known for throughout history
+will be his leadership,
+the lessons he's left
+with a lot of people over the years, many leadership
+lessons which I think
+are still not legible
+to the world yet and will only become
+clear over time.
+But today, Ben, I think it would
+be helpful to take everybody here a little bit
+behind the scenes
+of what it took for you to
+become the Quincy Jones of tech. You're not supposed to be
+blushing this hard, Ben.
+[LAUGHS] Yeah. Again, you got me and Quincy. Yeah. Having known him,
+he's a very high bar.
+That's a high bar. OK. Thank you for being here,
+Why don't we start with--
+let's zoom back all the way
+to the founding of Andreessen Horowitz. Let's start there. Yeah. This is a systems class.
+Andreessen Horowitz
+ended up being one of the most important
+innovations in the systems design of venture capital, of
+how capital should be deployed.
+Where we'd love to contextualize
+this is the students have heard that three or four
+of the largest bottlenecks
+to progress are
+context, feedback, compute capital, and culture.
+And we haven't talked that
+much about capital and culture. So today, I hope you
+can take us a little bit to the frontier of what's going
+on in capital and culture,
+especially in labs,
+in startups, in teams that are pushing the frontier. But I think to get there, we
+should rewind a little bit
+and start with what
+was the system that you created to even allow
+capital to get to this point?
+Yeah so we started
+the firm back in 2009. And at that time,
+there were a couple
+of ideas about venture
+capital that, I would say, we thought were dated.
+One was it was mostly
+an investment idea. So the product for investors,
+LPs, was really good
+and that they had
+very high returns, but the product for
+entrepreneurs I thought
+was pretty bad in that
+they didn't do much for you other than give you money.
+So that was kind of
+idea, one that we thought we could
+just build a better product for entrepreneurs.
+And then the other idea that
+was very, very prevalent in venture capital was
+this idea that in any given
+year and the historical
+data really supported this, there would only be 15
+technology companies that
+would ever get to $100
+million in revenue. So the whole industry
+was just about getting
+invested in as many of
+those 15 as you could. And that just limited the
+size of the whole industry
+and the capital in the game. And we really thought
+that was going to change, because, look, at that time,
+we thought a software was
+going to eat the world. And every company that was
+going to be interesting, every new company was going
+to be a technology company,
+and therefore there
+were going to be more like 200 companies a year
+that would hit that bar, not 15.
+And so we decided
+that one of the things that I did as the
+CEO of the operation
+was to say, OK, how
+do you scale this? Because venture capital
+firms notoriously
+didn't scale because
+they didn't have to. It was I remember Dave Swenson,
+who was the most famous LP,
+said, yeah, a good
+venture capital firm is like the size of
+a basketball team, five
+guys and then a six man
+or something like that. And that was not going
+to be enough to have
+a great product
+for entrepreneurs and then also invest in such
+a large number of companies.
+And so to get to scale,
+there was a couple of ideas that we had that-- or
+sound very, very simple
+but ended up being important. The first was, normally,
+in venture capital,
+It's a partnership,
+and the partners share economics and control.
+And the problem with that
+idea, and you experience this in your career at
+other venture capital firms,
+is if you share control, then
+it becomes very, very difficult
+to change the organization,
+because everybody's got to agree. And if you anything about
+running an organization, the one
+thing about a reorg is some
+people are going to hate, it because it's a
+redistribution of power.
+And it's not necessarily
+the people who aren't good. It's just some people are
+just going to hate it, because nobody
+likes to lose power.
+And if people get a
+vote, then there's no way to effectively
+reorg a business.
+And so our idea was like,
+you can't share control. We'll share economics, but
+we'll centralize control.
+And that ended up
+enabling us to reorganize and enabling us to get into
+many, many more categories
+like American dynamism or crypto
+or bio or these kinds of things,
+because we could change the
+organization and scale it and so forth. And that ended up being
+an important systems idea.
+And then we also-- because investing is
+always a conversation,
+and you need a very, very
+high-fidelity conversation to get to the truth, you never
+want more people in the room
+than can have a conversation. And so you can't have a
+conversation with 30 people. It's not possible.
+That's a presentation. Over the years,
+what do you think is the optimal construct of a
+truth-seeking conversation when
+you're trying to understand the
+future of a technology that's super complex? Yeah, I think that if you
+have really good chemistry
+and rapport, it
+can be like seven. But if you don't, then
+even that gets problematic.
+But yeah, you just can't
+do it with a large group. And so what we
+ended up doing is we just kept splitting the firm
+into smaller and smaller groups
+over time, and each
+group would address a certain part of the market.
+And that ended up
+being very effective. And to contextualize for folks.
+So when you started the firm,
+the first fund was about $300-something million? $320?
+$300 million, $300 million. And you had all these
+institutional folks like David Swensen
+and so on who had
+these long-held, for whatever
+reason, priors and assumptions. Yeah. What did you find was
+the most effective way
+to realign them, or get them
+to revisit those assumptions or update those
+priors in a way that
+was aligned with your mission Well, succeed. I mean, that's all it is.
+I think one thing. You think another thing. We're going to find
+out if I'm right. So then the first
+thing that happened
+was we invested a quarter
+of that $300 million fund into the Skype buyout, out,
+which everybody thought was
+insane, but there was a
+bunch of things we knew
+that other people didn't know. So the first thing that made it
+insane was like the deal itself.
+When it spun out of eBay,
+eBay didn't own the IP. They own the company but not
+the IP, which how they ended up
+there is like a
+crazy dumb story. By the way, never do that. Never buy the company
+without buying the IP.
+So the founders had
+this hold on them where they could have sued
+them and shut down the service.
+And so everybody was like,
+oh, that's an unbuyable asset. But we knew the founders,
+Janus and Niklas.
+And we knew the one
+thing they had in life that defined them was
+Skype so they weren't
+going to shut that thing down. It was just a matter of how
+much money did they want? Did they want to
+be on the board?
+The IP at the time was basically
+the Skype client and the user base? It wasn't the client. It was the underlying library
+that controlled the protocol.
+Oh, sure, yeah. The communications protocol. Yeah, which was
+very hard to replace
+and all that kind of thing. So anyway, we bought it,
+and everybody goes, OK. Well, even though we
+thought you were nuts, maybe
+you're not completely insane. There's so many interesting
+parallels to that era now.
+But one property of that era
+was the explosion of networks.
+Yeah. The idea of network
+effects became legible for the first time
+as a systems concept. So can you talk a
+little-- take us back.
+I think it's hard
+for people now, or we just take
+these for granted. But at the time, can
+you talk about why
+was it novel, why were
+people resistant to it, and what were the
+insights that then led to the
+architecture, the firm being a network
+effect-driven firm?
+Yeah, I mean, I
+think people just didn't understand
+network effects as well. So the big era of networking
+started with the internet.
+And then people thought the
+internet itself was just like a unique network. And it was weird. It was different,
+because nobody--
+people got value from things
+built on the internet, but the internet was
+not owned by anybody.
+It was like the first,
+real, decentralized network. And so people didn't
+what to make of networks
+that like Facebook
+early on had-- there weren't a ton
+of people giving them
+money for the first round. That's why Peter Thiel was able
+to do it at a really good price.
+And then the same thing
+with Twitter, and so forth. People just didn't
+know basically
+how invincible those things
+got when you got them up to strength so that the bigger--
+it's basically like an N squared
+value so every node you add
+kind of increases the value by N squared.
+So if you have five people
+on the network, that's 25. But if you have 6, that's what?
+36 and so forth. And the value, if you
+get up to internet size, is just invincible.
+Nobody's going to ever build
+a rival to the internet or very unlikely.
+And so at that point,
+us being involved in the internet and
+Twitter and Facebook
+and so forth, we had a really
+good understanding of that. And so we always thought
+of the firm as a network.
+And so from the
+very beginning, we thought, OK, the more
+relationships that we have,
+the stronger our network effect. And so we ended up doing
+things that other firms didn't do like we tried to
+build relationships
+with every engineer in Silicon
+Valley and every executive and every everything and
+then every corporation
+that bought technology
+and so forth. And we were, in our minds,
+creating this network effect
+that would just make us the
+best place to raise money from, because we were like
+an automatic you could
+tap into that network and
+become extremely powerful, right off the rip.
+And I think a lot of
+people didn't understand
+how hard that was to do. And then the bootstrapping
+of any network is always the most
+difficult thing.
+So, yes, if you have a network
+with a billion people on it, it's going to be very valuable. But how did
+Alexander Graham Bell
+sell the first telephone when
+there was nobody to talk to? That part is
+actually really hard. And so figuring that out and how
+to bootstrap the network effect,
+coming from behind in
+venture capital was the idea. Well, I mean, could
+you say a little bit about how you bootstrapped it?
+What were the things
+that maybe now lost to the annals of history,
+where they were individuals or asymmetric--
+one of the things
+we talked about
+in the first class is often the students get
+excited about the speakers like you up here,
+but we reminded them
+that one of the most
+valuable assets they have is the people
+sitting next to them. It's the relationships
+they build. When you were bootstrapping--
+I think that's getting
+more important, by the way. Exactly. If there's anything that's
+going up, it's that value. But if you zoom back, when you
+were starting that bootstrapping
+and you didn't have the
+largest firm in the Valley, you didn't have
+the most capital, you had no track record as
+a venture capitalist other
+than your angel investors, what
+were the moments where that may not be legible to folks
+here, that you used something
+that was asymmetric,
+that allowed you to bootstrap the network? Well, the really
+simple idea was we knew, like venture capitalists
+made a lot of money.
+So they would take
+the fee money and then they'd pay themselves
+big salaries. And so we were like, well,
+what if we didn't pay ourselves
+anything and we just
+took all the money and we basically spent it
+on building this network?
+So we would hire
+people to bring people in with our kind of, how
+do you get relationships
+with every big corporation,
+FedEx and this and that and the other. And the trick that
+we had there was we
+had sold the previous
+company to Hewlett-Packard. And so we knew the people
+in their enterprise briefing
+center. And so we would
+call them every week and say, who's coming to the
+briefing center this week,
+and can we get their numbers? And we would call
+those companies, and we would have them come
+to our briefing center,
+and we'd just show
+them all the startups. So it would be like-- and we'd
+have everything they like, all the donuts and
+all that stuff.
+So it was very
+unventure capital-like, but the corporations loved it. So all of a sudden, we
+knew more big companies
+than VCs who had
+been around 50 years because we had this hack through
+the HP enterprise briefing
+center. I think it's very poetic that
+we're sitting in Hewlett 200, by the way. This is the name
+of the auditorium. It all comes back full circle.
+So when you started
+doing that, usually when somebody new shows up
+on the block with an insight
+like that, from a systems
+perspective, what we've observed is often the
+antibodies come out.
+The immune response of the
+existing incumbent system comes out. Yeah At the time, I was across
+the street with Mike,
+actually at Kleiner. And I remember there was-- a16z was in the
+headlines all the time.
+And our CMO at the
+time, great great lady. But I remember taking one
+of the headlines to her and saying that we
+should do this too.
+And she said, Anj, this
+executive briefing center, oh, that's just marketing.
+And I said, yeah,
+that's your job. This is working. And I've been consistently
+shocked by the number of times
+a16z has done something
+from a product insight, deliver that to
+the entrepreneur, and then everybody else just
+says, oh, that's just marketing.
+Am I being overly
+facetious, or is that true? And what were the
+immune responses like that that you
+were experiencing
+and how did you deal with them? Yeah. Well, it's funny,
+because every time
+we meet with our investors,
+our LPs, they would say, every time we meet with
+another venture capital firm,
+all they want to do is talk
+about you and say mean things. And I'm like, well,
+that's fantastic.
+That's great. The best form of flattery. That's good. They used to call us a-ho. That was their
+nickname, the other VCs.
+They hated us. But some of it was
+my fault, though. Because when we started, I was
+coming from enterprise software,
+which was a very competitive,
+bare knuckle kind of there's no such thing as coopetition
+in enterprise software.
+It's just kill or be killed. So I did it like--
+I wrote this blog post
+called forth things that VCs do that I don't like
+where I just attack them all.
+And then I did this big-- Sarah Lacy had this
+big, big event.
+And she interviewed me on it. And she was like, well, you seem
+like you don't like other VCs.
+And I quoted Lil
+Wayne, and I said, when I see another VC coming
+at me with a peace sign,
+all I see is the trigger
+and the middle finger. And everybody hated me for that.
+But it worked. Because they hated
+me so much, they weren't willing to copy what
+we were doing, even though what
+we were doing was working. So it backed-- I would have been that
+antagonistic again,
+but it worked, so you
+can't argue with it. Well, OK. Well, I think we should come
+back to that later, and then
+what do you do differently. Yeah. So great. You bootstrapped
+the network effect. That allows capital
+deployment to start scaling
+into a bunch of startups. Now, It really does feel like
+a Back to the Future moment
+a little bit, right? Yeah, yeah. What's going through
+your mind right now? Yeah. I mean, so the big thing
+that's changed is that--
+or the most
+fundamental thing that changed from a VC standpoint
+in my mind is it used to be--
+I mean, for my entire
+career, the one thing that you knew about technology
+companies is you couldn't
+throw money at the problem. So if somebody had a
+two-year lead on you, you could not hire 1,000
+engineers and catch them.
+That was never going to
+work, because nine women can't have a baby in a month.
+There were just things
+you could not parallelize and then the communication
+overhead would kill you. And my favorite joke used to be,
+you know, what's a [INAUDIBLE]?
+It's like 700
+IBMers before lunch. It's nothing. You can't catch that that way.
+With AI, that's really
+changed and that you can throw money at the problem. Because if you have enough
+GPUs and enough data,
+you can basically solve
+most problems right now. t That just is what it is.
+And so now, the capital
+race becomes a real thing
+and you have to think through,
+OK, code is not really
+a moat the way it
+was in the past. And user interface
+isn't really a moat and so what is your
+barrier to entry?
+What is the thing that
+differentiates you over time? These have become
+really, really different.
+And it's happening at
+the same time that. demand for the
+technology is unlimited,
+because the products work
+so much better than anything we've built before. These AI, I mean,
+many of you are
+too young to remember
+the products of old, but none of them work
+this well before. This is wild how well
+this thing works.
+Oh, you mean companies didn't
+always go from $9 to $30 billion in run rate in six weeks, yep. But the reason they go that fast
+is like you use them and you go,
+wow, this works perfectly. How can I do more with it?
+Whereas in the old days, if you
+bought Siebel Systems software, it took two years to deploy the
+thing and $1 million at minimum.
+And so that's going
+to limit demand. There is no limit on demand
+when technology works as well.
+So you would say,
+Anj, the technology is working in a way that
+collapses the gap that existing
+incumbents might have as a
+result of their human capital investments over the last,
+whatever decade of software.
+There's willingness to pay at
+levels that are exploring it? I mean, the return is crazy. So I mean, if you make an
+engineer 20 times as productive.
+And you're paying that
+engineer-- well, if you're Zuck, you're paying that
+engineer $1 billion. But if you're paying
+whatever, it's
+going to be at least several
+hundred thousand dollars a year. That's a hell of a return. Right.
+So that creates this--
+so the final project for the class for the students
+is the one-person frontier lab,
+because what we're trying
+to get everybody to realize is there's actually an
+extraordinary amount they can accomplish with
+the right tools.
+Yeah. Right? But-- And we have an entrepreneur
+like that right now, building a
+global VPN by himself.
+By himself, yeah, yeah. And this started to become
+more common, I would say, when we were seeing
+pictures almost a year
+and a half-- two
+years ago now, right? Yeah. What does that
+mean for folks here
+who don't have necessarily
+access to the most capital, may not have access to
+a ton of compute either
+but want to make a
+difference to the frontier? Well, I mean, I
+think saying just
+be careful, a little
+careful with people who don't have access. Anybody with a great
+idea these days has--
+trust me-- have access in that. There's unlimited money
+for good ideas currently.
+Maybe that changes over time,
+but it's definitely there. And I would just say this.
+The world is changing,
+and you can just think of it as like the jobs
+we had before the Industrial
+Revolution are
+all gone and we've been living with the
+post-Industrial Revolution
+and then the post-computer
+age jobs since then. And we're going to get to
+a whole other class of jobs
+and a whole other class of
+companies over the next 10 years that replace most
+of what we have now.
+And so if you're young,
+that's the best thing possible for your career
+and for your life.
+Because in the
+opposite scenario where it's all the same
+companies, then you
+got to start at the bottom and
+work 30 years to get yourself to be a mid-level manager, and
+you've got a politic and then
+the old people who aren't as
+smart as you get all the money and that sucks.
+But in this world,
+it's the old people who will have the challenge
+because how to do the old thing.
+They don't how to
+do the new thing. And you can walk in
+and learn anything. I think that the main thing
+is just understand the future
+and then the future is yours is
+the way I would think about it if I was 19 or 20 years old.
+Well, you said something
+pretty important there, which is for the right ideas,
+there's unlimited capital.
+Could you talk a
+little bit about what do you think is the
+shape of good ideas today
+that's emerging in your mind? Well, look. I mean, I think that it
+always comes down to like,
+can you build something, a
+product, an organization, a culture, an offering
+that people want?
+And then if you don't build it,
+is it getting built by somebody else?
+Or do they need you to do that? Does the world needs you to
+do that, or it doesn't exist
+Is always the best
+entrepreneurial idea. And so anything that needs to
+exist that doesn't otherwise
+exist is a good idea. And, look, that was the whole
+story with the venture capital
+firm. Now, did the world need
+another venture capital firm? Generically, no.
+Did it need a different kind
+of venture capital firm? Absolutely it did. And so that's what we built.
+Now, I think that's true for--
+I mean, if you look
+at OpenAI, they weren't the only ones
+trying to do AI like Google.
+It was assumed Google
+was just going to own AI. And it was panicking everybody. And that's why Elon, by the
+way, co-founded it with Sam.
+And Elon is still mad
+about what Sam did with it, but that's a different,
+longer story.
+But it was one of those
+things where we need an AI, we need an alternative. The world needs this
+alternative to Google,
+and, that becomes a
+really, really good idea. And, look, the world is changing
+so fast that the new needs are
+going to multiply. There's going to be
+many, many, many things that need to be done. I mean, if you look at--
+I think the old-- the one thing that's interesting
+about the SaaSpocalypse
+is it's definitely true
+that the barrier to entry on building software
+and user interfaces
+is getting much smaller. But by the same token, the
+most boring thing in the world
+is to just rebuild Salesforce.
+Salesforce had a half the
+cost or a quarter of the cost isn't nearly as interesting as
+like, what do you really want
+for your sales organization? Because it's not that. I mean, I don't think. And then the question is, can
+you build it before they can?
+But do you really
+want your salespeople entering data in a crappy
+user interface and then
+most of the things
+that they work on aren't captured in the system
+and this and that and the other. So going to the
+future, figuring out
+in a world of AI, what
+does that look like, yeah. One of the traps that
+students often fall into
+is I call it the dorm
+room problem which is you've got direct
+visibility into problems that
+are in the light
+cone, so to speak, of your visibility, which is
+quite narrow when you're still
+a student, right? Yeah. And sometimes, when your friends
+are high in the dorm room and you have that conversation,
+it sounds really good.
+It's not actually that good. You should at least
+sleep for one night. Yeah. I've seen a lot of
+those over the years. Yeah, yeah.
+Make sure it sinks in, and you
+still think it's a good idea. At least one night of sleep. Yeah, yeah, yeah, yeah. But just because you're
+a student in a dorm
+doesn't mean you don't want to
+have an impact on big problems and work on things that
+have an impact at scale.
+And sometimes these things
+are mission-critical things, health care, financial
+services, the economy, selling the enterprise,
+but these things
+are not directly in your line
+of sight when you're very young.
+And how would you advise folks
+to-- in particular, to bring it back to these AI systems,
+the context feedback
+loop we've talked
+about is quite critical but getting access to those
+context feedback loops when they can make a huge
+difference is challenging when
+you're young in your career and
+you don't have a big network and so on. So how would you go about
+bootstrapping that problem? Yeah.
+Look, I think the main thing
+is to just solve a problem. And what tends to happen is
+when you go to solve a problem,
+particularly if
+it's a hard problem, you find some other problem
+that's more important.
+And this is well known
+in scientific discovery. Penicillin was an accident.
+They weren't trying
+to solve that one. It just rolled off of the side. And then, by the way,
+Meta was an accident.
+He was building Hot or Not. And he stumbled into,
+this much bigger idea.
+And my friend Drew at Dropbox,
+he was literally tired
+of having USB where he'd have to
+move his presentation from one thing to another.
+He was just solving a
+problem for himself. So I think the best way to
+come on a really important idea
+is to go try and solve
+something, not necessarily build a company, just try
+and solve the problem.
+And then in that problem,
+if it's like a problem that you have, that
+means it's probably real.
+And then in solving
+it, you'll probably-- or you'll likely find
+something much bigger.
+And then that may force
+you to build a company. And those are the things that
+work the best that we've seen
+are these big things. I mean, it's really hard to-- and even Elon Musk
+didn't start his career
+trying to build Tesla. He was solving a
+much smaller problem,
+and that's generally
+how you build up to that I think
+trying to swallow
+the Earth from the beginning
+with no experience doesn't usually work, It's good
+for your pitch deck,
+but it's not good
+for your company. I think Elon's first attempt was
+like a yellow pages competitor or something like that.
+Yeah, yeah, yeah, exactly. Yeah, yellow pages and then
+PayPal and then Tesla and then
+SpaceX. Well, so on that
+point, the time horizon on which sometimes you find
+entrepreneurs have an impact
+on humanity is quite long. They bootstrap the impact--
+I would say or let
+me put it this way. One of the old ways we've seen
+the generation of entrepreneurs that belong to
+Elon's generation is
+that they feel like they
+have to start, somewhat with a narrow scope
+and then bootstrap,
+bigger and bigger scope with
+every successive project. But just a few minutes
+earlier, you said, actually, things are going
+through a lot of change.
+Yeah. You can have a lot of
+impact very quickly relative to incumbents who may have
+had to be a little bit more
+measured in their approaches. How do you resolve these two? I think thinking of it like how
+big a thing am I going to do
+is the wrong way
+to think about it. You have to start with,
+what problem can I solve?
+And then If you can solve that
+problem, that's where to start.
+You have to size it to you. Not everybody is the same. Different people have
+different capabilities.
+You become your full,
+most effective self
+at a different age. Some people are really good
+when they're-- by the way, Zuck is way different now than
+he was when he was 20 years old.
+When he was 20 years
+old, it's a miracle. If he didn't have a
+network effect business,
+that wouldn't worked at all. He just wasn't very good. But he developed that
+entirely over the year.
+And because he had
+that kind of business that had a vertical takeoff,
+he could develop into that.
+And, look, so if
+he didn't have that he might have been better off,
+finishing Harvard or whatever.
+That was just one
+of those things where he happened
+to solve a problem at that age that
+was important enough
+that it created a company. So I want to take it in a
+slightly different direction,
+which is-- or analogous, which is
+when Facebook was getting started, it had a very
+unique culture and--
+Some good, some bad. Yes. And it's not always
+clear what is good and what's bad until much later.
+I think my friend Sean got
+in trouble with the law with that culture, but yeah. Well, didn't he get in
+trouble for Napster?
+Wasn't that one culture earlier? Sean got in trouble
+at Facebook also. At Facebook as well. OK So I don't know--
+And that was a different problem
+with the law at Facebook. I see. Yeah, he generally tends to
+get into trouble a lot, but--
+He is a genius, though. Well, this is the thing. With genius where you often
+find outlier technical
+and/or any kind of outlier
+capability, often you find-- one of the problems I'm
+discovering today in the field
+is that you often
+have really talented teams try to start a new
+lab or a new company. And sometimes they fall apart.
+They just don't get very far. And from the outside,
+you'd be like, oh, this is totally
+going to succeed, star entrepreneur, lots
+of capital, great problem.
+And then 6 months
+in to 12 months in, teams are just struggling
+a lot to make progress.
+And sometimes people leave. They got a-- why is that? What do you think? It is about the right
+cultural initialization
+that sets apart teams
+that can do this and hit that takeoff
+versus stumble along and how do you skip
+the painful parts?
+Yeah. So I think there's a few things. First of all, building
+a company is hard.
+And no matter what
+era or whatever, the press always
+makes it seem easy,
+because they hate entrepreneurs. But it's not easy. It's always extremely hard
+so some are going to fail.
+I just say that up front. But in terms of the team and
+the dynamic and so forth, yeah,
+it's a combination of
+leadership and culture. And culture is a
+very amorphous thing,
+but it ends up being
+very important. So basically, the way to
+think about it is it's
+not like-- people think of
+culture as corporate values or some bull [MUTED].
+But it's not that. It's not, we have integrity.
+We have each other's
+backs or like some of these whatever
+platitudes that people say.
+It's like, how do
+we behave exactly? What are the behaviors? This summer, I
+have a great line,
+which is a culture is
+not a set of beliefs, it's a set of actions. And so what do we
+mean by behaviors?
+Well, do we come to
+the office or not? Do we go home at 5:00
+or do we stay longer?
+If somebody asked me a
+question, do I get back to them instantly or in a week?
+All those kinds of things
+end up mattering like, do we believe the
+best idea wins,
+or does it like matter
+who was the founder? All that stuff, you have
+to agree on as a team
+and like very specifically not
+just some highfalutin idea.
+And then you have to live by it. And then if you have that, if
+you have a standard, if you have
+a cultural standard, then
+if somebody's not living up to that standard, then
+it's a simple thing.
+If you have no
+standard and people aren't living up to
+where you want them to,
+then you're pissed. But then that just
+starts infighting. Then it gets political,
+because it's like, well,
+why [MUTED] is he going home? Well, we never said that
+he needed to be here. We never agreed on that.
+He has a date or whatever,
+or he's got a family.
+He's got to go home. We never said what that was. And then people stop
+liking each other.
+And then you hit the first,
+hard issue and it's like, F it. I'm out.
+OpenAI is going to
+pay me a lot of money. Screw you guys. Screw you guys. I'm going home, as
+Cartman would say.
+But what happens if you
+started by standardizing on some set of beliefs,
+set of actions.
+And then the world changes? And what you thought was going
+to be the right standard six
+months ago in a world where
+stuff changes so fast, needs to be updated? Yeah, yeah.
+Look, cultures can evolve, but
+you have to evolve together. And you need a leader.
+Having this is why I hate
+the idea of co-CEOs or like, we're all equal or we're going
+to run a Communist organization.
+It doesn't actually
+work in a company, because you need somebody
+who's going to break the tie.
+OK yeah. You want it to be that way. You want it to be that way. We're going this way. If you don't like it, out.
+That's how you have to run an
+organization in order for it to succeed. And I think we
+culturally got away
+from that idea in Silicon
+Valley a little bit. In the end of the fat,
+happy network effect era.
+But it's back now so I think-- Could you say more? What do you mean by that? Well, everybody wanted a vote
+on what the company values were
+and this and that. And then CEOs caved to that and
+that ended up not working well
+for any-- Right, right. Companies are not democracies. They are-- Yeah. Well, I think a
+dictatorship always
+beats a democracy in
+a competitive battle. And so because it
+takes a long time to decide things in a democracy.
+Now, look, for a
+country, it's different. There are things when you have
+to last several hundred years
+that no matter how good
+the monarch is, if they die
+and a worse monarch comes into
+play, that could be an issue. Well, I'm going to push a
+little bit on this assumption
+that it's different for
+countries versus companies, because something
+I've learned from you is the way you approach--
+the businesses I
+look up to the most, especially the ones
+in the a16 portfolio, are often with leaders who
+are thinking so long term.
+The way they talk about
+their impact on humanity is not that different from
+the time scale sometimes
+of political leaders. In fact, arguably, some
+of the entrepreneurs are thinking longer term than
+political leaders these days.
+Well, it is longer term. So if you have a
+king-- let's say you had a king running
+the United States.
+If it's a great king who was
+not interested in their own,
+enrichment or their
+family or their friends and so forth, that works like-- Who cared about the
+public benefit basically?
+Who cares about
+the public benefit, I think that works better
+than our current system.
+The problem with it
+is as soon as you get somebody who's not like
+that, that's just too much power
+so you're better off
+decentralizing power so that the system is
+resistant to bad leadership.
+I think a country has to be
+resilient to bad leadership and that, look, if a company
+goes away, OK fine, whatever.
+Well, Dave Packard and
+Bill Hewlett, they're gone.
+They passed away. The new leaders weren't so good. That's the end of the company.
+Fine, whatever. It's a company. Yeah. They did their thing. They did their job. They fulfilled their mission.
+A country has to
+persist beyond that. And so I think we
+already see that here
+be it like on the nation
+level, on the state level.
+Even on the city level, you
+can see like eventually you get politicians who just start
+giving stuff to their friends
+and then everybody suffers. At least you can vote them out. At least you can do something. Whereas in a company, you want
+to be as efficient as possible
+while the sun is shining. I know I could
+keep going forever, but we probably have a bunch
+of questions piling up.
+So I'm going to ask you one
+more question and then we're going to switch to
+the students, yeah, which is you talked
+about David Swensen
+and he had some strong
+assumptions that then you felt-- these were leaders of
+the previous generation
+that you felt just
+didn't get it. Well, I just think that,
+not that he-- by the way,
+Yale is still an
+investor in us today. So I just think you can't let
+your investor-- by the way,
+including us-- run your
+company because you're on the ground in real time
+seeing what's happening.
+They have knowledge
+of the past, and they have a light knowledge
+of what you're doing
+but not full of context. So they can be-- it's an interesting
+conversation, but the investor
+can't run the company.
+And then that's just the way
+it was with him and us, yeah. Well, so my question
+for you is what prior do you feel
+like you now have
+to update so that
+given that you felt
+like Yale at that time, needed
+to update their priors faster today, what do you feel is
+like the biggest assumption
+that you've changed about the
+venture capital industry that maybe was a strong belief
+you held 10 years ago?
+Well, I mean, like
+I said, I think-- well, one, I mean, there are so
+many things that are changing.
+And I talked about like you
+can throw money at the problem. That's a massive change.
+I think that the
+bottlenecks have moved. So we used to have a bottleneck
+on software engineers.
+I think we've got bottlenecks
+on things like electricity now. So I think that changes how
+we think about investment.
+And then companies are so
+big in the private markets
+that they now require things
+that venture capital firms didn't previously provide.
+So when you get up to
+$1 billion in revenue, then you have to be
+multi-country, multi-channel,
+multi-product. These capabilities, most
+VCs just have never had,
+but I think now we
+have to have them. And then I think, the
+private capital markets
+don't have all the functions
+of the public markets so, that needs to be addressed. So there's a lot of
+things that are changing.
+This is definitely
+not a new question. It's a follow-up to
+that, which is you said culture is a set of actions.
+Yes. By the way, this is
+on the wall at a16z. And every day, I would go to
+the office in San Francisco.
+And I'd rent one of these. We could all book
+our own offices. And the one that was my
+favorite was in the back corner
+closest to the
+bathroom, because I could dash to the
+bathroom between meetings. But in that corner, it
+says from the Bushido,
+culture is a set of
+actions, not just beliefs. Yeah, I mean,
+look, I tell people when they come in like, I
+don't care what you think.
+I don't care how you feel. I don't care what's
+in your heart. I just care what you do. And what you do
+matters, and that's
+why you have to your
+own organization, or you get into this. So I mean, that's
+my follow-up is
+a culture is often also what
+you don't do what you say no to. Yeah. What are the things
+that you've had
+to say no to because
+you're like, well that's just not-- that. could be an interesting
+opportunity. It might even help
+an entrepreneur out,
+but that's just
+not in our mission. That's not us. Yeah. Well, so I'll just
+give you one example. So the biggest one that got
+proposed to me like 18 times
+was, well, with AI, AI is like-- it's very much like when
+the spreadsheet happened,
+that launched private equity
+because all of a sudden you could go in and make all
+these big companies much more
+efficient by having them
+adopt this new technology. And AI, even more so.
+You can go in, and you
+can go into an old company and you can make it much
+more efficient with AI.
+And there's many VCs who
+are going with that idea.
+And for me, I would say two big
+reasons I didn't want to do it.
+One is it's culturally the
+opposite of venture capital so--
+Like leveraged
+buyouts, basically. Yeah, LBOs. So venture capital
+is about investing
+in entrepreneurs with
+new ideas and focusing on how they can grow fast.
+Leveraged buyouts are about
+entry price, making it
+more efficient, firing people. And I don't really
+want to grow it. I just want to make more
+money out of what it is.
+And so if you're in the
+venture capital mindset, you're looking for
+the great entrepreneur
+to go build something amazing. If you're in the
+leveraged buyout market,
+you're caring
+about like, OK, I'm going to bring in
+a professional. I'm going to have them run this
+more efficiently and so forth. So it's the opposite motion.
+And so for me, I
+was like, well, I don't want to split
+the culture that way. I think that's not
+going to be a good idea.
+And then the other
+thing is like, I don't want to do that with my life. I have the opportunity to fund
+the greatest, new ideas that
+are going to push humanity
+forward or like that. It's not stupid. I think it's a good business,
+but it's not a business for me.
+So sometimes you're saying
+it's OK to impose bottlenecks on your own growth, because
+that's just not what is fine.
+You don't have to
+be in every business just because
+there's money there.
+Look, I believe
+in like you build a company to do something larger
+than yourself and make the world
+a better place. And then if you do that,
+you will make money. But if you are in business
+just for making money, look,
+that's not for me.  There are a lot of people
+who think that way,
+and I'll let them do that. But I think that great
+companies don't think that.
+To me, companies
+that you would want to be part that I would want to
+be part of don't work that way
+and so I'm not going to
+build that thing just because like, oh, there's
+money over there, or let's
+go run to the money. We're going to
+switch to questions. So the way it's going
+to work is they've been putting their
+questions in Discord,
+and they're all voting on
+each other's questions. And the top ones that
+get voted by each other, we'll go through
+them one by one.
+First question. The question is, if I
+was a college student, where would I put
+my energy and effort
+and what do I think
+about encouraging people to drop out of college?
+So I think that if I
+was in college now,
+I would put a
+tremendous amount of-- I would view AI as a
+very powerful tool set.
+So almost think of it like-- I think the best analog
+is electricity so like, OK, if you knew
+electricity was coming
+and you wanted to do
+something interesting in life and you were in the
+pre-electricity world where it's six o'clock.
+We got to be at home, because
+it's going to get dark. We're not going anywhere
+like that world. Sounds like San Francisco.
+[LAUGHS] Yeah. Well, yes.
+So then, OK, this
+whole new world is coming, let me really
+understand this technology
+and then what is interesting
+to me in the world, and that could be biology.
+It could be material science. It could be rocketry. It could be anything,
+but you want
+to have those tools in your
+bag when you go do that. Or it could be-- by the way, it
+could be in the creative field.
+So people, I think,
+misunderstand what's about to happen
+in the creative world.
+But somebody who in my era would
+have been a pretty good guitar
+player, can now make a
+sci-fi motion picture scored
+and everything by himself. And so the world is
+really, really different.
+So I would definitely figure
+out what I'm interested and then master this new tool
+set and apply it together.
+I think that's probably
+the thing that's definitely going to work.
+In terms of dropping
+out of school, I think that this is
+very individual-based.
+You'd mature at
+different points in life.
+I finished college myself,
+and that was good for me.
+I think it was good for Zuck
+to drop out, given the idea he had and given the kind of
+company he was able to build.
+And so I think that with career
+advice, let me just say this,
+that nobody can give
+you good career advice. They can give them
+good career advice.
+So I can give you
+good advice for me. I can't give you
+good advice for you. And particularly
+your friends are
+going to give you good
+advice for them, not for you. And so don't listen
+to your friends
+and figure out who you are
+and what the best path for you is, I would just say on that.
+Yeah. So by the way, so just
+on political donations, I also donated $5 million to
+the Kamala Harris campaign.
+Important fact. Yeah. Often not reported on. Well, it is reported out
+on Twitter every time
+the MAGA people get mad at me. Look. on politics--
+or let me just
+tell you where that came from
+and how I'm thinking about it, in general.
+Tech had very little
+voice in Washington, DC, and that had extremely severe,
+negative consequences for tech
+and specifically so I can
+go through a few things in the Biden administration. One is they basically almost
+ended the crypto industry
+by enforcing things that
+weren't even in the law to shut down companies.
+And then the same thing
+was happening with AI. So the last Biden
+administration executive order
+was to require for
+all sales of GPUs
+worldwide that any
+time you sold one, you would first need
+government approval, US government approval.
+So that would have
+basically taken us out of the AI race entirely. And the issue behind that was
+basically that we had no voice.
+The whole industry had
+no voice in Washington. So we launched a
+very, very big effort to have a voice in Washington.
+And I would say that
+it's worked very well. So we have much better AI
+policy, much better energy
+policy, and much
+better crypto policy now than we did before
+we got involved.
+So I'd say I'm very
+happy about that. And then all the money
+and conversations
+have been about that. Look, I mean, the
+other thing is--
+like I said, I gave
+money to Kamala, because I'd known
+her for 15 years. She's been to my house 17 times.
+My wife sat next to her
+in church the whole time so I knew her, so I knew
+I could talk to her. Biden, we never could
+get a meeting with Biden
+for the whole time
+he was in office. And if you speak to Tim
+Cook or Sundar Pichai
+or Dave Ricks, who runs
+Eli Lilly, none of them got a meeting with
+him in four years. Now we all know why now.
+But at the time, we didn't. And the result of that was
+tech had no voice in Washington for those times.
+So I guess the answer is,
+yes, I'm happy with that. [LAUGHTER]
+Oh, here we go, Ben.
+That's a good question. So the question to repeat
+the question for the podcast is how do I think being in a
+rap group in college affected me
+and then can I rap for us now. So the story of that was I had a
+friend who got shot in the face
+and became blind. And so we started a-- and he was very, very depressed
+so I would send him rap music.
+And in those days, rap
+had just gotten started. And that cheered
+him up over time
+so we started a rap group called
+the Blind and Def Crew, D-E-F.
+And we became a group
+and I wrote some rhymes. So one of the rhymes
+was the blind, def crew,
+you know we're fly. Three of us, but
+we got four eyes. Because he got his eyes.
+All right. [APPLAUSE] Thank you, Ben. [LAUGHS] There are so many
+very memorable and intriguing
+pitches.  Well, one of the most memorable
+was actually Databricks,
+because it was so bad. So the pitch was the-- Ion Stoica, who was a
+professor at Berkeley,
+presented the company. And the slides he made. It was like going to a
+computer science lecture
+that you couldn't
+understand in college. That's what the Databricks
+pitch felt like.
+So that was very memorable. It was memorable
+because of that. And then it was memorable
+because of what it turned into.
+But-- Well, if you couldn't make
+sense of it, why'd you invest? Well, the whole reason I
+had them come in to pitch
+is because Scott
+Shenker, who was another professor at Berkeley
+who I knew, had called me
+and said, Ben, I have the
+best distributed systems guy that we've seen in the
+last 10 years in academia.
+His name is Matei Zaharias. Do you want to meet him? And I knew as soon as
+he said that to me,
+I was going to invest in
+the company, yeah, yeah. But that pitch
+scared my partners.
+Thank God they didn't
+talk you out of it. Yeah, yeah, yeah. Yes, it's funny.
+So the question is
+about Cluely and what do I think about it now in
+terms of momentum and this
+and that and the other. Look, I think that an
+easier way to think about it is we invest in founders.
+And, you want founders
+who are original thinkers and have breakthrough
+thinking on whatever
+it is they're working on. And I think those guys had a
+bunch of breakthrough ideas,
+including marketing. I think they are
+marketing geniuses
+in a sense in that
+you know about them. They're not the biggest
+company in the world,
+but they're the one
+that you know about. There's something to that. So what it becomes from here
+and where it goes, we'll see.
+But like, hey, I say
+these things are early. And there's only one
+unforgivable sin in business,
+and that's running out of money. And until you've
+run out of money-- I don't count any of these
+companies out, by the way.
+Slack was in dire straits
+before he figured it out. He had built a game on
+flash called Glitch,
+and Steve Jobs outlawed
+flash on the iPad. And it was an iPad game. And I'm like, that's
+how dead he was.
+And he had $6 million left. And he turned it into Slack. But that Stewart Butterfield,
+he's a great entrepreneur.
+So companies go through
+changes and this and that. If you're a special founder
+and you don't run out of cash,
+I'm still for that
+and would bet on that. Question is given
+the SaaSpocalypse
+and given that we have
+a long time horizon, how do you think about--
+how can you invest in anything, because Anthropic
+is just going to one shot
+at all? This is the Wall Street view. By the way, anytime
+Wall Street thinks one thing and Silicon
+Valley thinks another thing,
+that arbitrage is worth a lot
+of money and Wall Street's always wrong, so I think there's
+actually a lot of opportunity
+now in that case. Look, I think some
+of these things are--
+the whole moat is
+the code and the UI. And I think that's
+a difficult position
+to be in right now for sure. But there's a lot of companies--
+most of the new companies-- nobody's coming in with new
+SaaS companies at this point.
+People know like, OK, that's
+not that defensible like you
+can build it and so forth. So that's not the new idea. So then if you go to the
+old ones and you go, well,
+are they all dead like
+Wall Street thinks? I think not really. So I'll just give you
+one example of a company
+that I'm on the board of. So I'm on the board of
+a company called Navan. And Navan is a software
+travel agency for businesses.
+So in a company, your
+biggest variable expense
+is travel so you need to have
+very tight policies around it and so forth. And then to build
+a travel company,
+you actually need to have
+supply chain relationships with, not every airline in
+the United States,
+but every airline in the world,
+every hotel in the world. And if you scrape their websites
+and do that kind of thing,
+they literally cut you off. They send you a
+cease and desist. And they sue you, and you're
+out of business instantly.
+So it's not that hard to build
+all those global supply chain relationships.
+And then you can't sell to
+any significant company that travels worldwide if you
+don't have all of them,
+because I need to be able
+to travel everywhere. And then you've got to
+integrate with whatever
+they're doing for their cruddy
+other systems in their company.
+And then the channel to
+sell it, you're actually selling to somebody
+called the travel manager,
+which, by the way, like
+Anthropic is like the chance that Anthropic would
+build a channel
+to sell to the
+travel manager when-- there's gold bricks everywhere. They're not going to
+pick up a silver brick.
+They're just not going to do it. I can tell you,
+Anj can tell you. That's the last
+thing on their mind.
+In fact, they've
+got an open req now to hire a travel manager at
+Anthropic to manage the Navan
+relationship. [LAUGHS] Nonetheless, I think they'll
+be fine for a very long time.
+So it's just one of
+those things where-- and there's a saying
+on Wall Street. When the paddy wagon backs up
+to the house of ill repute,
+everybody goes to jail,
+not just the people who are committing crime. And so in the
+SaaSpocalypse everybody's
+in jail whether or not they
+should be in jail so just be aware. What do you think it's going
+to take for the markets
+to realize that not-- Time. Time. It's just time.
+And education, I guess, Yeah. And you learn. Well. So the way Wall
+Street works is--
+and Warren Buffett always
+says, in the short term,
+it's a voting machine. In the long term, it's
+a weighing machine. Well, why is that? Well, the reason is
+it's a narrative.
+They buy the narrative. They don't buy the facts. They buy the narrative. So if the story, this is a
+victim of the SaaSpocalypse,
+barring any new
+results from that, that's going to be a
+winning story because it's
+like such a good story. And by the way, all
+the portfolio managers who own SaaS companies
+got fired so nobody
+wants to jump into that, kind
+of thing if you got the new job.
+And so that story is
+going to hold for a while. But eventually, when
+the quarters come in,
+the weighing machine
+will go, well, maybe that narrative wasn't
+right for that company, because why are they making
+so much damn money if they're
+a victim of Anthropic
+can one shot them. That doesn't make any sense. Don't the customers
+the one shot is coming?
+And so then the
+narrative will change and a new narrative will win. And then it becomes
+a weighing machine,
+and that's true for, by
+the way, every company. What advice is super
+overrated today?
+I don't what advice. That's a good question. I'm not sure. What kind of advice
+are you getting?
+Oh, what I get? I mean, look, I think you have
+to pay much more attention--
+I think the thing that is
+true is you can't ignore. I remember before
+the internet came,
+which I was also alive for. There were a lot
+of tech companies.
+And anyone that ignored
+the internet was just gone. You can't ignore
+a change that big.
+There's no way that something
+that worked before AI can ignore AI and survive.
+So that part is true. And so if you're
+starting a company and you're not dealing
+with not only AI today,
+but what's likely to happen,
+as the models get bigger and so forth, it's just not going to
+be a very interesting company.
+So that part of advice
+is very correct. I think the part of
+the advice that's wrong
+is there aren't going to be any
+employees and companies aren't going to hire
+people, and it's just going to be AI bots
+running everything.
+By the way, all the data is
+going in the opposite direction of that. Even software engineering
+jobs are growing very fast,
+despite what Dario says. And by the way, they're
+growing very fast at Anthropic
+so it's like, at what point
+do you call on that idea?
+I think sometimes things
+get taken out of context. With the political donation
+question, what was missing
+context was that your
+donations to both sides. I think one of the things
+that gets taken out of context with Dario is
+he's often saying, hey,
+during the transition,
+some types of jobs that are low skill, those will go away.
+And those people will then
+have to take new jobs. Yeah, so there will be a job--
+so Dario is very right on that.
+There will be a job change. So not the advice Dario gives
+but how it gets written up. Exactly. It's the tweets.
+It's the tweets. The tweets are the problem. Yeah so those tweets turn out
+to be I would just say very
+overblown and not representative
+of what's likely going to happen so, don't--
+and in general,
+the doom and gloom, I just think it's
+overstated a lot on AI.
+By the way, the most
+dangerous thing I think, on AI by far, is that
+we fail as a country.
+We get too scared. We overregulate. We do what Bernie
+Sanders recommends. Some of you are Bernie
+Sanders fans, but like we put
+a moratorium on data centers. And then China wins. And look, I think a
+world Where-- by the way,
+either China has
+superintelligence and we don't or we have
+it and they don't is
+a much more dangerous world
+than having some kind of balance to the power.
+Concentrations of
+power historically have been the worst
+thing for humanity. And so I think that would be
+the thing to be scared of.
+So I think the fear could
+cause actually a worse problem than what people fear.
+Well, here at AI Coachella,
+we are rational optimists. All right. That was good. So thank you for coming
+to AI Coachella, Ben.
+All right. Thank you.

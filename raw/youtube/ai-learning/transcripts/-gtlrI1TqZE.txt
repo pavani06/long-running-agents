@@ -1,0 +1,263 @@
+By the end of this video, you will have
+a crystal clear understanding of what
+MCB is, why it's required, how it
+internally works, how to effectively use
+it in any to build complex workflows,
+and why is everyone so excited about it.
+You will be amazed to see how useless it
+is in certain cases and so powerful in
+others. This video contains everything
+you need to know about MCP in any. Let's
+get started. First, let's understand
+what MCP is. Let's say we have this AI
+agent that handles all the appointment
+scheduling. We have given it access to
+the open chat model which will act as
+its brain. Then it has access to a
+simple memory where it can store its
+previous conversations. And then we have
+given these five calendar tools create
+event, delete event, get event, update
+event and list events. Depending on what
+action this EI agent needs to perform,
+it can trigger the required
+corresponding tool and get the work
+done. And this works just fine. Now just
+imagine if there were large number of
+tools not just five then that would
+become really difficult to manage over
+here. And if you look at each of these
+nodes internally they are just making an
+API call. So here we give the credential
+that it will use to make the API call.
+Then we select the resource type and the
+operation. Now just imagine if the
+service provider in this case Google if
+it makes any updates to their existing
+APIs in the newer version. Let's say
+they add some more parameters or if they
+deprecate an existing API or they or
+they introduce a new API then in order
+to keep these workflows running fine we
+will need to update these nodes. We'll
+have to come over here select the
+correct operation or fill in the correct
+value for the newly introduced parameter
+or update it and that's a manual and
+kind of non-productive exercise. Now
+what if there were a better way of doing
+it where a agent had access to some
+server that would dynamically on the fly
+return all the available tools along
+with what parameters they need and all
+the corresponding prompts etc. And
+that's exactly what MCP does. MCP is
+model context protocol. It follows a
+client server architecture where a host
+application can connect to multiple
+servers. It has three main components.
+MCP host. MCP host can be any program
+like cloud desktop or any ids like
+cursor or maybe your custom application
+that want to access data through MCP.
+Second component is MCP client. These
+are protocol clients that maintain
+onetoone connection with the servers and
+the third component is MCP server
+itself. It is a lightweight program that
+exposes specific tools through a
+standardized model context protocol. So
+in case of any its docker container will
+act as the host. Now client can call
+this server and it can get the list of
+all the available tools which are
+registered on that server and server can
+respond back with a manifest file back
+to the client. Then client can forward
+that manifest file to the AI agent and
+AI agent will share it with LLM model.
+Then LLM model will decide which
+function to execute based on the current
+query being processed. And once it's
+decided then AI agent will ask this
+client to execute that particular action
+and client will make a request to the
+server. Server will execute this
+function and return back the response
+and that's how the complete flow looks
+like. So this is the code for Google
+calendar MCP and if we scroll down in
+listtools.ts we will find the list of
+all the tools defined in this MCP. To
+begin with, client will make a request
+to this MCP server to list all the
+tools. LM will then decide which tool
+needs to be executed. MCP server will
+receive that request and will execute
+the logic defined in call tools.ts for
+this particular
+tool. Now, don't get overwhelmed by
+looking at this code because you don't
+have to deal with any of this stuff.
+Everything is being taken care of by the
+native node in any. This is just for you
+to understand how it internally works
+and we don't have to own this server
+code. This is managed by the respective
+services or by open communities. By the
+way, if you want to build your own MCP,
+you can do that pretty easily by
+following this guide over here. You can
+find the link in the description. Now,
+let's come back to any and see how to
+transform this workflow by using MCP.
+So, any provides two nodes. one is MCP
+client tool and another is MCP server
+trigger. MCP server trigger is where we
+need to define all the tools that we
+want to be available for this EI agent.
+So what we need to do is disconnect all
+of these tools from here and move them
+below this MCP server and connect all of
+these tools. Now all of these tools are
+provided through this MCP server. Now we
+need a way to allow this AI agent to
+talk to this MCP server and that's where
+this MCP client comes into the picture
+and we just need to connect this one
+tool with this MCP client node. Now if
+we open this MCP server trigger it has
+this URL over here. So we can copy the
+production URL and then we need to go
+back to MCP client and we need to paste
+that endpoint over here in the SSC
+endpoint field.
+Now if I save this workflow and if I
+refresh this and open this MCP client,
+we will see all of these tools in this
+list which we added to this MCP server.
+It means that client is able to pull in
+all the tools from MCP server. Now in
+MCP client we have this way of limiting
+the access to the tools. So we have
+three options all selected and all
+accept. So all will select all the tools
+which are added to the MCP server. With
+selected field we can select a couple of
+tools that we want give access to and
+all except field will let us exclude a
+couple of tools. For the sake of
+explanation I'm keeping both MCP server
+and client in the same workflow. But we
+should move this MCP server to a new
+workflow and then use it over here.
+Let's move these side by side so that we
+can trigger the chat and see all of
+these nodes in action. Let's give it a
+prompt. I want to schedule a meeting at
+11:00 a.m. for 1 hour. Keep the title as
+project discussion. Now, EA agent is
+working on it. It called MCP client and
+and it was able to successfully schedule
+the meeting. As you can see, it first
+called the memory, then it called the
+chat model, then it called MCP client to
+execute the operation, and then it again
+called the openi chat model to prepare
+the final message. And then it saved the
+message in the memory. If we go to the
+executions, we can see that this MCP
+server was triggered and the create
+event rule was executed and these
+parameters were passed by the MCP
+client. Start, end, description, and
+summary. Now, as you can see, using MCP
+can seem useless at times, especially if
+you are not looking for reusing your
+tools across workflows. For example,
+here all we did was to move all of these
+tools from under the EI agent to this
+MCP server. And that's it. And that
+introduced one more layer of
+communication. Earlier, AI agent was
+able to directly call these tools, but
+now it has to go through this layer of
+MCP server to be able to execute them.
+The latency will be in milliseconds. But
+this additional layer will introduce
+some more latency. Now there is no point
+of using MCP over here if I don't intend
+to use these tools in other workflows.
+And that's where it becomes kind of
+useless. In fact, it could have been
+useful if instead of configuring each of
+these tools manually, there could have
+been a mechanism that would
+automatically fetch all the available
+tools from Google and make them
+available to this AI agent. And I think
+that will happen in the near future but
+it's not there right now. So when should
+we use MCP? So the first scenario is
+where we are looking for reusing tools
+across workflows. Let's say we have 10
+15 20 workflows which are kind of using
+the same tools. Then instead of
+providing these tools in each of those
+workflows it's better to pull them out
+and put them under the MCP server. The
+reason being that let's say tomorrow if
+Google makes some changes to their APIs
+and that leads to some changes to these
+nodes maybe introduction of new
+parameters or updating the existing ones
+in that case you will need to go to each
+of your workflows and update the nodes
+but if you're using MCP server then you
+don't have to make any change to any of
+your workflows and all you need to do is
+make one change in your MCP server
+workflow. That's it. The second use case
+would be that if you want to build your
+MCP server on any and if you want to
+connect it to different tools like cloud
+or cursor or maybe your custom
+application then you can consider using
+it. Now let's talk about what's a good
+way to structure MCP servers and the
+corresponding tools. Let's say you want
+to give tools related to email, Google
+calendar and Slack to this AI agent. Now
+there are two ways of doing it. Approach
+one, you can add tools from multiple
+services in the same MCP server and then
+in the MCP client you can select the
+tools that you want to give this agent
+access to and you can use the same MCP
+server across your various workflows.
+The second approach is to create three
+different MCP servers one for calendar,
+one for Gmail and another for Slack and
+then create three different MCP clients
+and connect them to the EI agent. In
+each of these MCP clients, you need to
+give the corresponding SSE URL. And
+behind the scenes, what will happen is
+the manifest file from all the three MCP
+servers will be combined and passed on
+to the EI agent. But I don't suggest
+giving a large number of
+responsibilities to the same agent.
+Instead, you should create multiple AI
+agents with their dedicated
+responsibilities and you can have one
+master AI agent that delegates the
+corresponding tasks to those AI agents.
+A single agent having access to so many
+tools will lead to hallucination. Let me
+know in the comments what do you think
+about MCP or if you have any questions.
+Don't forget to subscribe the channel
+for more in-depth tutorials on AI and
+MCP. Thanks for watching and see you in
+the next video.

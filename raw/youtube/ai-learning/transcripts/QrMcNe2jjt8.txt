@@ -1,0 +1,550 @@
+[music]
+How's it going?
+The end of uh the end of the conference.
+How is everybody feeling? Tired drinking
+from the fire hose as well? Are you guys
+a little bit tired of hearing loop
+engineering, harness engineering,
+software factory, evolves, pre-training,
+post-training data, and whatnot? Uh, but
+anyways, those topics were more than
+valid, right? Hi. Some really common
+faces here. By the way, I'm super
+excited to be here and talk to you guys
+uh about this title. And I'm sorry when
+I was when I submitted the application I
+was thinking of potentially a catchy
+title but I don't like this at all. So
+without the respect to the organizers
+I'll have to make a change. Uh and the
+actual topic that I want to focus here
+today is lessons learned uh from a team
+that is building proper generative uh UX
+and UI. And I was gonna uh touch on
+agentic orchestration, but come on. Uh
+over the last three days, this is what
+we heard uh all the time. So I'd rather
+focus on what I didn't hear uh enough
+about here in the conference. And
+hopefully you walk away if not with
+something very tangible, but with a new
+mental model that can spark meaningful
+discussions down the road. Sounds good.
+All right. Very good. So hi everybody.
+Uh I'm Gus. I'm a general manager at
+Commerce Tools. I lead product UX and
+engineering for zero to one product. I
+tell people I'm in a very privileged
+position because we get to build really
+cool stuff. So we cook really
+interesting stuff at commerce tools.
+Fantastic. And this is what you guys can
+expect uh during the presentation. Uh
+I'll like to make sure that we're on the
+same page with respect to the problem uh
+the problem space. Uh followed by a
+quick demo of the product because I'm
+not sure if you guys agree an image
+speaks more than 10,000 words. So it
+would just uh make it more tangible for
+uh everybody here followed by a rapid
+discussion on the emergence of UI
+protocols and I'm not sure if you guys
+joined maybe some of the talks here even
+the founder of some of these protocols
+were here uh this week and that was
+really cool followed by and last but not
+least the challenges that uh my team uh
+and I faced and we still face and some
+of the mitigation tactics uh that we put
+in place to overcome some of these
+challenges. So with that, let's continue
+the problem space. This is this is more
+like a a statement. Um and we're still
+adapt to the software that we ship, not
+the other way around, right? And then uh
+although you could argue when GPT came
+out, this was November uh 2022, we had a
+really good glimpse of uh real
+personalization, but everything else uh
+remained static. And even with AI, we
+keep shipping a lot of stuff much
+faster, but to a significant extent, it
+is still static. And my question is why?
+So for the uh over the last 40 years, uh
+we kept shifting static experiences. And
+if I put myself in the shoes of uh some
+of uh my customers, they need several
+SAS applications for uh the day-to-day
+work. And each with its own mental model
+and its own way to get anything done and
+over time it just kept getting worse
+just acrewing uh that the cognitive load
+that we wanted to remove and that we
+wanted to transfer to the machine uh
+it's on us and now with a AI things can
+be different. I don't know if you guys
+agree but this is uh what we what we
+think and I do have a couple of
+examples. I'm not going to say out loud
+the name of these apps. But let's take a
+look
+here. First one, you know that icon is
+very well known. This is probably the
+most famous CRM of all times. But when I
+look at this screen, there's a lot going
+on. I don't even know where to start,
+right? Not only the information
+overload, how many features, how many
+teams do you think are somewhat involved
+just to ship this? Many probably, right?
+And this is just one. Let's have a look.
+I have a couple of other examples. So
+this here, look at that. Oh my god. This
+is a fancy table. I don't even know
+where to start. But anyways, one more.
+Does everybody know this one here?
+Beautiful, beautiful UI, right? It's a
+fantastic, super intuitive. And
+something else just to highlight.
+Do you guys know how much time these
+companies need to invest in onboarding
+people? So that was the the trade-off.
+Uh right. So you got to allocate a lot
+of time from a lot of people just to
+onboard uh newcomers as a result of this
+uh complexity that has been introduced
+uh over time. So this is just uh at
+least uh the hardcore uh evidence. So
+different apps, different logic every
+single time and then more apps are
+coming out. So imagine just put yourself
+in the shoes of an average user and then
+oh now I have five five apps and then
+every single one I need to learn how to
+navigate, how to browse and so on and so
+forth. And then uh this has been the
+history uh up until now. But then this
+was August last year. I sat down with uh
+my boss happens to be the founder of the
+company. So big shout out to my boss. Uh
+and then we asked this uh this question
+because at commerce tools we are an API
+first company 300 plus still counting
+and we asked this posing question
+through the lens of artificial
+intelligence. What are the foundational
+shifts that could be made if we could
+change drastically the way that we
+interact with software not in a static
+fashion and the answer to that question
+led to the product that I'm going to
+demo right now. Let's go. How about
+quick demo? Guys like the idea? Give me
+a thumbs up. Bye. I know everybody's
+tired. Let's go. Yay. All right. Cool.
+Look at this. I know I'm gonna zoom in.
+No worries. So, I have this query here.
+Create a sales report for Q1.
+And the UX side of me when I look at uh
+what was generated. And by the way,
+everything here on the right side has
+been autogenerated guided by us. But
+this is AI, right? deciding on the
+placement on the information
+architecture deciding which uh
+components had to be actually retrieved
+from the catalog but I don't like it at
+all right it's a even if you don't know
+a lot about UX just let's you know I
+have at least four different variations
+because those were four different terms
+for the same query let's check it out
+first one here it was Q1 uh urban thread
+whatever that is Q1 I see all of these
+KPI cards. There's a lot going on here.
+And then my intuition tells me, man,
+this doesn't add up.
+Okay, second one. It's not Q1 anymore.
+Now, this is January and March. There's
+no consistency. Does that help? Yes or
+no?
+No. Right. This is this is will only
+create confusion. If this is a heavy
+personalized experience for the user,
+imagine if every single time you need to
+prompt and then uh at least the model
+will output something different. This is
+not good. And this is just the second
+turn. Let's have a look at the third
+one. Oh my god. Now there is uh even
+more stuff uh here on the right side.
+Right. So this is uh I have uh this
+component, the KPI cards, a bunch of
+text, a bunch of charts. Uh and then
+this this was the beginning of our
+journey. One more. Yes. Okay. Now it's
+still Q1. Uh but still for me this still
+uh it's confusing and because this has
+been a very experimental journey. Uh at
+least uh okay, let's let's move on here.
+My feedback to the team and to myself
+was no, no, and no. There's no way that
+I would ship this to to prot whatsoever.
+Right? And then uh I have my colleagues
+here just to uh confirm what I just
+said. But then things evolved and I like
+to demo the current state of the
+product. It's much more sophisticated.
+And let's have a look. I I would like to
+plan a campaign and for what it's worth,
+I'm going to save you from all the
+nitty-gritty details for everything that
+is domain uh specific. But I'm going to
+pick this query here. Uh and then let's
+see what happens. And this is the theic
+orchestration part that I was going to
+highlight. Underneath the hood, we have
+the orchestrator and the orchestrator
+can then just extract the intent of the
+query. Based off of the intent of the
+query, it can locate the tools, right?
+Those can be first party, third party
+tools. And the outputs of this different
+it could be agents on MCP servers
+combined will give uh uh enough what I
+call ammunition and context for the UX
+agent to eventually render something uh
+that we call meaningful. So compared to
+the previous terms
+this is this is decent right I want to
+just remove my bias but the overall
+aesthetics the look and feel of this
+query uh it it resonates with me. Would
+you agree? Give me a thumbs up if you if
+you agree. Okay, at least the vast
+majority here. And then see it is
+decent. And let me just continue here.
+And then once again, right, this was
+decided by AI, guided by us. I just want
+to make make that clear here. And then
+I'm going to touch on the the UI
+protocols and then how you can make this
+happen. But okay, let's see if I approve
+here. And then this is already live and
+this is prepro, right? So, uh, this is
+great. Let me go back to my
+presentation.
+Perfect. I have one more question. Are
+you guys skeptical that this is
+possible? Because I can tell you this,
+it is possible. If you're still
+skeptical, don't worry. I have all of
+these guys here uh also every day just
+looking at me and then challenging
+whether uh this uh can be made possible
+at scale, right? And then uh okay. And
+then this is the part that I like just
+to touch uh touch base on the uh on the
+three ways that you can render what you
+just saw. And there are different UI
+protocols. Are you guys familiar with uh
+generative uh UI? Have you guys play
+with it? Let me see here. Okay. Wow,
+that's really cool. Uh okay. So, uh what
+I would like just to share with you
+guys, it's all about how much control
+you want to exercise over the
+experience. And this matters a lot
+because uh you know as a
+nondeterministic solution uh you can
+decide if you want something really um
+like this. So let's have a look here.
+This is a chap
+and my query was help me find a Japanese
+restaurant uh in SF today. If you guys
+see here this component this component
+is very opinionated. Would you agree
+with that here? Right. So uh you can
+have complete control over this uh
+component. So depending upon the nature
+of your business, this works really
+well, right? And for that, let me just
+go back here and then this is what I
+call uh control. Essentially, you ship
+the component as it is. The agent will
+pick and it will display exactly the way
+that you describe. However, depending
+upon the nature of your business, at
+least for us, right, my company, we're a
+B2B says the there's so much
+configuration that we don't want to be
+over uh prescriptive because uh the
+feedback that I keep getting from my
+customers, oh the flows are so
+confusing, there's so much
+configuration, how can you remove the
+cognitive load uh for me? But uh if
+you're like booking, for example, this
+approach uh works uh really well. And
+then let's see uh how it works. So
+essentially you have the agent. The
+agent would just pick the component from
+your catalog and then it will render uh
+as it is right and uh in the interest of
+time I'm not going to touch base on the
+code snippets that I have for this three
+different types but afterwards if you
+guys are interested uh I can share the
+presentation and then you can have a
+look. All right. Very good. This is uh
+at least on the left side. Let's discuss
+a little bit on the right side because
+this is when you give full autonomy to
+the LLM. If you guys remember uh at
+least the previous attempts for my
+product, this is exactly what we did. So
+we just say so hey LM how uh how would
+you compose this experience knowing that
+you have this components right? But uh
+that was uh that was a little bit uh a
+little bit of our opinion because it's
+uh it has uh it had some of the
+components available. But it could
+happen that uh you can just delegate
+fully to the LLM and then right now I'm
+here on cloud and I ask cloud so hey
+create an org chart with three levels
+that was it and then claude just render
+this diagram and it works really well
+right but here if I put myself in the
+shoes of a company I'm not sure I would
+delegate fully to the LLM because I
+cannot control uh at least the out uh
+the output uh and the outcome And me
+personally, Mikas as a UX leader, the UX
+side of me will always say no, you got
+to be in control. There's been a couple
+of talks uh here uh at least this week
+on design, on taste and judgment. And
+this matters a lot if you guys want to
+embark on this journey of leveraging
+these protocols. You don't want to
+delegate too much uh of the actual
+experience to the LLM. You got to find
+alternatives and I'm going to touch on
+that in just a little bit. Okay, cool.
+And then this is how the open-ended uh
+approach works. So essentially there uh
+there's going to be an MCP tool and then
+this will literally ship uh the uh HTML
+and then in a sandbox uh iframe uh
+environment this will be uh rendered uh
+in the host of your choice. It can be a
+chat, it can be this uh yeah cloud, it
+could be chatpt, it could be perplexity
+or it could be uh any other chat. If
+you're willing just to to give full
+control to the LLM, uh, good luck. But
+the one that I would like to highlight
+is
+this here. And this was our choice that
+we call the declarative. Declarative is
+uh in the middle. uh if you guys uh
+heard some of the protocols and I don't
+want to get into the specifics of each
+because they have different
+characteristics but H2I from Google JSON
+render from uh versel open UI by thesis
+those are some of the protocols that
+will give you this uh in between here
+and let's have a look right so at least
+for uh my product the one that I just
+showed the orchestrator agent will uh
+eventually if you think of uh the whole
+traversal. Uh the user will enter the
+query and then there's going to be the
+intent classification based off of the
+intent classification. Then the tools
+will be invoked, the data will be
+retrieved and uh somewhat uh somewhat uh
+in between at least uh there will be the
+mapping of the eligible components from
+your catalog uh to uh the uh the
+entities uh of uh of the tools, right?
+And then the orchestrator would just
+broadcast this UI description. It's like
+a UI spec. This UI spec will be also we
+have this component catalog here and we
+use the ZOD schema and then you got to
+be compliant with this protocols. This
+is just one of the requirements and then
+you just render that right. Uh and then
+the final output will be the native UI
+in this case the react components. Uh
+this is it. The good thing about uh the
+declarative uh approach uh is uh it will
+be compliant with your design system
+everywhere. This matters a lot. So in
+our case we did not want to delegate uh
+to uh the LLM because you guys saw uh
+over there it can change the copy right
+so it's not Q1 sometimes it's going to
+be March uh January to March it matters
+a lot so within uh UX we have different
+vectors right we have the actual UX is
+uh if you think of the overall
+experience there is UI there's also
+copying UX uh writing and so on and so
+forth but this approach uh gives us this
+in between it is less deterministic and
+I think this is a really good segue to
+some of the challenges because imagine
+I'm going to use my example once again
+the orchestrator uh would just fetch the
+eligible uh components for that query
+but then it's up to the LLM how to place
+in the UI and this can get really really
+messy right and uh those are the
+challenges that I would like to share
+with you guys here I got to be careful
+because I've got only 30 minutes but
+let's
+So the first challenge is if the agent
+picks the components, who's in charge or
+what entity is in charge of arranging
+them? And this is information
+architecture, right? This is a critical
+uh aspect of UX. And then once again, if
+you put yourself in the shoes of the
+average customer, it matters a lot. So
+if you're just left alone, the placement
+can be totally random. So at least in my
+team we borrow this concept of atomic uh
+design and atomic design it goes like
+this. Let me just change here. Uh yeah
+so as you can see uh atomic design and
+then I have the definition is uh a
+methodology composed of five distinct
+stages working together to create
+interface design systems in a more
+deliberate and hierarchical manner. This
+helps a lot, right? Because those are
+the individual elements and if you think
+of the overall structure of the page, it
+gives me the ability to steer as I see
+fit. And what we've done in my team, so
+this UX agent, we harnessed this UX
+agent. So we eventually taught uh this
+uh this UX agent what good looks like,
+what what is uh the optimal uh layout
+for a given situation. And we have a
+catalog of different templates. But I
+would like to show you uh at least this
+because this detail is very important
+here. It is the overall hierarch
+hierarchy. So if you remember uh part of
+the orchestrator the orchestrator will
+eventually just fetch the eligible
+components to accomplish the query uh of
+the user. But then uh the next big
+question is how do we arrange that? The
+approach that we use was think of this
+hierarchy. So you have the overall page,
+the layout, the layout uh will contain
+different slots. So think of this one
+here, the header, you can have the main
+and then you can have sub uh sub slots.
+Subslots can have sub slots and within
+the sub slots you can have eligible
+component categories and then this will
+allow us to steer uh eventually the uh
+the uh the optimal placement of the
+components that uh have been retrieved
+by the orchestrator. So th this is
+literally us codifying u uh our UX
+knowledge into this agent. So the next
+time you know it doesn't matter we'll
+just uh follow the same approach and
+then this is the hierarchy that we're
+using. So layout to slot to sub slots to
+components. However because of the
+orchestrator we we flip the order. So
+from components components will map to
+sublot sub slots to slots is slots to
+templates and then we can uh just uh
+arrange as needed. So this was a hell of
+a challenge. It is still a challenge by
+the way and it's a really good segue to
+the second one uh the second challenge
+which is uh the actual design your
+design system and your catalog. This
+becomes the heartbeat of the whole
+thing, right? I cannot stress enough if
+you guys see the potential of leveraging
+these UI protocols for your product,
+this is going to be a big deal, right?
+So, we're pushing the boundaries and
+then we're testing and we keep on
+testing these different protocols that I
+mentioned, HPUI, JSON render, uh, open
+UI and so on and so forth. But this has
+been uh quite challenging because the
+the catalog is the contract between the
+agent uh and the UI. So every property
+ma uh matters and not only for the
+catalog but for the layout as well. So
+if you remember the layout has its own
+components the slots and the subslots.
+Each of those components will have uh
+its own attributes and all of that this
+curation let me just encapsulate into
+curation. This curation is absolutely
+needed so that you can deliver something
+meaningful not some demo that you will
+see out there for the sake of demo.
+Right? So this this is this this will
+give you a control will allow you to
+steer from a UX perspective.
+Very good. And uh last but not least uh
+one significant challenge that we had is
+that my teams do not design the pixel
+anymore. I don't know if you could see
+that right. So we're not here designing
+the entire flow. Now uh AI can dictate
+that to a significant extent but the
+nature of the work shifted quite a bit
+and it's been an interesting journey to
+say the least. a really good one. But
+even for the non-technical uh PMS and UX
+designers, it it was a big hit because
+right now we talk about uh the schema.
+Let's talk about this curation of the
+catalog. Let's talk about the rules.
+Let's talk about the synthetic uh data
+that we can generate. How can we
+generate the queries that will map to a
+given component as part of this mapping
+logic? Let's talk about interaction
+patterns. So this uh if once again if
+you guys are going to embark on this
+journey be aware that the people element
+is very important when I talk to uh
+other leaders I I talk about the three
+PS people product and process right and
+then a very lightweight process but this
+matters a lot and uh with that um I'm
+going to leave a couple of resources
+here so and by the way those are talks
+from AIE for what it's worth. So uh yeah
+people that have been talking about
+these protocols over and over and over.
+So uh please just take advantage take a
+screenshot and uh if you guys want to
+connect with me here um yeah my LinkedIn
+or just take a screenshot I would love
+to uh talk more uh about the topic. I
+can tell you this it's just a matter of
+time right so this is coming so thank
+you so much
+[music]

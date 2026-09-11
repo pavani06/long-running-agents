@@ -1,0 +1,119 @@
+open AI released their API for the 01 model so I wanted to try it out just to see what we can do with it uh I'm probably going to run this in cursor
+because I don't have access yet even though I am on tier five uh a bit strange but I probably they are just
+rolling it out over time I guess uh yeah uh I don't have it here but uh uh the
+reason I saw this is that on live bench now you can see 01 this version is on top for coding so I wanted to give it a
+spin here on cursor just to do a few examples to see what we can write about it check out the latency will this
+replace my CLA 3.5 I doubt it but let's see now what we can do with this so uh I think we're going to start by just
+making um simple thing with the real time API with the web RTC that was also something new from open AI so I think
+we're just going to copy this documentation here and and just head over to cursor I made a file here so I'm just
+going to paste in this documentation and then I think we're just going to open up the chat
+right and I selected the 01 model here in cursor uh if you want to try this yourself you have to set like a hard
+limit because yeah something about you have to pay for it or something but I'm going to test it out now just to see what we can do with it so I think we're
+going to do like a one shot Pro prompt here to try to build this web RTC uh small application to see what we
+can do with this so let's do the prompt uh I want to build a simple web app RT voice. HTML where the user can input the API key start talking with the realtime
+API uh I also want a drop down menu that selects between the voice bad and verse let's also display a connection
+monitoring establish not connected and a start stop button so I select o1 and let's do yeah enter guess so let's
+monitor the latency now because that is what I'm most worried about that this is going to take a very long time each time
+you want to do something small so yeah already I can kind of feel that this is slower than claw
+3.5 uh and that is something I don't want to do I guess I could use a one in some cases okay I guess it didn't stream
+so we came back with a result here uh so let's apply this uh but if this works first time I guess
+that's that isn't too bad uh I thought we maybe needed a server for this uh but
+let's try it out so uh I'm just going to open up uh that this and do like a
+python so we can serve this on Port 8,000 maybe I should have said that but
+let's try that now let's go to this port here and let's open up this okay uh so far it's looking pretty good so we have
+the drop down that's good we have the start we have the not connected so I'm going to grab an API key here to see if
+this works so let's paste in our key uh click Start
+hello hello hello hey there hello again what's on your mind today uh not much uh
+how are you I'm just a bundle of digital energy always okay so let's stop it let's try to switch up the
+voice hello hello there how's it going I'm good what about
+you I'm doing great thanks for asking okay that was pretty good right that was a one shot prompt we got the code
+straight away we got everything we needed that's so that was a bit better than I thought so I was kind of impressed by this so we could build this
+out now so let's try to improve the UI a bit give it a more like a let's go for like a retro terminal feel so let's go
+back to cursor and let's do a new prompt here just to follow up on this so let's follow up with great at work now I want to style the UI I want a super retro
+minimalistic terminal UI black and white some well-known terminal animations maybe a hint of dark green make it stylish and very nostalgic feeling so
+again let's try the o one prompting here so hopefully now we're just going to edit our uh HTML here again uh I expect
+this is going to take a bit of a time uh but it wasn't too bad like I think this uh entry was a big Improvement if we
+compare it to o1 preview and that is kind of one of their sales Point yeah that wasn't too bad how
+long was that maybe around 10 20 seconds okay so we got uh so let's uh just
+implement this is here okay so let's go back here uh all right that is something
+right not too bad we have some simple animations here uh let's try to just uh I want to give it like more freedom so
+let's do uh okay good let's just do make it more terminal based let's start green put all the content into an interactive
+terminal window so again we're going to try to see what this
+does okay so let's apply this say that fresh yeah this is more what I was
+looking for so I'm pretty happy with this so let me paste in the key again let's select this start and
+hello hey there how's it going what can I do for you today switch up the
+voice hello helloy hey there how's it going yeah the voice switching where is pretty good so
+I'm pretty happy with I don't really like this part though it's a bit strange let's try to remove that so let's just do let's remove the popup play volume
+controls hopefully this shouldn't take too long so let's just stay here now to check the latency so yeah it's been like 5 seconds
+I guess we still have these reasoning tokens so it will be slower naturally because it has to go through this
+stepbystep instruction list right so yeah not too bad uh but again I could have
+implemented streaming so let's refresh this now let's try again
+hello hello there okay yeah perfect so so far I got to say uh it worked pretty good how long did that take me around
+maybe 10 minutes to set everything up uh I think I want to do one more thing uh
+because testing out this model in just uh a few a short video is not going to cut it but at least I get some
+impression now what I think uh and this solution we have here by one shoting this web RTC integration of the realtime
+API work out pretty good so I think I'm going to start one more project and let's see if we can onot that so I'm
+going to fire up something new gather some documentation and let's try it okay so I decided what I want to do uh I want to implement structured outputs uh I
+want to implement whisper and some other stuff so we can kind of record our conversation into maybe like an MP3 file
+we can translate that using whisper and then we can use structured outputs and maybe like a GPT 40 call to try to
+extract some data from our conversation with the realtime API so I'm just going to gather some data here so I know they
+added this copy page I like that so I can copy this let's go back to our documentation here o that was 1100 lines
+so let's grab speech to text this is going to be whisper I think so let's copy that
+information paste that into the docks another 500 lines is there anything else we need I guess we need text generation
+so let's do that uh okay so we got about 2,000 lines of documentation now and I think we got
+to include uh we're going to include the T voice
+here in this context let's do a do EnV and let's do an open a Let's do an open
+AI API key input here and let's add this so let me come up with a onot prompt for
+all of the project now and if all one can do this in one shot uh I'm going to be pretty impressed my one shot prompt
+for this is going to be I want to build uh on the RT voice HTML project this runs the realtime API and is a conversation between the user and the
+API we want to extract some data from the conversation for the next step of this project it will work as follows the
+user and the API has a conversation the conversation must be recorded as a temporary MP3 file we can run in whisper to transcribe this into text in ajon
+format then we have the transcript you want to use the gp4 O API and structured outputs to extract data into a Json for
+format the data we want is sentiment topic conversation and any dates from the conversation the extracted data must
+be saved into a data Json in the cvd look at the documentation write all the code we need to implement this into our
+project so if this works on the one shot I will be very surprised but let's try it now so just going to press
+enter uh it's a long file so this is probably going to take some time uh but I'll come back with we have this and I
+just give like a quick report how long this took okay so we have the respon so this took about I would say 40 seconds
+30 45 50 seconds around that so we have a new code here for this RT voice so
+let's implement this okay interesting and if we scroll down we need to create a server.js we just can apply this right
+Away Great we save that uh we have some installations we have to do so let me open up the terminal so we're going to
+install some dependencies here uh we want to export our o Open AI key so I'm going to do that okay so I set my API
+key now we can run the server uh and then let's head over here so now we are in our HTML right so I'm going to paste in AP key uh I'm going to try start
+let's open up the conso to hello hey there what can I do for you to
+I just need a date that's about it today's date is December 19th 2024 anything else you need I think
+that's it so thank you very much I enjoyed your service and let's speak soon you're welcome I'm glad I could
+help don't hesitate to reach out if you need any hello again what's on your goodbye have a okay so I clicked stop
+now okay so we have an error here I guess you can see it it's in the cons here so let me grab this error that's something about the course
+policy so I'm going to copy this so it didn't work one shot but uh let's see
+how quick we can fix this now uh let's do okay I get this uh
+console error let paste in that uh can you
+fix it is a pretty ambitious thing to one shot so I was expecting we had to do some iterations so let's see how quickly
+we can fix this now if it's even possible okay so I went a bit back and forward not big changes uh so let's try
+this now so let's copy this new RT voice here so we added about 50 lines of code
+here and let's update the server code uh so let's go to our server let's
+apply this okay let's save that I think we got it now so this is pretty impressive so let's run our node server
+now and let's head over to and let's head back here and let's refresh our Local Host so paste in our key so the
+idea now is that when we talk we can yeah have a conversation we can actually yeah we want to mention a date I think
+and the idea is that we can record all of this and extract the data so we have that using structured outputs
+right hello hello there how's it going I'm pretty good I have a bit of a conundrum I don't
+know the date for today and I also need to know how many days it is to Christmas Eve because I got some present I need to
+buy today is December 19th so Christmas Eve is just 5 days away you still have
+some time to get those presents but it's sneaking up fast yeah that's true well thank you for that and is there anything
+else you want to say before I leave just that I hope you have a fantastic time shopping for those gifts and enjoy the
+holiday season thank you bye bye have a great day okay so when we stop this now you can see we should get
+like a popup or like a toast or something here yeah conversation process check the logs for structure data so if
+we go here now uh you can see you can we have the transcription from our conversation we have the assistant from
+the real time events and we have what we said that was kind of recorded and then we can use structured outputs to put
+this into ad Json file perfect so we have the sentiment positive Christmas Eve and
+buying present that was the topic and we extracted December 19th perfect so you can see that worked
+pretty good uh I guess my uh conclusion is that uh it was pretty impressive uh we didn't one shot
+this but this is quite the task to do and I've been trying this uh not this exact setup but using this HDML file to
+try to record something before it's not that easy to do with the clae so so far I'm pretty impressed by o1 will I switch
+to 01 to make it like my main model I'm not sure but I'm certainly going to use it like if I'm stuck on 3.5 I might
+switch to 01 uh but I need more time to kind of yeah evaluate what model I will be using in cursor going forward but uh
+I'm pretty sure already that I will be switching between the two uh I only miss streaming from 01 uh I just like
+watching when claw 3.5 streams but other than that uh I think this was a very good test for me I'm pretty positive uh
+on going forward trying out a bit more 01 in cursor so yeah hope you enjoyed it
+h hope all get access to the 01 a soon so we can start yeah doing even more testing to find out what we like the
+most and what's going to bring us the best results so yeah that was me for today hope you enjoyed it and let's
+speak soon have a great day bye

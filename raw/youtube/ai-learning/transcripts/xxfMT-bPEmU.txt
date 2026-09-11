@@ -1,0 +1,486 @@
+[music]
+Uh, hey folks. Uh, I'm Karan Vya,
+co-founder and CTO of Composio.
+Most agentric tool calls today are still
+happening in one field. No guesses, it's
+software engineering. Every other kind
+of work is trailing far behind.
+If models keep getting better, then why
+are we still limited to just agentic
+coding? That's the trillion dollar
+question I'm here to answer.
+3 years ago, coding agents were just
+autocomplete. Today, software
+engineering is fully autonomous. We went
+from pressing tap tap tap to let just
+claude cook. That's just magic.
+And why did it happen so fast in coding?
+Most people would think it's models.
+Yeah, models got really better over time
+over last two to three years. And so did
+the harnesses, clock code, codeex,
+cursor. But on their own, it wouldn't
+have been enough. It only worked because
+all the infrastructure and systems
+around coding were literally meant for
+agents.
+code came with the support that agents
+needed. You have got the repo, the
+commit history, test, CI/CD, review,
+llinters, revert if anything goes wrong.
+The kind of stuff that makes you trust
+the agents, the systems around code.
+Now we are pointing these same amazing
+agents at everything else, support,
+finance, sales. But the agents that were
+doing phenomenally well in coding are
+just working blind because the
+infrastructure around coding doesn't
+even exist in other fields.
+[snorts]
+So how do we close the bridge between
+coding agents and knowledge work agents?
+We think it's core six primitives and
+coding had all six of them while
+knowledge work doesn't have any and
+that's what we need to build.
+First is centralization.
+Coding agents worked so pretty well
+partly because they were very near the
+source of truth. They knew the what, the
+why, and how. You give them the repo,
+the infrastructure as code and you close
+the loop and let the model cook. The
+agent starts at everything with
+everything they need all in a single
+place that is the codebase.
+This is exactly what knowledge work miss
+today. For example, a single deal is
+scattered across five different
+platforms. The records are in
+Salesforce, the docs in notion, the
+emails in Gmail, conversations in Slack,
+and the support history is in Zenesk.
+There's no single source of truth,
+single place to get all the information.
+Everything is separate, and every app
+has its own login. Before a knowledge
+work agent can even start to do thing,
+it has to go and pull all the threads
+and kind of tie them together itself.
+And that's still the base point where
+coding agent had started. It already had
+it all. So how can you expect knowledge
+work to do knowledge work agent to do
+the same level of work as coding agent.
+So the first thing we build is the
+missing center. One place where all your
+apps, all your connections, all your
+login exist. So the agent doesn't need
+to do the hard work of stitching them
+all together. They find it all in a
+single place and they get the baseline
+with the coding agent started with which
+is the repo the information across all
+the stacks in one single place. That's
+the foundation you start with and you
+can give right accesses to your agent.
+The next thing agent needs is a sense of
+history. The ability to look back in the
+past
+in code you get it for free. Kit keeps a
+record of every single thing that went
+in, every single change that was made.
+So the agent can always look back and
+see how a certain change was made, why
+something worked, why something didn't
+work. Think about a kind of thing you
+actually ask your agent to do. We had to
+revert a change in the past because of
+some failure, but that was pretty hard
+to pull off. Can you look at it and get
+it back again? It just reads through the
+history and get it back and cook it. The
+[snorts] history isn't just for agent.
+It's also for you to keep a record what
+the agent is doing. You can see what the
+agent is doing, where it is up,
+where it is doing successful things. And
+like instead of trusting what the agent
+is saying you, you can just go to those
+particular apps and look at what it has
+done.
+Now ask those same questions about
+knowledge work. What led to the CRM
+being in a state where it is today? How
+did the how did my colleague craft that
+amazing mail that led to the closing of
+the deal? Watch the actual process to
+escalate a support issue or even close
+one. The answers are smeared across
+hundreds of apps and none of them keep
+the history. So the agent has no memory.
+It starts from blank state almost every
+time. No idea what was tried before,
+what worked, what didn't work. And you
+you have nothing to look at all as well.
+Once the agent runs, it tells you it has
+done successfully. You don't know if it
+has actually done successfully. There's
+no way to uh know if it is right or not.
+And that's what's missing a record of
+work.
+Now, because everything finally runs
+through one single place, that
+centralization, we can build a layer on
+top of it, the record.
+Every single like action that agent
+takes can be logged across every other
+app. whatever it touched, whatever it
+skipped, what worked, what didn't.
+Via this firstly the agent gets memory.
+It can look back at how similar tasks
+were done before, what was successful
+and replicate it again.
+It doesn't start with a blank state all
+the time. Second, you get trust. You can
+finally see exactly what the agent is
+doing. So instead of hoping it will do
+the right thing, you can just go back
+and check and catch it if it does
+something bad.
+And as you kind of see it more and more
+doing the right things, you'll develop
+the trust and offload more task to it.
+The next thing an agent needs is
+context. And there are really two kinds
+of context. If you think about it, the
+first the shape of shape of the
+platform, the architecture, how things
+flow into each other, how things are
+tied, the data flows like kind of like a
+map which a senior engineer carries in
+their head and a junior engineer takes
+probably 3 months to develop. The second
+is style. This isn't what's objectively
+correct, but more like what good looks
+like in your company. So, how you do
+things, things like llinter, type
+checks, etc. And maybe you use a
+TypeScript decorator which nobody else
+would. This is not exactly somewhere in
+a playbook. It's more in your codebase.
+It's all available in your codebase. So
+the agent can just go and look and
+figure out the specs uh what you like
+the like llinters the formatterers etc.
+Now coming to knowledge work the same
+thing. Say you're writing a doc to a
+customer to even start I would have to
+open the database to pull their usage
+check post hog of how they have been
+actually using things and Salesforce to
+look at their deal details only then I
+can even start writing the first line of
+the dock the answer wasn't isolated in
+just one of those tools I'm able to
+write this doc because I'm pulling the
+threads across all these tools into one
+single context in my head so putting
+history and context together That's how
+you map how the organization works and
+that part is not available to agent
+handily.
+So as we did centralization and logging
+the record we just built the one that
+gives the agent memory and lets you
+check what it did also does one more
+interesting thing. It if you log enough
+of what every agent is doing you start
+to see patterns. You start to see how
+the organization works and you start to
+form skills which is some sort of
+distillation of how the organization has
+been working which approaches work which
+don't which what led to failures in the
+past etc. The the record isn't just
+history of what happened anymore. It's a
+picture of how your company operates.
+And it actually works at three different
+levels. How a tool works in general
+which is applicable to every person. how
+a company does things and how you prefer
+to do things, what good like looks like
+to you. And that's the context that
+context that was missing for a knowledge
+work agent, how the work actually gets
+done, the real playbook of sorts and the
+preference of a company of a personal
+user. And now the agent can query it and
+stop guessing how the company operates.
+The other reason coding agents work so
+well, they test themselves. The work
+checks itself. Verification. The moment
+the agent writes a code, a stack of
+checks follow. The unit tests can catch
+small mistakes. The integration test
+catch the ones that only affect
+components three blocks away. The type
+system would not even work and run. If
+anything is going wrong, the compiler
+will not even build. On top of it sits
+the software checks, llinters,
+formatterers, bugbot.mmd, review skills,
+etc. And these ensure that the code
+matches the way your t team likes to
+follow the standards of your team. None
+of it needs you. The agent completes the
+loop on its own and makes sure that it
+follows the standard and is able to make
+the code run.
+Now think about like so there's an a
+while back I pointed my open claw at a
+hiring outreach mass emails to
+candidates. It ran it sent tons of
+emails. Uh, some of you might have also
+gotten it from my open claw. It did
+exactly what I told it to do. It was
+also a disaster. The kind that ends up
+on Twitter with my name on top of it.
+Uh, yeah, I think you can see a you
+current. Uh, I was not the happiest when
+it happened. And here's the thing. Every
+check from the past slide would have
+passed. The emails were valid. The
+addresses were real. it actually uh got
+to real people who posted. Uh there was
+no test to in the world to actually uh
+question what really mattered. Should
+this have gone at all? That's the gap in
+code. These tests tell you what's wrong
+and right. Here the internet told me
+that I was wrong.
+So we build the checks that are missing.
+The problem in the above thread was
+wasn't the outreach was wrong. it was
+that it went out before even I getting
+to know. So the fix is simple catch
+before it's even real. So we have two
+ways in which we do that. One before the
+agent sends anything it checks the draft
+emails that I've sent before if it
+matches my style if it matches the
+goodness that I like. The second before
+doing anything destructive in the real
+world scenario we provide the agent send
+boxes which mock the real tools and they
+can send they can do action on top of
+these sandboxes. So instead of the blast
+radius hitting the real world it will
+hit a sandbox and then I can review it
+before the agent does the real thing.
+Put those two together and you've got
+something knowledge work never had a way
+for agent to check its own work before
+it's even real. it can finally close its
+own loop instead of stopping to wait for
+you. And with all that you can trust the
+action it is taking without you getting
+bombarded with the tweets that I showed.
+Next thing the agent needs is
+governance. Building trust is
+controlling what the agent can do.
+Putting up the right walls around the
+agents
+in code. This is mostly solved and like
+has multiple layers. The agent can do
+whatever it wants on its own branch, but
+it can't merge to main. A human reviewer
+sits in between it merging to main. The
+critical files have code owners. So
+whenever it touches one of them, the
+right people are getting involved. Uh we
+use agents to ship to preview
+deployments, never let it touch the
+production deployment. So we control it
+there. The governance is not a single
+gate but multiple of them and each
+varying its sizes depending on the blast
+radius it exposes. None of it slows the
+agent down in safe parts. Just prevents
+it from up production.
+And the tighter those lines are, the
+more you can trust the agent and let it
+go berserk.
+You probably saw this one. The director
+of alignment at Meta Super Intelligence
+Lab hooked up an agent to its email and
+it started destroying its email,
+deleting a lot of them. She told it to
+stop. It kept going. Finally, she had to
+run to a physical machine to stop it.
+But by then 200 emails had actually
+vanished.
+She had told it beforehand in prompt to
+confirm before acting on such cases. But
+that was just a prompt which probably
+would have compacted away. And if
+someone whose sole job is AI landment
+can't prompt it the agent correctly then
+probably none of us can. And that's the
+real reason these agents are so hard to
+trust. Not because they are worse than
+the coding agents, but because there's
+no wall around them. In code, the wall
+was already built into the system while
+we were developing earlier. Knowledge
+work also has some bits and pieces here
+and there. For example, Gmail has
+scopes. Salesforce has permission
+levels, but it's so scattered all over
+the place that it's very hard to have
+real control and mostly people end up
+doing it via prompting.
+And prompting is fragile. The agent will
+find those loopholes. things will get
+compacted away and at scale uh one of
+these pens will break and you'll also be
+in the same condition where 200 of your
+important emails are vanishing. So what
+would actually stop it? Not like a
+better instruction but wall that the
+agent can't cross even if it forgot that
+wall existed.
+So we build these walls in two layers.
+The first layer is deterministic control
+over what the agent can reach, what it
+has access to. Um, a hiring agent can
+probably just read the emails. A support
+agent can create a draft email but not
+actually send it. The boundary lives
+outside these agents. It can't be argued
+with by the agent or forgotten or
+compacted. Use instruction failed
+because it lived in agents memory in the
+prompt. this doesn't
+uh but access alone wouldn't have saved
+her because she was actually building an
+email agent so it definitely needed
+access to this email. Um the other thing
+that we do is provide policies which is
+you can define natural language policies
+of what the agent can do even with those
+accesses. So things like never delete
+more than 10 emails without my
+permission. never email outside a
+particular domain rules that with even
+those access control the behavior. So
+between those two things one layer
+controls the what the agent can reach
+and the other layer can control the
+behavior with what it can do with that
+reach. Together it's real governance for
+the agent not asking the agent to behave
+but enforcing it what it can do.
+The last pillar reversibility and this
+is the one of the uh this is where we
+reach when things go wrong. Can I undo
+it? In code you almost always can every
+change is recorded. Things can be walked
+back. You can get revert the last commit
+or you can get bisect to the commit that
+broke your production and revert it. Um
+now like I'm not saying it's good. I I
+won't pretend like that. If things go in
+production and break, it's always bad,
+but it's still not permanent. You can
+still walk back from it. And that's what
+gives you confidence to let your agents
+cook and let let them do some magic
+because even if think they break the
+things, you can you have a pathway back
+for knowledge work. There is no undo
+button. Things like think about use
+inbox. Those 200 emails are gone. They
+have vanished. That's the normal case by
+the way. The disaster case is a sent
+email which you can't revert back. a
+wire that has already been made. So you
+can't get that money back. A deleted
+record gone forever. Most actions
+actually in knowledge work don't have an
+undo button. And that changes the whole
+equation. Uh that changes the blast
+radius. Uh with code you can trust the
+agent after the fact. Let it run, check
+the result, undo if it's wrong out here.
+There's no coming back. The only place
+left for you is to is to trust before
+the agent acts. That's what makes these
+agents feel dangerous in a way coding
+agents never did. It's not that they
+fail often, it's that out there failure
+is forever. So either you completely go
+up front or never let it act.
+Let me be honest, reversibility is the
+hardest to replicate in knowledge work.
+Real undo the way it exists for code
+probably doesn't exist in all the
+scenarios in knowledge work. But we have
+some scenarios where undo exist and we
+call them. So let's say you add a label,
+you can remove the label afterwards. But
+for actions uh that you can't undo at
+all like hard deletes that disappear the
+emails from your inbox, we pro again
+provide a sandbox where the agent can do
+the thing first in the sandbox and you
+can review it and then actually goes
+into the production environment. None of
+it touches the real world. That's the
+whole flip in code. You can undo the
+mistake after it happens. Here you catch
+it before it does. Different timing,
+same result. A mistake that won't stick.
+Think about you again. The actions we
+could reverse, we would give it a
+reverse button. The ones we couldn't,
+the agent would hit the sandbox first
+and she would be notified, your thousand
+200 emails are going to get deleted. Do
+you want it?
+It's not done yet. Uh but across
+billions of actions that we are going
+through, we are learning on the way
+which ones can be walked back, which
+ones can't and preparing the sandbox
+accordingly.
+If you take one thing away today, take
+this. For two years, the model was the
+bottleneck. So everybody was racing
+towards better and better model. Now the
+models have gotten good enough where
+software engineering is 100% autonomous.
+But now everything else is the
+bottleneck. This
+the same model that writes your code uh
+can also do your hiring, sales and other
+knowledge work. Uh but it right now it's
+working blind. No history, no context,
+no ways to verify, no guardrails, no
+undo. So the bottleneck has moved.
+Now it's infrastructure that nobody has
+yet built. And that's what we are
+building at Composio.
+Yep. We are powering billion plus tool
+calls in total. Uh 300 million tool
+calls happening every month. And if you
+are building an agent just point it to
+compose and see the magic happen for
+knowledge work and if you want to build
+the future of substrate of AI agents
+then please come to me we are definitely
+hiring and there's a lot lot left to do
+the models will keep getting better the
+bottleneck won't be models it will be
+the things around it thank

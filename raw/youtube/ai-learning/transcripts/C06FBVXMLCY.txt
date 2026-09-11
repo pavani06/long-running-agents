@@ -1,0 +1,425 @@
+OpenAI just took the best AI model in the world, GPD5 High, and turned it into a coding agent that can build essentially anything. Yet somehow,
+nobody is talking about this. It's called Codex, and they just released a hidden 2.0 update, which makes Codex the best in class. Now, I've tried every AI
+coding tool under the sun. Cloth code, cursor, Devon, client, augment, you name it, I've tried it. And after trying all of these tools, I can confidently say
+Codex is currently the best AI coding agent in the world. And I would say it's not even close. So in this video, I'll show you the best way to use Codex, how
+it compares to cloth code, and how you can build anything with it. Now, it's no secret that Enthropic's release of cloth code has been an incredible success.
+It's rumored that they reached 400 million ARR in just 6 months after releasing Cloud Code. OpenAI has decided that they want some of that juicy
+revenue because developers have money unlike a lot of different categories of consumers. And so over the past few weeks, they've been silently improving
+Codex, shipping updates basically every single day without doing any real marketing, which is why Codex has become so good without not many people knowing
+how good it is. Now, Codex actually isn't a single product. There's three versions of Codex you have to understand. The first version is the CH GBD Codex that went viral earlier this
+year. This is an AI agent that lives in the cloud and can work asynchronously on many different tasks. Then there's the Codex CLI, aka OpenAI's own version of
+cloth code. And this one has improved massively. It used to be really bad, but now it's actually very, very good. But the best version of Codex, in my opinion, is the Codex extension. This is
+the real hidden gem that nobody knows about, and it can be used from any IDE.
+And I would say the release of the Codex extension is a direct attack on cursor, but we'll get to that later. Now, in order to understand Codex, you have to
+understand GPD5 high. GPD5 is not a single model. It's a family of models that comes in multiple different versions, but the only useful one is
+GPD5 high. The high stands for high reasoning effort, and this means that Codex can think for five plus minutes on a single task. This is much longer than
+Opus 4.1, and this is what's known as test time compute. This ability to reason for many minutes at once allows Codex to go way deeper than CL code,
+which makes it perform much better on difficult programming tasks. And later in the video, we'll compare these tools side by side, so you can see the real difference between Codex and Cloud Code.
+Now, all of us want to use the best AI tool possible, whether it is for coding or for task management. So, here is what Richard said earlier today in our Discord server about Veal. I finally realized what a kick-ass app this is.
+Too many features that I like to mention, so I'll just say incredible work, David, and the team. If you don't know what Veil is, it's an AI powered task manager. So, for example, here I
+said, "Today I want to focus on coding and scaling my business, reorganize my task list, and it updated 24 tasks, saving me valuable time to focus on what
+matters most." So, if you're serious about AI and you want to maximize your productivity, go to vector.ai and give it a shot. You can get started completely for free. Now, back to Codex.
+So, let's look at the inside of the LLM itself. For GPD5 High, 80% of the max tokens are dedicated to the hidden
+reasoning tokens, which means this model is doing way more thinking than any other LLM out there. On the other hand, it has 22% fewer output tokens than 03
+while achieving 50 to 80% better performance. But here's the most important part. The reasoning effort parameter has four levels. Minimal, this is no reasoning. This is basically useless. It's worse than GPD4.1 somehow.
+Then low, this is 0.2 ratio. Medium 0.5.
+This is the default. And then high. This is the magical one with 0.8 ratio. Now, if you want to understand the future of programming, you have to understand sync
+versus async. When coding with AI, there are two different paradigms of work. Synchronous and asynchronous work.
+Synchronous is when the AI agent works alongside you on the same task. Async aka asynchronous is when the AI agent works separately, usually in a cloud, on
+a different task or many different tasks. But the beauty of Codex is that it can do both. The CIGBD Codex agent is asynchronous and the CLI and extension
+are synchronous. So CEX itself can do everything you need it to do when it comes to AI programming. Now, actually, there's a fourth Codex use case that you
+must know about, and this just came like two days ago. Codex can now also review your pull requests, and you can think of this as the cursor backbot, but on
+steroids. Just in the last few days, for me, Codex has been able to find serious bugs that multiple human reviewers missed. And this is especially important
+because LLMs think differently than humans. So, there are some bugs that LLMs will completely miss that are obvious to the human eye. But there are
+also bugs that humans are completely oblivious to that the LLMs can spot easily. This is what makes the Codex code reviews very very powerful. So
+later in the video I'll show you how to set this up because it's super easy and it takes like 1 minute. So here is the plan. I will show you how I use Codex
+myself dayto-day to build my own AI startup which is used by over 60,000 people. I'll also go over OpenAI's official prompting guide for using GPD5
+for coding. It was released last week and it didn't get enough attention for some reason. So we'll also look at that.
+But if there's one thing that I can promise you, it's that if you watch until the end, you'll have the confidence to build any software with AI and specifically with Codex itself. So
+now let's get to building. So I'm going to build something that all of you can start using today and that is a prompt compression tool because it turns out there's nothing good on the market,
+right? So when you have a very long prompt such as 70,000 tokens and you want to make it 30 40% shorter without losing any essential context, there's no
+easy way to do that. So, I'm going to load up cursor and we're going to use codeex to build this project. So, let me open a folder. Boom. Right here. Now,
+you might think that GPT5 high, which has 400,000 context window, would be good at doing this one shot. However,
+when I tried it and I told it explicitly that I want a 30% shorter prompt, it managed to turn 7,000 lines into 266,
+which is not 30% shorter. That's 96% shorter, which is terrible. So, we cannot do that in one shot. We have to first split the long prompt into chunks,
+right? Then we have to rate each chunk in terms of relevance and then run an LLM a smaller one maybe like GBD4.1 on each chunk separately and actually we
+have to use code for constantly checking the token count. So this is something that LLM suck at you know you know the famous strawberry how many hours there
+are in strawberry. LMS are terrible at this. So we're going to use codeex to build this prompt compressor and at the end of the video I'll give you the
+GitHub repo so you can use this yourself. To install Codex, you need to run this command. npm-g at open/codex. Copy this. Open the
+global terminal. Boom. And paste this inside. And that's it literally. Then inside of cursor, go to extensions and type in codex OpenAI coding agent. And this one is the one we're looking for.
+Make sure it's from official OpenAI. So basically, it has the same powers as the CLI, which by the way, you can then launch with just pressing CEX. However, it's sim it's nicer user interface, right? You can see there's a chat box.
+So you have switching of the effort which you should instantly switch to high. Same in the chat right when you started just type in /model and switch
+to GBD5 high. And we're going to be using both to build our own project. So before you do anything, no matter what you're building, you want to create a
+step-by-step plan. So I'm going to say read build idea. This is what we are going to be building. also read all
+files in the previous attempts folder because I already tried this with you know existing tools such as LM lingua
+from Microsoft which is terrible because it uses small local LLMs to do the compression and I don't trust no two
+billion parameter model I want to be using big models so I'm using voice to prompt faster do not write any code yet
+just analyze and prepare and output a concise sixstep plan and there we go we're going to start codex running and this can take a few minutes. So in the
+meantime, as I promised, let me go through the six prompt engineering tips from OpenAI on how to use GPD5 for
+coding. Number one is be precise and avoid conflicting information. The GPD5 family of models are significantly better at instruction following, but
+these models can struggle with vague or conflicting instructions. So that's why clear specific problems always yield better results. The second tip is use
+the right reasoning effort. You might be thinking, okay, what does this mean thinking and pro David? Well, this is inside of JGBT, right? So, they have auto, they have instant, they have thinking mini, they have thinking inside
+of here. To be honest, I only use thinking. So, this tip, I honestly disagree with OpenAI. I think you should only use thinking and pro. You should
+almost never use instant. And uh when coding, you should just stick to high.
+Do not use medium. Do not use low. They produce much worse answers. Let's see how Codex is doing. And we have the six stage plan. So, say looks good. Now
+append this plan at the bottom of the build idea markdown file. All right. So this is a good practice when doing something. Do not just leave the context
+hanging inside of the chat. Especially if you're working on longer projects.
+You have to document them in clear markdown files. That way you can reference them. Right? So maybe I switch to cloud code which by the way this is what my setup actually looks like.
+Codeex on the left as the extension and cloud code in the middle running 4.1. It's much easier to do add build idea.
+Boom. Than copy pasting and searching in previous chats. you know, use markdown files is what I'm trying to say. But this is my text stack. And actually, the
+next point is what my text stack looks like. So, right now, I'm spending $420 a month. Well, way more than that to be honest. But at this very moment, it
+costs $420 a month. So, first of all, we have JGBD Pro, which is $200 a month for maximum codeex access. Then we have Cloth Max, $200 a month for maximum
+cloth code access. And then we have cursor. This is the only one on this list that I'm not paying the full plan for because I only use it for the cursor tab really, right? So like when you're
+writing documentation maybe we can go here and can say it's more complicated.
+Boom. It's suggesting you know it's more like a process. So it's suggesting the next word basically. So I use it for that and I just use it for the role of
+the ID obviously. Right. So you have the terminals. Boom. You have the debugging tools. You have the code editor which is the main thing. You have the file
+management source control. So this is what I'm using cursor for right now. But honestly this might change. The AI field is evolving so rapidly. A month from
+now, my AI stack may be completely different. That's why you should subscribe, by the way, because you need to stay up to date with the latest and greatest AI practices. So, go below
+video and click subscribe. All right, let's go back into cursor. Let's see if Codex did this what I wanted. Yes, it did. So, first of all, structure
+chunking markdown aware chunker. All right, so it split the plan into six stages or six steps as I wanted. Looks
+good. And now I'm going to have it execute step by step. Good work. Now create a new compressor.pi file and
+execute step one. All right. And we're going to set it off on step one. And actually we can probably start using u the CLI as well. I'll say read build
+idea and spot any serious flaws or edge cases. Now while that's going, let's go into tip number three of the OpenAI
+guide for GBD5 coding. And that is to use XML tags. Right? So you will see this in my file right here as well. I
+use XML tags quite a lot to define the sections. And this is huge because it helps you structure your instructions and help the AI agents actually follow
+them. So, OpenAI recommends us to delineate different sections of our prompts to improve GPT5's understanding.
+So, for example, you would have a context section, I'm a software developer, and then you have a task explain object-oriented programming. And the main benefit of this is reducing
+misinterpretations because if you put the XML tag at the start and end of each section, the AI agent will know what those instructions are about. All right,
+let's see how Codex is doing. It is still going. This is what I mean. High is amazing. GPT5 high is thinking for so
+long, way longer than Opus. Opus could never. So this is really the first model in the history of LLMs that utilizes
+reinforcement learning the test time compute the power of reasoning to the fullest extent which is what makes it so powerful. Now before we look at tips
+four, five, and six from OpenAI, first let me address a common thing I see of people thinking that vectal is just a to-do list app. If you think it's just a
+to-do list, you're seriously missing out. So this is what vectal looks like.
+First we can create a task such as build a prompt compressor tool in Python. Then I can pin this task. Next up, I can use the chat agent to help me work on this
+task. So, let me select a different model. Maybe we can use Gemini 2.5 Pro.
+And I can say, what's the first thing I need to do? Boom. And while it's thinking, I can also go here and generate steps. And with one click, I
+can generate five steps on how to get started on this. Right? So, the chat agent fought for 6 seconds. Then, it does perplexity web search, which by the way, inside of vectal, we have
+Perplexity Pro built in. All right. So, the chat agent finished the web search.
+It gave an answer. Then it updated the task. And we can see that it added a bunch of stuff into the task description field. And then it gave me more ideas
+about prompt compression techniques, which actually we might implement some of these in this video. So let me copy this. I'm going to go back to cursor.
+I'm going to go to build idea. I'm going to add it right here. Research section.
+Now this is just one of many things that Vectel can do. For example, in your notes, you can create what's called an AI research. This is an automated daily
+research about a specific topic. So in my case it's about latest AI agent problem techniques and as you can see every single day vectal did automatic
+research on this topic and out with it a detailed report another OP thing that you can do in vectal is you can have it find the highest leverage task where's
+the biggest task that will bring me closest to my goals right now and by the way if you're wondering how does it know what your goals is this is exactly where user context comes into play you fill
+this out once and vectal knows everything about you so if you want to have AI agents helping you organize your task list and complete your tasks go to
+vectal.ai and sign up. You can get started completely for free. All right, now back to Codex. So, it implemented step one, but it did it in a insanely
+over complicated way. 300 lines is way too much. Um, I'm going to say first off, refine the sixstep plan to make it
+simpler and less overgineered. Then I'm going to reference the approach again.
+Make sure to follow this approach. Next up, in the meantime, I'm going to use the correct CLI. So, first of all, it identify these risks. Okay, let's see if
+there's anything major. I think none of these are actually that serious edge cases. But what I'm going to do is I'm going to tag the first file. I'm going
+to say read build idea and then read
+compressor. py. Your task is to heavily simplify the Python file so that it
+follows step one of the new simpler stepbystep plan. The fewer lines of code, the better. This is something I should have said in the original prompt.
+The fewer lines of code, the better. It wouldn't have been 300 lines. So, that's definitely my mistake. But let's look at the reduced plan. How simpler it is.
+Boom. Okay. So, we can actually view the changes right here inside of the codex extension. You can see a nice div of the changes. And yeah, it looks a lot
+simpler right now. So, another good thing to do is to do a deep research actually. So, I started this, but I'm going to show you again. So inside of you can use perplexity chb doesn't
+matter gemini gro any tool that has deep research which by the way we have that in ve as well it's called ultras right
+here and it's powered by perplexity deep research but anyways I started the deep research on this topic browse the web and tell me the exact documentation for
+openi API for using the gp4 model in python so basically I want to make sure we are following the latest and greatest
+docs because codex just like cloud code is a agent it's a agent And it uses a model that is a training cutoff, also
+known as a knowledge cutoff. Because when you train a large language model, you have to cut the train there at some point and then do the training run after which means it doesn't know what
+happened yesterday, right? It can never know that. That's why web browsing is so essential and that's why doing a deep research to get the latest documentation
+and latest up-to-date info is so essential and then giving context that info will allow it to perform at the highest possible levels. Let's see how
+codex CLI is doing. So, as you can see, it's basically the same as the extension, but the extension is a much simpler, cleaner user interface, right?
+The CEX is more terminal based. It's it's a CLI. It's a command line interface. So, it's not going to be as userfriendly, but it's just as powerful.
+So, while that's going, let me explain, as I promised, how to set up Codex for pull request reviews because this is very, very powerful and it's actually
+very easy to set up. So, first go to chbpt.com/codex.
+This is the Async cloud-based agent, right? So this is one of the free versions of how to use Codex and the other two we have right here. We have
+the CLI, we have the extension, and then this is the Codex agent in the cloud.
+Right here there's this new button, enable code review. When you click on that, it moves you into the settings where you can see your different repositories. So on the left, make sure
+you have code review selected and then you can see your repos and you can select on which repo the code review should run automatically, which is covered by my webcam, but you can see these toggles right here, code review.
+So you can just toggle codeex to run and you'll need to enable it. There's going to be like a button enable for GitHub.
+You give it the necessary permissions and then on any PR, let me switch to GitHub here and open a pull request.
+This is what I just finished implementing earlier today. You will see Codex automatically reviewing it. So this is 12 hours ago when I created the
+PR. All right. So I'm probably going to have to blur some of this because this is essential authentication for vectal.
+You know, I'm actually doing what I preach. I'm not just talking. I'm actually walking the walk. I'm using these tools to build my AI startup every single day. So, I'm going to need to
+blur that authentication. But what you can do is you can do at Codex, are there any major issues with this PR? What
+should be the main things we test manually in the app? And you can write this comment and then CEX will react with the ice emoji on this in a bit,
+which means it acknowledged it and it will start working on it. Oh, there we go. So, there's this eye emoji. You can see chbdc codex connector reacted with the ice emoji and that means it's
+looking at this PR. It has started reasoning. get started analyzing the files and it will give you a very thorough PR review. Now, this is
+especially OP if you combine it with automated versel reviews, automated cloth code reviews, the cursor backb and you have all of these checking every single PR which will spot a lot of bugs.
+It will make your code more modular, more scalable, and will just allow you to ship way faster with a lot more confidence. So, if you are working on a
+bigger project, I highly recommend you do this. It's very OP. All right, let's switch the cursor. Let's see what happened. So we had the Codex CLI simplify this file from 300 how many?
+330 which is crazy to just 86 which is much much better. Okay. Next I will need to add the GP4.1. So for this you
+obviously need to go to platform.opAI login with the same account you have as for chat GPT takes like 30 seconds. Then on the left click on API keys and create
+new secret key. I created one named subscribe. So if you're watching this make sure to subscribe. and then create an env file just env no other extension.
+Now, do not share your API keys with anybody, okay? I'll delete mine before uploading this video. I'm just doing it for educational purposes, obviously. But in here, you need to type in OpenAI API
+key and then equals and then paste in the API key after that. Save that. Then, in step two, we will use GB4.1 to rate
+each chunks relevance. But for GB4.1 to run, we obviously need to add the OpenAI API in here. So, next up, let's let's
+switch from between CLI and the extension. I'm going to say this is much better. Now execute step two. First read the compressor. py file. Look how I
+simplified it because your implementation was way too long and way too overengineered. And then execute step two like a senior developer would
+in the simplest way possible. The fewer lines of code, the better. For the env file, I created a new one in the root
+folder. ENV. In there is the OpenAI API key. So make sure to properly load that.
+That way we can use GPT4.1 using the OpenAI API. Next, I'm going to switch and then I'm going to do actually research. I'm actually going to docs.
+This is going to be the XML section. So, let's go back to the research here. I'm going to copy the entire results and I'm going to paste it here. I'm going to say
+docs and just going to send it. Extra context never hurts as long as it's relevant. And now, GBD5 High is going to
+implement step two using the results of this DB search. So it will know how to use GPD4.1. You know, it will know what OpenAI API looks like right now and it
+will implement a step regarding our build idea. So right now we have the chunking. So it can split the large markdown into chunks. Let's look at it.
+And it's nice that it will respect the code fences, headings, li lists, and stuff like that. So it won't just split it into random chunks. It will be chunks
+that make sense. While that's going, let's look at tip number four from the OpenAI prompting guide. And this is avoid overly firm language. With other
+models, you might use firm language like B40. But with GPD5, it can backfire because the model might overdo what it
+would naturally do. So it can overthink, overengineer, overanalyze. It can you do way too many tool calls. If you use it,
+whether it is the extension or the CLI, you will sooner or later get a situation where it does like 20, 30, 40 different
+tool calls even on a simple task. So this is the thing like sometimes being overly strict, overly firm will backfire
+because it will literally do like 15 tool calls for updating a single documentation file where it already has all the context, right? So being less
+aggressive in your prompting can actually be more effective with GBD5.
+Now we can see codeex now was fast. So sometimes it takes long, sometimes it works fast. The allocation of the reasoning effort is really intelligent this way. And then it created a separate
+file raider. And the function is to rate the chunks with GB4.1. So let's look at it. It loads the open API key from the
+environment variable. And it gives each chunk a rating 0 to 10 with float allow so it can do decimal numbers. That's
+nice. And then it asks, want a tiny demo script to run? And actually I do. Yes, I do want you to create this tiny demo
+script. Keep it simple. So this is very good. After you do each step, you should test, right? So we didn't do any testing after step one because it's just the
+chunking. So then we did step two. So we did two steps and now it's a good time to just do a demo script. We should test
+if these steps work correctly, if they follow my vision before moving forward.
+So two steps, step one, step two, and it created a simple demo script. We can look at it right here. Add a tiny demo script to run checking rating on
+original prompt. Okay, so we just literally started and let's see if it works. We have error. Max output tokens. Let's see. So I'm going to copy this.
+I'm going to say error again using XML tags. Paste it inside. Close it. When I ran that uh demo script, I got this error. Explain what it is. Tell me what
+is causing it and proposed a clean and minimal fix. All right. So do not take errors personally. Even when using Codex, which right now is the most
+advanced coding agent in the world, you will run into errors. It's absolutely expected. So yeah, just don't overthink
+it. Don't take it personally. Don't let it overwhelm you. Keep going. I guess in the meantime we can go to tip number five on how to use GBD5 for coding. Give room for planning and self-reflection.
+Let the model think first before taking an action. This is what we did. Instead of oneshotting it, which it might work, it might not work. We split the task
+into six separate steps. And I think this is really the sweet spot. You know, five to seven different categories. And open they suggest to create a rubric
+that has five to seven categories. So before you do anything, doesn't matter if you're adding a new feature or fixing a bad bug, splitting it into smaller
+steps is definitely the way to go. Also use tags like self-reflection to improve the reasoning of the model. So here you have an example from OpenAI of how this
+could look like. First spend time thinking of a rubric until you are confident. Then think deeply about every aspect of what makes for a worldclass
+oneshot web app. This rubric is critical to get right. But do not show this to the user. This is for your purposes only. So basically you teach it how to
+think. This allows the model to plan and iterate the best possible approach before it writes any code. All right, let's see what happened. The API
+responsor rejected max output tokens eight. So I don't know why is it eight.
+Make it 200. That's kind of funny setting max output tokens so low. Yeah, this is an error I've never had to encounter before because um I never
+wanted to output just eight tokens. But since here we're doing the rating, I guess uh that's that. Anyway, so let's rerun this demo. Prints a concise JSON
+summary with chunk counts and the 10 lowest scored. Okay, so right now we're running u GB4.1. I guess I'm going to
+say the issue with the demo or with the current two Python files is that there is no observability to the user. We are
+not printing anything in the console. Uh it's very hard to know what is happening. So take a deep breath and add
+four sensible print statements where it makes sense. Right now I have no idea if it's running or not, if there's uh any
+progress happening and that's pretty bad for debugging and building an app. Okay, so it added two lines of code into compressor.py and then two into Rator.
+So now if we run the demo, we should be able to see the progress logs. There we go. Compressor splitting text 2,000.
+Okay, almost 300,000 characters produced 117 chunks and then it's rating them.
+Okay, so we need to run it in parallel, right? So change the raider to actually
+rate all of the chunks in parallel, not sequentially. So we would be waiting forever if this was sequential, right?
+117 times calling GP4.1. Ain't nobody got time for that. We need to run this in parallel and u get the result way
+faster. In the meantime, we can actually get started on the first step. While the extension codeex in extension is working on this, we can start on the third step.
+So, I'm going to say read build idea again and execute step three like a
+senior developer would. Make sure to also read the compressor. py file and the raider. py file. These are the files
+for step one and two. You need to understand them deeply and formally before you execute step three. Take a deep breath and implement step three in
+as few lines of code as possible. The simpler the better. All right. So now I'm going to launch Codex CLI on this.
+Let's see. We have um we have changes 32 + 32 - 21 in Raider. So now if we launch
+the demo, it should be running it in async. Okay, wait. It's finished. So never mind. That was way faster with the
+async done rating. So there we go. File original problem MD chunks 117 top candidates. And there we have the ids of
+the chunks that are the least relevant basically. Wow. The problem is right now we don't tell it to what right but okay so I can actually ask that how is the
+relevance being rated right now like what is the relevance score being compared against what does the prompt
+for GPD4.1 look like I think there needs to be some clear way such as in the original prompt at the bottom
+um it is relevant to this right these claims so because this is structured in a repo so that's how it looks
+But we need to have we probably need to ask the user relevant to what. All right, let's see. Codex CLI implemented
+a small step free module named target.py. Okay, what I added target py plan chunk returns using. So this is why you need multiple agents by the way.
+Whether it is a combination of codex extension and cloud code or using codex extension and codex cli. Sometimes you
+need to ask questions to one while still making progress with the other. So this is why it's huge. All right. So this is a big gap. Right now we don't ask the author intent.
+Okay. So this is definitely a flaw. This should be the first step we do. It should use the Python input to ask the
+user in the console what is the intent like what is the focus of this compression. So yeah, we've spotted a pretty serious flaw. How did we spot it?
+just by testing it ourselves, writing a small demo script and testing it and seeing like okay it's rating the relevance but what is it rating against
+and that revealed a actually a gap in our planning right let's look at the target so step three is computing global token target from desired reduction
+problem is we also never ask this another issue is that we never ask the desired token reduction which is another thing we should ask at the start of the
+user now to be honest target probably doesn't have to be a separate file uh this could have easily been part of the compressor I feel like maybe compressor
+is a bad name here it's trying to make it really modular which is good separate files for separate functionalities but um this is relatively simple project so
+we don't have to make it ultra modular now as I said earlier let's compare how cloth code works compared to codex right because you can see codex even for a
+simple question just it doesn't format it really nicely right cloud code is much better at this opus 4.1 is
+excellent at explaining concepts, at teaching you things. So that's why my stack is codex plus cloud code. But I'm
+going to say start by reading the build idea markdown file so that you understand what we are working on. Then
+find all of the Python files in our codebase and read them in full and then explain to me what exactly has been
+implemented, what is missing and what's the next step we should do. Think harder answer in short. Demo is now going to
+ask for the desired token intent. So let's actually do this. Also update demo to make use of target. This is our step
+three implementation. Do not change anything else. Boom. Read the build ID again. Compress loop.
+Okay, looks good. Actually, the CLI has been performing quite nicely in terms of being concise. So I'm going to say read the build idea again. then read all of
+the Python files again because I made some updates and then take a deep breath and execute step four of the build idea
+like a senior developer would. The fewer lines of code the better. And what's also nice about the CLI is that you can see the exact token counts. Right? So
+here we can see 300 not 300 39,000 tokens used in this chat session and that's 96% of the context window left.
+So that's another nice thing that you do not see in the extension and you do not see it in close code either is uh knowing how many how many tokens there
+are in the conversation. That's why having all of these tools, whether it is the CLI, whether it's the extension or
+the web- based chat GBT codecs, having all of them at your arsenal really is the way to go and trying all of them and
+seeing what works, right? There's no single dogma. Uh what works for me might not work for you, but you you never know unless you try. All right, so it seems like our demo script has been improved.
+Let's look at it. Let's run it again.
+Step four is a separate file again. I don't know why everything is a separate file. Um maybe that's issue with me being overly strict at the start. I said
+modular now it's creating a separate file for everything. So really when OpenAI says this tip four
+avoid overly firm language they do mean it. You know Greg Brockman the co-founder knows what he's talking about right? So he's coding every single day.
+He's using GBD5 more than anybody. So listen to him. This these tips are partially from him. And uh let's look at it. So let's run the demo. It's it's
+very interesting how each model reacts differently, right? So offer intent focus. So in this case, the original
+prompt. So this is actually what we're implementing in vectal by the way. Desire reduction I want to do 40%.
+Boom. So inside vector, we're adding these workflows and it's basically internal automations that allow you to automate repetitive processes, right? So
+let's say you want to have schedule like every three hours have it brainstorm an idea that's like a new marketing angle
+or the default prom is a single actionable idea that would get me closer to my goals but it could be anything and uh so right now I was investigating
+whether we properly have limits or if there's some bypass but it's already fixed so don't worry so this is uh what I needed this prompt but that's why it
+has 7,000 lines and nearly 300,000 characters And let's look at the demo.
+So this is not some like random prompt I invented out of thin air. This is something I actually needed for my startup. So I'm building a solution to a problem that I encountered. So okay, the
+main difference is that the intent and the focus, you know, it it asked us for the intent and the focus and the
+percentage reduction. Then it created a token target. It would be nice to also output the token length of the default.
+So I'm going to say also it would be nice to add a single print statement that shows you the original full token
+token count before the compression and then show the token target after that.
+So now we can see actually the chunks that are properly rated against the focus of this file right and
+score the least relevant. So these are the ones that we're going to be compressing. We don't want to compress the most relevant most important parts of our problem. We're going to compress
+the least relevant ones. Okay, so that's good. Honestly, we probably cannot do testing without step five and six. So,
+I'm going to say now read step four and tell me whether it fits well with
+compressor raider target. Take a deep breath and analyze the original step-by-step implementation
+plan inside of build idea.md and then tell me if there are any changes needed or if we can proceed to step five. Do not make any changes yet.
+Just analyze and answer. Be concise. All right, let's look at the cloth code prompt. So we can see you can already see this like instantly you can see
+cloth code is much cleaner. Do you see this like nice heading, clean formatting, you know, empty lines, the
+outputs of um codeex are hard to read like this is hard to read, you know, and this uh also wording like if you wanted
+to explain something, cloud code is much better at explaining concepts at teaching you stuff. Okay, I'll say read
+step four. Is this a good execution implementation? So it it clearly told me what's implemented, what's missing and
+yeah with cloud code you have much cloth code is my favorite like consultant right you have the codex as the coding agent that's actually implementing the
+code and creating the plan stuff like that cloth code is like verifying explaining checking providing second opinion stuff like that this is the op
+workflow right now it says proceed to step five right in that case implement step five like a senior developer would only create a new file when necessary if
+not put it into the compressor py file. So we are definitely overdoing it with files here. I'm going to say
+does target really need to be a separate file or should it
+be inside of the main compressor py file instead
+think hard answer in short with clo code this actually influences the reasoning effort. So yeah before codex does any action you can see how many tool calls it does. It's kind of crazy right? Okay.
+So now it updated compressor py since only 20 line change and then cloud core is suggesting we also merge
+target. Okay. So I'm going to say also do the same for target. py and I'm going to do xml tags merge merge.
+Execute this simple refactor like a senior developer would. I need you to move the functionality from target. py
+into the main compressor. py and then delete the current target py file. Do not do anything else. Do not add
+complexity. The fewer lines of code, the better. So being clear with your prompting is really key. I'm going to say
+read all of the files again. Tell me where we stand and tell me what needs to be done next. Do not be lazy. Actually open and read the files in full. Think
+harder. Answer in short. So cloth code has a much more consistent response length. It doesn't have this big
+variance where sometimes it responds in 10 seconds, sometimes it's 8 minutes.
+Codex can easily take five, six, seven, eight minutes to respond. Cloth code doesn't. It can maybe take 2 minutes, 3
+minutes at most, but you usually know how long it will take, right? It will do a couple of tool calls, some reasoning, and it will respond. So it's much better
+at chatting and like working fast. UI changes. Close code is much better at front end and UI because you can iterate much faster. Codex tends to overthink
+and overengineer. So uh okay, target was deleted. That's good. What about step four? Maybe step four is separate. Okay,
+these look good. Step four is like 50 lines. That could be separate file.
+Let's see implemented steps. Okay, problems. Okay, so this actually pretty
+good analysis. So I'm going to put this as a plan. Boom. Again, using XML tags, I'm going say, take a deep breath and
+now execute this plan like a senior developer would add enough comments to make everything clear and well
+explained. If you're a beginner, ask the tools to add more comments, right? I mean, comments should be used everywhere, no matter what your skill
+level is, but usually senior developers can just read the code pretty well, but the newer you are, the more more of a
+beginner you are, the more comments you need. So just ask for that like the models can easily accompany your request. So now basically we've
+implemented everything step for sex step six but there are some issues right step four is missing the cis import. We don't have a complete pipeline commanding all
+steps and no final output which is the step six stick chunks together in order and write the result simple stats. Okay
+so now we're going to create main.py which is going to use these all the files in a single place. I'm going to say check whether your next steps were executed correctly. Open and read main.
+py and tell me if it's ready to be tested on the original prom.md. And then we'll say ultra thinking. This is the highest level of reasoning effort for
+cloud code. So listen code codex. I need you to analyze all of the Python files again and tell me whether we can test
+the main original prompt MD file with the new main. py. Is everything ready for us to test all six steps or not?
+Think harder. Answer in short. So, let's allow this uh Python. I'm going to say skip this. Focus on the code. Ultra
+thing. So, it's it's trying to run some Python commands to check imports, but it's just a waste of time to be honest.
+While that's running, let's look at the last, but definitely not least important tip from OpenAI's prompting guide for
+GBD5 for coding. Control the eagerness of your coding agent. GBD5 tries to be thorough and comprehensive by default.
+Use prompting to control how eager it should be. Set boundaries on scope and execution. So you can actually give it like a tool budget. This is a very this
+is a new concept that's very interesting. Right? Instead of thinking like a budget in terms of money or a budget in terms of time, you give it a
+tool budget. Like you can only call 10 tools and it can operate within that budget. So it doesn't overthink, right? So here is an example from OpenAI again.
+So they wrapped it in the persistence XML tasks. Do not ask the human to confirm or clarify assumptions as you can always adjust later. Decide what the
+most reasonable assumption is. Proceed with it and document it from the user's reference after you finish acting.
+That's very important. Documenting which assumption it was acting upon. And this is wrapped in the persistence XML tag.
+So, it's encouraging the model to be persistent and not to ask the user for, you know, confirmations like a
+lot of models do. Okay, it's saying step four is missing some imports at the top.
+So, what I'm going to do, I'm going to copy the analysis and say analysis. This is literally how I work by the way. I asked another developer on my team to
+analyze your execution and here's what he said. What do you think of his analysis? Is he overthinking? Is it valid? Is it overly strict? or are there
+any good and relevant points we need to fix? And then I'm going to put the response back. Boom. Here's the response
+from the developer who coded these files to your analysis.
+What do you think of his response? Is it valid or is he missing something? Think harder. Answer in short. And then let's
+go back up and let's look at the testing instructions. Yes, it's ready to test all six steps. So, let's do that. Let's run main. py. Let's look at the offer
+intent. Verify whether rate limiting is proper.
+Let's do u 25% reduction. So again, 288,000 characters at the start. Again, it
+didn't tell me the token count at the start, so I don't like that. Make sure to update the relevant file to actually tell me the token count at the start.
+When you say compressor splitting text and you say the total amount of characters, I also want to see the total amount of tokens at the start. Here's
+what my terminal looks like when it's running. As you can see, there is no observability, no updates, nothing
+telling me how many of the chunks have been processed, how many of the agents are running. I'm just waiting until all
+have finished running, which is very bad UI UX.
+So your task is to find the best possible spot where we should add one or two print statements. So I have a bit more info while the chunking is running
+about how many of the 117 GBT4.1 agents have finished and how many are still left and it should be rendered
+like a simple loader bar. Boom. Let's run that.
+Let's open the terminal to see this is still running by the way. How many?
+Okay, I'm going to ask right now. How do we decide the chunking? How many chunks does it split into? Is that hardcoded?
+Is that somehow calculated? How do we decide how many tokens is in a chunk?
+Analyze the code. Answer in short. So, this is called dog fooding. You know, testing your own tool, your own
+software, and using it yourself, looking where there's like lack of clarity when something is missing. It's really essential to build great software is to
+be the number one user yourself. I mean actually like inside of vectal I'm always in the top five in the stats.
+Obviously this is my testing account so I'm like 300 but on my main account I'm always in the top five and I'm using it every single day for many hours and it's
+saving me multiple hours per week. So you know if you want to build great software you have to be one of the most power users, one of the highest users of
+that software to spot the bugs and to really feel what's wrong with it. Okay.
+Split by mark. Okay. One chunk refriger blocks.
+This is kind of bad, by the way. I don't like this at all. Instead, we should be chunking it into roughly 4,000 token
+amounts. Obviously, we should respect the boundaries of the markdown rule, but
+we should make sure that each chunk is between four and 8,000 tokens. So we can see there's multiple flaws. You cannot
+just let these models to their own devices. You have to be involved, right?
+You have to be leading the product. You have to be leading the feature directions so that you actually can see what's happening because the models are
+bad at making decisions. They're really good at writing code and at spotting bugs. They're bad at deciding, you know, what what's the feature, what the
+product should look like, how should it feel. All of that is your responsibility. So people who say like AI is going to replace programmers, they're clueless. They're not using it
+day-to-day. I use it every single day and I have a team of developers using it every single day. And trust me, the models are not going to replace programmers. They're going to make them
+smarter and for the next 5 years, the future is going to be human plus agent. Human plus agent will destroy AI only.
+Okay, this is a quite a bigger change.
+113 new lines and five removals. Still, compressor is quite manageable. 230 lines is fine. And by the way, if you're
+liking what you're seeing, all of this content is exactly what we have in the new society. So if you want to go deeper, if you're serious about AI
+coding and you want to become a 10x AI developer, an AI first developer, then inside of the classroom, we have multiple workshops just on this topic.
+So if I scroll down right here, we have an entire section on code with AI that has multiple different workshops on cloth code, on cursor codeex. So this is
+the codex, this is when it originally came out. six modules on that, three modules on cloth code, two modules on cursor, and this is just one of many
+different courses we have inside of the classroom of New Society. So, if you're serious about AI, if you want to take it to the next level, and perhaps if you want to start making money with AI, join
+the New Society. It's going to be linked below the video. All right, so the compressor changes have been made. Let's run it again. I really want to see how well it makes and I I want to finish
+this because I'll be using it myself, this prompt compressor. I'm not building some like throwaway, you know, vibe coded stuff. I'm building something I
+will need to use day-to-day. Check if user limits are correctly applied. We want to do let's do a 45% reduction.
+Okay.
+Okay. Original target. All right. So, spring text.
+So, this is using different tokenizer than repo because in repo prom this was like 30 74,000 tokens. Here it
+calculates at 60,000. Then it produced nine chunks.
+H. We might need to change the chunking logic.
+Change the chunking thresholds to be between 2,000 and 4,000 tokens each.
+Change it to be between 2 and 4,000. Not 4 to 8,000 like it is now. Do not change
+anything else. So again, we have no nothing happening when this is running.
+So I'm going to say still when the script is running nothing is happening
+at this stage I'm going to say terminal boom paste it in
+close the terminal XML tags identify what point of the main py script this is
+and implement more logging more print statements so I can actually see what is happening. So, we updated it to be two
+to 4,000. That's much better. Before it was like way too many chunks, you know, like 117 chunks. Like that's too many API calls. But then, uh, it was only like nine chunks when we did 4 to 8,000.
+So, I think 2 to 4,000 will be better.
+In the meantime, what we can do is we can set up the GitHub stuff. So, I can
+go to my GitHub repos, new repo. I'm going to say prompt compressor. I'm going to make it public.
+This tool can compress any prompt by a given percentage amount. Ideal for very
+long prompts. Okay. Uh license. Let's do MIT, which is full open source. Git
+ignore. We can probably add it. So, actually, we should probably add a git ignore. Analyze all the dependencies, all the environment files we have, everything. And add a proper git ignore
+into the root folder covering everything. Okay. So, we're going to leave that empty. Create repository.
+Then I'm going to copy this link of the repo and I'm going to help cloud code.
+I'm going to have cloud code uh correct this. Well, actually, let's use codex.
+So, boom. I'm going to actually do slash new to start a new chat session. I'm going to do use I'm going to break my
+rule because I want fast responses. I'm going to use GBD5 low. I say your task is to help me connect my local project
+to this GitHub repo. Tell me what to do step by step. Okay, so let's see. Cloud code has created the git ignore. So even
+on the low reasoning effort, it still takes a bunch of time to respond. So actually I'm going to use cloud code for this because again cloud code is better
+at quick changes. It's not as powerful as Codex. It's easier to use for sure.
+So the best use case as I said multiple times is codeex plus cloud code and to be honest if you are starting out you
+just need the 20 $20 a month plan on both of these right anyways let's initialize the repo following the steps
+if you've never done it I mean obviously I have tons of repos but if you've never used GitHub just ask the AI agents have
+them help you it's the most underrated thing like a lot of people make excuses where it's literally like one or two prompts like most of your excuses are literally one or two prompts to an LLM.
+Think about that. All right, so let's send this. Boom. What's the issue here?
+Is it misformatted or something? Get remote add origin paste. Okay, there we go. Get add dot to stage all the files.
+So we can go to the source control here. We can see all all those things have been staged.
+And then we just do original commit and push it with upstream. Get commit first commit.
+Actually, this this commit message is pretty good. You can just steal this.
+Boom. And then we need to set the main branch as being the master. Get branch.m
+M-m main. And then we need to push it with upstream tracking. That way we can then just do get push and it knows which
+branch is connected. Get push upstream origin main. And what's what's the issue?
+Oh, we need to fetch first. Get pull.
+Oh, because we have the license. What is the issue? Get pull.
+There's no tracking for the current branch. So, I have this error. I'm going to have LLM help me resolve it. Is Codex finally finished? Okay, there it is.
+Error. Boom. Okay, so I implemented all the steps but when I tried pushing with upstream, I got an error saying that I need to pull first. So when I do get
+pull, okay, I know what the issue is. I just realized what the issue is. We don't have the upstream tracking. So we need to do get pull origin main. Okay, we
+need we need some parameters. You know what? Let's do force push. Tell me how to do the upstream push but with force.
+We have some changes that we need to overwrite. There we go. We need this command. Boom.
+And then if we go here, we reload, we have everything, but we lost the license. So I can just ask codeex. Next
+up, analyze our entire repository, read all of the files, and create a license file that is a complete MIT license.
+Everything open source, everything allowed. Okay, that's good. So now we have it on GitHub. And I'm going to link this below the video so you can just
+take it, you know. Hopefully there is no ENV file. There is not. That's good.
+We have some previous attempts. Uh, original prompt. I should probably remove that. Or actually, I don't know.
+It's probably fine. I mean, you guys can use your own prompt, so all right. So, I had to do a few fixes off camera, but
+it's ready. So, I added the license file. I added the readme file. Stuff that every GitHub repo should have. And again, it's completely open source, so
+you can feel free to use it. I'm going to link it below the video. Um, if you have long prompts, this is the way to go to compress them. Hopefully you found this video useful. This is my this is
+how I use it. I use cloth code for you know quick actions for explaining what to do for teaching me concepts and I use
+codeex for the heavyduty programming for the most complex error fixing feature implementation anywhere I need the most
+all the power I can get. GPD5 high is right now the best AI model for programming. Opus 4.1 also really good
+but it's not as powerful. It doesn't reason as much. That's why it's better for being like more of the assistant, more of the consultant, right? Whereas
+the actual AI coding agent is Codex with GBD5 Highi. So this is my tech stack as of early September of 2025. AI field is
+improving so fast. So who knows, might literally change in the next month, in the next two weeks. We'll see. But yeah, hopefully you found this video useful.
+If you did, and if you're interested in more content like this, make sure to join the new society in the classroom.
+You're going to upskill yourself from a complete beginner to someone who's better than 99% of people at AI. If you want to become an AI first developer,
+which means a developer who will not get replaced, instead who companies will try to keep and promote, this is the place to be at. No matter what your experience
+is, no matter if you've never coded before or if you have coded but you're not using AI, if you join a new new society and if you go through the content we have in the classroom, you
+will become better than 99.9% of people with AI. And that is a promise because I've spent well over thousand hours
+using AI tools for coding and I've documented everything in here. And actually I've even documented my startup literally from day one documented the
+rise of vectal from the idea to choosing to building the back end error hell the
+path my plan to 10 mil deploying it choosing the do name the domain name blah blah blah everything is in here. So
+yeah, if you want to build your own SAS, literally I showed you how I did it from zero to over $10,000 MR. So if you're serious about AI, join new society. It's
+going to be linked below. With that being said, thank you guys for watching and I wish you a wonderful, productive week. See you.

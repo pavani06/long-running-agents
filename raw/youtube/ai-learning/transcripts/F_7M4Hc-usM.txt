@@ -1,0 +1,1097 @@
+Please join me in
+welcoming Sam Altman. [APPLAUSE]
+This class was designed
+as an inspiration from a set of
+different experiences
+while I was a student here. One of them was Terry Winograd's
+intro seminar CS-47M, Computers
+and the Open Society. But a second one that was a
+pretty formative experience for me, and a lot of
+my friends and peers
+on campus at the time
+in 2014, was CS-183, How to Start a Startup by Sam.
+And so it's really
+cool to have you back. What's it like? How's it feeling
+for you to be back? I was thinking as
+I was walking in,
+if I had just a
+little more time, I would do an
+update to that class because I think everything about
+starting a startup has changed
+so much, and I have
+not seen anyone do a good version of how you're
+supposed to make a starter now.
+So I had that-- just
+walking in here, I had that, oh, it'd be fun to do it again. So, timeline wise you
+thought that in '14.
+I think OpenAI was
+founded in 2015? Is that right? '16 basically. '16, OK. So then you went-- it
+was like you were--
+it felt to me from an
+observer perspective that you had come up with
+your working theory for how
+to do it right, and then you
+went and tried to implement it. Is that a fair assessment
+or is that not the case?
+OpenAI was like the strangest
+startup of the last,
+maybe, a couple of decades
+in Silicon Valley because it started as a research lab. It was really not
+a company at all.
+And the kind of normal
+course of startups
+is that you start
+a product company, and then it grows for a while,
+and then growth slows down, and then you start a research
+lab and you like bolt that on,
+and you try to figure
+out the next thing to do. And we were the
+opposite of that. We were a research
+lab first that
+later had to bolt on a startup. And I don't really
+recommend that. It's kind of an unusual
+thing, but that's
+not quite what I meant. What I meant is
+we still followed the pre-AI rules of
+a startup because we
+were trying to make it. We didn't have it yet. But now, watching what
+the best startups do
+is so different
+than how startups work even a couple of years
+ago that I think someone--
+I'm probably not
+going to do it-- someone should do
+that class again. And what would be
+the biggest updates you'd make based on your data?
+With an affordable amount
+of spend on tokens, you can do what a 100-person,
+incredibly great engineering
+team would do as a startup. And that was just
+totally impossible. That was not in the set
+of options for a startup,
+and now it is. So I think what you can take
+on, the level of ambition you can have, the speed
+of which you can move,
+the amount of stuff
+you can do at once, it's just totally different. And does that change the
+shape of the problems
+you feel like you assign at
+the end of the class for people to attack at the
+end of that quarter
+if you were teaching it again? I don't think assigning
+problems to attack ever works because if you like--
+if I can think of
+a problem-- if I can think of a really
+great startup idea, if it's, obvious,
+enough to me, then it's
+probably obvious
+to a lot of people. When we started
+OpenAI, we were one
+of maybe-- generously speaking--
+four AGI efforts in the world. And you want to find
+something like that.
+And I'm sure that there exists
+something today that just wasn't possible at all pre, like,
+automated coding era that
+is totally non-obvious, that
+will be a multi-trillion dollar market soon.
+And that only four companies
+are working on it right now, but I don't know what that is. It's much more likely
+you all know what that
+is than I know what that is. My brain is like
+taken over by OpenAI. But, the kind of idea someone
+can assign you to work on
+is probably not what you want. Yep. OK, so that's fair.
+But I think it would be
+helpful, since this is a systems class, to maybe reason
+about a particular problem
+that you have to reason through
+so that they can then apply the shape of the techniques used
+to break down from a systems
+perspective, that problem into
+solutions to their own problems. And a concept that you had
+started to tease in the class
+back in 2014 and then clearly
+you've talked about publicly over the years is scale.
+Scale is its own beast. Its quantities, its own quality.
+Scale as a concept
+has been something it seems like you've
+empirically investigated
+in all kinds of ways over
+the last 10 years or so. Could you help us, first unpack
+what you mean by scale now,
+10 years later, how would you
+deconstruct that as a systems design attribute to apply,
+whether it's as a tool?
+Can we start there? Yes. So I don't know why the
+following observation is true.
+I offer no theory that I find
+satisfying to explain it,
+and that makes me a little bit
+nervous to suggest you follow it, but I'm going to anyway
+because, empirically, it
+does seem to be
+true, which is all of the most interesting things
+I have observed in my career
+in watching other things happen. All of the most interesting
+ones have had something
+to do with emergent properties
+that scale or scale continuing to provide returns far beyond
+what the consensus thinks
+will work. And this, obviously, happens
+with scaling laws for AI models,
+but this happens with
+getting more smart people together to think about one
+problem in a research setting.
+This happens with companies
+and the economy of scale you can get all in all
+these different ways.
+I really learned
+this at Y Combinator when it became clear to me
+that everybody was saying,
+oh, Y Combinator
+has gotten too big. It should shrink. We should fund less
+companies per batch. The best times of Y
+Combinator, when it was
+like 10 companies per batch. And a lot of very smart
+people were saying this, and it was like
+tempting because it
+would have been much less work. And the theory was that the
+best companies are always kind of obvious, and
+then you fund the rest
+and it's not as helpful. But a huge part of the magic
+of what made YC work were--
+was the network effects
+inside of the batch. And that was an emergent
+property at scale that just hadn't been
+discovered before.
+No one had tried
+to fund startups at scale in the same
+way, and thus no one
+had ever happened upon this
+observation of when you do that. There's something important that
+happens that just didn't exist
+at all at the 1/10
+but 1/100 of a scale. There's a bunch of other
+examples like this,
+and I'll skip them in
+the interest of time. But I would say, again, I
+offer no explanation for why,
+but empirically
+speaking, when you find a time that you
+can push on-- you can push something to a scale
+people have not tried before,
+and it's already working in some
+interesting way at the smaller scale, more often than not,
+that seems to be a good idea.
+And that also seems
+to be something that most people
+don't do enough.
+And I don't offer an
+explanation for this either but when we
+were, like, we're really
+going to scale AI models,
+all of the geniuses in the field, most of them were,
+oh, this isn't really working.
+That's barely a
+scientific result. It's not interesting that
+it gets better at scale. You've already shown
+that, why keep scaling it?
+So I mentioned the
+YC example, I've seen a lot of startup founders
+where they're like, well,
+there might be
+something interesting would happen if
+I scaled this up, but I'm a little worried about
+it for non-specific reasons.
+And, again, looking
+back at a huge data set of people that have
+scaled their companies in all
+these different ways, there's
+almost always interesting stuff there. So I think, directionally,
+that's like an interesting thing
+to push on and
+severely underexplored.
+On the systems
+design part of that, I think one reason
+people don't do it
+as much is stuff breaks
+at an accelerating rate
+and in an unpredictable
+way as you scale it. And if you are going to
+really scale something,
+it's always like a
+little bit broken. There are always
+very smart people who say why you shouldn't do
+this, don't get too ambitious,
+don't get too big, let's
+try this smaller, and so breaking that down
+is a systems problem.
+I'll use the thing of when
+we were scaling up AI models, there was technically
+can we do this at all?
+This seems crazy. Like, no one had ever thought
+about trying to do a run across 10,000 or 100,000 GPUs, and
+that was going to require stacks
+of engineering talent. There was the capital
+requirements and what it was going to take to do this.
+And like, how is there ever
+going to be a business? How can you think
+about taking this risk? There was this sort of cultural
+stuff of researchers saying,
+well, if we're going to
+get all this compute, why do we put it all
+into this one project where we're not going
+to learn something? Why not divide it up
+among all these projects?
+And this also happens
+in every area. I've looked at almost
+every area for scale,
+and breaking it down into each
+difficult area or each reason
+not to do it and
+trying to address them one at a time, yeah,
+that's been really important.
+I'm going to push on that a
+little bit because there's very few people who've been able
+to repeatedly scale new products
+and systems the way the OpenAI
+team has over the years, but it seems like
+one of the issues
+is there are all these
+prior conditioning sort of mental models and
+expectations humans have,
+and you said things break. And one of the
+things it seems often breaks that's the
+hardest to refactor
+is the human side of the
+systems design, wherever there's human
+implementers or there's
+human participants in that. And so what have you learned
+about humans at scale-- organizing humans at scale to
+participate in a system that
+may not be just a redo
+of some past system that they get naively on--
+at a priori on first blush?
+I think a clear goal, a
+clear plan to get there,
+and a clear answer to the way
+that you're going to get there
+and how you're going to make
+decisions along the way, that's very important. So if we go back to the example
+of when we decided to scale up
+models, there were a lot of
+people who were like, ah, this isn't really going to work. It's going to have
+these problems. It's also not-- we need a
+more diversified portfolio.
+But once we say, no,
+we're going to make a bet on scaling deep learning. That's our thing. If we're wrong,
+we'll fail, but we're
+going to do that,
+here's why we're going to do that,
+here's what we believe about what the
+state of the world can be like if we get there.
+That's very powerful. And then for whatever
+reason, we did not
+evolve to be good at
+thinking about exponentials. People have a hard time
+imagining that scaling laws are
+going to continue exponentially,
+that revenue will grow exponentially, that an
+organization can take on exponential complexity,
+and, in my experience,
+it takes a lot of time to really
+reason through first principles with people about
+why that can happen.
+Can we take two examples
+to walk through that? The first being ChatGPT and
+the second being Codex, both
+of these have transformed-- can everyone hear? I'm going to try to project it. Yeah? OK.
+So, let me put in
+a frame and you can challenge both
+the assumption, and then we can hopefully reason
+through example what happened.
+In the case of ChatGPT-- for a long time in
+scaling of models, a big mental block that seemed
+to be prevalent in the space
+is what are these things
+going to be useful for. It's a research
+solution-chasing a problem,
+research-first approach. It's not a product. And then ChatGPT came out
+and it proved to the world
+that that chat experience was
+a killer app for general models
+at scale for consumers. And then a couple
+of years later, it's clear that coding has
+been the killer enterprise app.
+So, how would you
+compare and contrast the systems you guys used
+to discover those use cases, ship them, scale
+them, monetize them?
+Any salient learnings
+from those two systems? Yes.
+So, we had made
+GPT-3 and we needed to make money because we wanted
+to go scale up to a billion
+and multi-billion
+dollar computers. And we had GPT-3, and it
+was kind of interesting. It was a cool demo, but
+we couldn't figure out
+a product to build around it. And we had been thinking,
+thinking we just couldn't do it. We had tried a few things,
+they hadn't worked.
+And so we knew the models
+were going to get better, but we also wanted to start
+a revenue engine sooner.
+And we said, well, since
+we can't figure out what product to
+build, we're just going to put this
+into an API, and we're
+going to hope that somebody
+else can figure out what product to build. And so we launched in like-- I don't know, something in the
+summer of 2020-- the GPT-3 API.
+And, initially, it kind
+of got no traction at all.
+And then about a month later,
+randomly, as far as we can tell, it went viral on Twitter.
+On the same day, a few
+different developers kind of got it to do
+something cool, posted it, other people started trying.
+And then a lot of people
+started trying the API,
+but it was shockingly bad. If you go back and
+use GPT-3 or 3.5,
+you will be astonished at
+how bad the models were then, relative to the
+amount of excitement
+they generated at the time. So people tried all
+of these things, and, really, the only
+business that people
+got to work in a significant
+way with GPT-3 was copywriting.
+And that was, like, not that
+great and not that exciting. And we were kind
+of like, ah, it's just going to have to
+wait for a better model.
+But although that was the only
+business that was working, developers had figured
+out how to put in a prompt
+and be able to chat with it. And we saw this a lot. Like, more people were using--
+they couldn't get the API
+to work for their business, but they were using their
+API key to just chat. And we said, well, we
+can build a good chatbot.
+People clearly want that. And we had a new model. We actually had
+GPT-4 done but we
+had a new model we were ready to
+release in between called 3.5, and we had figured out a
+new kind of post training
+where we could get the models to
+do a good job with instruction following so it can make
+it easier to chat with. And we said, well, the API
+is not working great-- maybe
+it was like a $10
+or a $20 million run rate kind of business--
+but there is this thing that people love.
+And under the YC principle,
+see what your users love and do that, we said we'll build
+a chatbot around it.
+And we put that out. And we still didn't think it
+was going to do that well. It was really meant
+as a research demo
+to convince other
+people that they should build chat-like products
+and pay us for the API,
+but that went crazy viral. And another thing I
+had learned from YC is when something really starts
+growing and it's not very good,
+you have a guaranteed
+hit on your hands. And so we had like five
+days where the traffic
+would shoot up, fall off and
+everybody would be like, well, that was just a hype cycle. But then the next day it
+would get to a higher peak,
+fall off again, later
+in the day people would say that's a hype cycle. By the fourth or fifth day I
+was like, I know how this works.
+I know what's going to happen. Like, we have the potential
+here at a killer product,
+and we knew we could
+make it much better. We knew we could--
+we knew we had GPT-4, we knew we could keep scaling,
+but by that fifth day,
+we got everybody together and
+said, this is an emergency. This is the good
+kind of emergency, but we have to build a company
+and a product all at once.
+We then had two months of crazy
+scaling, and then we said, we have to figure out
+a business model later.
+For now, we're just
+going to charge people so that we don't run
+out our compute bills, but that's, obviously,
+not the long term answer.
+That also turned
+out just to work. And that was the
+story of ChatGPT. And then there was so much
+utility that people just had not
+gotten over the
+activation energy to find that that has
+worked really well.
+And then Codex-- actually,
+the plan before ChatGPT was that we were going
+to go all in on code.
+We knew these models
+could write code. We knew that they
+could be really-- and we knew that would
+be a valuable area,
+but then we had this incredibly
+exciting thing happen. But our internal
+belief at the time
+was that coding was how
+these models would control things on computers
+and robots were
+how these models would control
+things in the physical world. And if you made a
+smart enough model that had the actuators of
+writing code and robot--
+and driving a robot,
+you could then actually get this intelligence to do
+stuff for you in the world.
+So then it took us a
+while to get there. And then I think Codex got
+really good by early this year,
+but with 5.5 is when we saw
+this real inflection point where people are now like doing just
+incredible things with it.
+And earlier in the
+class, we've talked about how the capabilities
+pipeline is starting to look--
+it's starting to become
+somewhat more legibly standard across different
+research groups. You've got pre-training,
+mid training, post training,
+then you've got the RL and
+supervised feedback loop. Do you think that's roughly like
+the shape of the pipeline that
+allowed Codex to go
+through a capability jump and that will basically stay
+stable now and consistent, or are we going to go through a
+major rewrite of that pipeline?
+I think that is definitely
+the current pipeline. I expect we will go
+through a major rewrite. I don't know when it'll
+happen or exactly how,
+but it is a little
+odd to me that it's so
+happens as a pipeline
+and it doesn't quite feel like the optimal solution.
+What would be an optimal
+solution in your head? I think that's a research
+problem for the AIs to figure out.
+I think we're at a point where--
+and we've set this goal that by September of this year, we
+will use 500,000 A100 equivalent
+GPUs-- like a lot
+of computing power-- as an AI research intern. And by March of 2028, that we
+will have a full end to end,
+very talented researcher
+figuring out completely new architectures.
+So I think we are going to
+get-- with the current pipeline, the current
+architectures, I think we're going to get
+over the line of when
+AIs can do incredible work. One of the things that you
+just described there is you--
+we've been talking
+a lot in the class about systems,
+frameworks, and analogies to make concepts from one
+domain legible to other people
+who may not have all
+the context in another, but sometimes because of
+the translation problem,
+reasoning by analogy
+is not helpful because then errors compound. Yeah. Right there you
+said, our goal is
+to try to use it as an AI
+intern, which, obviously, is a very useful metaphor
+within the context of Silicon
+Valley, a class that understands
+how these pipelines work and so on. And then as you scale, actually,
+that metaphor globally,
+people who might not
+have all that context go-- start analogizing
+these models in ways that they shouldn't be. Like, how should we think
+about the limits of that--
+what are the limits
+to scale of-- what are the product
+analogies, the research
+analogies you find most
+useful within the valley? And which one of-- what have
+you found about the limits
+of those analogies scaling? And now how do you navigate
+between those two problems?
+I've been very interested
+in studying how--
+I think what is happening is we
+are in the process of creating a new utility. This doesn't happen very often.
+Electricity is utility,
+internet is utility, the water, I guess-- there's
+not a lot of these.
+And so there are not
+a lot of examples that we can study for good
+metaphors or learnings
+about how to explain
+this to the world. But I was recently looking at
+what happened when electricity
+became a utility. And it's a good analogy
+for many reasons. It's imperfect, of course, too,
+but the electricity companies--
+at least the ones I
+could find information about-- they didn't talk
+about selling electricity because no one knew what that
+was or why they wanted it.
+It sounds very scary. It's this thing that's like
+going to come into your house and it can kill you
+in this gruesome way, and it feels very different
+than the world before.
+And maybe they tried to
+sell electricity or market electricity first, I don't know. But in any case,
+that didn't work.
+And then what they started
+marketing, selling to people was light at night. We are going to--
+what you are getting from
+us is not electricity. It's light at night. By the way, you can use the same
+thing that lets you get light
+for all these other things,
+but people are like, well, why would I want that? And they're like, well, it'll
+wash your clothes for you
+someday. And, no, it won't. That's too far of a jump for me. So, I don't know what our
+analogy for this should be,
+but I suspect that even
+if we're totally right and intelligence is going
+to become this new utility,
+that every company,
+every customer, every government just
+who needs access to and
+is going to use on all
+sorts of incredible ways. And you will have a
+OpenAI token subscription that you will plug
+into everything
+and use to access
+everything, and you have running for
+you all the time and doing this amazing stuff. I kind of don't think-- at least
+right now-- the right way for us
+to analogize that is
+we're selling intelligence because people are just,
+like, somehow not resonating.
+I don't know what our
+equivalent of we're selling you light at
+night is going to be, but I think if we're
+going to become a utility,
+we need to find a way to explain
+to the world what it means to have this intelligence
+pike that you can just
+do whatever you'd like with. So, one question that has
+emerged-- an emergent property
+of this class of having a
+diversity of different speakers is that the utility analogy
+has come up several times,
+but in reference to
+different things. So Jensen likened
+compute to a utility
+and why there should be
+access, and so on, and talk about how Stanford should pool
+budget and so on, and procure
+that as a utility for everybody
+on campus, whereas you just likened the intelligence
+part to utility. Are both of these things true?
+Is one of them true? Is one more likely to be true? How should people
+reason about compute as a utility versus
+tokens as a utility?
+And compute I mean here
+chips versus tokens. Does that make sense? I think as a consumer, as a
+business or an individual,
+you will think in
+something closer to tokens or probably even one
+level up from tokens. I don't think you'll care
+very much about, where
+the hardware is, what particular
+chip it is, what's powering it. I think that stuff
+will be abstracted out. And what you will
+care about is when
+you're interacting with the
+system, can you use it a lot? Is it cheap?
+Is it doing a good job? So right now it's like tokens. It may get-- as we
+move into a world
+where we all just have this
+constant agent running for us, being useful to us all the
+time, you may think about it
+as even one level up,
+but, yeah, my guess is when you pay for
+your cell phone bill,
+you're like, all right, I'm
+buying access to airtime and some number of gigabytes. And, it's going to
+do all these things,
+and I'll use all these
+apps and whatever else. But what you think about
+paying for that kind of internet utility
+in this case is just
+like access to the whole system. And the particular hardware
+at the base station
+and how it connects
+to the internet, you don't think
+about that as much. I know I could nerd out
+about utility infrastructure
+for a long time,
+but I want to make sure we switch a little bit to
+being relevant for the students. Usually we have
+questions but we're not
+doing this today, unless
+you're comfortable with it. Oh, OK, great. How about that, improv. OK.
+So one final question
+to start getting the creative juices flowing
+is the final project for this class,
+according Project 183
+is the one person frontier lab. So everybody here is working
+on projects where they're simulating being an individual
+as a lab with access
+to all the right tools, they've
+got hundreds of thousands of dollars of credits
+from Cloudflare. I think we've got some
+OpenAI tokens maybe,
+but there's a bunch of
+compute at their disposal. If you were in the
+class, what would you
+be working on for your
+one-person frontier lab project? First of all, I think
+that's an awesome project.
+I think this is top of
+mind because we were just
+talking about utility
+framework frameworks. I think there's a lot of
+very smart people working
+on great training
+ideas, and we're going to have incredible models.
+No matter what you all do, we're
+going to have incredible models, I promise you, pretty quickly.
+But I think we have
+not invested enough in being able to
+deliver at scale
+huge amounts of
+cheap intelligence, so maybe I would go work on the
+inference part of the stack. And how are we going to get
+this incredible intelligence
+to be cheap and abundant, I
+think that's under-invested. And I think all of
+the frontier labs
+are going to have to
+become insurance companies to a significant degree. OK.
+It might be too late to pivot
+your projects, but better late than never. Work on whatever
+you want to work on.
+OK, let's start doing questions. And I'm going to
+moderate and try to be not-- please try
+to be productive and not
+spicy, et cetera. Remember it's a CSS
+class, but up to you Sam. It's fun. It's Fine.
+Oh, we've got questions. Oh, perfect. All right. First one. The questions about your
+views on Yann LeCun's view
+that LLMs are a dead end.  First of all, in terms
+of achieving human level
+intelligence, these
+models have already far surpassed human
+intelligence in some ways, and then they're wildly
+worse than others.
+Like, for example,
+they seem much worse than people are at
+very long horizon,
+kind of, high judgment
+signal and tasks.
+On the other hand, yesterday we
+had one of our models discover--
+or disprove a conjecture one of
+the hardest problems that had-- smart people had worked
+on for a long time.
+And a lot of people, a
+lot of smart scientists-- I don't know if
+LeCun was one of them or not-- had even quite
+recently said something
+like that was not
+going to happen, and then the model just did it. And now you have all these
+mathematicians saying like,
+is math over? What does this
+mean for our field? So, clearly LLMs are capable
+of figuring out new knowledge,
+and clearly they are capable
+of doing some things that-- some intelligence tasks
+that humans just can't do.
+They are going to
+scale much further, so how much better and what
+distribution of the tasks they can do better than humans?
+We'll find out, but
+I suspect it's a lot. And in terms of this lack of
+a belief in the exponential we
+were talking about earlier, I
+think the field was, honestly, held back by a generation of
+scientists who just were way too
+certain on what wouldn't--
+what scaling was not going to produce. And then some people just
+looked at the graphs and said,
+well, it looks like it's
+continuing beautifully. Let's keep going. I think world models
+are clearly important.
+And we'll need that for
+things like robotics, but betting against LLMs
+scaling at this point
+feels quite misguided to me. Does it get annoying to
+be the, I told you so guy?
+No. I mean, there are these
+like Twitter trolls that for years have just been
+like, it's not going to work,
+it's not going to work. This is so dumb. This is fraud. This company is going to fail. This research approach
+is going to fail.
+And I used to get
+more bothered by them, but I don't even like feel the,
+I told you so at this point. It's like you were just-- Like, choose Nirvana.
+You're still going on about it. Like, the data is quite
+strong on our side.
+And I don't think it'd be
+that fun to say I told you so, also the fact that you're
+still saying we're wrong doesn't really bother me.
+Just move on. There's that saying
+that insanity is doing the same thing over
+and over again when presented
+with data that is not working. And if they keep repeating
+that, in a sense, it's a form of
+insanity, I think.
+I think there's
+something that happens, which is if you
+make your identity about a particular thing is
+going to work or not work,
+and you associate
+yourself with that belief, and then the science or the
+empirical results disprove you,
+and you're like too hung
+up on your identity, you can't let it go,
+you can't see the truth.
+And I think this is an important
+reminder in both directions. How do you see education?
+It clearly has to super adapt. And I am worried-- I thought by now it would have.
+I think if we continue to
+teach and evaluate students as if we were in a pre AGI
+world, it's not going to work
+and it is going to lead to
+atrophy of learning how to think or whatever. And I thought that was
+going to be obvious enough
+that I wasn't that worried. When ChatGPT launched,
+I was like, yeah, we're going to have one
+year of students cheating
+and not learning that much and
+then the educational system is just going to redesign
+itself, and we're going to teach people so much better.
+People are going to
+really get projects where they have to use
+AI to be able to do it,
+but they still have to
+stretch their brain more and think more and figure
+out new things to do. And, honestly, I struggle
+to point to any significant
+systemic change that I've seen
+in the education system at large in the three and 1/2 years
+since ChatGPT launched,
+and that was a
+prediction error for me. I thought that
+would have happened. So I have no doubt
+that we can likely
+have done with every other
+technological leap before, redesign how education
+works so that you still
+have to learn how to think. And there will be some things. Like, I am a person
+who thinks by writing,
+and I write a lot of stuff
+that I never show anyone else but it's still important to
+me to figure something out and so I'm grateful
+that I learned to write.
+People say the same
+thing about programming. So there will be
+some things that we teach people to do that machines
+can do better just because it's
+helpful to teach them the meta
+skill of thinking and learning, and that makes sense, but
+there are a lot of other things
+where we should
+just totally teach-- totally change how we teach or
+how we learn or how we evaluate.
+And if we don't do
+that, I think there will be significant atrophy
+in people's critical thinking
+skills. Question is, what was
+your favorite class? And what do you wish you'd
+taken when you were at Stanford?
+Did Stanford still
+do intro Sims? I did like all the-- I did like three intro Sims a
+quarter of my freshman year,
+and I loved all of them. They were all super different. But looking back,
+the fact that I
+was able to get such a
+broad exposure to stuff and have a very shallow
+understanding of lots
+of different fields was
+an incredible thing. If it had not been
+for that, I just would have taken like CS
+and physics classes, which
+still would have been great. But I think more
+about the stuff--
+the classes I took that were
+totally random and unrelated to what I do now but in
+some important way gave me
+a perspective, that I think
+I would have liked learned to program, no matter what.
+And I didn't think that at
+the time I was kind of like, this stuff is all
+cool, but it's mostly
+going to be about learning CS. I only did two years of school,
+so there was a lot of stuff
+I wanted to take
+that I didn't get to, but that's the surprising thing.
+My question is, what is
+your spiciest steak of all?
+I think with more
+time to think, I could come up with
+a much spicier one
+but I think AI is just
+going to keep going.
+And I think this is considered--
+I don't think this is
+widely believed yet. And I think if this
+were widely believed, there would be significantly
+more reverberations that
+are happening through
+society right now. Maybe I don't have the-- or actually, maybe this
+is the high order bit
+that if AI progress
+continues on the exponential that it's on for another--
+it's been three and 1/2
+years since ChatGPT. Even if it were another three
+and 1/2 years on that same trajectory, the
+world, the potential--
+the way that society-- what
+society is capable of are just completely different.
+Well, let me try to prompt
+you in more thinking tokens on that one. If we treated you as a
+model, as a frontier model,
+and you have some
+inherent capabilities-- and we're going to try to
+elicit capabilities that people don't know about for
+the next few minutes--
+one of them is that you've
+been post trained now on-- you've been
+continuously RL on OpenAI,
+as well as the external
+feedback loop of the world on what doesn't work and--
+what works and doesn't work. So now, if we're
+going to treat you
+as a prediction
+engine for a sec, the prompt is what are the
+three most likely forks
+of the universe you see
+over the next 10 years? And what is your probability
+assessment on each of those?
+Does that make sense? One that feels very
+important is how much
+is this technology going to be
+very widely democratized versus how much is it going to
+sit in a few companies.
+I think a world-- there are all
+of these reasons why you could imagine the default
+is that this gets concentrated to a few
+companies and they
+become like a significant
+fraction of the wealth on Earth. That would, obviously,
+be terrible,
+and we work super hard
+to push against that, but I think that's going to
+require the will of the world to really avoid because there is
+a sort of attractor state there.
+And I think part of
+the reason that we need to push to this kind of
+utility model of the world is that, A, it's quite
+unstable and quite bad
+and will feel quite unfair if a
+few companies have all of this. But, B, I think there's
+a real alignment failure
+and a very fragile world. And the best way
+to get to a world we want that
+represents everybody
+winning and everybody's values
+being represented, everybody having agency is to just
+push this technology out
+into the world,
+but there will be a very strong
+argument against that around safety and stability.
+And I think that
+will be a big fork. And it's very important. And I encourage all
+of you in your careers
+to push hard that
+this is a technology-- it can bring us an
+incredible sci-fi future.
+Life can be unbelievably
+much better. We are going to incur
+some risk to get there, but the risk of
+keeping is concentrated
+in a handful of
+companies, even though we would be one of these
+companies is not something we should tolerate. So I think that
+will be a big fork.
+In terms of probability,
+I think it's-- the world should
+have such an interest
+in it happening this
+way that I think it's like 80% we end up
+on the Democratic path,
+but there will be a very
+strong safety message and there will be a lot of
+power seeking people who
+want to concentrate the power. And one of the problems
+with forecasting this--
+or that you have and
+we all have as humans is once you make that
+forecast, then you have agency to affect the
+forecasts and the forks?
+Well, I mean, we're
+clear on what we're going to use our agency for. Like, this is what
+we believe in, we think that we're going
+to do everything we can
+to push it in this direction. We see the forces in
+the other direction. Maybe a related fork,
+there's a lot talk
+about future economic
+models and are we going to do universal
+basic income? Are we going to have
+everybody gets to own
+a slice of every company? Like, is it capitalism
+and no change? Is it, like, full on communism?
+There's a lot talk about this. One thing that I think
+is not talked about much is how-- specifically how
+we distribute compute.
+So, maybe a lot of the
+economy can work in a way that it's going to work.
+I've become much less of a
+even short term jobs doomer. I've always been optimistic
+we'll find new things to do, but this may not even be as
+disruptive as I originally
+thought in the short term, but
+we are seeing compute shortages now.
+I can imagine them
+getting much worse, and I can imagine compute being
+like the most important utility
+that people need. So if the price of compute from
+a supply and demand perspective gets way out of
+whack, then I think
+there will be a very
+interesting fork about what it means to equitably
+distribute compute.
+So, there are two very
+interesting things there which you said. On the economic
+side, we might have
+need universal basic income. Everybody owns a
+piece of shares. One of the speakers
+in this class is Nicolai Tangen, who runs the
+Norwegian Sovereign Wealth Fund.
+He's awesome. He's awesome. Yeah, the Norwegian
+Sovereign Wealth Fund owns 1.5% of all publicly
+traded companies on the planet.
+They also have effectively
+universal basic income. You could argue there's
+flavors of this already today because the largest employer
+now in the United States
+is the government. And you could argue
+large sections of that are a way for the
+government to redistribute income from taxpayers.
+So are these solutions that
+actually need to be novel or just reimplemented
+for this era?
+How do you think about the
+novelty of those solutions where we often,
+in Silicon Valley, have this tendency to be
+like reinvent old things
+from first principles? And so should we just look to
+existing systems and tweak them? I don't think that these things
+require deeply new ideas,
+although I will say,
+I am much more excited
+about people having
+some ownership stake than a fixed
+monthly cash dividend.
+And I funded like a big
+universal basic income
+study a while ago. I've also watched what happens
+when people invest in startups,
+and I know which model I think
+hits human psychology better. So what I would love to see is
+as leverage in the world shifts
+from labor to capital-- which
+I think is going to keep happening-- that we find a way to have
+something like a citizens wealth
+fund in the country or
+in the world, eventually, where you basically own
+a slice of capitalism,
+you own a slice of
+these companies. And then on the second fork
+there on compute bottlenecks, you said at some point when
+compute prices get out of whack,
+between January and this year--
+my current understanding is based on data-- we've seen
+that H100 prices and Blackwell
+prices, the spreads between long
+term reservations and spot is like 5x. I don't know if it's
+that high anymore.
+I think it got a little
+better, but yeah, it's high. Or if you could even find H100s
+because they're pretty much all gone for this year.
+Does that sound right? No argument. There's a gigantic
+compute shortage, yeah. So, that's a good example of
+a systems problem right now
+that's live. At least to some folks
+it feels like COVID, but for the compute era, like
+all the toilet paper is gone,
+why are people not
+freaking out about this? Well, I think people assume
+we will make big inference
+gains on the hardware we have. I also think there is a
+tsunami of hardware coming, but maybe the demand
+tsunami is even bigger
+and I think people should
+be freaking out somewhat. And would you say it's
+fair-- like, how long are we going to exist in a
+compute shortage, at least,
+based on current data you have? I think other-- you
+can't talk, really,
+about worldwide
+demand for electricity without talking about the price. Like, there's an
+extremely different demand
+about how much energy
+people need in the world if the price comes
+down by a factor of 10 or goes up by a factor of 10.
+And I think AI is like that too.
+If we can make models
+sufficiently smart
+and at sufficiently
+low cost, I think demand is kind of uncapped. And so in some sense, as long as
+we can continue to make progress
+on this, there will
+be a shortage forever and things will be a bit
+above what the price we think
+should be even though people
+are getting better, smarter, more whatever, intelligence
+just because you can use--
+if we make really
+great personal agents, you can have 10 of them
+running and working for you all the time, or you
+want 100, I think.
+It's a lot of
+inference, a lot of-- awesome. With that, I'm going to give you
+the swag for the class, which is--
+[APPLAUSE]  Thank you for coming. Thank you.
+Thank you, all.

@@ -1,0 +1,347 @@
+I've been using bolt every single day
+for the last 2 months but this new
+platform it might just be my favorite
+look bolt is great for building cool
+user interfaces but creating full apps
+that's a massive Challenge and here's
+where it gets interesting lovable makes
+it extremely easy to build fully
+functioning apps and add stripe
+Integrations and let me tell you
+something stripe Integrations are
+absolutely crucial if you want to make
+money so in this video I'm going to show
+you why lovable is a complete game
+changer for non-technical people like
+myself and this is coming from somebody
+that loves bolt. new so if you love bolt
+and are struggling with adding databases
+and backends and stripe Integrations
+this is the perfect video for you all
+right so first of all what we'll see
+inside of lovable is we could scroll
+down and we could see our projects that
+we've worked on but also see the latest
+that the community has built so this is
+a really cool way to see all the
+different things that people that also
+use lovable have been building so you
+could actually use like look through
+these and you could actually see the
+history of you know how they actually
+built this app which is pretty cool I
+love this feature you can also look at
+the featured ones we can go back to our
+projects but what we want to do is we
+want to type out what we want to build
+so I'm going to build I basically gave
+this a prompt and said build me an app
+idea generator for daily tasks that I do
+to help automate my workflows and then
+click Send here and it will start
+generating our preview for the app so
+how our app generator functions is
+similar to bolt so on the left hand side
+you can see this is our check chat with
+the AI and our agent and then the right
+hand side is where the preview and the
+code is written so let's give this a bit
+and see kind of the initial preview that
+it gives
+us one thing I want to mention is you
+can see it's breaking it down step by
+step so it's taking the design in
+Inspiration features for V1 and then the
+design elements as well and then
+breaking those down into you know
+different components here so this is
+initially what it gave us this is pretty
+cool we could choose the kind of
+different you know category here
+personal work let's go to work and then
+let's generate ideas so this is an app
+user interface that I actually built
+while I was trying to build out this
+video and I want to copy this so let's
+give this to our lovable agent and say
+so this is an easy way to actually make
+your user interface of your apps to look
+how you want them to just take other
+make your user interface of your apps to
+look how you want them to just take
+other inspiration from either other
+people or from you know specific
+softwares that you like to use
+screenshot it add it here and then
+basically tell it to emulate that so
+once we get the user interface SP
+looking like we want it to then we will
+do the important stuff which is backend
+integration adding user logins all that
+stuff but first of all let's focus on
+this so looking like there's an error
+here let's try to fix it lovable is
+really good at fixing errors whenever
+there's an error in the code awesome so
+now this looks exactly like the one that
+we actually used
+before great that all looks cool I want
+to take 10 seconds to make sure you are
+subscribed because in the next video I'm
+going to show you how to add stripe to
+your lovable apps and it is so simple so
+if you've been looking for a bolt
+alternative to actually charge money for
+your applications this is it all right
+let's get back to the video now let's
+move on to add user login and
+authentication so one of the best parts
+about lovable and the reason that I've
+actually been using this platform is
+it's super easy to add backends using
+superbase here so if we click this
+button here it makes really easy to
+integrate superbase which you can do
+inside of Bolt but you have to go in and
+do all this stuff manually whereas
+lovable makes this extremely easy and
+convenience is everything when using a
+platform like this when you don't know
+how to code so I'm going to come here
+and I'm basically going to say let's add
+user
+authentication it's telling us we need
+to actually connect our superbase
+account and so come over to superbase
+you're going to want to make sure to
+come over and add a new project and give
+it a second you could see that this is
+all still loading once your project
+status shows this little Green Dot here
+this means that it's all set up and
+ready to go or let's come back over to
+lovable and then come up to the
+superbase integration here we want to
+click on our project and let's go ahead
+and add the one that we just
+added so let's go ahead and connect that
+and now our chat right here it's saying
+that it's trying to connect our stupid
+base account and it's doing this so we
+actually don't have to do this ourselves
+which we would have to do inside of Bolt
+and it's a bit of a hassle especially
+for somebody like me that does not know
+how to code or is not a programmer so
+this makes it very seamless and one of
+the big reasons why I do love using
+lovable so it actually identified that
+we don't have any tables inside of our
+superbase account which is very
+essential because that is actually how
+we store user information all right so
+it looks like we are now connected to
+super base we have user accounts and
+login we could store and use real data
+we could add Advanced features such as
+endpoints email notifications payments
+which is very important in lovable is
+amazing at integrating stripe which I
+will be covering in another video so
+make sure to subscribe that way we could
+actually charge money for our apps we
+build which is absolutely massive so
+it's recommending that we set up
+authentication first before adding any
+other features so let's add
+authentication so it's asking the
+information we want to store inside of
+our superbase data and inside of our
+database so let's just store user info
+like login
+and then let's also store saved app
+ideas so basically what it's doing is
+it's writing an SQL command which I'm
+not a coder so I don't even know what
+this means but I do know that this is
+essentially like code that we run inside
+of super base in order to set up our
+table editor so that way we could store
+our information properly so all we have
+to do is Click apply changes it will
+insert this code into our superbase and
+then set up this table AKA database in
+order order for us to store this
+information without us having to set it
+up ourselves which again we would have
+to do this personally inside of Bolt and
+it's a bit of a pain to do that so we
+now have a sign up and signin
+authentication page here which is great
+so we can't access our app unless we
+sign in which is on the right path but
+for whatever reason we're getting a
+error here so let's actually try to fix
+this
+error so it looked like it actually
+identified the error and now it's going
+to try ahead edit the code and go and
+fix it for
+us all right so now we have a table
+inside of our table editor in superbase
+called saved ideas you can see the ID
+the user ID the title the description
+and the timestamp are now added so let's
+go ahead and test this out first of all
+let's see if we're able to sign
+up so it looks like I'm getting an error
+again so let's try to fix this the
+reason that error happened is because
+it's saying we need to actually disable
+email verification inside of superbase
+so come inside of authentication
+basically what I did is I came to
+Providers came to email and then I
+unchecked this so that way they don't
+have to confirm their email every time
+that they sign in or every time that
+they sign up so let's try one more time
+to actually sign
+up there we go so now we actually signed
+into our account we could actually log
+out here if we want and in order to test
+out the functionality let's now add a
+activity and try to generate an
+idea so let's generate that idea great
+we could like different of these ideas
+and we could save them looks like it
+saved successfully and it actually saved
+it down here that's pretty awesome we
+could change again the user interface
+extremely simply but more so in this
+video I want to focus on the backend
+integration because that is where
+lovable is so much better than these
+other platforms so we should now have a
+saved idea inside of this table now so
+you could see we have a new user we
+could see the title so wrote YouTube
+scripts tracker an app that helps users
+track and optimize blah blah blah so
+essentially it just saves that idea
+there and let's log out and then log
+back in and then see if that is still
+saved to our
+account boom there we go so the
+important part now is if we log out and
+sign back in all of our saved ideas are
+now added here so we could keep continue
+to save these and it will store this
+information inside of our profile file
+this doesn't seem like too crazy but I'm
+telling you this is way more difficult
+to do inside of Bolt so lovable makes
+this extremely easy and let's just test
+this out one more time to see if it's
+working
+properly generates these ideas you could
+save them and again these actually
+aren't real generated ideas we actually
+need to add an AI step which let's
+actually go ahead and cover that but one
+more time let's refresh this see if it
+saves this so then it saved this idea
+again so that's awesome now let's move
+on to actually adding an AI step where
+it actually does an API call in order to
+actually generate ideas via Chacha BT or
+Claud all right here's my prompt now
+let's add a real AI integration where
+when I generate ideas it actually uses
+Claud via the anthropic API to come up
+with ideas so if you don't know what CLA
+is it's essentially another version of
+like chat BT but I think it's better at
+coming up with scripts so I'm going to
+use that and whenever I click this
+button it's going to pull that
+information it's actually going to send
+that information to Claude and then take
+that information and send it back to our
+app and actually generate real app ideas
+here so I went ahead I added my API key
+it saved it
+successfully looks like again there was
+an error so I'm going to have lovable
+fix this for me
+basically I'm asking it can you help me
+set up the API to work fully because
+there are some changes I think we need
+to make inside of super
+base so again this is kind of hard to to
+explain if you're not a technical person
+but I basically asked it to help me set
+up the apepi beforehand if I were to do
+this in Bolt I would have had to come in
+and create this Edge function which I
+don't even know what it is and so
+essentially it went into my super base
+since it's natively integrated and set
+this up for me so this should be working
+smoothly now so let me go ahead and test
+this
+out so I'm now inside my account I'm
+going to generate this idea and now it
+actually should generate real IDE ideas
+using the claw
+API boom here we go this is actually AI
+generated ideas so script writers
+companion this app assists content
+creators in developing engaging scripts
+in video ideas it provides tools for
+research ideation outlining as well as
+library of proven Hooks and storytelling
+techniques the app streamlines the
+creative process helping users craft
+captivating videos efficiently that is
+awesome we could actually go ahead and
+like this and then save this and now
+this is saved let's go ahead double
+check in superbase to make sure this is
+saved yep it saved the script writer
+companion and now for example we could
+actually use this script and then come
+to lovable and then generate an app
+based on this so this app was built
+simply by using lovable I don't know how
+to code I don't know how to add these
+backends personally um without using a
+platform like this so the fact that
+there is a superbase integration and it
+sets this up for you is absolutely
+massive the last thing I want to touch
+on in this video is the ability to
+actually publish your application so I
+want to test how easy it is to do on
+lovable as opposed to volt. new so let's
+come over let's click
+publish click
+deploy and just like that our app was
+actually deployed really
+quickly and we can now sign up there we
+go and we have access to our application
+in the next video I'm going to show you
+how to actually add stripe which is a
+question so many of you guys have been
+asking me to do inside of Bolt and to
+answer your questions on if you could do
+this in Bolt it's really not possible
+right now without a very annoying and
+complex workaround so this is going to
+be very valuable when you learn how to
+do this with lovable so make sure to
+subscribe and tune in to the next video
+um I appreciate it make sure to sign up
+with lovable if you don't have an
+account already I'll see you guys in the
+next video

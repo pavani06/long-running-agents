@@ -1,0 +1,500 @@
+I don't know about you guys, but this is the coolest tech conference I've ever been to.
+And I have had nothing to do with it.
+So before we get started, I do want to shout out everyone who's working behind the scenes,
+in particular, Jess, Julia, Jacob, and Brianna for making this event fantastic.
+So let's give them a big round of applause.
+Now yesterday, we talked a lot about what building agents today
+looks like and how a lot of the most successful teams are
+bringing agents into production.
+And so for today, I want to talk a little bit about the future.
+One of the things that we think a lot about at LinkedIn--
+it's actually in our mission and vision statement--
+is what do the agents of the future look like?
+And so for the rest of this talk, I
+want to pretend like we're a year in the future.
+It's interrupt 2027.
+And what are the topics that we're going to be talking about?
+What are the topics we're going to be discussing?
+And I'm going to be wrong in a lot of these.
+This is going to look really silly and really stupid.
+But hopefully this gives you a glimpse
+into where we think that the space in the industry is going.
+One thing that I think will start to happen
+is there will be a divergence in the types of agents
+that people are building.
+So I think there will be two types of agents,
+and we're already starting to see some of this emerge.
+So one of the types I think will be these long horizon style
+agents.
+So these are agents that run for minutes and hours
+and maybe even in the future days.
+They do code execution.
+They do planning.
+They use subagents.
+They maybe use multi-agent systems.
+They use skills.
+And they operate over longer and longer time horizons.
+Things like outcomes and goals are
+starting to become ways to increase the horizons at which
+these can operate.
+And so I think we'll see a big push in these
+is they do more and more valuable knowledge work.
+At the same time, there's a completely different set
+of agents that latency is a huge factor for.
+And these often end up looking like customer experience
+agents.
+So this could be customer support.
+This could be sales.
+This is places when you're talking to an end user.
+Brand is really important here.
+Voice becomes a really interesting modality.
+Maybe video will in the future as well.
+And so I think these are these two directions
+that agents are going in.
+There is a shared stack underneath.
+There are also differences in terms of the technology.
+And I think one of the big questions that we'll
+be thinking about over the next year
+is how common is this shared stack versus how particular
+are the technology pieces that you need for each?
+Speaking of voice, I think we'll be talking a lot more
+about voice in a year.
+This is a place where we're starting to invest more and more.
+We see this be particularly relevant for these customer
+experience style agents.
+voice is a great modality.
+The typical voice pipeline today looks something like this.
+There's this speech to text, text to speech,
+kind of like sandwich.
+So the user speaks, that's transcribed into text,
+that's passed to an agent.
+The agent operates in kind of like the text space,
+output some text, and then that text is transformed
+back into speech, which is the audio that you hear
+from the agent as you're talking to it.
+And so this is the pipeline that we see today,
+But there are these native speech-to-speech native voice
+models that are coming out.
+So OpenAI released V2 of theirs, I think, two weeks ago.
+And while I would say the consensus today
+seems to be for applications where you really care
+about having control, they're not quite steerable enough yet,
+we do expect that to change.
+And so I think one of the big things
+that we're looking at in the future for voice agents
+is which will it be?
+Will it be this pipeline approach?
+Will it be this native voice-to-voice approach?
+Will it be a combination?
+What are the pros?
+What are the cons?
+I think we'll be talking a lot more about voice
+in the next year or so.
+We think all agents will need a sandbox,
+especially these long horizon style agents.
+So coding is really good for a variety of tasks.
+It's not just writing software, it's for data analysis,
+it's for web browsing, it's for image gen,
+for deep research.
+I was talking to someone yesterday who said
+that when they think about building agents
+for their marketing team, one of the ways
+that they think about it is they think about
+giving that marketing team a software engineer.
+What would that software engineer build?
+What apps would it build to make the marketing team's job
+easier?
+That's what giving an agent the ability
+to write and execute code is.
+That's why we think sandboxes are really important,
+and that's why we launched sandboxes yesterday.
+So I actually think agents are very early on.
+Sandboxes are very, very early on.
+It's still just the dawn of those.
+I think we'll be talking a lot about them over the next year.
+Open models are a place that we expect
+to see significant increase in over the next year.
+So the performance of these base open models
+without any type of post training for particular tasks
+is already approaching that of frontier models.
+So this is some benchmarking that we did on deep agents
+comparing closed frontier models to open models.
+And you can see that it does lag in some places,
+but it's starting to get really, really close
+to that frontier.
+The other big thing that is happening
+is cost is starting to become more and more of an issue.
+So there are multiple cases where,
+in particular for coding agents,
+these agents are burning through a ton of tokens
+really, really fast.
+I think open models offer a cheap alternative to these,
+and we expect that to be a big driver of open models.
+A third reason that we think open models
+are really interesting is because they can be trained
+for your particular domain.
+And so I think that's yet another reason
+As companies build up a lot of these traces,
+a lot of these agent runs, how can you use those?
+How can you use those to improve the model over time?
+I'll talk a little bit more about that in a second.
+But this type of post-training is something
+that you can do with open models.
+And so we expect a big rise in interest in open models.
+Agent identity is really, really interesting to us.
+So as agents start to do more work in the real world,
+they take actions.
+How do they take those actions?
+On whose behalf do they take those actions?
+I think it's still early here.
+We see two emerging trends.
+One is when the agents act on behalf of individual users.
+So if I'm accessing an agent and that agent has access to Slack
+and I tell it to look up something in Slack,
+it will use my credentials and it'll have access
+to whatever I see in Slack.
+And so if Julia or a colleague uses it,
+they might get a different answer
+because it might see different things.
+Another type of auth is when they have a fixed set
+of credentials, usually a service account
+or something like that.
+And then whoever is interacting with that agent,
+they will always use that fixed set of credentials.
+So they'll see the same responses.
+This, I think, started to get really, really popular
+with things like OpenAI, where you had this concept
+of an agent that was its own thing,
+and it had its own fixed set of credentials,
+and you'd expose it through separate channels,
+and you'd interact with it.
+And we started to see actually some SAS providers
+make it really easy for agents to create their own accounts
+so that they could have their own fixed set of credentials.
+And so I think this will be an interesting trend to watch.
+I actually think we'll see both of these in the future.
+I think we'll have agents that act on behalf of users,
+but also agents with their own fixed set of credentials.
+And I think being really, really precise about when
+to use which one and which one which one is,
+and making that clear to users will be important.
+Continual learning is maybe one of the areas
+that we're most excited about as a company.
+So when we think about continual learning,
+we think about improving the agentic system over time.
+And there's three layers to this agentic system,
+and all of them can be improved.
+There's the model layer, there's the harness layer,
+and there's the context layer.
+So the model, I mean things like Sonnet, GLM4, GPT-4,
+harness, this is the code surrounding the model
+that connects it to the environment.
+This is deep agents, Claude Code, pi.
+And then context might be what we provide to the harness
+as ways to guide it on particular tasks.
+So agent.md, skills.
+You can't edit Claude Code directly,
+but you can give it skills and give it an agent.md
+that tunes it for your particular task.
+And so these are three different layers
+of the agentic system,
+and we think all of them are involved in continual learning.
+So maybe starting at the model layer first,
+this is taken from research done by Ramp
+and Prime Intellect that came out last week,
+where they fine-tuned a model to be really good
+at Ramp sheets.
+And you can see here that the latency is very, very low
+and the accuracy is very, very high.
+And this is an advantage of using an open source model,
+Qwen 3.5, and fine-tuning it for their particular domain.
+And so this is an example of continual learning
+at the model level.
+You can also learn at the harness level.
+So there's a great paper out of MIT and Stanford
+called MetaHarness, where they used an agent
+to optimize a coding harness.
+They optimized it on terminal bench 2.
+And you can see that it outperforms human-written
+harnesses.
+And so this is an example where they used the feedback
+from the environment, the feedback from running it
+on terminal bench.
+They took that feedback, they passed it
+to an agentic system itself that would make edits
+to the harness.
+So it wasn't changing the model at all,
+it was just editing the harness.
+And they got a really good score there.
+My backgrounds in classical machine learning,
+then there are a lot of similarities
+between how you use data there and how you use it
+in this new world of agent development.
+And so in classical machine learning,
+You have the model, you have the training data,
+you do some gradient descents,
+and that updates the weights of the model.
+When you're updating the agent in general,
+depending on the layer you're at,
+if you're working at the harness or context layer,
+it's not exactly gradient descents,
+but the evals that you write act as a forcing function.
+So in the example of the meta-harness that I just gave,
+you have these evaluations, terminal bench two,
+you run the agent on terminal bench, you get some feedback,
+you then pass that into the agentic system and updates it.
+So those evals are providing a similar type
+of this training gradient.
+And so evals and traces are incredibly important
+for this learning.
+We did this ourselves,
+and so this is a few months old at this point,
+and so all of these, you know, the leaderboard
+no longer looks like this
+because the space moves really fast,
+but we moved from top 30 on terminal bench two to top five
+just by changing the harness itself.
+So no changes to the model,
+only changes to the harness,
+and we saw a big increase in performance.
+And so we think that more and more companies
+will be doing this type of continual learning,
+whether it's at the model layer, the harness layer,
+or the context layer, for their particular use cases.
+We wanna help people do this.
+And so one of the things that we're announcing today
+is LangChain Labs, which will be a research group
+inside of LangChain aimed in particular
+at continual learning.
+We think that, yeah.
+(audience applauding)
+(audience applauding)
+We think that LangSmith, with all these traces already
+in there and all the feedback associated with it,
+this is a really, really solid foundation
+for doing this type of continual learning,
+whether it's at the model layer or the harness layer
+or the context layer.
+And so we're excited to work with a bunch of our customers
+going forward in this direction.
+The last thing that I'll say is we think that everyone
+will help build agents in the future.
+And we already see this today.
+So we already see that everyone in an org
+is involved in improving the agent with feedback.
+So you've got UX research, there's domain specialists,
+customer support pokes, product people, engineers,
+they're all giving feedback in some form,
+whether direct feedback or by tweaking the prompts
+or by just debugging in Slack,
+they're all giving feedback that improves these agents.
+And oftentimes it's the domain experts themselves
+who have the best type of feedback
+and know how the agent should perform best.
+And so we think in the future,
+they'll be even more involved in creating these agents.
+we think they're actually going to be building their agents.
+They're not just going to be giving feedback on them
+and handing that off to a separate team,
+they're actually going to be involved
+in building these agents.
+We've started to see a glimpse of this at LangChain,
+where we have a bunch of agents created by people
+in all different domains and expertise.
+And we've seen them build these over the past few months.
+And so to talk more about what that future looks like,
+I want to welcome onto the stage Caroline di Vittorio.
+(audience applauding)
+All right, all right, how's everyone doing?
+(audience cheering)
+Good, good.
+Anyone else get sunburned yesterday or was that just me?
+All right, Harrison painted a picture
+of what the future of agents in the workforce
+will look like.
+I'm excited to tell you all how we're actually
+doing that at Langchain today.
+First, I'm going to start with a few use cases.
+Our talent acquisition team sources
+candidates using our sourcing agent.
+Our sales team automates outbound and account intelligence
+with our go-to-market agent.
+Our marketing team researches the competitive landscape
+with our Intel bot.
+And our engineering teams triage and fix incidents
+automatically with OpenSuite.
+Across the company, agents are constantly running,
+monitoring the business, and providing real-time updates
+and Slack.
+What do all these agents have in common?
+Well, they were all built by the LangChain team members who
+actually use them without having to write a single line of code.
+How do we do that?
+I'm glad you asked.
+They use LangSmith Fleet, our managed agent builder,
+which allows anyone to build agents
+with just natural language.
+They don't have to write any code.
+Over the last three years of building agents,
+we've learned three main things.
+One, the best people to build the agents
+are the ones who actually do the job.
+Two, agents need to work where you work
+and have access to the same systems you use.
+And three, as your agent scale, governance
+can become a bottleneck.
+So why is it that the best people to build the agents
+are the ones who actually do the job?
+Well, at the end of the day,
+agents are just a collection of instructions,
+skills, and tools.
+And who best to codify that
+than the people actually doing the jobs?
+Also, just like how all of us improve over time,
+fleet agents do as well.
+They have memory built directly into them.
+So the more you use them, the better they become.
+Now, in order to work in conjunction
+these agents, they need to have access to all the systems you use.
+We solve that through tools and channels.
+We have over 200 tools built directly into fleets that cover the most common integrations
+that companies require.
+We also have a first-class partnership with Arcade, allowing you to access an extra 7,500
+tools out of the box to cover the long tail of your integration requirements.
+And of course, we support everyone's favorite tool framework, MCP.
+means you can connect your custom tools and proprietary data
+sources directly to Fleet.
+Now, in order to use them easily,
+Fleet agents are integrated natively
+into Slack, Gmail, Outlook, and more.
+So you can utilize the full power of Fleet
+without having to learn a new workflow.
+We also have a comprehensive user interface,
+which you can use to build, manage, and run your agents
+directly within our app.
+And of course, I haven't forgotten about you developers
+out there.
+We're opening up the fleet APIs.
+So you can use them directly within your own production
+applications and harness all of the incredible features
+we've built.
+So people working teams, these agents
+need to be able to work seamlessly alongside you.
+How do we handle that?
+Sharing, of course.
+You can share and collaborate on your agents and skills
+directly in fleet, just as easy as sharing a Google Doc
+with your team.
+When you actually go to use these agents,
+you need credentials and authentication management
+so they can connect to all your different services.
+And this can be really tricky.
+Trust me.
+Luckily, we've solved this for you in fleet,
+meaning you can connect all your accounts
+and pick which agents use which accounts depending
+on which user is using it.
+Everyone still with me?
+We've also seen how cost can skyrocket
+as your agents are adopted internally.
+So for that, we've built cost tracking and usage controls
+directly into the app.
+So you can inspect exactly how much your agents and users
+are spending and set spend limits on them.
+Human in the Loop is also a first class feature in Fleet.
+So you can give your agents access to powerful tools
+without having to worry.
+And of course, Fleet integrates natively
+with the rest of the LangSmith platform.
+So you can look at your agent traces
+and see exactly how your fleet agents are operating
+under the hood.
+Finally, fleet's open.
+It's model agnostic.
+So you can use your favorite open or closed source models.
+It's built on top of everyone's favorite open source agent
+harness.
+You guessed it, deep agents.
+And we make it easy for you to download your agent files
+directly into your code so you can make whatever modifications
+you would like.
+Now, I'm going to hand it off to Caroline, who's going to give us a live demo.
+Yeah, you heard that right.
+Live demo of fleet.
+>> Thanks, Brace.
+So we've talked--
+[APPLAUSE]
+So we've talked about why we built fleet and some of its capabilities.
+And I'm excited to show you what that looks like in practice.
+So here we have our go-to-market agent.
+This agent can surface account intelligence based on data
+from your CRM, your call recording platform,
+and your data warehouse.
+It can research accounts and contacts,
+and it can draft personalized outbound emails.
+In order to do that, we've connected it to the tools
+that we use here at Langchain.
+So in our case, that's Salesforce, BigQuery, Slack, Gmail,
+et cetera.
+We've written certain subagents for common research tasks
+that we wanted to perform.
+And we've given it a long list of skills
+for step-by-step instructions of common tasks
+that we wanted to get right every time.
+We've also connected the Slack channel.
+So instead of having to come into the UI here
+in order to use the agent,
+you can use it directly in Slack by tagging @gtmagent.
+Okay, enough said, let's run it.
+Here we go.
+Where did we leave things off with a Pied Piper account?
+What should our next steps be?
+As it runs, this go-to-market agent has been a game changer for our team.
+The go-to-market team, 84% of the go-to-market team uses it weekly.
+Lead to qualified conversion is up 240%, and it has saved on average 40 hours per month
+per rep.
+Originally, an engineer had built this agent directly in code.
+But when we built Fleet, we rebuilt this agent directly in Fleet so that the go-to-market
+team could own this agent's implementation entirely end-to-end without having to write
+a single line of code.
+Okay.
+So, the agent has wrapped up.
+We're seeing an at-risk account.
+That's not great.
+We're seeing some hesitation around pricing and recommended next steps to reengage Jared
+by email.
+So let's do that.
+Great.
+Get an email to Jared, please.
+As Brace mentioned, human in the loop is first class in fleet.
+So before we just send off an email to a potential future customer, this agent is going to check
+in with us so that we can double check the copy, make sure everything looks good before
+we send.
+So let's take a look here.
+Let's capitalize, LangGraph.
+Correctly.
+Everything looks good.
+pretty cool, right? Okay. Many of the agents, thank you.
+[applause]
+Many of the agents that we use every day here at Langchain are available as pre-built agents
+directly in fleet. So there's a go-to-market agent, which you just saw, but also our software
+software engineer agent, which allows you to fully own an agent that you can tag and
+Slack, have it write code in a sandbox, and then put up a PR for you to merge.
+All you have to do to use it is create the agent, connect it to the tools that your organization
+uses, and then go through a short onboarding flow so it gets to know your company, and
+then you're good to go.
+And with that, I'm going to hand it back over to Harrison.
+[APPLAUSE]
+So you guys can try out Fleet today.
+I use it myself for a variety of tasks.
+We actually added a free model in there.
+So for a limited time, there'll be a free model.
+And backing up what we were talking about earlier,
+it's an open source model powered by Fireworks, one
+of our fantastic partners here.
+So we try to live what we preach in terms of open source
+models and also trying to have the best partners here.
+There's a fantastic ecosystem of folks out there at the booth.
+And so I'd encourage you to go talk to them.
+So that's going to wrap it up for the keynote today.
+[BLANK_AUDIO]

@@ -1,0 +1,363 @@
+I've always been jealous of Winston Churchill.
+There's a quote, by the way.
+The history of innovation
+is the bed, the bus and the bathtub.
+It's always these moments
+when we're not really thinking about work
+or we're kind of doing something else
+that good ideas come to us.
+Winston Churchill,
+He's sitting in the bathtub,
+and he's dictating a national address
+to his assistant who's in the other room.
+She's saying, "distinguished ladies and gentlemen"
+"Don't call them distinguished"
+"They're not"
+This is the Gary Oldman version.
+"They're not distinguished."
+You know, "Dear ladies and gentlemen, we have gathered together."
+"Get to the point!"
+and I'm watching this going
+I would give anything to have an assistant
+who understood my context and my voice and
+my intent well enough that I could sit in
+the bath and they could write my speech.
+Now, the poorest villager in Palo Alto
+can have what only Winston Churchill
+used to have,
+which is an assistant that has my context
+and my voice and my intent available to me
+so that when I'm in the bathtub,
+I can be dictating my address.
+That is absolutely
+technically possible today.
+Exploring Human Agency in the age of AI
+Exploring Human Agency in the age of AI : Uncoded
+Ep.1 How to Become a Better Collaborator with AI
+I'm Jeremy Utley,
+I'm an adjunct professor of creativity
+and AI at Stanford University.
+I've been teaching at Stanford
+for the last 15 years
+at the intersection of creativity,
+innovation, entrepreneurship, and now
+increasingly, artificial intelligence.
+The topic that I'm most focused on right
+now is helping non-technical professionals
+learn to be good collaborators to or with generative AI.
+And then two years ago,
+myself and my partner at the time,
+Perry Klebahn, wrote a book called
+Idea Flow, which was the canonical book
+on idea generation and prototyping.
+So super proud of that.
+It was the culmination of a dozen years
+of leading executive programs
+and the leadership program and the
+entrepreneurship program at Stanford.
+And one month after our book came out,
+ChatGPT came out.
+To me, the fact that I wrote the canonical book
+on Idea generation just prior to AI
+is like writing the best book on retail
+just before the internet.
+AI is a tool to dramatically augment
+and amplify our creativity.
+And the truth is, I didn't know
+a lot about it when the book came out.
+So one month after my book came out,
+instead of going on a world book tour,
+I strapped myself back into the front row
+as a student and said,
+I need to be learning about
+this transformative new technology.
+So I started taking classes.
+I started conducting research.
+I started working with and studying teams
+inside of organizations, using the tool
+to understand the simple question,
+how does generative AI impact
+the individual and the team and the
+organization's ability to solve problems?
+Chapter1. Don't Ask AI, Let It Ask You
+You can give an AI a prompt, for example.
+How should I answer this question?
+Or you could give an AI
+the question
+I want to ask how I should answer this question.
+What's the best way of framing
+that question to an AI?
+So you see what I did there?
+I asked AI for how to ask I my question,
+but you can use AI to use AI, which is
+you couldn't use Excel to use Excel.
+PowerPoint can't teach you how to use PowerPoint.
+Email can't teach you how to use email.
+AI strangely can teach you
+how to use itself if you think to ask.
+Go to your language model of choice
+and just say the following.
+Hey, you're an AI expert.
+I would love your help and a consultation
+with you to help me figure out
+where I can best leverage AI in my life.
+As an AI expert, would you please ask
+me questions one question at a time,
+until you have enough context about my
+workflows and responsibilities and KPIs
+and and objectives that you could
+make two obvious recommendations
+and two non-obvious recommendations
+for how AI could leverage AI in my work.
+you will have one of the most enlightening
+and illuminating conversations you've ever had,
+and it's all because of AI's ability to evaluate its own work.
+What I've seen is non-technical employees
+are able to do incredible things.
+Here's one example.
+The National Park Service called me
+and asked me if I would
+conduct a training program
+for a bunch of backcountry rangers,
+so they gathered a group of about 60
+backcountry rangers and facilities managers
+into a training session,
+and I spent a couple of hours over zoom
+teaching folks the basics of collaborating with AI.
+One of the people in that
+session was a gentleman named Adam Rymer,
+who works at Glen Canyon National Park.
+And one of the things I say is you
+should focus on parts of your work that you dread.
+Parts of your work that you don't enjoy.
+"Ah, I have to do this again."
+And Adam said, if I have to replace
+the carpet tiles in the lodge.
+I have to fill out all this paperwork.
+And so to replace a carpet tile will
+sometimes take 2 or 3 days of paperwork.
+Then he thought,
+could AI help me write that paperwork?
+And in 45 minutes,
+he built a tool with natural language
+that saves him two days of work.
+Every day he makes a statement of work
+and then listen to this.
+Someone got access to that tool
+and shared it across the other parks.
+There's about 430 parks in the service.
+The National Park Service is estimating
+that the tool that Adam built in 45 minutes
+is going to save the service 7000 days of human labor this year.
+That's the kind of impact that normal
+professionals can have, even without
+any technical ability, if only they're given
+very basic foundational training.
+Chapter2. Do not Use AI, Treat It as a Teammate
+People are wanting to learn AI and how it
+can be transformative for their business,
+but they don't have the basic language.
+And so while lots of organizations
+are asking me how can we work with AI
+to transform our business?
+Where I have to start with them is
+how do you work with AI?
+The research I'm familiar with suggests
+that while on the one hand,
+AI makes people 25% faster
+and 12% more work and 40% better quality,
+it's also true that less than 10%
+of working professionals
+are deriving meaningful productivity gains
+from collaboration with AI.
+To me, there's this enormous gap.
+I call it the realization gap.
+We conducted studies both
+in Europe and in the United States.
+And what we found is, surprisingly, AI
+didn't help most people be more creative.
+In fact, in many cases, the people that we
+studied, AI made them less creative.
+And as we started digging
+into the research,
+we were surprised and looked at the data.
+We were confused because you
+think AI should make people
+more creative, not less.
+And we studied the underperformers
+and then we studied the Outperformers.
+And what we found is the Outperformers
+had a fundamentally different orientation
+towards AI than the underperformers did,
+whereas the underperformers
+treated AI like a tool.
+The outperformers
+treated AI like a teammate,
+and shifting your orientation
+from tool to teammate changes everything
+about the kinds of outcomes that you can achieve
+working with generative AI.
+A simple example is what do you do
+when it gives you mediocre results?
+If it's a tool, you get a mediocre result
+and then maybe you improve it.
+Or maybe you say,
+it's no good at doing that.
+If it's a teammate
+who's giving you a mediocre result,
+think about the last teammate who gave you
+work product that wasn't sufficient.
+You gave them feedback.
+You gave them coaching, you gave them
+mentorship, you helped them improve it.
+And so what we found is that people
+who treat AI like a teammate, coach it
+and give it feedback and importantly,
+get it to ask them questions.
+The fundamental orientation
+a lot of people take towards AI
+is I'm the question asker.
+AI is the answer giver.
+But if you think about AI like a teammate,
+you say, hey, what are ten questions
+I should ask about this?
+Or what do you need to know from me
+in order to get the best response?
+So things, for example,
+like you have a difficult conversation
+coming up with a coworker.
+Did you know you could leverage
+a large language model
+to roleplay that conversation?
+You can get an AI to interview you
+about your conversation partner,
+and then construct a psychological profile
+of your conversation partner,
+and then play the role of your
+conversation partner in a roleplay,
+and then give you feedback from the
+perspective of your conversation partner
+on how you approach the conversation.
+That's something you can do today,
+and there are many things like that.
+I call them drills,
+but there are many things like that
+where if someone will just shift
+their consideration set of what
+are the things I can do with AI.
+They end up discovering applications
+that I've never even dreamed of.
+I've been doing this stuff for two years,
+and my students are regularly
+coming to me with use cases I've never
+imagined that landed them in a destination
+I could have never predicted,
+and they could never have predicted.
+For me, I never thought about myself
+as a creative individual.
+Now, I fully and fundamentally believe
+every single human being
+has innate creative capacity.
+Every single one of us.
+What the D.school has helped me do
+is unlock others.
+Everyone has
+this latent creative capacity.
+Once I was teaching a class
+with a hip hop artist named Lecrae.
+He's a multi-time Grammy Award winning
+artist, and he and I are teaching a class
+to graduate students at Stanford,
+and we're giving them the assignment.
+You've got to go get
+inspiration in the world.
+And what I can see is it's like looking
+at myself in the mirror ten years ago,
+because all
+of the business school students
+in the class are going, "inspiration?"
+And I just felt Lecrae is clearly
+the The creative legend in the room.
+I said, Lecrae,
+what do you think about inspiration?
+And of course, as only a hip hop
+artist could do, he dropped a bar.
+He said, inspiration is a discipline.
+And I realized in that moment,
+for these students,
+it's not even on their radar as a tool,
+let alone a routine part of their life.
+But the most wildly creative individuals
+I know are disciplined about cultivating
+the inputs to their thinking,
+because they know it affects
+the outputs of their thinking.
+And so, even in regards to AI,
+I push people.
+What is the inspiration
+you're bringing to the model?
+Everybody has the same access
+to the same ChatGPT.
+How do I get a different output
+than you do?
+It's because of what I bring to the model.
+And what do I bring to the model?
+Certainly I bring technique,
+but I also bring my experience.
+I bring my perspective.
+I bring all the inspiration
+I've gleaned from the world.
+That's what gets a user
+a differential output from a model.
+Chapter3. How to Go Beyond ‘Good Enough’ Ideas
+A seventh grader in Ohio
+who I don't even know what her name is,
+but her teacher asked, what is creativity?
+And she put a post-it note up on the board that says,
+Creativity is doing more
+than the first thing you think of.
+And that's my favorite definition,
+because it speaks to a profound
+cognitive bias that we hold.
+It's been called functional fixedness.
+It's been called the Einstellung effect.
+But the basic premise is humans tend
+to fixate on an early solution
+and be satisfied.
+Herbert Simon called it satisficing,
+but it's the idea that if we get
+to good enough, it's enough.
+And that's why I love
+that seventh graders definition.
+Creativity is doing more
+than the first thing you think of.
+It's pushing past. Good enough.
+Is the definition of creativity
+changing in the age of AI?
+I don't think so.
+The reality is, with AI, it's now easier
+than ever to get good enough.
+If your goal is world class,
+if your goal is exceptional, then what you
+want to be prompting for is actually
+volume and variation, and that takes time.
+It takes time to not only read through it,
+but to sort it and to process it.
+But fundamentally, the definition
+of creativity doesn't change in the age of AI.
+It's just that the human's ability
+or inability to arrive at a creative state
+is affected not only by the technology,
+but also by their stated or unstated
+objectives in collaborating with it.
+Creators don't need to be afraid of AI.
+Creators need to dive in.
+They need to lean in.
+Creators are about to be unleashed in
+a way they've never been unleashed before.
+The only correct answer
+to the question how do you use AI?
+Is I don't.
+I don't use AI. I work with it.
+When you start working with AI,
+it will change everything.

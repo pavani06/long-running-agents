@@ -1,0 +1,328 @@
+What's up everyone? It's Brace for Lang
+Chain and today I'm really excited to
+announce OpenWiki personal brains.
+Personal brains is a new way for you to
+generate and maintain generalpurpose
+agent memory through open wiki that
+connects to all your different services
+and systems you already work in. Setting
+it up is just as easy as setting up the
+existing codebase memory. So let's jump
+in and see how to do that. The first
+thing I'll do is run open wiki personal
+init.
+When you run this, you'll see a very
+similar onboarding flow to the codebased
+memory, but at the end there's going to
+be a few extra steps. So, first I'll
+pick my model provider with OpenAI and
+GPD 5.5. Then, it's going to ask for a
+Lenmith API key for tracing. I'll set
+that. And next, it's going to ask me to
+edit or accept a wiki brief. This wiki
+brief is like a prompt. You could think
+of this as the instructions that you'll
+provide to the agent every time it
+generates or updates your memory so it
+knows what to focus on, what to ignore,
+and some more about you. basically just
+a system prompt. So, as you can see, we
+provide a default prompt here, but of
+course, you can edit this or add on to
+it if you see fit. For now, I'll accept
+it as is. And then it's going to ask me
+to set up a cron. This is another key
+distinction between personal brains and
+code brains. Code brains is specific to
+an individual GitHub repo. So, we run
+these updates in a GitHub action that
+runs in the cloud in that repo. For
+personal brains, it's not specific to
+any individual repo and instead you want
+it to be available to every agent
+session on your computer. So, we run
+these crons locally on your Mac. As you
+can see, we suggest a cron 2 a.m. But of
+course, you can overwrite this if you
+want. For now, I'll accept it. And then
+we ask you if you want to wake your Mac
+for these scheduled refreshes. This is
+very important because if you don't do
+this and you close or turn your computer
+off before you go to bed and your
+OpenWiki update job runs overnight, it
+won't actually run. So instead, we have
+a way for you to natively wake your Mac
+before this cron job executes so that
+your computer is actually running by the
+time uh the cron fires so they can
+update your wiki. I won't do this right
+now, but you should absolutely do this
+when setting up your wiki.
+Next, we get to the key difference
+between personal and code brains. For
+code brains, it's only running in a git
+repo and it looks at your commits and
+git history to generate documentation on
+that repo. For personal brains, you need
+to connect this to all the differenti
+systems and services you use every day.
+So wiki can proactively go out look in
+those systems and generate memories
+based on the things that you're doing
+there. So as we can see we still support
+git git repos. There's also notion gmail
+web search hacker news and x or twitter
+with many more coming soon like slack.
+And of course if you have feature
+requests here please open an issue in
+the open wiki github repo and we will
+see if we can support those as well. So
+configuring these these sources is super
+easy. Let's start with notion. All I
+have to do is bring my cursor there and
+then hit enter. It's then going to
+prompt me to off with notion which I can
+do in my browser. So we can see it opens
+up a new tab which I can then accept.
+Hit continue and then we can see
+authorization complete. Now if I go back
+to my terminal we can see browser
+authentication completed and it's going
+to ask me to set another prompt. This is
+a prompt so the agent knows how and
+where to look for new documents when
+it's actually ingesting from this
+source. So for notion I'll say
+prioritize pages related to applied AI
+and customer feedback. But of course,
+you can set a custom prompt if you
+wanted to focus on something more
+specific.
+Next, I'll go to configure X or Twitter.
+This is a little more difficult than
+notion because you do need a Twitter
+developer account for this and an OOTH
+client app, but we have documentation on
+this in the repo and it's pretty easy to
+set up. So, I'm going to hit enter here
+and it's going to ask me to paste in my
+Xclient ID. So, I have my clipboard. I'm
+going to hit paste, enter, and then I'm
+going to authorize with X. As you can
+see, it opens up my browser where I can
+then authorize the app and open wiki
+authorization complete. Now, when I go
+back to my browser once again, sorry, my
+terminal, it'll ask me to set a prompt
+for what to look for on X or Twitter,
+uh, which I can pick from one of the
+defaults or set a custom description.
+For this, I'll just say track my
+timeline and bookmarks.
+Now, I can add more sources if I want,
+and I can also add multiple connections
+per source. Say I wanted to track
+multiple X accounts or multiple
+different web searches, I can do that.
+Uh, but for now I'll continue so we can
+see what this actually looks like in
+practice.
+When you hit continue, it's going to ask
+you if you want to run your injection
+now or wait until the scheduled time. If
+you do wait till the scheduled time,
+it'll run at 2 am or the cron job you
+selected if you overrode that. Uh, but
+running it now will actually run the
+ingestion step for every source you
+connected right now. Let's do that. So,
+as we can see, it's running the agent,
+and it's going to ingest one source at a
+time, starting with notion because it's
+the first one I set up. Now, while this
+runs, let's look at a diagram to see
+exactly how this actually works under
+the hood. All right, let's talk a little
+bit about how it works. Before I do
+this, I want to make one key distinction
+between open wiki memory and say the
+memory in chat GPT or claude. The memory
+in chat GPT or claude is designed to be
+reactive. Right? So, you send a message
+in, it then decides if it should
+remember the context of your message and
+if so, it stores it for later, but it
+can't be proactive. So it doesn't go out
+to discover things about you or your
+interests automatically. With open wiki
+memory, it's complimentary to these
+existing memory systems because it will
+go out and proactively look in all the
+sources you've connected like your
+notion, your Twitter feed, your Gmail
+emails. It'll search the web and so on
+to proactively figure things out that
+you want it to remember, store those in
+its memory, and then make that
+accessible to agents going forward. So
+now to to go over how it actually works,
+you configure all your connectors and
+then one connector at a time, we will
+pull the connector, run an injection
+script. This looks a little bit
+different depending on what the
+connector is, right? So if it's notion,
+there is no API for say getting every
+change over the last 24 hours. So
+instead, what we do is we give the agent
+the prompt that you set when you
+configured the notion uh connector. We
+then give it a tool to query notion and
+it performs a gentic search to fetch all
+that data, ingest it, and then finally
+update the wiki. Once it's done with the
+first connector, it'll go back and find
+the next connector. So for me, that
+would be X here. That'll run an
+injection script. X is a little bit
+easier because we can just say, give me
+every tweet that I've I've sent over the
+last 24 hours, every bookmark I've
+bookmarked over the last 24 hours, and a
+snapshot of my actual feed that I would
+have scrolled through from the last 24
+hours. Once it's downloaded all that
+data, it'll run the actual agent to
+update the wiki. And then once again,
+it'll continue back to the next
+connector until it's gone through all of
+them. We've decided to make this
+sequential because it's a little bit
+easier on the agent's context if it's
+doing them one at a time instead of all
+at once. Also, if it's sequential, it
+doesn't have to worry about conflicting
+or overlapping data because each source
+should return data specific to that
+source. Right? So, my email will
+probably be very different than what it
+finds in Notion, which will be very
+different to what it finds in Twitter.
+So if we do it one at a time, it's able
+to focus solely on that domain, ingest
+the data from that, which will probably
+be a very large amount, right?
+Especially if it's, you know, email,
+you're getting tons of emails or web
+search. So focus on just that domain,
+update the wiki, and then when it's
+done, we start a fresh session where
+it's able to go into the next connector
+and ingest all of that data. Okay, so
+that's high level how the open wiki
+personal brain actually works. Now,
+let's go look at an example of what this
+actually looks like when it's done
+generating. All right, before we talk
+about the rest of the open wiki memory
+directory, I want to first touch on this
+new open questions file, which is a new
+feature we just added in the brains
+mode. So the open questions file is a
+way for the agent to write down
+questions which does not have the answer
+for yet. Instead of just skipping over
+them or making up information, you can
+imagine, say in this use case where we
+have a bunch of initials it found in
+notion, but it doesn't know who those
+initials actually correspond to. Instead
+of hallucinating an answer or outright
+ignoring them, it added them to the open
+questions file where the agent can then
+come back to later if and when it finds
+the answer to update it as answered or
+stale [snorts] if it decides it doesn't
+need it anymore. This is an important
+change we've added to a wiki where we
+tell it at the beginning of every run
+inspect the open questions file to look
+at every open question so it's aware of
+what they are. then ingest from that
+source and at the end of the run revisit
+the open questions file to either add
+new open questions or answer them if
+it's able to find the context it needs.
+You as a human can also go in here and
+manually modify these files to answer or
+add questions that you want answered. Uh
+or if there is an open question the
+agent added and you you know the answer
+to you can directly add them here and
+then the next open wiki run it'll pick
+them up and update its wiki accordingly.
+Great. So the rest of the open wiki
+directory looks pretty similar to how it
+did in code mode. One other key
+difference here is instead of adding a
+open wiki directory in the root of your
+repo, we add it in the root of your
+computer because it should be accessible
+to every single agent session that you
+run on your machine and not just in
+individual repos. Inside this directory,
+there's similar files and folders from
+what we saw before where you have your
+actual wiki, there's logs, data on the
+connectors, backups, uh the
+onboarding.json which contains all the
+configurations you set when onboarding
+and your instructions.mmd file which I
+mentioned before, right? This is the
+open wiki uh instructions you set so it
+knows what to focus on, what not to
+focus on and more context about what you
+want it to remember. You can always edit
+this and every new run it'll pick up
+whatever is the latest version of this
+file. You also have file which stores
+all the secrets which you've added. So
+for say all the connectors or you know
+web search APIs uh and right this wiki
+looks very similar to what it did when
+it was just for code mode where we have
+sources. So, Google Hacker News, notion,
+web search X. There's also individual
+files for say my commitments, open
+questions, which which we just went
+over, personal logistics, the quick
+start, which is the same as in code
+mode, which is right, the index, which
+agents can reference uh when first
+entering this wiki to know what's in
+there and high level about you, and then
+also themes. So, this directory is fully
+agent generated and agent maintained.
+And the idea here is the same as in code
+mode where it's a way to generate and
+store memories about you without you
+needing to do anything to actually get
+those memories in besides initially
+configuring it. All right, so that's a
+high level of how the OpenWiki personal
+brain mode works. You can all go try
+this out now for free using our open
+source agent, OpenWiki. And of course,
+the existing OpenWiki code brain is
+still there unchanged with lots more
+coming soon. If you enjoyed this, please
+go check out the repo and try out
+OpenWiki. If you have feature requests,
+feedback, or bug reports, please open an
+issue on the repo and we'll handle those
+ASAP. And of course, if you want to
+contribute, open up a PR. We love
+getting contributions from the rest of
+the community. See you guys in the next
+one.

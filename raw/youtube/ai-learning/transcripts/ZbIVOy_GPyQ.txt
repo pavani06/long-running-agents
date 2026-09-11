@@ -1,0 +1,300 @@
+today I'm going to teach you how to build AI Agents from start to finish in N we're going to start with the basics
+and then work our way up to some of the more Advanced Techniques before we start jumping in and learning how to build
+this we need to understand what it is and why it's important first so what are agentic systems agentic systems are
+environments built up of agents and workflows so what are these agents and workflows workflows are automations or
+systems where the output is predefined by the large language model and other tools you can think of a workflow like a
+post product purchase automation when someone purchases a product maybe you create a workflow automation that sends
+them an email with their order details that's a workflow now agents on the other hand work a little bit differently
+these are automations or systems where the large language model dynamically decides which tools and output is
+necessary so you can think of this like a customer support agent that has access to specific tools maybe these tools
+could be things like creating support tickets pulling in order history or even
+issuing refunds you basically give the large language model or the agent access to use those tools if that conversation
+ever comes up they can decide which one is best used for that scenario so there's no one way this automation could
+go the agent has to decide which tools to use in order to accomplish requests made by a user so visually this would be
+a workflow right you have an input whether it be from a user on a schedule
+uh from a certain application and then that input goes through an automation workflow and gets you a consistent
+output now the data could be changing in the output but you know that the output is going to go to the same spot you know
+where it's going to go because you've predefined it within building your automation while the agent example looks
+a little different so here the large language model would be receiving an input in this large language model
+depending on the input has a couple of tools or multiple different tools that it can use in order to reach a dynamic
+output so an agent is like a large language model with tools and we can
+even put agents nested within other agents so that one agent can call another agent which has access to a
+certain amount of tools as well and we're going to get into that concept a little bit later in the video but it was
+important to understand what are agentic systems and to visually see it for yourself now if you enjoy this video and
+you want to keep building building automations and agents with us then I recommend joining our community for AI
+foundations we have this community hosted on the school platform and in this community we focus on the three C's
+number one courses number two calls and number three saving the best for last
+Community the people that make up this community are better than any content within but let me tell you if you want
+to stay ahead of the curve on agents automations the fundamentals of AI then
+this is a spot to be we make AI easy to understand here we have a full nadn agent building course we have a calendar
+with a bunch of live calls and of course the lovely members that make up this community we just dropped this course about 20 hours ago and people are loving
+it Anthony here says this community is a gold mine for anyone who finds it best investment of 2025 John here agrees with
+Anthony this community is truly a gold mine for anyone who finds it and it's true it's kind of a hole in the wall
+Community we've got 580 members we'd love to see you inside I'll leave a link to join below so once you create your
+nadn workspace on the cloud you're going to be at a screen something like this
+except you probably won't have all of these different automations in here this is basically like your homepage and here
+you can see workflows credentials and executions credentials are things like your API keys and your account access
+that you give within your automations and executions are actually the running
+of your agentic workflow so whenever you hit run it tracks it as an execution or
+test step or whenever it runs through then it's an execution you have your domain which is the workspace that gets
+created for you upon creating an account and then your workflows over here are organized into projects over on the left
+so I could select into specific projects and I have different workflows different
+automations within each one as you can see in order to create a workflow it's
+very simple all you have to do is in the upper right hand corner hit this Orange button that says create a workflow and
+then you are going to be within the editor UI what you can also do is select a specific project and hit create
+workflow if you want this workflow to be within a specific project now that you're in your project workflow what you
+want to do is understand the node types before building AI agents within nadn nadn comes with different node types now
+personally I like putting node types into five different categories now nodes are anything that you put out here on
+the screen so I could have a node that starts on a chat message okay so anytime
+I chat this automation will start this would be an example of one of those five node categories so the five node
+categories in nadn are triggers these are the nodes that start your automations and this determines where
+when and how your agentic framework will begin we then have action nodes so the these nodes allow you to do something
+within an app or a service for example Google Sheets air table notion WhatsApp telegram you could import Gmail Outlook
+these are your action nodes you have thousands of different actions you can take between all of the apps and
+services available to you on n8n next we have utility nodes these are those
+little boxes that will be able to transform your data things like if statements filters data conversion tools
+data storing tools these tools are native to nadn and they can help you organize modify or send data elsewhere
+we also have code nodes so you can run code make HTTP requests set web hooks
+JavaScript and more now this takes your agent to the next level we also have the advanced AI agent node and this is what
+makes your agent autonomous this is what turns your workflow into an agent within your agentic system you can add search
+and retrieval functionality store memory start large language model chains perform sentiment analysis and so much
+more so these are the five node categories and pretty much anytime you add in a new part of your work flow you
+can kind of think within these types of categories now when you are beginning an automation you always start with a
+trigger so that's what we need to go do now so the cool thing about the trigger nodes is you can do multiple you don't
+just have to have one way you start an automation you can have 10 different ways you start an automation if you
+would like but we need to add our first step and what you're going to notice is when we do add our first step it
+automatically asks us what triggers your workflow this is the where what when how
+of your automation the interrogative of your automation so what we can do for Simplicity is we could just do on a chat
+message there's multiple different node types you can select from especially when you get into onapp events you know
+within these applications you can start automations on certain events happening
+if we go to Google Drive for example you could start an automation on a specific
+file change or when changes involv in a specific folder so there's different ways to start your automation but for
+now we can just do on a chat message M I'm going to make this chat publicly available and this is whether the chat
+should be publicly available or only accessible through the manual chat interface for now we can just make this
+publicly available and we can have this test URL right here I'm going to delete the initial messages and this is just
+preliminary stuff this is kind of cool you have the ability to change this from hosted chat to embedded chat which is
+kind of nice I'm going to go back to Canvas and now we have our first node in here which is great great we have our
+first trigger and this lightning bolt right here is signaling hey this is what's starting the Automation and what
+you will notice is at the bottom of the screen we have a chat button so when we select this chat button we can type in
+anything we want which is cool and this is how we're going to be communicating with our automation uh for the sake of
+this tutorial this is actually a very useful node to have let's add our next node in here and in order to get this
+started I like just adding the AI agent node so I'm going to open the nodes panel and then I'm going to go to
+Advanced Ai and then I'm going to add the AI agent and this is the secret sauce of n8n this is what makes it so
+amazing so we can leave everything the same right now uh because right now the
+prompt or the user message is just looking at this previous chat node so
+this is like the brain of your workflow your automation or your agentic system there's so many things that we can do
+from this AI agent node we could even just talk to it like it's chat GPT and we could have our own version of chat
+GPT within n8n let me show you an example now in order to power this AI agent node you always are going to need
+to add a chat model you need something to power the brain right you need something pumping blood to the brain so
+we can just use a chat model and I'm just going to do the open AI chat model you can select a model in here and
+they've got all the open AI models which is very cool I'll just do GPT 40 and then I'll click out of here but there's
+so many different models you can select it doesn't just have to be uh this chat GPT model you can select anthropic AWS
+Bedrock grock a Lama I mean there's so many different things in here you can select from but I like keeping it simple
+I've already got my API key connected with open Ai and I'm just going to power it with a chat model now chances are you
+might not have your credentials connected to chat GPT in order to do this or whatever application you want to
+use in order to power your AI agent so if that's the case what you can do is go to platform.
+open.com and then you can go to this settings button right here and within the settings button what you can do is
+go to API keys and this is the screen that you want to create a new secret key and once you create a secret key it'll
+take about 30 seconds to create one and once you do you copy your secret key you
+come back here and you have the ability to create a new credential and just paste it in right here and then you're
+all hooked up it's that simple you can load up5 to $10 in your open AI account and it will be plenty for testing
+purposes so once you have a model connected to your agent and you have a way to start your automation for example
+right now we're chatting with this agent in order to begin this automation process what you can do is you could
+just talk to this thing like it's chat GPT or any other large language model so I could ask it hey how are you and then
+I could send it off and now it's just using chat GPT and it brings me a response it says hello I'm here and
+ready to help how can I assist you today but the problem is right now this AI agent can only understand this query and
+then it doesn't maintain any previous context in the chat so in order to fix that we need to add memory so that it
+can understand what was previously said so that we can actually have a conversation with it and it can use our
+conversation as context in order to help us for example without memory things like this happen I can say continue the
+see quence for me each time I reply 1 2 3 and then I'll will put dot dot dot so
+it should say four 5 six so if I send that off what it will do is say four and
+maybe it's just going to go one number at a time so if I copy it and I go five what it's going to do is not
+understand the previous context so it's not going to keep on going it just says my message looks like it's incomplete
+but if it had memory it would be able to do this so we can add temporary memory to this chat by selecting this memory
+plus icon and then selecting window buffer memory this stores memory in N
+there's no credentials required it's the easiest way to go so here's your context
+window length and this is how many past interactions the model receives his context for now it's connected from the
+chat node so it already has our session key stored from this usually with this
+memory what you need to do is you need to map a specific ID so if you connect something like telegram if you connect
+something like WhatsApp you need to store that chat ID right here so it knows where to pull context from but
+right now it's mapped it for us from this node right here that's great so now
+if we try this again and we say continue the sequence for me each time I reply
+remember we have a window buffer memory of five now I can save this and then if I paste that in here and we go through
+this it will say four and when I type out five this time it will keep on going
+in the sequence because it remembers the past conversations because we gave it
+that context window to do so so now we can have full conversations with it four five 6 7 8 that's what window buffer
+memory does and you don't just have to use it with this chat node but you could use it with other nodes as well now that
+we know we can chat with this thing how about we start making it a little bit more powerful let's add our first tool
+to this AI agent now when we add a tool the AI agent is going to be able to decide should I use this tool or not
+depending on what I say from the messages so whatever I type in it's
+going to determine whether it needs to use that tool or not so what we can do is we can hit this little plus button
+underneath tool and within these tools we can do some pretty cool things we can call other workflows so right now we are
+in an nadn workflow we could add an entirely new workflow as a tool we could
+write code make an HTTP request we could call all sorts of vector stores and then
+we could use other tools as well like we could add Gmail Google Calendar we could give it a calculator Wikipedia so it can
+search Wikipedia woocommerce Wolfram slack so many different tools that we can use but for now what I want to do is
+I want to select air table let's say we have a home Inventory where we have all
+of our grocery items our household items all in a list with an order threshold so
+that we know when we need to order more I'm going to select air table and what we can actually do is we can search Air
+table databases within this tool right here so if I click into this tool as you
+can see we have a lot of different options here that we are going to get to but I want to point your attention to
+operation because within this air table tool we can do so many cool things we can create records we can update them
+delete records get records and we can search records which is what we want to do right now so I'm going to select
+search and now this will be ready but first I want to show you the database so here's my home Inventory database now if
+you're not familiar with air table it's like Google Sheets on steroids you can run automations very easily you have the
+ability to view your data in multiple different ways it's like if Google Sheets and notion had a baby uh you
+would get air table here but as you can see I just have some item names like toilet paper shampoo hand soap
+toothpaste trash bag Ziploc bag so it's basically like an entire home Inventory
+we even have some food items down here we have the current quantity like how much we currently have of that specific
+item and then we have inventory threshold so when it gets to that level we know that we need to order more so if
+we get only four sodas left let's just say then I guess we need to order more soda or if trash bags if we get down to
+three boxes of trash bags left then we need to order more in order to increase
+that quantity so this is our database that we're going to be uh giving n access to so that this AI
+agent when we're talking with it can actually use this tool so what we can do is within air table here we can just go
+down and hit create new credential and here we need to give an access token with the following Scopes in the air
+table Builder Hub you can create personal access tokens I'm going to hit create new token and I'm going to give
+it a name of test home Inventory I'm going to add some Scopes and this is
+basically just saying what can can n8n be allowed to do well we want it to be able to read the data we want it to be
+able to write in the data and we also want it to be able to read our database
+structure and see things like table names and field types so we can select schema basis read and now we need to
+give it access to that home Inventory base we need to give it access to this so we can hit add a base and then scroll
+down to home Inventory test and select that and now we can hit create token
+we're then given a secret access token that you will only be able to see once so when you hit copy make sure you uh
+store this in a safe place where nobody else can see it and now we can go connect our credential back in n8n so I
+can paste in that access token and then we can hit save and now our air table
+connection has been tested successfully so now it has access with those parameters to our air table database
+beautiful so now we need to give a tool description this is going to describe what this tool is now anytime you add a
+new tool to your AI agent you want to let your AI agent know hey this is
+what's going on with this tool and that's what the tool description is for so we're going to set this manually and
+we can just say searches home Inventory in air table so we're kind of giving it
+these words like home Inventory air table so that it knows that if I ask about my home Inventory that it can
+search it within this air table tool node you kind of have to to be specific within the description you want to
+explain to the llm what this tool does a good specific description would allow the large language model to produce
+expected results more often that's the idea of it now we can keep the resource on record operation is search because we
+want to search our database then we can select our base down here so I can select home Inventory and then we can
+select our table as well so I'm going to select table and then I'm going to do the goods the table is within home
+Inventory because you can create multiple tables within a certain base we don't need any filter and we can just
+return all that is fine so now this is ready to go so now I could have a conversation about my database because
+it's now connected as a tool so before we could just talk to it like it was chat GPT we could still talk to it like
+it was chat GPT I could ask it to give me 20 facts about Paris I could ask it
+to create me a business plan I could do whatever but now it has access to a tool
+that knows deeper information about me so now it's acting in that more agentic type way so I'm going to save this
+Automation and then I'm going to test it out let's ask it questions about my home Inventory first of all I'm going to come
+in here and I'm going to make something out of stock so I'm going to make butter out of stock I'm going to say inventory
+the current quantity I have is zero now that we have that is zero we could ask a question like hey is anything out of
+stock within my home Inventory I don't even have to say home Inventory the AI agent is really good at picking up on
+context even without any instructions I could say is anything out of stock in my house and I could send that
+off and as you can see it's searching our air table for us and then returning
+back to me what's out of stock it says currently you are out of stock on the following item in your house butter
+current quantity zero and if you remember that's the only thing that we changed to set as zero within our
+database I could ask is anything getting close to the order threshold and I could
+send that off to see if we're getting close to needing to order anything again and it will search my database search my
+home Inventory that we just added as a tool and then it gives me everything I
+need right here it's even pulling in the record ID kind of weird but you know these are things we could adjust with
+instructions it says glass cleaner aluminum foil mouthwash and honey are all getting close to their order
+threshold so what you're going to notice is that this AI agent I'm having a conversation with it about things that
+it didn't previously know it didn't have these items as context within the conversation and since it doesn't it
+uses my tools in order to go find those items and then bring them back into the conversation so this is great we now are
+searching our own database having a conversation about it how about we add another tool let's get into adding a
+tool where we can actually update these records right now all we can do is
+search our database what happens if we want wanted to update something maybe we bought something we were on the go we
+say to our chatbot you know we can eventually hook up voice to it and connect it to our iPhones or our
+Androids and we could we could have a conversation with this chatbot so in the future maybe I'm out shopping and I'm
+saying hey I just picked up two more boxes of pasta my laundry detergent I just picked up X Y and Z this agent
+needs to be able to not only search the records in order to find the record ID that needs updated which it will do but
+it also needs to be able to update those records so we can just add another air table tool I'm going to hit this plus
+button under tool and then I'm going to scroll down and select air table here
+it's a very similar process we already have our credential with air table connected so we don't have to do that
+again but what we can do is set a tool description and this tool description needs to be a very accurate description
+of what this tool does I can say updates inventory items from my my air table
+beautiful now we can leave it to record and we need to change operation from get to update and after we have it on update
+we need to select our base once again which is the home Inventory and then we need to select our list which is the
+goods and now we have a couple of fields that we can update if we want to so this
+is where the fun part happens because how does AI know what to put Within These Fields well it really doesn't
+until we message something and and the output's going to be different every single time that's where nadn adds this
+awesome expression from AI we have the ability to map a dynamic expression into
+each one of these fields and ask AI to fill it in for US based on the chat that
+we have with it in here so based on our chat it's going to fill in the fields for us without any instructions now
+adding instructions really beefs it up right it makes it much more consistent but id id is the ID of the record the
+item name each item has its own ID and the ID is found within the URL so just
+like with any item the same thing with your emails the same thing with notion the same thing with pretty much anything
+that has multiple rows records tables everything has an ID attached to it so
+what we can do is we can use this expression I copied it from up here and we're basically asking AI to find the ID
+for us so I'm going to make this an expression a fixed field will allow for you to type in fixed data while an
+expression allows for dynamic changing data so now we can give this ID a name
+we're telling AI to find it for us and it goes in this order key description type and default value they're all
+separated by commas and each one needs to be put in quotes so you're basically just defining your own key what do you
+want to call this well since we're updating records in air table and we need to find the ID for that record we
+could just name this something like record ID and then we must give a solid
+description describing what this field is that we want pulled in so this is the
+thing we want pulled in now let's describe what we want pulled in we can put a comma and then two apostrophes or
+quotes that would work as well and I can say the air table ID of the item
+needing updated so now it knows okay we need to find the item that needs updated
+and we need to use that record ID and now ai is going to find all that stuff for us again we don't even have any
+instructions we're just telling AI with key description values what we want it to do for us and so now I can copy this
+expression and do the same thing for all of these fields that I want to edit so let's say I just want to edit quantity I
+don't really want to change item name I don't even really care to Change inventory threshold maybe I just want to
+be able to update the quantity of a specific item from my database maybe I
+go to the store and I buy something I can delete those other fields and then I can make an expression here and within
+this expression I can paste in that placeholder name again and then I can say for the key something like new
+quantity then I can delete this description that I currently have and I can say the new
+quantity of the item being up updated
+beautiful now what we need to do here is we need to describe what is the type of
+this value whenever we want a number being pulled into a field we need to describe and tell it hey this is a
+number so for type here we're going to need to add another comma two more apostrophes and then we're going to need
+to put number so it doesn't return a string value or text but rather a number
+and this is how to use the from AI expression it's very cool because AI is searching for these fields for us we
+don't even have to worry about it look at this this is awesome so I can go back to Canvas now and we can actually try
+this out you can rename your Fields by right clicking on them and then hitting rename searches inventory or I can even
+just put search inventory and then I can name this one update inventory this is just for you to see
+the AI doesn't see this I'm going to clear my history real quick with this chat thread so we can start on something
+new and then what I can do is I can say I just bought two more things of
+toothpaste or two more tubes of toothpaste let's see what it does I just
+bought two more tubes of toothpaste then
+I can say update my inventory and then I can send that off and as you can see what it's going to do is actually first
+to search my inventory and then go and update it because it understood okay I've got to First search the inventory
+before I go and update it and as you can see toothpaste goes from two to before so we actually didn't need the
+instructions there and it figured it out itself now often times this will happen right it knows the tools it has to use
+but sometimes it can be inconsistent and that's where we need to start adding instructions for how we want this agent
+to act and how we want it to go through certain processes but we could keep on having conversations about our inventory
+now I could say can you add two things of honey as well and because it has
+memory it can pick up on like what I'm talking about so it it knows that I just bought two more tubes of toothpaste and
+also probably two things of Honey because it's going to use this as context with my prompt so I can send
+that off and it will search my inventory to find that honey object and then also
+update my inventory so now instead of one thing of honey I should have three
+down here at the bottom so I want you to take what you just learned and think about this entire process as one for
+your workflow because when you're dealing with multiple tasks and you're truly trying to create an agentic
+ecosystem it's not all going to happen with one AI agent node like we just created you're going to need to be able
+to learn how to create system instructions in order to classify specific tasks within areas of your life
+or areas of your business or areas of your work and then call these little Tools in order to help along the way so
+you could look at this like oh this is an AI agent that has access the two tools but what I like to look at this as
+is my inventory agent my inventory tool this can do everything I need within my
+home Inventory and it's one tool because what we have the ability to do is we can
+add a trigger to this and then we can add this trigger when called by another workflow and what's going to happen is
+when another workflow calls this AI agent it can send the data or my user query to this input
+and then start running this AI agent so it doesn't even have to start on a chat message but rather when I chat to a
+different agent and the way that happens in another workflow is by me adding a
+tool like this and then calling an n8n workflow so you can actually give entire
+workflows to your agent to call and once it calls it it can execute an entire workflow like we just built and then
+return the data back to the original workflow so that's really where the power begins is when you're calling other workflows with your agent based on
+your query so whatever question you ask maybe there's a better workflow for it an entire workflow like this with a
+completely different AI agent node involved and you can also chain these AI
+agent nodes together and maybe you pass information through this one and say you
+know what this agent is better for the job this has been a beginner's guide and introduction to building AI agents
+within NAD you're now up to speed out everything you need to know in order to go much further with creating these
+agentic ecosystems so I hope you enjoyed this again if you want to go deeper right now automatically then I highly
+recommend joining our AI foundations Community where you're going to be able to do so we have a new NN agent building
+course in here with 25 plus modules and if I click in here what you're going to
+see is we have all sorts of different modules going over things like retrieval augmented gener within nadn how to set
+it up we go over the node types more in depth and build out plenty of different automations in here and we even have
+projects for you to complete so that you can really hammer in your skills with building agents and we want you to learn
+with us because listen Carter and I you know the two brothers that are running this community we learn from the people
+within the community uh more than we probably teach them right the community is such a good spot to be everyone says
+like okay they finally found their group of people that thinks like them and that's why I want to tell you about it because when people join they're
+automatically like oh my gosh this is a gold mine how is this only $49 per month but the fact of the matter is what makes
+it a gold mine is the actual people in the community and when we treat it like a community that's when beautiful things
+happen that's when we grow most and learn more and build more is when we do things together with people from
+hundreds of different Industries right all these different Industries focused on one thing and implementing AI is that
+big thing so I hope you enjoyed this video I hope to see you in the community highly recommend it if you're into agent
+building and I hope this was a good introduction for you if you did enjoy please like And subscribe I would highly
+highly appreciate it all right I'll see you in the next video

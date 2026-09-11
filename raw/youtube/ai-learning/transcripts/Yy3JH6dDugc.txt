@@ -1,0 +1,785 @@
+Excited to be here with Jensen.
+There has been a ton of advancements
+in AI and agents over the past year,
+but few months in particular, I feel.
+We've seen a lot of these advancements
+come in the form of better performance,
+but at the same time, we've also seen
+that openness and control and trust in
+a lot of these models and systems around
+them has become more and more important.
+And so the first thing I want to start
+with is how and why are you guys at NVIDIA
+investing in an open agent ecosystem-
+and stack?
+first, before I answer,  I
+wanna congratulate you for
+all the work that you do.
+In fact, if you look at the last
+six months, we could both agree
+that,  although we've been working
+in AI for 15 years, the last six
+months changed everything,  and so,
+all of the technology, all the large
+language model advances, all the
+scaling, all of the breakthroughs,
+all the omni models,  multimodality
+stuff, all that stuff is fantastic.
+But in the end, it was the last six
+months that where everything came
+together, and now finally AI is useful.
+And when AI is useful, every company
+in the world, every enterprise in the
+world wants to get their hands on it.
+And now the question is how?
+And this is where LangChain comes in.
+And you always had a vision that the
+large language model was the essential
+ingredient, the essential enabling
+technology, but in order to turn it into
+a useful product, you have to surround
+it with what is now known as a harness.
+There's so much more.
+So much more.
+And, back in the old days,  we used
+LangChain to help us turn a large
+language model into a promptable API.
+And we would turn we used LangChain to,
+build our RAGs, and we used LangChain to,
+step by step which led to today's agents.
+And really what happened in the last
+six months, the big breakthrough are
+these agentic systems that are grounded
+on info, grounded on knowledge, that
+can use tools to do search and has
+memory that it manages and, it has
+safeguards and,  has the ability to
+iterate until it gets the job done.
+But it ultimately needed some models
+that have reached a level of capability
+where everything comes together
+into that flashpoint, and that's
+where Claude Code, really brought
+the, imagination of agentic systems.
+OpenClaw, of course, was a big deal and,
+all the work that you did, with, what,
+Deep Agents and, we use that ourselves
+and, all of that kind of came together
+and bam, here we are with agentic systems.
+The reason why we do it, we've
+dedicated ourselves, for many,
+years to build open systems.
+And the reason for that is
+because ultimately, AI is
+a fundamental technology.
+It can only be useful if applied in a
+whole  whole bunch of different use cases.
+Now, of course, it's the first use case is
+just language and cognitive intelligence,
+and that's very important, of course.
+We imagine a world where, scientists
+and digital biologists and designers
+and, roboticists and, students and
+researchers, enterprise IT, all of
+us could use agentic systems, AIs,
+to solve domain-specific problems.
+And many of the problems that we wanna
+solve, either we have specialized
+domain knowledge that is just simply not
+available outside that we have to embed
+into, imbue into, our, AI or it's because,
+we believe that AI becomes ultimately
+great, become a super agent when we put
+it into a flywheel where, we use it, it
+gets smarter, it becomes more useful.
+We use it even more, it gets even smarter.
+Kinda like us, kinda like
+humans, learns over time.
+Learns over time.
+And so, we imagine this future
+where AI has a foundation and, the
+work that Anthropic and OpenAI and,
+Google's doing is all fantastic.
+But there's specialized AIs and
+domain-specific AIs and proprietary
+AIs that people wanna build, and we
+wanna enable that world to happen.
+Maybe digging into that for a second
+on this topic of specialization.
+How exactly do you think it's
+best to specialize these systems?
+Is it gonna be purely the model?
+Is it gonna be the harness
+as well, the context outside?
+What goes into the specialization?
+The specialization starts with you need to
+have intelligence that's good enough, and
+this is what why we worked on Nemotron and
+really love the fact that you're part of
+the founding team of Nemotron Coalition.
+We made Nemotron Ultra pretty incredible.
+Now, Nemotron Ultra is, a great model
+as a start, but it becomes an incredible
+model when you put the LangChain framework
+around it, the LangChain harness around
+it, so that you ground it on information
+that is domain-specific, and, a person
+is, an intelligent person becomes
+super useful when we give them access
+to particularly important information.
+And so access to information's important.
+Putting it into a flywheel where,
+maybe you're even training the model,
+post-training the model inside the
+LangChain harness against a harness
+so that, the model becomes good
+at applying the harness around it.
+What you want it to do for that task.
+What you want it to do.
+Yeah.
+And so I think that this moment
+has now arrived, but we need a open
+harnessing system that we can build
+ourselves, that we can, apply and then,
+of course, improve against over time.
+I love what you said about
+the model being good enough.
+I feel like that threshold- Yeah … was
+crossed, I don't know, maybe a year ago
+by some of the frontier models, six months
+ago by some of the open weight models.
+Yeah.
+You talked about Nemotron 3 Ultra.
+We've done a lot of work with that to
+make that really good in Deep Agents.
+some of the things we did is tweak
+the harness to make it best for this
+model, 'cause we found that different
+models need different prompts- Yeah
+different tools.
+And with that tweaking, we managed
+to get Nemotron 3 Ultra in Deep
+Agents to we have, an internal
+benchmark, and it managed to get
+up to, eighty-six percent on that.
+Ooh.
+Claude Opus on, for
+comparison's at eighty-seven.
+you've got DeepSeek and, one of
+the Minimax models at eighty-two,
+eighty-three down there.
+So we're starting to see that some of
+the more recent open weight models are
+really getting to frontier performance.
+I know.
+I am so proud.
+But it is so incredible.
+Thank you.
+But the, but the It is so incredible
+… one of the just as important thing
+is it's, 10 times as cheap as Opus.
+Yeah.
+And I think open weight models really
+strike are starting to really strike a
+good balance between performance and cost.
+So I'd be curious how you see this cost
+part changing the equation for builders.
+The benefit of cost is it comes
+in a couple of, different ways.
+I happen to think that, when you
+have cost-effective intelligence,
+people just use more of it.
+When you have a cost-effective
+agent, then you can iterate
+across a larger search space.
+And as a result, the answer
+could actually be better.
+And in the case of Nemotron, it's
+cost-effective because it's so fast.
+It's so computationally efficient.
+When it's computationally efficient,
+it could explore larger spaces.
+And it's no different than
+when somebody can think fast,
+you could explore more space.
+When you can try things more
+quickly, you could become…
+you can find a better answer.
+And so this is the incredible
+benefit of Nemotron 3 Ultra inside
+the LangChain framework and the
+LangChain harness inside Deep Agents.
+It could think so quickly, it could
+explore so quickly, it could iterate
+so quickly and effic and efficiently
+that it's gonna find better answers.
+And so I'm, just really,
+excited that we created a model
+that was near the frontier.
+But adapting the environment
+around Nemotron, you made it
+deliver frontier capabilities.
+Now insight, for humans, it's the same.
+Of course, we like to hire the
+smartest people in the world.
+but beyond that, we also give them
+access to tools, we give them access to
+information, and we also create the world
+around them so that we, we allow them,
+enable them to create the conditions for
+them to achieve their full potential.
+And so you adjust the
+environment, not just the model.
+And this is where LangChain came in.
+What you said about using more of
+the intelligence as it's cheaper and
+faster, we, see that to be so true.
+I think one of the things that  I
+like to think I'm AI forward.
+One of the things that I've underestimated
+is just the demand for intelligence
+and for tokens and how big and massive
+that market is, and I think that's
+become especially true recently.
+With these models getting good and being
+really fast and really cheap, how should
+we think about using frontier models?
+Should we just use these open
+source models all the time?
+is there a time and place for both?
+the frontier models are getting better
+all the time, and I fully expect the
+frontier models to be unbelievably good.
+And they still have a long,
+runway of improving the models.
+The scaling, scaling laws,
+of course, are gonna sustain.
+Their harnesses are
+improving all the time.
+their technology for dealing with memory,
+whether it's working memory or long-term
+memory, is advancing incredibly quickly.
+The compaction technologies, the, all of,
+the advancements in, retrieval, augmented
+generation and, knowledge graphs,
+and there's still a lot of incredible
+advances that are being implemented
+into these frontier, model APIs.
+The thing that… The way I think about
+it is, frankly, I always start all of
+my work starting with the frontier.
+Okay.
+and the reason for that
+is because, it's useful.
+I know what's the potential.
+It costs a little bit more money, but
+it's incredibly… the, my, my time
+to getting the work done is fast.
+However you know, over time, I find
+that I want to add sub-agents to them.
+I want to connect sub-agents that
+are super agents at certain skills.
+And so we have, we have optimization
+problems inside our company
+that, relate to supply chain.
+Maybe it's related to, chip design
+optimization, floor planning optimization.
+And these problems, these optimization
+problems are insanely hard.
+And so you're not going to just
+have an, a general AI go off and
+crunch on it and think that you're
+going to find a great answer.
+So we create super sub-agents, and
+these super sub-agents we would create
+with Deep Agents, LangChain Deep Agents
+with Nemotron 3 inside, and we'll even
+connect them to specialized tools.
+And that thing is built for one job.
+That super agent is not trying
+to, book me travel, appointments.
+It's just trying to
+optimize our supply chain.
+And in that case, I really
+do need to have LangChain.
+I really do need to have Nemotron 3 Ultra,
+and I connect it to a lot of proprietary
+knowledge and proprietary skills.
+I've got a whole team who's
+just dedicated to refining that.
+Now, I think that defines a company.
+A company is really about a collection
+of a whole bunch of these super
+proprietary, super important workflows.
+And now we can have LangChain with
+Deep Agent and Ultra, Nemotron
+3 inside, and it gives them all
+of the control they need, super
+efficient access to incredible tools.
+That's the future.
+Do you have any advice for enterprises
+if they're following your practice
+of starting with the frontier
+and then starting to specialize?
+When should they think about specializing?
+what are some triggers that you
+look for that- As soon as it gets
+good enough, So I would take I would
+start with Cloud Code and Codex
+and, use it for as long as I can.
+And frankly, for a lot of things you
+never have to replace, because it's
+get- they're getting better all the
+time, and they're on a, they're on a
+trajectory that's gonna, that's gonna
+bring capabilities insanely fast.
+And so, I think that, in the future,
+just like companies are today, we have
+employees that we hire because their
+domain specialization and the refinement
+of the work and the work process and
+all of their life learnings here in
+the company is just too valuable.
+but we also hire consultants,
+and we license external tools,
+and we outsource work to other
+people, and so on and so forth.
+I think this is the future
+for AI, and are we going to
+continue to use, frontier models?
+Absolutely, and tons of it.
+But are we also going to create
+specialized, super agents with LangChain
+and Nemotron 3 Ultra that in fact
+arguably could be your crown jewels?
+And the answer is absolutely true.
+I think even for the consultants that
+you bring in just like when you bring
+in a consultant, you need to get them
+up to speed in your organization and
+give them context on the organization,
+how things work, what tools do they
+need that have access to data that's
+only inside your organization.
+And so I think, one of the things we've
+seen is as enterprises start to adopt
+AI, there's all of these kind of like
+systems that they have to, build around
+them in order to make the, agentic
+systems as a whole trustworthy and safe
+and proper kind of like governance.
+I'm, curious, how do you see and just
+to add on that, just, today, most
+companies are built on business processes.
+Yeah.
+In the future most companies
+will be built on harnesses.
+And so the idea, LangChain would just
+become the, tool that creates the
+operating system for the company, and
+everybody will be  using LangChain to
+create their specialized harness, which
+represents a workflow of the past.
+And now this harness inside that
+workflow becomes autonomous,
+agentic, much more efficient.
+I think we see that these things are…
+There's, the harness, there's the
+model, and then there's all the context
+around it, and all of these can be
+optimized at different points in time.
+That's right.
+And so the work that, that we did
+with Nemotron 3, I think was a great
+example of doing, some, pretty high
+ROI things around the harness, changing
+the prompt, changing the tools.
+One of the things we're looking
+forward to is experimenting with
+post-training Nemotron to, It, it,
+takes a little bit more time, but I
+think it really raises the ceiling
+of what this overall system can do.
+This is incredible.
+This is the big breakthrough.
+And so what you just described is a
+future where, once you get the harness
+built and it's, built, it's doing the
+work, and it's now part of the business
+process and it's very successful.
+Now the question is: how do we
+get it even better than that?
+Of course, you can keep improving
+the, information that you provided.
+You can tune the, harness, but you
+can now also improve the AI model,
+the large language model, Nemotron
+3 Ultra, inside the harness.
+I think that's a complete breakthrough.
+That's a capability that's never existed
+before, and I'm super excited about that.
+And it's really gonna take all of these
+enterprise-specific business processes
+and really start to tune this flywheel.
+And I think one of the things that
+we've heard when talking to enterprises
+is the demand or need for this
+to be built on an open ecosystem.
+This is, all this enterprise's
+knowledge and processes that
+they're putting in there.
+And having full control over that
+seems paramount to a lot of them.
+So I'm curious if you can touch on how
+you see open stacks really empowering
+enterprises going further with AI.
+Every company is built fundamentally
+on domain-specific or some
+specialized intellectual property.
+The reason why we call it intellectual
+property, intellectual, it's intelligence.
+Every single company is built on
+intelligence, some foundation of
+intelligence that's specialized.
+Our company is specialized in something.
+We're not good at everything, but
+we're very, good at one thing,
+and every company is built that
+way, and that specialization, your
+company's intelligence is who you are.
+You can't possibly not continue to control
+it, improve it, make it better, right?
+And, somehow, outsourcing that
+intelligence, whether you're a person,
+company, country, makes no sense to me.
+And of course, there's general
+intelligence, and there are
+general things that we all do,
+and it's a lot of the economy.
+And for example, software coding
+is actually a general thing.
+We all program in Python, we all
+program in C++, we all program, right?
+And, so you're applying it to
+different things, but the, skill
+of coding is largely the same,
+and that's a general skill.
+Writing is a general skill.
+But those are foundational skills
+that we then apply for our specialized
+domain intelligence, and that's where
+LangChain and Nemotron comes in.
+I think the foundation, of society
+is going to have these foundational
+models, and they're gonna be general,
+and they're gonna be, available in the
+cloud, and it's gonna be incredible.
+but on top of that platform,
+we're gonna have to build our
+own specialized capabilities,
+and you need open tools for that.
+And you can't outsource it.
+You can't… I, can't imagine
+calling a third party, when I
+need to enhance my intelligence.
+I need to enhance it right
+here inside the company.
+And so, I think that future
+is not one or the other.
+It's a completely complementary
+vision and really what we're doing is
+just making sure that we, automated
+intelligence is integrated, into all
+aspects of everything that we do.
+And as a result, we're
+all gonna be better.
+Completely agree, and I think
+it's still hard to get that
+integration up and running.
+And so one of the things that we're
+announcing today is, a blueprint with
+Deep Agents and OpenShell inside of
+the, NemoClaw, blueprints out there.
+And so this will let enterprises run
+Deep Agents with Nemotron 3 Ultra
+inside of OpenShell, which is a
+secure and open runtime- That's right
+and take advantage of that.
+This is one of just- such a, such a huge
+deal … hopefully it makes it way easier
+for enterprises to get up and running.
+Such a huge deal.
+Yeah, all of the key ingredients
+necessary for you to build your personal
+domain-specific, proprietary, your super
+agent, all of the technologies, all the
+components, all the tooling, all of the
+harnessing, everyth- and the blueprint, a
+great example, all put together for you.
+How do you guys think about blueprints?
+You have many of them.
+This is- this is obviously the best one.
+I won't make you say that.
+Yeah.
+But I'll say that.
+This is the best one out there.
+But you have a ton of blueprints.
+Why, what is the, why
+invest so heavily in them?
+Because the tools are, the
+tools are arcane still, and,
+there are a lot of pieces to it.
+Building, building an agentic
+system, building AI is not simple.
+And there's a lot of different
+pieces of technology, and we
+already talked about some of them.
+There's the large language model, there's
+the tool, the tools it uses, and, the
+knowledge graph that it has to deal with,
+its memory system, and its, guardrailing
+system, and its fine-tuning system, and
+now, the technology you're gonna create,
+the post-training against the harness.
+And then of course,
+there's the harness itself.
+But what about the runtime?
+When you're done, you
+still have the runtime.
+You have to keep it in a sandbox
+so it's secure, it's private,
+that, that is access control.
+It's something that IT
+organizations can control.
+Is that the hardest thing about
+the runtime, you think, inside
+of enterprises, all the security
+things that go alongside it?
+Without, solving the security, the access
+control, it's impossible to deploy.
+It's no different than it's
+impossible to hire a new employee
+into the company if you don't onboard
+them, give them access control.
+We don't give every, employee access
+to every file and every network, right?
+And so you have every single
+employee, based on their job and their
+responsibility and what they need to
+have access to, we give them access to
+tools, the laptops and, design tools
+and programming tools and whatnot.
+We give them access to
+certain parts of the network.
+We give them access to information.
+We give, we connect them to other agents.
+We connect them to other colleagues
+that they work within, and we
+provide them a skills file.
+You know we essentially, give
+them a document about this
+is the, this is your mission.
+this is how it's previously
+been done, and, and now, help,
+do it even better than that.
+And, so in a lot of ways, we are
+creating an, HR system, if you will-
+You know, for AI that allows the IT
+organizations and all of the different,
+business units inside the companies
+to be able to build, improve, and
+deploy these agents inside companies.
+This is more of a philosophical
+question, but you're talking, and I
+think a lot of people talk about these
+agents and anthropomorphize them- Yeah
+a lot, bring them into human systems.
+But, agents aren't human, and they
+have some things that are better
+than, what humans are, and, they
+have other places where they're, they
+are, very different and maybe not
+as good as what humans are good at.
+What is the right level to
+anthropomorphize these agents?
+It's, it's electrons it's
+electrons, not atoms.
+and, it's not biological,
+has no consciousness.
+It, it's not awake.
+and so it's not any of that.
+it's a tool that, it's like my vacuum
+cleaner that's, roaming around the house.
+And it's, of course, roaming around
+the house, cleaning up the house,
+doing something that I used to do.
+And, you now have autonomous lawnmowers,
+and you have  and, so I, you could
+just imagine, a hundred years ago
+when, the first dishwasher came along,
+and now it's doing dishes by itself.
+It must have been magical to watch
+it, and, we call it a dishwasher,
+which is a little bit like a human.
+Yeah.
+Yeah.
+And, we have dishwashers.
+when… my first job, I was a dishwasher.
+And and so in a lot of
+ways, we'll get used to it.
+I think it's right now we tend to
+imbue too much, human properties to it.
+It's nothing close to that.
+It's software.
+It's computers.
+We know exactly how it's
+working because obviously, we
+created the harnesses around it.
+We obviously know how it works because
+it's getting better all the time.
+If we don't understand how
+something works, how do we
+make it better every time?
+And if we don't understand how
+something works, how do we improve it?
+How do we fix it?
+And so obviously, we understand how
+these things work and, I, I think
+that we ought to keep it there, And,
+meanwhile, one of the things that
+we know is that the more AI we use,
+somehow the more people we have to hire.
+And the reason for that is because
+these agentic systems are new
+skills and, now we have a lot of
+software engineers, building agents.
+They used to code software, but
+now they're building agents.
+If you ask me, every one of my software
+engineers prefer to be building
+agents than to be writing Python code.
+Coding is like typing, and so
+they're gonna do less typing.
+They're gonna they're gonna
+be more systems engineers
+and more building engine…
+building and creating these autonomous
+systems that are super cool.
+They're creating evals.
+They're creating benchmarks.
+They're creating guardrails.
+Isn't that right?
+And so the amount of work that we
+have to do to bring AI into the
+world is really quite incredible.
+And so it's creating
+a whole bunch of jobs.
+And, my software
+engineers love, love this.
+I think we've seen-- You
+mentioned evals briefly.
+I think we see that being a key
+part to- Yeah … unlocking a lot of
+agentic usage inside an enterprise.
+You need to have some sense of, how
+it's doing, and, quantifying whether
+it's good or not is oftentimes best
+done by subject matter experts who
+already live inside the enterprise and
+can easily give feedback and work with
+these systems to automate a lot of the
+tedious parts of their job and then
+spend time on the really intellectually
+stimulating parts and, the creative parts.
+And so I- That's right.
+In a lot of ways, whether you're a doctor
+or a designer or software engineer,
+you are creating an agent And, you're
+taking, all the mundane work, and you're
+trying to get this agent to do it.
+But meanwhile, we're all trying to
+get our agents elevated to do things
+with us that we couldn't do before.
+And so that, that requires
+imagination, that requires
+creativity, a lot of technology.
+I think, that's spot on.
+I think currently the a lot of the best
+usages that we see of agents are giving
+ourselves more leverage to do more things.
+Yeah.
+But I think a lot of that approach
+is thinking about what did we do
+previously, and can we automate that?
+But I think a lot of the unlock
+will come in the future of what
+just-- what couldn't we do before-
+That's right … that now we can do.
+And so maybe, maybe- Ambition helps.
+A hundred percent.
+Right?
+Ambition, agency.
+Ambitions help.
+Yeah.
+Yeah, yeah.
+Maybe, on that vein, wrapping up, as you
+think about how to help drive towards
+this future, what are some of the
+missing pieces of this agentic stack?
+Today we're announcing a very big deal.
+This is a very big deal
+thing that we're doing today.
+We are providing, the basic building
+blocks, the foundation, all of the
+the key ingredients, all of the key
+ingredients to build super agents.
+These-- When I say super
+agents, they're domain specific.
+They belong to you.
+You could… You build them, you
+improve them, you refine them over time.
+You give them access to proprietary
+information, knowledge, maybe
+it's super private to you.
+and as a result, this super agent will
+be able to do things, that, you can't
+imagine, and it will be extremely, good.
+We've created all of the all of the
+key parts, a, world-class language
+model, a framework called LangChain
+Deep Agents that has now been also
+fine-tuned to expose the full potential
+of Nemotron 3 Ultra, a blueprint that
+helps everybody do that, and of course,
+the runtime, the OpenShell runtime
+that keeps it secure, the, acceleration
+stacks that are all integrated into it.
+And so every company in the world
+should be able to, every developer
+in the world should be able to now
+create these super agents, deploy
+it anywhere in the cloud, on-prem.
+a, good friend of mine just
+built one for DGX Spark.
+And so now you have these agents running
+on DGX Spark right next to your laptop.
+You could have it
+running on a DGX station.
+you could build your own
+supercomputer inside your company
+if you like, or do it in the cloud.
+We now have agentic, capabilities that
+you can now build for yourself everywhere.
+All the pieces are now here.
+There are no excuses not to engage it.
+I think that's a perfect way to end it.
+You, got me so pumped up
+when you were speaking.
+That was a great motivational speech.
+So I'm gonna go out and build some…
+I'm gonna go out and build some agents.
+Thank you, Jensen, for sitting down.
+Congratulations.
+Thank- Good job.
+Thank you.
+Proud of you guys.

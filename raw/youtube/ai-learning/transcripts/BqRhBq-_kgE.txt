@@ -1,0 +1,156 @@
+MCP is blowing up right now. Agents
+usage of MCP is increasing exponentially
+and it's not showing any signs of
+slowing down. But at the same time, many
+agents are now changing the way that
+they handle tools and starting to take
+over responsibilities that used to
+belong to the server. So what does all
+of this mean for the way that we build
+MCP servers? Well, let's break it all
+down. When MCP first hit the scene, one
+of the most common approaches for
+building MCP servers was to just map
+each of your API endpoints to its own
+tool. And by doing this, an agent was
+able to access the full range of your
+API surface area. And this
+implementation worked, but it presented
+two major issues. First, if your API had
+hundreds of endpoints, then that meant
+your MCP server had hundreds of tools
+and all of these tools would be loaded
+into the context window up front,
+meaning that before you even started
+your session, your context window could
+have been completely bloated by MCP
+tools. And secondly, if you had lots of
+endpoints that were similar to each
+other, an agent might end up getting
+confused and not pick the right tool for
+the job. In order to solve some of these
+problems, a lot of MCP servers adopted a
+layered tool call approach. So now,
+instead of listing out hundreds of tool
+calls, you might just have two or three.
+You might have a tool to search all of
+the available endpoints, a tool to
+inspect the definition of a specific
+endpoint, and a tool to execute the
+request. This pattern has seen a lot of
+adoption, but this is now where the big
+change happens. Traditionally, this
+pattern was implemented on the MCP
+server side, but more recently, many MCP
+clients, especially many popular coding
+agents, are implementing this pattern on
+the client side. The pattern is now
+called progressive tool discovery, and
+it's a recommended best practice for MCP
+clients. In addition, a lot of these
+agents like Codeex or Claude Code are
+implementing what's called programmatic
+tool calling, also known as code mode.
+And with code mode, instead of calling
+tools one at a time, the agent will go
+ahead and write a script that chains
+those tools together in a sandbox
+environment. The script then runs in the
+sandbox and then only the final result
+is returned back to the model. So
+between progressive discovery handling
+tool call selection and then code mode
+handling tool composition, the clients
+are now starting to take more ownership
+of the problems that servers originally
+were trying to solve. So surely this
+means we can just go back to the
+original method of doing a one-to-one
+mapping of API endpoints to tool calls,
+right?
+Not quite. While an agent certainly can
+accomplish everything it needs to just
+by having access to tools that represent
+every API endpoint, that isn't
+necessarily always the most efficient
+way to interact with an API. For any
+given API, there are often very common
+tasks or workflows that require
+stringing together multiple API calls.
+And if an agent has to figure out that
+chain on its own every single time,
+that's a lot of wasted tokens. And this
+is the same reason that SDKs exist. They
+give you the raw endpoints, but also
+bundle common workflows into single
+operations. And we can apply that same
+idea to the tools that we expose through
+our MCP server. So for example with Neon
+we have this idea of creating a branch
+but it turns out that creating a branch
+is actually three separate API calls
+under the hood. You have to first create
+the branch itself but then make a
+separate call to attach compute
+resources to the branch and make a third
+call to get the connection string. In
+the SDK we bundle those three API calls
+into one method called create with
+compute. So, as this relates to our MCP
+server, in order to give MCP clients the
+most token efficient path possible, it's
+helpful to expose operations like this
+that they can take advantage of in some
+of these common use cases. Of course, if
+your API is relatively simple and
+straightforward, a onetoone mapping
+might be totally fine. But for something
+like Neon where there's some complexity
+in provisioning infrastructure, these
+ergonomic shortcuts save the agent from
+making the same mistakes over and over
+again. So at Neon, we have an SDK which
+is generated from our open API spec. So
+that way it covers every API endpoint.
+But on top of that generated layer, we
+also have another thinner layer that
+adds the ergonomic methods that we were
+just talking about, things like create
+with compute. From here, in order for
+this to be usable by agents, we need to
+convert all of these methods into tool
+calls. So that's exactly what we did
+with a package that we call neon tools.
+So that includes both the raw endpoints
+and the ergonomic workflows all as tool
+calls. And by virtue of pulling these
+tools out into a separate package, we're
+able to serve a few different use cases.
+First and foremost in the Neon MCP
+server, the server imports this package
+to surface all of these tools to any MCP
+client. But on top of that, we can also
+take this package and build adapters
+around it for different agent
+frameworks. So for example, we have
+adapters for both Mastra and Eve for
+anyone building custom agents with those
+frameworks. And one more thing worth
+noting is that these tools are organized
+into categories. So that way you can
+scope down exactly which tools you want
+the agent to have access to. All in all,
+the big idea here is that the server is
+controlling what tools are available,
+but then the client handles discovering
+and executing those tools in whatever
+way it sees fit. All of this is open
+source, so if you want to dive through
+the code and see exactly how everything
+is implemented, I'll have some links
+down in the description for you to check
+out. And if you have ways that you're
+approaching building your own MCP
+server, let us know down in the
+comments. Thank you so much for watching
+and I'll see you in the next one.

@@ -1,0 +1,346 @@
+learn about Vector embeddings which transform Rich data like words or images into numerical vectors that capture
+their Essence this course from anikubo will help you understand the significance of text embeddings showcase
+their diverse applications guide you through generating your own with open Ai and even delve into integrating vectors
+with databases by the end you'll be equipped to build an AI assistant using these powerful representations so let's
+begin hi everyone and welcome to this course all about vector embeddings by
+the end of this course you will be able to understand what Vector embeddings are how they are generated as well as
+understand why we even care about them in the first place we are going to do this thanks to visual explainers as well
+as some hands-on experience by building out a project that uses Vector embeddings to submit your understanding
+of them by the end my name is Anya Kubo and I'm a software developer and course creator on YouTube
+as well as on codewithanyu.com and I'm going to be your guide to this hot but slightly complex topic so before we get
+going let's just have a quick look at what this course will cover so first off we're going to learn what Vector
+embeddings are in the first place and what they're used for after we understand that I will show you what a
+real Vector embedding looks like and show you how to make one yourself and after that I will delve into why
+companies might want to store Vector embeddings in a database as well as show you how to store Vector embeddings in
+your own database just as a company focused on AI word next we will take a quick look at a popular package called
+Lang Chen that will help us with the next part of making an AI assistant in Python and if you don't know any python
+don't worry I'm going to talk you through it step by step okay so a lot to learn but by the end you should be an
+expert in this aspect of AI development so what are we waiting for let's do it
+what are vector embeddings in computer science particularly in the realm of machine learning and natural language
+processing or NLP for short Vector embedding is a popular technique to represent information in a format that
+can be easily processed by algorithms especially deep learning models this
+information can be text pictures video and audio and much more let's look at
+text embeddings first so in terms of text we can create a text embedding that will give us more information about our
+word such as its meaning that computer can understand a word will go from
+looking like this for us humans to this for computers so essentially the word
+food is represented by an array of lots and lots of numbers but why do this well
+think about it this way say we have this text right here diary went to town on
+foot she set off early in the morning to beat the rush to the shop she wanted to be sure to get the best lettuce and
+tomatoes for her grandfather's recipe now say you want a computer to scan this for words with the closest meaning if
+you ask a computer to come back with a word similar to food for example you wouldn't really expect it to come back
+with letters or tomatoes right that's what a human might do when thinking of similar words to food a computer is much
+more likely to look at the words in the text lexicographically kind of when you scroll through a dictionary and come
+back with foot for example this is kind of useless to us we want to capture
+words semantic meaning so the meaning behind the word Texas embeddings essentially represent that thanks to the
+data captured in the super long array by creating a text embedding of each word I
+can now find words that are similar to food in a large Corpus of texts by comparing text embedding to text
+embedding and returning the most similar ones so words such as lettuce instead of
+foot will be more similar now you might still be wondering what even are these
+numbers what does each one represent well that actually depends on the machine learning model that generated
+them to understand how these numbers can help us find words that are similar however let's look at this fantastic
+visual explainer from Jay Alamar I absolutely love this explainer so full credit to him for these next few
+illustrations it really is great imagine you are also conduct a personality test
+similar to that of the Big Five personality traits test that rates your openness agreeableness conscientiousness
+negative emotionality and extroversion the test requires a score from 0 to 100
+on each of the five traits in order to get a good understanding of a person's personality let's start by looking at
+the extroversion trait first imagine Jay gives himself a 38 out of 100 as its introversion extroversion
+score let's show this in one dimension like so on the left now let's switch this out to be a score
+of minus one to one now it is hard to know a person from just one personality
+trait right so let's add another one and then turn another dimension the aguria
+winners score of a person for example or any of the other five traits great and already you can start to get a better
+understanding of Jay's personality now say we have three people here are their
+personalities plotted out based on two personality traits so we can see them on a two-dimensional graph and we can also
+see them on the right in numeric representations from minus one to one now CJ got hit by a bus and we miss our
+friend I want to replace them with a person with a similar personality dark I know but you get the idea
+when dealing with these numerical values or vectors a common way to calculate a similarity score is using cosine
+similarity this is the formula for getting cosine similarity using cosine similarity you will see
+person one is more similar in personality to J than person two but
+still two personality traits probably aren't enough let's use all five trait scores so we can use five dimensions for
+our comparison now the problem is this is kind of hard to draw let alone think about on a graph
+this is a common challenge in machine learning where we often have to think in higher dimensional space however cosine
+similarity still works so we can get a numerical value by passing through the vectors for each person we want to
+compare to each other into the formula to get one numeric value which represents similarity
+so now by comparing J to person 1 J to person 2 and J2 person 3 we can see
+which person is most similar to him great now that we understand this concept let's look at the actual text
+embedding so for example this is the word food generated by open AIS create embedding
+so as you can see it's an array of lots and lots of numbers from -1 to 1. the
+meaning behind each numeric representation varies based on which model generates them here are some of
+the other models you can use to create text embeddings so you've got open AI as we've seen huertevac and glove so as we
+now know we can use these text embeddings to compare them to other text embeddings just like we did with the
+example of comparing personality trait to personality trait apart from instead of capturing a personality the meaning
+of a word is captured instead there is another cool benefit to Turning
+words into numeric representation one of them being that we can now apply math to
+them take for instance this now well-renowned example so King minus man plus woman equals Queen
+so for example here you can see how you can take the word King and minus the
+word man and replace it with the word woman and you get Queen this is truly
+incredible and it's all thanks to text embeddings we can use code in order to pass through
+the words King and woman and subtract man and then we get a bunch of words returned to us each with a similarities
+score Queen is the most similar and hence it has the highest score pretty cool right
+let's move on by actually talking about what Vector embeddings can be used for so far we have looked at Texan beddings
+but Vector embeddings actually cover a lot more text is just one of the things that we can vectorize we can vectorize
+sentences documents notes and graphs images and even our faces we have word
+embeddings like we just seen this is one of the most popular applications why are the baddings like what back or glove
+convert words into dense vectors where semantically similar words are closer in
+the vector space for instance we saw king and queen would have vectors that
+are closer than King and paper next we also have document and sentence embeddings methods like Dr vac but and
+sentence but can represent whole documents or sentences as vectors this
+can be used in document classification semantic search and more next we also
+have graph embeddings nodes in a graph can be represented as vectors
+applications include recommendation systems social network analysis and more here are some of the primary
+applications of vector embeddings we have recommendation systems embeddings can be used to represent users and items
+like movies books or products the similarity between user and item embeddings can help in making
+personalized recommendations we also have anomaly detection if you
+can represent data as vectors you can measure instances or similarities to detect outliers or anomalies in data we
+also have transfer learning pre-trained embeddings especially in the context of deep learning models can be transferred
+to another task to Kickstart learning especially when the target task has limited data and also amazingly we have
+visualizations high dimensional data can be converted into 2D or 3D embeddings
+using techniques like tsne or PCA to visualize clusters or relationships in
+the data we also use it for information retrieval by embedding both queries and documents in a shared space one can find
+documents that semantically match the query even if they don't share exact keywords and of course we can use them
+for natural language processing tasks tasks like text classification sentiment analysis named entity recognition and
+machine translation benefit from embeddings as they capture semantic information and relationship between
+words we also have audio and speech processing audio clips can be converted to embeddings for tasks like speaker
+identification speech recognition or emotion detection and finally we can use
+it for facial recognition face embeddings can represent a face as a vector making it easier to compare faces
+and recognize identities so a lot of things that Vector embeddings can be used for we're going to create a few of
+Our Own in the lesson coming up but the main takeaway here is that the core advantage of vector embeddings is that
+they provide a way to transform complex multi-dimensional and often discrete data into a lower dimensional continuous
+space that captures semantic or structural relationships within the original data
+next up how do we generate Vector embeddings I'm going to show you how using openai's Create embedding okay so
+here we are on open AI so please go ahead and log in or sign up if you haven't before and you'll be taken to
+this landing page now once here what we are going to do is interact with the API
+so just go ahead and click that and the first thing you will need to do is just
+make sure you have an API key so under your username here just view your API
+keys and go ahead and create a new secret key I'm gonna call this demo key
+like so so that is the name of my key and I'm going to create a secret key and save this somewhere safe so please go
+ahead and do the same just save your API key and once you're done with that click done you can of course delete previous API
+keys to revoke access to them so that's what I'm going to be doing with this one so that you can't use it in the future
+it will be deleted now once you have that let's go back to our API reference and what we're going
+to do is create embedding so let's click on embeddings here here's the URL if you are lost just copy that into your
+browser and we are going to be using the embedding object so essentially here is
+the code that we're going to use so it's right here we have in node.js you can
+have it in python or you can also have it in curl it is up to you whichever one you would prefer to do so let's just go
+ahead and use this version first so this is what we're going to be using this is
+the request we're going to write and this is the response that we are going to get based on the input we passed
+through okay so essentially the food was delicious and the waiter dot dot dot is
+now represented by this embedding this array of numbers right here so let's go ahead and do it I'm going to
+copy this just make sure that it's copied let's get up our terminals I'm just going to make this a little bit bigger for you let's paste that in and
+now here we need to replace the open AI API key with our own so let's just go ahead and do that
+it's going to navigate to that piece of text
+delete it all just like so and paste it and let's just use the same input for
+now so hit enter and amazing so there is the array of essentially numbers from -1
+to 1 that make up the food was delicious and the waiter dot dot so there we go
+there is that whole object the full thing right here it is also telling us how many tokens we
+have used in order to create that so great I'm just going to clear that out
+so let's paste that in again in fact what we can do is just press up and now
+let's change the input to something else so for example let's just use an example from the beginning of this tutorial
+let's just go with food
+so third hit enter and that is the text embedding for food okay it's this whole
+array and we have used exactly one token to create that amazing
+now it's time to look at vectors and databases with the rapid adoption of AI and The Innovation that is happening
+around large language models we need at the center of it all the ability to take
+large amounts of data contextualize it process it and enable it to be searched
+with meaning generative AI processes and applications that are being built to natively
+incorporate generative AI functionality or rely on the ability to access Vector
+embeddings a data type that provides a semantics necessary for AI to have a
+similar long-term memory processing to what we have allowing it to draw on and record information for complex task
+execution as we now know Vector embeddings are the data representation that AI models such
+as large language models use and generate to make complex decisions like
+Memories in the human brain there is complexity Dimension pattern and relationships that all need to be stored
+and represented as part of the underlying structures which make all of this difficult to manage
+that is why for AI workloads we need a purpose-built database or brain designed
+for highly scalable access and specifically built for storing and accessing these vector embeddings Vector
+databases like data Stacks astrodb built on Apache Cassandra are designed to
+provide optimized storage and data access capabilities specifically for embeddings
+now that we understand how important it is to store these vectors in the right type a database let's get to setting one
+up ourselves in preparation for creating our AI assistant so let's do it so fast
+off I'm just going to navigate to data stacks and log in please go ahead and
+sign up if you haven't already this is what your screen should look like once
+you are signed in and you can see all your options here as well along with
+your username and so on so as you will see I've previously created a bunch of
+databases on here already but don't worry I'm going to show you how to get started completely from scratch
+so all you're going to do is Click create database here and make sure you
+have Vector database selected and once you have that it's super simple just go
+ahead and name your database making sure to use the correct characters so for
+example it won't let you use certain ones you have to use ones that are allowed you will get a little prompt
+message if you do use an incorrect one I'm just going to go ahead and call my database Vector database
+now we have to create a key space name that will go inside our database and
+once again just make sure to name it with the correct conventions so I'm just going to call it search as that was what
+we are creating we are creating a vector search database so I'm just being super literal with my naming conventions and
+now I'm going to pick a region that is closest to me so I'm going to go ahead and select Us East one and then just
+click create database and that's it that's really all there is you will see my database is pending right here we
+have done it we created our database I'm going to leave that running and come back to it when it's time to use it and
+pending has gone from pending to active for now let's carry on with a little bit
+of learning before we dive into creating an AI project I want to talk to you a little
+bit about line chain Lang chain is an open source framework that allows AI developers to have better
+interactions with several large language models or llms like open ai's gbt4 for
+example we can use the M python or JavaScript which is great news for us Developers what do I mean by better
+interactions however well for one it allows developers to create chains which
+are logical links between one or more llm you can even use it to load documents
+such as PDFs or csvs for example to change to each other or an llm heck you
+can even use it to split up documents and much more you can have basic chains or more advanced chains we'll be
+creating our own chain soon enough in this course for now just know that langtune's superpower lies in allowing you the
+developer to chain together different AI large language models external data and
+prompts in a structured way in order to create cool and Powerful AI applications such as an AIS system for example that
+not only uses data from the internet but perhaps an essay that you wrote as well that we can then feed into it in order
+for the AI assistant to answer questions about it too okay so we finally gathered enough
+knowledge in order to proceed in building an AI assistant built in Python
+so let's go ahead and do it just to recap this AI assistant is going to essentially be an AI assistant that will
+help us search for similar text in a data set okay so once again we are going
+to be able to get some data break it up into little chunks save it in a database
+in order for us to essentially perform Vector search on it thanks to packages
+such as Lang chain don't worry if that's a lot I'm going to be explaining everything step by step as we do it so
+first off let's go back to our database in order to continue with this tutorial
+so we've already created a serverless database the next thing we're going to do is actually learn to connect with it
+from an external source and in order to do that we need to essentially get our
+token so please go ahead and get that token we need to go to the connect Tab
+and we're simply going to get an application token using the generate token button in the quick start section
+so you can save this in any way you want just make sure it's saved somewhere safe
+now once we have got that token saved we need to get a secure connect bundle okay
+so just go ahead and do that get your bundle and once again save this
+somewhere safe this time however we're going to down with the secure bundle because we're going to point to this
+somewhere on our computer so just download the whole thing onto your computer into your downloads wherever
+you want great now that we have that once again we are going to have to get our API key
+so as a refresher all you're going to do is head over to the openai.com page
+and then once you have signed in you will see this platform and you're going to go to API and then once again we are
+going to be working with embeddings however we are not going to be doing a
+call request from here we are going to Simply feed in our API token in order
+for Lang chain to do its thing instead so just go ahead and navigate to your username view your API Keys create a new
+one so this time I'm just going to call it demo copy this key okay and keep it
+somewhere safe and then let's go back to data Stacks once more okay
+so great we have done everything that is to be done here now let's create a
+python script using Lang chain and Castor IO so I'm just going to go ahead and get up
+my terminal once more and navigate to a directory where I want to store this this time I'm going to store it in a
+another directory which is going to be webstorm projects and I'm going to create a
+directory I'm going to call it search python so I'm going to use the mukter command and then I'm going to go into
+that project so using the CD command I'm just going into search python or whatever you called your project and
+then I'm just going to open it up using Code dot which is the shortcut to opening this up in vs code
+and great so once we are in vs code I'm just going
+to make sure that this is enabled for python so in order to work with python files
+let's just go ahead and create a python file first I'm going to call it index.py
+giving it the py extension so that our code editor knows to treat this as a python file
+next I'm just going to go here and click on the prompt and this has prompted me
+it's saying that you know it's recognizing we're working with python and it's asking us to install the
+recommended python extension so I'm just going to go ahead and install that and that is installing for me right now
+great once we have done that we are also prompted with a little checklist so I'm
+going to go ahead and just run through this it's telling me to create a python file which we've already done so the
+next thing we're going to do is actually add a python environment so let's go
+ahead and do that I'm just going to go with the first one
+so great once we have made our environment we can essentially do stuff
+like this so I'm going to write print hello so just go ahead and do the same as me this is a python script a very
+simple one and now if we run this by essentially pressing this little plus sign right here that will run the script
+and you will see Hello being printed in our terminal okay so that's really it everything's now ready to go we've been
+set up correctly great so now let's get to the media stuff now
+in order to install packages you can't write it in the script here okay if I go
+ahead and write pip install and all the packages packages python packages that
+we need and hit plus that will not work we need to do this in the terminal so
+just go ahead and paste that in like so just copy it out and hit enter and that
+will do its thing and install all the packages that we need the packages once again are Cas IO Data sets Lang chain
+open Ai and tick token so go ahead and wait for that to do its thing it will
+take some time and once it's ready we should be able to continue with our tutorial
+great now I'm just going to go ahead and rename this file for readability okay
+I'm going to rename this to mini.qa you will see there's another directory above
+me that has been generated with everything that we've done so just go ahead and rename your file if you want
+to continue having everything the same as me you don't have to though that is completely up to you
+great the next thing I'm going to do is just ask you to copy this code so here are
+some variables that we're going to need in order to continue with this tutorial so we have the Astro DB secure bundle
+part we've already downloaded this onto our computers so that is something that
+we're going to have to point to and the next thing we're going to have is our astrodb application token as well as our
+Azure DB client ID okay so these are things we're going to fill out from the stuff that we saw earlier from our
+secret things that we downloaded some other things that we're gonna have to add are our astrodb key space name as
+well as our open AI API key which we just recently saved as well and the final thing of our astrodb client secret
+to so now let's go ahead and fill all these out the open AI API key should be
+easy it starts with SK like so we previously saw this on the API keys on
+open AI next I'm going to just put my astrodb keyspace name which we also did
+together I named the keyspace name search so if you do the same as me just go ahead and write the string search
+there too of course this is all very down to you if you're copying along with
+me please feel free to copy these as they are apart from the open AI API key that would be unique to you it should
+start with SK and if you try use mine mine will now be deactivated or revoked
+as I showed you how to do earlier as well next we're going to have our Astro DB
+client secret so again this would be unique to you here is mine if you try to use mine it will not work for you but
+I'm pasting in here like so so you can kind of see the format that yours should look like as well next we're going to
+have our astrodb client ID which again will be unique to you but it should be kind of similar in length and kind of
+similar in terms of the characters that are used and once again we have our token which
+again is unique it should start with Astra CS like so so make sure yours does
+two but the characters after it will be unique to you and finally we have the path to our secure bundle so for this
+just uh go ahead and go to your downloads and find the ZIP file okay
+that we downloaded when it came to downloading a secure bundle and just drag it into the project and once that's
+dragged into the project I'm going to ask you to get the path to it okay so get the part like I am here and paste it
+in like so as mine's in my project now you will see the path to it in my project which is stored in webstorm
+project in the project called search python so that's all I've done make sure it is still a zip file so it will have
+the dot zip extension at the end and great so we are now done with all
+those variables let's continue next we're going to have to get some stuff from the Lang chain package that we
+installed so here's all the things that we're going to have to get from Lang chain so just paste that out like so
+we're going to be getting Cassandra from there we're going to be getting Vex the store index wrapper we're going to be
+also getting the open AI we're also going to be importing openai as the large language model and also importing
+open AI embeddings from Lang chain embedding great as well as using the Lang chain
+package that we installed we're also going to get stuff from Cassandra so what are we going to be getting from
+Cassandra where we're going to be importing the cluster and the plain text auth provider and finally from datasets
+we're going to import the load data set from the package data sets that we imported earlier
+great now we are going to essentially have to write some configuration in order for us
+to connect two data Stacks Astra and create an Astra session and to do this
+we are going to create a cluster so using the cluster import I'm just going
+to pass through two things I'm going to pass through the secure connect bundle
+which we can pass through as the variable we defined above so that is going to be passed through and another
+thing we're going to have to pass through is an auth provider okay and to create an auth provider we're going to
+use the plain text or provider that we imported from Cassandra and pass through
+our Azure DB client ID and astrodb client secret so this is essentially
+just configuration like I said in order to be able to communicate with our database that we created using
+datastacks Astra okay so again we're just using all these variables and
+passing them through in order to connect this to our Astra database
+great so once we've done that we have essentially created an asterisk session
+that we're going to be using later now we're going to have to essentially connect to open AI using our open AI API
+key so we're going to get the openai import and just pass through our API key
+like so so we're getting the varial so we're getting the variable that we defined above and passing it through and
+saving it under the variable llm the next thing we're going to do is do
+the same pool using the open AI embedding so once again we're just passing through our open AI API key and
+we're storing all of this under the variable my embedding great next we're
+going to essentially create a table so we're going to actually name our table
+in here we are going to pass through our astrodb key space which we know is the
+string search and we are now going to create a table and we're going to do that my table is going to be called QA
+mini demo so I'm passing through that string that is being created and being saved under the key space name of search
+in my Cassandra database great so let's just check this is working
+I'm just going to print loading data from hugging face and then I'm actually going to get some data from hugging face
+okay this is just one that exists on the Internet it's going to be some onion news so I'm just going to load that data
+set from hugging face and I'm just going to pass that through and I'm going to save it as my data set and then I'm
+going to get that data and I'm going to just get the headlines and in order to check that has worked first off I'm just
+going to print some texts okay so I'm just going to print some text generating embeddings and storing an astro DB and
+then I'm going to add those headlines to my Cassandra store so I'm essentially
+passing that through to my database to my astrodb database which is the
+Cassandra database and then once that is done I'm going to print those headlines so let's run that code okay that's all
+I've done I'm just printing stuff out to appear in our console log so you can kind of have this ability about what's
+going on in the back end so once that's done doing its thing we should get that being printed so we're going to print
+that text loading data from hugging face so we can kind of see where we are in the script essentially then we're just
+going to print generating embeddings and storing an astro DB and then it's going to tell us exactly the amount of
+headlines that we've inserted into astrodb is going to be 50 headlines great that is looking wonderful so we
+can now continue now I'm just going to essentially pass my store my Cassandra
+store into the vexer store index wrapper and save it under Vector index and now I'm going to paste in some code
+it's going to prompt us to enter a question and once we have entered that
+question it's going to do an if else statement in order to print out the question and then the answer as well as
+the documents by relevance so essentially we are going to write some text it's going to search the hugging
+face data so the onion news in order to bring back any similar text it's going
+to do a vector search on our database to find similar text to it based on the
+vector search so let's go ahead and do that that is the code for doing so please copy it and once we have finished
+copying it just run the script and you'll be prompted to enter a question
+so now we can enter a question let's go ahead and paste one that is what are the
+biggest questions in science the answer is I don't know so not a great answer
+really but it's going to return some documents by relevance in our database
+so you will have here the relevant document along with a temperature to
+show you how relevant that document is we have biologist torture amoeba for information on where life comes from so
+that's kind of similar to the question that we propose and then we also have study shows humans still have genes to
+grow full coat of something so essentially we are getting documents by
+relevance that exists in our database based on the question that we asked let's try another one so I'm just going
+to ask another question I'm going to ask what should I know about Silicon Valley
+Banks again it says I'm sorry I don't know but then it returns some documents by relevance again we get a similarity
+score and then we also get the document that is most relevant to the question
+I'm going to ask one more let's ask one about amoebas because I saw it being returned in the first document so our
+amiibos really are overlords and then the answer is no amoebas are not our
+overlords and again it returns documents by relevance so we see that same document being returned with a
+similarity score that is higher based on the question we can see that should be higher because we do have the word
+amoebas in there so there is no surprise that that document is coming back with a higher similarity score and then we also
+have some other documents being returned back with the lower similarity score so great we have managed to build an AI
+assistant that will essentially look in a database look for similar documents
+based on our question and if we want to have a look at what this database looks like under the hood so essentially has
+been vectorized right we have vectorized all the documents and then we are doing
+a vector search on it to bring back similar vexes to us that is exactly what we discussed in the beginning of this
+tutorial I hope you can now see how Vector search works behind the hood as well as on the front end to

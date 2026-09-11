@@ -1,0 +1,357 @@
+Okay, then let me make a controversial statement that again is going to get me a lot of friends in SQL. Um,
+AI legend Yan Lun has raised a billion dollars to pursue an alternative approach to AI. Unlike large language
+models, Lacun's approach is not rooted in language and is not generative. By
+design, it does not spit out text, images or videos. Instead, Lacun has proposed Jeepa. Jeppa is not a single AI
+model, but instead an alternative architecture or framework for training AI models. Many successful approaches in
+AI and machine learning train models to predict some output Y given some input X. Large language models are given some
+input text X and trained to predict the text Y that comes next. Image classifier
+models are given an input image X [music] and trained to predict the corresponding label Y. Jeepa does not
+work like this. Instead, our inputs X and outputs Y are each passed into models known as encoders. These encoders
+return a vector or matrix of numbers, often referred to as an embedding.
+From here, a third model known as a predictor is trained to predict the embedding of Y given the embedding of X.
+Why might this be a better way to build AI systems? Do you think that Jeepa or world model based approaches, do you
+think they'll replace LLMs one day or are they kind of solving different problems? Initially they'll solve different
+problems. Eventually they're replaced LLM okay because you know LLMs are really good at
+manipulating language but basically nothing else. They're really good in domains where the
+language itself [music] is the substrate of reasoning compared to the mainline generative
+language approach to AI. Jeepa lives on an alternative path of joint embedding
+architectures. Interestingly, Lacun played a significant role at the outset of both paths. In part one of this two-part
+series, we'll explore this alternative path to Jeepa. We'll dig into why Yan moved away from generative architectures
+just as they were gaining traction in language and explore Yan's epiphany for a new solution to the representation
+collapse problem that plagued joint embedding architectures for years. Finally, we'll dig into the Jeepa
+architecture itself. In part two, we'll dive into JEPA implementations and see exactly how
+these models stack up against LLM driven approaches.
+Yan Lun saw the revolution coming in the 1980s. While most of the AI field was
+busy building expert systems that were explicitly programmed instead of learned from data, Jan pioneered the
+convolutional neural network. 25 years later, when deep learning began its rise
+to its now dominant position in AI, the breakthrough deep learning model AlexNet
+turned out to be uncannily similar to Lacun's convolutional nets from the 1990s.
+However, as deep learning continued to pick up steam through the 2010s, Lacun and other researchers became
+increasingly concerned by just how much this approach to AI depended on labeled training data. AlexNet was trained on
+the enormous and meticulously labeled imageet data set using supervised learning where AlexNet was trained to
+match the labels assigned to each image by human annotators. In contrast, children are able to learn
+very general representations for concepts like dog with very few explicitly labeled examples.
+As manually labeled data became a bottleneck for supervised learning, interest grew in alternative approaches.
+Reinforcement learning, where models learn from interacting with their environments instead of from labeled data, experienced a many renaissance in
+the mid2010s, highlighted by Google DeepMind's breakthrough performance on Atari games
+and the highly complex board game Go. Concurrently, Lacun and others explored
+unsupervised methods that learn from data without labels, including a variant
+called self-supervised learning, where the labels are taken from the data itself. Starting in 2015 or so, I
+started showing a slide that has become a bit of a meme in the machine learning community where I said like, you know,
+if it's the cake slide, right? So, if uh intelligence is a cake, the bulk of the
+cake is self-s supervised learning, the icing on the cake, supervised learning, and the chair on the cake, reinforcement
+learning. At the time, people were kind of crazy about reinforcement learning. So I was trying to tell them like this is not never going to you know take us
+to you know anywhere close to human or animal intelligence because it's too inefficient. Um and uh turns out the
+success of self-s supervised learning uh you know happened in in text and and
+language much faster than it did in sort of more uh you know natural uh
+modalities like uh like vision. Here Jan is referring to the success of next token prediction for training large
+language models. OpenAI was founded in 2015 and initially focused their efforts
+on reinforcement learning creating OpenAI Gym and Universe and showing very
+impressive performance on complex video games. While much of the company was focused on reinforcement learning, Ilia
+Sutskever, Alec Radford and others became interested in a new neural network architecture from Google, the
+transformer. Initially designed for language translation, while experimenting, Radford tried an
+interesting modification. Instead of having the transformer translate from a block of text in one language to a block
+of text in another language, he switched to a simpler self-supervised approach where training text is broken into
+sequences and the transformer is given all but the last little piece of text known as a token in each sequence and
+trained to predict what this final token will be. Ratford and his OpenAI colleagues
+trained their transformer on a fairly large internal OpenAI data set of 7,000 books. Note that we now call this phase
+pre-training and then further train their model using standard supervised learning from human generated labels on
+specific language tasks. Their two-stage training approach worked well, setting new state-of-the-art
+results on nine language benchmarks, including tasks like high school level reading comprehension questions,
+outperforming architectures and methods that were individually designed and trained for each individual task.
+Radford's model is now known as generative pre-trained transformer 1 or GPT1.
+GPT1 didn't receive much public attention at the time, but was a huge unlock, breaking models free from their
+dependence on humanlabeled data and opening up unprecedented levels of scale.
+Other researchers at OpenAI quickly grasp the significance of Radford's results and the team went allin on this
+approach, aggressively scaling up to GPT2 in 2019, GPT3 in 2020, and Chat GPT
+in 2022. In 2012, AlexNet was trained on around a
+million examples. In 2020, GPT3 was trained on hundreds of billions of
+examples. And interestingly, the new training paradigm that emerged exactly matched Yon Lacun's predictions from a
+few years earlier. An extensive self-supervised pre-training phase followed by supervised learning and
+finally reinforcement learning to shape the raw next token predictor model into a helpful AI assistant.
+However, while these self-supervised generative approaches clearly broke through in language, the picture was
+much fuzzier for image and video data. But I I I kept working on vision and
+then initially uh the the uh idea was to
+use um so to train a system to predict what happens in video but to use uh
+generative architectures. Um so basically train at a pixel level what's going to happen in the video. Years
+before the success of GPT1, researchers including Lacun had tried to apply the same self-supervised generative approach
+to video. In the most straightforward implementation, we configure our neural network to take in the RGB pixel values
+from a sequence of video frames and then predict the pixel values in the next frame just as the GPT models are trained
+to predict the next token in language. However, when we use these models to predict the next frame, the results are
+blurry. And this blurriness compounds dramatically in longer horizon predictions. Large language models are
+auto reggressive. When chat GPT answers a question, it generates one token at a time. At each step, feeding its latest
+generated token back into its input to create the next output. If we try this auto reggressive approach with a next
+frame video prediction model, the results quickly devolve into blurry nothingness.
+Before we see exactly how JEA is able to get around this blurry prediction problem, let's look at another
+fascinating application of transformers beyond language models. This video is
+sponsored by Hudson River Trading, and this is an order book. The left column
+shows all the bids to buy Nvidia stock ranked by bid price, and the right
+column shows all the current offers to sell Nvidia stock ranked by asking price. On a busy trading day, on the
+order of 1,000 new buy and sell orders like this come in every second. This
+deluge of orders is an incredibly rich information source. Is it possible to train a transformer like the ones used
+in VJA to find patterns in this data and use these patterns to predict future
+prices? Hudson River Trading has trillions of tokens of historical data.
+This is the same order of magnitude of training data used to train Frontier LLMs.
+and their researchers are working to push the frontiers of machine learning on this data.
+The VJEPA model we'll see later in the video maps patches of videos to individual embedding vectors. We could
+take a similar approach with order book data tokenizing groups of orders using some financial intuition.
+However, this naive approach does not work well in practice, and the Hudson River trading team has developed some
+really interesting [music] approaches to adapt cutting edge transformer architectures to the complexities and constraints [music] of trading data. And
+all of this is happening in a setting where speed is everything. Models have to run under incredibly tight latency
+constraints. These fascinating and highly complex research and engineering challenges
+combined with the resources to actually tackle [music] them and an open, highly collaborative environment make Hudson
+River Trading an incredibly unique place to work. I hear a lot from potential sponsors these days and have been
+seriously impressed in my interactions with the Hudson River Trading team. The level of technical discussion and
+enthusiasm for these deep and interesting problems is unparalleled in my experience. If this sounds
+interesting, Hudson River Trading is currently hiring for AI researchers, algorithm developers, and software
+engineers. They're hiring globally, and you don't need a finance background. You
+can learn more at hudson rivertrading.com/welchlabs. Now, back to Jeepa.
+Now, the blurry frames produced by our generative video prediction approach are not some huge mystery. Language is
+complex and unpredictable, but it's nothing compared to video. Language models use fixedsiz
+vocabularies. GPT2 has 50,257 discrete outputs, one for each token
+that the model could say next. This complete enumeration approach is hopeless in video. For full HD video, in
+the most general case, each pixel can take on 256 discrete values. And we have
+1920 * 1080 * 3 color pixels. Meaning there are something like 10 to the power
+of 15 million possible next video frames dwarfing the number of atoms in the
+observable universe. So there's no way our video prediction model can have a discrete output for each possible next
+video frame as our language model has a discrete output for each next possible token.
+Instead, many generative video approaches of this era had the network directly output pixel intensity values.
+The big challenge with this approach is how the model learns to handle uncertainty.
+If we compare an LLM learning to complete the sentence, the ball bounced to the and a neural network predicting
+the next frame of a video of a ball actually bouncing, we can see exactly what goes wrong. In the LLM training
+case, the model will see various examples in its training set of the ball bouncing left and right. And since the
+model has separate outputs for each of these tokens, it can essentially independently update these
+probabilities. Our video model doesn't have it so easy. If our data set includes videos of the
+ball starting down the same path and then bouncing in various directions, since our model is forced to directly
+predict a single output frame for a given input, the best it can do in the face of this ambiguity is to predict the
+average of these outcomes. When we average the pixel values of our videos, we end up with a blurry, washed
+out mess. Now, this is only the most naive approach, and there have been many, many
+interesting video and image prediction strategies tried with various degrees of success over the last couple decades.
+However, the challenges that naturally arise led Lun and other researchers to ask an interesting question. Do our
+models really need to be generative? In our GPT example, during the crucial
+pre-training phase, it really doesn't matter that our model is generative.
+After pre-training on next token prediction, we're left with a model that's essentially a really good
+autocomplete. But this is not the point. What actually matters are the internal representations
+and features that the model learns to solve the next token prediction task.
+These learned internal representations are what allows pre-trained models to be quickly adapted into powerful AI
+assistance. Next token prediction on language is a proxy for intelligence that has turned
+out to work shockingly well. But are there other signals and methods
+that we can use to learn these powerful internal representations that we need to build intelligent systems?
+Simultaneously we started realizing in the you know around
+2017 18 that uh the the best system to learn representations of images are
+systems that do not are not generative. They don't reconstruct they they you
+know you you you get an image and you run it to an encoder and then you try to
+kind of coers this encoder to extract as much information as possible with certain properties. So for example, you
+take two images of the same scene or you take an image and you corrupt it or transform it in some ways. You run them
+both through encoders and you tell the system the representation whatever you extract to really be the same for those
+two images because they semantically represent the same thing. Um and I've
+been working on things like this since the '9s. So this is not a new idea. This this idea joint embedding we used to
+call this Siamese neural net. The method Yan is referring to here, Siamese networks, was created by Yan and his
+collaborators at Bell Labs in the early 1990s when developing systems to detect fraudulent signatures.
+The system worked by passing a pair of signature images into two copies of the same neural network. The network copies
+were not trained to generate any kind of data. Instead, they output vectors of numbers, often referred to as embedding
+vectors. These network copies were trained on two types of examples.
+Positive examples that contain a reference signature and a nonfraudulent signature. So these are by the same
+person. And negative examples that contain a reference signature and a fraudulent signature.
+For fraudulent examples, the network copies are trained to produce embedding vectors that are maximally different.
+And for positive examples, produce embedding vectors that are maximally similar.
+When a new signature comes along, we can pass it into our network to comput an embedding vector and compare it to the
+embedding vector produced from our reference signature. If the resulting embedding vectors are not similar
+enough, the signature is detected as fraudulent. By jointly embedding our signatures, our
+Siamese network learns a very useful internal representation of the images of our signatures, notably without learning
+to predict or generate any actual signature images. As a GPT-based approach would
+joint embeddings offer a potentially viable solution to our blurry video problem. As Yan explains,
+you you get an image and you run it to an encoder and then you try to kind of
+coers this encoder to extract as much information as possible with certain properties. So for example, you take two
+images of the same scene or you take an image and you corrupt it or transform it in some ways. You run them both through
+encoders and you tell the system the representation whatever you extract should really be the same for those two
+images because they semantically represent the same thing. So the idea here is that we sidestep the blurry
+video problem we saw with generative models by using a joint embedding architecture to map copies of images or
+videos with one or both corrupted or transformed to similar embedding vectors. This trained model will ideally
+learn a useful internal representation of images or video that we can repurpose for other tasks just as GPT models learn
+internal representations during pre-training that can be adapted into AI assistant behaviors.
+However, this joint embedding strategy has a huge problem. Since we're training our network to make the embeddings of
+our original and corrupted images or videos as similar as possible, the network can find a trivial solution
+where it simply returns the same embedding vector for any input that we pass in. If our network learns to
+output, for example, a vector of all ones for any input, then the network will return all ones for a corrupted and
+non-corrupted view of the same image, maximizing the resulting similarity, but without actually learning anything
+useful. This problem is known as representation collapse.
+In Lacun's original Siamese network approach, the team used what's now known as contrastive learning to avoid
+representation collapse, giving the network both positive and negative examples.
+It turns out we can apply the same contrastive approach to images and video, training our network to output
+similar embeddings for views of the same underlying images or videos and dissimilar embeddings for different
+images or video. These contrastive methods have been successfully implemented on images and videos, but
+can run into issues when they're scaled up, requiring large amounts of computation and many negative examples
+to learn meaningful representations. and Lacun has argued that in the worst case,
+the number of contrastive samples may grow exponentially with the dimension of the representation.
+By the end of the 2010s, it was clear to Lun and others that using generative models to fully reconstruct images and
+video was not a good strategy for self-supervised learning. But there wasn't a straightforward solution to the
+representation collapse problem that would allow joint embedding architectures to learn the same level of
+powerful and general internal representations that large language models were enjoying.
+And so it was pretty clear that reconstruction was a bad idea for uh signals like like images and
+a fortory for video. And I had a bit of an epiphany because uh
+the uh the the methods that we were using to train those joint emitting architectures were kind of hacks a
+little bit until um I did some work with
+a couple postocs at at Meta particular guy called Stefan Deni who uh came up
+with a technique called Ballot twin. So it it's based on an old idea in uh in
+computational noise science in machine learning that Jeffington also played on with similar ideas which is that you you
+should have time to have some measure of information content and try to maximize that and there's some real world work by
+uh by Barlo about is a famous computational neuroscientist and right
+theoretical neuroscientist here Jan is referencing the work of Horus Barlo who hypothesized in 1961 one
+that the neurons in animal and human vision systems operate by reducing redundant information between neurons.
+Stefan Deni a postto lacun was working with in 2020 was familiar with Barlo's
+work and proposed that one way to avoid representation collapse could be to apply Barlo's idea to the outputs of
+their networks. In the joint embedding architectures we've been considering, our embedding
+vectors are produced by a final layer of artificial neurons in our embedding networks. So if our embedding vectors
+are of length 128, then the output layer of each of our networks contains 128
+neurons. If we pass in a batch of various images into each of our networks and plot the
+output activation of the first neuron as we step through our images, we can see that this neuron fires strongly on this
+first picture of a dog, not so much on this cat picture, and so on.
+Following our joint embedding approach, our network takes in a distorted view of the same batch of images.
+The whole point of our joint embedding architecture is to make the resulting embeddings of the same underlying images
+or videos similar. So we want the output of our first neuron in our second network to be similar to the output of
+our first neuron in our first network. In a standard joint embedding architecture, we would simply measure
+and maximize the similarity between these two vectors. However, as we've seen, this approach is
+susceptible to representation collapse. With the network simply learning to output the same values for any input
+image. But now applying Barllo's hypothesis as proposed by Stefan Deni, we should
+reduce the redundancy between the outputs of different neurons. We have a bit of a choice to make here.
+We could compare the output of the first neuron in our first network to the output of our second neuron in our first
+network or to the output of the second neuron in our second network. The team chose to compare to the output of the
+second network. As we'll see, this results in a simpler implementation and the team further notes in the appendex
+of their paper that in practice they didn't see much difference between these alternatives.
+Here's the output of the second neuron in our second model. To measure the redundancy between neuron outputs, the
+team computed the crossorrelation between these output vectors. This computation consists of scaling each
+vector and taking the dotproduct resulting in a single number, the correlation or more precisely the
+Pearson correlation coefficient between our vectors. To reduce the redundancy between our neurons as proposed by
+Barlo, we want this correlation to be close to zero. If we arrange the neuron
+outputs of our first encoder vertically and the outputs of our second encoder horizontally, we can compute and place
+the correlations between all pairs of neurons into a single matrix. This crossorrelation matrix has one row for
+each output neuron in our first encoder and one column for each output neuron in our second encoder. The elements along
+the diagonal capture the correlations between corresponding neurons. Since the whole idea here of this joint
+embedding architecture is to produce similar outputs for distorted versions of the same image, we want the
+corresponding neurons in our two encoders to have high correlations. Alternatively, all of the off diagonal
+entries in our crossorrelation matrix correspond to different neurons in our two encoders.
+And following Barlo's hypothesis, we want to reduce the redundancy between these neurons. So we want these
+correlations to be zero. So ideally our crossorrelation matrix looks like the
+identity matrix. Deni lacun and their collaborators designed a new loss function for their
+joint embedding architecture that measured the deviation of their crossorrelation matrix from the identity
+matrix. Their new method which they called barlo twins worked surprisingly well avoiding
+representation collapse while learning a powerful internal representation of the images that it was trained on.
+The team used a few different methods to measure the quality of these internal representations.
+Earlier, we saw how by using self-supervised pre-training, GPT1 was able to outperform purely supervised
+models that had been adapted to specific language tasks. For vision tasks, one of the most
+important benchmarks at the time was accuracy on the imageet data set. This
+is the same image classification data set that the AlexNet model had shown breakthrough performance on back in
+2012. The original AlexNet paper achieved an accuracy of 59.3% on the
+imagenet validation set. To compare the self-supervised Barlo twins approach to
+fully supervised models like AlexNet, the team used a common approach known as a linear probe where a single layer of
+neurons are tacked onto the output of the Barllo twins trained encoder model
+and trained using supervised learning to classify the imageet data set. Importantly, the main encoder model is
+frozen during this training process. So the simple linear probe is effectively adapting the Barlo twins
+encoders learned representation to solve the imageet classification task.
+Impressively, the frozen Barlo twins encoder with a linear probe achieved an imageet accuracy of 73.2%.
+Outperforming the original fully supervised AlexNet model by over 10 percentage points.
+However, in the nine years from the AlexNet paper in 2012 to the Barlo twins paper in 2021,
+fully supervised approaches had made significant improvements over AlexNet. In 2020, a team at Google applied the
+transformer architecture to image classification, achieving a new state-of-the-art imageet
+accuracy of 88.6%. So by 2021, thanks to the Barlo twins
+epiphany and other joint embedding approaches, self-supervised learning was advancing rapidly for vision tasks, but
+was still inferior to fully supervised methods. The general and clearly superior self-supervised generative
+pre-training methods in language that were fueling the rapid advancement of LLMs were still out of reach for image
+and video applications. And so it became clear that this really was the the right
+way to go. So we kind of uh after that published another version a simplified version basically of battle twins called
+vicrag which turned out to be quite good. uh and then simultaneously another group some of our colleagues at fair
+paris were working on uh uh similar methods which eventually came to be
+known as dino uh dino v1 v2 v3 now have a new version which is not called dino
+anymore uh and and this is also a jetting uh technique so so it's really
+clear john embedding was better for represent learning you
+know right self-supervised learning to to represent images. The Dino V3 paper released in August
+2025 marked an important turning point achieving a very near state-of-the-art
+image at accuracy of 88.4% using a joint embedding architecture.
+As the authors say in their paper, all in all, this is the first time that a self-supervised model has reached
+comparable results to weekly and supervised models on image classification.
+The quality of representations that Dino V3 is able to learn without [music] access to any human generated labels is
+astounding. Dino outputs an embedding vector for each patch of image that it analyzes. If I take this image of myself
+and take Dino's embedding vector from this image patch on my hand and compare this embedding vector to the rest of the
+patches in the image, visualizing how similar each patch is to the hand patch using a color map. [music] Dino does a
+remarkably good job segmenting my hand from the background. [clears throat] Here's the same approach applied to a
+ball, a cat, and a book. Following the success of Barlo twins
+Vicreg and Dinov1, in 2022, Lun brought these and many other threads together
+into a 60-page position paper called a path towards autonomous machine intelligence. Unlike the great majority
+of Lun's papers [music] where he works on specific and technical pieces of machine learning theory or practice, a
+path towards autonomous machine intelligence takes a holistic first principles approach to how we should
+build intelligent machines. Lun begins by arguing that our current approaches to AI are nowhere near the capabilities
+of human learning, giving the example of a teenager that can learn to drive a car in around 20 hours of practice. How is
+it that we have those millions of hours of training data where we have we can train kind of level two system with it
+which is what Tesla is doing basically. Yeah. Um but nowhere near level three, four, five.
+Okay. Uh yet a 17-year-old can learn to drive in a few hours of practice. Like how does that happen, right? Shouldn't
+we figure out what the what's the secret there? And my guess about it is the secret is
+role models. Lacun's billion-dollar bet is that the missing piece of modern AI is world models. Models that make
+predictions about the physical world. As he says in his 2022 position paper,
+common sense can be seen as a collection of models of the world that can tell an agent what is likely, what is plausible,
+and what is impossible. Using such world models, animals can learn new skills
+with very few trials. They can predict the consequences of their actions. They
+can reason, plan, explore, and imagine new solutions to problems. Lun goes on
+to argue that joint embedding architectures offer the right foundation to build world models on top of.
+So, JPA means joint embedding predictive architecture and it's you you take an
+observation in the world and then the next observation in the world. Uh you run them through encoders. So this is
+like a joint embedding type architecture and then you have a predictor that tries to predict that the state at time t plus
+one from the state at time t and you might condition this on an action and now you have a world model as a concrete example instead of using a
+generative architecture to predict the pixel values in the next frame of video. We can map the video and next frame to
+embeddings and then train a predictor model to predict the embedding of the next frame given the embedding of the
+video. In this implementation, the JEPA architecture frees the model of the intractable task of predicting every
+pixel in the next frame of video and theoretically allows the predictor to focus on predicting only the salient
+features of the scene that make it through the encoder. Jan gives a nice example here. If you train a geology
+model, you know, to predict what's going to happen in a dash cam video, uh, it will spend most of its resources
+predicting the random motion of the leaves on the trees that bord bordering the road and and those are things that
+are essentially not predictable, but they have a lot of pixels, you know, that move around. As Jan mentioned earlier, we can take
+Jeepo one step further by conditioning on actions. In the VJEPA 2 paper, which
+we'll dig into in part two, the team conditions a JEPA model on the action signals sent to a robot arm. So, the
+JEPA model sees a sequence of images of the robot's arm and environment and then is trained to predict the embedding of
+the next video frame, but is also given the control signals that are sent to the robot arm. This allows the predictor to
+learn to predict how various control signals will change the robot arm's position in the embedded image.
+This learned world model can then be used for robot planning and control. Given an image of some goal state, for
+example, moving a cup off of a platform, this image is passed into the next frame encoder, resulting in an embedding of
+the goal state of the robot. From here, a controls algorithm can be used to explore the world model's predictions
+given various hypothetical actions and find a set of actions that will lead the model's predicted future state to match
+its goal state. As Jan says, this is really a new twist on an old idea.
+You build a model that gives you the state of the world at time t plus one as a function of the state of the world at time t and an action you imagine taking
+or intervention or control, right? And then if you have this you can uh predict
+the outcome of a sequence of actions and you can by optimization you can figure out an optimal sequence of actions to
+arrive at a particular um outcome. Right? This is classical optimal control. This is you know this is going
+back to the late 50s in the Soviet Union early 60s in the in the west.
+Very classical stuff. Yeah. What is not classical is you learn the model. You use machine learning to learn
+the model. Right. Yeah, what is even less classical is you learn a representation of the input that
+computes a state an abstract state representation and you learn the you
+know the the model in that uh in that state and that's JPA
+but will Jeepa or other world model based approaches really overtake large language models since lacun first
+proposed Jeppa in 2022 the architecture has been applied by various teams to a
+wide range of problems. How exactly do these models stack up? In
+part two, we'll dive deeper into VJeppa 2 to get a sense for what's really happening inside the models embedding
+space and see how VJA 2 fares as a robotics control algorithm against
+rapidly advancing VLA approaches. We'll also explore VLJA which solves
+many of the same vision language problems we solve today with multimodal LLMs but in a very different way and
+with impressive results. Finally, we'll spend some time on an implementation of Jeepa called layworld model. Layworld
+model gives perhaps the most complete albeit early picture of what Jeepa based systems can do. Until next time, I'll
+leave you with Yan's take. Okay, then let me make a controversial statement that again is going to get me a lot of
+friends in Silicon Valley. Um, I do not understand how you can even think of
+building an agentic system without a agentic system having the ability of
+predicting the consequences of its actions. Okay? And a VA doesn't doesn't do that.
+Sure. Right. Airlines do not have world models. They cannot predict the consequences of their actions beforehand. they just take the action
+and then deluj as uh you know as some famous
+French kings said. So uh if you really want to build reliable agentic systems,
+they absolutely have to be able to predict the consequences of their actions so that they can plan a sequence
+of actions to do something first of all to uh fulfill the task that they are
+being asked to fulfill but also uh perhaps to you know guarantee some safety guard rails. Sure.
+Right. And the inference process now becomes a search as opposed to just an autogressive prediction.
+Right. Uh, so that's a world model. That the whole idea of a world model.
+If you enjoyed this video, check out the Welch Labs illustrated guide to AI. Its
+cover produces highly consistent Dino representations, so you know it has to be good. The book is beautifully
+illustrated and is a great way to dig deeper into many of the topics we touched on in this video. Chapter 5 on
+Alexnet is a great way to learn more about embedding vectors and the rise of deep learning.
+Chapter six on neural scaling laws takes a deeper look at the fascinating buildup from GPT1 to GPT3 at OpenAI.
+Chapter 9 covers diffusion models which are able to reconstruct highly accurate pixel level representations of images
+and video but with some notable trade-offs. Chapters 1 through 4 give some great
+background on all these topics covering the fundamentals of neural networks back propagation and deep learning.
+Each chapter includes thought-provoking exercises and supporting code. The book is now shipping to 24 countries. You can
+pick up a copy today at welchlabs.com.

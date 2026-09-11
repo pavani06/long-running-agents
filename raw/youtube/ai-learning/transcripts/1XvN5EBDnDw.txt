@@ -1,0 +1,511 @@
+[Music]
+hey everyone my name is Karina and I'm
+an AI researcher at open AI before that
+I worked at antarik for about two years
+working on cloud so today I would love
+to chat more about what kind of scaling
+paradigms that has happened in the past
+two to four years in AI research and how
+those paradigms unlocked New Frontier
+product research I'm also going to share
+some of the vignettes from some of the
+lessons learned by developing claw and
+Chach PT products some design challenges
+and lessons um and how do I think about
+the future of Agents as they become from
+collaborators to co innovators um in the
+future I would also love to invite you
+to engage um in the conversation so I'd
+be more than happy to answer some of the
+questions at the
+end cool
+so not sure if probably the majority of
+you know this but I think there are two
+scaling paradigms that Hasen happened in
+AI research over the past few years the
+first Paradigm is the next token
+production and you might have heard this
+as called
+pre-training and what's really amazing
+about the next token prediction is that
+it's a World building machine the model
+learns to understand the World by
+predicting the next word and I think
+fundamentally if you think about it
+this is happening because certain
+sequence is caused by initial action and
+this is irreversible and so the model
+learns some of the physics of the world
+to understand and the token can be
+anything right the tokens that we pre-
+chained are strings words pixels it
+could be
+anything and so to predict what will
+happen next the model needs to
+understand how the world works and this
+is why
+raining worked and so you can imagine
+the next token prediction is the massive
+multitask
+learning and what's amazing about this
+is that during prating some tasks are
+really easy to learn such as translation
+right like the word boarding in French
+is the model also learns a lot about the
+world the capital of France is Paris and
+because some of the information is much
+more present on the internet and in some
+of the knowledge artifacts the model has
+much easier time to learn this but
+actually the reason why compute is so
+important and scaling Compu in the
+paining stage is so so important is
+because there is a new class there is a
+class of tasks that is really really
+hard to learn and for example the model
+learns a lot about the physics it learns
+so much about the problem solving
+generation and The Logical Expressions
+it learns some of the spal reasoning
+although it's not
+perfect um but we getting to the
+complexity of the tasks such as math
+when the model has to compute this
+number during the next token prediction
+is actually really high so that's why
+you need Chain of Thought or might spend
+more compute on the Chain of Thought
+to help the model to reason through more
+computational such tasks another class
+of tasks that I was thinking a lot about
+is creative writing it's actually really
+really hard and the reason why it's so
+hard for the model is because you know
+you can predict very nicely the style of
+the writing but a lot of the creative
+writing is actually World building and
+storytelling and the plot and it's much
+much easier for the model to make a
+mistake for the next token prediction in
+such a way where it will completely
+deteriorate the plot coherence which is
+really important for the stories and
+this is an open-ended like research
+problem um creative writing in itself
+and the reason why it's because it's
+really really hard to measure what is a
+good creative writing what is not a
+creative writing and obviously we would
+love for the models to invent new forms
+of writing and be extremely creative in
+their generation s but this is actually
+one of the hardest AI research problems
+today is um how do we make models to
+like write novels and have
+coherent stories over the long course of
+the period of
+time
+so I think the era of
+2020 to 2021 that was an ER of scaling
+PR traing a lot both in at anic and at
+openi and actually the first at that
+time one of the first products was
+GitHub compilot and I thought it was
+completely interesting product the
+autocomplete because it's so imp paining
+the model has learned so much about the
+code and the next token prediction for
+The Code by the billions code tokens
+using from GitHub open source projects
+Etc and what has happened for the a
+complete tap to top in the cursor or
+gith Pilot is that the researchers
+constrained VI rhf reinforcement
+learning from Human feedback and
+reinforcement learning from AI feedback
+to make it extremely a little bit more
+useful to use and this is where the era
+of post training has gone off so in post
+training we teach the model how to
+complete function bodies understanding
+dog strings how to complete generating
+multi-line completions predicting the
+next diffs apply the next diffs and I
+think we are still in that era where
+there is so much more to be explored in
+the posttraining stage of rhf
+rlaf to push the capabilities and models
+to reason through complex code code
+basis the next Paradigm in AI
+research which has
+happened last year
+and and it was published by open a with
+a new model 01 is scaling reinforcement
+learning on Chain of Thought and this is
+why we call them it's highly complex
+reasoning and you can imagine you you
+spend a lot more test time
+comput on training in to scale
+reinforcement learning and the reason
+why it works is because the model learns
+how to think during the training and
+learn from the feedback by having really
+good signals in
+RL so on the left you can see the output
+of normal GPD 40 or
+gbd4 and on the right you can see the
+entire Chain of Thought that has been
+that the model has thought about to
+solve the complex problems and as we
+think about harder and harder tasks if
+you want the model to go from you know
+translation
+towards solving medical problems you
+actually need to spend you actually need
+the model to like spend a lot of time
+just thinking through the problem and
+completely creating more complex
+environments with tools and other other
+tools and more complex environments to
+think through and verify its outputs
+during the Chain of Thought So as you
+can see the chainnel thought itself is
+very interesting and the model is has
+certain words that it does um but um
+there's a lot of science to be done in
+terms of you know faithfulness in the
+Chain of Thought how do we measure the
+faithfulness what happens if the model
+goes into like wrong direction can it
+backtrack itself I think there was a lot
+of science around that and we are only
+the beginning of
+it one of the first projects that I've
+done at open a is actually how do
+we the interaction Paradigm is very
+different now so the interaction
+Paradigm is models thinks a lot to solve
+the problem if the problem is hard so
+but how do we create this interaction
+new interaction Paradigm with humans
+such that it will be much easier so that
+humans don't have to wait for 15 seconds
+or 30 minutes for a model to come back
+and one of the things that we did um as
+a simple approach is to have like a
+streaming models thoughts to a user and
+that way we had to communicate what
+exactly the summaries of the thoughts
+for the model and communicate very
+wisely to human but I think it's still
+one of the design challenges like as the
+model's capabilities and interraction
+paradigms change you have like new
+design challenges that you need to solve
+um for these types of
+models so and and I guess like this year
+open is the year of agents and the way
+we think about it is highly complex
+reason such as models trained on a and
+Chain of Thought using real world tools
+such as browsing search computer use uh
+over a long Horizon period of time over
+a long
+context but what's the next stage in my
+view the next stage stage level is co-
+innovators and the way I'm thinking
+about is it's agents that is built upon
+all the things that we've done with
+reasoning and Tool use and long context
+plus creativity and creativity is
+enabled only through human AI
+collaboration and I think this is where
+I'm really really excited about in the
+future is
+to create new affordances for humans to
+collaborate better with AI such that we
+both can co-create the future that we
+want and so those two scaling paradigms
+in AI research has unlocked us new kind
+of product research and you know you can
+imagine product research being oh we
+have API from the model and now we have
+to integrate in the products but it's
+actually what's happening on the ground
+is we have like a very now we have like
+a very nice rapid uation cycle of the
+product development and and the reason
+why is because we can use those highly
+reasoning models to distill back to
+smaller models or the models that we
+canate very very fast and we can use
+those highly complex reasoning models to
+synthetically generate new data such
+that we can create new post training new
+data sets new reinforcement learning
+environments so okay um so one of the
+things that we can do is is creating new
+completely new class of tasks and um you
+know if the task is um how do we create
+a multiplayer
+collaboration uh with a human nii you
+might want to simulate different users
+and how do you do that you might want to
+like synthetically generate data sets of
+different users conditioned on the
+different users and push chain on that
+so it actually highly depends on like
+what kind of product EXP experiences
+that you want to create and extrapolate
+that to a new class of tasks that you
+want to P the
+models um I think we are moving towards
+more complex reinforcement learning
+environments uh which means we can allow
+models to use search or browsing or much
+more collaborative tools like canvas
+during ourl such that they can learn how
+to be how to become better at
+collaborating um we can love things like
+in context learning I think models are
+extremely extremely good so you can
+essentially create something a new tool
+and then the model will learn just by
+few shot examples and this is extremely
+rapid uation cycle for any
+developer as I mentioned before
+synthetic data wide distillation is
+another thing I think we can also invent
+New Model Behavior and interactions to
+utilize user feedback so now we're going
+to go through for some of the Vettes
+that
+um that has happened um from Anar toi um
+I think the first concept that I've
+learned um is how do you bring
+unfamiliar capability into familiar from
+factor and the reason why 100K context
+uh was successful is because we found
+you know file uploads is extremely
+familiar from Factor everybody is
+working on documents but you can imagine
+we could have deployed 100 key content
+text via infinite chats such that it's
+like one huge long chat that you can
+interact with but I think finding the
+simplest form practice sometimes for
+unfamiliar capability uh is one of the
+design challenges uh in this new
+era the next project that I worked uh
+one the second project that I was I
+worked on at open is called Chach tasks
+um and actually I did not realize about
+this until it was shipped um you know
+reminders and tasks schedule tasks is
+actually it's very familiar thing that
+people do almost every day but what's
+amazing about this product is that you
+can scale this with new kind of
+capabilities and the models so CHP task
+is not just scheduled reminders and
+to-do lists it's actually you can create
+you can ask the model to continue the
+story every day for you H or you can ask
+the model model to
+search everything that you are
+interested in every day or every other
+every other day so in a way you can also
+like help yourself to like learn new
+language by having like extremely
+multimodal and interactive visualization
+that CH can create and so I I think this
+is concept of your product feature
+should enable modular compositions that
+will scale very nicely in the future as
+the models will develop much higher
+capability is um is one of the is is
+something that I've learned by doing
+chpt
+tasks um I think another design
+challenge that we have here is how do we
+Bridge together real-time interaction
+with models to a synchronous task
+completion and where we can ask the
+model to go off for like 10 hours to
+research or write code and then come
+back with the
+solution and the bottleneck here is
+trust and I believe
+that giving trust can be solved by
+giving humans new collaborative
+ordinances to verify edit model outputs
+and having them to give models realtime
+feedback so that the model can self
+improve and you know one of the first
+products uh from antar was actually CLA
+and slack and it was the first attempt
+to have a virtual teammate in your
+organization
+and it was an amazing concept because
+slack had all the affordances with tools
+and image uploads and multiplayer
+collaboration that you can
+create and there is something in there
+that is still I think there is still a
+lot of things that we can do here and
+take the lessons from clent slack to the
+next generational products um again the
+task was also like very much inspired by
+cloud and slack prototypes when Claud
+could just summarize channels slack
+channels across the organization every
+Friday and have a summaries for
+everybody my first project at open was
+canvas
+and I thought that human collabary
+affordances could scale and create new
+creative capabilities and what I really
+loved about the canvas and the way we
+operate in canvas as a team is that it
+was extremely flexible interface that we
+could come up with and here here are
+some like the vignettes that we had so
+the canvas itself can become like
+co-creator and co-editor and you can
+have like a very very fine grain editing
+uh interaction the model can also do
+search in order to generate the report
+and then you can also ask a question
+back hi verify this output and you can
+imagine this interface scales to
+multiplayer when other people can join
+your document or even multi-agents if I
+can create a model critic or an editor
+they can use you have like a multi-
+agentic and multiplay collaboration at
+the same time and so this is like a new
+design challenge that we need to
+navigate how do we do that I'm also
+excited for personalized tutors I think
+the models care are becoming extremely
+multimodal extremely flexible that you
+can learn new things in a new way the
+way you like like if I'm a visual
+learner and you are a more auditory
+learner the model can adapt to your
+personalization sorry um one thing that
+uh I did yesterday is that
+um I was on the plane and actually I
+used canvas to create me a game and so I
+really like this genor entertainment on
+the
+[Music]
+Fly anyone can create their own tools
+and VB apps now
+and I'm not sure what the future will
+look like but I think it will be
+extremely amazing if a non a person who
+never had to touch code ever before in
+their life for the first time can create
+the tool that they really wanted and
+deploy that um for themselves or to
+start a business from scratch and I
+think there's something around pair
+programming and code creators that we
+can
+use in order to create the future that
+we want and so canvas has also become
+mooo a PR programmer so the reason why
+canvas is so flexible is because it was
+ad it was trained both to become
+collaborative for writing and
+coding because it has tools such as
+search and can search for AP
+documentation it can become a data
+scientist too and especially if you
+upload the entire CSV docs um it can
+generate a real time um
+analysis and finally what I'm really
+really excited what everybody is excited
+in the ey is how do we
+actually help models to become better at
+research um and creating new
+knowledge and here you can see that the
+model that the model in the human can
+co-create document or co-create a new
+artifact that has never been happened
+before so here's a demo of the paper
+that I've co-published and then um I'm
+asking the model to kind of reproduce it
+and you can imagine this is like one of
+the maybe one of the most common tasks
+in research is to reproduce or you can
+imagine reproduce like open source
+GitHub repo and you you have like this
+very nice Interactive
+Paradigm where because the model can
+also leverage its own internal
+knowledge you and a you and a AI can
+work together to come up with new
+research hypotheses and verify certain
+like research um directions together and
+you can also handle delegate the tasks
+to an AI assistant to do
+that finally what are I'm really excited
+about the future is that there will be
+this layer of invisible software
+creation for all um and especially what
+I'm really excited is like from the
+mobile itself people can just create
+their own software
+tools I think the way you interact with
+AI fundamentally changes in a way that
+the way you access the internet will
+also change my prediction is that you
+will click less and less on the internet
+links and the way you will access the
+internet will be why models lens which
+will be much cleaner and in a much more
+personalized way and uh you can imagine
+have like very personalized multimodel
+outputs let's say if I say I want to
+learn more about the solar system
+instead of it giving me a text output it
+should give you a 3Gs interactive
+visualization of the solar system and
+you can have like highly richly
+interactive features to learn more and I
+think there is there'll be this like
+kind of cool future of like generator
+entertainment on the
+Fly for the people to learn and share
+new games with other
+people I think the way I'm thinking
+about it is the kind of interface to AI
+is is blank canvas that kind of self
+mores into your intent so for example
+you come to the work today and your
+intention is to just write code then the
+canvas becomes more of an IDE like a
+cursor or like a coding IDE although the
+future programming might change or if
+you're a writer and you decided to write
+a Noel together the model can start
+creating tools on the Fly for you such
+that it will be much easier for you to
+brainstorm or edit the writing or create
+character plots and
+visualize the structure of the plot
+itself and finally I think the
+co-innovation is actually going to
+happen with co-direction creative
+c-direction with the models itself and
+it's through
+collaboration with highly reasoning
+agenda systems uh that will be extremely
+capable of superum tasks to create new
+novels films games uh and essentially
+new science new knowledge
+creation cool um um thank you so much I
+think that's the end of my talk um
+[Music]

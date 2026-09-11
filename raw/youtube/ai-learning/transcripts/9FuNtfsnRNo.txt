@@ -1,0 +1,792 @@
+hey guys so what we're going to be
+looking at today is the ultimate
+personal assistant and I'm super excited
+to share this build with you guys as you
+can see the ultimate assistant has
+access to these four agents that we
+built out within nadn the first one is
+an email agent it looks like this this
+one has the ability to send emails reply
+to emails label emails create drafts get
+emails get labels and Mark emails as
+unread the next agent is a calendar
+agent it looks like this it can update
+events create events with attendees get
+events and delete events as well then we
+have a content creator agent that can
+search the web and then it creates blog
+posts for us and then finally we have
+the contact agent that's able to get
+contacts and also add or update contacts
+in our air table contact database and
+then finally we also gave it access to
+tavali here is just a tool in case it
+needs to do some web search
+functionality so let's run through a few
+demos show off all the tools show off
+all the functionality and then I'm going
+to show you guys how you can download
+this workflow for completely free and
+then plug it into your nadn and get
+started can you please set up a team
+sync tonight for 6 p.m. with Nate
+herkelman and then send him an email to
+confirm if that time works okay so right
+now telegram just sent over that audio
+file it's getting transcribed now the
+ultimate assistant has to decide what to
+do so first of all it hit the contact
+agent to get Nate Herman's email address
+now it's hitting calendar and email
+agent simultaneously to create that
+event as you can see it just popped up
+right here and send that email so we
+just got our response back from telegram
+the team sync with Nate herkelman has
+been scheduled for tonight at 6 p.m. you
+can manage the event here additionally
+an email has been sent to confirm if
+that time works for him if there's
+anything else you need just let me know
+so here we have our caler invite you can
+see that Nate herkelman got added as a
+guest then hopping into our sent emails
+we can see hey Nate I hope this m
+message finds you well could you confirm
+if 6 p.m. works for our upcoming team
+sync let me know let's say that that
+time didn't work for Nate let's push it
+back an hour can you actually push the
+team sync back an hour okay so that's
+going to get sent through same thing
+transcribing the audio the ultimate
+assistant has memory so it's going to be
+aware of what we're talking about when
+we say can you push that back an hour as
+you can see it just hit the contact
+agent now it's hitting calendar and
+email agent so we're going to watch
+right here as the team sync gets bumped
+back an hour it just got moved and we
+also see that the agent responded with
+Team Sync has been pushed back 7:00 p.m.
+and an email confirming the rescheduled
+time has been sent to Nate so that
+really shows you the power of this
+ultimate assistant because we didn't
+even ask it to follow up with Nate by
+email but it went ahead and did it
+anyways here we go in our emails we can
+see Team sync rescheduled dear Nate
+herkelman um I'm writing to confirm that
+the team Sync has been rescheduled to
+7:00 p.m. tonight anyways let's take a
+look at our inbox we can see we have a
+new email from Nate herkelman checking
+in how are you let's say that we want to
+respond to this email in that same
+thread all we have to do is ask our
+ultimate assistant to do so for us
+please respond to my email from Nate
+herkelman saying that I'm doing well
+okay that's going to get sent off once
+again it's going to grab that
+information it's going to hit the email
+agent and then we're going to take a
+look at what actually happens within the
+email agent to reply to this message we
+just got our message back I've replied
+to the email with I'm doing well so
+let's quickly refresh our Gmail we can
+see that in this thread we have now I'm
+doing well signed off by Nate and now
+we're going to go into the email agent
+and check that execution to see what
+actually happened so here's that
+execution of the email agent as you can
+see it hit the tool called email reply
+which is awesome because it's going to
+put it in the same thread but what we
+see here is that we need to get a
+message ID and this isn't something that
+we'd be able to get by ourselves without
+getting all of the email information so
+what the email agent has to do is first
+of all grab emails from Nate herkelman
+as you can see it pulls in the sender
+which is upad digital gmail.com and then
+it's able to look through the emails
+that we're talking about grab that
+message ID and then plug it into the
+email reply tool so that's how it
+actually replied in that same thread so
+this type of logic is really cool and I
+want to show an example of doing
+labeling emails because in the label
+email tool what we need is a message ID
+but we also need a label ID so in order
+for the agent to actually label emails
+it's going to have to get all emails get
+all labels so that it has IDs for labels
+and messages to feed into this tool so
+let's do an example of that please label
+my recent email from Nate herkelman as
+high priority there we go it's hitting
+the email agent and then we'll take a
+look at the execution and see how that
+worked so we got our message the recent
+email from Nate hman has been labeled as
+high priority let's refresh our Gmail we
+can see right here this is the one we
+talking about it just got moved to high
+priority and here we have the most
+recent execution of the email agent as
+you can see what it had to do to fill in
+the parameters for label ID it had to
+get message ID and label ID and it got
+this by activating the get email tool to
+get the message ID and then get the
+labels for the label ID super cool stuff
+okay let's try out some other
+functionality can you please create a
+blog about deep seek and then put it in
+a draft for Nate herkelman okay this is
+going to send it off to the content
+creator agent which has um a workflow in
+there where it's able to search the
+internet grab back articles and then
+it's going to use that information to
+create a blog and then what it's going
+to do is hit the contact agent to get
+Nate Herman's contact information once
+again and then it's going to hit the
+email agent to draft that email for him
+and by the way in the ultimate assistant
+I'm using GPT 40 and all of these agents
+I'm using GPT 40 except for the content
+creator agent I'm using Claude 3.5 Sonet
+because I really like the way that it's
+able to structure content human readable
+HTML whatever it is I like the way that
+it retrieves content for us okay here we
+go the blog about deep seek has been
+created and included in a draft email
+for Nate herkelman so let's take a look
+at the draft real quick okay we're in my
+draft as you can see it's right here if
+we pull it up it's in a HTML format
+let's actually make this bigger real
+quick and take a look at it so deep seek
+Revolution AI with breakthrough
+technology and Energy Efficiency we've
+got different headers here we've got
+bullet points we've got benefits
+potential applications challenges and
+concerns and then we've also got sources
+at the bottom which is just really cool
+for a really quick agent to throw that
+together okay one last demo then really
+dive into this build let's say can you
+please get my calendar availability for
+today and then send that in an email to
+Nate
+herkelman there we go hitting the
+calendar agent right now it's getting
+availability as you can see we only have
+three meetings today so this is what we
+should get pulled back um as our sort of
+unavailable slots and then hopefully
+it's going to take that information get
+contact information for Nate herkelman
+and then send an email to them with our
+availability okay there we go the email
+with your calendar availability for
+today has been sent to Nate herkelman
+let's take a look at it so here's what
+the email looks like dear Nate here's my
+calendar availability for today 12:00
+to1 I'm busy with a meeting with you 7
+to8 team sync 8 to9 strategy meeting and
+then it provides links to all those
+events It also says I'm free before 1200
+between 1 and 7 and after 9: so that's
+pretty cool too okay so before we start
+breaking down this ultimate assistant
+with all the other agents that we built
+if you want to download this workflow as
+as well as the email agent the calendar
+agent the content creator agent and the
+contact agent you can do so by joining
+my free school Community the link for
+that is down in the description you'll
+go to YouTube resources click on the
+post associated with this video and then
+you see right here you can download
+those Json files to load straight into
+your nnn environment and if you're
+looking to take your skills with naden a
+little farther and you're looking for
+more Hands-On approach please feel free
+to check out my paid Community the link
+for that is also down in the description
+we've got a great community of members
+who are always sharing resources about
+nadn um sharing builds sharing
+challenges they're having we also got a
+great classroom section with resources
+that are always being updated right now
+we're focusing on a deep dive within
+building AI agents but there are other
+Deep dive topics like vector databases
+and finally we have a calendar section
+with five live calls per week to make
+sure you're always getting your
+questions answered never getting stuck
+and also being able to network with
+other like-minded individuals in this
+community so I'd love to see you guys in
+here let's get back to the video okay
+there's a lot going on in this build so
+let's Dive Right In and I'll try to
+break everything down as simple as I can
+so let's first of all just start with
+the inputs and the outputs we're working
+with telegram so we have a telegram
+trigger set up that's watching for our
+messages when it comes through it's
+either going to come through as a text
+file or a voice file so if it comes
+through as voice what we're doing is
+we're using this switch to see if the
+voice file exists if it does it's going
+to send it up this way to download the
+file in telegram transcribe that file
+and then it feeds it into the ultimate
+assistant if it comes through as text
+which actually let me show you guys that
+real quick so I'm saying search the web
+for puppies we sent that over as a text
+so as you can see it's going to go down
+this route because right in here we're
+seeing if um the json. message. text
+exists rather than the voice file so
+anyways they both feed through into the
+agent and it's going to work all the
+same real quick let's see what we got
+here are some interesting stories about
+puppies so the Puppy Bowl it's going to
+give us a link to read more um pause
+Chicago pet of the week Kirby it's going
+to give us a link to watch the video and
+um then finally we have one more video
+that we can click on the link to watch
+and that's how that search functionality
+works but what we're doing here is we're
+setting them both to equal a field
+called text so as you can see through
+here we're mapping this to text so that
+it's going to feed through so that the
+agent can just be looking for a field
+called json. text and now I'm in an
+execution where we used our voice and as
+you can see what's leaving the
+transcribe node is a field called text
+so once again the ultimate assistance
+now I'm in an execution where we trigger
+this workflow with our voice as you can
+see coming out of the transcribe node is
+a field called text so we're able to
+feed in the agent json. text and it's
+able to understand what we're saying
+whether it's voice or text and then as
+far as the output all it's happening
+here is we're responding in that same
+telegram chat ID so we're grabbing the
+chat ID that's coming in from the
+trigger and then we're just outputting
+exactly what the ultimate assistant
+output to us okay cool so from there
+let's take a look at the ultimate
+assistant prompt so we all understand
+what is going on now what I think is
+really really cool about this ultimate
+assistant framework is that as you can
+see this prompt is not very long or not
+very complex and similarly with all the
+other agents the prompts are not very
+long and not very complex so this is
+really cool because every agent sort of
+specializes in something rather than
+loading up one agent with a ton of tools
+and a huge prompt so in this case the
+ultimate assistant is just in charge of
+delegating tasks as we said your job is
+to send the user's query to the correct
+tool you should never be writing emails
+or creating event summaries all you need
+to do is just call the correct tool so
+that makes it really easy for this guy
+then we Define what the tools are so
+email agent use it for email actions
+calendar agent use it for calendar
+actions contact agent content creator
+and then Tav for web search we did have
+to give it a rule which is pretty
+important so we said some actions
+require you to look up contact
+information first so for the following
+actions you need to get contact
+information and then you send that to
+the agent who needs the contact
+information so in this case if you're
+looking to send emails draft emails or
+create calendar events with attendees
+you need to get contact information
+first and then I was able to get away
+with having this agent perform pretty
+well with only giving one example which
+is here's an input send an email to Nate
+herkelman asking what time he wants to
+leave first action is you use the
+contact agent to get Nate Herman's email
+then you use the email agent to send the
+email and you'll pass the tool a query
+like send Nate herkelman an email to ask
+what time he wants to leave so all we're
+doing is getting the email agent an
+actual query rather than sending trying
+to write an email and send that over and
+then finally we just gave it access to
+the current date and time okay so how
+are we actually able to give the
+ultimate assistant access to those
+workflows that we bu built out like the
+email agent and the calendar agent what
+we need to do is we add them as tools so
+we can click on the plus under the tool
+section and we're going to click on call
+NN workflow as a tool so when we click
+on this we have a couple things to set
+up the first thing is we actually need
+to give it a name and this is the name
+that the AI agent will be looking for
+when you define them in the system
+prompt so in here as you can see I said
+these are the tools you have email agent
+calendar agent and those are all in
+camel case and as you can see here those
+aren't camel case but in here I actually
+Define the name in camel case so that's
+what the agents look for anyways once
+you're in this tool what you need to do
+is give it a name so this is just an
+example you need to give it a
+description so let's say this was the
+email agent what we would say is call
+this tool for email actions right um so
+email actions is there and then what
+we're doing is we're just going to grab
+it from our database you could also do
+it by Json we don't want to do that
+we're just going to do it by database
+and then it's going to basically just be
+a drop down list for us to choose from
+so in this case um you know that's why I
+was pulling in the email agent or we
+were pulling in the calendar agent right
+here so that's pretty much how it works
+and then you may be wondering okay so
+the ultimate assistant calls this tool
+great then the tool goes through the
+process of taking action whatever it
+needs to do and then it has to respond
+back to the main agent so the main agent
+actually knows what's going on and so
+there used to be a parameter here called
+um field to return and then we'd always
+it was by default called response so
+that's why um out of habit I always set
+my last node as a set node to response I
+don't think you have to call it response
+anymore because right here it says the
+tool will call the workflow you define
+below and it will look in the last node
+for the response the workflow needs to
+start with an execute workflow trigger
+so um this email agent that we're
+calling it's starting with an execute
+workflow trigger the query comes over
+the email agent decides what to do and
+then the email agent outputs a response
+which is either you know hey the email
+got sent to Nate herkelman saying all
+this kind of stuff or the email agent
+failed and then we output this response
+that says um you know unable to perform
+the task please try again and this
+introduces a really cool element of the
+agents being able to talk to each other
+more than just here's a query here's my
+output but also like hey I'm having
+issues try again so that's what's going
+on as far as like data transferring
+between different workflows so this is
+really cool because rather than having
+all the email Tools in this workflow and
+all the calendar Tools in this workflow
+all it has to do is just send it off
+once and then this email agent is able
+to figure out with the incoming query
+what it needs to do so if we click into
+an execution here we'll look at one of
+the examp examples we just did in the
+demo so let's click into this one that
+took 30 seconds to run because it was
+probably a little bit more of a complex
+query all this this agent is getting is
+um create a draft for Nate herkelman at
+upit digital.com and it gives us a
+subject and then it gives us the actual
+blog that we needed to send over and
+here's that example again where we asked
+it to label one of our emails the query
+that it got was label the recent email
+from Nate herkelman as high priority so
+what it had to do was understand which
+tools to use so let's look at the email
+agents prompt so as you can see this
+prompt is super short and it's just
+super concise super clear which is
+awesome because it really allows us to
+add on more tools and to the ultimate
+assistant continue to add on more and
+more agents because right now it's not
+overwhelmed with what it's doing so the
+overview is you're an email management
+assistant all emails must be formatted
+professionally in HTML and signed off as
+Nate so here are the tools that you have
+access to send email to send emails
+create drafts get emails get labels so
+those are all pretty intuitive because
+the name of the tool pretty much says
+what the tool does but then we have a
+couple that we had to give more
+instructions to so use Mark unread to
+mark an email is unread but you must use
+get emails first so you have the message
+ID of the email to flag as unread
+similarly with labeling emails you need
+to use get emails first so you have the
+message ID of the email to flag then you
+have to use get labels so you have the
+label ID and finally with email reply
+same thing get emails first so that you
+have the message ID to put into the the
+tool um reply to emails so first things
+first the email agent is being triggered
+when it's called by another workflow so
+as we saw in the demo in the visual with
+the green um spinny things um when the
+ultimate assistant decides to send a
+query it's going to hit the email agent
+and then it sends something over and
+then right here is where that email
+agent actually captures that query and
+then what we're doing here is we're
+basically having two options for output
+the first one is if success we're going
+to return the output of the main agent
+back to the ultimate assistant so by by
+setting this field to response it's
+going to be looking for json. output and
+so some of you guys i' I've seen have
+been there have been questions about
+this but basically when you're setting
+up workflow as a tool you can see that
+it says the tool will call the workflow
+you def find below and it will look in
+the last node for the response so
+whatever node you have at the end of
+your workflow that's where the main
+agent that you called originally is
+going to be looking over here so we have
+success and we have try again we were
+able to set this up by coming into the
+agent clicking on settings and then
+using on error continue using error
+output so this so what this did is it
+broke up two branches so if there's an
+error in the email agent it's going to
+come over here and it's going to send
+back unable to perform task please try
+again and then the ultimate personal
+assistant will read this and likely send
+over a new query to try the process
+again so we're going to dive into these
+different tools down here and how they
+actually work um for the email one but
+then pretty much they're all going to be
+using that same sort of from AI
+framework that I'm about to dive into so
+we won't break all of them down as in
+detail but let's take a look at these
+tools here so first thing that I'm going
+to do is I'm going to come into our node
+which is one executed by another
+workflow and we're going to enter in a
+query here so that we can just test this
+environment easier rather than than
+having to have the ultimate assistant
+send over a query every time so in here
+I'm I'm typing out send an email
+to Nate herk 88@gmail.com
+asking what's up and what his favorite
+color
+is okay so that's the query that this
+agent's going to be getting right so we
+have this set um and this is similar to
+a query that the ultimate assistant
+would actually be passing over to us so
+we'll hit play so the email agent starts
+thinking about it using its prompt to
+understand what tools it needs to hit we
+know that all it needs to do really is
+hit the send email tool as you can see
+it didn't activate any of the other ones
+but you may be thinking how does it know
+how to actually do that so in this tool
+and for all the other tools like I
+mentioned we're going to be using a
+function called from AI so as you can
+see right here use the Expression from
+AI for any data to be filled in by the
+model so this is really really cool
+because Within These different
+parameters like who the email is going
+to what the subject is what the message
+is we can basically just tell the AI to
+fill this in by itself based on a few
+like a key and a definition and in this
+case we're not even using a definition
+we're just using a key so as you can see
+here um in the two field we put from Ai
+and we told AI that you're looking for
+an email address so based on the queer
+that was coming in it was able to to
+define the email address as Nate herk
+similarly for this second part where we
+were doing from AI subject it was able
+to make a subject based on the query
+which is what's up and then down here as
+you can see the email body is it's an
+HTML so it looks a little weird here but
+it's saying hi Nate I hope you're doing
+well I was wondering what's up with you
+these days also I'm curious to know
+what's your favorite color looking
+forward to your
+reply so that's how the from AI function
+can really really speed up the process
+of creating these agents giving them
+tools hooking them up really easily
+because we don't have to go through
+different logic to actually pull out
+from a query what is the two what is the
+subject what's the message we can put it
+right in here and the AI is going to do
+all that for us and I just absolutely
+love this function okay setting a new
+query in here mark my email from Nate
+herkelman as unread there there's the
+query let's send that over and we'll see
+what happens and then we'll take a look
+at what's going on Within These tools so
+if you remember it has to get emails
+first because in the mark unread tool
+it's asking for a message ID of which
+one we need to go in there and Mark is
+unread so first thing it needs to do is
+go into get emails we're looking for
+sender of Nate herkelman and in this
+this thing we can say a sender is either
+the name that comes through in Gmail or
+it's the actual email address so in this
+case Nate herkelman works it could have
+also been up at digital gmail.com and it
+would have worked the same anyways we're
+grabbing one email from Nate herkelman
+which is the most recent one and then
+we're grabbing that message ID which is
+right here and then in the mark unread
+tool all we have to do is say hey you're
+going to be looking for the response and
+then you're going to be looking for a
+message ID which it grabs right here and
+so as you can see it went ahead and
+marked this one as unread this one is
+marked as un red but it's just the one
+that we just sent to ourselves where we
+said you know um what's your favorite
+color but this is the one that we
+previously had clicked on in the demo we
+made it high priority but now it just
+marked it as unread so the tool worked
+so exact same thing with the calendar
+agent it's being triggered by the
+personal assistant it has access to
+these five tools and then we're
+responding with either success or try
+again or success is the output of the
+calendar agent and then try again is
+just basically saying an error has
+occurred please try again once again The
+Prompt for this guy is super super
+simple which is just awesome your
+calendar assistant your responsibilities
+include creating getting and deleting
+events so then we Define the tools
+create event with an attendee when an
+event includes a participant create
+event for solo events get events to
+fetch events and then for delete and
+update we needed it to get Events first
+so that it could get the ID of the event
+to delete and then finally we gave it
+today's current date and time and then
+we said if a duration for an event isn't
+specified just assume that it's going to
+be 1 hour long so um if you're curious
+why there's one for create event and one
+for create an event with attendee it's
+because there's a parameter in here
+called attendees so in here we don't
+have that filled out but in this one we
+do and so if you were to try to create
+an event in this node with no attendee
+and you left this blank the request just
+wouldn't go through so that's why we
+have two different ones and we just have
+to specify okay if you want to have an
+event with someone invited then you're
+going to use this one otherwise you'll
+just use the basic create event function
+and so pretty similar logic with like
+deleting an updating event as the same
+thing with our um replying to emails and
+labeling emails and the other agent
+because you have to get the ID of the
+event to actually update it or delete it
+so we're going to do a quick example
+we're just going to ask it to delete an
+event so we'll come in here hit test
+workflow so our telegram trigger is
+listening for us and then we're going to
+say could you please delete the team
+sync tonight at 700 p.m. so we'll send
+that off it should be hitting the
+calendar agent and then it's going to
+grab that event get the ID and then it's
+going to delete it we can watch this
+happen probably in real time right down
+here Boom the team sync was just deleted
+and then the agent responded team Sync
+has been cancelled so that's how that
+works okay so now let's take a look at
+our contact agent this one's a lot
+simpler it just has the option to get
+contacts or add or update contacts the
+assistant prompt for this guy is your
+contact management assistant your
+responsibilities include looking up
+contacts adding new ones or updating
+them and then we Define the tools um as
+you can see retrieve contacts or add or
+update so let's do an example of this
+real quick so telegram's listening for
+us and I'm not going to just have it get
+contacts because it's been doing that
+for all the demos what we're going to do
+is we're going to change Michael Scott's
+email so can you please change Michael
+Scott's email to Michael
+dundermifflin.com send that off it's
+going to go to the contact agent of
+course and then we should see an air
+table right over here Michael Scott's
+emailed boom it just got popped and
+changed to Michael dundermifflin.com
+rather than Michael Scott
+dundermifflin.com so that's how you can
+really quickly update contacts and then
+obviously pull them back using that that
+contact agent and then the final agent
+of course is the content creator agent
+so let's pop into this system prompt
+here all we were saying is you are a
+skilled AI blog writer specializing in
+engaging well structured informative
+content you have one tool which is
+tavali and you're just going to use this
+to search the web about the requested
+topic for the blog post um and then we
+just gave it some blog requirements like
+formatting it as HTML we told to keep
+the links that it's getting from tavali
+so that the users can click into the
+links in the actual blog if they want to
+and obviously right now the use case has
+been write a blog and then um send it as
+an email but obviously you could hook
+this up to different social medias if
+you wanted to sort of automate that
+process or since you know we've already
+seen that integration with air table or
+some other sort of database you could um
+just be pushing content constantly into
+a database that you could then go
+manually post if you want or use that to
+plug into something else so real quick
+I'm going to load up an execution of the
+one that we had this agent WR for NVIDIA
+as you can see it went to tavali which
+is the tool and what we did here is
+we're sending over a request to tavali a
+post request in this Json body what
+we're doing is we're able to use a
+placeholder for any data that the model
+needs to fill in so similar to the from
+AI function except for rather than doing
+a from function we're just putting in a
+placeholder so right here you can see
+the placeholder for the query that we're
+searching tabl for is search term and
+that has two curly braces around it and
+then down here we're defining the
+placeholder name is search term the
+description is what the user has
+requested to write a blog about and that
+is a string variable type so when this
+request actually gets sent over to
+tavali in the body parameters they're
+filling in search term with probably
+Nvidia or actually sorry not Nvidia deep
+seek because that's the one that we
+asked it to write about so search term
+deep seek AI features benefits
+applications in modern technology
+sectors so these placeholders are
+working exactly the same as the from AI
+functions so while I was editing this
+video I realized that I never actually
+formally signed off the video I just
+kind of stopped recording so this is me
+signing off um that's going to be it for
+this one thanks guys so much for
+watching if you enjoy this one if you
+liked it then please drop me a like
+definitely helps me out a lot and let me
+know in the comments what else you want
+to see but as always appreciate you guys
+making it to the end of this one I'll
+see you guys in the next video thanks

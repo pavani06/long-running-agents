@@ -1,0 +1,495 @@
+[Music]
+thank you so much for inviting me um as
+I was trying to think what would be a
+good topic to present at this talk the
+organizers were really nice and so a lot
+of things that you'll hear today was
+influenced by what the organizers
+thought was important cuz there really
+so many things happening that are
+exciting to talk about in the agentic
+landscape so let's get started the first
+thing was um late 2021 I think LMS
+really uh were starting to capture the
+imagination as a company we've been
+investing in AI for almost almost 15 16
+years so we decided we'll build our own
+um we'll build our own large language
+model took all of 2022 to do that and
+2023 we wrote a paper about it we had
+learned a lot about how do you build
+these models how do you organize uh data
+sets for these how does evaluation work
+how do you Cox performance in certain
+zones out of this but then chat GPT
+happened I think the open weight and the
+open source Community has come up so uh
+beautifully along so while we continue
+to do very similar
+work as a strategy we pivoted to say
+let's build on top of uh whatever is
+available out there we have many many
+different use cases so I think we we
+pretty much pivoted to say We'll build
+on top uh if it helps you in any way on
+how we are doing things so there you go
+uh the other was uh I think there was a
+curiosity on how exactly uh does a
+company like Bloomberg organize its AI
+efforts so um I report into I report to
+the uh Global head of engineering and we
+are organized somewhat as a special
+group if you will we work a lot with our
+data counterpart Bloomberg is a really
+strong large data organization that you
+can appreciate now helps us out a lot uh
+we work with the product the CTO in in
+cross functional settings about 400
+people 50 teams London New York uh
+Princeton and Toronto so that's a little
+bit about our our
+group okay so um we've been uh Building
+Products using generative AI um starting
+with tools more agentic for 12 to 16
+months now I think the effort has been
+really really serious and so there have
+been so many things we've had to solve
+in order to build something today using
+what's available today uh and then I
+decided somebody must cover all of these
+topics so I'm not going to talk about
+these at all right uh I think there are
+some wonderful speakers talking about
+this uh I'll try to hang around a bit
+after this and I'm really um I'm really
+bullish on what the developments are in
+any one of those challenges that we need
+to solve I think it gets easier and
+easier to solve those challenges so
+please don't read these as being
+pessimistic it's just realistic right I
+need to build and ship things today and
+that means these are the things I need
+to deal with today uh again we won't be
+touching on any of these topics
+today um so internally it was really
+hard to say what's an agent and what's a
+tool because everyone kind of had their
+own vocabulary and then this really nice
+paper came out so when I'm talking today
+when I say a tool I mean on the left
+hand side of that uh it's cognitive
+architectures for for language agents if
+you haven't read it you should uh try to
+read that paper and then an agent is
+really like more autonomous has memory
+can evolve so whenever I say agentic
+it's on the right hand side of the
+spectrum and the other one is the left
+hand side um so that's what my
+vocabulary will
+be finally to set the stage for the talk
+um I don't know how many of you know
+about Bloomberg I certainly did not know
+as much as I do today when I joined so
+um we are a fintech company as you can
+imagine from my nice uh jacket or
+jumper and our clients are in finance
+but Finance is a very diverse field so
+uh I'm listed here 10 different
+archetypes of people who are in finance
+and they do very different activities
+but they also do a lot of similar
+activities and so um what is like a
+short form of thinking what Bloomberg
+does we have we both generate and
+accumulate a lot of data this is
+unstructured and structured so news
+research uh documents slides we uh also
+provide access to we we sites there's a
+lot of reference data uh Market data
+coming in so if you just want to know
+the scale every day we get 400 billion
+pics of structured data information
+about a billion plus um unstructured
+messages millions of well-written
+documents which include news and this is
+just every day and we have over 40 years
+of history on it so when we say we offer
+information as one of the things to our
+clients this is the scale at which we
+are working
+uh the rest of this talk I will uh as
+you can imagine we are building a very
+broad set of products so to focus the
+talk I'll talk about one
+particular uh archetype uh research
+analyst if you didn't know what a
+research anal is done here is a does
+here is a short course so uh there's a
+research analyst they are typically an
+expert in a particular area think like
+you know I'm a research analyst in AI or
+semiconductors or technology or electric
+vehicles and the kinds of things they
+need to do on a daily basis are written
+at the bottom so they are doing a lot of
+work with search and Discovery and
+summarization a lot of things with
+unstructured data on the leftand side
+they are doing a lot of work in uh in
+data and analytics structured data and
+analytics in the middle part of the
+segment they are reaching out to their
+colleagues both to disperse and gather
+information so there's a lot of
+communication and then they're also also
+uh some of them are also building models
+uh which means they need to normalize
+data they need to actually program and
+generate models as well so this is a a
+research analyst in a uh in a
+nutshell uh the other bit is because we
+are in finance and we've been here for
+we've been in finance for like since
+founding 40 years ago there are some
+aspects of our products that are
+non-negotiable and uh those include
+things like precision comprehensiveness
+speed throughput availability um some
+principles like protecting our
+contributor and client data making sure
+that whatever we build there is
+transparency throughout these are
+non-negotiables it doesn't matter
+whether you're using AI or not so these
+should ground you in the kinds of
+challenges we face when we use what's
+available today to build
+agents okay so what was the first thing
+we did uh again 2023 is when I think we
+got serious so the first thing we did
+was for the research in the in the zone
+of helping the research analyst
+community
+um companies public companies in
+particular they have scheduled quarterly
+calls that discuss the health of their
+company they talk about their future
+it's a conference call a lot of analysts
+attend the call uh there's a
+presentation by the company's Executives
+and then there's a Q&A segment and
+during earning season it happens that on
+any given day many many of these things
+are happening so I told you that a
+research analyst has to stay on top of
+what's happening every single day so
+so transcripts of these calls need to be
+generated again AI is used and in 2023
+we saw an opportunity to say well we
+know what for every company which is a
+which is operating in a particular
+sector we know what are the kinds of
+questions are of interest and maybe we
+can try to answer them for the analyst
+to take a look at and that way they can
+be informed on whether they wanted to
+deeper dive or not right seems like a
+simple product and again I'm talking
+about work that started in 23 so
+where the technology was we still needed
+to do a lot to bring it to the market
+keeping our principles and features in
+place so what does it mean just focus on
+the right hand side if you will um
+performance out of the box was not great
+like Precision accuracy uh factuality
+things like that uh and for those of you
+who are interested in mlops I think
+there was a lot of work done in order to
+just build remediation workflows and
+circuit breakers because remember these
+summaries are not somebody just chatting
+with a transcript it's actually
+published and everyone gets to see the
+same summary and anything that is an
+error has an outsized impact for us so
+we constantly monitor performance
+remediate and then the summaries get
+more and more accurate so a lot of um I
+think a lot of monitoring goes in behind
+it a lot of cicd goes in behind it as
+well okay so today how are the products
+that we are building how does the
+agentic architecture look like well
+first of all it's semi- agentic because
+I don't this is an opinion we don't yet
+fully have the trust that everything can
+be autonomous so there are some pieces
+that are autonomous the other pieces
+that are not autonomous guard rails is a
+classic example of for example Bloomberg
+doesn't offer Financial advice so if
+someone starts with hey should I invest
+in then you know you need to catch it we
+need to be factual that's again a
+guardrail so like those are not optional
+pieces for any agent those are coded in
+as you must uh you must do this check so
+just take this keep this image in mind
+it'll come back okay so this is about
+this is a talk about scaling so with
+that long Runway let's get to scaling so
+I just wanted to cover two aspects of
+scaling I'm hoping that both these
+aspects will be more of a confirmation
+and not a surprise to any of you um so
+let's see so the first thing is if you
+want to build agents and you want each
+agent to evolve really quickly because
+when you build the first time unless
+you're a magician it's going to suck a
+bit and then it needs to improve and
+improve and improve right so how do you
+get there well let's go back to how some
+really good software is built when I was
+a grad student I use matrix
+multiplication a lot and this is a
+snapshot of the generalized Matrix
+matrix product and if you read the API
+documentation it lays out every aspect
+of the input every error code how long
+it will take is also available in
+documentation it's just it just works
+right and when you build software on top
+of such really well documented
+well-written software your software also
+tends to be robust your products tend to
+be robust even from 20 years ago when we
+started using machine learning to build
+products like you know there are tools
+like apis that use models or pipelines
+of models behind them you as a caller or
+a person Downstream of such apis there
+is a bit of stoas stochasticity if I can
+pronounce it correct uh in right you
+don't quite know what the result will be
+and you don't quite know if it'll work
+for you or not and this is despite best
+intentions of establishing you know what
+the input distributions are and what the
+output distributions are there's always
+a bit of stochasticity it was still okay
+to work with them and I'll tell you why
+it was okay to work with these but when
+you enter using llms and agents which
+are really compositions of llms the
+errors multiply a lot and that is
+something that causes a lot of fragile
+behavior and I and we'll just take a
+look at it and and I I hope my answer is
+mildly surprising to you on how to avoid
+the
+fragility um in 2009 we
+built uh a news sentiment product it was
+basically to detect if a piece of news
+for a given company would be beneficial
+for that company or
+not so the input distribution we knew
+which news wires we were monitor
+monitoring we knew which language it was
+in news wires also have editorial
+guidelines on how they write things so
+well it's while this while the API that
+sits in front of the model is not as
+clean as like Matrix Matrix multiply you
+still have a very decent handle on okay
+what is coming into my system and the
+outputs are obviously just like you know
+it's minus one to plus one pretty much
+so like the output space is also very
+easy training data we built it from
+scratch so we know the training data we
+could have really nice held out in time
+and space um
+test sets and then we could establish
+the risk of deploying this we could
+monitor it so despite all of this guard
+rail being present we still ended up
+having a lot of outof band communication
+on anyone who's Downstream of us so for
+example if you were consuming our stream
+of output on sentiment we would give you
+a heads up we would tell you that hey
+the model version is changing if you
+have a downstream application using this
+as a signal you want to test it out
+things like that this was the landscape
+that's changed a lot when you think
+about building agentic architectures
+like you want to make improvements to
+your agents every single day you don't
+want to have a release cycle where there
+is a you know a purely batch regression
+test based release cycle because there
+are so many customers who are Downstream
+of you who are also making independent
+improvements to your model so I'll give
+you like one small example right so uh
+one of the one of the workflows that we
+have agents for is um for a research
+analyst is uh I told you that structured
+data is something that they look at the
+question here is US CPI for the last
+five quarters Q is just a quarter
+there's an agent that deeply understands
+the query uh figures out what domain it
+should dispatch to and then uses a tool
+it's there's an NLP front end to the
+tool but uses a tool to basically fetch
+the data right
+um turns out that the data is wrong and
+which is why you need the guard rails
+the data is wrong because of one
+character that was missed uh it monthly
+data as opposed to quarterly data and if
+you're actually building a downstream
+workflow where you're not even exposing
+the table a good research analyst would
+catch it but if you're not even exposing
+the table and you're just looking at an
+answer that says well it looks like the
+answer is 42 it's really hard to catch
+these compounding errors which is
+why it is easier to not count on the
+Upstream systems to be accurate but
+rather factor in that they will be
+fragile and they'll be evolving and just
+do your own safety checks even in like
+I'm talking about within my own arc
+people are independently operating every
+version of the data and analy analytics
+API tool that's coming out is better and
+better but being better means being
+better on average it doesn't mean it'll
+be better for you as a downstream
+consumer so building
+in some of
+this um guard rail I just think is good
+sense and that almost makes you go
+faster as as you factor out individual
+agents and each agent can evolve without
+having these handshake signals of well
+every Downstream caller I have I have to
+make sure that they understand what's
+changed and they sign off that I can
+actually release my I can promote my um
+new agent to like beta or production I
+think we just need to like change that
+mindset and be more
+resilient so that's one the second thing
+is as much as I used to code one one one
+fine day long long ago I'm a manager now
+so I thought I'll talk about Arc
+structure and I don't know how many of
+you will um resonate with it Bloomberg
+like I said we've been building these
+things for like 15 years and traditional
+machine learning um it has a particular
+factorization of software and that
+software factorization is then reflected
+in the arc structure if you are lucky
+you have the reverse Conway uh law of
+design but you but you really need to
+rethink that as you start using
+different text stacks and start building
+different kinds of products um what do
+what do I
+mean how many agents Do you want to
+build and what should each agent do and
+should agents have overlapping
+functionality or not these are some
+basic questions and typically it's very
+tempting to just say let's just keep our
+current software stack and see if we can
+build on top of that or let's keep our
+current Arc structure and build on top
+of that and so what I've learned
+is on the columns here you can see you
+know the first two columns are
+vertically aligned teams the next two
+columns are horizontally aligned teams
+and there are some properties in the
+rows and what we've learned and we've
+actually done some reog what we've
+learned are in the beginning you don't
+really know much on what the product
+design is going to be and you want to
+iterate fast it's just easier to like
+collapse The Arc collapse the software
+stack and just say here has a team go
+build what needs to be built and figure
+things out and that's where you want
+like you know really fast iteration you
+want sharing of code data models things
+like
+that the more you have understood this
+for a single product or a single agent
+the more you understand what its use is
+and what it's good at and what it's not
+and you actually build many many of
+these agents and that's when you start
+thinking okay I can go back to the
+foundations of building good software
+and good Orcs And I want to have things
+like optimization on it so I want to
+increase the performance reduce the cost
+make it more testable make it more
+transparent and that's where you move
+into the bottom right corner of the
+segment where you do have some
+horizontal so in our case like guard
+rails are horizontal we don't want every
+team every one of those 50 teams like
+trying to figure out what does it mean
+for me to not
+accept user inputs that are thinly
+wailed Financial advice inputs right
+like like it's something that you want
+to do horizontally but you don't also
+don't want to you want to figure out for
+yourself what is the right
+time uh for you and your organization to
+start creating horizontals to also start
+breaking out some of these
+monolithic agents which are reflected
+again in your structure and start
+creating smaller and smaller
+pieces so all that said and done like
+you know just again for the uh running
+example of a research agent this is how
+it looks like today so you know I think
+taking in the user user world and and
+session context and deeply understanding
+what is the question and then figuring
+out what kinds of information are needed
+to answer that question uh it's
+factorized as its own agent uh reflected
+in the art structure same similarly for
+answer generation we have a lot of uh
+rigor around what constitutes a
+well-formed answer again that's factored
+out I call it semi agentic like I
+alluded to before because we do have
+guard rails that are non optional there
+is no autonomy there you have to call it
+at multiple points um and then yeah like
+we build on top of like years of
+traditional uh and more and more modern
+forms of data monging like you know your
+sparse indices have become dense and
+hybrid indices now so yeah that's a
+little bit and I think I'm brighter time
+so have a nice day thank you
+[Music]

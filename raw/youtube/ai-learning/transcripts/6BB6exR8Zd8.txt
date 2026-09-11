@@ -1,0 +1,448 @@
+A few months ago, I wrote a few
+sentences, about four sentences that
+have turned out to be the most
+influential four sentences I've ever
+written. I packaged these four sentences
+up into the grill me skill, which is a
+skill that you can use to get the LLM to
+interview you relentlessly. It
+interviews you until you reach a shared
+understanding, walking down each branch
+of the design tree, resolving
+dependencies between decisions one by
+one. I know this skill is influential
+because every single day I receive about
+five messages of people saying they've
+tried it and they love it. This skill is
+an absolute gamecher. What are your
+favorite skills? Grill me is great. I'm
+working on a project. Blah blah blah.
+The grill me skill asks me about
+ambiguities. Fantastic. Grill me skill
+is goated. At first, I felt like it
+slowed me down with all the questions,
+but after using it bit, I honestly think
+it might save time. You just one-shot
+everything after you've kind of gathered
+all the context and you tested the skill
+called grill me and blah blah blah blah
+blah. It's wonderful, wonderful,
+wonderful, wonderful. And after all that
+praise, you might think, well, you
+should probably stick with that skill,
+shouldn't you? That skill sounds pretty
+good. And it turns out I've actually
+built a better one. I'm never very happy
+when I'm resting on my laurels. I always
+feel like there's improvements to be
+made at every single part of my process.
+And now grill me has been replaced with
+a new skill. Let's open up a session so
+that I can explain a little bit more
+about where grill me goes wrong. I'm
+going to paste in a prompt that I've
+already added here. And this prompt is
+an idea for a new feature. I've just
+dictated this out. So you just sort of
+be spared the details of it. But
+essentially I want to create a new
+entity in my database and a new entity
+that my app is going to deal with.
+Currently this application deals in
+courses, deals in lessons, deals in
+videos and you know sections and a few
+other things. And I want to add a
+concept of pitches. There's this kind of
+Mr. Beast style axiom where you should
+be thinking about the packaging for your
+video before you actually work out
+what's going in the video. And that's
+what a pitch is in this kind of setup. A
+pitch is really just the packaging for
+the video, the title, the description,
+how I'm going to frame it to people. And
+I create a bunch of these pitches and
+then pick the best ones and then turn
+those into videos. Now, what you notice
+here is as I'm communicating with the
+agent, we're really focusing on
+language, right? We're really focusing
+on what is a pitch. I just had to
+communicate that to you so that you
+could follow along and the agent will
+need to extract that information from me
+too. But there's also some extra jargon
+in here that the agent doesn't know
+about yet. For instance, I've talking
+about standalone videos. What does a
+standalone video mean? Oh, of course it
+means a video that's not connected to a
+lesson or a course. Now, of course, I
+know that. That's kind of like a term of
+art for using this whole setup, but the
+agent doesn't know that yet. It doesn't
+have any concept of what that is. So
+during the grilling session, it's going
+to have to ask me what a standalone
+video is or try to figure it out from
+the code. So as I used grill me more and
+more and more, I would start to notice
+these times where the agent was being
+really really verbose and I would have
+to remind it, no, there's already a term
+for that. And often though there wasn't
+a term or I was kind of thinking about
+things in a very verbose way myself and
+that wasn't being challenged by the
+agent or we would actually land on some
+really good shared language and then
+that wasn't documented anywhere. So I
+started to feel dissatisfied with grill
+me because there was this piece missing
+from the puzzle which is we were able to
+communicate about the code pretty
+effectively but I would have to reexlain
+all of the nonobvious things about the
+codebase and about the domain the
+problem that we were solving before we
+could do anything productive. So I
+started to think to myself what is the
+thinnest layer of documentation I could
+use to just give the AI a bit more of a
+leg up. So I came up with this skill,
+the ubiquitous language skill.
+Ubiquitous language is an idea that
+comes from domain driven design. This is
+the big blue book by Eric Evans that
+everyone goes on about. And what it does
+is it's essentially you're trying to
+create a document which is the language
+that's used by the codebase, that's used
+by developers, and that's used by domain
+experts. In other words, people that
+know about what you're building, but not
+how you're building it. All of those
+three groups should be using a shared
+language because that means that the
+domain expert can go okay there's
+something wrong with this particular
+section of the app. The developer knows
+what they're talking about and the code
+also reflects that. So what I would do
+is in the middle of a grilling session
+when I noticed that we were needed to
+sharpen some language I would use the
+ubiquitous language skill and call it
+with you know ubiquitous language and
+try to create a ubiquitous language.mmd
+as we were going. So, I had grill me and
+I had ubiquitous language and I was
+using them both at the same time. And I
+realized, wouldn't it be great if I just
+combined the two into a new skill? And
+here is that new skill. It is grill with
+docs. It has exactly the same text as
+grill me at the top here, but it has a
+couple of extra pieces. The first thing
+it has is the ability to look for a
+context.md file. And this context.md
+file will document all of the shared
+language that's inside that context. Now
+context is like super overloaded. So I'm
+a sort of uncomfortable but maybe okay
+with it. It's essentially a bounded
+context in DDD is a part of the app in
+which you speak a shared language. So if
+you have a massive monor repo, you can
+have a context map here and have many
+different contexts inside. So that's how
+you would scale this to an enormous
+repo. But still if you just have one
+pretty big repo where all the
+application is speaking the same
+language and the domain experts speak
+the same language then you can just use
+a single context.md here. So it's
+instructed to look for this existing
+documentation to pull in this shared
+language and then during the session
+it's got some extra additions here to
+challenge uh language usage against the
+existing glossery to sharpen fuzzy
+language discuss concrete scenarios
+cross reference with code and update it
+as you go. So this essentially helps you
+really sharpen your language as you're
+using the grill with doc skill and this
+pays off as you go. I was asking some
+folks for feedback on this and I got
+some really nice quotes here. So this
+guy used it for the whole of today and
+at the start it asked him to define a
+lot of terms. Some terms were hard to
+agree on and ones he would most
+definitely forget but four or five
+sessions in he started noticing that
+Claude was picking up the context during
+the grill session and it magically
+aligned with the thoughts I had before
+the words came out of their brain. So
+that's what you get out of this. By
+documenting the non-obvious stuff, by
+agreeing on a shared language, you
+really can nail down and get a magical
+alignment between you and the AI where
+you just have to use far fewer words to
+communicate what you mean. For instance,
+here's the one that I have in my repo
+here. We essentially just have a little
+description about what the um you know
+what the repo is. Then we have a course
+and a course repo and we have all of the
+entities inside here, course versions as
+well because I have multiple versions.
+And if we look for the one that we were
+looking at before, which is standalone
+video, it is just down here. So we have
+an exact specification for what
+standalone video means. Now, now the
+grill with doc skill knows to look for
+this. But I also add a context pointer
+into not inside that claw. MD, but
+inside the local claw.md here. So we
+have just this domain docs, a single
+context layout, context.md at the repo
+root. and you see this extra little bit
+of uh documentation for more information
+about where this stuff is. One final
+thing that Grill with Docs does is that
+there are some things that sharpening
+the fuzzy language will help with, but
+there are some things that it won't. And
+so I wanted a layer that would explain
+all the nonobvious decisions that
+weren't able to be captured inside
+context.md. And so for that, I've gone
+with an architectural decision record.
+These ADRs here are really like simple
+markdown files that sit in your repo
+that essentially document all of the
+nonobvious decisions. You only want to
+create an ADR when the decision is hard
+to reverse because if it's just like,
+oh, we use this library instead of this
+library and they're kind of
+interchangeable, then you can always
+just swap later. It would be surprising
+without context, and plenty of decisions
+in a repo are surprising without
+context, especially more complex ones,
+and the result of a real trade-off. In
+other words, that this decision has
+consequences down the line. And I've got
+an ADR format inside here that um the
+LLM uses when it creates these ADRs. So
+now we understand all the pieces. Let's
+go back up to here. Let's replace grill
+me with grill with docs. And let's
+actually start this grilling session to
+see it in action. All right. So the
+first thing it has done is it said
+context.md is rich. Standalone video is
+already defined as a lessio a video with
+lesson ID equals null. and it says
+before going further I want to surface
+attention with the glossery. This is
+what you'll often find with grill with
+docs is that it really focuses on the
+language before you then actually go and
+talk about implementation details. It
+says there's cardality between pitch and
+standalone video. It's asking whether
+one pitch holds many standalone videos
+or one pitch corresponds to exactly one
+standalone video. I think it might make
+sense to follow its recommendation here
+and go with okay we have one to many
+relationship here. So, I'm just going to
+say correct. Very nice. Next up, it's
+noticing that there's a terminology
+collision with the standalone video. So,
+it's saying that you have a standalone
+video that are either totally standalone
+or they can be related to pitches. So, I
+think it's basically asking whether we
+keep standalone video as any pitched or
+unpitched lesson or we redefine it to
+mean specifically unpitched, unlistened
+video. Now, the way we answer this
+question is going to influence
+everything afterwards. is going to
+influence whether standalone videos get
+their own section in the UI or whether
+we have standalone videos and videos
+with pitches kind of mixed in because
+the language that we're defining here is
+also the language that the user is going
+to be seeing on the page when they
+navigate around this. And I think I'm
+agreeing with it. Actually, I was
+actually going into this thinking we
+would probably have a separate section
+for pitched videos, but I think yes, I
+agree it makes sense to keep pitching as
+just metadata on the standalone video
+itself. This, by the way, is whisper
+flow. What I'm using for dictation. It
+works. Okay. Uh I'm not sure I recommend
+it, but it's fine. It's now saying,
+okay, we need some status semantics
+here. So each pitch can be idle or
+scheduled or shipped here. I think I
+want just to allow I think I want to
+allow just free form transitions. So I
+don't really care about this being
+automated. We can always layer on
+automation later, you know, like when
+you press uh send to YouTube or
+something, it goes into a new status.
+But for now, I'm okay just like toggling
+it myself. That's fine. It's now asking,
+can a pitch exist with zero videos?
+Absolutely, a pitch can exist with zero
+videos. The point here is that we're
+kind of generating um pitches, ideas for
+videos. You know, this is the Mr. Beast
+thing. We're trying to uh get the
+packaging ready first. And this
+relationship, this language also goes
+into things as concrete as deletion
+cascades. So, I think I'm going to say
+ondelete restrict here. This is mostly
+because I just uh like um restrictive
+deletions and mostly what I do is I tend
+to archive instead of delete when I
+actually do these. We're now getting
+into more implementation details here.
+So, I think um instead of just boring
+you with actually like implementing the
+grilling session here, I'm just going to
+say could you save what we have into
+context.md so far. If there's anything
+we haven't figured out, grill me about
+that before you make the adjustments.
+And let's see what it goes for here. And
+okay, it has made a bunch of updates
+into context. Specifically, it's added a
+bunch of pitch information here. So,
+we've got pitch, the actual entity
+itself. We've got pitch status, the
+status the pitch can be in. Pitched
+standalone video is a little bit
+awkward. I might want to grill it about
+that. And then unattached standalone
+video. That's also like it's basically
+saying standalone standalone video. Now
+bear in mind I'm like I might seem like
+pretty, you know, anal retentive about
+this language. This might just feel like
+bike shedding to you, but this is going
+to affect every part of the code that's
+generated. All variable names, all file
+names are going to be based on these uh
+context.md documents here. And so
+getting this right is absolutely crucial
+for feeling aligned with the AI. Now, of
+course, we don't want to just endlessly
+bike shed. So I'm going to call this
+now. I'm going to say that's good
+enough. Let's ship with this. We can
+always change and refactor to new
+language later. So, let's quickly talk
+about the benefits here. What you
+actually get from going through this
+ceremony. The first thing that you get
+is concise replies. The AI is able to
+use fewer tokens to speak to you because
+you have this shared language and it
+doesn't need to verboseely repeat
+everything or redescribe everything. It
+just says, "Okay, standalone videos are
+changing. We uh needed to make a change
+to the pitches and how the pitches
+display." This concision is also
+reflected in its own thinking traces as
+well because of course AI uses language
+to think to itself and so it's able to
+be much more aligned with your intention
+and actually use fewer tokens when it's
+thinking. This is something I've
+observed and it feels pretty nice. And
+finally because the planning documents
+because the way that you're speaking
+with the AI is also aligned with the way
+the code looks as well then you end up
+with easier to navigate code because
+it's able to just okay I need to find
+all the information about pitches. let
+me just search for it. And of course,
+this makes sense because these are all
+the same benefits described in domain
+driven design itself. So, the same
+techniques that work with humans also,
+it turns out, work with AI. You're
+probably thinking though, is Grill Me
+dead? Did I just kill Grill Me? Did its
+creator come along and stab it in the
+back? Absolutely not. I think Grill Me
+is an excellent, excellent skill, but
+Grill with Docs is better when you have
+a codebase. In my skills, I have moved
+GrillMe into the productivity area here.
+So this is for general use cases for use
+cases where you don't have a codebase. I
+had someone, this is the most amazing
+story, who said that they were writing a
+eulogy for their mom and they use
+GrillMe to get the AI to grill them
+about their mom and surface all these
+amazing stories. And so Grill Me has
+incredible use cases outside of
+engineering. And of course, if you are
+really early on in a project, actually
+really early on in a project, I'd still
+probably recommend using Grill with Docs
+because you just get so much more out of
+that shared language. And often at the
+start of a project is where you're
+trying to establish that shared
+language. So essentially, the rule is
+when you have a codebase, use Grill with
+Docs. When you don't have a codebase,
+use Grill Me. I update these skills
+super duper regularly and I'm often
+thinking new thoughts about the skills
+or even how best to use them without
+changing the skills themselves. So, I
+keep everyone up to date on this with my
+AI skills for real engineers newsletter.
+This is just an addition to the already
+good newsletter that I have that just
+gives you a few extra skills updates or
+maybe one a week when they happen. I
+really freaking hate email spam and so
+I'm not going to spam you, but this
+little page will help you basically keep
+up to date with all the skill change
+logs and have some nice extra additions
+here that you can just take a look at
+and learn how to use the skills better.
+Otherwise, thanks for watching and I'll
+see you in the next one. Thank you so
+much for following along. I really
+really appreciate it. And if you enjoy
+this skill, then do let me know in the
+comments how you got on with it, what
+you noticed, and do raise an issue on
+the skills repo itself if you think
+there's something that I could improve.

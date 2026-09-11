@@ -1,0 +1,783 @@
+You're one of the godfathers of AI. What's your kind of view of the path of progress here? 5 years complete world domination. The
+best way to get breakthrough research is you hire the best people. You get the out of the way. Pardon my French.
+You share the touring award with two others. When did your views start diverging? In 2023. How do you know it was time to leave
+Meta? It sounds like you were thinking through some of these things over a period of time. Here's a big misconception about my role, my relation to Alex, and how AI
+was run at Meta. What's like one thing you've changed your mind on in the last year? I mean, the whole idea of uh Yan Lun is one of the godfathers of AI.
+He's an absolute legend in the field. Uh someone I've admired for a long time. And so it was such a treat to get him on
+unsupervised learning. Uh he's been a noted skeptic of of LMS in many ways. And so we dug into what LM can do, what
+they can't do, uh some of the limitations he sees, and why he ultimately decided to pursue a different architecture. Uh and we also talked
+about his time at Meta. um you know the things he's proud of in setting up fair how the last few years proceeded and
+what ultimately led him to uh spin out and start his own company uh AMI um I think it's just fascinating to get Yan's
+thoughts on everything happening in the AI ecosystem today this tension between basic research and then pushing LLM
+forward and how that's happening in in a bunch of organizations today as well as his thoughts on just where the the whole
+space is headed uh he's just an absolute giant in the field and when I started this podcast I hope we get guests like
+him so it is just such a treat I think folks will really enjoy hearing the conversation we had. Without further ado, here's Yan.
+Yan, this is such a pleasure. You're one of the godfathers of AI. I feel like when I started doing this podcast years
+ago, I was really hoping we might one day get someone like you on. You know, I don't like that term because I live in New Jersey. When you're a
+godfather in New Jersey, [laughter] it doesn't mean the same thing. Very fair. Very fair. You know, obviously, you know, your bet on on
+neural nets when everyone doubted them is legendary. And I feel like today you're making a similar bet in many ways against LLMs and the kind of predominant
+generative architectures that that so many believe in. Uh you've recently started a new company uh behind this
+theme. And so you know our goal today in the conversation is to leave our listeners with a lot more information
+about AME, what you're doing there, some of your work at Tapestry. Um you know, why you think the rest of the field is
+is is pointed in the wrong direction around some of these generative models and then also just get your reflections on the way the field's unfolded your
+time at Meta and all that. So, you know, modest goals for uh for for for a single podcast episode. I figured it'd be great
+to start with the meat um because the company feels like the clearest statement of your technical thesis going forward. And so, you recently launched
+the company. It's focused on world models uh and scaling the Jeter architecture, which you obviously pioneered uh over at Meta. And so, I'm
+wondering if you could talk a little bit about the origins of that architecture and the extent to which you drew inspiration from the human brain and the
+way that works. So first of all, I want to say there's nothing wrong with LLMs in the sense of LLM, you know, are the
+basis for a lot of very useful AI products that all of us use, including me. Uh they're great, okay, for what
+they do. They're just not a path towards human level or human like intelligence
+or even animalike intelligence. Uh so that's my claim, okay? I'm not saying
+are useless, right? I'm I'm just saying they're not a path towards you. I mean, you helped build some of the first major
+open source ones, [laughter] right? Absolutely. So, what is uh AME?
+So, ME really stands for advanced machine intelligence and the the the
+kind of subtitle the moto if you want is uh AI for the real world. So basically a
+lot of you know AI techniques that people know about today are good for language manipulation either human
+language or computer code or mathematics or or legal ease
+which barely qualifies as human language. [laughter] Unfortunately a lot of human language used for it
+right sadly you know language is very special in a way and it's particularly
+well suited for the type of uh you know architectures that have been so
+successful uh recently the the you know large language models GPT style
+architectures but what about the real world what about like understanding the physical world turns out reality is way
+more complicated than language uh because It's highdimensional. It's continuous. It's noisy. It's messy. And
+uh training a system to understand the real world is much much harder. So that's really what we're after. That's what I've been after for most of my
+career. And really kind of, you know, working on in an accelerated fashion over the last five, six years or so and
+making significant progress over the last two years. And so it made sense to
+really do a startup around it and sort of go to into high gear, you know, in pushing that. and it became clear, you
+know, by the end of last year that Meta was really not the right place for that.
+So, which is why I left and started Emmy Labs. I think it's an interesting like, you know, trend that we're seeing across the
+board, right, where it feels like um there you're there's there's many folks spinning out of, you know, either some
+of the large companies or research labs, you know, that have a a particular direction of research they're excited about. And you you'd have such an
+interesting vantage point of this from your time at fair. This uh almost tension that exists between, you know, go pursue as many different research
+directions as possible in these companies versus hey, something's really working. This is the thing that we're going to sell for the next 61 12 months
+like go focus on that. You know, I'm curious your your thoughts on that and and what you've kind of seen in the industry at large.
+Well, it's a strange uh trade-off. There's really two modes of R&D, right? There's a lot of exploratory research, a
+lot of d research directions, right? And sometimes something kind of seems to
+work and you you need to push it further and it's not research anymore. I mean the people working on it are researchers
+or they're called researchers at least in the press but uh but really it's becoming more engineering and pushing
+for for products, right? So that happened a number of times at Meta
+because of things that was started at fair. Such a thing happened in you know
+early 2023 essentially uh when you know Lama which was developed at fair lama
+one um was very promising and uh meta created a whole organization geni to
+turn it into something real and a series of products uh and produced you know lama 2, lama 3, lama 4 which was a bit
+of disappointment uh and because you know Mark Zuckerber was disappointed by it he kind rebooted
+the entire organization, reorganized it and hired new people etc. But what also
+happened uh over the last year is that uh basically the company meta realized
+that um they had fallen behind a little bit and so that kind of refocused the
+the strategy on trying to catch up with the industry. And the sad side effect of
+it is that a lot of the exploratory research was basically not given high
+priority anymore. I mean it didn't concern the stuff I was working on. all the JA and role models because you know
+Mark himself and and Dub Bosworth the CTO and a bunch of other people in the company were really interested in that
+project and really believed in the long-term impact but the rest of the company was just you know totally
+entirely focused on LLM and made it clear to me that Ma was really not the
+the right place to push for that project anymore and then we started to had good results and so it was clear that you
+know we had to kind of make that transition between research and actually kind of uh developing the technology,
+scaling it up and building products out of it. And we realized also that most of the applications were probably for
+things that Meta was not particularly interested in. A lot of applications of the kind of stuff that we've been
+working on is in industry like manufacturing industry and stuff like that. Obviously, you're you're kind of
+pursuing world models and and and in that broader world. And I think there's other people that have come at the world model pace from a more like generative
+approach. And so I think you've got folks, you know, uh got the Google folks in Genie and the video models. You've got folks, you know, building VAS on the
+robotic side. You've got uh FE and and kind of like the 3D spatial models. as you think about kind of the the body of
+of of of evidence that got you excited about the JEPA models and how you kind of compare them to what the generative
+folks have done, you know, where do you think we are today in in terms of like comparing these architectures and approaches?
+Okay, so what model is quickly becoming a buzzword? Yeah. Right now, right, certainly in research, but also in
+industry to some extent. And uh and then there are two factions if you want. I'm not going to talk about VA because VA is
+clearly now being seen as not going anywhere like it's really not working.
+So VA is you know vision language action models right? to basically use the LLM
+technology to train a system to produce actions for like controlling a robot or something like this, right? So you have
+vision in, language in, action out, maybe language out too. Um, and that's
+pretty much now seen as a failure. [laughter] Uh, not being reliable enough, requiring
+too much training data, you know, things like that. Okay. Then there is world models. Okay. So what is a world model?
+uh a world model at a very general level is something that allows an agentic
+system to anticipate the consequences of its own actions. Okay, predict the
+consequences of its own actions. From my point of view, I cannot imagine how you can even think of building an agentic
+system without that system having the ability to predict the consequences of its actions. I mean, that's pretty
+essential, right? When we act in the world, we have this ability and when we
+uh take an action without thinking about the consequences, we are taking a big risk. And very
+often, you know, other people think we're we're an idiot. Uh we have plenty
+of examples on the international political scene at the moment of people who have complet you know ability to
+predict the consequences of their actions. So that's the one model. That's all it is, right? ability to predict the
+consequences of your own actions. If you if you have this ability, then you can plan a sequence of actions to accomplish
+a task to you know satisfy a goal. And you do this by planning reasoning uh by
+a process of search and optimization. You don't do this by predicting one action after the other auto reag.
+uh you do this by searching for a sequence of actions that will accomplish the task you set you set for yourself.
+So the blueprint for this is completely different from what you know LLM can do
+at the moment. LM do not have the ability to predict the consequences of their actions and they do not have any
+planning abilities because inference is by predicting the next token right it's
+not by search okay so right there you have the two characteristics that I
+think are essential for intelligent behavior ability to predict consequences of your actions and second uh ability to
+plan by optimization by search find a good sequence of actions that will produce the correct outcome and then
+there is a third characteristic which is uh how do you p how do you predict the
+consequences of your actions? Okay, so you know if uh I have a water bottle in
+front of me. I realize some people would just listen to this and not have the picture. So I have an open uncapped
+water bottle in front of me. If I push at the bottom it's going to slide on the table. If I push near the top it's
+probably going to flip. We can't predict exactly how the the bottle will will fall in
+which direction. Uh we can't exactly predict how it's going to slide. You know, how the water will spill. You
+know, whether the table is tilted in one way and the water will uh you know kind of flow in one direction or another.
+There's no way we can predict this at a pixel level. And so our mental model of the world predicts but at an abstract
+level of representation. So as you were working on this architecture, was a lot of it inspired by the human brain? I mean obviously like the you know the way
+you're articulating things exactly how how we do things right or at least by you know cognitive science right whether you can sort of
+translate this into an oral architecture and things like this that's there's a big gap there. Um okay so that that you
+know certainly cognitive science was a bit of a motivation or or you know what
+psychologist call system two which is this idea of the way you behave in sort of deliberate reflective behavior is
+that you do imagine predict the consequences of your actions and you plan uh accordingly contrary to system
+one where you just act you know reactively and instinctively. So yeah,
+there is an inspiration but also there is a lot of empirical evidence that you
+don't want to generate pixels. Okay, I've been I've been really interested in that problem of learning models of the
+world by prediction for a very long time and then had an epiphany about five years ago realizing that all of the
+architectures that have have been successful to learn representations of images and videos are non-generative
+architectures and all the generative ones basically have been failures right so
+VA right vial autoenccoders or autoenccoders more generally. Uh it's
+kind of a natural way to think about like learning abstract representations of inputs, right? So you put a an image
+at the input of a of a neural net and then you train it to just reproduce the
+input on its output. Now with a big neural net now if you just do it this way your neural net will
+not do anything interesting. We just learn the identity function. Yeah. Completely uninteresting. it doesn't work like if you train a VA to learn
+representations of images you get something but it's really not that great same with sparse autoenccoders then you
+have another set of techniques uh and it's kind of derivative of something called the noising autoenccoder
+uh masked autoenccoder is a version of this BERT is a version of this for NLP so you take the image you corrupt it in
+some way and then you train this big neural net to recover the original uh the original image there's a huge
+project at at fair on this called ME to encoder. It was very disappointing. A lot of
+competition and not not really great satisfying result. Simultaneously
+uh some of the same people working on MA and and some other people in Paris and in New York were working on other
+techniques using non-generative architecture joint embedding architecture. So take an image, corrupt
+it in some way and then run the two images to encoders and then try to predict the representation of the
+original image from the representation of the corrupted one. Uh that's JPA.
+Yeah. Okay. So Japa means joint emitting predictive architecture, right? So you have one encoder that obser makes an
+observation, another encoder that makes a different observation. You try to predict the representation of the first one from the second one with a
+predictor. And those techniques turned out to work much better for representing
+uh images and video. So things like Dino, Dino V1, V2, V3 um project that is
+still going on at at fair in Paris, projects like Japa uh and then VJA and
+then before that there were like SIM and MCO and like a whole bunch of different techniques mostly for meta. There was a
+bunch of others from other groups. Um but uh that turned out to be a much
+better way of learning representations of images uh than predicting pixels.
+Yeah. And so it just clicked in my in my mind, but you know, not just mine, uh
+that this was the way to go and predicting pixels was kind of a losing proposition. You know, it feels like there's all
+these robotics demos that are released, uh, you know, from from some of the model companies that are feel increasingly impressive and maybe, you
+know, seem to resemble things like planning and reasoning when, you know, they maybe haven't seen a a room or or a
+specific, you know, version of a task before and are still able to execute that task. you know, what would you say
+to our listeners, I guess, that that that observe that stuff and feel like, ah, it feels like we're trending toward some real progress uh with some of the
+generative approaches. Well, there is real progress and some of those demos are really impressive. Um,
+but [laughter] they are trained with enormous amounts of uh data collected either from
+operation or from just you know, human action with uh things you hold in your hand that look like
+grippers, grippers that you know and and you collect the data for that. uh or just
+you know tracking hands and fingers of of a person uh and then translating this
+into kind of commands for for a robot and so those things are trained with imitation learning mostly right and a
+little bit with uh you know reinforcement learning to fine-tune in mostly in simulation. So the issue with
+this is that you need a lot of data to train those systems to uh to imitation
+and it it becomes expensive and it's a little brittle uh in the sense that you
+know you need to collect lots of data for every task you want the robot to uh to solve. Whereas if the system had a
+world model that allowed it to predict the you know the outcome of an action,
+it would just plan an action to solve a new task without actually having to be trained to accomplish this task. So the
+degree of generalization you would get with a one model based system is much much larger uh you know kind of wider
+spectrum of of tasks with less training data that would be required than a
+system train with imitation learning and and you know fine tuning. No, no doubt those approaches require more data and I
+guess this question of generalization really is is the big question, right? You know, and I think you know some folks have have uh have shown some
+results around you know uh getting better at task A helps with task speed but that obviously feels like the still the big unanswered question uh you know
+around those architectures. I mean you get this uh or synergy between tasks. So the more tasks that
+you train the system to solve the more task is be is going to be able to acquire with a small amount of data
+regardless of whether what technique you use. But but the hope with uh well models is that the system can solve mut
+zero shot which humans are completely capable of doing right and many animals as well. So uh so that's really the the
+hope like you know solving a lot more problems with uh either a small amount
+of training data or or no training data at all and just a little bit of maybe
+you know RL style fine tuning. Yeah. like you know how how is it that a
+17-year-old can learn to drive in like a dozen hours or maybe 20 hours. Uh we
+have millions of hours of training data of you know people driving cars. We still don't have level five learning
+cars, right? So imitation learning obviously doesn't work even for just the task of autonomous driving.
+Yeah, I guess it'll be a race between the ability to develop some of those capabilities which may take time and lots of data versus this kind of
+architecture. I feel like there's this dream of using video models to just generate like tons of synthetic data for for you know simulation and you know
+even if it's not perfect these video models uh from a physics perspective it's like helpful enough to uh you know
+improve uh robotics and and the underlying physical world. What have you made of some of those approaches? Obviously I think a video has been
+focused there. Google seems to be going down that road. I'm sort of asking again the question you know why can 17-year-old launch a
+drive in 20 hours? You don't need millions of hours of demonstration and you don't need synthetic data. Uh you
+don't need any of that. So you know I I want a system that can learn as fast as that. If we crack that then we don't
+need you know generated data, right? I mean we might need to train a system in simulation but not with the same amount
+of uh uh you know of time or or trials as as current systems require. It's
+really a question of data efficiency. You know I was uh interviewed Jerry Torque on the podcast. as he was at OpenAI and Spun app to start his own lab
+and you could sense a similar tension where I think he actually might even agree that you know if you continued scaling RL the way we're scaling you get
+more you know you continue getting very impressive results but I think he felt god there's just got to be some like way
+more efficient way to do this and it's interesting it's an interesting tension because you could imagine if you're open AI and you know something is going to
+continue like you could continue scaling it and it will keep getting better there's not a ton of incentive necessarily from a business perspective
+to do something more data efficient right there's no incentive for the other companies to do anything different
+either because they're all chasing the same like they can't afford to kind of fall behind the others, right? So, they
+all work on the same thing. Yeah. And and there's a bit of this sort of you know kind of
+her behavior uh and and you know in in mostly in Silicon Valley where everybody is
+digging the same trench. Yeah. Uh and you know so I per purposely
+set up the headquarters of Emmy Labs in Paris. Yeah. [laughter]
+Uh the American office being in New York not Silicon Valley. [laughter] It's
+really interesting because I think it it it points to a tension that you know it exists in the broader ecosystem today where uh you know you could imagine the
+other side being sure maybe there are more data efficient methods out there but like almost who cares because we can
+keep scaling what we have to to better and better results and then obviously I think from both you know new new things
+you can accomplish from these models as well as just the joy of being a researcher and finding these new things I get why there's such an attraction to
+to to these other architectures as well and it's a bet but you know we're pretty confident because you know we we have
+results already. And as you think about like the the kind of um the initial spaces you're most
+excited about for the AME technology like what gets you know where do you think you know the the technology goes and and what are you most excited about?
+Well I mean you know AI for the real world um like you know can where is your
+domestic robot where is your level five self-driving car? Yeah. Where is uh and that's
+when am I going to get a domestic robot? I'm excited about this. Well, so this is several years down the line, okay?
+Despite the fact that there is like huge number of companies building robots, none of those companies actually has any
+idea how to make them smart enough to be useful, right? Or trust it around with a baby in the house or something. Certainly not that. Uh but but even for
+like you know relatively narrow manufacturing task, right? You know, I mean none of them really knows how to do
+this reliably other than you know for by imitation learning for a small number of tasks. Uh so how do we make those things
+useful? So that's kind of a relatively long-term objective. Shorter term there
+is a huge amount of applications in industry where you need to have a a
+system an intelligence system that has the ability of you know predicting
+what's going to happen if I change this control variable on this complex system
+be it a jet engine a chemical plant a power
+plant some manufacturing line a patient a human cell right those are systems
+that are sufficiently complex that you can't model their behavior with a small
+number of equations. Right? So the traditional way of modeling does not work. And what you need to do is train a
+neural net deep learning system uh to to um you know model the dynamics of that
+system from data. And what you get at the end is a a phenomenological model of
+of that uh process of that uh system. Um
+and if it's action condition then you get basically a a water model of that system that allows you to control it
+optimally for whatever purpose you have. And I think the number of applications
+of this in industry is mindboggling. Where do you think we'll be with uh you know JEP models over the next couple
+years? Are there like you know milestones you'd point to or like what what's your kind of view of the path of progress here? Okay, couple of years is a little short
+like five years complete world domination essentially. [laughter] Okay, so somewhere between on the path to
+world domination in five years. I mean this is kind of a joke obviously but uh this is a quote from Lin Starvald right
+you know when people ask him what's your goal with Linux he said total world domination [laughter] he actually managed to do that
+yeah very fair the first approximation every computer in the world runs Linux right so um so
+that's kind of a joke but but in the end I think this is the blueprint for intelligent systems of the future there
+still be a small place for LLMs you know for like a language interface
+basically But uh but what we're designing are are systems that are capable of thinking.
+They they may not be capable of talking or listening initially, but they'll do the thinking and then you
+can add the talking and listening. Uh on top of that, I'm sure you and the team are are are
+eagerly working to kind of, you know, get the early proof points of this and obviously you've already had some in the work you've done. How do you think about
+like the interim steps of what you'll be able to show on that path to to fiveyear world domination? Well, so I think uh
+you know within a year or so um we'll have I think a a general methodology to
+train hierarchical models on you know a very wide variety of modalities. We know
+we can do a good job on video uh with some techniques that we're not completely happy with because they have
+some shortcomings but um and we have sort of small scale demonstration of a
+methodology that we think is really what we want. So we need to scale that one up
+and get it to the same level of performance as the the other techniques that are not as uh satis satisfying if
+you want on on things like video but also on other types of data sets that we would get from industry partners. Okay.
+So we'll have demonstrations that we can train world models perhaps action condition world models that allow us to
+plan for uh a number of different use cases. Some of them will be robotics,
+some of them will be industrial process control of various types. Maybe some of them in health um healthcare as well
+because we are partners in that in that domain and that should be within a year to 18
+months. Um and then we'll push th this methodology and those models into
+uh those use cases with partners some of which are investors already you know in our company and gain experience on how
+to kind of essentially build a somewhat universal world model if you want. I mean and you've obviously had this uh
+you know this experience before of of kind of making this really contrarian bet on neural nets and and being certainly uh proven abundantly right uh
+in in in the history books. I guess as you think about this bet which I think you know if you talk to the majority of people uh maybe at at the cutting edge
+of various parts of AI maybe would would say is contrarian today in what time frame do you think it will become apparent like you know this was right
+I think it'll happen faster than expected perhaps because I mean you can
+see that world model is already becoming a buzz word right at least at a research
+level uh and it's starting to kind of permeate into the industry Yeah.
+And a lot of people are realizing like VA suck and you know LLM don't work for
+real world data. Industry has realized this already certainly on the on the on
+the user side. And I think because of the importance of the robotics industry
+u you know a lot of people are kind of trying to figure out like how how do we how do we get there? How do you get how do you make those robots uh useful? So,
+so I think it's I think the realization that you need a change of paradigm is is happening as we speak and will become
+completely obvious to people by early 2027. I think now that doesn't mean we'll have a
+solution by then. We hope we will but you know we'll see I guess you know switching gears to the LM side you mentioned some of this work
+you're doing with uh with Tapestry which I think would be really interesting for our listeners and so maybe just speak to that a little bit. Okay. So, this is
+kind of a little bit orthogonal to uh to Emmy Labs. Uh as if that wasn't enough to keep you busy. [laughter]
+Well, it's a it's a kind of an idea I've been uh forming over the last three years or so is the fact that uh
+people increasingly use AI assistants for various things, right? I mean, uh you see a decrease in the use of, you
+know, traditional search engines and you just ask a question to your favorite AI assistant.
+Um and you know if the plan that Meta and others are are developing of you
+know having smart devices like smart glasses and stuff like that uh you know is realized basically you would just be
+talking to your AI assistant you know by voice with you know through your smart glasses or maybe some other smart device
+and so all of your information diet will be mediated by AI assistance
+and if you are someone, you know, somewhere in the world, let's say outside the US or China, and you have an
+AI assistant, and that AI assistant was built in California or, you know, Beijing or Shanghai or
+Shenzhen. Uh, it's not good for you. Like, you may speak a language that
+those systems really haven't been trained to handle particularly well. uh you may have a culture that is not
+particularly well understood by people in Silicon Valley and China, not well represented by the training data that is
+publicly available on the internet. Um you may have a value system that is absolutely not represented by uh you
+know people building those models and certainly you'll almost certainly have political opinions that are absolutely
+not represented by the handful of AI assistant you you might be able to get
+from the you know west coast tech companies or from Chinese companies.
+So what is the solution to this? like how do you serve u you know a farmer in
+India uh or um even a philosopher in France
+or Germany and what you need is a platform
+which basically is uh an open free foundation model LLM style
+that is fine-tunable by anyone to cater to the interest of people
+speaking a particular language, having a particular culture, having particular
+value systems, political biases, uh, creeds, whatever it is. And so what
+you need is a wide diversity of AI assistance. There's a lot of countries
+around the world uh that are in neither the US nor China who absolutely want
+some level of sovereignty for AI not just for their industry but also for the citizen they don't want the citizen to
+get brainwashed by a Chinese model or a California model actually uh and so they want sovereignty
+how do you get that so the way you get a platform like an open platform like this
+to get to the frontier is you just train it on more and higher quality data than
+the than the proprietary systems. If you talk to people in India, in France, in
+Vietnam, in Morocco, in Switzerland,
+in Korea, Japan, uh Kazakhstan, everyone wants
+basically sovereignty. and you tell them like you guys have been training your model you know
+locally you don't have to share your data. So that's the crucial aspect of tapestry. You would have international
+contributor contributors to tapestry contributing to training a a global
+model that would basically constitute a repository of all the world knowledge
+and culture if you want. But the contributors would contribute uh data
+and uh computing resources but they would preserve the control on their data. they would not have to share that
+data with the other uh contributors. What they would contribute is parameter
+vectors, right? So it would be a kind of federated learning style thing where
+uh you have a bunch of data centers uh you know they they get the parameter
+vector from the the the global consensus of a model. Think of it as an average of all the all
+the parameter vectors of all the contributors, right? So all the contributors uh periodically tell
+everyone else through maybe a central server here is my parameter vector what is yours? Okay. Uh and so you exchange
+parameter vectors like this and a local worker basically whenever it updates its parameter vector it tries to also makes
+make it as close as possible to the global consensus vector. So as the
+training of this thing kind of progresses all those parameter vectors converge towards like a consensus model
+essentially which is kind of a repository of all human knowledge. Now you have an open an open model that is
+as good as if it had been trained on all the data in the world and now you can fine-tune it for your
+own purpose your own political cultural and linguistic biases
+whatever you want or centers of interest and I think there is a natural force for this to happen uh because you know most
+countries that are not the US nor China want sovereignty but also because Um AI is
+fast becoming a platform and there is a natural tendency for platforms to become open. That's what happened with Linux,
+right? And that's what happened with the software infrastructure of the internet
+or the wireless network. It's all open source. Um it was proprietary initially,
+but that was all wiped out. It's a really clever way to get around uh you know what would seem to this trend of
+you know decreasing open source and and obviously I think there's been many fears that as like the closed source
+models get better they'll be held back and they'll be used to train the next generation and you know they they'll kind of be this almost like escape
+scenario for for closed source models where they get you know so much better than than their open source counterparts. So remember what you know
+who the big players of the internet infrastructure were in 1996.
+Sun Micros systemystems HP Dell and a few others. Um so Sun Microsystem was
+selling you Solaris with their you know proprietary hardware HP with HPUX.
+Uh they were claiming you know Unix is so much more reliable than Windows. You're not going to run a web server on Windows. Dell was doing this, you know,
+with Windows NT, but like who is running Windows NT now [laughter] as a web server? All of this was totally wiped
+out by Linux. Like the entire internet runs on Linux. Um, even Azure, right?
+Even Microsoft [laughter] it runs Linux. So, uh,
+basically OpenAI, Anthropic, etc. of today are the Sun Microsystem
+and HPUX of yesterday. Yeah, I mean I guess implicit in that is
+is obviously um you know I think your you know uh your view of like the limitations of of what like you know
+these models can only get so good and so it'll be possible over time for for the open source folks to to catch up.
+They've already run out of data, right? I mean the the the open openly available publicly available
+data text data uh is already all used. I mean there's not more of it, right? So
+what what those companies are doing is licensing uh commercial copyrighted data
+or training on synthetic data. And I guess I'm curious because obviously there's been some impressive results uh in the last few years that
+they that they have been able to drive you know post these large scale free trainings um you know IMO gold uh you
+know the meter task horizon benchmark keeps going up. Um okay that's okay that's very
+interesting. Now think about those two domains, right? Mathematics and code. Those are two domains where the language
+itself is the substrate of reasoning. It's not the only substrate of reasoning, but a lot of when you do
+mathematics, right, the the formal way on a piece of paper, not the intuitive stuff, but the you manipulate language,
+right? And LLMs are really good at this. So, um you know, proving theorems and stuff like that, that's that's what LLMs
+are really good at. They're not so good at the sort of, you know, coming up with
+like good concepts and definitions and things like that. It's more like here is a problem, solve it. They're problem solvers. Mathematics is not just problem
+solving, right? Most of it, uh, is actually a creative act that those things don't do. Um,
+and same for code. So, LLM are good programmers. They're not software architects. They're not computer
+scientists, right? uh but they can program for us. So they
+they're not in a in a state where they can just you know replace humans
+entirely. It changes the world of humans. So humans now you know kind of go one level up in the abstraction
+hierarchy and our world is to decide what to build. But like building it, you
+know, you can you can get help from LLMs. But okay, that's the the important point is that uh LLMs are particularly
+successful at domains where the language itself is the substrate of reasoning uh
+not for anything else. Yeah. What would an LLM like need to do to convince you uh otherwise? So like a zero shot agentic system,
+right? You have an agentic system, give it a new problem. It's not been trained to solve that that particular problem.
+doesn't have a script for it. Uh is it going to be able to uh accomplish this
+task that it's never been trained to solve and unless this system has the ability
+of predicting the consequences of its actions and then use using use that for for planning
+it's not going to be able to do it and you're not going to do this with an LLM. You're going to do this perhaps with a
+significantly augmented LLM that is capable of, you know, search and
+planning blah blah blah. And currently, you know, LM that do math and code actually do this. Yeah.
+Right. Because they search for, you know, sequences of tokens that actually accomplish a particular task and, you
+know, they can run the code or verify that the proof is correct or whatever. Um, so you have like a way of checking
+whether something that's produced is is is correct. Um, but that's not a very efficient way of of doing planning and
+it only works in domains where this type of search can be performed in token
+space. What I'm talking about with JEPA is you don't do this in token space. You do this in you know abstract thoughts
+space. And I'm sure some people listening might think well you know hey if if even if it's inefficient and it works uh and it
+works at you know uh at things that are done in token space that's still a large part of the uh of the economy that
+I mean if it works it's fine. I mean there's again there's nothing wrong with you know using it for what they're good
+at. Uh it's just not a path towards human you're missing you know and it
+like a huge uh domain. You seem like you know hey it's going to tap out before it can become a software
+architect whereas I'm sure it's not going to tap out. It's it's just going to have like a a limited, you know, ability to be deployed for like an
+it's going to become like increasingly difficult to kind of deploy it for an increasingly large number, you know, of
+of use cases because you're going to have to collect tons of training data for each of those use cases. And these
+are basically you're not going to be able to make those systems completely reliable, you know, without
+hallucinations or or dangerous stuff or uh etc. Unless those systems have the
+ability to predict the consequences of their actions, which means they're going to have to have explicit world models.
+Yeah. So, I guess to bet against, you know, the uh 100% accuracy and then also the generalization uh across different
+tasks, right? I guess, you know, one thing that that's so interesting about the way the the field has developed is obviously you uh
+shared the the touring award with two others and I feel like they seem much more convinced of like maybe the the power or potential threats or safety
+risks of LLMs over time. Um, I'm wondering like when did your views start diverging?
+Uh, in 2023. And what like drove that in your mind? I didn't change my mind. They changed
+their mind. Okay. [laughter] And at just about the same time and it was basically GPT4. I mean, Jeff
+basically had was not connected to any of that. he was never really interested in LLMs and discovered uh GPT4, you
+know, 2023 when it came out and basically had an epiphany and said, "Oh my god, those systems, you know, are
+really close to human level intelligence and they have possibly they have subjective experience." Uh, and he did a
+a quick calculation saying like, okay, the human cortex has about 16 billion neurons. If you want to um do something
+like back prop, okay, the brain doesn't do back prop directly, but if it does
+something like back prop, like some sort of, you know, gradient estimation for some sort of objective function, you
+probably need like a network of a few neurons to kind of reproduce the functionality of a virtual neuron in a
+in a neural net. And so we said like let's assume you know maybe you need you need a circuit of 10 actual neurons to
+reproduce what a a backrop neuron does then all of a sudden your your cortex is
+only 1.6 billion neurons. Oh my god GBT4 is really close to this. Okay. So maybe
+it's as smart, you know, it's going to get as smart as humans. I do not believe in this claim at all. This is kind of
+you know Jeff's uh uh way of saying
+okay basically I can retire I can declare victory you know I search for
+the learning algorithm the cortex or my career uh maybe I didn't discover what
+it really was but backrop seems to be like a good substitute for it works really well and so maybe that's what we
+need so I can retire uh and [laughter] and go around the world and give talks
+about you know the potential uh promises and dangers of uh of AI. Uh
+that's basically what you know I think what is uh intellectual kind of trajectory has been. Uh he's much less
+vocal about the potential dangers now than he was uh a year or two ago. he
+kind of realized it's probably a way to design truly intelligent systems. So first of all he probably you know he
+realized that current LLMs are not that smart first of all and and second uh
+that there's probably a need for a few breakthroughs like conceptual breakthroughs before we get to humanlike
+intelligence and third that the the blueprint of those systems would be quite different from LLMs and we have
+probably have a way of you know making them controllable and things like that. Yeah,
+I've been saying this for years, but okay, he sort of discovered this recently. Same kind of there's a similar
+thing with Yoshua. I think what they are both worried about is the ability of
+society and the political system to make sure that the benefits of of AI would be
+maximized and AI would not you know just profit you know make a few rich people
+even richer and uh you know accentuate inequalities and and you know
+cause major catastrophes because of bad usage. Okay, this is not like the the doomer scenario of AI taking over the
+world. It's more bad uses users which seems possible with the LLMs of today
+which is a danger but you know I I don't think it's as apocalyptic as you know
+what some people have claimed it is. Uh certainly not as apocalyptic as what even anthropic has claimed. uh and has
+tried to kind of lobby governments into you know scaring governments into kind of regulating AI because because of that
+uh I don't I don't I don't subscribe to this at all. They seem to genuinely believe it. I think they genuinely believe it but
+also I think there is you know some kind of commercial good commercial reasons for them to believe that and to kind of
+uh you know brainwash some people and government into thinking their systems
+are are dangerous. And it sounds like, you know, with these other architectures, do you think they're because obviously it doesn't, you know, as maybe uh bearish as you are on LM
+being the end state of everything, you know, you have some pretty ambitious timelines too for for these new architectures. And so it doesn't seem
+like you think we're particularly far away from uh from from some very compelling capabilities. How do you
+think about, I guess, the the safety around, you know, if it ends if these breakthroughs end up coming from newer architectures and whether that should
+make us rest easier or not? I'm going to say something that's again might be controversial. Uh and certainly my some
+of my colleagues at MEA didn't like me saying this, but I think LLMs are intrinsically unsafe. I don't think they
+can be made reliable and safe. Okay, they cannot be made reliable because you can't stop them from hallucinating.
+Uh and if they are agentic, you cannot guarantee they're not going to like take an action that you know they didn't
+predict the outcome of. And that I mean does it surprise you they can do these like 15 hour coding tests given the concerns around reliability.
+Well coding is something where you can actually verify that you know the the the code that you generate uh you know
+satisfy your specification. Um but but not everything is coding and and
+there are examples of you know uh coding agents like wiping up your your hard
+drive, right? So like uh or or doing stupid things, right? that makes you
+lose a lot of money or data or whatever. So I think I think uh you know LLM in
+their current forms are are intrinsically unsafe because they cannot predict the consequences of their
+actions and because the way the task that they accomplish is determined
+uh is is subject to their training. You know, you you give them a prompt and
+then they will accomplish a task that correspond to that prompt only to the ex to the extent that their training has
+condition them to actually do the right task corresponding to this prompt. But there's no like you know hardwired
+constraint that will force them to accomplish this task and then you know predict that the task would be
+accomplished properly. Yeah. I mean I think famously in the early days right they would you'd ask them a question and they'd keep asking the they keep asking the question.
+Right. Right. for [laughter] example. Um or I mean also they don't have common sense,
+right? So I mean there's the the joke that was circulating like a month ago of you know I need to wash my car and you
+know the the car wash is 100 yards from my house. Should I walk?
+I tried it again like maybe two weeks ago. Uh they all say yes, you should walk except Germany.
+Germany says so they're training on your video of of having done having given that speech before. It was not my video because
+[laughter] I didn't come up with this. I remember whoever came up with it. Yeah. Right. Whoever came up with it. But there are a few instances, right,
+where where I said like, you know, an LM can do this and then six months later it was capable of doing it. And it's simply
+because, you know, as soon as people watch the podcast of me saying NLM can
+do this, they of course type it into CHP. So now it becomes part of the training set, right? And now of course,
+you know, the next version has that uh you know that that thing in the finetuning set. And of course it can
+answer the question, but it's not because it's it became smart all of a sudden. It's just because it was explicitly trained with that question.
+So L&Ms are interestingly unsafe. Uh I don't think there is any way to fix that in the current um paradigm. Um and what
+I've been proposing is the architecture I've been talking about is objectivedriven AI. So basically you
+give an objective to an AI system which is accomplish this task. Now how does
+the system knows it will accomplish this task? It has a world model and it
+predicts uh you know the outcome of a sequence of actions it imagines
+taking. uh and if this uh outcome satisfies
+a cost function that you know describes to what extent the task has been
+accomplished or not accomplished then that system if if the way that system
+works is by optim by optimization finding a sequence of actions that
+accomplishes this task minimizes this cost according to it model it can do nothing else.
+Yeah. Okay. And of course there's many things that can go wrong there in in particular uh the
+cost function might be inaccurate. It could be that the cost function you think is actually measuring to what
+extent the task has been accomplished but perhaps it's not accurate. Okay. Uh
+the one model might be inaccurate. So the prediction that the system makes is actually not the right one. So its prediction of what was going to happen
+as a consequence of its action wasn't right. Okay. So the system can still make mistakes but but it can predict the
+consequences of its actions to some extent which is I think indispensable for any agentic system. Now what you can
+add to that system is not just a cost function that guarantees a task has been accomplished but you can also add a
+bunch of other objective functions other other cost functions or even constraints
+that are safety constraints that say okay you know don't hurt anybody on the way right and you cannot specify this at
+a at an abstract level but you can have you know low-level objective functions that put together will guarantee that
+the system will not be dangerous And the system cannot violate those things by
+construction. It will have to satisfy those conditions. Not the case for an LLM. The LLM can always escape. There's
+a gap between your training error and test error. There's always going to be a prompt where the system is going to do
+really stupid things. To talk through one specific space around LLM, like you know, I think you're obviously really excited about a me and healthcare. And I think you
+people have been using LLMs in healthcare for for all sorts of things. And so I'm curious how you think about like the set of things where LMS are
+just not going to work in healthcare and you need like a a model that understands the world better. So uh I mean designing
+a a course of treatment for a chronic disease for example or even a non- chronic disease
+uh for a particular patient uh which may not completely fit into you know
+templates that you've observed before but if you have good mental model of the dynamics of the physiology of the
+patient and you might design a course of treatment that will actually bring the the patient to a good state.
+Yeah. uh when I'm seeing and when I'm seeing a patient, it can be a cell. Okay. How do you tell a a stem cell to
+turn into a pancreas beta cell that produces insulin? Okay, you have a
+patient with type 1 diabetes and you know they have you know their immune
+system basically, you know, kind of eats up their own beta cells, right? It's autoimmune. um how do you keep making
+beta cells? You know, can you send a message? Do you have a a model of a of a human cell that will allow you to figure
+out what sequence of message do you need to send to a stem cell so that it turns
+into a bit cell the less LM pill camp and the LM pill camp talk past each other. It's like I
+think it's actually very possible that both what LM can do which is maybe scaling what a top doctor the treatment
+you get at like the top doctor or the top place scaling that around the world like unbelievable potential impact of
+that right if you're able to do that and then you know I think what you're talking about which is certainly still on the come for for a lot of these
+things is okay and well even better than the top doctor like how do you how do you go do that but it's more than just a top doctor
+right because I mean what the LLM can do well is you know it it can sort of regurgitate knowledge that you can read
+in books mostly. Um but if medicine was
+only kind of about accumulating u declarative language that declarative
+knowledge that exists in books. You can be a doctor by just reading books and you can't be a doctor by reading books.
+You have to do you know residency and you know actually kind of listen to the heart and like press on the belly and
+things like that to you know diagnose appendicitis or whatever it is. Yeah. Yeah. Right. It's interesting. I would be very
+curious to see whether LLMs themselves can provide like, you know, top quality healthcare uh globally. We'll we'll have
+to check back in on that one. It seems it seems like there's pretty pretty close. You know, I definitely also want to hit on your your time at Meta because you spent over a decade building like
+one of the most respected research labs in the world. You know, obviously you recently left. As you reflect back on on the time there, what do you think you
+got like most right and most wrong in your time running fair? So the thing we got right is uh you know building a a a
+top research lab that really sort of innovated produced a lot of the sort of
+basic methods and science and tools like PyTorch um that are useful to the entire
+industry right [snorts] uh I mean the entire industry is built on PyTorch basically except for a few people at
+Google [laughter] and I think a a culture of uh you know
+openness and and and kind of you know scientific process which I think is is
+necessary for breakthrough innovation. Yeah. Um because you know there there's
+a lot of there's a whole chain of innovation right you have blue sky research uh new concepts a lot of that
+takes place in universities some of that takes place in advanced research labs in industry which can be counted on the
+fingers of one hand uh you know Google is a good one uh you know fair was a
+good one hopefully will still be I'm not sure um and you know a few others then
+you have Okay, this is a good idea like let's push it forward and see see if it can be uh made useful. But still at the
+research level in a in a sense of we're not going to fool ourselves. We're not going to try to just you know find
+a solution that just works for this problem. We we're going to see if this
+technique that we imagine or we picked up from other people in the community can actually be pushed and and be be
+made uh practical not as a product but like we can show that it beats some
+record on you know some uh task or benchmark. And then the next stage is
+for the the company that hosts the research lab to say okay now we're going to push the button devote you know big
+engineering effort to that uh to that vision and then push it forward. That is
+where a lot of projects fail. That's that's where a lot of companies kind of fail to pick up. Ma was actually pretty
+good at this. Okay, but far from perfect. It was not like you know
+textbook example of how you do it wrong like you know Zerox Spark like totally missing out on you know gooey interface
+and you know mouse and windowing systems right meta was you know kind of missed a
+few steps essentially and and it's part partly just organizational it's partly
+because uh you need a an organization that is pretty close to research but not
+completely a product organization to take the relay of, you know, pushing a
+technology a little further, not making product with a three months deadline, but like, you know, pushing
+things and we had that at one point. Yeah. At at at Facebook and Meta. Uh, and then
+we lost it and fair was basically isolated within the company. Had lots of
+ideas that nobody picked up on. And then in 2023 the genai organization was created by basically taking about 60 or
+70 scientists and engineers from fair right initially and then it built up u
+but then it was under so much short-term pressure that basically that organization ji didn't have time to talk
+to fair and so instead of being at the forefront and innovating in
+LLM uh ji basically had to focus on short-term things and became very
+conservative. So there was a gap basically impenetus mismatch between research
+Yeah. and uh and is that kind of what happened with llama 4? Yeah. Well even with you know llama 3
+starting with llama 3. So LMA 1 was a small project within fair 2022 early 233
+Genai was created. The Lama people were basically moved to Genai. They started
+working on Lama 2 and then a bunch of them realized u like I could do a startup. So that was the genesis of
+Mistral. Yeah. Okay. two of the authors of uh LAan
+basically created Mistral with another guy uh from Google and and you know a
+few people kind of left and sort of did other things. This is not a kind of a happy time at uh at Meta for various
+reasons. And so there were, you know, a bunch of people kind of left and then the the the GI organization which kind
+of took over uh Lama 2 to some extent and LMA 3 and four was
+under so much short-term pressure that they became very conservative and you know it's combination of disapparity of
+of the groups but but like pressure from the leadership and I mean there's many
+ways things can go wrong and you can't blame anyone in particular. killer. But um but yeah, that's kind of what
+happened. I mean, it feels like a lot of these organizations obviously are under short-term pressure right now because there's just a incredible race going on.
+And so I'm curious like obviously this this, you know, fair setup you had and kind of there's a similar one, you know, at Google for for many years and
+certainly many researchers running around open anthropic trying many different things. Do you think like that
+is still possible going forward or like is the only you know is one of the only paths to leave and and do your own
+company or or you know are there still places within the industry that you think have this like original ethos
+affair even amidst the race that is race dynamics that are happening. I think there are a few places within Google
+research and deep mind that where where people actually do research. Um but
+increasingly the industry has become more kind of closed right. I mean Google certainly climbed up and you know meta
+and fair even is kind of going a bit in the same direction. there are restrictions on publication now like
+more restrictions uh and so it's less appealing for people who really want to kind of do
+breakthrough research and you know they they don't get as much resources if they do something that is relevant in medium
+term they're told not to talk about it and and so it's it's not you know it's not a good atmosphere I think for for
+breakthrough it's not conducive you know I mean basically the g the best way to get breakthrough research
+of the type that you know you we were getting in the early days of fair and uh
+you know at Bell Labs in the good days in Zero Spark is you hire the best people and those are people who have
+good nose to know what to work on what projects to kind of attack you give them
+the means to succeed and you get the  out of the way all right pardon my
+French [laughter] yeah I mean I'm curious like what you you know what impact it then ends up
+having on the broader research communities obviously one of the legacies of fair is you trained you know uh so many researchers right and and
+like they're all throughout the ecosystem um and it feels like now the maybe equivalent of those people that came in younger in their careers at fair
+you know they're joining these these labs uh with maybe shorter term priorities and focus and I guess I'm
+wondering like you know uh in this current ecosystem where it feels like a lot of younger people getting into the field are thrust much more into these
+like short-term dynamics does that change anything about the way the the ecosystem evolves well I mean the people who tend to want
+to work with me are generally people who uh you know sufficiently crazy to do it
+first. Very fair. And uh or or you know kind of subscribe to the the whole idea that uh in
+academia and during your PhD you should work on the next generation of of AI system, you shouldn't work on the
+current generation. Yeah. Like if you work on LLM in in academia now it's incredibly boring. At least to me it's boring. is basically kind of
+studying how how and why LLMs work and explaining why they work or what the
+limitations are. It's like descriptive science. It's really not you know kind of creative very creative like I I don't
+find that particularly interesting. It's useful. Yeah. Uh and you know if you really want to kind
+of show how to do new things with LLM like you're not going to have the GPUs you need for that.
+Totally. So like forget that. like don't work on LLM if you're doing a PhD like there's
+no point you cannot contribute how do you know it was time to leave meta it sounds like it was you know uh you know you were thinking through some
+of these things over a period of time you know was there a moment that it crystallized or well it was a combination of things right uh so first of all you have to
+understand u a lot of people have like completely wrong idea about what my role at at Facebook was so I joined in late
+2013 really kind of started early 2014 the first four and a half years I was
+director of fair. So I built the fair organization uh set up the culture, hired the key people and and sort of
+managed it. Um and after four and a half years I
+stepped down from that uh role for a number of reasons and I became chief AI
+scientist. Okay. So, uh the the the reason is uh you know I was
+basically getting close to uh turning 60 [laughter]
+first of all 58 and uh I just don't want to do management. Okay. I mean I was
+ready to do it for a while to get the the organization started but I'm just
+not good at it. It's not the thing I'm I'm more like a you know scientific or technical visionary and engineer and
+scientist. So uh other people are much better at management than I am. [laughter] So I basically stepped down uh you know
+two other people uh Joel Pino and uh Antoine Basically yeah took over uh the directorship of of fair
+and I became chief air scientist. So um I was reporting to the CTO
+and uh and you know had goals of
+u basically restarting a research project that I thought was necessary
+because the ambition of fair was always to build intelligent systems. Yeah. Right. And I thought you know I put my
+own research in in parenthesis while I was running fair. I just didn't didn't have the time and I thought it was
+important to basically kind of design the architecture of of like human level
+you know human like AI systems uh and you know I had come up with the
+concept that this was going to be based on self-supervised learning and on you know prediction from sensory signals
+like video things like that I mean this is these are old ideas and uh and world
+models. I actually gave a keynote at Nurips in 2016 where I I said like this is the way AI
+research should go like world models predict you know consequences of your actions and plan and I said like you know RL is not the thing that will take
+us there because it's too inefficient supervised learning has shown its limits and so the future is self-s supervised
+learning and wild models so how do we do self-s supervised learning and wild models and and I started a few projects
+on this with like a few avenues that didn't pan out some projects on video prediction and stuff like that and and
+then came up with this uh concept that you could train self-s supervised learning from video but you have to
+train the system to make prediction in representation space. So that's the idea of Japa and if you have JPA you can turn
+it into a world model by making it action condition and then you can use it for planning. So I had this idea around 2020 and in
+2022 I wrote a long vision paper. So I said I'm just going to write a paper with my entire vision. Okay, spill all
+my secrets like I don't care. Uh but maybe they will rally a bunch of people to to that vision. And boy did it work.
+Uh [laughter] because not only did I rally, you know, a bunch of students who kind of came
+working with me at NYU or in Paris because they wanted to work on this, but also a whole team at at at fair who said
+like this sounds great. That's what we want to work on. And then Joel Pino
+said, "Well, maybe this should be like a major mission of uh of affair." Uh we
+called it advanced machine intelligence. That was the internal name of the park. Interesting. Okay.
+And they let you leave with it and now it's the name of the company. Um and you know, Mark Zuckerberg, you know,
+kind of kind of read that paper and knew what it was about and subscribed to the project.
+and Andrew Budworth the CTO also and uh M Shrefer the uh previous CTO uh Chris
+Cox who was my my direct manager chief product officer also love the idea so like you know there's a lot of support
+in the leadership uh about this project that we internally called AMI
+and uh and you know and and and it started really kind of working uh for
+for video but and you know company kind of refocused all of its effort on LLM
+despite support from Mark and Andrew uh Buzz we call him Buzz um
+you know the all the layers below like didn't see the point I think and so
+politically it sort of became a little difficult uh the applications as as I said of Japan one model are there are
+applications in like you know wearable agents and stuff like that but and robotics but but Meta chose to get rid
+of its entire robotics AI group um that was led by Gita Matalatic who is now
+Amazon and so you know clearly it wasn't the right environment anymore most of the
+applications were in industry that Meta had no interest in uh fair was
+increasingly getting pressure to kind of basically help MSL with uh LLM times.
+Um, so yeah, you know, it it made it made clear and and that, you know,
+throat ramming uh worked really well with investors too because when I had to raise money for Emmy,
+everybody knew my story and any anybody knew you know many investors um you know
+staff at various VCs that read my paper and or had listened to my talks and had bought my story. they were realizing,
+you know, LLM had limitations and, you know, were kind of
+interested by the idea of like building the next generation AI systems, I guess. Was was like the scale acquisition like part of this catalyst
+of of like the pure LLM focus internally? Yeah, definitely. I mean, there's probably some, you know, other reasons
+to it. I think, you know, maybe um [snorts] uh I don't have any sort of inside information to comment on this,
+but uh it's possible that Mark sees in Alex kind of a potential successor to
+himself, like a younger version of himself. Yeah, I feel like like uh a lot of the popular narrative, you know, in the
+media has been like, oh, like, you know, when Alex comes in, it then gets harder to run like a research organization. You know, I don't know if that to the the
+extent you felt that or Well, okay. So here's a big misconception uh about my role, my
+relation to Alex and how AI was run at Meta. I had zero technical contribution
+to Lama like none whatsoever. My one contribution to LMA was to argue for
+open sourcing Lama 2 because there was a big internal debate whether we should open source like the legal department
+was against it, the policy department was kind of against it. uh the comm's
+department was for it. All the engineering side was for it like Buzz was for it. uh so there was like
+enormous internal discussions at a very high level you know 40 people from Mark Zuckerberg down every week for two hours
+[laughter] for months. So, so really it was, you know, kind of a a big debate
+internally and I really really really you know pushed um argued for for the fact that uh you know up and and Buzz
+also was was very vocal about it that um the uh you know safety risks were
+basically overblown. Uh the opportunities to create an industry were
+extremely strong. um and that we were going to jumpst start the AI industry by open sourcing LMA 2 and in fact that's
+exactly what happened. So but I had zero contribution to to LMA positive or
+negative like I I didn't do anything to stop it or slow it down or anything. There was a lot of people working on LLM
+within fair and it was fine. Uh I never said anything against it. Okay. Um other
+than saying this is not a path to human intelligence but it's fine. uh it's useful [laughter]
+uh you know same thing for speech recognition translation right uh so uh
+and particularly since uh 2018 when I stepped down from being director affair
+uh I didn't have any direct influence on what people were working on other than
+you know basically publishing my my vision and then rallying people uh
+around uh around my project but you know they they were working with me because
+they wanted, not because I was their boss. I wasn't telling them to work with me. Um, and so um so I had no positive
+or negative influence on LLM, okay, [laughter] within within meta uh uh and
+uh I had some influence on the strategy, but it was more like the long term and and like how how you maintain a research
+lab and things like this. And in the last year and you know I mean starting maybe early 24 uh and certainly in 25
+the the the way fair was kind of the direction in which it was moved and
+managed basically did not correspond to what I thought was necessary to preserve
+um you know innovation research and breakthrough and preserve the good people like a lot of good people have
+left already. Yeah. And I guess a lot of, you know, you probably was harder to get people to work on the stuff you were working on
+internally and and I'm sure there was pressure for you yourself to work on a lot of the cellm stuff. Yeah. Yeah. No, but a lot of other
+people also have left, right? No, it's it's it's fascinating. I mean, one thing I'm struck by throughout our whole conversation is I feel like you're
+you've like had a remarkably consistent point of view like you know on the in
+the space like you know for a long time and you can go back to your you know a bunch of the earlier talks you referenced. You know, obviously it is a
+fast-moving space and and a ton of interesting things have happened in the last year. What's like one thing you've changed your mind on in the last year?
+I mean, the whole idea of uh what we used to call unsupervised learning that we now call self-supervised learning. uh
+you know until about 2003 the whole idea of unsupervised pre-training where you
+get a good representation for the input data and then you either fine-tune the
+the model with a little bit of supervised label data and it sort of give us you know some evidence that this
+whole technique could work. I tried to apply this to video because ultimately what I wanted to do is train a system to
+understand how the world works by just watching the world go by. Yeah. Right. I mean that's the basic idea.
+Uh and sort of started to argue for this in the sort of you know early 2010s
+um did some some work on simple video prediction. We didn't have GPUs. Okay. uh and uh and then sort of
+doing this more seriously about after the creation of fair uh by doing pixel
+level video prediction realizing that wasn't working uh but then arguing for self-supervised learning. Okay, this
+whole idea of like training a system generically not to solve a task but to basically just predict and then using
+the representation that is learned this way as input to a downstream task that you can train supervised or
+reinforcement or whatever. Uh so that's that was a bit of the topic of my second
+half of my keynote at uh at NIPS in 2016. It was still called NIPS at the time. Yeah, of course.
+In 2016. And then I I kept kind of, you know, kind of pushing for this idea and tried to kind of discover some methods
+to to get that to work. And what surprised me is that that became incredibly successful, but not for
+video, for language. LMS basically are a a
+blindingly successful example of self-s supervised learning. No, that that they are. Um well, I feel
+that's it's almost like the perfect note to end on, but I want to make sure to leave the last word to you. Um I feel like there's I mean all our listeners
+are are very familiar with you, but I want to at least give you the mic to point them to anything that you think they should uh they should check out
+with some of the new stuff you're doing or I don't know any of your your work you want to point to. Uh the mic is yours.
+Okay. Let me tell you um one thing. An LLM works because when you have a
+sequence of discrete symbols, making predictions is easy because there's only a finite number of possible symbols in
+your language, 100,000 possible tokens or something like that, right? And you can have your
+neural net produce a a probability distribution over all possible tokens.
+And then you can sample from that distribution, shift the token into the input, and then produce the next token.
+and you can do autogressive prediction. Okay, so that's a special case. If you have the real world, you can't use a generative model. So now you have to
+train a system that learns a representation and makes prediction in the representation space. There's a big issue with this which I didn't think
+until about five years ago that was easily solvable even though I invented
+one technique to solve it, you know, decades before that. Uh and it's the problem that
+um if you take two inputs, let's say the initial segment of a video and the
+continuation of that video or you take one image and a corrupted version of it, you run them both through an encoder and
+you train a predictor to predict the representation of one from the representation of the other. There's a
+very simple solution where the system basically predicts a constant representation. Another prediction
+problem becomes trivial. That's called a collapse. representation collapse.
+So the big question of self-s supervised learning for JEPA for the joint embedding architecture is how do you prevent collapse? Yeah. The solution
+that uh I came up with many years ago 1993 is uh contrastive learning. So
+basically you have examples of things that should be predictable from one another and an example of things that
+should not be predictable from one another. Uh it turns out this method works but uh it doesn't scale with
+dimension. doesn't scale very well. Um there's another technique that was actually invented by Jeffington and Sue
+Becker in the late 90s late 80s I'm sorry. Uh where you have those two
+networks and you try to maximize the mutual information between them. Uh Jugger is mad at me because he also came
+up with a version of [laughter] this in 1992 and he says that's Japa. It's not
+Japa. It's just another way of preventing collapse of a joint embedding architecture. Okay. Um, [snorts] which
+is fine, but it's not, you know, it's a particular way of doing it, which I I
+don't think is particularly good. Um, so um,
+okay. So now you have this JPA architecture. You have to come up with a good way of preventing collapse and there is a couple ways. So as already
+said, contracting methods I think is not a good uh a good approach. Uh there's
+another set of methods that are kind of called distillation methods
+and they do prevent collapse. We we don't know why. So a good example of that is dino or dyno.
+Y um that's a joint embedding method using the distillation method. Basically one of the encoders trains the other one is
+like used as a teacher for the other encoder. Uh and the encoder that is
+being trained you do back prop to it. the one that is not being trained you don't do back prop but you share the weight with the other one with some
+exponential moving average it's a collection of recipe there's a paper from from deep mind about it called
+Boostrap your own latent which uses this trick that trick is derived from some intuition from reinforcement learning
+and somehow it prevents collapse but we don't know why okay there's a few theoretical papers on it that explain
+why it possibly might work in some simple cases but it's not satisfactory
+the function the cost function you think you're minimizing you're not actually minimizing and so you can't monitor it
+actually goes up when you train I mean makes so we don't like this method but it works and some of the models we've
+trained large scale video representation learning system VJA VJA 2 vja 2.1 they
+train using this method uh JJ also but we're moving away from this and now we
+have uh a few papers that came out recently on a explicit regularizer to
+prevent this collapse which basically tries to maximize the information content coming out of the encoder. So
+it's in the same family as the Becker and Hinton from ' 89 and the Schmidber
+1992 and a bunch of others since then and to some extent also contrastive techniques also it's not although it's
+not sample contrastive um and then the question is how do you measure
+information content? how you maximize the information content coming out of a neural net. And the problem is if you
+want to maximize the quantity, you either need to be able to measure it or you need to have a lower bound on it.
+Yeah. Uh information content, we only have upper bounds. We cannot measure it. We can only come
+up with upper bounds. And so we take an upper bound and we cross our fingers. Okay. And it kind of
+works. So the latest one is called SIGreg. That means sketch is isotropic
+gaussian regularization. We had a previous one called VC rag or vicrag
+variance invariance coariance regularization. Um and the cig stuff is really cool. Um
+so this is some work by uh Randall Bistriero who's was a postoc with me is
+is a assistant professor at Brown uh now and uh it basically consists in forcing
+the distribution of variables coming out of the encoder to be uh John Gaussian
+essentially sort of maximize information if you want it's just a very different way of doing it than you know what what
+Jurgen Schmidber [laughter] and Sue Becker and and Jeffon were Um and so uh this this is super
+promising in my opinion and we have you know variations of it you know one that can produce sparse representations
+another one that can produce uh isotropic representations but not necessarily gaussians and we have a
+paper with Randall uh student at at mil
+that where we train a world model with this it's still small scale but we I
+think is super promising. So if you want to read one paper, read that paper. It's
+L world model L E world model. Awesome. We'll definitely link to it too. Yeah, I'm not responsible for the name.
+Random [laughter] picked up. Amazing. Well, Yan, seriously, thank you so much. It is such a a privilege to get
+to spend the last bit of time with you and uh really appreciate you coming on the podcast. Thanks for having me. That was fun. I'm
+Jacob Efron and this has been Unsupervised Learning, a podcast where I get to talk to the smartest people in AI
+and ask them tons of questions about what's happening with models and what it means for businesses in the world. As I
+hope is clear, I have a ton of fun doing this. It's a nights and weekends project in addition to my day job as an investor
+at Redpoint. But our ability to get these incredible guests on really comes from folks like you subscribing to the
+podcast, sharing it with friends. It's really what ultimately makes this whole thing work. And so, please consider doing that. And thank you so much for
+your support and listening. We'll see you next episode.

@@ -1,0 +1,762 @@
+T-Max is the one tool that every single
+agentic engineer needs. Now, what even
+is T-Max? T-Max stands for terminal
+multiplexer, aka a tool that lets you
+run multiple terminals at once. But
+that's not all. The thing that makes it
+essential for AI agents is that it keeps
+your terminal alive even when you
+disconnect. So, if your laptop dies,
+runs off a battery, if you want to run
+/all in Hermes or Codex, or if you're
+doing a large refactor, all of these
+require your agent to run for multiple
+hours without T-max, you really cannot
+do that. So if you're using cloth code,
+Codex, Hermes, Pi, or any other agent
+and you don't have T-Max, you really are
+missing out. Now here's where it gets
+really OP. While most vibe coders
+develop all their apps and projects
+locally on their MacBook, on their
+laptop, Agentic engineers use T-Max
+running on a VPS to run multiple
+different agents at once for hours,
+sometimes days at a time. And by the
+way, all of the famous AI developers
+like Peter Steinberger, the creator of
+OpenClaw, or Mario Zakner, the creator
+of Pi, all of them do this. So, I would
+highly recommend you block out the next
+20 minutes, sit down, and actually learn
+T-Max. First, let me show you how to set
+it up locally so you get a taste of the
+power of T-Max. But then I'm going to
+show you the real deal, which is T-Max
+on a VPS and then SSH into VPS. Let me
+not get ahead of myself because I don't
+want to overwhelm you. So, first, open
+up a terminal. Any terminal is fine. If
+you're on Mac OS, you can use Brew. But
+basically, the way to install T-Max is
+very simple. Just type in brew, install
+T-Max. Boom. Just like that. And by the
+way, if you get stuck at any point in
+this video, just ask CH GB or CL. For
+example, let's say you're not on Mac OS
+and you're getting confused. Well, I'll
+show you how to solve that, right? Boom.
+You take a screenshot of what I'm
+showing and you paste it into Cloud or
+into CHBT and say, "Help me set it up on
+Windows. I'm not on Mac OS. How do I
+actually install this? Be very concise.
+So, don't make excuses. As long as you
+can speak English and have an internet
+connection, you can absolutely do this."
+Let me jump back into the terminal and
+then I'm going to do clear and t-max-v.
+Okay, we have the T-Max version.
+Beautiful. Let's do clear. And now I'm
+going to give you the main command you
+have to know to start a new session
+inside of T-Max, which is T-Max new-S.
+And then the name of the session. So
+that could be testing or, you know,
+YouTube or subscribe. If you're watching
+this and you want more of these
+technical videos, make sure to
+subscribe. And boom, here we are. You
+can see this green bar at the bottom.
+When you see it, that's how you know
+you're inside of T-Max. What that means
+is that we can run a command, for
+example, like ping google.com, which
+obviously will keep running and pinging
+Google. And then we can do the main
+keyboard shortcut which is commandB and
+D. This will allow us to detach. You can
+see detach. And we're back in the
+terminal. And we can do something else.
+For example, like pwd and any other
+command. We can launch cloud code do
+whatever we want. But the magic is that
+session is still running inside of
+T-Max. So when I kill cloud code here
+and I do clear, I can do t-max attach- t
+and then name of the session which was
+subscribe. And boom, here we are back.
+It's still pinging Google. Still the
+same terminal session. It wasn't killed.
+So this is really the magic of T-Max and
+obviously it can do a lot more. For
+example, I'm going to show you here
+little sneak peek, you know, splitting
+it into two. We can, you know, do a lot
+of fancy stuff inside of T-Max. All of
+which I'm going to show you in this
+video. But the main idea is that these
+sessions are persistent. You can detach
+from them. You can reattach from them.
+And you can use this to manage multiple
+agents at once, which makes it ideal for
+the era of agentic engineering. Now,
+when you want to close a T-Mac session,
+just type in exit and then close the
+pane. So I'm going to do Ctrl + C to
+stop this Google ping and do exit to
+exit out of T-Max. And to see all of
+your active sessions, just domax ls. And
+you can see that no server is running
+right now because we exited everything.
+Now to understand T-Max, you have to
+understand these three essential
+building blocks. Sessions, windows, and
+panes. And I think this graphic really
+explains it the best. We have the T-Max
+session which kind of wraps everything.
+Inside of a session, you can have
+different windows and in each window you
+can have different PES. A session is the
+whole workspace. Windows are like tabs
+in a browser and panes are split screens
+inside of a single window. Now the
+reason this works is because T-Max can
+persist spawn read and write terminal
+sessions programmatically. This gives
+the agents the powers to read other
+panes. Otherwise if you have two
+separate terminals the agent cannot
+access the other terminal but if you're
+using T-Max agents can see what the
+Azure agents are doing if they need to
+see it. So basically you can think of it
+as the substrate that the whole multi-
+aent setup stands on. Okay. So, I gave
+you a little teaser of how simple it is
+to install T-Max locally and run it on a
+MacBook. But the real power is using it
+with a VPS where these agents are all
+running on a VPS. So, you can have the
+most computer possible with like 2
+gigs of RAM. All you need to do is SSH
+into the VPS. You can run cloud codecs
+by cursor CLI, open code, anything you
+want on the VPS itself. And you can SSH
+through it through your MacBook from
+your phone. And all the development is
+happening on the VPS inside of T-Max.
+This is what all the top people are
+doing in AI development. I'm going to
+show you how to do the same. So, the
+first thing you need is a VPS. Now,
+personally, I run all of my VPS servers
+on Hostinger. It's one of the most
+affordable options and it's super easy
+to set up. So, I'm going to leave a link
+to Hostinger below the video. Just click
+on this landing page. Then, click on
+choose plan and select KVM2. This is
+more than enough to run multiple AI
+agents in parallel. So, here inside of
+the cart, make sure to select the
+period. I recommend going for 24 months
+because every month that goes by, I have
+more and more VPSs. So, that gives you
+the biggest discount. But also, if you
+want an even bigger discount, go to the
+right and click on have a coupon code
+and type in code David. Hostinger was
+kind enough to sponsor this video. So,
+if you use the code David, you get
+additional 10% off from your VPS. Then
+on the left, we can select a server
+location that's close to you and click
+on continue. This will redirect you to
+the checkout page. So, the last thing
+that remains is filling out your credit
+card details and completing the payment.
+Now, once you complete the purchase,
+you'll be redirected to your Hostinger
+panel where you can see everything about
+the VPS. If you don't see this screen on
+the left, you can click on VPS, select
+the one you just purchased right here,
+and click on overview. Here you can see
+all the stats, CPU, switch, memory, all
+that stuff. But what we are interested
+in is the SSH access. And again, SSH is
+one of these terms that can be
+complicated. It definitely sounds
+intimidating if it's your first time
+using it. But all that means is
+accessing your VPS through your MacBook.
+Okay? So your computer, you just access
+your virtual private server. That's it.
+SSH is the protocol that allows us to do
+that. So, what you need to do is copy
+this command. Literally click on this
+button right here. Open up your
+terminal. Paste this in. It's going to
+ask for the root password. If you didn't
+save that, which you should definitely
+save that during setup, but if you
+didn't, don't worry. Just click on here.
+You can easily change it. Generate a
+secure one. Boom. Of course, do not
+share this with anybody, otherwise they
+can just access your VPS. So, make sure
+to store this securely and click on
+confirm. And within couple of seconds,
+Hostinger will change your root
+password. So, when you go into the
+terminal and you click in, paste it in.
+Boom. Here we go. We are logged in into
+our VPS sshed from my MacBook, right? So
+I can control the virtual private server
+but everything will be happening on the
+server on Lithuania. So even if my
+MacBook explodes, doesn't matter. All
+the agentic development is happening on
+the server and I can connect from a new
+device from my phone. There's apps like
+Terminus, which if you want me to make a
+video on that, make sure to comment
+below. But this is the beauty of having
+a VPS. You eliminate the risk. You put
+everything on the server. you don't
+drain battery of your computer and you
+can run heavy operations that would
+require an expensive computer. So if you
+don't have one, this is the way. But
+this is the way no matter what because
+more and more agents are running for
+hours. Last year, you know, the longest
+agent ran for like 5 10 minutes. Now
+with features like /go inside of Codex
+and Hermes, agents can run for days and
+you would have to keep your laptop or or
+computer powered on and awake for all
+that time otherwise it interrupts.
+That's obviously very inefficient. So
+instead, we're going to use T-Max on a
+VPS, SSH into that VPS, and run all of
+our development on there. So the first
+thing you want to do is type in T-Max-V
+to test if you already have T-Max. As
+you can see, we do, which is beautiful.
+It saves us some time. I think it comes
+preconfigured on Hostinger. But if you
+don't, I'm going to show you how to
+install it. Type in a update to make
+sure you have the latest version. We can
+do clear and type in a install T-Max.
+And this will install T-Max on your
+Ubuntu Linux VPS. Clear. do tmax-v
+and as you can see we have version 3.4.
+Now the next command you absolutely must
+run non-negotiable and that is to enable
+mouse support. So run this command echo
+set gm mouse on. I know it's a pretty
+complex command that's why everything
+from this video I packaged it into a
+single bundle that you can just click.
+It's going to be the second link below
+the video and you can get all of the
+terminal commands, all the presets,
+everything I'm going to show you in this
+video completely for free. So again it's
+the second link below the video. Go grab
+it now. Okay. So we can type clear again
+and we can start our first T-Max
+session. T-Max new-s agents can name it
+agents. There we go. We can see the name
+right here at the bottom and we can
+actually start doing some of the
+multipplexing you know using it to run
+multiple terminals at once. So for
+example here we can do top to just uh
+get a bunch of data about our VPS. Then
+we can do CtrlB and then percentage.
+This will split it horizontally. Right?
+So again CtrlB is the main command
+inside of T-Max. The tricky part is that
+you have to let go after you run it.
+Okay? So it's not Ctrl + B percentage.
+It's Ctrl +B let go and then press
+percentage. Another thing you need to
+know is CtrlB quotation. This will split
+it vertically. Right? So same thing
+CtrlB to activate the shortcut and then
+quotation to split it. So here I can do
+like ping one one one. This is the
+public cloudflare server. And then if I
+want to split it vertically I can do
+CtrlB quotation and have another
+terminal here. And I can do something
+else you know ping google.com.
+Boom. And and with the mouse support we
+can click around actually and you know
+split these terminals and you can do
+this on multiple levels. You can do
+controlB percentage again and look look
+at this. Look how many terminals we have
+running. Right? Isn't this beautiful?
+This is the magic of T-Max. Also we can
+do exit to exit any of them right. So we
+can keep splitting um indefinitely
+basically. Boom. Ctrl + B percentage and
+uh yeah each of these could be separate
+AI agent. Now we haven't installed any
+agent so far. So that is going to be the
+next step. installing Cloud Code and
+Codex CLI on our VPS so that we're not
+just running some pings, but these are
+actual agents doing actual development
+work. So, let me show you how to do that
+right now. So, to install Codex CLI,
+just type in Codex CLI and click on the
+open developers link. It's literally a
+single command. So, just copy that.
+Boom. Back to terminal. We can actually
+exit some of these so we don't have so
+much mess. This is why you enable the
+mouse support because without that you
+actually cannot click. You have to do
+CtrlB and arrows. It's very annoying
+with mouse support. It's much easier.
+Also, another thing we can do Ctrl +B
+detach, right? So, Ctrl +B and D. And
+then if you want to kill everything,
+that's T-Max kill server. So, actually
+before I run that, I'm going to do T-max
+ls. It's going to see, okay, agents one
+window. And obviously, we can uh
+reattach attach t agents and we're back
+in. Beautiful. Just like that. But if
+you want to kill everything, just it's
+kill server. T-max kill server. Boom.
+And now we do tmax ls to list out
+everything. Nothing is running.
+Beautiful. So now just pasting the
+command from openi docs to install codex
+cli. Let's run that. And it's especially
+powerful. I'm going to show you close
+code as well. But like codex cli with
+the /go feature has been made for this.
+You really need a VPS to run this
+effectively because otherwise you need
+to keep your laptop or PC up at all
+times. Not just turned on but awake. It
+cannot you know power off. It cannot be
+closed. All that stuff. So let's launch
+codex. So this is what it's going to
+look like for you when you do it for the
+first time, right? You type in Codex and
+then you have three options. JGBT device
+code and API key. Easiest is device
+code. I'm going to click that. And then
+we need to copy this, right? Copy this
+link that uh the terminal gives you. Go
+into your browser and then paste that
+in. And then you need to just log into
+your chbd account. All right. This
+requiring 2FA. Okay. Let's put that in.
+Boom. Now I'm going to select my
+personal account because I have a CHBD
+pro plan, the $200 a month, which is
+more than the team plan. But it honestly
+doesn't matter. Just make sure you have
+any paid plan. And then back to the
+terminal, we have this nine-digit code.
+Copy that, paste it in, and we should be
+good. If we check here, we should be
+logged in. There we are. Okay. So, hit
+enter. The first thing is to set the
+model obviously, right? The model GB 5.5
+medium. That's a good baseline. And make
+sure to do /fast uh so that it is 1.5
+speed. And send a test message. And it's
+working. Okay. So, what we can do is
+totrl C to kill this. We can do t-max
+new session. Maybe we can name it test.
+As you can see, the green bar at the
+bottom means that we are inside of
+T-Max. And I'm going to do codeex-
+yolo to launch a codeex. Then I'm going
+to do ctrlb percentage to split the
+t-max. There we go. And we can launch
+another one. Codex- yolo. And now you
+can feel the power, right? You can have
+these codexes work on the same project,
+different features or different
+projects. Now, let's say I click in
+here. Hey. And I'll do Ctrl +B quotation
+parks and we split it vertically. So
+here I can do another codex. Boom. Boom.
+And this is how you run multiple agents
+on a VPS persistently. So I can do /go
+and say build a full stack web app that
+is a clone of uh reddit.com but built
+for AI agents blah blah blah. Whatever
+you want to do, right? And this goal it
+will run for hours. Maybe you can set a
+better end end state. The end state
+should have all features with unit tests
+and it should be you know including
+integrated database deployed on
+cloudflare whatever you want to do as
+the end state but this /go feature can
+easily run for 24 hours. If you wanted
+to do this locally you would have to
+have your computer up for 24 hours which
+is very unrealistic and it would be
+eating your battery. It would be um
+distracting you. You have to keep it
+open. You cannot accidentally close the
+tab. With T-Max, you can have multiple
+agents running at all times. And the
+best part is you can detach. So you can
+still use the same terminal. Command PD
+and I'm detach. And I can still you do
+like a ls, you know, figure out what's
+there. PW I'm on the root level. I can
+see, you know, what's on the VPS. I can
+cd I can make a directory, you know,
+YouTube. I can cd into YouTube, you
+know, and you can do whatever you want
+on the same VPS. And then always to tmax
+ls. You can see, okay, it's named test.
+If you forget your name, that's helpful.
+You know you can do tmax ls to see the
+name of that session and just tmax
+attach- t test and we're back in and
+these agents will be running. That's the
+beautiful part. Now let's install cloud
+code so you feel the power of having
+different agents running into T-Max at
+all times. So just go to Google type in
+cloud code install clo install. There it
+is. Click the first link. They also have
+a oneliner installer. So just copy that
+back into terminal again. The detach
+controlb you need to learn this. Okay.
+You need to learn that command
+controlbd. It's essential. Paste that
+in. It's going to install a cloud code
+cli. And actually, while this is
+installing, I should have run it inside
+of a t-max. That's a rookie mistake.
+Anyways, what we can do actually is I'm
+going to do the same command that we
+just ran to attach into test. And I'm
+I'm going to start this create a new
+deer named web app. And in there build a
+full stack web app with swelt plus vite
+that is uh for monitoring flights using
+some free public API build the full
+thing end to end. So this is going to be
+running for 5, 10, 15 minutes, I don't
+know. But in the meantime, we can just
+do CtrlBD and we can continue using the
+same terminal because it's running
+inside of T-Max. So we do TMAX LX, we're
+going to see that it's running. And then
+in the meantime, we can continue with
+the cloth code install. So I'm going to
+do cloth and we need to authenticate the
+same way we just did with Codex CLI. So
+we have the subscription, console
+account, and third party platform. I'm
+just going to go subscription. It's
+probably the easiest. Obviously, if you
+don't have cloth subscription, use the
+API or something. Boom. Paste that into
+our browser here. Authorize. Need to
+copy this code. Paste that here. And we
+should be good. Enter. Enter. Enter. And
+we're here. Let's do /model to select
+model we want. Okay. Opus is by default.
+Let's send a message. Hey, there we go.
+So that's how easy it was to install
+both codex CLI and close code CLI. But
+we're not interested in this. What we're
+interested in is running T-Max. So let's
+do again t-max attach-t test. As you can
+see, this agent is running. It did a
+bunch of stuff in the meantime. Also, by
+the way, the reason you need to do the
+mouse command, which again is going to
+be in the bundle with everything else
+shown in the video, go get that. It's
+the second link below the video. It's
+completely free. So, get it. I'm going
+to email you all that stuff, including
+the mouse link because you need to
+enable the mouse. Without that, you
+cannot scroll. You can't even scroll in
+T-Max. You have to do everything by hand
+as um these like tryhard DevOps experts
+who have mastered every single Linux
+shortcut do. I mean, shout out to them
+because without them, tools like this
+wouldn't exist. But, you know, we're not
+as cracked as them. I still want to use
+my mouse to just click around and scroll
+around. So, definitely enable that
+command. But, as you can see, this agent
+has been running. And we can, you know,
+maybe kill this one. Ctrl + C and
+instead do clot dash dangerously skip
+permissions. It cannot be used whatever
+just normal clot. And we can say um run
+ls and tell me all the dares we have.
+And we can have this development running
+on the VPS permanently even when I close
+my laptop. And again, we can use apps
+like Terminus. If you don't have
+Terminus on your iPhone, definitely get
+it. It allows you to SSH into your VPSs
+and manage them through your phone. So,
+you know, if you have like a Hermes
+agent running or open running and they
+crash, sometimes you're not on your
+computer, right? So, you can easily fix
+them from your phone if you have
+terminus. But the main thing is you need
+a VPS. If you don't have a VPS, you
+cannot SSH into it. So really moving
+more and more of your stuff, your your
+information, your agents, your
+development work onto a VPS is the
+future. So you either wait until it's
+obvious and then you're going to be the
+last mover or you do it now and you're
+one of the first movers because most
+people still don't know how to use it.
+Especially Vive coders and stuff like
+this is really the difference between
+VIP coders and engineers. People who
+actually embrace software, they embrace
+all the tools that exist and they have
+the best possible setup to get the most
+work done in any given minute. You don't
+want to be using ineffective tools,
+right? And again, this is running on our
+VPS. It's building the app. You can see
+that we have the web app. So, I'm going
+to say go into the web app and explain
+what the state is. Be concise. Yeah. So,
+you can run a CL code here. That's like
+more of a explainer advisor consultant.
+You can run multiple codexes that are
+building different features. You can
+click here. Maybe this guy is uh you
+know lazy. So, you can do another
+session here. Claude. Okay. Maybe maybe
+this one is kind of weird. You don't
+like this LI. So you can exit that and
+do Ctrl + B percentage to split it
+horizontally and do a clot here. And
+this one maybe it's taking up too much
+space. So I'm going to do CtrlB
+quotation mark. And maybe we can run
+another CEX yolo here. And this is the
+beauty of T-Max. You can run many agents
+at once in a clean user interface with
+easy switching. And if you need to
+detach, command B. Boom. Detach. And I
+can start another T-Max session. I can
+do T-Max new- s and maybe do a different
+web app. Maybe this can be a 3D game.
+Okay. Okay. And now here we're going to
+do another codeex yolo. Let's actually
+zot the cloth. And I'm going to do
+create a new deer named game and build a
+nice 3D web game in a single HTML file.
+And then I'm going to do command BD
+detach from this. I'm going to do tmax
+ls. We can see all of our sessions. We
+have 3D game. We have test. So I'm going
+to do attach to the test one. See how
+this development is going. Okay, this
+guy is still running 4 minutes 30. This
+guy already explained it. Let's see
+what's happening. It's real working.
+Okay. Want me to run it? Improve the
+docs. Command BD detach from it. We can
+do clear demox attach-dame.
+Let's see how this is going. It's still
+brainstorming. Thinking some more.
+That's a new feature in cloud code. All
+right. So, obviously we haven't launched
+with dangerous escape permissions. So,
+that's why it's asking for everything.
+But, uh, yeah, you get the point. We
+have development running on a VPS. My
+MacBook is running smoothly. You know, I
+can open up activity monitor. My memory
+is probably very low. I mean, I'm
+recording with OBS, so that is going to
+be taking up some time. But, uh, you
+know, my battery is fine. If I was in a
+cafe and and wasn't connected to
+charging, this would be a complete game
+changer. My battery wouldn't run out.
+Everything's running on a VPS. If my
+internet gets disconnected, my agents
+keep running. If my laptop runs out of
+memory, my agents keep running. If I
+need to close my laptop, the agents keep
+running. There is a massive difference
+between people who don't use T-Max and
+who do use T-Max. T-max on a VPS is
+non-negotiable. I'm certain of it and uh
+everybody in 2026 will have to adopt
+this or just not be as effective. Now,
+let me show you the biggest thing and
+that is completely killing the SSH,
+right? So, I'm going to kill this to
+prove the point. I disconnected. So, I'm
+on my MacBook, okay, on my desktop. I'm
+going to launch a new terminal. I'm not
+even SSH. So, back to Hostinger panel.
+I'm going to copy this again. Boom. Run
+it. I forgot the password to be fair.
+So, I'm going to reset it. Boom. Reset.
+Put that in. Let's do clear. This is
+completely fresh SSH. I killed
+everything. Killed the connection. But
+we can do t-max ls. Oh, and we have
+sessions running. This is the beauty of
+T-max persistence and the multi- aent
+right in the in the user interface.
+Really, this is uh it's essential. So
+now we can do again tmax attach- t test
+and we're back. Even though I completely
+killed the SSH, we can see that the app
+is running here and PM real flights.
+Okay. So I can ask how can I see this
+app? I'm sshed into this VPS via my
+MacBook. I'm going to give it the
+command. Here is the IP. Boom. Give me
+step by step. Be very concise on the
+VPS. Run this. Okay. So actually we can
+um we can easily do it here. Let me
+maybe click here. We can reuse some of
+these terminals. Where is it? Yes.
+Allow. This cloud code is useless. I'm
+going to control C to kill it. But I'm
+going to run it here. cdroot web app.
+Let's copy that. cd /root web app. What
+do we need to do? npm rundev d-host
+0000 0.
+There we go. And then uh on the we need
+to run on a MacBook command. So I'm
+going to do ctrlN to open a new terminal
+like this.
+And just copy this command. Okay, it's
+not copying. Now one caveat is when you
+copy something you need to hold option
+while you select it to bypass the T-max
+selecting. Okay. So then we have to go
+to this uh IP address and the port 5173
+because it's a V app 5173 and just HTTP
+before this. Okay. HTTP colash and this
+should work. SSH tunnel. So it needs the
+IP. So let's go back to hosting the
+panel. Give it IP. Here is the IP.
+Give me the updated command. There we
+go. Let's run it here. Needs the
+password. Let's give it that. So, and
+then we can go new browser tab. And
+here's our flight monitor built fully on
+the VPS. Look at it. And we can keep
+developing it, right? So, let's go back
+into DMAX. And all of this was built on
+the VPS by agents running inside of
+T-Max sessions. And now I can access it
+from anywhere. Right? We can push it to
+GitHub. We can deploy to versell to
+cloudflare add a superbase back end
+whatever we want to do. But the main
+thing is if I run a massive refactor
+like slash goal refactor the front end
+to be like Palunteer UI UX keep going
+until we have 20 plus working features
+all using
+OSS APIs for different global we can say
+like geopolitical
+data. Boom. is going to be pursuing this
+goal for many hours, developing our app,
+and I can do whatever I want. I can go
+for a walk, I can go to the gym, I can
+go grab a coffee, and this development
+is happening. Even if my MacBook
+literally gets shredded to pieces, even
+if it explodes, it will still keep
+running because it's on the Hostinger
+VPS somewhere in Lithuania and the Codex
+will keep cooking on that app and the
+app is going to be developed. This is
+the future running T-Max on a VPS, you
+SSH into it. I know there's a lot of
+different terminology, but as you can
+see, it wasn't that complex. We were
+able to install T-Max and cloth cloth
+code very quickly. We were able to set
+up a new VPS very quickly. I mean,
+hosting makes that easy. Codex CLI
+installation, cloud code CLI
+installation was also very easy when you
+have the subscriptions. If you don't
+have the subscriptions, why it's 226.
+Just get a subscription on any AI tool.
+All of this can be set up within 40
+minutes, maybe 60 minutes if this is
+your first time. So, now that you've
+watched this video, go ahead and
+actually do it because watching is
+useless without action. So, this will
+already put you ahead of 99.9% of
+people. Most VIP coders have nothing
+even close to this. They're completely
+scared of T-Max. They don't know what it
+does. They don't know how to set it up.
+They don't have a VPS. They're
+developing everything locally, just
+confused if they close their laptop, all
+the all their development stops. Their
+agents aren't running for multiple hours
+persistently on a goal. They don't even
+know what the SLG goal feature is,
+right? whether it's inside of Hermes
+when and even cloudcore has it/goal
+right we can say like u build a new 3D
+game shooter end to end and all of this
+can be running on a single VPS the the
+KVM2 plan from hostinger is more than
+strong enough and again if you don't
+have your own VPS use the first link
+below the video get your VPS today
+because it's essential no matter if
+you're running your automations your
+agents your deploy you can deploy your
+full stack web app on hosting VPS you
+can do anything with a virtual private
+server store your files there it's
+basically a computer that you don't have
+to worry about. It's managed somewhere,
+lives in a data center, and you know,
+it's a virtual private server. That's
+what it is. So, even if you're not a
+DevOps expert, even if you're not a
+developer, grab yourself a VPS and start
+using T-Max with multiple agents
+building your software for hours at a
+time, even while you sleep. Oh, and
+again, all of the resources, terminal
+commands, everything I showed from the
+video is bundled below. It's the second
+link in the description. So, if you want
+this, go get it. It's completely free.

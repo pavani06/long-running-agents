@@ -1,0 +1,347 @@
+Eric Darling here with Darling Data. And
+in this video, I'm going to talk about
+uh where the
+uh free SQL server monitoring tool is
+headed in the near future and uh go over
+uh kind of what what what I what I've
+been working on. Um [snorts]
+why I haven't done a release in a couple
+weeks now. Uh so when I when I first
+started working on this uh my my
+original goal was to make something very
+easy for people to set up and run
+depending on their preference or
+depending on certain requirements. There
+was the what I call the full dashboard
+that created a database on your SQL
+server logged a bunch of things there
+and uh you could query it, you could
+back it up, you could send it to
+someone, you could do whatever just just
+about whatever you wanted with it. But
+there were some problems with that
+setup. One was that um a lot of people
+thought that that would be the one
+database that everything got logged to
+that they were monitoring. They didn't
+realize it was one database per server.
+Uh and that database had a tendency to
+get fairly big. So I had to take some
+additional correct when I first made the
+whole thing. You know, I made sure all
+the indexes were compressed and took
+various steps to try to keep things uh
+neat and tidy. But you know uh certain
+uh collection elements like query text
+and query plans and blocked process and
+deadlock report XML uh tended to bloat
+things out. So some additional
+corrective steps I took were to use uh
+the compress and decompress functions on
+those things. Uh and that cut down on
+the size quite a bit. But uh the and I
+think I think I haven't gotten really
+any complaints about that stuff in a
+while. So uh hopefully that that solved
+the problem. But um the the additional
+sort of friction for me was having to
+maintain uh two different code paths. If
+there was a bug in one, there might be a
+bug in two. And uh getting uh my my
+various uh claude army to remember that
+there are two and fixes need to go to
+both and not defer or downscope things
+randomly uh was a challenge. So uh that
+wasn't fun. So the my my first idea was
+I could I could make a lot of the stuff
+between the two monitoring tools uh into
+sort of shared libraries and that way uh
+fixes would only need to go to one
+place. Uh that didn't quite go as I pl
+go as I planned. So uh and I still had
+the sort of additional friction point of
+you know uh light being very very
+popular but of course light is uh a user
+application and if you close your laptop
+or shut down a VM that you have it
+running on or you know you you you close
+the you close the dashboard it stopped
+collecting. That was what full tried to
+sort of get rid of but full had its own
+problem that I've already talked about.
+full was just agent jobs running
+constantly collecting stuff. As long as
+your SQL server was up, data was
+flowing. So that was so like neither one
+really uh solved the full picture. So
+what I'm doing now is I am essentially
+deprecating the full dashboard. Uh I am
+keeping the sort of portable light
+version of that. It's kind of like when
+you download Crystal Disc Mark, you have
+the full installer, just the zip that
+you can crack open and run and choose
+your favorite anime girl theme. That's
+the best. Uh, so it's sort of like that
+minus anime girls. Unless unless if
+anyone wants to donate or like add some
+themes in to include anime girls, I'm
+totally fine with that. It's your if
+you're into that sort of thing. Skin it
+up. But um uh you know, it's it's not my
+thing. No pillows with faces on them for
+Eric Darling. But uh so the the
+direction that I went [clears throat] uh
+is uh one I wanted uh something that
+would still be free
+uh or at least as free as possible. Uh
+and so I chose Postgres uh with the uh
+time scale database uh plugin or uh what
+do they call them extension in there. Uh
+the reason for the time scale thing is
+it offers incredible compression. Like
+so like Postgres on its own uh does
+compression pretty well and they have
+this uh toast thing that kicks in for uh
+string columns of a certain size. And in
+Postgres 18 you get this uh crazy LZ4 I
+think compression on stuff. So like
+query text and query plan XML and the
+deadlock and block process port XML was
+already doing a pretty good job of
+staying nice and small and tidy. But uh
+we have the additional sort of time
+scale thing kicking in and keeping
+things even smaller which is wonderful.
+Uh so Postgres is the the chosen backend
+that means you don't have to pay for
+another SQL or worry about having to pay
+for another SQL server. I know a lot of
+y'all out there really like putting your
+monitoring tools on developer edition.
+I'm not the licensing police, but I'm
+just saying
+might might be a little dodgy like
+terms-wise, but you know, it's
+between that's between you and
+Microsoft. I got nothing to say about
+that. I am just a lowly consultant out
+in the world trying to make a
+difference. Uh so yeah, so it that the
+the the Postgres part is free. You uh
+will pay the potentially pay the cost.
+Uh you can bring your own Postgres too
+if you want like so if you already have
+a Postgrez server uh running somewhere
+that you're okay with having a
+monitoring tool database in you can you
+can bring your own otherwise you would
+just need a new VM or something uh that
+has the Postgres uh instance on it and
+uh what this thing what this what this
+uses is a headless Windows service. Uh
+headless meaning it is not tied to a
+user. It is part of it is running on
+Windows regardless of well I mean unless
+you shut the VM down completely right if
+it goes to sleep or you log out or
+something it's fine but uh if you shut
+the VM down you I can't I can't help you
+with that. So it it's running constantly
+uh the way that the agent jobs in full
+would to collect data and put it into
+Postgres and uh it's sort of and it
+completely detached the uh collection
+service from the viewer. So if you have
+multiple user, this was another friction
+point was getting this so that multiple
+users could all ping ping in and see the
+same set of stuff all at once. You can
+do that. This also allowed for some neat
+security stuff uh where there is uh like
+an owner account that can do anything.
+There is an admin account that can is
+allowed to change schedules and
+collection stuff and alerts and whatnot.
+And then there's just a reader only. So
+if you have folks who shouldn't be t you
+you don't trust to tinker with those
+things they uh can they have a readonly
+path to see the monitoring data without
+being able to mess with anything. So all
+good there. Um and now we have behold um
+a viewer with some improvements uh I
+think. And uh if you're asking how this
+solves the um the the double bug thing
+for me, uh it doesn't completely, but it
+does make it easier because much more of
+the viewer code path stuff is shared
+between light and this thing than um
+than with the full dashboard. So that's
+good there. Uh anyway, what I what was I
+saying? Yes, good. Uh so now we have
+this and I I've made some visual
+improvements and some performance
+improvements to things along the way. So
+you start off with what you would
+normally see uh when you open up light
+pretty much some again some improvements
+um got some new stuff up here that show
+you the number of servers how many are
+healthy and all that stuff and then you
+have the normal sort of knock style
+dashboard in here. Uh I believe hammer
+db is no I think maybe no hammer db
+probably finished on 2025 that's why
+things are all green and happy over here
+but uh going into the monitoring data
+itself uh we can see actually let me set
+this to the last like 4 hours so that
+things are a little bit more zoomed into
+when we had hammer db running and doing
+stuff. Uh so this is uh the sort of
+normal stuff that you see. We have our
+overview here. Uh we have our weight
+stats here that includes top weights and
+um you know uh like like the top weights
+that you have in here along with some of
+my favorite weights to show people. Uh
+there are some neat additions when you
+like click on stuff and look at things
+in here. Uh but you can just as always
+if you want to you know see queries
+causing a problem you right click you
+get to those queries.
+Um uh and under the queries tab we have
+all the again just same user experience
+as light just with a different backend
+that uh is a constantly running
+collector to get stuff from. So all the
+stuff that you would want to see in here
+uh the UI is a lot snappier too. Um I
+think uh clicking around through here
+sometimes there were some some long
+pauses on things that I was always mad
+about. Uh but now everything seems
+pretty snappy. Um, there are some new
+collection metrics in this one as well,
+uh, that, you know, give you a little
+bit more information. You know, I tried
+we, you know, there was some stuff in
+full that I like that I wanted to give
+give get more get further into. So, I've
+got all this stuff in here and, uh,
+there's no memory pressure events on SQL
+Server 2025, but over on 2022, if we
+look, uh, we can see some memory
+pressure events. If we go back to the
+last 24 hours, you can see uh, where,
+you know, SQL Server 2022. So SQL Server
+2022 is my my old prod VM that has been
+downgraded to like 2 gigs of memory and
+four cores or something. Uh this thing
+uh gets beat up a little bit easier, but
+uh 2025 is where I do uh like all my new
+development work and stuff now. It seems
+pretty safe and worked out. So uh we've
+got all this stuff in here. Uh all the
+same stuff that you would you that you
+would you would expect. Uh, one big
+thing that I corrected uh on the advice
+of uh the lovely and talented Kendra
+Little was uh temptb has been
+unpropercased and it is now in its
+proper state. Right. All lowercase.
+Good. Right. So that's nice there. Um so
+but everything that you would want to
+see around blocking and everything. All
+right. Uh that stuff. Uh current
+weights. Look at look at all those wild
+spikes. Look at our blocking stats. Look
+at our block process reports and our
+deadlocks and our perfmon. All right.
+And perf remember Pfmon has all the
+different collector packs in here. So
+depending so like you don't have to
+remember all the stuff that you want to
+see all all the counters that go into
+certain PFM things. Um so and other
+stuff that was uh brought over from full
+into this that wasn't in light. Uh we
+have stuff like session stats so you can
+see um what things were running uh like
+sleeping background total all that good
+stuff.
+Um we have uh our usual agent job things
+going on our usual uh configuration and
+configuration changes stuff. Uh one
+thing that I I did change so uh daily
+summary used to be just a one line about
+today. Uh like this isn't all lit up
+obviously because I haven't this kind of
+new right so it's like new data. Uh, but
+one thing I changed in here is I made
+this a calendar view where you know like
+you can see the good days and the bad
+days and then you can like sort of click
+and see what was going on with the good
+days and bad days down here and you can
+you know it's like oh you had a lot of
+deadlocks and blocking and crappy
+queries so you can go and look and stuff
+in there. Uh, so this is a improvement I
+think. Um, system events. There's not a
+lot in here because like this is all
+from the system health extended event.
+And quite frankly, once again, this is
+the oh crap section. If you have a lot
+of stuff in here, uh you you might want
+to hire a young handsome consultant with
+reasonable rates like yours truly to
+come help you with your server. Um we've
+got some latch and spin lock stuff in
+here that that got promoted in from the
+full dashboard because some people
+despite best efforts still care about
+this stuff. And of course the collection
+health stuff where you know I get to
+tell you um how well my my performance
+monitor collector is doing. So this is
+uh this will be in the next release
+uh available I want to say in the next
+few days or so. Most of the work is
+done. Uh there is just a little bit of
+polish that needs to be completed and
+once that is all done um sorry mid
+midweek or so uh well actually you'll be
+seeing this on Thursday. So, it might
+have even been released by the time you
+see this. Well, we'll see how that we'll
+see how that plays out. Anyway, uh this
+is where things are this is where things
+are headed. Um much closer to sort of an
+enterprise monitoring tool than uh the
+previous versions. Uh I this
+if I had to put a high number on it
+could probably support about 500 servers
+um if if we if it needed to. If you have
+500 servers, God bless. And again, this
+is totally free. There's no cost to you.
+There's no per server or anything. Um,
+if you want to donate money to this
+project, you can. If you want to, uh, if
+you need a support contract, that stuff
+is available. But otherwise, it's just
+totally free monitoring. Uh, you can get
+it at code.ericdarling.com.
+That'll bring you to my GitHub repo, and
+it's just under the performance monitor
+section. So, anyway, uh, that's where
+things are at. Uh, thank you for
+watching. I hope you enjoyed yourselves.
+I hope you'll use the monitoring tool in
+its in its full enterprise glory. Uh and
+uh if you have any questions, comments,
+concerns, problems, uh you know, that's
+what GitHub is for. Otherwise, [snorts]
+thank you for watching. Goodbye.

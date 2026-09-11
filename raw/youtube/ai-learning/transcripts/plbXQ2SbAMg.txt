@@ -1,0 +1,183 @@
+A cada semana, um tourbilhão de novidades no mundo da IA. E no meio de tudo isso, eu peguei três dessas I
+destacaram e trouxe para você. O primeiro é a nova função do Perplex, o Perplex Labs ou laboratório, como ficou aqui no português, que transforma suas
+ideias em documentos, em apresentações, dashboards, linha do tempo e por aí vai.
+É muito bom, você vai curtir. O segundo é o novo agente Flow, que antes ele estava fechado somente com convite e
+agora ele tá aberto para todos. A ideia aqui é o quê? Teres com passos
+infinitos, infinitos, infinito contexto, mas também, olha só, infinito dinheiro.
+Fica ligado. Em meus testes, minha assinatura de 20 foi embora igual água.
+Então, por isso que eu vou te mostrar quais são as melhores práticas para que isso não aconteça com você. E o terceiro é a nova função do conhecido agente
+menos, que agora além de tudo que ele faz, ele também pode criar slides com as suas ideias. O ponto é, será que esses
+novos agentes, essas novas funções, eles são bons mesmo? Valem a pena pagar por eles? E é isso que eu vou te mostrar nesse vídeo. Se você ainda não é
+inscrito aqui no canal, arrasta um pouquinho para baixo, dá uma olhada na animação que acontece quando você se inscreve e logo do lado clica nesse lindo gostei. Fechou? Meu nome é Sancla
+Miranda. E aqui nesse canal eu falo sobre IA há mais de 2 anos. Você está pronto? Você está pronta? Então vem
+comigo. Let's go. Dentro do perplex, perplex.aiaiai, se você não conhece, é um mecanismo de busca excelente. A este
+ponto ele já tá muito estourado, talvez você já conheça. E agora na conta pro, você precisa ser assinante do Pro,
+apareceu essa nova função que são laboratórios, o Perplex Labs. Ah, Sancleu, não tenho pro. Eu vou te dar
+uma dica. Se você é assinante da Vivo, se você é cliente da Vivo e esse não é um patrocínio para eles, é porque essa, de fato, é uma promoção muito boa. Vai
+no seu app lá opção de você pegar um ano de graça do Perplex Pro. Beleza? Eu recomendo que você que tá assistindo o
+vídeo, que acompanha o canal, que você faça assim, da maneira correta. Não sai criando e-mails, não sai fazendo esse
+tipo de ação, porque, cara, isso prejudica, eh, quando é feito de forma massiva, isso prejudica a empresa que
+tem funcionários, que t uma estrutura e prejudica o país de maneira geral.
+Então, fica a minha recomendação para você que é inscrito e me acompanha aqui, fechado? E sinceramente, para quem não é cliente lá da Vivo, vale vale muito a pena, porque o Pro é são $ por mês.
+Então, se você fizer as contas, qualquer conta que você assinar lá com a Vivo, vai valer muito a pena, vai sair muito
+mais barato do que você pagar a sua conta do telefone e também o Perplex Pro. Vou clicar em laboratórios nesse
+ícone e o legal é que aqui embaixo, pelo que tudo indica, são as sugestões que aparecem aqui para você já são baseadas
+nas suas buscas. Então, por exemplo, teve uma vez que eu busquei sobre o Mega Man, para quem é da década de 90 aí,
+como vai lembrar do Mega Man. E ele já trouxe aqui, olha, monte um estudo sobre a história dos jogos Mega Man, incluindo gráficos de vendas, evolução do design e
+dos personagens. Eu não vou clicar em nenhum desses aqui porque e ele leva alguns minutos, então pode levar 5
+minutos, 9 minutos mais ou menos. Então já deixei um prontinho aqui para você que foi cria uma apresentação em slides com gráfico sobre a evolução do uso dos
+agentes de em automações de workflows, incluindo exemplos práticos com o N8N.
+Muito bom. Aí, veja só, aqui embaixo aparece laboratórios, aplicativo, ativos, tarefas, imagens e fontes. Quer
+dizer que além dele criar tudo isso, ele já deixa tudo separado em abas o que o agente do perplex fez por todo esse
+tempo. Então, se ele levou 5 minutos, ele vai mostrar tudo isso aqui. Primeira coisa que eu vou te mostrar é esse app interativo que eles fizeram. Se eu posso
+clicar aqui para ver em tela cheia, ele vai abrir essa nova janela. Vou aplicar um zoom aqui. Beleza, o título ficou apagado aqui. Uma coisa que eu testei é
+que se eu pedir para fazer uma alteração, ele não entende ainda. Então, acabou de ser lançado nessa função.
+Então, se eu pedir para que ele, ah, troca essa parte aqui de cima, ele não vai fazer isso, ele não vai entender, ele vai começar a criar outro ou então
+ele vai entender outra coisa. Mas esse aqui ele já ficou muito bom. exemplos práticos. Ele já criou uma imagem com IA aqui próximo. O que são agentes de A?
+Olha que legal, mercado em tendências, evolução da automação, adoção por setor.
+Ou seja, com um só prompt, com aquele pedido muito simples, muito simples, certo? Esse pedido aqui, ele já criou 12
+páginas interativas. Então, vou aqui para o próximo, que são agentes de A.
+Definição, diferença dos LLMs versus agentes de A. Cara, isso aqui tá muito bom. Que isso? Separou por categorias.
+Vou para o próximo. Evolução do mercado de agente a de 2023 e fazendo uma projeção para 2030. Valores, anos. E tá
+aqui, ó, só subindo. Legal. Aqui para baixo também tem. Deixa eu ver aqui, ó.
+Coloquei no tirei o zoom um pouquinho porque tava atrapalhando. E veja o quanto que tá muito bem construído isso aqui, cara. Evolução do
+mercado. Próximo. E 12. Ó, tá aqui. Ele começou a falar sobre o a plataforma do N8N. Economia de 40 horas, integração com APIs, próximo. Exemplos práticos.
+Vejam quão completo está isso. Muito bom. Voltando aqui, ele cria uma espécie de um artigo, né? O perplexo que cada dia que passa ele tá ficando muito bom.
+Definição e evolução dos agentes e todo o conteúdo que ele colocou lá é o mesmo conteúdo que está aqui. E detalhe, você
+pode pegar isso aqui e aí é uma função que já tem no próprio Perplex, né? Você pode vir aqui nos três pontos e adicionar a um espaço. Nesse espaço você
+pode colocar conhecimento, você pode colocar arquivo, páginas, você pode converter para uma página e exportar
+como PDF, por exemplo, entre outras opções. Então, essa página criada com essas informações e com essas fontes pode virar uma uma das fontes de conhecimento aqui dentro. Legal.
+Aplicativo, vai aparecer somente o app.
+ativos. Tudo que foi utilizado, o código foi utilizado em Python para gerar os
+gráficos em si, imagens, tudo você pode baixar individualmente, você pode copiar, você pode mandar baixar tudo com
+zip. Maravilhoso. Tarefas. Quais foram as tarefas que o agente fez passo a passo? Você pode consultar isso depois.
+imagens, as imagens que foram buscadas durante a montagem dessa apresentação e fontes, por último, 39 fontes que foram
+consultadas para que ele criasse essa aquela apresentação, aquele app, né, chamado de app aqui. Muito, muito bom.
+Uma coisa muito legal para valorizar nesse tipo de integração é a simplicidade. Com apenas um prompt bem simples, ele já usou o melhor modelo
+disponível para a tarefa. Então, não tive que escolher qual modelo é esse.
+Ele já fez toda a integração, já montou o aplicativo, já deixou tudo separado, os ativos, a tarefa, as imagens, as
+fontes, tudo para depois eu poder consultar, se eu quiser aprofundar em alguma fonte em específico. Cara, esse tipo de integração, ela tem que ser
+muito valorizada, porque você vai ver o próximo que eu vou mostrar para você, o Flow, ele é excelente na ideia, mas ele
+ainda não está pronto e tem um motivo. E um dos motivos é justamente pela complexidade. E quando algo é muito
+complexo na prática, no dia a dia, isso não funciona bem, não flui, entende?
+Esse aqui é o flow. Ele tem a ideia de fornecer agentes com múltiplos passos, com múltiplas tools, ferramentas e muito
+similar, ao menos em alguns aspectos, podendo chegar, como eu falei, até o infinito. Porém, é claro, isso tem os seus custos e o valor da assinatura
+acaba muito rápido. A assinatura de menor valor deles custa $. Então, tem alguns cuidados para tomar aqui que eu vou te passar. A primeira coisa é que você ganha só ao entrar 1000 créditos.
+Aqui eu vou deixar alguns códigos aqui que é bem limitado. Eu só tenho aqui disponível nesse momento 17. Então vai esgotar. Quando esgotar eu vou colocar a
+palavra esgotado. Então não vai ter mais. Caso tenha mais eu vou colocando.
+Beleza? E aí se você for um dos primeiros a ver os o vídeo são 4.000 créditos que você vai ganhar. Esses 4.000 não são renováveis. Então depois
+que você usar eles eles vão acabar. Do lado esquerdo é aquela interface muito comum pra gente que fica o histórico de
+tudo que você fez. do lado direito é onde você coloca as ações que você quer que esse agente faça. A ideia deles é
+muito legal e tem alguns poréns aqui que eu vou falando ao longo do vídeo. Quando você clica em agente mode on, significa
+que ele vai pegar, se você passar uma tarefa para ele, ele vai separar em diversos passos e aí vai delegar para
+cada agente e cada agente vai começar a fazer uma parte daquilo que você pediu.
+Se você quer apenas testar sem o agente mode, que é o é o jeito mais seguro, vamos dizer assim, de você gastar menos,
+só para você fazer o seu primeiro teste, ver como que é a interface, como que é a dinâmica dele, você deixa aqui no off, certo? Tá aqui no off. Nessa opção você
+clica em deixa em regular apenas para um modelo generativo de texto que só vai te responder em texto. E você deixa,
+escolhe um modelo. Dentre esses modelos, você pode escolher qual você quiser. O 4.1 mini, ele é um dos mais em conta. Eu vou tirar aqui porque esse aqui eu vou
+te explicar já já o que eles são. Essas bases de conhecimento. O jeito que eles chamam aqui seria jardim de conhecimento. Vamos lá. Vou mandar um
+simples olá para você ver como que funciona a interface. Ele vai, tá vendo?
+Ele mostra que ele tá pensando, analisando o seu, a sua requisição. E essa é de cara já uma das
+características que ainda não são boas do Flow WiF, que é a demora. Ele demora um tempinho bom até mesmo para um modelo
+que é bem rápido quando quanto o 4.1 mini da Openi. Ele é bem rápido, mas aqui ele leva um tempo porque ele
+analisa, né? Ele deve ter uma tool para pensamento, para raciocínio, mesmo que ele não seja de raciocínio nativamente,
+ele tem também a base de conhecimento, o que faz. E aí tem a dinâmica do appena, então assim, ele demora mais do que o
+normal. Então veja aqui em cima fica a sua requisição. Você pode, o que foi a sua pergunta, o seu prompt, você pode copiar, deletar e embaixo fica a
+resposta dele. E se você apertar o control do seu teclado, manter pressionado e arrastar, ó, você, na verdade, não precisa nem fazer para arrastar e sim apenas para dar zoom.
+Beleza? Eu tô rodando o screw do mouse com o control pressionado. E se eu clicar fora, eu posso mover sem control,
+sem nada, só com clique. Se eu clicar aqui para iniciar um novo tópico, por exemplo, iniciar um novo tópico, perceba
+que ele vai criar o ramificação aqui dentro desse canvas. Ele vai criar um novo separado desse aqui. Para que eu
+continue esse, eu preciso clicar e clicar aqui para escrever. Então, escrevendo uma nova requisição, aí sim
+ele continua. E aqui eu posso pedir para um agente, eu posso colocar aqui no modo agente, ao invés de ser o regular, ó,
+agente mode, cadê? Tá aqui o agente mode. E posso pedir para ele desenvolver alguma coisa. Um ponto muito positivo,
+muito legal, e aí eu já vou entrar num exemplo que eu fiz, vou clicar em back.
+Uma coisa muito legal é que o que você pedir, o próprio agente vai se virando.
+Então ele pede pela sua intervenção apenas se algo der realmente errado.
+Caso contrário, ele vai se virando. Só que, como eu falei, tem que ter cuidado com o contexto. Eu vou te mostrar ali como que você faz para que não gaste
+muito. Nesse caso, o meu prompt foi para criar uma página. Então eu pedi para ele criar uma página, por exemplo, do
+Hermesia, que é um agente de a que faz atendimentos no WhatsApp da de uma empresa, de um produto, de um projeto,
+ele atende de forma automática, já baseado nos documentos, no FAC e por aí vai, que inclusive esse Hermes IA ele é ensinado dentro do IA Revolution, que o link tá aqui abaixo na descrição.
+Perceba o seguinte, eu vou fechar essa side bar aqui para você ver melhor que a partir do meu prompt, automaticamente
+ele já começou a planejar quais são os passos e aí ele já dividiu cada passo e cada agente foi fazendo uma parte dessa
+ação. A interface ela ainda é meio bugada, ó, acabou de dar uma bugada legal aqui, não é intuitivo, então você precisa quebrar a cabeça um pouquinho. E
+assim, eu não vejo nenhum problema quando tá no início de uma plataforma de uma de uma IA, que ela é complexa, só que ela está competindo com o menos. E a
+proposta dela é que seja algo integrado, algo simples, o que ainda não é. E aí causa essa estranheza, tipo assim, pô, eu vim achando que era simples, mas na
+verdade é muito complexo. E aí, de forma automática, veja que horas que ele começou. Ele começou no dia 31, 8:13.
+Deixa eu ver aqui qual foi a última parte dele. 8:23. 10 minutos depois ele finalizou passando por criação de
+imagens. Então sim, uma das coisas muito legais do Flow é justamente isso, que ele vai se virando. Se você pedir para criar um vídeo, ele vai criar um vídeo
+usando cling view, só que, é claro, vai consumir os seus créditos. Ele criou essas imagens. Eu posso clicar aqui em cima, ó, para você ver. Apertar ES. E eu
+vou clicar aqui em launch preview. Em launch preview, eu preciso clicar aqui em full screen para que apareça. Tá vendo? não é muito intuitiva a interface
+dele, precisa prestar muita atenção assim no que que você tá fazendo. Ficou com alguma alguns erros de formatação aqui durante o o texto. Na verdade, eu
+tô na parte de slides, né? Aqui do lado esquerdo foi onde eu criei primeiro a página, depois eu pedi para que ele criasse slides. Então, deixa eu ir na
+página primeiro para você ver. Veja que foi um principal e depois mais duas ramificações, ficando três caminhos aqui, ó. A primeira página foi essa. E
+olha só como fica um pouco confuso. A página ficou pronta aqui em cima, só que aí ele foi com outros passos. Aí você fica assim, bom, intuitivamente o último
+passo é aqui, então cadê o botão para eu ver o que que o que tá pronto, sabe? Mas na verdade ficou lá em cima, tá? aqui,
+clicar em full screen e aqui está a página Hermes e seu WhatsApp voando, vendas decolando e assim ele trouxe uma
+copy. Veja a IA e ação. Ficou muito legal quando você pensa no trabalho que nós teríamos ao fazer uma página como
+essa sem a IA, mas quando começa a comparação com outras IAs, aí o jogo já é diferente, principalmente pelo custo
+alto do flow if. Então, por exemplo, eu peguei o mesmo prompt e coloquei aqui no lovable. dentro do lobable seria o mais
+indicado para isso. Então veja, dentro do flowwi if tem essa função. Você pode fazer isso lá dentro e ele se propõe a
+isso. Faça qualquer coisa. A gente faz qualquer coisa com infinitos agentes, infinitos passos, infinito contexto, mas
+na prática não fica muito bom. Quando você coloca numa ferramenta especializada nisso, veja que o resultado é muito diferente. Olha o resultado disso aqui. Coloca um foguete
+no seu WhatsApp. O Herms A vendendo seus produtos 24/7 no WhatsApp. ponto de texto e áudio, imagem. Veja como ficou
+muito melhor. Cópia ficou muito melhor, o design ficou melhor, a divisão aqui, ó, com uns exemplos muito legais, fazendo uma simulação de como seria, né?
+É claro que agora a partir daqui, eu não vou mexer, não vou fazer outras edições, é só para te dar esse exemplo. E uma comparação com outra IA. Eu poderia
+clicar para editar, eu poderia editar aqui esse site. E para colocar no ar daqui é muito fácil, já com as sessões de depoimentos.
+com os preços. Ficou muito, muito bom com um só prompt, que foi o mesmo que eu coloquei no flow. Esse aqui é um exemplo
+da multimodalidade do Flow. Eu posso pedir para que ele crie uma imagem com uma logo que eu enviei. Então, enviei a
+logo do I Revolution, pedi para que ele criasse um com as camisetas. Não ficou perfeito, né? não ficou, não seguiu a as
+dobras da camiseta, mas já é alguma coisa bem legal, pelo menos para pegar como uma primeira ideia, entende? Um protótipo. Então se ele tem múltiplas
+funcionalidades, muitos tipos de uso. Eu vou te mostrar aqui o que eles chamam de knowledge garden. Eu vou clicar em explore more, porque aqui fica
+disponível o jardim de conhecimento de pessoas de maneira geral. Então, por exemplo, vi esse aqui do Paul Graham, eu
+posso clicar nele. E nesse caso, esse cara aqui, Derekn, ele colocou 222 fontes. Então, tem 222 documentos aqui
+disponíveis para a IA do Flowif fazer o rag, seria o retrive augmenter pegar isso aqui nesse momento
+de graça, pode vender aqui também, essa é a ideia deles, e adicionar ao meu jardim de conhecimento, que ele vai vir para cá, ó. Knowledge Gardens, está
+aqui, ó. Graham e se com essas fontes aqui, eles dividem em seeds, que seria a mesma coisa para quem cria agentes de A,
+seria ele dividido em chunks. E se você pegar de outra pessoa, nesse caso aqui, eu clonei, vamos dizer assim, para o meu
+jardim de conhecimento, ele não gasta dos meus tokens. Vou fechar. E se eu clicar em new flow, eu posso vir aqui, desativar o agent mode, posso colocar
+para usar ou então poderia ser com um agente também, tá? Só para exemplo aqui, eu vou desativar, vou clicar para
+colocar o knowledge base e nesse caso eu poderia clicar aqui e perguntar assim: "Quais são os conselhos Paul Grahen para
+uma startup em 2025?" Colocar um modelo melhorzinho 4 Sonet, tá? No modo regular. E deixa eu já falar se não vou
+esquecer, para que não use muitos tokens e seus créditos dentro do modo agente, clica aqui nessa opção que seria para a
+quantidade do do output. a configuração dela e você vai deixar ou aqui em compacto para 10.000 palavras ou então
+aqui em 50.000 palavras, que seria você falar: "Olha, eu quero que todo contexto que vai ser utilizado seja no máximo até
+10.000 palavras, que seja no máximo nesse caso aqui, até 50.000. E veja que pode chegar até o infinito, só que como
+eu falei, vai gastar infinito também os seus créditos. Legal? Então vou tirar aqui do modo agente, vou voltar para o Sonet knowledge base. Ele tirou tudo.
+Clicar em start. Você vai ver que vai aparecer uma animaçãozinha aqui dele analisando. E nem sempre também deu certo, tá? Então tá com alguns erros.
+Percebi que a qualidade do rag dele não tá muito boa também. Então, dá uma impressão assim que realmente tá bem
+beta, bem beta, beta mesmo. Para cada coisa que tem aqui que tá falando que você pode fazer tudo aqui, na verdade tá melhor em outros lugares, no menos tá
+melhor no notebook LM para fazer esse tipo de rag, tá melhor você levar um site para fazer lá pro Lovb, entende?
+Ainda não tá muito bom não. Tá aqui ele trouxe os conselhos fundamentais, ele mostra qual foi a fonte, né? Mas ele não dá essa opção de você clicar e direto
+para lá. Mas ele mostra aqui do lado esquerdo qual é essa sed que você pode olhar que ele chamam de seed aqui. Tá vendo? É bem conciso a resposta. Eh, por
+mais que esteja com todos os princípios aqui, é uma frase muito curta. A partir daqui, num followup, eu poderia pedir,
+como ele é multimodal, poderia pedir para ele criar qualquer coisa a partir daqui, fazer uma busca, criar um app, entende? Só que como eu falei, você
+consegue fazer isso hoje em dia com Gemini, com Cloud, tá? aquela coisa meio Frankstein. Agora vamos falar da nova função de slide dentro do menos. Então,
+já estou dentro do menos. A única coisa que você precisa fazer de diferente é só pedir para criar um slide. Então, dentro do meu prompt, eu coloquei o que eu
+queria sobre o que era esse slide e por último, para que aquilo fosse em slides. E aí ele já criou. Vou te mostrar já já.
+Aqui do lado direito. Depois do prompt, quais foram os passos? ele foi fazer a pesquisa em cima daquele conteúdo que eu pedi. Então, ele primeiro foi procurar
+pelo impacto da IA no atendimento ao cliente, crescimento de empresa, etc.
+Tem como clicar para rever, né, os passos dele foram bastante fontes e assim sucessivamente. Ele foi fazendo com cada informação que eu pedi dentro
+do prompt está aqui, ó. Agentes de A, se eu clicar, eu posso clicar aqui, ó, para
+ampliar, certo? E se eu precisar editar alguma coisa, eu posso tanto fazer aqui dentro, o que eu não recomendo muito,
+vou te mostrar o que eu recomendo, mas você pode clicar aqui em editar, ó, e já modificar aquilo que você quiser. Então, ele já fez uma cópia muito boa, fez
+inclusive com animação, quanto custa não responder. Aqui por enquanto ainda não está com opção de mudar a fonte, então
+por isso que eu nem recomendo você fazer por aqui a edição. já criou uma imagem, tem animação aqui, ele mostra as funções do Hermes. Legal. Vou clicar para sair
+da edição. E o que eu recomendo é você fazer isso aqui, ó, no ícone de baixar, no canto superior direito, você pode enviar direto para o Google Slides, que
+inclusive acabaram de colocar essa função aqui, não tinha, só tava com pptx e PDF. Então, vou converter para Google
+Slides. No meu caso, como eu já estou logado na minha conta aqui, né? Se você não tiver, ele vai pedir para que você logue na sua conta Google. Aí ele já vai fazer essa conversão. E olha só que
+maravilha, ele já trouxe para o Google Slides. E aqui dentro sim você pode editar, adicionar, você pode, no caso,
+copiar os elementos. Ah, gostei desse elemento, mas quero criar outro slide.
+Aí você cria outro slide, copia e cola, modifica, né, a organização dos elementos. Você não quer que esteja aqui do lado esquerdo, aí você passa para o
+direito e assim sucessivamente com os outros. Maravilha, né? Facilitou demais.
+Inclusive, se você quer aprender o Hermes IR, você vai aprender por completo dentro do IR Evolution, que está no curso Agentes de A do Zero, ou
+seja, é do zero, você não precisa de nenhum conhecimento prévio. O curso é separado por níveis, essa é uma das minhas didáticas e, cara, essa é
+literalmente uma das maiores demandas que existem no momento. E são poucas pessoas que estão realmente preparadas
+para prestar esse tipo de serviço. Ou seja, é uma demanda muito alta e pouca oferta, poucos profissionais que estão
+preparados para prestar esse serviço. E o agente de A do Zero é apenas um dos cursos que você tem lá. Alguns outros são para aprender mais rápido usando IA,
+chat EPT do zero, clones de A, entre outros. E além do curso, você também tem monitores que estão disponíveis para
+tirar as suas dúvidas, tanto dentro das aulas, no campo dos comentários e também na nossa comunidade exclusiva. Eu vou deixar o link do IA Revolution aqui
+abaixo na descrição e também no primeiro comentário fixado. Corre, garante a sua vaga e eu te vejo lá. E para quem chega até o final do vídeo, nós temos sempre
+um combinado na qual eu escolho um objeto aleatório ou uma palavrachave que vem na minha cabeça para que seja um comentário, para que essa palavra esteja
+de maneira disfarçada dentro do seu comentário. Eu vou escolher aqui agora a palavra, deixa eu ver, universo. Vai
+universo. Então, por exemplo, A e A traz um universo de possibilidades. Cabe a mim então canalizar uma dessas possibilidades e fazer se tornar real.
+Então esse é um dos exemplos aí que você pode comentar. Muito obrigado você ter assistido. Até o momento, meu amigo, minha amiga. Eu te vejo já já. Estamos junto.

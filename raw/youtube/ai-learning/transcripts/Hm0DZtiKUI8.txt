@@ -1,0 +1,552 @@
+this was my startup team in
+2024 we were nine people in total but
+this year we only four people
+left I replaced more than half of my
+team with AI agents and in this video
+I'll show you how you can create your
+own AI startup team yes you can do this
+without riding code every business is
+going to have a um an AI agent that
+their customers can talk to agents will
+begin to deliver on hype I got to tell
+you K opportunity for agents is gigantic
+as we AI agents are AI systems that can
+do work for hundreds of millions of
+billions of different AI agents billions
+of different AI agents whether you think
+this is good or bad AI agents are here
+and you can be certain that they're here
+to stay millions of jobs worldwide will
+soon be replaced by AI agents and
+thousands of tech companies and small
+startups will reduce their headcount and
+their dependency on human labor it's
+very likely that startup Founders just
+like myself can go back to basics and
+become a solopreneur running everything
+as a oneman business without reducing
+the output and without losing revenue
+and for you the upcoming founder who
+wants to run a SAS business but is
+blocked by the sheer thought of having
+to manage a team this is incredible news
+we're still very early so don't miss out
+on this opportunity let's get ready cuz
+we have work to do in this video I will
+show you step by step how you can create
+a fine-tuned specialized AI model how
+you can use it as an AI agent and how to
+make it collaborate with other AI agents
+on your team let's get started one area
+of work I replaced with AI is content
+creation I used to have people help me
+write content for social media for my
+weekly SAS newsletter and my YouTube
+scripts so in this video we'll set up an
+AI agent that creates content for social
+media though the process I'll
+demonstrate here can be used for almost
+any type of task you typically run into
+on a startup team fortunately open AI
+has made this incredibly easy for us we
+can just ask chat GPT to generate some
+content
+right hey chat GPT can you create a
+banger post about SAS and
+Entrepreneurship for me please sure how
+about this exciting times in the world
+of SAS and Entrepreneurship every day
+presents new opportunities to innovate
+and lead in this dynamic
+industry uh that's no that's not
+something I would post uh try again
+please okay how about this feeling
+grateful for the amazing journey of SAS
+and Entrepreneurship here's to more
+coffee fueled brainstorms and chasing
+dreams that's really tacky and lame and
+what's up with all the Emojis no all
+right all right I got you leveraging and
+utilizing synergies in the existing
+realm of SX you know what thank you this
+is not going to work so it turns out we
+cannot just ask chat gbt to create
+content for us and expect it to create
+anything of good quality and many people
+who try this will stop here they'll
+conclude that AI is bad it's generic
+poor completely lacking substance and so
+on but let's just back up for a second
+and compare this to hiring a new
+employee If you hired a Content writer
+and you gave them no onboarding access
+to no brand guidelines no initial
+instructions and just ask them to create
+a post about some topic how do you think
+they do do you think you would magically
+be happy with their first result or
+would you expect them to First learn
+about your brand your core values your
+style of writing and the history of your
+company and then start delivering good
+results cuz that's exactly what we need
+to do to prepare our AI agent now I've
+seen many different approaches to this a
+common method is including examples and
+instructions in the system prompt or the
+first message of the conversation it
+rarely produces good results that's why
+most of the custom gbts suck cuz that's
+exactly what they are it's just a chat
+gbt with some instruction in a system
+prompt injected into the chat before the
+conversation starts these are not AI
+agents even though some people
+incorrectly call them that we need to
+fine tune a
+model in essence instead of explaining
+what the AI should do we will show it a
+whole bunch of examples of what an out
+outut should look like fine-tuning an AI
+model is the process of specializing an
+AI by training it on specific data so in
+this case we will prepare examples of
+social media content it can be your own
+content it can also be content from
+other creators that you really like we
+should put together 20 to 50 good
+examples now for each of them we need to
+reverse engineer The Prompt so take this
+post and imagine chat GPT generated this
+what would the prompt have looked like
+probably something like
+this perfect we need to repeat this for
+all examples if you want to save some
+time you can actually ask chat gbt to
+reverse engineer the promps for you in
+most cases it actually does quite
+well now let's head over to platform.
+open.com and sign in with your chat DPG
+account click fine tuning in the left
+side menu and click create
+this is where we create our fine-tuning
+job but before we can upload our
+training data we need to turn it into
+this specific format called Json L it's
+Json and it's one example per line if
+you're a programmer you can write a
+quick script to automate this if you
+don't know what Json is just follow my
+lead here for each example we need one
+line on this specific format we have a
+field called messages which is a list
+that has two messages one from the user
+that will be our
+[Music]
+prompt and one from the assistant which
+would be the reply from the
+AI if you want to include the line
+breaks as part of the data you just need
+to use back
+sln there we
+go once we have all our training data in
+a Json L file we just need to upload
+it choose the base model I recommend
+using gbt
+40 and that's it we can leave everything
+else as is and click
+create now open AI will start training
+your custom
+model once it's ready we can go to the
+playground and try it out
+so let's try again create a post about
+SAS and
+Entrepreneurship okay let me see I was
+failing SAS until I finally understood
+this your team should be remote you
+should work async taking VC money is
+your best
+bet awesome that sounds exactly like my
+way of writing love it wait a minute
+well what was that last line taking VC
+money is your best bet no no we can't
+have that I'm all about bootst startups
+so we can't have that thing with VC
+money ah okay got it got it how about
+this one I was failing SAS until I
+finally understood this the easiest way
+to create a bootstrap sass is using
+Cloud tools like versel or netfi no no
+no absolutely
+not you sound like me okay but you're
+saying things I would never say and this
+is our next problem now we have a fine-
+tuned model that has learned to adopt a
+specific writing style but it's not
+really that valuable if it doesn't know
+what our brand is all about it needs to
+know which core beliefs and opinions to
+adopt which common themes can be found
+in our content which hot takes to drop
+and which values to align with and this
+is not exactly something we can find you
+in our way out of instead we're going to
+do exactly what we would do with regular
+employees we should write a brand brief
+in plain English this brand brief should
+provide clear writing guidelines
+describe Our Brands in terms of core
+values content themes and objectives
+dislikes and opponents Associated
+products and services and other areas of
+our brand write this in a text file
+notion page a Google doc or whatever you
+prefer if you've never done this before
+or you haven't really thought about your
+personal brand in this way I actually
+think it's a great exercise to spend
+some time writing all of this down but
+again if you want to save some time you
+can have chat GPT do this too simply
+take all of the training data you used
+to find through your model in the
+previous step upload it to chat GPT
+directly and ask it to create a brand
+brief given these posts then edit it to
+your liking and simply use that for now
+I've written my brand brief in text file
+and if we head back over to the
+playground we can now upload this file
+Island ask or fine-tuned model to use
+this brand brief as a base for creating
+our
+posts I have to say this is really good
+content no one likes a feature creature
+how did you come up with that well I
+guess I learned from the best
+ah I think you will fit in very well on
+this team though not going to lie it's a
+little bit timec consuming to have to
+ask you to write every single post can't
+you work a little a little bit more
+autonomously I would love to Simon but
+I'm just an AI model I can't do anything
+on my own initiative or make any active
+decisions all I can do is answer you
+when you ask me for something so far
+we've solved two major shortcomings of
+the normal chat gbt we fine- tuned a
+model to write in a specific way and we
+taught it about our brand to understand
+what we're all about it now knows what
+to say and how to say it but it's still
+not an AI agent it doesn't do anything
+on its own and it doesn't make any
+decisions to be fair at this stage is
+still very useful I've been using this
+exact setup for a long time and it has
+been tremendously helpful but it's also
+been very timec consuming chatting with
+my fine tuned model refining giving it
+feedback copy-pasting the results into
+feed hiive my social media tool and so
+on so at some point I got this idea what
+if I created a small team of AIS and
+gave them the agency to collaborate with
+other and push the final results into
+feed hiive all by themselves we can do
+better how about an engaging
+question we should also use a more
+consistent tone of
+voice here's how it would work we want
+one AI agent to generate topic
+ideas we want another agent to create a
+post from one of these topics we want a
+third agent to check the quality of the
+post and give feedback to the second
+agent the second agent will use the
+feedback to refine and improve the
+post these two agents will go back and
+forth for a bit until they agree that
+the post aligns with the brand uses the
+right tone of voice and is of high
+quality then finally push the post to
+feed High where it shows up under my
+drafts let's set this up for this we
+need a tool called
+n8n n8n is an automation tool in the
+same family as sapure and make but just
+way way better you can sign up and use
+NN in the cloud but you can also install
+it locally or selfhosted which gives you
+unlimited workflow runs totally free of
+charge let's set this up in nadn Click
+create and then choose
+credential here you need to add the
+credentials to the apps you want nadn to
+access such as notion Google Docs open
+Ai and so on you will at the very least
+need to give nadn access to open AI by
+adding an API key there are many Guides
+Online on how to do this so moving
+forward I will assume that you have set
+up credentials for all the apps you need
+so now that we have that done let's
+start cooking we'll start from the
+smallest task and work back up in the NN
+dashboard create a new workflow let's
+call it brand
+brief add First Step since this is going
+to be a subtask we will use when called
+by another workflow I have my brand
+brief in notion so let's add a notion
+node we want to get all child
+blocks and add the URL to the notion
+Page hit test
+step there we go now because notion
+outputs a page in blocks we want to
+aggregate at the parts we need so let's
+drag in an aggregate
+node what we're interested in is the
+content
+Fields there we go we now have a simple
+list of individual pieces of text so
+let's add an edit Fields
+node drag in our content list we want
+the final output to be one piece of text
+so we'll change this to string and after
+content we'll simply write do
+join and there we go this workflow is
+done let's move on create
+new call it get content ideas once again
+use when called by another workflow
+now in order to get ideas we first need
+the brand brief so we'll use a call
+another workflow
+step and we'll choose the brand brief
+workflow we just
+created let's rename this to get brand
+brief awesome next let's add a simple
+open AI note called messageer
+model for this task we can simply choose
+GPT 40 Mini
+in the text field give the model a
+prompt that describes what it's supposed
+to do we'll tell it to create 10 topic
+suggestions that aligns with the
+provided brand brief we'll tell it to
+use a Json output format like this and
+we'll provide the brand brief from the
+step
+before enable output content as Json
+let's try it
+out that's perfect and also here let's
+add an edit note and let's map this over
+to a simple list called
+suggestions like
+that let's move on to the next
+workflow we call this get content
+feedback it's similar to the workflow we
+just did so let's set up the execute
+workflow trigger and the get brand brief
+notes
+just like before this workflow is a
+little different since it will take some
+incoming data namely the post to give
+feedback on so let's double click on the
+first node click set mock data then add
+some data like
+this
+perfect and also here we want a node
+from open AI that messages a
+model and also here we can choose gbt 4
+mini this time we want to give the AI
+some rules to follow so let's change
+this first message to the type
+system the role of this AI is to give
+feedback and ensure the quality of a
+post is good so we will simply give it
+some criteria to
+follow of course you should adjust this
+to fit your specific
+brand the most important part here is to
+have the model give a score between Z
+and one and show it in the Json format
+we want to use for the
+output let's make sure to include the
+brand
+brief and this time we want to add
+another message with the role
+user and this will simply be the query
+from the first
+step also here we want to Output as
+Json and let's test
+it perfect and yeah since this is just a
+mock input I'd expect the score to be
+pretty low here so that seems to work
+finally also here let's make sure to
+simplify the output a
+bit there we go now we got everything we
+need let's put the whole thing together
+I'll show you how to do this but if you
+want to download and import all of these
+workflows directly into your own nadn I
+will share access to these files with
+members of Founders dech I'll tell you
+more about this towards the end of the
+video create a new workflow let's let's
+call it content
+creator for now the first step will be
+on chat message but we'll change that in
+a bit the next node will be an AI
+[Music]
+agent now we need to give this AI agent
+three things a model memory and tools
+for the model we'll use open AI
+[Music]
+and because we linked our open AI
+account we have access to the fine-tuned
+model we created
+earlier for the memory let's just use
+window
+buffer now we need to give this agent
+some tools these tools are going to be
+the workflows we already created so
+let's pick NAD and
+workflow let's give the tool a name get
+brand
+brief let's describe
+and pick the workflow from the
+list we'll add the feedback tool in the
+very same
+way there we
+go awesome now let's double click the AI
+agent we need to give this agent a
+description of its main
+objective so we'll use system message
+and we'll give it a description similar
+to this
+a quick explanation of how we want it to
+work how to use the tools we provided
+and which final output we
+expect now let's hit chat and try it
+out all right and we can see that the
+models start
+collaborating going back and forth and
+there we go look at that really cool at
+this point the basic AI agent
+functionality is pretty much done the
+agent has access to a fine tun model it
+has access to the tools it needs to
+access the brand brief and get feedback
+and because it's an agent it figures out
+when and how to use these tools
+correctly given its task description
+this right here is an actual AI agent
+let's finish up since we want the output
+of this AI agent to be passed onto
+another tool in my case feed hiive We'll
+add an HTTP request node here
+in feed hiive under automation we can
+create a new
+trigger I'll call this AI content and
+pre-select a few social
+accounts I'll grab the URL from
+here and add it to
+nadn we don't have images in this
+workflow so I'll remove the media url's
+part and for the text I'll grab the
+output from the AI agent agent and
+simply add it here now every time the
+agent finishes a post it'll add it
+directly to feed hiive where I can
+schedule it to go
+out and instead of this chat message
+input let's use the content idea task we
+created we'll replace this with trigger
+manually We'll add a call another
+workflow
+node choose get content ideas from the
+list there we go now let's add a split
+out
+node drag in the suggestions from the
+idea
+step now let's add a loop to Loop over
+each
+item awesome now for each of the
+suggestions that was generated we'll
+trigger the AI agent flow but because
+the AI agent expects an AI chat input we
+just need to add a temporary step here
+so once again edit fields
+this time let's use
+Json and we want an object that looks
+like
+this for the session ID we use an
+inbuilt variable called item
+index the action should just be send
+message and the chat input will be the
+suggestion we got from the idea
+generation
+step perfect we can feed this directly
+into the AI
+agent and after each Lube is done we
+need to make sure to go all the way back
+to continue with the next item which is
+the next
+idea now all we have to do is Click test
+workflow and see the whole thing in
+action the AI agents will start
+working and a bit of back and
+forth and finally off to feed five where
+the post will appear under
+drafts highquality posts that are on
+brand using the right topics and using
+the right style of riding fully
+automated isn't that just
+awesome also in case you didn't know
+feed hiive which is the social media
+management tool I used here is one of
+the sad products my team and I run and
+if you think all of this looked way too
+overwhelming and complex feed hiive
+actually has a lightweight version of
+this exact flow built-in you can write
+your posts ask feed's AI to give it a
+grade and it will give you feedback and
+suggest changes to make your post better
+to it's not using a fine-tuned model
+trained on your specific content so it's
+not as good as a custom setup like the
+one we built here but it's pretty solid
+and a very userfriendly experience you
+can get lifetime access to feed hiive as
+well as three other tools my team and I
+run for a single onetime purchase they
+all come with apis and automation
+they're all AI agent compatible go to
+founder stack. proo to check it out I'll
+leave a link in the description now I
+know I ran through some of this pretty
+fast but I have put the full workflows
+together for you to easily import into
+your own NN account and a step-by-step
+tutorial on how to set this up in an
+ocean
+dock if you are a Founder stack member
+you can go and access this right away I
+have left the link in the description
+below all you have to do is enter the
+email you used to buy founder stack and
+you'll get access to this immediately if
+you want a more slow paced technical
+introduction to n8n just Search Here on
+YouTube there are many excellent videos
+from creators showing you how to build
+all kinds of cool automation with these
+agents now I picked one example for this
+video which is content creation but
+through this I'm using similar workflows
+for a whole range of different tasks I
+hope you got inspired thanks for
+watching

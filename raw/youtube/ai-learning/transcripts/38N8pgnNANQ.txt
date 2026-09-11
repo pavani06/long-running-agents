@@ -1,0 +1,180 @@
+just a few days ago Google released a Gemini 2.0 and I gotta say I've been testing this out and I'm super impressed So
+today we're going to focus mostly on the kind of the stream real time and this is kind of a version of the multimodal live
+API uh with Gemini 2.0 so this is the Gemini 2.0 flash experimental uh I guess I could turn off
+dark reader here right so this is what we're going to do today I'm going to focus mostly like I said on the stream real time uh I might do some tests on
+the API but I don't have like the full access to voice and this real time sharing yet but hopefully I will pretty
+soon so there's a bunch of cool things you can actually do with this so we have kind of the option here to select a
+video source so we can do our camera or we can do a screen So today we're going to do screens so let me just show you
+now if I select screen we can do full screen okay and we can I understand you're showing a screen and you can make it
+full screen so what do you see now Google now I see a screen with the
+Google AI studio interface it has a section labeled stream real time on top and on the right there's a panel with
+run settings uh what do you see now now I see the visual studio code
+interface showing a python script the script has a function named it's cursor but almost that's not too bad uh so I'm
+just going to stop this now I see the uh okay so we reloaded this so you can see how it works now it's pretty easy to use
+uh but there's a bunch of cool things we can do with this so uh I just want to start off by kind of doing like um
+tutorial or like a tutor let's say I wanted to yeah learn to write some simple python code here right
+we can ask Gemini to follow along with the screen and help us set this up so let's try to do that okay so what we
+want to do now again we just want to select our video source so we want to do the full screen and then we can just
+head over to cursor here or vs code so I can just say h hello Google okay you are
+showing your cursor or VSS code and then yeah that's right so uh I want to learn kind of how to write some simple python
+code I haven't used it much but now since the AI stuff is here I kind of want to get into writing some code so
+today I just want to start off simple maybe doing like a small project I'm thinking something I onun random to create some random numbers could you
+help me get started and do this kind of Step by Step yes you'd like to learn how to
+write simple python code particularly how to create random numbers using code and you'd like help getting started step by step is that correct yeah let's just
+start now uh I'm on the main.py here can you see that yes I see you are on the main hey
+file to start you'll need to import the random module you can do this by writing import random at the top of your file would you like me to guide you through
+the next step okay so something like this yes that is perfect you have now imported the random module after that
+you can use the module by writing random. randant a to generate a random integer between A and B what would you
+like your range to be uh I think I want to do like one to
+100 is that correct or should I do like one to 100 is that good I see you have the code random randant 1 to 100 but
+that would subtract 100 from one first you should use a comma instead of the minus sign to separate the range okay s
+something like uh this yes that is correct the code random
+Randon one 100 will generate a random number between 1 and 100 okay great would you like to uh let's try to uh I
+want to do a variable maybe uh that uses this could you help me with that yes you can store the random number
+in a variable by assigning the result of random. randant 1 100 to a variable name
+for example you could write random underscore number equals random Randon 1 100 would you like to continue this so
+something like this what you meant yes that is perfect you have stored the random integer into the variable back
+quote random underscore number back quote okay okay now do you want uh now
+uh is it possible to print this yeah yes you can print the value of the
+variable by using the print function you would write print random underscore number would you like to try that
+now so I get this red error here I see the error the print function should have parentheses around what you
+want to print you should write print random underscore number instead would you like me to help you with the next
+step so this looks good now and if it does can we run it how do I run this code to run the python code you
+can press the play button at the top right of the versus code window and the output will be shown in the terminal below do you see
+it yeah I pressed it uh it looks like something happened can you check if this looks good it says 70 or
+something yes I can see the number 70 printed in the terminal so your code worked as expected and you generated a
+random number between 1 and 100 would you like to continue with another step so the next thing I want to do is uh I
+want to create a function and I like functions so I think the function could take like a integer like integer as an
+argument and then we can add the random number on top of that in integer to kind of print a new number could you help me
+set up this function please step by step sure I can help you with that you want to create a function that takes an integer as an argument and then adds a
+random number to that integer and prints the new number is that correct yeah I think I want to do that okay let's start by defining the
+function in your code below the line back quote print random underscore number back quote add a new line with
+the following code backquote defa add underscore random integer back quote this line defines the function with the
+name addcore random that takes an argument named integer so you said def addore random
+and what what's the next you need to put the argument of the function within parenthesis so the next
+part is to add back quote integer back quote after back quote add underscore random
+backquote so this yes that is correct now after the colon press enter to go to the next line and since this is inside
+the function you have to indent it okay I'm indented great now you can create a new variable inside the function called new
+underscore number that will contain the result of adding the random number and the integer so in that indented line type backquote new underscore number
+equals random randant 1 100 plus integer backquote so you said new number
+equals yes that is correct and then after the equal type backquote
+random randant 1 100 plus integer
+backquote so like this yes that is exactly correct now add another line indented that uses the
+print command to print out this backquote new underscore number backquote new number
+great now you just need to call the function with a specific integer after line Nine without indentation to see the
+result for example backquote addore Random 5 back quote okay so like this
+yes that's it now you can run your code and it will print the result of adding a random integer between 1 and 100 to 5
+okay so uh I'm ready to run this now uh should I just uh like before for so python
+main.py yes you are correct you can execute the code using back main I did that uh but we got a syntax error
+expected some kind of colon or something you're right I apologize for the oversight the issue is that a colon is
+expected after the parenthesis online 7 please change it to backquote Def addore random integer backquote and that will
+fix the issue okay so uh I'm going to try again now okay so now we got uh
+9843 does that look correct yes the code is now working as expected the first number 98 is the random number from line
+five and the second number 43 is the result of adding a new random number between 1 and 100 to the integer 5 which
+was given as an argument to the function on line 11 oh okay I see okay I see I was a bit confused but now I see like because we
+print here we print here uh so let's say uh I want to remove this I think I can
+right and I also can remove this I think and this should still run fine but now
+we don't see what kind of random number we are adding so uh I kind of want to
+add some way we can print both the random number that generated and the number we add so the integer and then
+the added numbers uh is it possible me I could just try to do that and you can correct me if it looks
+good okay I understand you want to modify your python code to print both the random number generated and the integer that was added to it you want me
+to correct you as you make these changes feel free to proceed when you are ready yeah I'm starting now so I'm just going
+to think out loud here so uh I guess we kind of need let's call this random
+number so right uh so let's just do like this and then we can do uh number uh
+equals integer right and let's say we do added
+numbers this could be random number uh number uh plus number
+something like this and then we can print the random number right and we can print
+the uh number and then we can kind of at the end here
+print maybe the added numbers uh what do you think about this okay I see what you've done you've
+added a variable called added numbers that calculates the sum of the random number and the integer then you print the random number the integer and
+finally the added numbers it looks good so far okay I see maybe we can just drop
+line five and then just do like this maybe this saves uh a bit more time right something
+like this saves a few lines of code okay I see you remove the line where you define the variable number and
+instead you are now passing int directly to the print function which is fine this way you are saving a line of code yeah okay that's pretty cool I'm learning
+here right that's pretty cool uh I think I'm ready to run this now you agree yes I agree that you are ready to run the
+code now feel free to proceed when you are ready okay so you can see uh the print statement here uh I think it looks good
+what do you think and explain what happened okay I can see that when you ran the code it first printed the random
+number 95 then it printed the integer five and finally it printed their sum which is 100 is there anything else that
+you would like me to do I think I'm pretty happy with this uh how do you think I did you did well you were able
+to modify the code to print the random number the integer and their sum and you also optimize The Code by removing an unneeded
+variable okay thank you for your help speak soon you're welcome feel free to reach out if you have any more questions
+okay so that was pretty cool right uh I just think this could be a help to a lot of people and this is kind of the voice
+part of it but we can also select uh I've been testing out we do we do the realtime stream but instead of output
+format we do text so now I can I'm going to show you how this works everything we ask for is just going to be printed in
+this chat here even though we share our screen I'm going to show you how this works uh but I just think this is pretty
+cool and I can see for now it's free too this is a lot of help to people and there's a bunch of stuff you can learn
+and doesn't have to relate to coding at all but it's super cool the response time is pretty good it's not hyper fast
+but it's pretty good and yeah uh so far I haven't had really really any big bugs either it crashed sometimes but other
+than that super interesting okay so now we're going to change the output format to text so everything we record now and we want a response to is going to be uh
+responded in this text box here or chat window so I'm still going to share my screen right so I'm share full screen uh
+I'm going to head over to I'm going to add recording to and I'm going to head over to Google SDK here 2.0 Gemini and
+I'm going to ask like uh Hey Google I have highlighted some text here could you copy this and just print it in your
+chat window uh I want to use that later okay so now you can see okay we have the code here right uh so I'm just
+going to copy this and now I'm going to head over here paste it in right uh okay
+uh so uh I think I'm going to do Gemini API key here and let's do Gemini API key
+uh we want to do from. EnV load uh import and
+let's and let's load this and let's do this and this okay uh can you copy this
+code Google for me please and just paste it into your chat window hey Google so uh I have this uh code here uh I don't
+want to use this like this uh I think I want to create a function that is called uh chat uh that takes kind of the uh
+contents or something like this contents as an argument could you fix that for me and write the full code okay so there
+you can see here we have the code so we can just copy this paste it in let's try it now uh now we kind of have a def chat
+contents so Google before we run this we have to add like an example down here right could you just write that for me
+uh because we need an example input here to print anything okay so here we got the example right let's copy that and
+let's just paste it in now we got the example and now we can run it how does AI work do we get a
+response yeah perfect that works pretty good so now you can kind of see how we can do this by using this text output
+instead of like input and uh I'm just going to say yeah Google that worked pretty good but the issue now is that uh
+we only have like a hardcoded input here uh I kind of want this code to make the user could do like an input in the
+terminal and then the chat model can respond to that uh I think also we need to add maybe some conversation list so
+we can keep the context of the conversation just write a full new code that does all that so we can test it out
+okay so let's see here now we have the chat history input output perfect let's copy that uh let's go back here paste it
+in so let's try this now and does this have any so we can do you hello
+how can I help you write uh a pie code to add to
+ins okay so we get that now we want to see if we have any context uh great how can I run
+this so now if we have the context they should know what we are talking about right perfect yeah that works pretty
+good so that is another thing that is pretty nice that we can kind of have this connection when we share our screen back to our chat box here uh so another
+thing we can do we can just refresh this now so if we select text again we start a recording we start the screen sharing
+and I want to do full screen okay and uh hello Google so I'm reading an article here on the verge could you just
+summarize this for me in like three sentences please and write it in the chat
+box okay so you can see Ina we got this short part here from the birge so that
+worked pretty good and we can go and change another article uh we can do yeah let's just
+click on this and can you also just write like a short summary of what you see on the screen here and add it to the
+chat box okay perfect so that was pretty quick Okay Google so uh I'm looking at the
+Gemini uh news now there's some new output modalities uh just also write a short summary of
+this boom we got it uh okay that's good now write a full summary of all the
+summaries we have so far and we got it so now we kind of summarized the Sora video the pocket FM
+article and the Gemini flash so it's kind of cool to do this voice mode when we kind of go around and gather
+information right so it's pretty cool uh and I'm looking kind of forward to this so I'm just going to stop this now uh
+because I also want to take a quick look at uh the other things we can do with Gemini that I don't have access to yet
+so let's take a look at a few more examples of how we can kind of use this native input uh with images output imag
+video understanding and a whole bunch of multimodal stuff that I think is better than open AI so I just want to watch a
+few examples here and then yeah just let these are examples of native image output in Gemini
+2.0 Gemini 2.0 can now natively generate images as part of your conversation let's say you want to
+imagine how it might look to turn this car into a convertible with today's AI tools this takes a lot of work you might have to
+manually mask out this roof area or write a really complex prompt we brought this image into AI studio and sent it to
+the new experimental Gemini 2.0 flash model this is a realtime screen capture and all the prompts you'll see in this
+video are things that early testers can now try and this is the entire prompt we gave it turn this car into a convertible
+and it gener okay that was pretty cool right I was pretty impressed by this uh but I tried to do this uh but but I couldn't I don't think I have access
+Early Access or something but hopefully soon I will get access to this and we can start testing this out uh I thought this turned out pretty good that was
+pretty cool so this is kind of the idea right so seamlessly reason and generate text and images all with one model so we can go back and forward right just a few
+examples of what's possible when you can seamlessly reason and generate text and images all with one model yeah that's pretty cool uh I think I have one more
+video I want to take a quick look at yes so was this one this kind of the Native tool use let's take a quick look at a few examples of this uh I thought it was
+pretty cool too these are examples of what you can build with Native tool use in Gemini 2.0 Gemini 2.0 is natively built to use
+tools like code execution and Google search I think that's cool tools I think code execution is cool I think Google search is pretty good because yeah we
+have probably the best search engine yet still here's a demo that combines tool use with real time interaction built
+using the new multimodo live API make a bar graph that compares the runtime of The Godfather and
+Oppenheimer graph that compares the runtime of The Godfather make a bar graph that compares
+the runtime of The Godfather and Oppenheimer add the other two Godfathers
+to the graph pick three random superhero movies and add them to the graph
+okay so that's pretty cool so basically what he's doing is he running this real time uh input audio that we used earlier today but he has like a tool use that
+has the execute execute code uh function calling set up too so he can execute code by kind of using his voice and
+adding data sources and stuff by just using the real time input uh I think that's pretty cool but yeah that is basically a Gemini 2.0 so build your own
+multimodel AI agent so finally I'm a bit hyped about starting playing around with the Gemini API uh I want to take a quick
+look at why I don't have access to everything yet so if you look at the right here and they say speech
+generation Early Access allow list image generation Early Access allow list so I don't really have uh the uh yeah access
+to those yet but hopefully I can get this soon and we can start playing around with these real time interactions by using tool calling and stuff like
+that uh I have played a bit around it with the open AI real time API uh but I think uh Google has done a pretty good
+job here so I'm quite excited to try this out and I kind of hope you enjoy this video maybe you want to go out and play with the stream real time now uh
+it's free so that is what's pretty crazy uh you can try it out for free now so that is pretty insane if you ask me so just go around play around with it and
+let me know what do you think is Google back uh I think they're looking pretty strong with this new setup here I'm kind of excited to play around with the API
+key when we get access so yeah uh hopefully you learned something new about Gemini 2.0 and the real stream
+real time here and we speak soon so have a great weekend and yeah bye-bye

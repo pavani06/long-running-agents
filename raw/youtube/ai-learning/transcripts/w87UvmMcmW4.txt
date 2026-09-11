@@ -1,0 +1,156 @@
+the energy usage they're thinking is going to pretty significantly affect our planet and agents need more of it than
+any workload previously but it's at a different unit of scale. What are you most excited about when the cost of intelligence approaches zero? You know
+right now to tame either inflation or improve economic growth we need some help. Do you ever see a future in which
+the operating system is similar where there's maybe no or very little underlying traditional code? Every layer of the tech stack has to be reimagined.
+You had previously said the software the application layer is going to collapse down into agents. And what what does that mean for vertical SAS companies?
+All right, Satia, thanks for chatting with me. Uh congratulations on everything you announced at Build. Um, yeah, I had a few questions. You've
+overseen very successful major transitions at Microsoft Cloud, the adoption of open-source, and now we're
+kind of in this this next one. With the rise of these incredibly powerful AI agents, how are you thinking about
+investing in that while also maintaining your kind of the current product suite that you have and the major changes that are coming to it? Yeah. First of all,
+thanks so much for uh being at uh our developer conference. You know, the way I think about it is um first you have to
+embrace what's new, right? And that's where I think even you know now that we're even two to three years in depending on how you count into this you
+know AI era and this agenting web era the patterns of what it means to build
+agents build apps is becoming clearer right so you have to really go look at the tech stack uh that you have uh that
+you built maybe for a previous workload um now needs to be really thought up from first principles for the new
+workload right so take even the infrastructure layer right obviously we're very very proud of the fact that we have 70 regions of Azure all around
+the world and then you say wow we now need to retrofit them or fit them uh to become AI factories right that's kind of
+what you need to do turns out that if you take even an app like chat GPT or copilot uh it definitely needs a lot of
+GPUs or AI accelerators but it also needs everything else it needs in fact tons of storage uh both in during
+training and inference. It needs a ton of compute, regular compute, not AI accelerated compute, in order to be able to for example have the environments for
+agents. So, interestingly enough, it turns out what we built over the last 15 years may be more relevant now because
+agents need more of it than any workload previously, but it's at a different unit of scale. So, that's kind of what we
+have to do at the infra layer. Same thing with data, right? take data and you say well you know data has been always about take a database you said that's where you schematize people
+places things but now you can bring the intelligence layer to the data right a reasoning engine straight in like one of
+the coolest demos we showed was this Postgress which you know so modular that you can now mix and match in your SQL
+query an LLM response right I mean think about the query plan you can generate so I feel that every layer of the tech
+stack has to be re-imagined but it also means we can take some of the best work we've done over the last 15 years and
+have it compound for our developers uh so that they can get the benefits of it.
+So that's how we're thinking about it right which is how do we make sure uh we think about every layer of the tech stack in from a first principles
+perspective for the new AI workloads that are being built uh and then really stitch it together so that it meets the real world needs of customers. Yeah. So
+the the end users especially for products that people are so familiar with office 365 these products I assume are going to be changing so rapidly. So
+what what is that acceleration change in the Yeah, it's a fascinating thing, right? If I look at Office, right? There are I'd say three modes of Microsoft
+365. The first is the brand new mode which is I have this new UI for AI which
+literally is this new scaffolding uh which has chat which has uh search which
+has notebooks which is a place where I collect all these heterogeneous collections of data and do things like podcasts and audio overviews and all of
+that. Uh I have agents right like these researcher and uh analysts. So these are things that I can delegate tasks to and
+so on. It's so exciting to have all of that and I even have the copilot studio.
+So in other words, I can build agents, right? So that's the new thing which is, you know, like I now have an UI for AI and agents. Here's the other interesting
+thing. Teams takes all of that into multiplayer mode, right? All of those agents are available to me in my channel
+in my meeting, right? So teams becomes the scaffolding in which all of the AI now is working with me in multiplayer
+mode. And the third mode is my heads down just like how in GitHub copilot with VS Code I'm heads down coding away
+but I have agents that I can use. I'm heads down on an Excel spreadsheet and I have you know my copilot chat right there. Right? That is like having a data
+scientist next to me while I'm analyzing a spreadsheet. while I'm research writing a document I have a researcher
+right there the idea is we've turned every office canvas into an IDE with chat essentially if you think about it
+that way so in some sense I feel like the value of even the M365 system now
+has gotten to be more compounded uh because of intelligence getting built into all of these layers so I I I want
+to continue on that note a little bit you had previously said the software the application layer is going to collapse down into agents and I made a video
+about it called it SAS is dead it you know garnered a lot of attention um that was really cool thoughts about it but I
+want to hear you know the assertion is there's going to be the agent layer and then under that there's going to be the grounded database that the agents can
+read and write from and what what does that mean for vertical SAS companies what what how do they prepare themselves
+for this future yeah like all of us I think the the the the the way to go about it. I mean, even the demo we showed today, right? Literally, there
+was Dynamics 365 uh with essentially an MCP uh server that was used by Copilot
+Studio to orchestrate a multi- aent application that spanned CRM and many other systems of record uh and then
+completed essentially the orchestration of a complex business process, right?
+That seems to be here and now, right? I mean it's kind of clear as day that when you go about thinking about business
+process and business applications you have to compose yourself into something like that. Uh and so yeah that will mean pretty radical change if you all you
+thought was hey I'm the system of record or system of engagement or what have you and it's just uh about workflows on top
+of my data and that's the scope that's just not going to persist. So I think we have to all be open to participating in
+what is this new orchestration layer in the agentic web that will be essentially will have multiple backends right your
+SAS application will be one backend uh you better support something like MCP uh in order to be able to participate in
+the agentic web uh and then maybe even something like NL web could even reduce the friction of all these connectors right because if you think about
+enterprises you know you have a significant ificant sort of friction in how connectors work. Something like NL web could be massive change even inside
+the enterprise. And so I feel like yes, I think SAS applications we built may have to radically change in order to adapt themselves for this future. Yeah.
+And so these these uh let's just say these SAS companies, do you think they're going to be curators of this ground truth data for their customers
+and then the agents will be provided by platform companies like Microsoft? Yeah, I mean I sort of think about like it's unclear to me exactly how it all shakes
+out because in some sense all of us overstate the importance of one thing that we have today but the reality is when these platform shifts the value
+will anyway get created somewhere else right so this is where uh you know like at the end of the day what's the job to be done the job to be done is to
+complete a business process it's not about any one system of record and its curation uh or it's not about any one
+agent or one workflow It's about the entirety of it, right? So that to me is where the water is flowing and the
+question is how do you flow with it versus thinking that somehow I have this moat and I'm going to hold on to it or
+I'm going to build some sort of facade around it which has an agent head or what have you, but it's not the
+comprehensive view of what the customer in this case needs to, you know, get done. Yeah, I really like that you said, you know, different uh types of agents are going to be talking together.
+Different databases, it doesn't really matter. It's just an abstraction layer.
+Um, so that that all sounds really exciting. Another thing you mentioned, you had said in an interview that when you hire somebody and an employee,
+you're hiring them in the future uh and their basket of agents, which is fascinating to me. But I wanted to get some clarity on that because it seems
+like most likely the company the employer is going to want to own that IP the agents just like they would own traditional IP. So maybe you can add
+some clarity. Actually that's that's correct. In fact uh what you said is sort of our view right if I look at even today's announcements because what is
+the uh intellectual property of a company right uh even the work product of any one of us at work is the
+company's property and so that I think is going to be the case even with agents and that's one of the fundamental reasons why we extended the rails right
+where you now agents have an entry id uh you can manage conditional access uh for
+uh these agents uh just like you do with uh people inside of an organization perview right another super important
+thing if agents are going to have access to data it needs to be subject to the same data protection and data rights and
+so we are going to abs and security by the way you're going to manage the agent environment like an endpoint uh so that's why defender uh is going to make
+sure that there is no credential theft or what have you so absolutely thinking of all of the things we've done from identity management and security for
+people and their IT infrastructure is going to be done for agents and their IT infrastructure. Yeah, you know that makes a lot of sense and I also suspect
+a lot of people are going to build their own personal agents for their personal life and maybe do you see a future in which they are also bringing those
+personal agents into work and it's a great question. I mean the the system where you bring your own personal agents right uh has to be done in such a way
+that these two worlds don't have the data leakage right so that's the issue right which is you know let's even take the simple thing which is hey my email
+and my corporate email uh today they're two segregated things they're two identities and we know how to separate
+state out uh for both privacy reasons and for also intellectual property reasons right both of those are helpful
+I think something like that that's why even uh we believe in Entra and Microsoft account right so that's why we
+have copilot and Microsoft 365 copilot conflating the two even in terms of the user model uh is can be very confusing
+the reason why I pin uh edge with two profiles is helpful because I do it with Microsoft account when I as a as a user
+as an as an individual and I do this with entra when I'm working uh at Microsoft and it's a helpful
+demarcation to keep this you know the metal model simple otherwise I think by conflating it all I think you can really
+get up very tangled I think that makes a lot of sense so I I want to ask you maybe a a question about your vision so the cost of intelligence does seem to be
+dropping rapidly hopefully approaching zero I think it's going to be such a fascinating world in the future what do you think um what use cases do you think
+are going to open up what are you most excited about when the cost of intelligence approaches is zero. Yeah. I mean to me ultimately right when I look
+out there in the world uh do we need more abundance of something like technology like uh intelligence that can
+then ultimately drive productivity and economic growth. Absolutely right. I look around and say man you know right
+now to tame either inflation or improve economic growth we need some help like so this is you know high time. So if you
+sort of take that thing and take sort of the example we even shared at our developer conference as to what Stanford medicine was able to do for something really high stakes right like you know
+tumor board meetings and oncology and cancer care they were able to take all this technology and apply it in a real
+way where they were it was a multi-agent framework they used in foundry to orchestrate you know pathology clinical
+trials problemat data ultimately to have a better tumor board meeting and then have the data and the information from that go into PowerPoint into a teaching
+class or into teams for people to collaborate. That is to me what needs to happen. Healthcare is 20% of our GDP
+close to a lot of the expense is in this workflow. Uh and so if you know every provider out there can start improving
+their patient care and outcomes and reducing cost using AI that's going to have a profound impact in our societies.
+Uh and so that's what I'm really looking forward to. Yeah, I think the healthcare use cases I'm I'm extremely excited about hyperpersonalized healthcare. I
+already used uh Chad GBT co-pilot to answer questions about my own personal health. It is very very exciting and
+also some of the research uh that you showed off the uh immersion cooling.
+Yeah. Right. That was discover discovered. Yeah. It's so cool. Material science. There's there's just so much there. Um, so, uh, anecdotally I've
+heard from some of the younger generation that they're either avoiding AI altogether or or maybe just using it
+lightly and and specifically because the energy usage they're thinking is going to pretty significantly uh, negatively
+affect our planet and so so how how do you how does Microsoft think about that?
+What words of of confidence would you give to them? Yeah, it's a first of all, you know, the fact that the younger generation cares about this deeply is so
+so inspiring quite frankly because at some level um it is sort of the right push for all of us to be able to say
+okay whatever we're creating is fundamentally helping with these outcomes that matter to us in society, right? Whether it's in healthcare,
+whether it's in education, whether it's access to financial services, whatever the domain is, ultimately it's economic growth, it's economic prosperity and
+abundance. So let's take that as the first thing which is we're not doing this just for some tech accomplishment, but we're doing it to solve the
+challenges of people and planet. Then the second part is also important, which is we've got to do it in a sustainable way, right? It's sustainable abundance.
+Um and and then if that is the case then one of the equations I go back to is it's tokens per dollar per watt right
+the the fact that we are able to use software right as the most malleable
+resource to use energy in the most efficient way to generate the most amount of abundance which in turn then
+improves health and education and other outcomes is a good thing. uh and we just have to stay on it, right? The the
+reality is all of tech is what 2% 3% of sort of the grid power today or total power consumption. So it's minor but yes
+it'll double uh and so if it if it needs to double it needs to have the social permission to double uh it needs to
+create a lot more value in the real world. In fact that's one of the reasons why I feel like we as a tech industry need to be anchored on not just one product of ours that everybody's using.
+uh for doing fun things. It has to be in health care, in material science, in broad knowledge work in a small business
+getting productivity, right? Because that's what'll give us the social permission to continue to use the scarce resource called energy. Do that with in
+a sustainable way. We have some of the biggest buyers of alternative energy. Uh in fact, you could say the greatest subsidy out there for new projects is
+from, you know, people like us. uh we really want to make sure we continue to push on it but you know ultimately
+deliver tokens per dollar a watt such that it creates economic prosperity. I'm glad you said that. I'm going to tell the folks who are very nervous about the
+environmental impact what you said and I'll show them this video. So thank you.
+Um there there's there's definitely a major shift in computing architecture happening right now. The the line between deterministic and
+non-deterministic parts of the architecture are kind of getting blurred. Um, I saw this really cool demo a few months ago where they recreated the game Doom using a diffusion model.
+Every single frame was predicted. Do you ever see a future in which the operating system is similar where there's there's
+maybe no or very little underlying traditional code? Yeah, it's a great like we had a similar one like this muse
+model that we built was a world action model that we had built but we trained it on train you know on gaming data and you know it starts to do essentially you
+can have an Xbox controller as actions that are then used to generate the next scene which is sort of pretty pretty it's kind of like robotics you can think
+of is like that and gaming is like that and so yes everything is uh generated so to speak. um the operating system, you
+know, to me this idea that you know sometimes I think we even
+overstate the determinism of what we call deterministic systems right because after all you take a software program
+you can't prove it right I mean that's sort of one of the fundamental challenges of computer science that uh it's um and so therefore I think we yes
+it's a stochastic system but this stochastic system does need to work in deterministic ways uh that we can at
+least like you know inspect quite frankly what Elon said in the keynote when I interviewed him he said hey we got to understand the physics of
+intelligence is actually a good way to think about it right which is we have to somehow get back to a place where when we stitch these complex systems there is
+some way for us to understand the physics of these complex systems uh and then bound them right sandbox them and
+what have Right? I think that that's what we will have to do even on an operating system. But you when I look back at it, you take the coding agent that we just launched. Interestingly
+enough, the coding agent has an environment uh underneath GitHub actions. You're really putting a virtual machine and then you're really setting the boundaries of that virtual machine,
+right? Which is, hey, does it have internet access or not? You have to control it. If it's going to have access to tools with MCP uh servers, you have
+to control it. Uh and then there's a full audit log of all of that. Um and so I think that that's how we will learn
+how to essentially mix a deterministic system so to speak which a software system that we built with a lot of imperative code and you know uh and this
+agent uh to couple together and then have the interaction itself be something that we can monitor. Yeah. I um so so
+that it's really cool because you said in the keynote we're kind of beginning the middle innings of this transition.
+So I really think uh it's a really interesting time to see where that blend of different types of software go. Thank you so much for meeting with me. I appreciate it. Thank you so much. Such a
+pleasure. Thanks for coming and spending the time and look forward to being in

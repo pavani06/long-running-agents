@@ -1,0 +1,453 @@
+We're entering a period
+of exponential change
+in the world, a new
+industrial revolution driven
+by technological advances.
+And our workplaces are
+already deeply impacted.
+Our human teams are
+being joined by agents,
+artificial intelligence
+that learns on the job
+and can perform multiple
+tasks and processes.
+Agentic AI may
+revolutionise the way
+we work and manage teams
+on a scale we haven't
+seen in 100 years or more.
+What might that mean for
+humans, for our jobs,
+and for the future of work?
+They can take on
+increasingly complex tasks.
+I can give it a bunch of
+information and documentation
+from my work, so it
+knows me and my work.
+And then I can ask it
+to take that content
+and write me a paper.
+I'm Isabel Berwick.
+I lead the FTs Working It
+brand: speaking, presenting,
+and writing about management,
+leadership, and workplaces.
+In this series, I'll explore
+some of the most pressing issues
+around the future of work
+and talk to senior leaders
+about how they are
+making work better.
+So what is agentic AI?
+Very simply, I think of
+agentic AI like a wind-up toy.
+You set it up with access
+to multiple platforms
+and processes, give
+it a task, and off it
+runs, and carries on until
+the task is completed.
+Agents are capable of
+acting autonomously, making
+their own decisions without
+much human supervision.
+There's agentic AI, as the tech
+sector would like to explain it.
+And that is the idea of a
+completely autonomous technology
+in which AI takes
+control of something,
+doesn't need any kind
+of human interaction,
+and just goes ahead
+and gets the job done.
+Whatever it is you need
+doing, buying stock, talking
+to customers, interacting
+with internal employees,
+it's all done for you.
+The idea is you give
+it a very broad remit.
+And it will go and do
+everything at the same time.
+In workplaces agents
+can already approve
+expenses, on-board
+workers and clients
+and collaborate
+on project ideas.
+They might also work in
+customer experience and client
+management.
+Top tech firms have
+all launched tools
+intended to complete
+complex tasks with little
+or no human instruction.
+OpenAI just unveiled
+ChatGPT agent in July.
+The technology is supposed
+to analyse and summarise
+information from your
+calendar and beyond,
+as well as devise plans
+based on what it finds,
+from breakfasts to briefings.
+Agents are embedding
+throughout organisations,
+from the recruitment stage
+through to management.
+Sounds scary?
+Top executives are
+already on board.
+I spoke to Colette Stallbaumer,
+co-founder of the Microsoft
+WorkLab and general manager
+of Microsoft 365 Copilot.
+She leads the team behind the
+Microsoft Work Trend Index.
+When we met at the FT's Women
+In Business Summit in London
+this summer, I asked Colette to
+share her advice on what steps
+leaders should take with AI now,
+especially those leaders who
+haven't really got started yet.
+Really, leaders seem to
+be ahead of employees.
+Last year when we looked
+at the data employees
+were actually experimenting
+with AI in their work.
+And leaders were
+actually catching up.
+Now we see in the data
+that that has flipped.
+But still only 1 per
+cent of companies
+say that they've completely
+implemented their AI strategy.
+So we're still in the
+early innings of this.
+The thing that's
+important to know now
+is, if you haven't started
+yet, you're already behind.
+So go again.
+So how quickly will global
+workforces adopt agentic AI?
+Research company Gartner
+says that agentic AI use will
+skyrocket in the coming years.
+Gartner asked more than 3,000
+business leaders how they will
+move forward with agentic AI.
+And nearly half say
+they are planning
+a conservative investment.
+There's also some suggestion
+that a lot of the AI hype is
+just that... hype.
+I asked my colleague,
+Melissa Heikkila, the FT's AI
+correspondent, to share
+her insights into what's
+happening right now.
+A lot of it is hype, for sure.
+A lot of it is hype.
+People are really, really keen
+to see this being rolled out
+in the real world and also
+see a return for investment.
+Companies and investors
+have poured billions, if not
+trillions of dollars,
+into this technology.
+And now the big question
+is, what is the killer app?
+What is this technology
+actually useful for?
+And we don't really
+know that yet.
+Companies everywhere
+have this almost FOMO,
+or Fear Of Missing Out, that
+if they don't adopt and use
+the technology, they'll fall
+behind their competitors.
+Optimists say that
+using the technology
+will help reduce
+workplace drudgery,
+leaving more time for
+employee creativity.
+I spoke to Zig Serafin, CEO of
+Qualtrics, a US-based experience
+management company.
+I asked him what the future
+will look like if and when
+our teams at work include
+both humans and agents.
+What that means is
+that the nature of work
+that can be agentic, or that
+can become agentified, or better
+automated, or be able to
+take the rudimentary, basic,
+repetitive, highly
+predictive rules-based tasks
+and have AI do that work, and
+then be able to allow people
+to spend time on things that
+are more human starts to change.
+More human means
+focusing on creativity,
+focusing on areas that require
+complex judgement, areas that
+require strategic thinking,
+areas that might require
+much more of
+craftsmanship, and being
+able to require much more of
+a human approach to something.
+All of these forms
+are more human.
+And so if people can spend
+more time on things like that,
+that usually improves the
+organisation's ability to be
+able to create things
+that are more human,
+be able to create more
+human connections,
+while more of the repetitive
+things become more automated
+as a result of that.
+So if you step back and you
+look at an organisation,
+even though things
+won't change overnight,
+organisations will
+become less rigid.
+Is AI coming for the traditional
+org chart - the organogram?
+We all know them.
+They're the hierarchy of work.
+It shows us where we sit
+in the office structure.
+But experts say that agents that
+can perform autonomous tasks
+could soon replace humans
+in part of the org chart.
+And if that happens
+it's going to have
+profound effects and
+knock-on consequences
+for the future of work.
+To go deeper, I spoke to
+renowned trust expert,
+Rachel Botsman.
+I visited Rachel at the
+London Design Biennale,
+where her installation,
+Roots of Trust,
+reimagines the first known
+company organisational
+chart - what we now call the
+org chart - dating from 1855.
+With agentic AI set to disrupt
+the traditional company org
+chart, mixing human workers
+with AI-based colleagues,
+Rachel shared her thoughts
+on how humans will react
+to this extraordinary shift.
+So are humans hardwired, do
+you think, to resist change?
+Or with the agents
+and AI coming in,
+is that a human
+thing, to be wary,
+and to use one of your
+words, mistrusting?
+Not necessarily mistrusting,
+but human beings
+are wired to resist change.
+So I talk about a concept
+called a trust leap.
+And so a trust leap is
+whenever you're asking someone
+to take a risk, to
+do something new
+or to do something differently.
+And we resist trust
+leaps because we
+like the known and the
+safe and the familiar.
+And whenever you're
+asking someone
+to trust a new system, a new
+product, a new innovation,
+a new leader, you're
+asking them in some way
+to move into the unknown.
+As workers worldwide
+grapple with trust
+and the rapid
+implementation of AI agents,
+we have concerns ranging
+from job losses and jobs
+becoming obsolete to privacy
+violation, because those agents
+scrape a lot of data, often from
+multiple platforms and sources.
+The sceptic in me wonders about
+the long-term consequences
+of this headlong rush
+to implement agents
+in our workplaces.
+However intelligent it is,
+it's still a something.
+And my fear is not
+a lack of trust.
+It's actually misplaced trust.
+And it's how honest we are about
+the intentions and the motives
+of that something, and how that
+person who's using it realises
+it's not a real human being.
+Because this is the
+first time in history
+that the line, the distinction
+between human trust
+and technological
+trust, is not even
+blurred, that we don't know
+where that line begins and ends.
+So agentic AI,
+there's this something
+called agentic washing, which is
+the idea that tech companies are
+telling people, they're
+telling companies
+right now that a agentic AI
+is a thing, that it works,
+that you can sell it.
+It's more expensive
+than just getting access
+to a normal ChatGPT chatbot
+because it can do more.
+And we're in a
+peculiar point in time
+where AI companies are spending
+massive amounts of money
+on research and development.
+And they're getting in quite a
+lot of money, but not as much
+as they're spending.
+Agentic AI is a way
+to balance that out.
+The problem is that truly
+agentic AI, totally autonomous
+AI, does not yet exist.
+And that's for two reasons.
+One is because it's very
+difficult to give it a remit
+and let it go ahead
+and do everything.
+But the second one is that it
+gets things wrong all the time.
+So how are companies
+avoiding agentic washing?
+How can they make sure it works?
+I find it very, very important
+to not only use it internally,
+but we also partner with
+customers around the world who
+like to kick the tyres
+first, but ultimately
+help us to be able to
+finesse the use of the AI
+in a way that makes
+a great difference.
+So that by the time we end
+up launching the capability
+in the market, usually
+we'll have 50, sometimes
+a hundred customers
+that are already
+using the system at
+scale, so that it's
+been tuned and polished, such
+that many other customers
+can take advantage of it.
+It's not a finished product yet.
+It's not something that can
+just run without anybody
+watching over it.
+This is still something
+that we're testing out.
+And it fails, and fails
+in interesting ways,
+but still fails.
+We are definitely
+the guinea pigs.
+And I think a lot of it has to
+do with the cost of R&D in AI.
+And that might not be something
+that the companies themselves
+want to talk about.
+But that's the reality
+for AI at the moment.
+The amount of money
+that they're spending
+to pursue superintelligence,
+to pursue AGI,
+is vast, billions and
+billions of dollars.
+The amount that
+they're getting in
+is nowhere near covering that.
+So they're still working out
+their revenue models right now.
+Agentic AI, the sales of agentic
+AI, are part of that experiment.
+We are part of that experiment.
+There's a lot of buzz at the
+moment about huge numbers
+of jobs being lost to AI.
+Is this what the future
+of work looks like?
+Some in the tech world
+are really excited.
+They're saying in
+a few years, we
+might get the world's
+first one-person unicorn.
+Unclear if that will happen.
+If you want the real genius or
+really, really good quality,
+you still need a human.
+Language models work by
+generating the next likely word
+in a sentence.
+So often you get the most
+statistically average result.
+And you still need humans for
+real ingenuity or creativity
+or something that goes
+beyond the average.
+So I don't think humans
+will ever be replaced.
+Right now, levels of optimism
+and investment from tech leaders
+seem to be far outstripping
+the reality of what
+agents are doing in workplaces.
+But things move so
+quickly at the moment.
+Leaders have to be ready
+for the agentic revolution,
+however it unfolds, and
+wherever it takes us.

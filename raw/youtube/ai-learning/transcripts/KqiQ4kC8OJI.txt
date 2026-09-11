@@ -1,0 +1,306 @@
+I created this high quality website in nextjs including all of these pages and all of these functionalities including
+e-commerce and book Comm meeting and all of these functionalities within less than 1 hour using this tool which is
+called bolt. New and in this video I'm actually going to give you Hands-On training that how you can actually create something high quality some high
+quality design in bold. new because most of the times when when we create something in bold. new or any of these
+AI uh uh like U website Creator tools they create something very average and
+some very basic design but I took this uh template this is actually uh webflow
+template so I took this template just as a reference to to uh to just show you guys that how we can actually take this
+template and then I'm actually going to uh like give you a Hands-On training
+with all of the tips and tricks that we can actually going to use and Implement in bolt. new to create something high
+and high quality so you can actually char your customers for more than 5 to 6,000 even 7,000 up to $10,000 for this
+kind of high quality amazing websites with without even writing a single line
+of code and because you'll be creating this in next year that means the possibilities are just endless that
+means this will be a custom coded this is not going to be on webflow this is not going to be on WordPress or something like that this is going to be
+custom coded website that you will not even I mean you won't write any code but still this will be a custom coded
+website so we'll actually try to replicate this design and and I'm actually going to give you a very
+handson training before we move move on please uh do not forget to subscribe my YouTube channel just go to YouTube
+search for the metav sky I am right now at 613 subscribers please please please please help me to reach 10,000
+subscribers by the end of this year so it will actually help me a lot so I'm actually I'm more passionate when as
+soon as I see these numbers growing I I'm actually feel I feel more passionate about making these videos so I'm
+actually going to like give you all of my secrets that I uh deliver my customers with high highend uh websites
+so we are going to use bold. new we are going to use chat GPD and we are going to use this as a as a reference and um
+then uh also I'll actually guide you that how you can actually download that source code and then deploy it on on on
+on a server so you won't you W uh like I I won't leave you uh in the middle so uh
+you can just like um start with simply signing up on bolt. new if you don't
+know what bolt. new is is a uh very uh amazing AI um website builder even app
+builder uh you can say AI code editor basically that you can actually use so
+if you if you don't if I have actually subscription if you don't have any subscription you don't have to worry
+about that because uh it will give you free uh 1 million I think free credits so that is enough to build our first
+website so what you have to do is actually uh come here and then uh hold on let me just uh switch to different
+screen so I think this better all right what uh let me just sorry let me just switch back to uh this one all right all
+right so what you have to do is first of all we need to take a picture of this entire web page either we can take a
+picture of this entire web page because actually in website you you need to understand this in in the landing page
+are in like high quality high end websites the main uh part the main
+attractive part is actually the hero section this is what we call hero section so we need to replicate this
+hero section all right so what we need to do we need to uh either take picture of this hero SE or we need to take
+picture of the entire website so let's just start with taking picture of the entire website how you can take a picture of entire website so you need to
+have something like uh this Go full page so this is actually a Google Chrome plugin so you just need to go to Google
+Chrome and look for Go full page Chrome extension just look for that go full page Chrome extension and then click on
+add to Chrome and it will it will be added to Chrome and then you can actually find it here in your extensions
+in top right uh section and then you can just uh if it is not showing in your bar here so you can simply just look for it
+and then click on this pin icon something like this if you click on that you see there's an icon which is popping
+up so uh you just need to click on that so as soon as you have clicked on that and now you can see it here what you you need to do is actually just go to your
+uh template and then click on this button as soon as you click on this button it will actually start taking
+screenshot of this entire entire website so all you have to do now just click on download PNG button and this PNG button
+and then you can have this website here right here in front of you the next step
+now is we need to now go to chat GPD open a new chat open just U chat GPD 4.0
+because um 4 uh1 actually preview doesn't support
+uploading images so you need to go with uh chat GPD 4.0 or if if you're using
+Cloud you can use cloud what we're going to use chat GPD for we are actually going to use chat GPT to create a
+detailed prompt or you kind kind of as a communication medium for bolt. new to
+convey uh like what kind of design we are looking to uh make here so what you
+need to do you can just simply click on attach file click on upload from computer and then simply click on this
+file here so as you can see it's uploading and it has uploaded and now let's just uh tell CH what what we need
+to do this is a screenshot of um web
+template I need to create uh replicate this
+design design in bolt. new I want I need you
+to understand this design uh
+[Applause] understand the color
+combinations and understand the correct combinations and text and font
+Styles and background [Applause]
+details every single thing about this
+design and then I want you
+to write uh detailed
+prompt for bolt. new by the way I can actually leave this uh uh prompt for you
+in in description so you can just find this in description section uh if you if you just need to like copy this as it is
+because when I explain this way so it actually understand better chat GPD actually then comes up with something
+really cool and nice um so
+especially write a very
+detailed prompt about the hero
+section um I really like the
+background colors and
+gradient explain it in your
+prompt also explain about
+the header section I need the header to look
+exactly like this please write
+a detailed prompt that's it
+so we actually just going to enter this as it is let's just go with it and let's
+see what CH GPT will come up with so here it is Char GPT is actually now has
+started creating this detailed detailed prompt so is actually going to create
+this prompt create a modern clean visually appealing landing page that mirrors uh uploaded design style the
+page should functional responsive okay sticky op position okay that's fine all right hero section okay
+mix of lime green okay fine perfect and it has actually given this uh color
+scheme as well it has given text color that it has given details about the
+typography and then kind of fonts that it will use so what we're going to do we
+can actually just copy this as it is and let's just go to bold go to Bol and then
+bold. new let's just go ahead there rep paste this prompt as it is and then
+let's try to uh upload this image I think bolt new only support 5 MBS so
+let's just PNG size reducer if you ever face this problem because actually you're going to take this kind of like
+long image so image size can actually increase so you can just reduce image size so this website is good enough to
+like reduce image size which is called PNG size reducer or just compress pg.com
+so just go there it will actually compress your PNG size let's just wait
+for it to complete its function so that's it the image is compressed now
+let's just click on upload let's click on that that and now it will start uploading and then let's just click on
+this button and let's see the magic is happening right now in front of
+our eyes H okay at least okay one of the
+images Dimension exceeded maximum allowed screen size of 8,000 pixels if it ever gives you this kind of error so
+what you have to do uh is just go to your uh screenshot and go here
+and hold on let me just see it has actually I think let me just see it has
+um okay perfect it is not it has not lost its quality yet so that's perfect
+all right so what you have to do is simply uh write now just click on here
+right now it's 12,000 so we cannot actually increase uh have pixels more than 8,000 so I think we can just have
+it until here and that's it just simply save about the footo section we can actually add the a separate image for
+that that's not a problem to start with let's just upload our updated image which is this one and then now let's
+carry on with again so let's see The Magic In Action from Bol
+new all right so what b. new will actually do uh it
+will actually start creating this project in uh nextjs so yeah it will so yeah this is
+actually great thing about b. new because I I use cursor and I I love cursor but b. new is is a really good
+place to start your project because it will set up everything for you it will
+do all of that like all of the project setup part it can do really really good for you so let's just see what it has
+built so I think uh it has just like sort of a basic project and this is what
+it came with all right this is again as I said below average so this is the
+first iteration that we got and this is below average we don't like it what we're going to do now let's just take a
+screenshot this is now where the actual magic happens what we're going to do we can just like take a simple open
+Snipping Tool take a screenshot and just copy
+it like this let's save it let's call it
+something come here
+please make the hero section look
+exactly like this attached image copy it as it
+is copy the background
+color and every single UI
+all right so let's see what it does know so now we actually asking it to like
+exactly exactly replicate it to not miss anything so let's see what it does now
+all right uh yeah it's all about like uh like back and forth just uh giving it
+more details so it's is consider like you have a senior developer full stack developer in front of you sitting next
+to you and now it is actually doing some iterations on your website and now you are giving him uh review in real time so
+it's just like that so let's just uh let me just check if everything is okay yeah everything is okay
+perfect all right so here it is so yeah uh it has actually added this image here
+and then it has like added something like that so kind of you can see in the color and gradient it has got that as it
+is it has got this uh section but we'll actually ask it to uh improve this section and make it make more Central
+but but here is the image that it is using so let's try to uh so yeah I mean
+it has actually do this business thing underline it has added this nice very
+nice rounded thing here and it has added this thing okay let's just ask it to add
+this image and I'm not sure if if we can just directly give it an
+image all right so it it was actually saying message did not complete this response okay please add this
+image in hero section in place
+of the human
+image all right let's just let's let's just like uh let's not confuse it with
+any more suggestions let's just try to implement this image as it is uh instead
+of this guy so let's see if if it does that but most of times I I don't recommend you changing images directly
+inside uh inside bolt uh there's another way of doing that uh but yeah I mean uh
+let's just try to do it um with with within bolt if if it doesn't do that accurately no problem we'll actually
+I'll then show you another way we'll actually focus on enhancing the design L overall uh not uh changing the image so
+I think yeah it has um messed up with the with with the image part it has tried to copy that but it has then
+messed up uh the image so image not image is not looking very good but yeah overall design if you see so design is
+kind of better if we have to now change some certain area let's suppose uh this
+email I mean I want it to look white so what you can do you can just take a screenshot
+and then let's just mention
+it you can see it has even I
+want this email
+section in hero to look
+exactly like the attached
+image so that's what you want we need it to like look exactly like this so let's see
+if if it if it does that all right it's just like that I
+mean we have to now keep going back and forth back and forth and I keep asking you to like enh enhance this design it's
+actually really good in doing that so
+I mean I have tried this technique with cursor uh cursor is not really good in um in getting your design right uh I
+mean I use v. def for that but I find I like I found b. new to be more accurate
+okay so it has actually kind of tried to uh get it like that but yeah I mean that's that's acceptable that's kind of
+better and it now pops up more next thing that I wanted to do is actually uh
+increase the font make it bold for these um header uh items so what I can
+do make the header menu items
+font bold and little
+bit bigger so it should now do that um I
+think now you got kind of an idea that how actually we can get a high quality
+design the only problem that we are facing right now is actually this image so that image is missing right now so we
+are actually going to implement that uh but not inside bold. new we are actually going to do that inside cursor so in
+this video you're actually going to learn how you can actually move your um
+like project from b. new to cursor so you know you can see that it has now
+made it uh bold uh and then like kind of more visually appealing now so all right
+so I think I'm happy with kind of the the beginning of of the project here what I need to do now uh I think let's
+just try to okay again this is a Sprite so let's just take it to cursor and let's let's add these like images here
+um in inside cursor so what you can do because cursor actually gives you uh option to directly upload images in your
+um in your um it actually creates a public click folder then actually it allows you to add images there so
+yeah we can do that I think here as well but let's just go to cursor the cursor will actually save a lot of time so let
+me just download it here okay just click on this download button and that's it so
+it has now 41.3 KBS this the total project size is 41.3 KBS I'll just copy
+it from my download section and then take it to let's just go to development file and then let's go to bolt. new
+local okay I think this was a different one uh bolt
+tutorial let me just click on that click on that extract
+and let's just go there all right let me just rename it to
+bolt then BT T all right so let me just copy
+this thing from here let's go to cursor if you have not installed cursor you should install it's it's an absolutely
+free uh to uh start with so you can simply just download cursor so uh click
+on cursor add this it will ask you to open a folder just click on that and you
+can just like open this in Visual Studio as well but uh because if you I assume that you're beginner in programming or
+like these kind of I tools so I suggest you using cursor you won't have to write a single line of code because in V
+Studio you'll have to figure out a lot of stuff but yeah okay so we are here uh
+what the first thing that you need to do is actually uh type npm
+insl just click on that and it will actually install every single dependency
+that uh it needs to run this project so it will just simply install all of these
+depend
+es all right so all of the dependencies are installed let's just click on npm
+start uh that means I'm actually going to run this locally let me just see if there's any other uh code which is
+running here nothing is running here nothing is running here all right cool so I can actually just do npm start and
+it will actually start this project okay uh npm okay let me just try npm runev npm run Dev all right yeah cool perfect
+so uh it will just run locally on this port so let me just click on that and it
+will now run on this
+port perfect so here it is so our project now from the same project that
+we created in bolt. new this that same project is actually now opened inside
+here uh on on Local Host so now actually we can uh add if you see on inside
+cursor you can see this public folder now and you can see like all of this uh stuff here but what I'm going to do I'm
+actually going to add this image I'll just uh that man's image uh right I'll
+just call it uh man image and then I will just drag it
+inside this public directory and now what next step I'm going to do
+I'm actually going to open cursor composer if you're not aware of what cursor is you can actually simply just go to my YouTube channel and uh watch a
+detailed video about cursor in here uh which is I think it say yeah this one so
+you can actually it say a very detailed walk through uh for cursor you can just like simply uh watch it on my YouTube
+channel so if you have not subscribed please do right now it's 63 I need more subscribers please do subscribe my
+YouTube channel all right cool so we are here now uh what we need to do we need to ask it
+um let's just add a file here inside
+cursor hold on let me just add a this
+section I want the header section
+to look exactly
+like the attached [Applause]
+image for now I want you to
+add the man image in header section
+[Applause] I have added an
+image in public
+directory Tre with the [Applause]
+name let's just find the name of this thing this was man
+image man image please add this image in my
+hero section not header actually hero section I have mentioned it here so
+header is the top bar hero is actually your hero section so I'm what I'm going
+to do I'm actually going to uh tag my entire code base here so curs will actually go through my entire code base
+and then find uh like this particular area and then add this guy over there so
+let's just click on that and let's just see if cursor can and starting because
+sometimes actually I need to turn on my VPN to uh run cursor for some reason
+so so far it's working so far it's actually adding the guy there inste updating the
+hero section Implement apply and let's just open let's see all right so here we
+are so we got this guy here uh I mean you can see the one problem that we have
+is actually uh the background so it has a very weird this green background so what
+I'm going to do is actually I'm going to take a screenshot and then tell it that I don't
+like this green
+background so let's just go back let's just let me just minimize it
+like this I like it like this all right all right let me just
+um okay that's fine uh where is our image background image
+here it is I can see you have
+implemented the man photo but I can see the photo
+has green color behind it
+it's um
+PNG G photo without a
+background please remove the green
+color from behind the photo
+all right uh mention one more thing please don't
+change anything else on hero
+section so I just like specify that please do not change anything else on hero section so let's see what it comes
+up with uh if it updates that or not all right class from Okay cool so it will
+actually just update this thing over there I think we had one error right now react is
+declared but it's value is never use okay I think it should be fine yeah perfect all right so we have got rid of
+that uh background so yeah you you see like this this is exactly how we want it
+to be and now uh I think we can like just keep adding
+uh more and more stuff so I think uh my purpose is is fulfilled U that we we got
+something like um like high quality something like this and we have now we are now on way we can actually now add
+this okay let's let's just add one more item and then we can actually uh uh sign off this tutorial uh right now we have
+it's 31 minutes so I don't want to like bore you with too much stuff but um similarly we can just like add this and
+then ask it to animate it a little bit uh back and forth uh we can do that or we can just like let's do that all right
+so
+let's go to cursor please
+add okay let's just add all of these three once while we're adding
+that image one
+next one is image two I'm just naming them like
+the easy names so I can just like um put these thingies over there uh let me just
+go to cursor and go to public directory just drop it there and then let's ask it
+to image 1.svg and image 2.svg uh please see the let me just add that
+screenshot again
+please um see the
+screenshot I there are two
+image boxes um in front
+of human image I want you
+to add these two um uh image
+boxes in there I have added both of these both of
+these images in public
+directory you can find them
+with um names uh image im a e image
+1. SVG and image IM im a e to.
+SVG please add a a little move animation
+as well on these images so these
+images can move back and forth that's it that's it just go to
+code base and just click on enter that's it
+so it will just update that floating images it's called
+floating so I don't remember but now I see that it has uh named it as floating
+images all right okay cool perfect let's just uh yep here it is the floating
+images are added here the floating images are added perfect awesome similarly we can just like remove this background thingy from here and add
+another thing here but these floating images added there these are moving nicely and looking very cool so yeah I
+mean you got this you can just like keep going on now and add it to ask it to like add all of these features and then
+um simply then you can actually then later on deploy it on versal I'll create a separate tutor for tutorial for that
+but today's uh tutorial was actually just focused on how you can actually build high quality
+um like we web designs in cursor from a from a reference image so you saw that
+we did that uh we started in b. new then we mve to cursor because cursor is more handy cursor is more uh you can say when
+it when it comes to like uh writing more code so cursor is more handy and more
+cheap in terms of like using it because Bol art new will actually cost you um tokens cursor will also cost you tokens
+but if you use uh right we actually we're using clouds on it so if you use uh gp4 o or maybe simply just use gp4 so
+it will be good enough to like um have um like everything up and ready for you
+so yeah this was it so this is that easy is that simple you can just you just need to like start with Char GPD uh like
+sorry start with the reference and that give that reference to chpd ask charg now create a detailed uh kind of a
+prompt for you and then give that prompt to bolt and then create something on bolt and then uh do some tweaks on bolt
+and then download that source code bring it to cursor and that's it I mean that that's the whole uh kind of um um I mean
+the the workflow to create high quality designs and this this way actually you can replicate any design um and u i I
+have because I have been actually working on on upwork I have got like so many projects from my customers who need
+like this kind of custom high-end websites not only front end but back ends as well so I'll actually create a
+separate video for that how you can actually now create a back end here and then you can add some like backend functionalities because we'll be doing
+in nexs uh this one particular was actually because we didn't specify next year so it says invite plus react plus
+typescript so we can actually convert this project still into uh next year but that's that's fine that's that's that's
+a topic for another day so yeah this was it please do not forget to subscribe please please do not forget to subscribe
+and U because it really really matters for me right now that's the driving force I'm I'm I'm passionate right now
+to achieve 10,000 subscribers uh before the end of this year so please don't forget to subscribe thank you bye-bye

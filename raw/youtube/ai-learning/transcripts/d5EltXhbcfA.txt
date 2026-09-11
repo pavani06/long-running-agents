@@ -1,0 +1,150 @@
+[Music]
+the theme of this conference today is agents at work unfortunately for the next 18 minutes you'll be stuck with me
+talking about how agents don't work very well today and how we can do better when it comes to AI engineering ing so there
+is so much interest in Agents from all fronts in the product world and in the industry World in academic labs in
+research if you're someone who doesn't think that companies will be able to scale language models all the way to AGI
+and what we're going to see more and more of in the near future is agents that are not really deployed directly but function as small parts of larger
+products and systems and this is what AI is probably going to look like in the near future swix came up with a few
+dozen definitions of AI agents this is one of them where language models control the flow of a particular
+system in fact even when people naively think of um chat GPT and Claw as models
+uh these tools are actually examples of rudimentary agents at some level they have input and output filters uh they can carry out certain tasks they can
+call these tools and so on so in some sense agents are already widely used as well as
+successful we've now seen mainstream product offerings uh that can do a lot more open AI operator can carry out
+open-ended tasks on the internet the Deep research tool can carry out 30 minute long report writing tasks on any conceivable
+topic so that's the first reason I think today's conference is timely but the second reason is that on the flip side
+the more ambiti ambitious visions of what agent can do are far from being realized so on the left here is a vision
+for what agents can do something out of Science Fiction films like the film her and on the right hand side are how these ambitious products have failed in the
+real world so far now I'm pointing this out not to criticize the specific products on the slide but to genuinely challenge the audience into the
+challenge of building AI agents that really work for the people who are about to use them and so over the course of this talk I'll talk about three main
+reasons why agents don't yet work and what we can do to realize the potential of agents to get past some of these
+failures the first one is that evaluating agents is genuinely hard so to begin let's see some examples of how
+when people have tried to productionize agents these agents have sort of failed in the real world do not pay is a US startup that
+claimed to automate the entire work of a lawyer um the startup co-founder even offered a million dollar for any lawyer
+who would be willing to argue in front of the US Supreme Court using do not pay in an earpiece in reality a couple of years
+later in fact very recently the FTC fine do not pay hundreds of thousands of dollars the reason for the fine was that
+the performance claims that do not play seem to be making were actually entirely false now you might consider this a case
+of Rush invention of a small startup making claims that it cannot back so let's look at some of the work from more wellestablished
+companies Law Firm Nexus Lexus Nexus as well as West law are widely regarded to be some of the leading lawtech firms in
+the US a couple of years ago Lexus Nexus launched this product which it claimed was hallucination free in its ability to
+generate legal reports and reasoning but when Stanford researchers evaluated Lexus Nexus and West law
+products they found that in up to a third of cases in at least a sixth of cases these language models
+hallucinated um in particular in some cases the hallucinations basically completely reversed the intentions of
+the original legal text in others the paragraphs were made up uh they have about 200 examples of such errors um in
+leading ltech products we've also heard examples of AI agents soon automating all of scientific
+research so this is an example from St startup Sakana doai Sakana claimed they had built a research scientist that could fully automate open-ended
+scientific research now our team at Princeton wanted to test this claim in the real world in part because automating scientific research is one of
+our main research interests so we built a benchmark we created this Benchmark called core bench the tasks in this
+Benchmark are way simpler than what you might expect from open-ended real world scientific research um they just tried
+to reproduce a papers result even providing the agent with the code and the data needed to reproduce it so as you can imagine this is far simpler than
+automating all of science what we found is that the best agents as of today cannot even automate
+scientific research reliably less than 40% of the papers can be um reproduced by the leading agents now of course you
+can see these models getting better and even if an agent can automate only 40% of rep producibility that is a huge
+boost because researchers spent a lot of time reproducing baselines from past results but on this basis to argue that
+AI can soon automate all of science or that agents will R render scientific researches obsolete is way too
+premature in fact when people actually looked at how well Sakana ai ai scientist worked they found that it was
+deployed on toy problems that uh it was evaluated using an llm as a judge rather than than human peer review and that in
+fact once you start looking at the results they turn out to be very minor tweaks on top of other papers think undergrad research projects rather than
+fully automating all of Science Now a couple of days ago as I Was preparing the slides for this talk I came up with another claim or Sakana
+came up with another claim where they claimed to build an agent for optimizing Cuda kernels the claims were indeed very
+impressive they could lead to a 150x improvement over the standard could kernel that P comes with the issue
+though was that if you sort of analyze their claims one level deeper you would see that they were claiming to outperform the theoretical maximum of
+the H 100 by 30 times clearly this claim was false and once again it was because of the lack of rigorous evaluation it
+turned out that the agent was simply hacking the reward function rather than actually improving the Cuda kernels once again the point is not to call out a
+single company but rather to flag that evaluating agents is genuinely a very hard problem it needs to be treated as a
+first class citizen in the AI engineering toolkit or else we continue risking failures like the ones on the
+slide the second reason why building agents that work in the real world is hard is because static benchmarks can be
+quite misleading when it comes to the actual performance of agents and that's because for the longest time we focused on building
+evaluations that might work pretty well for evaluating High well language models too but agents are not the same as
+models for example for most language model evaluations all you need to do is to consider an input string and an
+output string those are the domains where language models work it's really enough to construct valuation on the other hand when you're
+thinking about agents these agents need to take actions in the real world they need to interact with an environment and so building this s of evaluation that
+makes these changes possible that creates the virtual environments within which these agents operate is a way harder
+problem a second difficulty in evaluating agents is that for llms the cost of evaluating a model is bounded to
+the context window length of these language models you can basically look at these evaluations as having a fixed
+ceiling but when you have agents that can take open-ended actions in the real world there isn't any such ceiling you can imagine these agents calling other
+sub agents there can be recursions there can be all sorts of systems maybe just llm calls in a for Loop and because of this Cost needs to be once again a first
+class citizen in all evaluations of Agents if you don't have cost as an access alongside accuracy or performance you're not going to really understand
+how well your agent works and finally when you build a new Benchmark for a language model you can
+basically assume that you can evaluate every single language model model on this Benchmark but when it comes to evaluating agents these agents are often
+purpose-built so for instance if there is a coding agent you want to evaluate you can't really use a web agent
+Benchmark to evaluate it on and this leads to an second hurdle which is how do you construct these meaningful multi-dimensional metrics to evaluate
+your agents rather than um relying on a single Benchmark to evaluate how well it works now all of these concerns might be
+thought of as theoretical um you know you could reasonably ask why do we care if static evaluations don't really work
+well for agents the reason is that because of these differences with the cost and the accuracy because of the
+single focus on optimizing for a single Benchmark we are basically unable to get a coherent picture of how well an agent
+works so at Princeton we developed this uh agent leaderboard that tries to solve some of these issues in particular for
+example for the core bench leader I mentioned earlier um you can have multiple agents which are evaluated with
+cost alongside accuracy so here on this parito Frontier you can see agents like
+Cloud 3.5 um scoring about as much as the um open eyes o1 models but a cloud
+model actually costs $57 to run whereas o1 costs 664 even if the performance of open a
+Owen was a couple of percentage points higher which it wasn't in this case by the way but even it would work for most AI Engineers the choice here is obvious
+you would any day of the week take a model that costs 10 times lesser while performing about as well now in response to this sort of
+two-dimensional parito um I've often been asked um are llms becoming too cheap to meter in other words why do we
+even need to care about the cost of running an agent if the cost of uh creating these models is dropping drastically and it is indeed true that
+costs have dropped drastically in the last few years if you compare Tex DaVinci 003 which was open AIS model back in
+2022 um to today's GPD 40 mini which in most cases outperforms this older model the cost has dropped by over two orders
+of magnitude but at the same time if you're building applications that need to scale this type of approach is still quite
+costly and especially from the point of view of releasing prototypes one of the barriers is for a Engineers is you
+really need to sort of iterate in the open and so if you don't account for cost your prototype might soon end up costing you thousands of
+dollars and finally even if the cost of uh scaling inference time um llm calls continues to drop what is known as a
+jvin paradox I suspect will keep increasing the overall cost of running agents so jvin Paradox is this Theory from a 19th century British Economist
+who figured out that as the cost of uh mining coal reduced the overall usage of coal increased not decreased along
+several Industries the same happened when the ATM machines were introduced all over the US people expected a loss
+of jobs for bank tellers but what happened was the opposite because ATMs were so easy to install the number of Bank branches actually drastically
+increased leading to an increase in the number of bank tellers employed this is also what I expect will happen as the costs for language models keep dropping
+drastically and that's why for the foreseeable future at least we do need to account for cost when it comes to agent
+evaluations so how do we do all of this um in an automated way well with the holistic agent leaderboard or Hal uh we've come up with a way to
+automatically run agent evaluations on these 11 different benchmarks already and very many more are on the way um
+beyond that though even if we come up with these multi-dimensional um benchmarks even if we do come up with cost controlled evalu ations there are
+still certain issues with this type of evaluation and that's because agent benchmarks have sort of become the metric against which VC's fund companies
+an example is cosign which raised its seed round of funding based on its results on S bench in fact agent
+developer um cognition raised $175 million at a valuation of $2 billion
+driven primarily by the fact that the Asian did very well on S bench unfortunately Benchmark performance very
+rarely translates into the real world so this is an excellent analysis of how well Devon Works Devon is the agent
+developed by cognition um from the very impressive Folks at answer. um instead of relying on standard benchmarks they actually tried
+to incorporate Devon into the real world and what they found was that over a month of use they tried it for 20 different tasks and it was only
+successful at three of them so this this is the other reason why this overreliance on static benchmarks can be really
+misleading how do we get over this one of my favorite Frameworks to think through this is the work by Folks at Berkeley called who validates the
+validators on the top is the typical evaluation pipeline which consists of singular llm calls against static
+metrics which is the um sort of broken Paradigm for AI evaluations that we just discussed and at the bottom is what they
+propose they propose having humans in the loop who are domain experts who proactively edit the criteria based on which these llm evaluations are
+constructed and that can lead to much better evaluation results overall this brings me to the last key takeaway for why Agent performance does
+not really translate into the real world which is the confusion between what capability is and what reliability
+is so very roughly speaking capability means what a model could do at certain points of time for those of of you who
+are technically minded this means the pass at K accuracy of a model for a very high K that means that one of the K
+answers that the model outputs are correct on the other hand reliability means consistently getting the answer right each and every single time when
+agents are deployed for consequential decisions in the real world what you really need to focus on is reliability rather than capability that's because
+language models are already capable of very many things but if you trick yourself into believing this means a reliable experience for the end user
+that's when products in the real world go wrong so in particular I think the methods for training models that get us
+to the 90% of it what in s's term would be the job of a machine learning engineer don't necessarily get us to the
+99.999% what is often known as the 5 9 of reliability and closing this gap between the 90% And The
+99.9% is the job of an AI engineer and I think this is what has led to the failures of products like
+Humane Spin and rabbit R1 it's because the developers did not anticipate that not having reliability in products like
+these would lead to a product failure in other words if your personal assistant only offers your orders your do Dash
+food correctly 80% of the times that is a catastrophic failure from the point of view of a product now one thing people have
+proposed to fix this sort of issue to improve reliability is to create a verifier something like a unit test um
+and on this basis there have been several claims that we could improve the inference scaling capabilities of these tools and get to very reliable
+models unfortunately what we found is that verifiers can also be imperfect in practice for instance two of the leading
+coding benchmarks human eval and mbpp both have false positives in the unit tests that is um a model could output
+incorrect code and still pass the unit test and once we account for these false positives what we have are these inference scaling curves bending
+downwards so rather than model performance continuing to improve if there are false positives in your verifiers the model performance sort of
+bends downwards simply because the more you try the more likely it is you'll get a wrong answer and so this is also not a perfect
+solution to the problem of reliability so what is the solution I think the challenge for AI Engineers is
+to figure out what sorts of software optimizations and abstractions are needed for working with inherently
+stochastic components like llms in other words it's a system design problem rather than just a modeling problem where you need to work around the
+constraints of an inherently stochastic system and I want to argue in the last one minute of my talk that this means
+looking at AI engineering as more of a reliability engineering field than a software or a machine learning engineering field and this also brings
+me to the clear mindset shift that is needed um to become successful for from the perspective of being an AI engineer
+if you look at the title slide of my talk um this title slide sort of pointed to one such area where we've already
+overcome certain um types of limitations of stochastic systems and that is with the birth of
+computing the 1946 eniac computer used over 17,000 vacuum tubes many of which at the beginning of this process used to
+fail so often that the computer was unavailable half the time and the engineers who built this product knew
+that this is a failure from the point of view of the end users so their primary job in the first two years of this computer was to fix the reliability
+issues to reduce it to a point where it becomes well enough it works well enough to become usable by the end user and I
+say that this is precisely what AI Engineers need to be thinking about as their real job it is not to create excellent products though that is
+important but rather to fix the reliability issues that plague every single agent that uses inherently
+stochastic models um as its basis so this is what I'll leave you here with today um to become successful Engineers
+you need a reliability shift in your mindset to think of yourselves as the people who are ensuring that this next wave of computing is as reliable for end
+users as possible and there's a lot of precedent for this type of thing happening in the past all right with this I'll leave you with the 3K
+takeaways it was a pleasure being here thank you
+[Music]

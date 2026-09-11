@@ -1,0 +1,843 @@
+Agentic commerce will be bigger than e-commerce. There are cases where the Sierra agent is actually getting paid a
+commission on a sale. Today I'm talking to Zach Renault Wedin, head of product at Sierra, the platform
+powering customer experience agents for most of the Fortune 20. Coding agents are really good at file systems. They're really good at Git.
+They're really good at GP. Let's materialize everything into those structures so that coding agents can
+[music] just, you know, cook. He breaks down how Sierra builds for voice and why the architecture looks nothing like a
+standard agent harness. One of the big unlocks for Sierra agents was how to parallelize thinking,
+listening, and talking. And if this model says it's silent, you trust it. If this model does not say it's silent, you
+trust this one. We get into why a Sierra conversation is unlike a typical LM call. You know, 10 or 15 different models
+might be invoked for a given conversation turn. So sometimes you're classifying and you're responding at the
+same time. And Zach explains how and why Sierra built an entirely separate infrastructure layer for payments.
+We have isolated infrastructure where payment info doesn't go to an external large language model cuz none of the LLM
+providers are PCI certified in that way. Welcome to Max Agency, the podcast [music] that goes deep into how the best
+agents are being built by builders like you. [music]
+Most people are probably familiar with Sierra as a customer support platform, but from what I understand recently, you
+guys are going broader than that. Could you talk a little bit about the types of agents that you help people build?
+Yeah, so this has been the vision since the beginning. I think because many companies have an RFP process where
+they're very specific about, hey, we want to solve customer service. That is often where we start, but we think of
+Sierra as the full engagement platform across all of the moments that matter for your customers. So, if you're an
+airline, that might be browsing for a flight, might be booking the flight, might be choosing your seat, might be,
+in my case, I have a small dog, so adding a pet and cabin, then the flight might get rescheduled um or delayed or
+um cancelled, etc., etc. You need to get your bags there. There just so many different things across that process.
+Some of them are sort of sales, some of them are more service, some of them are more loyalty, but they all kind of lad
+up to the relationship between a business and its customers. And Sierra agents are present at all of these
+different parts of the customer life cycle. So, as an example, there are cases where the Sierra agent is actually
+because of our outcomebased pricing model getting paid a commission on a sale, which I think is quite different
+from how most people would imagine service. And so we get really excited about those more exotic opportunities
+because they also give us an opportunity to push the platform forward and you know continue adding to what the
+platform can do and kind of turn that into a product, package it up nicely and bring more to all of our existing and
+future customers. How similar is the platform between these different use cases?
+I would say that it's very extensible and so you can kind
+of take it in different directions. uh we like to say I think it's originally attributed to the um one of the creators
+of the programming language Pearl but we try to make the easy things easy and the hard things possible. So out of the box
+pretty similar the starting point but you can kind of take it in any direction that you want. So it's not that oh
+there's like a separate product for you know one company versus another but the
+agents that you can build on it and we'd like to think of these agents as products unto themselves can be
+arbitrarily uh customized. What does it look like to build on the Sierra platform?
+So uh we have it's basically a web app. There's three main sections. There's analyze, build, and then there's
+release. Um, within the analyze section, you have things like our explorer agent,
+which is kind of the longunning chatbt deep research for all of your uh, customer conversations and data. You
+have reports, you have monitors, which are kind of always on evaluators of conversation data as well. And then
+within build, you have ghostriter, which is the agent similar to codeex or cloud
+code for building agents. Um you also have journeys kind of the underlying source code layer although it's not
+really code it's more like natural language or standard operating procedures uh as well as kind of uh
+different variables um and and everything like that. On the release side you have all of the collaboration
+and change management and governance procedures. And so Sierra, I think at this point we're working with most of
+the Fortune 20, something like uh 40 or 50% of the Fortune 50 or Fortune 100. So
+very much um with a lot of the largest companies in the world and they have needs around governance and release
+processes and change management that have just pushed us to develop from the
+very beginning, you know, very buttoned up procedures and collaboration and review and all of this stuff. That's
+basically what it's like. I think on the surface probably similar to a lot of other you know places that you go to
+build things whether that's uh Figma or cloud code or these different places but
+just very much optimized around no code agent building and um giving you all
+those capabilities and are those different steps intended to be done in that order like analyze
+build release can you analyze basically human transcripts before you build the AI agent or does analyze really come
+after you build and release the first version of the agent? and now you're iterating on it. It's both. So, typically you'll come in
+with some sort of resource of how you want the agent to be structured and
+architected, how you want it to behave. Maybe that's transcripts, maybe that's standard operating procedure, maybe
+that's a conversation that you have with Ghostriter. And that will typically be how you build the agent. So, I'd say
+most people will start with build. But then once your agent is live and
+production conversations are happening, your daily routine probably starts more
+with analysis. You're probably thinking, how can I optimize the metric that I care about, whether that's customer
+satisfaction or resolution rate or in the case of the customer I mentioned like sales converted and so you get
+those insights and then you want to make improvements to the agent whether it's
+you know fixing an issue or finding a new opportunity to hill climb on a metric or please customers in one one
+more way and so that typically involves you know working with ghostriter often
+and ghostriter will actually proactively suggest an improvement on the insights to kind of close that loop and build
+that flywheel. Um, but I would say the day-to-day is more analyze, build, release. Who is doing that analyzing and
+that iterative improvement? Is this is this engineers? Is this product folks? It's primarily people that have the most
+depth and insight about the ideal customer experience, which tends to be
+operations uh people. So customer experience managers um folks in that
+department at our customer companies. It's also a number of engineering teams
+will build either other agents that interface with Sierra agent or they can extend the platform uh via basically
+tools and packages that you can then kind of see and introspect on Sierra. So it's very much kind of the same way that
+you have the person that knows everything about your knowledge base. We want them to be able to come in and self-s serve on day one and just, you
+know, make the perfect instantiation of knowledge. The person who knows everything about the standard operating
+procedures should be able to just do that in the product. And so we're constantly kind of trying to sand down all of the barriers between the people
+with the most context and their ability to contribute directly to the platform. You've said no code a few times. So what
+does this agent building experience look like? Is it truly no code? And and I'm assuming it's maybe something like quad
+code where you talk to it and it generates something under the hood. Is it generating code? Is it generating a custom DSL? Yeah, good question. So the
+layers of the stack you have kind of what we call agent OS which has our constellation of models. So translating
+the tasks that need to be done on the platform into prompts uh into data
+injection across you know 10 or 15 different models that might be invoked for a given conversation turn. Some of
+those might be frontier models that need to do you know top tier reasoning. Some of them might be in-house models that
+are very good at a specific task and some of them might be just, you know, classifier models that run really well
+on a a model that's a little bit cheaper and more performant. And so that's kind of the base layer. On top of that, you
+have the agent SDK, which is the codebased layer of agent orchestration
+and context management. That's kind of where Sierra started. But over the last
+18 months, most of the agent development, um, pretty much all of the agent development has shifted to our no
+code layer that we call journeys. It compiles down to agent SDK code
+deterministically and isomorphically, which is a fancy word for you can turn it one way and
+then turn it back and it's the same. And so you can have uh code that you transition over to no code. You can have
+no code that you transition over to code, but the language of specifying it is very much declarative. Here's how I
+want the agent behavior to be. Uh when customers ask about this, we want to unlock these conditions and kind of flow
+in this direction. And we find that that's pretty intuitive because it maps the type of document that we would write
+for someone joining the team in a customer experience role or a sales role. You would explain to them how to
+do the job and that's kind of what you're doing here as well. But there is some DSL for journeys. It's not pure raw
+kind of like text. Correct. And it's very hard. I'm not sure. We could get into a discussion
+about it. If you're just doing text, you have to choose between this is
+non-deterministically compiled, which all of the experiments we've done in that direction, you end up, I think,
+with more harm than good, or this is a prompt engineering task, which then puts
+you in the realm of engineering teams. And we, you know, are very proud to be more in the realm of operations teams
+where a lot of that domain specific knowledge resides. The other big piece of it is that Ghostriter has totally
+changed the learning curve for building agents. So you come in and you just say, "Hey, you know, I want to orchestrate
+order returns or I want to do flight booking or I want to do car rental or uh
+referral from primary care provider to a specialist." And Ghostriter just kind of already knows those concepts and is an
+expert in journeys. But Ghostriter is using the Journeys product. So it's not writing code, it's writing uh journeys
+directly so that you can go inspect that after the fact as well. I imagine there's some there's some
+format that these journeys have to have to adhere to and I imagine that's not in the model's training data at all. Was it
+hard to teach it that format or was it pretty easy? It's a really good question because at every point there's this conflict
+between here are the perfect abstractions for me and here are the abstractions that the models are most
+familiar with. And similar to in math how you're often taking one problem and reframing it in another problem to do a
+proof or something like that. You have to decide if you want to reframe this problem into something the models understand or build a skill and inject
+context in the right way so that the models can understand your way of thinking. The truth is that we do both.
+So there are cases where we'll say you coding agents are really good at file systems. They're really good at git.
+They're really good at GP. let's materialize everything into those structures so that coding agents can
+just you know cook. Then there are other cases where it's like no no no our way of thinking about this is the correct
+way of thinking about this and there's not really a way to shoehorn it into what models are already good at. So
+let's do the investment to make the models good at this. My personal perspective is that 80% of the time you
+want to do the first thing and just meet the models of where they are on their turf and you should reserve the second
+one for that really special case. I'm curious uh if that's what been your experience as well. I think recently
+it's probably gotten to be we see a lot of people using the file system as an abstraction. And so I think recently
+there's been a lot of talk especially as the labs talk about how they're rlinging the models to be really good for their
+harness to try to fit everything into a file system or this particular like edit file tool or things like that. I also
+think that the models are really good at writing certain packages like if you're in the training data I think I think a
+lot of langraph is in the training data. So I think at least anthropic models recommend Lingraph for a lot of use cases and that's great
+but for newer things like deep agents which is a new package we have it's not in the training data at all we spend a little bit of time not maybe not as much
+as we should but we spend a little bit of time thinking about what makes these models good at writing certain things we really have no clue how to like affect
+know how to affect what goes in the training data but it's a really interesting thing and so I think there's definitely been cases where we see that
+people choose technology because the models are really good at writing it and so one question I was also going to ask
+for agent SDK. I imagine that's you know your own custom kind of like framework built in house. I don't know if you
+experimented with having it sounds like you didn't you're not having ghostriter write that directly but like that's
+obviously much more closer to code and so I was curious if you experimented with ghostriter or any model like
+writing agent SDK versus just writing like raw code. So yes, um, one of the
+things too is if you almost do the abstraction that the models are really good at, it can be overconfident or it
+can be familiar and successful. And so you have to be very thoughtful about going either all the way there or just
+not going there at all. Like you're saying agent SDK is somewhere in the middle and that might actually confuse it. Exactly. Exactly. Um, we have kind of
+reinvented the agent SDK two or three times as models improve. So it used to
+be you had to have more deterministic guardrails in order to get the behavior that you want. Now there's more room for
+reasoning uh at each individual step and you can kind of push out the frontier of that reliability versus reasoning
+trade-off. So that's been very interesting. The reason for uh Ghostriter primarily or entirely editing
+no code is just that that's where the vast majority of activity is on the platform today. So that's what our
+customers know and so making ghostriter good at it is really where all the payoff is. I think if we tried to do it
+for code it would be a similarly scoped task but it would be hard to get it to be really good at both at the same time.
+There's always going to be some trade-off. Do you still let users edit the agent SDK code if they want or is that now
+like completely abstracted away from them in terms of just its journeys? So the core agent SDK is part of the Sierra
+platform, but building agents in code is totally something you can do. One
+example is a number of our customers have CI/CD continuous integration pipelines that they want to make sure
+their agent is released on and so they need a git repository which is where their agent lives. Another example is
+sometimes you have a particularly complex tool that has interacts with a streaming API or something in a way that
+is just easier to model in code than in no code. And so the way that these work is because no code compiles down to
+code, you can kind of import or under the hood it will import code files and compiled no code files kind of all as
+though they're the same thing because they are. So I think this is a benefit of starting out as a codebased platform
+is that we still support it. We have a number of customers that have dozens or in a few cases 100 plus developers
+building on the platform and sometimes for that you know they work in git they release in git and so being part of
+their enterprise change management protocol just means supporting git. You mentioned that the agent SDK has
+changed over over the past few years as everything in the space has. um what does it look like now and how has it
+changed? What does that evolution look like? So, it started out uh we call this now flow-based very much like you know do
+this and it wasn't just like do these things. I think I'm a big fan of your not another workflow builder blog post.
+So, it wasn't that rigid, but it would be, hey, you know, make sure you collect their email before you uh say that
+you're going to send them a confirmation email, right? Very clear to us, but you would want to do those things in that
+order. Now I think if you think about just the way that agents can reason through tool calling uh instead of
+having to specify that in the actual structure of your agent you might just give it the context that in order to
+call this tool you know as a prerequisite you should have their email uh and it will know how to ask for it.
+So it's really like you'll just say that in the prompt. Yes. Um or you know eventually all
+things end up in prompts but it would be in the journey. Um, and so as you're kind of writing it out, you would
+specify that that's one of the rules or policies of the journey and then the
+agent can take care of the rest. I think it's a mix of the models getting better and our orchestration platform becoming
+even more sophisticated and robust. So when I talk about that constellation of models, there's a lot of we talked a
+little bit before about Lanaeus and Darwin, there's post- trainining that goes into that. There's model selection
+and eval and prompt engineering as well. And so I think it's it's kind of equal parts model improvements and platform
+improvements. I want to talk about those models in a second, but I want to stay on the harness for a little bit. How similar does it look like in its current form to
+a coding agent harness? Does it have access to skills and sub agents in the same way that someone using cloud code
+would would have? So the one constraint we have that cloud
+code doesn't have is latency. Majority of Sierra conversations are voice and if you're not responding in one or two
+seconds then people wonder where you went and so we are highly optimized for
+these low latency use cases. There's a ton of parallelism. That being said at a high level it is
+using a lot of the same models. It has access to tools. Um so there's a lot of
+similarities. There are also you know you can invoke other agents from the Sierra agent. So the core what's best
+for the core conversation loop isn't typically what's best for software development but you might want to say
+hey let me actually give you a call back in 20 minutes after I figure this out and then you would have a type of loop
+that runs you know more like cloud code and for those for those longer loops that might happen in the background are
+those also built on the Sierra platform and are just a separate type of agent that remove the latency con
+you can do it either way so you could have a Sierra agent calling out to another Sierra agent or you could also
+have a Sierra agent calling out to an in-house platform. And because so many of our customers have their own
+technology teams and a robust array of different AI projects internally, they
+might be experts in a particular area. Like they might have document generation
+handled themselves and that might be a longunning agent and then CR agent can call out to it and wait for a response.
+So it's kind of up to you to choose and we find that enterprises are varied enough that they appreciate kind of
+having choice when you do these agentto agent communications. Are are you using a toa
+or one of the protocols specifically for that or MCP or just an in-house I don't know rest API call. The most common is
+an API call. When you know who you're talking to in advance often times you can save a lot of tokens and make sure
+that you're 100% accurate that way. That being said, CR agents support the uh MCP
+and agentto agent protocols. You can kind of install that integration and then your agent can be an MCP client.
+You can also set up your agent to be an MCP server. So this is how we support chatgpt apps uh which rely on MCP
+servers. Basically the tools of the agent can be made available to chat GPT and then you can at reference a Sierra
+agent. The example uh that would be most familiar is Redf Fin. Um, if you do, if you go to redfin.com and do their AI
+search, uh, under the hood, it is a Sierra agent that is returning the home listings and having the conversation
+with you. And that agent is also, I believe, available in chat GPT. Interesting. I I didn't realize that
+Sierra agents could be chat GPT apps basic. Is that the right terminology for them? It is. Yeah, exactly. Do you have do you
+have an opinion or hot take on in the future do you think people will be interacting with the agents that
+represent brands on dedicated chatbot websites or in uh chat GBT or central
+chat engine? I think that agentic commerce will be bigger than e-commerce. So if I think
+about how I get things done today, it used to be that I went to websites and clicked around. Now, I ask Codeex or
+Claude to do things for me, and I don't see why I won't do that to manage my
+subscriptions, to order supplies to my home, to make dinner reservations. It just feels like that's where we're
+headed. And so, if that's happening, I think brands will want to be ready on the other side of that. So, we are very
+much planning for that world. We were investing in payments before it made sense, I think. And it's a long process,
+but a few months ago, we announced, you know, we're uh fully PCI DSS level one
+certified. I have no clue what that means. What does that mean? Payment card industry. Okay.
+Um Oh, man. You stumped me on DSS. Uh [laughter] I have uh some of the other acronyms um
+in my head, but um we'll put it in in post. Okay. Okay. Thanks. Oh man, it must be like digital sec. I don't know. I know
+that the we were uh certified by a QSA, which is a qualified security assessor.
+And uh what that means is we're able to do the only voice payments platform
+certainly at launch. I think still this is the case where you don't need to transfer to another platform. So it's a
+co cohesive experience throughout checkout and all the work that went into that. we have isolated infrastructure
+where the payment info doesn't go to a large language model, doesn't go to an external large language model because we
+have none of the LLM providers are uh PCI certified in that way. And so putting that all together is like
+spinning up a separate cluster, you know, getting certified uh making sure all of our operational rituals, you
+know, conform to what the security assessor is looking for. And we put in that work because we believe in this
+future where agentic commerce is actually bigger than e-commerce. And I think e-commerce is in the hundreds of
+billions of dollars at this point, couple percentage points of GDP or something like that just in the US. And
+so if you think about that space, um, it's pretty big. And by Agentic Commerce, do you mean like chat GPT
+talking to a Sierra agent that represents Redf Fin or do you mean someone going to Redfin's agent no
+matter where it is and talking with it there? Both. Both. I do think that the majority of this
+will be from personal agents just looking at user behavior. We spend so
+much time in claude and chatbt and codecs that you have to think that's
+where a lot of that behavior will occur. And do you think those agents will interact with another agent? Why not
+just the raw APIs themselves? I do. I think that as you think about
+being ready for that world. Um, the same way that you might want to use Shopify
+or you might want to use certain software on your website to do product
+recommendations to do checkout. Uh, you might want to use Stripe. Similarly,
+you'll want to use a platform that can make sure that you're presenting your products in the right way, that you're
+making checkout as easy as possible, and you're showing up at your best, whether it's for a customer that's browsing or
+for an agent that's browsing. The one thing that I think is pretty different is the attention isn't necessarily
+valuable in the same way. like our eyeballs are more valuable than an agent
+just, you know, spewing out tokens assuming that no one's ever going to look at it. At least I that's true for
+now. At some point it ends up in some future training run and maybe has value, but I think that's dimminimous relative
+to getting us to look at things. And so I do feel like maybe that's a bit different, but the presenting yourself
+in the right way, making it easy to check out, making it easy to understand what products are available to express
+the preferences of whoever is responsible for that agent going off and doing something commercial. That all
+still feels relevant to me. I've seen some dev tools provider, I think Sentry, doing a similar thing where they have a
+bunch of APIs obviously for the underlying platform, but they also have an endpoint to just ask questions of the
+agent directly. And I think you could make a counter-argument that like great brands should absolutely care about how
+the platform is being used and how it's being presented, but you could do that with skills or or some other mechanism
+to expose that to the agent. And I I honestly don't know which one's right, but I it has been interesting to see the whole space is so new, but increasingly
+so companies exposing agents as endpoints to interact with rather than the endpoints themselves. I agree. I think that all of this stuff
+you could try to do it yourself. It might be that certain companies that's the best option. What we've seen is that
+because there's often tens or hundreds of millions of dollars on the line, in some cases billions of dollars on the
+line, you really want to make sure you're getting the best solution. And so if you're going to be 90% as good at it
+as you could be partnering with a company like Sierra, it's still makes sense to partner and, you know, get that
+extra few billion dollars. One last question on this fun side tangent, payments. How early are we?
+I think we're really early. I personally still don't order paper towels with
+codeex. I don't know if you do. No, that's why I asked. I'm glad that you said that because I don't I'm not close to doing that and so I was
+wondering how far behind I was. I mean, like I also didn't do it with Alexa, you know. I think for some of
+that really easy stuff, you could probably have done it already. The one that I think will definitely become a
+thing is there are a lot of apps that claim they can, you know, go through all of your subscriptions and cancel the
+ones that you're not using. That feels like as a consumer that's a useful service. I'm definitely closer to doing
+that with codeex than I am with an app. You know, it would it would be so much
+work to tell it all the things and try to tell it which ones to cancel. It's a very manual process. If I gave Codeex or
+uh Cloud Co-work or something just access to my browser and said, "Hey, you know, go to all of the streaming apps
+and like the ones that I'm not logging into, just, you know, cancel those and
+let me know if you need my password." And obviously, you have to figure out how to make that secure and everything, but I feel like that I would have demand
+for that product. Going back to the harness uh for a little bit, you said something earlier about things running
+in parallel. Is that like guardrails that you're running or retrieval steps or or what's running in parallel in in
+this process? So many things. One example, knowledge. We will often look up answers before we
+know if we want them. So you'll, you know, before you decide whether this question needs an answer, you'll at
+least have the answer ready or in parallel with deciding. So sometimes you're classifying and you're responding
+at the same time. Basically speculative execution. Another example would be transcription, what we call ensembling.
+Um, I think we might have published a blog post on this today, which is great. Go read it. We've learned so many things
+from being a uh modular architecture on voice. This was an early decision we
+made that I think has totally played out to our advantage where we have the ability for any language, for any
+customer, for any use case to multihome providers uh across transcription,
+across synthesis, and across native uh voicetooice models. And so on the transcription side, for example, it just
+turns out uh when you have a thick UK accent from northern UK or at least
+parts of northern UK, I don't know exactly the region, there is one model that has the highest
+quality transcription, but it hallucinates during silence more than other models. So we run two models in
+parallel, and if this model says it's silent, you trust it. If this model does not say it's silent, you trust this one.
+And so that's just an example where we're running those in parallel. Uh we have logic for when you take the right
+one and it's very specific. And if you had, you know, all your chips in with
+one provider or one system, uh or you weren't doing things in parallel, you would inevitably hit the limits of what
+that provider can do. So the same way we use Claude and Gemini and the GPT class
+models, we're also able to use all of the leading players on the transcription and synthesis and speechtospech side as
+well. You mentioned you have some in-house models as well. What do those models do and why
+did you guys decide to build those inhouse? So uh knowledge is a great example. I think whenever we are pushing the limits
+of what's possible, we always consider whether we should build this inhouse. whenever it's limiting our ability to
+deliver more for our customers. So, an example where we're probably not the
+company is these, you know, many millions of dollar training runs that produce the GPT55 class models. And, you
+know, Mythos, I'm sure, is a many, many millions or tens or hundreds of millions of dollars training run um to get that
+produced. And that's stuff that OpenAI and Anthropic are just the best in the world at. I think what we're the best in
+the world at is going really deep with customers, understanding all of the process knowledge, uh, specific to their
+industry, specific to their company, specific to their customer base, and then having the products that can allow
+them to serve those customers as best as possible. And so an example like knowledge where we were hitting the
+limits of the retrieval and reranking that we could do with out of the box models, we asked the question of you
+know should we create our own models here um and eval them and we have a research team that's pretty sizable and
+tightly integrated with our product teams and so we can flex that muscle when we need to but we try not to be
+doing it just for the sake of doing it. You mentioned something like every run of the agent would have 10 to 15
+different model calls. Yeah. if you had to guesstimate like how many of those are Frontier model calls
+versus like in-house fine-tune versus not Frontier model but but third party. So for a typical um turn of a
+conversation I would guess that and this is just ballpark but you know being uh
+precise rather than being accurate. Uh I think maybe a couple frontier model a
+handful of classifiers that probably don't require that a handful of
+speculative execution in the case of voice in particular to make sure that it's low latency. Um, sometimes there
+will be an interim response that's generated to, you know, the same way you'd say, "Hold on a minute. I'm just pulling up your account." Like that kind
+of thing. Roughly like a third, a third, a third or a quarter, a quarter quarter. But I would say the frontier models just
+because they might be slower or more expensive would probably be, you know,
+more doing the bulk of the reasoning, but in one or two inferences for a given conversation turn.
+Do you ever end up training models specific to a customer? It's not something that would be out of the
+question, but I can't think of a specific example. The reason I pause is because we do have our agent data
+platform and there are machine learning models that power strategies that are
+specific to customers. But in terms of like a uh you know language model or generative model, we don't have cases of
+that. What's the agent data platform and what does it power? Basically, one thing we
+realized pretty early on is large language models are really good at in the- moment empathy. Oftentimes better
+than we are of understanding, okay, you know, I understand you're having a hard time. I'm really sorry about that. And it's the same way when you walk into a
+restaurant that has amazing service or a hotel that has amazing service. They recognize the moment you walk in, okay,
+this person just got off a really long flight or this person's 10 minutes late to their reservation and they were stuck
+in traffic and I'm just going to let them know that that is not a problem. Their table is ready. And large language
+models have that, especially on a platform like Sierra, but they don't necessarily know what you care about at
+a level deeper than that. And often times the previous generation of AI or
+recommener systems have a better understanding of some of those things. And so what agent data platform does is
+it can either integrate with your customer data platform all your internal systems or you know you can have it just
+on Sierra or you can do sort of a zero copy integration and it can take that
+structured data that knows what to recommend along with the unstructured data of the here and now in the
+conversation and then use those to generate uh better conversations, better
+uh orchestrations around how you want customers to feel and what you want to do for them. Um, so that all sounds
+maybe a little bit abstract. Uh, one example would be during sales. Often times there's structured data that knows
+the right offer to present, but doing it just with that structured data with the previous generation of AI and before
+Sierra feels very stilted or it feels like, you know, I don't know why you're doing this. And so large language models
+can really understand how to present an offer, uh how to attribute it, weigh two
+different offers based on conversation context and pick the right one for the moment and that kind of thing. So we see it a lot with sales with loyalty and
+retention, those types of conversations. One of the last agents we haven't talked about too much is Explorer.
+Yes. What is Explorer? What does it look like under the hood? I've described it as chat GBT deep research uh for all of
+your customer context and conversations and all of the data on Sierra. And so what it allows you to do is basically
+instead of having to go spelunking for the specific insight in reports or in
+monitors, you can just ask the question. You can say, "Hey, I noticed my resolution rate dipped. You know, why
+was that?" Or, "How can I generate more sales?" or uh I wish that more people were converting from trial to you know
+full-time uh paid plan how come that's not happening and then more than that
+you can set up automations so that you know on a daily basis for example explorer can ask the same questions
+proactively and then partner with ghostriter we currently think of these as kind of two separate agents the
+analysis agent and the authoring agent to say oh here are some fixes that are suggested to improve and you can chat
+with ghostriter and kind of pick it up from there. Under the hood, where this is converging, I think, is a shared
+harness that is an expert at using Agent Studio, uh, Sierra's platform. Um, and
+so that's kind of what we've been setting up in terms of what we talked about at the beginning, like you know, figuring out the file system
+architecture that maps to the product. Um and so as we've exposed more and more
+tools um you know like building knowledge bases to these agents they get
+more and more powerful and we see a lot of emergent behavior between both. Does this harness end up looking more
+similar to like a coding agent harness than the the harness that's part of agent OS or agent SDK?
+Yes. Um, so this is less of a quick turn conversational agent and more of a
+longer turn deep analysis agent and so it ends up looking a lot more like a
+cloud code or codeex. One of the things I've been thinking about I'm curious if you have a take here in a year, two
+year, 3 years, will there be this split just in terms of harness ones that's optimized for kind of like yeah lower
+latency external facing customer experience type things? voices maybe
+heavily involved and another that's really focused on these deep research maybe coding like you run in a sandbox
+things like that or will it just end up converging into one harness that you know depending on how you prompt it or you know has these async sub aents in
+the background that can maybe run for longer periods of time I think there will always be latency performance cost
+trade-offs and different architectures that emerge because of that I've actually been surprised by how many
+different types of model companies there still are. And when I talk to people who are particularly AGI pilled about it and
+I say, "Hey, what's like a cool model opportunity that's not flying like so
+close to the sun that the labs will do it?" They'll say, "Oh, well, you'll just ask, you know, GPT12 to make that
+model." So, it's actually not a big opportunity. But I think in reality, at least up until now, I'll probably look
+dumb when AGI comes out. [laughter] You do see a lot of success in areas
+like voice models, from transcription to synthesis. You don't always see
+leadership from the model labs. You see the model labs actually trying to focus more on specific problems. For
+anthropic, I think it's coding. For OpenAI, it's been consumer. Now, maybe shifting a little bit more to
+enterprise. Um, for Google, definitely consumer as well. And it really does
+feel like there are still trade-offs to me. So I expect there will still be multiple architectures up until that
+event horizon of AGIS here. So all bets are off. As you guys build your core agent
+harnesses and I'm assuming want to build them in a model agnostic way. What do you need to change to go from an open AI
+model to an anthropic model? Usually you have the evals that are designed to work across both. So if you
+have really good evals and a really good harness or really good architecture, then you should be able to kind of hill
+climb toward eval performance with too much effort. Often what will happen is you'll learn the first time you're
+switching one task from one to another or making it possible to run on multiple systems that your eval wasn't quite as
+good as you thought. And so then you make your eval better and you continue to improve. But the short answer is that
+it's pretty simple for a given intelligence level of a model to uh run
+a task on one or the other. And so again, it's that basically latency, quality, cost tradeoff, but not more
+than that. And because we have customers that have very specific requirements around what clouds they can run in, what
+models they can use and our uh company approach is to meet them, you know, on
+their terms. You don't serve most of the Fortune 20 without that approach. It's not really a choice. Uh and so because
+that's our approach and we've built a lot of products around that, we also have made sure that we can kind of move
+between models of comparable intelligence without too much heartburn. And what do you end up changing when
+you're hill climbing? Is it just the prompts? Do you also change out some of the tools themselves? It depends on the case. Um, and I might
+not be the expert on the exact history of each. I would I think that if you
+change the tools, it's pretty hard not to have downstream effects of that. And there might be certain tasks that can
+only run on certain models and other tasks that can run on other models. And so there's always kind of a set of
+eligible models for specific tasks. I don't know exactly how tools change, but
+I know the uh eval getting more robust and the prompt, you know, conforming to the quirks of each model is definitely
+part of the development. You guys recently wrote a blog around context engineering and I think you said
+it was the key to great agent building or something like that. How do you guys think about context engineering and and and what you know tips or tricks would
+you have for others? I think it's showing agents everything they need to do the right thing but
+nothing more. And as models get smarter, you can be a
+little bit less precise with everything they need and certainly less precise with nothing more. So early on it was
+the agent SDK was really about only giving the model exactly what it needed and kind of spoon feeding the context.
+Now to extend the uh meal analogy, it's probably more like, you know, putting out the right dish. And maybe in the
+future it might be something that is even less structured. One concept that I think is in that blog post is kind of
+progressive disclosure. You'll probably know more about this than I do, but when you bring something into the prompt, you
+don't want to do it before it's relevant. And then you also risk incoherence if you then yank it out of
+the prompt. So when you do things like prompt compaction, you just want to be really thoughtful about not making it
+lossy because if you keep something in the history that is incoherent with the
+rest of the system prompt, it's not going to end well. And so I think to the degree, you know, when we're fixing uh
+issues or when we've seen hallucinations, it's often because one part of the prompt was this and the
+other part was this. And actually, one of my main learnings from Sierra is anytime you think the model's being
+dumb, it's probably you. I like that. I think that I I think a lot of people have learned similar
+lessons from doubting. Whenever you think the model's too dumb, the model's actually too smart. How much do you guys care about prompt
+caching and maintaining that cache? I've heard I've heard kind of like two mindsets on it. One is like, yeah, do
+everything you can to maintain the cache. Like don't invalidate it until you like absolutely need to. And then
+I've heard another theory that's basically like, yeah, prompt caching is great, but like what matters most is like performance and sometimes you need
+to just like break the cache in order to insert the right context or give it a system reminder or something like that.
+How how strictly do you guys try to adhere to prompt caching? Is the purpose for those who are prompt
+caching loyalists for uh speed or cost or quality?
+I think the first two mostly speed and cost. Speed and cost. Yeah. I haven't I haven't heard anyone argue that it's for quality, but maybe
+maybe it works better. It's a nice to have. Um we definitely don't want to invalidate a cache for no
+good reason, but quality comes first. So, we aren't zealots about it at all. I
+would also say that when the outcomes that your agents are delivering are very
+valuable, you have the luxury of not being extremely focused on cost in
+particular. Uh, and so that probably is part of the reason for that is that, you
+know, a a conversation with a customer could sell a $100 product or a $1,000
+lifetime value plan. And so those are valuable enough that quality almost
+always comes first. We've talked a bunch about the agent itself. There's two topics that we were discussing earlier
+and I'm curious, we've talked a little bit about them, but I'm curious if you have any more thoughts. First being RL. When is RL good? When is it bad? How
+much have you guys explored it? We've explored it a lot in part because it has two great promises. You know,
+increasing the ceiling of the quality of models and then also making it so that you can do a similar task on more
+models. I'm curious for your take, but in practice, I've seen a little bit more of the second one when it comes to like
+enterprise RL. It's taking an open model or open weights model and saying how can we get similar performance to a frontier
+model. The two things that make it hard are number one uh the way that that gets delivered is non-deterministic and might
+include um you can't include any data that you don't want the model to regurgitate. So we basically would never
+fine-tune a model on something when it could lead to regurgitation risk. That's just a non-starter. And then also uh in
+general just the way that uh you would train the model you have to think about preparing all of that data. The other
+big one is that the frontier models are improving so fast that you want to remain as agile as possible. And so in
+many cases doing something like RL makes a ton of sense for something like knowledge where we feel like we are
+pushing the state-of-the-art but if we're not pushing the state-of-the-art we really want to be thinking about
+what's going to be true 3 months from now, 6 months from now. And often times RL is a rounding error against that.
+Yeah. I feel like to your point earlier, we've started to hear it a little bit more recently. I think because of cost.
+So I think like most people are interested in it when they're using these frontier models and the performance is good, but now whether
+it's coding or other things, their cost is just going through the roof. I think the and we're starting to investigate
+this more, but I think the places we're hearing it most are basically in those where performance is good, cost too high. How can I bring it down? Let's see
+if I can I can train a model to get similar cost at a fraction of the cost or similar performance fraction of the cost.
+Yeah. Interestingly enough, a lot of our progress here has been driven by capacity not cost where you know we have
+a lot of customers that are in the retail space. And when we go into Black Friday, Cyber Monday for example, you
+need a lot of capacity to deal with the spikes that they face. Uh we've also
+done load tests that are on the order of you know if you were to have that rate of conversation over a year it would be
+billions of conversations. And so that level of concurrency and those spikes
+just mean that we need to be resilient to downtime with a particular provider
+and ready for you know using whoever has the capacity to serve us. And so it's
+funny because it's useful in so many ways, but a lot of the reason why we have such good support for multiple
+providers is specifically preparing for Black Friday, Cyber Monday, and running load tests for really large customers.
+One other uh harness agent engineering topic, uh multi-agent systems, where do
+you think they're useful? Where are they not useful? I think they are often not as useful as
+people think. My thoughts on this would be people should be really thoughtful about why they want a multi-agent
+system. If you want a multi- aent system so that one team can work on one agent and one team can work on another agent,
+then you're shipping your org chart. If you want a multi- aent system because it's just makes you more comfortable to
+think about this problem over here and this other problem over here, then you're also not optimizing around
+impact. If, for example, you had an agent that does triage and another agent
+that does a task, by building it as a multi- aent system, you're often
+depriving of the agent doing the task of the information from the triage and depriving the agent doing the triage of
+all of the procedural information from the task. And that's typically destructive of value. And so we are
+often just want to make sure that we're doing multi- aent systems for the right reason. if you're kicking off even a sub
+agent, you want to make sure that it has everything it needs to do that task and that there's no reason why it shouldn't
+just be part of the main agent. Um, and so I think I've seen a lot of cases
+where people are reaching for multi- aent systems the same way you might reach for microservices
+uh before you're necessarily ready for that level of optimization and also for
+reasons that might not be just about building the best possible agent. And so Sierra agents tend to be kind of one
+agent representing the brand. You certainly can have multiple agents and build a multi- aent system, but if
+you're managing context correctly, if you're doing really really good context engineering, then typically it's just
+not a problem because you're not exposing the wrong context to the wrong agent. Is there a right time to build a multi-
+aent system? I think if you have truly separable jobs, right, where there's not any purpose of the first context being
+part of the second context, I will say that in my personal opinion with, you
+know, May 18th, 2026, there not a lot of great times for it.
+There might be times where it actually the organizational difficulties are worth the quality drop, but if you're
+doing it specifically for quality, I think it's it's pretty rare that you can't just solve it with better context
+engineering. And I'm kind of a monolith loyalist on that. I feel like voice is
+one of the things that is getting more and more popular, but there still aren't a ton of people doing a lot of, but you
+guys are. Can you give me a voice 101 or 2011? What what should I and other agent builders know about voice compared to
+just building, you know, simple chat agents? Voice has been maybe the most fun project that I've worked on in my whole
+career. So, and and I for context, I joined Sierra as an agent PM working on
+building agents specifically with customers in a forward deployed role. And one of the first customers I worked
+on uh is SiriusXM, the uh incar streaming radio service. And so I'm big
+SiriusXM fan. uh before that and as a result and they have a ton of volume
+over voice, even more than they have over chat. And so many of their touch points with customers are over the
+phone. And so early on it was very obvious that voice was going to be impactful for the business. And we got
+to think from first principles basically from the ground up. What makes a voice experience great? How is that similar to
+chat? How is that sim how is that different from chat? And so latency is probably the most obvious one. You need
+to be really thoughtful about parallelism. You need to be really thoughtful about what we call progress
+indicators, which is where you uh say, you know, hang on a second while I look up your account. That's number one.
+Number two is naturalism. This is a combination of a number of different things. So often times when something
+sounds a little bit robotic, I'll I'll read what the agent said and I'm like, "Wow, I sound robotic, too." So, it's a
+combination of what the agent is reading and then also the quality of the voice itself. Um, there's multilingualism.
+It's very easy to speak different languages over chat using large language models. It's a lot harder to be fluent
+in I think it's about 60 languages on Sierra platform. Um, and you know, than
+it is on chat and each of those languages, you know, sometimes the very best transcription provider might have a
+20% word error rate. I think that's true for a language like Hungarian for example. And so it's okay, how can we
+ensemble multiple transcription providers in order to get that down and kind of be better than a single model is
+on its own. The other big factor is I think we all believe that a few years
+from now most voice agents will be running voice native models. So you know
+uh real time I think they might be up to 2.5 at this point. They've had like three big real-time launches at OpenAI
+this year already. There was the really cool demo from Thinking Machines Labs as well. So there's been a lot of increased
+momentum here and as of a few months ago we now have production agents live with
+the voicetovoice models. Um and so they're you know it's you know fully end to end doing that. You still need the
+transcript in order to like make API calls and that sort of thing but the Asian is responding you know uh with
+audio as the input. The other big piece of it, I think the thinking machines demo was a really good example. Up until
+now, we basically had like 50 lines of Python. I think Silero is the most
+popular voice activity detection library deciding when to speak and then a
+trillion parameters deciding what to say. And that balance feels very off to me. If you think about the conversation
+we're having right now, I'm actually using a lot of my brain power to decide when to speak uh in addition to decide
+what deciding what to say. And it's probably more like 50/50. And so the one of the big unlocks for Sierra agents was
+deciding to think about not only how to parallelize a task, but how to parallelize thinking, listening, and
+talking. So that when I'm listening, I'm already thinking about what I might say next. when I'm talking I'm listening for
+interruptions and so that was a big unlock uh in terms of the product design. The other one I would say is
+just modularity. Like I said earlier, um no one is the best at everything in this space. And when there are you know 100
+plus languages uh worldwide that you know really deliver meaningful results when many of our customers are global
+brands, global companies, you need that flexibility to use one provider here and another provider there and to ensemble
+them together in a specific place as well. How much of that modularity and
+that parallelism and thinking about different things goes away when it's like a a native voicetooice model?
+In one specific conversation, it goes away. But if you think about the
+businesses we serve, the voicetovoice models today are just reaching a level of reliability where you would trust
+them for English. And so if you still want to support all the different languages, you need that modularity for
+the foreseeable future. Um the other thing is they're still almost an order
+of magnitude more expensive. They aren't quite as good at reasoning yet. And so
+the cases where they are live in production, they're not quite as reliable with tool calling and instruction following. the cases where
+they're live in production, it's cases where we know in advance that the journey is a little bit simpler and
+where the naturalism matters even more than usual and the procedure is not as
+complex as some other cases and so it's still I would say a fraction of our
+market that we can use voicetooice models for. My perception also and I I
+have never built a voice agent so I know truly nothing here but my perception here is for the voicetovoice models you
+you probably you have less control over what goes on inside of the loop basically of of tool calling and
+reasoning is that correct or are there pretty good controls for for what happens inside you may not have built a
+voice model but you're an expert in developer ergonomics and I would say early on the APIs miss the mark on the
+ergonomics and so they got the uh integration points wrong and they were
+it was exactly what you said. It was hey if you want our model you need our voice activity detection and you need the
+whole thing. There was still an underlying model that was available. So I'm you know dating myself in AI but the
+GPT40 audio model was extremely exciting. It did things that no model
+before it could do. I think maybe like people that are real AI OGs would say this about like GPT2 or something. And
+so you could see that this was coming and I think we all would have said 5 years from now this is where we're going to be. But the way that we wired that up
+in our system was basically using the entire Sierra pipeline and then holding
+on to the input audio and piping that in with all of the prompt context into the
+audio model to do the last mile. So we were basically still doing everything ourselves and using it for the last
+mile. I think you're right that over time there's more and more that you can do with the audio model the same way
+there's more that you can do with the text models. The fallacy would be that okay so then you don't need the harness
+or you don't need all of the orchestration and simulations and everything because you can make that
+choice. you can either do the same thing a little bit uh more easily or you can set your sights on new and more
+impressive things which I think not to get too philosophical but that's kind of the direction of the industry in
+general. It's like or are we all obsolete or are we going to find new things to do that raise our horizons uh
+even farther? If you had to guesstimate a time we're big into guesstimating on the podcast apparently. Um when do you when do you
+think more than 50% of your either traffic or customers will be served by a
+voicetooice model as opposed to this this uh speech to text text to speech pipeline? I will be surprised if it happens in the
+next 18 months. I've been surprised before. I was surprised by Opus 4.5
+uh late last year. Um certainly surprised by Chat GBT. like vividly remember the first time staying up till
+3:00 a.m. just, you know, trying to jailbreak the prompt. [laughter] And so,
+you know, I I know you're a sports fan, too. So, if we're doing overunders, it would be like 24 months in one day or
+something like that, you know, like or over under 24 months would be probably my my personal guess. Demation.
+How, if at all, do you guys think about memory? Uh, specifically long-term memory specifically. It sounds like
+you've got users potentially interacting with multiple different agents that you're you're that a single brand can
+can be building. How do you think about the memory that's shared uh across them? Memory is very important to the
+platform. So I mentioned the agent data platform earlier which kind of brings together
+u machine learning data or you know big data as you might say about uh about
+customers and then marries that with uh in the- moment context. that can only
+happen if you have a sense of identity and can also bring in uh memory from the
+past. So in every Sierra conversation there's the possibility of uh
+identifying the customer saving memories either uh implicitly automatically or
+explicitly and then extracting those memories at a future date for use in the agent. So it's very much first class
+primitive on the platform. I think you'll see that happen more and more over time as well, just as these
+journeys get more complex, as we see more and more wins from the personal touch. We already have a number of cases
+where resolution rate has gone up meaningfully from memory, whether it's just greeting you by name, remembering
+what you called about last time, knowing that yesterday you were on the phone for an hour and it was really frustrating.
+And so uh early on we had that memory through uh customer systems only but we
+found just from customers asking over and over hey can you just have this first class on the platform that it's
+helpful to have both seamless integrations with a CRM as well as on platform memory that really understands
+AI better than most uh CRM software does. How do you guys think about memory? I
+feel like you've got agents, multiple agents interacting with customers throughout various stages of their
+buying experience life cycle. So I imagine memory must be important. How how do you guys think about it?
+So memory is extremely important to the platform and since the agent data platform introduction which we launched
+back in early November, it's been a first class primitive on Sierra. So, if
+you call, for example, uh my wife lived in Hawaii for a year and so I was flying Hawaiian Airlines back and forth quite a
+bit and on a couple occasions, um for anyone who's brought a dog to Hawaii, there's a lot of paperwork involved. I'm
+excited for the Sierra agent that can help with that. But I would often add a pet in cabin, not that often, a couple
+times. And if I call back, you know, it's nice for them to remember why I'm calling, to know about me, to know I
+prefer aisle seats. I'm a big user of the uh in-flight internet. Hawaiian has
+Starlink back and forth from Hawaii. And so uh these things just what we've seen
+in practice is that if you know who someone is, you greet them by name, you remember what's important to them and
+you show empathy in the moment, it increases all of the metrics that are most important to businesses from
+resolution rate to conversion rate, etc. And so we've made memory first class on
+the Sierra platform where during a conversation implicitly or explicitly you can basically store memories and
+then uh the agent if the same person calls back can extract those memories.
+The one thing to be aware of is you have to be really thoughtful about authentication because oftentimes if
+someone calls over the phone, you don't necessarily know 100% from their phone number that it is this person. You know,
+some office networks all have the same phone number, maybe it's a family line, etc. And so, every business has to think
+about what the policy is for allowing the extraction of memories and which memories are sensitive versus not so
+sensitive. saying, "Hey, Harrison, thanks for calling again." You know, that's probably fine. But if it's like,
+"Hey, Harrison, are you calling about your social security number?" You know, that's like a definitely a different standard. Um, and so we try to be very
+thoughtful about that with our customers as well. When you say you can implicitly or explicitly save memories, what exactly
+does that mean? So there's kind of three layers of it. Number one is on a given conversation
+turn, you could say, I want to save this to memory. Number two would be at the beginning of a conversation, you could
+say, "These are the things that are important to remember." You know, remember their birthday. That's always
+nice. Uh I remember Cold Stone Crearyy growing up. They would give you a free scoop on your birthday. You know, it's a
+great opportunity for brand. You say you could say, so would the brand say, would the customer say this
+in the system prompt or would this be the end customer talking to the agent saying, "Hey, remember for future things
+that my birthday is on XYZ?" So the first one you said would be an example of journey building. An example of what
+I just said and you would do it in journey building. You'd say I care about birthdays as an agent developer or an
+agent builder at any one of our customer companies. The second thing you said would be the third category of memory
+which would be just sort of remember important things and it would be an important thing if the customer said hey
+I want you to remember this when I call back in the future. Um so whether you're deciding something in the moment this is
+important as an agent builder I care about these things or you know let the agent decide uh those are kind of three
+ways to structure u memory storage and when you think about the structure of memory itself do you guys think about
+it as a knowledge graph a vector store a file system TBD it's not super important um I guess I
+would say you want to optimize around retrieval but the reason why I said it's not super important is that typically
+your knowledge base is three orders of magnitude larger than the memories for an individual customer and so the
+retrieval and ranking problem is pretty simple and I don't think it matters what structure you use at least in our system
+today. I feel like memory is this really hot topic and everyone loves to talk about it and and there have been memory
+startups now for like 2 years but but I don't see any of them being massive
+breakout success. Why is that? Is is memory not that important in the grand scheme of things? Is it so bespoke? Is
+it just too early on? Is it is it really hard? Like why why isn't there a more established memory company or memory
+pattern? Do you have it turned on with Claude or Chat GBT? Not on purpose, although I think it is accidentally
+and do you find it useful with your accidental turning it on? I don't really there. Okay. I ask because I would say that
+those are useful to me. I think what I said earlier about how when you're trusting us with memory, you're trusting
+us with authentication. That's part of it is that actually in order to pull off memory, you need to be trusted with
+something that has higher risk, you know, as well. And so the reason I
+mentioned ChachiBT and Claude is those are products that you are already
+trusting. And so I think they have more freedom than a B2B player would have
+where it's like, hey, if I want to buy memory from you, I also need to buy authentication or verification at least
+or identification at least from you. And I don't know exactly what the startups are in the space, but I would imagine
+like you're biting off more than you think when you sell memory. Talking about observability and evals for a bit,
+you guys have an interesting problem I presume, where you have evals for your internal agents and for the maybe like
+general purpose agent SDK, but then I'm assuming your customers want to do eval themselves as well. Are those the same?
+Do you use the same tools for both or if they're different, why? And how are they different? Typically not exactly the same. So
+internally um the agent OS you know if you think about it as a series of tasks
+and some of those tasks might be very complex and some of those tasks might be more simple. The eval problem is more
+similar to the eval problem that any applied AI company has. When you think about our customers, I think the eval
+problem is much more complicated and involves things like what happens when
+there's background noise in voice and uh what if I have an adversarial user and I
+want to save these 20 personas and run all of my simulations against all 20 of the personas and make sure that it
+works. And so you end up with just a more complicated topography because a
+conversation by nature is very complicated and can go in so many different directions. And so we built a
+product specifically for our customers to eval agents called simulations. And
+it supports all of these different things. I think it is probably you can tell when someone's building an agent if
+they have good simulations. It's such a great unlock because you can make changes in a way that is constantly
+improving the agent and being sure that you're not regressing especially as you get into big teams with complex agents
+that are doing so many things. I mean, I know you see this at Lang Chain as well, like having really good evals is such a
+great unlock. And so, we pride ourselves in addition to, you know, government
+governance and collaboration and review and making sure that, you know, you have workspaces so you can let ghostriter run
+free, but still review it before you make any changes. We also have that uh
+simulation layer so that every change you make is tested against all the assumptions of the platform across voice
+and chat and many languages and many personas and this highdimensional space that you're going to experience in
+production. Going out from evaluing
+that also ties into memory I guess a little bit like how do how do you think about continual learning in general?
+Does the Sierra platform support it in a fully I'm assuming not like completely automated way, but like how how far
+along are you guys and and and what do you think the future in continual learning holds? Where we are today is you can
+automatically detect an issue with the monitor. Ghostriter can automatically suggest a fix to an issue and you can
+review that issue and push it to your agent. And so you're still in the loop
+or people are still in the loop in all of the cases, but it's as automated as
+it can be with still giving you authority over that. I think in the near future, you will start to see the first
+cases of Sierra agents improving themselves where they have a confidence level to the fix. For example, if
+there's an error in a knowledge article and it can tell that there's a contradiction and it can go check the website and you know, for whatever
+reason, it's very clear what the true answer is, it could it could give you an FYI instead of needing approval. Same
+way I do some work, I ask for approval, I do some other work, I give FYI. And so all of the primitives are there. It's
+just around the confidence that people have and the level of control that they want to have. And so we also don't want
+to get ahead of our skis there. Most of our customers, they want to review every change that goes into the agent. This is
+a really important part of their business. We don't want to pull the future forward too quickly. Um, we want
+to move at the pace our customers are excited about. One of the things you mentioned going back to Evals is monitors. What are
+monitors? And then you guys also wrote a blog called monitoring the monitors or something like that. Would be curious to hear about that.
+Yeah, we have a saying in the company that the solution to all problems with AI is more AI. And so oftentimes you
+have something that's 90% accurate and you figure out how to verify it 90% of the time. Figure out how to verify that
+90% of the time and and so on and so on and you have something that's you know three or four nines of reliability. And
+I think with non-deterministic systems that's just quite a bit about how it works. And so similarly uh with a
+conversation platform you can set up monitors that run on every conversation
+and look out for the things that you want to flag either for review or to
+create issues from uh etc. And it just basically gives you peace of mind narrows the set of hey I don't have to
+wake up every morning and try to read 10,000 conversations. I can read five and I can say okay these five look good.
+I feel comfortable uh going on with my day. Um, and so that frees up a lot of our customers to think about how do I
+actually improve customer satisfaction or resolution rate or some of these more strategic levers as opposed to feeling
+like they need to review everything. So I think that's why it's one of our more uh popular features.
+You guys released Talbench which is an eval for a few different agent uh use
+cases and I think you released a few other benches as well. Why do you guys invest in these and why should people
+check them out? So I mentioned we have a research team and it's very exciting when you're
+building something to also think about how other people could use it. I mean the distance that the AI space has come
+and how we've benefited just from all of the contributions to open source. You
+know our knowledge engine as as I mentioned runs on open models that we've fine-tuned. It has felt like one of the
+areas where we can contribute because we actually know a lot about what it takes
+to build a good voice agent. I don't think anyone knows more than we do. We know a lot about knowledge retrieval. We
+know a lot about tool calling and uh following process. Um and we know a lot about transcription. Um and so we've
+released I think those are the four areas. There might be another one where we've released benchmarks in the sort of
+tow cinematic universe. There's uh tow voice, tow knowledge, ta bbench, and muuben, which is the multilingual
+transcription benchmark. And so it really just started because the first tow bench was a lot more popular than we
+expected. And we're like, oh, people trust us to kind of say what good looks like in this space. And so we've
+continued to do more and more. And our research team has grown and there's appetite. I think it also has this ancillary benefit of causing us to think
+about these problems in a very principled way. and you know from kind of the first principles of what goods
+looks like and then we can evaluate our agents that way as well. So I think it has that benefit but it is very path
+dependent on TAB bench being a hit and you know TA squared being the SQL being
+a hit as well and then us just deciding okay let's do more of this uh people seem to like it. How much does the core agent team use
+these to guide their harness choices? Most of the benchmarks we use to evaluate providers
+uh more than to evaluate agents. And so for example, we had there's a really
+exciting new transcription model. They came by the office and presented it to us. Um and so we were able to say this
+looks really exciting, but we'd like you to run it against Mubench and then it will be really exciting. Um, and so it
+really helps in the modular approach that we've taken. Like the reason we discover that this model works really
+well when there's silence in Northern United Kingdom, but this other model works really well when there's speech is
+because of things like MUBench in particular for that one. Internally, simulations is the main way that we uh
+eval the actual agents that are going out to production. So it's just too customer specific for us to rely on
+something as general as a benchmark. How do you create these benchmarks? Are they synthetically generated? Do you do
+a lot of data labeling internally? Outsource it? I think it's a mix of all three. Um I
+don't know all of the details for all of the benchmarks, but I know that we uh do
+a lot of stuff internally uh just in terms of especially when you're kind of in the 0ero to one phase just figuring
+out what the right shape of the data is. Even when you work with external companies, they often want to see some
+number of examples from you. And then I think also uh being able to synthesize data when scale matters a lot especially
+if you can do it in a reliable way is very helpful too. It's harder for something like transcription where audio
+synthesis might be you know already in the training set of the transcription and that kind of thing. Um but for
+things like text I think it's easier. One of the things I think is pretty underrated in building agents is UX. So
+we've already talked about voice as a modality. We've talked about actually showing up as a chat GPT app. How else
+do you guys think about modalities or UX's? Do you have you experimented with generative UI in any form? We have quite
+a bit. I think it's pretty vertical dependent as well. To give you an example, when you're checking in for a
+flight, if you have a hypothetically 12letter last name with a hyphen in the
+middle of it, and a first name that's hard to spell as well, hypothetically, then it might be helpful to type that in
+while you're on the phone. And so, we see in industries like airlines appetite for multimodal experiences, especially
+when there's a lot of reservation, retrieval, or input. For something like retail, we see exactly what you
+described where really polished UI around product discovery and around recommendation moves the needle and
+makes a difference. I think where Sierra is particularly differentiated is going
+really deep with customers, especially in specific areas, and learning, you
+know, what does it mean to build an amazing retail discovery experience? And
+then just from first principles, what's the agent that could help drive that versus what does it mean to build a
+great airline check-in experience or flight disruption experience? Um, to the
+degree that can be great, it can be not terrible, I guess. Then, you know, what's the right form factor for that?
+We've seen, and I think one of the reasons vertical companies have been pretty successful lately is that
+understanding the contours of each industry and each company really makes a difference. One of the things that I
+think you guys are actually best known for is your revenue model and charging for outcomebased pricing. How do you
+actually do that? How do you estimate the the value that an interaction has and is it specific to each customer?
+This I think is maybe the number one operational reason or business reason
+why Sierra has been successful. It aligns the incentives between
+our company and our customers. And I think the phrase I like to use, which is a little bit cheeky probably, is if you
+don't understand the value of outcomebased pricing, your outcomes are probably not that valuable. Because when
+you're delivering, you know, $100 outcomes and you get to keep a portion
+of it, everyone wants to row in the same direction. and it cuts through all of
+the prioritization and decision-m that often will cloud and resource allocation that often will will cloud enterprise
+partnerships. So, it's extremely valuable and I think it's a big reason why we've been successful. I think it will just become the norm for companies
+that are doing differentiated highval activities. If your product really like
+feels a little bit more like a commodity, you'll start to see more usage based and seatbased pricing
+because it's just simpler. An area for example, knowledge based lookups are a
+little bit more that way, just question answering. And so in the case of
+question answering, that's not an area where you would have a high premium for an outcome of any particular sort. But
+if it's making a sale on a membership or, you know, selling someone a car, that's a really big outcome. Um, and so
+companies will be more than happy to pay for that. Uh, I think where we're seeing things going is intra conversation
+outcomes to also thinking about more, you know, as I mentioned, kind of the moments that matter across the customer
+life cycle and driving outcomes on top of our agent data platform that kind of
+span that whole life cycle. I think that's particularly interesting. You guys support multiple different
+outcomes. So, you've got customer support and you've got sales. How different is the pricing between those
+and how many different of these like categories or templates do you guys end up having? It really depends on the value. So, you
+asked if it was customer specific. The answer ends up being that it sort of has to be. In certain cases, you are
+troubleshooting very complex setup to a device or something and you have to try
+15 different things to get it to work and the average conversation might take 20 turns and the amount of, you know,
+context engineering to make that work might be very high. In other cases, you might have something where, you know,
+you're just resetting the signal on your TV and it's very quick and easy or you're checking your balance with the
+bank. Um, and that's very easy. And so, you know, one outcome is very valuable
+and drives a lot of loyalty and one outcome is somewhat commoditized. You might have some cases where there's, you
+know, an outcome that's tens of dollars, uh, and in terms of the, you know, money
+that the agent would earn. Uh, and then you might have some cases where it's, you know, much much lower than that.
+And does that ever differ within a customer? So, like in your example, I
+could imagine you you could have an agent doing a really simple task of, oh, tell them to unplug the computer and
+plug it back in or something like that. And there's another one where like, oh my god, who knows what's going wrong. And it and it like is a miracle that it
+solves it at all. If it's the same customer, will it be charged the same amount or do you differentiate even
+within those different types of requests? There are cases where we differentiate. We're not dogmatic about it. What we
+found is that often times the benefits of having our incentives aligned are so
+high that it's not worth negotiating every detail of what counts for what and
+it kind of evens out over time and you do right by your customers over time and
+you build trust and contracts aren't infinite and you want to have a really high uh renewal rate and have them trust
+you with more use cases and these kinds of things. So we make sure that incentives are deeply aligned. Um and
+then on top of that, I think you can get really pedantic about the engineering of specific outcomes and maybe over time
+the market will move in that direction, but I think you're missing the forest for the trees in that case because of
+just how powerful the concept is. And so most of our customers are eager to find something simple that we all understand
+that feels fair as opposed to trying to engineer like the perfect uh value for the for each outcome. Why don't you
+think there's more outcomebased pricing right now? Is it because there's not enough agents doing valuable things or
+because it's so operationally intensive for now because it's early on that you guys have just a builtup muscle of doing
+it and that's what allows you guys to do it so effectively? I think it's probably a bit of both. I think that there are a lot of products
+that probably as models have improved find themselves in a position of being more
+similar to what you could just buy uh tokens and create. And then also there's
+just we're very early here. Um if I had to say though, I would guess that the
+second one is more important and there will be a lot more of this. the same way
+someone doesn't care how many hours I work as long as I produce you know new
+products uh that are good and I think that that will become true of agents as
+well. There will be a mix of building agents in house on platforms like Langraph and then there will be also uh
+you know buying uh products like Sierra to build agents on. Maybe switching to the last topic which
+is just the type of people that thrive at Sierra. I think you guys are also pretty famously known for your for
+deployed engineering or agent builder approach. Could you talk a little bit about that both in terms of what those
+people do as well as the right persona to grow into that role? I joined Sierra about 2 and a half years
+ago and it was my first B2B job ever. I'd only worked in consumer products and
+I love building consumer products. I love being like, oh, I could imagine, you know, my friends using this or my
+parents using this. But I never really loved growth uh and the idea of figuring
+out how to drive a couple percentage points of attention or a couple
+percentage points of usage. And what I learned when I joined Sierra is I love enterprise sales. Uh [laughter]
+I got a tattoo. Um so basically the the process of caring about each customer
+individually saying one customer is upset. I'm gonna call them right now and find out why and see how I can help.
+Just felt very empowering as a builder in a way where building for a billion
+users on Google search for example, you know, it was exciting in other ways, but it didn't feel like you could listen to
+each user and help them. And in many cases, we have customers of Sierra that have, you know, gotten promoted in their
+organizations. They're building careers uh because of the agents that they've built on Sierra. And so it's just feels
+very deep in terms of those relationships. What I love as well though is that the end user of a Sierra
+agent is still a consumer in the vast majority of cases. And I think it's pretty rare to have a product that needs
+to be consumer grade where the product that you're building, it's a it's a
+platform, but then the end user is really a consumer and you have to have them in your mind the whole time. but where you have kind of the enterprise
+sales process of building trust, of solving problems, of discovering value,
+and then delivering that value for people. Um, and so I think the people that really appreciate those two things,
+the customer obsession and the craftsmanship, uh, do very well. I think
+we've also discovered just with the rise of coding agents, certain things are
+more important than they used to be. deep customer intuition. GPT 5.5 doesn't really have that. Um agency, the ability
+to say why can't I do this? Um one of our uh engineers that has really high degree of agency, her status message is
+just like why not today? Um and so having that mindset I think is really
+important. And then the other thing just as someone with a product background is I think we kind of have a faster car
+then you need more pit stops kind of thing. So like a a Formula 1 car needs to get its tires changed more often than
+my Hyundai Kona. Uh and the reason for that is you know it's driving faster, it's burning more rubber, uh etc. And I
+think we have a similar thing building products as well now where coding agents have allowed us to write code a lot
+faster and even to review it faster now. But certain things like product judgment and customer intuition are therefore
+actually needed more often, not less often. And so, uh, people that can bring that to the table themselves are in this
+amazing loop of moving fast, but people where it's one person's job to bring
+that and another person's job to do engineering. They need even tighter collaboration and, you know, more daily
+standups and that kind of thing to be successful. I really like that car analogy. I hadn't heard that before and totally resonates
+with what what what I'm seeing where product is becoming the bottleneck because it's so easy to code and you can
+make so much of things, but that doesn't mean you should. Who ends up fitting this agent builder profile the best? Is
+this product people then? Is this engineers with good product intuition? Like what does it look like practically?
+We're still figuring it out. I will say that people that have done both roles
+are often successful in the company. Our head of engineering, Arya, has been a product manager in the past. We have a
+number of engineers that have been product managers. I think those skills, knowing how to talk to customers, not
+just like what to say when you're in front of a customer, but how to find your way into the right conversations,
+having a high degree of agency, being really strong with communication so that you're getting, you know, product isn't
+the bottleneck anymore. Uh those are really important skills. I still think kind of knowing the right questions to
+ask and the right things to tell coding agents is really important. So the systems thinking and the architecture
+design are really important and so if you have not been an engineer before uh
+it can be difficult and so I I think that the multidisciplinary approach is more important than ever. My own
+personal rubric, which is like very much in beta, is kind of this customer intuition,
+agency, product judgment, technical depth, communication, intensity, because
+when the car, you know, you need to be really locked in when you're driving a Formula 1 car. Um, and then one which is
+a little harder to pin down, but is just kind of leadership where when there's more activity going on, the ability to
+to draw it into the correct direction is really important as well. So, this is kind of the working framework in my
+head. Um, but I'm sure there are lots of other things, too. How do you interview for agency? And I
+asked this because I think the the guest we had on in the previous episode said the exact same word, agency, for one of
+the traits that they look at, and I asked him the same question. So, now I'm going to ask you the same questions. How do you how do you interview for agency?
+So the most concrete way that we've changed our interviewing process is we have this AI native interview
+and you wrote a great blog on it the other week. Yes. And so you by the way Vijay and
+Arya and our uh engineering leaders but I've seen it done and participated in
+the interview panels and basically it involves building a product end to end
+over the course of a few hours and then reviewing it with a team. I think in that environment, you can see what
+people think is offlimits or what's their job and what's not their job and how far they extend sort of what they're
+allowed to do. And if they're able to find opportunities that you would have
+thought, oh, maybe that they would think that's out of scope, bring them into scope and build build great products on top of it. You kind of see agency. You
+see that they have a sense that a lot is in their control instead of feeling like certain things are not in their control.
+And if you think about coding agents, they bring so much more into I think the
+like the locus of control, right? And so you can do more things and if you appreciate that, I think it comes
+through in that AI native interview. Thanks for listening to Max Agency. If you liked this episode, leave a review
+and subscribe. Send feedback or questions to [music] Max Agency langchain.dev.
+We want to hear from you.

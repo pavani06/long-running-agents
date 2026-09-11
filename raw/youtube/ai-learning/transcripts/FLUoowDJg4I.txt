@@ -1,0 +1,515 @@
+[music]
+Okay. All right. Hello everyone. Thanks
+for coming by. Today I will talk about
+how I automate my own job uh at
+HuggingFace using agents.
+Um short introduction. I'm just uh Neils
+from Belgium, the land of beer, fries,
+and chocolate. I studied at K Louven and
+I'm a machine learning engineer at
+Hugging Face for 5 years now.
+Uh today I'll talk about the community
+science team at HuggingFace, which is
+the team I'm part of. Uh then I'll talk
+about how I automate a large part of the
+community science team. And finally,
+I'll also discuss some other efforts uh
+that we do at Hugging Face.
+So let's start with the community
+science team at hugging face. So
+basically this started when I was send I
+was seeing like trending research uh
+passing by on GitHub and a lot of times
+when I saw new interesting work um the
+weights were not available on hugging
+face sadly like researchers use either
+Google drive or they use GitHub releases
+they use Dropbox they use Zenodo or
+other servers to put their um artifacts
+on and this hurts uh discoverability of
+their work. it's like not easily uh
+visible or discoverable. And when I then
+open a GitHub issue to say like actually
+you could put your weights on hugging
+face for free, most of the time people
+replied to me like yeah migrating the
+weights uh from Google Drive to hugging
+phase actually makes perfect sense. So
+yeah the community science team can also
+be described as the Google drive to the
+hub team.
+Um why? Because on hugging phase we have
+these paper pages uh and every single
+paper is sourced from archive and then
+on the right side you can basically list
+the linked artifacts like the the linked
+models or data sets. So people can
+easily uh reproduce your paper or find
+the models or data sets.
+So yeah you can see them on the right
+side. Um this improves the
+discoverability of your work because we
+have these metadata tags or filters on
+the H. So you can easily find for
+example a depth estimation model an LLM
+if you're interested you can find them
+by language you can tag them with the
+library they are compatible with and so
+on. So this improves the discoverability
+of your work. So these are yeah the
+metadata tags that you can add to every
+single model on hugging phase or every
+single data set.
+So yeah this is like the main problem
+that we saw like uh lots of people lots
+of researchers are like using third
+party services to publish their work. We
+have the hugging face platform which is
+like a centralized place where people
+can find machine learning artifacts. It
+also improves with documentation because
+you can add a model card or a data set
+card. We have tooling so you can easily
+upload or download stuff from hugging
+face. Uh and it might also help re
+researchers in promoting their work. So
+it's basically a win-win uh both for
+researchers and then other people using
+the research.
+So yeah, these are the typical Git
+issues that I was opening. I always had
+like the same template. I just asked
+could you please release this checkpoint
+on hugging face? Could you please
+release this data set on hugging face?
+And [snorts] then I also opened PRs pull
+requests on hugging face to add data set
+cards or model cards to improve the
+documentation of those artifacts.
+But there's a problem. uh it's not
+really scalable for me to open all these
+GitHub issues or pull requests because
+every single day there are like hundreds
+of research papers coming out on archive
+especially now with AI boom um yeah also
+NERPS for example a major AI conference
+they are seeing a massive amount of
+papers so can we automate this can we
+scale the community science team with
+agents so that's the second part of my
+talk how can we yeah scale this uh to a
+massive amount of research papers
+So the idea is pretty simple. Uh we
+should have an AI agent which can help
+me do this outreach to all these
+researchers which publish models or data
+sets uh as part of their research work
+and then yeah do the outreach in an
+automated way. So this is the typical
+workflow that I was following. So
+basically whenever I saw a research
+paper I first try to find the GitHub URL
+uh of that paper if it's available. Then
+I I read the read me of that githip uh
+file and then I basically check if
+there's anything new interesting to be
+shared on hagging phase. Uh it could be
+that it's on hugging phase already. In
+that case I check whether the model
+cards or data set cards already properly
+uh present whether the metadata tax for
+example are there. If uh not then I
+might open a pull request otherwise if
+the artifacts are not yet on hugging
+face I open a github issue and then
+finally I also follow up with the
+author. So that's kind of the workflow
+that I had to automate uh with agents.
+And there are several ways to solve
+this. Uh you could go with a workflow.
+Uh these pictures are by the way taken
+from the blog post building effective
+agents by entropic which is a really
+great read uh read. Um so on the left
+side you see yeah a workflow which is
+more deterministic. You basically use
+LLM APIs within steps of a predefined
+path or pipeline. Uh which is more
+predictable. It's more deterministic.
+you have more control over it. Of
+course, it's less flex flexible. And
+then on the other hand, you could have a
+fullyfledged auto autonomous agent,
+which is an LM in a loop that calls
+tools until it's done, which is more
+flexible, but also less predictable
+uh at the time. Yeah, of course, it
+doesn't have to be a binary story. You
+can have a workflow on one hand, you can
+have a fully autonomous agent on the
+other hand, but you you could of course
+also mix and match these type of things
+uh for your use case. In my case, I went
+for um pretty deterministic workflow. Uh
+why? Because at the time that I was
+building this, this was in 2024 was at
+the time that Entropic wrote their blog
+post building effective agents. And
+there they actually said try to avoid
+building agents if you really don't have
+to start simple. Start with a single LM
+API. Uh avoid frameworks. Uh and
+actually I think those were great tips.
+So at the time I started building a
+workflow which basically replicated the
+workflow that I was doing when I was
+doing this outreach. So yeah this is the
+whole uh pipeline. This is created using
+the excellraw mcp server and cursor.
+It's pretty nice to create a
+visualization of your code. I'm not
+going to go into the details but
+basically it just replicates uh the
+workflow that I was doing when doing the
+outreach and I use LM APIs and then each
+of the steps without any framework
+without any agent framework. So it made
+it quite uh deterministic and I had a
+lot of control over uh how this goes.
+Um in terms of deployment of this uh
+workflow, it's a simple chron job. So
+chron is just something that runs
+regularly. In my case, I run it once
+every night. So when I'm sleeping, there
+is this agent, but technically it's just
+a chron job. It's a Python script with
+an LLM API which is going to read all
+these hundreds of archive papers. uh and
+then it might open GitHub issues or it
+might open pull requests on the hugging
+phase. I'm using GitHub actions for
+this. Uh I saw this very nice blog post
+free Chrome jobs with GitHub actions and
+actually it's probably the best entry
+point if you want to set up Chrome jobs
+uh because GitHub has a pretty generous
+tier if you want to get started with
+like putting simple chrome jobs up
+there. And yeah, it makes it really easy
+for me in the UI to manage all these
+Chrome jobs. And so yeah, every night I
+have uh hundreds of uh GitHub issues
+being uh created.
+For the tracing part, um I'm using
+Langfuse. Uh yeah, Langfuse also has a a
+boot here. Um Langfuse is pretty great.
+Um I use it mostly for the tracing part,
+the observability part just to see what
+is the LLM doing, what are the inputs,
+what are the outputs, what are the
+prompts, how much does it cost, latency
+and so on. Um, so yeah, uh, I definitely
+recommend it.
+Um, but yeah, as my agents are opening
+so many GitHub issues every night, I
+then end up with a massive amount of
+unread GitHub notifications because
+people reply to those GitHub issues. And
+that's a lot of work to then reply to
+all of those issues. It's kind of like
+going through your mailbox.
+So you could wonder could we also um
+automate the followup to those GitHub uh
+issues because initially I was still the
+GitHub issue creation was done uh by an
+agent but I was still the one involved
+in them doing the follow-up. Uh now a
+few months ago I also automated the the
+follow-up to those GitHub issues.
+Again you could think how should you
+solve this? Should you go for a more
+deterministic workflow or can you go for
+a fully autonomous agent, an LLM in a
+loop which runs with some tools and
+skills? Um, well, here I went for kind
+of a fully autonomous agent. So, it's
+kind of flexible. It's a bit less
+predictable, but it works quite well. Um
+I went for this because uh in November
+of last year at AI engineer in New York
+there was a pretty nice workshop by
+Entropic on the cloth agents SDK and
+there they were actually saying that
+agents might be better than workflows.
+So they were kind of contradicting
+themselves but they also said that
+models have become so good that you
+might actually now start to work with
+fully autonomous agents rather than a
+workflow. So this is why I went with
+this approach and I actually am using
+the cloth uh agents SDK for this use
+case. Uh there was another pretty nice
+talk uh by Kurser also at AI engineer.
+This was in the European version in
+London few months ago. There they talked
+about how they replaced 12,000 lines of
+custom code pretty sophisticated
+workflow with a very simple 200 lines of
+code skill. Uh actually it's pretty
+similar for me like I can uh replace a
+lot of custom codes thousands of lines
+of code with nowadays just a simple
+agent with maybe a CLI as a tool uh and
+a skill and that's it. Um because the
+models have become so good.
+So yeah in terms of the uh architecture
+this is a bit what it looks like. Um so
+it's actually just the cloth agents SDK
+which is I would say a pretty good
+Python SDK for building an agent.
+Initially I was using the cloth models
+uh but then I since actually this week
+I'm using the GLM 5.2 model via hugging
+face inference providers. So hugging
+face does offer uh a service uh which
+basically wraps a lot of inference
+providers like together.AI fireworks
+suras and so on. So you can use a lot of
+open models in a unified way. It's
+OpenAI compatible or entropic compatible
+and then I deploy this on model. Model
+is also present here today. Um and it's
+mainly using bash as a tool. So the
+terminal to uh basically um do hugging
+face comments because it's using the
+hugging face CLI quite a bit. So I I
+combine it with the hugging face CLI
+skill which is actually all it needs and
+then um it might com comment something
+on GitHub as a follow-up. and it also
+actually does the posting on Slack
+because eventually I also want to see
+the final results on our Slack channel
+uh from Hugging Face. So yeah, given
+that there's also a lot of hype on GLM
+5.2 recently, for example, cursor uh saw
+great performance on their cursor bench,
+post train bench is another one where it
+actually beats op 4.8 and it's cheaper.
+So yeah, there's no reason not to use
+GLM 5.2 uh especially given that I work
+at Hingo. Um, for the deployment, as I
+said before, I use model. Um, it's
+pretty great if you want to deploy
+agents. Uh, in my case, I'm using the
+batch processing feature. So, they allow
+you to spin up a massive amount of
+containers all in parallel. Every single
+container is basically one agent loop
+that is processing one GitHub issue. Uh,
+it's super easy to use, I have to say.
+Um, and the startups are also pretty
+fast. So I definitely recommend it if
+you're building uh agents that are like
+for example running in the background
+running overnight for example.
+Um and then the way I invoke it yeah
+technically I could also just uh deploy
+this as a chron job model for example
+has support for this but typically the
+followup on the github issues I still do
+that actually manually by invoking it as
+a skill. So I created a skill for this
+in cursor uh I call it process unreit
+model and then what it's going to do is
+it's actually going to invoke an agent
+in this case composer 2.5 which is like
+the agent that I'm mostly using in
+cursor which is again going to invoke
+all the other agents. So that's this is
+kind of the loop that people are talking
+about and then finally it's going to
+post uh all the results on our slack
+channel.
+Uh so yeah and this is actually what it
+just posts. So what it does is it
+basically just posts a huge amount of
+hugging face papers uh which are these
+research papers which people can make
+available on the hugging face because
+every time someone mentions it in a
+model cart or data set card we index it
+on the hub and then it just posts all
+the artifacts that people have been
+uploading based on the outreach that we
+do via GitHub. Um so yeah I do this
+still in a manual form. So I just invoke
+the skill and then after a few minutes
+these messages uh appear on our Slack
+channel.
+Um yeah I just included some fun results
+because to be honest it's quite fun to
+see people interacting with the agents.
+Um to be honest I don't disclose that
+it's an agent. Why? Because I think if
+people know it's a bot then they might
+quickly like close the issue. And to be
+honest they post exactly the same stuff
+as I was doing before manually. So I
+don't actually see any reason to to do
+that. Um so and then you see replies
+like this. Hi Neils, thanks a lot for
+your suggestion and the clear guidance.
+I actually also often times see people
+using an agent to reply to my agents. So
+it's kind of the that internet nowadays.
+Uh but people yeah make all their
+artifacts available on hugging face. And
+out of the thousands of issues that are
+being created on hugging face actually
+so far I've only had two uh negative
+comments. one guy saying uh yeah please
+close this slop so he closed the issue
+and then another one but most of the
+people they just say yeah actually it
+makes perfect sense to make my weights
+or my data set available on hugging face
+like why didn't I think of this um so
+it's kind of a win-win I would say
+uh I often times also post fun results
+on our Slack channel like for example
+one time someone a researcher from Apple
+uh sent me a DM like I saw you reached
+out to me but yeah technically it's my
+agent just posting a GitHub issue uh
+regarding publishing a new Apple the
+artifacts of an Apple paper on hugging
+face or for example it reaches out to
+Google deep mind to uh publish um
+mathematics data sets. Um so a lot of
+times like I receive emails the one on
+the right side where yeah they want to
+publish a 400 gigabytes data set on
+hugging face but this was also my agent
+just opening GitHub issues.
+Um yeah this is another fun result. So
+pedal OCR it's like a Chinese company
+they migrated all their OCR models to
+hugging face based on outreach by the
+agents that create issues for me. So um
+yeah it's pretty nice.
+Another fun result is like whe when it
+completes the default template of model
+cards on hugging face. So Mac Mitchell
+who also works at hugging face she has a
+famous paper called model cards for
+model reporting making sure that anyone
+documents their models in a proper way
+and so we do provide this template which
+you can see on the left side in the git
+diff and then uh the agent is just
+completing that template based on the
+content that it finds based on that
+paper like the github readme uh the pdf
+itself and so on
+um yeah it's also quite funny to see for
+example, in this case that it uh
+included me in uh the model cart. It
+said uh model card authors Neils part of
+the hugging face community science team.
+I never prompted it this way, but it's
+pretty fun to see or people uh replying,
+thank you for helping me fix my
+mistakes. So those are all done by uh
+the agents.
+Uh I think the most popular GitHub issue
+that was created was this uh paper uh
+tiny recursive models which you might
+have seen was quite trending uh both on
+hugging face but also on Twitter. Uh so
+yeah more than 60 people actually
+upvoted that issue so that the model was
+released on hugging face. So this is
+again I think the win-win. So it's both
+a win for the researcher making their
+research more discoverable on hugging
+face but it's also yeah better for
+people then who want to build on top of
+that research and want to use them.
+Uh so yeah I have hundreds of GitHub
+issues where I think I can show nice
+results um where people interact with
+the agents.
+You might also wonder, yeah, how to
+avoid slop because you might think,
+okay, you have an agent uh spamming the
+whole internet with your GitHub issues.
+Like, should you even do this? Again, I
+already talked about the win-win. Um,
+but a blog post that I highly recommend
+if you want to avoid that your agent is
+just posting slop is um the LLM evals
+FAQ by Hamel Husin. I would say he's
+like the main expert when it comes to LM
+evaluation. He also has like a paid
+course, but he also publishes a lot of
+stuff for free online, including this
+blog post. So, I highly recommend to go
+through it if you want to learn more
+about how to evaluate your agents.
+So, my conclusion would be um that open
+models are actually getting great
+especially now with GLM 5.2 you have
+deepse v4 and so on. So, um yeah, we we
+are able to now replace closed source
+models by open ones. Uh for my use case
+I would say agents are actually better
+than workflows. Uh they only need a
+single CLI which is the hugging face
+CLI. They need a single skill the
+hugging face CLI skill and a sandbox and
+that's all they need to do their work.
+And finally yeah don't forget about
+evaluation. Um
+finally uh I can also discuss some other
+efforts that we do as part of the
+community science uh team um very
+shortly. Um, so I have a Twitter account
+that I created. It's called Daily
+Papers, and it actually uses the exact
+same workflow as my agents behind the
+scenes to post interesting research
+papers on X. It uh recently crossed
+90,000 followers without any involvement
+of me. I just deployed this uh and it
+posts interesting research papers and
+artifacts from HuggingFace every four
+hours or every time someone uh releases
+something cool on Hugging Face. Um, so
+yeah, and I have like Gemini uh
+determining the best visual to tweet or
+to include in the tweet. Like for
+example, this recent tweet uh where it
+tweeted out that Nvidia released an
+optimized version of GLM 5.2 got more
+than 2,000 likes. So that's pretty cool
+uh to see.
+And a final effort that I'm working on
+right now is a revival of papers with
+code which is a website that once
+existed then it was acquired by ma and
+then sadly it diet. So I'm I'm trying to
+re revive it in making research and
+state-of-the-art easier accessible. Um
+for now it lives at papers with code.co.
+Uh so yeah you can find benchmarks over
+there. uh for example for OCR models own
+OCR benches like popular benchmark but
+I'm also uh making it an educational
+resource so that people can learn about
+technical terms like mid training uh on
+policy distillation and so on.
+So yeah uh that was it for my talk. I
+hope uh you learned something. Thanks
+all for your attention. [applause]

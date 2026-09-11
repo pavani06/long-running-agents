@@ -1,0 +1,428 @@
+[music]
+Hello. Good evening developers.
+How is everyone doing?
+Welcome to I Engineer and welcome to the
+Neo Forj uh context graph session number
+two. excited to be here together with my
+peer ab to share with you more about
+context graphs how they can help Asians
+to become uh more decision aware.
+So um one of the big challenges uh that
+we are trying to solve these days in the
+AI era is basically um using knowledge
+graphs to unlock AI where we want to use
+graphs to fill the gap of knowledge.
+gave gave AI agents the right tools and
+enriched them with the right uh um
+content u to do to to uh to solve
+certain uh challenges. So we all know
+that I agents are really good in in
+language reasoning and creativity but we
+want to miss or fill the the the missing
+puzzle piece of of knowledge and um um
+for for the agents.
+So and big um topic we have been we also
+saw before at Steve's talk is is memory.
+So uh to
+um we talk about different types of
+memory. So short-term, long-term and
+reasoning memory. So in a short-term
+memory, we um we try to to understand
+and capture the um the the conversations
+that a user had with with AI agent.
+And in a long-term uh memory, uh we we
+capture more um contextual uh knowledge.
+in this case um things around or
+organizations
+uh people and things basically. So that
+really give us more the generalized
+overview of um um of the of the context
+and of course we need here reasoning
+helping basically the AI to to to
+make the right decisions to um achieve a
+certain task.
+We saw also that uh um
+the for for the background of this we
+need uh we we need a graph. So um a
+graph basically is made out of nodes uh
+and relationships to basically help um
+help you understand the deep and complex
+uh relations and connections between
+different type of data.
+So the big question is now why context
+graphs? So we also have been talking
+also lately a lot about context
+engineering and now basically the big
+ask again why uh context graphs. So
+basically we are still within the sphere
+of context engineering when we talk
+about context graph. But context graph
+is really the shift of having um AI
+agents that already are very good in in
+providing knowledge um to uh to their
+users having the right tools and content
+and context. But with context graphs, we
+would really like to um provide
+additionally to the knowledge um the
+right rules and policies um to the
+agents to help basically them become
+more capable to to to drive u uh
+decisions. So not only only knowledge
+but also um decisions. So that's why
+we're moving not only okay how an agent
+or what an agent can do but also now we
+want to really capture within a context
+graph the missing why. So why an agent
+needs to do something and this is
+something we capture with data that
+focuses on policies and rules.
+So uh when we talk about neoj um we say
+also that uh graphs are everywhere. So
+this is a basic uh replica of an
+organization. Um each organization is
+basically also reflected here from
+finance uh or department of an
+organization from finance to product to
+suppliers and so on so forth. We saw
+also a good example by Steve before on
+um on financial services. So um is
+someone is bas is eligible to to get a
+certain amount of money here. So yes or
+no. So we u part of this chapter we are
+really going deeper with our customers
+uh and and verticals to understand their
+needs and basically how we can help them
+solve the why question and help them
+drive better better agents that can can
+be more decision um decision aware. Um
+this is also uh how a memory graph uh
+would look like. So if we want to to um
+an Asian to also drive the right
+decisions we need to also um give them
+memory capabilities. So this is a quick
+overview how the memory graph would look
+like. In green we see the short-term
+memory. So we are capturing again the
+the the conversations the the state
+history and then in long-term memory is
+more like the generalized overview of of
+organizations people. Um and then most
+importantly also the the reasoning. So
+why an AI agent should should um um do a
+certain task based on on on predefined
+policies and rules.
+So and behind behind this story is
+always uh our let's say the foundation
+if we would like to build aentic graph
+applications
+um we always have the
+the I agent where the user sends first a
+query
+um we the agent looks for this knowledge
+uh or for this um topic if it's
+available in its knowledge source if not
+we uh jump to the graph database. We
+have a certain um asset of tools like
+text to cipher that translates text
+human human text to our uh query
+language and then we tra we yeah uh
+traverse the the graph on the right
+content and hopefully coming back to the
+user with more uh reliable and
+qualitative content.
+So uh ABK you have been building um a
+decision framework in the last couple of
+days. Let's have a look on that.
+Sure. Thank you, Zade.
+Thank you, Abk.
+So, we've been hearing a lot about like
+what does the data model look like for
+how do you store memories? We're talking
+about context graphs and it's all about
+decision- making. Why do we really care
+about decision- making? And maybe you
+noticed the awesome animation. How many
+people have a claw? Claw owners, some of
+you. Some of us have claws these days,
+right? At least have heard about claws.
+What's awesome about open claw and all
+the different claws is they really
+exaggerate the need for good decision-
+making where decision-m is basically
+when you run into a point in the
+workflow or the life of the agent where
+it has to do something that it doesn't
+have in its setup. You haven't given it
+instructions about what to do in a
+certain circumstance. Autonomous agents
+run into this all the time. If you just
+let them off and go and do stuff for
+free, give them a credit card, give them
+access to your Amazon account, say,
+"Hey, keep my stock completely my my
+fridge stocked with like Red Bull at all
+times." Okay. If they notice that you
+need some Red Bull, they're going to go
+order some Red Bull. They may not know
+like, "Oh yeah, I should order Red Bull
+unless the rent is coming up and I don't
+have enough money for rent." You may not
+have anticipated that. You can go and
+fix that with some prompt engineering
+and keep improving the instructions for
+the agent. But really there's a meta
+problem which is how do you make good
+decisions. I'm going to talk through
+given if you have some memory, if you
+have a graph around, you've got an agent
+running, what does an agentic workflow
+look like for actually making good
+decisions?
+Because the crab wants help. Help the
+poor crab.
+Okay. And actually, it's even worse, of
+course, if you've gone down this path at
+all. You start with maybe one agent
+that's running that becomes multiple
+agents that have specialized tasks.
+They're all off doing things. They all
+have to collaborate together. They all
+have to be self-aware of each other and
+themselves. The problem gets worse and
+worse at scale. So you need a thoughtful
+framework for how to make decisions. If
+you have friends who are in MBAs that
+went through some business school
+perhaps here in the judge business
+school in in the UK, they probably have
+entire courses on how to make good
+decisions. I'm going to talk through a
+framework that you can give to an agent.
+you can implement yourself in your
+choice of framework whether it's lang
+graph or if you just want to write some
+skills you can give that a try as well
+but this overall workflow is just how
+you make decisions generally as a human
+and as we know for much of the
+engineering we do these days
+transferring our implicit understanding
+about how to do things in an explicit
+way to the agents is what helps agents
+do their job really well. So given a
+context graph given some memory here's a
+workflow for actually making good
+decisions.
+Okay, starts at the top with just
+framing the problem. Basically, it's the
+local context that matters. And for the
+local context, there's how did you get
+here in the first place? That's the
+causality of the second one. Actually, I
+would probably lead with that. You went
+through some reasoning chain. You went
+through some actions and suddenly you're
+at a point where like you have some
+amount of uncertainty. Rather than just
+making a choice about what to do next,
+you're like, "Hang on, let me go into
+this subprocess, which is decision-
+making, and figure out what to do."
+you've got an objective in mind,
+something you want to get out of that
+process. And the example we had before
+for finance was like actually instigated
+by somebody who wants to increase their
+loan or something like that. Fine. Could
+be that could be ordering Red Bull,
+whatever the decision might be. An
+objective, the causality that led to
+having that objective be a thing you
+want to resolve. And then there's an
+environment within which that's actually
+operating, that's purchasing, that's
+actually perhaps medical decision-making
+guidance in that realm. So it goes from
+hey can I order a Red Bull to there's a
+life at stake. Those are very different
+environments but those environments
+matter for like what kinds of decisions
+you end up making. That's the kind of
+thing that we understand because we
+experience these things. You have to
+tell the agent these things so that they
+understand it as well.
+Once you've got the framing that feeds
+into a larger context which is the
+global context around what did you do
+before in this situation. That's always
+a good idea. If you can stay consistent
+that's really good. But then also there
+are global rules both the hard and soft
+rules of a business. Maybe they're
+formally described in a business process
+language or something like that or
+they're just informal in some kind of
+guidance in Slack channels in Google
+Docs whatever hard and soft rules come
+to place here for having alignment over
+the decisions you're making. And it's
+important to keep both of those things
+in balance. What did you do before could
+be the right thing to do again? But also
+what are the global rules that are
+applying now that might have been
+different before? So there might be a
+reason to overrule what prior decisions
+were. These are all part of the
+framework.
+You've got the inputs. You've got a
+framework for the decision-m that is
+global. And now you've actually got to
+go through and do the analysis. And this
+is of course just the classic risk value
+analysis. And you're going to figure out
+for the risk side that's probably where
+an agent should spend most of their
+time. If it's a serious thing that you
+spend even more time and by serious I
+would mean things like this first point
+is called a reference class validation
+where a reference class is and rather
+than assuming what is good and what
+matters you have to try to decide for
+the players involved what is the most
+important thing for them so what is your
+reference point for like what's
+important to them the example I love
+here is like if you have uh in in
+medical care this is a very dangerous
+area to be doing letting open claw loose
+right If you're prescribing drugs for
+somebody and like 99% of the time you
+might prescribe drug X for symptom Y and
+that's the right thing to do 99% of the
+time. But for the 1% of the time, if
+you're in the small 1% of the
+population, giving that same drug might
+be fatal. So before deciding what you
+should do, it's very important to know
+if you're part of the 99% or the 1%.
+Statistical, you know, behavior does not
+really help you there. That's an extreme
+example, but there's flavors of that in
+many decision-making circumstances that
+right now are kind of implicit for us. A
+lot of our practice as AI engineers is
+being explicit about the implicit
+knowledge that we carry with us. So keep
+that in mind actually classifying what
+matters, what doesn't matter, what is
+the actual risk involved. Is the
+decision reversible? It can you take it
+back like oh sorry that was obviously a
+bad idea. Let's just back it off and and
+do it again. That changes the dynamics
+of how you assess things. And then also
+what's the cost of being wrong generally
+again like is a life at stake or is it
+the okay I'm going to not have Red Bull
+in my refrigerator not great but not the
+end of the world. So it's okay if that's
+a bad decision. Then also of course on
+the value side it isn't obvious what
+you're maximizing. Are you trying to
+maximize your saving your budget? So
+actually don't spend all your money on
+Red Bull. Save some aside because you're
+saving for a vacation or for buying a
+house or whatever it might be. What is
+it? Are you maximizing some value? Are
+you trying to minimize some cost? That
+has to be part of it as well. And it has
+to be explicit. Without that, an agent
+is going to take its general knowledge
+of conditions and be like, okay, well,
+most of the time this is the right thing
+to do, but the particulars matter. The
+particulars always really are important.
+And then the final thing is that the
+output of this stage is actually not
+making a decision. I like to think in
+terms of multi- aent systems. For me, I
+love compartmentalized, highly focused
+agents working together. this agent's
+job only thing would be to like actually
+come up with a proposal of some
+alternatives and to give some procons
+for those alternatives not to actually
+make the choice. The choice then would
+be handed off to the next agent
+which would be actually deciding whether
+or not it can act. Does it have the
+authority? And if it does, it can go
+ahead and like rank the the options that
+it has available to it and take those
+actions and have the impact actually be
+felt. Or it can decide actually I don't
+have certainty here or I don't have
+authority here. So let me escalate this
+to either another agent or another actor
+that could be a human that does have the
+authority that can make the decision. So
+this is incredibly important here.
+Either act or don't act. Let somebody
+else make the call. And the oversight
+here is basically the subprocess that
+would be kicked off for like a human in
+the loop basically to step in or an
+agent with higher privileges. The final
+part of this is really an important
+self-learning part. Once you're done,
+once the decision has been made, either
+a decision has been made or there was
+not enough information or certainty to
+make the decision, you might defer
+actually doing anything. That's a
+possible state as well. or you make the
+decision if you had record the entire
+reasoning process. What you considered,
+what you didn't consider, this is part
+of the tracing, the accountability that
+we talked about in all the other moments
+around context graphs. That all gets
+saved into the graph along with the
+decision itself and the actions that
+were taken that lets future agents do
+better at their job because they have
+this now as precedent that they can
+refer to.
+Okay, that was my speedrun. This is the
+full diagram of the workflow. You can
+implement this again if you want to in
+Lang graph in ADK whatever you've got on
+hand write up some skills doing this
+that works well I will say it's very
+hard to generalize each of these things
+this is a general framework the
+particulars of every step end up being
+very domain specific so bit bit of a
+caveat there um we're obviously working
+on like lots of different examples in
+different domains for this stuff so if
+you've got a domain that we haven't
+really talked about yet I'd love to talk
+about it so we can add it to our kind of
+catalog of things okay
+Very quickly, that was me. Call to
+action is the same as Steve had as well
+before. If you want to learn more about
+this stuff, we have free online courses
+at Graph Academy. You can learn more
+about context graphs, learn more about
+graphs. Come talk to us at the booths.
+Come talk to us after this talk. Uh we
+love to talk about this all day long.
+Thank you.
+[applause]
+[music]

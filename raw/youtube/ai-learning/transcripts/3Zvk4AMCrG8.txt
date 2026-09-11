@@ -1,0 +1,217 @@
+I'll say it. Nano Banana, Google's new image model, is the best image model to ever exist. It's what we all wanted out
+of an image model. You can place products. You can keep characters consistent. You can change scenes. You can edit specific parts with full
+control. It's basically like Photoshop, except you don't need to hire someone to go and edit. You just use plain
+language. So, I brought on Logan Kilpatrick, who works at Google, who's senior at Google, on the AI team, to give us a tutorial with how to get the
+most out of it. And it's important to me that I brought him on because I think that there's going to be a lot of people who make a lot of money from this
+specific model. They're going to be able to create content that's scroll stopping from this model. They're going to be able to create ads that convert from
+this model. They're going to be able to create SAS startups using Nano Banana.
+You need to watch this episode. This is an incredible demonstration of a new technology and I can't wait to hear what you think.
+[Music]
+Logan Kilpatrick on the podcast. What are we going to talk about today, Greg? I'm excited. We're talking about Nano Banana aka Gemini 2.5 flash image
+which is our new Gemini state-of-the-art image generation and specifically image editing model uh which folks are are
+loving and and no pun intended going bananas for right now. Um so I was hoping we could just see a bunch of examples of the model in action. we
+could actually build some stuff live and and like vibe code something and uh show people like what are the actual product applications, what are the types of
+companies and things that you could build around this new model by the end of this episode. What are what are some tangible things that people are going to get out of it?
+Yeah, hopefully you'll see like what are the model's capabilities? What does it actually work really well at? Um, and hopefully like what are like five or six different ideas of how you might
+actually bring this model in and start building a product um or you know integrate into your existing product or build a new product around this model and and uh put it in production.
+Beautiful. Let's let's let's go.
+Awesome. Um maybe I can share screen really quick and we can just look at some basic examples. Um let me pull up a
+tab of AI Studio and we'll see the model in action. Um so you can use them all for free. It's on AI Studio. Um, if you
+haven't used AI Studio before, it's our platform for developers and and AI builders to go and try a bunch of things. Um, you'll land in this
+experience. Uh, you'll see, uh, if you're a normal AI Studio user and you've used the product before, we just landed a bunch of other updates. We'll
+talk about that some other time. Uh, the fun thing and the cool thing is we have the sort of two Gemini native image
+experiences. one at this like top level when you land you can just like do a bunch of prompting. There's the model drop down to the right hand side here
+and you can ask the model to do a bunch of silly goofy stuff. Um I'll make a quick comment which is like the speed of
+this model is something to think about like there's a lot of these like editing experiences or these generation experiences that you can't usually build
+just because like it takes 45 seconds and like are users really going to sit there and wait while the thing is generating. So there's like a there's an
+interesting like product edge angle that you can have around just how fast this model is. Um it's also only like I think it's like roughly 4 cents for an image
+to be generated too. So it's like you know you can let people go wild and you're not going to break the bank which is really great. It's like a th000
+images is 40 bucks. Um so this is the basic experience. The cool stuff is in this build tab here which we don't talk
+a ton about but it showcases a bunch of these like demo apps. um and shows uh shows the new model capability nano
+banana actually in um in action and in practice. Um so we've got options. Greg, what do you
+want to look at? We could try this like uh image filtering use case which is really or this like uh live Gemini. I
+think it's called like gem booth or something like that. Um, this this could be an interesting one where you can like take a picture and use, you know, some a
+bunch of these different filters and it'll it'll showcase all these things in action. Uh, we could try building something live. What do you Where's
+Where's your head at? We We were talking off camera about Yeah. Interesting. We were talking off camerara about um like you know creating marketing copy
+and stuff like that is like a is is some marketing like uh imagery is something that uh could be potentially interesting. So I'm happy to go in
+whatever direction you think is is most fun.
+Yeah. I mean I think you know when new models drop I'm always interested in you know how can this give me an unfair advantage either from building a product
+or using this for a marketing asset to get more customers. So on the marketing side, like you know, yeah, here we go.
+AI ads.
+AI ads. AI ads are where it's at. So I I built this literally as we were sitting here talking off camera um about uh sort
+of being able to drop in a product picture and then turn it into a bunch of different ad formats. Um so here when you upload, I'll go and upload an image
+and I'll take the new picture of the the Google Pixel 10. Um and then this is completely vibecoded. You can see this is literally one shot as well. You can
+see my prompt in the top lefthand corner. Um, and so we have a bunch of different things now. So we can do like a luxury magazine spread or subway
+interior. I I actually can we do subway interior ad just because I see um like the notion ads all the time and they're
+showing them in the subways and I'm always envious of the notion people for for doing that. So maybe we could try that one. Let's do it.
+Awesome. And let's see. Um and then so this takes the there's a prompt behind the scenes. It takes the image of the of the Google Pixel 10 and hopefully we'll
+see it um in a subway. Awesome. Um I feel like it's reasonable that you might actually see something like this um in
+the actual in an actual subway somewhere. Uh this doesn't look like that fun of a subway, but um the pixel
+the pixel is shining in this example. So maybe we'll try one more and then actually I've got an idea for remixing this um which I think could be really
+cool. So maybe we'll try Sam Alman, the co-founder of OpenAI, just said that it is the era of the idea
+guy, and he is not wrong. I think that right now is an incredible time to be building a startup. And if you listen to this podcast, chances are you think so,
+too. Now, I think that you can look at trends uh to basically figure out uh what are the startup ideas you should be
+building. So, that's exactly why I built ideaser.com. every single day you're going to get a free startup idea in your
+inbox and it's all backed by high quality data trends. How we do it?
+People always ask. We use AI agents to go and search what are people looking for and what are they screaming for in terms of products that you should be
+building and then we hand it on a you know silver platter for you to go check out. Um we do have a few paid plans that
+you know take it to the next level. uh give you more ideas, give you more AI agents and more almost like a chat GBT for ideas with it, but you can start for
+free ideabrows.com. And if you're listening to this, I highly recommend it. I feel like this is a little bit uh
+edgier, but an urban mural ad. I feel like mural ads I always look at murals because they don't feel like advertising. So, there could be
+something there could be something interesting, which I really like. This is actually cool. I wish that's cool. Companies did this. That's really cool.
+Yeah. And and that's and this is the type of thing that you can put on social like if you're not Google and you're a team of 20 people or even less like you
+can put this on Google sorry you can put this on X or something or or Instagram and people be like whoa like where's this mural?
+I love it. And then and then it actually creates this flywheel where you're like wait maybe we should actually do a mural in real life. Like this is kind of sick.
+Um, so what I what I like about this is just like how well the model like fuses this onto an actual like real world setting.
+I think the thing that's missing is in this example, like I have a picture of my product um that I want to generate ads for. And in this case, it's the
+Google Pixel 10. Um, but it's missing like the I I know it's the pixel because there was just some event that happened and I watched it. Um, but someone walking by this might not actually know.
+So, you're kind of missing the like marketing tagline or like some additional context. So, I'm actually going to ask the model to um like add
+that in as part of it and we'll use the model's native capability to like embed that text um into the actual ad that it's creating itself. So, I'll try to
+come up with a coherent prompt for this on the fly. Uh which is something like, okay, this is great. Um, however,
+I want to add in a marketing, and this is maybe a bad example. you probably don't want like a marketing slogan, but
+we'll say we want to add a marketing slogan um to the image itself in text so that
+when people see the ad, they don't just see the product,
+[Music]
+they also see the marketing slogan.
+make it so I can manually add this
+UI or optionally let the model make one up for me.
+Even better.
+Yeah, I'm like I don't want to come up with marketing sol let the AI do the work for me. Uh that's it's what I'm that's what I'm paying tokens for. Um,
+so maybe while we look at that one, I'll show just like another example that I was messing around earlier today and and
+was inspired by um a show on X um and was seeing their like social assets that they were putting out. In the this
+example that I did was I I took a social asset that another um that TBPN had
+created and I um basically vibe coded an app in a single prompt to say like hey
+based on this asset um make me you know you be inspired by this theme and this style to like help me make assets that
+are something like that. Um, so this was inspired by the Taylor Swift engaged one if anyone saw that on X today that the
+folks at TBN TBPN put out. But so I'll do Logan Kopatrick shipped uh
+nano banana and we'll generate this and this will make me a couple of like cool social
+assets in the theme of the TBPN. So you could go in and change this theme with whatever. Like Greg, I don't know if you have like a bespoke social asset
+character that you really like. Um, but literally all of this is 100% vibe coded. This is using the model behind
+the scenes. Um, and it's actually like generating these assets and like dramatically makes it easier if you have like a consistent style as a brand or as
+a company and you're producing these types of social assets. Um, you can get lots of like cool content remixing by using this model. um and like building your own generator to do this as well.
+Yeah. And I think you know why this is interesting and why to me at least is you know social content is about scroll
+stopping content and yes you can put that image of you which is a beautiful image you look great thank you but you know there's there's something
+about that extra layer of wrapping it in a story that gets you
+more awareness within the algorithms gets you more likes gets you more replies which helps ultimately get more customers to whatever it is you're doing, get more brand awareness. So, I
+think that, you know, in the past, what did you have to do to do this? You had to hire someone who understood Photoshop, maybe, right? You know, that
+you now you could um just do it yourself.
+Yeah. And I think there is there's another layer of this and um I think about this a lot which is like what happens when you as the person who like
+has a story to tell or like some idea you have to like put it through this transl this translation layer especially when the translation layer is sometimes
+like a you know a bunch of people or something like that you lose a little bit of the fidelity of the story and that's why this like whole AI assisted
+tools to help you is great because like I get to iterate on this idea and make sure that the tool that I'm using is like actually telling the same story
+that I'm telling from a fidelity standpoint. Um, so I I I love this example. I'm curious to see the other vibecoded
+um the mocks where we are with the mocks. Um, so I'll go back and I'll put in this pixel and we'll see. Um, okay.
+So, I'll let it come up with the slogan and hopefully it's not horfy it's not horrible. Um, and maybe
+co there ads and co-working spaces maybe. apparently cafe product placement. I'm curious any of these stand out to you as interesting uh places.
+Luxury magazine spread to me is actually the most interesting.
+Let's try it. Let's try it. I don't know if there's any luxury magazines out there that people still buy, but um we'll we'll find out what it looks like when the pixel with ideally an AI slogan shows up. Um what does it say? Oh, okay.
+Created crafted for tomorrow. Inspired by you. I like that. That's pretty good.
+That's actually that's actually pretty like subversive and and it's actually good. Like it says nothing but says a lot at the same time, which is kind of what you want.
+Yeah, that is great. Hold on. I want to try one more just because I'm I'm sort of inspired by what slogans we're going to come up with. Any of these other ones um seem interesting?
+Um I kind of like the vibe of the rainy bus stop ad, but I don't know how effective bus stop ads are.
+Yeah. I don't know. I don't know. We'll try. Let's see. Yeah, let's try.
+We'll see. I also wonder if it's like taking the context of the bus stop ad to then come up with the slogan. Like are you going to um is it going to give us
+like a water resistance story or something like that? Um no slogan, but we did get an AI generated Google logo, which I guess that's the slogan in of
+itself is it's Google. We're we're selling the pixel. Um, well, I wonder how how intentional the model was about that effort. It's just missing the
+point. Um, either way, I love this example. I think it's there's definitely something here to to push on, and it showcases the model's uh capability in action, which is awesome.
+What if you like Okay, so let's just say you wanted to edit this image, like how do you actually edit it from here with natural language?
+Yeah, that's a great example. So, in this experience that we're in right now, I think it's kind of hard, but let me actually just like take the image out of here and then we'll go into another
+example. Um, so you could either you have two choices. We could either just like go back to the main chat UI. Um,
+and I could dump the image in and start doing a bunch of stuff. Um, so we could try that first actually and we'll see.
+Um, so maybe I say make me a lo or let's do
+add the slogan pixel the phone
+for AI nerds. I don't know. I'm sure the pixel people won't appreciate it, but add the slogan pixel the phone for AI
+nerds um under the image uh of the pixel
+and let's see what it comes up with. Um so this is the like most lightweight version of this where you could come and do this. I I do think there's something
+for like you want to have a little bit more like product scaffolding around this to kind of help you if you wanted to like you know have a paintbrush to
+like highlight something or circle an area like none of that exists in this default experience but you can build all those things bespoke in that build tab
+that we were in before. You just need to like prompt and say like now add a bunch of like creative tools. And we actually have an example of this um as well. But
+if we look at this pixel the phone for AI nerds um it looks great. I feel like that's like a reasonable um a reasonable
+outcome 100%.
+Yeah, I'll I'll show you this other example too. We can see what it would have been like. We can go to this uh pix
+shop uh photo editor example. Um so I'll upload now actually I'm going to upload the
+picture of yes this one. And then so we have a bunch of different options here. So we
+could try filters or this is again this is like a vibecoded pre-built set of different filters or like tools that you might
+want. Um so you can like retouch click and the image to make a precise edit.
+So, I could say, let me see if that actually works.
+And I could say, remove the Google logo from here. Let's see if it works. This is vibe coded. So, uh, you know,
+batteries included, but also sometimes the batteries are in the wrong position.
+Uh, so we need to, uh, not Okay, awesome. It actually works. and it they did hallucinate a little bit and end up
+removing the logo from the from the um the middle of the phone, but I think generally gets that like you get these
+like creative tools out of the box, which is pretty cool. That's awesome.
+Yeah, I want to try a filter as well. Um and again, we could change this to say like, hey, here are the 10 filters I want or come up with 10 filters or come
+up with, you know, a way to like add a text box to it or something like that.
+So there's like all this like infinite content customization. And I will make another note that all of this experience that we've looked at so far um is
+completely free. So you can do all this like you know ideally you build a great product with this and you end up using the Gemini API and all that stuff but like you don't you don't necessarily
+need to. The experience is free. Um there's there's no gotcha. You can come in and play around with all this stuff um and vibe code it all and uh try out
+the models and doesn't cost anything which is awesome you know. Is there any best practices in terms of prompting to get, you know, the most out of out of the product?
+Yeah, it's a great uh it's a great question. I think there's um and I don't I don't know if I I'll just throw another example up on the board or on
+the on the screen as we as we talk through this. I think some of the limitations um are around
+the complexity of what happens when you do like multi-turn um
+when you ask for lots of edits in a single turn. I think the like best way to do this is to be like like very precise single turn edits. the model is
+capable of like doing multiple things in a single turn if you're if you give precise enough instructions, but I think it oftent times like kind of loses the
+gist of what you were trying to say if you like layer multiple instructions together. Um, it is it is also like it's worth noting this model is powered by
+the the same Gemini 2.5 flash model that like we released earlier this year. So, it does have a lot of world knowledge.
+So, you you you should assume it is like a smart creative partner in many ways.
+But just like any other if anyone's ever done like a uh worked with like a random you know sort of creative uh contractor
+on the internet like you oftentimes don't get I just went through this recently where I like wanted someone to design a bunch of t-shirts for me and I had sent them a bunch of stuff and I got
+the I got the results back and I was like yeah this isn't what I wanted and then I went back and looked at what I what I said and it was like oh yeah it's very clear that I gave bad instructions
+which is why I'm not happy with what the outcome was. Um, so I do think that that same the same story applies to this, which is like be precise about what you
+want. Um, try to block these into like small um as small like multi-step edits as possible. Um, the model doesn't like
+the image quality doesn't get worse as you like do a multi-turn edit. So like you don't need to get everything right on the first edit. So all of that's
+possible. Um, and this example that I just pulled up is like another really cool one which is like AI home design. and I think is this like huge ecosystem.
+I just was helping my girlfriend um decide what color blind she wanted inside of her office and it was like a great we were like I don't know like is
+there an app that's going to do this? I was like I don't know we'll just make one right now and it literally took 30 seconds and then we took in an image and then she literally scrolled through all
+37 different flavors of the color green for what her blinds might or her curtains might look like and she was like that's the one I want straight on
+to, you know, onto Amazon to go and buy those curtains. So there's so much possible with this. Can we see how this works?
+Yeah, this is a great example. So if we upload the um if we upload a scene and I need to go and like find a good one. Um let me see.
+So this is a picture of Demis and I talking. Um and I will upload a product now. And we'll do this. This is kind of a contrived example because I don't have
+a bunch of good um I don't have a bunch of good examples nearby, but
+let's see what happens. Uh so the product this this is actually a really good example of potent assuming it works. Um this is a great example of
+like the model's world knowledge coming into play. Um so we have the scene on the right which is Dennis and I sitting in some chairs in the library in London.
+The product on the left is actually the ad that we generated before. um using AI and um the the interesting thing is
+there's like other stuff visible in this image. So there's you know a car and a bunch of people and umbrellas and a a bus stop. So like the model has to make
+some assumptions about like what is the actual product that the user is is asking for.
+So if we go and drag this over um let's see what uh let's see what happens. Uh hopefully it does something reasonable
+with this. And I actually also realized that I'm supposed to draw the Oh, that's actually great. Um, so I I dragged this
+image over and it took the the the screenshot. Um, or it didn't take That's amazing.
+Yeah, it took the image and it like set it on this little table that was sitting between Demis and I. And now there's like a little product placement for um
+the Pixel 10 that was pulled out of this broader image that we had just created. That's crazy, dude.
+Yeah. this I mean there's there's so much possible of um of what you can do with this stuff. I think and that's I mean just to opine on this point of like
+why why we have this experience that like lets you interactively see cuz it's like seeing is believing like I think you can like the like chat experience is
+cool but like sometimes they'll like uh it like gets my gears turning in a different way to like see the experience like come to life in this way of like
+interactively um interfacing with the models uh beyond just chatting with them. I think I think lands the point of like just how capable the models are in a bunch of these different contexts.
+Yeah. To me, what I'm hearing from you, and correct me if I'm wrong, is there's almost like three levels of playing with the models. One is just to use chat.
+That's like level one, the simplest way anyone can get started, chat, understand how it works. Level two is using going
+to the build tab and seeing what are some pre-created vibecoded apps that you can go and use and create some value
+with. And then you know once you get a little uh used to that then it's like okay I
+understand what this maybe the home canvas thing does but there's some limitations for whatever my use case is therefore I want to create some you know
+personal software based on my needs and then that's probably where most in my opinion that's where most of the unlock
+for the people listening to this show founders business builders are going to get building their own vibe coded apps using some of these models.
+Yeah, 100%. And then like when you the you know you have all the controls that you need when you go and like do your vibecoded app like if you want to just
+like go and deploy it and share it with a bunch of people or move it over to GitHub or download the code and like move it to cursor and like keep vibe
+coding with it or like whatever your flow is, you should be able to like continue on with that experience. Um it doesn't need to stop in AI Studio like
+we've designed it so that it shouldn't stop in AI Studio. you should be able to like go and use whatever tools you want, build in whatever ecosystem you want.
+Um, but we want to help you get started and I think this is uh hope hopefully this is helpful. We're also I was talking to our team earlier today like
+we're very early in the story. So um as much grace and as you can give us in this experience uh there will be rough edges. Send us the feedback. We've got a
+ton of stuff coming in the next few months. Um and also a ton more coming on like models like Nano Banana which is exciting. So, um, hopefully hopefully
+we'll see more progress. And if there's examples that don't work well and there's like things you wish the model could do for your use case, like ple my emails on the internet, go and send me
+an email like those those are the best emails of like I'm trying to build this crazy product. It's not possible today.
+It doesn't work. Uh, I wish the model could do X Y and Z thing. Like we we'd love to help make the model uh work for whatever products people are trying to
+build. And and before we we sign off, you know, why should someone
+play with Nano Banana today and not in six, you know, not the next model in 3 six months? Like why why log into Google
+AI Studio today and start playing with it?
+Yeah, I think there's this um there's this competitive advantage piece which is like there's you know the number of people who know that this model exists
+and are building things with it is rather limited. So if you're if you're sort of early to the wave of creating the product experiences around this, I
+think like my broad take is um there's a huge amount of consumer interest in this type of use case. Um and the if you look
+at like what products are available to actually like serve customers who are interested in this, it's like pretty limited. It's probably like a handful of
+products that actually exist. So, if you build something um and are thoughtful about it and get into the hands of people, I think you're going to have this like holy crap experience from a
+lot of your users that um they they just haven't experienced something like this before. If you show the average person on the street that this is possible,
+they're going to it's going to blow their mind. Um so, I think there's some urgency to build that experience because uh lots of folks are going to try.
+All right, I believe it. Logan, thanks for coming on the show. We're going to have to have you back when new stuff comes out, which seems like you guys are
+shipping like crazy. So, I I bet that sooner than later. Please uh comment uh if you'd like Logan to
+come back and uh if you enjoyed this episode and like this video if you want more of this in your feed. Uh, I'll
+include links to follow Logan on his social, you know, on social and uh and we'll include a link to to to get going on Google AI Studio.
+AI.studio/banana.
+You can try the model out. Uh, ai.studioapps if you want to go and build and see all the stuff that we've built. So hopefully the links make it super simple for folks to get started.
+Super simple. Thanks, man. I appreciate you. I love it, Greg. See you.

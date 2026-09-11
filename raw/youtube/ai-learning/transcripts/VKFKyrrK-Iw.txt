@@ -1,0 +1,62 @@
+This is a trace.
+A record of the action an agent takes from input to final output.
+Most teams building agents today have traces.
+What they don't have is an answer to the question that actually matters.
+How should I improve my agent?
+So how should you?
+Over the years we've seen the best organizations figure out how to use their traces to build
+an agent development lifecycle, returns experimentation, and a repeatable system for shipping, logistics,
+learning and improving over time.
+That lifecycle has four parts.
+You start by building the agent, of course.
+Then testing your agent using data sets that cover a wide
+range of examples and evals that focus on the metrics you
+think determine success.
+You can be as thorough as you want in your testing.
+The reality is you can't predict every message from your
+customers or every action from your agent.
+That's why after deploying your agent, you need to monitor
+through tracing and online evals.
+This informs changes that need to be made,
+which you can patch in, test for regressions,
+deploy and monitor all over again.
+LangChain has built LangSmith and the rest of its ecosystem
+to facilitate teams at every point
+along this development life cycle.
+Up until now though, we still relied on engineers
+to connect the dots between each stage.
+We've seen the bar for agent quality
+get higher every week,
+when agent's doing more for users.
+But agent engineering remains manual, slow, full of blind spots.
+That's why we built Engine, an agent built
+to improve your agent for you by following the agent development
+lifecycle.
+Engine investigates your traces, paying close attention
+to any explicit errors, eval failures, negative user
+feedback, or new behaviors the agent doesn't handle well yet.
+When it spots a problem, it looks for the same pattern
+across your project and clusters everything into an issue.
+But this goes beyond triage.
+If you connect your agent's repo,
+engine will draft a PR with a targeted change,
+then propose examples and an eval to add to your test suite
+to ensure future regressions don't happen.
+Once you reviewed the change and merged,
+engine continues to monitor the issue in production
+to verify it's actually been resolved.
+Teams like Vanta, Campfire, and Cogent
+have already surfaced thousands of agent issues using Engine.
+They're catching aggressions earlier,
+shipping fixes faster,
+and spending less time on Treeout.
+We're working towards a future
+where agents improve themselves,
+where every trace makes your system smarter,
+every issue makes them more resilient,
+and teams spend their time on what's next.
+Now what's broken?
+This is the first step.
+Lancsmit Engine is available now.
+Connect a tracing project
+and start improving your agent today.

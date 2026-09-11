@@ -1,0 +1,408 @@
+How do you sort out the so-called jargon
+from real world practices that work? Do
+the members of your organization find
+some business or technology advice
+utterly confusing? Welcome to Real Talk
+with Sam Hollesman. In this program, we
+set the record straight and in terms
+that business people and technology
+people can understand. Now, here is your
+host, Sam Hollesman.
+Welcome to this edition of Real Talk.
+I'm Sam Hollesman and the topic for this
+particular broadcast is ontology and AI,
+the hidden skill that makes architecture
+and your career work. Why ontologies
+matter? Now, well, what's an ontology?
+We'll get to that in just a moment.
+Let's give it an example. First, picture
+a film studio where one director writes
+DP, another cinematographer, a third
+logs director of photography, and every
+system still understands these all mean
+the same role. connects them to camera
+setups and production schedules and
+credits and avoids payroll confusion or
+duplicate jobs. That's seamless. Shared
+understanding is ontology in action. In
+both EACE enterprise architecture and
+business architecture under BACE,
+ontology is the backbone. It tells us
+what kinds of things exist in the
+enterprise, how they relate, and how
+those meanings stay consistent as we
+automate, integrate, and apply AI.
+today. That makes ontologies not just a
+theoretical idea, but one of the most
+valuable underused skills in the AI job
+market and a critical success factor for
+serious enterprise architecture and
+serious business architecture. Now, what
+an ontology really is, it's simply
+described, as we like to say in our
+workshops, kinds of things together.
+Kinds of things together. It's actually
+the backbone on how we as human beings
+think about almost everything. And then
+once we understand that, it's the
+relationships between those things. In
+information and computer science, an
+ontology is a formal description of
+knowledge in a domain. The kinds of
+things and the relationship between
+them. It is more than a glossery. It's a
+structured model of meaning that both
+humans and machines can use. Ontologies
+answer two big questions in any domain.
+studio, school, city, orchestra. What
+kinds of things are there? These are
+your concepts or classes. The categories
+of things that matter in a film
+production studio, for example,
+director, producer, cinematographer,
+actor, script, scene, schedule, camera,
+location, equipment, shot, budget,
+department, vendor, contract. Each is a
+kind of thing the enterprise cares
+about. The ontology gathers gathers
+these things kinds of things into an
+organized shared set that defines what
+exists in the world and how we disting
+distinguish one kind from another. And
+then we ask how are those things
+related? These are the relationships and
+properties that connect the classes and
+instances. A director oversees a scene.
+An actor performs in a scene. A scene
+uses a camera. A camera requires
+equipment. Equipment belongs to a
+department. A department consumes
+budget. In an ontology, these
+relationships are explicit, named and
+directional and defined. They express
+how one kind of thing depends on,
+constrains, or connects to another. An
+ontology typically typically contains
+classes, director, course, instrument
+building, individuals, a specific
+instructor, a particular violin, one
+city park. Attributes: Skill level,
+construction date, duration, capacity,
+relationships, teaches course, composes
+for, located in, manages,
+rules and constraints. A student must
+enroll in at least one course. A music
+piece must have a composer. A building
+cannot open if safety certificate equals
+expired. This is what makes ontology
+different from simple database schemas.
+A database stores data. An ontology
+captures meaning and logic. So AI
+systems and humans can reason over it.
+Large language models just do not have
+this specific understanding. Now let's
+take you back in history a little bit.
+The Dewey decimal classification system
+a classic ontology example. If all of
+this sounds abstract, once again, think
+about one of the most widely used
+knowledge structures in the world, the
+Dewey decimal system, classification,
+and libraries. Dwey organized all
+recorded knowledge in 10 broad classes.
+If you remember back 000 to 900, for
+example, 300 for social sciences, 400
+for languages, 500 for science, 600 for
+technology, 700 for arts and recreation.
+Each main class is then organized into
+divisions and sections just using a
+simple this decimal notation giving you
+a finer once again the same phrase kinds
+of things together 600 technology 610
+medicine and health 16 diseases 616.1
+diseases of circulatory system
+616.12
+heart diseases or 500 natural sciences
+510 mathematics
+516 Geometry
+516.3
+analytic geometry what's happening here
+defines kinds of things together kinds
+of things together science versus
+technology versus arts versus literature
+then more specific areas inside each it
+defines ontological ontological
+relationships longer numbers represent
+more specific subjects shorter numbers
+represent broader ones. 616.12
+heart diseases is a more specific kind
+of 616 diseases which is more specific
+kind of 610 medicine and health which
+sits underneath 600 technology kinds of
+things together. Dwey behaves like an
+ontology. We explicitly define what
+kinds of things there are across all
+knowledge and how they're relate so that
+people and catalog systems can reliably
+find and connect information in
+enterprise and AI work. Your ontology
+plays the same role Dewey plays in a
+library. That means you have to have an
+ontology. That is your Dewey decimal
+system. Your best practices. Dewey tells
+you where every book belongs and how
+topics relate. Your ontology tells you
+where every concept, process, and data
+belongs and how they relate. So data
+processes and decisions can be
+discovered, combined, and automated. Now
+let's take a look at another example. A
+formal ontology like example, the
+periodic table of music genres. If all
+these feels a little too abstract, still
+think of one of the most intuitive
+classification systems in the arts, the
+way streaming services organize music. A
+little bit more contemporary music
+platforms categorize sound in genres and
+subg genres. Jazz, smooth, fusion, bbop,
+rock, alternative, progressive, metal,
+classical, baroque, symphonic,
+contemporary. Each level refineses the
+last, defining broader and narrower
+categories through explicit
+relationships. Well, what's happening
+here? Defines kinds of things together.
+Once again, that phrase that you'll hear
+consistently kinds of things together.
+Rock versus jag. Jag, rock versus jazz
+versus classical. Then more specific
+types inside each. It defines
+ontological relationships. Hardbop is a
+kind of jazz. Jazz is a kind of music
+and so on. Dewey does this for books.
+Genre taxonomies do this for music. Both
+illustrates ontology's key principle. We
+define what kinds of things exist and
+how they relate so humans and systems
+can reliably connect and search for
+information. In enterprise and AI work,
+your ontology plays the same role these
+systems plays in libraries and music
+platforms. It is a consistent shared
+structure that organizes all the books
+and tracks of your enterprise data
+process and logic. Why has ontologies
+been the key to EACE enterprise
+architecture and BACE business
+architecture? Well, at EACE and BAC,
+we're not we're not just drawing boxes
+and lines. We're building a structured
+understanding of the enterprise that can
+be used to make decisions, automate
+work, and align change with strategy.
+Ontology is the mechanism that makes
+this understanding precise, reusable and
+computable. Ontologies as the foundation
+of what the enterprise is. EACE's
+enterprise framework organizes
+architecture into coherent structures
+describing future, current, and gap
+states. Underneath that, you need
+clarity about what kinds of things. Once
+again that same phrase, what kinds of
+things exist in the enterprise?
+Students, classes, campuses, systems,
+regulations, how they relate. Students
+attend class. Class belongs to
+department. Department operates on
+campus. Policy influences curriculum.
+That is why ontologies provide a common
+vocabulary
+and web of relationships. It becomes
+your enterprise map defining conceptual
+neighborhoods just as a city plan
+defines streets and districts or as Dwey
+defines shelves and subject areas in the
+library. In business architecture, the
+business architecture center of
+excellence BACE ontologies are the
+backbone of business meaning. BACO
+business architecture emphasize
+capabilities, information concepts,
+stakeholders, and policies. Ontologies
+turn these loose lists into a coherent
+semantic model. A model that has
+meaning. Curriculum uses course
+material. Accreditation policy governs
+program design. Faculty performs
+teaching activity. The ontology based
+views lets you connect educational
+capabilities to systems and AI tools.
+Trace decisions across roles, concepts,
+and rules. keeps a stable organizational
+blueprint even as the technology shifts
+underneath. In both the EACE and BACE
+frameworks, ontology is the semantic
+spine, the spine of meaning, defining
+kinds of things in the relationships
+dependent and independent of any single
+system or platform much like the Dewey
+decimal system keeps the structure of
+knowledge stable even as libraries,
+cataloges, and formats evolve. Now, why
+is ontology and architecture and AI
+exploding? Now AI is great for making
+text, images, and code, but it lacks a
+structured understanding of specific
+domains. Ontology fills that gap with a
+precise map of what exists and how it
+fits together. Making AI actually
+understand your domain. Large language
+models know about students or cities,
+but not in your context, not in your
+specific curricula, zoning code, or
+composition rules. Ontologies encode
+that domain, meaning so AI can
+specialize. That is why E AI enterprise
+augmented information not AI but E AI is
+the key to removing hallucinations
+better known and stated actually as
+fabrications in higher education for
+instance ontologies define relationships
+between courses outcomes and materials
+so educational AI interprets information
+the way educators do. This solves the
+integration nightmare. Real institutions
+and agencies use many systems. Student
+information, facilities management,
+payroll, learning management,
+accreditation records. Each label
+similar concepts differently. Ontologies
+let these align around shared meaning,
+much like a music playlist that still
+links lofty jazz and chill pop and
+instrumental beats under related
+categories. or a library that shelves
+very different looking books looking
+books together under the same dewy
+number. Now how do we make AI
+explainable and trustworthy? Regulators
+and boards needs to know why a
+recommendation was made. Why? Ontology
+based AI can trace logic scholarship
+denied because GPA is less than 3.0.
+Credits completed is less than the
+required threshold and enrollment status
+equals part-time. This explanation stems
+from ontology defined rules. Just as a
+dewy assignment can be traced back to
+how subject is classified. This
+supercharges modern AI applications in
+education or creative industries group
+related materials courses to skills
+artist to albums follow relationships
+and clarify ambiguous terms. Score is a
+different meaning in music and not a
+test grade. Ontologies make AI answers
+more relevant and consistent. Now, real
+world ontology in action in education,
+an only source of learning proof. A
+university ontology defines students,
+courses, learning outcomes, and
+credentials. Relationships like student
+completes course, course awards,
+credentials, makes makes transcript
+generation, credit transfers, and
+curriculum design possible across
+systems. In music production,
+coordinative creative flow workflows.
+Recording studio use an ontology linking
+song, instrument, performer, equipment,
+session, and producer. Relationships
+like song uses instrument, performer
+participates in session, session occurs
+at studio, lets AI automatically tail
+tag files, schedule sessions, and
+handles royalties. In urban planning,
+smaller smarter city operations. A city
+manager ontology connects buildings,
+streets, zoning area, utility lines,
+permits, and maintenance events. It
+identifies that the building lies in
+zoning area. A zoning area restricts
+building height and maintenance event
+impacts utility line. This allows AI to
+coordinate projects to avoid conflicts.
+In film production, intelligent
+post-production workflows. An ontology
+defines scene, shot, actor, prompt,
+editor, schedule. Relationships such as
+scene includes an actor. A shot uses a
+prop. A scene is edited by an editor.
+Let's video AI platforms index footage
+semantically, not just by cryptic file
+names. Let's take a look at the job
+market. Why ontology skills pay? The
+EACE and BACE differences. While people
+are chasing AI engineers and data
+science titles, enterprise ontology
+expertise sits at the high value niche.
+Studios, schools, governments, and
+cultural organizations now hire
+ontology, EACE, and BAC architects to
+make their data and AI usable without
+hallucinations.
+Ontology demands logical thinking,
+systems design, and domain fluency.
+Those skills are rare, prized, and
+durable. How do you build your ontology
+as a career superpower? You can start
+small and build a visible portfolio.
+Create a mini ontology for something
+familiar. A podcast network, course
+catalog, or local music festival. Align
+it with your current path. Enterprise
+architects or business architects can
+use this to explicitly model your domain
+concepts and relationships. Use them to
+anchor strategies, systems, and AI
+coherence across every platform. EACE
+and BACE workshops and certifications
+have been providing this approach for
+decades, well before the concept of AI
+became popular. The future of AI is
+semantic architecture. Architecture that
+has meaning, not just structure.
+Throwing more models at a problem does
+not create understanding. Enterprises
+need structured, meaningful knowledge AI
+that can be trusted and explained.
+Ontologies provide that structure. In
+EACE and BOC practice, ontology bridges
+business intent, architectural logic,
+and AI execution. It keeps the
+enterprises kinds of things and the
+relationships stable. Much like how
+music taxonomies or city maps preserve
+coherent thought while there's constant
+change and how the Dewey decimal system
+classification keeps the world's books
+consistently organized. and for your
+career. While others chase the latest
+neural trend, you can master the
+semantic infrastructure that makes AI
+architecture and the integration
+actually work. Ontologies are not
+optional anymore. It is the skill
+quietly shaping the future. Please reach
+out to us at www.acoe.org
+and www.bacae.org
+for an exploratory discussion. Bring
+your career to EA 5.0. 0 and BA 5.0.
+Others are on this path today.
+Thank you for tuning in to Real Talk. Be
+sure to join your host Sam Hollesman
+again for another edition of our
+program. We'll have more real topics of
+discussion

@@ -1,0 +1,637 @@
+I took Google's prompt engineering
+course for you so here's the cliffnotes
+version to save you to 9 hours but it's
+not enough just to listen to me talk
+about stuff so I've also included a
+little assessment at the end of the
+video to help you remember everything
+that you learned because research shows
+that immediately reviewing information
+after you learn it is the best way of
+retaining that information all right
+let's go let's first go over the
+structure of this course prompting
+Essentials has four modules module one
+is start writing prompts like a pro this
+is where they introduce some really
+helpful Frameworks for how to craft
+prompts module two is design proms for
+everyday work task this will include
+proms for emailing brainstorming
+building tables and summarizing
+documents module 3 specifically focused
+on using AI for data analysis and for
+building PowerPoint presentations and
+finally module four use AI as a creative
+or expert partner this is where Google
+really packs it in like I am genuinely
+super impressed by this module we talk
+about Advanced prompting techniques like
+prompt chaining Chain of Thought tree of
+thought and a framework for creating
+agents all right module one let's do the
+fundamentals let's first the prompting
+prompting is the process of providing
+Specific Instructions through gen tool
+to receive new information or to achieve
+a desired outcome on a task this could
+be text images video sound or even code
+the course provides a five-step
+framework for how to design a prompt
+task context references evaluate and
+iterate the task is what you want the AI
+to do for example if your friend's
+birthday is coming up and they're really
+into anime you can say suggest the gift
+related to anime for my friend's
+birthday now that prompt in itself is
+okay but but you can Elevate this and
+get a result that's more unique and
+specific by incorporating two additional
+things the first one is a Persona which
+is a role that you want the AI to embody
+for example you can update the prompt to
+act as an anime expert to suggest an
+anime gift for my friend's birthday you
+notice that the results are a lot more
+specific and it's actually split into
+different genres the second thing you
+can add is the format of the output the
+default here is just the list and bullet
+points but maybe you want something
+that's more structured so you can say
+organize that data into a table the
+second component of the framework is
+context the general rule of thumb is
+that the more context you can provide
+the better the output will be in your
+birthday gift example you can specify
+something like your friend is turning 29
+years old her favorite animes are
+shangula Frontier solo leveling and
+Naruto etc etc you'll see that the
+output is much more targeted third part
+of the framework is references this is
+where you can provide examples to the AI
+sometimes when you're trying to explain
+what you want it's kind of hard to
+describe it in words but providing
+examples can really clear things up and
+AI is especially good at incorporating
+examples maybe you can provide past
+birthday presents that this person has
+enjoyed step number four is evaluate
+this is after you get the output just
+ask yourself is this output what I want
+it to be and if it's not exactly what
+you wanted to be then last upep is
+iterate prompting is rarely a oneandone
+kind of thing it's much more of a
+circular process in which you're
+refining the prompt to get the results
+that you want just like what we did
+earlier often times you might just start
+with a simple task like suggestions for
+a birthday present then you want to get
+better results and you start iterating
+on that and adding things like a Persona
+context and references to finally get to
+a result that you're happy with as the
+course calls it ABI always be iterating
+speaking of pneumonics the course does
+have one for this five-step framework
+which I actually find really difficult
+to remember um I think it's thoughtfully
+craft really excellent I don't know what
+the ey stands for I'll I'll put it on
+screen but I do have one that I made
+which I can remember a lot better so I
+don't know maybe this will help you as
+well uh which is Tiny crabs ride
+enormous iguanas a lot more memorable in
+my opinion anyways whatever it is that
+you need to do uh just figure out some
+way to remember this framework because
+everything else in the course is based
+on this the rest of module one which
+also includes interviewing different
+people I think is interesting but not
+super necessary the only other really
+useful important thing that they
+presented is the four iteration methods
+so by following date I'm just going to
+call it tiny crabs writing enormous
+iguanas framework um will get you like
+80% of the weight but sometimes you're
+just not quite there so to iterate and
+get the 20% there are four different
+methods that you can try the first one
+is just to revisit the prompting
+framework maybe you can give more
+references more examples provide more
+context or you know add a Persona if you
+haven't already number two is to
+separate your prompt into shorter
+sentences it's helpful to think about AI
+like how you would talk to a normal
+person like if you just word vomit to
+someone about whatever it is that you
+want they'll probably be like
+overwhelmed and there's just like a lot
+of stuff going on right so the same
+thing can happen for AI and an easy
+solution for this is just to break your
+prompt into simpler sentences and
+feeding it to the AI slowly so it's less
+like blah blah blah blah blah blah blah
+I'm more like blah blah and blah much
+more organized number three is trying
+different phrasing or switching to an
+analogous task say you want the AI to
+help you write a marketing plan but the
+results are just kind of like boring and
+Bland what you can do is that marketing
+is really just telling a compelling
+story so instead you can ask it to write
+a story about how this product fits into
+the lives of our Target customer
+demographics this is an analog task but
+the results are much more lively and
+interesting and the fourth iteration
+method is to introduce constraints just
+like when you tell someone that they can
+do anything or like if you ask people
+what does everybody want to eat for
+lunch and they're just like oh anything
+this actually makes it a lot harder for
+you to get a result that you're happy
+with so instead you can introduce
+constraints to narrow the focus down say
+you want to generate a playlist for a
+road trip and the AI generat your
+playlist but it's just like not very
+interesting you can add different
+constraints like only specific to a
+certain region only at this specific
+Tempo or only songs about
+heartbreak Deion for example I don't
+know maybe you like feeling sad so with
+these four iteration methods um with the
+help of AI I also came up with a
+pneumonic to remember it better which is
+rahen saves tragic idiots so let's talk
+about multimodo prompting the most
+classical way of interacting with a
+large language model is just by like
+typing stuff I like having a
+conversation but you can actually
+interact with many AI models like Gemini
+um with different modalities as well
+including pictures audio video and even
+code it's able to take different types
+of modalities as the input and is able
+to Output using different modalities as
+well this doesn't change anything in
+terms of how you think about prompt it's
+still going to be tiny crabs writing
+enormous iguanas but you just might need
+to be a little bit more careful about
+specifying what kind of input or output
+you're looking for and the kind of
+context that you're providing for
+example if you designed a new nail
+artart collection and you want to Market
+it on social media you could input
+something like write a social media post
+featuring this image and then attach
+your nail art collection as a reference
+the post should be fun short and focus
+on the fact that's a collection of new
+designs I'm selling some other examples
+of multimodality usage would be asking a
+gen tool to suggest recipes based on the
+photo of the ingredients in your fridge
+inputting your Brand's logos and colors
+and then creating a digital teaser to
+promote an event or if you're working on
+a short story and you get really
+inspired by a musical piece you try
+inputting that music piece and tell it
+to kind of follow those vibes for the
+atmosphere and details of the story
+regardless of the modality that you're
+prompting in there are two major issues
+with using AI tools the first one is
+hallucinations a Hallucination is when a
+gen AI tool provides outputs that are
+inconsistent incorrect or even
+nonsensical a really famous example is
+that if you ask an Ella um how many RS
+are in Strawberry it tells you that
+there's two hours in Strawberry the
+second is biases unfortunately L's being
+trained on human content also
+incorporates human biases things like
+gender and Race So to minimize these
+sorts of problems the course recommends
+that we take a human in the loop
+approach which is making sure that
+you're always checking your outputs and
+verifying whatever it is that the Gen
+tool gives you in the end it is your
+responsibility of making sure that
+whatever is being produced is in fact
+accurate here is a checklist feel free
+just to take a screenshot for some
+considerations when you're thinking
+about using AI responsibly you know
+compared to other Google courses I've
+taken especially the AI Essentials
+course which you can check out over here
+um this course is a lot more dense which
+is a lot better bang for your bug so pay
+attention moving on to module 2 module 2
+is called design prompts for everyday
+work task it's essentially just
+providing examples of use cases based on
+the tiny crabs writing enormous iguanas
+framework and the ramen saves tragic
+idiots framework too that's why I'm
+going to go through this module
+relatively quickly I'll highlight some
+of the examples that I think are really
+important and for the rest of them I'll
+actually just put on screen so you can
+take screenshots of it if you want and
+build out your own prompt Library where
+you can kind of like store the prompts
+that you want to use one of the biggest
+use case that most people have when
+using gen tools is by using it to
+produce content for example like writing
+emails here's an example of a situation
+um when you want to write an email to
+your staff about a new schedule change
+for your gym I'm a gym manager and we
+have a new gym schedule write an email
+informing our staff the new schedule
+highlight the fact that the MWF Monday
+Wednesday Friday Cardio Blast class
+changed from 7:00 a.m. to 6:00 a.m. make
+the email professional and friendly and
+short so that the reader can skim it
+quickly here's the new schedule and you
+can actually attach the link that
+contains the new schedule this sort of
+email probably take you like 10 minutes
+to write but by using a gen tool you can
+do it in like a minute most of us do
+send quite a lot of little emails here
+and there throughout the week um so the
+time savings do add up for this kind of
+email you probably aren't super picky
+but what happens if you need to write
+email that is a lot more important or
+you're writing other things like an
+essay an article or a newsletter you
+would care a lot more about the tone and
+the word choice that's being used
+instead of using general terms like
+write a casual summary try to use more
+specific phrases like write a summary in
+a friendly easy to understand tone like
+explaining to a curious friend you can
+also provide references for context
+other emails or articles or whatever
+that you've written in the past and tell
+to AI to match the tone I'm going to now
+include a few other prompts on screen
+related to generating text or content
+which you can take a screenshot to add
+to your prompt Library if you want if
+you're current in University thinking
+about going to University or going back
+to University to maybe get an additional
+degree you should check out straighter
+line straighter line is a credible
+online education platform where you can
+take highquality online courses designed
+by academics from leading universities
+and recommended by accredited
+educational institutions you can
+basically take a course at a fraction of
+the cost and still transfer the credit
+to your college or university more than
+3,000 colleges and universities have
+accepted credit from straighterline
+courses so not only are StraightLine
+courses is much more affordable they
+also come with a flexibility of being
+able to take a class when you want and
+at your own pace they even have a
+variety of Support Services like tutors
+and resources to help you succeed if
+you're still on the fence just check out
+their course catalog and you can start a
+free trial today at this link over here
+also linked in description thank you
+straighter line for sponsoring this
+portion of the video now back to the
+video module 3 is pretty similar to
+module 2 it's just more example use
+cases very helpful example use cases
+though specifically data analysis and
+presentations the big word of caution
+here is is that be careful about what
+data that you're inputting into your AI
+model uh if you're working for you know
+a company you do not want to be
+violating any privacy policies and you
+probably don't want to be putting some
+sensitive data into some large language
+model as well the example from a course
+if save you have a data set for a
+grocery store chain with information
+about the store the area items that they
+have available the daily customer
+account and store sales if you're not
+very good at Google Sheets or Excel you
+might input a prompt like this attached
+is a Google sheet of store data how can
+I create a new column in sheets that
+calculates the average sales per
+customer for each store it can help
+teach you specific things like this um
+and it can actually do more say if
+you're interested in the trends in the
+data set you could then add on to give
+me insights into the relationship
+between daily customer count items
+available and sales based on the given
+data Gemini is able to show some
+interesting Trends including the fact
+that there's no clear correlation
+between items available and store sales
+if you find this interesting you can
+continue prompting it digging into this
+and maybe coming coming up with ways to
+figure out why that's the case I'm going
+to put on screen now a couple other
+prompts related to spreadsheets and data
+analysis that you might find helpful the
+second part of the module is about
+building presentations and I'm going to
+put on screen out a couple prompts
+related to presentations that could be
+helpful and finally we are at module 4
+we're almost done guys module 4 is
+titled use AI as a creative or expert
+partner this is an extremely important
+module and what made me very impressed
+about this course so first we're going
+to cover some advanced prompting
+techniques starting off with prompt
+chaining prompt chaining is a way to
+guide gen tools through a series of
+interconnected prompts adding new layers
+of complexity along the way for example
+you're an author and you wrote a
+wonderful novel and now you want to
+Market and sell your novel so you need
+to come up with a marketing plan the
+course recommends you use Google AI
+studio for this because it has much
+longer context window because you're
+going to be attaching your entire
+manuscript the first thing you might
+want to do is to generate some summaries
+of your manuscript generate three
+options for a one sentence summary of
+this novel manuscript the summary should
+be similar in voice and tone to the
+manuscript but more catchy and engaging
+so Jeb was able to give some decent
+options but you want to focus on a more
+specific theme that's where the prompt
+chaining comes in taking the output from
+the previous prompt and then asking
+create a tagline that is a combination
+of the previous three options with a
+special focus on the exciting plot twist
+and mystery of the book find the
+catchiest and most impactful combination
+the tagline should be concise and leave
+the reader hooked and wanting to read
+more and great it comes up with the
+desert whisper secret a young Weaver
+seeks a city of singing stones but the
+greatest Journey unfolds into Whispers
+of her own
+heart anyways you can keep refining
+things if you want and finally maybe
+even asking Gemini to generate a six-
+week promotional plan for the book tour
+including the locations and the channels
+to promote each stop on the tour so that
+was prom chainy there's two other
+Advanced Techniques in this module Chain
+of Thought prompting and tree of thought
+prompting as a no a lot of these Ai
+terminologies and techniques sound like
+super fancy but they're actually not
+like Chain of Thought prompting is about
+asking the AI to explain his reasoning
+as a step-by-step process it's similar
+to how your math teacher might ask you
+to explain your work so he or she is
+able to identify like the steps that
+you're taking and where you could be
+going wrong all you have to do
+throughout your prompting sequence is to
+tag on the line explain your thought
+process this helps you understand the
+ai's reasoning for things and you can
+help improve his decision making tree of
+thought prompting as his name suggest is
+sort of like a tree it allows you to
+explore multiple reasoning paths where
+like branches simultaneously this is
+really helpful for abstract or complex
+problems like developing novel plots
+with new characters or creating outlines
+and drafting sections for lengthy
+documents you can work with the AI tool
+to explore different options and
+evaluate them to finally come up with
+the best output as an example maybe
+you're creating an online course and you
+want to create a cool image on the
+landing page you can use tree of thought
+prompting to brainstorm different
+options a potential prompt may be
+imagine three different designers are
+pitching their designs to me all
+designers will write down one step of
+their thinking then share it with the
+group then all experts Will Go On To The
+Next Step Etc if any expert realizes
+they're wrong at any point then they
+leave the question is generate an image
+that's visually energetic and features
+images of art supplies in computers show
+me three suggestions in very different
+styles from simple to detailed and
+complex and here's the output Gemini
+came up with now looking at this output
+you might be like m I kind of like The
+Vibes of one where one could be going so
+you can tell the AI that you like the
+first one and you'll like to expand the
+idea a little bit more and perhaps
+generate three different color schemes
+for that concept and you can just keep
+doing that until you end up with
+something that you like a pro tip is
+that you can combine Chain of Thought
+and tree of thought prompting by asking
+the AI to explain his reasoning at each
+iteration so you can provide feedback
+another Pro tip as you're prompting
+along is if you ever get stuck and you
+don't really know what prompt to use you
+can actually use use AI to help you come
+up with a prompt this is called meta
+prompting all right the last section of
+the course is on agents and I have
+actually not seen a single course be
+able to cover agents as well as this one
+so first definitions what is an AI agent
+an AI agent is like an expert designed
+to help with task and answer questions
+you can have all sorts of Agents you can
+have coding agents that help you with
+coding uh marketing agents that come up
+with marketing plans with you a golf
+agent that can correct you on your golf
+swings or maybe just a friend agent that
+can be your friend the course cover
+covers two types of Agents the first one
+is a simulation agent called Agent Sim
+agent SIM can simulate scenarios with
+you like conduct interviews or do role
+playing for example if you work in a HR
+department you might be tasked with
+coming up with a training program to
+help interns improve their interviewing
+skills for that final job assessment for
+AI agents you want to focus a lot on the
+Persona and the context the Persona here
+is act as a career development training
+Simulator the task is your task is to
+help interns Master interview skills and
+conduct convers ation with potential
+managers then you have the context you
+need to support the following types of
+conversations articulating strengths and
+skills communicating professionally and
+confidently And discussing future career
+development goals once an intern has
+picked a conversation topic provide
+details about the situation in the
+interviewer's role then act as the
+interviewer and allow the intern to
+participate as the employee make sure to
+guide a conversation in a way that will
+allow the intern to exercise their
+interview skills finally you want to
+include a stop role where you can tell
+the agent that you're done with the
+simulation continue to roleplay until
+the intern replies with jazz hands after
+the intern gives the stop rule jazz
+hands provide them with key takeaways
+from the simulation and skills they can
+work on now that is set up you can start
+doing a simulation maybe by inputting
+the chart analysis that I did for my
+intern project agent Sim will ask you
+more questions about the analysis and
+you keep responding to them and at the
+end you can insert jazz hands and then
+agent Sim will provide feedback for you
+the second kind of agent is an agent for
+expert feedback Called Agent X Agent X
+is able to give you feedback on any
+topic of your choosing sort of like a
+personalized tutor or consultant here's
+an example prompt to create an agent X
+that can provide you feedback about a
+pitch for a potential client first the
+Persona you're my potential client the
+VP of advertising at a world famous
+sports car company known for its
+Innovation performance and Engineering
+Excellence now the context you're
+considering hiring a creative agency to
+develop a new campaign that will attract
+a younger generation of buyers you're in
+a meeting with me the design director of
+a creative agency that's pitching a new
+campaign for your company and now the
+task act as my potential client when I
+provide answers critique the answers if
+needed ask follow-up questions continue
+the conversation until I give the stop
+roll break then give me a summary of the
+whole conversation highlighting ways I
+can improve my pitch you also want to
+include additional material references
+for your agent I've included the brief
+the car company provided me that has all
+the relevant information for this
+project use the information from this
+brief to inform your answers AI agents
+can be super powerful if you can design
+them correctly and these are only two
+examples I really like how the course
+also provides a guideline for how to
+create any AI agent first you need to
+assign a Persona that you want the AI
+agent to take on for example act like a
+successful personal fitness trainer and
+talented nutritionist step two is that
+you want to give as much context and
+detail as you can about the scenario and
+the conversation for example I'm looking
+to improve my overall Fitness and adopt
+a healthier lifestyle step three is to
+specify the type of conversations or the
+kind of interactions that you want to
+have with the AI agent you might also
+want to set some rules to follow like
+like ask me about my workout routines
+and meal planning and give me feedback
+step four is to provide a stop phrase in
+order to stop the conversation this can
+literally be anything you want so go
+wild an example they give is no pain no
+gain and finally step five as a tool to
+provide feedback or areas of improvement
+after the conversation EDS at the end of
+our conversation provide a summary of
+the advice you provided and that is it
+my friends you have now completed the
+Google prompting Essentials course and
+saved 9 hours of your time but as
+promised to make sure that you actually
+have retained this information I will
+now put on screen the questions for the
+little assessment please answer these
+questions to actually retain the
+information you've just learned you can
+like say it in your head you can say it
+to your friend your dog your cat
+whatever but for proof you should write
+it in the comments thank you all so much
+for watching and I will see you guys in
+the next video we live stream

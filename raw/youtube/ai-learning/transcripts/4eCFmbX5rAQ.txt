@@ -1,0 +1,1917 @@
+[UPBEAT MUSIC]
+[ROCK MUSIC] PRESENTER: Please welcome
+via live broadcast,
+Chairman of the Board and Chief
+Technology Officer of Oracle, Larry Ellison.
+[ROCK MUSIC]
+LARRY ELLISON: Hi, everybody. Let's see. OK. Says, AI changes everything.
+That's a kind of
+a big statement. Everything. I think it's pretty close.
+So I'm going to
+talk a little bit about how Oracle's
+been responding to these changes that started--
+well, I guess they started in
+earnest when ChatGPT 3.0 came
+out and suddenly,
+AI models started sounding a little bit like us.
+There are two big phases
+of this AI technology.
+One is the dawning
+of the AI era, which is a bunch of companies
+building these enormous AI
+models. They're actually
+an AI model right now, what's called a
+multimodal AI model,
+is made up of several
+neural networks, like your brain
+has several parts.
+It's actually it's kind
+of a perfect analogy. To do vision, you use
+one part of your brain.
+To do language, you use a
+different part of your brain. When you build an AI model, you
+use a different neural network
+for vision-- seeing something, seeing
+its edges, seeing its shape,
+seeing its color,
+seeing it move. You use one neural
+network for seeing it and a quite a different
+neural network for recognizing
+what it is, identifying it. And then a third neural network,
+to classify it and organize
+it and reason with that data. So very much like our
+brains, the modern AI system,
+a modern AI model is
+a multimodal model that has multiple
+neural networks to look
+at different kinds of data-- video data, textual data, hear,
+hearing, things like that.
+Well, what's going on
+right now is a series of companies are spending vast
+fortunes training these AI
+models on publicly available
+data on the internet, enormous amounts of data.
+And this has become
+this AI training. It's very apparent
+after a few years of it.
+It's the largest,
+fastest growing business
+in human history, bigger
+than the railroads, bigger than the Industrial Revolution.
+I mean, it is a whole new
+world that is dawning.
+There's the building
+of the models. And then once those
+models are built,
+it's the actual
+using those models to solve very important
+problems, early diagnosis
+of cancer, for example. But there'll be a lot of-- surgery that is more precise and
+more accurate than human beings
+can do. Robots will be much better
+surgeons than human beings can be for all sorts of interesting
+reasons you might not guess.
+Anyway, the big opportunity
+in AI training is upon us.
+And Oracle is a
+major participant in building data centers
+to do AI training.
+But the much, much
+larger opportunity, the one that will
+truly change the world
+isn't the creation of
+the models themselves, the training of the models.
+What will change
+the world is when we start using these
+remarkable electronic brains--
+and that's what they are-- these remarkable electronic
+brains to solve humanity's
+most difficult and
+enduring problems. Now, there's one thing
+that's kind of interesting,
+where Oracle's explicitly
+involved, which is, as I said earlier,
+these AI models
+are trained on publicly
+available data, all the data on the internet. So if you look at ChatGPT,
+Anthropic Claude, Llama,
+what have you, they're all
+trained on all of the data
+on the internet, in other
+words, publicly available data. But for these models to
+reach their peak value,
+you need to not train them not
+just on publicly available data, but you need to make private,
+privately owned data available
+to those models, as well. And that's where Oracle plays
+a particularly important role because most of the
+world's high-value data
+is already in an
+Oracle Database. We just had to change-- and it is past tense.
+We had to change. We did change that database
+so that Oracle Database can
+take the data that's already
+in the Oracle Database and make it available to
+AI models for reasoning.
+So the AI model can reason
+on not just public data but on private data.
+AI is an incredible tool. People think some
+people think it's
+going to replace all
+human beings and all of our human endeavors. I don't think that's true.
+It will help us solve problems
+we couldn't solve on our own. However, it will make us much
+better scientists and engineers
+and teachers and chefs and
+bricklayers and surgeons and what have you,
+that we've never built
+a tool, anything like this.
+I press the button and
+the slide didn't move.
+Do it again. I press the button again. [LAUGHTER]
+And this is not an AI device.
+One more time. And then I'm just going
+to say the word slide. Oh, there we go. OK.
+Well, I did both. So who knows what--
+who knows why it moved. OK.
+I remember when this
+wasn't called AI World, remember what it was
+called CloudWorld a long, long, long time ago?
+I had a presentation about AI.
+Even though it was
+called CloudWorld, I was still allowed to
+do a presentation on AI. And I said, is AI the
+most important technology
+in human history? And dot dot, dot, we're
+going to find out soon.
+Well, it's pretty clear. The smartest people
+I know are working--
+what? I didn't press the button. OK, so not pressing the button.
+You back up the slide, please. Thank you. I'm just going to put that down.
+[LAUGHTER] We're going to get a
+better one next time. The smartest people I know
+are investing fortunes.
+To be specific, they're
+investing their fortunes in building and training
+these AI models.
+That's how important they are. That's how
+extraordinary they are. And by the way, Elon, Mark,
+Sam, in alphabetical order
+are all really smart guys,
+extraordinary people.
+People say, well, this AI
+thing, maybe it's just a bubble. Maybe it's not that big a deal.
+Maybe it's just a bubble. Well, the internet, really--
+I mean, the internet
+was a big deal. I mean the most-- if you look at the fortunes
+created of the internet,
+I mean, certainly
+worked out for Google, searches seemed
+to have paid off.
+And Elon on that list
+did start PayPal, and that paid off nicely.
+But I know I have asked him. Elon, he said he definitely
+didn't put a dime into pets.com.
+And the thing is, when
+people talk about bubbles, what is a bubble? I mean, people get exuberant.
+I mean, the internet was an
+incredible new technology, remains the foundation
+of computing.
+And we couldn't have AI
+without the internet. So it's incredibly
+important technology.
+But people started
+confusing internet companies like a PayPal or even worse,
+internet search worse, meaning
+better, with pets.com. I mean, the fact
+that if I can sell pet food in an e-commerce
+site, that suddenly
+means I'm an internet company. Not really. So yes, there'll be people
+spending money on AI
+because almost every
+tech company these days call themselves an AI
+company, but they're not.
+A lot of them are not. But AI in terms
+of its value, this
+is the highest value technology
+we have ever seen by far.
+Next slide, please.  AI.
+It's interesting because it's
+called artificial intelligence,
+but as opposed to
+artificial perception. But it does perceive,
+it hears, it smells.
+Think about smelling. I mean, the idea that you can
+pick up chemicals that are just
+drifting around
+in the atmosphere and figure out what
+those chemicals are. Dogs can smell
+cancer in patients.
+We should be able
+to do that with AI. We should be able
+to-- in fact, there's
+a project I know of called the
+dog's nose that I'm actually
+a part of. And we're building sensors. We're building sensors that can
+smell cancer or other illnesses.
+But AI perceives. It's got the part of the
+brain that hears and sees,
+in addition to reasoning. I mean, it can
+read street signs. It can read a page on a book.
+They take a look at you,
+it'll recognize you.
+Can identify the
+song that's playing. You can talk to AI and ask
+it a question or type it out.
+And AI can reason
+logically, very quickly, using language the
+same way-- the same way
+we do, and mathematics. And I remember I
+was over at Tesla
+looking at the Optimus robots. And I was curious just
+how the robots were going to learn, and then just
+thought about it for a minute
+and said, well,
+how would a robot learn how to clean your
+house or scramble eggs
+or play the guitar? Well, it would just
+watch an internet video.
+It's connected to the internet. It can learn to play
+piano, just like we
+would watching an
+internet video, except it would do it a
+little faster because it
+can play the internet video
+at very, very high speed and learn to play that
+piece by Chopin in about
+five seconds, which I know my
+kids can't learn to play piano
+that fast because I listen
+to them practice every day. And five seconds is
+out of the question.
+AI robots. AI robots will be much better
+surgeons than the best doctors.
+There's this very
+famous surgery started by Dr. Mohs, who actually would
+take cancer lesions off patients
+faces. And he was so famous for it
+because he did the least damage.
+He took the least amount
+of tissue off your skin. So cosmetically, he
+had fantastic results.
+And what he did, he would take
+a couple of layers of skin off and then take that skin over
+to a microscope and look at it
+and see. Is he just taking-- is he taking any healthy cells? I mean, how deep
+does the cancer go?
+So he's back and forth,
+cut a little bit of tissue, look at it on microscope. Cut a little bit more tissue.
+Look at it. Well, AI robots aren't
+just don't play fair.
+Their vision, the vision on
+the robot, it is microscopic.
+They can see what-- they
+don't need a microscope to see individual cells.
+They don't need a microscope
+to see where the cancer ends and the healthy tissue begins.
+And their coordination,
+and it is exactly, they're better
+surgeons than we are.
+Not because they're
+smarter than we are, but because they have better
+hand-eye coordination.
+Their eyes are way
+better than ours, and the precision of their
+hands is way better than ours. So they can cut between
+a layer of healthy cells
+and a layer of cancerous cells. It's truly stunning to
+watch and will make us all--
+and it'll be very
+reassuring when we can go to a doctor who's
+using a robot to do the surgery.
+The surgery will be perfect.
+I said this earlier, but
+it is so interesting. It's built just like the brain's
+specialized neural networks,
+one for vision. I mean, literally, a
+convolutional neural network simulates the visual cortex.
+And the visual cortex
+has five layers. It's right in the
+back of your head. And evolution produced the
+very first layer of V1,
+was just so the
+animal could first perceive edges of something
+they were looking at.
+Then it got up to
+four for color. And the very famous
+V5 for motion detecting, detecting motion
+and threats and threats
+in the environment. The ViT is the
+Vision Transformers
+that then took that bitmap. So the convolutional
+neural network produces a bitmap map, an image,
+a bunch of pixels, if you will.
+And then the vision transformer
+then compares that to things that you already know.
+And you start and you can
+recognize faces and things that are-- things that are familiar.
+And that's a different--
+that's a transformer. That's a ViT neural network
+for a holistic understanding
+of the image and recording it.  Version 3 of ChatGPT was the one
+that used the huge transformer
+networks that did comprehensive
+language and reasoning. The only drawback with that,
+the transformer networks--
+because we had facial
+recognition long before we had the ability
+to converse and reason
+using language with
+the GPT network, the generalized
+pretrained transformer
+network, which is what is doing
+the language and the reasoning. But that requires enormous
+amounts of compute.
+Thus, the requirement for
+fortunes to train these models, these networks.
+The transformer network is
+much bigger and much more complex than some of the
+other networks, as you
+think reasoning would be
+more complex than vision. And then there are networks for
+certain types of mathematics.
+Anyway, looks a
+lot like the brain.
+So the brain has a
+lot of-- it's amazing. 20 watts human brain. 20 watts.
+Anyone screwed into 20-watt
+light bulb know that's not a lot of light. But it's enough to
+run 86 billion neurons
+and give you vision and balance
+and reasoning and language
+and creativity and the ability
+of deduction and inferencing. You can do all of that with
+this incredible what Elon calls
+a 20-watt meat computer.
+Sensation, recognition. After recognition, the
+ability to reason on that.
+Again, the visual cortex is
+right behind the parietal lobe. Behind and below it,
+the prefrontal lobe,
+as you can see on the left
+side, is a big language center.
+The brain is very specialized,
+So are the AI models.
+But we're not building
+a 20-watt meat computer.
+We're building a
+1.2-billion-watt AI brain.
+Did you ever try to
+do multiplication as fast as an HP calculator?
+These electronic brains, the AI,
+these AI models reason, and they
+reason very quickly. And they can deal
+with a lot of data.
+And they can get to answers
+that we've never gotten to.
+So this is a picture
+of a data center we're in the
+process of building.
+Actually, it's up and running. Part of it is up and running.
+Eventually, it's going to
+have a half a million NVIDIA GPUs in it. By the way, to give you an idea. A 1.2 billion watts, what
+does that really mean?
+That's enough to power 1
+million four-bedroom homes
+in the United States. A million, that's a
+pretty good sized city.
+And I think we've got a
+video on the construction. [UPBEAT MUSIC]
+PRESENTER: Oracle is building
+the world's largest AI cluster
+for OpenAI in Abilene, Texas. [UPBEAT MUSIC]
+The project began as
+empty land in June 2024, and is delivering GPUs
+in less than one year.
+The cluster will contain more
+than 450,000 NVIDIA GB200s when fully provisioned.
+Power is provided
+by a combination of grid power and on-site
+natural gas turbines.
+Capacity is provided in
+eight separate buildings, spanning 1,000 acres, all
+interconnected together
+to support a single workload. This site deploys
+the latest technology
+across AI accelerators, liquid
+cooling, and networking. More than 3,500 people work
+on site each day to deliver
+capacity at an
+unprecedented rate. Demand for AI continues
+to exceed supply.
+And Oracle is committed to
+delivering the largest and most advanced AI clusters to
+support our customers
+all over the world. [UPBEAT MUSIC]
+LARRY ELLISON: Well, that's
+a long way from writing code in my bedroom in college. [LAUGHTER]
+What happened? [LAUGHS] I have no idea.
+OK. So we're training. We are in the middle-- we train the very first
+version of Grok for Elon.
+We're training a number of other
+of these multimodal AI models.
+Almost all of these AI models
+are in the Oracle Cloud. And I'll come back to that.
+But yeah, we're
+probably involved. We're certainly involved in
+training more multimodal AI
+models than any other company. And it's very exciting. It's very exciting,
+and it's daunting.
+I mean, the size of these
+projects that we're running,
+it's not just
+building the network of GPUs, the computer rooms, and
+the networks and the cooling.
+And that was hard, by the way. That was hard in
+the first place. But now we have to build the
+power transmission plants.
+There's a natural
+gas pipeline that goes to the gas turbines,
+that fires up the gas turbines
+and then generate electricity. That electricity then has to
+be moved to the data center.
+So it's power generation, it's
+gas pipelines, power generation,
+power transmission,
+data centers, networks. And those data
+centers are filled
+with lots and lots and
+lots of complex software and a lot of very smart,
+hardworking engineers.
+These are enormous
+engineering projects, each and every one of them. And what we're
+building-- what we're
+building-- what
+we're trying to build are these multimodal
+neural networks,
+trained on all types of
+data-- textual data, images data, audio, video.
+Every publicly available piece
+of data, plus synthetic data, we train these models on.
+Some of the models are
+designed to be real time. Actually, Google has two models,
+one is Gemini, one is DeepMind.
+The DeepMind is
+highly specialized around molecular structures. And one in DeepMind won
+a Nobel Prize last year.
+Not this year, last year, won a
+Nobel Prize on protein folding. We understand, it's
+taking a molecule,
+where you understand
+the chemical formula of that protein, a
+chain of amino acids.
+And what happens-- what does it
+look like in 3D when you fold it up, and it's no longer a string?
+It's now folded. That's a problem we've been
+working on for a very long time, folding proteins.
+And they solved it
+with the DeepMind model that Google owns, when they
+bought DeepMind in London.
+Elon has two AI models that
+are very, very different. One is Grok multimodal AI model.
+The other is Tesla. And it's a real-time model. And real-time models have
+some different characteristics
+than, let's say,
+than Anthropic, which generates code,
+or ChatGPT, which
+is solving a legal problem
+or a medical problem, something like that. If you're driving cars,
+things happen very fast.
+So yes, you have to have vision. You have to have cameras
+all over those cars.
+But if something
+happens, you might be required to respond
+in a microsecond,
+in a millisecond, at least. A microsecond is really fast. A millisecond, in the car,
+a thousandth of a second.
+The ball suddenly is
+coming off a curb, and a bike is
+following the ball.
+And you have to see it,
+understand what's going on, and take evasive action. So there's no accident,
+and no one is injured.
+You have to build
+things differently when you can't afford the
+network traffic to go back
+across the network and talk
+to a computer, an AI model on a network that's far away.
+You need a very, very low
+latency response time. That's why all the Tesla
+cars, all the Tesla robots
+have to have local compute
+in the car, local compute in the robot to make an
+immediate decision, a very
+low latency decision. That's not required, for
+example, if you're writing code.
+I can tell you
+what code to write. And you can take a
+moment to think about it and then give an answer. So the real-time models
+are a bit different
+than the models that aren't,
+that don't require real time, where you have some time to
+reason and compute your answer.
+But both models are-- both types
+of models are very important, and both types of
+models are being built.
+These models do
+multistep reasoning. Now, the reason-- what I'm
+calling reasoning not long ago
+was called inferencing. People would talk about
+we got to train the model. There's one thing where
+we train the model
+and then we're using the model
+when the model's reasoning. We reduce that to
+just inferencing,
+a type of reasoning. That's no longer true. In the early days, that's what
+models did was inferencing.
+Not anymore. They reason like we reason.
+And there's a list. They do deductions. They do inferencing. They do calculations. They have strategy.
+They have rules. All the techniques, the
+reasoning techniques that we use, they
+simulate and use,
+but they think a lot faster
+than we do and solve problems a lot faster than we do.
+Or they solve really
+complicated problems that we can't solve at all. And that's what makes
+this so exciting
+and makes this so
+enormously valuable. These models can
+answer your questions.
+They can generate computer code. A lot of the code that Oracle is
+writing, Oracle isn't writing.
+Our AI models are writing. We just tell the model what
+we want the program to do.
+And then the AI comes up
+with a step-by-step process to actually do it.
+We don't write the procedure. We declare our
+intent, but the model
+writes the
+step-by-step procedure, that thing that we commonly
+think of as a computer program.
+They diagnose medical images
+far better than we do. They design drugs that we can't.
+But there's a big gotcha.
+There's a big gotcha
+on these models. And that is the models do not
+get trained on your private data
+because for some reason,
+that people want to keep
+their private data private. And that's not going to change.
+But people also
+want these models to reason on their private data.
+Have your cake and eat it too,
+whatever you want to call it. I want to keep my data private.
+I don't want to share
+it with anybody else. However, I'd like to use
+this enormously powerful tool
+to reason on my private data. And that's what Oracle--
+was one of the big
+things Oracle's been applying itself
+to in terms of solving that particular problem.
+And we have this new thing where
+we're talking about this week here in Las Vegas is the Oracle
+AI Data Platform, the Oracle AI
+Database, and the
+Oracle AI Data Platform. And the interesting thing
+about the AI Data platform,
+it includes a multimodal
+model of your choice, well,
+a multimodal model
+of your choice. That's great. So if you want to use
+Grok in the Oracle Cloud,
+you can use Grok. If you want to use ChatGPT,
+you can use ChatGPT. If you want to use
+Llama, you can use Llama.
+You want to use Gemini,
+you can use Gemini. And we'll attach that model,
+the model of your choice,
+to not only the public data. It's already-- the
+model is already connected to the public data. That's done.
+But we give you the ability
+to add your private data
+to the model's library of
+information and knowledge.
+So the model can reason across
+not just public data, but also
+private data, while keeping
+your private data private, not sharing it
+with anybody else.
+That's very, very important. And it's not easy to do
+it in a highly secure way.
+It's not easy. If it was easy, a lot of people
+would have already done it.
+So as I said, the
+OCI includes all
+of the popular
+multimodal models. You can mix and match.
+And we have the AI
+database and the AI Data Platform that lets you add
+private data to the models.
+In fact, I'm going to be a
+little more precise this time. What it really does-- and it's called RAG, by the way.
+You basically take
+a bunch of data that the model has
+not been trained on.
+And by the way, that might
+be today's stock prices. I mean, the model doesn't
+know today's news.
+The model doesn't know, hasn't
+been trained on today's news. The model hasn't been trained
+on today's stock prices.
+Now, the model knows
+where to look for it. It knows how to ask to look
+at the day's stock prices.
+It knows how to
+look at the ticker and get the very latest quote
+on today's stock prices.
+And you just put that
+information in a database that the model can access.
+And you put your private
+data in an Oracle Database. An Oracle Database--
+the new Oracle Database
+is called an AI database not
+just because AI is fashionable. The new Oracle Database
+is called an AI database
+because it has this
+RAG capability. It has the ability to take
+any of the data in the Oracle
+Database and make it
+accessible to the AI model by vectorizing it.
+So since a lot of your data is
+in an Oracle Database already, you simply have
+the Oracle database
+to make that-- put that
+data in a format the model will understand.
+And that's called
+a vector format.
+And the Oracle Database
+will vectorize any data
+that you want to make
+available to the model. And then you can reason on it.
+By the way, but
+it's not just data. It's not just data in an
+Oracle Database than an Oracle
+Database-- the Oracle AI
+Database will vectorize. Let's say you have a lot
+of data in OCI Object Store
+or Amazon Object
+Store for that matter. And you'd like to make that
+data available to the model,
+to the Oracle AI Data Platform. No problem. The Oracle Database can go into
+OCI Object Store and vectorize
+and create what's called
+a vector index to data in OCI Object Store.
+It can go into Amazon-- go into Amazon Cloud
+storage and vectorize
+portions of that
+that belong to you, and make that
+accessible for reasoning
+by the multimodal model. So you're not restricted to data
+that's just in the database.
+The Oracle Database
+can vectorize anything that's in an Oracle Database,
+a different database,
+a different cloud, and make that
+data easily accessible to the AI
+model for reasoning. And the reasoning
+is fascinating.
+The first thing that Oracle did. So the first project Oracle did
+in terms of taking private data
+and making it
+accessible to AI models, is we took all of
+our customer data,
+and we vectorized
+it, and used RAG--
+and used RAG to make it
+available to the models. So we started with
+customer data because we
+think there's nothing
+more important to us than our customers.
+Now, some people were cynical. You would say,
+there's nothing more valuable to us
+than our customers.
+But they go hand in hand. So there are certain interesting
+questions we wanted to ask,
+we thought were extremely
+high-value questions. And there's a whole industry
+called customer relationship
+management. Actually, it's not
+called that anymore. They changed the name to
+customer engagement management.
+Whatever the name is, we
+know what the questions are. So we ran this project
+inside of Oracle,
+took our private customer data,
+put it in an Oracle Database,
+vectorize it, and
+used RAG to make it accessible to models, to a
+multimodal model, an AI model.
+And then we asked the
+question, what Oracle customers
+are likely to buy another Oracle
+product in the next six months? Now why should that
+be important to us?
+And specifically, what product
+each and every customer that's
+going to buy something
+in the next six months? Do you mind telling me what
+product they're going to buy?
+Now, did you answer
+that question, they're most likely to buy. And then one thing--
+and by the way,
+it's not just questions
+that this thing does. You can ask questions, prompt.
+You can prompt it
+and get answers. But you can also ask it
+to do things via agents.
+You can create little
+computer programs, sometimes not so little, and ask
+the AI to actually do something
+to orchestrate some process. And then we said, OK,
+let's send a mail to all
+of our prospective buyers
+with the three best customer references encouraging
+them to buy.
+Now, that request required the
+generation of a computer program
+called an AI agent, that
+had to figure out, OK, you were going to buy this product.
+You're a bank in Switzerland. So we think the best
+references would
+be the banks in Switzerland
+that have already bought that product for you.
+Those would be the best
+references for you. So all of the references
+would be customized based on what we know
+about you as a customer
+and the exact situation you're
+in, the business you're in, the products you have,
+the other banks you
+have good relationships
+with, and you can call for a reference. Anyway, it's
+extremely interesting
+that it can solve a problem
+like this so quickly
+and tell us what the sales
+force should be concentrating on
+at Oracle over the
+next six months. It's kind of amazing.
+So that application,
+that AI agent--
+I can just back this up one. I'm going to have to
+back up my slide once.
+The last thing, the
+last line, send an email to prospective buyers
+with the three best--
+the three best references. From that single line, we
+can generate the AI agent
+to actually do that properly. You can generate the AI agent.
+Or if you wanted to
+do a little bit more, you could get even more precise. You could add more
+things to it, what
+exactly what you want to do. What kind of letter do
+you want to send them? What make the agent
+even more capable?
+And that's actually what we did.
+And by the way, I don't know
+if you've heard this term. I mean, I thought it was a
+little strange the first time
+I heard it-- vibe coding. Sounds very Gen-- what
+is the latest one? Z? It sounds very Gen
+Z, which is just
+say what you want the program
+to do, generate the prototype, and try it out.
+Don't think about it too hard. Just get a feeling for it. And feel the vibe, I guess.
+I mean, you can use English. You can generate computer
+programs directly from English.
+Personally, I've had debates
+with other engineers here at Oracle about whether using
+English as a programming
+language is a good
+idea because English is notoriously imprecise.
+And wouldn't we be
+better off if we want to generate programs to
+create a custom, highly precise,
+declarative language for
+computer programming? Well, that's what we did
+at Oracle using APEX.
+We added declarative AI
+generation language to APEX for generating applications.
+But there are plenty of
+people out there still working with English. And that's fine. It's up to you. We don't make those
+decisions for you.
+We just make sure
+that you have options. But most of the new applications
+that Oracle's creating now
+are AI agents that
+were generated, not handwritten,
+that were generated.
+And they're connected
+by workflows. And the interesting thing when
+we generate these applications--
+there are no security holes
+in these applications, because the
+application generator
+doesn't forget things
+and leave things out and doesn't make those
+kinds of mistakes.
+Every application
+that we generate is stateless and reliable.
+In other words, if the
+computer that application was running on
+suddenly blows up,
+loses power, whatever
+happens, someone catches fire, that
+application can immediately
+restart in a different data
+center because it is stateless. And even though it stopped
+running in location A,
+it will pick up
+running in location B without missing a beat,
+without losing any data, without the customer
+ever perceiving it.
+So when you're generating
+these applications, they have built-in backup,
+no single point of failure,
+built-in reliability,
+built-in security, and built-in scalability.
+All the applications
+are written. A lot of people--
+these low code application
+programming languages are designed to write
+departmental things. Maybe they work for
+20, 30, 40 users.
+But after that, they
+start to slow down because they're
+really not designed to scale to millions of users.
+Well, because we generated,
+the design is always the same. We always design it
+for millions of users.
+Even if there are only five,
+it will run faster that way and use fewer resources.
+The productivity gains
+we're getting from this
+is one of the reasons we feel
+so good about our efforts in health care, that we can
+build, rebuild the Cerner code
+base. We can rebuild the
+entire Cerner code base, modernize it using AI, build
+a modern version of Cerner
+by generating it. And we got all of the code
+for clinics operating already.
+And next year, we'll
+have all acute hospitals. We have rewritten
+everything that Cerner wrote
+over a quarter of a century-- we'll have rewritten
+in three years.
+But what ours does is much
+more than theirs ever did.
+We attack the problem not
+just as automating a hospital or clinic but automating
+the entire ecosystem.
+Those are the kind of
+enormous productivity gains you get when you use
+these incredible AI tools.
+The example of rebuilding
+Cerner is fascinating
+because it's really
+not what we're doing. We're not just, yes,
+we're rebuilding Cerner. But we're also building
+accounting systems
+for hospitals designed for
+hospitals, HR systems designed for hospitals.
+And hospitals are very unusual. They're kind of 50/50
+gig economy in and out.
+A lot of nurses, they'll
+work for one hospital. They'll work for
+private patients.
+They'll have schedules. You don't how many nurses you
+need or doctors for that matter
+you need on Monday. It depends what you're doing,
+how many patients you're seeing, how many operating
+theaters are available.
+So an HR system for a hospital
+is very, very different and complicated. There's a lot of certifications
+that doctors and nurses
+and other health professionals,
+technicians have to get in order to do certain tests, in order
+to do certain procedures,
+in order to handle
+certain patients. And our HR system has to deal
+with those certifications,
+schedule the training,
+schedule when they're working.
+They trade shifts a lot,
+be flexible about doing all of that, paying them
+properly when they're
+working a lot of overtime, but
+also understanding when they're only working two days a week
+here and four days that week
+at another hospital across town. So we're building HR systems and
+accounting systems and banking
+systems. And this will be the one
+that maybe surprises you. And then I'll go
+into my example. And banking systems
+that cater to hospitals,
+making hospital loans
+based on their receivables.
+So I'm going to
+describe an AI agent. So our goal was to
+not just automate
+hospitals, like Cerner did
+or other competitors of ours
+do automate hospitals
+and automate clinics. We thought, following
+Elon Musk's rule,
+that if we really want to be
+successful in health care, we can't just automate
+hospitals and clinics.
+We have to automate
+the entire ecosystem. Like, Elon had to build a
+worldwide charging network.
+Or electric cars
+weren't going to work. He couldn't just make
+the cars and assume
+that Standard Oil would
+provide the fuel, which is what Ford did.
+To build electric cars,
+he had to not only design an electric car and manufacture
+batteries and put robots
+in the manufacturing
+plant and figure out how to sell cars on the internet. He had to build a worldwide
+network of charging stations.
+He had to build a complete
+ecosystem for electric cars. If we want to automate
+hospitals and clinics,
+those hospitals
+and clinics are not going to be very efficient
+if the people who regulate those hospitals and
+clinics are not also automated.
+If the patients who are making
+appointments or receiving
+the results of a blood test
+and all of it-- if the patients not also have access to
+that automation technology,
+you have to automate the
+patient, the provider, the payer, the regulator,
+the pharma companies, banks
+who finance the
+hospitals, and governments who regulate the hospitals
+and collect information
+from the hospitals. You have to automate
+the entire ecosystem. That then, you will get a truly
+modern, efficient health care
+system. And that's what we were
+after when we bought Cerner as a first step.
+Anyway, one of the most
+interesting AI agents we've ever built connects
+providers to payers
+because this is a very
+interesting problem. And it took me a while to
+fully grasp this problem
+when we were working on this. And the best possible care--
+what do we want
+the hospital to do? The hospital has
+to figure out, what
+is the best possible care
+I can give this patient?
+Well, that's kind of true. But let's say you're in the UK.
+And the best possible care said
+that you have high blood sugar. And I've got to put you on
+Ozempic or another GLP-1.
+Well, guess what. The NHS in the UK
+doesn't pay for Ozempic.
+They won't reimburse you for it. And it's very expensive.
+So are there any
+other drugs that will help you manage
+your blood sugar levels? Yes, there are. And are they pretty good?
+Yes, those drugs
+are pretty good. And will the NHS
+reimburse you for those? Yes, they will.
+So what you're really doing
+when you're automating a hospital in the UK--
+what you're doing is you're
+trying to work with the doctor
+to come up with the best
+possible quality of care that
+is fully reimbursable if
+the patient can't afford to pay themselves.
+So those two things are
+tightly coupled together.
+So it's pointless to
+prescribe Ozempic to someone in the UK who can't afford
+it because the government is
+the insurance company in the UK. And NHS doesn't pay for Ozempic. It's true today.
+So this is what we had to build. And we had to build something
+that worked in the United States and in the UK and all over the
+world and solve this problem.
+The problem was the
+best possible care that's fully reimbursable. That's what our goal was.
+So the AI model
+that we built first used RAG to access the
+latest medical literature
+and your latest test results in
+the EHR, vital signs, and all
+of that information,
+all your blood tests, to assist the doctor to come
+up with the best possible care.
+And we had to things
+like, well, there's a new clinical trial for this
+particular type of cancer
+that applies to this patient,
+that the doctor should consider putting this patient
+in that clinical trial.
+So the AI model,
+not surprisingly,
+will have all of the
+latest information about clinical trials,
+which drug is working better
+than the other drugs for this
+particular patient the doctor is looking at.
+So we'll provide
+information to doctors. The AI model will provide
+information to doctors
+as the doctor tries to figure
+out the best possible care for the patient.
+Then the AI model
+is also trained, uses RAG to access the
+latest rules and policies.
+Now, in the United
+States, those would be insurance policies
+and rules depending what insurance do you have.
+Do you have Medicare? Or do you have
+Medicare or Medicaid? Do you have
+supplementary insurance? What are all the
+different things you have?
+So I got to figure
+out what is covered, what do you get
+reimbursed And it's really those intersecting sets.
+What's the best care? What's fully embraceable? So I have to train the model
+on all of the insurance rules
+to make sure that what
+the doctor is prescribing is fully reimbursable.
+And I've got to catch
+little snags along the way. Well, actually I do reimburse
+for Ozempic in the UK
+if your body mass index
+is beyond this point.
+And I've got to make sure
+that the doctor knows that. And I can let the
+doctor know-- actually,
+this case is an exception. This patient is
+eligible for Ozempic
+because they're overweight
+to past a certain threshold. And the rule that
+was just changed
+says that they now
+can get Ozempic. I had to do that.
+So the AI agent then reasons
+with all of this data
+to propose the best
+possible care at the highest
+reimbursement level achievable. That's the goal of
+it in most places
+in the world where
+the government is the payer of health care.
+And the one last thing
+that we also did-- and we have examples of this--
+that we've experienced
+where a lot of clinics, a lot of hospitals in the world,
+including in the United States,
+don't have lots of cash on hand. And if they haven't gotten
+the reinsurance reimbursements
+on time, sometimes they can't
+provide care to new patients.
+They're just running short
+of cash all the time. And what the AI
+agent can do here
+is give the bank all
+of the information about a particular
+collection of reimbursements,
+assuring the bank that
+those reimbursements will be adhered to all of
+the reimbursement rules.
+And the clinic and the hospital
+will, in fact, be reimbursed. 99% chance, 95% chance,
+they'll be reimbursed.
+You can discount
+it a little bit. And the bank will then
+loan on those receivables.
+So it's a fascinating
+set of problems.
+When you look at the health care
+ecosystem, the financial aspects of the health care ecosystem,
+it's very expensive to run.
+There's a lot of administrative
+duties and administrative tasks that we can automate
+away using AI
+and let patients spend more
+time with their doctors who are worried about care.
+And we can figure out how to
+get the highest achievable reimbursement, how to
+get the hospital the cash
+that they need to
+continue operating. But that's all done
+via automation. And the doctor's time
+and the nurse's time
+is spent much, much more
+efficiently with patients. As I say, AI will make things
+so much better for all of us.
+So Oracle Cloud is very unusual.
+In the simplest sense,
+Oracle does infrastructure
+and applications. We do scaled enterprise
+applications. And we do scaled
+AI infrastructure.
+And we're the only
+cloud that does that. The other big clouds--
+Microsoft, Amazon, and Google-- really do not do health
+care applications,
+enterprise applications,
+big financial applications. They don't do that. In other words, they
+develop AI technology.
+They may or may not
+develop AI technology. Google does. The other two don't.
+They may or may not
+develop AI technology. But also, they are not building
+large, scaled applications,
+where they're trying to
+automate industries or automate ecosystems using
+this technology.
+So our goals are different
+than those other clouds. We're a participant in
+creating AI technology.
+And we're also a participant
+in using that technology to solve problems in
+different ecosystems
+and different industries. And we're obviously very large
+in training the AI models.
+But we have those models,
+a bunch of those models, some of which we trained,
+some of which we didn't.
+We have those models
+in our cloud for you
+to use to solve your
+problems, for you to do AI reasoning
+on your private data,
+to solve the problems you
+want to solve at your company.
+We have AI code generators. Anthropic is-- it's the thing
+they're most famous for,
+Anthropic, is code generation. We've been doing
+this for a long time. We think we have our
+new APEX code generator.
+One thing I can say about APEX-- every application it generates
+is scalable, secure, reliable,
+everyone. And we've been doing
+that for a long time. Now, we're doing complete code
+generation using AI and APEX.
+We are the only ones that are
+building suites of applications
+to modernize not just industries
+but complete ecosystems.
+And health care is one example. But utilities is another. And we're taking on entire
+ecosystems, which makes things
+work much more efficiently. I mean, you're only as strong as
+the weakest link in the chain.
+If you have to interact
+with, let's say, a regulator that does clinical
+trials and the clinical trial
+regulator says, OK, once you
+finish your clinical trial, print out all the
+results, and send it
+to us in boxes of paper-- and I won't mention any names.
+But that happens
+all over the world.
+It makes new drugs
+incredibly expensive and take forever to come out.
+It's a huge problem. So you have to automate these
+entire ecosystems as a goal.
+And then agents, you have to
+build these complex processes,
+these robotic pieces of
+software called AI agents, that not only automate
+processes within a company
+but also automate processes
+between companies-- how one company talks
+to another company, how
+a hospital talks to a bank.
+That's phase 1 of
+my presentation.
+We'll be serving dinner. [LAUGHTER] That's why I arrived.
+I arrived a little
+late because this way, we can go straight to
+dinner when we're done.
+So this is looking at-- I went into how the AI models
+work, how they're built,
+how Oracle is different. And I'd like to just
+take a look at the world
+as I think it's going
+to be because of AI. And I think by and
+large, we are going
+to live much better lives,
+healthier, longer lives,
+eat better food, live
+in better houses. It should be a much better
+world because these tools
+are so enormously powerful.  But some of the things they'll
+do is a little bit shocking.
+So these are some of the
+things we're working on.
+I can go through them. On the line, we're
+working on biometric.
+We can prevent identity
+theft using AI. Just stop it. So no more logging on.
+No more passwords
+that get stolen. No more intrusions. No more data that gets stolen.
+No more credit card. No more you have to send in your
+credit card and get a new one.
+We can make them all credit
+proof if that's what you want
+or fraud proof if that's the
+kind of credit card you want.
+I don't know of anyone who likes
+spending time in the hospital. And the hospitals
+have figured out, the sooner they can get
+you out of the hospital,
+the better it is for them also
+because some of the nastiest bugs, some of the
+nastiest pathogens
+are lurking in the
+halls of hospitals. And the quicker you home,
+the patient's happier.
+And you're safer at home. So we can build these
+IoT medical devices
+where we can monitor you at home
+as well as we can monitor you in the hospital. And even if you're
+in an emergency,
+you're being transferred
+back and forth, the ambulance is also
+always connected. So your home, if you
+had a patient at home,
+they're always being
+monitored by hospital staff. You've got a patient being
+transported in an ambulance.
+The hospital staff-- there's an
+audio-video digital connection between the ambulance
+and the emergency room.
+Diagnostic images--
+when AI reads them--
+I remember one time, I flipped
+my motorcycle upside down. Don't ask what was I doing.
+And I wasn't that young either. I don't even have
+that as an excuse.
+Anyway, I landed
+on my right side. And I broke eight ribs.
+I remember going into an MRI. And they were
+counting 1, 2, 3, 4. What are you doing? I'm counting your broken ribs.
+Oh, great. But I was having an MRI. But the only thing they did
+was count my broken ribs.
+There was all this other
+data that that MRI produced. No one looked at it.
+That's always the case when
+you get one of these scans. You're looking for
+one or two things. And the rest of the
+stuff, you just ignore.
+AI will find it. We'll find things that
+no one was looking for. And plus, it's just more
+precise and more accurate.
+Actually, if I do this,
+I'll finish all the slides
+on this one page. So I'm going to just do this. Identity theft-- we said
+earlier in the early slides,
+AI knows who you are. We recognize your face, your
+voice, your fingerprint. When you log in, sit down at
+the computer, say, hi, Safra.
+What do you want to do today?
+There's no--
+passwords are insane. That's what get stolen. People write them down. The fact that your password
+has to be 17 characters long
+with at least two underscores
+next to each other-- are you out of your mind?
+You think this is a good idea? The only way I'll
+ever remember this is I write it down and
+put it on a sticky note
+right next to my computer. Why? This is just idiotic.
+So no password. No passwords. It's all biometric.
+Better for everybody. Better data privacy. Credit cards-- if
+you want them, we
+will have optional credit
+cards that are biometric. So it's very hard
+to imitate people.
+So this dramatically
+reduces credit card fraud. The banks pay for all
+the credit card fraud.
+The banks don't
+have to pay that. Your interest rates
+are going to go down. It's going to be
+better for everybody.
+It's going to save
+a lot of money and keep your data private.
+Patient monitoring--
+I mentioned this.  We're going to have
+these low cost.
+They're going to be so low cost. We're going to have these
+fabulous medical devices that we can mass produce
+that are higher quality.
+But all medical devices should
+be attached to the internet. And they should go into a
+secure database, where only
+you and it's your data. And you can decide
+who gets to see it, your doctor or a
+health professional
+who's monitoring your care. And you keep it private. But that data is immediately
+accessible by your doc.
+And if your doc
+has set an alarm, if your blood pressure drops
+below a certain threshold or goes above a
+certain threshold,
+they want to be
+immediately notified. You can do all of that. You're going to get much
+better health monitoring--
+home, in the
+ambulance, wherever.
+And as I say, when
+moving between your home
+and the emergency
+room, the ER doctors are talking to the
+EMTs and the ambulance.
+And believe it or not,
+we're building one. We're actually building
+these prototypes.
+Will we mass produce
+an ambulance? I have no idea. If you told me a
+couple of years ago
+we'd be building billion watt
+power plants, I would have said,
+you need to get more rest. That's not going to happen. But yeah, now we're looking
+at doing this because--
+and the thing is the
+ambulance is connected and is loaded with AI. And it's just a much safer
+way to transport patients.
+The diagnostic imaging--
+my wife was pregnant.
+We were living in
+Hawaii at the time. And she went in for a sonogram.
+Two things were crazy. One is the tech took a ruler and
+was measuring fetal development
+with a ruler, measuring
+how big the skull was and how long the spinal cord was
+on the screen of the sonogram.
+And I said, whoa,
+whoa, whoa, whoa, whoa. That's like a
+two-dimensional ruler measuring a three-dimensional
+shape inside,
+floating in a fluid. Are you kidding? Who thinks this is a good idea?
+We can do that with AI. We can do this very
+accurately with the computer.
+Even with primitive
+AI, we should have been able to do that. It then got worse.
+We were on the island of Lanai. And the dock was
+actually in Honolulu.
+And she held up her iPhone
+to the sonogram screen so that the doc could see the
+fetal image on the sonogram.
+I'm like, oh my God. Oh my God, You can't record this
+in high resolution
+and transmit it digitally. You're FaceTiming
+the image over. What the hell is?
+No. And actually, I remember
+her saying one thing. I said to the tech, look,
+I promise to fix this.
+I promise to fix. This is awful. I can't believe
+this is going on.
+But of course, AI is 3D vision. We can measure accurately fetal
+development on the sonogram.
+We, again, find things
+doctors aren't looking for. Imaging-- right now,
+one of our partners
+looks at tumor
+biopsy slides and can diagnose the cancer from
+the image in a few minutes.
+We're going through
+the entire process. Do all the genetic testing
+and all of these other things
+might take a week or two,
+a week or two of worry and a week or two
+without treatment.
+And AI is going to allow us to
+get a response very quickly, either say you're fine, you're
+clean, everything is good,
+or, no, you need to start
+this drug right away.
+In both cases, we
+get better outcomes.
+This is very interesting. This is a device that
+we're working on,
+which is called a
+metagenomic testing device.
+Our ability to
+identify pathogens-- when someone gets sick, we
+have a testing methodology
+called PCR. If we suspect, well, you
+have influenza A or influenza
+B or this coronavirus
+or COVID-19, we can test for a panel of some
+number of known respiratory
+viruses. But if you have
+something that's odd,
+it comes up just
+as PCR negative. We don't what it is.
+And what we really want to do
+is genomic testing on that. But before we can do
+genomic testing on it, we have to culture it.
+We have to culture it
+and wait several days. And it could take
+a week or two weeks
+before we know what you had. Either it went away or you did.
+It was particularly bad.  This is a new sensor that will
+simply do gene sequencing.
+It will do gene sequencing
+of everything in the sample. So you take blood.
+And obviously, in your
+blood are your own genes.
+Well, included in your own genes
+are something called ctDNA,
+circulating tumor DNA. So in everyone's blood,
+if you have cancer, even
+a stage 1, early
+stage 2 cancer, you have small fragments of
+circulating tumor DNA
+that we can discover
+by gene sequencing
+everything alive in your blood. The problem with the
+circulating tumor DNA--
+and people have been trying
+to work with it in the past-- is your immune system
+will cure a lot of cancers
+without you ever
+knowing you have them. The immune system clears
+up a lot of cancers
+before you're ever symptomatic. And if we keep telling you, oh
+my God, we found this cancer,
+we need to start treating
+you-- in fact, no, we don't-- your immune system
+is going to clean that up, do absolutely nothing.
+So the false positives
+are deadly in this. However, with AI now, we
+can look at the fragments
+and distinguish
+between false positives and a real serious problem,
+that you should start
+treating immediately early. So this has the
+promise of giving us very, very early cancer
+diagnosis, which everyone knows
+leads to a much higher
+likelihood of a positive outcome with the cancer. It also will allow us to find
+any bacteria, any fungus,
+any virus, any living
+organism that you're infected with-- any pathogen
+that you're infected with
+and tell you exactly what that
+pathogen is even if it's novel. Like, COVID-19 was novel.
+So we know how to treat it. Well, it'll tell if that
+pathogen is resistant
+to certain antibiotics
+and specifically which antibiotics
+it's resistant to
+and which antibiotics we
+should treat you with. Now, we actually
+have a partner here
+that went on
+earlier, that talked about working on that same exact
+problem, which is very, very
+important. If you imagine this device
+being a low-cost device
+that's in the pathology
+departments in hospitals all over the world-- so we can do this one blood
+test and find whatever
+pathogen you're infected with. If we had that, we never would
+have been caught off guard
+with COVID 19. We would have had early warning. We would have discovered it
+far before we discovered it.
+Those metagenomic
+sequencers would be the perfect early warning
+system for pandemics.
+And that's why we're
+working on them. And that's why we need them.
+Building all of these
+medical devices, building them reliably-- if you want to put these
+metagenomic sequencer
+in every hospital all over the
+world or most of the hospitals
+all over the world, they
+can't cost $1 million. They can't cost $100,000.
+You have to make them
+cost effectively. You have to mass produce them.
+You have to make them
+in robot factories. If you make them
+in robot factories,
+you get much higher quality
+and dramatically lower costs.
+I think we have a video.
+This is a disk where the test--
+you actually put the sample
+into the disk, spin the disk, and run all of these
+tests on the disk.
+Actually, I think that
+video, when I saw it, lasted three minutes. And Maddie told me, no way
+am I putting that whole video
+in your presentation. [LAUGHTER] But it is remarkable.
+There are no people in the room
+when the device and the disk
+and the disk is being
+built. Here's another one.
+You'll be happy we
+don't have a video. We just have a
+couple of pictures.
+Growing inside reduces
+the amount of water that we use to grow food
+by 90% That in itself
+is essential because we are
+running out of food, by the way. We're running out of
+food in the world.
+I think in 2050, Africa will
+be our most populous continent.
+Think about that. Asia is by far. Asia has India, China.
+Those are big countries
+with a lot of people. Africa will be larger. We need to produce much more
+food than we currently do.
+We're going to run out of water. We're going to run
+out of arable land.
+We can't keep taking habitat
+and converting it to farmland. We have to be much
+more efficient.
+And by growing in greenhouses
+and moving plants around, plants only need a lot
+of room a few weeks
+before they're harvested. Otherwise, they can grow in
+much more confined areas. If you can move
+the plants around,
+you use up much less
+water, much less space. You save habitat.
+If you're growing indoors,
+you can grow by urban centers. I mean, I don't suggest
+you put a greenhouse right
+in the middle of New York. But you can put it 50
+miles away from New York.
+And you're growing near
+population centers. So the CO2 output for
+transporting the food
+to population centers
+is greatly reduced. The food is much fresher. Again, in a greenhouse, there's
+a harvest every morning.
+And it's to deliver the
+grocery that afternoon. And it can be
+eaten that evening.
+So the food is much fresher. It's lower cost. It's more nutritious.
+It's tastier. And we're actually
+building these things
+in these robotic greenhouses. And there should be
+a picture coming up.
+Yeah. That's real. You just hold that. As I pointed out to Elon, this
+is also a martian habitat.
+This building,
+which is very large,
+you can imagine as a greenhouse. And that yellow thing kind on
+the lower part is an overbought.
+That's a rail system that
+moves the plants around from one location to the other.
+No human beings are
+allowed in the growing area because human beings
+contaminate the growing area.
+We literally lift the plants up
+and move them into a harvesting area where people are allowed.
+But also, the growing area
+is very, very high in CO2. It's very humid.
+It's very unpleasant for people. It's very, very high in CO2,
+which is good for plants,
+not so good for human beings. But if you took that same
+building-- and the building,
+by the way, there's
+no structure. It is an air pressure building. So the atmosphere-- it's
+a positive air pressure.
+So basically, think
+of fans keeping the pressure inside
+the building as higher than the pressure
+outside the building.
+And that's what holds
+up the roof, which is made of ETFE, which
+is the most sunlight
+transparent material known
+to man, also quite strong.
+And those are steel cables. Those are steel
+cables in the arches
+anchored to a concrete
+footing around the base.
+So literally, you have
+a robot dig the footing. You snap the steel cables onto
+the fiducials on the footing.
+And then you turn the fan on. And you inflate the building. You fold the building up.
+The building is fabric
+with steel cables. You fold it up in nice packages.
+And you transport it to
+where you're building it. Or you transport it to Mars
+on one of those big rockets. And then Elon can
+build his house right
+in the middle of that
+and have beautiful rose gardens and all
+of that other stuff. It'll be lovely.
+But I'm not going. [LAUGHTER] I will to go to
+this one, which is--
+the first ones are in
+California and Texas, which is way closer than Mars.
+Here's another picture
+of the same building. They're big. And then the green areas
+are the harvesting areas.
+And the walls lift
+up where the trucks arrive to deliver the food.
+This is going to be shocking.
+The first thing we did-- and
+we've actually done this. We've actually done this. It's actually a company that I'm
+involved with called Wild Bio.
+It's part of the Oxford company.
+I've got an institute
+at Oxford called EIT, the first time I've ever
+put my family name on something.
+EIT. And one of the companies we have
+is this company called Wild Bio. And the first thing they
+did was they modified
+wheat plant, which is a grass. They modified wheat to have it
+produce 20% more food per acre,
+more grain per acre, which seems
+like we're running out of food. That seems like a good idea.
+Now, it's really interesting. If you produce 20%
+more grain per acre,
+what wheat does basically,
+it takes CO2 and sunlight,
+mixes them together
+to create food.  So if you're growing more grain,
+you're consuming more CO2.
+Now, where that CO2
+ends up is really--
+if you have AI
+designing the wheat-- is really up to us.
+So we built this
+wheat that's much more efficient with photosynthesis
+than conventional wheat.
+Once we've absorbed
+the CO2 into the wheat, we could choose to take
+that CO2 and convert it
+into calcium carbonate. By the way, that's exactly
+how coral reefs get built.
+A coral reef is converting CO2
+and sunlight into a structure,
+into an inert mineral
+called calcium carbonate.
+So we grow a lot of wheat
+around the world every spring.
+We plant several Amazon
+rainforests worth of wheat.
+And if you want to, you can
+not only produce more grain,
+you can convert more CO2
+directly into calcium carbonate,
+therefore removing it from
+the atmosphere forever.
+So if you want to manage-- there are all these
+interesting ideas on how to manage the climate
+and manage the atmosphere
+and manage atmospheric CO2. But in this particular
+case, you can remove--
+if you wanted to go from the
+current level of 440 parts per million of CO2 in
+the atmosphere, which
+some people think is
+too high, and reduce it to 400 parts per million,
+you can do that simply
+by having the wheat and the corn
+and the soybeans and whatever,
+converting CO2 into
+calcium carbonate. And you can manage the CO2 level
+in the atmosphere to whatever
+level you deem appropriate. And if you think the sweet
+spot is 400 parts per million,
+that's right. Now, someone will
+say, no, no, we want to get rid of all
+the CO2 in the atmosphere.
+Well, pack a lunch
+because if you get rid of all the CO2 in
+the atmosphere,
+all the plants will
+die on the planet. So don't go to zero. That's a really bad idea.
+But the sweet spot in terms of
+stabilizing the climate probably
+is going from 440 to 400. And it's something we can do. And it's basically free.
+Basically, there's
+no cost in doing it. And it's just a natural process
+called biomineralization.
+And we could use our food crops. We could actually increase the
+food yield while lowering CO2.
+This is what I mean by AI. AI is a pretty amazing tool. There are a lot
+of problems we can
+tackle that we've
+been unable to solve for a very, very long time.
+And it's very, very
+contentious within our society. But you absolutely have
+the ability to do this.
+Corn-- we're also
+working on corn.
+Another huge problem
+with agriculture is nitrogen fertilizer.
+You fertilize all these
+crops to increase the yield. The problem is fertilizers
+are made up of nitrogen.
+And it rains. And you've got huge nitrogen
+runoffs into river basins and into the ocean.
+And that pollution does a lot
+of damage in our environment.
+Rather than using nitrogen
+fertilizer to nourish the plant,
+the atmosphere has got a huge
+amount of nitrogen in it. Why don't you simply
+engineer the plant
+to take the nitrogen directly
+out of the atmosphere? And we know how to do that.
+There's an enzyme in the
+world called nitrogenase. And nitrogenase quite literally
+takes atmospheric nitrogen.
+Does it with
+soybeans, for example. It's unique to soybeans. Takes atmospheric
+nitrogen and uses it
+as a nutrient for the plants. And you don't have to
+use nitrogen fertilizer. You can get rid of all
+the nitrogen fertilizer.
+In Africa, no one can afford-- I shouldn't say nobody. A lot of farms can't afford
+to use nitrogen fertilizer.
+But even the ones that can
+afford used nitrogen fertilizer, it's a waste of money. And it is damaging
+to the environment.
+So you can engineer the plant
+to get the nitrogen directly
+from the atmosphere. And the plant is just as
+tasty and just as nutritious and just as healthy.
+Getting the nitrogen
+from the atmosphere is getting the nitrogen
+from fertilizers that's been added to the soil.
+Another problem AI makes
+it easy for us to solve.
+You're going to be very happy
+that last slide-- this is my last slide with words on it.
+[LAUGHTER] I have one more video,
+one more picture. And then the three of
+you who are going to stay
+can ask questions. [LAUGHTER] So autonomous drones--
+well, anyone who's looked,
+we've seen the drones have
+been developed in Ukraine for military purposes. Fortunately, drones
+have very wonderful uses
+beyond how they're being used
+in Ukraine, the war in Europe,
+which is just terrible.  We built an air traffic
+control system for drones.
+And we're actually using
+drones to deliver blood samples
+from clinics and taking
+the blood sample by drone to testing laboratories.
+And we built what we call an
+RFID specimen vault, which we put an RFID tag
+on, which identifies--
+so no one knows this is Larry
+Ellison's blood or whatever.
+They just know there's
+an RFID tag on the blood. And then the test results
+go into the cloud.
+And eventually, they
+make it back to my doctor and to me, the results. But otherwise, in
+the chain of custody,
+no one can distinguish-- my personal privacy is
+not compromised at all
+by doing this. But also, the other
+problem is sometimes they do a great job of
+protecting your personal privacy
+by losing your blood sample or
+thinking it was somebody else's
+blood sample. That's not a great way to
+protect our personal privacy. So we built this specimen.
+Another thing we built
+are these specimen vaults to take samples
+from the hospital,
+from the clinic to the
+lab, where the results then go into the cloud.
+But the other thing
+that drones can do is they can detect
+forest fires immediately
+with infrared cameras. They can even figure out
+who set the forest fires. Tragically, the
+Palisades fire-- a number
+of the fires in California
+were set by arsonists. I mean, unbelievable tragedies.
+But we can detect
+the immediately and start to fight
+the fire immediately.
+And if someone set the fire,
+we can figure that out too.
+And we shouldn't have police
+cars chasing other cars around those high-speed chases.
+While the videos
+look kind of cool, they are very dangerous
+for not just the police.
+But for civilians
+and cars nearby, we can have drones
+follow those cars.
+It's way better. I'm going to now go
+to my last picture.
+That's the RFID specimen
+vault over there. And last video
+will be coming up.
+There it is. Sure enough.
+So you can deploy these. It'd be great in the Palisades. It's the dry season.
+You send the drones up. You can have a
+series of these cars. You've got a lost hiker out
+in the wilderness, something
+like that. They're portable. I think it's going to now land. And then if it gets down safely,
+I will take my first question.
+It's a video. It's going to get down safely. [LAUGHTER]
+Awesome. And that's a charging station.  [MUSIC PLAYING]
+DAWN TITTENSOR: Wood PLC is
+a large global consulting and engineering company.
+We operate across 60 countries. And we have an employee
+workforce of 36,000.
+As a function, we were
+inefficient and costly. And that was across our IT, our
+HR, and our finance functions.
+We had dozens of HR systems,
+very disparate applications
+landscape. We had lots of different ways
+of working, different processes.
+And we found it very, very
+difficult to pull together our employee data and reporting.
+One of the key impacts
+was the ability to make it easy to work at Wood,
+to engage with our employees
+in a more unified way. And also, as I say, that
+self-service capability
+in the flow of
+work wasn't there. So we chose Oracle Fusion
+Cloud HCM because it covered
+across our people processes. It also really focused on
+that employee and candidate
+experience, which
+was important to us. Moving to SaaS software allows
+Oracle to do all the hard work
+and for us to leverage and
+move at pace with innovation across our people processes.
+We are live with Code
+HR, Talent and also Workforce Comp and Learn.
+So those were the first
+modules we rolled out. We have since also
+brought in Oracle Recruit
+with Recruit Booster. We're leveraging
+journeys for onboarding. We've also just
+recently implemented
+Help Desk and Digital Assistant,
+which really gives us a full end to end for our people processes.
+We have enabled our AI features
+within Oracle Recruit and also
+our performance management. We have recently gone live with
+AI assist in performance goals.
+I'm delighted to say the
+feedback has been incredible. We have reduced
+our time to hire.
+So pre-AI, for our trading craft
+population, we were 45 days.
+Post-AI, we are
+sitting at 21 days. That time to hire for
+our reimbursable roles
+is a key metric
+and a key target. If we don't have a role filled,
+we can't then build our clients.
+AI agents are going to
+help us really drive the adoption of self-service.
+It will support our
+employees and managers, finding the answers
+and giving them guidance in the flow of work.
+So no longer do they need
+to send an email to HR, reach out to our shared
+services, wait for a response.
+They are in the application. They have the guidance
+and what they need there.
+And they can, again,
+focus on the value add activity of their work.
+The support that we get from
+Oracle and the partnership is second to none. The journey never ends with
+digital transformation.
+It's continuously evolving. And I think partnering
+with Oracle,
+they put the customer first.

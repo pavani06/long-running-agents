@@ -1,0 +1,477 @@
+Hello. Hello. Hello. Can you hear me?
+Okay.
+Okay. Cool. Let's get started. So, we
+are going to be talking a little bit
+about WebMCP. Has anybody just out of
+curiosity, has anybody already played
+around with WebMCP?
+Only a few people. Okay, great. Those
+few people, you have a bit of a head
+start, but for everyone else, we'll be
+going into a bit more of the background,
+how it works, what it does. So, my name
+is Tara. I am part of the Google Chrome
+team. Um, I'm a developer relations
+engineer and I'm here with a few of my
+colleagues from Google Chrome alongside
+the DeepMind team, too. So we'd be
+really interested to talking to you
+afterwards around the deep man booth if
+you like have thoughts around web and AI
+and the intersection between the two.
+That is where my focus is these days. So
+let's get into it. The let's say past
+few decades we have been building the
+web for human actions
+and human eyes and we've been trying to
+optimize for that. But these days it's
+not just humans that are using the web.
+We have agents using the web on human
+behalf too. And we are seeing an
+increasing number of agents using the
+web. But the problem is the agents are
+having to do so much work to do simple
+actions on the sites that we've built.
+And just to give you a bit of an example
+of this, this is a a website that I've
+vio coded and it's a concert website for
+selling tickets for concerts. And we
+have Gemini and Chrome panel on the side
+here. And let's say you've come along to
+this website and you've typed this
+prompt. You want to buy two tickets to
+the Afro beats festival. You've given it
+the details.
+The AI agent has to do so much work to
+make this happen. So it'll probably look
+at the HTML because usually the agents
+will pass the entire DOM just to
+understand what's happening on your
+page. Then it will look into the
+accessibility tree just to understand
+the structure of your HTML page. Then
+maybe it will take a screenshot of the
+page, analyze all the different elements
+that it couldn't see in the HTML and the
+accessibility tree. And then maybe it
+will measure how far down needs to
+click, how far across, where the exact
+element that it needs to click. And then
+it'll click that element. And as you can
+see, this process is quite long. It can
+be brittle. And I don't even want to
+guess at how many tokens you probably
+just use trying to do this. It's
+probably a lot. And then after all that,
+maybe your ad has loaded at the top of
+the page, pushed all your content down,
+and your AI agent couldn't even click
+the right place in the end.
+So there's so much to think about, but
+before we go into this proposed web
+standard, it's worth mentioning that you
+can do so much by improving web
+foundations first.
+So making your site accessible for
+everyone makes it accessible to AI
+agents by default.
+So if you improve your semantic HTML, if
+you focus on robust accessibility
+standards and if you improve your page
+performance, make it load really
+quickly, think about those core web
+vitals and then improve really good user
+experience flows through your site,
+you're already halfway to getting an
+agent ready website. And it's only once
+you have those in place that it makes
+sense to start thinking about web MCP.
+So, if you're not already aware, the web
+model context protocol is a a proposed
+web standard and that gives you the
+ability to define your site's
+capabilities
+as structured tools for your AI agents
+to use. And so, you might have heard
+references to this as the USBC of AI
+agent interactions.
+And that's because instead of any agent
+guessing what your website does, you're
+kind of giving the AI agent a menu of
+tools that it can take of tools that it
+can use and actions that it can take.
+And so because of this, we're seeing
+that WebMCP significantly improves the
+performance and the reliability of
+agents navigating your website.
+So let's see it in action.
+Hopefully Gemini treats me well today.
+So this is the maze escape game built by
+our team in Chrome Devril. And just on
+the side here, we have a Chrome
+extension. Um I'll show you a link to
+that afterwards, but this is the model
+context tool inspector. And so we're
+using this. This is a standard Chrome
+extension
+that lives in your side panel and it
+lists out all the tools that it finds on
+your website. So, at the moment, it only
+has one. It can only see one tool and
+that's the start maze game tool. And
+then at the bottom down here, it gives
+you two options to interact with the
+page. So, you can interact via a prompt
+like a user would prompt normally via
+the AI agent or you can call tools
+directly at the bottom. but we won't be
+looking at that one today. So, this
+specific maze game is actually more
+unique in that you actually can't browse
+it by clicking around the UI. You can
+only use this app with the AI tooling.
+So, let's start a new maze game here.
+You can also choose your model on the
+side. So, let's stick with the Gemini
+2.5. So you'll see that at the bottom
+when you send a prompt
+it gives you all the information. So the
+new pro prompt to start a new maze game
+and the AI agent Gemini in our case has
+called that tool start game.
+The tool itself has returned
+this information and then the AI has
+read that and given me this response.
+And so now we have our maze. And you'll
+notice that on this page, we have a
+bunch of new tools in the scope of this
+page. Whereas the previous page, you
+only have that one tool. This page,
+we've got a bunch of tools to help us
+navigate the maze. So in this maze, you
+can move around with the north, south,
+east, west directions. You can look to
+see where you are in the maze and which
+directions are open. And then you can
+pick up items, drop items, use items as
+you navigate this maze. And
+if I pop in some prompts, I can see that
+I can move down. Then maybe after that,
+then write
+the AI agent should use my prompt match
+it to the specific tools. So in this
+case, the move tool. It's taken my
+direction of down and right, mapped that
+to the northsoutheast direction and sent
+that off to the tool that we have
+registered on this page. And then it's
+moved it down and right. And so you can
+do and because it's an AI agent, it can
+understand a whole bunch of different
+things. So I could just say right,
+up maybe right again. Let's try that.
+And so the AI agent has seen that R
+stands for right, mapped that to the
+direction and then called the move tool
+with those information.
+And because it's an AI agent, it can
+just keep repeating the same tool tool
+calls until it thinks that it's done
+what needs to be done. So, I could even
+say complete the maze.
+And then the AI agent should use all the
+tools available to just keep moving
+around the maze to pick up items to use
+the items when it needs to because it
+has all the information in the tools
+available.
+This specific prompt was not the most
+efficient. So, sometimes you'll see
+it'll go backwards all the way to the
+start and then go forwards again. But
+the more that you refine the prompt, the
+better the agent knows how to complete
+the maze in the most efficient way. For
+example, if you just say the exit is in
+the bottom right corner, it'll be more
+efficient in its uh instructions to get
+to that to that direction.
+So, I won't I won't continue this
+because it can take quite a while to
+complete this maze. But if we go back to
+the slides
+here,
+so this is the model context tool
+inspector that I mentioned. So this is
+the web extension that our team in
+Chrome Devra built. The QR code there is
+if you want to see where that is in the
+Chrome web store, but anyone can use
+that and grab it from the web store.
+But essentially, WebMCP kind of unlocks
+this new approach to using the web where
+your users don't have to spend a lot of
+time trying to figure out how to use
+more complicated sites and they can
+figure out their own workflow. So, they
+can choose to browse your website the
+normal way for a bit. then they can hand
+over control to their AI agent and the
+AI agent takes steps on their behalf and
+then your user can come in at any time
+to take control again and browse your
+site again the way they normally would.
+And so that ability to simplify user
+journeys and make those user journeys
+for people easier has been a large part
+of the reason we've seen interest and
+excitement in this new standard.
+So I want to pause for a minute just to
+address the question that some people
+have and that's what is the difference
+between web MCP and MCP but you can kind
+of see them as being complimentary to
+each other. So whereas web so whereas
+MCP enables AI agents to connect to
+applications on the server side and
+you'd need to set up your own server for
+the agent to access and then the agent
+can access the information anywhere at
+any time. WebMP
+is different in that it's kind of
+inspired by MCP. I like to think of it
+as how JavaScript is inspired by Java.
+And that's in short WemCP is the
+implementation of the tools part of the
+MCP.
+And so WebMCP allows engineers to
+provide tools to in browser AI agents
+and it's very specific for the client
+side features. So you have to have your
+browser window open for web MCP to work
+and then you can use it to help your
+agent interact with the browser. that
+all of the tools live in the browser.
+But you can imagine this for quite a few
+different types of use cases. So imagine
+those websites that are really
+complicated. They have a lot of steps
+that a user needs to take. Maybe like
+booking a flight or filtering
+products on a normal shopping website or
+filling in complicated medical forms or
+financial forms or to trigger fixes that
+need to be hidden on a page that are
+hidden on a page.
+Or if you're like me, you're just on a
+normal shopping site and you're trying
+to find the right black faux leather
+clutch bag that can fit your mobile
+phone in. And instead of going through
+all the little filters, you just want to
+ask your AI agent to do it for you.
+So these are a bunch of examples where
+any user can ask whatever AI agent they
+are using to complete these things on
+their behalf. So the user doesn't have
+to manually do this.
+and they don't have to fill in each
+input. They don't have to select each
+checkbox and using WebMP in these cases
+can mean that you can make those actions
+much easier for users.
+So let's look at the APIs. Web MCP
+proposes two approaches for
+implementation.
+So we've got the declarative API and the
+imperative API. Let's start with the
+declarative API.
+So if you have a normal HTML form, you
+can just add a few attributes to the
+HTML to get this to work. So we've got
+the tool name and tool description here
+and then your browser will automatically
+generate a JSON schema that the agent
+can use to read using the form fields as
+parameters for the tool. So here's an
+example of what the JSON schema would
+look like for this form HTML.
+And there are a whole b bunch of other
+attributes that can be used. So there's
+like um an agent invoked boolean
+attribute. So you can tell whether your
+form was filled in by an agent or if it
+was filled in by a human. And there's
+lots of like more specific um attributes
+that can be used for things like that,
+too. But essentially, you want to use
+the declarative API when you have a
+standard form element. But when you have
+something more complicated, that's when
+we want to go back to the imperative
+API. So this is where you can register
+and define your own custom tools for
+when you have more complex maybe
+multi-step UI flows.
+So here is an example. So at the bottom
+we have this register tool function.
+And when you call register tool with an
+object like this,
+you need to manually create your own
+schema similar to the one that we had in
+the declarative API that was generated.
+You name your tool and give it the
+description. And you want to make sure
+you have really descriptive descriptions
+that enable the AI agent to know when it
+should be calling this tool.
+And then you have the execute block
+which is essentially where you call
+normal JavaScript. Maybe you already
+have functions that you're using that
+you can call in here. Maybe do a light
+wrapper in this add to-do item example.
+You can like validate and trim text
+input for example. And then you create
+the do DOM elements or DOM nodes and add
+them to your page. And then you want to
+return some information to the AI agent
+so it knows what happened if everything
+happened successfully. So it can use
+that information for its next steps.
+So those are the two APIs. The
+imperative API is probably the one
+that's most used because people have
+more complex UI flows that it wants the
+agent to complete.
+But if we go back to my vibecoded demo,
+I have added
+a few
+tools here.
+So we have a few featured events in the
+demo and then all of the events
+available down here and then you can go
+in and purchase tickets for an on an
+individual
+concert page.
+So, I have noticed that this works much
+better with Gemini 3.1. So, I'm going to
+try that one.
+If we wanted to buy tickets to one of
+these festivals, let's buy tickets to
+the Summer Vibes Festival.
+Summer Vibes
+Festival.
+Uh, let's see. two VIP tickets because
+VIP only for me.
+Send that prompt.
+So the a the AI saw the tool search
+concerts
+which it has called to find the specific
+concert via the concert name and the
+tool returned the information about the
+concert including the ID for that
+concert. Then it has called this second
+tool open concert page with the concert
+ID
+and that has opened this summer festival
+page. And then this new page has
+separate tools. This one here called
+purchase ticket. And it's called that in
+the third tool core here with a quantity
+too and the section name. And then we've
+got a little notification say oh you've
+bought your tickets. You spent £356.
+Great. I'll put that on the Google's
+credit card.
+But you can see as well like in each
+step it's updated the UI to make sure
+the user can also see what's happening.
+So you also you always want to make sure
+that your UI is in sync with the tool
+calls that are happening. So we've got
+the VIP selected, we've got the quantity
+selected, and then in real life it would
+go through to some checkout page. You
+probably want your user to manually do
+that step so they know that they're
+spending real money.
+Let's head back. So, if you're
+interested in trying this out, it's
+probably worth just understanding the
+status of where we're at with WebMCP.
+So, we're still in early preview stage.
+This API is very experimental. It will
+change. It has been changing over the
+past few weeks. And so the code that I
+have shown might be different next week,
+but that's because we want people to try
+out. We want feedback. We want to know
+the best way to use this API. And if
+you're interested in doing that, these
+are a few steps to get set up. So WebMCP
+is enabled in Chrome version 146
+upwards. I recommend using Chrome Canary
+just so you can keep things separate.
+Otherwise in the normal Chrome you have
+to enable experimental flags and you
+might not want to do that on your normal
+your normal browser.
+Once you have Chrome Canary, you'll need
+to enable the web MCP testing flag with
+by putting this flag in your URL
+and then install the model context tool
+inspector extension from the Chrome web
+store that I mentioned earlier just so
+you can play around and debug and see
+what your tools are doing.
+Then uh these are the two resources that
+I recommend taking a look at. So this is
+our main blog post that gives you
+information on the early preview program
+for WebMCP. So if you sign up there, you
+get access to all of our initial
+documentation
+and you get extra information about the
+program information on best practices
+implement all the extra implementation
+details that you you might want to use
+while you're testing it out and all of
+the API information.
+That is the first one. And then the
+second one is the GitHub repository of
+all the tools. So we've got the
+inspector tool here. We've got all the
+demos. So you can see the maze demo code
+is live there for you can to play around
+with. There's about six, seven different
+demos you can try out. And there's an
+eval CLI tool you can use to help you
+start testing your own sites and the web
+MCP tools on your own sites today.
+So, I mentioned we're still in early
+preview. That's because and we're
+looking for feedback. So, try it out.
+Let us know what you think. If you have
+any friction points, if you find any
+bugs, we'd love to know that so we can
+keep iterating on this API
+and eventually move on to the next stage
+and start getting WebMCP in front of
+more users.
+But to wrap up, AI agents are already
+using the web. We don't have to settle
+for these tokenheavy,
+brittle,
+screen scraping processes that we have
+today.
+Instead, we can use WebMCP tools to turn
+every website into a high performance
+API for agents and at the same time
+build incredible user experiences for
+the users of our sites. So now that you
+have the tools and the context, please
+give it a go and try making your agents,
+try making your websites agent ready
+today. Thank you very much.
+Thank you.

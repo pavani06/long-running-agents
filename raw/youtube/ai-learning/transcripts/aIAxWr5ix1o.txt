@@ -1,0 +1,107 @@
+I as many of you really love the model context protocol from Claud where we can kind of do our own tools in the desktop app but sometimes there are some tools I
+really miss like executing files for example of course there are some security reasons why this is not included but there are ways around this
+so today I'm going to show you how I modify my servers so we're going to actually implement the execute file tool into the file system so yeah let's just
+do it and then you can start modifying your own servers to get them more way you want them right so just to make this video easy for everyone to follow along
+we're going to use kind of the official model context protocol here so we're going to go into servers uh and we're going to find the servers we're going to
+edit today and that is going to be the file system service right server so here uh we have four different files we have
+the readme file the index.ts package Json and TS config Json so we could of course clone uh all the
+servers here but today we just want to focus on this file system server so I'm going to go to cursor so here uh I'm
+just going to create a folder called servers right uh I'm going to also do a folder named file system and in this
+folder we want some files so let's to index.ts uh yeah what other files did we want yeah I'm just going to go check uh
+I'm just going to add the package Json and the TS config Json file here in cursor so let me quickly do do that okay
+so now that we have those three files uh I just want to start I'm just going to copy the contents of this for now uh
+paste it in and let me just grab all the content from those files and then we can start modifying this okay so all our
+files are here right I also want to add a TS config file uh in um my rout here so I'm just going to use
+this so you can check if you want to yeah the next step now is that we need a claw desktop config file if you have mCP installed you probably have this file
+already so if you don't have this just run this command here in Powershell if you're on Windows and you will get this CLA desktop config file so I'm going to
+go ahead and open that file now so here we have our empty file so usually when I run file system uh I've been just using
+this npx command here and we have this at model Contex protocol server file system uh but when we are running uh the
+server from our local computer because we have to do that if we want to add some more tools to this file system uh
+we need a bit of a different setup so this is the setup I've been using so here you can see I point at this index.js in this disc here uh in our
+mcp2 servers file system right and under that we have the folder that we want our file to be saved to so we can add more
+here but I'm just going to keep it in this mcp2 folder so this is the setup I I want to run oops to run my local
+server so the next step now is actually going to be to see if this is working and now we kind of have to go into our
+here and do this uh mpm install because we need the yeah all the package.json
+here hopefully this works fine yeah this looks good now we have our this here we have our index.js that we are pointing
+to here perfect so we can clear this so now we want to start our CLA desktop
+app so in Windows I always run this as admin and hopefully now we will have some servers that we are connected to
+yeah perfect you can see we have some tools available here now for us to use and now we can actually let me I just
+want to add some Zoom here so now we can just test this and see if our files are getting saved up here so let's just
+write us simple prompt write a python code to add two integers and save them as matt. Pi so hopefully now we just
+going to write the code and then we're going to look up file system local yes we're going to write this I see we need to specify the
+path okay just going to do save it okay so it find the allow directory and yeah
+you can see this was saved here perfect so this is working now so now we are running our MPC C mCP server locally and
+this means we now have some opportunities to kind of modify this uh index.ts here start adding some more
+tools to our file system mCP server right and that is what we are going to do so I'm going to open up the chat here
+and I'm going to try to ask Claude to help me add a new feature to this mCP
+Tool The Prompt I'm going to do here is I'm testing out some new tools from my server the next tool we need is an execute file Tool uh I'm going to do
+python node commands uh that run files in the system and capture the outputs from the Run can you help me implement this execute file tool into my existing
+server so I only used Python and node commands now because this these are the files I want to run so I want to run
+python code I want to run some node maybe some server or something and yeah it looks like we get a suggestion here because we have the index as context
+here so it's very easy for clo to kind emulate and add more tools on top of this 600 line code we already
+have uh okay uh so we're going to try this so I'm going to apply this to our existing TS code okay so let's save that
+uh I think we have to do an mpm run build now to get this
+implemented uh yes this looks better so I'm going to restart the claw desktop app and hopefully now now we
+have a new execute uh file tool just a tip if you're struggling with getting the new tools to update uh I you just
+closed the claw tool in my uh task manager here so let's open this again as
+admin okay and hopefully now we have a new oops mCP tool okay so you can see we
+have 12 now previously we have 11 if we scroll down do we have it execute file perfect so now we added a
+new tool and I think we need to test it so let me come up with a prompt here write a python code to find a prime
+number add an example test save it as prime. Pi execute it to capture the output so hopefully now we can use all the tools we have created so I'm just
+going to follow along oops in this side here def is prime okay so we have a test
+case uh so let's uh allow this to write it to our system yes I'm going to close
+this artifact here okay so we're checking the let's save it uh yes Prime
+not Pi so let's watch here good and now we want to execute file from file system so I'm going to allow this and it's
+going to be interesting to see the code has been successfully created perfect let me explain what it
+does and we can see from the output the next prime perfect so now we kind of have added a
+new tool so if we open up the execute file tool here we can see what happened
+so we ran prime. Pi we got the standard out next prime next prime next prime all
+cases passed perfect and what was the code again what was the example case it
+was putting in 10 20 and 100 that is what we did right 10 20 and
+100 yes we got it so this is how you can actually add a new um tool to your mCP
+server so I think we got to do one more cool test case I want to try to build a website just a simple one right uh where
+we can fire up a server and where we can actually run this on our local server so we're going to try to build a website
+from the cloud browser now and actually fire up a server to run this on Local Host 3,000 or something so my plan is to
+actually oneshot this this is going of interesting I'm going to read out the prompt here so let's start by creating a folder name web page in the folder
+create a file Nam index HTML server.js and other files you think we need for our landing page about running an AI startup the web page must be modern
+stylish retro terminal feel when all files are created and saved let's run the server.js on Local Host 3000 and
+view the web page so this is this is going to be like an attempt to oneshot all of this uh I haven't tried this but
+uh I think it's going to work or maybe it will we'll see uh okay we are actually looking up what we can where we
+can write our files so we added a web page folder here perfect we want to write server.js in
+this page we want to do the index.html okay we're doing some o art here so I'm
+just going to let this run there index.html is saved now create some styles.
+CSS so far looking pretty good if you ask me you're going to use the Courier new that's kind of like a terminal based
+font oh that was a big CSS file save it as styles. CSS yes let's
+create a main JS file okay this is a logo wow
+cool neuraly AI so we save that as main.ts we have a
+package Json we going to run right file and now we want to run
+this npm okay so we don't have npm in our allowed commands I
+think uh let me see uh if we can actually change that so
+I'm going to go back to our server here right index and let's do uh also add in
+npm and pip commands so this is
+allowed so this means that we can install packages I didn't really think of that but let's see if we can actually update this okay so now we are updating
+our code so hopefully now we can actually run mpm pip maybe run commands and this will help us installing
+packages so again I have to do a build here and that should be pretty much it now we can uh restart this so I'm going
+to open up the CLA desktop app again okay so if we open up now let's check the description okay so now we can
+actually do NP M commands pip commands so this looks better uh so I want to try navigate to the web page folder and run
+mpm install Okay so let's see now okay so we're going to navigate to the folder
+that looks good uh let's try
+okay now it's going to try to install this great the mpm install is completed
+I saw something something happened here so we got all our files perfect would you like me to help you start with the server
+yes start the server.js so hopefully now we will go to
+the execute tool again good run I guess it's running now so let's
+open up a browser and let's do Local Host 3000 boom we got it okay that was pretty cool here is our page look at
+that that's cool right I like this terminal style we have our logo we have our services team
+contact and yeah that is basically how you build a web page from
+um from the claw desktop app so you can see how much difference it made when we
+actually gave our tool able to run and execute commands and files uh of course
+the security risk goes way upright but we can control it by only allowing a few different types of files to be executed
+so we don't want any like XA files to be executed so this was just python files that is dangerous enough of course but
+uh yeah I I kind of take this chance I think it's just cool to play around with uh but hopefully you learn something
+from uh this today and this is kind of the the way I try to modify my own servers because there's a bunch of cool
+servers here right on the model context protocol but uh some of them have some
+restrictions uh but just if you go to servers here you can see how good the if you go to community server so there's a
+big Community around this so go check it out bunch of two cool uh servers that are other Here and Now you kind of know
+how you can yeah Advance them to fit more of your style so let's say you wanted to change up
+this Alpha Vantage server you can just download it and just do some stuff with it right and yeah hopefully that was
+pretty cool uh I really enjoyed it and hopefully I see you again very soon enjoy your day speak soon

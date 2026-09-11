@@ -1,0 +1,224 @@
+I still get a lot of questions of how you can set up AI agent so today I thought we can go through what you can see here we're going to build every
+single step in cursor so you can follow along if you want to implement this so I think I'm just going to start by explaining my setup here so we have a
+pipeline trigger this is going to be a customer request this could be an email coming into our system that is what
+we're going to do today so the first thing we want to do is of course fetch this email and getting in into a context
+for our llm to process so we're going to process this email to kind of understand the intent of the customer request and
+for this I want to use like a custom system prompt so our llm knows what to do next and what to look for in the
+email uh we might do some data extraction here this is just a side point maybe using structured outputs uh just to maybe get some email or other
+stuff we are very interested in getting out from that request from the customer and from there I think we want to create like a step-by-step plan what to do next
+and this plan goes well into our next step that is going to be select a few tools we need uh from this step-by-step
+plan to actually execute on that so we're going to build some tools that our agent has access to this could be like
+rag database calls email yeah bunch of stuff you need uh and after we have run those tool calls from our step-by-step
+plan we going to fetch all the responses uh to get that into context from the tool calling and from there I want to
+generate like an educated customer response uh I choose to call it educated
+because we try to remove all uh like non-deterministic things by adding a
+bunch of tools here maybe some knowledge we can get from rag this kind of reduces the hallucinations if you want to call
+it that and here we could just send this response straight to the customer again
+right using the email Tool uh but I want to see if we want to implement maybe some kind of llm as a judge here uh
+let's say this doesn't look too good this response if we compare it to the original request then this could maybe
+be sent to some kind of human to look at it or something we'll see if we do that uh but let's say okay we sent the
+response so now we kind of have like a full circle here we answer uh the customer with an email uh and from there
+I think we want to set up maybe some kind of customer event history let's say the customer responds again then we kind
+of want all of these actions that were taken here in some kind of context that the agent can pick up so it knows what
+we have been talking about before right so this is what we're going to build today it looks very complicated but it's not that bad it seems very yeah this
+looks a bit strange but uh as you see when we get into cursor now start writing out some code I think this is going to be pretty simple to set up
+actually and it could be very effective for uh maybe not your business but uh this is something you can take out to
+customers let let them think about do you want this kind of setup could this help you so this could be a good business IDE if this is something you
+want to get into uh but now I think we just going to head over to cursor and start writing some code and set this system up the first thing I always like
+to do is just start Gathering some documentation I know I will need for this project so I usually just do like a
+folder here I call it just docks uh let's say uh we need some mail gun this is what we're going to build uh our mail
+tool from so we want some uh information about the mail gun documentation so I just went over here I guess I could put
+on dark rther here and I'm going to capture some documentation from mail gun here so what I like to do is uh I
+selected python I'm just going to copy some information here so let me just grab this just going to paste this in
+here we got a couple hundred lines of documentation that we can use in our programming here uh I also think we just
+want to use open AI uh for this project so I'm just going to grab uh create an open AI MD file uh I went over to the
+documentation here from open AI text generation uh I think we want that so let's copy this page paste it in here
+it's a bit much but uh yeah I think it's fine uh do we want any images I don't think so structure outputs yes we might
+use that so I'm going to grab that paste in that uh do we want some function calling yes we do so I'm going to copy
+this documentation grab this now we're up to almost 4,000 lines of documentation uh I think that's enough for now uh let me
+think let's go back to our schedule uh this is here is there anything else like
+we probably would have needed some rag documentation here uh but for this setup I'm just going to like simulate Rag and
+create just a text file that is going to be a rag I think uh I don't think we need to create a full rag setup uh in this
+sample uh but yeah I think I'm pretty happy with my documentation now so I always create like a do en EnV and let's
+start create some uh we need maybe like an open AI API key here right something
+like this uh equals and we need like a mail gun AP key uh that's something I know we need so let's start with
+those and I think that's it uh let's start doing kind of our first prompt here uh we can also create
+maybe let's create a folder that's called uh I don't know uh customer request or something
+and this folder here we can have a file called uh incoming email something like
+this this could be just a text file I think that's fine or Json maybe
+Json let's call it Amon I like that format so this could be our incoming email that could come from a database
+this could come from anything but this is what's going to trigger our pipeline right okay so we have our documentation we have our customer trigger here the
+email that's going to come in we have some simple EnV file uh I think we want to create a virtual environment just to
+yeah and we can activate this uh something like this okay that should be pretty
+good and yeah okay we have that set up so now uh I want to start thinking about the prompt here so I'm going to put in
+my EnV file I'm going to add the open AI documentation I'm going to add the mail gun
+documentation uh okay not it but fine so now we have this now you can kind of choose do you want
+to use the composer do you want want to have a bit more control using the uh the chat so for this example I think we want
+to use the chat just so we can kind of take it more step by step the composer kind of speed things up a bit but uh
+it's not so easy to follow along so yeah let me just write a prompt here now and then we can start building out some code
+here okay so I finished the prompt I'm just going to read it out if you want to skip that's fine so the prompt we going to run is uh I'm creating a system that
+should work as follow number one the system must check for new incoming emails in the at incoming email
+Json file that we have here and then we're going to if there is a new email in this file we should start the AI
+agent pipeline the AI agent fetches the email from the incoming emails Json file into context then we use the open AI API
+call with the GPD 40 model to get the intent of the customer email use a custom system message here we should
+also use structure outputs to ex ract email addresses and dates from the incoming email and save it to a data.
+Json file because we want to use uh the email address when we going to reply so we want to store this in a place we can just fetch it easily in some kind of
+Json structure number six after processing the incoming email and getting the intent we must create a step-by-step plan to handle a response
+to the customer this plan should include tools we need to call read our knowledge base so I'm going to create that company
+secrets. MD so this is kind of the rag check for available appointments that's going to be our schedule. Json file we
+can read using a tool and we have our mail gun send email tool from this plan we should run all the tool calls the
+agent in is needed collect all the tool responses in context for the file on generation of the response to the
+customer when the customer response is ready use the email tool in a combination with the data. Json to get the addresses to reply to the customer
+can you write implementation of this system for me uh so that is going to be our initial
+prompt okay so I have it here and I haven't decided what kind of model to select here uh I think I'm going to try
+o1 because I found out o1 is really good at this long uh kind of step by step
+instructions so I think we're going to try to run the 01 model for this prompt just to see if it works if not we're
+going to switch to CLA 3.5 so I'm just going to run this now it's going to take a bit of time okay so I hit my hard limit here on 01 okay so I updated at my
+limit now I think we can run a one here right so this is of course going to take a bit of a time because it's a long file with detail so I think I'm just going to
+let this run and then we're going to try to implement uh the code and start testing out some details from this to
+see if we need to make some adjustment from our initial prompt here okay so we have the response from 01 so let's just
+go over this to just to see how it looks like on the first ey yeah we have our incoming email so here we want to do
+like an example that's fine uh I think we want to apply this uh I'm going to make it like on my own here but uh so
+let's just apply this example mail that was nice to add that okay good uh we have a schedule. Json yes we need that
+too perfect this could just be here yeah that's fine so 01 here added some example data that
+we need to actually run the script so I thought that was very nice and data.
+Json this is just going to be an empty file I think for now because we need to extract some data we need a company
+Secrets okay I like that it created the example data we need here so this is the company
+Secrets uh okay tool schema. P perfect this is some thing we need so let's just do tool schema.
+p uh this is kind of the schema we want for our Send email via mail gun uh
+function perfect we scroll further down we get our tools dopy Happy Days that's good
+this is uh what we're going to call our tools so our tools is to read our knowledge base that is going to be our
+company Secrets right check our schedule this could be our Json file schedule.
+Json and we have the tool send email perfect that is what we wanted so far so good if you scroll further down we get a
+main.py uh I just want to apply this and take a quick look here so this is the main orchestrator we got to import open
+AI tools we're going to import those tools perfect we have a system message does it mention our tools here that
+would be great um maybe we have to change that up we'll see so if you just read
+explanation now loads incoming emails check for process uh we're going to call open a with a system prompt requesting a structured Json extraction of the user
+email saves the extracted data in Json data. Json creates a step by step plan plan to decide what tools to call calls
+the mango function to send the final email makes incoming EMA marks the incoming email as the process
+perfect uh now we need to update our system variables did we get any information
+about what to install here so now I kind of like to switch to CLA 3.5 Sonet again
+since we kind of have the the context here what Libs do I need to install so
+let's just ask about that and then then do like a pip install here pip install open AI request and
+python let's do this and yeah I think we want to test this out uh I'm just going to alter the email a bit uh I'm going to
+do my email address here okay so I kind of set my open AI key my mail gun API key I wanted to do I needed to do one
+more thing I needed to set my mail gun domain here so this is AIS sv. Tech this
+is my mail gun domain so if you want to copy this you need of course your uh mail gun so I'm going to do from uh yeah
+let's call it AI swear uh no reply okay that's fine so this is our setup for our email and I
+think that looks pretty good now and our schema looks good so we need subject
+line uh yes I think everything looks fine there in our main is there anything
+else we need to change I think we're going to try the prompts that uh 01 suggested for us uh but I think
+everything should be set up now and we are ready to run this so the incoming
+email I think is going to be inquiry about scheduling a new appointment okay we have the date we have the from so the
+email is going to be hello I like to schedule a new appointment sometime next week the date I'm looking at is May 12th let me know what times are open and what
+the cost would be for 1 hour session the user wants or the customer wants to see if we have something available next week
+we do here is our appointments and it wants uh some pricing so I think we need to add some pricing so you can think of
+this company secrets. MD this could be a rag right but for uh e sake here we're just going to do a markdown file so
+let's just create a price structure here for appointment so we kind of have this in our yeah knowledge
+base and we offer appointment I think that's basically all we need let me move this and save that so now we have
+something to work with so yeah I think we're going to try this now uh I'm not confident that this is going to work first time to be
+honest uh but let's see now so we have the incoming email so remember what we want to do do now is take this incoming
+email fetch it process it extract some data create a plan do some tool selection uh get these tool responses
+generate an response send it and maybe yeah I think that's what we want to do now okay so let me try to run this now
+to see what issues if we have any here uh I don't think we added okay so we have the AI structure output
+reply here we have the tent okay SK appointment we don't get the email address that's an issue here's our
+step-by-step plan so we're going to go through this after I think uh read the knowledge check the schedule if the date
+is available proceed to next step uh prepare our response include a
+cost use the send email to send it uh okay so we have some issues here
+we have a 401 unauthorized to send this okay that's fine I guess I
+think this is a good start we got almost everything we needed you can see we did
+not get the email address uh let's look at data here did we save it yeah we
+didn't get the extracted email address I think we need that because we want that when we are going to respond to the
+email so what happened here here uh okay so we can just compare this data so I'm just going to copy this
+message and put this in a chat I'm going to take this in the chat and we need our
+incoming email in the chat I think that's fine so let me do a prompt here so I'm just going to do we did not extract the email address can you fix
+this so it's probably just some kind of setup here we need to change uh I guess
+we can clear this for now the issue is in the system prompt for the openi call uh yeah we need to
+specify to extract from from field I think this should be an easy fix so let's see okay so let's run this again
+hopefully this time now we will get our email extracted yeah perfect okay so now we got it so maybe what we need to fix
+now is actually the mail gun call because we did not send an email but now we have the intent we have the email we
+have the date and the next part now is going to be to create a new stepbystep plan we're going to check our knowledge
+uh we're going to fill in our email address so let's see if we get a client error here now from mail
+gun send the email we mail gun we have the two subject body I guess we did miss the two field uh on our last attempt so
+this time it might actually work um NOP we got an error 401 client
+unauthorized processed email ID one done so if you go to incoming email now you can see we added this here this means
+that this email has been processed so at least that is something good if you look at the previous version we had zero here
+so this means that this email is finished so that system is working good that's uh nice at least but we need to
+fix this this part so let let me come up with an idea how we can actually send the emails okay
+so after looking into it uh I think there was my mail gun API key that was wrong so let me just try to fix that okay so I updated my API key I think
+this should work now so I reset uh yeah we uh fetch our email address we get our
+May 12th schedule appointment intent so I really like the structured output here it seemed to work pretty good and we
+always get the same so that is and perfect now we're going to create our stepbystep plan to actually handle the response we're going to read a knowledge
+base uh we have the 1 hour session inquiry check the availability on May 12th if the request is available move to
+step four is not if not go to step five now we're going to respond and hopefully now the email works success perfect so
+it's sent let's see if I get an email down in behind my face here yeah I do so let's read this email now let me zoom
+in a bit here dear customer confirmation for your appointment request on May 12th perfect
+thank you for reaching out to us on schedule appointment we appreciate your interest in our service unfortunately due to high demand we run out available
+slots on May 12th apologize for this however our team is ready to accommodate on an alternate date Monday to Saturday
+for a standard hour session the cost would be 15 50 we also offer a package deal if you reference all about AI take
+advantage of this senior citizens and students all titled to discounts please let know alternative date let me Works
+look forward to providing perfect this is a very good response uh I can see there are some few things we are missing
+we need uh some kind of sign up here and is there anything else it is a bit verbose but it's not too
+bad dear customer let's see if we can extract a
+name to Dear customer is a bit nonpersonal so let's see if we can
+extract a name to answer the email with and we need some kind of sign enough here I think we can fix that in our
+system message let me just put this down so we're just going to do great this is working we also need to extract the name from the body of the email to respond in
+a more personalized email starting with hello name can you fix this so uh I added some context incoming email mail
+tools and data Json that should be great so I think we just need to make some small changes in the structured outputs
+here uh yeah the customer name look for a name in a signature or something and we're going to add this uh in our
+structured outputs customer name perfect I think that should work pretty easy to be honest shouldn't be too bad to get
+that set up uh and yeah let's just implement this into our main and let's
+set uh this to zero perfect do we have any data here now I remove that so I think when we run this again now we
+should probably yeah just do it hopefully now in this direction we will also see the name John Johnson yes we got that so
+hopefully now we should see hello John Johnson and hopefully we have best regards Chris AI agent that is what I
+hope for okay so we got it uh let's open up the email and let's read it again hello John Johnson perfect that is nice
+it's a pleasure to serve your quest for the appointment uh I'm afraid to inform you that yeah that is consistent uh okay so we did not sign
+off with our name uh we have to fix that let me come up with a solution to fix
+that I think uh other than that I think think it looks perfect to be honest let me just try to fix this we can do this
+with uh cursor I think so I'm just going to do a simple good job uh we don't sign off the response correct so just add an
+example this should be best regard new line Cris New Line agent uh please uh
+solve this so I think it's just a a small adjustment in our system message most
+likely and then we should be good to go yeah here we have kind of the final prompt message I think I put it in the
+wrong system message uh but this should work good so let's try to run it one
+more time just to see that our sign off is perfect okay so let's open up the mail hello John Johnson let's go here
+best regards Chris aient perfect so now we got that settled that is good uh I'm happy with this pipeline now this was
+everything I wanted but I want to see if we have a grip on new incoming emails so
+this is incoming emails right and we have last process so this email should
+be completed now that was the ID so I'm just going to ask cursor here to write a
+new incoming email uh with a different
+uh request keep the old one the new is uh ID to
+okay so here we have a new email uh appointment request for May 11th I'm going to just change the mail address to
+my email just because so we can get it so this is a different appointment
+request best regards Sarah I'm flexible
+uh let's say do you have a student discount because we have that
+right so okay so this is not processed our last processed ID was one
+right that is important because we have done that so now I think we could handle a new incoming email and Skip kind of
+the ID one yeah we skipped that right perfect so now we just focus on the new incoming email so this was from Sarah
+May 11th and yeah pretty good so this is everything we wanted now we kind of have a store of different emails stat is
+coming we have assigned an ID to this this is quite important because we can go back and look at the IDS from this
+email here we got it so let's read this hello Sarah I hope you're doing well thanks for interested in our service we have no available
+times uh okay as for career about student discount we offer y perfect this applies to all uh thanks again for
+reaching out uh perfect yeah this is pretty good so now you can just see how
+easy it is to adjust go into your uh here you can adjust your schedule uh I guess this was a bit
+bugged I didn't really know how to set this up but uh we can work more on this schedule setup here I guess seems a bit
+buggy but uh there's a bunch of stuff you can do here in the system message to kind of get this response exactly how
+you want to interact with your customers we can add a bunch of new different tools here in our tools. piy if we need
+that tool schema there's a bunch of stuff we can expand on this AI agent now to handle more and more complex uh stuff
+uh but if we go back to my drawing here um yeah I think we kind of fixed all of
+this I guess we didn't Implement llm as judge this might be something we do in another video uh because then we need
+some good example data from responses that has been approved to feed to the llm so it can look at what we're going
+to send compare it to what we have sent before and say true false if it's false send this to a human to kind of respond
+instead of using the agent that is a simple solution to that issue but uh yeah how long did this take me to set up
+this AI agentic system to handle incoming customer emails I would say I spent yeah around an hour maybe and of
+course you have to do some deployment here and we need a data line data pipeline to feed in the emails but it's not that hard and this could save a lot
+of time just for maybe some standard requests right so I see a lot of good use cases here so if you want to copy my
+exact set up here go ahead do that start interacting with businesses and ask if this is something they want there must
+be some kind of market for this because it is very efficient and cheap and the customers get a reply straight away and
+they don't have to wait right so there's a lot of value in just responding to the customer straight away with uh at least
+an initial response it doesn't have to be like set in stone but you can see we handled uh all of this company Secrets
+the pricing the discount was perfectly handled here and here is just your imagination and your knowledge base that
+kind of sets the limit of what you can do with this so yeah I think we kind of achieved what we wanted to do here I hope you enjoyed it I hope you learned
+something and yeah I might put this code up on my community GitHub if you want to become a member of the channel uh yeah let's see what people
+want if you want this code I can put it up uh and yeah hope you enjoy the rest of your holidays and look out for 2025
+there's going to be a bunch of more AI agent videos so if you are into this uh give this video a like maybe follow the
+channel and hopefully I see you again very soon bye-bye

@@ -1,0 +1,338 @@
+over the weekend uh I've been diving kind of into this post by anthropic that is called building effective agents uh
+this came out a few weeks ago but I haven't really looked at it and I just found it very interesting and I think it could make a good introduction video to
+agents how you can actually use them yourself so what we're going to do in this video is uh you can see here uh
+anthropy goes through like an example of how you can use an agent in different ways so what we're going to do is we're
+going to build out all of these examples in code just to do an example so we're going to build out an example of the augmented llm we're going to do some
+prompt chaining we're going to do some model routing we're going to do parallelization so each of these categories is going to be a new code
+that we're going to test and see how they work in practice but uh I think we're just going to start on top here uh
+just to know what uh anthropic uh Define as an agent so they have kind of two uh
+ways to do this so at a Tropic we categorize these variations as agentic systems but through an important
+architectural distinction between workflows and agents I think that's good so they say workflows are system where
+llms and tools are orchestrated through predefined code paths agents on the other hand are systems where llms
+dynamically direct their own processes and Tool usage maintaining control over how they accomplish tasks so this is
+what we're going to look at today uh I think we're just going to go through this from top to bottom so we're going
+to start with uh building blocks workflows and agents we're going to start with the first building block that
+is the augmented llm I will be using cursor for this so if you are using cursor to it should be easy to follow
+along uh I think we just want to start by just creating a simple API call I think we're just going to use open AI uh
+I'm most familiar with their tool calling so let's just head to their documentation here on platform. open.com
+let's just grab some information about their text generation and what I did is I just created a text file pasted it in here I
+also did grab the full article from anthropic effective agents. MD so we have kind of the documentation if we
+need some extra help uh I think we're going to try to do it without that but let's just get going here so uh I think
+the first thing we want to do is just make a simple call to open AI so uh I'm just going to add the text and let's do
+a simple prompt here so I have my open a AP key set in mymv uh I added kind of the context here
+and let's just to write a text gen call to the open I API print the response only print content so this should be pretty strong straightforward uh we just
+want to have this base for when we start using um start
+using an in so let's just apply this and I think we need from load and let's do
+this OS let's use gp4 o and yeah that looks pretty good so
+let's do python augmented do PI hopefully this works
+first time uh yeah why do programmers prefer dark mode because light attracts
+bugs so this was just a short joke about programming uh yeah we want to use GPT 40 it always defers to gp4 I don't know
+why it's a bit strange uh but that is kind of our setup now we have um code here we can work on and expand on uh
+like I said I have my open AI key just set here and that is basically it we can remove this so if we head back to the
+article now what is the augmented llm so if you look at the schema here
+you can see the basic building blocks L llm hands with augmentations as retrieval tools and memory so our
+current model can uh actively use these capabilities so basically a simple agent that can do search queries use tools uh
+you can see here we have some retrieval maybe rag we have tools here we have memory so this is a pretty basic setup
+uh I think we just going to create a simple call using uh some kind of tool and that is should be a good example of
+the or Meed llm right uh you can also say they talk about model context protocol I have a lot of videos on that
+so mCP that is also an example of the augmented llm so let's just do this uh
+let's just uh we can continue let's start a new chat uh let's grab our code uh but I think we want to create a file
+here that's called Fun uh fun function call. MD or
+something uh let's head over to the open AI uh add documentation let's go to
+function calling and let's copy page so let's grab all the documentation on function calling paste it in our MD here
+and add that to the context so you can see I added an open vther API key yeah you can just use this if you want to
+this is just to so we can make uh an API call so let me just do a simple prompt here so let's just do uh I want to use
+the open Weather API as a function call tool in our augment py code use uh or add tool use so we can find the weather
+for a specific City uh I think that should be enough because we only need to create a we only need to add some code here
+that has kind of the tool schema set up and yeah it's using the get weather function good that's what we need we
+want to capture temperature description and humidity here is our tool schema that looks pretty good and GPT 4 we need
+to change that we have some cleaning uh let's see now so if we apply this let's go over here we really want
+to use GT40 same here and let's save that and
+yeah that looks pretty good so what we're going to do now is we have this function here that's called get weather so this is going to call or use our open
+vther API and it's going to take a city as an argument I
+think and it's going to use that to search up to find the temp hum humity and the description of the weather from
+this city here we have our tool schema this is uh calling up the function we just creat the get weather function get
+weather for a specific City and the city name of the get weather information so when we make the
+call we want to decide a city here so this could be Tokyo let's start with that and we have Tokyo to send it back
+to the model so this uh interior now when we run python augmented P hopefully
+this finds the weather in Tokyo using our API yeah today's weather in Tokyo uh characterized by Broken clouds
+temperature of 4.5 Celsius and 47% humidity so that work pretty good so
+what we can do now we can change Tokyo let's do Oslo so I think we need to change it
+both places so let's check the weather in Oslo uh again we are using basically the same
+setup uh Oslo is overcast minus 11c and 87% humidity so this is how you augment
+the llm we give it some kind of action it can take or some kind of tool in this
+case is was the tool to actually get the weather here uh there are some more things we can do to make it more
+reliable we could add the say like a system here so to do that I think we
+just create a new role yeah system role you're a helpful assistant that can get with information uh use the tool or something
+like this to get the information so we can add uh a system message here if we are
+struggling the model to actually call in this so I think we need to add this uh in both places like this and this should
+also work now I think uh it doesn't make a big difference but I like to have
+um system messages right and in the system message we can also specify
+something like uh return the response as a poem or something like
+this and this could be we can do that here too
+return uh return the response as a poem right so now we should probably get um
+response from the weatherin Oslo as a poem right yeah you can see in os's Embrace quite cold great story so this
+is how we can change up things by just ch using a system role here so always
+think of that if you have some specific requirement of the output uh so that is basically how you
+can augment an llm so this is how anthropic is thinking about to we can of course add memory to this we can add
+query rag results and mix all of these together uh but I think the tool calling kind of uh represents what they were
+thinking about here uh next up we have something called prompt chaining prompt chaining decomposes a
+task into sequence of steps where each llm call processes the output from the previous one you can add prity checks
+see gate so we have a gate here and uh when you use this workflow ideal for situations where the task can easily and
+cleanly decomposed into fixed subtasks main goal is to trade off latency for higher accuracy making uh each llm call an
+easier task so we have some examples so basically you can can see we have a call
+we get an output from this llm so we're going to decide is the output okay if
+it's good or if we get an output we should pass this to a new call and so on
+so this is like prompt chaining so let's just set up a simple prompt chain here and you can kind of see how this works
+to do some chain P thing I thought we could just continue on the code we have but uh I want to turn it into a function so I'm just going to do turn this into a
+function named open a tool call where the argument should be a string with a city name uh because I think that's just easier if we have a function and then we
+can kind of manipulate the responses so let's see what we get here uh let me take a quick look return yeah that looks
+good so um now we just need a city name as the argument so what's the weather
+like in city today uh and yeah so let's just do probably something like print uh let's
+do Oslo let's see if this works so now we're just going to send in Oslo and we're going to print the
+response okay that looks pretty good uh but now uh I kind of want to store this in a value so let's call this
+weather one or something and we can do this print and this should work too so now we're just
+going to store for this uh in this value here and here now we can kind of use this uh in our next API call since this
+has captured the weather from the first API call and that is kind of we what I mean by Chain prompting so if we create
+a new function here now let's do let me just come up with a simple text generation function here so let's just
+do create a simple text generation function that uses to open a i API as an argument so let's just use um cursor to
+create this for us and now you can see we have a generate text this take the prompt as an argument we call gp40 uh we
+don't need a system message here but now we are going to do something else here so let me just show you so let's just
+bring this weather one down here and now we can do like an F string prompt right
+so let's just do something uh compare uh weather weather and we can do equals and
+let's do generate text but now let's do like an F string here and we can do Oslo
+uh and we can do weather uh but let's compare not Tokyo
+compare the in Oslo now um against the average or something
+and we can do something like um let's bring this to the front so
+let's do weather in Oslo now right compare this weather in Oslo now against average
+weather in Oslo so now you can see we take the response from our first call that is going to be just to get the
+weather and we're going to feed that into a new call that is going to use like an F string to we have the live
+weather in Oslo now we can compare this right so if we run this now uh hopefully
+we will uh yeah get a response okay so now you can kind of see uh to compare the weather with the average you can see
+the average is around - 7 to minus1 now it's - 7.8 uh conditions that are typical
+slightly colder than the average humidity uh humidity of 41 is quite low for Oslo in the winter so you can see we
+kind of use the response from the tool call into a new prompt uh that kind of compares the weather with the averages
+that comes from the original training of open AI GPT 40 right and we can just continue now we could take this variable
+and use it in a new prompt so we can chain them together uh this is could be very helpful because
+sometimes the response you get here is what you need to solve the next problem so I think this is what an Tropic is
+talking about when it made promp chaining we want some initial answer we need to pass this because we need answer
+from one to answer two we need answer from two and one to answer tree and yeah so and so on right uh I'm going to be
+making a video where we going to do loads of prom chaining with different AI agents soon so look out for that uh yeah
+I think that example kind of covers prom chaining uh now we want to go on to rooting so I thought we can do this uh
+let's see how they they talk about this so routing classifies an input and directs it to a specific followup
+task uh this workflow allows for separation of concerns building more specialized prompts without this workflow optimizing for one kind of
+input can hurt performance of other in of other inputs right when to use this
+workflow routing works well for complex task distinct categories okay uh Direction different types of customer
+services rooting easy and common question into smaller models uh I think we're going to do a model rting
+example so how are we going to do this I think so I think we need to create a
+router that kind of decides is this call going to go to GPT 40 mini or maybe 01
+mini or gp4 oh we'll see So based on the input we need to create some kind of router that decides yeah what model
+should answer this and then out so I think that is kind of what I mean by routing but they are bit different you
+can have different prompts you can route to we can maybe do that too let's see so yeah let's head back to cursor and do
+this example just to make this uh a bit more easy let's just use what we have here so we want to keep the generate
+text function but I think we want to remove the get weather and tool call function so let's start with this
+generate text function I think I'm going to call it rotor agent or something like this so this is just going to take in a
+prompt that comes from yeah we can fix that afterwards so this is going to be the router agent so I think we want to
+give this a system roll maybe so let's do yeah a system roll for
+this uh I'm going to come up with a system roll here because this is quite important uh we need to decide what kind
+of model is going to be the rotor to uh let me think two seconds about this and how we can do that so now we're just
+going to do the rotor agent is to send the user input to the correct model so yeah you can see here I changed up the system message you are an llm router
+agent you're are to rout the user input to the correct model uh or agent uh what's my ID here I'm just going to call
+it agent doesn't matter too much so you can see we have some parameters to consider when to uh root the users's query do the user input require
+extensive reasoning if yes send this to the reasoning agent matter coding yes send it to the reasoning agent does the
+user request just a simple conversational answer send it to the conversational uh agent so it's a pretty basic setup so now we just need to
+create two different agents so we need a def reasoning agent right so this should
+be pretty straightforward yeah GT40 for that and
+for the def uh conversational agent we can they pretty much do the same so
+let's do GPT 40 mini for this one is that the correct I think so so now we
+kind of have a mini uh that is cheaper and faster for the conversational requests and we have
+uh GPT for o that is the reasoning agent maybe that could have been like 03 or 01 uh that would have been a better choice
+but uh yeah just to keep it like this for the example set so now we're going to start sending uh The Prompt is going to go to this agent
+that is going to decide we need to add some code here uh where to go so I think I'm just going to request CLA to help us
+set this up so I'm just going to do the prompt we need a router agent to take the user input first then we decide where to rout the question next the rout
+agent should just decide where the request go it shouldn't answer it so if the user input this hello the agent should send this to the conversational
+agent and so on then the user should only see the uh output from the conversational agent and get the answer back from this agent so let's implement
+this okay so see uh I think this is going to be pretty straightforward uh yeah I had a suspicion that it was going to change up
+my system prompt so this is just going to relook at the response should be reasoning if it's one of those and
+conversational if the response is this uh we can just apply this and I can kind of show you here what I meant so now we
+just going to have like a uh so if uh root two is reasoning we're going to send it to this uh if not we're going to send it to the
+conversational agent so let's do a quick test here so let's just start by doing like the router agents we're going to send in
+just hello right so hopefully now we will only get the response from gp40 mini that's going to be the
+conversational agent yeah you can see we routed to conversational agent hello how can I help you today uh let's do a
+coding question here uh so let's put in a different argument here so now let's do write a
+python code to calculate the area of a circle so hopefully now this should mean be are routing to the other agent yeah reasoning agent and that is kind of how
+we set this up uh we should now get like a python code to calculate uh yeah so that is pretty straightforward too but
+it can be powerful because we can save money right H let's say we have this in a loop sometimes we get the answer from
+mini if it's just conversational but if we need more power we get it from the reasoning agent uh the thing is we lose
+latency because everything has to go now we use GPT 4 that was a bit slow but that's fine uh so everything has to go
+through the router agent and we need to be sure that this is able to make the right decision uh but it shouldn't be
+that hard to evaluate that and of course this is going to be more expensive too since we need to make a a additional
+query to the API uh but if you look at what anthropic said here so this could
+work well in like yeah picking models and different types of customer server server
+queries so sometimes we rout to a prompt about refunding request technical support uh so what we didn't do here is
+like like I said instead of having conversational agents we could have different prompts so this router kind of
+decide what input should be what kind of prompt this input should be sent to that is also something you can do and it's
+not so hard to set up uh but I think this show how we can create a simple router that divert the input
+where it's most likely to get the best or the cheapest or most optimized uh response the next workflow is going to
+be parallelization so here you can see llms can sometimes work simultaneously on a task and have the outputs
+aggregated programmatically so what we're going to do here is uh sectioning I think uh we could do breaking a task
+into independent subtask run in parallel uh they also suggest voting so this is running the same time uh same task multiple times to get different outputs
+uh I think we're going to do sectioning so we're going to do I think we can do like an async call do two uh prompts in
+parallel to get two different answers to kind of yeah let's say we ask for the weather here we ask for some kind of
+other stuff in llm C 2 we aggregate all this into yeah some kind of prompt and
+then we can use both results to get the output so when to use this workflow uh paralyzation are effective divided
+subtext that can be paralyzed for Speed or perspectives right so yeah we have some examples of how we can use
+sectioning and how we can use voting uh it shouldn't be hard too hard to set up if you use Python we can just do like a
+um Asing call here I think so let's head over to cursor and try to set this up so in our code here I just went back to one
+simple call here so we're just going to use the llm agent uh function that takes up prompt in and gives our response back
+so we can use this maybe we need to add one more function but let's uh show you I going to show you some kind of uh
+workflow we can do in cursor here so we have our code here remember we added the full effective agent article here in uh
+our documents so if we add this to our context here right uh effective agents.
+MD uh so let me do a prompt here so to see if cursor can create this parallelization call for us the prompt
+here is going to be I want to create a parallelization llm setup with two agents I think I meant three agents the first agent should answer on one
+specific question the second should answer another in parallel to optimize for Speed feed both of these answers to
+a third agent that takes this Aggregate and gives a final answer print all answers along the way implement this
+into my code so now this is probably going to create three different functions and we're going to run them in
+a Synco right perfect that's what I want to see we have llm agent paralyzation llm
+processing and yeah that looks pretty good so let's add this to our code uh it
+keeps referring back to gp4 it's very annoying uh but let's do GPT 40 so this
+is just a basic function that takes a prompt so we have uh the processing
+agent 1 2 3 system one and two analytical and we have a creative
+assistant so here you can see we run this in a thread to do this in parallel we get the both results we feed those in
+with an F string here so we get the analytical perspective the creative perspective then we want a balance
+complete answer from both perspectives Ives then we synthesize this into
+one answer so we get we return all of this okay that looks pretty
+good so let's run this and see what we get back here and also let's add some prints here right we get that I
+didn't see that so we can actually see what happens so let me open this so let's do python augmented so
+hopefully this should be pretty quick now because we are running this in parallel so yeah we don't have any along
+the way here so we're just going to get the final output we're not streaming this but let's see now how long this takes okay so if we go further up now
+you can see we have the analytical response perfect we have that angle we have the creative response angle and
+finally we have the final synthesis so here we take and aggregate both
+different angles from both the first agent and we kind of get like a final answer
+that take both angles into consideration so this um parallelization can be very
+powerful uh but of course you make more calls but you could also save time by doing it in parallel instead of
+serializing this so yeah I use this sometimes can be very effective if you need different angles but there's a
+bunch of things you can do with this like they said you can run multiple prompts uh with the same same task they diverse outputs so there's a lot of
+opportunity and flexibility while running this system uh if you go back to our article now the next part is going
+to be orchestrator workers so this is a bit different that we've done before so in the orchestrator workers workflow a
+central llm dynamically breaks down task and delegate them to the worker llms and
+synthesizes the results so this is almost like we did before we have like a central llm that takes in the prompt uh
+it kind of knows what work worker it has access to the idea is that the orchestrator decides where the where the
+call should go and these agents are going to do the task based on the information he gets from the orchestrator and it's going to be
+brought back down and synthesized uh for the after we get the response from these llms so this should be pretty easy to
+set up uh I think we're just going to do two workers uh so when to use this well suited for complex task where you can't
+predict the subtasks needed right in coding for example uh the number of files needed to be changed uh the nature of change in each file is likely
+dependent on task we have some examples coding products can make complex changes to multiple files search task that involve Gathering analyzing information
+from multiple sources for possible relevant information uh I would say it's pretty similar to what we looked at here
+for routing uh but this time um we not going to just route based on what we
+have here uh we're going to delegate this more into tasks right so again we're just going to go back to our
+simple code with our API call here with the llm agent uh function so we just going to add again our effective agents
+uh I think we just going to try the prompt uh I want to create a workflow with two orchestrated workers implement this so here we should look at the
+content from our effective agents article and again this shouldn't be too hard for cursor to figure out I think
+it's going to be pretty straightforward we probably need some yeah worker IDs or something like this so let's just see how it wants to
+set this up okay so let's add this to our code here so I'm just going to do like this and we can blow this up a bit
+so here you can see now we have a function called orchestrator that takes a task in so this is going to you are an
+orchestrator that breaks down task into subtask analyze the following task breaking down to two different subtasks
+that can be handled by workers return the subtask in clear numbered format so we have the task here right and again we
+want to use 40 and you can see we have some subtask we're going to assign this to different
+workers so we have worker one and worker 2 right synthesize these workers return to a final response we're going to bring
+the result back to our uh orchestrator agent you want to use GPD for for that
+uh in the worker function you are worker and we give them ID given these subtasks focus on completing this worker ID right
+subtask that's going to be given from the the orchestrator great uh that should be pretty pretty much
+it so let's see how we give our task now I'm just going to figure that out so I think we can just do like final result
+yeah that looks pretty good uh What are the implications of AI in healthc care let's come up with a different task that could be a bit more interesting so let's
+just try I need to create a software in Python that can add two integers and sell this to a client very basic task uh
+so let's see what happens now if we run this so hopefully now we will delegate this to two different agents uh I didn't
+add any print so we probably won't see that uh we might go back to add some print statement uh or just wait a bit uh
+let's add those print statements that's a bit interesting to kind of see again it's stuck on GPT 4 it's very annoying
+uh but yeah now we have some prints here that looks a bit better so let's bring this back uh let's run this so so
+hopefully now we can actually see what the worker is answered so here we have the subtask so one task is to develop a
+Python program that takes two integ as an input calculate and display the result oh that was a bit
+quick and the other subtask is going to be to prepare a Sal strategy to Market
+software to Pro uh potential clients uh it's a bit strange task but uh you can see the worker r result was
+uh to write the python code to add to integers good job and yeah we have some explanation
+and we have the worker two result to prepare an effective sales and marketing strategy uh developing subtask one we
+will do the following steps okay great and the final response is developing and marketing of a basic python calculation
+tool so we have the software development we have the marketing strategy pitch sales pitch conclusion so yeah
+perfect that's exactly what we wanted so our Central agent here kind of wrote out the subtask that is an important part it
+delegated the subtask to two workers the workers executed these tasks sent the
+information back to the orchestrator that then synthesized this into one answer and gave a final response to the
+user with the business plan and kind of the software creation so yeah well done not so hard to set up but can be very
+effective so like I said previously in this video I think I have a plan to create a kind of big project where we
+have like tens maybe 20 uh different agent that's going to work on like the same task think going to be pretty
+interesting but yeah I think that's it for the orchestrator worker workflow it's pretty interesting uh and the final
+one is going to be the EV valuator Optimizer this is something that's always also pretty interesting it's
+almost like llm as a judge or something like that uh so let's take a look at this this workflow is also something I
+really like so here we kind of one llm calls generate a response while the other provides evolation uh in a
+feedback in a loop so basically you can think of this like I think we're going to do llm one uh creates our python code
+the evaluator looks at it and says m not good enough send it back with feedback do this to improve this it tries again
+no it tries again yeah now you're good then it's accepted and it's going to be sent out to the user something like this
+this workflow is particularly effective you have a clear evaluation criteria so this is only useful when you have
+something that you can evaluate right it's really hard to evaluate an essay or something like this but like uh some
+kind of code or something could be easier so here we have translation nuances that translation uh llm might
+not capture initially uh complex search Tas that require multiple rounds of searching and
+Analysis to gather information so one thing that can be a bit difficult here
+is the evaluator tends to often agree so it could be very easy to accept
+the result but let's see if we can get it at least to go in one Loop so uh I think we just going to I went back we
+just have a call here to the open a API and I want to do the prompt I want to create a workflow with an evaluator
+Optimizer we should evaluate the quality of a python code for approval if the eval fails retry until it passes
+implement this so again it's not that hard to set up but you might have to work a bit on the system prompts here
+and what kind of model you use to evaluate because sometimes it's a bit it's not so
+strict H it just said yeah that's good looks good to me let's just get it out here uh so let's take a look at the
+suggestion from Claud here we have an evaluator code function that's fine we have an optimize code
+function we have an llm agent for iteration in a loop uh I would just want to watch this bit bigger here again it's
+using gb4 uh it's very annoying I guess we could use gd4 for the evaluation but uh let's use 4 all
+right so let's have a look here so this uh your senior developer code reviewer
+evaluate a given python code for Quality return a Json with past Boolean or feedback string okay that smells like
+trouble but let's try it please evaluate this code we feed in a code here that looks good optimize code you're a python
+expert implement the improve the code given based on the feedback okay llm agent your python Dev
+so this is this is the first so this is going to write it's going to send it to the evaluator and we can improve it
+right so let's just try this out and see how this setup works so we can just do
+yeah let's just use this this is fine so this is going to create a function that calculates the
+Fibonacci sequence uh okay uh I think we want to add some more prints too add some more
+prints to get the full workflow overview yeah now we can add the initial code we can print that the feedback and yeah so
+it's a bit more interesting when we run this in the terminal okay again we have to do the 4 oh very
+annoying uh yeah that looks pretty good so let's try this now so remember we going to try to write a code uh for a
+Fibonacci Sequence and hopefully we can see initial code
+generation so let's see how this goes uh okay we wrote some code we're going to evaluate it it's probably going
+to get past yeah we got some trouble with the Json I don't really like that I think it's a
+bit uh yeah it's it's going to fail a lot with the Json uh resolve this because the
+formatting is going to be Troublesome here if we rely on Json well let's give it one more shot so let's try again
+we're going to write a code we're going to evaluated it looks pretty good to be honest uh the code is correct code
+approved returning the final version uh yeah that was pretty good uh that worked but let's like I
+said it's going to be quite kind here uh but let's instruct the developer to
+write bad code so let's just add in the code should be test uh the eval function
+so write code with bad practices so let's see this time if uh we can pass this the first time so now we kind of
+instruct our developer to write bad code I don't know it's going to work but uh let's
+see uh yeah looks less okay so it failed that's good so the iteration is a bit
+fast we can go over this okay so we we got one iteration at least so this was the initial code
+right and on the first evaluation the usage of eval is problematic here RIS rky and
+inefficient so the performers hampers passed no then we send this to optimize
+the code based on feedback here is the improved version good and it goes back to the eval the code is Well written
+efficient and secure best practices perfect approved returning the final evaluation so yeah that is basically
+what we want to see uh yeah there's a bunch of stuff we can do here but I think this proves the point first it
+ation failed we went back sent that with our problems we wrote a better code
+optimized based on the issues we had on the code and on the second attempt we got this approved so this is kind of the
+idea behind this evaluator llm as a judge you can call it what you want but basically uh we get stuck in a loop here
+until the eval agent thinks uh this is good and and we can return this so yeah
+pretty interesting so yeah I think that was basically the last workflow they had here uh they have something about agents here so you can see agents are emerging
+uh in production as llms mature in key capabilities understanding complex inputs engaging reasoning planning using
+tools reliability recovering from errors agents begin the work with either command from or interactive discussion
+with the human user and I have an example here of an autonomous agent so here we kind of have a human we have an
+llm call we have a action and a feedback and environment and when to stop right
+so I'm not going to do this example but they have like a simple summary here when to use agent agents can be used for
+open ED problems where it's difficult or impossible to predict the record a number of steps where you can't hardcore
+a fixed path the llm will potentially operate on many turns you must have some level of trust in the decision- making agents autonomy
+makes them ideal for scaling tasks in trusted environments the autonomous nature of Agents means higher cost potential for
+compounding errors if it goes down the wrong path you can just Compound on this so we recommend testing uh extensive
+testing in sandboxed environments along with appropriate guard rails yeah that's
+a good idea so do sandbox testing don't just put this in production uh I would
+do a lot of testing but I really appreciate anthropic rot up this gu because it's it can be really hard to
+know when to use this it's very easy to fall in this trap that they talk about here success in the LM space isn't about
+building the most sophisticated system it's about building the right system for your need start with simple prompt optimize them comprehensive evaluation
+and add multistep agentic system only when a simple solution fall short so there's no point in building like a very
+sophisticated evaluator system if you're just going to ask how to write a python code to add two
+integers then you can just do that in one call right so yeah hope you enjoy this hope you learn something from this uh I'm going to be covering a lot of
+different a and stuff in 20 25 uh new models everything we're going to do some projects I have in mind uh so yeah stay
+tuned for this uh like I said hope you enjoy this video hope you learned something something practical that you can start experimenting with So yeah
+thank you for your support and hopefully I'll see you again in my next video bye-bye

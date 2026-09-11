@@ -1,0 +1,406 @@
+Last night, sometime around 7 PM, You pulled out your phone, you typed a question. Maybe it was, "What should I make
+for dinner with chicken and rice?" And about two seconds later, A machine wrote you an answer. Two seconds.
+That's what I want to do in this video. I want to slow those two seconds down, way down. Because in those two seconds, your
+questions left your phone, traveled hundreds of miles through strands of glass thinner than a human hair, and
+arrived at a building the size of several football fields, a building that drinks as much electricity as a small city.
+Inside that building, your question passed through a machine that costs as much as a house, got translated
+into pure math, was processed by chips running so hot they have to be liquid cooled like a race car engine.
+And then the answer came back to you letter by letter before you had time to lower your thumb. and here's the part that should
+get your attention as an investor. To make those two seconds possible, the largest companies on Earth are
+spending this year alone roughly seven hundred and twenty-five billion dollars on infrastructure.
+That's just four companies, Amazon, Microsoft, Google, and Meta. That's more in one year than the
+inflation adjusted cost of the entire US interstate highway system. Goldman Sachs project a total build out at
+seven point six trillion dollars between twenty twenty-six and twenty thirty-one. Jensen Huang, the CEO of Nvidia,
+stood on stage at Davos this January and called it his own words, " The largest infrastructure
+build out in human history." So the question this whole video hangs on is simple: where does all the money actually go?
+By the end of this video, you're going to be able to answer that. you'll understand every single step your question takes, the power plants,
+the cooling systems, the chips, the memory, the fiber optics, and software. You'll know which companies sit at every
+step, which companies are printing money, which companies are telling stories, and where the whole thing could crack
+I'm Leo, a VC investor. This is educational purposes, not financial advice So before we trace your question
+across the country, we have to answer something more basic. The internet has existed for thirty years.
+Google has answered trillions of questions. Why did nobody need to spend three-quarters of a trillion dollar a year until now?
+What changed? The answer comes down to a difference between two people, A librarian and a writer.
+Google is a librarian. When you search chicken rice recipe, Google doesn't cook anything.
+It walks into a giant library it has already organized. It indexed the whole internet years ago and keeps updating it, and it
+hands you pages that already exist. The expensive work happened in advance. Answering you is just a lookup.
+Fast, cheap, done. A Google search costs a fraction of a cent. ChatGPT is a writer.
+When you ask it the same question, there's no answer sitting on a shelf. There's no database entry that says,
+" here's what to tell this person." The model compose your answer from scratch, one word at a time, every single time.
+Even if a million people ask the same question today, it doesn't retrieve, it generates And generation is expensive.
+A single ChatGPT query can cost 10 to 100 times more compute than a Google search.
+Now multiply that by 900 million weekly users. That's the entire reason this video exists.
+Search retrieves, AI generates, and generation is a manufacturing process Which bring me to the analogy I'm going
+to use for the rest of this video. I want you to think of an AI data center as a factory, a very strange factory.
+Raw material goes in one side, electricity. A product comes out the other end, words.
+And like any factory, it has departments, a power plant, a cooling system, assembly lines, a shipping department.
+We are going to tour each one. But first, three terms you need. Term one, the token. a token is the product this factory makes.
+Language model don't actually read words, they read tokens, which are chunks of text, roughly
+three-quarters of a word each. Chicken and rice is about four tokens. Your question get chopped into tokens on the way in, and
+the answer gets manufactured token by token on the way out. And here's why investors care. Tokens are the unit of
+revenue in the AI economy. OpenAI and Anthropic literally price their product per million tokens.
+When you hear token, think widget comes out the assembly line Term two, the flop.
+A flop is one floating point operation. one single arithmetic calculation. One multiply or one add.
+It's a unit of labor in this factory. Manufacturing a single token requires a model to do hundreds of billions of these
+calculations, not per answer, per word. when people say a chip does a thousand trillion flops per second, they
+are telling you how many workers that chip has on the factory floor Term three, and this is a big
+one, training versus inference. Training is building the factory. You take a model. Think of it as a machine with
+over one trillion adjusting knobs called parameters. And you show it a huge portion of the reading internet, adjusting these knobs
+until it gets good at predicting language. This takes months. Tens of thousands of chips running around the clock, and on
+the order of a hundred million dollars or more per frontier model. It happens once per model. Inference is running the factory.
+Every time you ask ChatGPT anything, that's inference. The trained model manufacturing answer for you.
+And here's the misconception I most want to kill in this video. People assume training is where the money goes.
+Wrong. By twenty twenty-six, roughly two third of all AI compute is inference. Because training happens once, but
+inference happens billions of time a day. OpenAI's inference bill alone is projected around fourteen billion dollars this year.
+The factory was expensive to build. It's even more expensive to run okay, so why did all of this
+suddenly explode after 2022? One discovery. the most economically important discovery of this decade, and most people have never
+heard of it: scaling law Around 2020, researchers at OpenAI found something almost embarrassing in its simplicity.
+If you make the model bigger, give it more data, and spend more compute, altogether, the model gets smarter.
+Not sometimes, Predictably, on a chart, it's nearly a straight line. If you spend ten times more,
+you get a reliably better model. And stop and think about what that means for a CEO. For fifty years, better software
+meant hiring smarter programmers. Scaling law turned intelligence into something you could purchase.
+It converted AI from a research problem into a capital expenditure problem. And big companies know exactly how
+to compete on capital expenditures. Outspend everyone. That is the moment software stopped being about code and
+started being about concrete. That's why we suddenly need factories. Because here's the closing thought for this act.
+For the entire history of Silicon Valley, software was an escape from the physical world. zero marginal cost, infinite
+copies, no factory needed. AI reversed that. The frontier of software is now poured in concrete, measured in
+megawatts, and cooled with water. Every additional smart answer requires physical machines, physical
+electricity, physical heat removed. Software became heavy industry, and that changes who makes money
+Let's un-freeze your question. It's 7:00 PM. You have typed, " What should I make for dinner with chicken and rice?" And your thumb hits send.
+Here's the actual complete no-step-skips journey Step one, the trip. Your question leaves your phone as radio
+waves, hitting a cell tower or your Wi-Fi router, and within a few miles becomes pulses of light inside fiber
+optic cable, glass strands carrying data at two-third the speed of light. and it got routed to the nearest
+entry point of the AI company's network, then travel often hundreds of miles to a data center.
+Total time so far, a few hundreds of second Step two, the front door. Your question arrive at API gateway.
+think of it as a factory receiving desk. It checks who you are, checks you are not sending a thousand requests a
+second, runs a safety screen, and staple together everything the model needs, the system instructions, your past
+conversation, and your new question. Step three, tokenization. That full text get chopped into tokens.
+The puzzle pieces from act one, your dinner question, plus context, maybe a few hundred tokens.
+This get converted into numbers, because from here on, everything is math. Step four, prefill.
+The model reads. Here's something almost nobody knows The model process your question in two totally different phases.
+the first is called prefill. The model read your entire prompt all at once in parallel and build
+an internal understanding of it. This is a burst of raw computation, billions of calculations,
+And it produced something called the KV cache. don't let the name scare you. The KV cache is simply the model's
+working memory of your conversation. It's notes on everything said so far, held in super fast memory right next to the chip.
+Ever notice ChatGPT pause for a little bit before the first word appears? That pause is prefill.
+The factory is reading the work order Step five, decode. The model arrives. Now the assembly line starts.
+The model generate the answer one token at a time. It look at your answer plus everything it has written so far, runs the
+entire training knob network, hundreds of billions of calculation, and produces one word, "try."
+Then it does the whole thing again for the next word, A. Again, one pan. Again, every single word of
+every ChatGPT answer on Earth is manufactured this way, one at a time. full network pass each time.
+When you watch the answer type itself onto your screen, that's not a design flourish. You are literally watching an
+assembly line run in real time. Each word appears the moment it's manufactured. Step six, the trip home.
+Each token streams back through the same fiber, and two seconds later, after you hit send, you are
+reading the dinner ideas One more thing happening behind the curtain. You are not alone in there. the factory will batch everything
+you sent with hundreds of other people's question on the same chip simultaneously, like a delivery
+driver grouping orders on one route. That batching is the difference between your question causing cents and causing dollars.
+Now zoom all the way out because here's the whole factory in layers. This is the map for
+the rest of this video. 10 layers. And here's a one-sentence version of this entire video.
+Electricity comes in one side, flows through silicon, becomes computation and heat. The heat get carried away by water.
+The computation get coordinated by light, and what ship out the door is words. Electrons in, tokens out.
+That's the factory. So let's start a tour where every factory tour starts, the power plant. Because, and this surprised me the most
+when I first dug into this ecosystem, the story of AI in twenty twenty-six is not mainly a story about chips anymore.
+It's a story about electricity Let me give you the number that framed this whole industry for me. A traditional rack of servers, the kind
+that ran the internet for the last twenty years,  draws about five to ten kilowatt. Think of a kilowatt as ten old-fashioned
+100-watt light bulbs burning at once. Nvidia's flagship AI rack, one rack,
+one refrigerator-sized cabinet, draws one hundred and twenty kilowatt. And the next generation coming later this
+year, the Vera Rubin racks, are projected to approach six hundred kilowatt per rack.
+That's sixty to hundred times jump in power density in under a decade. The electrical demand of an entire
+neighborhood packed into a phone booth. This is called power density, And it's the root cause of nearly everything
+in the next two acts Now scale up. A large AI campus today want a gigawatt or more. A gigawatt is a thousand megawatt,
+roughly the output of a full-size nuclear reactor, enough electricity for about a million homes.
+Individual companies are now planning multiple campuses of that size. Data centers consume about four to five percent of US
+electricity going into this boom. the credible projections put it at nine to seventeen percent by twenty thirty.
+And here's the collision. The US electrical grid was built brilliantly decades ago for demand
+that grew one or two percent a year. AI showed up asking for tens of gigawatts right now.
+The grid physically cannot say yes. Two bottleneck numbers, and they are the most important numbers in this act
+Number one, the interconnection queue. to plug a big new facility into the grid, you file a request and
+wait in line while utilities study whether the grid can handle you. That line is currently four to five years long.
+This April, there are about four hundred and ten gigawatt of large project waiting to connect.
+Eighty-seven percent of them are data centers. That's nearly five times the entire Texas grid's peak demand waiting in line.
+Number two, the transformer. A large power transformer, the giant gray box that step voltage down,
+used to take about a year to order. Today, two and a half to four years, with prices up nearly eighty percent.
+You can have your chip in six months. The gray box that powers them, twenty twenty-nine So what do you do if you're
+Microsoft or Meta and every month of waiting costs you the API race? You stop waiting for the grid.
+You go around it. The industry calls this behind-the-meter power, generating electricity on site or next door, so you
+never touch the public queue. And that decision, thousands of companies making it simultaneously,
+is what lit a fire under an entire forgotten sector of the stock market, boring old industrial power companies.
+Let me introduce the players, from most dramatic to most dependable. The nuclear resurrection.
+In 2024, Microsoft signed a deal that would have sounded like satire a decade ago.
+A 20-year agreement with Constellation Energy to restart Three Mile Island. The undamaged reactor next to
+the one from the 1979 accident. Constellation is spending about one point six billion, backed by
+a one billion dollar federal loan to bridge the 835 megawatt unit back in the second half of 2027.
+And Microsoft will buy every megawatt it produce for twenty years. Constellation operate the largest nuclear fleet in America,
+about twenty-two gigawatts. And suddenly those aging reactors became some of the most valuable energy assets on Earth.
+Why? Because AI factories run twenty-four seven, and nuclear is the only carbon-free power source that
+also runs twenty-four seven. Constellation stock tell the story. It's now roughly a ninety billion dollar company.
+Its pair, Vistra, with a thirty-seven gigawatt fleet mixing nuclear and gas, rode the same wave.
+The moat here is beautiful in simplicity. You cannot build a new conventional nuclear plant in America this decade.
+Existing reactors are replaceable. The small modular reactor lottery tickets. You have heard the tickers.
+Oklo, backed by Sam Altman, with over 14 gigawatt of signed pipeline. NuScale, the only SMR design
+actually certified by US regulators. here's my analytical skeptic framing, and I'll be blunt.
+These are pre-revenue companies whose first commercial electron arrives around twenty thirty at earliest.
+Oklo doesn't yet have final regulatory approval for its design. NuScale booked about thirty-one million in revenue against a three
+hundred and fifty-six million loss. Both stocks are down sixty-five percent to seventy-eight percent from their late twenty twenty five peaks.
+That is not a business yet. That's an option on the twenty thirties. Next, the fastest power in the West.
+If the grid takes four years and nuclear takes 10, what can you get in 12 to 18 months? Fuel cells.
+Bloom Energy makes solid oxide fuel cells, boxes that convert natural gas into electricity chemically, no
+combustion, and you can park them behind the meter next to a data center fast. the stock nearly quadrupled
+in 2025, then doubled again in the first half of this year. And Bloom announced seven point six
+five billion in data center contracts in a single nine-day stretch. But, this July, Hunterbrook, An
+investigative outlet whose affiliated funds short a stock it covers. So weigh the source accordingly.
+Publish a report Saying that Bloom's marketed twenty billion backlog is more than forty times its binding contract obligations
+versus about two X for typical peers, and that scaling to its stated ambitions would consume nearly the entire global
+supply of scandium, A metal China now requires export licenses for. Bloom formally rejected the
+claims as false and misleading When a backlog number and the SEC filing disagree by 40X, the
+burden of proof is on a company Next, the arms dealer setting out through 2030. My favorite business in this act is
+the least glamorous, GE Vernova the power spin-off of General Electric. They make the giant gas turbines
+that are realistically the number one near-term power source for AI because gas is the only thing you
+can build at scale before 2030. GE Vernova's turbine slots are sold out through the end of this decade.
+Their backlog is around 163 billion. In the first quarter of 2026 alone, they booked 2.4 billion in data
+center electrification orders. More than all of 2025. The stock is up so much it's now a nearly $300 billion company.
+Their only real global rival at scale, Siemens Energy. Between the substation and the chips sits a layer of equipment
+most people never think about. Switch gears, busways, and interruptible power supplies, the UPS, essentially
+a giant battery that catch the load instantly if the grid blinks, because even a half second outage can cause a training
+run that's been running for a month. Three companies own this layer, and remember their name because two of them show up again in the next act.
+Vertiv, Schneider Electric, and Eaton. Eaton's electric backlog grew forty-eight percent year over year.
+Vertiv's backlog more than doubled to fifteen billion dollars, and the company joined S&P 500 in March.
+These are the companies selling shovels to every miner, regardless of who wins. And the last line of defense,
+Rows of backup generators from Caterpillar and Cummins. Diesel engines the size of school
+buses idling in wait for the one hour a year the grid fails. Analysts think Caterpillar's data center
+generator business could triple by twenty-thirty Before we move on, the uncomfortable part, because this act has
+one and it's showing up in your inbox. Because data center bid for scarce power, they bid against you.
+in the PJM market, the grid covering 13 states from Illinois to Virginia, data center demand added over nine billion
+dollars to the latest capacity auction, translating to residential bills rising sixteen dollars to eighteen dollars a
+month in parts of Ohio and Maryland. Communities are noticing. moratoriums are being proposed.
+This is becoming a genuine political risk to the build-out, and any honest map of this industry has to include it.
+So the factory has power. one hundred kilowatt are now flowing into a single rack of chips, which create an immediate problem.
+Physics 101. Every one of those watts become heat. The factory is running a fever. A single flagship AI chip today dissipates
+over one thousand watts of heat. A chip the size of a postcard Putting out the heat of a full-size space heater.
+Now stack seventy-two of them into one rack, plus their memory and networking. You have got one hundred and twenty kilowatt of heat.
+The output of about eighty space heaters in a cabinet you could hang. Why? Because computation is heat.
+Every one of those trillions of calculation pushes electrons through microscopic wires and electrical
+resistance turn into warmth. The factory's raw material, electricity, doesn't get consumed making tokens.
+It get converted almost entirely into heat. Cooling isn't a support function of AI data center.
+Cooling is half the job. For thirty years, the answer was air conditioning, genuinely just fancy AC.
+cold air pushed up through the floor, hot air sucked out the back, giant chillers and cooling towers on the roof.
+And air worked fine up to about thirty to fifty kilowatt per rack But we just passed that line permanently.
+Air physically cannot carry heat away fast enough from a one hundred and twenty kilowatt rack. You need hurricane force
+winds through the servers. So the industry is undergoing its biggest plumbing change in its history.
+The switch from air to liquid. Water carries heat about 3,000 times more effective than air per unit volume.
+The technology ladder in one breath. Rare door heat exchangers, a water-cooled radiator bolted to the back of the rack.
+A transitional patch. Direct to chip cooling, the 2026 mainstream, a metal plate with
+liquid channels sit directly on top of each chip, connected by hoses to a CDU, a coolant distribution unit.
+Think of it as the rack's heart, pumping coolant to every chip and carrying the heat to the building's water loop.
+Nvidia's flagship racks don't offer this as an option. They require it. And at extreme immersion cooling,
+literally dunking entire servers into tanks of non-conductive fluid, like deep-frying a computer that never burns
+two quick vocabulary items investors will encounter. PUE, power usage effectiveness.
+it's a factory efficiency score. Total power in divided by power that actually reaches the computer.
+A perfect score is one point zero Old data centers run about 2.0, a watt of cooling for every watt of computing.
+Modern liquid cooled facility hit 1.1. that efficiency gap times a gigawatt
+times electricity prices is real money. And water. Many data centers cool by evaporating
+millions of gallons, which is becoming a genuine permitting and political fight in dry regions.
+closed loop liquid systems help. but watch this issue. it decides where facilities get built Who gets paid?
+Largely the same names as the power room, vertiv is the market leader. the rare company selling both the
+power gear and the liquid cooling. a one-stop shop growing revenue twenty-eight percent a year at twenty percent margin.
+and then something remarkable happened. The two electrical giants each spend billions to buy their way into liquid
+cooling within months of each other. Eaton paid about nine point five billion for Boyd Thermal.
+Schneider Electric bought Motivair. When the electrics more disciplined industry acquires, both pay up for the same niche.
+They are telling you what they think every future data center looks like. smaller pure players nVent including loops and enclosures
+and private cool IT systems. The specialists whose cool plate ship inside many brand name servers.
+The liquid cooling market was about five billion in 2025. Forecasts put it at fifteen to twenty-seven billion by the early 2030s.
+It's the single clearest picks and shovels growth lane in this entire ecosystem because it does not care
+whether NVIDIA or AMD or Google wins. Heat is heat. All right, the factory has power.
+The fever is under control. It's time to walk onto the factory floor and meet the machine your dinner
+question actually runs on and the three trillion dollar company that built it This is the machine your dinner question runs through.
+Nvidia's GB200, NVL72 seventy-two GPUs wired together so tightly they
+behave as a single giant computer. It weighs about a ton and a half, draws those one hundred and twenty kilowatt we discussed, and costs
+roughly three million dollars. So let's open it up and to keep the parts straight, come back to the
+factory, specifically its kitchen. The CPU is the head chef. The central processing unit run
+the operating system, takes orders, coordinates everything, brilliant at complex sequential tasks.
+But there's only a handful of them. For decades, the CPU was the star of computing, Intel's kingdom.
+In the AI server, it has been demoted to management The GPUs are 10,000 line cooks.
+A graphic processing unit, originally invented to draw video game graphics, contains thousands
+of small, simple cores that all do the same operation simultaneously. It turns out the math inside a neural
+network is exactly that kind of work. Billions of identical multiply and add operations.
+One head chef cannot do that. 10,000 line cooks, each chopping one onion at the same instance, can
+That accident of history, gaming graphics and AI needing the same math, is the foundation of Nvidia's empire.
+HBM is the countertop, high bandwidth memory. Hold that thought. It gets its own act.
+The SSD is the pantry. The NIC, the network interface card, is the waiter carrying
+dishes between kitchens. And the power supplies and the motherboard are the plumbing and wiring holding
+it all together Now the companies. Nvidia finished its last fiscal year with $215.9 billion in revenue, up 65%, of
+which about $194 billion was data center. It controls roughly 80 to 86%
+of the AI accelerator market. Its gross margin in recent quarter is about 75%, 75% on hardware.
+Apple, the most admired hardware company in history, runs around 46. Nvidia became the first $5
+trillion company last October. And depending on the week, roughly seven cents of every dollar in the S&P 500 is Nvidia.
+How is that margin possible? Everyone says best chips, and sure, but the real answer is a word we'll
+unpack fully in act eight, CUDA. Twenty years of software that every AI developer on Earth was trained on.
+For now, the one line version, Nvidia doesn't only sell chips. It sells the only complete factory
+floor system the world's engineer already know how to operate. Buying a competitor's chip means retraining your whole workforce
+The bear case, about forty percent of Nvidia's revenue come from just four customers, and all four are
+building their own chips to replace it. Next, the challenger, AMD. AMD's Instinct GPUs are genuinely
+competitive on inference, more memory per chip, and by some estimates, twenty-five to forty percent better tokens per dollar.
+Their problem was never silicon. It's software. Their CUDA alternative, called ROCm, now hits ninety to
+ninety-five percent of Nvidia's performance on standard workloads. But ninety percent as good with more
+friction is a hard pitch when your training can cost a hundred million. AMD holds maybe five to
+seven percent of this market. Watchable, but it's improving. still a distant second. Intel, painful to say,
+is barely in this race. Still selling plenty of head chefs, but the kitchen stopped being about head chefs
+Now the quiet assassin, Broadcom. Here's the plot twist most retail investors miss. Those four hyperscalers building their own
+chips, they cannot actually do it alone. Designing a frontier AI chip takes a decade of specialized IP.
+So they hire Broadcom, which co-designs Google's TPU, Meta's training chip, and reportedly OpenAI's.
+Broadcom's books over sixty percent of custom chip market. Posted AI revenue up one hundred and six percent last quarter, with
+a seventy-three billion backlog. And management says it has lines of sight to a hundred billion of AI revenue in twenty twenty-seven.
+In our factory analogy, Nvidia sells finished kitchens. Broadcom helps the biggest restaurant chains build their
+own and takes a cut either way. It also dominates the switch silicon in Act Six. One company, both sides of the war
+Now, who actually built those racks? Not Nvidia. Nvidia designs. Super Micron integrate full liquid
+cooled racks faster than anyone. Revenue up 123% last quarter. Over 90% of it AI.
+Gross margin between six and 10%, depending on the quarter. Dell has taken over 64 billion in
+AI server orders with a 43 billion backlog, a staggering number as server segment margins under 9%.
+HPE writes supercomputing and sovereign AI deals. and beneath the brands sit the true
+invisible giants, the Taiwanese ODMs, original design manufacturers, Foxconn,
+which assembles roughly 40% of the world's AI racks, Quanta, Wiwynn Celestica.
+The same rack passed through many hands. Nvidia captures seventy-five point margin on the silicon. The company that physically screw
+it all together keeps six to 10. In hardware, the profit lives in whatever is scarce.
+Chips and software are scarce. Assembly is not. But I've been hiding something from you. I said seventy-two GPUs
+behave as a single computer. Nobody hit that with a magic wand. Making ten thousand line cooks work
+as one brain is arguably the hardest engineering problem in the entire building, And it's where some of the
+best businesses in the ecosystem hide So  why can't one GPU do the job? Simple.
+The model doesn't fit. A Frontier model has over one trillion parameters. Those adjacent knobs require
+terabytes of ultra-fast memory. The biggest GPU carries a few hundred gigabytes. so the model gets sliced
+across thousands of chips. And here's the consequence. To produce every single token, those
+chips must exchange intermediate results constantly at unimaginable speed.
+Back to the kitchen. Ten thousand line cooks preparing one dish together. every chef needs ingredient
+from other chefs every second. If passing ingredient is slow, your ten thousand chefs stand
+around waiting, and these are the most expensive chefs in history. at cluster scale, a network
+that's ten percent slower can idle billions of dollars of silicon. That's why networking is roughly
+forty to sixty percent of spending for every dollar of GPU. Two words to define. Bandwidth is how much
+data moves per second. the width of the conveyor belt. Latency is the delay for one handoff.
+How long a single pass takes. AI needs both everywhere at once. The wiring comes in two flavors.
+Scale up inside the rack is Nvidia's proprietary NVLink, an extreme speed web
+that makes seventy-two GPU one machine. Scale out rack to rack across the building is where a war is being fought.
+For years, serious AI clusters ran on InfiniBand, a specialized ultra-low latency networking that NVIDIA
+acquired in 2019 with Mellanox. Premium performance, premium price, one vendor.
+Against it, Ethernet, the open universal standard, the same family of technology as your home network.
+Historically slower, but backed by literally everyone who isn't NVIDIA. By early 2026, about two-thirds of
+new AI cluster networking is Ethernet. Open standards, given time, usually win. They just did.
+This is a proprietary versus open story as old as tech who profit from the nervous system?
+Broadcom again. Its Tomahawk chips are the merchant silicon inside most high-end Ethernet switches.
+Arista Networks build the switches themselves, the best in class boxes and software hyperscalers standardize on.
+Roughly six percent gross margin, guiding to eleven point five billion this year, with the risk that its two biggest
+customers are forty percent of revenue. Cisco, the incumbent, still huge, fighting to stay relevant in AI backend.
+Marvell plays the Broadcom playbook one tier down. custom chips for Amazon and Microsoft,
+plus leadership in the digital signal processor inside optical modules. And Astera Labs, one of the most
+remarkable margin stories in ecosystem, Makes tiny retimer chips that clean up electrical signals degrading over mere
+inches of circuit board at this speed. Boring, invisible, seventy-six percent gross margins.
+Revenue up ninety-three percent last quarter. When data moves this fast, even the space between two chips become a market
+And then the plot literally turned to light. copper wires can carry this speed only at a few meters before signals degrade.
+Fine inside a rack. Use this across a football field building. So between racks, everything converts
+to light through glass fiber. The device doing the conversion is the optical transceiver, a thumb-sized gadget,
+an electrical to light translator, and you need one at each end of every fiber link. A single large AI cluster consumes
+hundreds of thousands of them at hundreds of thousands of dollars each, replaced every upgrade cycle.
+It's a razor blade for the data centers. The names? Coherent, the market leader, Lumentum
+Chinese volume champion Innnolight. Fabrinet. The contract manufacturer that assemble for nearly all of them.
+The arms dealer's arms dealer. Corning, which draws the glass fiber itself, And Amphenol, whose connectors are
+the knuckles of the entire system. The frontier to watch is co-packaged optics, moving the light conversion directly onto
+the switch chip to slash power The nervous system is built. 10,000 chips thinking as one.
+but there's a dirty secret on the factory floor. Most of the time, the most expensive chips in the world are waiting, not for
+data from across the room, for data from two centimeter away Here's a secret. During the decode phase, the one word at a
+time assembly line from act two, The GPU's math cores are often not the bottleneck.
+For every token, the chip must pull the model's parameters and the conversation's working memory, that
+KV cache, from memory into its cores. The math is fast. The fetching is slow.
+Modern inference is what engineers call memory bandwidth bound. The line cooks are lightning,
+but a countertop cannot feed them ingredients fast enough, which makes the countertop one of the most valuable pieces of real estate in technology
+The industry's answer is HBM, high bandwidth memory. Instead of laying memory chips flat on
+a board a few inches from the processor, HBM stacks them vertically, eight, 12 stories high, drills thousands of
+microscopic elevator shafts through the silicon, and glue the whole tower directly next to the GPU on the same package.
+A skyscraper of memory downtown instead of suburbs of memory across a highway. result is five to six times the
+bandwidth of conventional memory at five to six times the price. Nvidia happily pays. Memory is now one of the biggest
+cost component inside every AI chip you have heard of, and only three companies on earth can make it
+SK Hynix, the Korean company owns roughly 60% of HBM and got there by
+out-executing its giant neighbor. It bet on HBM years before it mattered and shipped each generation
+first, unlocking the lion's share of Nvidia's next generation allocation. Samsung, the largest memory company
+overall, was embarrassingly late. Micron, the American champion, went from afterthought to selling out
+its entire 2026 HBM capacity in advance Here's the stat for the act. In May 2026, all three memory makers
+crossed a trillion dollar in market value, combined over four trillion, roughly sixteen times what they were a decade ago.
+Memory used to be the most brutal commodity business in tech. Boom, bust, bankrupt, repeat.
+HBM changed the psychology. it sold out more than a year in advance, allocated like a scarce
+resource, priced like a luxury good. the open question is whether that price survives the moment all three giant
+finish their capacity expansions at once. Memory cycles have broken hearts before Now walk out the back of the
+factory to the warehouse storage. The hierarchy in one line, the closer to the chip, the faster and pricier.
+Cache on the chip itself, HBM beside it, regular DRAM on the motherboard, SSDs flash drives for hot data, and
+at the bottom, the technology everyone declared dead ten years ago, the spinning hard drive, still unbeatable
+per terabyte for cold bulk data. And AI turned out to be an AI hoarder. Training datasets, model
+checkpoints saved every few hours. And the part nobody predicted, the output. Every conversation, every log, every
+generated image retained forever. Seagate CEO calls it the inference inflection. AI doesn't just consume data,
+It produced it endlessly. hard drives are a literal duopoly, Seagate and Western Digital, plus flash
+drive players Kioxia and Solidigm. After a decade of decline, both drive makers sold out their
+entire production into 2027. Western Digital now ships 89% of its revenue to cloud customers and was
+one of the S&P 500 top performers. Consumer hard drive prices jumped 50% because of AI ate the supply.
+A dying industry resurrected by the factory next door needing somewhere to put infinity The machine is complete,
+powered, cooled, wired, fed. But a pile of perfect hardware answers exactly zero questions.
+Something invisible has to run the place. Everything we have toured so far, you could theoretically buy. Hardware is purchasable, where
+does the durable competitive advantage actually live? The stack briefly bottom to top. Linux, the free operating system running
+effectively every server on Earth, commercialized by Red Hat and Canonical Kubernetes, the invisible foreman.
+Open source software that schedules work across thousands of machines. restart what crashes and keep
+the factory floor humming. Then the serving layer, then the models. Two stories in this act matter to
+investors more than all the rest combined. First story, CUDA, the twenty-year trap  In 2026, Nvidia made a
+decision Wall Street hated. It spent billions building a programming platform so scientists can use gaming chips for general math.
+For a decade, this looked like an expensive hobby. Then deep learning arrived, and every AI researcher on Earth
+learned to build on CUDA because it was the only mature option. Twenty years later, CUDA has
+millions of developers, thousands of specialized libraries, and every framework optimized for it first.
+Understand what this means. When AMD ship a chip with better specs, and it sometimes does, the
+customer isn't competing chips. They're comparing chips plus the cost of retaining their entire engineering organization and rewriting
+their code with their one hundred million training run on the line. That's why seventy percent gross margins survive competition.
+The moat was never the silicon. The moat is the muscle memory of a million engineers Second one, why your question
+costs cents, not dollars? Raw, naive inference on trillion parameter model would be super expensive.
+The economics only work because of an unglamorous layer called a serving engine. software like vLLM and NVIDIA's
+TensorRT doing three tricks. Batching, grouping hundreds of users' questions through the chip at once.
+The delivery route trick from Act Two. Caching, reusing what KV working memory instead of recomputing the
+conversation from scratch for every word. And quantization. Rounding the model's numbers to lower
+precision, like shipping a slightly compressed photo, nearly identical quality, fraction of the cost.
+Together a three to ten times cost reduction from software alone. When OpenAI or Anthropic cuts
+API price 80% in a year, it's mostly this layer, not new chips. Token manufacturing costs
+are collapsing our curve. Remember that for the finale, because it cuts both ways One last floor of the stack.
+Your dinner question doesn't need it, but enterprise AI does. RAG. retrieval augmented generation.
+The model is a brilliant writer with a fixed education. RAG hands it your company's documents
+at question time via vector database. search engine that find text by meaning rather than keywords from
+players like Pinecone, plus the data platform Databricks and Snowflake. The librarian and the writer working together.
+That's the enterprise AI pitch in one sentence. And with that, the tour is over. You have seen every layer: power,
+cooling, silicon, light, memory, software. Now let's follow the money, all of it in one map, and then ask one question:
+Does any of this actually pay for itself? So here's the whole board. On the demand side, the miners, three
+tiers, the hyperscalers, Microsoft, Amazon, Google, Meta, Oracle, spending their combined seven hundred
+and twenty-five billion this year. The neoclouds, specialized GPU landlords, CoreWeave, Nebius, Lambda, Crusoe
+And AI labs, OpenAI now value around $850 billion. Anthropic, which passed it at
+roughly $965 billion on about $47 billion of annualized revenue. And XAI folded into SpaceX.
+Both major labs filed for IPO this June. The private market has already priced them as two of the most
+valuable companies on Earth. The public market is about to vote now the costs. Bernstein estimate one gigawatt
+of AI data center, one campus, costs about $35 billion to build. Where it goes, roughly 39% is the
+chips, the single biggest line, which is why Nvidia's gross profit alone is estimated near 30% of total industry cost.
+And that thirty-five billion machine depreciates fast. most operators write chips off over four to six years, And skeptics argue
+even that flatters the accounting since a five-year-old GPU competes against chips 10 times better Every year of
+depreciation life added or removed swings billions in reported profit. Watch that debate
+so follow this. NVIDIA invests billions directly into CoreWeave, into Nebius, into OpenAI.
+those companies use the money to buy NVIDIA chips. revenue for NVIDIA. The hyperscalers sign enormous
+contract with the neoclouds. Meta alone committed roughly twenty-one billion to CoreWeave and reportedly twenty-seven billion to
+Nebius, which conveniently moves data center spending off Meta's balance sheet into someone else debt.
+The AI lab signs compute deals with hyperscalers. OpenAI with Microsoft and Oracle. Anthropic with Amazon and Google.
+paid partly with money those same hyperscalers invested into them. Let's be fair, because the analytical
+skeptic label cuts both ways. This is not fraud, and it's not new. Vendor financing built the
+railroads and the telephone network. The loop has exactly one opening where fresh money is supposed to
+enter, end users and enterprises. You paying twenty bucks a month, companies paying for APIs and copilots.
+That is the only exit that isn't recycled capital. And today, that corner is the smallest number on the board.
+The two biggest labs combined annualized run rates now top seventy billion. Generally spectacular.
+The fastest revenue ramp in software history. But the revenue they'll actually book this calendar year is a fraction of
+that, set against seven hundred and twenty-five billion of annual spend, with OpenAI still expected to lose on
+the order of fourteen billion this year The entire $7 trillion machine is the bet that a small corner grows
+faster than the big circle spins. So let's watch it one more time. Same two seconds, but now you can see.
+Your thumb hits send, and the question becomes light in glass fiber crossing state lines. arrive at a building
+drawing the power of a city. power from a restarted nuclear plant, a sold-out turbine, a fuel cell parked behind the meter.
+It's chopped into tokens and fed into, a three million dollar rack assembled in Taiwan, sold
+at a seventy-five point margin, where ten thousand line cooks fetch a trillion parameters from memory skyscrapers.
+While liquid coolant carries away the heat of eighty space heaters, and light speed interconnects let
+ten thousand chips think one thought. The software batches you with one thousand strangers, and the answer
+streams back token by token, each word manufactured instance you read it Two second, $700 billion a year,
+the largest infrastructure project our species has ever attempted. So a machine can suggest you make
+one-pan chicken and rice Whether that's the most important investment in history or the most expensive,
+Honestly, nobody on Earth knows yet. That's the whole map. If you find this video helpful, please subscribe, and I'll
+see you in the next one.

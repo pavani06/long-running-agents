@@ -1,0 +1,401 @@
+in a world where we have multiple AI
+agents how will they work with each
+other ever since Auto GPT and PB AGI
+came out this year autonomous AI agents
+has been a Hot Topic AI agents is almost
+like a Aim Pro ease can do very complex
+tasks autonomously at high level AI
+agents has four big components one is
+the profile which Define who they are
+and what's their role and then memory
+where it can has both domain knowledge
+and also the shorter memory so it can
+remember what happened before an ability
+to use large language model to do the
+planning so it can break down a big goal
+into subtasks in the end it has ability
+to use different tools and apis to
+complete the tasks this framework I'm
+showing here coming from a recent
+research paper called a survey on large
+language model based on autonomous
+agents which is very good paper if you
+want to dive into the world of Agents
+more and if you want to learn more
+technical details I also made a video
+before about how can you build
+autonomous agents that can do research
+for you so I'm very optimistic that in
+the next 6 to 12 months we're starting
+people and companies how carrying AI
+agents as part of their Workforce you
+might get a specialized AI agents for
+different type of tasks like designers
+developers product management market and
+this reads the impression which is in a
+world where we have so many different
+agents how those agents work with each
+other because for a complex task and
+purchase it does require multiple
+different agents to work together and
+their few projects already explore this
+multi-agent's word one example is called
+camel which represents communicative
+agents for mind exploration of
+large-scale language model Society
+fundamentally it provides a playground
+to simulate conversations between
+multiple different agents for example
+here you try to simulate a conversation
+between a Python programmer and a stock
+Trader with a goal to build a trading
+bot in the end and there are also other
+projects like Adrian verse which allows
+you to do those multi-agent simulation
+or you can simulate the whole classroom
+with the professor and five or six
+different students or the classic
+prisoner dilemma where you can simulate
+the conversation between the policemen
+and two different prisons and see how
+the conversation involves they even can
+simulate Pokemon where the character
+will talk to each other and you can go
+to a specific character and start
+chatting with this character those are
+good for social experiments but the two
+projects that really color my eyes are
+meta GPT and chat Dev they are both
+multi-aging Frameworks they allow you to
+create team of Agents with different
+Specialties and Orchestra them to
+complete very complex progress both of
+them got really popular on GitHub in a
+very short period of time and this
+really gives us some good insights of
+how the multi-agents were gonna look
+like and this is what I want to show you
+today how can you create your own teams
+of agents and let them work together so
+the one I want to dive a bit deeper is
+chat Dev because they provide a lot of
+interesting customizations and
+flexibilities there are three key
+components you can set up in chat Dev
+rows faces and chat chain and rows
+basically means you can Define different
+type of Agents from the boss product
+managers CTO and QA and then you will
+Define faces which basically means a
+specific task and Stage for example you
+probably will start from demand analysis
+which involves find the requirements and
+scope and in the end they allow you to
+station together different phases from
+the demand analysis coding code review
+tests and documentation writing each
+phase will involve different AI agents
+and the default team the chat that
+provides is a software development team
+and the result is pretty stunning it is
+able to deliver compact software like a
+classic ping pong game Flappy Bird
+calculator 204a game and even image
+editor but the beauty of chat Dev is
+that you can fully customize it to any
+other team you want so if you're a
+content creator like me you probably
+want to create a Content operation team
+who can work for you 24 7 from idea
+generation research to content writing
+and I'm going to show you a step-by-step
+guide of how can you create this content
+operation team with chat Dev but
+speaking of content generation about AI
+even though it is very powerful I often
+have questions like will Google penalize
+the AI content that I'm creating on my
+blogs and what kind of limitations I
+should be aware of that's why I want to
+introduce you to a research conducted by
+HubSpot and Jasper where they explore
+all those important topics so we can
+understand what kind of limitations and
+pitfalls of using AI in our content
+creation process and also dive into how
+topirams in the world are scaling their
+content generation value AI so I think
+you will find this very useful if you
+are in content operation business I have
+put a link to download this free
+research paper in the description below
+so definitely go and check out and
+thanks HubSpot for sponsoring this video
+and provide this free resource now back
+to chat Dev so to set up the chat Dev on
+your computer is pretty simple first
+they clone their GitHub repo you can do
+this either through the GitHub desktop
+app or command line and once you finish
+you can open the project folder in the
+visual studio code and open the terminal
+do this to line of code to set up the
+python environment and click enter
+once it's finished we're gonna install
+all the required dependencies so making
+sure you are in the project folder if
+not you can do CD chat Dev and do this
+pip install requirement and once you
+finish it should be all good the next
+step is set up your open AI API key if
+you are on Mac do something like this
+export open AI API key with your API key
+here but if you're on Windows then you
+will do something like this that's
+pretty much it you can already give a
+task to the right development team by
+doing Python round.py and give a task
+name as well as a project folder for
+example I can ask it to build a snake
+game by doing python round.py task
+classic snake game with project name
+snake and project name Will basically be
+used to create a project folder under
+warehouse and I will click enter you can
+see this already start working with all
+those conversations here it will
+probably take some time in the terminal
+you can actually see the conversation
+between different agents so this one
+agent that is giving comments to the
+original code delivered by the
+programmers in the programmer or try to
+iterate them in fixed bugs based on
+those comments once it's finished it
+will give you summary about the total
+cost which is less than 10 cents and the
+apps they did that will be under this
+folder called Warehouse you should be
+able to find this project called snake
+and all we need to do just navigate to
+that specific folder where house and our
+copy the folder name here and inside
+this folder you can see that we have a
+few different files and our to Python
+main.py and here you go so we got a
+snake game and it's fully functional as
+you can see here I can play the game it
+has actually good visual as well so it
+is working pretty well inside this photo
+not only it has incremented game itself
+it also have a menu list all the details
+of how to play this game and this is
+quite phenomenon they also provided you
+a simple web app where you can visualize
+how does this team work together so you
+can do this by navigate back to the root
+folder under the chat Dev and then we
+can do python online log app.py okay and
+then you get this web website URL you
+can click on and you'll get this page I
+will click on this chat replay and click
+on file upload and I will choose this
+log file under the Snake Game folder and
+click open then click replay and this
+will basically start lay out the whole
+conversation history from a CEO give the
+brief and then CPO decide on the
+requirements and there's a little
+visualization on the left side as well
+so it's quite a fun to watch but this is
+not just it as I mentioned before you
+can actually customize the team of
+agents to be any other teams in any
+other standard procedures you have and
+the way it works is there's a folder
+called company config this is where you
+can set up a whole team so if you open
+that folder there should be a default
+folder and you will see three different
+files one is the raw config where you
+will Define the list of different agents
+in their rows at default they have
+multiple different roles from CEO
+product managers CTO and even HR and
+then you can open the stagnant file
+which is the face config where you will
+Define different faces for example at
+the beginning they will Define the
+demand and Services where they will give
+a very special prompt about what this
+stage is and what's a go and scope and
+they will also Define a assistant role
+and user role because each stage here is
+actually simulate a conversation between
+two agents in the demand end of this
+stage is a conversation between the CEO
+and the PM to come up with the product
+requirements and then for the next stage
+which is coding it will be a
+conversation between the CTO and Azure
+programmers where CTO will be giving the
+programmers a list of instructions about
+the tasks and goes on and on so each one
+of them is basically a specific tasks
+that need to be happened during this
+software development process and in the
+end you will have a chat chain config
+this is where you will Define the actual
+standard procedure to develop a software
+it refers to demand analysis and the
+next turn step is negative one which
+means it only run once you can even turn
+on reflection as well so the CEO and the
+Consular can do a bit of refraction
+after each step for more complex phases
+like whole review you can do a compose
+face as well which means this step will
+be composed of a few sub steps like code
+review comment and code review
+modification and they will repeat this
+cycle for maximum three times in the end
+the documentation team will try to write
+a user menu you will Define the list of
+AI agents need to be involved in this
+process so these three files is
+basically where you can Define the team
+the tasks and standard procedure in
+their documentation they actually have a
+pretty detailed instructions but I will
+show you a quick example of how can you
+create your own AI agent teams so here I
+create a new folder I name meta XYZ also
+duplicate the original files from
+default so use case I want is pretty
+simple I want to create an AI marketing
+agency where it still has CEO and
+counselor to Define scope of work and do
+some reflection of each steps but the
+main role I will want to customize is
+marking directors whose responsibility
+is to come up with creative marketing
+campaign ideas and then another row
+which is marketing specialist whose job
+is taking the brief and idea from the
+marketing director and do the actual
+content writing and I remove all the
+other rows that I don't really need once
+I finish this I can also customize the
+faces and I simplify the faces to be
+only to one's ID generation which is
+basically conversation between the CEO
+and marketing director to come up with
+the best marketing campaign ideas the
+second phase will be content generation
+whereas a marketing director will give
+the brief to the marketing specialist to
+do the actual content creating work
+there are some caveats about the prompt
+here so for the idea generation the last
+part is most important which only brings
+down the campaign idea and to not
+discuss anything else because this is
+actually simulating a conversation
+between this two person if you don't
+give the scope the conversation can go
+anywhere we also said wish rainstorm and
+create tick on each other's idea after
+discussing more than 10 ideas any of us
+must actively terminate the discussion
+by picking up the best idea and reply
+with only one line which start with a
+simple word info followed by our latest
+content idea without any other words and
+what this does is when this special
+format show up that means the
+conversation has end so that we can move
+to next stage and apart from defining
+the faces here you will also need to go
+to the chat Dev and click on the face.py
+and for each faces you added here you
+will actually need to Define class here
+but the format is very simple so you
+will Define the initialization which you
+don't need to change much and then you
+will Define update phase environment and
+this basically means passing on the
+global environment to this phase because
+if you remember in idea generation phase
+we will actually have a variable called
+task which is original task that the
+client gave us so in here we will need
+to define the variable called task where
+it will do chat environment dot
+environment that this is a Crux of this
+phase if the lens of conversation is
+bigger than zero and info label is
+inside this conversation then we will
+set environment variable ideas to be the
+information it pass on and if there's no
+ideas then it will return I have no idea
+that's all you need to do and we will do
+both both ID generation and content
+generation here with same format and
+once we finish we will go back to this
+chat chin config and update the chains
+and where I will basically remove all
+the other steps that I don't really need
+and only keep this two steps idea
+generation and content generation and
+face type will be simple faces because
+we don't have any sub steps and the
+recruitment will be this four persons
+that we defined earlier and the rest you
+can just keep guessing and that's pretty
+much it you can actually give a task to
+this new team that you just created and
+the way you would Define that is you
+will do python brown.py so you will do
+dash dash config meta XYZ which is the
+folder name here so this means your
+explicit however to use a new
+configuration folder that you created
+here and then task will be drive more
+people to subscribe to my newsletter
+called AI Json where I share how to
+build AI products with a project name
+called AI Json newsletter so I will do
+this so here the star this conversation
+between different agents okay and now
+you can see it is finished so if we go
+to the warehouse you can receive this
+new folder here called aigs and
+newsletter because here I'm doing the
+content generation so there's no actual
+code it will be generated if I look at
+the log there will be a conversation
+between the marketing director and CEO
+where they start brainstorm a few
+different ideas and then the CEO pickups
+the best idea which is an interactive
+quiz to test the user's knowledge of AI
+product development with a call to
+action to subscribe to a newsletter I
+think it's actually pretty good idea and
+once it's finished they move on to next
+phase where marketing director is giving
+a break to the marketing specialist
+about this is a go and this idea I came
+up with now please try to generate a
+social media post and then the marketing
+specialist will generate actual social
+media posts so this is a very quick
+example of this AI agent team you can
+build I'm super excited to see what kind
+of use case you start creating in this
+multi-aging word so please comment below
+about the interesting agent use case
+you're creating if you do enjoy this
+video please consider giving me a
+subscribe thank you and I see you next
+time

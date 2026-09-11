@@ -1,0 +1,405 @@
+Loops are emerging as the single biggest
+unlock for people building software with
+artificial intelligence right now. But
+most people don't even know what loops
+are. And so today, I'm going to tell you
+what loops are. I'm going to show you
+why they're valuable. And then I'm
+actually going to give you many specific
+use cases that you can use loops for
+today. So what is a loop? A loop is a
+way to allow your AI coding agent to
+work autonomously towards a specified
+goal. The most important thing about
+loops is that it removes humans that
+allows the agent to work much more
+quickly towards this defined goal. And
+if it sounds very theoretical, I am
+going to break it down. So what is a
+loop more specifically? Well, you need
+two things. You need a trigger and you
+need a goal. With those two things, you
+can complete the loop. A trigger is what
+kicks off the loop. And there are three
+ways to kick off a loop. One, you can do
+so manually. You literally tell the
+agent, go do this loop. Two is schedule.
+You can schedule a loop to happen at a
+certain time of day or on a repeating
+schedule. And then three, you have
+actions. You can have the loop kick off
+based on some kind of action like
+opening a PR. Now to fully remove the
+human, we wouldn't want to kick
+everything off manually, but sometimes
+it is required. All right? And for the
+goal, the goal can be basically one of
+two things. It can be verifiable or we
+can use LLM as a judge. So if it's
+verifiable, it is something concrete,
+some specific number or some way to test
+it deterministically. If it is LLM as a
+judge, that means we're giving the model
+the ability to determine when it has
+reached the goal. Let me give you two
+examples. So for verifiable 100% test
+coverage in our codebase as an example,
+that is something that we know for sure
+and we have a nice way to test against
+when it is true. And for LLM as a judge,
+one example would be refactor until
+satisfied. And the satisfaction just
+means you as the LLM get to determine
+when we are satisfactorily
+refactored enough. All right, enough of
+the theoretical. Let me actually show
+you some examples. So, a lot of people
+talk about loops, but they don't
+actually give concrete use cases. And I
+wanted to fix this. That is why I am
+launching the loop library. It is a free
+library. I'm basically taking all the
+loops that I use and the ones that I see
+other people use and putting them in a
+single place so you can see them. You
+can be inspired by them to create your
+own loops or you can simply copy them
+straight from here. It's free. I'm going
+to drop the link down below. So, let's
+go over it. This is definitely my
+favorite loop and it's going to show you
+exactly how loops work. This is the
+sub50ms page load loop. Let me click
+into it. And here we are. So the
+objective of this loop is to get every
+single page load in my app under 50
+milliseconds. And so that is the goal.
+It is a very concrete well-defined goal
+which really makes building a loop
+easier. So what I tell it is continue
+optimizing the code for speed. After
+each significant change, measure page
+load performance across every page under
+the same repeatable test conditions.
+continue until that's the loop continue
+until every page loads in under 50
+milliseconds. So it is literally going
+to go through my entire application,
+every window, every page, every modal,
+load it. If it's above 50 milliseconds,
+it's going to continuously optimize it
+until it gets it under 50 milliseconds.
+Once it's done with one, it moves on to
+the next. That's the loop. That's the
+goal. But how do I actually do that? How
+do I actually kick it off? Well, the
+trigger in this case is me. I am the
+human and I'm going to manually kick off
+this loop. You can certainly set it on a
+schedule and you can even trigger it on,
+let's say, a PR open. So, every time you
+open a new PR, you also want to make
+sure that that new PR doesn't make the
+page load over 50 milliseconds. So,
+let's kick it off. So, we're going to
+click copy right here. All you have to
+do is paste it in. So I have the prompt
+right there. And then at the end or at
+the beginning, it doesn't matter. Type
+slashgoal.
+And this is a feature in codeex. Claude
+code also has a /goal feature. But as
+soon as you have this slashgoal, it's
+telling codeex to continue working until
+the condition is met. The condition of
+every page loads under 50 milliseconds.
+That's it. You just hit go. And it might
+run for 10 minutes. It might run for 10
+hours. it will just continue to run
+until it meets the goal. And so you do
+have to keep a close eye on it if you're
+under a token budget constraint. So here
+it is in action. I sent this as a goal.
+Look for more optimizations to make sure
+every page loads in under 50
+milliseconds on production. It worked
+for nearly 50 minutes. So I'm treating
+this as a production performance goal.
+I'll first measure the real team's page
+request path. And it basically, as you
+can see here, went through every single
+page and optimized it to load under 50
+milliseconds. Loops are the frontier of
+AI workloads. And if you want to power
+them reliably and at production scale,
+use the sponsor of today's video,
+Digital Ocean. If you're running
+production inference, you're probably
+running into some of these problems.
+Your inference stack is too complex to
+operate. costs are unpredictable and I'm
+spending more time managing the
+infrastructure than actually building
+the things to be on the infrastructure.
+And most teams find out the hard way
+that the hard part of building AI
+applications is not using the model.
+It's actually everything around the
+model. The operational overhead, the
+fine-tuning inference complexity, the
+costs that become harder to predict as
+you scale. And that's why I want to tell
+you about Digital Ocean, the partner of
+this video. Digital Ocean is designed to
+minimize the total cost of ownership by
+giving teams a simpler path to
+production AI. They provide
+infrastructure that is optimized for
+inference and a vertically integrated
+core cloud that provides efficiency at
+scale. Vertically integrated is the key
+word. And with transparent usage based
+pricing that makes costs easy to
+predict. So, if you want to spend less
+time managing your infrastructure and
+actually building the thing you're
+excited about, Digital Ocean is the way
+to go. So, go check it out. They've been
+a fantastic partner. I've actually been
+using Digital Ocean for well over a
+decade at previous companies, so I can
+vouch for them. Go check them out. Link
+down below. Now, back to the video.
+Here's another loop that I really like.
+This is called the overnight docs sweep.
+Each night, review the codebase in full
+and make sure all documentation reflects
+the latest changes from the previous
+day. update the documentation as needed,
+then open a poll request with those
+changes. So, what I am doing is I'm
+making sure we have complete
+documentation based on any changes we
+may have made. This is an example of LLM
+as a judge. There's no verifiable way to
+know if we have complete documentation
+coverage. There may be some ways that we
+can say, okay, as long as a piece of
+documentation covers this section of the
+code, but ultimately what we're doing is
+saying, okay, LLM, you decide. So, how
+do we actually use this? Well, once
+again, just hit the copy button. We're
+going to come into codeex. We're going
+to click this automations tab. We're
+going to create via chat. We're going to
+delete this portion. I don't know why
+they put that in there, but I want to
+set up an automation. Then, we paste in
+what we just copied, and then each night
+review the codebase in full. hit go and
+let it run and hopefully it will set up
+an automation just like this. So there
+we go. I'll set this up as a recurring
+automation. So first I'm loading the
+automation tool rather than writing a
+one-off note. Perfect. So this is a way
+to keep your documentation always up to
+date. It is awesome. And by the way, I
+created this website with here.now. So
+shout out to here.now the partner on the
+loop library. I created it and I simply
+said deploy to here. Now and it was
+done. It's so easy. Next is the
+architecture satisfaction loop. This is
+one that Peter Steinberger himself says
+he uses often. Here we go. Refactor
+until you are happy with the
+architecture. Here is the trigger and
+the goal all in one sentence. Refactor,
+which is what the loop is going to do,
+until you are happy with the
+architecture. Happy with the
+architecture is the goal. This is
+another example of LLM as a judge. We
+can even give it more guidance on what
+happy with the architecture means. We
+can say be very strict about simplicity
+or make sure every single line of code
+is dry. Then after each significant
+step, live test the system, run auto
+review and commit. Track progress in and
+then we give it a markdown file to track
+the progress. This is fantastic. So it's
+tracking its loop as it's actually
+looping. Now you can kick this off
+manually or you can run it every night.
+So let's say during the day you're
+deploying a bunch of code and then every
+night you're just making sure that it's
+refactored, it's dry, and it looks
+really solid. So very good way to keep
+your codebase very clean. Next, another
+one of my favorites, the logging
+coverage loop. So let's click into it.
+Basically, what this loop is going to do
+is make sure that we have thorough
+logging throughout our app. And there's
+another loop that builds off of this
+that I'm going to show you in a minute,
+which these two loops together, you can
+start to see how loops can become so
+powerful. So, this says, "Review the
+systems logging and add missing coverage
+until every important path produces
+useful tested logs." And again, this
+just makes sure that we have logging for
+everything. And this is going to be
+manually kicked off. And this is going
+to be LLM as a judge because it says
+every important path and important is
+non-deterministic. It just means the LLM
+gets to decide what's important and what
+isn't. And by the way, if you want
+hands-on help with loops and other AI
+topics at your company, my team is
+offering free consulting sessions. I'm
+going to drop a link down below. We're
+only doing a few of these, so go apply
+if you're interested. Would love to talk
+to you. All right, so now imagine this.
+You have full logging coverage, but what
+do you actually do with those logs?
+Well, I have another loop for you. This
+is called the production error sweep.
+Every single night, we're going to
+review our production logs for errors.
+If you find an actionable issue, trace
+it to its root cause, fix it, verify the
+fix, and open a pull request. Then, ping
+me in Slack with the findings and PR
+link. If no actionable errors are
+present, ping me with that result
+instead. So we are kicking off a loop
+every night and the loop is looking for
+every error in the logs and we'll fix
+them one by one with the end goal being
+no more unressed errors in the logs. So
+that is a very concrete goal for this
+loop. All right, here's another loop.
+Something incredibly important to any
+website owner, any app owner is SEO. And
+not only SEO, now GEO. So, here's the
+SEO GEO visibility loop. Run an SEO GEO
+audit across crawlability, indexation,
+page intent, titles, internal links,
+structured data, source citations, and
+answer first content. Rank the gaps. I'm
+not going to read the whole thing. Fix
+the highest leverage issues. Rerun the
+same crawl. And here's the loop. Repeat
+until no critical technical issues
+remain. Again, you might have one issue.
+you might have 50 issues. The point is
+we've now kicked off a loop that fixes
+all of them until no more issues are
+present. So, this is a really cool one
+to run, let's say, once a week. All
+right, here's one of my favorite and one
+of the most handwavy loops that I have,
+but listen to this. This is called the
+full product evaluation loop. Create n
+realistic scenarios covering every major
+capability. Before testing, define clear
+success criteria and choose a consistent
+evaluation method such as past fail
+checks or a scoring rubric. Run every
+scenario under the same conditions and
+record evidence for each outcome. Fix
+the underlying cause of anything that
+that does not meet the criteria. Rerun
+the affected scenarios and then rerun
+the complete test. Continue until every
+scenario meets the original quality bar.
+Now, a lot of you might be thinking,
+"Wow, that just sounds like tests,
+right? It's just like a test suite.
+Well, kind of. But this is actually
+non-deterministic. This is allowing the
+model to go through every single use
+case in your application, in your
+product, figure out if it's good enough,
+determined by the LLM, and update it if
+necessary. This one really does work. It
+takes like 12 hours at times or more,
+but it really does come up with very
+good optimizations. Now, you can also
+customize this for your specific app.
+So, for example, I'm building something
+right now that requires me asking a
+question of an LLM and it providing a
+really accurate response with sources.
+So, I tell it, come up with 100
+different use cases, wide ranging use
+cases for asking the LLM questions and
+judge whether the response is good
+enough. If it's not, iterate and improve
+it. So, I could keep going, but if you
+want to find all of the loops and any
+new ones that I discover, go check out
+the loop library. I'm going to drop a
+link down below. And once again, shout
+out to here. Now for hosting the loop
+library. Okay, so there are two major
+caveats with loops that I have to tell
+you about. Number one is it's not for
+every problem yet. Designing a loop
+isn't always easy. Specifically, coming
+up with the goal for the loop is not
+easy. If something can be verified like
+every page loads under 50 seconds, that
+is perfect for a loop. When we have to
+have the AI judge, LLM is a judge
+whether a goal is met or not. That's
+when it becomes a little more brittle
+because we are leaving taste and
+judgment up to the model. This becomes
+even more difficult when we're talking
+about building features. I have not
+really found a way to build features
+with loops. You cannot say loop until we
+build a full permissioning system. I
+mean, you technically can, but I'm not
+doing it because I don't know which
+direction the AI is going to go. I don't
+know what features it's going to build.
+I don't know when or how it's going to
+decide which features are worthwhile
+versus which are not. So, that makes it
+not great from day zero feature
+building. Now, one example of building a
+product from scratch using a loop is
+something I did where I told the model
+as a goal to clone Excel feature parody
+and it was running for days and days and
+days until I finally stopped it. It
+actually opened up Excel on my computer,
+used computer use, and literally clicked
+through and made sure that it had
+feature par. And yes, it was running for
+days before I finally stopped it. So, I
+do not recommend doing that. And that
+brings me to the second big caveat.
+Loops are very expensive. They are
+churning through tokens autonomously
+until they hit the goal. Some of these
+agents might run for 10 minutes. Some of
+them can run for days. So, for you token
+maxers out there, loops are fantastic.
+But for those of you who don't have an
+unlimited token budget, this might not
+work for you today. And by the way, if
+you like coding with loops, you might
+also like these four open- source
+projects that I reviewed that you can
+use right

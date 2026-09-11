@@ -1,0 +1,412 @@
+So my name is Zach. Uh I work for Neo
+Forj. We're a graph intelligence
+company. You can think of us like a
+knowledge layer graph database at the
+core. We help connect and resolve
+information so AI systems can be a
+little bit more accurate and
+explainable. Um, I used to work in
+technical market. I very recently I'm
+going back to my and machine learning
+roots. Uh, transferred over to a to a
+research engineering role. So I'm going
+to talk to you today about context
+graphs. How many people in this room
+have heard about context graphs before?
+Okay, so we've got about half. And how
+many people have actually coded anything
+with a context graph or with a graph
+like Neo forj in general?
+Okay. Okay. About half. So that's good
+to know. So I'm going to talk a little
+bit about how we think about context
+graphs at Neo Forj, define what they
+are, and then I want to go over some
+tools um that are built by uh William
+Loin, who's one of our product managers,
+um so that you can get started with them
+very quickly um with your own code and
+your agent framework. So, context graphs
+foundation capital I think back in
+December
+and essentially uh we saw of noise
+around this idea of creating decision
+traces and reasoning um to help agents
+make better decisions. And so to kind of
+think conceptually about what a content
+graph is, we need to ask ourselves what
+do agents need to really be accurate,
+right? And so for one thing, doing a lot
+of retrieval, you're going to need a
+knowledge base obviously. Um, so a
+knowledge base for something like RA or
+graph retrieval basically helps an agent
+or a chatbot answer questions correctly.
+What a context graph does and the
+evolution of this is really the
+information required to not only answer
+questions correctly, but make better
+decisions.
+So if we took an a concrete example and
+I'll show you a demo of this financial
+analyst agent um and say that this agent
+has a question around improving
+increase and a request for a certain
+amount of money
+to allow that a information about the of
+the system. So, customer info,
+transactions, and policies. The response
+from that is likely to look something
+like this, where it could maybe assign
+some sort of risk score and recommend
+some sort of review and talk about some
+key risk factors. What is helpful,
+what a context graph enables an agent to
+do is actually give an answer. Should
+you reject, accept, and why? Right? And
+it does this because in addition to
+getting that customer information in
+those transactions, it's also going to
+get you past decision traces and
+presidents, dynamic information about
+why decisions are made. Um
+um systems of record really about facts,
+entities,
+state
+about presidents, causal chains, exated
+outcomes and enabling the agent to act
+with subject matter expertise. Um and
+telling the agent really
+model for a context graph. um be
+entities about things that exist.
+There'll be uh event so decisions,
+transactions, approvals, things like
+that. and then context that
+um and different reasoning by AI that
+require memory but um by employees and
+and past humans that have made
+some of it because you know with
+internet connection I never really know
+you know how things are going to go. Um
+all the code for this is available I'll
+I'll show links at the end. Um basically
+data that we generate replicates taking
+data in from a CRM and a support system
+and some other places. Um it's using um
+claude in sort of the agent runtime has
+some open AI embeddings. Um there's neo
+forj database assisting the data with
+some vectors. Um and then we have our
+nextjs front end um as well. So, let me
+show you recording
+running here so you can kind of see what
+this looks like because again these are
+go. You ask it a question and it will
+call basically a series of tools and you
+can see it bringing the graph data back
+um and then you see it getting these
+different decision traces and eventually
+it will get this reject decision, right?
+And if
+then it does this thing called find
+presidents which is going to be more in
+a second but it's going to look at
+information to pull a bunch of
+In addition,
+internet would work
+connect to each other in these puzzle
+things. See
+build off of each other
+is um so like I was saying before um we
+queried just context around Jessica's
+profile. We pulled back decision traces
+and we did a special of hybrid search
+especially around those presidents both
+on semantic similarity and structural
+similarity inside of the graph that
+actually looked at how the decision
+traces were made um from previous
+decisions and it tried to match that and
+I'll talk a little bit about how that
+works with graph embeddings in the next
+slide to ultimately come up with the
+recommendation
+and so we add a we have a vector index
+so we're able to search
+like fraud rejection for example sort of
+on the semantics but then we have
+thiscept called graph embedding. So you
+a lot of you in here are probably
+familiar with text embeddings right on
+on words right a graph embedding is the
+same concept except those green nodes
+that I was showing you before everything
+was connected we actually embedded those
+into a vector and so what that means is
+similar decision traces are now going to
+be able to be looked up by vector
+similarity and so if you have system
+right where you've had past decisions
+and tickets that have been now up just
+like you would with vector search for
+for or another type of text. And that
+might be very very hard to pull out if
+you just had it inside of documents.
+Um this is just some more information
+around uh the context graph demo and
+some of the scenarios you can run um and
+some of the tools that were used here.
+Um GDS is called graph data science.
+That's what we use for the uh for the
+graph embeddings themselves. Um and then
+I'll link you over to the code here to
+rerun that. But what I really wanted to
+show you today um was another tool that
+was just recently created
+and then a month ago um which allows you
+to create a full um stack application to
+start with with just a oneline command
+in the terminal to actually create the
+context ref and the front end and the
+back end.
+Um and so basically you can think about
+this like um create react app or create
+next app like you basically get this
+boilerplate um and all of the
+scaffolding that you
+you can specify the domain when you
+create the graph um or when you create
+the application rather and the command
+line um and it will give you this you
+know basically the backend the front end
+and and and everything um out of the
+box. So, if I was to show you, uh,
+if I go over here, it kind of looks like
+this. And I know it's probably hard to
+read. There's just a UVX command. UVX
+create context graph. Um, specify the
+name of the app, the domain, um, the
+framework I want to use. There's a ton
+of them that that we can use here. I'm
+choosing paidantic AI. Um, and I'm and
+I'm specifying demo data. And it will go
+and basically create this folder for me
+with a bunch of fixture JSON. the data
+in this case going to use it's uh you
+know basically dummy data that I can use
+to help host the application
+which we don't have enough time to run
+through all of them it takes a few
+minutes to basically install the
+application and seed the data and stuff
+and start but I do have it run um
+that it would give you I don't know how
+helpful that is probably hard to see
+if I go back to Uh
+it'll give you um you know data inside
+of a graph and then um you know you can
+go ahead and ask questions um and it
+will go and and you know basically do
+this type of retrieval with cipher and
+and everything else. ciphers our graph
+query language um to pull data back very
+similar to what we saw in that uh
+context graph demo that was hosted
+I'll let it run for a little bit here
+and um get moving because we only have
+all right can you hear me now okay how
+long did that go on for by the way how
+long was it
+just a
+Okay.
+All right. Okay. Well, here's our
+response back. So, you can see um you
+know, I asked it about um prescription
+medications and in it and it went ahead
+and and pulled everything back and
+there's a visualization of the schema
+here. And like I was saying, different
+decision traces that you can look
+through. Um so, this is a great place to
+get started if you just want to you're
+interested in context graphs and you
+just want to code something up really
+quickly. Uh there's a website that we
+have for this too that you can go to. Um
+it explains this step by step um about
+how to you know get the app started and
+explore everything. Um there's also some
+very interesting new tools if you want
+to import from um software as a service.
+So if you want to import from GitHub or
+notion or Jira or Slack, so you don't
+have to use just demo data, you can
+import data from these other tools. Um,
+and then some other features, and I'll
+give you a link to all of this at the
+end, like I said. Um, so we were looking
+at a pyantic AI application, but you can
+also do it with OpenAI and Langraph and
+Crew and Strands and Google ADK and all
+these others. There's a 22 built-in
+domain. So, healthcare was the one that
+I just showed, but there's also
+Finserve. You can also create your own
+custom domain and it will actually help
+generate an ontology basically a graph
+schema for you and put everything
+together. We talked about um the
+different data connectors for GitHub,
+Slack and etc. Um and it has all of the
+graph native stuff to power your queries
+um that we were seeing to pull the data
+look at decision traces um generating an
+MCP server and doing actually multi-turn
+conversation inside of that app. Um so
+again this project is uh just on its
+just getting started. Um so it's open
+source people are welcome to commit um
+and contribute there. Now I'll talk a
+little bit about what this project is uh
+based on. So um underpinning this one of
+the big dependencies is our Neo Forj
+agent memory package. Um so this is a
+complete memory API. uh it includes and
+context graphs really need all three of
+these things. Um a short-term memory, a
+long-term memory and reasoning. So
+short-term is more conversation history
+and session context. I think we we
+understand that. Uh long-term is the
+entities that are extracted from that um
+and those that repeat over time and
+resolving those down. And then the
+reasoning is going to really be sort of
+the um the traces inside of that context
+graph.
+Um, and there's also inside of here,
+which is very useful. I know a lot of
+people think about, well, if I have this
+text data, how do I put it into a
+knowledge graph, right? Is is you
+usually one of these big questions that
+people have. Um, so here we actually
+implemented this inside of the package.
+Um, where it goes through a few
+different stages on raw text. There's
+other tools that you can use sort of
+outside of this if you want to, um, take
+in structured data. um or you can use
+your own language model extraction um ne
+processes um but this one just uses a
+few stages where you go from spacey to
+gliner and more advanced to an LLM
+fallback um and then there's a separate
+merging dduplication and enrichment
+strategy. So um it's a little bit more
+well thought out and that helps
+especially with the short-term memory
+take that information out and transition
+it into useful long-term memory and
+entities that can be resolved over time.
+And the schema kind of looks like this
+where you have your conversations um and
+then in yellow you have your um your
+entities that get pulled out and those
+connect to your reasoning traces.
+All righty. So we're getting towards the
+end here and we might actually have a
+few extra minutes for for questions if
+if that's allowed. Um but here are the
+resources. So the context graph demo
+that I showed, if you go to that blog,
+it'll also link you to a live
+application that's just hosted. Um, and
+so that that's very useful if you just
+kind of want to explore the concepts out
+of the box. Create context graph in the
+middle on the top one. I know on our
+Wi-Fi
+for this, for some reason it blocks that
+website. It won't block the website if
+you go on a normal Wi-Fi network. I
+don't know why it does for this one. Um
+but that link does work. And then on the
+one on the bottom is basically just the
+GitHub repository. Uh NeoRaj agent
+memory um is the agent memory package
+that underpins um all of that. And that
+also integrates with Microsoft agent
+framework um as well as Google uh ADK
+and and a whole bunch of others. Um so
+that's actually it for me. I made it
+through with a couple minutes to spare.
+So, I'm happy to open it up to any
+questions for the next couple minutes if
+if there are any in the room. Yes.
+Yep.
+Yeah, there is you can add timestamps.
+Um you can add timestamps and then
+obviously as they occur in time the
+different steps they'll be linked by
+like caused or next.
+Yeah.
+Um I I don't know if it does that quite
+yet. I think that's something that will
+happen as the you know as the technology
+matures a little bit. But yeah, that
+that is a good point. It's a good idea.
+Uh the ontology is fully general. It's
+just prepare the nodes and the edges.
+So you'll prepare the ontology
+beforehand for those domains that um I
+showed you the pre-existing ones. A lot
+of them will use there's there's
+something called pole E which is like um
+entity um basically policy. there's like
+a few like predefined entity and
+relationship types and that's used to
+guide the extraction and all of the
+mapping and stuff. Um, so yes. Yes.
+automate creating a front uh
+yeah I would look at the I would look at
+the create context graph package at
+minimum if you're able to describe the
+ontology um then describe what's in the
+data um then you can definitely create a
+graph schema from there um and then that
+will help you do if it's unstructured do
+entity entity extraction um I it depends
+on how structured your data is. So if
+it's like very structured and it's in
+like um for example like CSV files or
+tables um then it's just a matter of
+like mapping the cipher statements over.
+Yeah. So I think that that text stuff I
+think that can be handled inside of
+here. If you look at like create your
+custom domain there might be some things
+that you can do there to help you.
+Again, it's a new project, so it's a
+still a little bit rough around the
+edges, but at least you'll see the code
+and you'll see how it can generate an
+example ontology and then how that can
+be fed to an extraction process to to
+move everything through. Yep.
+Yeah, I think we're still figuring that
+out at the moment. moment. Um
+I know in in this first demo that it is
+like you can ask it to store like if I
+like from my previous conversation I can
+ask it to store decisions but I don't
+think it will do it unless I prompt it
+to. Um but yeah that's a good point. And
+then in the create context graph we're
+still working on how you would write um
+new decision traces. Um so so yeah, it's
+something to think about like some sort
+of sentiment or um like quality score on
+the decisions.
+All right,
+cool. Well, thank you guys.

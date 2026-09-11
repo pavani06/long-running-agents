@@ -1,0 +1,286 @@
+[music]
+Hi, I'm Mikuel. Uh, welcome to capturing
+decisions for humans and AI alike.
+Yesterday with a team from safe
+intelligence, we have released spec 27,
+a new product to test agents. Before
+that I was in Microsoft, Red Hat and
+spent in 10 years working on a single
+product. The consistency problems we
+face with AI and the story of capturing
+decisions show up in every product I
+have seen and these notes are distilled
+from that experience and you can find me
+at the booth. Um
+so BDD, PRD, ADR like that's a lot of
+acronyms. Uh why does any of that
+matter? So let's unpack it from the end.
+You probably know this story. Uh I hope
+it's not an urban legend. Uh but
+scientists put five monkeys in a cage
+with bananas on a ladder. Then gave them
+a cold shovel every time a monkey tried
+to get a banana. Other monkeys beaten up
+the poor fella. Then they replaced the
+monkeys one by one and none of the
+originals remained. And yet they have
+beaten up every monkey that tried to
+climb the ladder, not knowing why.
+So humans and LLMs they suffer from the
+same trait limited context people forget
+LLM's context compacts humans leave have
+no memory [snorts]
+after a while of operating a product the
+team starts asking why do we have this
+flow why is this goal of this feature
+why is this code shaped like that why
+where does this belong and you might not
+have the founding engineer available to
+answer and These problems show in every
+orc uh maybe with AI much sooner than
+they used to.
+So ADR is architecture decision record.
+It records why you do something and how
+you enforce it or how you want to do
+that. And you can cover examples by
+reference docs and code snippets. For
+example, we split code in layers to
+prevent N plus1 queries. We enforce that
+split by linting imports in modules. And
+we also enforce reading from database
+returns um plain shapes instead of RM
+objects. So we cannot um cannot make
+these uh these queries and to prevent
+duplication and also linting it by
+module imports and another like 50 ADRs
+that defined architecture of the
+product.
+There is not a single format that that
+you need to use. It's just a concept.
+um it's a text so there is no specific
+uh way how to enforce it. You still need
+a tool to enforce it but the tool will
+tell you that this is the rule. Why are
+you doing this and how are you supposed
+to fix it? Then the agent will go and
+try to find this document why this
+reason exists and more information about
+how to fix it. Also you can define like
+which files it actually concerns to like
+is it some Python files or some folders
+and how you actually enforce it.
+PRD is a product requirements document.
+Uh that's something lighter. When you're
+building a feature you describe why that
+thing exists and what problems it solves
+and how user goes through the app to
+actually interact with it. What's the
+journey through the application?
+It can be very light. It doesn't need to
+be really long and exhaustive like a
+massive document. You can just capture
+why the problem and the goal and the
+journey that connects them. And it's not
+just for the agents, but also for you
+six weeks from now when you forget why
+you did that.
+Now, BDD, um, it's a behaviordriven
+development.
+You have probably seen spec driven
+development lately. Uh, but if you
+practiced it, uh, you might have
+suffered the same thing as me. How do
+you validate that the product actually
+aderes to the spec? It's a markdown
+document. You describe how it's supposed
+to work, but how do you know it actually
+works like that?
+One thing harder than reading an AI code
+is reading AI tests.
+Um, so what if you had an intermediate
+layer that actually describes how the
+product behaves in a human language and
+BDD is not new and shiny, but it's it
+can be executable and readable.
+So enter cucumber.
+It's almost forgotten, suddenly useful
+again. It's definitely easier to review
+than your average tests.
+You can connect scenarios directly to
+your PRDS and critical user journeys. It
+can be readable, executable and it
+closes the loop that a [clears throat]
+spec driven development leaves open.
+These rules uh these specs are later
+parsed by steps and they are executed as
+code. But what you can do is that you
+can actually write and read these and
+you can review these and you can
+understand these. The language is on
+you. it doesn't need to be um enforced
+like you there are multiple ways how to
+write these uh these features
+and
+that's it but they describe
+how you're supposed to go through the
+application why this thing exists and
+how it runs and similarly they can refer
+back to all the documents that you have
+about why things exist.
+So, and as a bonus, making consistent
+UIs with agents is just another level of
+heart. Like design system and pattern
+library are the way to build consistent
+UIs. Like there was the way before AI
+and it is the way now.
+So you document your language. You say
+for example a primary button is this and
+that. It is blue. It has this shape. It
+has this color and it's this size. And
+you say your rules. You say we will have
+only one primary button visible on a
+site at any on a on on a page at any
+point in time and then you can enforce
+these rules.
+Similarly, you define components and
+patterns. So for example, you have
+multiple colors of these buttons and
+multiple states. You define components
+and you define previews and you
+demonstrate how they work and you create
+snippets of previews so you can actually
+see them and the agents can see them.
+And then you can go and review and like
+do these actually adhere to the
+principles that I have? Do they adhere
+to the visuals? And then you reuse them.
+As with code, you build these from the
+ground up from small pieces into bigger
+ones. You compose them and you reuse
+them. Otherwise, it's uh chaos like with
+a code.
+So
+cool, these are cool ideas, but how do I
+actually enforce this?
+So my team and agents stick with it. How
+do I keep it consistent? Well, with the
+loop, you probably have heard about
+closing the loop, reinforcement loop,
+the harness,
+how to remind the agent that there are
+rules and how to follow them.
+So our loop is simple. It is git hooks,
+skills, CI and llinters and bunch of
+other checks. Agents goal is to deliver
+a pull request and they to do that they
+need to use git. So we use gith hooks
+git hooks to run predefined tasks and
+these tasks are later executed on the
+CI. They are the same tasks that they
+are executed as as hooks. If for example
+agents would get lazy and not want to
+execute them or skip them then they get
+caught.
+And we include linting, formatting, type
+checking, code duplication, architecture
+checks, document linting, everything
+that's that's possible.
+So there was a time where code reviews
+were about style and tabs and spaces.
+And there is no space for that anymore.
+All these things are not for discussion.
+They are rules and they're enforced and
+they are automated because there is no
+space for discussion about these
+anymore. It's more about the higher
+level concepts.
+What you cannot find you cannot enforce.
+So for example we enforce architecture
+of the product and of the code. We
+separate modules um and their imports.
+So what you can use from where for
+example our end to end BDD test suite
+cannot access database. So we forbid
+from accessing any module that could
+access database and basically force the
+module to the models to iterate without
+database and really use only the browser
+features of the application.
+Similarly in the product itself we
+enforce we cannot talk to database from
+rendering templates. So we know that
+there are no n plus1 queries ever. You
+just define ways to prevent these
+problems from happening ever. You cannot
+keep finding them. You need to prevent
+them entirely.
+Then the com the agent tries to commit
+it and push it and they get feedback on
+the comet and get rejected and they get
+linked back to the document and they go
+read it and fix it and iterate.
+So there are some drawbacks. Um it is
+sorry it's not drawbacks it um so this
+loop is generic. uh this loop where they
+do some work, they they push it and they
+get feedback and they iterate.
+But the loop can be multiple things,
+right? Like sometimes you're working on
+a product feature, sometimes you're
+working on UI, sometimes you're working
+on more backendish backendish things. So
+that loop is the same, but what changes
+is the focus of the loop. So we have
+different skills. uh there is ADR that's
+whenever there is an ADR mentioned the
+agent will look up ADRs how to operate
+with them uh how to find code that
+affect that's affected by these ADRs for
+PRD the same for for UI loop we actually
+skip bunch of checks and rather force it
+to iterate in a browser quickly
+and
+test skill that actually identifies
+tests to run based on code coverage and
+file changes So we run just the focus
+part of the suite and not the entire
+suite and some goal execution to
+actually keep decisions that the model
+made so we can review them later. But
+all of these provide focus in the loop
+but the loop still stays the same.
+There are drawbacks like it is very
+context heavy like you can run out of
+half of the context uh in u
+starting the research.
+Um but I have no fear of context
+compacts like this actually for like
+last half year actually works I think.
+So in my sessions there are 20 50
+context compacts and it's it's okay
+because the important things survive and
+the agent will always look them up
+again.
+So and that's the goal anyway, right?
+Like you want to have multiple hour
+sessions with a clear goal that the
+agent can operate autonomously with the
+rules that you define. So that's the
+goal anyway like
+so
+there are decisions that you can record.
+There are parts of the product that you
+can describe why these exist. There is
+um cucumber or BDD that can have
+executable specifications that you can
+actually read and review and understand.
+Design systems can help you to build
+consistent UI from components and um
+again enforce it that for example there
+are no inline stylus anywhere else and
+you employ harness to loop it all
+together.
+So may the spec be with you. That's it.
+[applause]
+[music]
+[music]

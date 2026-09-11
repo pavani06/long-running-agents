@@ -1,0 +1,456 @@
+[ __ ] your calendar. [ __ ] your meetings. Like this thing is going to eat your lunch. You have to reinvent your company from scratch right now. Like we don't
+know what's going to be on the other side of AGI. But like what we do know is that your company is going to be nothing
+like what it was. The bottleneck at this point is no longer the technology. It's you. It's your own adoption. I think at some point is also just a decision
+people have to make for themselves. Like do you want to be a business of the future or a business of the past?
+All right. Flo. So far AI has been more single player. How is it going to change as we work with AI more closely and
+agents in everything? I think like literally right now like we are starting to see the advance of of
+much more multiplayer uh AI product. I compare it all the time to like you know I don't know if you're old enough David
+but like we used to send each other like weird documents back and forth by email. Like you still do it sometimes when you
+have like a legal deal. It's really annoying. that you know it's the same difference as between like sending each other we real documents via email or like sending
+each other like a Google doc link and then you can collaborate together on the same like underlying artifact. I think
+it's the exact same thing. I think like 2025 2026 was about like okay agents are really working now. It's really
+impressive. They can do like long time horizon tasks and all of that stuff but it's still like everyone's got like
+their own little like cloud code or like co-work or or CEX or like whatever you use. I'm more of a cloud code guy
+myself. Like everyone's got their own agent set up on their own computer. I know. Do you have a team, David?
+Yes. Are you experiencing the same thing like now like people send each other like MD files and HTML files back and forth all
+the time on Slack? Like it's a mess. Yeah, it's a mess. The best solution like we have right now is just GitHub
+repos and it's not optimal, you know, 100%. I think everyone is just hacking something together and none of those
+tools were designed for the the new use case we have now which is like hey we have a new teammate you know
+fundamentally that's what it is is we have a new teammate that teammate is AI and we must make that teammate work with
+us in exactly the same way as any other human teammate so that's I think the huge transition that's happening now
+yeah I think like that stems from the fact that like basically all the softwares that we use has been created pre- agents right it's been created for
+humans only which means it's probably not optimal for agents right? Like they're completely different entity than
+humans. They have different strengths and different weaknesses. Maybe I should ask you, but like I hold the belief that soon enough 99% of all software usage
+and you know tools will be done by agents. Like it's just more convenient for me to ask my personal agent whether
+it's pie openclaw her just like hey track my calories and like figure out how much I have less rest for the day
+and just order something you know something healthy high protein I don't want to think about it right and now Door Dash released their CLI so it it's
+going there 1,000%. So given that the future is agentic and that soon enough 99% of
+tasks will be done by our agents, we need to make sure that whatever agent you're running is as powerful as
+possible. And this is exactly what I spent the last two months building with deep API. This is the first API key I
+give to any agent I create because it instantly gives it worldclass scraping for any website or social media. It
+gives it deep research that's better than perplexity, ability to use browser use, its own email address, and so much
+more. Let me just show you. So let's jump into CEX right here where I have three completely different tasks that
+showcase the power of deep API. First one is to get me 100 active licensed general contractors in Austin, Texas
+from the state licensing records, name, website, phone, email and table. Right? So it ran for 30 minutes. It used deep
+API to research that. These are the things that enthropic doesn't give you into cloud code or OpenAI doesn't give
+you into CEX. But with deep API, it's a single API key that allows the agent to basically do anything that a competent
+human can do on the web. So in this case, after 30 minutes, it created the 100 unique contractors. It outputed a
+markdown table. You can see very clearly, boom, all 100 contractors. The amount of use cases is literally
+thousands. Let me show you a different test. This one is eight different stock tickers. So check the last 24 hours of
+news and sentiment of these eight tickers. Nvidia, Tesla, AMD, blah blah blah. Ran for 4 minutes. It was faster.
+and then also email it to me. Right? So, this is the crazy part. The agent can send emails without you doing any
+authentication or any config. The agent can scrape some addresses, find contacts for you, and email them themselves. All
+with a single Deep API API key. And let me check my email address actually. So, we can see right here we got the email
+from deep API. And yeah, the agent sent me everything that he promised as a single email without me having to
+configure him, set him up again. It comes inside of deep API. All of these capabilities your agent instantly
+unlocks the moment he has a single API key from deep API. And by the way, our pricing is fully transparent. If we go
+to dogs and pricing, you can see that even if you buy just $30, you can get thousands and thousands of different API
+calls for your agent. So go ahead and go to deepi.co or click the first link below video and try it yourself.
+Even the the laptop, even like the computer is going to disappear. And I say that as like I'm the guy with like a
+49 inch like Samsung monitor and all of that stuff, but I really think increasingly as like a keyboard and a
+mouse or just tools you use to micromanage your computer because it's you know output tokens. You put tokens through
+that. That's all I care about, you know. And so if my computer was smart enough, I would just be able to give it a go. And
+that doesn't take a massive keyboard and a mouse and a 49 inch monitor. It just takes whisper flow like a keyboard, you
+know, and I and I can just like dictate and be like, "Hey computer, I want you to do X, Y, and Z." you figure it out. I don't know what you use under the hood.
+I don't know how you chain it together. Like you figure out how to achieve my goal. Um so 100% I think like uh uh the
+software we have and the workflows and even the hardware we have computers has been built for for like a pre- agent
+era. That said like even the software we have right now is you know we have
+collaboration tools. It's not like multiplayer is a new thing. It's not like no one was working together before like we are used to working in teams.
+even that today like agents are not currently plugged into that like so for example we're releasing this new product
+in a in a week it's called the lindtitimate it's basically again it's a multiplayer agent okay so it's like you
+have an agent you you have integrations like tools and and actions that are like shared with the teams you have like a
+team computer like a team file system and like a team memory you have team skills okay and then you have a team
+surface which is just Slack you know but like it's just a team surface where you collaborate with your agent Right now
+it's so weird like we have this like common room where we all get to talk and AI is not in the room somehow and like
+we all have to like talk to our own AI outside the room and then go back into the room. So the moment you can like invoke your agent in a a collaborative
+environment it changes everything. Like for example, right now shocking that I still cannot atmentntion an agent on
+Google doc, right? Uh it's shocking that most agents still don't have an an email address. Like just imagine like
+something as simple as an email address, right? So yes, your AI teammate should have a Slack account. You should be able to admin on
+Google Docs. You should be able to send it emails and it should just be like a normal member of the team. Yes, absolutely. I mean yesterday I
+literally realized this in the evening we had like a pretty intense discussion about go to market and you know different opinions flying around and I
+was like why didn't we like involve GBD 5.6 Pro? Why didn't we involve Fable 5?
+Like this should have been like a a central participant in the conversation. Yes. Uh it happened to me literally last
+night. Can I share my screen real quick? Yeah, of course. Teammate was asking me this is on Slack. It's like oh do we allow free users to
+use Lindy teammate via Slack? And then I was like oh at Lindy you know which is the Lindy teammate we're releasing. I think we wrote a doc about billing
+recently. So like, yep, I found it. It wasn't Lindy, it was Jeremy. Uh, this is this is how it works, right? And so
+you'll notice I didn't have to retype the entire prompt because the prompt exists in context, right? That like the
+ability to invoke your agent in a in a context where like a lot of information and queries already exist makes a huge
+difference. Yes, I think with the skills like that alone is huge because you know if you have people on the team, whoever is best
+at something that should be the person creating the skills for that, right? And also like it's not even about the
+expertise like if somebody's working on something like literally I'm I'm like like can we just have like some either
+like voice transcription record the loom have some note taker like document this into tokens then tell Fable 5 to like
+create into structure markdown files and push it to a shared GitHub repo. you have a specific you know David internal
+GitHub or it's like all these different areas of the business we need to have a GitHub repo on it that needs to be like all the knowledge because before you say
+like okay we we had to do a task you know like create an SOP create a playbook and like nobody wants to like take their time and like teach you know
+more junior people on the team but like if you're already on a Google meet or already on a you know zoom call and like there's like a notetaker suddenly you're
+like developing training materials not only for new humans on the team but for the Asians but like all the time
+I promise to your viewers this isn't set up but this is again exactly what I am uh obsessing about these days is like
+multiplayer experience and I I totally agree with you that like the bedrock of a multiplayer experience is like shared
+[snorts] context right I think people underestimate how hard it is to build that shared context right and the first
+thing people think about when they think shared context is like the wiki you know but like most companies like they don't
+even have a wiki and like wikis suck like the moment you write a wiki it's out of date the way we've resolved this
+here internally Let me show you. I'm obsessed by this idea. We call it like automatic hydration. Okay, so we have this file system and if I if I go to my
+file system, I can see my my master memory file. This was not brought together by me. This was brought
+together by my agent and my agent keeps it up to date continuously as I have meetings, as I receive emails, as I do
+all of that. You can see here Lindy looked at months and months of history of our Slack workspace. So it ingested
+something like 20,000 messages here. And you can see it's updating its learnings live. So at this point of the video,
+it's only looked at like 1,200 messages and it's telling us what's going on in the company. So you're focused on the
+teammate experience. And then you can see on the right, it's building this graph of what's going on the company.
+It's keeping up to date this team repository of knowledge. Two big data sources that it's using to do that are
+Slack and meetings. I was asking Lindy catch me up on the highlights from Lindy
+teammate on boardings this week you know or people sometimes say like hey like what did we decide about this project
+again or like what's the latest shipping date and Lindy was in the meeting and she can basically oh like during the
+latest project sync FL said that we were pushing the launch date by a week so it becomes almost this like it's like a
+teammate that's been in like every meeting in the company it becomes irreplaceable so I I do agree like if you take that multiplayer experience
+seriously half the job is just making sure you have this self building you
+know copasy was talking about this like self-building wiki that's basically what it is it's like a self-building company
+wiki I have so many thoughts on this first I would say like humans like are great at some things agents are great at others
+right and like so many humans they try to like remember things they try to be like okay what do we say in the last meeting what was the thing that we said
+we're going to do but like we are terrible at memory this literally like in court you know like eyewitnesses are like the least credible source of
+information our memory is like so easy like a lot of our childhood memories are fake or either heavily distilled. There
+have been many studies on this. So instead of like that just like use a task list, you know, like it's the same thing with the context. Instead of
+trying to remember all the context like what did that person say? Okay, what did we chat on this last last Thursday first Thursday first Thursday first Thursday first Thursday first Thursday first Thursday first Thursday first Thursday first Thursday first Thursday first Thursday meeting it's just like let
+agents handle this okay some things agents are clearly better better at humans and like there some things are
+worse like I believe like gen genuine creative thoughts humans are much better you know like seeing having that
+intuition humans are better but like distilling you know 50 plus meetings you would have to spend like half of your
+day doing that for example for me I had a similar experience where I track every 15 minutes which is like a productivity
+technique it sounds crazy for people but like after doing it for two weeks it's normal And basically I have like you
+know every day tracked every waking hour 15-minute blocks. And then I was like yo I'm I'm just getting overwhelmed you
+know like I need to delegate better to my to my team and stuff like that. So I took Fable I just gave it access to my
+Google calendar. It analyzed like the last week or two and produced insight. I was like wow this is like so true and
+like it was so clear because it was like 250 or 300 different events you know. I would never do that manually. I would
+never spend those hours like going through it. But the data was there and like it's the same concept as you said with the 50 meetings you know nobody
+would like go through these transcripts but when you chat with 50 plus meetings there's like something magical just having that loads of context and a
+frontier model and just produces the insights 100% and and like the agents surprise you when you give them so much context
+and I I am so happy we have basically infinite context windows now because like right now like the base context
+when we ask a question to Lindy on Slack we can look in in like the the debug logs like the base context just like you
+Hello world. That's 100,000 tokens. Like we just right off the bat feed 100,000 tokens to the model. And so sometimes
+like one thing that surprised me in the way we use multiplayer agents is like let's not forget like you can also just
+like talk to agents just like tokens in and out, right? Like all of us we use cloud all day to just brainstorm and ask
+for its opinion and all of that stuff. And so we do the same with our Lindy teammate. Now more and more we're
+actually asking Lindy for her opinion, you know. So under the hood, it's oppus. It's a really good model. It's really smart. But most importantly, I think
+like I actually think intelligence is is slightly overrated. I think intelligence, sure it matters, but like
+imagine if if you were inviting Albert Einstein, you know, like the smartest guy in the world, like John Voyman, you
+know, you invite John Vyman to your office and he sits next to you and he has zero context. He's kind of useless.
+Like he's not going to do a lot a lot for you, you know, like if you have like a quick thing you really need done, John Vman is not your guy. like your guy
+actually like your average like normal coworker who's not John Boyman is actually a lot more useful in that
+moments than John Vman because it has all of the context about the company and so very often like we'll we'll like at Lindy like in a straight like ah what do
+you think we should do here and sometimes it's it shocks us because it has all of this context it doesn't just
+chime in like oh I think this is a good decision it says guys sometimes it literally tells us like hey guys I I
+don't think this matters actually I think like none of the whole decision matters at all Because from the context
+I have, I know that what you actually care about is this other thing over there and like why why are you spending so much time talking about this right
+now like that is not something that cloud can do if you just ask it a question in a vacuum. It's never going
+to tell you it doesn't matter you know but if if you have the context about hey guys like this other thing is on fire right now I think this is a distraction
+that's the kind of thing an agent can do for you. Yeah, I think this is a there's going to be like a big moment similar to
+you know January, February when open claw blew up massively that was basically that but single player right it's like okay suddenly this one agent
+can connect to WhatsApp to slack to discord to calendar or whatever email and like it can have all these contacts
+and I can interact from the apps I already use. The question is like who's going to crack that on the team layer
+and on the company's layer efficiently but really in a way that's like smooth because nobody wants to like my belief
+is that like the the web UI is is dying. Nobody wants to like learn a new app. Nobody wants to like adopt a new tool
+you know it's already like friction like it's just friction switching things even like high power humans they have their
+own text stack they like to work from their own familiar interfaces. So, like it needs to be a smooth way. It needs to
+be non-intrusive. And yeah, like you said, it needs to like be efficient where it surprises you. It's like, wow,
+you know, I I said like I'm going to focus on not overthinking and not adding any more features. And now I like I
+caught myself, you know, being stuck on like adding this fifth feature where we still are in the early stages, stuff
+like that. 100%. Which which again I I think this is why I am so bullish on Slack. In a
+way, it it breaks my heart because I actually don't love Slack as a product too much. But I think at this point, it's like undisledible, but I am so
+bullish on Slack. I really do think like Slack is going to be the place where AI agents collaborate together because I I
+agree. I think at the end of the day, it's got to be magical. And you know, we went through this phase and and you had some videos as well like NA10, you know,
+was like all the rage last year, you know, like we don't hear like too much about NA10 anymore. And I think one reason is like it's just too hard to
+use. It's just too complex. I nothing against them. I think it's like an awesome company, you know, but I think people really crave something that is
+just so so so easy to use and like they don't even have the time to connect
+their tools and and to give it the context and and to give it the instructions like they just want it to work, you know? And so again, I think
+this is why if you have a multiplayer scaffold, you don't need you can join a company, you don't need to connect the tools because like the team already did
+it for you. You don't need to like worry about the context because it just builds itself. you don't need to worry about the skills because same like the team
+created all of those skills for you and then you can just go ahead and ask it stuff. You shared a great point is like people just want things that work, you know,
+nobody wants to like configure 20 different things, 10 different API keys. It it was like you said, you know, with
+the with the NA10s, the make.coms really the competing like who has really like the raw number of connectors.
+But now that agents can do all of this like people just want efficiency. They want something that works. People want
+like zero setup things, reliability, high uptime, predictable user interface, all these things.
+It's actually shocking because yes, like agents can do all those things. I I do agree like the mode of Zapur is like for
+the longest time it was the integrations. Now it's I'm sorry, but it's worth nothing. Like agents can just figure it all out on their own like on
+the fly. Something interesting happened. It was I think two days ago. A teammate on Slack mentioned Lindy and was like,
+"Hey, I want to create like an audio ad." I don't even know why he was doing that, but he wanted to create like an
+audio ad about Lindy. And so he was like, connect with like the 11 Labs API, like come up come up with like the
+script and and then create a web page that I can use to like play all of those files. We've created all of that. We
+actually have an 11 Labs integration that that the agent can invoke via a tool, but we hadn't added it to the
+agent. The agent can also like request integrations. It's got to invoke another tool to search integrations. Okay, it
+didn't bother doing that. It was just like, hey, I'm just going to play with like the the 11 Labs API and I'm going to create my own integration. Again,
+it's got a computer. It's got a file system. So, it literally wrote a Python script that it saved in its file system
+for future use. It asks us for like the 11 Labs API key. It's got like a secrets manager that it uses to store that. And
+and I was like, oh [ __ ] you didn't even bother to use the 11 Labs integration we created. Like you're just like building
+it yourself. So, I I I agree. I think like basically right now there there is a race like whoever becomes this nexus
+that accumulates all of the context and all the skills and all the the the integrations of a team can build this
+this this ultimate AI teammate that you can just like offload work to all day. And I think another reason why it
+matters being first mover is for the training data. like whoever is really established as the first player gets
+baked into the training data of the next generation of models and then then they're going to default to that right like we can see it with building with AI
+like there's a certain tech stack everybody knows it where just like you start building with AI and they recommend certain tools because you know
+people have been building on top of them so much and I think it's going to be the same for like all aspects 100%. you mentioned uh like you're
+you're a cloud code u more of a cloud code person than codex can you like describe or share like your current
+setup how do you work how many agents are you running usually I mean on cloud code I'm always I don't know about you like I'm always a bit confused to see
+everyone with those like super complex setups because I find like cloud code just works out of the box for me and
+I've tried all the things I I've added a bunch of MCPS obviously like that that you do have to do but I've removed like
+my my cloud MD file is is now basically empty like there's nothing in here all I do is that I just have like one ma like
+massive agent folder on my computer that I use for like all of my agent projects and like all of my agent context, but
+otherwise it's basically vanilla clut code. I think like the bulk of my agent usage these days, it's going to sound
+like I'm I'm playing my book, but it truly is Lindy, you know, because I I do find I find it easier to use. It's in
+the cloud, you I do I do like that it's connected to all of my integrations and so I I you know and I can have those um
+I think routines is a thing we've not talked about. It's basically is those recurring workflows that happen and that
+tap into all of my integrations and again because we have like 3,000 integrations and even if we don't have
+one like N will just build it itself anyway. This is how I use agents now. This is every morning I have an agent
+send me a daily brief uh by uh text you know uh I have an agent draft replies to
+my emails. I have an agent labeled the emails that I receive. I have an agent take notes for my meetings. Prepare me for my meetings. It sent me a message
+right before this this podcast right now. I was like, "Oh, you're meeting with David. Like, this is this is what's been on his mind." And so forth. I What
+do I have here? I have maybe it's tmi. I have like an agent that uh my agent's got like an iMessage number so I can
+just like text it all day. Every time I eat something, I send it a picture. Yeah. Same. You do you have like an iMessage as
+well? No, not through iMessage. I have to do it through Discord, but yeah, I track all my calories through agent. Yeah. Uh, and then I have this agent
+just like lo that somewhere and then at the end of the week it's like shaming me. It sends me a text with, you know,
+this is your score for the for the week. Oh, this agent I love. We we are recruiting engineers. Um, where is it?
+Weekly AI authors. And so it's it's finding I find like a really good source to recruit engineers is to find people
+who've written really good blog posts. Like if you if you have a blog and and if you write it means I think right here
+you're like in the top 5% most passionate uh engineers. And so I have an agent every week uh research new blog
+posts like indie blog posts that were written by by engineers and then send me a list and then offer me like hey which
+ones should I reach out to? I have this one that uh finds like identifies like interesting signups like oh my god like
+the CEO I can't say who but like there the CEO of like a pretty big company that signed up to us recently. uh it
+intercepted it immediately. It was like, "Hey, like this guy just signed up. Do you want me to reach out?" I'm like, "Oh, [ __ ] yeah." You know? So, right
+here, I'm like super reactive. It's like within like 20 minutes of signing up, the CEO is receiving like a personal outreach for me that's like actually
+real. It's not like completely automated. I mean, at this point, like my entire life is powered by agents and like that's that's what they use for it.
+Like right now, you know, just using it for coding. It's almost shame like cloud code and codex have the word code baked
+into them because people don't think about other things, right? You mentioned someone on your team using
+for marketing. You yourself mentioned the use case that you did like before this podcast. There's so many different ways to like use these agents that like
+we still need to figure out. And also like this is both on the personal side like trying to give it more and more
+ambitious prompts, more and more ambitious tasks to see like what it really can do, but also on the company side. I mean that's my belief like as a
+as a startup you have to be willing to completely reinvent yourself like every couple of months because like things are
+changing so fast and if you're like no we're this type of company that does things this way it's like okay but maybe
+you know the next generation of models maybe it can do it or maybe people don't want to use it that way anymore you know maybe they just want to use it through
+WhatsApp or iMessage so can you speak more about this like need to just reinvent whether it's on the personal
+you know how you work with AI or as a company 100% I often think of the experience that the kid has learning and adopting
+new technologies, you know, like it's kind of strange, isn't it, that like as a kid you can you can learn faster than
+as an adult. Like you adopt new technologies faster. Like what what's going on here, you know? And there is something about the brain and all of
+that stuff. But I think there's something else at play here. I think there's there's a couple of forces like you get busy. And so even if the
+innovation over the long term has ROI, over the short term, it's it's less effective than the status quo because
+you're going to have to learn and experiment. Okay? So you're busy. Okay? you're you're kind of afraid honestly uh
+that it's going to break something, you know. Uh so there's the comfort, there's the fear, and I think it is more
+important than ever to just [ __ ] around. I think, you know, that that's what kids do. Like they just [ __ ] around. They
+play, right? I think it is more important than ever to just play with this technology. And that's another
+thing that kids do is like they break stuff all the time, you know? Like I I I was coding when I was 11. I've been
+steeped in computers my entire life. And one thing I've done as many kids like me who were like playing with computers
+their entire life is I have broken so many computers. Every time I would go to a friend's place, I'm like, "Oh my god,
+you have a computer. Let me let me go to the computer and play with it all time." And I would break everything. You know, you go to like program files on on
+Windows like this is useless. Delete, delete, delete, delete. Next thing you know, nothing works. Um and and I I
+look, it it sucks to break stuff, but that's how you learn. I always uh urge
+people. I'm like, you've gota right now. You've got to break stuff. You've got to play. You've gota you've got to waste
+time, you know? You've got to clear your calendar and you can't let the urgent crowd out the important. [ __ ] your
+calendar. [ __ ] your meetings. Like, this thing is is is going to eat your lunch. Like, you have to reinvent your company
+from scratch right now. Like, we don't know what's going to be on the other side of AGI. But like, what we do know is that your company is going to be
+nothing like what it was like two years from now. My father had um he had a
+magazine company. He was like a magazine publisher, you know, and when the internet came about in like the early 2000s. It was was sort of similar to
+what's happening right now in AI, it was kind of scary. It was kind of exciting and it was very confusing. It's like what's going to happen? Like no one
+quite knows how it's going to shake out. What he did know is that his company would completely change. And so I mean
+he basically rebooted his entire company, you know, and like he made a ton of mistakes. He fired a ton of people. He like the company almost died
+multiple times. But now now the company is actually doing well. He transformed his business for like the internet era
+and all his competitors who didn't do that and they didn't take the risk and they didn't make the mistakes. It's just
+a slow death. You just descend into death little by little. So how how do you think about that? Like
+running a company on a practical what are some practical things you guys are doing or not doing? Oh boy. I think right now we're very
+much in like the uh let a thousand flowers bloom phase. You you have to embrace chaos right now. It's super
+chaotic right now because again like I think the very fact that right now unfortunately AI tools are single player
+means that everyone's doing their own thing. So right now for example we have a problem where it's like engineers uh
+each engineer has basically created their own PR review workflow their own AI agent PR review workflow. So we also
+have like a PR review agent for the company and then like engineers have like their own agents like add stuff to it's a total mess. It's a total mess and
+I love it and I totally welcome it. I think right now is the time to let to let chaos rain. And I think once like
+out of that chaos patterns are going to emerge. It's it's just it's it's natural selection, you know, like the jungle is
+a chaotic system, but like there's beautiful uh very complicated uh organisms that emerge out of that
+chaotic system. Um so I I I think right now that's just the mode we're in in 2026 is like you've got to let chaos
+rain and you've got to embrace just breaking stuff. So as a founder just run
+experiments, observe, talk to your users, see what resonates, see like really try to be like the finger
+spitting a field, you know, try to get the feel of like where people are turning away, you know, like this agent is no longer popular or like this family
+of models is becoming popular. People are using it that way. You know, people are using more and more tokens. People are becoming more aware of their token
+spend and they want to see what they get before buying. You know, maybe six months ago everybody was like spending as much as possible on subscriptions.
+people are like okay this plan gives me that much this company does resets you know this company requires your backend
+enterprise data this company doesn't so like I think there are a lot of different trends how are you like doing
+this you know you mentioned like clearing your calendar experimenting with new tools like when you see a new interesting tool do you just like block
+out some time to test it like personally what what are some of your ways you try to be on the cutting edge yeah so Wednesdays uh are like like my
+my no meeting days and like I basically spend them like like building with AI at this point I'm with AI all the time.
+Like any any waking minute I have like again I was at the office last night at 2 am and that that's what I was doing. I
+was just like like I was I was working but I was working with like that playful intention because I had the space and I
+had the time and I'm just going to spend more time to actually do new things with AI. I spend all of my weekends with AI
+and like all day at at at work I'm I'm telling the team again I'm urging the team I'm like agent agent agent this got
+to be an agent. you know, I think the team, especially if you're like a leader, I think the team feeds off like
+the attention that you give to different initiatives. And so I think like it's very simple. It's like you've got to ask
+all the time people about their AI workflows. And you've got to reward people like you've got to notice people
+on Slack and during meetings like, "Oh my god, this is so cool." And then you've got to you got to uplift them. It's like, "Oh my god, look, look at
+what Ali did. Like, [ __ ] yeah, like show us Ali." Right? Like if you reward that, if you shine a light on that, that's
+what people are going to do as well. I think of it almost as like um the invention of electricity. Like imagine
+you're like a factory, right? You're like a shoe maker before the electricity or whatever or before even the
+industrial revolution, okay? Like you're making shoes by hand and it's a mess. It's just like two dudes in a small
+workshop making shoes by hand. Okay? Now the factory comes in, right? And maybe it's not even the electricity,
+maybe it's like a coal engine or whatever, right? Um the ultimate shape
+of this new business is like the Nike factory, right? It's like a whole floor. It's like a lot of machines and all of
+that stuff. Okay, you've got two choices. You can keep doing what you were doing and it's going to be very
+tidy and you're going to die, you know? Or you can move on to the new way and
+it's going to be an absolute mess, right? Like this factory that's transforming itself from this like 1700s
+like workshop to like the modern like factory floor with machines. Like the transition isn't pretty. Like it's going
+to be an absolute mess, you know? And so I think right now if your company isn't a [ __ ] show, you're falling behind and
+you're not you're not really adopting this. And I think right now if you're not spending I want to say at least 20 hours a week
+directly hands- on keyboard using those AI systems and and breaking stuff and
+making a messy you're going to die. Like I don't think your company is going to make it. Yeah, I would say even more than that
+because like it's just there's so much I I think like to distill it for people like I think about it a lot and I think
+it's two things, right? the AI agents, they're just going to be like a lot smarter and a lot of things and way more
+efficient. So like ultimately it's like how well can you use the agents and do you have the money to use them? Bigger
+models are more expensive and people are burning more tokens. So like do you have the skill set? Do you have the setup? Do you have the technical ability, the
+knowledge, the vocabulary to command these agents well and can you actually afford to burn billions of tokens per
+day? That's exactly right. That's exactly right. And by the way, it's not rocket science. And I think a lot of people they're afraid of like dipping their
+toes in and like once you do it it's fun. It's just so much fun. These systems are so awesome.
+Also like you mentioned you know the shoe factory where like people are stitching everything by hand. Now in retrospect it looks like middle ages.
+But I think like the current way of working where like humans have to be involved in everything and like human is the border and everything. I think even
+in 10 15 years from now that will look even more like the middle ages compared to like the agentic future where we have
+super intelligent models commanding everything and the humans are doing the things they're truly great at but like
+all the other things whether it's like robotics or you know parsing thousands of documents reading like a big legal
+case whatever that will be done by AI and I think soon enough we'll look back and see like it's crazy how slow
+everything was moving it's crazy that people used to read meeting transcripts or there was a like literally this is
+still a paid position like you know like you obviously has one of the most cutting edge transcription tools out
+there when it comes to AI but like there's still a physical job where somebody like sits in a courtroom or
+whatever and like tries trans transcribes you know like there's still like translators as well there's people like literally my age I speak like both
+men and women that like go to school to become a translator I'm like guys have you not spoken to JGBT boys like what
+are you doing like well for what I have this friend Zach Hogget uh he said this I love he said um
+yesterday lasts a long time. I don't know if you know like lotus lotus notes which is like for people who don't know
+it was like I think 80s maybe 90s era like world predecessor uh and and lotus
+notes is a $1 billion a year business for IBM right now. Okay. So it's just I actually think unfortunately the diffusion of
+innovation of innovation is really slow but I think at some point it's also just a decision people have to make for
+themselves like do you want to be a business of the future or a business of the past right now you mentioned in 10 or 15 years we're going to have those
+like supercharged AI organizations like it's it's happening right now you know like if you're just if you're starting a
+business from scratch right now it's actually really easy to just hire zero people and set up everything and it's
+it's harder the bigger you are and the more the more transformation you have to do the harder it is But it's the
+bottleneck at this point is no longer the technology. It's you. It's it's it's your own adoption. Yeah. I literally spoke about this with
+people on my team today. It's like anybody has an engineering team right now. Like your codeex, your cloud code, your cursor. You have a world-class
+engineering team. The question is, do you know how to use it? You know, do you have the right idea? Can you build it?
+Do you have the initiative? Do you have the work ethic? All these other variables, you know, do you know how to take this to market? Go to market marketing. People don't want to talk
+about it, but like this is a huge unlock. And it's just like so many people and again I have this
+controversial belief that like 99% of slop comes from humans because like people say like AI slop this and that
+but like if you have the bad input if you tell it to build a shitty product it will gladly build a shitty product. The
+hard part is knowing what's a great product. Yes 100%. But look I think honestly even
+that is going to to to go away soon. I think like the the job is just going to set up the agent. Right now the job is
+is just to set up the agentic machine. If you've read, you know, Ray Dalio, like he wrote that book principles. One
+thing I love in that book that that idea that they love, you know, they always say like don't work in your company, work on your company. You're not
+supposed to operate the machine, you're supposed to work on the machine, you know, and and every so often you go into the machine to to see what's going
+wrong, but then your objective is to get out of the machine to fix it. And I think it's the same thing with AI agents
+right now. I think you you want to work on the machine that does the things. Uh listen labs, I don't know if you saw
+recently had this awesome tweets. I had an intern build like an app and I had like well obviously you have a coding
+agent builds the app but then you have a user research agent that continuously gathers feedback from users about the
+app and then talks to the coding agent to ask it to change and like the app is basically completely self-improving
+right now you know so I think that's that's the current job I think is just to set up this machine and then like the
+you know in so far as humans have a job in the future and like they're knowledge workers like I I don't think they will
+but like I I think the last job we're going to have is going to be like to to just look at this machine and like and
+scratch our things and ask ourselves like how can we keep optimizing the machines and that's obviously until like the the machine optimizes itself. Like I
+actually think soon I don't think it's it's a it's a distant future thing. I think like in a year or two I think like
+the agents are going to be more than capable enough to like look at the machine themselves and just keep growing it themselves. And I think at this point
+all you become is you become like a a passive shareholder. I think you you own shares in the company and you maybe you
+pay yourself dividends but you're not really doing anything as a business anymore. I mean when you break it down to first principles like it's not that
+hard to figure out what would it need right like you said contact with the customer it needs to do some marketing
+to get more customers if you want to figure out like best principles like okay there's successful startup stories you do some deep research to get that
+like all of these are just like different tools connected to a smart model smart brain and again question is
+can the current models do that maybe probably maybe the next like the gen next generation or the generation after
+that will probably can you know it's all about like the term harness the term environment like the right tools a lot
+of pe we don't even know what these models can do right like people are still figuring out every month every other month how to use them like with
+the right APIs with the right tools you can have the same model be completely different and as you said context is
+another huge variable you can have the same model opus if if somebody creates a new claw account could be like a you
+know okayish assistant but if you give it all your company context then suddenly it could be super human
+100% so how you thinking about like you know AGI AI improving? How much are you worried about that? Do you think it's
+like outside of our control? How are you preparing for that both as a personally and like as a company? I almost try to to not think about it
+too much anymore because I I you know I live in San Francisco and I'm I'm tired. [laughter]
+I am so tired. You know, it's like I've been I've been the AGI guy since 2015. Okay. I write I write like Ray Kilz in
+2015 and he's the guy who like AI pled me at the time which was like it was very early, you know. Um, and now I'm
+like, this is all everyone I know is talking about. And for good reason. This is like I think the biggest topic in
+human history, you know. But I I think on some level I'm like, look, it's coming. I am I am worried
+about existential risk, you know? I I think there's only two potential outcomes in the end. And I call them like death
+or house cat, right? So death is we'll die, you know, and house cat is like we'll just, you know, I don't know if
+you have a cat like they don't do much all day. And so I think I think those are the and
+even the the the upside like even the best case scenario which is the the
+housecat even that upside uh is is is going to be a shito on the way there.
+It's it's not going to be a smooth transition you know. Um that's that's my take on AGI. I think it's going to take
+a while but like does it matter? I feel like at this point people are bickering about like is it going to be two years or 20 years? I'm like I don't care. 20
+years is nothing. Even if it's 20 years, I think 20 years at this point is like this like the maximum that anyone can
+can agree like it's not going to be more than 20 years. And so I'm like, okay, even if it's 20 years, I don't care.
+It's just happening, right? It's like this is like such an insane transformation. That said, I I try to
+focus on what I can control. And I I I don't know about you, like maybe again it's because I'm so I've I've talked so
+much about this, like I more and more I find joy in the present and in like,
+okay, well, you know, we're in for the ride. Let's do it, you know, let's [ __ ] do it. And I I think like right
+now the transformation is happening like this everything we've just talked about, right? Like we are going through that AGI transformation right now. It's like
+okay, your company can run itself. What you going to do? You know, are you going to let yourself be run over or are you going to transform your own company?
+Like those tools exist right now. Well, they're starting to like the multiplayer ones are starting to like what you going
+to do, you know? Let's let's use them. Let's just ride this wave, baby. Um, so I think that that's how I adapt right
+now is like I'm trying to ride the wave. I'm trying to have fun along the way and I try not to think too much about, you
+know, the other scenarios because they are they are scary. Yeah. I think that like personally I absolutely despise the kind of like wait
+people. It's like wait until AGI or like oh I'm going to wait until the next generation of models. Like what kind of
+a mindset is that? You know this is like we're living in the greatest technological time in the world. Like so
+many arguments this is the greatest time ever. It's like what do you mean you're going to wait? You know it's like no just do something. like you said,
+experiment, try stuff. I mean, a lot of people, maybe that's a good question, like a lot of people want to try, you
+know, starting a business, starting a startup, but they don't know like how to think about it. So, like if you had no business, no team, no connections, what
+type of company would you build in Q3 of 2026? And it's fun. I think what people miss is like it's a lot more fun to be riding
+the wave than to be crushed by it. Like if you if you wait, you're like, "Oh my god, it's coming. What am I going to do?" If you're if you're surfing it,
+it's like, you know, you may fall once or twice, but it's fun, you It's a lot of fun to build with the system. So I I
+at this point I'm like when the the conversation comes at dinner parties like ah AGI risk and all that stuff. I'm
+like hey guys can we sure you know let's talk about that. But honestly at this point unless anyone has something
+original to say like basically what I said is the conclusion. It's like death or housecat and then there's like misuse
+and terrorism and open source like all of that stuff. Sure. But like it's just like a painting along the way of like
+those two end outcomes and like unless anyone has anything original to say like let's talk about you know that saying
+it's like um when art critics meet they they talk about like history the history
+of art or something and when artists meets they talk about where to find cheap topine like cheap paint you know
+I'm like can we talk about topine for a minute let's talk about the paint like what what are you guys doing all day at work like what tools are you using like
+how are you doing this stuff yeah I mean you can definitely drive yourself crazy think about it's too What
+is saying like ignorance is bliss you know like in some ways that the people who don't really know what's happening and you know who still have their job
+and like aren't paying attention to the cutting edge AI in some ways that they are like happier you know they don't have to worry about these things that
+comes with like I guess like you know intelligence and like insight and and being on the cutting edge where you see
+like these potential risks potential worries and like you know then we feel I guess some part of responsibility either
+like trying to remedy that or like educate people about that but as you said like if you go too hard on that you
+to definitely drive yourself crazy. Yes. I I I sometimes compare it to like cosmology, you know, if you if you study
+like the the evolution of the universe, it's like there's only two possible outcomes like the great the big uh the big rip or the big crunch like either
+the universe completely expands so much that like there's no there's no potential energy anymore or the universe collapses back onto itself. And so it's
+like okay, we know that that's a pretty big deal. That's literally the biggest deal ever. You know, it's going to happen over trillions and trillions of years. Like there's not that much like
+point talking about that. you know, you can just like come up at dinner parties and be like, "Oh, Big Rich or Big Crunch, you know, I don't know." Or you
+can be like, "Hey, do you want to just join us and play video games with us? Like, let's let's have fun until until then." In terms of like the starting a startup,
+right? Like for the people who actually want to ride the wave, surf the wave, how would you advise them about like what not to build and what to build in
+the third quarter of this year. Oh boy. I think it depends if you're like building a lifestyle business like
+an indie business. It depends. or if you want to build like a VCbacked business, you know, if you want to build an indie business, I actually think like what you
+build doesn't matter as much as like how you build it. Obviously, you don't want to build nonsensical stuff, but if you
+build sensical stuff and you build it in like an AI native way using like this like autonomous self-improvement loop
+and all of that that I just mentioned, like you know, yes, all things equal, you don't want to be building a commodity, but like look, commodity
+businesses exist and they're huge and as long as they're well operated, like Nike does make money, you know, like uh
+shipyards do make money, right? like you can build these businesses and as long as you're building them in the modern way and you're operating you're running
+your ship well you're going to you're going to make a lot of money you know so you're always seeing those indie hackers
+like make money with like the ideas are kind of dumb right they're very simple it's not a crazy idea I think what really matters is how they do it and
+it's basically does no fat they just build super fast like levels right it's just like every time he presses command
+saves a file on his computer it literally commits pushes and so deploys
+a ph you know and so Yeah, that's that's awesome. You know, like that that the how, you know, as a
+result, he basically is like as as productive as like a startup of 20 people and, you know, he's making like
+seven or eight millionaire. Like if he was a startup of 20 people, it'd be kind of not great. As a one person operation,
+it's [ __ ] awesome, you know. Yeah. Um, so, um, yeah, I think I think the how matters
+more than the what and the how is everything we've talked about. It's just use AI all day and and try to remove yourself from the machine day after day.
+So, what is the second part? you know if you want to build build like a hyperscaling VC backed unique generational business
+ask yourself about that AI future where humans don't operate businesses anymore
+I I I love what you said earlier like it is true I think like web front end is disappearing because obviously web front ends are meant to be used by humans and
+I think humans might not even have a role to play in that like knowledge economy of the future so ask yourself
+like in that extreme scenario where humans aren't doing anything anymore is your business still valuable does the
+economy still need your business. So for example, um inference businesses like banan and fireworks and all together and
+all of that all of these folks like the answer is yes. You know we we we're going to need data centers. We're going
+to need like more GPUs than we could possibly imagine. ATS is like you know applicants tracking systems. Uh it's
+like a CRM to like track your tickets like I don't think so. I think those guys are in trouble. That's the frame I
+would apply to this thing. And so I think I think this is why the infrastructure layer is is going to be much healthier for a long time than the
+application layer. And when you say infrastructure, do you mean like both the software and hardware side? Like what is what are all the
+things included in the term infrastructure layer? I do mean both software and hardware. I do believe like hardware is becoming
+more and more defensible because software can just build like that right now. So I think there's going to be a great rotation of capital and it's
+happening right now actually away from software and two worlds hardware. Some of that is also just the labs like
+sucking the oxygen out of the room. Like if you're like a growth guy or like a hedge fun guy, if you're like an investor, people underestimate the
+extent to which it is hard for an investor to to invest all of their money. It's their job. Like it's like
+when when they give you money, it's not they don't do it out of the goodness of their heart. Like they want a return. It's really hard to invest capital at
+scale and and get returns from it. So in a way when they stumble upon an operation, a business that is very
+capital intensive and is reasonably risk-f free, they're actually quite grateful because they can go home. They're like, "Ah, anthropic. Thank you.
+Take take my $5 billion and I'm going to take a break for the next six months, you know, because now my $5 billion are
+taken care of." So I think I think hardware has like that that nice property of like it can be capital intensive. I think in a good way. I
+think we do need capital intensive businesses. And I think anyway software right now like anyone who used to invest
+in software has parked their $5 billion in in anthropic and open AI anyway. So um I think I think hardware and bio I
+think is going to be a a huge and and is right now a huge huge huge uh domain and
+and I think it's going to grow even relatively speaking as a share of the economy is going to keep growing. All right so I want to be respectful of
+your time. We have two minutes left. Where should people go? Go to lindy.ai AI sign up to uh I think
+right now like the best multiplayer agentic scaffold. All right. And we're also going to include your Twitter and socialists
+below. Anything else you want to say for the viewers? No. Thank you so much for having me, David. Thank you as well.

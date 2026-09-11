@@ -1,0 +1,528 @@
+[Music]
+Who here's building agents?
+Who here's your hand up if you built
+like 10 plus agents? Anyone here built
+like a hundred agents?
+All right, we got a few. Awesome. Love
+it. Um, so I think a lot of us have been
+on this journey of building agents. Um,
+and what happened with me was, you know,
+I decided I want to build an agent. We
+figured out what we wanted it to do. Uh,
+we want to move fast. We're developers,
+so we use libraries. We don't write
+everything from scratch. Um, and you get
+it to like 70 80%. It's enough to get
+the CEO excited and get six more people
+added to your team. But then you kind of
+realize that 70 80% isn't quite good
+enough. And that if you want to get past
+that 70 80% quality bar, you're seven
+layers deep in a call stack trying to
+reverse engineer how does this prompt
+get built or how do these tools get
+passed in? Where does this all come
+from? Uh and if you're like me, you
+eventually just throw it all away and
+start from scratch. Um or you may even
+find out that this is not a good problem
+for agents. I remember one of the first
+agents that I tried to build was uh a
+DevOps agent. I was like, "Here's my
+make file. You can run make commands. Go
+build the project." Couldn't figure it
+out. Did all the things in the wrong
+order. I'm like, "Cool, let's fix the
+prompt." And I over the la next two
+hours I'm more and more detail about
+what everything was and every single
+step and the exact until I got to the
+point where I was like this is the exact
+order to run the build steps. It was a
+cool exercise but at the end of it I was
+like you know I could have written the
+bash script to do this in about 90
+seconds. Not every problem needs an
+agent. Um and so I've been on this
+journey. I think a lot of you have been
+on similar journeys. Um and what
+happened was is I went and talked um in
+trying to help people build better, more
+reliable agents. I talked to a 100 plus
+founders, builders, engineers. Um, and I
+started to notice patterns. One was that
+most production agents weren't that
+agentic at all. They were mostly just
+software, but that there were these core
+things that a lot of people were doing.
+There were these patterns that were
+making their LLM based apps really,
+really good. Um, and none of them were
+doing kind of a green field rewrite.
+Rather, they were taking these small
+modular concepts that didn't have names
+and didn't have definitions and they
+were applying them to their existing
+code. Um, and what's really cool about
+this is I don't think you need an AI
+background to do this. This is software
+engineering 101. Well, probably not 101,
+but just like Heroku needed to define
+what it meant to build cloud. We didn't
+even call them cloud native back then,
+but this was how you built applications
+that could run in the cloud 10 years
+ago. Um, I decided to put together what
+I thought would be the 12 factors of AI
+agents. Um, from everything that I've
+seen working in the field. Um, so we put
+up this GitHub repo. You can go read it.
+Um, turns out a lot of other people
+agreed and felt the same thing. Um, so
+we were on the front page of Hacker News
+all day, 200k impressions on social. Uh,
+I'm just going to put this one up and no
+comment.
+Um, and just for context, we got to like
+4,000 stars in like a month or two. Uh,
+there's 14 active contributors. Um, it's
+very easy to read that thing and and
+hear the talk and say like, oh, we're
+here, this is the anti-framework talk. I
+am not here to bash frameworks. I would
+think of this as much as anything as a
+wish list, a a list of feature requests
+is how can we make frameworks serve the
+needs of really good builders who need a
+really high reliability and want to move
+fast still. Um, so what am I here to do?
+Uh, I want you to kind of forget
+everything you know about agents and
+kind of rethink from first principles
+how we can apply everything we've
+learned from software engineering to the
+practice of building really reliable
+agents. Um, so we're going to mix the
+order up a little bit. If you want all
+12 factors in order, that's a 30-minute
+talk, so we're going to bundle some
+stuff together. There will be a QR code
+at the end. You can go dig through it at
+your leisure. Um, factor one, the most
+magical things that LMS can do. Has
+nothing to do with loops or switch
+statements or code or tools or anything.
+It is turning a sentence like this into
+JSON that looks like this. Doesn't even
+matter what you do with that JSON. Uh,
+those are what the other factors are
+for. But if you're doing that, that's
+one piece that you can bring into your
+app today. Um, factor four. This leads
+right to uh did anyone read this paper
+uh go to considered harmful or maybe
+just heard about it? I never actually
+read it. Uh but it was all about we had
+this abstraction in the C programming
+language and a bunch of other
+programming languages at the time that
+said this thing go to it makes code
+terrible. It's the wrong abstraction. It
+no one should use it. I'm going to go
+ahead and go on a limb here and say tool
+use is harmful. And I put it in quotes
+because I'm not talking about giving an
+agent access to the world. Obviously
+that's super badass. But what I think is
+making things hard is the idea that tool
+use is this magical thing where this
+ethereal alien entity is interacting
+with its environment because what is
+happening is our LM is putting out JSON.
+We're going to give that to some
+deterministic code that's going to do
+something and then maybe we'll feed it
+back. But again, those are other
+factors. So if you have structures like
+this and you can get the LLM to output
+something that generates them, then you
+can pass it into a loop like this or a
+switch statement like this. There's
+nothing special about tools. It's just
+JSON and code. Uh, that's factor four.
+Factor eight, and these are we're going
+to do a couple kind of bundled together
+here. Owning your control flow. Um, and
+I want to take a step back and kind of
+talk about how we got here. Um, we've
+been writing DAGs in software for a long
+time. If you've written an if statement,
+you've written a directed graph. Uh,
+code is a graph. You may also be
+familiar with DAG orchestra. Anyone ever
+use like Airflow or Prefect or any of
+these things? Um, so like this kind of
+concept of breaking things up into nodes
+gives you certain reliability
+guarantees. But what agents were
+supposed to do, and I think a lot of
+people talk about this, and I think in
+some cases this is realized, is you
+don't have to write the deck. You just
+tell the LM, here's the goal, and LM
+will find its way there. And we model
+this as a really simple loop. You know,
+LM is determining the next step. You're
+building up some context window until
+the LM says, "Hey, we're done."
+Um, so what this looks like kind of in
+practice is, you know, you have an event
+come in. You pass it into your prompt.
+Uh, it says you want to call an API and
+you get your result. Put that on the
+context window. Pass the whole thing
+back into the prompt. This is like the
+most naive simple way of building
+agents. And the LM's going to call a
+couple steps and then eventually it's
+going to say, cool, we've done all the
+tasks from the initial event, which
+maybe was a user message asking it to do
+something. Maybe it's an outage. Um, but
+then we get our final answer. And our
+materialized DAG is just these three
+steps in order. Um,
+turns out this doesn't really work. Uh,
+especially when you get to longer
+workflows. Mostly it's long context
+windows. There's other reasons you could
+poke at as well. Um, and people say,
+"Oh, like even as anyone put like two
+million tokens into Gemini before and
+like try to see what happens." Like you
+can do it. You'll get an answer. The API
+will return you something. But I don't
+think anyone will argue with you that
+you will always get like tighter,
+better, higher reliability results by
+controlling and limiting the number of
+tokens you put in that context window.
+Um, so it doesn't quite work, but we're
+going to use that as our abstraction to
+build on. What's an agent really? You
+have your prompt, which gives
+instructions about how to select the
+next step. You have your switch
+statement, which takes whatever the
+model output JSON, uh, and does
+something with it. You have a way of
+building up your context window. And
+then you have a loop uh that determines
+when and where and how and why you exit.
+Um and if you own your control flow, you
+can do fun things like break and switch
+and summarize and LM is judge and all
+this stuff. Um and this leads right into
+kind of how we manage execution state
+and business state of our agents. Um a
+lot of tools will give you things like
+current step, next step, retry counts,
+all these like DAG orchestrators, they
+all have this kind of concepts in them.
+Um but you also have your business
+state. What are the messages that have
+happened? What data are we displaying to
+the user? What things are we waiting on
+approval for? Um, and we want to be able
+to launch, pause, resume these things
+like we do for any standard APIs. Um,
+this is all just software. And so if you
+can put your agent behind a REST API or
+an MCP server, um, and manage that loop
+in such a way that normal request comes
+in and we load that context window to
+the LLM. Um, we're going to allow our
+agent to call longunning tool. So we can
+interrupt the workflow, serialize that
+context window straight into a database
+because we own the context window. We'll
+get into that. Um, and then when we
+launch the workflow, um, eventually it's
+going to call back with that state ID
+and the result. We use the state ID to
+load the state back out of the database,
+and then we can append the result to the
+program and then send it right back into
+the LM. The agent doesn't even know that
+things happened in the background. Um,
+agents are just software, so let's build
+software. Um, and building really good
+ones need requires a lot of flexibility.
+And so you really want to own that inner
+loop of of how all that stuff is fitting
+together. Um, that's unifying. That's
+pause and resume. Uh factor two, this
+one is I think most people find first is
+like you really want to own your
+prompts. There's some good extractions
+that if you don't want to spend a lot of
+time handwriting a prompt, you can put
+stuff in and you'll get out um a really
+good set of primitives um and a really
+good prompt. Like this will make you a
+banger prompt that like you would have
+to go to prompt school for like three
+months to build a prompt this good, but
+eventually if you want to get past some
+quality bar, you're going to end up
+writing every single token by hand. Um
+because LM are pure focus functions and
+the only thing that determines the
+reliability of your agent is how good of
+tokens can you get out and the only way
+the only thing that determines the
+tokens you get out other than like
+retraining your own model and something
+like that is being really careful about
+what tokens you put in.
+Um I don't know what's better. I don't
+know how you want to build your prompt,
+but I know the more things you can try
+and the more knobs you can test and the
+more things you can evaluate, the more
+likely you are to find something really
+really good. Um owning your prompts, you
+also want to own how you build your
+context window. Um, so you can do the
+standard open II messages format or in
+this moment where you're telling the LLM
+pick the next step, your only job is to
+tell it what's happened so far. You can
+put all that information however you
+want into a single user message and ask,
+hey, what's happening next or put in the
+system message. So you can model your
+event state, your thread model however
+you want, um, and stringify it however
+you want. And some of the traces that we
+use in some of the agents we build
+internally, I'll get into that in a sec,
+um, might look like this. Um, but if
+you're not looking at every single token
+and if you're not optimizing the density
+and the clarity of the way that you're
+passing information to an LLM, you might
+be missing out on upside and quality. So
+LMS are pure functions, token in, tokens
+out, and everything everything in making
+agents good is context engineering. So
+you have your prompt, you have your
+memory, you have your rag, you have your
+history. It's all just how do we get the
+right tokens into the model. So it gives
+us a really good answer and solves the
+user's problem. solves my problem
+mostly. Um, I don't know what's better,
+but I know you want to try everything.
+Um, so let's own your context building.
+Um, this one's a little controversial.
+Uh, that's why it's a it's a standalone
+factor. And the way you make it good is
+by integrating it with other factors.
+But you could, um, when the model screws
+up and it calls an API wrong or it calls
+an API that's down, um, you could take
+the tool call that it made and grab the
+error that was associated with it, put
+that on the context window, and have it
+try again. Anyone ever had a bad time
+with this? Seen like this thing just
+like kind of spin out and like go crazy
+and lose context and just get stuck. Um,
+that's why you need to own your context
+window. Don't just blindly put things
+on. If you have errors and then you get
+a valid tool call, clear all the air
+pending errors out. Summarize them.
+Don't put the whole stack trace on your
+context. Figure out what you want to
+tell the model so you get better
+results. Um, contacting humans with
+tools. This one's a little subtle. Um,
+but I've seen this is just like what
+I've seen in the wild. almost everybody
+is like avoiding this very important
+choice at the very beginning of output
+where you're deciding between tool call
+and message to the human. Um if you can
+push that emphasis to a natural language
+token, you can one give the model
+different ways. You can be I'm done or I
+need clarification or I need to talk to
+a manager or whatever it is and two you
+push the intent on that first token
+generation and the sampling to something
+that is natural language that the model
+understands. Um, so your traces might
+look like this if you're pulling in
+human input here. Um, this lets you
+build out auto outloop agents. I'm not
+going to talk about this. If you go on
+the site, there's a link to this this
+post. I've written a lot about this. Um,
+I don't know what's better, but you
+should probably try everything. Um,
+that's contacting humans with tools.
+Goes right along with trigger things
+from anywhere and meet users exactly
+where they are. People don't want to
+have seven tabs open of different chat
+GPT style agents. Just let people email
+with the agents you're building. Let
+them slack with the agents you're
+building. Discord, SMS, whatever it is.
+We see this taking off all over the
+place. Um, and you should have small
+focused agents. So, we talked about this
+structure and why it doesn't really
+work. So, what does work? Um, the things
+that people are doing that work really
+well are micro agents. So, you still
+have a mostly deterministic DAG and you
+have these very small agent loops with
+like three to 10 steps. We do this at
+human layer. We have a bot that manages
+our deployments. Most of our deploy
+pipeline is deterministic CI/CD code.
+But when we get to the point where the
+GitHub PR is merged and the tests are
+passing on development, excuse me, we
+send it to a model. We say get this
+thing deployed. Says cool, I'm going to
+deploy the front end. Uh, and then you
+can send that to a human. The human says
+actually no, do the back end first. This
+is taking natural language and turning
+it into JSON. That is the next step in
+our workflow. Um, backend gets proposed,
+that gets approved, it gets deployed,
+then the agent knows, okay, I have to go
+back and deploy the front end. Once
+that's all done and it's successful, we
+go right back out into deterministic
+code. So now we're going to run the end
+to end test against prod. If it's done,
+otherwise we hand it back to a little
+roll back agent that is very similar on
+the inside. Um I'm not going to go into
+it, but here's it working in our Slack
+channel. Um yeah, 100 tools, 20 steps,
+easy. Um manageable context, clear
+responsibilities. Um a lot of people
+say, "What what if LM do keep getting
+smarter? What if I can put two million
+tokens in and it can do it?" Um, and I
+think we very much will see something
+like this where you start with a mostly
+deterministic workflow and you start
+sprinkling LMS into your code, into your
+backend, into your logic. Over time, the
+LMS are able to do bigger, more complex
+tasks until this whole API endpoint or
+pipeline or whatever it is is just run
+by an agent. That's great. Uh, but you
+still want to know how to engineer these
+things to get the best quality. This is
+someone from notebook LM and it's
+basically their take and I think they
+did this well is find something that is
+right at the boundary of what the model
+can do reliably like that it can't get
+right all the time and if you can figure
+out how to get it right reliably anyways
+because you've engineered reliability
+into your system then you will have
+created something magical and you will
+have created something that's better
+than what everybody else is building. So
+that's small focused agents. There's a
+meme here about stateless reducers. I
+guess someone actually tweeted at me,
+it's not a reducer, it's a transducer
+because there's multiple steps. Um, but
+basically agents should be stateless.
+You should own the state, manage it
+however you want. Um, so we're all still
+finding the right abstractions. Um,
+there's a couple blog posts I link in
+the paper. Um, frameworks versus
+libraries. There's a really old one from
+Ruby Comp about like do we want
+duplication or is like do we want to try
+to figure out these abstractions? Um, if
+you want to make a 12-factor agent, we
+are working on something called create
+12-factor agent because I believe that
+what agents need is not bootstrap. You
+don't need a wrapper around an internal
+thing. You need something more like shad
+CN, which is like scaffolded out and
+then I'll own it and I'll own the code
+and I'm okay with that.
+So, in summary, agents are software. You
+all can build software. Anyone ever
+written a switch statement before?
+While loop. Yeah. Okay. So, we can do
+this stuff. LM are stateless functions,
+which means just make sure you put the
+right things in the context and you'll
+get the best results. Own your state and
+your control flow and just do it and
+just understand it because it's going to
+give you flexibility. And then find the
+bleeding edge. Find ways to do things
+better than everybody else by really
+curating what you put in the model and
+how you control what comes out. Um, and
+my tech agents are better with people.
+Find ways to let agents collaborate with
+humans. Um, there are hard things in
+building agents, but you should probably
+do them anyways, at least for now, and
+you should do most of them. Um, I think
+a lot of frameworks try to take away the
+hard AI parts of the problem so that you
+can just kind of drop it in and go. And,
+uh, I think it should be the opposite. I
+think the tools that we get should take
+away the other hard parts so that we can
+spend all our time focusing on the hard
+AI parts, on getting the prompts right,
+on getting the flow right, on getting
+the tokens right. So the reason why I'm
+here is like I do run a small business.
+Um we have a startup where we try to
+help you do a lot of what we do we do in
+the open is open source and I think it's
+really important and we need to work on
+it together. There's some other things
+that are hard but not that important and
+not that interesting. So that's what
+we're solving at human layer. Um working
+on something called the A2 protocol.
+Come find me if you want to talk about
+this but this is a way to get like
+consolidation around how agents can
+contact humans. Um but mostly I just
+love automating things. I've built tons
+and tons of agents internally for my
+personal stuff, for finding apartments,
+for all kinds of internal business stuff
+we do at human layer. Um, so thank you
+all for watching. Let's go build
+something. I'll see you in the hallway
+track. Uh, I'd love to chat if you want
+to riff on agents or building or control
+flow or any of this stuff. That's
+12actor agents.
+[Applause]

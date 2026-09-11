@@ -1,0 +1,1608 @@
+Welcome, gang, to
+week 3 of CS153. We have today with us
+Amit Jain from Luma.
+Thank you for joining us, Amit. Thanks for having me. OK. [APPLAUSE]
+Amit is going to be talking
+to us today about unified intelligence systems.
+You're going to be hearing
+a lot more about this. I think it's a very
+relevant follow-up
+to the visual
+intelligence systems lecture we had last
+week from Andy Blattman at Black Forest Labs.
+Quick recap on the
+class and today, we're going to talk about Amit.
+And today we're going to
+do a field trip into what I think is also one of the
+most exciting factories working
+on how to get work
+done, especially visual and creative work done
+in the world called Luma.
+But before that,
+why don't we start by talking about
+Amit a little bit? I had the privilege to get to
+Amit a few years ago, when he
+was still an engineer at Apple. And I was at
+Discord at the time.
+And I got an email
+from Amit saying, hey, I heard you have a
+bunch of 3D data.
+Can I have it? [CHUCKLES] I remember that. And I said, no, you
+can't, because Discord had acquired the data.
+But I started asking
+why he needed the data. If you guys remember, I covered
+this in our first lecture.
+But Ubiquity6, the company I
+started about a decade ago, was a 3D computer
+vision mapping company.
+And we had millions of people
+around the world who were capturing the world in 3D using
+their smartphones and all that
+data-- we had terabytes of data
+that were 3D representations
+of the world that we'd
+reconstructed from 2D images. And Amit said, well, I want
+to build a 3D service that is
+generative. I want to allow people to
+create the same kinds of meshes and point clouds and 3D
+representations of spaces
+but through generative models,
+because that's where the world is going. And I got interested
+because I agreed with him,
+and he was ahead of the curve. And so I had a chance to
+invest as an Angel Investor at the time. And then a few years
+later, I had a chance
+to partner with
+Amit again at a16z when I was a general partner. And thank you for letting
+me lead your Series--
+B. --B. Yeah. Amit was also one of
+the first customers of the a16z compute program
+called Oxygen and actually
+helped name Oxygen as well. I think the quote
+was, he said something like, if we don't have
+compute on day one,
+can't really breathe. Yeah. So tell us a little
+bit about what Luma is.
+And what were the dots that
+led from the insight at Apple that generative modeling was
+the future that led here?
+My background, very
+briefly-- so at Apple, I was working on first the
+LiDAR systems that actually now
+is on our iPhones. This was called the Jasper
+sensor, if any of you are familiar. And we were trying
+to actually build
+what comes after the camera. The sensor was built now. I can talk about it because the
+project is no more for the car,
+which was called Titan. And we started to
+work on Vision Pro after that because the
+car project got canceled,
+and the Vision Pro had a
+bunch of leaders on it. And during that work, it
+started to become obvious
+that, OK, the computers
+of the future, we still don't what
+they will look like.
+Maybe they will
+have AI or what not. The computers of the future will
+need very different interfaces,
+will need very
+different kind of media, and will need very
+different kind of ways of actually capturing
+and creating and building
+those things into the system. So in 2020, at Apple, we started
+exploring generative models.
+And think about it. It's 2020 so before language
+model scaling was known to be working and before--
+actually, it was before
+DALL-E. But NeRF had already come out from Matthew
+Tancik from Berkeley.
+So we started to explore
+those generative systems, and that led me to
+thinking that, OK,
+if language scaling is working,
+and here is a method where
+differentiable 3D is possible,
+what would happen if all of these things are
+combined together? That would basically mean
+you have the full footprint
+of every observation
+in the universe, and you will be able to
+differentiably learn about them.
+If you can differentiably
+learn about them, you can understand them. And then finally, you
+can generate them. So that was the genesis of Luma.
+And at that time, because
+of the pedigree we had, 3D seemed like the most
+logical way of going forward
+because first of all, 3D has a
+lot more information than images do.
+Naively, we assumed at the time
+3D has a lot more information than videos do as well and that
+4D would be very easy to capture
+and scale. But again, I say
+naively, because, as you will learn
+in a few seconds, that that was a bad assumption.
+But that's where we started
+with the idea of building what we now call
+a world simulator. At that time, it was
+just like, all right,
+if you can learn this
+and generate this, we would have something
+that would allow us world understanding. And you talked about you said
+this phrase, which is important.
+"Learn the world in a
+differentiable manner." What does that mean? Right, so I mean, I'm
+sure you guys are all
+familiar with how transformers
+work and how AI models work. Differentiable means you can
+put it in a training loop,
+and you can have a loss function
+that can be then iteratively optimized. So differentiable
+allows you to do that.
+If the function is
+not differentiable, then you really can't do
+gradient descent on it. And if you can't do
+gradient descent on it,
+then deep learning doesn't work. So the tools that we have for
+this era for this generation is basically compute
+and gradient descent.
+And yes, transformers
+are things that are very, very well susceptible
+to gradient descent. But the actual
+thing underneath it
+is gradient descent and compute. So how can we take a lot
+of data, a lot of compute, and gradient descent and produce
+something useful out of it?
+Differentiability is the core
+characteristic of that problem, those problems, basically. Yep, that's helpful.
+Can you just connect
+the dots on what that insight led to then
+what do was doing today? So when we started the
+company, the idea was,
+we will capture an
+ungodly amount of 3D data, build a flywheel that allows
+people to capture that
+and for us to be able to use it
+and then build world simulation systems with it. So we released an app, which
+is called Luma 3D Capture.
+It actually was
+very, very popular because, one, the results
+were really, really great. It was for the first time
+that NeRF and Gaussian
+Splats were productionized. And Matthew, he joined
+our team actually to really push
+forward the frontier
+of that part of the world. But very soon, we realized
+that it doesn't matter how many people use the app.
+It will never reach
+the scale that was necessary to learn
+enough about the universe.
+Why is that? Because think about it. The number of people that are
+riding on the internet that
+are taking photos on the
+internet, that are capturing videos on the internet,
+substantially outpaces anything
+one company can
+actually distribute. Also, there's decades
+and decades and decades
+of that information that
+is already available. So it's all about data. You can make the case that this
+particular modality of data
+is better for learning
+versus this or versus that. It really doesn't matter. That's a moot point
+because you're running
+against the physics of scale. So wherever there
+is scale in data, that's the only thing
+that's going to work.
+And you have to
+design the algorithms around where the data is,
+not the other way around. You come up with some
+pristine algorithm,
+but you don't have any data. Then what's the point? Robotics is coming up
+against this problem right now where,
+all right, we're
+going to build these
+action systems. But, well, where
+is the action data? There's no internet
+of action data.
+You can have huge labs
+in China and India and Vietnam and everywhere
+gathering this data,
+but the scale is
+really not comparable. So you have to just design
+the systems around data, so that's what we learned.
+So in 2023, after
+that realization and after NVIDIA Hopper
+architecture was announced,
+we started to build the
+foundations of generative video because video is
+three dimensional.
+It has two dimensions of space
+and one dimension of time. And human brain actually learns
+about 3D representation through
+that time proxy. So when Hopper architecture
+came about, we started to think,
+all right, it might be possible
+actually to learn video and to learn the world
+representation through video.
+So in 2023, Jiaming joined us. Jiaming was at
+NVIDIA at that point.
+He's a Stanford grad. And a few other people
+from Stanford and Berkeley started to join the company
+with this idea of, all right,
+let's learn from video. And we started to build
+that infrastructure. And in March 2024, we
+released the first video model
+that was called Dream Machine. And in the first three
+weeks, four weeks, actually, we got up
+to 6 million users
+from that because people had
+never seen generative video. So it was announced but never
+released, so people had never experienced it. So people really wanted
+to actually try that out.
+So we started with
+video at that point. And then we have had the similar
+realization again in 2025,
+early 2025-- it's just
+like annual cycles now-- that just video is not
+enough, because video is good.
+But it doesn't pair human logic. It doesn't pair why
+an event is important. What is the sequence of events,
+and what does that actually
+lead to? Just having language
+models in the middle that are being used for
+embedding is not sufficient.
+You need unified intelligence. So that's where we are now. These are the dots. Well, yeah, so this is not the
+first time the class has heard
+that when you
+close the loop, you have to evolve the mid-training,
+the post-training pipeline,
+the interface. And so can we spend a
+little bit of time-- so I don't think it's
+a surprise for people to hear that there was an
+iterative loop every year as you
+got more and more
+data from customers. But can we talk a little
+bit about that first--
+the final projects for
+the class this time are the one-person
+frontier lab, where they're going to
+be bootstrapping their own flywheels.
+That's pretty cool. And before, I remember
+how nerve wracking it
+was for you and
+for the team when you had the realization
+that video was going
+to be the future, but you
+didn't have a video model out in the world yet. And you didn't have a
+state of the art system
+to start collecting that
+context feedback loop. So let's take a bit of a journey
+back in time, time travel
+to the launch of
+Dream Machine 1. Can you just tell
+folks how you went about kickstarting
+or bootstrapping
+the video flywheel at Luma? So I think the core
+problem that you want to think about,
+whenever you're
+building these really,
+really large systems, they have a wild distribution. Even if you're talking
+about language models,
+well, they have all of language
+models, language model data. And what is good? What is bad? So you want to think
+about, OK, from this really
+raw distribution I
+get from pre-training, how do I get to a model
+that humans can use?
+And what humans find useful
+is a very narrow band within that distribution,
+and that narrow band is not
+a predictable linear band. It's just pockets of greatness
+that humans think are great.
+Some other species might
+find it very different. But we have our own aesthetics. We have our own use cases. We have our own value systems.
+So we find those
+distributions valuable. So now the question
+becomes, how do you find or how do you basically get that
+distribution out of the model?
+So we started to think
+about that problem. And with Dream Machine,
+because there were so many users that were using the
+model, the question became,
+all right, can we learn
+something about that? And preference or
+preference feedback-- at that time, by the
+way, SFT was just
+started to being thought about. RLHF was the hard
+thing where people were thinking about, all
+right, human feedback loops.
+So we built a system where are
+videos that people were liking and people were
+downloading, we considered
+that to be a signal
+of, all right, this is something
+that people prefer. It was not 100% accurate,
+because some people
+were downloading really
+bad videos as a showcase of how bad I is at video. So our model also
+learned a lot of that.
+So we had to then build
+systems for humans to be able to go and
+filter out people we pay.
+So then it started to emerge
+what a frontier lab actually looks like. A frontier lab has
+these components
+of data, these components
+of compute and algorithm, but it also has huge parts of
+what we call skills and trainers
+and tutors and people who are
+doing the labeling of data and all of these systems. If you don't have that, then
+it's actually not complete.
+And a part of that is also
+the product you build. Can the product actually
+give you enough information
+to make sure that the next model
+is better than the previous one? And hence, the
+experience is better, and hence, more
+people will use it,
+and hence, you'll get more data
+from it about this preference of human distribution. And can you make the next
+model actually better?
+So I mean, it took
+us a long time to learn actually how
+to gather that feedback.
+And then now the system we
+have in the latest Luma agent system-- ungodly amount of
+feedback actually we
+get from what people are doing. Every interaction that
+is there we learn from, whether they like it or dislike
+it, in what way they like it,
+what way do they dislike it,
+whether the full chain of thought that the model produced
+and the full chain of work that the model produced is any
+good, which elements of that
+is not good. And then that's how you actually
+start to get good at it. Well, why don't we
+do a double click
+on how that actually works. So to remind everybody about the
+field trip we're about to take,
+this is the very basic standard
+AI factory we've talked about,
+frontier AI pipeline. We've got pre-training,
+mid-training, and then we have
+post-training and deployment.
+And so today, we're going to
+hear a little bit from Amit on how the Luma
+version of this works.
+Why don't you go
+ahead and just talk us through what's actually going
+on under the hood at Luma. Absolutely.
+So let me talk about what
+is informing the design decisions for our architecture
+and for our models.
+Currently, we're
+seeing huge amount of alpha coming from
+language models being
+used for adjacent
+tasks like coding, for adjacent tasks
+like system design and those kind of processes.
+But when we start
+to think about tasks that require more context than
+what is available in text,
+so creative work-- huge amount of things, a
+huge amount of information that is in visual domain,
+huge amount of information
+in auditory domain, actually,
+a huge amount of information in the trace of how you
+arrived at the final output,
+that when we think
+about robotics, you can definitely start to
+build a robotic system just
+based on text models
+or VLMs or VLAs that people are
+starting to do now. But they will not
+generalize just the same way
+that autonomy-- autonomous driving
+didn't generalize until people started to build
+full end-to-end systems that
+had language, that had video,
+that had all the control signals, all of these
+things in there. So that's the problem
+we are coming up with,
+that the real world is way
+more complicated than coding. I mean, coding is a
+really valuable task,
+but not everything
+can be done in coding. Otherwise, programmers
+would be the only profession that would be left.
+And now they're also
+endangered species, actually. But-- I'm not sure that's true, but
+I understand your point, yeah.
+As a programmer, it's
+really fun, actually. Well, the job has
+evolved, for sure, to become a trainer
+and a tutor, yeah.
+It's a really fun
+time to be that way. I started coding when I
+was 13 years old in order
+to build simulation
+systems, in order to do-- so my background is in
+physics, and in order to actually build simulation
+systems for electromagnetism
+and those kinds of things to
+see how these systems behave. That's when I learned
+to start coding. And even at that point, it was
+really obvious that I cannot
+teach those systems
+from any observations. We can write the code, but
+that is like approximations
+that we have in our models
+or in our equations. But we can't actually teach
+those models from any data.
+So all of this is informing
+how we build our systems. So even early on, we
+started to think about, OK,
+in our pre-training, how can
+we learn from all of video, all of images, and all of text?
+It's a really hard problem
+because they're really different modalities,
+and they're expressed very differently.
+If you think about the
+encoding of these modalities, text is discrete. And text performs the
+best when you encode it
+in a discrete manner. At least that is
+understanding today. Video is somewhere in
+between, and audio and images
+are best performed
+in continuous space. So our factory, as you call it,
+is built around this idea of,
+how do we learn jointly
+from all of these systems? In 2025, these were
+disparate towers
+that we built, language tower,
+image tower, video tower, audio tower. And then we would
+unify them together
+using just some
+fusion techniques so that they will do better. If you look at the work from
+Andy's lab, stable diffusion,
+those kind of
+things, that's what it does as well, where you
+have a tiny little language component. And you learn
+embeddings from that
+to be able to understand
+the human instructions. It was just not sufficient. So when we talk
+to our customers,
+when they try to use
+our system, so where are systems being
+used, for instance? Currently, large studios.
+So actually, I'm very,
+very, very excited about a new show that is
+coming out on Prime Video.
+The trailer is out. It's called Old Stories. It's about Moses.
+So Sir Ben Kingsley
+is the star of it. It's a proper production.
+It's not an AI video. It's a $4.5 million per
+episode production, basically.
+And it's all pretty much all
+produced using Luma agents. So they're using it in these
+really high, intense situations
+where they want to
+be able to model the whole world and the physics
+of the world and light and fluid
+and interactions and all
+of these kind of things. Now, when you do
+that, it's just not sufficient to build an image
+model or a video model.
+You need a model that
+understands time and causality and language. And it understands
+proper instructions.
+OK, well, this looks good. But what if the shirt sleeves
+had, this particular thing right
+here? How do you express
+that instruction? In time, when this person
+actually walks through the door,
+the whole scene explodes. What does walking through
+the door actually mean? When the person walks
+through the door, what does this explosion
+of the scene mean?
+Give me more instructions. The deeper you go into
+these kind of problems-- and this is a very,
+very, very big market.
+It's about 120 million creatives
+in the world who's-- this is their job. These are not people who
+paint for a hobby or all
+these kind of things. These are people who
+actually are employed in this industry, so about
+two times, three times
+by estimation of coders. Their work every day
+goes into replicating
+the physics of the real
+world into computers. So we want to build
+systems for them.
+And if you want to
+do that, you want to build what we are now
+calling unified models that
+have the same understanding
+and intelligence of a language model, that can follow
+context, that can remember,
+and the physical understanding
+and the world model understanding of video
+models and image models. So that is what the output--
+that is what the things we want
+to produce. This was 2025. And now in 2026, when the
+models got really good, what
+people want to do is they want
+to do the full work end to end. It's like, all right, why is it
+only producing 5-second video
+for me? Why can't it make
+the whole shot? If you go to people
+in advertising, well,
+why can't it make
+the whole campaign? If you talk to
+robotics companies, why can't it actually
+produce the whole action
+and then judge its
+own outputs and then tell me when this is the right
+action and incorrect action. Why can't I get the
+right force in all
+of these kind of problems? So people want
+end-to-end results. So now the Luma factory
+is about building systems
+that can do end-to-end
+work in multimodal domains. So that's what we do.
+We have massive reserves of
+multimodal data in about--
+the final trainable outputs are
+in about 30 petabytes of scale. We train them on currently H100s
+and very soon GB300 GPUs in all
+10K scale, basically. So pretty much the same as
+second-tier language model training. So we're not at 1
+trillion parameter
+yet, because that scaling
+hasn't been figured out. But we're going to get there. And then we do post-training
+on this stuff using
+huge amount of customer data and
+huge amount of user preference data, as well as data that comes
+from our own human annotations.
+And finally, we put
+them in production, and we do reinforcement
+learning and continual learning on those systems.
+So that's the shape of the
+factory currently at Luma. And could you talk
+a little bit about, when you started
+deploying these systems--
+in the first lecture, we talked
+about mission critical contexts. And one type of mission
+critical context
+is a large studio for whom
+their data is super sensitive. They're happy to have you
+train their data, but--
+with their data for them. But if I'm running a
+studio, I don't want my data being used by another studio.
+So how did you navigate
+the deployment restrictions
+of these professionals? So we work with two archnemesis
+at the same time, Netflix and Amazon Prime studio, which
+are the two giants of streaming
+war at the moment. So basically, then then
+you have to build systems that are guaranteeing
+that there is no way
+that there is any data overlap. We have internal
+controls and systems that are some of
+the standard ones,
+like SOC 2 and those kind of
+things and then specific ones that are for AI labs on, how
+do you not train on this data?
+So for instance, if you're
+producing the next blockbuster, you don't want the next
+Iron Man, for instance,
+to show up into
+the training data. So we have guarantees
+around that, all right, whenever certain stuff is
+marked or projects are marked,
+they will never show
+up in training data. They will never show up in
+any of these loops, basically.
+But we still learn
+from what users are doing in the
+product, which is different from the
+visual artifacts
+that they're producing, but
+rather the traces they're producing. We were still able to use them
+and learn from them, actually. This is the interaction data--
+That's right. --when people are working with
+the interface of the agents. That's right. So there's some limitations
+on these higher-sensitivity
+projects. Yeah. I think you have a-- well, one, could you talk a
+little about how you created
+these slides? Because these, I believe,
+were created with Uni1. That's right. So I basically gave it--
+actually, let me
+start from that first. And then I will actually talk
+about unified models as well.
+So here, on the
+top, what you see-- I created that mind map,
+whatever you want to call it,
+in our product. And then if you see on
+the right, I asked it-- and I also gave it on
+slide, the one right here,
+sorry, not this one. But-- OK, I don't know, the
+first one you saw of the-- The Factory slide.
+That's right, yeah. I gave it that and asked,
+like, hey, in this style, actually produce the outputs. Now, this is actually a
+very, very good example
+of what unified
+intelligence that I'm going to talk about means. People, when they think about
+image models, video models,
+or any models, not
+text, they think they produce beautiful images.
+But that is a really
+big mental gap that the world has in this area. Just like language
+models produce words,
+the words can be beautiful. You can just say like,
+hey, it's a poem, and it could mean nothing. And simultaneously, you can
+have a mathematical proof
+of Erdos problem number-- take your pick-- 1152. They all are words at the end
+of the day, but how you string
+them together determines
+the information content and determines the
+intelligence of those.
+Just like that, how
+you arrange the pixels determines what
+they're conveying
+and how intelligent they are. So unified models that
+we are producing now-- and I'm going to talk
+about that in a second--
+are about how you express
+intelligence in whatever medium is convenient for the person
+that they are actually--
+who's using it? So if a language output
+is convenient, fantastic. If it is slides and
+images, fantastic.
+If it's a video
+explainer, great. But they're all basically
+outputs that are intelligence.
+So that's what we
+call unified models. So here, basically,
+it was one shot. It produced those slides. It produced one
+that I didn't like,
+and I deleted before you ask me
+to take a screenshot of that. But that was pretty
+much about it. If I would have asked it to do a
+very detailed overview of that,
+then that's what
+it would have done. So end-to-end work-- this is
+what we call end-to-end work.
+So just to break
+down what happened, you gave it my original
+slide as a prompt,
+a screenshot of that prompt. You then gave it instructions
+on the right in the chat, and then you gave it
+a little bit guidance.
+Is it that scaffolding? Yes, my thoughts up there. The top half of the
+screen is my thinking.
+Right, and then the output below
+was essentially the slides one shotted from that. Correct. OK, and why was that not
+just possible trivially?
+Why can an LLM do that, and why
+did it take so long to get here? What's the hard part about this? So I mean that's a good segue
+into unified models, basically.
+So well, LLM, first of all,
+doesn't generate images.
+I mean, it's a language model. You can ask an LLM
+to use a computer and try to generate images.
+But again, it really falls apart
+because it doesn't see anything. So when it tries to
+reason spatially, when it tries to produce
+any visual outputs,
+they're blind models. They see everything
+as a full sequence. Even the grid nature of
+images and visual information
+is not apparent to LLMs. So when you start to do VLMs,
+which are Vision Language Models, you start to
+teach them a little bit
+about image part of it. VLMs are still not generative. VLMs understand images, but
+VLMs can't generate images.
+So we have on this world
+where you have understanding in language and
+generation of text, and then you have
+models like Flux,
+which are good at generating
+images, which are great models, by the way. But then they don't have
+any of this understanding.
+And I think Andy talked
+about that last time as well, that there's this big chasm
+in between these two things.
+Understanding is separate,
+and language is separate. Or sorry, generation
+is separate. But in language,
+that's not true.
+An LLM is good because it
+understands text and generates text all in one go.
+There's no delta in between. There's no two models that
+are actually doing it. If we want to solve
+world understanding
+and, quote unquote, world models
+that people are calling it, that's what we need to do. But I mean, for at least
+about a year, I guess,
+we've had models that can
+generate language tokens and image tokens
+with Nano Banana.
+But Nano Banana was still
+not able to generate. I remember trying to generate
+schematics like this.
+I tried to generate the
+factory slide with Nano Banana. I couldn't. Why were the capabilities
+still not there with basic
+these jointly trained models? So from what we of
+Google's architecture, Nano Banana is still
+a fused architecture,
+where there's a large diffusion
+tower that is generating images.
+And there's a large language
+tower that is generating text, and there's a thin
+bridge in between them.
+So you generate
+huge amount of text. It's called EP, Enhanced Prompt. And that text you take and
+give it to the image model.
+And that image
+model's job is now interpreting that text using
+a very thin, narrow VAE
+and some encoder. I don't know what Google uses
+for their internal encoders,
+but these encoders are
+$700 million parameters, 800 million parameters. That's the best you're able
+to actually get out of it.
+What we're building in unified
+architecture is different. So our approach is,
+well, transformers
+are probably the single
+thing-- if you know, I was coming back in time. This is what I would bring
+with me, the transformer
+architecture. And I will give it
+to people that-- all right, go play with this. Transformers are very good
+at-- they don't care actually
+what kind of information
+you're passing through them. Continuous, discreet--
+actually, it's all OK.
+It's the pre and the post of it
+that the encoders and decoders-- when, actually, things
+start to fall apart.
+So in unified architectures,
+what we are building are these-- actually, let me--
+I didn't order it
+correctly, but anyway. This is a pretty bad diagram of
+that because, again, it is a-- I didn't try to go with
+a architecture diagram,
+but that's the idea. One single transformer or
+maybe one single backbone.
+You encode this information
+in the same space, whether that is audio,
+image, text, code. It doesn't matter, really.
+And then you reason about them
+all in the same backbone, just like the human brain.
+So human brain, while
+it has different areas
+for processing image information
+or visual information and auditory information,
+those kind of things, but those
+are just encoders. All of that information then
+goes into the neocortex or maybe
+a little stages before that. But anyway, it
+ends in neocortex, and reasoning and thinking
+and all the judgment
+happens in one single place. This is how we build the next
+generation of great models
+that are able to do more tasks
+than what LLMs are able to do. It took us about
+a year to come up with this architecture, a huge
+number of failed attempts.
+You probably know. I don't how long I have
+been talking about this. Huge number of attempts
+at trying to scale them,
+all of that things. But now we are at
+a place where we are pretty comfortable
+and confident at building
+hundreds of billions
+of parameter models out of this architecture, and we
+know that it is going to scale. So now there's efforts
+within the company
+at all of these modalities,
+but one single model, one single architecture,
+including language. That's unified
+architecture for it.
+Makes sense. Yeah. Did you have any more
+before we switch to Q&A? Yeah, so actually,
+let me talk about how
+we deploy these
+architectures, first of all. So this is what we
+are trying to build. If we wanted to do
+end-to-end work,
+this should be very familiar. If you've taken CS class, it's
+the wrapper loop, read, eval, print loop. This is how computers
+work have worked
+for a very, very long time. If you think about the
+Von Neumann architecture, it is built around
+a loop generally.
+it was not thought about
+at the time this way, but now we think
+about it this way. If you want to deploy models
+to not just produce text tokens
+or image tokens, but actually
+to do work, end-to-end work, how do you build these systems?
+So how do you do that repo loop? One way is doing
+the left one, where you have different models
+for each kind of things.
+And there's two
+schools of thought. You produce federated
+models, or you
+have these tiny models that are
+each doing specialized work. And then you make them--
+or you just pass
+outputs from each other, and you probably have
+a judge model on top that judges and orchestrates
+all of that work.
+That's approach one. And approach two is that
+you have these mega models in the middle, and where they
+share this deep connective
+tissue. And they can reason
+in one single space. And you give them inputs, and
+you expect outputs of them.
+They're iterative models. So it's not like one
+shot, all the outputs that are going to come out.
+But we are betting on
+this second approach, and the reason is
+very simple because we think intelligence is not this
+pipeline architecture problem.
+If you think about the
+systems of intelligence, the systems of
+intelligence don't look like this big database problem.
+The systems of
+intelligence look more like the human brain,
+where you let information
+itself design the architectures
+and circuits inside it, like what we do during training. And hopefully, very soon
+in container learning,
+these circuits will change as we
+are actually using these models.
+And then you step
+away from that. You manage context outside.
+You manage memory, sometimes
+outside, sometimes inside, like how you do with
+caches in CPUs today.
+But the actual processing
+unit are these unified models, so that is our approach of how
+we think about building them.
+And how we think of improving
+them is a little bit like this. So if you want to
+think about what
+the computer of the future
+look like, actually, what is every agent
+product today? It's some version
+of this, basically.
+This is not a big revelation. This is how things
+are being built. So you have a tool
+harness in the middle.
+I'm going to go
+from the middle, up. This tool harness
+means systems that can use Linux, systems
+that can use call APIs, all
+of these kind of things. But then, how does it all work? How does it actually--
+full work gets done?
+So you have this fat stack
+of skills on the top. These are domain-specific
+understanding.
+So you want to teach a robot
+how to assemble something. That's not a normal thing.
+If you want to think about,
+How is an iPhone assembled? this is a very
+domain-specific thing. You can give it all
+that information.
+It doesn't need to
+be in the model. It doesn't even need
+to be in the tools. You give this
+information as context.
+And you can do this
+across huge amount of verticals, huge
+amount of different tasks
+in those verticals. Then you have tool
+harnesses, where you give it as general
+ability to call
+tools and things like that. And finally,
+orchestrating all of that and thinking through all of
+that is this unified model
+at the bottom that
+is interpreting all of this multimodal
+information, generating tool
+calls, understanding
+which skills to use, and
+producing the outputs. So this is how we think the
+architecture of the future
+of computers will look like,
+and this is what we have built. The current product
+basically on. This is basically built on
+this kind of architecture.
+So actually, could you just
+do a one-to-one mapping? So here, where was the harness?
+Where was the skills? Where was the model? So actually, when it
+generated these slides, someone on our
+team, who's really,
+really good at producing
+greatly designed slides, wrote a, I don't know, about--
+it's a 50-page document on what
+it means to design good slides. And if you see-- I don't know if the
+prompt is there.
+I've got a clear picture,
+and I'll kick off planning and generation. So after this, it
+would have said,
+oh, let me look up the
+skills I have access to. So that was the skill. That's a general purpose--
+Slide skill. --like, best-in-class
+slide creation skill that was created
+internally by human and then uploaded for anybody
+else to use automatically.
+Exactly, so that's
+the skill layer. Then the model
+layer is obviously the one that is
+generating the tool calls
+and all of these kind of things. And the tool layer here-- so
+not many tools were necessary. But I think your
+image that you gave,
+that was also parsed as context. And we probably ran OCR on it,
+just to see what kind of things.
+So this was not a very
+tool call-heavy thing. But had you asked it to make
+an interactive web page that
+animates all of
+this stuff, then it would have gone and
+call your coding tools,
+tools to run that
+code, deploy that code, all of these kind of things. So it will have done
+all of these things.
+But it's the
+underlying model that is orchestrating all of that. OK, I'm going to ask
+you one last question before we switch, which is, OK,
+so it took a couple of years
+to put the whole
+system together, which is a fairly
+high scale system. Can you talk about the
+business for a second.
+You announced
+earlier this year, I think you raised
+about $1 billion. 1.5. 1.5 billion. Yeah, total.
+Yeah, over the lifetime, Luma's
+raised about 1.5 billion. Of that, I think a billion was
+raised this year, these last 12
+months. Why is this such a capital
+intensive effort if it's not
+as high scale as language? If you really want
+to do it correctly, it is larger scale than
+language because it is strictly
+a superset of the work that
+is going on in language. But currently, we don't care as
+much about coding, for instance,
+so we don't have to spend
+that much effort towards it. We can go towards all the areas
+that language models are not
+good at, and that means we can
+actually have a subscale compute infrastructure, subscale
+data infrastructure,
+things like that so it doesn't
+require 100 billion yet. We can do with 1
+billion what generally takes 5, 10 billion annual run
+rate to be able to produce.
+But if you think
+about it, where things are going in one year, two
+year, three years' time,
+we believe that these
+systems will far surpass language systems, just
+because of the access to more
+data-- more data
+is better-- just because of their
+understanding more domains. So I'll give you an example.
+One of our customers who
+is using these systems, they work in energy industry. You can guess who that is.
+And now suddenly, our systems
+have no idea about grid systems,
+how the energy
+grid actually works and how they want to
+be able to do that. So what we did is we started
+to ingest their energy grid
+diagrams and energy grid code
+and all of these kind of things. And suddenly, our
+systems are better at producing schematics and
+planning than Anthropic's coding
+models are because
+they can't actually read all that information. They can't actually see how
+the things are laid out,
+that sort of problems. It's a very small example. Studios have another big example
+where, yes, LLMs have had
+forever. But a story is not just text. A story is all of the physical
+stuff that is happening. If it has visual understanding,
+it can do much better.
+So we believe, especially as
+the age of robotics comes about, you will need these
+systems to be general
+and these systems to be
+able to do everything, including writing code. And that's where
+we're going to go.
+But today, this gives
+us a very great business where language models
+are not really playing.
+When we started the company,
+I mean, we were very small. Today, we work with some of the
+largest studios in the world.
+Now we work with the
+largest advertising agency in the world, publicists. They're just deployment
+channels for us. We work with the second largest
+brand in the world, Coke,
+who is moving $3 billion of
+annual production of content to Luma, basically.
+And in addition to that,
+in some of the areas, like, how do you do
+work just in a company?
+How do you communicate
+information visually? They're starting to be these
+new areas in which previously
+only designers and
+artists could work. Now everyone is starting
+to do that work. Yeah, so you had an
+event earlier this year.
+I mean, I think it was
+three weeks ago in SF. And I came by, and the
+thing that shocked me
+was that it was all
+artists and creatives. And I mean, you spoke for
+a little bit off the stage, but then they got
+you off the stage.
+And then a bunch of
+folks from Hollywood came by, a bunch of designers. And it was the first time
+I'd seen so many artists
+and creators, not
+machine learning people, but creatives excited
+about using tools.
+And that's very new. But there was a lot of
+fear, uncertainty, doubt
+a couple of years ago that this
+was going to actually take away jobs in the creative industry.
+But for whatever reason,
+these folks-- these are some of the biggest
+names in creative in the creative
+world, some of whom
+were actually opponents of the
+technology a couple of years ago. What changed? I think the technology at
+that time was not good enough,
+and they were just looking at it
+from the angle of, first of all, it's using all our data.
+And it's not good enough. So what is the point
+of all of that? But through all of this work
+that we have been doing, now
+the value is starting to become
+just-- it's in their face. So when we go and talk to
+companies about our work
+and what the products are doing,
+what we do is very simple. We actually sit right there,
+and someone will open a board
+and start to
+produce their stuff. So actually, this
+happened recently at a gaming company,
+Savvy Games.
+And they produce Monopoly
+Go! and some of the most played games in the world. And we were talking about it,
+and everything was hypothetical.
+It's like, oh, it will
+scale up production, it will reduce cost, all
+of these kind of things. And then, I took a
+couple of their assets,
+and we produced about a
+500-scale campaign while we were sitting and talking about it.
+It's like, you can do it for
+all of these different things. And we showed right there. When you see that,
+it's the same thing
+that coders are having
+that moment today. It was all slob before. Slob just means-- when
+someone says "slob,"
+it means they have never seen
+or used a good AI system before. When you see the
+results and you're like,
+this is as good or
+better than what I can produce or in the
+similar ballpark at least,
+their minds change. Hollywood studios were and
+still are very apprehensive. But now, when they start
+to see the production
+that we have coming out,
+we actually show them. And they're like, there's
+no way this is AI generated. And then we show them the
+backstage production of it,
+and then that changes
+my hearts and minds. So the best way to
+change hearts and minds is to just do good work
+and actually show them.
+But does that mean
+the existing folks in those jobs have
+more productivity,
+or they're getting
+stuff done faster? What is the benefit
+to the creative? Let's put the business
+people aside for a second.
+The actual the creatives
+who are using these tools, what's the benefit to them? Yeah.
+I think it really changes
+the game of what they're able to do in a couple of ways. First of all, right now
+execution is at a premium.
+So you do so much work to
+validate the idea ahead of time. And this is all across AI, by
+the way, not just for Luma.
+You do so much work. Like, oh, Is this the right
+idea once we put the execution resources on it? But think about it.
+It just changes the
+equation completely. It's like, all right, let's
+execute on all of them and produce the thing, and we'll
+see which one is great one.
+When you think about some of
+the best creatives in the world, and I don't mean creatives like
+just visual creators, people
+who made anything, they
+end up being prolific. If you look at their
+life afterwards, if you look at Einstein's
+work, yes, relativity is huge.
+But there's also a
+huge amount of work that went into Brownian motion,
+a huge amount of work that
+went into light and lasers
+and photoelectric effect. If you look at Archimedes,
+incredible amount of work.
+If you look at Mozart, just
+ungodly amount of work. Some of them was good. Some of them was not so good.
+People who are great
+at what they do are not just one shotters. Like, they actually produce
+a huge amount of stuff.
+Currently, if you look
+at just our industry, artists and creatives are stuck
+in this industrial system that
+measures every action
+they do by the output that they're producing. This is no way to
+do great things.
+If you want to do
+great things, you should have the liberty to just
+explore basically unconstrained.
+Then they start
+to use our stuff. They feel unconstrained,
+and I think that is what is bringing a
+lot of creatives on board.
+Because you can parallelize-- Exploration. Exploration, I see. And then you get to
+produce better things
+than you could ever do. It's more enjoyable
+because you're not in the slog of
+every single pixel and all these kind of things.
+You come at a higher level. This is what the moment
+coders are having, too. It's like, all
+these ideas I had,
+they're not just stuck anymore. You can prototype. --try them out, yeah. OK, I think we should switch
+to Q&A. I'm sure there's
+lots and lots of questions. So the question is,
+what is my hypothesis why I shut down, whether
+it's a business reason,
+it's an architectural reason? And two, what impact does it
+have on us in the industry, but also on creatives?
+So I mean, I can only
+give you hypothesis. I don't know really what
+is happening inside OpenAI.
+But I mean, the one word
+here is really "focus." OpenAI, at the core of it, is
+a large language model lab.
+What they do really,
+really well is produce models that are very good
+for chat particularly.
+Chat is a vertical that has
+about 8 billion customers, maybe not little kids, but maybe
+they too because they
+want to talk to a computer. So pretty much all of humanity
+is a good customer of chat.
+Executing on that is
+a really hard problem. Executing on anything
+at that scale,
+you need to go into
+the depths of hell to be get everything
+working really, really well.
+When you do everything,
+that's really hard to do. I mean, Luma also had
+that problem, actually,
+in early days when we were
+not really clear about, how do we execute on this? So we tried a lot
+of parallel paths.
+But it doesn't matter how much
+money you have, doesn't matter how many people you have. This was also a
+lesson from Apple.
+There's way more
+things that Apple-- that they choose not to
+do than they choose to do. That is because it
+doesn't matter the money,
+doesn't matter the people. The organizational physics
+still come into play. Less is more. Exactly. There's only so
+much attention you
+have as a company,
+not as a person, but as a company
+that you can actually devote to making something.
+So OpenAI doing
+literally everything is not good for their business. And I think that is a
+realization that is setting in,
+and I think this will not
+be the last thing that they have actually canceled. There might be
+actually even more.
+One thing I will
+challenge is OpenAI was not the largest
+player in the market. It is actually Google that
+is doubling down on video,
+on images, on visual generation,
+Gemini, or Gemini's great models that do pretty much all
+of these things, actually.
+It doesn't indicate
+actually anything on the size of the market. It just indicates that
+they are getting-- they're [MUTED] because
+of lack of focus
+by Google, by Anthropic,
+and those kind of things. And they have to focus
+if they want to go IPO, and that is the market
+that we are actually
+entering at this point. For Luma, what does this mean? I mean this is great news. This validates our
+thesis that, you can only
+do so many things at a time. And this is the
+area that we have chosen to go in because this is
+a very, very big market, which
+huge number of people that
+call it their profession. So it actually gives us very
+good footing in the same market,
+so that's what I would say. So the question is,
+given that anyone can make a video about
+anything and content
+about anything, what
+happens to copyright? So I think copyright and the
+ability to produce something
+are orthogonal problems. If you're talented
+enough, you can make Mickey Mouse in
+Photoshop, really,
+and you can actually produce
+great stuff about Mickey Mouse. Let's say you're DreamWorks. You don't have rights
+to Mickey Mouse,
+but you have all the people who
+can actually produce anything related to Mickey Mouse. But you don't. Why?
+Because the law exists that
+prevents you from doing that. So I think none of
+that has changed.
+Has it become easier to violate
+other people's copyright? Yes, I think so. You didn't ask me what the
+responsibility of platforms is.
+Again, the responsibility
+of the platforms is the same as it
+was for Photoshop. It's not Photoshop's
+responsibility
+to prevent you from
+producing Mickey Mouse. It's your responsibility as
+a law-abiding citizen to not
+violate the law of the land. So I think it is pretty
+much orthogonal, basically. Generative AI doesn't
+change copyright
+in any way, shape, or form, at
+least on the output side of it. But specifically,
+if there's a law
+that says you can't do X,
+Y, Z, you will adhere to it. Absolutely. If we get a DMCA notice,
+we'll take it down
+if you're hosting it. If that person used to create
+it, and we get a call of like,
+all right, this
+person made something, it is not our responsibility to
+point law enforcement to them,
+because that's not
+the law of the land. All right, I see. You protect the
+users in that case. That's right.
+Right. So the question is, GANs were
+very popular in 2017, 2018.
+And now the world has
+shifted pretty much entirely towards diffusion models. What is the space of GANs
+in today's models or today's
+architectures, basically? That's a great
+question actually. We still use GANs quite a lot.
+We use techniques
+from GANs quite a lot. But GANs are one of the
+most finicky architectures to ever work with.
+So GANs, if you don't know, are
+Generative Adversarial Networks. And as the name says,
+they're adversarial networks.
+So you design the objective in a
+very different way to diffusion
+models, where you have a very
+predictable gradient descent. I mean, they still
+explode sometimes, but it's a very
+predictable system.
+GANs are still actually
+used quite heavily in distillation networks. If you want to do distillation,
+GANs are actually pretty useful.
+If you wanted to do
+a real-time system, you would still go
+to GANs quite a lot. But because GANs are just
+not very predictable,
+researchers don't
+want to work on them. And that is the laws
+of physics in AI.
+What researchers want
+to work on is generally what will get worked on. So I could make the case that,
+hey, Rust is more efficient.
+Doesn't matter. Everybody wants
+to code in Python, so that's what will be done. But also, GANs have not
+shown the kind of scaling
+that we are seeing
+with transformers. GANs are primarily U-Net-based
+and convolution-based models.
+And they just don't
+really show the kind of learning that you can
+get from transformers. Can GANs be implemented
+using transformers?
+Yes, there are some
+papers about it. But at that point,
+you're really, really trying very
+hard to just do GANs.
+And that's OK. But diffusion models also
+now are on the way out. So I know this will be a little
+bit controversial if people
+are thinking about it,
+but diffusion models have physics that is
+not actually bearing out on scaling side of it.
+So Luma and some of the
+companies are actually moving away to hybrid, autoregressive,
+and diffusion regimes--
+that's what our unified
+models actually are-- because diffusion
+models actually
+have some really,
+really bad habits that are hard to unlearn and
+hard to get out of the system.
+So they're also on
+the way out, actually. So yeah. If you realize,
+basically, when we first
+started teaching
+the class, there were debates about what
+the right programming language was for security.
+And it feels like architectures
+have come full circle, basically, don't-- Sure.
+Good note for office
+hours this week. The question was, as models
+get more and more powerful, what is the space
+of human creativity,
+especially in these
+unified models that can do pretty much all tasks,
+visual tasks, language tasks, all these kind of things?
+My stance on this has been
+actually very, very sterile from day one.
+I don't think anything
+the model is doing is creative or not creative. Whether it's creative or not,
+creative is for humans to judge.
+That judgment alone is
+the act of creation. What you choose to do
+is an act of creation.
+How I tend to spend my time
+is actually a very creative endeavor because it
+will produce outputs
+that people will consider
+creative or not creative. But more importantly, in a
+practical physical system
+that is an AI system,
+where is the role of human? It's in that fat skills area.
+This is why our
+slides look good, because someone who knows
+this really, really well went
+in and taught the
+model a million times over that this is what
+good looks like to humans.
+And this is what bad
+looks like to humans. This is just like programmers. Before, artists never had
+this kind of huge leverage.
+They did something once, and
+it will run a billion times. Programmers have always
+had this leverage. You write the program once,
+and it will run again and again
+and again and again on
+everyone's computers, on everyone's phones, many, many
+times over, and produce value. Artists produce one thing,
+and then that's one thing.
+That's it. Now, other creatives
+in the world, not just programmers,
+have this leverage
+because of this architecture. You teach the model
+once, and they're able to produce a huge amount
+of really, really great things
+in different contexts. This is actually an explosion
+of creative potential that this never has been.
+So the skills and
+human creativity are much more important. Actually, it will weed out
+people who were mediocre,
+and it will elevate
+people who are really great to even greater heights
+because now their work will be rerun a trillion times over.
+OK, so Hollywood is
+default dead right now, and that has nothing
+to do with AI. That has really
+nothing to do with any
+of the technological
+changes recently. Hollywood's business
+model has been deteriorating for
+the past 30 years,
+and COVID really accelerated it. And then the writers' strike
+just was the nail in the coffin.
+At this point, we
+are at a place where this production that
+I'm talking about is the first production in LA
+proper in the last five years,
+first production, because
+all production has moved out of Los Angeles. Think about it. Hollywood doesn't
+make movies anymore.
+Hollywood finances them
+but doesn't make them. Where are they being made? In Greece, in
+Canada, in Ireland.
+Wherever you get tax incentives,
+you're going to make it there. So what does solving this
+problem actually mean? First of all, Hollywood has
+to stop thinking like PE.
+Currently, Hollywood's business
+model is like a private equity. Oh, Guardians of the
+Galaxy was a great hit. Let's make number 2, number 3,
+number 4, number 5, number 7,
+number 10, number 20. How many Avengers are there now? I don't even know. And how many crossovers of
+Avengers and Spider-Man?
+And I won't be surprised
+if Tintin is in there one day, some multiverse thing.
+As a physicist, that's
+a really troubling thing for me, the multiverse universe. That's not how it works at all.
+But it is emblematic
+of a PE mindset where, all right, we
+created a franchise. We created an asset.
+How do we rent seek that asset
+the most we possibly can? But audience don't think that.
+More and more people want
+to watch great things, want to go to theaters,
+want to actually watch
+things on their phone. That is emblematic
+in Netflix's growth. I mean, on Thursday,
+you're going to see this quarter results.
+I'm not saying buy
+or sell anything, but you're seeing the
+growth of Netflix. And they produce 800
+productions a year
+compared to the 5, 10, 20 that
+large studios are producing right now. That is the PE mindset.
+So those 800 productions don't
+have $500 million budget. They have 10 million,
+20 million, 30 million,
+$50 million budgets. And this is how they're scaled. What does this allow? This allows different kinds
+of and more kinds of stories
+to be told, and that means it
+appeals to a wider audience. So your platform then becomes
+more appealing to more people.
+Are they making
+again a Harry Potter? Yes, I'm very happy
+about it, by the way. But this is also PE
+mindset, that why
+are we making Harry
+Potter when we have so many other great books
+that should be made again and again and again and again?
+Sorry, it shouldn't be
+made again and again. So Hollywood has been
+default dead for a long time.
+It's not about AI again. If nothing changes, all those
+jobs are actually already gone.
+The people in those
+industries know that. AI is a chance to actually
+change the business model once
+and for all because you can
+move away from these massively expensive production methods.
+You can move away from these
+huge, huge time and capital sinks and go back
+to an era where
+many, many ideas can be tried. And one has a shot of
+building people into theaters.
+Ryan Gosling from Hail Mary--
+if you have not seen it, great movie-- makes a great point. It's not the audience's
+job to come to the theaters
+to keep Hollywood alive. It's Hollywood's job to make
+great things so the audiences want to watch it.
+You can't blame your customer-- What I'm going to do
+is, that was well said. And I think the PE
+mindset is going
+to come up over and over
+again, where capital markets-- wherever they look
+for predictability,
+we tend to find
+stagnation of innovation. And I think that's
+hurting a lot of people. That's a great question,
+and that's the one
+that the whole company spends
+all their time thinking about, honestly. So the question is, what
+is the delta between where
+we are to getting
+to a place where world models, video
+models, whatever have you, are as generally used and useful
+as language models are today?
+Fair? [INAUDIBLE] Right, so there's only one
+word basically, intelligence.
+That's the delta. So currently, image
+models and video models that are not unified models
+are really, really stupid.
+And I mean that in non
+derogatory way of that. When I say "stupid,"
+I mean in this way.
+When you work with
+a person who you don't consider to be
+intelligent, what are the signs? They forget what you said.
+You have to tell them the
+same thing again and again. They don't actually
+understand what you said.
+They are a facsimile
+of understanding. They say, you said something. But they're like, but
+that's not what I said.
+Yes, you interpreted
+my words literally, but that's not what I'm saying. You have no context
+of what I'm saying.
+They are able to
+do small things. But when you ask more of them,
+then they can actually do that.
+This is what today's video
+models and image models are, all of them, basically. That's what we try
+to solve with Uni1.
+They need to be as intelligent
+as language models are. They need to have multi-turn. So when you ask it
+something, afterwards, it
+needs to be able
+to go back and say, all right, this is
+what I generated. This is what you had asked. I have memory. Let me iterate on it,
+and let me fix it.
+How annoying would ChatGPT be
+if you only had one turn on it. And then you had to repeat the
+thing, and then another turn,
+and repeat the thing,
+and then another turn. That's ridiculous. Nobody uses that. See, that was the difference
+between LLMs being a research
+project and them becoming
+generally useful. That was RLHF that
+enabled chat multi-term.
+So that was number one. Number two is, how much
+intelligence did they actually have? So current image
+models and video models
+are beautiful pixel generators. They have really
+no understanding of what the hell they're
+generating, the physics of it,
+any introspection on it,
+all of these kind of things. Unified models are designed
+to solve this kind of problem.
+So when you use them in
+things like education, for instance, these slides
+could-- sorry, not this one,
+but the ones I had
+could easily be used by teachers with
+probably a lot more density. And I can show you really good
+examples of it producing really
+high-density things. Videos are some of the best
+explainers in the world. Imagine a history class that
+is now taught as drab text,
+but you can actually see. And most importantly,
+you can do alternatives. What if the Rubicon
+was not crossed?
+What if Caesar was not murdered? What if these things
+didn't happen? What if Archduke Franz
+Ferdinand was not shot in 1914?
+Would there still
+be a World War I? I posit yes, and we
+can go into that. But what if you
+see that flow out?
+You had this level of temporal
+understanding and coherency and these kind of things. Language models
+are getting there.
+Image and video models
+don't have that. That's what we need to solve. So that is the distance between
+them being just tools that
+can produce almost
+stock footage to things that can do end-to-end work. Awesome.
+Thank you, Amit for being here. Thanks for having me. [APPLAUSE]

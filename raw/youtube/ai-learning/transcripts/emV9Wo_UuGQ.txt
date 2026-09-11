@@ -1,0 +1,369 @@
+So, have you noticed that trying to get
+a really great response from chatbt5
+just feels a little bit more difficult
+now? And that's even though this model
+is more powerful than all other previous
+models inside of chatbt, it's just
+become more tricky for a user to get
+more intelligence and unlock that
+intelligence out of it. And that's
+because GPT5 is fundamentally different
+when it comes to its architecture. So,
+today I want to share five simple but
+kind of weird tricks to get you a 10x
+better response from Chat GBT. And all
+these tricks have been shared directly
+from Open Eyes research team. So if
+you're interested in these small changes
+that get drastic improvements in how
+chatbt responds to you, let's just dive
+in. Okay, so first credit where credit
+is due. There's two blog posts here
+published by OpenAI where they talk
+about the details associated to
+prompting this tool and how to get the
+most out of the model. What I wanted to
+do here is I wanted to consolidate
+everything into five simple tricks where
+you can get the most out of the tool
+based off of what they've shared. Before
+we jump into the tricks themselves, we
+need to first understand what's changed
+between what was chatpt in the past and
+what it is today. And first we want to
+look at the value gap. So what's
+happened is now users that don't
+necessarily know how to prompt
+effectively they they lose the value
+they can get from the tool. So this is
+about the amount of value they can get.
+But if you're an expert at prompting,
+you get a lot more from it. That will
+always probably remain the same. But the
+the gap between these two is drastically
+increased because of the way they
+consolidated all the models. And what do
+I mean by consolidated? Well, this is a
+simple visualization of what's happened
+here. We have on the lefth hand side all
+the legacy models that one can choose
+from the drop down. if you had access to
+plus or pro inside of chatbt.
+But what's happened now is we've
+consolidated all eight of these models
+down into just three. And this is only
+three for those that have access to pro.
+If you have access to plus, you only
+have access to two of them. And you can
+see 40,4.15,
+4.1 mini, 04 mini, 04 mini high have all
+been consolidated into the base model of
+GPT5. Then we have 03 that's been
+consolidated into GPT5 thinking. We have
+03 Pro that's been consolidated into
+GPT5 Pro. Now, this consolidation means
+there needs to be some sort of routing
+that happens in the background. And
+that's the architecture we have set up
+here where what OpenAI has done is when
+you send in a prompt, they have a router
+in the middle that basically looks at
+your ask, looks at the context around
+the ask you've given it, and then routes
+it to a specific model. Once it's routed
+it to a specific model, either the base
+model, the thinking one, or the pro one,
+it's also going to do two other things.
+It's going to set up a specific amount
+of reasoning for that model. So it could
+be minimal, low, medium, or high. And
+it's also going to set a feature of
+verbosity. So how much should it respond
+to you? How long should the response be?
+Low, medium, or high. So now the burden
+is on us to figure out different ways to
+prompt this model to ensure that we're
+getting routed to the best model for our
+use case. And we're hoping and ensuring
+that the reasoning level associated to
+that and the verbosity level are
+relevant and specific to our use case
+and our scenario. And that's where these
+tricks come into play. And that's where
+we're going to start with our first
+trick. So the first trick and the most
+obvious one is trigger words. So GPT5
+and previous models as well have trigger
+words where if you mention a word,
+you're going to likely increase the
+reasoning the model is going to use
+before it responds to you. And here are
+just four simple ones that I've seen
+OpenAI mention, but there are many
+others that you could use where if you
+tack this on at the back of your prompt,
+it's going to increase its reasoning. So
+thinking deeply, double check your work,
+be extremely thorough. This is this is
+critical uh to get to get right. These
+are all different things that we can use
+in our prompt to ensure that the model
+is going to be routed to a bigger model
+and likely is going to have a higher
+reasoning level to ensure that the
+response we get back is accurate to the
+task we've given it. So that's our first
+trick trigger words. Our next one is an
+optimizer. So this is a tool that OpenAI
+has provided to us. So we can use this
+tool and I think you may need API
+credits but it's maybe a dollar or two
+dollars. It's not that much. And what's
+going to happen is you're going to give
+them a base prompt and they're going to
+improve that prompt based off of best
+practices for prompting GPT5. A few of
+the things they're going to do when they
+convert your prompt is they're going to
+focus on making sure that nothing is
+vague in the prompt. It's well
+structured. There's no contradictions in
+the prompt and a variety of other
+things. And on this slide, I wanted to
+give you an actual example and a demo of
+what this tool looks like. So here we
+have the original prompt. And the way
+you can get to this optimizer is through
+platform.ai.com.
+You can get access to the optimizer. So
+once you put in the original prompt,
+this the original prompt I put in. It's
+around basically rewriting drafts for me
+for a newsletter. Very basic. It's going
+to convert this once I select optimize
+into an improved prompt. It's not only
+going to improve it, but it's going to
+tell you exactly why it improved and
+what it changed. So here, if you collect
+the comment here, it's going to tell you
+exactly the reason as to why it changed
+and the improvement they made. A clear
+example here is that when I stated that
+something was important associated to
+writing, I mentioned best, but I didn't
+specify what best meant. So what
+happened is their optimizer intuited
+what best meant based off of other
+things that I've talked about in that
+same sentence which was clarity,
+simplicity, and writing at a fifth grade
+reading level. It rearranged that
+initial prompt to state that that's what
+best correlates to. So it's being more
+specific. Another one here is it
+converted a minimal process that I
+provided into a detailed checklist that
+the AI will create for itself based off
+of what we care about when it comes to
+writing. And it'll then follow that
+checklist before it responds back to me.
+And there's a whole bunch of other
+things that it did. But that's the
+beautiful part about this optimizer is
+it's going to take the best practices,
+apply them to your prompt, and give you
+a huge boost in what you can get from
+the AI. So, if you take nothing else
+from this, this is a very easy and weird
+tool that you can use to put your base
+prompt in, get an output, and it's going
+to have a much better response. Oh,
+hello there. Quick pause in your regular
+programming. This video is brought to
+you by MUA. So, below is a 30-day AI
+insight series that's completely free.
+So, if you click that link, you're going
+to get 30 days of 30 insights in your
+inbox of how you can apply AI to your
+business and your work. If that's at all
+interesting to you, check out the link.
+It's free. With that being said, let's
+get back into the video. So, that's our
+second one, prompt optimizer. Our third
+here is words matter. So, this one and
+the next one is associated to the way
+that this model follows instructions.
+So, GPT5 as well as previously GPT4.1,
+they're both very good at following
+instructions. So, whatever instructions
+you give them, they will follow it.
+Also, that means that if you put a
+contradiction into your prompt, it's
+going to overreason and overthink and
+try to and probably confuse itself
+trying to figure out which direction to
+go based off the contradiction you
+provided in the prompt. The same thing
+applies to vague terms. And here's a
+simple example of what bad and good
+looks like when it comes to word usage.
+So, this is a bad prompt where we've
+stated, "Help me plan a nice party. Make
+it fun, but not too crazy." So, this
+lacks tons of specificity. And here's a
+slightly improved version of it where I
+say, "Okay, hey, I want you to help me
+plan a birthday party for my 8-year-old.
+There's going to be 10 kids there. The
+budget is $200. We have 2 hours, and
+it's going to be unicorn themed." By
+doing this, we're giving the AI a much
+better opportunity to solve our problem
+effectively without overreasoning or
+going in the wrong direction. So, when
+you're creating a prompt, either for a
+direct conversation with AI or as a
+system prompt in custom GPTs or GPT
+projects, make sure you're specific in
+the words that you use. So that's number
+three, words matter. Number four is a
+structured prompt. So when it comes to
+structuring prompts, this is something
+that we've done for a while, but it's
+become more and more important as these
+models become very effective at
+following instructions. So I'd say this
+is most suitable for when you're
+creating custom GPTs or you're creating
+specific GPT projects. So we'll do GPTP
+and we'll do CGP for those two. And by
+doing this, XML has been by far the one
+that resonates most with GPT5 and that's
+what OpenAI recommends. And XML is
+basically a way of putting tags around
+your text. So here you have a bracket
+says context and this little slash is
+the end of the context. So this is the
+end. This is the beginning. This is the
+start of task. This is the end of task,
+start of format, end of format. And the
+reason this is important is by doing
+this the AI knows that this section is
+dedicated to the background associated
+to the ask. It knows that this section
+is dedicated to the task it needs to
+achieve. And this section here, it knows
+that this is associated to the format it
+should provide you back when it
+responds. By doing this, we're going to
+improve the overall results that we get
+back from the AI because it comprehends
+the system instructions more effectively
+than if you didn't use this structure.
+And the beautiful part about all of this
+is you don't necessarily even know need
+to know how to do any of this. You can
+just ask AI. So once you've written your
+prompt, you've used the optimizer or
+something else. You can basically just
+send that off to AI and say, "Hey,
+convert this system prompt into XML."
+It'll do it for you. You can make minor
+tweaks if you want and then that can act
+as your system prompt for that custom
+GPT or GPT project that you create. So
+that's our fourth fourth trick. And then
+our fifth final trick is
+self-reflection.
+GPT5 is very good at critiquing itself
+and we can use that against itself. So
+this is the way that I recommend doing
+and this is what OpenAI states is when
+you put a prompt together. So this is
+either a system prompt for a GPT project
+or a custom GPT or it could be a direct
+conversation. You state that the AI
+needs to create a rubric for itself and
+then judge itself on that rubric. And
+that's exactly the first step we're
+going to do. So we're going to say, "Hey
+AI, create a rubric based off of our
+intent." So in the example of writing,
+our intent was to ensure that we had a
+simple and clear piece that was written
+in a fifth grade reading level. That's
+our intent. So I want you to create a
+rubric aligned with that intent and then
+judge yourself against the rubric.
+That's exactly what this is going to
+happen. So it creates the rubric based
+off of that. Sets the standards,
+metrics, etc. And then when it writes
+its first draft based off the goal that
+I'm trying to achieve, which is writing
+newsletters in this use case, it's going
+to write the first draft. After it's
+written the first draft, it's going to
+evaluate this first draft based off the
+rubric that was created. It's going to
+rate the response from 1 to 10. It's
+going to check against the rubric and
+also see if there are any gaps
+associated to what we're trying to
+achieve, what was written. What's going
+to likely happen is it'll iterate maybe
+two, three, four, five times. At the end
+of this, you're going to have your fifth
+response. And this fifth response is
+going to be probably the highest quality
+response you get back from the AI. And
+it's the only response you get back from
+the AI, which is also beneficial because
+everything else happens internally
+inside of the AI's head. and you only
+get the best piece. And with all these
+improved iterations, you're going to
+have a much higher quality output
+because of that self-reflection process
+and and internal critiquing. So that's
+our fifth and final trick, which is
+self-reflection in process. Key
+takeaways here, right? The key takeaways
+are is that the foundational model has
+changed and the foundational model is
+focused on routing now. So we don't have
+access to the models we choose. That's
+happening in the background. So we need
+to improve our ability to prompt this
+model to ensure that in the back end
+it's directing it to the right model
+with the right reasoning level and the
+right verosity that we care about. And
+there's five simple ways we can do that.
+We can do that with trigger words. We
+can do that with a prompt optimizer
+that's very straightforward to use. We
+can do it with specific words and the
+right structure because remember they
+follow instructions effectively. And we
+also can use the self-reflection process
+to ensure that the model's critiquing
+itself to improve itself before we get
+the final output. So, those are just
+some of the tricks I wanted to share
+with you today. And with that being
+said, my friends, if you enjoyed this,
+please share with your friends. And
+also, as I mentioned previously, Below
+is a 30-day AI insight series that's
+completely free. So, if you click that
+link below, you'll get 30 days of 30
+insights in your inbox of how to apply
+AI to your work and your business. So,
+check it out. Completely free. Also,
+while you're down there, if you want to
+work with me, there's three different
+ways we can do that. You can click that
+link as well to see if there's a good
+fit. And that's it. So, internet, I'll
+see you next

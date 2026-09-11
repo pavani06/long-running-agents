@@ -1,0 +1,790 @@
+Exactly one month ago, I went viral on
+Twitter. My post is in engineering deep
+dive on how we made Deepseek outperform
+Opus 4.7. And that is what we are going
+to discuss today. Just about a month
+ago, Deepseek went ahead and launched
+their V4 family, Deepseek V4 Pro and
+Deepseek V4 Flash. And I started looking
+at that in a very different way. There
+were two groups of people on Twitter.
+When Deep Seek V4 Pro and Flash were
+launched, the general sentiment in the
+community was kind of a like a not
+really an even split, there were a lot
+of people that I respect a lot who were
+saying this is uh a really intelligent
+model. So, a lot of people that I
+respect in the community, they were
+saying things like uh this is a really
+intelligent model. Um the cognition
+level it has is amazing. It's uh you
+know um probably like opus tier uh model
+and it is fast and it is quite stable
+but at the same time uh there were like
+probably 80% of the community which I
+think were probably saying things like
+uh it is super slow tool calls
+uh do not work right and this is the
+this is the thing that I kind of want to
+focus on right like why were a lot of
+people saying that you know tool calls
+are not working like what was what was
+so different for them uh in these guys,
+right? So, I [snorts] started looking at
+it and we had shipped a deepc for
+probably the same day or the next when
+uh it dropped in the community and I had
+like a bunch of data on error stack in
+command code and I saw something
+completely crazy. Deepseek being an open
+model has a lot of tool calling issues
+and I started looking into that and I
+remember like it was uh Friday my team
+was actually going off and they were
+thinking like yeah it's it's it's how
+open models are but I was still looking
+into it and I was like figuring out like
+maybe there is a fix here right I'm not
+going to fine-tune DC I'm not going to
+fix the pre-training but maybe there is
+something I can do in the harness that
+can improve the performance and
+reliability and stability of the tool
+calls across the board and I I ended up
+discovering something that we have now
+been calling repairs, tool repairs. And
+we have this huge tool repair harness in
+command code that outperforms uh most
+every other uh you know coding agent
+harness in the market especially for
+open models and this is the reason why
+right so [snorts] um let's actually just
+go through this post so I can share what
+I discovered right so I've been thinking
+a lot about why are open models bad at
+tool calling now I'm almost sure like
+it's always a harness problem and not a
+model problem models are going to
+hallucinate they're going to you know go
+make mistakes and that's why the harness
+should be able to figure things out for
+it. Sometimes deterministically,
+sometimes uh nondeterministically,
+right? This however is a deterministic
+fix, right? So the thing is we are
+building command code and I ended up
+looking at the tool input repair layer
+that we are building. Uh this is this is
+like a review of that, right? And what I
+saw was the deepse v4 flash was
+consistently failing on our slash review
+skill that comes bundled with command
+code. And every shell command the read
+file call was bouncing back. And there
+were like on average 56 failures per
+tool call uh for shell for read file for
+slashre for deepc for flash. And I was
+like this seems like a big pattern. You
+know the model should not be that bad
+right? And I was at the very you know
+brink of like okay maybe we should stop
+offering this model because it's not
+good enough and we can't really do
+anything about it. And the last thing I
+did about that was uh maybe I can run
+our internal benchmark and see how we
+can kind of like make a blog post on you
+know uh we probably removing leaf seek
+from command code and it's not good.
+It's not doing tool calls at all. Uh we
+tried a bunch of different ways and I
+was trying to prove that you know uh
+it's just a bad model and it's not
+working. Then I've been building
+something and that thing is called
+taste. You all know that like and if you
+want to go to our docs and you know take
+a look at our taste model what that is
+you know be my guest. Taste is a
+continuous learning layer right and I
+built it because I wanted my coding
+engine to learn from me. I have been
+writing code for 27 different you know
+27 years I've built so many things. If
+you go to my uh GitHub you will see like
+I have like maybe 300 plus open source
+projects. 70 of them are probably really
+good but everything else I like maybe
+more than 1100 repositories uh that are
+open source now right? So I have a lot
+of thoughts and opinions about how
+software is made and when I'm using
+coding agents I want them to be learning
+my taste. They should be learning how I
+prefer things. Right? So I built this
+taste model with my team and the idea
+was that if the if if you look at this
+scale divergence loop if an LLM knows
+something we do not consider that a
+learning we think that LLM will just
+pick it up right if it does not that is
+the thing that we learn and we kind of
+put it in um let me actually open up u
+this is what uh taste file ends up
+looking like it's very much like a skill
+but it is automatically learned so after
+like building maybe 30 40 CLI with
+command code uh these are all the things
+that it it has picked up are my taste of
+building CLIs, right? And as the models
+have gotten smarter, this file has
+actually gotten shorter, right? So a lot
+of things that models now already know
+are, you know, uh get automatically
+removed from here. So this is the T
+file, right? And I built it for humans.
+I built it because I was like the math
+was very simple, right? So here's a
+human developer
+and they are going to uh probably write
+a prompt or uh maybe they are going to
+you know edit a file or say no this was
+bad or say yes this was a you know uh
+good tool call right and that is going
+to translate into software right so in
+this particular area this thing I felt
+like this was pretty important and this
+piece when a human is talking to an AI
+through their prompts through their
+edits uh you know uh through their
+saying something like you know no this
+is really bad or saying something like I
+always prefer using commander I always
+prefer using typescript something like
+that maybe we should be learning
+something from this area and uh storing
+that as a taste file right so this
+became the taste MD file the problem
+however with this approach is very
+quickly this year we saw in the same
+equation humans are getting replaced by
+AI right AI is actually going even a
+step uh ahead head uh you know a step up
+right uh AI is being used to prompt
+right in the human part is actually
+somewhere here now right this is the
+current uh world we live in where a
+human tells in a coding agent that this
+is what I want and the AI coding agent
+can spin up a bunch of different agents
+spin do a bunch of different tool calls
+do a bunch of different prompts um and
+do a bunch of different things and write
+software right so I eventually ended up
+thinking that we can also learn the
+taste of an LLM right so this is
+considered This is an LLM. U since LLMs
+are writing more code than humans. We
+can probably learn the taste of LLMs,
+right? But it's not that useful. It's
+like I cannot learn the taste of
+Deepseek V4 Pro or Flash and share the
+taste with you, right? What would that
+taste really be be helpful for for you,
+right? It um and how would I actually go
+and learn that, right? So I ended up
+building this weird experiment of sorts
+where I picked an LLM and that LLM uh as
+you know was DeepSeek
+V4 Pro. I also tried this on Flash by
+the way and I set a goal. I'm going to
+burn 1 billion tokens across different
+programming languages. uh you know um I
+did uh TypeScript, I did JavaScript, a
+lot of HTML uh in CSS projects, a bunch
+of Go, bunch of Ruby, um bunch of
+Python, um you know, and I think like
+probably 11 different languages um that
+were uh done by SAK, right? A bunch of
+different things, a bunch of different
+projects. And I ended up burning like a
+billion tokens and out of this, I got
+this thing. I got the taste of DeepC Pro
+and Flash. So I got a taste file and
+this taste file is actually the taste of
+this LLM after a billion tokens on
+different projects and I found so many
+amazing things in there. I found that um
+you know particular things like you know
+when uh you're writing some particular
+go routine deepseek v4 trips up for some
+reason if you're uh you know writing
+some interface with typescript uh if you
+just ask for that interface it will just
+do it really really well but at scale if
+you're doing it a lot if you're sending
+like you know thousands of different
+requests if you're burning like a
+billion tokens at scale this open model
+starts to struggle and the taste file
+started building up a layer of different
+fixes that when you're doing this do
+that when you are doing this you always
+stumble on doing this poorly do that
+right this was an interesting experiment
+as you can imagine right alongside this
+experiment I started thinking about how
+can I actually use this like if I have
+the taste of one LLM where would I
+actually really need that right the
+second thing on the side that was
+happening was the errors yay and the
+pros and the cons uh that people were
+sharing in the community like oh
+Deepseek is so good oh wow everybody's
+saying that it's so good but I think
+it's a hype and uh you know people are
+just claiming things that are fake. I
+tried it. Tool calls are failing, right?
+And then I think within a couple of days
+or whatn not, we had probably cross like
+10 billion tokens consumed on command
+code. So I had enough data for errors of
+tool calls like for this deepseek model
+that I was able to figure out
+correlation between the taste that I had
+built in the tool call errors that were
+happening because of deepseat and
+something became apparent like it was
+like you know oh shoot right there are
+there's like a very clear pattern of
+things that this model is doing wrong.
+So I started with just four tool
+repairs. You know how there is a
+database migration right? A database
+migration is like this you know maybe
+you are using superbase uh or some uh
+you know postgress or something like
+this right? So you generally have like
+this migration folder right and uh in
+this folder you have probably you know I
+don't know some date file with some I
+don't know we changed this table to fix
+um username or whatn not um and STL
+right and then you have like a bunch of
+uh files like this um you know I don't
+know table fix uh authors or something
+right so this is how your migration
+folder generally looks like right so I
+started ended up building something very
+similar I called it repairs
+and I started started looking at um you
+know this is the repair uh tool harness
+part of our command code right so I
+started building something similar right
+u and it was like you know I started
+taking a look at what are the most
+common
+uh you know things that I see across
+different models so not just deepseeek
+but GLM quen and a bunch of others and I
+started to pick up on things and these
+were the four most common tool call
+errors right and this is what my repair
+folder generally kind of looks like So
+when you are uh sending null for an
+optional field a lot of these open
+models just omitt it think of it like
+this think of it like you have like a
+shell tool think of it like a function
+right it's a shell function and shell
+function can accept I don't know um it
+can accept like um a
+b c d like four arguments right one
+argument actually with four uh
+properties right and maybe the uh c and
+d arguments are optional. So what I saw
+was that uh BCP for flash would uh
+instead of sending an empty value, it
+would just send null and our uh you know
+repair our our u you know zod error
+schema was super strict it would just
+reject it right and uh in other cases it
+would be emitting something like this
+which is not uh which is a JSON array of
+sorts as a string when the tool was
+actually the tool u schema was actually
+expecting an actual array not a JSON
+string right and then uh in many cases I
+saw saw that it started wrapping up
+arguments with uh a JavaScript object
+for no reason at all, right? Um as empty
+placeholder. So imagine you were
+expecting uh a value for D, but instead
+you got this weird thing, right? So it's
+not null. Uh it's just an empty
+JavaScript object. So it will probably
+trip up uh this tool call a little bit.
+And whatever uh uh you know error error
+handler you're using or the type um you
+know validator um what do you call it?
+Uh library you are using we use zod,
+right? that zod uh library would be like
+oh no you can't do this you can't send
+this thing this is against uh the schema
+we sent you right so this back and forth
+was happening right and uh it actually
+looked something like this so think of
+this as command code um and this is your
+LLM
+and this LLM right now is uh anything
+from DeepS uh Quinn uh GLM uh Miniaax
+I think I also I didn't try on the uh
+email models but um there was also Kimmy
+right
+these were the models that I tried
+earlier on right so you're sending uh
+your llm uh this data uh you're saying
+you know you can have a shell tool call
+and it expects a b c and d and this a b
+and c and d could be like I don't know
+uh let's call it uh you know what is
+your shell command it is expecting a
+command and you can also tell it when to
+shut down like you know the uh time when
+uh we um I think the idle time or
+something like this right that is uh
+quite common in shell tool calls and um
+the llm in return is actually doing
+something really very crazy right so
+here's your prompt prompt is this is
+your u the developer saying something
+like you know can you tell me uh
+something related to shell tool call and
+the tool call is actually being
+transferred through your uh you know uh
+coding agent to the llm in the ll
+instead of returning back uh a tool call
+that has some data like you know I don't
+know uh run uh cat command or something
+like uh um what has happened run cat
+command or something and your your you
+know tool harness your coding agent is
+expecting some idle time here like 9,000
+like 9 seconds or something right and
+instead of this it is sending this weird
+bug right yeah Instead uh your LLM is
+returning something weird which is not
+confirmed of the schema of the tool
+call. Right? So what happens here is so
+this was uh your um coding agent right?
+So this was cmd and this was your tool
+schema and this is the tool call that we
+got from the lm right and now that this
+tool call is a bad tool call what's
+going to happen is zord is going to take
+a look at it and zord is our type uh
+validator and it's going to probably say
+uh you can't do this uh it's going to
+probably return some giant big error
+object which will probably be saying
+something like you know uh I receive of
+this empty uh uh thing and I was
+expecting uh either you will uh send me
+nothing uh like I don't know you will
+send me null or you will send me uh a
+number value for this particular
+argument right and this error is now
+going back to an open model right so
+here's the problem right the open model
+will continue to send you back this
+thing
+and it will do that for like 50 times
+that that was the thing that I actually
+discovered like you know it will uh on
+average it will it was failing like 50
+six times you would be getting the same
+bad tool call for 56 times and Zord
+would be responding back with the error
+like yeah you can't do that fix your
+input and then I will run this tool
+right so I was like h I don't know maybe
+I can figure out if there is a limited
+number of these bugs and I can write a
+small repair harness on top of this
+which would actually repair the tool
+call uh and fix it and run it and then
+also send back a note put a fixed note
+to the LLM. Think of it like you are
+teaching somebody how to drive a car,
+right? And you're sitting here and the
+person who is learning how to drive a
+car is sitting here and
+that person is about to hit a truck,
+right? You have two options. You can let
+them hit that truck and then teach a
+lesson of lifetime that you know this is
+not how you should have done that. Or
+you can stop them,
+fix what they are doing wrong once you
+have saved them from that accident. You
+can explain that you know you should
+have done this. Your speed should have
+been this and while you were like you
+know 3 m before this joint truck you
+should have pressed your brake because
+trucks happen to have pressure brakes
+and they can stop anytime. Right? So
+there are two options. You can either
+tell them well this is your error go fix
+and by that time they are already dead
+right and uh probably you along with
+them or you can tell them you can fix
+repair what they are doing wrong once
+you have saved them from that accident.
+You can also then add a note like you
+know this is what you should have done
+in the first place. So most of the
+harness right now in this space are
+doing just this. they get a bad tool
+call, they let it fail and then they
+send back that error but your session is
+already ruined your LLM as a human.
+Think of it like this. If you are
+interrupting a human from speaking 56
+times in a row when they are trying to
+help you build something, they will get
+pissed off. I always think of these LLMs
+like they have like a human like because
+they're trained on our data, they act
+like humans, right? They will get pissed
+off. Their value to your task will
+decrease. their intelligence, their cogn
+cognitive ability, their capability will
+decrease and they will the overall
+quality of output will also get
+increased right so uh instead of doing
+this back and forth if you can fix and
+repair that bug deterministically and
+send back a note you know I fixed this
+here's the tool result you should have
+actually done this that can have amazing
+results so I tried that right so in in
+this scenario what I did was I was like
+okay uh let's break it down. I will
+probably try to fix all of this. Okay,
+this is taking too long.
+Okay, instead of Zord sending back that
+error, I redirected this thing to a
+repair harness. So, we now have a repair
+harness, right? So, soon as uh you know,
+Zord figures out, oh, that this tool
+call was bad and we have a bug, the
+repair harness actually has something
+like a migration, something of like a
+migration. It looks at this. Okay, I
+have this thing um and I know how to fix
+it, right? And what we do is we like,
+okay, we can deterministically fix this.
+And a repair runs. And I call that
+repair uh you know, let's call this um I
+don't actually remember what I call it.
+Um empty uh JS uh repair JS object
+repair. So we have a bunch of repairs
+and this fix will go back to our repair
+harness and repair hardness will match
+this with okay we can actually fix this
+and it uh uh we will send this as an
+input and we'll get back this output
+since we were expecting the idle time
+and since there was a bug here we can
+make a deterministic you know um call
+here and we can say okay the idle time
+could be uh something like uh I don't
+know 3,000 right and now this is what we
+have and cmd
+will send back this as a tool result.
+But uh wait just a minute, right? Uh
+this there this more interesting stuff
+that's going to happen here. So once you
+send this back your whatever LM you're
+using open or close, it will now have a
+really good tool called result and it
+will be able to continue doing what it
+was doing in the first place. A lot of
+people would have thought like this is
+it right because but because I am me I
+thought maybe I can learn how well this
+does in production. So I made this
+repair, made it live, washed it 3 hours
+later, almost 6 hours later and in the
+night I was able to figure out that this
+is just still failing. It is able to
+repair like just 1% of the uh bad tool
+calls and we have 96% maybe you know 98%
+of the tool calls that are repairable
+but we are not able to repair them and
+that was happening because right after
+this uh thing happens let me actually
+make some more room for this. So right
+after this happens, open models do the
+same bad thing. They are going to send
+back the same bad command, right? So the
+next tool uh tool call you get you are
+again going to get something I don't
+know maybe you are running something eco
+or what not. You're again going to get
+that bad thing uh you know that error uh
+that was wrong in the first place like
+this thing right and it would slow down
+it would be just expensive. Sometimes it
+would do some weird thing that would
+cause it to just absolutely fail. And I
+thought to myself, what if back to this
+example, what if
+I didn't just save this person from a
+from an accident, but also told them
+what they were doing wrong, right? Which
+is what we were trying to do here,
+right? Uh I I I have a feeling that the
+way these open models are trained, um
+they have this weird alpha male energy
+of sorts where they think whatever they
+are sending to you is right. Right.
+Maybe they are being distanced from big
+closed commercial models and their
+training data set is something like you
+know whatever this commercial model is
+saying is correct. So just learn what
+they are saying. So the open model ends
+up being whatever I'm doing is correct.
+Right? So if you pass back a zod uh
+error the open model again says no you
+are wrong. I'm not going to listen to
+your error. This is just wrong. I am
+what I'm sending you back is the correct
+thing. So what happens is if alongside
+this tool result
+if you add such a small node like this
+is a repair fix node on our end right I
+call it repair note right and that
+repair node is explaining exactly what
+zord was saying alongside the correct
+result right so here's the correct
+result this is what you should have done
+in the first place but here's the repair
+note you should actually from now on do
+this
+this becomes the entire that tool call
+that is sent to I don't know deepseek or
+some LM in the very next tool call they
+send they stop making those mistakes all
+of a sudden. So this this is such a
+minimal thing and it has such a big
+impact you can't believe it right. Uh it
+started with you know when an open model
+sends a bad tool call you repair it
+deterministically without wasting any
+tokens and you send back the correct
+result or near correct result by
+guessing what the uh you know model is
+doing. For example, if this was a a read
+file tool, they would send no data of
+offset like are you trying to read 100
+lines from the bottom or the top of this
+file. So I would just say okay uh since
+I don't know I would repair it and send
+them just the first 100 lines right but
+if that was a log file and the repair
+note was there DLM would quickly
+understand oh no no I actually wanted to
+see what are the last five or 10 lines
+of this particular log file and would
+very quickly repair itself right and
+think of it like this you know you just
+made a mistake because you were thinking
+about something and you were talking
+about something else and you just ended
+up saying something and without breaking
+your flow somebody says you mean this
+and you're like yeah yeah and then you
+continue. That is what this is, right?
+The the cognitive load that this
+particular open model is uh has when you
+have like your thousand messages deep
+and you know, you know, 2,000 tool calls
+in there, a long session, a small tool
+call break can cause the model output
+quality to completely drop. And because
+you just repaired it, it stays the
+course. Now it can run 12-hour long, you
+know, uh super super long sessions. Uh
+it can really really help you, right?
+And this is not a uh this is obviously a
+model problem and they can probably fix
+it uh in uh future models as well. But
+right now no other coding agent harness
+is doing that. So I thought this was
+really really good and uh I didn't want
+this to be like oh we only do this. I I
+was like this should be open. We should
+all have a really good experience with
+tool calls especially with open model.
+So I wrote about it. The failure is not
+random. It is a small finite
+compositional you know set. It's only
+these things that I discovered that day,
+right? And the tool repair uh uh uh you
+know harness is just you know there like
+30 30 to 100 lines of code that can
+deterministically run a small compute
+code and it can just fix it in place.
+Your tool results go back to the model
+with a repair node, right? And it just
+becomes really really nice. Overall,
+this translated into a massive uh
+outrage. It's like a it's like a thing
+that people didn't expect, right? You
+know, a lot of people tagged DC. Oh, is
+it true? And a lot of people write wrote
+like a bunch of different small
+harnesses. I saw like 10 different uh
+versions of this thing for pi. Uh I saw
+something for open code. I saw something
+for uh what is it called? Hermes agent,
+right? A bunch of people because this is
+out there in open and you know the
+entire process is right there. And I'm
+not like uh you know uh gate blocking
+it. I'm not saying you know you you can
+only have this in command code a lot of
+people were able to discover a lot of
+shape and variants and fix them right
+and it just started this new thing which
+is like you know once you have these
+repairs in place and once you have a
+coding agent like command code that can
+self-repair self-learn and continuously
+learn what you have is a consistent
+amazing uh feedback loop that is
+consistently figuring out errors in
+variance uh in in in across different
+open models
+in fixing them, right? In process,
+improving the speed, the flow, the
+quality of the output and saving you a
+lot in token cost, right? So, it started
+with just four tool calls by the way. It
+started with four. Um, the next chip was
+around 12 to 16 based on different uh
+LLMs. Like, coin have different quirks.
+Deepseek is very different. GLM for some
+reason does not make a lot of mistakes.
+Kimmy makes a lot less mistakes though.
+Kimmy K2.6 stays my top favorite open
+model so far, right? But once I fixed uh
+DeepSeek through these uh tool repairs,
+Deepseek Flash is one of my favorite
+models. It's it is so good. It is better
+than Claude Haiku right now. Cheaper
+than like maybe 10 20 times cheaper than
+that. And if you know what you're doing,
+you can just ask it to do it and it will
+just do it right as far as it is not
+breaking up on weird tool call errors,
+right? And now there like I think 56,000
+repair invariants we have like we have
+variations of 56,000 different small
+little tool called migrations based on
+the language based on the model that
+you're using based on the scenario and
+we continuously discovering more and
+this uh number actually goes up and down
+like models tend to uh become better at
+different times like for example the
+same error that I just discussed here
+most of the times deepseek does not have
+have this error which is so odd right
+maybe I have a feeling that when the
+capacity of inference goes down when
+there are a lot of people using deepc it
+tends to uh become less intelligent it
+tends to make a lot more mistakes and
+that is when these tool call uh issues
+start to show up so at a trillion scale
+we are at a trillion scale right now we
+have a trillion more than a trillion
+tokens per month uh in command code we
+see this so many times we see this
+hundred of thousands of times right so
+by building these small little repairs
+we are saving both cost speed and we are
+you know fixing these open models such a
+massive thing right it's it's such a
+benign thing and it helps in so many
+different ways right um so this this
+ended up becoming a thing as you can
+imagine right a lot of people ended up
+talking about it uh here's Paul who
+created the impeccable uh u you know
+design scale uh and he was like you know
+this is super interesting as an idea and
+then then there were like a bunch of
+different other people right and a bunch
+of people started trying out all of a
+sudden a lot of people started saying
+you know um I don't know about this
+maybe you know uh this is not as much
+and I ended up like uh doing this is
+when you know the tool repairs were like
+at 36k uh I ended up actually creating a
+small uh infill icon of sorts. Whenever
+you see this uh in command code uh you
+would know that this thing this whatever
+the thing whatever tool call that was
+running with whatever open model was
+repaired three times with three
+different repair migrations before we
+sent back the result to the LLM. And you
+can see okay it's always like this this
+was repaired once it was repaired twice
+it was repaired uh thrice obviously as
+you can see this is just a you know
+small smoke test where you know when the
+llm was uh running a file and we were
+expecting a file path it sent us path
+right when we were expecting old value
+it sent us old underscore string as the
+you know uh argument so we just
+deterministically replaced this with
+that and fix the tool call and uh also
+the new string new value right so these
+are the three tool tool repairs that
+happened before this tool result before
+this tool could actually run, right? Uh
+if you were not using uh command code or
+if you were using a coding agent that
+does not have repairs in it, right? Uh
+it would just have potentially failed
+here, right? And then it would have
+failed here and here, right? So it's
+saving you a lot, right? And that led to
+a bunch of different things. Uh one of
+the things that led to was, you know,
+command code got adopted a lot. We are
+now second or third biggest coding agent
+usage wise on different uh leaderboards
+like on versel which is one of our AI
+providers. We have an AI cafe. We also
+host GPUs ourselves. Um and I ended up
+sharing a lot more around this thing.
+You know uh I ended up doing the same
+thing with Kimmy. So if you are you know
+down going to want to go down that road
+uh you know you want to see how Kim K
+2.6 tool repairs work you can uh you
+know go read this as well and a bunch of
+different other things. Yeah. With that,
+if you have any comments, suggestions,
+feel free to share. With that, I'm out.

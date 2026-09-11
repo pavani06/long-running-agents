@@ -1,0 +1,384 @@
+So this is Lauren Tan, ninja engineer.
+She's worked at Netflix. She's a member
+of the core React team. You might have
+heard of React and principal engineer at
+SpaceX and also Cursor. If you're
+building coding agents or using any kind
+of software factory, you have to check
+out her set of skills. It's basically a
+senior engineer's brain extracted into
+one stack. Even our friend Theo has done
+a deep dive on how awesome her skills
+are. So even if you don't end up using
+Pstack, just reading them will give you
+a breakdown of how a serious agent
+practitioner works at scale. So in just
+one afternoon, I created this skill
+manager called Molton Base to manage all
+my skills across my various different
+agents. I'll take you through some of
+that process and a breakdown of all the
+noteworthy skills. This is a couple of
+minutes that's really going to help you
+improve your work with agents. Pstack is
+broken down into all of her principles
+and engineering rules. Then we've got
+the playbooks which you can think of as
+operating procedures so the agent knows
+what to do next. And then all the
+individual skills and slash commands
+that do all the work even after using
+agents for 2 years and building my own
+set of skills. There are a few in here
+that are absolutely getting added to my
+default list. So you can run pack
+anywhere you want. Cursor claw codeex.
+You can find the official repo from
+cursor and lauren at plugins pack at
+ccursor. I'll leave the link in the
+description down below. And it's as
+simple as just typing in slash addplugin
+pstack when you're in cursor. If you
+want to run this on claw codeex open
+code, I found this not official repo by
+Michael Dener. He's done the porting
+into each one of the agents. So you can
+actually run that by installing it from
+the plug-in marketplaces.
+So the heart of the Pstack is potato
+mode. It's essentially a router that
+helps you decide which one of the 20
+plus skills you should use first. So
+what we've got here in our skill tree is
+essentially 22 playbooks which gives a
+nice set of examples here for different
+use cases along with each one of the
+prompts. I always love an opportunity to
+build some new software. I haven't found
+a good skill manager that I like using.
+So let's go and build our own. So I've
+given potato mode a prompt here and
+let's see which one of its skills it
+uses to kick this off. So the [snorts]
+first thing we see here is potato mode
+actually rooted this to a figure it out
+playbook. If you're expecting something
+like BMAD superpowers or OpenSpec, this
+isn't necessarily designed for spec and
+planning. This is meant to be operated
+on an established codebase. Laurens's
+personal take on this is I don't believe
+in planning. The best spec is the code.
+So there's deliberately no planning
+skill baked into Pstack. Now you can
+already see the arena skill is in place.
+So we have a design idea distributed
+between Claude, GPT, Grock, and Claude
+Opus 5. There goes the token budget. If
+you have a critical feature to develop
+and tokens are not an issue, you can run
+arena. It is it pits three or four
+different agents against the same
+problem and it takes the best parts of
+each and wraps them into a final commit.
+And it's something that cursor had baked
+in 6 months ago and they later removed.
+So basically having them all fight it
+out to the best design and then picking
+the best parts of each design. So based
+on what each one of the sub agents
+learned while working on the problem,
+Arena decides to either graft or reject.
+Now, similar to that, we have the idea
+of swarm. It's the idea that again,
+you've got parallel workers, but you
+give them different slices of the
+problem and then you pull it all back
+into one aggregated report. Pstack is
+designed so you get fearless
+parallelism. If you're working across
+feature branches, work trees, etc. Even
+if you're using arena or swarm, it's
+aggregating all of your work together,
+making sure there's no overlaps. Well,
+that's the idea in principle. It is a
+big claim. I haven't used it enough to
+say that that is actually the case, but
+you can see how the principles are baked
+in to allow for it. Using its TDD skill
+or testdriven development, it went and
+created a bunch of unit tests first and
+then made sure they passed before
+proceeding. So this skill I particularly
+like why. So the Y skill is really cool.
+Instead of just checking the transcript
+for the project, it basically runs
+through all the different MCPS and CLI
+that you have that are relevant to the
+project. It might check product
+information in Post Hog. might go to a
+conversation thread in Slack about why a
+feature was implemented. It might pull
+logs from sentry to get a full big
+picture of decision records or adors as
+to why something was done. Definitely
+stealing this one. So just like potato
+mode is a router for all the skills in
+Pstack, open router is pretty much a
+router for all the models you could
+possibly want to use. Basically, one API
+key and one bill gets you all the text,
+video, voice, and image models you could
+possibly want under one API endpoint.
+There are so many reasons why that is
+awesome, but for today, here's just one.
+I get so tired of logging into different
+dashboards, figuring out what API keys I
+have, switching around providers for
+video and images, and not to mention, my
+poor agent has to manage so many
+different APIs. So, I went and built a
+CLI that interacts with Open Routers
+API. I want to be able to generate
+images, videos, and voice using any
+provider using claw code, cursor or
+codecs and create a singular skill that
+can invoke the CLI. So basically, I got
+my agent to build a CLI that connects to
+Open Router along with a set of skills
+so I can generate images, videos, text,
+and even audio. I just need to grab one
+API key. So then I can use my new skill
+and CLI via Open Router's API to do
+things like generate a video of a load
+of potatoes rotating around my head
+using Cadream. And just like that, we
+have a head full of potatoes. Rob Shocks
+viewers can check out Open Router via
+the link in the description down below.
+Next up in terms of usefulness, we have
+recall. So recall is fantastic for when
+you want to pick up on a project that
+you've just left off. Maybe it's been a
+week or so, you're trying to remember
+where you're at. It will scan through
+all the transcripts. It'll even use the
+Y skill to go and check your MCPS like
+Notion Linear or Post Hog to find out
+where we're at and what we need to do
+next. To be honest, just reading through
+the skills themselves, there's some
+great learning in here for developers.
+some fantastic patterns that are really
+worth knowing. So once the code is
+actually developed, we're into the
+validation stage. So we have
+interrogate. So with interrogate, you're
+basically getting two or three different
+models to go and interrogate or doublech
+checkck the code against its standards.
+Multiple different models review the
+same code and they all come back with
+their opinions. Now, you're going to
+burn a ton of tokens with some of these
+skills. But inevitably, if what you're
+looking for is the highest and strictest
+code quality, the token count probably
+isn't going to matter to you here. This
+one I absolutely love. It's the create
+verification skill. So basically, it
+created its own scripted way to prove
+out the app behavior. We have to delve
+into the root, multiple different
+projects and setups. We have to scan
+continuously to make sure that
+everything's updated. There is a large
+surface area for this app to appear to
+be working but actually be fundamentally
+broken or giving us the wrong data. So
+it went and created a set of
+verification scripts and cross checks.
+When you're dealing with
+non-deterministic agents, this kind of
+verification step is just so valuable.
+We also have a maintain verification
+skill. So oftent time as the app
+develops, the script or verifier that
+you've set up is going to diverge from
+the development. So running this skill
+will actually go back and make sure that
+it gets updated. The unslop skill is an
+absolute gift if you use your agents to
+do any form of riding with the purpose
+of killing and removing all those
+annoying phrases like pivotal moment,
+crucial, delve, enduring, and the
+controversial one, getting rid of em
+dashes entirely. I actually like em
+dashes. I used them a long time before
+AI came along. Sad to see them go, but
+inevitably it seems like a big tell for
+people that AI is used when you see that
+little line. Let's say I've been running
+a load of agents in parallel all morning
+and my brain is just coming to a halt.
+This is just too much for me to gro. I
+can actually run the bro skill, which
+basically restates the last message in
+plain human language with no jargon. So,
+let's give it a go. This bro skill is an
+absolute gift for clarity, particularly
+when your brain has been burning hard on
+10 different agents.
+So, we can learn an awful lot about
+Pstack, how it works from the show me
+your work skill. So, I ran this on the
+first invocation of that one prompt. Now
+remember this whole thing was one shot
+of that one single prompt we started
+with. So just like any good engineer it
+started with some probing. So a probe
+can be a quick test to see if what we're
+trying to achieve is even possible.
+We're not going to build the whole app.
+We're just going to write a small script
+and just investigate to see if it is
+actually possible. So the initial frame
+is understanding the requirements and
+the constraints of the ask. So in this
+case we're saying that we want it to
+operate on Mac but then eventually on
+other systems. So it's able to create a
+frame around what needs to be built.
+Next up, we did some basic scaffolding
+for the app before we moved into the
+arena stage where we had four parallel
+agents working on the problem. So this
+one is particularly interesting. Design
+changes forced by reality. Now this can
+sometimes be the problem with doing too
+much planning up front. When the agent
+creates this very detailed plan, it
+hasn't actually dealt with reality yet.
+It's only as we build and develop that
+our assumptions get broken and we have
+to rework the problem and come up with a
+new plan on the fly. In phase E here, we
+have all the verification testing and
+then we finish up with our audit. Now,
+this is why verification is so
+important. The agent had realized it had
+hallucinated some of the details. It
+caught three false claims that it was
+able to correct.
+So, let's take a look at the key
+principles. Number one, laziness
+protocol. Absolutely love this one. When
+refactoring our code, let's look to
+delete code if possible and make this a
+whole lot simpler rather than adding
+more code. And let's just aim for the
+smallest change to get the job done
+because inevitably that leads to far
+more maintainable code later on. So
+redesigning from first principles. So as
+your project grows and you're adding
+more features, the agent might decide to
+bolt on the next feature or
+functionality. What redesigning from
+first principle is doing is basically
+saying that let's imagine that we're
+adding this feature from day one. How
+would you look at the code structure?
+How would you have designed the
+scaffolding the database to structures
+in order to make sure this was more of a
+native feature? So this might actually
+involve removing some structures and
+some code in order to get to our happy
+place. So again from Lauren, the goal
+isn't more code, it's maximum impact
+with the least amount of code.
+Minimizing reader load. We're all
+getting so sick of these huge PRs
+written by agents with disjointed code
+across several abstractions and modules.
+The idea here is that we minimize the
+reader load. We keep things super simple
+with the minimum amount of abstractions.
+Exhaust the design space. So this is
+very much where the agent arena comes
+in. We can have multiple different
+models and agents working on the same
+problem. Come up with the best of all
+and then graft the best parts into our
+final commit. In my course, I teach this
+thing called design mode where we
+actually just scaffold out a couple of
+different variations of what the
+interface might look like without any
+database or code in the background so we
+can come up with the best option for
+design before we move forward. Next
+principle is build a lever. So if you're
+going to be doing something with your
+agent by hand multiple times, why don't
+you build a tool for that? It could be a
+CLI. It could be a script that does the
+same verification over and over and
+again, which we see via the verification
+skill. Lauren has also baked in some
+great disciplines here. To be honest,
+you would hope that a model like Fable
+or Astra would start to think about and
+bake these things in naturally, but when
+it comes to verification steps, there is
+no harm in having these kind of
+disciplines applied after the fact. One
+of the biggest principles that flows
+through the entire stack is
+verification. Having it compile and go
+green on tests is not the same as
+actually testing and proving it works in
+terms of a real artifact. by deeper
+verification, whether that's via
+computer use or end to end testing.
+Guard the context window and never block
+the human. You can see this throughout
+the skills and the playbooks. The
+central context window is key. It's
+important. How do we offload slices of
+the task to sub aents? They've got their
+own unique context windows to do their
+work and then they report back to the
+central thread. The combined skills and
+methodology while costing a lot more in
+terms of time and tokens have led to a
+much more hardened application. Using
+Fable 5.1 without any plan mode and
+without any skills attached, it took
+about 30 minutes to get the project
+done. Using the P stack, it took 1 hour.
+So twice the amount of time. However,
+the difference between the two projects
+is substantial. Now let's be very clear.
+Pstack as a set of machinery and skills
+in your repo is going to cost you a lot
+more money. All of this validation,
+verification, and swarms means a lot of
+token burning. You might not need to
+throw the potato at every single project
+that you have, but at least you have an
+idea of what it's good at and where it
+can be used. If you're making small
+design changes or working on the
+front-end UI, you probably don't need to
+be using this. So, if you're subscribed,
+and I hope you are, I've been building
+on a series of videos around skills and
+the SDLC for a modern agentic developer.
+I've got a course coming up on that
+soon. So, if you want to get into the
+wait list for the first cohort, you can
+drop your interest at
+switchdimension.com.

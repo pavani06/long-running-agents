@@ -1,0 +1,486 @@
+[music] at 2 a.m. with GBTV, like why
+can't you fix this bug? And I was like,
+I'm talking to a [ __ ] computer and it
+literally will not fix that bug. And I'm
+like, what am I doing with my life?
+I'm going to build an AI that builds
+companies and then I'm going to build a
+thousand companies with all my ideas.
+And the dream got really big.
+Everyone is building an AI in some way,
+shape, or form, but there's only a
+handful of people that are truly
+building at [music] the fringe of what's
+actually possible. And today, we're
+getting to meet one of them.
+It's a super ambitious project. And
+[music] so, obviously, investors love
+really ambitious project that can change
+the world. It's also a very impactful
+one if you can help the 99% be more of a
+part of the economy. I'm going behind
+the scenes with Ben Baroa, [music] the
+founder of Pulsia, a platform that uses
+AI agents to autonomously build and
+launch companies for anyone. The mission
+of Pulsia is really to give a tool that
+is able to build any business but also
+[music] any idea autonomously setting up
+a bank account to talking to an
+accountant doing taxes to talking to a
+factory to build something specific
+[music] and then plug it into all of
+these to hiring a human. Ben just closed
+a $30 million [music] seed round by
+making VCs pitch his AI agent instead of
+him and his goal is to build the first
+oneperson [music] billiondoll company.
+But the question on everyone's mind is
+can he actually pull it off?
+What you really [music] want is just
+like Pulse to RIP for you to tell Pulse,
+hey like here's my business. Just do it.
+I don't want to babysit you. You're AI
+just run for [music] 24 hours straight.
+This should be such a perfect indication
+of the fact that you can do this too.
+Anyone can do this. AI has just leveled
+[music] the playing field. Go nuts and
+build something that the world's going
+to use.
+All right, so today we are catching up
+with a guy called Ben Sarah. He's a
+previously exited founder. He's onto a
+new venture called Pulsia. It is a agent
+architecture that allows anyone to
+basically type a sentence in and build a
+business and have it run completely
+autonomously 24/7. I meant to go on a
+run in like 20 minutes. He's like a
+really good runner apparently. So, he
+said he was not that good, which is what
+every good runner says. He's probably
+going to smoke me. So, we'll see what
+happens. [music]
+[music]
+Life of a founder. It's like I feel like
+you kind of need with discipline cuz
+it's such a grind and there's so many
+ups and downs. You have to find those
+rituals because like you you only do
+your best work when you feel your best,
+right? Yeah. And and Yeah. So that's why
+like it's like it's important for me to
+live somewhere that feels right to have
+a nice setup like a nice life setup when
+I'm working on Pulsia when I'm hustling
+to create the best experience for my
+customers. Like I I also feel good.
+[laughter] Yeah,
+I'm also in a good mental state.
+It's a beautiful spot.
+Cheers.
+Cheers.
+Super hectic run. Super hardcore.
+What's on today? What's going on?
+So, today is going to be about we have a
+podcast uh that we're going to do in an
+hour actually with a French a French
+podcast [laughter]
+going international.
+Yeah, we're going to release this new
+feature called boost. Um it's code name
+boost. I don't know if we're going to
+call it e boost yet. Uh but essentially
+it's like a way for pulsia to run
+autonomously for much longer because
+cost of intelligence is so high like you
+know entropic openi APIs for the top
+models are so high you know the initial
+product was just like um you know you
+had to you had one task every night and
+then like in the product you could ask
+pulsia to do more tasks every day one by
+one and you can commission pulse to just
+like run continuously for hours and
+hours. [music]
+[music]
+All right, so we are on our way into San
+Francisco City to go to the office where
+Ben works at. He just finished up his
+podcast. It is absolutely crazy that
+within what was that like a month and a
+bit of actually like having this product
+live that he's at a 7 million annual
+recurring revenue. That is just insane.
+There's like unheard heard of numbers
+here, but like in AI, like it makes it
+possible. And when you see what he's
+actually building and what he's built
+for someone, like I'm like, "Oh yeah, I
+would use that 100%." Like this is the
+future. It's just insane.
+Can I [laughter]
+welcome to the vlog?
+How do you guys know each other?
+Uh we are French
+French uh taxi
+textine.
+She's a investor at Google Ventures and
+uh yeah we met in LA I think two three
+years ago at a party
+ago at a party at one of your investors
+party Sophia Moro.
+Yeah.
+And uh the rest is story. very excited
+about what he's building. I think
+you're really building the future. Some
+people may not see it now, but it's very
+exciting. Have you tried the sugar next
+door from the
+Oh my god. Do you want one? Let me get
+you one.
+Do you want one?
+You're the best one that like I fast
+every day.
+Hello.
+Hi.
+[laughter]
+In my Australian accent.
+Sometimes the universe wants you to eat
+a quason and you eat a quasa. [laughter]
+We've been like we've been like fighting
+it for like we've been fighting it twice
+on two separate occasions this morning
+and it's it's happened. Tell me who that
+was. What just happened like crazy
+proximity, right?
+I know. So it's actually that's the
+that's an investor from Google Ventures
+that I met a while back in LA actually
+at like a party that like one of my
+investor uh threw back then. Yeah. when
+I moved to SF, she was one of the people
+that like I knew and then we hanged out
+and she actually she had the studio in
+Marina that she rented from me for like
+a month. So I was in Marina for a month.
+That's why I wanted to take you here.
+It's such a cool peaceful place to get
+coffee to get the fourth coffee of the
+day. And yeah, it's so random they rent
+to her, but like it's sort of like that
+serendipity you get in SF [snorts] where
+you keep on running into people casually
+and then it's like well yeah when you
+want to raise around then it's so much
+easier when you're right there and you
+can just chat about it over coffee over
+right
+literally literally
+and it's like if I was in Paris or in
+who wherever it's like that doesn't
+happen.
+Yeah. So you you can still build you can
+still build great things, but you don't
+run into those people that like lift you
+up, that like give you opportunities to
+like go bolder, go faster, you know?
+Yeah.
+That's what you get out of SF. That's
+why it's a magical place. We get into
+Sapium's HQ, which is one of the
+infrastructure for agent sort of
+companies I work with to help me scalia
+without having to uh rebuild the whole
+internet myself. So yeah, the idea is
+like partnering with the best SF AI
+agent startups that are all getting
+started and are all building the the
+infrastructure for this future that's
+coming that's now and coming soon.
+Yeah.
+Um and yeah, it's like working with
+other people without hiring employees.
+[music]
+The thing to think about would be
+interesting is sort of like having all
+these different channels and so for each
+one there's obvious big ones we could
+target.
+Yeah. It's a it's a podcasters. It's
+like, you know, if it's a late night
+show, I mean, that's more difficult to
+do, but like at which diff at which
+stage of the company or which feature we
+think they could be interested cuz of
+course we can wait until they invite us,
+but like we can also provoke it with
+like our network of people, but we can
+maybe today is not good, but like if we
+announce the fundraising, maybe trying
+our luck to say who knows like
+I think the fundraising we should brute
+force it on each of those channels
+because like the story is too beautiful
+to
+like not being on all those things those
+those channels. So you know the the
+story is basically sort of founder
+company raising [ __ ] ton of money uh and
+actually the company growing fast
+and I think this should be one of the
+priority of from us also the PR agency
+of course
+to really be sure that we're going to be
+pushed on all those different channels.
+Yeah, I was thinking, you know, for
+example, the solo founder journey and
+and that's something interesting. Like
+those are obvious moments.
+Yeah.
+Then there's like features that are like
+could sound boring, but actually we
+could turn it into shooting story,
+right? So we talked about boost like the
+Okay. Yeah. It's just a button to get
+Pia to be autonomous.
+God mode,
+but actually no, let's turn it into
+let's call it god mode or yolo mode or
+like you know like something that's more
+interesting than boost.
+[music]
+It's pretty cool to hear how Ben is
+actually thinking about go to market
+virality and customer acquisition and
+that is one of the most critical pieces
+in getting a company like this to a
+venture scale outcome. But building a
+product that can actually deliver on
+that promise is a whole other challenge
+and that comes down to the
+infrastructure partners making it all
+work behind the scenes and that was
+exactly where we were headed next.
+Pulsia obviously is building an AI that
+can build and runs businesses for for
+the 99%. Which means we get a lot of
+nontechnical people that like go to
+Porsia and ask them for their dream
+company or their dream project and
+sometimes Bulsia needs to use a browser
+to act and to do things.
+For those who don't understand, would
+you mind introducing exactly what the
+product is? Yeah. So, Ankor browser is
+basically an identic browser automation
+workflow that allow you to basically
+automate anything you want on the web
+without the hassle of are you human or
+are you bot and do it as fast as you
+can. So, that's basically what we do and
+that way we allow agents to interact
+with the web in a seamless way. Pulseia
+is super pumped to be partnering with,
+you know, with Sapium, with Anchor
+Browser, with Blackel and a and a few
+other companies we're talking to to get
+everyone to benefit from each other,
+right? Because everyone is is is
+building a part of the stack. We're
+going very deep in a part of the stack.
+And you know like Pulsia is like
+building more like the the end product
+like the autonomous loops the
+orchestrations
+uh the like memory layers uh and
+obviously like the consumer you know the
+consumer growth right which is a big
+part of like what Psia does and educates
+people. It's so funny like you know
+you're a solo founder but it still takes
+a village right you know you can be a
+CEO and raise all the capital and hire
+an army like the Lord of the Rings you
+know it's like okay I'm proto [snorts]
+[laughter] like guys I have the ring but
+like I need like you guys to come with
+me cuz like we're going to Mordor All
+right. Okay. [laughter]
+[music]
+So, right now the infrastructure is kind
+of it's quite a challenge to build but
+it's amazing to see that much apps being
+deployed in a few sec in few
+milliseconds or even nanconds. It's
+insane. I mean it's really cool like I
+love that you know we started working on
+just this endbox which by the way is a
+whole thing with like all the security
+challenges of those agents
+going wild and like trying to like break
+everything if they can and so being able
+to contain them into the sandbox where
+it's like you know you stay here you
+stay corridor and also you know end of
+the day it's about reducing cost for
+Pulia which means we can reduce cost for
+the customer and get more customers.
+Yeah, it's the new infrastructure like
+only pay on demand. Like when you're
+using stuff, you pay but otherwise it's
+free.
+Exactly.
+And it's like I feel like the internet
+was built for you. I mean it was built
+for humans and for and all those like
+web server sandboxes. It was built for a
+company to build one web server and so
+there's like minimum commitment and cost
+and when it's just an agent who's
+spinning up, you know, we're going to
+launch a feature soon where it's like a
+user can launch like 10 businesses in
+parallel and just like AB test them.
+Yeah. And it's like, well, I cannot pay
+like 10 bucks a month for 10 personal
+accounts. That makes no sense because
+those are temporary businesses that get
+built in like in minutes.
+Yeah.
+So, super excited for you guys to to
+sort of like figure out.
+At some point, we'll reach the the the
+infrastructure problem
+probably where we need to have more
+servers.
+But that's our
+more data centers.
+Yeah. Data centers so that we can
+support PCS growth.
+Exactly. [laughter]
+need to find
+VCs or I don't know someone that is
+excited about this about this scale.
+I we met a a VC earlier today. She she's
+[laughter]
+she's she's excited. She's going to
+finance it.
+Yeah. And then there's the whole GPU
+problem like that's something we want to
+tackle afterwards. Like we started with
+a sandbox, but we we want to optimize
+the whole infrastructure network wise,
+storage wise, GPU wise also. Yeah. And
+so that's a whole ecosystem that we want
+to provide.
+And at some point we'll tackle the GPU
+problem with our own data centers. All
+the network is inside this data centers.
+So you have the most optimal sandboxing
+and agentic platform.
+Yeah.
+To work with. [music]
+Sapium is like the infrastructure
+[music] that makes Pulsia possible.
+Pulsia was imagined and vibe coded by
+me. But very quickly as the system
+scaled, it's like okay there's a whole
+infrastructure of like you know how do I
+how do I make sure that like when Pulsia
+agents uh run uh they're secure, it's
+scalable, meaning if we go from like
+1,000 customers to 10,000 to 100,000 it
+scales. How do we make sure that like
+agents have all the best APIs and at the
+better at the best cost and that they
+are allowed to use those scales? So that
+was sort of like the the in the initial
+partnership was like well you guys build
+the payment rails and the API rails and
+I'll bring the customers. [laughter]
+Uh and it's like we win together and and
+now we're like buying GPUs. [laughter]
+And now we're like actually, okay, so
+how do we go to from from like seven
+million run rate to 70 million run rate?
+How is it going on the GPU side? Yeah,
+it's still a mess.
+Yeah, it's hard to get GPUs and it's
+hard to make those GPUs work at like so
+we had a good concession today with um
+what are they saying? They saying like
+uh I feel like it's literally their job
+to run models. I told them
+and so it's like what do you mean like
+the top open source model is has an
+issue running on your [ __ ] GPUs like
+it doesn't make any sense to me
+just so I can understand like for the
+audience who doesn't understand how this
+all works so you're buying GPUs from
+companies how does that even work are
+you physically building infrastructure
+out west to like hold the GPUs
+so there's companies who are actually um
+running those GPUs and they kind of
+resell the GPUs with the model. So it's
+similar to entropic, you know, when you
+go to entropic API like technically
+entropic is running GPUs to run their
+model, but there there are companies
+that actually kind of reserve and buy
+kind of GPUs that they will run for you
+and you decide the model that you want
+to run on those GPUs. So you can decide
+which open source model you want to run.
+So they kind of run those GPUs and then
+you book those GPUs for a year, two
+years, three years and then it's your
+kind of rack on servers of GPUs and then
+you can just send all your traffic and
+that's at no cost. You just pay the GPUs
+and then it's up to you to optimize it
+and to leverage all those GPUs. But
+today GPUs it's like a black market. uh
+it's almost impossible to get uh every
+one of those big companies and they just
+got sold right away. Uh so we're always
+competing against people in Asia, people
+everywhere to get some allocation of GPU
+which is quite uh quite interesting. So
+it's all about connection and you know
+putting investors to figure out how we
+can connect with the right funders uh
+and making the right connections to get
+some priority
+to get compute. That's crazy.
+Yeah.
+Is there any sort of advice you'd give a
+founder who's looking to do something I
+guess a bit similar like this? Like what
+would you say to those guys out there?
+I mean what I think is that until you
+have product market fit, you should
+force yourself to be alone or a micro
+team like you and one other person and
+that's it. Anyone on the team and if
+it's just you, it's just you should use
+AI all day long like clock, codex,
+pulsia, whatever you want. And once you
+have park on market fit, try to get AI
+to replace employees. And what I'm
+trying to say that is that like it will
+force you to fully understand where's
+the edge. And because once you
+understand what the edge, it might give
+you ideas to actually the business you
+were trying to start in the first place.
+And it's the only way to being able to
+win in this age is to fully understand
+the cutting edge. And if you start
+hiring too fast and then you rely on
+someone else's knowledge to build,
+that's where you may lose. And so stay
+lean, stay solo, and go get them.

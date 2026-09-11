@@ -1,0 +1,255 @@
+This is my Obsidian vault. This is where
+I keep all of my context, whether it's
+my daily notes, the metrics I want to
+keep track of, content research. It's
+also where I keep my AI agents and
+custom workflows, pretty much the whole
+thing. But this doesn't just capture
+notes. This also is where I do all of my
+work. And that's the part I think a lot
+of people are missing, right? Because
+capture is one thing, but it's totally
+useless if you can't do anything with
+it. And that's exactly what we're going
+to talk about in this video. Data
+collection is only as good as what you
+do with that information. Okay? Okay, so
+it's not just about inputs. We're also
+going to talk about reporting,
+intelligence, and execution. So, let's
+dig into it. So, first things first, I
+don't want to turn this into a vault
+tour. I just want to show you what
+you're missing out on if you're thinking
+more about the workflow and not systems,
+how things work together. What I really
+want to do is get you focused on how you
+can customize this platform to work for
+you, right? Like, this is a custom view
+I built out so I could get a real feel
+for exactly what I need to see right
+now. not just metrics and stuff, which
+is, you know, awesome, but really what
+my focus is for the day. Part of my
+daily routine is kind of the to-do list,
+right? Making sure that I knock off the
+most important thing one at a time. So,
+for me, that's really important. I've uh
+got ADHD. Don't know if you can tell.
+Um, but knowing exactly what I'm doing,
+one, two, three, is pivotally important.
+Right? This is the current focus front
+and center. This is what you're doing
+right now, end to end. Right? I can log
+the time. I can knock it off. If I need
+a little more information, I click
+context and I can pull up some stuff
+from my notes that match this search
+criteria. Also, some shortcuts in terms
+of tracking, right? So, I've got a few
+things that if I do every single day,
+things tend to fall into place for me,
+right? So, I can knock those off by
+clicking these things on or off, you
+know, through the day. I can also quick
+capture some ideas and log it to an
+inbox, which is fantastic. It makes
+things really, really easy. And it's
+just directly in front of me, right? If
+I want to drill down on any of these
+bits of information, I've also got the
+full-on metrics view for it, right? I
+can go over here, check this out. I'm
+looking negative today because it's
+still in progress. But, you know, you
+can see the heat map here for what we've
+got going on through the week overall to
+the summary, see what's going on, look
+at trends. You you get the thing, right?
+Just optics. But, I mean, I can also
+look at overlapping graphs and I can get
+real insights as to if my revenue goes
+up one week, for example. I can really
+drill down and see what actions I was
+taking during that time and then just do
+more of that. I'm not obviously not
+going to show you the business views
+because, you know, there's some uh
+private information there. But you get
+the idea how things all work together.
+I'm going to get more into the mindset
+stuff in a second, but I'm just going to
+finish up how this all comes together.
+And it's pretty straightforward
+actually. I run everything off of two
+commands that I start my day with and
+end my day with. And that's how we track
+different things. But not only that,
+every activity I do inside the vault is
+also logged as well. And that's going to
+come in later. Okay. But what we do, we
+got this daily template with all of the
+metrics I want to track as properties.
+That's important. Then we've got the
+three main priorities that are populated
+based on my daily notes. Some are
+carried over from the day before. Got
+the tasks, my activity log, which is
+running throughout the day. Calendar, my
+schedules, right? And all the different
+things I want to talk about. It's really
+not hard to wrap your head around how we
+are tracking this thing. It's just
+setting it up and getting into the
+routine of actually using it. Every day
+I run my PI agent. I just go slash
+today. I'm hoping my face isn't covering
+this. Then it pulls in my calendar, my
+inbox, any carryovers from the day
+before, and we figure out what it is
+that I need to focus on that day. Same
+thing at the end of the day. I write
+close day and I just use my voice
+dictation to talk about the day. I'll go
+in and I'll fill in the other half of
+the metrics. For example, you know, time
+with my family or effort put in like out
+of 10, you know, the different things
+that are important to me and it'll go
+and log those and we can see the the
+different trends, right? If you like
+this video so far, please consider
+leaving a like and subscribe to the
+channel. YouTube tells me only 8% of you
+are actually subscribed, which is kind
+of wild. So, if you wouldn't mind making
+sure that you are, that would really
+help me out. And it also tells YouTube
+that you want to see more content just
+like this. Let's get back to it. Okay,
+so here's where things are changing a
+little bit and why I wanted to do this
+video like this and not a big flashy
+tutorial, okay? Because there's a lot of
+that and people don't seem to connect
+the dots ever. Everybody is interested
+in putting one and one and one and one,
+but not two and two. They're thinking
+about workflows and not systems and I
+think that is a fundamental misstep. I
+still to this day get the question, why
+use Obsidian and not just cloud code
+with some fun folder structures? And
+you're missing the point entirely. It's
+not enough that your agent can just read
+and navigate a folder structure. That's
+not an operating system. I want to keep
+everything in one place. I want it to be
+the one place where I can do everything,
+right? Not have to alt tab all the time
+or go in and separately make notes of my
+activity for the day. If I keep it all
+in the one spot, I am infinitely more
+focused. There's a lot of folks out
+there putting out like operating systems
+and using Obsidian as a memory layer for
+it, and then they'll build out another
+interface for metrics and monitoring and
+all that other stuff. And it doesn't
+make sense to me to have to go from one
+app to another app to another app to do
+all these different things. I can go
+into Obsidian and keep my eyes on
+everything. But not only that, I can
+work in it as well. It's the entire
+system. It's not just the one workflow
+after another. It it's all working
+together. Like I can check out Telegram.
+I can check out Slack, check my email,
+bounce over to my school community, see
+what's going on on YouTube if people are
+like, you know, responding to comments
+and that kind of thing. Right? I've got
+my terminal right here. And then I can
+spin up the local host and just run this
+wherever. I can move any of these
+windows wherever I want. It's really
+customizable and the system is all in
+the one spot. That is so important and
+I'm going to tie it back into the
+dashboard here in just a sec. Okay, but
+like a browser here, uh the agent here,
+a different folder there, your dashboard
+somewhere else, all of that causes
+friction and friction isn't harmless.
+Every time you change context or have to
+like switch views or whatever, you're
+losing momentum. You might not notice,
+but you absolutely are. It might sound
+dramatic, but it's just good system
+design. If you keep everything tight, so
+you don't have to go like searching or
+reaching for anything and it's all in
+the same place, you're going to be more
+productive. It's a lot easier to work
+with your toolbox nicely organized
+rather than it is to like go looking for
+a different toolbox is maybe the best
+analogy I can come up with off the top
+of my head. Anyway, back to the
+conversation at hand. Agents and
+Obsidian are great friends because they
+complement each other's strengths.
+Agents help you input to the Obsidian
+structure. Obsidian fills in the memory
+gaps in your AI agent. It works great
+except it still leaves the problem a lot
+of people have with note-taking and
+personal knowledgebased apps where they
+just like collect information and it
+turns into a graveyard. Where Obsidian
+is uniquely powerful over other PKMs is
+you don't just have to sit on all that
+information. You can turn it into an
+intelligence layer either through a
+custom plugin like this which is great.
+You just build out a mini app
+essentially to pull from your daily
+notes. You can do it with your canvas
+right with uh different charts views and
+things like that. There's a lot of ways
+you could get there and Obsidian offers
+that. that is useful and beneficial on
+its own, but when you factor in that you
+can actually go in and do the work in
+this platform as well, that's where
+things start to really compound. It
+doesn't make sense to think of these as
+like individual workflows anymore. And
+that seems to be what is most popular on
+YouTube tutorials is like, oh, I can do
+this and then you put it back on the
+shelf and then you go to another app for
+something else. No, man. Keep it all in
+the same place and you'll be
+exponentially more productive. And
+that's really what I'm trying to say
+here is stop thinking about things as
+like individual workflows and start
+building out systems where all these
+different things start working together
+for you. So while I said the point isn't
+to you worry about this particular
+dashboard. I do have a free starter
+vault that I'll leave a link in the
+description to some of my free stuff.
+But I also have this exact layout with
+the dashboard and intelligence plugin
+available through my school community.
+I'm updating that very shortly. It'll be
+in the tools and agent section right
+here. The link to that will also be in
+the description. Make sure to subscribe
+if you want to see how this continues to
+grow out as I build it out in the
+future. Thanks for hanging out with me.

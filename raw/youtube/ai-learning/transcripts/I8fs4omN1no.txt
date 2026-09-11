@@ -1,0 +1,342 @@
+[music]
+Wow, it's wild to be on the same stage
+as so many people I've drawn inspiration
+from. Let's dive into it. My name is
+Nick. I'm the head of AI at Klein and
+today I'm going to share some lessons we
+learned along the way.
+So let's start with the bitter truth.
+For years we compensated for weak models
+by building clever scaffolds around
+them. All kinds of clever ideas like rag
+indexing systems, search trees, tool
+calling scaffolds, all this was invented
+to cope with weaker models. And Frontier
+models simply bulldoze those
+abstractions. Now, you don't really need
+your scaffolding anymore. Your
+scaffolding just gets in the way of
+these models. And the question really
+isn't how fancy is your agent stack.
+Increasingly, it's how strong is the
+model driving it.
+And the lesson here is relentless. Um, a
+perfect example of what I'm talking
+about is Gemini 3.0 released this week
+and it immediately dominated terminal
+bench leaderboards with no aentic
+harness supporting it at all. In this
+chart, you can see Gemini 3.0 on
+Terminus scored better than the vast
+majority of model agent combinations in
+the world all out of the box. And what's
+remarkable is that Terminus is designed
+to be an unopinionated generic stripped
+down harness. And it has no graph
+search, no rag, no indexing, just here's
+a terminal, go figure it out. And it
+crushes. The whole point of terminus is
+that it has no clever tool calling, no
+context engineering features. So the
+takeaway here is that capability beats
+scaffolding. If you get out of the
+model's way, it will perform just fine.
+So really what I'm driving at and the
+key takeaway from this whole talk is if
+you're building agents, just relax. Cool
+it with all your clever engineering
+tricks. Stop overthinking it. That's it.
+That's the lesson. And another point on
+this, kind of like an aside, is I don't
+know about you guys, but we're all on
+Twitter. I'm on Twitter, and at this
+point, I just think talking about these
+like clever little context tricks and
+and hacks is a little played out. Like,
+at this point, I'm straight up tired of
+seeing some of this stuff. And like, I
+get it. it's free engagement and we all,
+you know, indulge in it a little bit.
+But personally, I think there's not
+really much signal there.
+So, if you want the full playbook for
+building an effective coding agent, like
+the playbook's right here. It's up on
+the screen. Um, there's really some
+novelty talking about it like months
+ago, but at this point, in my opinion,
+it's been done to death. And we've been
+in this, you know, we're model agnostic
+at Klein. We support all the models.
+Every two weeks there's a new big model
+release going out and we've basically
+come down to the same playbook of
+supporting each model as it comes out.
+So I'm sure everyone here knows how to
+tune an agent from Sonnet 4 to Sonnet
+4.5, from Gemini 2.5 to Gemini 3 and GBT
+5 to GP GBT 5.1. I feel like this entire
+conversation is a little played out. So,
+I'm not really even going to cover this
+in depth because the tweaks here are
+trivial and the gains are marginal.
+So, what I really want to talk about is
+something that's not actually given a
+lot of attention and it's the real
+bottleneck. And the real bottleneck is
+that you can build the cleanest agent in
+the world, but that doesn't improve
+model capability by even 1%. Models only
+get better when labs train on something
+hard. And benchmarks, not agent
+cleverness, not all your clever
+engineering techniques, not your clever
+rag pipelines. It's benchmarks that
+determine what frontier models learn to
+do next. And models didn't magically get
+better at tool use.
+They got better because people built RL
+environments that forced them to
+practice certain actions. handling
+failure more handling failure modes
+retrying and for example like agents
+improve only when the model learns
+inside the right environment every jump
+in reasoning we've seen came from a
+benchmark every jump in agent
+reliability came from an RL environment
+so the real questions become what is a
+benchmark how do you turn real world
+agent coding data into an RL environment
+and what makes a good verifier how do
+you detect [clears throat] real
+difficult ulty and how do you train
+these models to work on the problems
+that we actually care about as
+engineers? These are the questions that
+matter for the next frontier.
+So what is a benchmark?
+A benchmark put simply it's an
+environment. It's a so in our case it's
+like a docker container where you let
+the agent run wild. It's a starting
+state which is the snapshot of the code
+when you started working on a real world
+coding task as well as a starting
+prompt. And the last thing is a verifier
+at the end that checks whether an end
+state is correct or acceptable.
+So how are RL environments different?
+[clears throat]
+Well, here's the thing. They're not
+really different at all. And you might
+notice this chart is basically the same
+thing as the previous slide. The only
+real difference, the only distinction
+here is how the reward is used.
+Benchmarks measure models. RL
+environments improve models. The score
+doesn't just stop in a leaderboard where
+you publish the results. The score is
+actually used to update the weights of
+the policy model.
+So, how do you transform real world
+coding data into useful RL environments
+for training?
+At Klein, we created the system called
+an RL environments factory. Looking for
+a better name there, but that's what we
+got so far. And the first phase in this
+pipeline is you get sub agents and you
+have them qualify tasks. And these sub
+agents, they work in parallel to decide
+whether or not given tasks are suitable
+to be turned into RL environments for
+the purpose of training.
+And the qualification process goes as
+follows. So you have you start with
+origins. So you have to validate does
+the repository actually exist. Is the
+starting commit accessible? Is it open
+source? The journey where you look at
+the starting prompt, the other follow-on
+prompts that the user might have
+followed up with with the agent. You
+have to try to understand what was the
+user actually trying to accomplish, what
+was the spirit of their task. And
+lastly, it's the outcome. So, can we
+find the actual commits or PRs that fix
+the problem in real life? Like, did they
+actually commit the solution to their
+problem later on in the timeline? And
+we're actively looking for easy
+disqualifiers as part of this. So,
+things like vibecoded slop, we don't
+need another benchmark that tests for,
+you know, build the next.js app uh from
+scratch. We're looking we're looking to
+disqualify trivial tasks that are too
+easy and tasks that have no reliable
+start or end states.
+And lastly, what makes a good RL
+environment good? How do we actually
+make an RL environment and what makes a
+good test or verifier?
+So phase two of this pipeline is
+building the actual RL environment. So
+you start out with archaeology where you
+actually reconstruct both states
+locally. You pull down the code, you see
+if you can implement it yourself,
+reconstruct it, build it, and verify
+that the bug that the user was
+referencing and the solution actually
+exists. You document every obstacle and
+dependency. You containerize it with
+Docker, removing Git obviously, so
+agents can't reward hack. And lastly,
+you define the verifier at the end. And
+this is where it gets into like a little
+bit of the art of building a good
+verifier. And I want to talk about this
+because the analogy that I typically
+give is a teac kettle. So let's say the
+user's goal is I want to boil water.
+A really good example of a verifier to
+test whether or not the water is boiling
+is a little whistle attachment that goes
+inside your teac kettle. And the whistle
+is a pure outcome verification. And it's
+an example of a pure outcome driven
+verifier where the water either reached
+the boiling point or it didn't. Either
+it's whistling or it's not. The kettle
+doesn't care how you achieved it,
+whether you used a gas stove, an
+electric induction stove, or a campfire.
+It just signals the result. And in the
+process of doing this, all these weird
+bad tests can emerge. So you might have
+noticed like that the sub agent might
+have noticed like oh in the ground truth
+solution like in a previous run the
+burner was set to high so maybe we
+should be checking for that but we all
+know that water can boil at a low
+setting on the burner or was it on the
+front left burner has 5 minutes elapsed
+like all kinds of weird bad tests and
+the key point here is don't
+overprescribe based on the ground truth
+test for the spirit of the task test for
+the outcome of the task.
+And the outcome at the end of all this
+is a containerized benchmark or
+environment for that task. Agent work is
+recorded so you can see the traces the
+trajectory that the agent took to
+complete the task and you can reliably
+score it and verify it and it's fully
+portable. You can run it on any device.
+So the path to automation that we've
+been undertaking as part of this is can
+we fully automate the process of
+converting real world coding data into
+RL environments for the purpose of
+training models.
+And this work largely started out manual
+but then the first time in the RL
+environment was like about 16 hours of
+my time. And what used to take 16 hours
+now takes less than 20 minutes per task.
+And we're building towards a fully
+automated RL environment factory where
+the bottleneck shifts from engineering
+to collecting high quality tasks. And an
+interesting kind of point here, the
+natural endpoint of all this is what if
+we actually built RL environments and
+this is like a question for everyone in
+the audience is what if we built RL
+environments to test how well agents can
+actually make RL environments kind of
+like a meta benchmark. What would hill
+climbing on that look like? And you can
+kind of start imagining that as models
+get really really good at making their
+own RL environments to train on based on
+real world user data, you kind of
+complete that loop. Something to think
+about. So, okay. Um, this next part is
+the truth nuke. Um, also known as TRO.
+Um,
+an unspoken fact is that we're not alone
+at Klein building this kind of system.
+Every major agent lab captures this
+data. They all do some version of this
+behind the scenes, but no one really
+talks about it. And I don't even need to
+name them. If you know, you know. And
+realistically, you all know. These same
+companies site internal benchmarks to
+justify legacy systems that they spent
+months maintaining. But curiously,
+you'll never be able to study or inspect
+them because they don't publish them
+openly. And this data is so valuable yet
+no one shares it. It's the only thing
+that actually moves the needle.
+And here's the heart of my argument is
+by standing between real world engineers
+working on real world tasks and the
+models agent labs have a unique role in
+history. We can build better prompts. We
+can build better tools. But none of that
+improves the underlying models. We
+possess the single richest data set of
+real engineering work anywhere in the
+world. Models don't improve without this
+data and keeping them closed is slowing
+down Frontier Research.
+So today we're announcing client bench.
+This is our attempt to finally create a
+benchmark that isn't cosplay
+engineering. It's not write me a server
+that generates Fibonacci sequences. This
+is real software development captured
+and packaged into standardized RL and
+inval and eval environments and this is
+the benchmark that we always wanted
+someone else to build. No one did. So
+we're doing it and anyone can
+participate. So here's how it works. The
+whole thing is open source. There's no
+secret sauce, no locked away data sets.
+You can openly run it yourself and
+inspect it to see how it works. Anyone
+can use these environments for SFT, RL,
+eval, whatever. The point is is to just
+give the entire ecosystem a real
+substrate to measure and improve models
+on, not just leak code puzzles. And this
+only works if the community contributes.
+And the good news is you don't actually
+need to do anything special. Just work
+on your open source project with the
+client provider turned on and opt into
+the client bench initiative. If a
+frontier model gets stuck and you step
+in to fix it, that's actually a ideal
+task for to be a candidate for a
+benchmark and that's it. Just use the
+climb provider, see where the model
+struggles and we'll pick it up and
+introduce it into this open-source
+benchmark. So, client bench will always
+remain free, fully open source and
+freely accessible.
+Thank you all. If you want to
+contribute,
+[music]
+[music]

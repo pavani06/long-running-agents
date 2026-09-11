@@ -1,0 +1,80 @@
+So, we've steadily improved our
+reasoning models, but what's most
+exciting about 03 is that it combines
+multi-step reasoning with the ability to
+use many tools agentically while
+completing its task. So, I'll go ahead
+and drop my prompt in here. And I'm
+asking 03 to run a month-end variance
+report based on this dummy data that I'm
+uploading.
+And if I take a quick peek at what's
+inside one of these many different
+department spreadsheets here, you can
+see that we have some numbers. We have
+budgeted and actual spends for each team
+as well as some other details like cost
+center and
+forecast. Now, usually when I run
+through a process like this manually, I
+would need to harmonize and analyze the
+data flag variances of say more than 7%.
+I would need to visualize that data,
+probably look around on the web for
+maybe some benchmarks that I can compare
+against, and then I would need to create
+an executive summary uh or post for my
+CFO. So, you can see here that there's
+multiple discrete tasks that I want chat
+GBT to go out and complete, each one
+using a different tool or capability.
+So, this is where 03 can really shine as
+it's going to be able to run every step
+of this process step by step, calling
+new tools as it goes. So, we'll go ahead
+and send this
+off. Now, chat GBT will start to go
+ahead and
+think, and you can actually see the
+chain of thoughts summarizing its
+actions down at the bottom of the
+screen. So, we have CSV files being
+analyzed. We have some Python code being
+written for the analysis of that. It
+says that it's going to be focusing on
+certain aspects of the
+files. And it looks like there's 25
+lines. 20 are flagged indicating the
+most categories uh exceeding 7%. All
+right, next it's searching the web
+finding some details from citable
+sources. Looks like we're getting some
+stuff from say
+KPMG and we can see some analysis of the
+analysis of the documents that are being
+put in and and what's being turned out.
+So, in just about a minute, we've got
+some information about the flag 7%
+variances. A bit further down from that,
+we've got some data
+visualizations. We have an analysis of
+the variance with some interactive
+visuals. And we can click into those and
+actually see some different numbers
+here. And then there's some key
+takeaways if we want to dig in a bit
+further on the information that we have.
+again, citable sources across the
+line, a quick write up on maybe how to
+read those visuals, and then some
+checkpoints just to make sure that we're
+getting what we actually expect out.
+Then down at the bottom, looks like we
+have our executive summary and a Slack
+post ready to go to our CFO. So 03 has
+gone away and automated three to four
+steps of what's normally a very long
+workflow using whichever tools it needs
+to get the job done and generate a
+report that normally would have taken
+hours.

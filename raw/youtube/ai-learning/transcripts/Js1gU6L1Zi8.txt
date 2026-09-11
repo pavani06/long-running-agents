@@ -1,0 +1,779 @@
+You all might know Mike of course as
+chief product officer of Anthropic, but
+you were also Sequoia founder at one
+point. Is that right? Yeah. And for a
+hot week. For a hot week. And what was
+that company? It was Instagram.
+Instagram. Thank you. Welcome everyone.
+Mike Lauren, take it from here. Thank
+you for joining, Mike. Yeah, happy to be
+here. Hey, everyone. Um, so those you
+may not know, but Mike is actually a
+content nerd, so it's pretty fun to have
+the AI filmmaker ahead of us. Where do
+you think the world of AI content is
+going? I think regardless of like the
+medium or how much AI is being used to
+create things, I think you'll keep
+coming back to like is there a story
+being told? Is there a person behind the
+content that people can connect to and
+ultimately like react to over time? Um,
+and so it's like another tool in the
+toolbox of a storyteller. Um, and I'm
+curious how you guys think about as you
+build more content, as more pixels get
+generated, how do you help people build
+control? like Enthropic has done a
+really nice job of helping us understand
+models with mechanistic interpretability
+and where are models how do you make
+Golden Gate clawed how do you think
+about giving that option to your users
+and your customers yeah I think you know
+there's probably things that are useful
+at a point in time right now like
+there's you know talk about watermarking
+and like oh is this AI generated but you
+know and maybe this was in the
+conversation earlier today I wasn't here
+in the morning but the majority of
+content will be AI generated so the
+distinction of like was this made by AI
+or not I think is going to be a not
+useful one. Um, I think there will still
+be interesting questions of like
+derivation and providence and and those
+kinds of things. They can get easier uh
+with AI. I mean, it's funny to bring it
+back to blockchain, which I feel like is
+not a cool thing to talk about anymore,
+but like was like theoretically one of
+the problems that was being solved with
+blockchain is probably much more doable
+when like the entire N10 pipeline um um
+is bits. Um but yeah, I think like the
+the things that were important in the
+past world like what did you source like
+is there a citation like when I think
+about like documents is still important
+and more doable now. Um but like whether
+it's AI generated I think is like not
+the interesting question going forward.
+Interesting. And so let's dive into
+Enthropic a little bit and some of the
+products you guys are building there.
+You guys have done a really nice job
+with artifacts with the coding models
+with MCP. I'm curious for you as a
+product officer, chief product officer,
+what your framework is for building
+products and how do you make them how do
+you make them the products better than
+just the model itself? Yeah, I think um
+I guess two thoughts on this. Like one
+is um the things that were useful in the
+Instagram age are still useful now,
+right? Which is like are you solving a
+real problem for people? Like if you're
+creating a developer tool, are you
+enabling you to do something interesting
+and novel and quickly? If you're
+building an enduser product, like are
+you meeting the needs of people where
+they actually are? So I think that like
+remains as important now as it ever has
+been. I think what's different and a
+lesson I had to unlearn is like on
+Instagram we did a much more sort of
+tops down you know 3 to six month time
+frame you know of of planning. Thomas in
+the third row can relate to this. We
+were definitely much more like plan and
+deliver it. I think this is true at
+anthropic and in talking to kind of my
+counterparts in open at other places
+like you just have to allow for much
+more bottoms of creativity because most
+I think the best products are the ones
+that are built very close to the model
+and you can only kind of tell what
+they're capable of like pretty late in
+the process and so I've just learned to
+kind of invert the sort of part of the
+like creative process to be much more
+bottoms up which you know as like a bit
+of a control person it's like a little
+hard but I think it's also like opened
+up some really interesting things like
+artifacts was a research prototype that
+then got taken by like a designer and an
+engineer and then shipped to production.
+I think I've heard that story not just
+from us but from other like creators in
+the space as well. Yeah. Could you
+actually give us some examples? I'd be
+curious maybe MCP is one of the more
+interesting products the whole industry
+is starting to adopt. Where did that
+come from and what's the story? Yeah,
+it's funny for MCB because I actually
+like recently was like I was like, you
+know, half of my job is making memes and
+sharing them internally. And one of I
+was like making a meme around like when
+MCP was created. It was like a twinkle
+in like two people's eyes. And I was
+like went back and it really started
+from like watching us try to implement I
+think at the time we're implementing
+like Google Drive integration and then
+we were imp implementing GitHub
+integration and like those things should
+have more in common than not, right?
+It's like you're bringing context into
+the model. Um and we had done like two
+completely different interp uh like uh
+implementations internally and the third
+one that we were like queuing up was
+going to be like yet another uh
+completely you know bespoke thing and
+you know usually like my general pattern
+is like do things three times and on the
+third time you can try to figure out
+what the abstractions are and this is
+definitely that case where it's like all
+right what is in common here and where
+are things going uh but it definitely
+was not like a top down like we need a
+protocol for like better interacting
+with models it was again two engineers
+being like yes I think this is a good
+idea let's go let's go prototype and
+build it um and then like just spending
+the time like let's make the protocol
+better. let's like make it truly open so
+it's going to get adopted beyond
+entropic because we think there's value
+in not just us like owning a protocol
+but instead it being much more
+standardized um and then iterated on
+from there and now it's gotten much more
+of a community flavor where you know we
+tropic you know we're over a thousand
+people but still feels very startupy
+like we're working with like places like
+Microsoft and Amazon that have like all
+sorts of four-letter acronyms like you
+know I actually was going to cite them
+but I don't even remember some of them
+but it's like deep you know
+authentication like identity management
+with Exchange servers. I'm like, these
+are not the considerations that we think
+of a priority, but they are when you
+actually open it up to a broader group.
+Yeah, that's awesome. And where do you
+think it goes from here? It's been
+interesting to see a lot of the people
+in this room adopt MCP. You guys had a
+new release I think yesterday around
+integrations. Um, so like once you have
+the seed that comes bottoms up, how do
+you nurture it and grow it? Yeah, I
+think the two areas like MCP adjacent I
+get most excited about. One is around
+just taking action. So a lot of like V1
+of these projects was around like how do
+you bring context into the models? um
+like we launch our integrations where
+you can pull in like GitHub, you can
+launch like Zapier actions, but I think
+like the the right mode or like the
+actually taking actions is going to be
+much more uh important going forward
+because ideally you want these things to
+actentically not just in retrieving but
+also being able to automate workflows.
+The second one is like when MCPs and
+just agents more generally interact with
+each other and what the right protocol
+is. It feels early to try to standardize
+this too much. Like I know Google's
+doing agent to agent like I think we're
+still exploring what like the right
+patterns are. Um but that I think is
+going to be very interesting like
+internally we talk about like at what
+point will your agents hire other agents
+and what does that economy of you know
+uh of things even look like. So that is
+what I get really excited about going
+forward. That's awesome. So at this
+point um you guys have done an amazing
+job with your coding products that feels
+like it's more than just bottoms up a
+couple people tinkering with it. I'm
+curious how you think about it as a
+focus and what you guys have gotten
+right so far. Yeah, I mean even coding
+like I have a lot of awe of watching our
+researchers like uh it's also you know
+you can have a top down sort of like
+idea of where to go but so much like
+research innovation comes from like a
+couple people you know pushing the
+boundaries of um RL like Dan was talking
+about earlier right like there's like
+like a lot of these things come from
+discovery and that process needs to be
+pretty much bottoms up. I think a thing
+that we've tried to do well on the
+coding side is um not just focused on
+the benchmarks but also really like is
+it generating code that people like
+working with or is it generating good
+outcomes as well and so that's like a
+thing that we'll we'll definitely
+continue to to push on as well but it's
+been interesting like you know we
+definitely did not coin like the term
+vibe coding I think that that has like
+its natural limit in terms of like but
+it can create interesting things but is
+that like the way you're going to want
+to do an entire like codebase with like
+a team of 100 like definitely not right
+and so I I think we're we're internally
+figuring out what the role of like
+generating code is within our code base.
+We use it a ton. Over half of our pull
+requests are cloud code generated.
+Probably at this point it's probably
+over 70%. But what does that mean for
+code review is something that we're
+figuring like you can get then you can
+get cloud code review or PR but then
+it's like turtles all the way down and
+like at what point do you have that that
+like oversight around like is this like
+going to lead us to an architectural
+dead end? Does that matter if you can
+like overpower the usual like tech debt
+rewrite with um AI coding like we're and
+I think probably other folks like in
+labs working on like coding models like
+kind of patient zero for some of these
+for better and for worse. I was actually
+very curious to hear about some of the
+second order effects of coding agents
+getting much better like code reviews is
+one like I'm curious as more everyone
+can write software where do we go? I
+mean internally I think like what I'm
+realizing is like it makes all of your
+other inefficiencies as a product
+organization like extremely painful
+because now it's like the alignment
+meeting is like it's not just standing
+in the way of like an hour of
+engineering work that would happen. it's
+like standing in the way of like the
+equivalent of like four or eight hours,
+you know, and so I think it's made made
+it like I think our product organization
+is going to break very much so with like
+with faster uh with code jet it just
+makes it very painful when you're like
+like it's even more wasted time with
+like driving alignment and the models
+are not helpful with that really. I mean
+they can synthesize meetings they can
+maybe like tee up the next conversation
+but they're not like they're not yet at
+the point where they're like
+organizationally driving uh decision-m
+interesting. Um I mean you guys are
+using a lot of enthropic at anthropic.
+Um here these are a couple examples. I'm
+curious what are the things that you're
+doing or that you've tried in the last
+six 12 months that everyone here should
+be using with your models or others to
+make them work better. I think what's
+been cool has been seeing like different
+disciplines inside the company that are
+not technical start using the models a
+lot. um and whether that's you know
+people in sales using it for meeting
+prep and you know they start from just
+using like what's available and then
+like some blocker becomes really
+apparent then maybe we'll build
+something bespoke in there. Um so that's
+been interesting but it's still less
+evenly distributed than you might expect
+even at an AI lab. I think there's uh
+even within a team like the salesperson
+that knows how to use it really well and
+the people are like doing it more
+traditionally and like the former person
+might be more effective or more like you
+know hit fewer blockers but it's not yet
+like yes it's like a requirement that
+everybody's going to use. Um myself like
+I just use it as a thought partner. So
+whenever I write anything whether it's
+like a strategy doc or a planning thing
+or performance review like uh I kind of
+re it's almost like in the same way that
+I started feeling weird trying to code
+on flights like after co-pilot where
+you're like oh wait I really feel like
+I'm half the engineer I usually am
+because this thing is not uh helping me
+go through like I feel that way now
+about if I write something and I don't
+have that extra sort of cycle through
+claude I'm like ah this is probably not
+like getting fully vetted. Um earlier
+Sam talked about how people in their 20s
+are the ones they're using these models
+the best. You're definitely closer to
+being in your 20s in your model usage
+which is fun to see. Yeah. Although it's
+like also surprising seeing like how
+people enter the workplace like we've
+been doing more work with universities
+and like you know they'll come into work
+in a very different way in terms of like
+the expectation of how much they're
+going to use Genai and like there not
+being a stigma for it. This is a big
+piece like some of our most successful
+internal products are ones that have
+shared visibility. like we like do a lot
+of things within Slack with with cloud
+integrated with internal tooling and
+I've learned that's really helpful for
+breaking down even at anthropic this
+like ooh did you make that with AI
+versus like yeah I did like it saved me
+like two hours like of course like I did
+other like better things to do than like
+write this performance review or
+something right and so like uh like even
+watching my time in this like last year
+and a half of like oh I don't know about
+like cloud and performance reviews to
+like now it being encouraged is is I I
+think a positive development uh of
+course you should read the result and
+make sure it actually acts but the thing
+that was really wacky was um our we have
+like a internal thing that can do you
+know go across all of Slack and all
+internal documents and but it's a public
+it's either a public or a private
+channel depending on how you want to use
+it but most people use the public
+version and what was happening around
+performance review season just a couple
+weeks ago is people using it to like
+generate their first drafts which was
+like very interesting in public so I
+don't know like I I wonder how much
+people who come up with just the
+assumption that you're going to use AI
+for a lot of what you're doing are just
+going to be more comfortable and not
+have that stigma around usage it kind of
+reminds me of the early midjourney days
+Yeah. Yeah. Yeah. Exactly. Like that
+shared visibility of usage is I still I
+still think very important. I think
+we're still at like the very beginning
+of how people even understand how to use
+this in their work. Yeah. It feels like
+there's a bunch of social opportunities
+which we haven't seen a lot of yet
+actually. Yeah. Um I'm curious to hear
+what's next for anthropic. Like you guys
+have done a lot on code. You've been
+thinking about the enterprise. Maybe
+there's more models coming up. Whatever
+you can share, we would love to hear.
+And then while he's answering that,
+we're going to do audience questions
+after this one. So start thinking what
+other people might have to ask and we'll
+jump to that next. Yeah, I think for us
+like on the both the model and the
+product side, it's like I know the word
+agent is like you know I'm looking at
+you know David and Robo and it's like
+top of mind for a lot of people. I think
+we we want to be as much as possible
+like powering a lot of that use case. So
+a lot of the like coding is the fir I
+think of as the first uh example of a
+broader theme which is can the models
+work for hours at a time like there was
+the meta chart from earlier and I think
+that that like is like I'm not going to
+call it our road map but it is like our
+goal which is like can the models work
+autonomously for longer and they're
+going to need things like memory they're
+going to need like advanced tool use
+they're going to need to onboard
+themselves organizationally like it's
+not stops being just about the model
+also is like the kind of full complement
+of things that you build around it like
+is it verifiable is like what does
+logging look like when you have a
+hundred agents working in your company
+rather than just one and like I don't
+think we'll like we won't play all the
+parts of that stack but hopefully we can
+enable a lot of that through the models
+and some of the building blocks nice and
+do you have any new models coming soon
+soon maybe maybe soon we always have new
+models coming soon yeah I look forward
+to seeing them I mean it's hilarious
+people like oh cloud 37 is still like
+377 is still the most popular cursor
+model and it's so old I'm like dude we
+released that in February it's like it's
+like the pace is very crazy uh And uh
+we'll have something cool soon. I'm
+excited for it. Do we have any questions
+from folks in the audience for
+There's one behind you, Daria, too. It's
+a comically large microphone. I like it.
+It's throwable. Wait me now. It's
+throwable. We need that. The one behind
+you or I'll go. Okay, I'll go. What's
+the You're a product person. What's the
+like what what keeps you up at night
+from a product perspective? Like what's
+the hardest product question you're
+dealing with right now?
+I still think I'll speak for our
+products, but I think this is generally
+true. Like these products are really
+like hard to use effectively for most
+people approaching it for the first
+time. Um like we'll build things that I
+think are useful and then like they'll
+be good workflows, but it's still a
+little bit too much of like if you hold
+it the right way, you can have like
+incredible results, but like a little
+bit off the beaten path or like if you
+don't have the insight of like, oh, you
+know, bring data this way or like this
+is what you can do and do these
+workflows. that still feels very like
+we're very far from like the first time
+you open Instagram it's like what do you
+do this thing you take a photo and like
+it's like it's definitely not that and
+part of that's being you know primarily
+more like work oriented than than like
+pure sort of like you know personal use
+case oriented but that keeps me up at
+night which is like I like there's still
+a huge overhang of like how models are
+useful to people and their capabilities
+today
+um so there's a certain future in AI27
+that is being predicted did and how does
+your world view like match or differ
+from that or where do things go? What's
+your commentary on that post in general?
+I think like maybe two reactions. One um
+like the importance of compute it's like
+it's not a novel or particularly
+profound statement but like like is I
+imagine a top topic of conversation open
+it's one at anthropic as well. So like
+what is our current compute story?
+What's like the next generation of
+compute like who do we partner with etc.
+So like that emphasis and the numbers in
+there are like pretty directionally
+correct overall. So I thought that was
+interesting. Um the one that I think is
+the most interesting like open question
+about whether it will play out this way
+is the like holding models back from
+release because they're going to be more
+useful and deploy internally. I even
+just saw there's an interview with um
+with Mark Zuckerberg like this week with
+at strategy and he was talking about
+like offering an API for llama and like
+the trade-off around like using some of
+the compute like that conversation is
+happening at every lab right which is
+incrementally do you spend the extra
+time on RL or do you spend that time
+like with a customer use case or do you
+spend it on you know your next pre-train
+and like um that allocation of relative
+compute is going to be incredibly more
+important and then at one point you're
+like wow Like if we have a very large
+product that is going to take a lot of
+inference and like that's highly
+profitable and that's useful but it is
+like directly taking time from from
+capacity for research you know and
+that's not even like research for the
+known runs it's also research for your
+wacky ideas from the two people in a
+room that like have an interesting new
+idea about how to scale that could
+become the next test time compute. So,
+um, that was very like closely matched
+and, um, it'll be this fascinating like
+we're kind of getting into this natural
+experiment with like Ilia's like SSI not
+commercializing from the beginning and
+like will they be in an advantage and
+that they can throw all of their compute
+towards training. I don't know. I feel
+like we've learned a lot from having our
+models out in the wild. I don't think we
+would have built like 37 sonnet the way
+we did it if it hadn't been for the like
+market feedback and seeing real use
+cases. So, I'm a big believer in having
+like an offering in the market. So, like
+that's probably the least plausible but
+will be interesting to watch over the
+next few years.
+I'm curious in a giant uh research plus
+product or how you balance um either you
+could imagine the product defines what
+sort of research happens and everything
+is vertically integrated and maybe
+that's the best product experience
+versus research which might want to just
+make the smartest models possible to
+push the frontier and then product sort
+of gets whatever happens and and makes
+do with it. like how do you uh how do
+you think about that? Yeah, that's such
+a good question. Um I think uh I I push
+our product teams and like in
+combination with research to be like if
+we are shipping things that could have
+easily been built just on top of our API
+and have like no other like way in which
+like at least their initial version
+wasn't better than what could be done
+like what are we doing? It's like we do
+have like these incredible researches on
+the other side. I would not say we were
+doing an like artifact is probably the
+best example of that where like you know
+that was fine tuned into the model it's
+useful etc. Um but then I think there
+was a a play like a phase where we
+weren't doing that as much of that and
+like I think we're getting back to now
+being like all right a full fully
+functioning product pod entropic should
+include applied AI should include
+somebody from like we have our cloud
+skills team which is basically like our
+finetuning team um to actually to
+succeed there but that's still probably
+only like what 10% of the research team
+is doing. And then hopefully the other
+things they're doing are generally
+useful like better instruction following
+is useful because then we can like do
+these things overall. Um, but I've
+always been interested with open air how
+they have like you all have like the
+chatbt model that is in the API that
+presumably not very many people use
+through the API but is like available
+there. Um, and whether we should like
+also have a like more fine-tuned like
+product oriented version. We've gotten
+away without that so far which is useful
+and mostly in compute preservation
+reasons but might actually be holding us
+back for some more differentiated
+product experiences.
+Um, thank you for taking the time. Uh, I
+was curious ho how you see um kind of we
+talked we heard Sam talk about being the
+one subscription for all things AI kind
+of integrating into all aspects of life
+and being that one-stop shop. How do you
+see anthropics positioning relative to
+that? I guess specifically I come from a
+world where you know I work on windsurf
+where we consume a ton of wind of
+enthropic but then I also use chatbt as
+like my app right and so do you draw a
+distinction when you're thinking about
+product strategy and what are you
+thinking long term in terms of those two
+things converging diverging
+I think in like there's a there it's a a
+question I think about a lot
+um there's what we find is like a lot of
+people at least at this phase in the
+product evolution like are comfortable
+like moving across or paying for
+multiple, right? And I'm sure you guys
+have seen this as well where it's like
+they're not replacement, right? Like
+people will pay for windsurf but also be
+in uh like might still subscribe to
+cloud or chatgpt in order uh in order to
+get something else, right? Or like a
+different workflow. I think that's
+sustainable in the short to midun and
+maybe in the long run there's going to
+be like maybe more desire for
+consolidation or maybe we end up with
+some maybe this sounds really dystopian
+like some version of like the like cable
+bundle of some of these things where you
+know there there's a little bit more of
+these. you can probably come up with a
+sexier name than the cable bundle for
+AI. Um, but there's probably something
+something to that regards. And then
+there's like the power users for whom
+like moving across things is valuable.
+Like we launched Cloud Max and like the
+top user request was like, can I use
+this for cloud code tokens? So, we
+launched that yesterday because it
+seemed like a natural evolution of yeah,
+if you're paying $200 a month for cloud,
+you're not going to probably be able to
+consume all of it using cloud AI. And
+that's where the bundle starts being
+useful. I thought it was interesting
+with with chatbt plus is the highest
+tier, right? where there's like yeah you
+can burn that down off of video gen or
+you can do it off you know on coding use
+case etc. I think that that at least
+feels valuable a product idea or concept
+that we've been thinking about is like
+it might be useful to be able to bring
+your tokens to other products as well
+which especially if you're bootstrapping
+a product and you might not be ready to
+pay get somebody to pay $ 20 to $200 a
+month like but they're already paying
+$200 somewhere else like maybe that's a
+useful way where they can get started
+right there.
+Hi Mike, thanks for being here. Um, uh,
+what's your take on how agent to agents,
+the new standard will play out over time
+and should we be waiting for something a
+new standard from anthropic? Yeah, we're
+like we have a lot of uh sort of wacky
+internal prototypes of agents talking to
+each other which I think will help
+inform like what are the right
+primitives that we want to have in
+there. Um, a question that I don't think
+anybody has solved yet from a research
+perspective, at least nothing that I've
+seen publicly, that is going to be very
+important, especially when agents start
+being sort of like your avatar out in
+the world representative of you or your
+company is like better discernment
+around like what you reveal and what you
+engage in, right? It's like
+um what is like if you're transacting
+with a vendor, sure you can re reveal a
+credit card information, but it's just
+like some other random agent you're
+talking to, probably not, right? if it's
+company to company what gets revealed
+and what gets um sort of withheld. So
+that is both a protocol but I think it's
+actually like a research question like
+models sometimes like they want to
+please so they want they'll want to tell
+you information but like how do we or
+they want to be too they're going to be
+too refusally if you like like never
+reveal any company information right so
+that sort of nuance and discernment
+feels unsolved um and then the other one
+that I like alluded to is just like
+auditability at scale is something
+that's going to be really interesting
+again I think like there will be
+products built on top of of that uh to
+solve that need but I was having a
+conversation with the founder last week
+around like what is identity management
+for agents and like what is you know do
+they have names like I don't know that
+feels kind of a little bit too
+anthropomorphic but maybe that's useful
+but feels like an agent should be better
+at doing the hundth task in the first
+which implies some kind of like
+longitudinal memory right um and there's
+going to be ones that are more like your
+extension of your work versus ones that
+are like wholly like an entire other
+employee right so I think those feel
+less like protocol questions and more
+like both like product and research
+questions to
+Hi Mike, thanks for your time. What do
+you think most people building in the
+application layer are getting wrong?
+I don't know about getting it wrong, but
+I think a a thing I've observed is like
+uh products that start sort of AI light
+and go AI heavy like tend to put AI like
+either in like a sidebar or like a it it
+ends up feeling like a secondary sort of
+surface and then especially as you move
+more and more agentically it's like
+harder and harder to make that like as
+full fullfeatured as you would want it
+to be. And so that's one thing which is
+like at what point do you rethink the
+kind of core sort of building blocks of
+your of your product to actually be more
+AI native. I think that's one. The other
+one is a shocking number of AI like
+native products don't expose the
+primitives of the application to the
+models enough. And what I mean by that
+is like you ask it something and you're
+like oh I can't sorry I can't do that
+for you Dave because like it hasn't been
+built that way. Maybe those two points
+are linked right when you build like
+I've built a guey and then like I've
+stapled a model on top. you don't
+necessarily think that like that model
+should actually be your like primary
+user of your application in a lot of
+ways.
+All right, Mike, thank you so much for
+joining us. Yeah, thank you all.

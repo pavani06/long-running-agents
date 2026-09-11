@@ -1,0 +1,318 @@
+I made more than 100 AI agents for the past few months. In this video, I'm going to show you you only need four
+main AI agents in 2025 in order to save time and save money. And now, let's jump in and I'll show you how we can uh
+create the first one. So, as the first agent, we are going to build an AI agent uh whose job is to uh be our personal
+accountant. instead of uh paying uh other human accountants like u paying uh
+$2,000 $3,000 a month, you can uh easily create an AI agent for you and actually
+give it uh the rules, how to behave and how to uh track your uh expenses and incomes. So in order to do that, we need
+to actually create a workflow inside NN. And here if you click at first steps uh we actually uh need to uh bring our uh
+trigger so that we can start our workflow. So uh today I'm going to use uh telegram and on the telegram you see
+that we have bunch of bunch of triggers here and I'm going to use on message and here basically we need to connect our
+telegram uh to any so we can uh send messages and receive messages and from
+here you see that it says credential uh to connect with and here I already connected uh my telegram but if you are
+new and you don't have any account connected here you can always click uh create new credentials and from here you
+only need to have an access token and you put it here and uh you you're pretty much u good to go. But if you
+don't know how to do that uh don't worry I'm going to show you. And the good thing about NAN is that they have almost
+uh documentation for every uh platform that uh they are supporting inside NAN.
+And if you click here you see that uh they are helping you how you can actually u use a telegram uh trigger
+node. So here if you scroll down so here we can actually see how we can connect our credential and here in this uh page
+they will tell you exactly what you need to do. So here uh this is the first uh step uh to configure this credential we
+need to have a bot inside our telegram and we need to have an access token. So in order to create a bot for us we
+actually need to start a chat with botfather. So if you go to telegram and if you uh type here uh botfather you see
+that uh here actually we can uh create our bot. So go ahead and type slash uh
+newbot and for this one now we need to uh choose a name. Let's say that I'm going to put this Ali's
+accountant. Yeah, this is our uh name. Now we need to give a username. So for username I'll put
+n10 accountant and I'll say
+Ali and remember for the username at the end you need to actually have the bot.
+So here I'm going to put bot and I create the username. Now we have successfully created our a new bot. So
+let's go back to our anything and from here create a new credential. Always give it a name so uh for the future to
+understand which bot you are using. So this one I'm going to say
+uh Ellis accountant and here we need the access token. So go back to your uh telegram.
+You see that here we have the access token. Click on it and paste it here and click save. It should uh turn into
+green. Now it is testing and yeah it turns to green and it says connection tested successfully. So now we already
+have connected our telegram uh to our uh anything. So if I uh click test, we can
+see if we can receive the message. So uh from here we can go to our uh bot. And if I click start, you see that here we
+received uh in some information. And uh if I change it to this, you see that our
+first message was uh / text. This is exactly the one we sent. So now the next
+step is actually to uh create an AI agent. So click on this plus button and here you can type AI agent. You see this
+option and this is our AI agent connected to our telegram trigger. So we can give it a name uh I'm just going to
+say accountant and right now we need to
+connect our AI agent to the uh messages that we send uh inside the telegram. So
+here you see that it says connected to a chat trigger node. Uh this is not correct. We need to change it to define
+below. And from here uh this is actually the message that we are sending to our AI agent. So uh from fixed change it to
+expression. So we can use expressions here. And if you scroll down under the telegram uh trigger you see that here we
+have a text. This is our uh message. So drag it and drop it here. And now we are giving uh the
+message uh to our AI agent. So now uh this this AI agent is actually our accountant and we need to tell how this
+accountant should behave or work. So under the option click add option and here we need to give it a system message
+and uh I already uh made a system message. I'm just going to grab it and paste it here. So before that let me
+change it to expression and open it so you can better see that and I'm going to paste uh this instructions for our AI
+agent here. Basically I'm telling that uh this is the system role. Uh your role is to uh be a personal accountant. Your
+role is to assist the user tracking and managing their expenses accurately. And here we are giving uh some task to it
+basically telling what to do. And at the end I'm giving the prompt um saying that here's the current date and time and
+this is the JavaScript code for the date and time. And on the other side you see the result. It looks like this. So our
+AI agent can understand uh what exactly time and uh date uh it is. So now that
+agent uh knows what to do it is good. Uh we can actually uh hit the test. But
+right you see that we got an error and it says that the chat model uh sub node must be connected. So this means that
+our AI agent uh has the message and knows what to do but uh doesn't have the brain and cannot uh do tasks without
+brain. So here we need to give it a chat model. Click here and you see you have bunch of options from an anthropic
+Google Gemini and Olama or open router gro. But for this one I'm I'm just going
+to use OpenAI chat model. And here first thing you need to do is actually to connect your OpenAI account. So I
+already connected mine. If you don't just go to the documentation they will uh help you how how to do that and come
+back here create a new credential. Basically you need only uh an API key. So all you have to do is to go to
+platform.openai.com and there you need to create an account and you need to top up your balance because we are using
+their API keys and uh we need to have some credits inside our account. And once you do that u under the settings
+you can find API keys. Go there and create a new API key for yourself. just give it a name and come back here and
+paste it here and then click save it. It will turn into green and then you're good to go. So now I'm just going to use
+my open account and for the model I'm just going to use the latest one which is 4.1. You can also uh use 4.1 mini but
+I don't suggest to use nano because nano is for very smaller task. mini and uh
+4.1 are fine and uh they have the context of 1 million token and they are currently the best one in the market and
+also the cheapest one. So I'm just going to use this and I'm going to uh give it a name
+GPT4.1. So now our AI agent has the uh brain it can think and it can do tasks.
+So let's just uh test it. I'm going to uh remove this uh test workflow. Now I
+can uh say hello and uh we can see that
+we received our message. It used the brain and it generated hello how can I assist you with your expenses today?
+Please provide me details for your recent transactions and so on. So now we can give our details on expenses and our
+agent we can process them. The next thing we can do is actually to give it a brain so it can always remember the chat
+history. If you click here, you see that bunch of uh memories that you can use inside an aent. But the first one is the
+very simple. You don't need to configure it uh like a crazy. Just uh click here
+and same as uh AI agent. This one right now is connected to chat trigger node. We don't use chat trigger node and we
+need to use define below. And for the key, the key is actually our uh user ID
+inside uh the telegram chat. So if you scroll down, you see that here we have a chat and we have an ID. We need to put
+it here. So every time it receives a message, it looks for this ID and understand that uh it is uh inside uh
+the same chat as before. And for the window length uh this is actually uh saying that uh it can remember past
+interactions uh inside the chat history. So right now it is remembering uh five
+of them which is fine. I don't uh touch it. But if you want your AI agent to
+have bigger context on the chat history, you can definitely change it to 50 or maybe 100. But as for this video, I'm
+just going to keep it as default on five. So now our AI agent has the memory and uh it can remember the conversation
+history. Now it's time to actually give it a tool as a Google sheet. So it can store our expenses inside a Google sheet
+uh just like uh any other accountant uh will do. But before going to another step, just always remember that click
+save in order to save your progress in case of anything happens. You actually don't lose your progress. All right. So
+the next thing is actually give our AI agent a tool a Google sheet tool so it can u manage our expenses inside a
+Google sheet just like any other uh human accountant will do. So click here
+and from here you can type Google sheet and bring this tool to our AI agent and
+click here. So here we need to connect our Google sheet uh credential. So click here create a new credential and you see
+that by default it is choosing O2 which which is recommended. It is super
+simple. Just click on sign in with Google account and basically you need to give the permission from your Google
+account to ence it will ask you to uh continue give
+the access and boom that's it. Uh it is green. Now we are connected a Google sheet account. But right now uh you see
+that we have an error and u basically it doesn't uh know uh which Google sheet it
+needs to choose. So we need to configure some things here. Uh the operation we need to change it and uh we need to
+write append row. This means that to add another add a new row inside our Google sheet and we need to choose our
+document. So this is the Google sheet document that I was talking about. We have date, personal or business title.
+We have description, amount and type. So we want to connect this Google sheet. I already made it. And we want to uh tell
+our AI agent to come to this Google sheet and uh insert the new data here. So go back here. We need to choose the
+document. The name for it is expenses. So we can choose this one. And here you see that there's only one sheet. So uh
+we can choose the sheet which is only one. And now we have these fields here that we need to configure it and tell
+our agent to what exactly put inside uh these all fields. But don't worry, you don't need to actually do it by by
+yourself. We can just click this magic button here inside uh the uh NN. And basically what it does is that uh it
+lets the AI agent to uh understand by itself and put uh information is uh in
+all these uh uh fields. So go ahead and click all of them. Okay. Now actually
+our AI accountant is done and ready. We can also test it. So, if I uh click test
+workflow and I open my uh telegram and let's say that I
+[Music] spent and $5 on
+food today. So, if I click send, you see that uh it will go through and it will
+use the brain and it will use the Google sheet and it will update our uh information inside the Google sheet. So
+let's open the uh agent and uh let's see what it says. It says your expenses has
+been recorded. This is the date. This is the type personal or business and the description. So we can go back to our
+Google sheet. We can see automatically uh our AI agent put all the information here. So here we have the date, we have
+personal business, we have the description which was the food expense and we have the amount and we have the type which is food. So now let's create
+another step where our AI agent also send us a message back inside the telegram. So we can uh always talk to
+our AI agent like kind of say that uh this is what we did. So from here we can
+bring another note a telegram node and from here we need to choose uh send a
+message. So here send a text message. All right let's open it and you see that our telegram is already connected. This
+is the beauty of anything. It will save all the credentials for you so you can access them easily. So this is correct.
+The operation is send message. The chat ID is exactly the ID that of our uh chat
+inside the uh telegram which is this one. Under the chat you have ID uh just
+drag it and put it here. And for the text we can uh actually use the text
+that our AI agent uh has which is the output. So uh put it here. And if I
+click test uh you'll see that we get a message inside our end which says that your expenses has been recorded. This is
+the date, the type, personal business, the description and everything. And at the end, if you want to remove this
+message which says that it was automatically sent by NN, you can come back here at the field. It says that N10
+attribution. Click on this and turn it off. So if I click test again, you'll see that I get a message. Uh but this
+time we don't have this uh annoying message at the bottom. All right, great. Now we have an AI personal accountant
+which one thing we can do is also that we can always come back to our AI agent
+and open this uh expression and we can always change those things in order how we want the AI agent or accountant to
+behave. So so in the future if you want to add more um ability or tools to your AI agent you can always come back here
+and uh refine this text. But now it is good. So if I click here and activate
+this uh workflow and now I can talk uh with my AI agent which is my personal
+accountant inside uh the telegram forever. So let's say that I spend
+another $5 on app for my business. Let's
+say just send it. Now it is working and it will send us back a message in a few
+seconds. Boom. There you go. Your business expenses has been recorded. So if you go back to our Google sheet, you
+see that this is the date. This time it is a business and the description is app purchase $5 software. All right. Now we
+have our first AI agent set up which is our accounted. It is time to go for the second one. All right guys, now the next
+agent that we are going to build is actually the best one. You don't know how much time you can save with this AI agent. It is very simple but yet
+effective. So in order to save the time for us, I'm going to import the file uh to this uh AI agent inside our editor.
+So from here just uh click on import the file and from here just click on open and you will have the agent readym made.
+So if you want uh this template along with other template that we are covering in this video and also with another uh
+templates that I'm uh creating on my YouTube channel, you can always check my web community. Here we have a
+like-minded people uh who are everyday becoming a master at uh AI automations and constantly building super powerful
+AI automations. Once you join the community, you get access to all the resources and also all the uh free
+templates that I uh showing you in this video. Uh so just go there, join and uh
+download the templates for you. Go back to your N10 and from here you can always import them and start working uh with
+this workflow in your life. Okay. And now this is our AI agent who constantly uh check our uh Gmail inbox and always
+uh filter out uh unimportant messages that are that we are getting so we can always focus on the important emails. So
+uh here we have the Gmail uh trigger node which is uh connected to our Google
+account and again if you have problems connecting your Google account it is super simple you just need to give
+anything the permission to connect your Google account and if you still have problem just go to the documentation here and they will help you. So uh right
+now the mode is on every minute. So basically every minute uh it will check our email uh to see if we have a new
+email in in our inbox or not. And the event is on uh the messages that we received in our uh inbox. And make sure
+you turn this simplify on. And then you're good to go. And here we have the AI agent which I'm connecting it to the
+first node which is a email trigger. And here I'm giving the ID and the subject and the snipped. Basically this is the
+message that uh we have. So for the ID is the ID for the email we are getting it from here. And the subject uh we are
+actually if you scroll down you see that you have a subject we are putting it here. And for the snips just drag this
+uh snip here and put it here. So for the system message this is actually the same as the uh other agents that we made and
+this is only for our AI agent to understand what it needs to do. So I'm
+defining some task and some role. I'm telling that uh you are a email tracker AI agent and responsible for managing
+inbox and identifying and filtering out uh unimportant emails and once it
+understand which emails are unimportant it will mark them as read so we can only focus on unread uh emails which are
+important and again I'm giving the access to the uh current date and time so here is the result you can see that
+and uh for the chat model or the for brain it is the same using the GP GPT uh
+4.1 and here for the tool I'm just giving a tool if you come here and click
+um Gmail you see that uh you can bring a tool here and uh you need to connect
+your Google account obviously and you need to u choose your operation so for operation we are not by default it is on
+send but uh you need to change it as mark as read so actually let me u delete this
+and open this one so this one is uh operation is a mark as And for the message ID again I'm using uh this uh
+magic button from Henan and I'm letting my AI agent to understand what is the
+message ID. Basically the message ID is the ID uh for the email. Uh but instead of uh we uh dragging this and putting it
+here we let the AI agent to uh understand and uh put it by itself. So now uh we can uh test it. And here u in
+my Gmail uh I have one email. This is the recent email that uh right now I didn't open it. So uh it is u unopened
+and I think it's an important email. So we can if we run our AI agent it can uh
+get that email address and it can understand that this is a import email address. So it doesn't check it as a
+read message. So let me open this and uh unpin this data. And if I click fetch
+test event it will go to my to my inbox and it will find last email that I got. Uh you can see this is the same N
+anything cloud was granted access. So if you come here you see the snippet cloud
+was granted access. Okay so this is uh the email that it found and now if we run our AI agent it will use the brain
+and it will use the Gmail tool and understand that that email address is very important. So if we open it uh you
+see that it says this email uh is a security alert regarding access to Google and at the end uh it is defining
+an action for itself. It says that action I will not mark this email as read to ensure the user is aware of the
+potential security issues. So this is very good. It can understand uh what
+email what is the context of the email exactly. So now uh let's say that I send an email from another account to this
+account and I just uh send an uh random which is not uh important. Okay. Now
+again I'm on my Gmail account and I just send an email to myself from another account and uh for the subject I put the
+friendly hello and for the body of the message I put the uh hello Ali how are you? So this is not a very important
+email it is an unimportant email and our AI agent right now should understand that this is not important and it can
+mark it as read. So right now you see that it is unopened. I didn't open it. So it should put it as a read uh email.
+So we can go ahead and uh test it again. So if I click test, it will uh find the
+last email and you see that uh it used the the brain and uh the Gmail note and
+let's see what it says. So it says that the the email was the subject uh friendly hello. It is a personal
+greeting which is generally not urgent or uh business crucial. I have marked it
+as red to keep uh your inbox focused and uncluttered. So this is exactly what I'm
+talking about. But it could understand the email is not uh important. So if we go back to our Gmail and if I uh hit
+refresh, you see that now the email is uh checked as red. So it is opened. And
+trust me guys, if your inbox is uh like me full of uh important and unimportant
+uh emails, you're definitely going to need this AI agent as it uh filters and clears your inbox and lets you to focus
+on uh important emails. So now that I have showed you uh the second uh AI agent which is the email tracker, now
+it's time to go and build the third one. All right guys, the next AI agent that we are going to build is actually our
+calendar manager. This one will help you to uh remind uh all the events that you
+have uh inside your calendar. So imagine you have so many uh events like for today or maybe tomorrow or the next week
+and whenever you want you can ask your AI agent for example ask him that uh what events I have for today or for
+tomorrow. it will go and grab all the events from your calendar and it will send you uh an email in order to help
+you manage your time. So now in order for us to manage our time, I'm not going to build it again. I'm going to just uh import uh the file. And by the way, uh
+the all of these templates will be uh available on my web community. The link to it is down in the description. So
+just go there and check it. So now you see that uh this workflow start with a schedule trigger. So we can uh schedule
+this trigger to for example start uh every day or every week or every month. All of these settings are customizable.
+You can customize the way you want. So right now I'm giving it the default. Uh it is uh the trigger interval is on days
+but obviously you can change it to seconds, minutes, hours, weeks and months. So now it is on one. It means
+that uh every day it will uh start this and the time for it is on midnight. And uh of course you can always uh change
+the time. And now again we have our AI agent. We don't have the system prompt for this one. Uh only uh we have the
+user message here. I'm saying that very simple system role. I'm giving um I'm telling that to check my calendar and
+make a summary of the events that I have and send a well structured email to me. And here I'm giving some uh tasks and at
+the end I'm telling that here's the current date and time. So it understands uh the time um in order to get the
+events inside my calendar. So this is very simple and as a brand it is connected again to uh GPD 4.1 and here
+I'm giving two tools basically the one is the Google calendar and the other one is uh Gmail. So if you uh click on this
+uh plus button uh from here you can type Gmail and you can bring the Gmail tool and uh for the calendar if you put uh
+calendar you see that uh you have the Google calendar as a tool so you can uh bring it uh and connect it to your AI
+agent. So uh let's start with Google calendar. So if you open it uh you need to connect your actually Google account.
+It's super simple and same as uh other agents that we did. But if you have any problems just go to the documentation
+and here the operation we need to change it to get many it means that uh basically uh it will go inside the
+calendar and get as many as event it can. So if you click on get it will only uh retrive only one uh event. But uh if
+you have multiple uh events uh in a day, it's better to uh always uh choose get
+many for the limit. Uh this is the limit how many events you want to uh actually
+uh bring it to you or search. I'm not sure that if anyone has more than 50 uh
+events per day, but uh by default it is on 50. You can change it. And uh this is
+actually the time uh the after time and the before time for the uh for the events that you have inside the
+calendar. You can uh keep it as default because uh it will check the events from now from the the moment that you tell
+him. And for the before right now it is uh by default on one week uh after this
+time. So it means that if today is uh 15 uh it will uh check from uh today until
+uh next week which is uh 22. You you can keep it as default. But if you want your AI agent to decide based on your uh
+prompt or bas based on the message that you are giving to your AI agent, you can always uh click this uh button from a uh
+anything and you will let the AI to define uh this parameter by itself. Uh nothing more uh but remember uh that
+under the calendar uh you need to actually connect uh the calendar that you want your AI agent to search. Uh uh
+right now you see that I have another calendars uh but uh this is the one that I want to uh my agent to check and the
+other tool is the Gmail and the operation is uh send basically I want my AI agent to go to the calendar and uh
+see how many or what kind of uh events that I have inside my calendar and basically generate a summary of them and
+send the email to me so I can uh read my email and see what are the upcoming uh events that I have and for the subject
+Again, I'm using this button from N. I'm letting the AI agent to define the subject. It is not important for me. And
+the email type is text. And the message again, the message that I want my AI agent to send. I'm again using this
+button here and let the AI agent to decide what it should be. And again, if you don't want at the end of your email
+that uh anything attribution, you can uh click add option, append anything attribution, and you can uh turn it off
+from here. So, let's save it and let's go ahead and test it. So right now I don't think I have any events on my calendar but we can give it a test and
+see uh what email it will send us. So if I click test workflow it will start using the brain. It will uh go uh inside
+the calendar and see all the events and it will send an email to me. So if I go to my inbox uh hit refresh you see that
+I got an email from me because I sent it from u my behalf and you see it says that here's a summary of your schedule
+for today. I had someone's birthday on my uh event. I didn't know about it and it is very good. my AI agent could uh
+see that event and remind me about it. So I can now go and say uh happy birthday to that person. Actually this
+is very good. I could uh actually this is very good. I could show you a use case of this agent. You see how uh
+useful uh this AI agent is. Okay, this was the our calendar manager and now you see that uh how you can create it. And
+now it's time to show you the fourth one. All right guys, this is the fourth one and last one. And by far this is the best AI agent uh you can create for
+yourself. every day some new tools, some new AI and some uh new thing will be created in this artificial intelligence
+uh area and it is very hard to keep up with all the news and understand what what are the new tools and uh what are
+the new technologies. So if you are struggling with this uh problem definitely you're going to uh need this
+AI agent that I'm going to show you. So the AI agent that we are going to uh make is actually an AI news agent. So
+let's call it [Music] here AI agent
+uh news. And once again to save the time I'm going to import it uh from the file. And remember you can always get these
+templates inside uh my W community. If you join uh you can download them and you can start uh plug it in inside your
+anything and work with them instantly. By joining the community, you will also get access to the courses that I'm
+constantly updating them. Here you can chat with people uh you can uh bring up your uh questions or your problems and
+there will be always someone to help you. So definitely go ahead and check it. The link to it is down in the description and I'll see you inside our
+community. Okay, go back to your enter. So here this agent's job is actually uh to go and search all the latest AI news
+and generate a summary based off the search and send us an email. So here it will again start with a schedule
+trigger. You can definitely customize it the way you want. You can use days, hours and weeks and you can also change
+the time. So I'm going to just keep it as default. And here we have an AI agent. Again, it doesn't have any system
+prompt. But uh in the user message, we are saying that you are a daily uh news agent in the topic of uh artificial
+intelligence, AI automations and AI tools. Uh you have the tool uh you can search the web. You have another tool
+which is a Gmail to send an email. And here we are just giving some context and some reminders just to understand what
+exactly need to do. And again here we are giving the uh t current date and time. So uh to this AI agent I have
+connected again a chat model for GPT4.1 which is the greatest one so far
+and I'm giving it uh two tools basically. One is a ser API and I'm going to tell you what it is and the
+other one is the same as before we used is a Gmail um with a send operation uh
+to send us uh to send myself an email. So here this is the SER API is a tool.
+If you click uh here you can just easily uh search it. If you put SER you will see that this is a SER API. Basically
+this is an API to the Google search. But in order to use this you need to have an account and you need to have an API
+token. So uh if you don't know what to do just go to the docs. But I'm going to show you here. Just go and type uh SER
+API. Uh here this is the first one. uh go ahead and uh create an account for
+yourself and once you are inside your account you can go to your settings and you can generate as many as uh API keys
+but uh here I have only one so I'm going to use this one and uh on the free plan
+it will give you 100 searches uh per month which is uh I think uh is good but
+keep in mind always uh uh treat uh your APIs as your password do not share your
+APIs with anyone so if you're seeing my API here uh maybe I'm I'm just going to blur it or if you're still seeing it,
+I'm just going to delete it and create a new one for me. So, APIs are exactly like your password. You don't share your
+password with uh someone else. Therefore, you don't have to uh share your API keys with anyone. So, go ahead
+and uh copy this API key. Go back to your uh SER API. And from here, you need to uh create a new credential and just
+paste your API key here and click save. It will be green and you're good to go. Now your AI agent has the access to the
+Google search and whatever you give uh your AI agent it will go and search it will find articles it will find blog
+post and it will make a summary and it will send that summary uh with the Gmail
+to wherever you want. Right now I'm sending uh to myself. So let's click save. And if I hit this test workflow it
+will go ahead and use the brain. It will search based on the topic that I gave which is uh artificial intelligence or
+AI automations. basically everything in uh AI space. Now it is again uh using
+the brain to generate a summary uh with that u uh post or search that it found
+and it used the Gmail and send uh and Gmail to me. So if we open our agent you
+see that it says I have compiled and sent the latest summary of AI news for May 15, 2025. Here are the key
+highlights. So let's uh go to our email and see uh see it there. So I'm on my
+email. If I click uh refresh, we should be seeing it. Yes, this one. So, if we click, it has a subject. It says that
+daily AI news summary for the date. And it says that here are the latest update in AI, AI automation and AI tools. So,
+it has 1 2 3 4. So, we searched the web and was able to uh get four uh search
+based on our topic and the agent made a summary out of it and send it to our email. And you see that it also has the
+reference link. So if you want to uh read more, you can always click on it uh and it will directly uh take you to the
+uh source. That's it for this video guys. You see that how powerful AI agents are and how we can use them uh in
+our personal life in order to save time and save money. So just to wrap up this video, we were able to create an AI
+agent to uh track our expenses. Uh we made another agent to track our emails
+and filter out uh the unimportant uh ones and um make them as red. So we can
+only focus on the important emails. We al we also made another agent which was the calendar management which looks
+inside our calendar and reminds uh all the events that we have for the uh today or upcoming days. And the last one which
+is the AI agent news which is very super powerful. It will go and search the web
+and it will return all the latest news about any topic that you want. Once again thank you so much made it so far
+watching this video and if you liked it and if you enjoyed just give it a like. It will definitely help me to show this
+video to more people like you. And don't forget to check out my W community. The link to it is down in the description.
+If you have any questions, just let me know down in the comment section. I'll be reading them and answering them as soon as possible. and I'll see you in
+the next

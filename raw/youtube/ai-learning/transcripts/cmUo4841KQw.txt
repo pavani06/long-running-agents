@@ -1,0 +1,863 @@
+I will never forget when I first [music] met Gavin Baker. It was early days of the podcast and he was one of the first
+people I talked to about markets outside of my area of expertise which at the time was quantitative investing about
+the incredible passionate experience that he's had investing [music] in technology across his career. I find his
+interest in markets, his curiosity about the world to be about as infectious as any investor that I've ever come across.
+He is encyclopedic on what is going on in the world of technology [music] today. and I've had the good fortune to
+host him every year or two since that first meeting [music] on this podcast. In this latest conversation, we talk
+about everything that interests Gavin. We talk about Nvidia, Google and its TPUs, the changing AI landscape, the
+changing math and [music] business models around AI companies. This is a life ordeath decision that essentially
+[music] everyone except Microsoft is failing it. We even discussed the crazy idea of data centers in space which he
+communicates with his usual passion and logic. In every [snorts] way, data centers in
+space from a first principles perspective are superior to data centers on earth. Because Gavin is one of the
+most passionate thinkers [music] and investors that I know, these conversations are always amongst my most
+favorite. I hope you enjoy this latest in a series of [music] discussions with Gavin Baker.
+I would love to talk about how you like in the nitty-gritty process new things
+that come out in this whole like AI world because it's happening so constantly. I'm extremely interested in
+it and I find it very hard to keep up and I you know I have a couple blogs that I go read and friends that I call but like maybe let's take Gemini 3 as
+like a recent example when that comes out. What like literally like take me into your office like what are you
+doing? How do you and your team process an update like that given how often these things are happening?
+I mean, I think the first thing is you have to use it yourself. And I would just say I'm amazed at how many famous and August investors are
+reaching really definitive conclusions about AI. Well, no, based on the free tier.
+The free tier is like you're dealing with a 10-year-old and you're making conclusions about the
+10-year-old's capabilities as an adult. And you could just pay and I do think actually you do need to pay for the
+highest tier whether it's Gemini Ultra, you know, um, Super Grock, whatever it is, you have to pay the $200 per per
+month ti whereas those are like a fullyfledged 30 35y old. It's really
+hard to extrapolate from an eight or a 10-year-old to the 35y old and yet a lot of people are doing that. And the second
+thing is there was a insider post about open AI and they said to a large degree open AI runs on Twitter vibes
+and I just think AI happens on X and you
+know there have been some really memorable moments like there was a giant fight between the PyTorch team at Meta
+and the Jax team at Google on X and the leaders of each lab had to step in
+publicly say [laughter] no one from my lab is allowed to say bad things about the other lab and I respect
+them and that is the end of that. Yeah, the companies are all commenting on each other's posts. You know, the research
+papers come out. You know, if on planet Earth there's 500 to a,000 people who really really understand this and are at
+the cutting edge of it and a good number of them live in live in China. Um I just
+think you have to follow those people closely and I think there is incredible signal to me. Everything in AI is just
+downstream of those people. Yeah. Everything Andre Carpathy writes, you have to read it three times.
+Yeah. Minimum. Yeah. He's incredible. And then I would say anytime at one of those labs, the four labs that matter,
+you know, being uh OpenAI, Gemini, Anthropic, and XAI, which are clearly the four leading labs. Like anytime
+somebody from one of those labs goes on a podcast, I just think it's so important to listen. And then for me,
+for me, one of the best use cases of AI is to keep up with all of this. You
+know, just like listen to a podcast and then if there are parts that I thought were interesting, just talk about it
+with AI. And I think it's really important to like have as little friction as possible, I'll bring it up. You know, I have it like um you know, I
+have I can either press this button and pull up Gro or I have this.
+Oh, wow. I don't touch that. That just get brings it right up. Yeah, it brings it right up. What do you think of Patrick Oanaughy?
+Oh man, Patrick Oshanaugh is one of my favorite voices in investing. His Invest
+Like the Best podcast is straight fire. Does deep dives with folks like Bill Gurly or
+Girly? [laughter] Yes. It's so Can you believe we have this? I know. It's like we have Yeah. I think
+somebody said on on on X, you know, like we imbued these rocks with crazy spells
+and now we can summon super intelligent genies on our phones over the air. You know,
+it's crazy crazy. So something like Gemini come 3 comes out, you know, the public interpretation was, oh, this is interesting. It seems
+to say something about scaling laws and the pre-training stuff. What is your frame on like the state of prog general
+progress in frontier models in general? Like what are you watching most closely? Yeah. Well, I do think Gemini 3 was very
+important because it showed us that scaling laws for pre-training are intact. They, you know, stated that
+unequivocally and that's important because no one on planet Earth knows how or why scaling laws for pre-training
+work. It there it's actually not a law. It's an empirical observation and it's an empirical observation that we've
+measured extremely precisely and has held for a long time. But our understanding of scaling laws for pre-training and maybe this is a little
+bit controversial with 20% of researchers but probably not more than that is kind of like the ancient British
+people's understanding of the sun are the ancient Egyptians understanding of the sun. They can measure it so precisely that the east west axis of the
+great pyramids are perfectly aligned with the equinoxes and so are the east axises of Stonehenge. Perfect
+measurement. But they had they didn't understand orbital mechanics. They had no idea how
+or why, you know, it, you know, rose in the east, set in the west, and, you know, kind of moved across the horizon.
+The aliens. Yeah. Our god in a chariot. And so it's really important every time we get a
+confirmation of that. Um, so Gemini 3 was very important in that way. But I'd say I think there's been a big misunderstanding maybe in the
+public equity investing community or the broader more generalist community based on the scaling laws of pre-training.
+There really should have been no progress in 24 and 25. And the reason for that is, you know,
+after XAI figured out how to get um 200,000 hoppers coherent,
+you had to wait for the next generation of chips. Um because you really can't get more than 200,000 hoppers coherent. And
+coherent just means you could just think of it as each GPU knows what every other GPU is thinking. They kind of are sharing memory. You know, they're
+connected. They scale up networks and scale out. and um and they have to be coherent um for during the pre-training
+process. And I think there's a lot of misunderstanding about Gemini 3 that I think is really important. So everything
+in AI has a struggle between Google and Nvidia and Google has a TPU and Nvidia
+has their GPUs and each of I mean Google only has a TPU and they use a bunch of other chips for networking. You know
+Nvidia has the full stack and Blackwell was delayed. Blackwell was Nvidia's next
+generation chip and the first iteration of that was the Blackwell 200. A lot of different SKs
+were cancelled and the reason for that is it was by far the most complex product transition we've ever gone
+through in technology. Going from Hopper to Blackwell, first you go from air cooled to liquid cooled. Um the rack
+goes from weighing round numbers 1,000 lb to 3,000 lb. goes from round numbers
+30 kilowatts which is 30 American homes to 130 kilowatts which is 130 American homes you know. So I I analogize it to
+imagine if to get a new iPhone you had to change all the outlets in your house to you know 220 volt put in a Tesla
+power wall put in a generator put in solar panels that's the power you know put in a whole home humidification
+system and then reinforce the floor because you know the floor can't handle
+this. So it was a huge product transition and then just the rack was so dense it was really hard for them to get
+get the heat out. So Blackwells have only really started to be deployed and
+really scaled deployments over the last 3 or 4 months. Had reasoning not come
+along, there would have been no AI progress from mid 2024
+through essentially Gemini 3. there would have been none. Everything would have stalled and can you imagine what
+that would have meant to the markets like for sure we would have lived in a very different environment. So reasoning
+kind of bridged this like 18month gap. Reasoning kind of saved AI because it
+let AI make progress without Blackwell or the next generation of TPU which were
+necessary for the scaling laws for pre-training to continue. The reason we've had all this progress, maybe we
+could show like the ARC AGI slide where you had, you know, you went from 0 to 0
+to 8 over four years, 0 to 8% intelligence and then you went from 8% to 95% in 3
+months when the first reasoning model came out from OpenAI is, you know, we have these two new scaling laws of post-
+training, which is just reinforcement learning with verified rewards. Verified is such an important concept in AI. Um,
+like one of Karpathy's great things was with software, anything you can specify, you can automate. With AI, anything you
+can verify, you can automate. It's such an important concept and I think an important distinction. And then test time compute. And so all the progress
+we've had, and we've had immense progress um, since October 24th through today was based entirely on these two
+new scaling laws. And Gemini 3 was arguably the first test since Hopper
+came out of the scaling law for pre-training and it held. And that's great because all these scaling laws are
+multiplicative. So now we're going to apply these two new um reinforcement
+learning with verified rewards and test time compute um to much better base models. Google came out with the TPU v6
+in 2024 and the TPU v7 in 2025. And in semiconductor time, it's like
+almost like imagine like Hopper is like, you know, it's like a World War II era
+airplane. And it was by far the best World War II era airplane. It's P-51 Mustang with the Merlin engine. And two
+years later in semiconductor time, that's like, you know, you're an F4 Phantom. Okay.
+[laughter] Because Blackwell was such a complicated product and so hard to ramp, Google was
+training Gemini 3 on 24 and 25 era TPUs, which are like F4 Phantoms. Like
+Blackwell, it's like an F-35. It just took a really long time to get
+it going. So, I think, you know, Google for sure has this temporary advantage right now.
+Um, from a pre-training perspective, I think it's also important that they've been the lowest cost producer of tokens.
+Okay. And this is really important because AI is the first time in my
+career as a tech investor that being the lowcost producer has ever mattered. Apple is not worth trillions because they're the lowcost producer of phones.
+Microsoft is not worth trillions because they're the low lowcost producer of software. Nvidia is not worth trillions
+cuz they're the lowcost producer of AI accelerators. It's never mattered. And this is really important because what
+Google has been doing has the lowcost producer is they have been I would say
+sucking the economic oxygen out of the AI ecosystem which is an extremely rational strategy for them and for
+anyone who's a lowcost producer you know let's just let's make life really hard
+for our competitors. Um and so what happens now I think this has pretty
+profound implications. One, we will see the first models trained on Blackwell in early 2026.
+Y I think the first Blackwell model will come from XAI. And the reason for that is just it's a according to Jensen, no
+one builds data centers faster than Elon. Yes, Jensen has said this on the record. Even once you have the
+Blackwells, it it takes 6 to9 months to get them performing at the level of
+Hopper cuz the Hopper is finally tuned. Everybody knows how to use it. The software is perfect for it. engineers
+know all its quirks. You know, everybody knows how to architect a Hopper data center at this point. And by the way,
+when Hopper came out, it took 6 to 12 months for it to really outperform AER, which was generation before. So, if
+you're Jensen or Nvidia, you need to get as many GPUs deployed in one data center
+as fast as possible in a coherent cluster so you can work out the bugs. And so this is what XAI effectively does
+for Nvidia because they build the data centers the fastest. They can deploy, you know, black wells that scale the
+fastest and they can help work with Nvidia to work out the bugs for everyone else. So because they're the fastest,
+they will they'll have the first Blackwell model. We know that scaling laws for pre-training are intact and
+this means the Blackwell models are going to be amazing. Blackwell is um I mean it's not an F35 versus an F4
+Phantom, but from my perspective it is a better chip, you know, maybe it's like an F-35 versus a Raphael. [laughter] And
+so now that we know pre-scaling holding, we know that these Blackwell models are going to be really good. And you know, kind of based on the raw
+specs, they should probably be better. Then something even more important happens. So the GB200 was really really it was
+really hard to get a coin. Um, the GB300
+is a great chip. It is drop in compatible in every way with those GB200
+racks. Now, you're not going to replace the GB200s. No new power walls. Yeah. Yeah. Just any data center that can handle those. You can slot in the
+GB300s. And now everybody's good at making those racks and you know how to get the heat out. You know how to cool them.
+You're going to put those GB300s in and then the companies that use the GB300's, they are going to be the lowcost
+producer of tokens. particularly if you're vertically integrated. If you're paying a margin to someone else to make those tokens,
+you're probably not going to be. I think this has pretty profound implications because it ch I think it has to change
+Google's strategic calculus. If you have a decisive cost advantage and you're
+Google and you have search and all these other businesses, why not run AI at a
+negative 30% margin? It is by far the rational decision. You take the economic oxygen out of the
+environment. You eventually make it hard for your competitors who need funding unlike you to raise the capital they
+need. And then on the other side of that, maybe have an extremely dominant share position. Well, all that calculus
+changes once Google is no longer the lowcost producer, which I think will be the case. The black wells are now
+being used for training. And then when the that model is trained then you shift you start shifting blackwell clusters
+over to inference and then all these cost calculations and these dynamics change and I do think it's this it's very
+interesting like during the strategic and economic calculations between the players. I've never seen anything like
+it. You know everyone understands their position on the board, what the prize
+is, you know what play their opponents are running. Um, and it's really interesting to watch. So, I just think
+if Google changes its behavior, cuz it's going to be really painful for them as a higher cost producer to run that
+negative 30% margin, it might start to impact, you know, their stock. That has pretty profound implications for the
+economics of AI. And then when Reuben comes out, we'll know the gap the gap is
+going to expand significantly versus TPUs. Versus TPUs and and all other AS6. Now,
+I think tranium 3 is probably going to be pretty good. train for are going to be good. Why is that the case? Why why won't TPU v8 V9 be every bit as good?
+A couple of things. So one um for whatever reason um Google made more
+conservative design decisions. I think part of that is so Google round
+numbers Google like let's say the TPU Google is so there's front end and back
+end of semiconductor design and then there's you know uh dealing with Taiwan semi. You can make an ASIC in a lot of
+ways. What Google does is they do mostly the front end for the TPU and then
+Broadcom does the back end and manages Taiwan mean everything. It's a crude analogy but like the front end is like
+the architect of a house. Yep. They design the house. The back end is the person who builds the house and the
+managing Taiwan Simmyi is like stamping out that house like LAR or you know Dr. Horton and for doing those two ladder
+parts broadcoms a 50 to 55% gross margin. We don't know what on TPUs.
+Okay, let's say in 2027 TPU I think it sits estimates maybe somewhere around 30 billion again who
+knows I mean yeah yeah yeah but I 30 billion I think is a reasonable estimate 50 to 55% gross
+margins so Google is paying Broadcom $15 billion okay that's a lot of money
+and at a certain point it makes sense to bring a semiconductor program entirely
+in house so in other words Apple does not have an ASIC partner for their chips
+they do they do the front end themselves the back end and they manage Taiwan semi and the reason is they don't want to pay that 50% margin so at a certain point it
+becomes rational to renegotiate this and just as perspective the entire opex of
+Broadcom's semiconductor division is round numbers $5 billion so it would be economically rational now that Google's
+paying if it's 30 billion we're paying them 15 Google can go to every person who works in Broadcom Smi double their
+comp and make an extra extra 5 billion. You know, in 2028, let's just say it does 50
+billion. Now it's 25 billion. You could triple their comp. And by the way, you don't need them all. Yeah. And and of course, they're not going to
+do that because of competitive concerns. But with TPUv8, all of this and V9, all of this is
+beginning to have an impact because Google is bringing in MediaTek. This is maybe the first way you send a warning
+shot to Broadcom. were really not happy about all this money we're paying but they did bring MediaTek in and the
+Taiwanese ASIC companies have much lower gross margins so this is kind of the first shot against the bow and then
+there's all this stuff people say oh but has the best certiscom
+has really good certis and certis is like an extremely foundational technology because it's how the chips communicate with each other you have to
+serialize and do serialize but there are other good certis providers in the world a really good certis is not at a certain
+Maybe it's worth 10 or 15 billion a year, but it's probably worth about worth 25 billion a year. So because of
+that friction, um, and I think conservative design choices on the part of Google and maybe the reason they made
+those conservative design choices is because they were going to a bifurcated supply. You know, TPU is slowing down. I
+would say has kind of the GPUs are accelerating. This is the first, you
+know, the com the competitive response of Lisa and Jensen to everybody saying we're gonna have our own ASIC is, hey,
+we're just going to accelerate. We're going to do do a GPU every year and you cannot keep up with us. And then I think
+what everybody is learning is like, oh wow, that's so cool. You made your own accelerator has an ASIC. Wow, what's the
+nick going to be? What's the CPU going to be? You know, what's the scaleup switch going to be? What's the scaleup
+protocol? What's the scale out switch? what kind of optics are you going to use? What's the software that's going to
+make all this work together? And then it's like, oh I made this tiny little chip and you know, like whether
+it's admitted or not, like you know, I'm sure the GPUs don't GPU makers don't love it when their customers make AS6
+and try and compete with them and like whoops what what did I do? I thought this was
+easy. How do you know? And it also it takes at least three generations to make a good chip like the TP TPU V1. I mean
+it was an achievement and that they made it. Yeah. Um it was really not till TPU V3 or V4
+that the TPU started to become like even vaguely competitive. Is that just a classic like learning by
+doing thing 100%. Yeah. And even if you've made like the first from my perspective, the best ASIC
+team at any semiconductor company is actually the Amazon ASIC team. You know, they were the first one to
+make the gravitron CPU. They have this nitro. Um it was the first, it's called Supernick. They've been extremely
+innovative, really clever. And like Tranium and Infantry One, you know, they
+maybe they're a little better than the TPUV1, but only a little. Trannium 2, you get a little better. Trium 3 it's I
+think the first time it's like okay and then you know I think tradeium 4 will probably be good. I will be surprised if
+there are a lot of AS6 other than tranium and TPU
+and by the way and tranium and TPU will both run on customerowned tooling at some point. We can debate when that will
+happen but the economics of success that I just described mean it's inevitable.
+Like no matter what the companies say, just the economics make it and reasoning from first principles make it absolutely
+inevitable. If I were to zoom all the way out on this stuff, because sometimes I just it's I I find these details unbelievably
+interesting and it's like the grandest game that's ever been. That's what I mean. It's crazy. It's so crazy and so fun to follow.
+Sometimes I forget to zoom out and say, "Well, well, so what?" Like, okay, so project this forward three generations
+past Reuben or whatever. What what is like the global human dividend of all
+this crazy development? Like we keep making the loss lower on these, you know, pre uh pre pre-training scaling
+models like who cares? Like it's been a while since I've asked this thing something that I wasn't kind of blown
+away by the answer for me personally. What are the next couple of things that all this crazy infrastructure war allows
+us to unlock because they're so successful? If I were to posit like an event path, I think the Blackwell models
+are going to be amazing. The dramatic reduction in per token cost enabled by the GB300 and probably more the MI450
+than the MI355, you know, will lead to these models being allowed to think for much longer, which means they're going
+to be able to, you know, do new things. Like I was very impressed Gemini 3 made me a restaurant reservation.
+It's the first time it's done something for me. And I mean, other than like go
+research something and teach me stuff, but you know, if you can make a restaurant reservation, you're not that far from being able to make a hotel
+reservation and an airplane reservation and order me an Uber and
+all of a sudden you got an assistant. Yeah. And you can just imagine, everybody talks about that, but you can just imagine it's on your phone. I think
+that's that's pretty near-term, but you know, it's you know, it's some big companies that are very tech forward.
+you know 50% plus of customer support is already done by AI and that's a $400 billion dollar industry and then if you
+know what AI is great about is persuasion that's sales and customer support and so of the functions of a company if
+you think about them them they're to make stuff sell stuff and then support the customers so right now maybe you're
+in late 26 you're going to be pretty good at two of them um I do think it's going to have a big impact on media like
+I think robotics you know we talked about the last time are going to finally start to be real. You know, there's an explosion in kind of exciting robotic
+robotic startups. I do still think that the main battle is going to be between uh Tesla's Optimus and the Chinese
+because, you know, it's easy to make prototypes. It's hard to massproduce them. But then it goes back to that what
+Andre Karpathy said about AI can automate [clears throat] anything that can be verified. So any function where
+there's a right or wrong answer, a right or wrong outcome, you can apply reinforcement learning and make the AI
+really good at that. Yeah. What are your favorite examples of that so far or theoretically? Does the model balance? They'll be
+really good at making models. Does you know do all the books globally reconcile? They'll be really good at
+accounting because it you know was you know double entry bookkeeping. It has to balance. There's a verifiable you got it
+right or wrong supporter sale. Did you make the sale or not? That's very clear. I mean that that's that's just like
+AlphaGo. You know, did you win or you lose? Did the guy convert or not? Did the customer
+ask for an escalation during customer support or not? It's like it's most important functions
+are important because they can be verified, right? So I think if all of this starts
+to happen and starts to happen in in in 26
+like there'll be an ROI on Blackwell and then all this will continue and then we'll have Reuben and then
+that'll be another big quantum of spin Reuben and the MI450 and the TPU V9 and then I do think just the most
+interesting question is what are the economic returns to artificial super intelligence because all of these
+companies in this great game they've been in a prison prisoners dilemma. They're terrified that if they slow down, they're just gone forever.
+And their competitors don't, it's an existential risk. And you know, Microsoft blinked for like six weeks
+earlier this year. Yeah. And like I I think they would say they regret that. Yeah.
+But with Blackwell and for sure with Reuben, economics are going to dominate
+the prisoners dilemma from a decision-m and spending perspective just because the numbers are so big. And this goes to
+kind of the ROI on AI question. And the ROI on AI has
+empirically, factually, unambiguously been positive. Like I just always find it strange that
+there's any debate about this because the largest biders on GPUs are public companies. They report something called
+audited quarterly financials. And you can use those things to calculate something called a return on invested capital. And if you do that calculation,
+the ROIC of the big public spenders on GPUs is higher than it was before they ramp spinning. And you could say, well,
+part of that is, you know, opex savings. Well, at some level that is part of what you expect the ROI to be from AI. And
+then you say, well, a lot of is actually just applying GPUs, moving the big recommener systems that power the
+advertising and the recommendation systems from CPUs to GPUs, and you've had massive efficiency gains. And that's
+why all the revenue growth at these companies has accelerated. But like, so what? the ROI has been there. Um, and it
+is interesting like every big internet company, the people who are responsible for the
+revenue are intensely annoyed at the amount of GPUs that are being given to the
+researchers. It's a very linear equation. If you give me more GPUs, I will drive more revenue.
+Give [clears throat] me those GPUs, we'll have more revenue, more gross profit, and then we can spend money. So, it's this constant fight at every
+company. One of the factors in the prisoners dilemma is everybody has this like religious belief that we're going
+to get to ASI and at the end of the day what do they all want? Almost all of them want to live forever. Okay. And
+they think that ASI is going to help them that right good return. That's a [laughter] good return. But we don't know. And if as humans we have
+pushed the boundaries of physics, biology and chemistry, the natural laws that govern the universe.
+I'm very curious about your favorite sort of throw cold water on this stuff type takes that you think about sometimes. One would be like the things
+that would cause I'm curious what you think the things that would cause this demand for compute to change or even the
+trajectory of it to change. There's there's one really obvious bare case and
+it is just edge AI and it's connected to the economic returns to ASI. in three years on a bigger and bulkier phone to
+fit the amount of DRAM necessary, you know, and the battery won't probably last as long, you will be able to
+probably run a pruned down version of something like Gemini 5 or Gro 4, Gro
+4.1 or you know, Chat GPT at um
+I don't know 30 60 tokens per second and then that's free. And this is
+clearly Apple's strategy. It's just we're going to be a distributor of AI and we're going to make it privacy safe
+and run on the phone and then you can call one of the big models, you know, the the god models in the cloud whenever
+you whatever you have a question. And if that happens, if like 30 to 60 tokens at
+like a one whatever it is a 115 30 60 tokens a second at a 115 IQ is good
+enough. I think that's a bare case other than just the scaling laws break,
+you know. But in terms of if we assume scaling laws continue and we now know they're going to continue for
+pre-training for at least one more generation and we're very early in the two new scaling laws you know for post-
+training mid-training RLVR whatever people want to call it and then test time computed inference we're so early in those and we're getting so much
+better at helping the models hold more and more context in the in their minds
+as they do you know this test time compute and that's really powerful because you know everybody's like well
+you know the how's the model going to know this? Well, eventually if you can hold enough context, you can just hold every Slack message and Outlook message
+and company manual in in a company in your context. Yeah.
+And then you can compute the new task and compare it with your knowledge of the world, what you think, what the
+model thinks, all this context. And you know, it may be that like, you know, in just really really long context windows
+are the solution to a lot of the current limitations. Um, and that's enabled by some all these cool tricks like KV cash
+offload and stuff. But I do think like other than scaling laws slowing down,
+other than there being low economic returns to ASI, edge AI is to me by far
+the most plausible and scariest bare case. I like to visualize like different S-curves. invested through the iPhone
+and I love to like see the visual of the iPhone models as it as it sort of went from this clunky bricky thing up to the
+what we have now where like each one's like a little bit, you know, obviously we we've sort of petered out on its form factor. If you if you picture something
+similar for the Frontier models themselves, does it feel like a like it's at a certain part of that of that
+natural technology paradigm progression to you? If you're paying for Gemini Ultra or Super Grock and you're getting,
+you know, the good AI, it's hard to see differences. Like, I have to go really
+deep on something like, do you think PCI Express or Ethernet is a better protocol
+for scale up networking and why? Show me the scientific papers. And if you shift
+between models and you ask a question like that where you know it really deeply, know that then
+you know the answers. Yeah. then you see differences. I do play fantasy football. Um, winnings are donated to charity,
+but it is like, you know, these new models are quite a bit better at helping
+like who should I play? Yeah. You know, and and they they think in much more sophisticated ways.
+Um, and by the way, if you're if you're a historically good fantasy football player and you're having a bad season,
+it's why this is why because you're [clears throat] not using it, you know. And I think we'll see that in more and
+more domains. But I do think they are already at a level where unless you are
+a true expert or just have an intellect that is beyond mind um it's hard to see um the progress and
+that's why I do think we need to shift from getting more intelligent to more useful
+unless more intelligence starts leading to these massive scientific breakthroughs and we're curing cancer in
+26 and 27. Yeah, I don't know that we're going to be curing cancer, but I do think from a ROI
+almost an ROIS curve, we need to kind of hand off from intelligence to usefulness
+and then usefulness will then have to hand off to scientific breakthrough, you
+know, just that creates whole new industries. What are the building blocks of usefulness in your mind? Just being able to do things
+consistently and reliably. And a lot of that is keeping all the context. Like
+there's a lot of context if someone wants to plan a trip for me. Like you know I've I've acquired these strange
+preferences. Like I follow that guy Andrew Huberman. So I like to have an east facing balcony so I can get morning
+sun. You know the AI has to remember, you know, being on a plane with Starlink
+is important to me. Okay. Here are the resorts I've historically liked. Here are the kinds of areas I've liked. Here
+are the rooms that I would really like at each. That's a lot of context and to keep all of that and kind of weight
+those it's a hard problem. So I think context windows are a big part of it. You know, there's this meter task
+evaluation thing like how long it can work, how long it can work for. And you could
+think of that being related and in some way to to context. Um although not precisely, but that just task length
+needs to keep expanding because you know booking a restaurant and booking is
+economically useful but you know it's not that economically useful. But booking me an entire vacation and
+knowing the preferences of my parents, my sister, my niece, and my nephew, and what it means that like that's a much
+harder problem. And that's something that like a human might spend three or four hours on optimizing that. And then
+if you can do that, that's that's amazing. But then again, I just think it it has to be good at sales and customer
+support relatively soon. I do think we're going to see an kind of an acceleration in the awesomeness of
+various products just because engineers are using AI to make products better and
+faster. We both invested in Forell, the hearing aid company, which is just absolutely remarkable. I think something I never
+would have thought of. And we're going to see I think something like that in every vertical and that's AI being used for the most core function
+Yeah. of any company which is designing the product and then it will be you know there's already lots of examples of AI
+being used to help manufacture the product and distribute it more efficiently you know whether it's
+optimizing a supply chain you know whether it's you know having a vision system watch a production line you know
+so I I think a lot of stuff is happening the other thing I think is really interesting in this whole ROI part is
+Fortune 500 companies are always the last to adopt a new technology they're conservative they have lots of regulations lots of lawyers Startups are
+always the first. So let's think about the cloud which was the first which was the last like really truly kind of
+transformative new technology for enterprises. Being able to you know do have all of your um compute and the
+cloud and use SAS. So it's always upgraded. It's always great etc. etc. You can get it on every device. I mean
+it's those were dark days before the cloud. You know the first AWS reinvent I think it was in 2013. Every startup on planet Earth ran
+on the cloud. Yeah. The idea that you would buy your own server and storage box and router was ridiculous. And that probably
+happened like even earlier that that had probably already happened before the first reinvent. And then like you know
+the first big Fortune 500 companies started to standardize on it like maybe 5 years later. You see that with AI I'm
+sure you've seen this in your startups and I think one reason VCs are more broadly bullish on AI than public market
+investors is VCs see very real productivity gains. There's all these charts that for a given level of
+revenue, a company today has significantly lower employees than a
+company of two years ago. And the reason is AI is doing a lot of the sales, the support and helping to
+make the product. And I mean there is, you know, Iconic has some charts. A6Z, by the way, David George is a good
+friend, great guy. You know, he has his model busters thing. So there's very clear data that this is happening. So
+people who have a lens into the world of venture see this. And I do think it was very important in the third quarter, this is the first quarter where we had
+Fortune 500 companies outside of the tech industry give specific quantitative
+examples of AIdriven uplift. So C Robinson went up something like 20% on
+earnings. And should I tell people what C Robinson does? Let's just say a truck goes from, you
+know, Chicago to Denver. And then, you know, the trucker lives in Chicago. So it's going to go back from Denver to
+Chicago. There's an empty load. And CH Robinson has all these relationships
+with these truckers and trucking companies and they match shippers demand
+with that empty load supply to make the trucking more efficient. You know, they're a freight forwarder. You know, there's there's there's actually lots of
+companies like this, but kind of they're the biggest and most dominant. So, one of the most important things they do is
+they quote price and availability. So, somebody a customer calls them up and says, "Hey, I urgently need three
+18-wheelers from Chicago to Denver." You know, in the past they said it would take them, you know, 15 to 45 minutes
+and they only quoted 60% of inbound requests. With AI, they're
+quoting 100% and doing it in seconds. And so they printed a great quarter and the stock went up 20% and it was because
+of AIdriven productivity that's impacting the revenue line, the cost line, everything. And so I actually
+think that's pretty important because I was I was actually very worried about like the idea that we might have this Blackwell ROI air gap because we're
+spending so much money on Blackwell. Those Blackwells are being used for training and there's no ROI on training.
+Training is you're making the model. The ROI comes from inference. So I was really worried that you know we're going to have
+you know maybe this threequarter period where the capex is unimaginably high. Those black wheels are only being used
+for training bars staying flat eyes going up. Yeah. Yeah. Exactly. And so ROIC goes
+down and you can see like Meta Meta they printed you know because Meta has not been able to make a frontier model. Meta
+printed you know a quarter where ROIC declined and that was not good for the stock. So I was wor really worried about
+this. I do think that those data points are important in terms of suggesting that maybe we'll be able to navigate
+this potential air gap and ROIC. Yeah it makes me wonder about in this market I'm like everybody else. It's the
+10 companies at the top that are all the market cap more than all of the attention. There's 490 other companies
+500. You studied those too. Like what what do you think about that group? Like what what is interesting to you about
+the group that now nobody seems to talk about and no one really seems to care about because they don't they haven't driven returns and they're a smaller
+percent of the overall. Well, I think that people are going to start to care if you have more and more companies print these CH Robinson like
+quarters that companies that have historically been really wellrun.
+The reason like they have a long track record of success is they have a long you cannot succeed without using
+technology well and so if you have a kind of internal culture of experimentation and innovation I think
+you will do well with AI you know so like I would bet on the best investment banks to be early
+you know earlier and better adopters of AI than maybe some of the trailing banks
+you know just sometimes past prologue one thing that I strong opinion I
+you know, all these VCs are setting up these holding companies and, you know, we're going to use AI to make traditional businesses better and, you
+know, they're really smart VCs and they're great track records. But that's what private equity has been doing for 50 years.
+You're just not going to beat private equity at their game. What Vista did in the early days, right?
+Yeah. Private equity's maybe had a little bit of a tough run. You know, just multiples have gone up. Now, private assets are more expensive. The
+cost of financing has gone up. It's tough to take a company public because the public valuation is 30% lower than
+the private valuation. So PE's had a tough run. I actually think these private equity firms are going to be
+pretty good at systematically applying AI. We haven't spent much time talking
+about meta, anthropic or open AI. And I'd love just like your impression on everything that's going on in this
+infrastructure side that we talked about. These are three really important players in this in this grand battle, this grand this grand game. How does all
+of this development that we've discussed so far impact those players specifically do you think? The first thing let me
+just say about frontier models broadly. Yeah. You know in in 2023 and 24 I was fond of
+quoting Eric Visria and Eric Fishria's statement our friend um brilliant man
+and Eric would always say foundation models are the fastest appreciating assets in history.
+And I would say he was 90% right. I modified the statement. I said foundation models without unique data
+and internet scale distribution are the fastest appreciating assets in history. But reasoning fundamentally changed that
+in a really profound way. There was a loop, a flywheel to quote Jeff Bezos that it was at the heart of every great
+internet company and it was you made a good product, you got users, those users using the product generated data that
+could be fed back into the product to make it better. And that flywheel has been spinning at Netflix, at Amazon, at
+Meta, at Google, you know, for over a decade. And that's an incredibly powerful flywheel. And it's why those
+internet businesses were so tough to compete with. It's why they were increasing returns to scale. You
+everybody talks about network effects much more and you know network effects are they were important for social
+networks. I I don't know to what extent meta is a social network anymore. It's more like a content distribution
+but they just had increasing returns to scale because of that flywheel. And that dynamic was not
+present in the pre-reasoning world of AI. You pre-trained a model, you let it
+out in the world, and it was what it was. And it was actually pretty hard. They would do RLHF, reinforcement
+learning with human feedback, and you try and make the bot model better, and maybe you'd get a sense from Twitter vibes that people didn't like this, and
+so you tweak it, and you know, there were the little up and down arrows, but it was actually pretty hard to feed that
+back into the model. with reasoning. It's early but that flywheel has started
+to spin and that is really profound for these frontier labs. So one reasoning
+fundamentally changed the industry dynamics of Frontier Labs. just explain why specifically that is like what what what is going on
+because if a lot of people are asking a similar question and
+they're consistently either liking or not liking the answer, then you can kind
+of use that like that as a verifiable reward. That's a good outcome. And then
+you can kind of use feed those good answers back into the model. and we're
+very early at this flywheel spinning like it's hard to do now,
+but you can see it beginning to spin. So, this is important fact number one for all of those dynamics. Second,
+I think it's really important that Meta, you know, Mark Zuckerberg at the beginning of this year in January said,
+you know, I anticipate, you know, I'm highly confident, I'm going to get the quote wrong, that at some point in 2025,
+we're going to have the best and most performant AI. I don't know if he's in the top hundred. Okay,
+so he was as wrong as it was possible to be. And I think that is a really important fact because it suggests that
+what these four companies have done is really hard to do because Meta threw a
+lot of money at it and they failed. Yamakun had to leave. They had to have the famous billion dollar for AI
+researchers. And by the way, Microsoft also failed. They did not make such an
+unequivocal prediction but they hire but they bought um inflection AI and you
+know there were a lot of comments from them that we anticipate our internal models quickly getting better and we're going to run more and more of cop you
+know our AI on our internal models Amazon they bought a company called Adept AI
+they have their models called Nova no I don't think they're in the top 20 so clearly it's much harder to do than
+people thought a year ago and there's many many reasons for that like it's actually really hard to keep a big
+cluster of GPUs coherent. A lot of these companies were used to running their infrastructure to optimize for cost
+right instead of performance complexity and performance complexity and keeping the GPUs
+running at high utilization rate in a big cluster. It's actually really hard
+and there are wild variations in how well companies run GPUs.
+Yeah. And if you're running if the most anybody because the laws of physics, you know, maybe you can get two or 30 hundred,000 black wells coherent, we'll
+see. But if you have 30% uptime on that cluster and you're competing with somebody who has 90% uptime,
+you're not even competing. So one, there's a huge spectrum in how well people run GPUs. Two, then I think there
+is, you know, these AI researchers, they like to talk about taste. I find it very funny. You know, oh why do you make so
+much money? I have very good taste. You know what taste means is you have a good intuitive sense for the experiments to
+perform. And this is a this is is why you pay people a lot of money because it
+actually turns out that as these models get bigger, you can no longer run an experiment on a thousand GPU cluster and
+replicate it on 100,000 GPUs. You need to run that experiment on 50,000 GPUs
+and maybe it takes, you know, days. And so there's a very high opportunity cost. And so you have to have a really
+good team that can make the right decisions about which experiments to run on this. And then you need to do, you
+know, all the reinforcement learning during post- training well and the test time compute. Well, complicated.
+It's really hard to do. And everybody thinks it's easy, but all those things, you know, I used to have this saying
+like, hey, I was a retail analyst long ago. Pick any vertical in America. If
+you can just run a thousand stores and have them clean, well lit, stocked with
+relevant goods at good prices and staffed by friendly employees who are
+not stealing from you, you're going to be a $20 billion company, a $30 billion company. Like 15 companies have been
+able to do that. It's really hard. And it's the same thing. Doing all of these things well is really hard.
+and then reasoning with this flywheel. This is beginning to create more separation.
+And what's even more important, every one of those labs, XAI, Gemini, OpenAI,
+and Enthropic, they have a more advanced checkpoint internally of the model. Checkpoint is
+just um you're kind of continuously working on these models and then you release kind of a checkpoint and then
+the reason these models get fast the one they're using internally is for better and they're using that model to train the next model
+and if you do not have that latest checkpoint it's you're behind
+you're it's getting really hard to catch up. Chinese open source is a gift from God to meta
+because you can use Chinese open source to try and that can be your checkpoint
+and you can use that as a way to kind of bootstrap this and that's what I'm sure they're trying to
+do and everybody else. Um the big problem and the big a giant swing factor I think China's made a terrible mistake
+with this rarest thing you know I think China because you know they have the Huawei Asin and it's a decent chip and
+verse something you know like you know the the deprecated hop preserving something it looks okay so they're
+trying to force Chinese open source to use their Chinese chips uh their domestically designed chips. The problem
+is Blackwell is going to come out now and the gap between these American frontier labs and Chinese open source is
+going to blow out because of Blackwell and actually DeepSeek in their most recent technical paper v3.2 said like
+one of the reasons we struggle to compete with the American Frontier Labs is we don't have enough compute. That was their very politically correct,
+still a little bit risky way of saying, you know, cuz China said, "We don't want the black wells, right?" And they're
+saying, "Guys, that might be a big mistake. That might be a big mistake." And so, [snorts] if you just kind of
+play this out, these four American labs are going to start to widen their gap
+versus Chinese open source, which then makes it harder for anyone else to catch up because that gap is growing. So, you
+can't use Chinese open source to bootstrap. And then geopolitically, China thought they had the leverage.
+They're going to realize, oh, whoopsy daisy. We do need the black wells. And unfortunately, they'll probably for them
+um they'll probably realize that in late 26. And at that point, there's an enormous effort underway. DARPA has
+there's all sorts of really cool DARPA and DoD programs to incentivize really clever technological solutions for rare
+earths, you know, like using enzymes to refine them or there's all sorts of really cool things happening, you know,
+and then, you know, there's a lot of rare earth deposits in countries that are very friendly to America that, you
+know, don't mind actually refining it in the, you know, traditional way. So, I think rare earths are going to be solved
+way faster than anyone thinks. You know, they're obviously not that rare. They're just misnamed. they're rare because, you know, they're really messy to refine.
+And so geopolitically, I actually think Blackwell is pretty significant. Um, and it's going to give America a lot of
+leverage as this gap widens. And then in the context of all of that, going back to the dynamics between these companies,
+XAI will be out with the first Blackwell model and then they'll be the first ones probably using Blackwell for inference
+at scale. And I think that's an important moment for them. And by the way, it is funny like um you know if you go on open router you can just look they
+have dominant share now open router is whatever it is it's 1% of of API tokens but it's an indication
+they process 1.35 trillion tokens Google did like eight or 900 billion this is like whatever it is last 7 days or last
+month you know anthropic was at 700 billion like XAI is doing really really well and the model is fantastic I highly
+recommend it but you'll see XAI you know come out with this open AAI will come want faster. OpenAI's
+issue that they're trying to solve with Stargate is because they pay a margin to people for compute and maybe the people who run their
+compute are not the best at running GPUs. They are a high-cost producer of tokens. Um, and I think this kind of
+explains a lot of their code red recently. Yeah. Well, just the 1.4 $4 trillion in
+spending commitments. And I think that was just like, hey, they know they're going to need to raise a lot of money.
+Um, particularly if Google keeps its current strategy of sucking the economic oxygen out of the room and, you know,
+you go from 1.4 trillion rough vibes code red like pretty fast, you [laughter] know, and the reason they have a code red is because of all these
+dynamics. So then they'll come out with a model but they will not have fixed their per token cost disadvantage yet
+relative to both XAI and Google and almost and anthropic at that point. Anthropic is a good company. You know
+they're burning dramatically less cash than openai and growing faster. So I think you have to give anthropic a lot
+of credit and and a lot of that is their relationship with Google and Amazon for the TPUs and the trainiums. And so
+Anthropic has been able to benefit from the same dynamics that Google has. I think is very indicative in this great
+game of chess. You know, you can look at Daario Jensen maybe have taken a few there have been a few public comments,
+you know, that were, you know, made between them. Jousting, a little bit of jousting. Well, Anthropic just signed the $5 billion
+deal with Nvidia. That [clears throat] is because Daario is a smart man and he understands these
+dynamics about Blackwell and Rubid relative to TPU. And so Nvidia now goes
+from having two of the fighters, two fighters, XAI and OpenAI to three
+fighters. So that that helps in this Nvidia vers Google battle. And then if
+Meta can catch up, that's really important. And so I'm I am sure Nvidia
+is doing whatever they can to help Meta, you know, whatever. Like let us you're running those GPUs this way. May maybe
+we should maybe we should twist the screw this way or turn the dial that way and then it will be also if Blackwell
+comes back to China which it seems like it probably will happen that will also be very good because then Chinese open
+source will be back. What other I'm I'm always so curious about the polls of things like one poll would be the other breakthroughs that you have your your
+mind on things in the data center that aren't chips that we've talked about before as as one example. I think the most important thing that's going to
+happen in the world in this world in the next 3 to four years is data centers in
+space and this has really profound implications for everyone building a power plant or a data center on planet
+earth. Okay. And there is a giant gold rush into this. I haven't heard anything about this so
+please. Yeah. You know it's like everybody thinks like hey AI is risky you know uh but you know what I'm going to build a
+data center. I'm going to build a power plant that's going to do a data center. We will need that. But if you think about it from first principles, data
+centers should be in space. Okay. What are the fundamental inputs to
+running a data center? There are power and there are cooling and then there are the chips.
+That's like the total if you think about it from a total cost perspective. Yeah. And just the the inputs to making the tokens come out of the magic
+machines. Yeah. So in space you can keep a satellite in the sun 24 hours a day
+and the sun is 30% more intense. You know you can keep it in the sun just because like if the sun's here's this
+you know you can have the satellite you know always kind of catching catching the light catching the light. The sun is 30% more
+intense and this results in six times more irradiance in outer space than the high than on planet earth. So you're
+getting a lot of solar energy. Point number one. Point number two, because you're in the sun 24 hours a day, you
+don't need a battery. And this is a giant percentage of the cost. So the lowest cost energy um available in our
+solar system is solar energy and space. Okay. Second, for cooling in one of
+these racks, a majority of the mass and the weight is cooling. And the cooling in these data centers is
+incredibly complicated. You know, I mean, the HVAC, the CDUs, the liquid cooling.
+In space, cooling is free. You just put a radiator on the dark side of the satellite.
+It's gold. And it's [laughter] as close to absolute zero as you can get. So, all that goes away and that is a
+vast amount of cost. Okay, let's think about um how this these, you know, maybe
+each satellite is kind of a rack. It's one way to think of it. Maybe some people make bigger satellites that are three racks. Well, how are you going to
+collect connect those racks? Well, it's funny. In the data center, the racks are over a certain distance um connected
+with fiber optics. And that just means a laser going through a cable. The only thing faster than a laser going through
+a fiber optic cable is a laser going through absolute vacuum. So, if you can link these satellites in space together
+using lasers, you actually have a faster and more coherent network than in a data
+center on Earth. Okay, for training that's going to take a long time just because it's so big.
+Yeah, just because it's so big. But for inference, but I think even training will eventually happen. But then for
+inference, let's think about the user experience when I when we asked when you know when I asked Gro about you and it
+gave the nice answer. A radio wave traveled from my cell phone to a cell tower. Then it hit the base station,
+went into a fiber optic cable, went to some sort of metro aggregation facility in New York, probably within like, you
+know, 10 blocks of here. There's a small little metro router that's routed those
+packets to a big XAI data center somewhere. Okay? And then the
+computation was done and it came back over the same path. [gasps] If the satellites can communicate
+directly with the phone and Starlink has demonstrated directto cell capability, you just go boom boom. [laughter] It's a
+much better lowerc cost user experience. So in every way data centers in space
+from a first principles perspective are superior to data centers on earth. So if we could teleport that into
+existence, I understand that that portion. What are the frictions to that? H like why will that not happen? And is
+it launch cost? Is it launch availability? I mean, we need a lot of the space starships. Like the Starships are the
+only ones that can eomically make that happen. We need a lot of those Starships. Um, you know, maybe China or Russia will be
+able to land a rocket. Blue Origin just landed a booster. It's an entirely new and different way to think about SpaceX.
+And it is interesting that you know Elon posted yesterday or said in an interview
+that Tesla, SpaceX and XAI kind of converging were converging and they really are. So
+XAI will be the intelligence module for Optimus made by Tesla with Tesla vision
+has its you know perception system and then you know SpaceX will have the data centers in space that will will you know
+power a lot of the AI presumably for XAI and Tesla and the Octopuses and a lot of
+other companies and it's just it is just interesting the way that they're converging and each one is kind of
+creating competitive advantage for the other you know so it's if If you're XAI, it's really nice that you have this
+built-in relationship with Optimus and now, you know, Tesla's a public company, so there's going to be like I cannot
+imagine the level of vetting that will go into that intercomp agreement, you know, and then you have a big advantage
+with these data centers in space. Um, and then it's also nice if you're XAI
+that you have two companies with a lot of customers who you can use to help
+build your customer support agents, your customer sales agents with kind of
+built-in customers. So, they really are all kind of converging um in a neat way.
+And I do think like it's going to be a big moment when that first Blackwell model comes out from XAI next year. Hm.
+If I go to the other end of the spectrum and I think about something that seems to have been historically endemic to the
+human economic experience that uh shortages are always followed by gluts in capital cycles. What [clears throat]
+if in this case um the shortage is compute like Mark Chen now is on the record as saying they would consume 10x
+as much compute if you gave it to them in like a couple weeks. So so like there seems to still be a massive shortage of
+compute which is all the stuff we've talked about today. But there also just seems to be this like iron law of history that gluts follow shortages.
+What do you think about like that concept as it relates to this technology be a glut? Yeah. You know, and AI is fundamentally
+different than the software just in that every time you use AI takes compute in a
+way that traditional software just did not. I mean it is true like I think every one of these companies could
+consume 10x more compute. Like what would happen is just the $200 tier would get a lot better. the free tier would
+get like the $200 tier. Google has started to monetize AI mode with ads and I think that will give everyone else
+permission to introduce ads into the free mode and then that is going to be an important source of ROI you know like
+seems like OpenAI is tailor made to Yeah. Absolutely. All of them and actions like you know hey
+you know here are your three vacations would you like me to book one and then they're for sure going to collect a commission. Yeah.
+You know here's you know there there there's many ways you can make money. I think we went into great detail on
+maybe a prior podcast about how just inventory dynamics made these inventory cycles inevitable in semis. Um, and the
+iron law of semis is just that customer buffer buffer inventories have to equal lead times. And that's why you got these
+inventory cycles historically. We haven't seen a true capacity cycle in semis maybe arguably since the late 90s.
+And that's because Taiwan Smi has been so good at aggregating and smoothing supply.
+And a big problem in the world right now is that Taiwan semi is not expanding capacity as fast as their customers
+want. And I think this is actually a pretty big this they're they're in the process of making a mistake just because
+you know you do have Intel and with these fabs and they're not as good and it's really hard to work with their PDK
+but now you have this guy Leapoo who's who's a really good executive um and really understands that business. I mean
+by the way Patrick Elsinger I think was was also a good executive and he put Intel on the only strategy that could
+result in su success and I actually think it's shameful that the Intel board fired him when they did it. But Leapoo
+is a good executive and now he's reaping the benefits of Patrick's strategy and Intel has all these empty fabs and
+eventually given the shortages we have of compute those fabs are going to be filled.
+So I think Taiwan Sim is in the process of making a mistake but they're just so paranoid about an overbuilt. Yeah.
+And they're so skeptical. You know they're the guys who met with Sam Alman and laughed and said he's a podcast bro.
+He has no idea what he's talking about. You know [laughter] they're terrified of an overbuild. So it
+may be that Taiwan Simei singlehandedly that they're cautious the breaks on the bubble
+is is is is the governor um and you know and we do like I think you know I think
+governors are good it's good that you know it's good that power is a governor it's good that Taiwan sim is a governor
+if Taiwan semi opens up at the same time when you know data centers in space
+relieve all power constraints but that's like I don't know five six years away that data centers in space or majority
+of deployed megawatt like yeah I think you get it overbuild really fast but just we have these two really powerful
+natural governors and I think that's good you know like smoother and longer is good
+we haven't talked about the power other than alluding to it through the space thing haven't talked about power very much power was like the most
+uninteresting topic because there's the de demand and nothing really changed for like a really really long time all of a
+sudden we're trying to figure out how to get like gigawatts here there and everywhere how do you think about are you interested in powers I'm very interested I do feel lucky in a
+prior life I was the sector leader for the telecom and utilities team. [snorts] Okay, I I do have some base level of
+knowledge. So one, you know, having um having watts as a constraint is like
+really good for the most advanced compute players because if watts are the constraint, the price you pay for compute is
+irrelevant. The TCO of your compute is absolutely irrelevant because if you could get 3x or 4x or 5x more tokens per
+watt, that is literally three or 4x or 5x more revenue. And so, you know, it's just like if
+you're going to build a like, okay, like an advanced data center costs 50 billion. A data center with your ASIC
+maybe costs 35 billion, but if that $50 billion revenue, if that $50 billion
+data center pumps out 25 billion of revenue and your ASIC data center at 35
+billion is only pumping out 8 billion, well, like you're, you know, you're pretty bummed. It's good for like all of
+the most advanced technologies in the data center which is exciting to me as an investor. So as
+long as power is a governor the best products are going to win irrespective of price and have crazy pricing power.
+Okay, I think that's that's the first implication that's really important to me. Second, it is in the only solutions
+to this. We just can't build nuclear fast enough in America. Like as much as we would love to build nuclear quickly,
+we just can't. We just can't. Yeah, it's just too hard, you know. Um, NEPA, all these rules, like it's just it's too
+hard. Like a a rare ant that we could move and it could be in a better environment can totally delay the
+construction of a nuclear power plant. You know, one ant. [laughter] It's crazy actually. Um, like humans need to come
+first. We need to have a humanentric view of the world. But like the solutions are natural gas and solar. And
+the great thing is the great thing about these AI data centers is apart from the ones that you're going to do inference
+on, you can locate them anywhere. So I think you were going to see and you're this is why you're seeing all this
+activity in Abalene, you know, because it's in the middle of a big natural gas basin and we have a lot of natural gas
+in America because of fracking. You I think we we're going to have a lot of natural gas for a long time. We ramp production really fast. So I think this
+is going to be solved. You know, you're going to have power plants fed by gas or solar. I think that's the solution. And
+you know, you're already, you know, all these turbine manufacturers were reluctant to expand capacity. Caterpillar just said, "We're going to
+increase capacity by 75% over the next few years." So like the system on the power side is beginning to respond. One
+of the reasons that I always so love talking to you is that you do every like you do as much in the top 10 companies in the world as you do looking at brand
+new companies with, you know, entrepreneurs that are 25 years old trying to do something amazing. And so
+you have this very broad sense of what's going on. If I think about that second category of young enterprising
+technologists who now are like AI, they're like kind of the first generation of AI native entrepreneurs.
+What are you seeing in that group that's notable or surprising or interesting? These young CEOs, they're just so
+impressive in all ways and they get more polished faster. And I think the reason is is they're talking to the AI.
+How should I deal with pitching this investor? I'm meeting with Patrick Oanaughy. What What do you think the
+best ways I should pitch him are? Yeah. And it works. Do a deep research. And it's good. You know, hey, I have this difficult HR
+situation. How would you handle it? That's correct. And it's good at that. How would you,
+you know, we're struggling to sell our product. What changes would you make? And it's really good at all of that
+today. And so, and that goes to these, you know, VCs are seeing massive AI
+productivity in all their companies. It's because their companies are full of these, you know, 23, 24 or, you know,
+even younger AI natives. I've been so impressed with like young investment
+talent and it's just part of it. Like your podcast is part of that. There's just,
+you know, knowledge and very very specific knowledge has became so
+accessible, you know, through podcasts and the internet. Impressive young people come in and they're just I feel like
+they're where I was as an investor like in my, you know, early 30s and they're 22 and I'm like, "Oh my god,
+like I have to run so fast [laughter] to keep up." these kids who are growing up native in AI, they are just proficient
+with it um in a way that I am trying really hard to become. Can we talk about semi VC specifically
+and like what is interesting in that universe? Oh, just the one thing I just think that I just think is so cool about it and so
+underappreciated is your average semiconductor venture founder is like 50 years old.
+Okay. and Jensen and what's happened with Nvidia and the market cap of Nvidia has like singlehandedly
+ignited semiconductor venture but the way it's ignited it's ignited in an awesome way that's like really good for
+actually Nvidia and Google and everyone is like let's just say you were the best DSP architect in the world you had made
+for the last 20 years every two years because that's what you have to do semiconductors it's like every two years
+you have to win run a race and if you won the last race you start like a foot ahead
+and over time those compound um and make each race easier to win but like maybe
+that person and his team maybe he's the head of networking at a big public company he's making a lot of money and
+he has a good life and then because he sees these outcomes and the size of the markets in the data center he's like wow
+why don't I just go start my own company but the reason that's important is that you know I forget the number but I mean there are thousands of parts in a
+blackwell rack and you know and there's thousands of parts in a TPU rack And in the Blackwell rack, you know, maybe
+Nvidia makes, I don't know, two two or 30 hundred of those parts. And, you know, same thing
+in an AMD rack. And they need all of those other parts to accelerate with
+them. [clears throat] So, they couldn't go to this one-year cadence if the rest everything was not
+keeping up with them. The fact that semiconductor venture venture has come back with a vengeance, you know, Silicon Valley stopped being Silicon Valley long
+ago. My little firm maybe has done more semiconductor deals in the last seven years than the top 10 VCs combined, you
+know, but that's really really important because now you have an ecosystem of
+companies who can keep up and then that ecosystem of these venture companies is
+putting pressure on the public companies that are also need to part of part of this if we're going to go to this annual
+cadence which is just so hard. Um, and it's one reason I'm really skeptical of these AS6 that don't already have some
+degree of success. So, I do think that's a super super important dynamic and one that's
+absolutely foundational and necessary for all of this to happen because not even Nvidia can do it alone.
+Not AMD can't do it alone. Google can't do it alone. You need, you know, the people who make the transceivers. You
+need the people who make the wires, who make the back blades, you know, who make every who make the lasers. They all have
+to accelerate with you. And one thing that I think is very cool about AI as an investor is it's just it's the first time where every level of the stack
+that I look at at least the most important competitors are public and private, you know. So Nvidia they're they're very
+important you know private competitors you know Broadcom important private competitors Marll important private
+competitors you know luminum coherent all these companies um you know there's even like a wave of innovation in memory
+which is really exciting to see because memory and is such a gating factor by the way something that could slow all
+this down and be a natural governor is if we get our first true DRAM cycle since the late 90s say more what that means
+you know if like a DRAM wafer is like valued at like a 5 karat a diamond in the '90s when you had these true
+capacity cycles before Taiwan semi kind of smoothed everything out and DRAM became more of an oligopoly. You know,
+you would have these crazy shortages where the price would just go 10x things that are unimaginable
+relative to the last 25 years where like a giant DRAM cycle, a good DRM cycle is the price start stops going down. An
+epic cycle is maybe it goes up, you know, whatever it is 30 40 50%. But I mean, if it starts to go up by X's
+instead of percentages, that's a whole different game. By the way, we should talk about SAS.
+Yeah, let's talk about it. What do you think's going to happen? Application SAS companies are making the exact same mistake that brick-andmortar
+retailers did with e-commerce. So, brick and mortar retailers um you know, particularly after the um you
+know, the the telecom bubble crashed, you know, they looked at Amazon and they said, "Oh, it's losing money. You know,
+e-commerce is going to be a low margin business." you know, how how can just, you know, from first principles, how can
+it ever be more efficient as a business? Right now, our customers pay to transport themselves to the store and
+then they pay to transport the goods home. How could it ever be more efficient if we're, you know, sending
+shipments out, you know, to individual customers, you know, and Amazon's vision, of course, well, eventually we're just going to go down a street and
+drop off a package at every house. And so, they did not invest in e-commerce. They they clearly saw customer demand
+for it, but they did not like the margin structure of e-commerce. That is the fundamental reason that essentially
+every brick brick-and-mortar retailer was really slow to invest in e-commerce. And now here we are and you know Amazon
+has higher margins in their North American retail business than a lot of retailers that are mass market retailers
+you know so margins can change and if there's a fundamental transformative kind of um new new technology that
+customers are demanding it's always a mistake not to embrace it and that's exactly what the SAS
+companies are doing they have their 70 80 90% gross margins and they are
+reluctant to accept AI gross margins you know the very nature of AI is you know software you write it once and it's
+written very efficiently and then you can distribute it broadly at very low cost and that's why it was a great
+business AI is the exact opposite where you have to recomputee the answer every
+time and so you know a good AI company might have gross margins of 40%.
+Now, the crazy thing is because of those efficiency gains, they're generating cash way earlier than other people, you
+know, than other than SAS companies did historically, but they're generating cash earlier, not because they have high gross margins, but because they have
+very few human employees. And it's just tragic to watch all of these companies
+like you want to have an agent, it's never going to succeed if you're not willing to run it at a sub 35% gross
+margin because that's what the AI natives are running it at. Yeah, maybe they're running it at 40. So if
+you are trying to preserve an 80% gross margin structure, you are guaranteeing
+that you will not succeed at AI. Absolute guarantee. And this is so crazy
+to me because one, we have an existence proof for software investors being
+willing to tolerate gross margin pressure as long as gross profit dollars are okay. And it's called the cloud.
+People don't remember but you know when Adobe converted from on premise to uh
+the CL you know to a SAS model not only did their margins implode their actually revenues imploded too because you went
+from charging up front you know to charging over a period of years. Microsoft, it was less dramatic, but you
+know, Microsoft was a tough stock in the early, you know, in the early days of
+the cloud transition because investors were like, "Oh my god, you're an 80% gross margin business." And the cloud is
+the 50s and they're like, "Well, it's going to be gross profit dollar creative. It probably will improve those
+margins over time." Microsoft, they bought GitHub and they use GitHub has a
+distribution channel for, you know, uh, or Copilot. co-pilot for coding that's
+become a giant business a giant business now for sure it runs at much lower gross
+margins but there are so many SAS companies like I can't think of a single
+application SAS company that could not be running a successful agent strategy
+they have a giant advantage over these AI natives and that they have a cash generative business
+like and I think there is room for someone to be a new kind of activist or
+constructive ist and just go to SAS companies and say stop being so dumb.
+All you have to do is say here are my AI revenues and here are my AI gross margins and you
+know it's real AI because it's low gross margins. I'm going to show you that and here's a venture competitor over here
+that's losing a lot of money. So maybe I'll actually take my gross margins to zero for a while but I have this
+business that the venturef funed company doesn't have. And this is just such a like obvious playbook that you can run
+Salesforce, Service Now, HubSpot, GitLab, Atlassian,
+all of them could run this. And the way that those companies could or should think about the way to use agents is
+just to ask the question, okay, what are the core functions we do for the customer now? Like how can we further
+automate that with agents effectively? Or is it some other 100% just like if you're in CRM? Well, what our customers do, they talk to talk
+to their customers. Yeah, we're customer relationship management software and we do some customer support, too.
+So, make an agent that can do that, right? And sell that, right, at 10 to 20% and let that agent access
+all the data you have, right? Cuz what's happening right now is another agent,
+another agent made by someone else is accessing your systems to do this job, pulling the data into their system,
+and then you will eventually be turned off. And it's just crazy. And it's just because, oh wow, but we want to preserve
+our 80% gross margins. This is a life ordeath decision. And essentially
+everyone except Microsoft is failing it. To quote that memo from
+that um Noia guy long ago, like their their platforms are burning. Burning platform. Yeah. Yeah. There's a really nice platform
+right over there and you can just hop to it and then you can put out the fire in your platform that's on fire. And now
+you got two platforms and it's great. You [laughter] know, your data centers and space thing makes me wonder if there are other kind of
+like less discussed off-the-wall things that you're thinking about in in the
+markets in general that we haven't talked about. It does feel like since
+2020 kicked off and you know 2022 punctured this kind of a series of rolling bubbles you know so in 2020 you
+know there was a bubble in like EV startup EVs company startup EVs that were not Tesla and that's for sure a
+bubble and they all went down you know 99%. And there was kind of a bubble in, you know, more speculative stocks. Uh,
+you know, then we had the meme stocks, you know, GameStop. And now it feels like the rolling bubble is in nuclear
+and quantum. And these are, you know, fusion and SMR. Like it's it would be a, you know, it's
+it would be a transformative technology. It's amazing. But sadly from my
+perspective, none of the public ways you can invest in this are really good
+expressions of this theme are likely to succeed or have any real fundamental support. And same thing with quantum
+like we I've I've been looking at quantum for 10 years. We have a really good understanding of quantum and the
+public quantum companies again are not the leaders. You know, from my perspective, the leaders in quantum
+would be Google, IBM, and then the Honeywell Quantum, you know. So the
+public ways you can invest in this theme which probably is exciting are not the best. So you have two really clear
+bubbles. I also think quantum supremacy is very misunderstood. People hear it and I think that mean it means that
+quantum computers are going to be better than classical computers at everything. With quantum you you can do you can do
+some calculations that classical computers cannot do. That's it. That's going to be really
+useful and exciting and awesome. But it doesn't mean that quantum takes over the
+world. The thought that I have had, this is maybe less related
+to markets than just AI. I have just been fascinated that for the last two
+years, whatever AI needs to keep growing and advancing, it gets.
+Have you ever seen public opinion change so fast in the United States on any
+issue has nuclear power? Just happened like that. Like that.
+And like why did that happen like right when AI needed it to happen? Now we're
+running up on boundaries of power on earth. you know, all of a sudden data
+centers in space, you know, just it's just a little strange to me that whenever there is
+something a bottleneck that a bottleneck that might slow it down,
+everything accelerates, you know, like Reuben is going to be such an easy, seamless transition relative to
+Blackwell and Reuben's a great chip and then you you know, you have MI, you know, AMD getting into the game with the
+MI450. Like it's just whatever AI needs, it gets. You're a deep reader of sci-fi, so uh
+Yeah, exactly. You're making me think of of Kevin Kelly's great, uh book, What Technology Wants. He calls it the
+technium, like the like the overall mass of technology that just like is supplied by humans.
+Absolutely. To grow more powerful. Yes. It just wants to grow more and more powerful. And now we're going into an instate.
+I have a selfish closing question. Speaking of speaking of uh young people, so my kids who are 12 and 10, but
+especially my son who's older is developing an interest in what I do, which I think is quite natural. And I'm
+going to try to start asking my friends who are the most passionate about entrepreneurship and investing why they
+are so passionate about it and what about it is so interesting and life-giving to them. How would you pitch
+what you've done, the career you built, the this part of the world to a young person that's interested in this?
+I do believe at some level kind of investing is the search for truth. And if you find truth first,
+and you're right about it being a truth, that's how you generate alpha. And it has to be a truth that other people don't have have not yet seen. You're
+searching for hidden truths. Earliest thing I can remember is being interested
+in history. You know, looking at books with pictures of the Phoenetians and the Egyptians and the Greeks and the Romans
+and pyramids. I loved history. I vividly remember like in the I think
+in the second grade as my dad drove me to school every day, he would we'd go we went through the whole history of World
+War II in one year and I loved that. And then that translated into a real
+interest in current events very early. So, like as a pretty young person, you
+know, I don't know if it was eighth grade or seventh grade or ninth grade, like I was reading the New York Times
+and the Washington Post and I would get so excited when the mail came because it
+meant that maybe there was an economist or a Newsweek or a Time or US News and I was really into current events, you
+know, because current events is kind of like applied history and watching history happen and like [snorts] thinking about what might happen next.
+And you know, I didn't know anything about investing. My parents were both attorneys. Like I was anytime I won an
+argument, I was super rewarded. Like, you know, if I could make a reasonable argument why I should stay up
+late, my parents would be so proud and they'd let me stay up late, but I had to beat them, you know, like I was just
+kind of going through life and, you know, I really love to ski and I love rock climbing and I go to college and
+rock climbing is, you know, by far the most important thing in my life. I dedicated myself to it completely. I did
+all my homework at the gym. I got to the rock climbing gym like at 7 am would,
+you know, skip a lot of classes to stay in the gym. I'd do my homework on like a big bouldering mat.
+Like every weekend I went and climbed somewhere with the Dartmouth Mountaineering Club. And as part of that, like on climbing trips,
+you know, maybe we'd play poker. The movie came out while I was in college. We started playing poker. I like to play
+chess. Um, and I was never that good at chess or poker. You never really dedicated myself to either. And my plan
+like you know after two or three years of college was I was going to leave. I was going to work as a I I was a ski
+bomb at Alta in college. I I was a housekeeper. I've cleaned a lot of toilets. Um it is it was shocking to me
+how people treated me and it is like permanently impacted how I treat other people. You know
+like I want you know like you'd be cleaning somebody's room and they'd be in it and they'd be reading the same
+book as you and like you know you'd say oh that's a great book. you know, I'm about where you are and a they look at
+you like you're a space alien, like you speak and then they get even more shocked. You
+read, [laughter] you know, so it like had a big impact on how I've like just treated everyone since then. But
+anyways, I was going to be a ski bum in the winters. Um, I was going to work on a river in the in the summers and that
+was how I was going to support myself. And then I was going to climb in the shoulder seasons, going to try and be a wildlife photographer and write the next
+great American novel. I can't believe I never knew this. That was my plan. This was like my plan of record. I was really lucky. My
+parents very supportive of everything I wanted to do. My parents had very strict parents, so of course they're extremely permissive with me. So, you know, I'll
+probably end up being a strict parent. Just the cycle continues. My parents were lawyers. You know, they they they had done reasonably well. Um
+they both grew up in in um I would say very economically disadvantaged circumstances. You know, like my dad
+talks about like he remembers every person who bought him a beer just because he could not he couldn't
+afford a beer. You know, he worked the whole way through college. He was there on a scholarship. You know, he had one
+pair of shoes all through high school. But anyways, and so they were super on board with this plan and I'd been very lucky. They sent me to college and I
+didn't have to pay pay for college. They paid for my college education. They said, "You know, Gavin, we think this plan of being, you know, ski bum, river
+rafting guide, wildlife photographer, climbing the shoulder seasons, tried to write a novel. We think it sounds like a
+great plan, but you know, we've never asked you for anything. We've haven't encouraged you to study anything. We've supported you in everything you've
+wanted to do. Will you please get one professional internship, just one, and we don't care what it is."
+The only internship I could get, this was at the end of my sophomore summer at Dartmouth, was an internship with Donaldson Lufkin Engineer. Um, DJ, my
+job was to every time DJ published a research report, it was in like the private wealth management division and I
+worked for the guy who ran the office and my job was whenever they produced a piece of research, I would go through
+and look at which of his clients owned that stock. Then I would put the research I would
+mail it to the clients, you know. So this day we wrote on General Electric. So, I need to mail the GE report to
+these 30 people and then I need to, you know, email the Cisco report to these 20 people. And
+then I started like reading the reports and I was like, "Oh my god, this is like the most interesting thing imaginable."
+Investing. I kind of conceptualized it. It's a game of skill and chance, kind of like something like poker. Um, and you
+know, there's obviously chance in investing. you know, like if you're an investor in a company and a meteor hits
+their headquarters, like that's that's bad luck, but like you own that outcome. Um, so there is chance um that is
+irreducible, but there's skill, too. So that really appealed to me. And the way you got an edge in this the greatest
+game of skill and chance imaginable was you had the most thorough knowledge
+possible of history. And you intersected that with the most accurate
+understanding of current events in the world to form a differential opinion on what
+was going to happen next in this game of skill and chance. Which stock is mispriced in the Perry Mutual system?
+That is the stock market. And that was like day three. I went to the bookstore
+and I bought like the books that they had which were Peter Lynch's books. I read those books in like two days. I'm
+I'm a very fast reader. And then I read all these Warren books, books about Warren Buffett. Then I read Market
+Wizards. Then I read Warren Buffett's letters to his shareholders. This is like during my internship. Then I read
+Warren Buffett's letters to his shareholders again. Then I taught myself accounting. There's this great book, Why Stocks Go Up and Down. Then I went back
+to school. I changed my majors from English and history to history and economics. And I never looked back. And
+it consumed like I continued to really focus on climbing. I would be in the gym
+and I would print out everything that the um people on the mly fool wrote.
+they had these fools and and you know they they were they were early to talking about return on invested capital
+and in incremental ROIC is like a really important indicator and I would just read it and I would underline it and I'd
+read books and then I'd read the Wall Street Journal and then eventually there was a computer terminal finally set up
+near the gym and I'd go to that gym and just you know read news about stocks and it was the most important thing in my
+life and like I barely kept my grades up and yeah that's how I got into it man history current events skill and dance
+and I am a competitive person and I've actually never been good at anything
+else. Okay, I got picked last for every sports team. Like I love to ski. I've
+literally spent a small fortune on private skiing lessons. I'm not that good of a skier. I like to play
+pingpong. All my friends could beat me. [laughter] Um I tried to get really good at chess and this was before the you
+know when you you actually had to play the games. It was before it was easy to do it on the phone. And my goal was to
+beat one of the people. I'm sure there's a park somewhere. It's literally right there. Famous one is right there. Okay. Well, there's one in Cambridge.
+And I wanted to beat one of them. Never beat one of them. Never been good at anything. I thought I would be good at this.
+And the idea of being good at something other than taking a test
+that was competitive was very appealing to me. And so I think that's been a really
+important thing, too. And to this day, this is the only thing I've been vaguely competitive at. I'd love to be good at
+something else. I'm just not, [laughter] you know. I think I'm going to start asking this question of everybody. Uh, the ongoing
+education of Pearson May, amazing place to close. [music] I love talking about everything so much. This is great, man. Thank you. Thank
+you. Thank you.

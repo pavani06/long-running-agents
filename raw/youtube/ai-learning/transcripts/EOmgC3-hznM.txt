@@ -1,0 +1,337 @@
+here's a rule of thumb for using
+notebook LM if your use case matches the
+following three criteria notebook LM
+will perform better than other AI tools
+first you have a very low tolerance for
+hallucination second you're working with
+information scattered across different
+locations different formats like
+documents and slides and or across
+different mediums text video and audio
+and third you want a quick and reliable
+way to transform all that fragment
+information into a cohesive and
+meaningful output in the next 15 minutes
+I'll go over key features real world use
+cases and pro tips very few people know
+about let's get started right off the
+bat it's a bit overwhelming for most
+users to see this when creating their
+first notebook there's a lot going on so
+I recommend pressing escape clicking the
+logo in the top left corner to go to the
+notebook LM homepage and now that we're
+oriented we want to bookmark this for
+easy reference uh in the future change
+to list view that's just a personal
+preference of mine and sort by title now
+let's create a new notebook and here
+here I'm first going to press escape
+again because I want to first name this
+notebook Health reports 2 you'll see why
+in a bit and click the plus icon here to
+start uploading sources here I'm just
+going to upload my three most recent
+annual Health checkup reports along with
+a pdf version of tools of Titans by Tim
+Ferris and while all that's loading I'm
+going to add another source YouTube
+video and I am first going to add a
+video on the topic of uric acid I
+promise this will make sense in a little
+bit
+one more Source YouTube video and this
+is going to be a video by Andrew
+huberman on the topic of fasting once
+all sources have been uploaded and
+processed we can now click into
+individual sources I'll choose my most
+recent Health Report um and I'm going to
+blur this to not overshare but ladies
+just know that I'm at Peak physical
+health and under Source guide we see
+that notebook LM has produced a concise
+summary of a dense medical report I
+would definitely not have read word for
+word on the right clicking into one of
+the key topics like abnormal results
+here actually prompts notebook LM to
+expand on that topic based on all the
+selected sources on the left hand side
+even though the key topic was just from
+One Source right so that's the first
+important thing to keep in mind
+everything in this chat interface takes
+into account all selected sources
+meaning if we want notebook LM to ignore
+a source we need to First deselect it
+from The Source list by the way don't
+worry about me the only abnormal result
+from my health reports is my absolutely
+huge capacity to make dad jokes The
+Notebook guide feature down here is like
+a quick start guide for beginners
+There's a summary of all the sources
+added to the notebook pre-created
+templates like FAQs and briefing docs
+that are very situational I'll give
+examples later and suggested questions
+here to help users get started and don't
+worry we'll also go over o audio
+overviews today all right we're going to
+start interacting with the notebook but
+since the answer take a while to
+generate I'll switch over to the actual
+Health reports notebook I've been using
+first I asked for the top 10 Health
+Trends based on my last three reports a
+pretty time-consuming task even for
+doctors right but just after just a few
+seconds notebook LM just gives me a list
+of 10 observations one of which is a
+fact that I've had elevated uric acid
+levels over the last 3 years uh which is
+unfortunately true because I eat a lot
+of red meat and because I added a video
+on uric acid as a source I can now ask
+what are the top three things I can do
+to load my uric acid levels I'm told I
+can do these three things okay but just
+to be safe what exactly did the video
+say clicking the inline citation brings
+up the video transcript and Dr Burke
+says uh potassium citrate can knock out
+uric acid pretty fast okay nice now pay
+attention to this next part because I
+got burned by this whenever you see a
+good output you want to refer back to
+click save to note if you don't do this
+the output disappears the next time you
+reload the notebook according to Google
+this happens because notebook LM is not
+trained on any of the data that we
+upload including our conversations
+meaning if we close a chat without
+saving the note all that data disappears
+next I fast for 36 hours every week and
+since both the Hub video and tools of
+Titans talk about fasting I can ask hey
+does anything from my health reports
+suggest I shouldn't fast for 36 hours
+every week and again notebook Alm does a
+great job sharing context telling me my
+blood work is normal and I can continue
+fasting with no issues without notebook
+LM yes I can obviously go through the
+exact same information and draw my own
+conclusions but that's very manual very
+timeconsuming and I might miss key
+information in contrast notebook LM is
+able to quickly and efficiently
+reference multiple sources connect the
+relevant dots and produce a good enough
+output in significantly less time
+finally I'm going to throw a curveball
+and prompt this notebook with what do
+the sources say about in inerting D Lo
+weeks into my workout routine and as
+expected notebook Elm says None of the
+sources say anything about D Lo weeks
+which is true but the output does
+mention related topics this actually
+illustrates a very important Point even
+though notbook LM and Google Gemini
+might use the same underlying model
+notebook LM is fine-tuned to hallucinate
+less but as a result is also less
+creative whereas Google Gemini while
+prone to Hallucination is optim ized for
+Speed and creativity wrapping up this
+example not only can we manually add a
+note but we can also select multiple
+notes or just simply select all and
+choose to convert all these notes to a
+standalone Source Pro tip once that new
+source is created we can click into it
+select all the text here copy and paste
+to use somewhere else by the way if you
+want to cut through all the hype and
+master essential AI skills you might
+want to check out my free AI toolkit
+I'll leave a link down below use case
+number one is something I call Focus
+knowledge retrieval and starting off
+with a simple example I have a notebook
+titled equipment manuals where I've
+added all the user manuals for all my
+filming equipment this allows me to ask
+questions like Hey how do I update the
+firmware for this monitor or how do I
+enable this one specific setting in my
+camera and notebook LM is able to
+retrieve that relevant information from
+my sources to replicate this you can
+just Google the product you have
+followed by user manual type PDF side
+note this is also how I found the pdf
+version of tools of Titans and even if
+you can't find a pdf version of the user
+manual remember you can add the website
+directly as a source Pro tip there are
+some websites that actively block
+notebook LM from adding them as sources
+but we can easily get around this by
+adding another source um and just copy
+and pasting the text from that website
+right here moving on to another example
+I have a tax and accounting notebook for
+my business where I've added uh
+documentations like tax codes from the
+government and audit reports from my
+accounts in preparation for tax season I
+can ask this notebook questions like
+what are my tax obligations last year
+what are some notable Trends in my
+financial statements and very
+personalized questions like hey do I
+qualify for offshore tax exemption since
+I travel a lot last example for this use
+case since I interview candidates as
+part of my full-time job I have a
+recruiting notebook this is just an
+example where I add sources like
+guidelines from HR performance rubrics
+question Banks uh candidate rums and
+interview notes I can now prepare for
+these interviews more effectively by
+asking questions like hey what are the
+key achievements and relevant skills of
+this candidate based on their submitted
+documents or based on what we look for
+in product marketing managers at this
+level give me 10 questions to ask this
+candidate and what are the key strengths
+and areas for improvement for this
+candidate based on the interview notes
+Pro tip if you try this yourself
+remember to only select the documents
+from the candidate you're currently
+interviewing or else notbook LM might
+incorporate information from other
+candidates as well next up we have the
+project context engine use case put
+simply I have a notebook for each
+project I'm responsible for at work and
+I add meeting notes project plans and
+documents from similar projects as
+sources side note project and program
+managers benefit massively from notebook
+LM because by definition their job
+requires them to one work with
+information scattered across different
+locations and two synthesize that
+information in an easy to digest format
+and notebook LM is designed to do
+exactly that remember the suggested
+templates found under notebook guide
+well here we can take that a step
+further to create perhaps a high level
+briefing document for senior leaders um
+a campaign timeline to make it easy for
+us to create a slide to visualize those
+key milestones and even an FAQ document
+for colleagues who are unfamiliar with
+the project Pro tip uploading meeting
+transcripts from Zoom or Google meet
+unlocks highly accurate answers to
+questions like hey what are my
+outstanding tasks or um write a meeting
+recap email based on this one specific
+meeting and since I've shared recap
+documents from previous projects I can
+ask notbook LM to identify learnings and
+strategies I can incorpor it in my next
+campaign Pro tip if you're struggling to
+get started with notebook LM I recommend
+uploading files you know are related in
+some way and then trying the suggested
+questions down here they're surprisingly
+helpful also if you just happen to be a
+Google workspace user you might want to
+join my Weekly Newsletter to receive an
+insanely actionable tip every week link
+down below next up I work in Tech and
+I'm obviously interested in AI but
+staying current is tough there's a lot
+to read and honestly it's hard to
+connect the dots sometimes like for
+example what are the implications of
+this big meta announcement for the rest
+of an industry my solution was to create
+an earnings analysis notebook with
+earnings reports from tech companies
+along with articles from Tech analysts
+that have compiled in a Google Docs
+format you'll see why that's important
+in a bit now with notebook LM doing the
+heavy lifting I can ask very targeted
+questions such as what is Google's
+monetization strategy with regards to Ai
+and I get this structured list and I can
+also ask broader questions like how do
+AI strategies differ for Google meta
+Amazon and apple and it's actually
+amazing how notebook LM first shares a
+one- sentence catchy summary Google
+enhance expand and explore meta AI for
+everything everywhere before expanding
+on their respective strategies and
+because I enjoy listening to podcasts
+during commutes and workouts I can ask
+notebook LM to generate a personalized
+podcast Episode by clicking customize
+audio overview and providing Specific
+Instructions like focus on how earnings
+from one company affect its competitors
+and assume the listener has zero
+technical background it's like they're
+taking a page from meta's book right
+instead of trying to invent some whole
+new AI thing they're making their
+existing products better more powerful
+and more profitable yeah it shows that
+AI isn't always about replacing
+everything sometimes it's about
+improving what we already have and meta
+seems to get that Pro tip when we add a
+Google doc or slide as a source we can
+click in and then we can click here to
+resync the file after after changes are
+made so that we're always drawing from
+the most upto-date information a few
+final thoughts I want to leave you with
+first although notebook LM rarely
+hallucinates it's not optimized for
+creativity so I found myself taking
+notebook lm's outputs and using gemini
+or claw to produce that final
+deliverable second the amount of
+information notebook LM can absorb is
+massive around 25 million words per
+notebook and that's compared to around
+500,000 words for Gemini 100,000 for
+claw and 64,000 for Chach BT and even
+though we're capped at 20 sources per
+notebook we can simply combine multiple
+documents into one file and third this
+might be an obvious point but with a
+tool like notebook LM the quality of the
+sources becomes extremely important
+using articles from wellestablished
+Publications is going to give us much
+better outputs than lowquality
+clickbaity blog posts I have a lot more
+use cases to share so let me know if you
+want more content like this in the
+meantime check out my AI playlist and as
+usual have a great one

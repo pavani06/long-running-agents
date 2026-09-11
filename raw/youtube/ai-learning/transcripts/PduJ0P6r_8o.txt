@@ -1,0 +1,583 @@
+Today's episode, we are going to talk
+about an introduction to Vibe Marketing.
+Now, if you're listening to this, you've
+probably heard of Vibe Coding, but you
+might have not have heard of Vibe
+Marketing, and I'm going to break down
+exactly what it is, why you should care,
+why this is going to propel your
+business, your startup idea, and why
+most people should actually be focusing
+on Vibe Marketing a little more than
+Vibe coding. I'm actually going to give
+away a bunch of workflows of how you can
+do Vibe Marketing. Towards the end, I'm
+going to talk about some of the tools uh
+that you could use. And by the end of
+this, you should have a pretty good
+foundation of how you can get going uh
+do vibe marketing, use AI, use agents to
+automate a lot of the tedious marketing
+tasks.
+[Music]
+So, uh, before I begin, if you're new to
+the channel, new to the startup ideas
+podcast, why you should listen to me.
+I've started and sold three ventureback
+companies. I was an adviser to Tik Tok.
+I was an adviser to Reddit. And, uh, I
+am a co-founder in LCA, which is a
+design agency for the AI age. We
+literally work with pretty much all the
+biggest AI companies or software
+companies looking to get into AI. So I
+know a thing or two about um consumer
+businesses, growing them, marketing uh
+and
+AI. So I posted this on on X and it went
+absolutely uh viral. I said vibe
+marketing is the new marketing. So when
+you think about what is vibe coding,
+right? Vibe coding is using tools like
+bolt, raplet, lovable. What is uh Vibe
+marketing? Well, it's actually the
+combination of some of these Vibe coding
+tools with things like Gum Loop, Manis,
+N8N, Tascade, and it's using AI agents
+and workflows to actually go and build
+marketing
+campaigns. So, my co-founder, uh, Boring
+Marketer, and shout out, uh, shout out
+to him, James, for helping me kind of
+put some of these present, uh,
+presentation materials together. He's
+the goat when it comes to VI market
+marketing. Uh he said something that I
+totally uh resonate with which is
+marketing will resemble highfrequency
+stock trading in the near future. Agents
+working 24/7 monitoring surfacing
+opportunities personalized micro
+interactions. You'll be like a portfolio
+manager or day trader adjusting risk
+deploying money based on real-time
+market signals. I totally believe that's
+where we're going. Why is VI marketing
+even happening in the first place? I
+think it's because three things have
+actually converged at the same time. One
+is that AI got good enough at marketing
+tasks. So now agents can actually handle
+the execution. I don't even think that
+was true a month ago, by the way. So
+this is happening in real time. Two,
+Vibe coding tools made automation
+accessible to non-developers. No coding
+required. And three, the custom tool
+building costs have basically collapsed.
+So you can build personalized software
+for pennies basically. Um and because of
+that, you know, you can basically do a
+lot of customized marketing campaigns.
+The old world and the new world. The old
+world of marketing was basically having
+these bigger teams, 10 specialists, SEO
+people, copywriters, designers,
+analytics people, media buyers. These
+guys were these people are basically
+working in silos. you know, they're in
+meetings, they're in Slack threads, and
+it takes a while to launch when you have
+a lot of people. This new world, and
+which gets me so excited about this new
+world is, you know, you don't have to
+raise millions of dollars or have a huge
+team to actually go and uh and run with
+this. You basically need a single smart
+marketer with taste, of course. Uh pair
+that with AI agents and workflows. We'll
+get into workflows by the end. I will
+I'm I'm not going to leave you hanging.
+testing tons of marketing angles in real
+time with hundreds hundreds of AI agents
+running the show launching in days, not
+weeks. So, uh before we do get into the
+workflows, let's just talk about what
+you need to get started, uh in the Vibe
+marketing toolkit. Uh some of this may
+be obvious to to some people. You're
+going to want to have a vibe coding tool
+like Replet, Bolt, Lovable. So, um, you
+know, it it is crazy that you can with a
+prompt go make me a website for new
+homeowners that help subscribe to
+exclusive content with flexible payment
+options. I mean, today, the fact that
+you can actually put in a prompt and get
+a prototype uh is a gamecher when you're
+creating a lot of these uh marketing
+campaigns. Uh, you're going to want to
+play with something like NAN. So, NAN,
+you know, this is their their homepage,
+flexible AI workflow automation for
+technical teams. So, you see they have
+this um
+flowchart. Uh so, you can basically
+create these flowcharts that basically
+help you drag and drop and automate uh
+with AI agents um and different tools.
+But I will say one thing, I think NAND
+is for, you know, more of the experts.
+Um, so, uh, definitely fun to play
+around with, but you know, you do need
+to be pretty savvy to use it. If people
+want, I can do an NAN, uh, demo and
+tutorial. Uh, just let me know in the
+comment section. Uh, Gum Loop is a lot
+like NADN, but there are some more guard
+rails. Um, so you know, the example they
+use on their website, you can scrape a
+website, scrape a website, you can ask
+AI, and then you can write it into a
+Google Sheets. So, uh, it's a lot like
+NAN, but there's it's just a the it's
+more user friendly. Um, and, uh, yeah,
+that's Gum Loop. Um, I also did an
+episode with Flo from
+lindy.ai. Uh, in a lot of ways, it's
+similar to Gum Loop. Um, it's it's
+basically like an NAN agent platform
+that allows you to, uh, basically
+automate a bunch of stuff. So, uh, if
+you haven't checked out the, um, the
+episode with Flo, um, you know, we we
+kind of went through how to automate,
+uh, a a recruiter, how to do sales
+prospecting, all automated, uh, all
+using AI agents and not just one agent,
+hundreds, or what they call agent
+swarms, which is a key part of I
+marketing. Quick break in the pod to
+tell you a little bit about Startup
+Empire. So, Startup Empire is my private
+membership where it's a bunch of people
+like me, like you who want to build out
+their startup ideas. Now, they're
+looking for content to help accelerate
+that. They're looking for potential
+co-founders. They're looking for uh
+tutorials from people like me to come in
+and tell them, "How do you do email
+marketing? How do you build an audience?
+How do you go viral on Twitter?" All
+these different things. That's exactly
+what Startup Empire is. And it's for
+people who want to start a startup but
+are looking for ideas or it's for people
+who have a startup but just they're not
+seeing the traction uh that they need.
+So you can check out the link to
+startupmpire.co in the description. Uh
+Manis, I've done an episode on Manis
+before. Um, in fact, you know, I
+actually threw this presentation into
+Manis to help design and and help me
+think through it. So, the fact that I
+can do that is, you know, it's kind of
+meta, but that's vibe marketing, right?
+You know, I I put it in here and it
+helps me kind of think through what I
+need to put in here. You know, it's a
+designer, it's a strategist, it's a
+McKenzie level analyst. Uh, so highly
+recommend playing with that. And then of
+course um Claude or Clude as I say uh
+you can definitely use it to uh you know
+write. It's probably one of the best
+writing tools out there right now. Open
+router um you know people know this a
+bit less uh but it's basically a way to
+get one single AI key that helps manage
+multiple multiple models. So, um, you
+know, if you're creating, you know, if
+if you want to use DeepSseek R1 for this
+and open AAI 03 for that, uh, using
+something like open router is something
+that you're going to want to play around
+with. Sora, I've done episodes on this
+before. Well, chat GBT image den uh you
+know one of the interesting things that
+Jacob Posel said on on on the tuto on
+one of our tutorials uh on on on the
+channel was that he actually thinks that
+Sora is you know you get better results
+on Sora than you do on chat GBT image
+gen. But this idea that you can go into
+a Sora or Chat GBT image gen and
+generate these extremely high quality uh
+photos, videos um and content. I mean,
+how doesn't that change the game in
+social, right? Like, how, you know, it
+it helps arm you with this huge uh
+advantage, unfair advantage to actually
+go and create content that's going to
+resonate with your audience. So, this is
+something um that my co-founder, Boring
+Marketing, put together uh for for his
+holding company, and I think it's one of
+those things that I think uh everyone
+should basically do. Um, it's a
+scorecard. Um, and the reason I put it
+in here is it's a scorecard of all the
+different models. You can see 40 mini,
+03 mini, gro 3, uh, code 3.7, deepsee
+reasoner, perplexity, sonar, deep
+research. And it basically scores it by
+analyst brief blog. And the point of
+this is that
+uh certain models are going to be better
+for certain things for whatever it is
+you're doing within Vibe Marketing.
+though you know I talked about you know
+when it comes to uh you know writing for
+example blog creation you can see at the
+bottom here uh you know code 3.7 it's
+actually amazing for content brief and
+blog creation so you know well-crafted
+blog with humanlike content it
+understands brand voice and maintains
+consistency and adds relevant internal
+links when we add it for when when we uh
+when we add website for it to refer to
+now you have to figure out uh for
+yourself which which models and which
+LLMs are going to be your LLM marketing
+friends. Some things are going to be
+better, some things are going to be
+worse, and I encourage people to
+actually go and create scorecards so
+that they know uh what's working uh for
+them. I will say as a caveat that these
+models are changing all the time. I've
+noticed actually over the last couple
+weeks that uh code 37 is actually kind
+of getting worse at writing. So uh you
+know, you got to continue update this.
+So, the moment you've all been waiting
+for. Let's actually see some workflows
+so we can learn how you can copy uh Vibe
+Marketing Pros and and start automating
+you and just sort, you know, you can lay
+on the beach while this this weird, you
+know, robot thing is going to serve you
+cash. Let's talk about
+um basically a few workflows here. So,
+uh, for your stack on this, uh, you're
+going to want N8 to N. You're going to
+want a Google Sheets, you're going to
+need an AI model, you're going to need
+Google Cloud Console, you're going to
+need, um, some data sources, so social
+platforms or other inputs, and you're
+going to need open router, which we
+talked about before. It's basically
+access multiple AI models through one
+API. Now, once you have that stack,
+you're going to be able to create a few
+different workflows. You'll be able to
+create a data analyzer, so you can
+connect sheets with AI for insights.
+You'll be able to create a content
+monitor. You can scrape Reddit and
+summarize with AI. You can create a
+competitor alert, get notifications of
+competitor posts, email
+summarizer, weekly AI summaries of
+emails. You can even do a meeting
+assistant, although this exists uh a a
+lot, you know, in other products.
+Um but uh yeah basically the formula is
+you pull data from sources, you
+transform it with AI, you analyze the
+results, you apply insights to strategy,
+and you create a closed loop uh strategy
+with output. So this is just some really
+really simple ways to actually create
+some of your first workflows. We're
+going to get to more interesting stuff
+um over here. So Jordan Mix, who uh is a
+partner at Late Checkout, my holding
+company, uh who has been on the pod
+before, had this really cool thing where
+um his workflow was the one-click CRM.
+So he basically uh was able to um you
+know, you can think of the use case of
+this podcast, the Startup Ideas podcast,
+every single week having a uh here's the
+five guests that we should invite on the
+podcast. uh automated uh and it's and
+and vetted and reaching out based on
+their social links basing based on other
+content that they've done. So, how does
+it work? You uh step one is you trigger
+with Gum Loop browser extension. Um and
+you can check that out on your own time,
+but um the browser extension basically
+uh you know what, I can show it to you
+real quick. It's this Chrome extension
+that automates your browser with AI. So
+basically, you can record your browser
+actions and replay them with a single
+click. No coding required. You can
+scrape and process web content with AI.
+Um, so super helpful. It's a Chrome
+extension, by the way. I'm not
+affiliated with Gum Loop or uh yeah, I'm
+not affiliated with with this company at
+all. Uh, and let's go back to the
+presentation.
+Yeah, someone asked me, "Are you filming
+with Gum Loop?" No, no, I just I'm
+trying to give you the sauce. I want to
+see what you can create. Um, and,
+uh, let's, uh, let's continue. So, uh,
+you trigger with the Gum Loop browser
+extension. You scrape the website so you
+can get a transcript, for example, if
+it's a YouTube video. Then you can
+analyze the content and web search. Um,
+you can extract the data. You get the
+social links and other relevant links.
+And then you can craft an outreach
+message, store it in Air Table, and then
+you can send a weekly summary to your
+team. Now, you actually don't even need
+to use Gum Loop for that. You can use
+Lindy, you can use other platforms. Um,
+but this is super cool because it does a
+lot of the heavy lifting, the boring
+stuff uh around actually figuring out
+who to reach out to and and how to reach
+out to
+them. Uh, this is a classic Vibe
+Marketing uh example. Uh we I did a
+podcast on this how we basically built
+this Disney Pixar level videos of myself
+um using Chat GBT uh Leonardo Chat GBT
+was on the script writing I think
+Leonardo AI cling AI uh stitching that
+together to actually make these
+beautiful images move into videos and 11
+labs for um for the voice and uh highly
+recommend to watch this. It's pretty
+long, but um it's an interesting way
+because you know why is this interesting
+in in the context of Vibe marketing?
+Because if you can create there's this
+arbitrage moment that exists right now
+where you can actually go and create
+Pixar level content that's going to fly
+on social media if it's actually good uh
+and your competitors are
+not. Uh you can even create a completely
+AIdriven newsletter. So you use Google
+appcript that takes a topic and a point
+of view from a Google sheet and then and
+then uses perplexity for all the deep
+research uh code for writing and
+midjourney for images. Imagine that like
+a completely AIdriven newsletter. Now, I
+know some people in the comment section
+are going to be like, "Oh my god, that's
+just going to be AI slop." And it might
+it might be AI slop, but if you have the
+right prompts um and you're Yeah, you
+have the right prompts and you do have
+some human in the loop at some point. Um
+it it you know, I I wouldn't say that's
+it's 100% true. I've seen AIdriven
+newsletters that are so so valuable and
+I love getting in my inbox and you you
+probably didn't wouldn't even know that
+it's uh
+AI. Um okay, so how to scale content
+with Vibe Marketing. Couple tools that
+we're we're using NAN, Google Sheets,
+Open Router, Open AAI, and Clo37. So how
+it works, you get insight from specific
+subreddits. You come up with content
+ideas using open AI. You store the
+ideas. You get one idea per execution
+and then you use code point uh 3.7 to
+create content for LinkedIn, YouTube
+video scripts and blog post. Shout out
+to boring marketer who put this
+together. Um I just think it's
+brilliant, right? Reddit, you have all
+these validated ideas and then you use
+open AI to sort of remix it and
+brainstorm. Um it's just it helps. You
+know so many people come to me and said
+say I you know I don't have time to do
+content I can't do content ideas I need
+a system for creating content this is
+your system vibe marketing is here sales
+agent you can create a you know use an
+LLM to validate a raw list of leads then
+get info from that website analyze it
+generate a report and send custom
+outreach you don't need a junior
+salesperson literally just automate it
+using Vibe marketing
+e-commerce, a system that takes Amazon
+as that's like basically the Amazon
+skew, uh, and runs it through seven AI
+agents, pulls in reviews, keywords,
+search behavior, turns it into a full
+listing, bullets, titles, back-end
+terms, image overlay copy, even A+
+content, all structured, all conversion
+focused. It's basically like having a
+strategist, copywriter, and SEO person
+in one click. Are you getting fired up
+about Vibe marketing? I am just talking
+about it and it goes on and on you know
+um you can you could uh here's another
+content idea content one uh using NAN
+search reddit for relevant combos in my
+niche you know how much I like Reddit ex
+extract themes painoints for content
+ideas and then generate psychologically
+powerful hooks outlines and briefs and
+just store it in a Google sheet for
+editing so it's similar to what we saw
+before um but thinking you maybe you
+just do it for hooks maybe you just do
+it for outines Maybe you just do it for
+briefs. Um, so this one is about, you
+know, who, you know, people who want to
+start YouTube channels but need content
+ideas. So first, you know, you're going
+to use again NAN, YouTube API, Open AI,
+Open Router, Google Sheets, Google
+Cloud. How you do it? Step one is you
+find videos. So you search YouTube for a
+keyword and fetch trending videos in
+your niche. Uh, then you extract the
+info, get title, description, views, and
+channel details. Then you store the raw
+data. You save that video into Google
+Sheets. Analyze the content. Use AI to
+extract content angles from titles and
+descriptions. Generate ideas. Ask idea.
+Ask AI to suggest new video ideas based
+on those angles. And by the way, use the
+model that you know will come will come
+up with the best stuff here. And then
+store the results. So save those angles
+in Google Sheets all in the cloud. I
+don't you know those are just a few of
+the workflows I encourage people to go
+and try and come up with their own. Use
+any tool you'd like. Uh this is where um
+you know I I think that the world of
+marketing is going to is really going to
+change over the next 12 to 18 months.
+This is an image from from my co-founder
+um where you know he said you know he
+says basically marketers using AI tools
+in isolated ways for specific outputs on
+individual channels. That's how people
+work today. But basically in the next 12
+to 18 months, we're going to see an
+interconnected AI system working
+together with shared contexts. You're
+going to have basically uh multiple AI
+agents and workflows. And these are
+going to be managed by manager agents
+trained by human experts. This is the
+future of marketing. Everyone marketers
+will evolve from individual ex uh
+executors to orchestrator of these
+systems. Small marketing teams of five
+will accomplish what previously required
+much larger teams. We talked about that.
+Adding new marketing channels isn't a,
+you know, won't require hiring. It's
+literally just an agent away. Outputs
+will be more consistent and with less
+feedback cycles needed and systems will
+be goal oriented. So, it's going to be
+about telling your agents, hey man, I
+need 50,000 new organic visitors
+monthly. Go figure out how to do it.
+There's going to be real time
+adaptation. So, real-time adaptation
+will occur as systems analyze market
+gaps, create opportunities instantly.
+marketing might resemble high frequency
+trading. We talked about that. Um, you
+get the idea. Marketing is changing so
+much right now and now is the time to
+actually get good at this vibe marketing
+stuff. So, what makes a good vibe
+marketer? I think that if you can think
+in systems, not campaigns, creating
+these like systems, these flowcharts
+type things, you'll outperform. If
+you're good at testing relentlessly, you
+know, now you're no longer testing two
+ads. you're testing 50 variations, 100
+variations. You're doing a lot of
+testing every single day. Uh, and you're
+learning quick. Um, you're frontloading
+value in everything you create. You
+know, you build once, you distribute
+forever, and you let machines handle the
+boring stuff. By the way, if you want to
+see more Vibe Marketing tutorials,
+highly recommend following Boring
+Marketer on X. Uh, he shares a bunch of
+workflows.
+Uh this is his agency where he automates
+five marketing um for folks. I'm a
+co-founder in this
+um and he also has a school community
+which will include in the links
+uh for other vibe
+marketers and uh I think he charges 100
+bucks
+lifetime to join but the price goes up
+every 100 members. So, for for people
+interested, check it out. Um, that's the
+introduction to VI marketing. I hope
+that was helpful. I wanted to give you
+all the sauce. Didn't want to hold back.
+Um, if you enjoyed this thing, I think
+you you kind of you got to let me know
+at least. So, like, comment, and sub,
+and share this with a friend so you can
+go actually build something. I don't
+want you just to like, comment, and
+subscribe. That's not fun. I want you to
+build something, and I want to see you
+win. I'm rooting for you. The best thing
+you can do uh is to actually just play
+with the tools. Uh see what you learn.
+Put it in your schedule. Every day I'm
+going to spend 30 minutes on this. I'm
+going to create a workflow. I'm going to
+automate this. I'm going to ask my team
+what are what are repetitive tasks that
+I can go and automate. Honestly, that's
+the best thing you can do. Um and that
+doesn't cost you any money. So, um a lot
+of these platforms have free trials. um
+check it out, have fun, and uh and yeah,
+maybe we can use the comment section as
+a place to uh just share share our
+learnings and and share how we're
+feeling about this. So, um go get them.
+Till next time, that was the Startup
+Ideas podcast introduction to Vibe
+Marketing.

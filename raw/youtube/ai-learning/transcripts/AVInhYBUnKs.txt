@@ -1,0 +1,618 @@
+during the weekend I buil a group of
+research gpts where I can pass on a link
+of air table that contain a list of
+different research objects and they will
+be able to extract data from the air
+table research together and F in the
+results back to air table for me behind
+the scenes there is swamp of different
+gpts working together from breaking down
+the big research goal into prioritize
+list to actually browsing internet CRI
+tiet results to produce high quality
+research and what's more exciting is
+that you can actually expand this system
+to more and more different working
+groups to expand its ability further if
+you want and I want to show you step by
+step how I did it if you watch my videos
+before you probably know I'm very
+passionate about building an AI
+researcher because research is such a
+foundamental ability that AI can do and
+has a wide range of use case scenario
+and for the past 6 months the AI
+development has been so crative that
+every two months I re build a new AI
+researcher with a lot of new
+capabilities delivering higher and
+higher quality quity research back may
+2023 it a simple lar language model
+chain that follow a very linear process
+it is basically a function that can take
+in a research topic triggering the
+Google research and let large language
+model to choose which links are most
+relevant and scripting the website and
+in the end get large langage model to
+generate a report I can type in topic of
+Twitter threat I want to write and it
+will do the research and generate a Str
+based on those information collected so
+even though it works but it is really
+linear flow for example if the new
+reference information found from the
+content script it won't be able to
+research further so it is only good for
+very obvious simple research tasks but
+two months later AI agent became a part
+topic and if you don't know what AI
+agent is it is combination of large
+language model memory and tools so it
+can do the reasoning to break down a big
+goal into sub tasks and also have access
+to different tools like Google search
+API to actually complete those tasks and
+also have long-term memory to remember
+what he did before and one of the most
+fundamental difference is that AI agent
+is more goal oriented so you can give a
+fairly ambiguous goal like research
+facts about what happened to Sam it is
+able to take multiple different actions
+to complete this goal so very quickly I
+build a second version of research agent
+where I give a special system prompt as
+well as access to basic tools like
+Google search and scripting and the
+quality of research result is a lot
+higher it is able to continuously
+navigating through the internet find
+more and more reference articles until
+point that it feels that it gots enough
+information and complet the tasks I can
+just give it ambiguous research go and
+it is able to return a high quality
+research results as well as a list of
+different reference links so it was a
+huge step forward compared with this
+first version of AI researcher but also
+has problems the biggest one is the
+quality is not consistent sometime it
+deliver awesome research results on the
+other hand it can't really handle
+complex or constraint actions that open
+AI didn't really want it to do so if I
+wanted to research about the phone
+number or email address about a specific
+perspect it kind of refused to do so so
+in summary it is great for a list of
+different tasks but the quality is not
+assured but after a few months a few
+multi-agent systems emerged like M gbt
+and Chad def it allowed the system to
+tackle more complex tasks they try to
+improve the task performance by
+introducing not only one but multiple
+agents working together and the recent
+Frameworks like autogen made the
+creation of those system even easier and
+it is very flexible to create all sorts
+of different hierarchy and structure to
+orchestrate the collaboration between
+different agents and as open AI released
+assistant API and GBS the cost of
+building useful agents has significantly
+dropped so this got me thinking why
+can't I create AI researcher 3.0 where I
+can have the original researcher to
+still doing the research but introduce a
+research manager to critique and do the
+quality control to making sure the
+result is always aligned with what user
+want and what's cooler is I can even
+introduce more and more agents into this
+assistant for example I can introduce
+another research director who can break
+down a large research goal into subtasks
+and delegate to both research manager
+and researchers and even do more tasks
+like reading and writing to a air table
+to save all the research results while
+the research team will be still focusing
+on doing the actual research and the
+result is the research quality is a lot
+more consistent and system becomes a lot
+more autonomous as well as all those
+little agents just doing the quality
+assurance with each other this represent
+paradigm shift about what people think
+of AGI at earlier this year when we talk
+about AGI often we have this image where
+this one AI can do all sorts of
+different things then the word might
+just have one AI that operates
+everything but there are lots of
+different technical challenges to get
+this work but on the other side the
+sentiment now is whether we can create
+lots of different agents who are
+specialized in specific task but figure
+out framework that let them collaborate
+towards a share goal but how do you
+train highly specialized agent well
+there are two common ways you can either
+do fine-tuning or you can create
+knowledge base which is what people
+normally call Rock retrieval augmented
+generation and they kind of serve
+different purpose rag is mainly used
+when you want to give large Lage model
+very accurate and rant data like get the
+most up to- dat stock information but if
+your goal is to improve the model skills
+in performing specific task like data
+categorization or answering customer
+email in specific style that's the time
+you want to try fine tuning but here's
+one problem fine tuning of high
+performance opens Source model is
+difficult and requires specialized
+Hardware with big memory capacity and
+Grading AI is a platform that really
+reduce barrier for fine tuning they make
+fine-tuning and influence open source
+model extremely simple and accessible to
+all developers and Enterprise with just
+few lines code you can find two model
+like llama 2 nors hermis and others you
+can also choose the programming language
+of your preference either nodejs python
+or command line interface and they
+provide all the tools and tutorials
+needed so you can get start very easily
+and the best is their pricing model
+normally for fine tuni you will have to
+pay all the upfront cost for dedicated
+infrastructure and Computing unit but
+gradient remove the need for the
+infrastructure and you only pay for what
+you use by token if you click on the
+link in the description below you will
+get $5 free credits to Stars so if you
+ever have needs to find your model but
+don't know how to start I definitely
+recommend to give a try and now back to
+our research agents I'm going to show
+you how can you build this multi agent
+research system step by step let's get
+it so the way we will Buu this system is
+our first it creat three different GPT
+assistants with different roles director
+research manager and research agent and
+each one of them play different role
+where director will be able to read and
+update air table database and also break
+down research task and delegate to
+research manager and researchers where
+the research manager will generate an
+actual research plan for a given topic
+and review and do the quality assurance
+for the actual research delivered by res
+Searcher and we're use autogen as a
+framework to oxr those collaborations
+and one good thing about using autogen
+is they actually simplify how to use
+assistant API because assistant API
+actually structure in a way that you
+have to create Strat send message wait
+and continuously check the progress to
+use that you normally need to create a
+function like this where it will create
+a run the Strat message first and write
+a function to continuously check the
+progress until you get progress like
+requir action to ask for user
+confirmation or send back reads but with
+Auto is pretty straightforward you can
+use a GPT assistant agent and just
+trigger message like normal so let's
+firstly create assistant open AI
+playground so I'll create a research
+agent first which agent that actually
+going to browse the internet and do the
+task so I'll given name special
+instructions your worldclass researcher
+who do detailed research on any topic
+and produce fact-based results you do
+not make things up and you should do
+enough research to gather as much
+information as possible if there are URL
+or relevant links and articles you will
+script it to get more information after
+each scripting and search you should
+think is there any other new things that
+I should search and script based on the
+data I have now but don't do this more
+than three iterations you should not
+make things up and in the final output
+it should include the research reference
+link as well and do not include a
+website like G2 LinkedIn because those S
+sometimes are gated or the quality or
+the content quality is not great I
+choose GPD for Turbo and then add two
+different function callings inside this
+is schema the name is Google search
+description and the input will be Search
+keywords and it is required the other is
+website scripting it would have two
+inputs one is the URL of the website
+that it should script another is
+objective which is the goal of scripting
+website because for scripting I will
+actually trigger a summary chain so I
+want a large Lage model to know what are
+the goal of This research so that they
+can summarize content in a way that then
+lose those details and the required is
+URL and objective and here I just turn
+on code interpreter in case you need to
+do some further data analyst and once
+you finish you can try it out let's say
+research about pricing model for
+relevance a a i and click add R so you
+can say it do a Google search first the
+Search keywords is ROM than sayi pricing
+model let's say I return example results
+of this URL then it will try to do the
+website scripting with this URL and also
+the objective extract detail information
+about pricing model including any tier
+rat or specific service feature included
+each price point so this is pretty good
+the next thing is our created research
+manager given name and also this special
+prompt so you are a research manager
+you're are harsh and relentless your
+firstly try to generate two actions the
+researcher can take to find information
+needed try to avoid websites that don't
+allow scraping and you review the
+results from researcher and always push
+back if the researcher didn't find the
+information be persistent say no you
+have to find the information try again
+and propose one next method to try if
+the research want to get away only after
+researcher found the information needed
+he will say terminate so this a
+researcher manager will basically play
+the role of quality control and making
+sure the researcher tried everything
+possible to find the information and
+click save and the last one is director
+and I will give you a special system
+prompt you are the director of research
+company you will extract list of
+companies to research from Air table and
+break it down into individual research
+task for each research task you will
+delegate to research manager and Market
+researcher to complete a task once a
+company's research is completed you will
+updated company information individually
+to air table and only say terminate
+after you update all the records in air
+table with information collected and it
+will have two different functions one is
+get air table records which will be used
+to read existing data on a from a air
+table URL and it has a few inputs base
+ID and table ID and the other is update
+single and the other is update single
+air table record it has other inputs
+base ID table ID as well as ID of the
+specific rode that I need to update and
+the data that to be updated and again I
+can test this one as well so I copy this
+link research the pricing model of each
+company in the list list so it will try
+to trigger the air table records with
+the exact base ID and table ID and let's
+say this is a list of Records in return
+and click submit then it will read the
+result and break down into different
+research task and delegate to research
+manager and Market researcher and let's
+say it Returns the research results and
+boom it trigger four different update
+single air table records so this is new
+parallel multi-function ability that
+open a I just introduced and as you can
+see it gets inputs all correctly so this
+is working well as well so now we get
+both stre assistant set up we just need
+to connect them together in autogen so I
+will open the visual studio code and
+firstly let's create new file called oei
+config list this is where your inst open
+AI API key putting array as well as a
+model and next let's create aemv file so
+this is where we store API key for other
+service like browser L and serer which
+is the one we're going to use for Google
+search and web scripting and also put
+open AI here that's because I actually
+want to use l chain summarized chain
+later to summarize content that agent
+script from website all right and next
+we will create app.py and first they
+import list of different libraries that
+we're going to use and also load
+environment and config list and now
+let's have overview about what we're
+going to create so we'll create a list
+of functions that we're going to use
+from website scripting Google search get
+and update air table records as well as
+four different agents we're going to
+create from user proxy agent researcher
+research manager and director and we're
+going to put them together into a group
+chat in the end start a conversation and
+firstly let's create a function for
+Google search and here we're going to
+use service called serer to get Google
+search results so give a URL keywords
+the API key and do a post request and
+next is function for website scripting
+and we will have two function one is the
+website scripting and summary function
+will be used if the content is too long
+so that we don't blow up agents memory
+and under the web scraping we're passing
+on two input objective and URL putting
+the header and data which is URL that we
+want to script and convert it to Json
+string so that we can pass on to the API
+request Quest and here we are using
+browser L which is website scraping
+service but for more sophiscated
+scraping Behavior you can also use API
+file or rapid API where they provide
+wide range of data access so I press on
+URL header and data and if we get
+response back and then we will try to
+extract Tex content from the website and
+if the lens is more than 10,000
+character then we will do a summary
+otherwise it will just return the text
+and for summary function we're going to
+summarize it through a ling summary
+chain so I create large Dage model use
+text splitter to split the large content
+into small chunks with each chunk size
+10,000 and I'm going to create list of
+documents from the split text and here I
+will give it a prompt write a summary of
+the following text for this specific
+objective and here a summary and I will
+create a map prompt template and use l
+chain low summarize chain so what this
+does is it basically try to make a
+summary of each chunk and in the end try
+to combine them together and then outp
+put final summary so those are all the
+function that we need for the research
+agent and then I move down here to
+define the user proxy agent and research
+agent to start test so first they create
+user proxy agent if you're not familiar
+with autogen user proxy agent is
+basically agent that can execute code or
+give feedback to other agents on behalf
+of user and I will putu human input mode
+to be always so that I will always have
+chance to give feedback and next is we
+will create a researcher agent so our
+Define researcher agent equal to GPT
+assistant agent give name and researcher
+and inside lar langage model config I
+pass on the assistant ID and assistant
+ID is the one that I will get from the
+open AI playground also registered
+functions so web scripting function will
+be point to the web scripting function
+that we create above same thing for
+Google search so that's pretty much it
+it's super easy to set up and I can
+quickly test it out user proxy agent
+initial a CH research with the pricing
+of random Ai and our open Terminal try
+to run this and one thing to know is to
+run GPT assistant in Auto gen you have
+to install this specific version of
+autogen
+0.2.0 B5 so making sure you install this
+first and then let's run python app.py
+so you can see the user proxy agent
+trigger message what's surprising then
+the researcher execute the Google search
+function and also start sripping and
+great so it return the results with all
+different tiers okay great so that means
+we successfully set up autogen with GPT
+assistance now we just need to bring
+more agents so I'll create a research
+manager agent same thing I'll go back to
+open AI copy the assistant ID and pting
+here so research manager agent is also
+ready and this research manager agent
+will review and critique the result from
+researcher which in series should really
+improve the quality of research so let's
+try out I'll quickly create a group chat
+with user proxy agent researcher and
+research manager and I trigger message
+to the group chat manager why Sam timman
+was fired so you can see it trigger
+message to chat manager and the
+researcher start browsing the internet
+and get information and here is the
+initial report there's some issues
+scripting the content from website
+however Sam atomus departure from open I
+follow with review process by the board
+which conclude that he was not
+consistently transparent in his
+communication with the board leading to
+the board lost confidence in his ability
+to lead the company and this pretty much
+this is fine but it's not great it's
+very like surface level information but
+then you can see the research manager he
+said no you have to find information try
+again there could be confusion or
+misinformation around this topic so
+first say check official press release
+or statement from open AI or Sam optiman
+himself and then look for credible new
+source or technology focused
+Publications so this is great it will
+force the researcher to do more research
+and also give advice about where to look
+and now the researcher coming back with
+more more and better details which is
+great so the last thing I want to do is
+I'll create director agent we should be
+able to access any air table link I have
+and conduct multiple different research
+actions and few information back so I
+will firstly move up to create a
+function for air table and we're use air
+table API and point and to do that you
+need to go to air table SLC create SL
+tokens to create a new token give a name
+and also add a scope which should both
+read and write permission and once it
+finish you should come back Tov file and
+include air table API key here as well
+so our first create function forget a
+table records so it will pass on base ID
+and table ID base ID is basically this
+part of the URL and table ID is this
+part of the URL and second is we will
+create a function for update single air
+table record where it will pass on API
+key and data will be records the ID of
+the row and also the fuse to update it
+will be a patch request call and that's
+pretty much it I'll move down to the
+create director agent our Define
+director agent with the specific
+assistant ID and also register the two
+functions for read and write at table in
+the end I will add director into the
+group chat so this you can see how easy
+it is to continue expanding this swamps
+so to continue expand the swamp of
+agents and our add a new message
+research the pricing for each company in
+the list with this air table so I'll
+trigger this message so you can see the
+director use the function to actually
+get the list of records from Air table
+and then create a message to research
+for each company uh it does hallucinate
+a little bit um probably to change the
+system prom a little bit now it is try
+to be creative and hallucinate about the
+different research manager it has and
+then the researcher start doing
+different type of Google search doing
+different different Google search and as
+you can see here it is triggering
+multiple search function at the same
+time and here are also update the system
+prompt for director agent as well so one
+thing I want to make it to do is making
+sure dat get task one by one do not
+delegate all task at once and after each
+research you have to update the research
+result individually to air table and
+then move on dedicate next research
+topic and the reason I do this is
+because the agent didn't have unlimited
+memory at this point and I notice that
+when there are a lot of items the agent
+can trigger a lot of different Google
+search at same time which actually
+reduce the research quality so I want to
+making sure the agent actually runs to
+research one by one and our give message
+research the funding stage amount and
+pricing for each company in the list and
+I'll open this to python app.py so you
+can see it Tred to GA records from Air
+table and then it says the first company
+to research is this one and the
+researcher start doing the research and
+the researcher has returned results
+about funding stage but it didn't really
+find the pricing so research manager
+push back and then say you can check the
+official Channel as well as second
+resource so the so researcher actually
+start doing more research and at second
+try is successfully get the pricing
+information as well and on the right you
+can see it automatically adding this
+information and then it start delegated
+for the next research topic which is
+ROMs Ai and you also get information for
+random AI to then move on to the last
+one stack Ai and eventually finish all
+the research and this is a pretty short
+list but you can imagine creating list
+of hundreds of research topics and this
+research team can just autonomously
+running for a while until they feel in
+the information for every single row
+there's still quite a bit problem is and
+there are still quite a bit problems the
+biggest one is memory because during the
+research stage there are quite a lot of
+information with script and often the
+researcher can forget the information he
+found before but there are ways you can
+customize that as well so autogen
+provide you ability to fully customize
+the group chat flow so you can even set
+up two teams with agent one should only
+have memory for certain information
+Agent B holds TRS about specific
+information so this is probably a good
+way to control the amount of memory for
+each agent and in my specific case the
+director probably should only know the
+final research output from the research
+manager instead of saying the whole
+conversation chain but the result is
+already pretty stunning I imagine this
+research agent can be used for sales and
+VC who want to do a lot of leads
+qualification so that's it for the AI
+researcher 3.0 it is really powerful and
+the only thing to be aware is that this
+can actually cost a lot of money so
+making sure you monitor your open AI bu
+and this is just one example as I
+mentioned you can actually create all
+sorts different hierarchy and
+collaboration workflow so I'm very
+excited to see those fully autonomous
+agent teams that you start building if
+you enjoy this content please consider
+give me a subscribe thank you and I see
+you next time

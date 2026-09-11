@@ -1,0 +1,282 @@
+Good morning, everyone. How's it going today? Today I bring you a new format right here. I'm going to be recording with my iPad,
+and we're going to be going over the entire architecture of Pi.
+Pi, of course, has been taking the world by storm, and it's actually very minimalist, and it's very beautifully architected and designed.
+So we're going to be taking a look at how it works, actually, so that you can think about probably creating your own.
+It's a very educational project if you want to go about it. Or if you're just interested in understanding what's really happening behind the scenes and why Pi is so well designed, this video is also for you.
+So we're going to be talking about mainly two things. So we're going to be talking, first of all, about the agent core, which is basically just the agentic loop that runs behind the scenes.
+And this one right here can also be called via RPC or in a programmatic way via the SDK.
+And then we're going to be taking a look at the PyInteractive way, which is the actual functionalities that are added via the terminal user interface.
+Okay. So without any further ado, let's actually get started with the PyCore.
+All right. So let's start off with PyCore. And in order to start with PyCore, I think that it is very, very important to understand
+that the main part of Py as a design is just its agent core.
+Okay? In other words, it's agent loop. Let's just call it loop instead. Agent loop.
+And this is going to be very straightforward. It is essentially all the steps that are going to happen every time that you start a conversation
+with Py. So let's suppose that you start a conversation with Pi and you're going to go right here.
+And the first step that's going to happen after you open Pi for the first time and send the first message is it's going to initialize its context.
+Okay. Now, what does this mean? This means that it's going to put together a bunch of different things.
+First, it's going to put together its system prompt. And this system prompt is hardcoded into Pi.
+You can, of course, update it by creating your own system.md in your workspace.
+But in this case more often it is going to be loading the pre system prompt I probably leave a link in the description if you want to take a look at it It is very very minimalist Don try to make it more minimalist
+It's already like a few lines of code, a few lines of instructions. After that, it's going to append
+all the agents.md files that you have, both in home and also in your current working directory.
+Okay, so of course, be sure to not add too many .agents.md files, because that will just
+bloat your system prompt. Actually, I think I made a mistake. This is not .agents, just agents.md file. After that, it is going to append all the skills descriptions.
+Okay, description. So all the skills that you have loaded into your agent, it is going to load the descriptions and it is going to do the same thing with the tools. So all the tool descriptions
+are also going to go into the initialized context. Okay. And there you go. And then after that,
+it is going to append your message history like this and your current message right here. So this,
+if this is a new conversation, then there is not going to be any message history. If this is an
+ongoing conversation, there is going to be a message history. And if the conversation was compacted, this can be replaced by the summary of your previous message history. Okay, so there you
+go. That is the initialization context. The second step that happens every single time is this step
+called the transformation, the transformation of the context. Okay. And what this means is that it
+is going to take a look at the context that was just created, and it is going to figure out whether or not it needs to compact that context. If it needs to compact, then it is going to compact it
+and add it right here instead of the message history. Compacting basically means that it
+takes all of the messages that are right there in the history and summarize them with the LLM,
+of course, as well. The third step is going to be actually doing the large language model call. So
+it's going to call your large language model to whichever provider that you have selected. It can be OpenAI GPT 5 it can be Anthropics models it can be Kimi it can be Minimax whatever you want And then your model is going to return a tool call if it wants to make a tool call For example
+it wants to update a file, read a file, search the internet, etc. And then your tool is going
+to naturally return a response to your large language model. And then the large language model may decide to make another tool call and then so back so forth. It can do hundreds of tool
+calls if you're really doing something very complicated or just a couple if you're just searching the web, for example. And then once the agent decides or your layers language model decides
+that it does not need a tool call, it will just reply and it will give you a response.
+And there you go. That is essentially everything that happens whenever you send a message to Pi. And that is kind of the core or the agentic loop.
+It may sound very easy and like it's just a few things that just a very straightforward
+diagram. But in reality, this is quite a complicated thing.
+And in Pi, it is coded from scratch. There is no additional library helping Pi build the whole thing right here.
+And for the record, there are libraries that do this for you that have this agentic loop preloaded.
+So you just have to import the agent loop and use it. Some examples are, for example, OpenAI Agents SDK.
+You also have Versus Sales AI SDK and all of this.
+But in this case, this one right here is completely custom. So that's with the agentic look of Pi.
+And that's the first thing. The second thing that we're going to take a look at is the sessions and memory.
+Okay, and the next thing to understand right here is the memory. Let's just call it like this, memory and sessions.
+Because this is one of my favorite parts of Pi, actually, which is that it is extremely easy and straightforward to export your sessions,
+to navigate them, to go to a previous step in the session, to fork it, etc. It is very, very straightforward and very, very well designed.
+So first of all, where are the sessions stored? The sessions are stored in your home directory inside your directory inside agent and inside sessions
+And inside here, you're going to see a bunch of different directories. And they're going to be mapped into each one of your working directories.
+So for example, let's suppose that you were working in an application called dashboard. And it's going to be a dashboard directory.
+then let's suppose that you were working in an application called weather app.
+Weather app. There's going to be that directory right here, etc. So here's going to be a list of directories.
+And then inside each directory, you're going to have each session with their ID, etc.
+And it's going to be stored in JSON-L. And what this basically means is that it is going to be just a very straightforward,
+file with the message here like that. It's kind of exactly like a JSON, but instead of having an
+actual JSON object, it is going to be just a document with a bunch of JSON-like objects and
+one object in each line. And this, of course, makes it very easy and very straightforward to
+document this because that means that whenever there is a new message in your conversation,
+all it has to do is append it in the last line. And these objects, of course, include the role, the message, etc.
+And there you go. It is extremely straightforward. And as you can see, it stores all of your sessions
+by the location where you started to work on them. And then every message is just its own JSON object.
+And this is, of course, easier to update than if you actually had an array,
+then you would have to update just a single part of the whole thing. JSON-L is just much more convenient.
+So that is the thing about sessions. Let me actually go into the...
+I'm going to show you that in just a moment in the actual Py command line to show you how this actually works.
+But before we do that, let me show you something that is very, very fun,
+which is the fact that these sessions right here are stored in not in a list.
+So it's not a list of sessions. So not a list, but it's actually a tree of sessions.
+In other words, you probably have seen that in order to navigate in Py to a previous command
+or a previous prompt that you gave, you do slash tree. And the reason for that is that all of these messages right here,
+they have, of course, the role, the message, and they also have a property called parent.
+And they also have their ID. So this one right here, the parent will refer the fact
+that this message bifurcated probably from a previous message.
+So right here we can have the role, all of its information, and here we have the parent, and this parent will be 111.
+And this one right here is going to have an ID of 111. So now Pi knows that this message comes before this one,
+but maybe you bifurcated from this one into another message, So you will have another, you fork the conversation.
+So here you will have all of your conversation history. And here you will have another parent 111.
+And that basically just creates a tree structure immediately from a single file like this.
+So now you have two different messages that come from the same parent message.
+And that creates two different forked conversations. It is just a beautiful design.
+And I have seen many AI agents trying to migrate into this new tree design rather than just a simple list, one message after the other system.
+So that is the thing that you're going to be seeing much more often in the coming agents that are coming out.
+So now that we have seen this in the actual map right here, let's actually show you what it looks like in the screen.
+All right, so let's go right here into my command line. And as you can see, I have this very nice session
+where I just talked to the agent about creating some videos, et cetera. And I had my whole video workflow automated right here.
+And let me show you what happens when you go right here and you do slash tree. As you can see, you have a bunch of different messages.
+And here, what we're actually doing is we're going vertically. We're navigating through this list of messages
+in this JSONL file. As you can see a bunch of messages are actually tool calls And a message can be also a user message an assistant message et cetera what going to happen right here let suppose that I want to go right here to this
+message right here. I can tell it to summarize the previous part of the conversation. And now this is going to create a new message in my JSONL file. And it is going to set it as a parent or as
+a child message of the message that was right before this one, before I bifurcated. But the
+other messages are still in the same directory, so in the same list of JSONL messages.
+So there you go. Here is, and if I go right back into tree, you can see that here we have a bifurcation
+and you have the summary and the whole thing that I can just take over. Let me show you what this looks like in the actual Py directory.
+So as I told you, you go to Py, Agent, and inside of here, you go into Sessions.
+And let me just show you. Inside of here, you have all the sessions in the different directories that I have run Py.
+So I have Inside Users, Alejandro, Agent Skills, Video Tool. This is one directory.
+Of course, this is not the exact name of the directory. It is like the path to that in a more standardized way.
+And I can access any of this. So for example, I suppose that I go into this one right here.
+I suppose that I go here. And as you can see, I have two sessions right here. So I can just open, for example, the last one, which is going to be this one.
+And as you can see, it is just a list of JSONL files with all of my conversation right here.
+And as you can see, every JSONL file starts and ends with this curly braces and just shows
+the whole thing of what happened. And actually, let me show this to you in code, in VS Code.
+There you go. Now I open the same thing on VS Code. And as you can see, every single line is a single message.
+And as you can see, each one contains the type of message, which can be a message. It's ID. It's parent ID, as I was telling you, to create the tree structure, the timestamp, and the
+actual message right here. So there you go. That is how sessions work.
+Now let actually take a look at the next part of the PyCore setting which is the tools All right so let talk now very quickly about the tools that it has and actually the as you probably know pi is a very minimalist agent and the tools is the tool list
+that it has is very minimal as well so it actually only has four tools the first one is the read tool
+tool then it has a bash tool and then it has an edit tool and a write tool and that's all it has
+there is no more than that that's you can of course add additional tools to pi if you want
+you can ask pi to create a new tool you can install packages to for it to add new tools but just out
+of the box it comes with these four tools i would myself add web search that's the only tool that i
+always install when I use Pi. So that would be my real minimalist setup. But just by having this,
+you already have a great minimalist setup, actually. It does, however, let me just mention
+something very quickly that it's not often mentioned. The fact that, yes, you have four
+tools, but there are two additional tools that are grep and find. And these additional tools are
+essentially the same thing or things that you can already do with bash but this additional tools are
+by default disabled because they are supposed to be enabled only when you want to use pi on read
+only mode right so you do not you probably don't want to give it access to bash so if you're going
+to be running pi with slash slash tools sorry dash dash tools and here you pass as an argument
+And what tools you want to use, you can mention that you only want, for example, read, grep, and find.
+And that is going to give you a Pi system that will be read-only.
+And this is, of course, very useful if you're running Pi programmatically. So, for example, if you're running Pi through RPC, that is going to be very useful because you probably don't want Pi to edit your files if you're just automating a few workflows.
+So that is for the tools, it's very straightforward. Let's now take a very, very quick look on extensions.
+So let talk very quickly about extensions and you probably know already what these are if you have used Pi but in case you haven extensions are these packages or things that you can add to Pi to modify its behavior Because of course it is a very minimalist setup
+It comes with only four tools by default. It does not come with either MCP support or with web search or anything like that.
+So extensions are kind of this ready-to-use packages that you can just install on top of Pi,
+and Pi will have all of these features out of the box. And it's very, very cool. Let me tell you some of the things that you can do with extensions.
+So I'm just going to add here extensions like this.
+And some of the things that you can do with extensions are, for example, register new tools.
+You can subscribe to events. And this is very important because that's something that I forgot to mention before
+is that every part of this entire workflow
+that happens every time that you have a conversation actually is triggering some events. And these events can be something like tool call,
+like agent response, like user message, et cetera. And these are events that happen during the workflow.
+So you can subscribe to events so that these extensions or these packages perform particular actions
+at a particular time of the agent loop. They can also register commands.
+They can add keyboard shortcuts, for example. Add CLI flags as well.
+They can also update the system prompt.
+Or even render custom messages.
+And these are extensions that you can code yourself. They are coded in TypeScript. And it's very, very straightforward because Pi naturally allows you to, since it is very modular, you can literally just add an additional extension, plug it to whatever you want to plug it, and it will modify the behavior of Pi.
+It's very straightforward. And of course, if you're interested in extensions, feel free to take a look at all of the extensions in the packages part of the website.
+Now, of course, be aware that these packages are naturally loading and executing code in your system.
+So you probably don't want to install packages from third-party sources that you do not trust.
+Or if you want to use them, at least run them through PyAgents.
+have pi explore the code of that particular package to make sure that it is safe so that is
+one thing now let's talk about skills and the system prompt in pi all right so let's talk very
+very quickly about the system prompt it is very very straightforward so the system prompt it's
+very straightforward there is just a very simple i can leave a link in the description if you want
+to actually read it, but it's very short. It's about 20 lines long. And basically all that it
+does is it tells the agent, you are a helpful assistant, you are a pi, helpful assistant,
+then all the appended sections, because you can also append your own system prompt to it just by
+creating your own append-system.md file. So you can do append-system.md file in your
+.py directory, and this will append this one right here to right after the urpy part of the prompt.
+After that, it lists the skills. And to list the skills, it uses a very nice markup language like this.
+So skills and skills like this. And inside of it, there is the skill with its description,
+its name, and what it does, etc. And this is very useful and it's very important to leave it in markup files because this is actually going to be parsed by the terminal user interface later on.
+I'm going to be talking about the TUI in a bit. But this is very, very useful and this is very, very important.
+Right after that, it includes the current date and the current working directory.
+And that's basically what the system prompt is in Py. and something important as well that you should keep in mind
+is that you can of course override it if you create your own system.md file in .py
+and same thing you can also override it if you run pi with the flag dash dash system prompt
+and then just pass your system prompt like this so those are ways to override the system prompt
+but this is how it is created by default So that has been basically the Pi core And I hope that with this information you have pretty much all you need to create your own version of Py Let now think about how PyCore
+interacts with the interactive part of Py, which is the actual part that we see in the terminal
+user interface, and how you can connect it to other user interfaces. So let's take a look at that.
+all right so now that we have pretty much covered everything related to pi core of course there is
+always a way to go a little bit deeper into this but i figured that this is a good place to stop
+we can take a look at pi interactive which is another package completely it's not in the pi
+core package and this one right here is the actual let's call it the coding agent right
+because this one right here is just an agent in itself, just the agent. And this one right here
+is going to be the actual coding agent. So let's talk about the entry point on the CLI. So when you
+create a new session, you log into the CLI, what actually happens? Let's call it CLI entry point.
+So this happens in two different files. The first one is in client.ts. And the second one is on
+main.ts. Okay? And on client.ts, what happens,
+let me just show this to you, and on client.ts, what happens is that it receives the py command,
+it does a bunch of other things, like setting the process title, etc., and then it calls main,
+like this. Okay? And here on main is where the fun part happens,
+is the arguments are parsed, It resolves the configuration, so it figures out where the custom working directory is and
+everything like that. It loads the extensions as well, because it's, of course, remember that this is very modular.
+Then after that, it creates the agent session. Okay, so it's not until now that we actually start the agent session, which initializes
+actually the PyCore element or the PyCore component. And it runs in the selected mode.
+So it runs, it can be either interactive, of course. It can be doing RPC as well And it can be doing just print to STDIO which is if you just run pi like this in the command line and just type your prompt like that Okay So that is the entry point Let talk
+a little bit about this, particularly on the terminal user interface, because that is also
+a very interesting thing. All right. So the terminal user interface
+is actually very straightforward. You have probably already seen it on, I mean, you can see that it is very, very modular.
+You have your input right here. You have your messages on top. And then you have a bunch of information
+in the nice little bar at the bottom. And it's pretty useful, actually,
+pretty fun and very, very minimalist. and it does not flicker, which is great.
+And yeah, everything works very well in a very minimalist way. And the reason for it is that it is, first of all,
+it is completely custom built. So it does not use textual or anything like that. It is completely custom.
+And then something else is that it is component-based. Okay, component-based.
+And then about that, you have to consider that each component basically is responsible for its own rendering, for its own inputs,
+and also can be updated dynamically. So yeah, that is something to consider. It can, of course,
+subscribe to a bunch of different events that are released by the agent core, but it is completely
+custom built and that does not mean that you cannot add your own graphical user interface on
+top or your own 2e on top but this one right here the one that comes out of the box is completely
+custom for pi now let's talk about the compaction or the way that pi deals with compactions because
+i find that that is very interesting all right so now let's talk very quickly about the way that pi
+deals with compaction, because many different agents deal with this in different ways.
+And I figure that the way that Pi does it is actually not only very minimalist, but also
+very simple and very intuitive. So I have seen some agents for example try to measure how long your context is by taking the number of characters in the entire context and dividing that by four to figure out how many tokens approximately are there Now that of course I seen some agents
+do that, especially at the beginning when you don't have a response from the LLM yet, and that seems to work. However, Pi does not do that at all. It just relies on the feedback that
+the response from the LLM gives you. It just assumes that on the start, you're not going to
+send a super long message anyways. So what happens is that Pi calls this function called
+check compaction, check compaction, like that. And it calls it on two different occasions.
+The first one is when an agent ends. That is to say, when the agent finishes a turn and it gives you the actual response from a tool call or whatever.
+And also before the prompt. So before the prompt.
+So if you have, so that is before you actually start sending a message. That's the other moment when this checks for compaction.
+And the reason, of course, naturally, the check for compaction is that you do not want your context to be too long
+so that when the agent is going to reply, it is going to just overload the context window.
+And you, of course, don't want to overload the context window from the start either. So what happens right here is that once the agent responds, it measures how many tokens are in your response.
+And some agents, some LLM, sorry, some LLM providers actually return to you in the response,
+the context. Okay, so the context tokens. So if those are present, then it just takes them directly from there.
+If they are not present, however, it calculates the context by adding together the following
+things. So usually, whenever an LLM gives you a response, you get a usage, let me just go right here,
+a usage parameter that includes the usage input, that mentions how many tokens you input,
+then includes the usage.output, that mentions how many tokens were generated by the LLM.
+And on top of that, it usually mentions the cache.read and the cache.write.
+adding all of this together, let me just say that here, by adding all of this together,
+then it calculates the context by naturally every single time that an agent ends a turn
+or before the user sends a prompt. So there you go. That is for compaction. And of course,
+if you want to take a look at what the compaction actually looks like, it is also very minimalist. Let me see if I can find the actual code right here, because it is very, very fun.
+Let's see. Oh, here it is. Let me switch to the computer to show you the actual compaction prompt.
+And here we are. We are inside packages, agent, source, harness, compaction, and inside compactions.ts.
+And as you can see here, we have the summarization system prompt. It says, let me just wrap this right here. You are a context summarization assistant.
+Your task is to read a conversation between a user and an AI assistant, blah, blah, blah. And something pretty cool is that here you have the complete system prompt that you have.
+So the messages above are a conversation to summarize, create a structured context checkpoint summary that another LLM will use to continue the work.
+And here is the exact format. So you mentioned the goal, the constraints and preferences, the progress, what is done
+and what is in progress, what is blocked, the key decisions that the agent has made, the next steps and the critical context. Keep each section concise, preserve exact file paths,
+function names, and error messages. And it has a slightly different prompt for updating an existing
+already context summary. So as you can see, it is very, very straightforward. And let me see if I can
+show you something fun right here. Let's see if I can just open this like this. And let's just go
+back into a working repository. And here I'm in a working repository.
+I'm just going to resume one of this. Let's see if this works.
+And there we go. Something that I can do right here is just ask it to compact the whole thing And so we going to see the exact compaction that it generates right here in just a moment And there you go Here we have the compaction
+And if you want to take a look at it, just do Ctrl-O to expand. And as you can see, we have the exact compaction that follows the prompt that we just saw.
+So the goal is this. The constraints and preferences are this. The progress, what is done, what is in progress to be done, and what is blocked,
+the key decisions it has done, the next steps, the critical context, original request, early progress, etc. So there you go. That is how compaction works. Now let's take a look, last
+but not least, at how the PyInteractiveAgent deals with skills. I think that this is very, very fun.
+All right, now something that I wanted to mention precisely about this, and it is very interesting,
+is how Pi deals with scales and with custom prompts.
+So custom prompts. These are two different things, and they are both dealt in a very similar way.
+Now, in case you're not familiar with scales, scales are these MD files, MD markdown files
+that contain a lot of very clear, detailed instructions. And at the header, they have a name and a description
+that is loaded into the system prompt. And when it comes to custom prompts,
+they're basically just custom slash commands. So you can do just like your slash command.
+And this is going to be replaced with your system prompt at the PI interactive layer.
+So this is never going to reach the actual PI core. And that is very important.
+Now for custom prompts, it's very, very straightforward. Whenever you send a custom slash command like this, the CLI is going to read it and it is going to turn it into the actual prompt that you had stored in your custom prompts.
+So that is very straightforward. The part that I find most interesting is how skills are managed.
+So remember we mentioned before in the system prompt that here there is a section with all the skills available And that is of course the first part of the skills workflow So in the system prompt let just go again mention the system prompt
+There is a lot of things, and then at some point, there is the list of skills available,
+as I mentioned before. Okay, just like that. And so now your agent, Pi, and your LLM knows that it has skills to work with.
+Okay, so it is actually aware that it has skills. It is not aware that it has custom slash commands
+because they just reach pi completely rendered. But for skills, they don't reach pi completely rendered, actually.
+What happens is that let's suppose that you... So here's the system prompt. And then the user, you, send your slash skill colon.
+And then you mention the skill that you want. Let's suppose that your, I don't know, your custom workflow.
+Now, this right here is going to be intercepted by the interactive layer.
+So your agent core will not see this command. It has no idea that you call a scale like doing slash scale colon.
+You could very well use another CLI or another TUI that uses the dollar sign like codex or just a slash command like clotcode, etc.
+okay so what happens is that when this command reaches the the interactive layer of your agent
+of your cli this is going to be replaced by the skill like this skill with markup tags which will
+contain its name, it will contain its description, and it will notably contain its location.
+And the location right here is basically just telling your agent where this skill is located.
+So for example it can be located in say pi agent skills It can be for example located in dot agents slash skills And this can be either in the current working directory or in your home directory And this is going to be very important
+because this data is going to be sent in the message. Okay, so the AI, your LLM does see this,
+But there is a custom instruction right here in the prompt saying that if a skill is invoked, use the read tool to read it.
+And what happens is that it will basically just after receiving the skill, it will just call the tool read and it will read this location and then get the response.
+and continue all the work. So the skills, at least in Pi, are not automatically replaced at the interactive layer.
+Some other agents that I have seen take this command right here and immediately paste the contents of the skill directly from here.
+But what Pi does, at least in this interactive layer, of course you can do this differently because this is done outside of the core that we saw before.
+What it does is it just sends the skill that was called with the name, the description, and its location
+so that Pi manually opens it with a tool call and gets the results and then just continues with the rest.
+So there you go. I mean, I think we have covered pretty much everything related to how Pi is built. I feel like you should be ready to at least start with Pi
+and maybe even create your own version of Pi. I find it very educational. I have been working on things like that before
+and over the past few weeks, and it's very fun. So I hope that this has been interesting.
+This is just a kind of a side research project that I was working on.
+If you're interested in similar videos like this, feel free to let me know. And of course, if you have any questions,
+post them right here in the comments. I'll be very happy to talk about this. so thanks a lot and I will see you in the next one

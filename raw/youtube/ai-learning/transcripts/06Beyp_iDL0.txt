@@ -1,0 +1,446 @@
+today we're going to be looking at three simple AI workflows that you can build right now to get started learning naden we're going to walk through everything
+step by step including all of the credentials and the setups so let's take a look at the three workflows we're going to be building today all right the
+first one is going to be a rag Pipeline and chatbot and if you don't know what rag means don't worry we're going to explain it all but at a high level what
+we're doing is we're going to be using pine cone as a vector database if you don't know what a vector database is we'll break it down we're going to be
+using Google Drive we're going to be using Google Docs and then something called open router which lets us connect to a bunch of different AI models like
+open AI models or anthropics models the second workflow we're going to look at is a customer support workflow that's
+kind of going to be building off of the first one we just built because in the first workflow we're going to be putting data into a pine cone Vector database
+and in this one we're going to use that data in there in order to respond to customer support related emails so we'll
+already have had pine cone set up but we're going to set up our credentials for Gmail and then we're also going to be using an nadn AI agent as well as
+open router once again and then finally we're going to be doing LinkedIn content creation and in this one we'll be using
+an NAD AI agent and open router once again but we'll have two new credentials to set up the first one being tavali
+which is going to let us search the web and then the second one will be Google Sheets where we're going to store our content ideas pull them in and then have
+the content written back to that Google sheet so by the end of this video you're going to have three workflows set up and
+you're going to have a really good foundation to continue to learn more about nadn you'll already have gotten a lot of credentials set up and understand
+what goes into connecting to different Services one of the trickiest being Google so we'll walk through that step by step and then you'll have it conf
+figured and you'll be good and then from there you'll be able to continuously build on top of these three workflows that we're going to walk through
+together because there's really no such thing as a finished product in the space different AI models keep getting released and keep getting better there's
+always ways to improve your templates and the cool thing about building workflows in nadn is that you can make them super customized for exactly what
+you're looking for so if this sounds good to you let's hop into that first workflow okay so for this first workflow
+we're building a rag Pipeline and chatbot and so if that sounds like a bunch of gibbers to you let's quickly
+understand what rag is and what a vector database is so rag stands for retrieval augmented generation and in the simplest
+terms let's say you ask me a question and I don't actually know the answer I would just kind of Google it and then I
+would get the answer from my phone and then I would tell you the answer so in this case when we're building a rag chatbot we're going to be asking the
+chatbot questions and it's not going to know the answer so it's going to look inside our Vector database find the
+answer and then it's going to respond to us and so when we're combining the elements of rag with a vector database
+here's how it works so the first thing want to talk about is actually what is a vector database so essentially this is
+what a vector database would look like we're all familiar with like an X and Y AIS graph where you can plot points on
+there on a two-dimensional plane but a vector database is a multi-dimensional graph of points so in this case you can
+see this multi-dimensional space with all these different points or vectors and each Vector is placed based on the
+actual meaning of the word or words in the vector so over here you can see we have wolf dog and cat and they're placed
+similarly because the mean meaning of these words are all like animals whereas over here we have apple and banana which
+the meaning of the words are food more likely fruits and that's why they're placed over here together so when we're
+searching through the database we basically vectorize a question the same way we would vectorize any of these
+other points and in this case we were asking for a kitten and then that query gets placed over here near the other animals and then we're able to say okay
+well we have all these results now so what that looks like and what we'll see when we get into NN is we have a
+document that we want to vectorize we have to split the document up into chunks because we can't put like a 50 page PDF as one chunk so it gets split
+up and then we're going to run it through something called an embeddings model which basically just turns text into numbers just as simple as that and
+as you can see in this case let's say we had a document about a company we have company data Finance data and marketing
+data and they all get placed differently because they mean different things and the the context of those chunks are
+different and then this visual down here is just kind of how an llm or in this case this agent takes our question turns
+it into its own question we vectorize that using the same embeddings model that we used up here to vectorize the
+original data and then because it gets placed here it just grabs back any vectors that are nearest maybe like the
+nearest four or five and then it brings it back in order to respond to us so don't want to dive too much into this
+don't want to over complicate it but hopefully this all makes sense cool so now that we understand that let's
+actually start building this workflow so what we're going to do here is we are going to click on ADD First Step because every workflow needs a trigger that
+basically starts the workflow so I'm going to type in Google Drive because what we're going to do is we are going
+to pull in a document from our Google Drive in order to vectorize it so I'm going to choose a trigger which is on
+changes involving a specific folder and what we have to do now is connect our account as you can see I'm already connected but what we're going to do is
+click on create new credential in order to connect our Google Drive account and what we have to do is go get a client ID
+in a secret so what we want to do is click on open docs which is going to bring us to NAD 's documents on how to
+set up this credential we have a prerequisite which is creating a Google Cloud account so I'm going to click on Google Cloud account and we're going to
+set up a new project okay so I just signed into a new account and I'm going to set up a whole project and walk through the credentials with you guys
+you'll click up here you'll probably have something up here that says like new project and then you'll click into new project all you have to do now is um
+name it and you you'll be able to start for free so don't worry about that yet so I'm just going to name this one demo and I'm going to create this new project
+and now up here in the top right you're going to see that it's kind of spinning up this project and then we'll move forward okay so it's
+already done and now I can select this project so now you can see up here I'm in my new project called demo I'm going
+to click on these three lines in the top left and what we're going to do first is go to apis and services and click on
+enabled apis and services and what we want to do is add the ones we need and so right now all I'm going to do is add
+Google Drive and you can see it's going to come up with Google Drive API and then all we
+have to do is really simply click enable and there we go I just enabled it so you can see here the status is enabled and
+now we have to set up something called our ooth consent screen which basically is just going to let NN know that Google
+Drive and edn are allowed to talk to each other and have permissions so right here I'm going to click on ooth consent
+screen we don't have one yet so I'm going to click on get started I'm going to give it a name so we're just going to call this one demo once again I'm going
+to add a support email I'm going to click on next because I'm not using a Google workspace account I'm just using
+a you know Nate herk 8@gmail.com I'm going to have to choose external I'm going to click on next for contact
+information I'm putting the same email as I used to create this whole project click on next and then agree to terms
+and then we're going to create that ooff consent screen okay so we're not done yet the next thing we want to do is we
+want to click on audience and we're going to add ourselves as a test user so we could also make the app published by
+publishing it right here but I'm just going to keep it in test and when we keep it in test mode we have to add a test user so I'm going to put in that
+same email from before and this is going to be the email of the Google drive we want to access so I put in my email you
+can see I saved it down here and then finally all we need to do is come back into here go to clients and then we need
+to create a new client we're going to click on web app we're going to name it whatever we want of course I'm just
+going to call this one demo once again and now we need to basically add a redirect URI so if you click back into
+end we have one right here so we're going to copy this go back into cloud and we're going to add a URI and paste
+it right in there and then hit create and then once that's created it's going
+to give us an ID and a secret so all we have to do is copy the ID go back into NN and paste that right
+here and then we need to go grab our secret from Google cloud and then paste that right in there and now we have a
+little button that says sign in with Google so I'm going to open that up it's going to pull up a window to have you sign in make sure you sign in with the
+same account that you just had yourself as a test user that one and then you'll have to continue and then here is
+basically saying like what permissions do we have to and it didn't have to your Google Drive so I'm just going to select all I'm going to hit continue and then
+we should be good connection successful and we are now connected and you may just want to rename this credential so
+you know you know which email it is so now I've saved my credential and we should be able to access the Google
+Drive now so what I'm going to do is I'm going to click on this list and it's going to show me the folders that I have in Google Drive so that's awesome now
+for the sake of this video I'm in my Google Drive and I'm going to create a new folder so new folder we're going to call this one um FAQ create this one
+because we're going to be uploading an FAQ document into it so here's my FAQ folder um right here and then what I
+have is down here I made a policy and FAQ document which looks like this we have some store policies and then we
+also have some FAQs at the bottom so all I'm going to do is I'm going to drag in my policy and FAQ document into that new
+FAQ folder and then if we come into nadn we click on the new folder that we
+just made so it's not here yet I'm just going to click on these dots and click on refresh list now we should see the
+FAQ folder there it is click on it we're going to click on what are we watching this folder for I'm going to be watching
+for a file created and then I'm just going to hit fetch test event and now we can see that we did in
+fact get something back so let's make sure this is the right one yep so there's a lot of nasty information coming through I'm going to switch over
+here on the right hand side this is where we can see the output of every node I'm going to click on table and I'm just going to scroll over and there
+should be a a field called file name here it is name and we have policy and FAQ documents so we know we have the
+right document in our Google Drive okay so perfect every time we drop in a new file into that Google folder it's going
+to start this workflow and now we just have to configure what happens after the workflow starts so all we want to do
+really is we want to pull this data into NN so that we can put it into our pine cone database so off of this trigger I'm
+going to add a new node and I'm going to grab another Google Drive node because what happened is basically we have the
+file ID and the file name but we don't have the contents of the file so we're going to do a download file node from
+Google Drive I'm going to rename this one and just call it download file just to keep ourselves organized we already
+have our credential connected and now it's basically saying what file do you want to download we have the ability to
+choose from a list but if we choose from the list it's going to be this file every time we run the workflow and we want to make this Dynamic so we're going
+to change from list to buy ID and all we have to do now is we're going to look on the leth hand side for that file that we
+just pulled in and we're going to be looking for the ID of the file so I can see that I found it right down here in
+the spaces array because we have the name right here and then we have the ID right above it so I'm going to drag ID
+put it right there in this folder it's coming through as a variable called json. ID and that's just basically
+referencing you know whenever a file comes through on the the Google Drive trigger I'm going to use the variable
+json. ID which will always pull in the files ID so then I'm going to hit test step and we're going to see that we're
+going to get the binary data of this file over here that we could download and this is our policy and FAQ document
+okay so there's step two we have the file downloaded in NN and now it's just as simple as putting it into pine cone
+so before we do that let's head over to Pine Cone doio okay so now we are in Pine cone. which is a vector database
+provider you can get started for free and what we're going to do is sign up okay so I just got logged in and once
+you get signed up you should see a page similar to this it's a get started page and what we want to do is you want to
+come down here and click on you know begin setup because we need to create an index so I'm going to click on begin
+setup we have to name our index so you can call this whatever you want we have to choose a configuration for a text
+model we have to choose a configuration for an embeddings model which is sort of what I talked about right in here this
+is going to turn our text chunks into a vector so what I'm going to do is I'm going to choose texting betting three
+small from open AI it's the most cost effective open AI embedding model so I'm going to choose that then I'm going to
+keep scrolling down I'm going to keep minus server list I'm going to keep AWS as the cloud provider I'm going to keep this region and then all I'm going to do
+is hit create index once you create your index it'll show up right here but we're not done yet you're going to click into
+that index and so I already obviously have stuff in my Vector database you won't have this what I'm going to do real quick is just delete this
+information out of it okay so this is what yours should look like there's nothing in here yet we have no name spaces and we need to get this
+configured so on the left hand side go over here to API keys and you're going
+to create a new API key name it whatever you want of course hit create key and then you're going to copy that value
+okay back in ended end we have our API key copied we're going to add a new node after the download file and we're going
+to type in Pine Cone and we're going to grab a pine cone Vector store then we're going to select add documents to a vector store and we need to set up our
+credential so up here you won't have these and you're going to click on create new credential and all we need to do here is just an API key we don't have
+to get a client ID or a secret so you're just going to paste in that API key once that's pasted in there and you've given it a name so you know what this means
+you'll hit save and it should go green and we're connected to Pine Cone and you can make sure that you're connected by
+clicking on the index and you should have the name of the index right there that we just created so I'm going to go
+ahead and choose my index I'm going to click on ADD option and we're going to be basically adding this to a pine cone name space which back in here in Pine
+Cone if I go back into my database my index and I click in here you can see that we have something called namespaces
+and this basically lets us put data into different folders within this one index so if you don't specify an index it'll
+just come through as default and that's going to be fine but we want to get into the habit of having our data organized
+so I'm going to go back into NN and I'm just going to name this Nam space FAQ because that's the type of data we're putting in and now I'm going to click
+out of this node so you can see the next thing that we need to do is connect an embeddings model and a document loader
+so let's start with the embeddings model I'm going to click on the plus and I'm going to click on embeddings open Ai and
+actually this is one thing I left out of the excal draw is that we also will need to go get an open AI key so as you can
+see when we need to connect a credential you'll click on create new credential and we just need to get an API key so
+you're going to type in open AI API you'll click on this first link here if you don't have an account yet you'll sign in and then once you sign up you
+want to go to your dashboard and then on the left hand side very similar thing to Pine Cone you'll click on API keys and
+then we're just going to create a new key so you can see I have a lot we're going to make a new one and I'm calling everything demo but this is going to be
+demo number three create new secret key and then we have our key so we're going to copy this and we're going to go back
+into ID end paste that right here we paste it in our key we've given in a name and now we'll hit save and we should go green just keep in mind that
+you may need to top up your account with a few credits in order for you to actually be able to run this model um so
+just keep that in mind so then what's really important to remember is when we set up our pine cone index we use the
+embedding model text embedding three small from open AI so that's why we have to make sure this matches right here or
+this automation is going to break okay so we're good with the embeddings and now we need to add a document loader so
+I'm going to click on this plus right here I'm going to click on default data loader and we have to just basically
+tell pine cone the typee of data we're putting in and so you have two options Json or binary in this case it's really
+easy because we downloaded a a Google doc which is on the left hand side you can tell it's binary because up top
+right here on the input we can switch between Json and binary and if we were uploading Json all we'd be uploading is
+this gibberish nonsense information that we don't need we want to upload the binary which is the actual policy and
+FAQ document so I'm just going to switch this to Binary I'm going to click out of here and then the last thing we need to do is add a text splitter so this is
+where I was talking about back in this excal draw we have to split the document into different chunks and so that's what
+we're doing here with this text splitter I'm going to choose a recursive character text splitter there's three
+options and I won't dive into the difference right now but recursive character text splitter will help us keep context of the whole document as a
+whole even though we're splitting it up so for now chunk size is a th000 that's just basically how many characters am I
+going to put in each chunk and then is there going to be any overlap between our chunks of characters so right now
+I'm just going to leave it default a th and zero so that's it you just built your first automation for a rag Pipeline
+and now we're just going to click on the play button above the pine con Vector store node in order to see it get vectorized so we're going to basically
+see that we have four items that have left this node so this is basically telling us that our Google doc that we
+downloaded right here so this document got turned into four different vectors so if I click into the text splitter we
+can see we have four different responses and this is the contents that went into each chunk so we can just verify this by
+heading real quick into pine cone we can see we have a new name space that we created called FAQ number of Records is
+four and if we head over to the browser we can see that we do indeed have these four vectors and then the text field
+right here as you can see are the characters that were put into each chunk okay so that was the first part of this
+workflow but we're going to real quick just make sure that this actually works so we're going to add a rag chatbot okay
+so what I'm going to do now is hit the tab or I could also have just clicked on the plus button right here and I'm going to type in AI agent and that is what
+we're going to grab and pull into this workflow so we have an AI agent and let's actually just put him right over
+here um and now what we need to do is we need to set up how are we actually going
+to talk to this agent and we're just going to use the default naden chat window so once again I'm going to hit tab I'm going to type in chat and we
+have a chat trigger and all I'm going to do is over here I'm going to grab the plus and I'm going to drag it into the
+front of the AI agent so basically now whenever we hit open chat and we talk right here the agent will read that chat
+message and we know this because if clicking to the agent we can see the user message is looking for one in the
+connected chat trigger node which we have right here connected okay so the first step with an AI agent is we need
+to give it a brain so we need to give it some sort of AI model to use so we're going to click on the plus right below
+chat model and what we could do now is we could set up an open AI chat model because we already have our API key from
+open AI but what I want to do is click on open router because this is going to allow us to choose from all different
+chat models not just open AIS so we could do Claude we could do Google we could do perplexity we have all these different models in here which is going
+to be really cool and in order to get an open router account all you have to do is go sign up and get a API key so
+you'll click on create new credential and you can see we need an API key so you'll head over to open router. you'll
+sign up for an account and then all you have to do is in the top right you're going to click on keys and then once again kind of the same as all the other
+ones you're going to create a new key you're going to give it a name you're going to click create you have a secret
+key you're going to click copy and then when we go back into NN and paste it in here give it a name and then hit save
+and we should go green we've connected to open router and now we have access to any of these different chat models so in
+this case let's use let's use Claude um 3.5
+sonnet and this is just to show you guys you can connect to different ones but anyways now we could click on open chat
+and actually let me make sure you guys can see him if we say hello it's going to use its brain claw 3.5 son it and now
+it responded to us hi there how can I help you so just to validate that our information is indeed in the pine cone
+Vector store we're going to click on a tool under the agent we're going to type in Pine Cone um and grab a pine con
+Vector store and we're going to grab the account that we just selected so this was the demo I just made we're going to
+give it a name so in this case I'm just going to say knowledge base we're going to give a description
+call this tool to access the policy and
+FAQ database so we're BAS basically just describing to the agent what this tool does and when to use it and then we have
+to select the index and the name space for it to look inside of so the index is easy we only have one it's called sample
+but now this is important because if you don't give it the right names space it won't find the right information so we called ours FAQ if you remember in um
+our pine cone we have a namespace and we have FAQ right here so that's why we're doing FAQ and now it's going to be
+looking in the right spot so before we can chat with it we have to add an embeddings model to our Pine con Vector
+store which which same thing as before we're going to grab open Ai and we're going to use embedding three small and
+the same credential you just made and now we're going to be good to go to chat with our rag agent so looking back in
+the document we can see we have some different stuff so I'm going to ask this chatbot what the warranty policy is so
+I'm going to open up the chat window and say what is our warranty policy send
+that off and we should see that it's going to use its brain as well as the vector store in order to create an answer for us because it didn't know by
+itself so there we go just finished up and it said based on the information from my knowledge base here's the
+warranty policy we have oneyear standard coverage we have you know this email for claims processes you must provide proof
+of purchase and for warranty exclusions that aren't covered damage due to misuse water damage blah blah blah back in the
+policy documentation we can see that that is exactly what we have in our knowledge base for warranty policy so just because
+I don't want this video to go too long I'm not going to do more tests but this is where you can get in there and make sure it's working one thing to keep in
+mind is within the agent we didn't give it a system prompt and what a system prompt is is just basically a message
+that tells the agent how to do its job so what you could do is if you're having issues here you could say you know like
+this is the name of our tool which is called knowledge base you could tell the agent in ins system prompt hey like your
+job is to help users answer questions about the um you know our policy database you have a tool called
+knowledge base you need to use that in order to help them answer their questions and that will help you refine the behavior of how this agent a all
+right so the next one that we're doing is a customer support workflow and as always you have to figure out what is the trigger for my workflow in this case
+it's going to be triggered by a new email received so I'm going to click on ADD First Step I'm going to type in
+Gmail grab that node and we have a trigger which is on message received right here and we're going to click on
+that so what we have to do now is obviously authorize ourselves so we're going to click on create new credential
+right here and all we have to do here is use oo 2 so all you have to do is click on sign in but before we can do that we
+have to come over to our Google Cloud once again and now we have to make sure we enable the Gmail API so we'll click
+on Gmail API and it'll be really simple we'll just have to click on enable and now we should be able to do that ooth
+connection and actually sign in you'll click on the account that you want to access the Gmail you'll give it access
+to everything click continue and then we're going to be connected as you can see and then you want to name this credential as always okay so now we're
+using our new credential and what I'm going to do is if I hit fetch test event so now we are seeing an email that I
+just got in this inbox which in this case was n end Cloud was granted access to your Google account blah blah blah um
+so that's what we just got okay so I just sent myself a different email and I'm going to fetch that email now from
+this inbox and we can see that the snippet says what is the privacy policy I'm concerned about my data and
+passwords and what we want to do is we want to turn off simplify because what this button is doing is it's going to
+take the content of the email and basically you know cut it off so in this case it didn't matter but if you're
+getting long emails it's going to cut off some of the email so if we turn off simplify fetch test event once again
+we're now going to get a lot more information about this email but we're still going to be able to access the actual content which is right here we
+have the text what is privacy policy I'm concerned about my data and passwords thank you and you can see we have other
+data too like what the subject was who the emails coming from what their name is all this kind of stuff but the idea
+here is that we are going to be creating a workflow where if someone sends an email to this inbox right here we are
+going to automatically look up the customer support policy and respond back to them so we don't have to okay so the first thing I'm actually
+going to do is pin this data just so we can keep it here for testing which basically means whenever we rerun this
+it's not going to go look in our inbox it's just going to keep this email that we pulled in which helps us for testing
+right okay cool so the next step here is we need to have ai basically filter to see is this email customer support
+related if yes then we're going to have a response written if no we're going to do nothing because maybe the use case
+would be okay we're going to give aned in access to an inbox where we're only getting customer support emails but
+sometimes maybe that's not the case and let's just say we wanted to create this as sort of like an inbox manager where which we could route off to different
+logic based on the type of email so that's what we're going to do here so I'm going to click on the plus after the Gmail trigger and I'm going to search
+for a text classifier node and what this does is it's going to use AI to read the
+incoming email and then determine what type of email it is so because we're using AI the first thing we have to do
+is connect a chat model we already have our open router credential set up so I'm going to choose that I'm going to choose the credential and then I'm for this one
+let's just keep it with 40 mini and now this AI node actually has Ai and I'm going to click into the text classifier
+and the first thing we see is that there's a text to classify so all we want to do here is we want to grab the actual content of the email so I'm going
+to scroll down I can see here's the text which is the email content we're going to drag that into this field and now
+every time a new email comes through the text classifier is going to be able to read it because we put in a variable
+which basically represents the content of the email so now that it has that it still doesn't know what to classify it
+as or what its options are so we're going to click on ADD category the first category is going to be customer support
+and then basically we need to give it a description of what a customer support email could look like so I wanted to keep this one simple it's pretty vague
+but you could make this more detailed of course and I just said an email that's related to helping out a customer they may be asking questions about our
+policies or questions about our products or services and what we can do is we can give it specific examples of like here
+are some past customer support emails and here's what they've looked like and that will make this thing more accurate but in this case that's all we're going
+to do and then I'm going to add one more category that's just going to be other and then for now I'm just going to say
+any email that is not customer support related Okay cool so now when we click
+out of here we can see we have two different branches coming off of this node which means when the text classifier decides it's either going to
+send it off this Branch or it's going to send it down this Branch so let's quickly hit play it's going to be
+reading the email using its brain and now you can see it has output it in the custom customer support Branch we can
+also verify by clicking into here and we can see customer support branch has one item and other branch has no items and
+just to keep ourselves organized right now I'm going to click on the other branch and I'm just going to add an operation that says do nothing just so
+we can see you know what would happen if it went this way for now but now is where we want to configure the logic of
+having an agent be able to read the email hit the vector database to get relevant information and then help us
+write an email so I'm going to click on the plus after the customer support Branch I'm going to grab an AI agent so
+this is going to be very similar to the way we set up our AI agent in the previous workflow so it's kind of building on top of each other and this
+time if you remember in the previous one we were talking to it with a connected chat trigger node and as you can see
+here we don't have a connected chat trigger node so the first thing we want to do is change that we wanted to find
+below and this is where you would think okay what do we actually want the agent to read we want it to read the email so
+I'm going to do the exact same thing as before I'm going to go into the Gmail trigger node scroll all the way down
+until we can find the actual email cont content which is right here and just drag that right in that's all we're going to do and then we definitely want
+to add a system message for this agent we are going to open up the system message and I'm just going to click on
+expression so I can expand this up full screen and we're going to write a system prompt again for the sake of the video
+keeping this prompt really concise but if you want to learn more about prompting then definitely check out my communities linked down below as well as
+this video up here and all the other tutorials on my channel but anyways what we said here is we gave it an overview
+and instructions the overview says you are a customer support agent for Tech Haven your job is to respond to incoming
+emails with relevant information using your knowledge based tool and so when we do hook up our pine cone Vector database
+we're just going to make sure to call it knowledge base because that's what the agent thinks it has access to and then
+for the instructions I said your output should be friendly and use emojis and always sign off as Mr helpful from Tech
+Haven Solutions and then one more thing I forgot to do actually is we want to tell it what to actually output so if we
+didn't tell it it would probably output like a subject and a body but what's going to happen is we're going to reply
+to the incoming email we're not going to create a new one so we don't need a subject so I'm just going to say output
+only the body content of the email so then we'll give it a try and see what
+that prompt looks like we may have to come back and refine it but for now we're good um and as you know we have to connect a chat model and then we have to
+connect our pine cone so first of all chat model we're going to use open router and just to show you guys we can
+use a different type of model here let's use something else okay so we're going to go with Google Gemini 2.0 Flash and
+then we need to add the pine cone database so I'm going to click on the plus under tool I'm going to search for pine cone Vector store grab that and we
+have the operation is going to be retrieving documents as a tool for an AI agent we're going to call this
+knowledge capital B base and we're going to once again just say call this tool to
+access policy and FAQ information we need to set up the index as well as the
+namespace so sample and and then we're going to call the namespace you know FAQ because that's what it's called in our
+pine cone right here as you can see and then we just need to add our embeddings model and we should be good to go which
+is embeddings open AI text embedding three small so we're going to hit the play above the AI agent and it's going
+to be reading the email as you can see once again The Prompt user message it's reading the email what is the privacy
+policy I'm concerned about my data and my passwords thank you so we're going to hit the play above the agent we're going
+to watch it use its brain we're going to watch it call the vector store and we got an
+okay so I'm getting this error right and it says provider returned error and it's weird because basically why it's
+erroring is because of our our chat model and it's it's weird because it goes green right so anyways what I would
+do here is if you're experiencing that error it means there's something wrong with your key so I would go reset it but
+for now I'm just going to show you the quick fix I can connect to a open AI chat model real quick and I can run this
+here and we should be good to go so now it's going to actually write the email and output super weird error but I'm
+honestly glad I caught that on camera to show you guys in case you face that issue because it could be frustrating so we should be able to look at the actual
+output which is hey there thank you for your concern about privacy policy at Tech Haven we take your data protection
+seriously so then it gives us a quick summary with data collection data protection cookies if we clicked into
+here and went to the privacy policy we could see that it is in fact correct and then it also was friendly and used
+emojis like we told it to right here in the system prompt and finally it's signed off as Mr helpful from Tech Haven
+Solutions also like we told it to so we're almost done here the last thing we want to do is we want to have it actually reply to this person that
+triggered the whole workflow so we're going to click on the plus we're going to type in Gmail grab a Gmail node and
+we're going to do reply to a message once we open up this node we already know that we have it connected because
+we did that earlier we need to configure the message ID the message type and the message and so all I'm going to do is
+first of all email type I'm going to do text for the message ID I'm going to go all the way down to the Gmail trigger
+and we have an ID right here this is the ID we want to put into the message ID so that it responds in line on Gmail rather
+than creating a new thread and then for the message we're going to just drag in the output from the agent that we just
+had write the message so I'm going to grab this output put it right there and now you can see this is how it's going to respond in
+email and the last thing I want to do is I want to click on ADD option append naden attribution and then just check
+that off so then at the bottom of the email it doesn't say this was sent by Neden so finally we'll hit this test
+step we will see we get a success message that the email was sent and I'll head over to the email to show you guys
+okay so here it is this is the one that we sent off to that inbox and then this is the one that we just got back as you can see it's in the same thread and it
+has basically the privacy policy outline for us cool so that's workflow number two couple ways we could make this even
+better one thing we could do is we could add a node right here and this would be another Gmail one and we could basically
+add a label to this email so if I grab add label to message we would do the exact same thing we'd grab the message
+ID the same way we grabbed it earlier so now it has the message ID of the label to actually create and then we would
+just basically be able to select the label we want to give it so in this case we could give it the customer support label we hit test step we'll get another
+success message and then in our inbox if we refresh we will see that that just got labeled as customer support so you
+could add on more functionality like that and you could also down here create more sections so we could have Finance
+you know a logic built out for finance emails we have logic built out for all these other types of emails and um plug
+them into different knowledge bases as well so let's move on to the third and final workflow for today okay so the
+third one we're going to do is a LinkedIn content creator workflow so what we're going to do here is click on
+ADD first step of course and ideally you know in production what this workflow would look like is a schedule trigger
+you know so what you could do is basically say every day I want this thing to run at 7:00 a.m. that way I'm always going to have a LinkedIn post
+ready for me at you know 7:30 I'll post it every single day and if you wanted it to actually be be automatic you'd have
+to flick this workflow from inactive to active and you know now it says um your schedule trigger will now trigger
+executions on the schedule you have defined so now it would be working but for the sake of this video we're going to turn that off and we're just going to
+be using a manual trigger just so we can show how this works um but it's the same concept right it would just start the
+workflow so what we're going to do from here is we're going to connect a Google sheet so I'm going to grab a Google
+sheet node I'm going to click on get rows in sheet and we have to create our credential once again so we're create
+new credential we're going to be able to do oo to sign in but we're going to have to go back to Google cloud and we're
+going to have to grab a sheet and make sure that we have the Google Sheets API enabled so we'll come in here we'll
+click enable and now once this is good to go we'll be able to sign in using OA 2 so very similar to what we just had to
+do for Gmail and that previous workflow but now we can sign in so once again choosing my email allowing it to have
+access and then we're connected successfully and then giving this a good name and now what we can do is choose the document in the sheet that it's
+going to be pulling from so I'm going to show you I have one called LinkedIn posts and I only have one sheet but
+let's show you the sheet real quick so LinkedIn posts what we have is a topic a status and a content and we're just
+basically going to be pulling in one row where the status equals to do and then we are going to um create the content
+upload it back in right here and then we're going to change the status to created so then this same row doesn't get pulled in every day so how this is
+going to work is we're going to create a filter so the first filter is going to be looking within the status column and
+it has to equal to do and if we click on test step we should see that we're going to get like all of these items where
+there's a bunch of topics but we don't want that we only want to get the first row so at the bottom here add option I'm
+going to say return only first matching row check that on we'll test this again and now we're only going to be getting
+that top row to create content on cool so we have our first step here which is just getting the content from the Google
+sheet now what we're going to do is we need to do some web search on this topic in order to create that content so I'm
+going to add a new node this one's going to be called an HTTP request so we're going to be making a request to a
+specific API and in this case we're going to be using tav's API so go on over to t.com and create a free account
+you're going to get a thousand searches for free per month okay here we are in my account I'm on the free researcher
+plan which gives me a th000 free credits and right here I'm going to add an API key we're going to name it create a key
+and we are going to copy this value and so you'll start to get to the point when you connect to different Services you always need to have some sort of like
+token or API key but anyways we're going to grab this in a sec what we need to do now is go to the documentation that we
+see right here we're going to click on API reference and now we have right here this is going to be the API that we need
+to use in order to search the web so I'm not going to really dive into like everything about HTTP requests right now
+I'm just going to show you the simple way that we can get this set up so first thing that we're going to do is we obviously see that we're using an
+endpoint called tavali search and we can see it's a post request which is different than like a git request and we
+have all these different things we need to configure and it can be confusing so all we want to do is on the top right we
+see this curl command we're going to click on the copy button we're going to go back into our NN hit import curl
+paste in the curl command hit import and now the whole node magically
+just basically filled in itself so that's really awesome and now we can sort of break down what's going on so
+for every HTTP request you have to have some sort of method typically when you're sending over data to a service
+which in this case we're going to be sending over data to tavali it's going to search the web and then bring data
+back to us that's a post request because we're sending over body data if we were
+just like kind of trying to hit an and if we were just trying to access like you know um best buy.com and we just
+wanted to scrape the information that could just be a simple git request because we're not sending anything over anyways then we're going to have some
+sort of Base URL and endpoint which is right here the base URL we're hitting is api. comom Tav and then the endpoint
+we're hitting is slash search so back in the documentation you can see right here we have slash search but if we were
+doing like an extract we would do slash extract so that's how you can kind of see the difference with the end points
+and then we have a few more things to configure the first one of course is our authorization so in this case we're doing it through a header parameter as
+you can see right here the curl command set it up basically all we have to do is replace this um token with our API key
+from tab so I'm going to go back here copy that key in n8n I'm going to get rid of token and just make sure that you
+have a space after the word Bearer and then you can paste in your token and now we are connected to tavali but we need
+to configure our request before we send it off so right here are the parameters within our body request and I'm not
+going to dive too deep into it you can go to the documentation if you want to understand like you know the main thing really is the query which is what we're
+searching for but we have other things like the topic it can be general or news we have search depth we have Max results
+we have a Time range we have all this kind of stuff right now I'm just going to leave everything here as default
+we're only going to be getting one result and we're going to be doing a general topic we're going to be doing basic search but right now if we hit
+test step we should see that this is going to work but it's going to be searching for who is Leo Messi and here is sort of like the answer we get back
+as well as a URL so this is an actual website we could go to about lonel Messi
+and then some content from that website right so we are going to change this to an expression so that we can put a
+variable in here rather than just a static hardcoded who is Leo Messi we'll delete that query and all we're going to
+do is just pull in our topic so I'm just going to simply pull in the topic of AI image generation obviously it's a
+variable right here but this is the result and then we're going to test step and this should basically pull back an
+article about AI image generation and you know so here is a deep AI um link we'll go to it and we can see
+this is an AI image generator so maybe this isn't exactly what we're looking for what we could do is basically just
+say like you know we could hardcode in search the web for and now it's going to
+be saying search the web for AI image generation we could come in here and say yeah actually you know let's get three results not just one and then now we
+could test that step and we're going to be getting a little bit different of a search result um AI image generation
+uses text descriptions to create unique visuals and then now you can see we got three different URLs rather than just
+one anyways so that's our web search and now that we have a web search based on our defined topic we just need to write
+that content so I'm going to click on the plus I'm going to grab an AI agent and once again we're not giving it the
+connected chat trigger node to look at that's nowhere to be found we're going to feed in the research that was just
+done by tavali so I'm going to click on expression to open this up I'm going to say article one with a colon and I'm
+just going to drag in the content from article one I'm going to say Article 2 with a colon and just drag in the
+content from article two and then I'm going to say article 3 colon and just drag in the content from the Third
+article so now it's looking at all three article contents and now we just need to give it a system prompt on how to write
+a LinkedIn post so open this up click on ADD option click on system message and now let's give it a prompt about turning
+these three articles into a LinkedIn post okay so I'm heading over to my custom GPT for a prompt architect if you
+want to access this you can get it for free by joining my free school Community um you'll join that it's linked in the
+description and then you can just search for prompt architect and you should find the link anyways real quick it's just asking for some clarification questions
+questions so anyways I'm just shooting off a quick reply and now it should basically be generating our system
+prompts for us so I'll check in when this is done okay so here is the system prompt I'm going to just paste it in
+here and I'm just going to you know disclaimer this is not perfect at all like I don't even want this tool section at all because we don't have a tool
+hooked up to this agent um we're obviously just going to give it a chat model real quick so in this case what I'm going to do is I'm going to use claw
+3.5 Sonet just because I really like the way that it writes content so I'm using Claud through open router and now let's
+give it a run and we'll just see what the output looks like um I'll just click in here while it's running and we should see that it's going to read those
+articles and then we'll get some sort of LinkedIn post back okay so here it is the creative revolution is here and it's
+AI powered gone are the days of hiring expensive designers are struggling with complex software today's entrepreneurs
+can transform ideas into stunning visuals instantly using AI image generators so as you can see we have a
+few emojis we have some relevant hashtags and then at the end it also said this post you know it kind of explains why it made this post we could
+easily get rid of that if all we want is the content we would just have to throw that in the system prompt but now that we have the post that we want all we
+have to do is send it back into our Google sheet and update that it was actually made so we're going to grab
+another sheets node we're going to do update row and sheet and this one's a little different it's not just um
+grabbing stuff from a row we're trying to update stuff so we have to say what document we want what sheet we want but
+now it's asking us what column do we want to match on so basically I'm going to choose topic and all we have to do is
+go all the way back down to the sheet we're going to choose the topic and drag it in right here which is basically saying okay when this node gets called
+whenever the topic equals AI image generation which is a variable obviously whatever whatever topic triggered the
+workflow is what's going to pop up here we're going to update that status so back in the sheets we can see that the
+status is currently to-do and we need to change it to created in order for it to go green so I'm just going to type in
+created and obviously you have to spell this correctly the same way you have it in your Google Sheets and then for the content all I'm going to do is we're
+just going to drag in the output of the AI agent and as you can see it's going to be spitting out the result and now if
+I hit test up and we go back into the sheet we'll basically watch this change now it's created and now we have the
+content of our LinkedIn post as well with some justification for why it created the post like this and so like I
+said you could basically have this be some sort of you know LinkedIn content making machine where every day it's
+going to run at 7:00 a.m. it's going to give you a post and then what you could do also is you can automate this part of
+it where you're basically having it create a few new rows every day if you give it a certain sort of like General
+topic to create topics on and then every day you can just have more and more pumping out so that is going to do it
+for our third and final workflow okay so that's going to do it for this video I hope that it was helpful you know
+obviously we connected to a ton of different credentials and a ton of different Services we even made a HTTP
+request to an API called tavali now if you found this helpful and you liked this sort of live step-by-step style and
+you're also looking to accelerate your journey with nadn and AI automations I would definitely recommend to check out my paid Community the link for that is
+down down in the description there are a ton of great resources on YouTube and you can definitely learn through tutorials like that but having a
+community of members who are kind of going through the same thing as you it's really going to help especially when you run into Little issues sort of like the
+one we saw earlier in this video it's just going to really help when you can come in here and ask questions that have
+been answered millions of times like in this community if I type in solved you're going to see there's you know
+hundreds of things that we have talked about and problems that people have had and now you know we basically have the solves for all of them right here so on
+top of that we have five live calls per week to make sure you're never getting stuck as well as a classroom section
+with different topics like intro to AI automation building agents Vector databases apis and HTTP requests
+step-by-step builds all this kind of stuff so I'd really love to see you guys in here love to see you on the live calls and I appreciate you guys making
+it to the end of the video as always if you learned something new or you appreciated it please give it a like
+definitely helps me out a ton and I will see you all in the next one thanks so much everyone

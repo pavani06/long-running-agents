@@ -1,0 +1,347 @@
+What is the stack that you see people using with NAD? Actually quite diverse. I think it's
+actually probably doesn't make sense because the nice thing about that system like in you can dy connect everything to
+anything means like there is probably not kind of this this default stack people are using like they use literally
+any LLM. They use any kind of memory or vector store or any kind of applications
+etc. is just the thing that makes anything great because I don't know what LLM is going to win the race in the end.
+who's going to be the best one, if it's going to be one, if it's going to be a million different ones, is it going to be a small one, a big one? I have no
+idea. But that's the great thing about NN is like we don't have to care because the nice thing is you can use what whatever is best for your use case. Um,
+and I think that is what makes it so powerful.
+[Music]
+Today we're joined by Yan Overhazer, founder and CEO of NADN, who is one of the most remarkable growth stories in
+the automation era, quadrupling revenue in 8 months after 6 years of steady building. What makes this breakthrough
+particularly compelling isn't just the explosive numbers, but the strategic pivot that made it possible.
+Transforming from a workflow automation tool into an orchestration layer for AI powered applications.
+Yan discusses the counterintuitive marketing strategy that abandoned lead generation to focus on community
+adoption, the delicate balance between serving free users and enterprise customers, and why he believes
+horizontal platforms will ultimately win over vertical AI applications. He also shared how their open source
+ethos informs how they prioritize what to build and how to package it and the importance of fair code usage in
+commercializing their technology. Yan's vision for NADN is to become the Excel of AI, the default tool people
+think of when building anything AI related. He reveals why empowering builders at the bottom of the market,
+may be the key to capturing enterprise customers at the top, and why the future belongs to those who can connect
+everything to anything in an increasingly fragmented AI ecosystem. Enjoy the show.
+So, Yan, hello and welcome. Uh, thank you for joining us. Um, we've been in business together for a long time. I
+think as far back as 2020, so the early days of NAN. Um, so we're grateful for you, you know, being with us and sharing
+some of the perspectives. Um, I thought maybe a good question to kick off with is just to share a little bit about the last eight months of really NA10's
+history. Um, it's been incredible run. You added I think four times the revenue in the last eight months that it took
+the first five or six years to really achieve in the company. So the business is really ripping. Um, what happened?
+What changed? First, thanks for for welcoming me here. Great to be here. Um to answer your
+question what happened I think it's it comes down to things that we actually
+did quite a few years ago actually almost two by now and I think it's has been two things one was obviously our
+focus on AI it's like when this whole AI wave started we kind of honestly we were
+worried a little bit at the beginning and we we're not sure what does it really mean for us and we knew it's probably going to be mean one of two
+things either it's going to be a huge opportunity or actually the demise of the company. You obviously want to be
+very sure it's going to be one and not the other. Um then we kind of looked in the market. It's like what are other
+companies doing? And what the most companies did is they kind of added nice AI features to the application. And we
+kind of realized this probably not the kind of thing that makes sure we're going to stay around long term. What is
+really important is to kind of become actually part of the value chain. So what we did is exactly that. It's kind
+of we we we not just added AI features. We actually allowed people to build AI powered applications with NM. There's
+obviously nothing that the user base or people kind of realize um overnight like
+what NN has become back then and it obviously takes some time to kind of catch on and that's where the second
+piece comes in. Historically we kind of focused on on mainly two things
+internally at NSN especially kind of in the marketing department. They always had like this dual focus on obviously
+kind of creating leads but also kind of making sure like the inbound that that kind of we get more adoption
+which kind of always caused a problem in the sense of we were always very good in adoption but at the same time leads
+normally fall short. So what happened is that that the marketing department then put everything from adoption in leads
+just to make sure like we can't make make that goal as well and that was problematic because like all the long-term planning actually went went
+away like they couldn't really have the impact they could have had and we realized hey we have this amazing community we have this amazing bottom up
+adoption. So instead of actually kind of forcing something that's not really true to us we just really focus on on what
+was already working with this is really focusing on this kind of top of the funnel. That's what we did. we kind of
+removed the the lead goal. We actually exchange it with like an adoption of of large organization just with went all in
+the in the community and making sure like as many people as possible are using NN and it kind of also is another
+thing that you can decide and and you you make the change but it's nothing is kind of happens overnight. You actually
+have to quite you have a lot of trust in that and you have to kind of really double down and and kind of wait because
+the things kind of take some time to mature and that's actually the thing that actually happened like it matured
+to kind of really double down. we kind of empowered our community more. We created more events. We created more content. Um and that is then in the end
+this thing that materialized especially in the beginning and the end of last year in December is where the market
+finally realized that we have become this AI tool but also kind of the community especially around on YouTube
+where more people created more and more content. Obviously more content people create the more other people want to create content the better it gets gets
+ranked and then everything kind of started to explode. I had an amazing story at our board meeting a couple of weeks ago, Yan, that you have YAN focus
+time on long flights and you actually coded the first version of that AI nodes product flying back from San Francisco.
+Is that true? No, actually I created quite a few things on on on planes in the past. That
+thing I didn't create on planes or trains. I think I always love the time. Honestly, right now I'm I always love
+that to be honest, but now I also feel like destroying more than actually helpful. just I kind of create more like
+MVPs or something like that. I play around rather than actually adding production code on planes and trains anymore which is sad
+on dodgy Wi-Fi maybe. Yeah. And if you can take us back to 2019 I think it was just you sort of
+founder entrepreneur when you went out and raised your preede round. What was kind of the aspect the origin story that really stands out to you?
+What has really stayed the same from day one of NA and what has really changed over that time frame? I think what
+always stayed true is for sure the kind of focus on the community like actually
+the first people like in the first week in in April a few people started and one
+of the first people that started was a deafel because I always knew like if if you want to make sure that ended and
+becomes meaningful and kind of becomes the company like I wanted to build I really have to kind of make sure kind of
+I I invest in the community very early on think that it kind always stayed true. I think another thing is probably
+something around values. We always actually I also have to be try to be as
+honest and upfront about things um as possible. We also see that for example in our license. You probably have seen
+like we never call ourselves open source because we don't have an OC approved open source license. What does it mean?
+Means our source code is available everywhere can use it totally for free. They cannot even use it in in
+production. that they innovative is a somebody home privately or somebody in large organization everybody can use it
+what is however different in our license is that people cannot commercialize our code means nobody can just take our code
+and often like now hosted version of NN for example or kind of create XY Z set automator in the product why is it
+important because I saw a lot of organization in the past like open
+source organizations kind of changing license And people obviously got very angry and they really hated that. And what I
+thought was quite interesting is people didn't hate it because of the license that the companies chose. People were
+mainly angry because people like this company changed the rules and that's never nice. And so what I thought, hey,
+I think it's a very reasonable thing. So I'm just very honest and upfront about it from the very beginning. I said, hey, I'm not building NN and giving it away
+for free because I'm a good person. Like I actually want to build a business around it. I want to make sure I can get paid. I can be I want to make sure all
+the other people can get paid as well because I actually think it's in the interest of everybody. So that is why I
+chose a D. I think that's we always had state very true uh around that. Again
+now getting to the second part of your question is like what changed thing is definitely like around like what what
+what we started at is like as mentioned before like we started as this kind of automation tool. Honestly I never have
+thought that we would AI ever. It's like never even crossed my mind that we would
+go into the AI space. But I think in the end it's like sometimes you see opportunities out there and you just
+have to take them and else I think it makes difference between building some a big sustainable company that really
+matters and or probably building a kind of a started at some point um this goes out of business sadly.
+Yeah, you've done a masterful job on the community building aspect of NAD and you
+mentioned the values which I'm sure were really critical to earning the trust of your community. Can you also talk a bit
+about the tactics? Um, it's kind of the constant push and pull of trying to kind
+of shape or curate the community while also really trying to listen and you know and see where they want to go. How
+tactically how have you managed the community over the years? I think for the very beginning it was very
+important for me just to kind of include people. For example, we in the beginning we didn't have any not telemetry data at
+all. that we didn't collect any telemetry which was always fine in the very beginning but obviously as as a company grows you kind of initially need
+data to kind of improve the product very fast again that's again makes a difference between a company that survives or one that doesn't so we had
+to add talent creator another thing we at the edge was as someone we obviously added paid features um and every time we
+made a bigger change we kind of um kind of posted it to the community forum first we kind of what like we we shared
+with them what we wanted to do gave them the reason why we wanted to do it Um, and then kind of listen to their
+feedback. I think that is just kind of taking them with you when you're doing something. I think that's just that's a
+very important thing. And another thing is definitely kind of trying to kind of empower them actually like one of the
+earliest eden employees was Ricardo. Ricardo is he is this amazing guy
+working in Florida and he was the first one of the first coders to end. He
+discovered a product on product hunt and he just started to kind of create one note then he created two notes created
+three notes and every time he contributed something I said hey that's great thank you very much and then I kind of um gave feedback I I improved
+things and he learned and he was excited and created more nodes and at some point he created like 50 or 60 notes like
+integrations for um then obviously as soon as I had the first Monday banker I hired him I think
+it's really just very important you kind of show people that you care and take them with you and and kind of show how
+how much you value them. I think I really hope people keep the community really knows how much we value them. We
+try to give back a lot. I think that's generally I think this kind of even though we're not open source, we have
+this this open source ethos where you kind of really give a lot first and I think you normally get so much more back
+than you actually receive. We see the same thing again also with our community today where we just say like we empower
+you and then they create all of this amazing content no matter if it's on YouTube on LinkedIn they create tutorials I think that that worked out
+very well this something they're still doing to this day has there been a shift in I mean given the scale of the
+community today right it's hundreds of thousands of members in size has there been a change in how you try and surface
+the right information or the right ideas and how you choose which to prioritize coming from that community Nice. Yeah,
+in the beginning was definitely easier. Like in the beginning like I I didn't really worry about monetization at all.
+So I just wanted to make sure I build the best product and I just built things that people really wanted. So I could
+literally from the very beginning we had a community forum where people could add feature requests and people could upload
+the ones they wanted to wanted to have the most. That is literally kind of how we chose very early on what to build.
+This unless this was something totally out of whack. We we we normally build it because we knew people really build that
+very much. Um and that works worked actually for quite a while. Um, at some
+point you have to get a bit more opinionated where you not just kind of building what the community wants, but
+we actually have to kind of think about like where the market is going also how you kind of build something again that's
+that's sustainable that again especially also something what honestly also kind of larger organizations use as well and
+also just generally where you see the market going and I think that's what what we're doing right now. We try to find a good mix between what are people
+really asking for and what do we think we have to build to be successful in the long term both because like something
+like uh AI but also again what for example enterprise organizations need. You mentioned earlier toward the start
+of the conversation that you had this sort of makeorb breakak moment in the early days of AI where you realized that
+AI was either going to be the future of NAN or I think the word you used was the demise the demise of NAN. Um, can you
+take us back to that moment? Like what did you see that made you realize how
+important an inflection point in the trajectory of the company this is going to be? And then what did you do to
+figure out how to position in so well with respect to these AI tailwinds?
+One thing I I saw is I saw it was the funding announcement of um pine cone
+where so I think they raised like a hundred million dollar round or something like that. They also saw that they kind of waste around a year before
+at like some point before and I was wondering like what changed it's like why why a companies suddenly care so
+much about them and then I realized again it was exactly that it's like what they were in the past is they were the
+vector database what they become they became deep database for AI that's thought hey that's where I really say we
+have to do something very similar with as well that's exactly what we did what we also did on this in the past and what
+the most of of our competitors did is they kind of created an OpenAI node. A
+node that kind of connected via HTTP did requests to OpenAI and you could do
+quite some nice things with it. You can still do it up to this point in time. But what we however realized is that is
+honestly not enough like you can do quite nice use cases but the really powerful things are not possible. you
+really have to be able to kind of create proper agents like change auto promps, add tools, um add a vector database, um
+and and and output parses and all of the the things. And that is um when we then kind of built out our advanced AI
+functionality where we where we allowed people to do the things in and at in this kind of low code, no code way that
+was previously only possible writing Python scripts. We kind of drastically reduced the entry barrier for people to
+build things and also reduce the speed because the stuff has histo been quite finicky honestly like you connected A
+with B and it didn't work and and and it's taking away all of those pain points and it takes care about it
+underneath the hood and you just click a few times add an agent add a model add the memory and so on and it's working
+magically. Yeah. And talking about you know companies that share I guess an open source ethos um across AI obviously the
+role of open source I think is changing across the industry at large. We've seen obviously a lot of headlines coming out
+of meta out of Mistral um open AI released there GPT you know open source version etc. What are just some
+perspectives you can share on how you perceive the state of open source in AI more generally and maybe how do you see
+its role changing in the future? I think the great thing that was we always had about with open source is it's like it's
+it's kind of it's driving very rapid innovation in the end like because you
+have like this kind of huge army of people that really really care very deeply. They're very smart and very
+often have a lot of time and they kind of do things that organizations can very
+often not do because again they they have very different incentives or have very different um timelines or have
+it silly doesn't work like then I think the nice thing about open source is like you can do whatever you want and you can explore things that maybe wouldn't even
+make sense in a company setting. So I actually think like open source is like really this amazing thing that that kind
+of opens up the world to very many different possibilities in the end like some of them bins didn't a lot of open
+source projects never make it to anything. Obviously this the ones nobody talks about but some of them they kind of hit something and that those are the
+kind of the ones that really kind of matter and kind of really shape kind of very often the whole industry in the end.
+Maybe a follow-up question to that Yan I mean do you see a shift in the role of open source? I mean do you see that
+companies I mean today might be using some of these open source technologies to save money to save costs but maybe
+actually having more control inside of organizations over the performance of models might be a value proposition that
+evolves in the future. Definitely very very much I think like first I'm not sure like first if open
+source is that very often is the cheapest thing I think this is kind of misconception is actually very often not true. I think you get you win a lot of
+things like being able to kind of selfhost knowing where data is stored and and and and what's happening with I
+think there's a lot of value there but rare of is actually the cheapest thing of is actually the more expensive thing because you have hardware that's
+probably idle for 99% of the time and this actually kind of turns out to be more expensive so actually I'm not sure
+if that's actually true but uh the second part I think is true I think people care about it more and more like
+we actually work now with a few organizations and that's actually the main reason why they wanted to use open source is not because it's free. It's
+because actually they care about the data privacy and data security angle and I think that's also what we always historically of seeing with it and very
+often it's like people want to kind of self-host and want to know um where the
+data is stored um and admit themsel
+cloud but obviously in their own private cloud. Yeah. Yeah, one I think noticeable shift over the last couple of years, something
+that of course NA I'm sure has been a beneficiary of is just improvements in the communication protocols between
+different systems and different models and obviously MCP is a you know high-profile candidate that has really driven the industry forwards. Can you
+talk a little bit about that kind of kind of how you see the changing role of some of these protocols in the future and and where you think they might
+evolve? I think that if you kind of standardize you kind of in the end you kind of accelerate things. I think that's very
+important even addressingly if the standard is maybe not perfect I think it still adds so much value and I think if
+MCP is going to be the the one you're going to use in a few years I have no idea but I think it's great to have like
+a starting point and kind of you kind of can build on top um in the end MCP is like the HTTP of the AI of AI workflows
+I think that's really amazing I think it's kind of it will enable it already enables now things like agent to agent
+and it kind of it's a kind of building blocks you actually need for this kind of more powerful
+um use cases like for example you had marketplaces or like plug and play automations and I think N&N can act as
+the kind of the orchestration layer between this kind of MCP agents and and
+tools and also obviously NN is also the best kind of platform to build also tools that you can um access um with MCP
+as well actually on that Yan we haven't we haven't really done the straightforward
+what is inaden So for somebody listening who has a passing knowledge of NAD but
+wasn't sure exactly what it is, what is NADN and when should people think about it when building an AI? I think Nad is
+by now probably the the easiest to use most powerful way to build AI agents
+right now. I think is it allows you kind of again build things you previously never even thought you were able you
+could build. I think like the nice thing about you can go very fast from a a
+first idea you have to a first prototype and then bring that prototype into into production.
+What is the stack that you see people using within ADM? Actually quite diverse. The the nice
+thing about that system like NN is you can actually connect everything to anything. There is probably not kind of this this default stack people are using
+like they use literally any LLM. they use any kind of memory or vector store
+or any kind of application except it's just the thing that makes LM great because like honestly like I don't know
+what LLM is going to win the race in the end who's going to need the best one if it's going to be one of it's going to be a million different ones it's going to
+be a small one a big one I have no idea but that's the great thing about NL is like we don't have to care because the
+nice thing is you can use what whatever is best for your use case um and I think that is what makes it so powerful
+any interesting observations on what's been trending positive or negative in
+the in universe. What people definitely use quite a lot is honestly still like all the kind of
+Google tools. Google is definitely still I think the one the the kind of application you could can use every like
+people use the private in Dutch organization. I think that's the amazing thing. So we definitely see this probably one of the the the strongest
+ones. We definitely also see a lot of this kind of communication platforms. if it's a Slack or Telegram or anything
+like that, it's also going to make sense especially in this kind of AI world because you obviously need like an
+interface how you kind of interact with with the agents you build and I think that is probably a few to call out but
+apart from that obviously also things like just databases any kind of again the nice thing about and you can connect
+um literally anything so it's not just kind of applications also kind of low one lowle things as well and also
+honestly very often also internal tools as well one of the um nice things about Nadin is
+you struck a good balance between the sort of flexibility, customization,
+control that a developer might want with the ease of use that somebody who's less technical might want. Has your user base
+changed kind of the complexion of the Nadian user base? Has it changed as you've gotten more and more AI adoption?
+It's quite interesting like when actually our user base started to explode like since the last eight months
+we were really wondering if if those people are really going to be the most successful like if if the quality
+actually dropped and quality doesn't mean obviously it's bad people it's just like the kind of people that are successful with it and and they didn't
+which was quite surprising like really people that are quite either already quite technical or people that really
+like have a use case and they care very deeply about what they're building and they're just waiting to put put in their work. Like maybe they're not as
+technical when when they when they kind of enter, but they have a problem they really want to solve. And we of actually
+quite a few users that actually started to learn to code because of end. And why do they do that? Because they can
+realize, hey, I can do as that much like if if I if I'm technical but I cannot code but cannot code but I can literally
+go anywhere if I can code. kind of this whole new world opens up that is actually by didn't change that much and
+I think that's that's really amazing. There's so many technical people out there and people are really interested. I think our our community is really
+amazing just the ideas they're having, how driven they are and how much they also want to help each other out. I
+think that's just great. Yan, do you think with the proliferation of adoption of many of these different
+AI technologies, the pressures are different on being a founder in 2025?
+I mean, you've lived it over the last eight months. Yeah, I think that the it definitely
+changed things. I think the main thing is like the past it was easier to plan and know where you're going and right
+now you're always living in this constant I wouldn't call it fear but kind of
+constant state of uncertainty where the world is moving. You have to be really willing to kind of like you have to find
+a you have to strike a very good balance between not missing anything important but at the same time not jump on
+anything that's coming up your way and I think that is definitely much harder it feels like than it was in the past.
+Given that how do you think the signals that you get as a CEO have changed in terms of how you weight them? I mean
+even things like you know the usage you see across the business or the revenue being generated you know in different
+parts of the company. How do you sort of assess the sort of durability of that and make sure you're investing behind
+the right things? And that that's actually probably talks about um something we I think it's
+generally quite important. So definitely harder in in kind of this open source world we having is we have like we have
+obviously we have some use cases that generate revenues like with enterprises and we have a lot of of of people that
+that use the product for free and we never generate revenues with them. But honestly none more is more important
+than the other one because like one is obviously is going to help us directly but the other one is the thing that
+drives all of it. So it means like we have to strike a very good balance
+between both of them. And honestly normally I leaning much more heavily into kind of for example I guess you
+obviously ask about question about signals but I think it's important point is like I normally lean much more heavily in kind of giving away more for
+free because again everything we give away for free kind of makes the whole product better for literally everybody
+and drives more adoption and also drives more revenues in the long term versus everything we build for the enterprise organizations obviously just kind of
+helps a subset of the users. I think we think we it's still important to do both and I think you have to listen to to
+both very closely but also I think it's around timing in the end. It's like right now I think it's really about
+capturing the markets and we have to listen what do people really want to build and I think what is important is
+to really capture the market generally and literally capture like the smallest
+builder out there because we already what we obviously we get into the largest organizations
+out there. What I think is impossible is if you now focus very heavily on enterprise only um and I think we can
+never go then downwards again. I think nobody like no nobody went from enterprise to to kind of owning a space
+and I think that is again also Google started the same way as well that maybe own quite quite quite a lot the same
+with Microsoft as well but you have to start in in the right direction there you know right now we're seeing this
+explosion of people building with AI capabilities over the last few years we've seen an
+explosion in the AI capabilities themselves and so the question is is that
+technological foundation the AI capabilities themselves. Do you think that that is still
+innovating at the same rate it has over the last few years or are we finally asmmptoing in terms of the capabilities
+coming out of foundation models or out of the open source world? Do you have a point of view on that? I think probably looking at GT5
+I think it definitely feels like it's slowing down which kind of makes sense. I think it's not very often what what
+happens is like there's there's some more lowhanging fruits in the beginning than than the later point in time and
+you can again you can throw more compute power and more data for quite a while but at some point you kind of max out
+there and and at some point it just becomes too much. So I think definitely kind of peace count is slowing down.
+However, just think this more as a kind of a temporary thing because there's so much money in the market right now where
+people exploring a lot of different things and and some of them are still very early and I think that they're not
+at the right stage yet. But I think as as some of them were coming to that kind of to the right stage, I think we're going to see probably another
+acceleration. I mean I'm maybe building on that to Pat's question. I mean we're seeing more
+code being written by machines, right? a more end to-end agent to agent automation. How does that change the
+positioning of NAD? How do you think about areas you'll invest maybe given that future? I think one thing is I think it's
+probably talks a little bit to the kind of role as as as a developer like in the in the past a developer was somebody
+that kind of built something for you. It's like you said, hey, I need X and they built X for you. Now with tools
+like N and all of the VI coding tools, that's changing.
+see developers more as the the people that kind of generate kind of create the guard rails for you, the people that
+empower you to build the things you actually want and need. And I think that is is really amazing. Honestly, it also
+plays exactly what it was always about. It always it was always about empowering people and it's I think it's great. I
+think literally every developer is can is kind of going into the role of empowering other people to to build the
+things they actually want and need. Yes. developer. Obviously, I still have the the VIP coders and and other people like
+that. They're not going to build everything. They're still gonna roll for the the classical engineer, but I really
+love that kind of world where people are empowered and the people that have the problems are the best equipped to kind
+of solve them themselves. And I think that's the kind of world where we're going and I think that's that the engineers and developers are definitely
+a very important part for that. I mean, Yan, something I think we'd love to know your opinion on. I'm sure a lot of people listening are struggling
+between building, you know, verticalized applications that solve a very acute use case versus kind of having broader
+platform visions, right, for their companies. Nad is the horizontal of horizontal tools, right? In many ways,
+how do you see the positioning changing given some of those dynamics of some of these very vertical applications and then some of the more horizontal tools
+coming out of the labs and the like? Yeah, I think like vertical is obviously amazing. if you had like one very
+specific use case that do this one thing perfectly and that can do it much better than than every horizontal tool and al
+obviously that's exactly what happened with with SAS like in the SAS world like they have a
+vert like a vertical application for literally everything that is again why we had the need for something like edit
+because you have to kind of bring it all of them together again I think there's also a limit what also probably happens
+more and more in AI right now where people build this kind of very vertical um tools as well. But as this happening
+there again the complexity increases again and you either need kind of another orchestration tool or they kind
+of you need a horizontal tool that kind of built everything for you again. So either kind of again you bring all those
+tools together or you use a more horizontal tool to kind of um build this thing in in this one tool rather than
+kind of a million different ones. And again I think that's again why we obviously feels like in a very good
+position there because again we I think we no matter which how which way is going to turn out I think we are very
+well positioned for that world if everything goes right what will naden be in five or 10 years
+what role will naden play in the world the idea is always like for very many
+different reasons they always compared n to excel they always thought about hey if people 15 years ago they heard
+spreadsheet they thought about excel And if if people in a few years think about hey I have to build AI have to do
+anything with AI the only thing that should come to mind is N. So I see more kind of this kind of default
+orchestration layer like what is kind of platform from everything to building to deploying and and where you find your
+agents um anything like that and think that is is where I think it's kind of naturally evolved. I think we are very
+very well positioned as we already kind of starting to be like the default building tool already. So Yan, you know, you build a remote first company,
+obviously centered in Europe, but but with global ambitions. Um, just talk a little bit about, you know, thinking
+about going into the US and kind of building the team and scaling the organization over the last year. Like obviously we started in Europe and the
+whole team was based here which we always was quite interesting like even though we were based in Europe like our
+user base was always very global like for quite a long time Europe and the US had the same size even though we
+honestly didn't provide our US customers the best experience it definitely shows there like a very very big need in the
+US that's why we also right now expanded in the US and we actually just right now opening our um office in New York and
+this also why we're hiring quite a lot like especially in the US But literally like also guess say worldwide literally
+everything from ancient years to people in support and and and especially a lot
+of people in the in the go to market orc. I think it's also kind of the the thing that gets me excited is like I
+think not many European organization kind of have the possibility to really
+build something really global and something that really matters. I think and is probably one of the orcs I think that has quite a lot of potential. It's
+nice to see that we are now finally kind of going that direction and um kind of also kind of capture the US and taking
+that market over as well. And and maybe to wrap um we'd love to ask some kind of rapid firefire questions just to get your your take on
+a couple of key themes. Um I think one just from your reflections of the last six years, what's maybe one of the
+hardest truths you learned about Yan as a founder CEO? One thing is probably
+I really don't like to say no. there's so many different things out there and I think that is I think very often it
+turned out to be okay like to kind of do a lot of stuff in parallel standards in hindsight is actually didn't turn out
+that well interestingly I think the most things very luckily turned out to to be
+quite well so I'm very lucky there but I think also has turned out very differently and I think for the most comedies actually turns out very
+differently we want you to keep taking those big swings what is one must readad or mustwatch
+piece of content and in AI blog book show like I still love her it's just a movie
+I think it's just yeah I think it's just this this thing is where I think what I think especially amazing about it is
+like a few years ago it it was sci-fi and it's now suddenly this thing that is just around the corner that's why I just
+love it I think that's also a great movie is there a tool or a product Yan you've been playing with in AI that you would
+recommend or that really interested you I think I just very recently and probably very late. I came there, but I
+started use granola. I think it's such an amazing tool to just it's so great, so simple to use. Does such an amazing
+job. So, I think that would probably be the one that comes to mind right now. What AI application or application
+category do you think is most likely to break out in the next 6 to 12 months?
+I think it's kind of what is this kind of AI powered internal tooling. I think
+there's obviously like this external part. I think it's going to is a little bit hard. You have to be very careful there. But internally you can take much
+more risks. We also see that already at end quite a lot. That's obviously that's obviously why I'm also excited about it.
+Yeah. Needless to say, we appreciate you you know sharing some of your story, looking into your crystal ball for us
+and kind of sharing some of the perspectives over the last six years. It's been a privilege for Sequoia to be a part of it. Um so thank you for having
+us on the journey. We look forward to the future. Thank you very much. Thanks for having me. [Music]
+[Music]
+[Music]

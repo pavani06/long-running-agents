@@ -1,0 +1,294 @@
+Well, good afternoon. It's a real privilege and an honor to be able to be with you this afternoon. My name is
+Steven Brovich. Um, I joined Amazon in August of 1999, almost 27 years ago, and a lot of the
+world has changed. I spent the first half of my career on the technology side of the business, but the latter half has
+been focused on people and culture because it turns out organizational culture is one of the primary reasons
+why organizations are successful beyond technology. I've spent the last two
+years had the privilege of working alongside Tom and a group of peers who are all former sea level executives
+leading large organizations through massive transformation. And our job is not sales. Our job is to come alongside
+customers and partners in their journey. Not because we think we have the answers, but as my boss likes to say, we
+really want our customers to make their own mistakes, not somebody else's. So today, I'm excited to share with you
+some of the insights that we've gained because over the last year, this conversation has shifted as I sit down
+with customers. They're no longer asking, should I be doing AI? The question now is how do we actually build
+teams that work in this new world? How do we organize? How do we govern? How do
+we protect what we've got while embracing what's coming? What I'm going to share with you today is a
+framework. There's four questions we're going to look at in order. Economics, talent, structure, and governance. The
+research that sits behind this is a combination of about a hundred executive conversations like the ones I have every
+week along with an Harvard Business study review sponsored by AWS on AI
+readiness and some internal conversations we've been having at Amazon as we work through AI across the
+breadth of the full stack. But before we get to that framework, I want to ground us in current reality. AI won't take
+your job. Someone using AI will. Now whether or not Scott Galloway is the
+person who originated this quote, it's stuck with Scott. And I think the reason it's stuck is because it's true.
+A lot of companies worry about AI as a threat. But the threat isn't the technology. The threat is the colleague,
+the competitor, that younger version of you that learned how to use this stuff six months before you did. Because
+here's the uncomfortable bit. AI doesn't have ambition. AI doesn't have a P&L
+target. that AI doesn't want your job. People want your job. Those people that
+are coming for your job, your team's job, or your company's competitive margin. Those are the ones who are
+successful are the ones who are already integrated into these tools into how they think and how they work. So the
+question isn't will AI replace me. It's am I moving fast enough to stay ahead of
+the people who are using it. Now I know that sounds dramatic. So, let me bring
+it back down to earth with a slightly less serious version of the same point.
+Look, every wave of technology has had a conversation similar to this one. When
+the tractor arrived on the farm, it didn't kill farming, but it changed who was useful on the farm. The same thing
+is happening to us now. AI isn't taking your job, it's changing what it means to
+do your job. And the people who figure out how to work with it, the horses who learn how to drive, they're the ones who
+get to stay in the barn. And by the way, I'm calling all of us horses in this metaphor, just to be really clear. Now,
+this is the joke, but let's look at the data because there's actually serious research right now that is coming out to
+tell us what is really happening in the labor market. Not what the headlines say, but what's actually happening. So,
+this is from Anthropic from March of this year. It's the first serious empirical study of what AI is actually
+doing to jobs. And what they found is going to surprise you. A lot of what
+gets written about AI taking jobs is based on theoretical exposure. What an LLM could do. Anthropic did something a
+little different. They combined three things. The ONET database of 800 US job occupations, actual their own clawed
+usage data, and the Alondu MIT exposure scores. And then they asked of all the
+tasks AI could do, which ones is it actually doing in work at scale. They
+call that observed exposure. The blue is the theoretical ceiling. The red is
+what's actually happening. And the gap is huge. Computer and math jobs where you'd expect AI to be furthest along,
+claing just 33% of the tasks it could theoretically do. In office and admin
+the theoretical exposure is 90% but observed exposure is a fraction of that.
+Now the chart on the right is the one that matters for our conversation today. Since chat GPT launch in 2022 there has
+been no systematic increase in unemployment for the most exposed workers. None. What they did find, and
+this is the interesting bit, is that the hiring of younger talent into those exposed occupations has slowed by about
+14%. Not a collapse, a slowdown. And it's the juniors who are feeling it
+first. So, who are the most exposed workers? Computer programmers top that list, then customer service, then data
+entry. And here's the surprising part. The most exposed workers are disproportionately older, more educated,
+and better paid than the average worker. The old narrative was that AI would come and replace the lower talent first. But
+the reality and the data says the opposite. This pattern is what we're going to unpack during the rest of this
+session. It's not mass unemployment. It's a reshaping. An entry level is
+where that reshaping is happening first. Now remember this slide when we talk about the hourglass organization.
+But let's shift focus to look at how Agentic AI is impacting business strategy.
+Timelines are compressing. Tasks that would have required dozens of developers and a multi-year budget are now being
+replicated by a motivated engineer over a weekend. This
+is the scary slide. This is the question your competitors are asking right now.
+Somewhere a well-funded team of 30 engineers with access to a frontier model is looking at one of your product
+lines and asking could we do this at a tenth of the cost a tenth of the
+headcount and a fraction of the time and the honest answer for most of in this room is maybe possibly we don't actually
+know because we haven't done the work to find out now I can use AI to generate a product
+but a successful business is built on more than the product itself. The top row of this slide, those are the moes we
+spent the last 20 years building. AI is eroding all of them fast.
+The bottom row, those are hard to get. AI makes those more valuable, not less.
+Because the easier it gets to build software, the more value concentrates in the things that software cannot
+replicate. years of operations, decades of trust, things that cannot be parallelized, things AI can't speed up.
+So if the old modes no longer provide protection, then how should we be investing? Now there was a period of
+time where we thought the answer as we started and look at economics as part of our model. We thought part of the answer
+was small language models. It seemed that the idea was if you could leverage my proprietary data to build your own
+set of small language models that becomes your new moat. Now, Anthropic's research paper on the topic is a really
+good read. But when you b weigh the benefits of operating a small language
+model against the cost of building one, the economics paint the different picture. Training costs are rising 2.4x
+per year. At the same time, inference costs are falling 10x per year. The gap
+between those two curves, the pricing scissors is opening by 12 to 24x per
+year. What does that mean practically? It means that the cost to create a frontier model is now approaching the
+billions. Only a handful of companies can afford it, but the cost to use one is collapsing towards zero.
+So, is the answer never build? Well, not quite. We see three worlds emerging each
+with a different level of cost and differentiation. World one is use the
+endto-end managed solution. Somebody else operates the AI, you consume it. Highest leverage, lowest
+differentiation. World two is compose. This is where you leverage frontier APIs
+stitching together in your specific context. You bring the workflow, they bring the intelligence. It's medium
+leverage and medium differentiation. World three is build. You train or
+fine-tune your models. It's the highest control, the highest cost, and the lowest speed. Build is still a valid
+option, but it should only be used in the places that truly differentiate your business. So, we've looked a little bit
+at this model so far, and what we see is actually these workflows cut across the
+worlds. Don't try to live in one world. Let economics and your actual
+differentiation drive which world each part of your workflow lives in and you'll naturally evolve. Day one, maybe
+the frontier model does everything. Month six, you learn the economics. You move some shifts to use and some to
+compose. By year two, the high volume, high differentiation stuff moves to build. This is the healthy path. The
+unhealthy path is the one where a leader says, "We're a build shop on day one and burns the company trying to train models
+before they understand their own workflow." So that's the economics that can guide our decisions in our strategy.
+Let's take a look then at the impact on talent because that world is changing as well.
+For 30 years, being valuable in tech meant being able to build the thing,
+write the code, design the schema, ship the feature. That was the craft. That was the career ladder. The craft is
+changing. The people who will be most valuable in the next 5 years aren't the ones who build the fastest. They are the
+ones who orchestrate the fastest, who can point an agent at a problem, evaluate the output, steer the next
+iteration, and know when to overrule. That is a different skill set. And most
+of us, including me, haven't retained for this new world. This shift is
+exactly the shift that Martin Fowler and his colleagues at ThoughtWorks talked about in their July 2025 article. He
+calls that orchestrator archetype the expert generalist and identified seven key characteristics including curiosity,
+collaboriveness, customer focus, and understanding of first principles. Why does this matter? Because these seven
+characteristics are exactly what agentic AI amplifies. An agent multiplies a curious person. It
+doesn't multiply someone who only knows one framework. An agent rewards deep fundamentals, not surface level
+certification collecting. So when you're hiring in the new world, and this is important, hire for these seven,
+not for the framework of the year because that framework will change three times before this person's first
+performance review. What this is doing as AI then enters the team, the specialist, your deep domain expert gets
+pushed to broaden because their specialty isn't enough anymore. They need to understand adjacent domains.
+They need to explain their work across boundaries. They need to orchestrate. Your generalist, your breadth player,
+they get pulled inward because AI gives them the superpower of specialist level depth on demand. They can ship domain
+specific work they couldn't ship before. They meet in the middle and what emerges
+is what Verer Vogel called the Renaissance developer. Whether it's Verer, Martin Fowler, Jurgen or PWC,
+everyone's converging on the same answer. The valuable human in the loop is the polymath with steering hands. And
+that's the opposite of what we have hired for for the last 20 years. And let's make this concrete. This is from
+Anthropics Build with Claude hackathon from February of this year. 13,000 applications from around the world. 500
+of those were accepted. 277 shipped production code. 21 million lines of
+code were generated in here. Third place. Third place. Dr. Mikall Nettoko,
+interventional cardiologist, MD, PhD, not a professional developer. He built
+an AI platform for post-appoint patient care in 7 days. coded it in the hospital
+between patients and in the cloud flying from Brussels to San Francisco. First
+place a lawyer built a permitting tool for California called Crossbeam. Also
+not a professional developer. Now stop and think about that. The top three finishers in Anthropic's own flagship
+hackathon were not professional developers. They were domain experts and they beat
+13,000 other people, many of whom had been coding professionally for years.
+The lesson here isn't developers are dead. The lesson is domain expertise plus AI beats coding skills alone. And
+the implication to your hiring strategy, especially for the next two years, is profound.
+The person who understands your customer, your regulation, your product
+nuance, who can now build because AI fills the gap. That person is gold. So
+what does this mean for how we staff our teams? The old world called for a team
+of specialists. Each one owns a lane. You got handoffs between them. There's coordination overhead. Classic
+enterprise team structure. The new world is calling for two or three expert
+generalists plus agents to fill the gaps. Each generalist doesn't own a lane. They own
+a workflow. They orchestrate a workflow end to end. Agents fill the gaps where specialist depth is needed. The
+coordination overhead collapses. The handoffs disappear. This is what I mean by hypercon convergence. And I'm not
+saying the eightp person teams die tomorrow. What I am saying is that the
+teams you build for new work will look like this. If your team still looks like
+the side on the left for new AI work, you are building yesterday's team. Now,
+let's test that ideal structure against four realities because there are four forces that are happening at once and
+they're not all pointing in the same direction. Force one, expert multiplier. Those of you that haven't heard about
+Project Mantle, go look it up. It's astonishing what a group of senior knowledgeable people can do with AI at
+their disposal. An order of magnitude increase in speed. Force two, the
+bottleneck shifts. The question is no longer can we build it. It's do we have the data and can we
+decide fast enough to keep up with what we can build. Force three, the
+verification tax. AI generates code 10 times faster, but it's three times
+harder to validate. The reviewing bottleneck eats the velocity if you're not careful. Force four, the deskilling
+trap. Juniors using AI can ship about 17% more code, but they understand 17%
+less of what they've actually shipped. The people coming through your pipeline are getting faster and less grounded at
+the same time. All four are true simultaneously. The leader's job, your job in this room
+is to hold the tension. Which leads us to talk about how we think about team shape and the talent pipeline. Let's
+look at four models for team structure. Pyramid. This is most of your organizations today. Lots of juniors at
+the base, pyramid levels, fewer seniors directing the work.
+Diamond. This is what happens when you overreact. You cut the juniors. We don't
+need them. AI can do the work. You bulk up the middle with more managers because we need someone to oversee the AI. You
+have a thin base, a thin top, and a flat middle. This is the trap. The inverted
+pyramid is what the new pod is emerging. Three to five senior engineers, each
+full stack, each with AI doing execution. The pod shape, and it works well for execution, but it's missing the
+learning path. The last shape is the hourglass and that's the learning organization.
+We have execution at the top, lean middle, and importantly
+juniors learning the craft on the way up. This is what I want you to walk around out remembering. The inverted
+pyramid is the pod that senior team with AI doing execution. The organization that houses them is the hourglass
+keeping the junior pipeline alive. Both are true at different levels of altitude. And this is why the hourglass
+matters because right now most organizations are heading toward the diamond. They're cutting the base and
+the data on that is brutal. Companies see reducing junior talent as
+the quickest path to ROI targets their boards are mandating from their AI investments.
+And the inverse is happening as well because the jobs aren't disappearing, they're bifurcating. Those same
+companies are frantically paying top dollar for senior talent and anyone with ERA AI in their job resume. Put the last
+two slides together and you start to see the emerging shape. The middle is hollowing out. The top is exploding.
+That's not a healthy economy. That's not a healthy talent pipeline. Which is why the hourglass matters. You have to be
+rebuilding the bottom deliberately. No one else will. Which brings us back to
+the central question. If you stop training your juniors, where do your seniors come from? In five to 10 years,
+the seniority pyramid inverts. AI absorbs the execution layer. What
+remains is judgment. But judgment only exists because somewhere someone spent
+10 years doing the execution and learning from the mistakes. If we skip that entirely, we don't just have a
+talent pipeline problem. We have an expertise pipeline problem. and expertise takes a generation to build.
+Matt Garmin, CEO of AWS, put it plainly in a 2025 interview. He asked, "How's
+that going to work when 10 years in the future you have no one that has learned anything? My view is you absolutely want
+to keep hiring kids out of college." He's right. The companies who stop training juniors today don't have a
+talent shortage today. They have one in 2034, which is four CEO cycles from now.
+So, no current CEO has to worry about it. which is why this is going to be a massive problem and exactly why your job
+as a leader is to resist the short-term temptation to cut the base. Your competitive advantage in 2034 is the
+juniors you're hiring today, not the ones you're laying off.
+This is the tension we talked about earlier, and this is why holding the tension is the leader's job. So, we've
+talked about economics, we've talked about talent. Let's take a look at structure.
+And I'm going to start with the uncomfortable bit. What got you here is not going to get
+you there like at all. Look, this org structure was already cumbersome in the
+age of cloud. It fundamentally breaks in an agentic world. Not because any of the functions disappear, but because the
+boundaries between them dissolve. Security isn't a department with review gates. It's code running at the gateway.
+Architecture isn't a whiteboard exercise. It's the policies your agents respect at runtime. Foundation services
+isn't provisioning. It's defining the operating envelope for the autonomous systems. The CIO role itself is shifting
+from being owner of the stack to being conductor of the stack. And the people who can make that shift will run the
+next decade. But that shift comes with a challenge because today everything in
+our operating model optimizes for determinism, runbooks, change advisory boards, SLAs's with 59s, predictable
+outputs for predictable inputs. Our whole discipline is built around the
+idea that the system should do the same thing every time. And for 30 years, that was the right bet. But it's no longer
+the right bet because non-determinism is a feature,
+not a bug. Think about what you're actually asking an agent to do. You're asking it to handle cases you didn't
+anticipate, to adapt, to reason about the goal, not just follow the steps.
+That requires non-determinism. A deterministic agent is a runbook. We
+already have runbooks. We don't need AI for that. So the operating model has to
+shift and you have to become tolerant of variance in execution and strict about
+variance in outcome. It's a different thing. This is the single hardest mental
+model shift for the CIO in the room because your whole career has been about
+tightening execution. And now the discipline becomes relax execution,
+tighten outcome measurement and build guard rails around the things you actually care about, not the steps, the
+outcomes. Set the outcome, give the team the means, and resist the urge to manage
+the how. Because just like rivers, agents find their own path. If you tried
+to build a toll gate in the middle of a river, the river would find another way around. Your job is not to prescribe the
+route. Your job is to define the riverbank, what the outcome has to be, and let the water find its way. This is
+the mental model shift. And the practical implication is the organizational models we'll explore
+next. Model A, traditional IT ops. What worked for 20 years is now the
+antiattern. This is the model most organizations in this room are operating today. Engineering builds then throws it over
+the wall for IT operations to run. Two separate teams, separate objectives, separate performance metric. This model
+was already less effective with cloud. It fundamentally breaks in an agentic world. And here's the evidence. Six
+stats all from real research. One, runbooks are deterministic. Agents are not. Two, ticket culture kills context.
+A quarter of your incident time isn't debugging, it's assembling the humans who understand what happened. Three,
+your operators have no authority over the model. Most enterprises can't see what their agents are actually doing.
+Four, operators have no authority over the data. Threearters of the failure modes bypass your current telemetry.
+Five, 91% of ML models degrade over time. You deploy, it gets quietly worse.
+and six ITIL can't keep up. These six failure modes stacked are why 95% of AI
+pilots fail to achieve meaningful impact. Your operators cannot debug what
+they cannot see and they cannot see what they were never trained to reason about. Most organizations are sitting here
+right now. The first step is admitting it because you cannot fix model A by
+adding more S surres, more runbooks or more monitoring. You have to change the model and that's what models B and C are
+all about. Model B is embedded. You build it, you run it. The same three to five senior
+engineers build and operate the pod. Same team, same people, full stack
+ownership. And the results, multi-eployments per day, subhour recovery, 0 to 15% change
+failure rate. This is Dora Elite territory. Why does it work? Because the
+people who wrote the agents system prompt are the same ones debugging it at 3:00 a.m. No context gap, no handoff.
+They are production. But model B breaks at scale. And here's why.
+At two or three pods, you survive without a platform. Each pod makes its own choices. Each pod build its own
+guardrails. It's messy, but it's survivable. At 10 plus pods, the duplication kills you. Each pod builds a
+slightly different off layer, a slightly different observability stack, differently, badly, repeatedly, and the
+cost of that inconsistency, security holes, compliance gaps, a
+spiraling AI budget you can't get insight into, that outweighs the cost
+you were trying to avoid by building a platform. So model C is model B plus platform platform provides everything
+you need for agent infrastructure runtime memory identity observability
+it's consistent it's governed and it's shared but the key to getting C right
+is this the platform doesn't constrain the platform enables pods choose what to
+build which models to use and how to structure their agents and how to use their data full autonomy full accountability but the road they build
+on is the platform. So this is the structural decision distilled. Model A is dead. Full stop. If you're operating
+model A today, you have a transition plan to execute, not a strategy to debate.
+Choose between model B embedded pods with AI agents as first class platform citizens and model C pods plus a
+platform providing the shared infrastructure. At small scale, B alone is fine. at medium and large scales. B
+plus C. Model A is dead. That's the banner. Go back and tell the people who aren't in this room. We've talked about
+economics, talent, and structure. Let's wrap this up by looking at governance. And for that, I'm going to point to
+Singapore's model of AI governance framework for Agentic AI. In January 2026 at Davos, Minister Josephine Tao of
+Singapore launched model AI governance framework for Aentic AI version one from Singapore's IMDA. It's the first
+statebacked governance framework specifically designed for autonomous AI agents. Not a general AI governance
+framework, but specifically Agentic. They published the first comprehensive model back in 2019. This 2026 version
+extends that to agents, and it's worth reading cover to cover if you're a CIO
+in a regulated space. Singapore's framework distills to four dimensions. Risk assessment upfront, structured
+before deployment. Two, human accountability chains. Every agent action is traced to a named human.
+Three, technical guardrails throughout the life cycle. And four, enduser transparency. Users have to know that
+they are interacting with an agent and they have to know the bounds of what that agent can do on their behalf. There
+are five things that make this framework stand out as distinct. One, it's the first framework to mandate agent
+identity management. Every agent has a verifiable identity before it can act,
+not a nice to have a prerequisite. Two, it integrates concrete testing
+frameworks along five risk categories building on the AI verify and global AI assurance pilot from 2025. It's not
+aspirational, it's operational today. Three, it explicitly addresses multi-
+aent coordination risk. When agents talk to other agents, and they will, what happens when they disagree, escalate, or
+find emergent behavior none of us planned for? Singapore has thought through this. No other framework has
+yet. Four, it's voluntary but directional. Singapore doesn't compel
+compliance, but if you want to do business with the Singapore government or in regulated sectors, this is the deacto standard. And last, it addresses
+the deskkilling trap headon. We have to be able to show not just that we're using agents, but that we are using
+approaches that are continuing to train the people who will take over for us in the future. And this is the beautiful
+part. Singapore landed on four governance dimensions. Amazon building agent core launched on the same four.
+Convergent evolution, different teams, different continents, same answer. Four questions we have to answer before the
+agent acts. Who's the agent? Who authorized it? Two, what is the agent allowed to do? Three, is the agent
+performing as expected? And four, can we audit what it did?
+This is policy enforcement that's happening outside the LLM loop. That's the critical architectural point. You
+don't ask the agent nicely not to do something. You stop it at the gateway before the LLM ever sees the request.
+This separates who writes the policy from who writes the agent. Your security team owns the policies. Your engineering
+team owns the agents. Each one of them places a strength. This is what governance as infrastructure looks like.
+Not a policy document, not a compliance checklist. Running code enforcing rules
+every request every time. Remember, agents find their own path like a river.
+Policy is code is the riverbank. The agent can meander, but it can't cross the bank. So, what do you do Monday
+morning? What do you actually do? Six steps in order. Don't jump ahead. One, economics. Pick one workflow in your
+organization, not one AI strategy, one workflow, and answer, does this workflow
+live in use, compose, or build? Two, talent. Decide who's on the pod. Three
+to five engineers maximum. If you can't staff a senior only pod, you're not
+ready to build. You should either use or compose. Three, structure. Are you model
+A, B, or C? Answer honestly. If you're in model A and calling it DevOps,
+acknowledge what it really is. Escape. Four, governance.
+Five, people. Invest in your senior domain experts. Double down on that
+person who understands your customer, your regulation, and your product nuance, the things AI can't compress.
+And six, pipeline. Protect the juniors. Do not cut entrylevel hiring to pay for
+senior AI talent. Both are true at the same time. Seniors are more valuable.
+And juniors are your 2034 pipeline. You need both. Economics, talent, structure,
+governance, people, pipeline. Six steps. Answer in order. The whole deck depends
+on that single economics question. But the answer is per workflow. You'll use this framework many times, but it's the
+steps that will keep you sane. The companies that win in the next decade aren't the ones with the best AI.
+They're the ones with the best operating model around the AI.

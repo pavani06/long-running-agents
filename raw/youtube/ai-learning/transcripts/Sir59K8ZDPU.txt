@@ -1,0 +1,450 @@
+[music]
+Um, okay. We're going to launch here.
+So, my name is Frank Coyle. Um, I'm I'm
+an educator. I'm teaching at Berkeley
+now. I've been doing this uh computer
+science stuff for oh, 30 35 years. And
+um [snorts] I'm and right now it's kind
+of a critical time for uh the poor
+computer science students. Used to be
+the used to be the only game in town
+degree was a guaranteed job and now
+thanks to AI it's not. But then again
+5,000 people are here. So AI and and
+agents are u seem to be the way to go.
+So the question is how do we leverage
+this new universe that we are moving
+quickly into? And so I want to talk
+about how agents and ontologies big word
+fit together. But before you before I do
+that, I wanted to um
+wanted to give you my uh my educational
+philosophy.
+And this [clears throat] comes from
+someone called sister Karita Kent. And
+it was made popular by John Cage who is
+a uh an avanguard musician.
+And
+you got to think about this a little
+bit. Nothing is a mistake. There is no
+win. There's no fail. There's only make.
+And more and more today, that's what's
+important. Get down and make stuff. And
+that's how you're going to learn. Not by
+necessarily reading. I'm also a big fan
+of writing. My early career was in
+neuroscience. I'm kind of coming back
+into it now that Agent AI is bringing uh
+kind of cognitive science back. But
+engage your senses. Get a notebook, get
+a pen, a pencil, draw pictures, write
+stuff down. Just don't type. Because
+when you type, when you're typing, your
+brain is thinking about the letters on
+the keyboard. When you're writing in a
+book, your whole brain your whole s all
+all your sensory systems are engaged and
+you're going to learn faster that way.
+Okay, on to our talk.
+agents and ontology. So there are two
+lineages here and I want to talk about
+both give you a little philosophical
+background. Um agents when did we start
+talking about agents? It well goes goes
+back to the early initial days of AI.
+People like John McCarthy
+uh uh uh Selfridge, Marvin Minsky,
+Society of Mind, people started thinking
+about the fact that this new computing
+technology was going to lead us into
+some kind of artificial intelligence,
+which is a term that came in 1956 when
+all these characters got together and
+tried to figure out where the future was
+going. Okay. and the concept of an agent
+finally evolved things that perceive and
+decide and then act and that's what
+we're seeing now. Now what about
+ontologies? Well, it turns out
+ontologies are not that new. Okay, it
+was actually Aristotle who first came up
+with the concept of we need a philosophy
+of of being like woo kind of heavy um
+but came up with categories of being and
+this kind of relates to what people are
+doing now with graph databases and
+knowledge representation and there are a
+couple of other people who kind of
+formalized it uh vanquin was a
+philosopher and then this guy Gruber
+1993 and I think this captures is what
+knowledge and uh
+graph technology really represents. It
+is a a formal specification of a shared
+conceptualization and that's what we
+want to give to our agents. We want to
+give them our concept our
+conceptualization of the universe our
+universe our domains. Okay. And now
+what's happening is you're getting the
+convergence of something that is
+probabilistic,
+the agents, the LLMs with the the more
+formal representations that you have
+with ontologies. And so this term is now
+being used. You hearing this a lot,
+neuro symbolic AI sounds pretty fancy,
+but it's really neural networks tied
+into
+symbolic AI, which rule-based systems
+come under that category. Um, as do the
+knowledge graphs that were that were
+assembling. And so
+what I like to argue is that
+neurosymbolic AI sort of represents a
+way to keep the LLM on its guard rails
+because LLMs are by nature
+probabilistic. People worry about
+hallucinations, but that's the feature
+that's actually a feature of large
+language models. It's who we are. We
+hallucinate in a way. We imagine things
+that may not exist and then we turn them
+into reality. And that's what large
+language models do in in a way. Okay. So
+let's just quickly overview what
+ontologies are. It's not they're not
+complicated. They're basically our
+representation of entities and their
+relationships to other entities. And
+these entities have properties. And this
+whole concept of graph databases
+arose when people began to realize that
+relational databases
+sticking data into tables was too
+restrictive. You wanted to add something
+new to a relational database or you had
+to add a new column. Man then you have
+to redo the whole structure. With a with
+a graph database you can just attach
+another item. You can just attach a
+property. you can attach a relationship.
+Okay, so the question often arises,
+okay, I I get it. I need to have an
+ontology
+to represent in a formal way what my
+organization is doing. How do I do it?
+Okay, there are a couple of ways you can
+approach it. You can have a top- down
+approach or a bottom up approach. Top
+down approach is you get the experts
+together and they sit down and analyze
+the domain, come up with the entities.
+What do we have? We have purchase
+orders. We have customers. We have
+customer representatives and we're going
+to structure them. They have properties.
+These are the relationships. Okay,
+that's one way. And this models what we
+were doing back in the 80s when I was
+involved in expert systems. Everybody
+thought expert systems was the way to do
+AI. Symbolic AI was the way to go.
+Companies rose, millions of dollars were
+spent. uh the uh the Japanese created
+this uh future world project in the late
+80s. People in America were my my son
+was taking Japanese in school because of
+these expert systems and but they
+couldn't scale. They couldn't scale and
+then we went into a kind of AI winter.
+Where did neural networks came come
+from? neural networks were put out there
+in the 60s, but they couldn't scale
+because we didn't happen to have Nvidia
+who was off making GPUs to make make
+reality of the of the video games.
+Fantastic. And then someone said, "Let's
+turn these things over to the neural
+networks." And of course, that's kind of
+why we're here now. So
+the other way you can that that people
+are adding to or creating ontologies is
+is from the bottom up. For example,
+customer reactions. What are the things
+the customers are involved in? Hey, the
+these entities, these relationships,
+let's add this to our ontology. Let's
+let's add this information to the graph.
+Now, as as a help,
+it's helpful to be aware that there are
+existing
+taxonomies that people have been working
+on for the last 15 to 20 years. Things
+like schema.org, which has a whole set
+of terms and relationships. So, you
+don't have to reinvent the wheel. In
+fact, you it's to your advantage to use
+some of these ontologies. FO, a friend
+of a friend for modeling social
+networks. the Dublin CPS which was an
+early an early attempt to come up with
+terms for describing uh research papers
+and books and so forth. So there's a
+whole series of things. In fact,
+Wikipedia is based on an ontology called
+DBPedia. So when you do a search on
+Wikipedia, it's looking things up in its
+giant graph database. So this stuff has
+been out there underlying a lot of what
+we already do. So take advantage of
+these things that already exist.
+Okay. Now what do you do when you build
+your ontology? Okay. So what I know what
+these entities are. I know what their
+relationships are. They have properties.
+How can I do anything with them? Well,
+there are other augmenting technologies,
+auxiliary technologies, things that we
+call things like RDFS which is a
+technology and owl which I'll talk more
+about. So these have these kind of sit
+over to the side of your graph. So I'm
+not going to talk about I mean ontology
+is a big word and it's often confusing
+and used in them many ways but think you
+have a graph data structure. Okay. And
+you have the entities and relationships
+but you want to apply some control over
+them or you want to be able to make
+inference over them. So for example
+there is uh some terms in this
+technology called RDFS
+domain and range. So if I say
+teaches has a domain of teacher that
+means if I say Bob teaches scooter in my
+text I can infer that Bob is a teacher.
+And if I say all teachers are persons,
+then this statement lets me know. If I
+say Bob teaches scooter, now I know Bob
+is a person. Bob is a teacher. What
+about scooter? If I say teaches has a
+range of student, that means a the right
+side of the verb. Then scooter is a
+student. And now I have this extra
+information into my system.
+Owl also has a series of
+of of properties that allow you to make
+some inferences. So a transitive
+property transitive property says if Sue
+is an ancestor like ancestor is a
+transitive property. If Sue is an
+ancestor of Mary and Mary is an ancestor
+of Anne, then Sue is an ancestor of
+Anne. Okay, this was not initially into
+my graph system. But with applying these
+functional properties, I can then add
+and augment the system with this extra
+data. So that's very useful. Then
+there's some properties called
+functional properties which means only
+one. So has father is a functional
+property. You can only have one father.
+You can only have one mother. That is a
+functional property. Okay. So that's
+that can serve as a constraint. So when
+if you say Bob is my Bob is Jim's
+father, BB is Jim's father. Well,
+the inference here is that Bob and BB
+are two ways of representing the same
+individual because that is a functional
+property. You can only have one. So
+these derivations and constraints don't
+sit in the graph. they sit sort of on
+the side and they can help as we're
+going to see I'm going to propose when
+we deal with agents how they can they
+can help us out. So what about agents?
+Everybody's talking about agents now and
+everybody's talking about loops, loops,
+loops, loops everywhere. Loops have been
+around for a long time. Back in the 60s,
+people were debating who has the best
+programming language. Forran or Cobalt.
+No, mine is better. No, mine is better.
+Oh, you don't know anything. You don't
+know what you're talking about.
+Beam and Jacobini 1966 came out and
+said, "Okay, there is no real difference
+in programming languages if they have
+three aspects.
+Sequence, I can put statement A,
+statement B, statement C. Fine. I have
+conditionals. I can have if then. And
+the last piece I have a loop if I have a
+loop if I have iteration if I take these
+three things the the language is what's
+called touring complete can do any can
+compute anything that a
+can be computed by computational devices
+from the work of Alan Turing okay and
+now we're seeing this in aentic AI
+agents are now have loops loops give us
+the last piece in the equation of giving
+us a technology that is capable of
+doing anything that computational
+devices can do.
+The danger though of loops is that they
+can break. If you're if you're a
+programmer, you know you all go in an
+infinite loop.
+Not good. Loops can drift as agents
+start talking to each other. things get
+off go off off the rails and loops can
+cost you money. Token counts crank up as
+the loops continue. So you don't you
+need to be careful. Okay, but in a way
+we are revisiting some of the early
+stuff with symbolic AI. I would argue
+we're going back to the world of expert
+systems
+which is the symbolic part of the whole
+thing. So I want to show you a little
+example using clawed agent. So little
+code here. Don't get scared, but I know
+nobody does Python anymore, but you got
+to look at what the agent's giving you
+and you got to you got to move in and
+and manipulate it. So here's a here's a
+loop while true classic Python loop.
+Okay. And so we have a client. So we're
+actually so the first little chunk here
+that you see the response. This is just
+some code where we have a model and we
+have uh we have a prompt that's part of
+part of the messages and we have a tool
+and we're we're asking the LLM to
+solve this problem using a tool. Now
+here's the here's the catch.
+LLMs can't do anything. All they can do
+is give us the next word with a high
+probability. Amazingly, we can now have
+these conversations with it. But they
+can't do anything. But we can give it a
+tool and we can give it what we want and
+say, "How do you think this tool can
+help us get what we want?" And then the
+LLM will set up the parameters
+and come back to us and say, "Okay,
+here's my response. I can't execute this
+tool, but I know what the input
+parameters are. I know what your context
+is. I know what your prompt is. So, here
+is the call that you need to make of the
+tool because I can't do it. I'm the LLM.
+I'm just locked in this box." Okay. So
+the second B the second chunk is
+stop reason. So stop reason means the
+LLM has stopped for some reason. The the
+reason here is that it can't do
+anything. And if the reason is tool use
+ah now it's time let's go execute that
+tool. So that second line get tool it
+takes the response which is formulating
+the the parameters and triggering the
+action. Okay. Now, there's stuff in red
+here. This is where I think the LLMs and
+other uh I'm sorry, not LLMs, the
+ontologies and stuff can come in. So,
+if you look down there
+after the the tool is called, it said
+tool runs. This is where ontologies
+could come in. The tool's going to give
+us information. We put the information
+in a form that our our our validator can
+use and think about the validator as
+operating with this these ontologies
+about our domain. Then we can
+make some sense of whether the response
+of the LLM is reasonable. So this is the
+loop. Call a tool, check the stop
+reason.
+If it's a reasonable result, then let's
+go with it. If it's not reasonable, go
+back to the LLM, say, "Oh, this is this
+is not working or get a human in the
+loop." But the idea is
+to surround the input with checks. Now,
+I've got this something that you that
+you should be at least taking a look at
+if you're doing some of this coding is
+something called paidantic. Pantic is a
+way to specify
+the types of what you want the types of
+the parameters to be. Those of you who
+who do know Python know Python is a
+unstructured type language. So you can
+have a variable x= 20 x equals hello. No
+problem. There's no typing. Pyantic adds
+typing to that. So you want to check
+your types with pideantic and then check
+your results with the ontology.
+So, paid at the door, ontology at the
+ledger, and pure agents. And by the way,
+your agents should try to have no side
+effects.
+That helps the whole logic. Meaning,
+they're not running off doing something
+that they're they're changing they're
+changing things in a database. Not yet.
+You want to run them through the
+ontology first and make sure that works.
+Okay. I only got an I've got another
+just a short time. I'm going to try to
+show you some of the things that um that
+you can some logical constructs from
+from you call owl the uh
+the web object language for for objects.
+So you have these functional properties,
+disjoint properties. I'll just put
+these, you can look at the slides, but
+essentially the errors it can catch.
+Look over in the the right hand column.
+A second refund on the same order is a
+is is a problem. Ontologies could catch
+it. Whereas it's it's very tricky to do
+that in in English. A payout sent to the
+support desk instead of the buyer. Okay.
+You can catch that with an owl disjoint
+property where customer and support rep
+are two separate entities. Okay. Uh one
+of may a madeup value like probably
+shipped. You can specify
+must have certain kinds of value. So uh
+the status paid, shipped or refunded,
+nothing else. And when you're in the
+pure text world, this can get this can
+get funky because the the LLMs are again
+probabilistic and um
+return some crazy stuff. Okay. Uh so
+really what the point I want to make
+here is use these re you can have a
+reasoner built ontology to check keep
+the LLM on track have guard rails to
+keep it honest. Okay. And for the
+guardrails, I'm referring to these
+concepts rel these support technologies
+with RDFS and OWL.
+And
+my my bottom line is nothing is a
+mistake. There's no win, no fail, only
+make okay feel free to reach out to me.
+Coil at Berkeley. I've got a I've got a
+I've got a little website co-supreme.ai.
+I'm a big fan of if you John Col Train
+has a has a some jazz called uh called
+Love Supreme. So I've named my site Code
+Supreme and if you go there I got some
+music and it's all good. Okay, thanks
+very much. 20 minutes [applause]
+[music]

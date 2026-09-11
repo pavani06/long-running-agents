@@ -1,0 +1,367 @@
+let's just paste this image of a table in here and then write create an interactive infographic oh my God this is way too
+easy all right let's try this create an ant colony searching for food use pheromone trails and basic AI rules to
+show ants exploring and optimizing paths holy smokes this is ridiculous all right
+how about this create an interactive periodic table where users can hover over elements to see properties and
+animations for atomic structure and if I hover over each one it indeed shows me the Properties Plus an animation of the
+atomic structure this is crazy all right let's try this create a 3D simulation of an intricate futuristic city with
+skyscrapers and highways and let's turn on the extended thinking mode for this oh my God are you kidding me this is
+insane so anthropic has been silent for many months but finally this week they released their newest model Claude
+3.5.1 version 2 Thinking experimental haou no I'm just kidding it's called Claude 3.7 son it you might be wondering
+what happened to 3.6 who knows or why not call it Claude 4 nobody knows it's just what it is these AI startup folks
+are really good at naming things and not making us confused anyways in this video I'm going to go over how to use Claude 3.7 I'll show you some insane
+capabilities so that you can get a sense of what it can and cannot do plus we'll go over its performance and benchmarks
+compared to other AI models let's Jump Right In thanks to HubSpot for sponsoring this video all right first let's go over where you can actually use
+cloud 3.7 it's actually available on many platforms so of course one option is claude's own site which is cloud.
+I'll link to this in the description below but note that to create an account you do need to provide a phone number which is of course not ideal so if you
+don't want to reveal your phone there are other places you can use this such as Monica which I'll link to in the description below I got a nice discount
+code for you or chat llm by appus AI or po I'll link to all of these in the description below and these platforms do
+not require a phone number to create an account plus it's also available in cursor so you can use cloud 3.7 directly
+in a code editor in this video I'm just going to use the native Cloud interface so over here you can see that it already
+selects Cloud 3.7 by default now Cloud 3.7 features what they call hybrid reasoning capabilities and this enhances
+its ability in problem solving and reasoning this would be especially useful in Sciences math and coding just to name a few examples and it also has
+has this extended thinking feature which allows it to think for longer and this is better for complex reasoning and
+problem solving tasks by the way this feature is basically the same as deep seeks deep think feature as well as open
+AI reason feature as well as grock's think feature of course you can get it to do regular stuff like summarization
+or translation or chatting or writing but honestly all the top AI models can already do this very well there's not
+really a big difference between them where Cloud 3.7 really shines is its understanding of coding math data and
+science so I'm going to go over mostly these types of examples in this video so you can see how good Cloud 3.7 actually
+is let's start with some data examples it's so easy to create graphs and charts and infographics with this you can
+upload an image or attach a document like a CSV file or even link it to any document in your Google Drive I'm going
+to upload this image of a table I'm not even going to upload the actual table but just this image and then I'm going
+to write turn this table into an interactive infographic make it visually appealing this is a key phrase that you'll see me use a lot throughout this
+tutorial and then use CSS JS and HTML in a single HTML file again this is a key phrase I like to use to keep everything
+within one standard alone file anyways let's press enter and see what that gives us all right and here's what we get how
+cool is that so it breaks this down by Brands and also gender so if we click on Coca-Cola only it only shows me all the
+stats for Coke it even gives you the most popular Coke among women among men and the biggest gender gap and then here
+is Pepsi only very nice and then here are all brands a really nice looking infographic just
+from one image of a data table so you can see how this is super useful for creating charts or infographics for
+reports and presentations all right next I'm going to start a new chat and here's what I'm going to do I have this Excel
+table with a bunch of correlations between different animals now let's just paste all this data into CLA and get it
+to create some graph from this so for the prompt I'm going to write turn this table into to an interactive Network graph make it visually appealing this is
+a key phrase I like to use and it tends to make the design look a lot nicer use CSS JS and HTML in a single HTML file
+and then let me press shift enter to start a new line and what I'm going to do is actually just copy all this data and then paste it in here so this is all
+our data let's press generate and see what it comes up with and the nice thing about cloud is it has this artifacts
+feature which basically shows you the code output and also a live preview of the code after it's done now I would say
+it's not as fast as open AI or gemini or deep seek so it does take like a few seconds for it to finish coding this up
+all right and here's what we get holy smokes this is so cool now I could just
+play around with this here but because this window is kind of squashed let me actually copy this whole code by
+pressing this copy button and then somewhere on my computer I'm going to create a new HTML file so I'm going to
+select text document first and then we can change the extension to HTML so I'm just going to call it test.html and then
+press yes to change the extension and then let's right click and open this in notepad but you can open it in another
+code editor if you want so again back to here I'm going to copy all this code and then paste it in here press contrl s to
+save it and now if I open open this HTML file in my web browser notice that I can open this entire app and it's full
+screen so how cool is that it indeed creates a network graph of everything now let's test out all these settings if
+I increase the repulsion force it looks like they come together if I decrease the repulsion force it looks like they
+are more repelled by each other and the data is more spread apart and then let's see can I click and drag these
+connections around yes I can how cool is that and then what about link distance let me try adjusting this higher okay so
+it looks like the links just get longer if I drag this smaller then it looks like the links get smaller very interesting and then what about
+relatedness threshold let me increase this slider and it looks like as I increase it some of these connections
+break apart and if I drag this all the way to one then none of these animals are connected and then if I decrease the threshold again we start to see these
+linkages form between different species so it looks like this determines like how related two species are before it
+forms a linkage very interesting if I hover over any of these you can see the connections so for Fox it has two
+connections it's 75% with bear and 70% with wo of course this is just madeup data but let's check if this is correct
+so let's see Fox and bear are indeed 75% Fox and wolf are indeed 70% this is
+completely correct and then let's hover over this tiger connection it has three connections with the lion it's 95%
+leopard is 80% cheetah is 70% let's double check this so lion with tiger 95%
+that is correct with leopard it's 80% that is also correct with cheetah it's 70% and that is also correct super cool
+tool so there you have it here is a fully functional Network graph of all these animals with adjustable settings
+and it's fully interactive you can adjust all these settings this is incredible again it got everything in
+just one shot all right I'm going to start a new chat this time let's try to get it to code some cool apps so here
+are the prompt is create a standalone HTML page here's another key phrase I like to use where I can upload a video and it will transform the video into
+black and white dots include sliders to adjust dot size allow me to preview the original video and transformed video
+side by side let's click generate and see what that gives us all right here's what we get now again because this view
+is kind of squashed I'm just going to take this code and then copy it and then back to our HTML file I'm going to get
+rid of this previous code and then paste in the new code and then press contr s to save it or you can also click up here to save now if we refresh this HTML file
+you can see this new video to dots converter now let's see if this works let me upload a video all right so
+upload video works and if I play this it magically transforms this into a video
+with black and white dots how insane is that let me actually keep looping this
+and then here we can adjust the dot size so here's one here's increasing the dot size very
+nice we can adjust the dot spacing so here we are adding more spacing to the dots this is so
+cool and then brightness threshold this basically determines what areas should be black and what areas should be white
+let me decrease the dot size a bit and decrease the spacing as well and then
+let's click on play and pause and indeed it plays and pauses the video how insane
+is that just from one prompt without needing to prompt it further it coded this fully functional page that can turn
+a video into black and white dots with adjustable settings and everything just magically works all right let's try something crazy so for the prompt I'm
+going to write in a standalone HTML page using three.js this is a key phrase I like to
+use three .js is a very useful library for creating 3D animations and we are
+going to create a 3D simulation of an intricate futuristic city with skyscrapers and highways make the design
+and visuals look amazing this is another key phrase I like to include into prompts for Claud otherwise it might
+create more boring dull Generations so if you get it to make the design amazing it's actually going to put more effort into making it look nice and then
+include sliders for day and night and other effects be creative do not use any other dependencies this is a key phrase
+I like to use to keep everything contained in one functional file and actually for this because this is quite a complex prompt we're generating an
+entire 3D City I'm going to go down here and select this extended thinking feature so this gets it to think for a
+long time and in theory its response should be better let's click generate and see what that gives us all right
+here's what we get holy smokes are you kidding me well before we go into the city let's actually look at its thinking
+process because we did turn on this extended thinking mode we can actually expand this and look at how it thinks
+through everything before it outputs some code for us so here it's listing all the requirements I'll need to create
+a full HTML page that includes all of these things let me design a solution that includes all of these I'll now
+create a complete HTML artifact that includes all the necessary code and here we have our code we can like drag our
+Mouse around to move around this city in fact because this window is kind of squashed let me click on this code and
+then copy everything here and then using our test HTML file I'm going to paste all the code in here press contrs to
+save it and open it up in any web browser so here we go here's our city how how insane is that so if I scroll on
+my mouse it's going to zoom in and out very nice and if I adjust the camera height you can see it is indeed
+adjusting the camera height all right now let's see what this fog does so if I increase the fog all right it kind of
+makes it look more polluted you can barely see anything now the fog is black for some reason if we decrease the fog
+you can see that wow that is so cool so if we set this fog to zero then the sky becomes a lot clearer let me adjust this
+slider again so you can see what happens how cool is that okay and then we have
+time of day so right now it's daytime let me adjust this slider oh my God
+that's pretty crazy you can even see the sky turning orange and then sun setting and then now it's turning into a night
+sky with actual stars in the sky this is insanely detailed speaking of prompts for Claude here's a free and awesome
+resource by HubSpot when I use Claude or other AI models I find that adding certain key phrases and prompts makes a
+huge difference and that's why I want to share a free resource with you that's going to help tremendously inside you'll
+discover how to set up Claude as your personal executive assistant that manages your entire workflow learns your
+preferences and maintains context across your projects it also breaks down how to create living documents with artifacts
+that automatically update as your business evolves plus how to build interactive dashboards that analyze your data without needing a data science team
+I especially like the section on real world applications like Market intelligence operational metrics and financial analysis the content marketing
+Revolution chapter shows how Claud can transform your entire content strategy by adopting writing styles to different
+audiences while maintaining your brand voice across all channels best of all the bundle is absolutely free simply
+click the link in the description below and get instant access the bundle is made by this video's sponsor HubSpot by
+the way when I start to drag it over here and have the sun set notice the shadows in the skyscrapers so it's
+actually simulating a sun setting you can see the Shadows among all these buildings and then the sky turning orange and then finally turning into a
+night sky and if I drag this the other way let's see what happens okay this is probably sunrise or something and then
+let's test out this neon intensity if I drag this all the way to the highest value I guess the buildings look more
+neon let me adjust the camera height a bit and then if I set this all the way to zero okay so it just turns off these neon colors if I set this back to one
+notice how there are now colors on these buildings okay and then let me turn this back into daytime let me zoom in a bit
+and then decrease the camera height okay so I see these like floating cars in this futuristic city what happens if I
+increase the traffic density indeed we do kind of see more flying cars everywhere and this is indeed a
+futuristic city everything looks very detailed you can even change the time of day it even simulates a sunrise and
+sunset and stars in the night sky this is so impressive and keep in mind it got everything in just one prompt now this
+is so cool I actually want to share this with you so you can take a look at the prompt and also play around with the code so if I click on this share button
+and then click share now this is a public link that anyone can view so let me copy this link and I'll paste it somewhere in the description so you can
+see this in action this is only one prompt using the extended thinking feature and you can create an entire enire freaking 3D City with this
+absolutely insane all right I'm going to start a new chat next let's get it to create a web page I'm going to take a
+screenshot of hugging face all right so let me just screenshot everything up to here and then paste it in here and then
+I'm going to write clone this web page in a standalone HTML file let's click generate and see what that gives us by the way it doesn't have to be HTML I
+think by default it codes everything in react but you can also get it to code just plain HTML or python or any other
+framework or language and here we go this is crazy this looks really similar to the actual hugging face site except
+for you know some slight differences in the font and also some logos which it might not have access to so you can use
+cloud 3.7 to easily clone existing websites or design wireframes all right let me open a new chat like I mentioned
+before CLA 3.7 Excel in stem so like science coding and math so let's try this write a p5.js script this is
+another key phrase I like to use in my prompts this basically uses a JavaScript library for creating animations so we're
+going to simulate an ant colony searching for food use pheromone trails and basic AI rules to show ants
+exploring and optimizing paths include controls the user can adjust in real time let's see if it can figure this out
+all right so it gave me this now this is just a raw p5.js script so it's not going to be
+able to preview this here it seems but that's okay we can copy this code and then using this handy online P5 editor
+which I'll link to in the description below we can simply paste in the code here and then press play how insane is
+that so here we have these ants moving around and finding food so here it seems
+like these green blocks are the food so if I increase the ant count let's see what happens all right now we have a ton
+of ants and once they've located food you can see the ants are now turning green and then returning the food back
+to the Colony and then if I increase the ant speed you can see they move a lot faster if I decrease the ant speed they
+move a bit slower so an Speed Works pheromone strength I believe this is like how much they influence each other
+so once the ant finds food how much do they tell other ants around them that hey there's a food source here let's go
+and collect this food so if we increase this strength then it should lead to more ants going towards these sources of
+food and if we decrease the pheromone strength then it seems like they are influencing each other less and then
+over here random movement let's increase this and it does look like they are walking more randomly now let's see what
+happens if we add obstacles let's try to add an obstacle like here oh my God I'm so sorry I'm so sorry Little Ant I
+didn't mean to add an obstacle right on you so looks like the ant is stuck so let me click on clear obstacles and
+indeed it does clear the obstacle next let me add a food source somewhere over here and then see what happens all right
+so we have a few ants detecting the this food source and they are now going back to the Colony let me increase the ant
+count increase the ant speed and decrease the random movement one more thing I want to try is let's let's add
+an obstacle right in the middle of this Trail and you can see the ants are now avoiding this obstacle all right let me add another one here and so you can see
+the ants now need to move around this obstacle a really cool demo here we have a fully functional simulation
+of an ant colony with options for you to insert more food items or insert obstacles again it got everything in
+just one prompt which is really impressive and even if it doesn't you can probably just prompt it a few more times and it would fix the issue for you
+all right next let's do a chemistry example so the prompt is write a p5.js script again this is a really useful library for animations and
+visualizations that simulates a dynamic periodic table where users hover over elements to see properties and electron
+configurations with animations for atomic structure let's click generate and see what that gives us note that I used the same prompt in Gro however it
+did not give me animations for atomic structure let's see if clae 3.7 can do any better all right so here's what we
+get note that again if we use p5.js for some reason it won't let us preview this in Cloud so I'll need to
+call copy all of this code and then going back to our HTML file let me paste in the code and press contrl s to save it and if we refresh the page here's
+what we get now note that it did not give me all the elements on the periodic table it probably ran out of room but for now let's just test this out so if I
+hover over H it indeed gives me the atomic number atomic weight electron configuration even a description Plus at
+the bottom here it gives me an animation of the atomic structure how cool is that now if I hover over lithium again it
+gives me all the information and it seems correct to me and the animation also looks correct to me it does have three electrons with two electrons in
+the innermost shell and one electron in the outer shell and then here is sodium which also looks correct so it should
+have two electrons in the first orbit eight in the second orbit and one in the outer orbit all right let's move on to
+magnesium and again the animation looks correct very nice and then here is calcium again
+everything looks accurate to me here is boron with atomic number five here is phosphorus and then let me just hover
+over a few more of these so you can see that it is indeed accurate and then here are stable gases like argon
+neon helium and everything looks correct to me I'm really impressed by this atomic structure animation we did not
+see that in grock 3 so you can see with with clot 3.7 you can easily create visualizations for Science and other
+fields this could be a game Cher in education all right I'm going to start a new chat let's try a math visualization
+so the prompt is write AP p5.js script that visualizes the Monte Carlo method for pi approximation randomly Place
+points inside a square and see how they estimate the value of pi over time I'll explain this in a second and then include controls the user can adjust in
+real time this is another key phrase I like to use because if you don't include this then some of the time the animation
+or visualization just starts immediately and you can't really pause the animation you can't adjust the view or any other settings and that's why I like to
+include this key phrase anyways let's click generate and see what that gives us all right here's what we get and interestingly this time it does show up
+in the preview window so let me press reset simulation now for non-math folks out there who have no idea what's going
+on let me explain this really quickly so the number Pi 3.14 this is a very special and important number that's seen
+across everything in life and we use this value to calculate the area of a circle for example plus a lot of other
+stuff now how did we come up with this value well here's one way so let me press reset again if you draw a circle
+inside a square so that the circle touches all four sides of the square and then you randomly Place points anywhere
+inside the square so some of these points could be within the circle some of these points could be outside of the circle and then if you count how many
+points are in the circle divided by the total number of points and then you times 4 it actually gives you the value
+of pi so let me reset this again and that's how you would calculate this value let me adjust these settings now
+so if we adjust points per frame you can see it fills this up really quickly let me adjust this to one to slow it down and then press reset
+simulation okay and then point size let me increase this all right so you can see the points are now bigger let me
+decrease this so the points are now smaller and then here you can see like how many points are inside the circle how many points are there in total
+what's the estimated pi value and then what's the error rate so if we speed this up slightly you can see that as
+this fills up with more points we get closer to the real value of pi and the error rate should go down let me
+increase this a bit further so you can see it's slowly moving towards the value
+of 3.14 and then the error is going down so let me decrease this back to one and then click on reset simulation and then
+let's see what density plot does very interesting so it turns these dots into squares I'm not really sure what's going
+on with this density plot but nevertheless here's a completely working Monte Carlos simulation for estimating
+the value of pi the animation looks beautiful and all the settings work and it does all of this from just one prompt
+really impressive all right so those are some science and math visualization examples next let's look at how good
+this is in terms of coding up games so let's try this using 3js Create a Minecraft environment include a start
+and pause button include a speed slider and this is another common phrase that I like to include in my prompts the system
+autonomously starts building a very intricate and complex Castle focus on visual appeal make it look amazing let's
+click generate and see what that gives us all right so here it looks like it has hit the max length for a message and
+had to pause so you can see it's not really done coding yet let's type continue from the end so that it would
+continue from here all right so you can see it's continuing from the the bottom of the code all right so here's what we
+get let me zoom out first let's click on start building uh it doesn't seem like we can see anything here so I think 3.
+JS might not be fully compatible with this Cloud preview so I'm going to click on code and then copy everything here
+and then paste it in our test HTML file so let me press contrl s to save it and and then if I open this HTML file up you
+can see the ground is now green so that's a good start let's see what happens when we Press Start building and
+here we go it is starting to build this Castle now let me increase the speed a bit so you can see this build faster
+very nice so yeah keep that in mind 3js might not work natively in claw artifacts so if it's showing up blank
+for some reason then you'll need to copy the code and then open a new HTML file in order to view the working version how
+cool is that so you can see it's now building out the walls of the castle and if you zoom in you can even see each of these elements labeled so for example
+here it says brick here it says Stone how cool is that and then I can drag my mouse around to view this at another
+angle very very nice so it has now finished building out the castle it says status complete and
+if we zoom in a bit you can see it has built Windows along the wall very nice it even built a nice door over here so I
+assume that's the entrance and then here it has a nice wooden roof very nice and there you go here is our Castle how cool
+is that with just one prompt we can get it to not only kind of Clone Minecraft but also get an agent to autonomously
+build a castle in this environment I've tried this prompt using open AI 03 and grock 3 but it couldn't get it in just
+one shot so this is super impressive all right I'm going to start a new chat and the game I usually like to test with
+these AI models is to create a snake game but that's way too easy all the top models could already create an autonomous snake game of two snakes
+competing with each other this works for o03 mini and grock 3 and by the way both models are really good as well if you enjoy this video definitely check out my
+full review on grock 3 over here as well as my full review on 03 mini okay back to here let's make it slightly harder
+I'm going to write create a snake game and instead of two snakes I'm going to get 10 snakes to compete autonomously to
+eat food make it visually appealing again this is a key phrase I like to use to just make it a bit more aesthetic and then use
+p5.js let's click enter and see what that gives us all right and here's what we get so notice that it starts
+immediately and it seems like there are 10 snakes it even shows the score of each snake and
+which snakes are dead which snakes are still alive right now we are left with just one snake remaining and then once that
+snake touches itself then it's game over and snake one wins with 19 points note that there's no start or stop button
+here and that's why usually I like to add a phrase like include a start stop button in the prompt so that it does
+doesn't just play immediately but anyways let's click on refresh again so you can see it starts with 10 snakes and
+they are competing autonomously with food and note that the visuals of this look way better than a traditional snake
+game that you see with older models plus this has a really beautiful scoreboard it keeps track of everything including
+which snakes are dead plus it has a nice game over screen very very impressive next let's try this make a
+sidescroller platformer game using phaser.js this is another really useful JavaScript library for creating
+interactive video games use only arrow keys for gameplay let's click generate and see what that gives us okay here's
+what we get note that we do see some error messages here and this is blank however I think it's just because phaser
+is not compatible with this Cloud chat interface so I'm just going to copy this code and then again paste it in our test
+HTML file and then open the file up all right so here's what we get if I move left and right with my arrow keys the
+character does move left and right if I press up this does jump so let me try to eat all these coins and after I do that
+I'm curious if it'll actually progress to the next level let me try to jump all the oh my goodness how do I even jump
+all the way up there let me try again there we go very nice so it looks like I can progress to the next level after I eat
+all the coins and I think this black dot is actually an enemy so let me try not to touch this first let me just try to
+eat all the coins and see what happens very cool very cool so after I eat all the coins it proceeds to the next level
+and it adds an extra enemy and then if I touch the enemy then it's game over how cool is that so not only did it coat up
+a fully functional game but it even included enemies plus multiple levels in the game with increasing difficulty now
+imagine if you prompt it further if you keep refining this game I think using just CL you can easily come up with a
+legit publishable game next I want to test out its reasoning and thinking capabilities one really good use case I
+like to use especially with deep seeks thinking mode is to get it to diagnose medical diseases so let's let try a
+similar prompt here a 55-year-old man with a history of hypertension and Hyper lipidemia is admitted with chest pain
+and shortness of breath despite medication adherence his symptoms have progressively worsened over the past month examination reveals elevated blood
+pressure and abnormal lipid profiles what could be the issue and then over here we are going to select this
+extended feature and then here you can also choose the style so let's go with explanatory which will give you more
+educational responses for learning so let's click generate and see what that gives us note that if we turn on that
+extended thinking feature we can see into its thought process and we can expand this to see what that looks like
+so here you can see it's organizing key information here's the patient information here are the symptoms here
+are the physical exam findings so potential diagnosis to consider is coronary artery disease most likely
+given his risk factors etc etc or it also could be heart failure or it can also be aortic dissection associated
+with uncontrolled hypertension it could also be pulmonary embolism and all these other causes and then it says given the
+age risk factors and symptom pattern coronary artery disease is the most likely diagnosis the next most likely
+diagnosis would be heart failure potentially as a complication of his hypertension and then it even gives you some actionable items so that's just its
+thinking process and then here's its final answer so here's the primary concern and then the patient may also be
+experiencing this which requires urgent evaluation other important considerations are these ones and then
+it gives you recommended next steps which is for proper evaluation which includes doing all of these so you can
+see how this this can be super useful for medicine and health care this is way better and more thorough than my family
+doctor so that's claud's response I also wanted to compare the same prompt with deep seek since this is one of my
+personal favorite models in terms of chatting and thinking so here's what deep seek wrote here are all the
+conditions what could be going on here first I need to consider his history since his symptoms have been worsening it suggests a progressive condition
+putting this all together the progressive chest pain and shortness of breath could be due to worsening coronary artery disease another
+possibility is etc etc it's also important to check if there's any non-compliance with medications but the
+question states that he's adherent another angle could the chest pain be something else like aortic stenosis
+alternatively maybe he's experiencing this I should also consider non-cardiac issues such as pulmonary is issues or
+gastrointestinal issues so just from a rough scan it seems like deep seek is a bit more thorough compared to Claude
+deep seek even considers non-cardiac issues whereas Claude doesn't really do that now interestingly deep See's answer
+is kind of different from claude's answer so deep seek suggested this to be unstable angina or acute coronary
+syndrome whereas for Claude it's suggested Cor coronary artery disease if there are any doctors or heart experts
+watching this let me know in the comments below which answer do you prefer which analysis is more correct anyways down here deep seek also
+recommends some next steps another thing I like about deep seek is it even gives you some steps on how to manage it right
+now whereas CLA doesn't really do that all right next let's test it on some hard physics problem solving so let's
+try this University level physics problem how much heat I think this is a typo is necessary to be given off by 56
+G of nitrogen in order to isothermally compress it from the pressure of 100 kPa to the pressure of 500 at the
+temperature of 300K so let me just copy this entire prompt and by the way the solution is
+pretty complex which is why I chose this problem anyways let me paste The Prompt in here and then let me change the typo
+and then over here again I will select extended and this is the better option for reasoning and problem solving so
+let's press generate and see if it can figure this out all right it has finished thinking through everything and
+the answer is indeed 8 K as you can see here and if you expand this thinking
+window you can see it reasoning through how to solve this problem so we can express this in terms of pressures this
+gives us this next let's calculate the number of moles of nitrogen now I can calculate the heat released continuing
+the calculation etc etc but wait I need to double check the sign convention and indeed it gives you the correct answer
+so that's an example of some pretty hard University level physics problem so that sums up some of the impressive things
+you can do with clae 3.7 however note that this is not perfect and there are some severe limitations one limitation
+is you cannot generate images from this if you want to do that natively in a chat interface then grock 3 would be your best option you can generate really
+realistic stuff and pretty wild things like this and it looks exactly like the person in real life plus there's no
+voice mode again open AI already has an advanced voice feature where you can just chat with the AI using your voice
+Gemini also has this feature and Gro also has this feature plus the problem with claw and this is the thing I
+dislike the most is it's the most censored model out there if you ask it anything about drugs weapons violence
+War it ain't answering nothing if you get it to create a video game with a bit of violence with blood spewing around
+everywhere it ain't going to do that so if you want more uncensored information Claude is not the best option plus
+here's another major problem with Claude it cannot search the web so if you need to do research on the most upto-date information this might be a deal breaker
+for you for example if I write tell me about deep seek R1 which was released this year here's its response I don't
+have specific reliable information about deeps R1 as my knowledge cut off is from October
+2024 whereas DPC car 1 was released in early 2025 I can't verify details about AI models or products released after
+that date if you're interested in learning about deeps R1 I'd recommend checking deep seeks official website so as you can see this is not great for
+up-to-date information and it cannot search the web at all plus I want to emphasize that for simple or lower
+intelligence stuff like writing social media posts or casual chat or solving simple problems honestly there's no major difference between the top models
+out there all of them can do the job really well including chaty BT Google's Gemini Gro deep seek and also Quin next
+let's go over the specs and performance of CLA 3.7 how good is this compared to other models so first of all note that
+this new Cloud 3.7 features a hybrid reasoning model and this enhances its performance in complex problem solving
+which is especially useful for Math and coding as you can see in all the examples I've shown you in this video it's insanely good at coding now Claud
+features a standard or normal thinking mode which basically doesn't think as much and answer you a lot faster but
+then we also have this extended thinking feature which self-reflect before answering and this improves its performance on math physics instruction
+following coding and many other tasks it allows for deeper analysis and step-by-step reasoning and you can also
+see into its thinking process note that this extended thinking feature is not available for the free plan so you do
+need to subscribe to one of their paid plans in order to access this feature finally let's go over some benchmarks and see how well this actually does
+compared to other models let's start with the benchmarks that they've self-reported and then we're also going to go over some comparisons from
+independent evaluators if you look at software engineering this just crushes everything even the best available
+version from open AI which is 03 mini High it only got 49.3 deep SE car 1 49.2
+these are all like below 50% but Claude 3.7 Sonet scores at least
+62.3% this is a huge margin Above the Rest of the state-of-the-art models so this is insanely impressive 3.7 is
+currently the best option for coding and then if you look at agentic tool use this is basically testing its ability to
+act as an agent and use different computer interfaces note that again Cloud 3.7 is even better than open AI 01
+now they might be cherry picking here they did not compare this with like quen which is really good at a gentic use so just keep that in mind they might be
+only picking models that Claud 3.7 can actually beat now speaking of agentic use here's a completely new Benchmark
+how good is AI at playing Pokémon so here's a chart that they showed where Claude 3.5 could only get past the
+vidiian forest but Claude 3.7 son it just blew past all these levels and it reached all the way in getting Serge's
+badge and this just demonstrates how good it's agentic capabilities are it's basically just analyzing the screen of
+the game and then deciding what to do however again note that they're only comparing 3.7 with earlier versions of
+Claud they're not including other competitor models here so it's really hard to see if 3.7 is actually better
+than let's say open AI or deep seek in terms of playing Pokémon and then here's another useful table which gives you a sense of what cloud 3.7 is good at so
+for graduate level questions if you don't turn on this extended thinking feature then it actually sucks it's
+worse than open a eyes 01 deeps car 1 and grock 3 only if you turn on this extended thinking feature do you get a
+higher performance that's on par with grock 3 and then coding we went over before clae 3.7 is by far the best model
+out there I mean it's not even close agentic tool use again we've gone over this and then multilingual Q&A still
+Below open AI o01 which was released a few months ago for visual reasoning this is like uploading an image for it to
+analyze again it's good but not the best it's still beat by open Ai o01 and grock
+3 in terms of instruction following it is the best in terms of math problem solving even with the deep thinking mode
+it's still slightly behind opening eyes 01 03 mini and deep seek same with competitive math it's not the best model
+out there next let's look at some independent leaderboards so here's one by livebench by Abacus AI now
+interestingly here Cloud 3.7 thinking is at the top of the charts with a global average of 76 just slightly above 03
+mini High interestingly here here its coding average is actually a lot lower than 03 mini high but it does beat 03
+mini in terms of mathematics and data analysis and language if we look at this other leaderboard called LM Arena where
+users can blind test different AI models I do not see Cloud 3.7 on this list yet I only see the latest version of 3.5
+which is all the way in 19th Place so at least at the time of this recording we don't know how good claw 3.7 performs in
+this LM Arena here's another independent evaluator called artificial analysis and interestingly Claude 3.7 Sonet is all
+the way down here in eighth place even behind Gemini and deep seek and 01 and 03 mini now I think this might be the
+non-thinking model but nevertheless this is not a good result notice how much more expensive it is per million tokens
+compared to other even better models so we're getting some mixed results so it's important to look at multiple leaderboards so you can get an objective
+sense of how good a model is finally we have this Benchmark called Humanity's last exam which is a very misleading
+name this does not mean AGI this does not mean once AI can pass this test that it's going to destroy humans and take
+over the world this is basically a set of really challenging questions from really specialized subjects that most
+people don't even know about so here are some sample questions and if you look at the results clae 3.7 Sonet scored 8.9 so
+slightly above deep seek R1 and opening eyes 01 but below even the regular version of 03 mini anyways that sums up
+its specs and performance and this brings us to the ultimate question should you use clae is it the best sure
+but maybe only for like 48 hours after that GPT 4.5 is going to roll out and completely destroy it and then probably
+the following week deep seek R2 will come out which will destroy everything else it just never ends at this rate I
+might never have time to go on vacation anyways I hope you enjoyed this video let me know in the comments what you think of this if you had a chance to use
+Claude 3.7 let me know your experience with it so far what cool or impressive things were you able to create from this
+as always I will be on the lookout for the top AI news and tools to share with you so if you enjoyed this video remember remember to like share
+subscribe and stay tuned for more content also there's just so much happening in the world of AI every week I can't possibly cover everything on my
+YouTube channel so to really stay up to date with all that's going on in AI be sure to subscribe to my free Weekly
+Newsletter the link to that will be in the description below thanks for watching and I'll see you in the next one

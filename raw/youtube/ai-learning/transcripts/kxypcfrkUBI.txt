@@ -1,0 +1,350 @@
+In this video, we will train a small language model to reason and perform question answering tasks. This is the
+culmination of a multi-part series of videos where we are taking a base model that is just 135 million parameters and
+going through all the stages of post training. We have already built some capabilities into our SLM through
+supervised fine-tuning. But boy, this model still makes a lot of silly mistakes, just factual errors, and often
+just goes into full ramble mode just like this. It messes up JSON schemas and
+sometimes even confuses the tasks that it was given. So this model has the knowledge but it doesn't know the
+behaviors that it needs to know to succeed. In other words, this is not a knowledge issue, it's a skill issue. And
+that's exactly where reinforcement learning is going to help us. You see, we followed a four-step recipe to get to
+this point. CPT, SFT, DPO, and now we're going to do RL. CPT or continued pre-training was all about getting the
+model to learn a lot of unstructured volumes of text. Then supervised
+fine-tuning was all about teaching the model explicit behavior, how to do specific tasks and also expand its
+knowledge. And then preference optimization was all about aligning the model to pick better answers. It does
+not add new knowledge into this model. It just sort of aligns the model to
+behave in a better way. Reinforcement learning is kind of similar to this preference optimization. It does not add
+external knowledge into the language model. Instead, it just aligns behaviors from within it so that its response just
+become better. But DPO required us to have a whole data set like a separate
+data set that contains pairs of accepted and rejected texts. So the model can
+learn which of the response to have a higher probability of producing and responses to avoid. However, in
+reinforcement learning, this data set requirement is relaxed. See, in RL, we will input a prompt to a model, get it
+to generate a response, and then inform it whether it was correct or incorrect. The model collects tons and tons of
+experiences like this, and it learns from this feedback about how to respond to prompts in a better way, meaning
+which responses tend to give higher rewards. So, in this video, we will cover all of this. I already have a
+video where I've implemented gRPO from scratch to train a reasoning SLM. And in
+that video, I went very deeply into the theory, Matt, code, and everything else. This video is a natural extension to
+that because here I'm also going to talk about how to create these environments and design reward functions to avoid
+reward hacks, how to evaluate models objectively, and very importantly, what can go wrong and what to do when things
+go wrong. because trust me a lot of things went wrong when I tried to train this model. So my hope with all of this
+is I'll I'm able to um like share and document my learnings as well as inform
+you what to expect during model trainings like these. Everything I do here is open source. So you don't need
+to copy or you know like run any code or uh anything like that. So I'll add the
+GitHub repo in the comments. So go check that out. And if you like this video just make sure you hit the like button
+and know ask me all of your question. I respond to each and every one of you. Although if you want to formally support
+this channel, the best way is to do it via Patreon. A lot of you are already supporting every month and without you,
+this channel will simply not exist. And with that, let's move into the first section of the video.
+Most of the time when you hear about reasoning models being trained with RL, it is done in verifiable environments. A
+verifiable environment is one where the answer is easy to check. You take a math problem, you prompt the model for a
+step-by-step chain ending with an answer. You extract that answer from its trace and match it against the ground
+truth and boom, that's a clean reward signal. You can tell the model if it was right or wrong and it learns to land on
+the correct answer more and more often as training goes on. Now the problem is in our task today, we don't have this
+luxury. You see, we are training on free form text generation like question answering, knowledge graph, tripleta
+generation, bulletoint extraction, summarization. So if you look at all of these tasks, it is not exactly
+verifiable. There's no simple function that can tell us whether a response is correct and how correct that response
+is. So we've got a genuinely unusual problem. Training a reasoning model in an unverifiable domain. And just to make
+it interesting, I'm holding us to a ridiculous goal. And it's like the long shot goal, okay? Like what if we get our
+135 million parameter model to go toeto toe with an off-the-shelf Quinn model that's nearly six times the size like
+Quen 3.5.8B? It's going to get a lot closer than you think. How do you even train a reasoning model in an
+unverifiable domain? Well, the clear answer are reward models. A reward model takes a response and outputs a scalar,
+which is a score of how good the response is. Now, there are several types of reward models, and I'm going to
+get to all of those in this video. And that section about how we build the reward model is going to be one of the
+most fun sections in this entire thing. But before all of that, let's quickly cover the basics of gRPO, the algorithm
+that we're going to use to train the final SLM. Now, I already have a video on gRPO where I implemented the whole
+thing from scratch. Here's a 3minut version of what GRPO is for this video. First we take our SLM and we make two
+[music] copies of this model. One we freeze which we call the reference and the other we call the policy which we'll
+actually train. We feed in a batch of prompts and for each prompt we generate a group of responses. These four red
+sequences are one group. These four green ones are the next and so [music] on. Each response has two parts. The
+reasoning and the answer. We just pull out the answer part and run it through our reward function to get a numerical
+quality score. You can score the reasoning too in a path by path fashion. But scoring the answer is the bare
+minimum to make this work. Then comes the group relative part. Within each group, we normalize those scores against
+each other. So they center on zero. That gives us the advantage. How much better or worse a response was than its
+groupmates. push up the probability of the sequences with high advantage and push down the ones with low advantage.
+And notice this is not token level feedback. We don't tell the model which specific [music] words were good or bad.
+We globally increase the likelihood of all the tokens in an advantageous sequence and globally decrease all the
+tokens in a disadvantageous [music] one. So how does it ever learn anything fine grained? Because the loss is spread
+across many responses. GRPO ends up doing a kind of light implicit credit assignment. Think about it. Blue words
+like be, on, at, appear in good and bad responses. So, their pushes up and down roughly cancel out over time. What
+doesn't cancel out are the tokens and patterns of tokens that show up consistently in the high advantage
+rollouts, but not the low ones. Oh, and that reference model that we talked about in the beginning. It is there for
+a very specific reason. As we train this GRPO model, it is going to stray from its original policy. And it might happen
+that it just completely degenerates into a very bad LLM. To prevent these large scale updates, we will use a KL
+divergence term to make the training policy not drift too far away from the reference policy. It is kind of like a
+rope that tethers the policy from not changing way too much from the starting policy so that training is stable. By
+combining that policy gradient loss and that scale term, we slowly train the model to generate better and better
+responses. The single most important thing in that whole algorithm that I just talked about is actually the reward
+function itself. If your reward function cannot distinguish between good and bad responses, then there's no point in
+training an LLM with RL. So in the next section, let's look at how to craft this
+reward function, especially for our domains, which mainly contains of question answering tasks and
+summarization and fact extraction and all of that.
+So here's the problem with trying to design a reward function for question
+answering task or any of these free form text generation or JSON generation tasks. You can't just write a Python
+function that checks for correctness. It's just not really possible to do with
+just pure Python code. We are going to use a combination of heruristic based methods and reward models. The heristic
+methods will be simple Python functions that can quickly check if a response is obviously wrong. And the reward model
+will be a neural network that does a deeper correctness check by comparing the language models response to the
+ground truth response. We will talk about reward models soon, but first let's talk about some of our uristic
+functions. Here's a few of them. Format rewards. We just check if the model is following this reasoning template. If
+not, then the extraction of answers will be broken. So the rest of the rewards just cannot run. So we are going to
+penalize if the model is not following our desired format. Next can be data types rewards meaning if the question
+asks for a JSON out whatever that data type may be the response must match that
+data type. The third can be a length penalty meaning we don't want overly long responses or overly long reasoning
+generation. So if that exceeds a certain limit we we start to penalize the model.
+Now these are all good huristics but none of them check for correctness. They
+don't check for the quality of the response. So how do you measure that? Given a prompt, a reference response and
+a LLM generated new response how close it is to your reference. So let's go step by step through some of the options
+and then I'll tell you what I did. The first obvious thing to do is to use F1 scores. We measure the word overlap
+between the reference and the response. The pro is that it is dead simple. It's fast. There's no external neural network
+needed to do this. But the con is that it sees surface word matching it. A factually wrong answer that reuses the
+right words will simply score high and a correct paraphrase that uses different words will score low. So F1 alone is not
+going to cut it. The other option is bird score. Well, instead of matching exact words, it matches the contextual
+embeddings of reference and response. So, paraphrases are now rewarded, which F1 couldn't. The pro is obvious, but
+this is also not very useful because the scores compress into a tiny range,
+meaning everything looks equally good if the sentences generated are kind of similar. And also it cannot recognize
+small factual errors like if the reference names a specific data set like CR 10 but in the LM response we have
+changed this data set name to I don't know CR 100. Well now the data set names
+don't match in the two responses but if you're using bird score it's going to be completely blind to that. It's going to
+say yeah they kind of look similar. The third and perhaps the most common approach is to use an auto reggressive
+reward model. Basically, this is a fulls size language model that is trained to read a prompt and a response and then
+output a scalar quality score. This is often done via Bradley Terry preference
+training which we have talked about in the last video. The pro is that these models are super expressive because in
+the end they are just language models. The con is we need to train such a model and that's going to require GPUs from my
+side as well as when we're training this SLM we need to host this reward model as
+well and that's going to eat up our GPU as well. So in other words it is a bit costlier than I want for a YouTube video
+but if you go for an auto reggressive reward model that's a good idea as long as you have the training data right. The
+fourth option is an external judge verifier. We basically prompt a separate stronger LLM to grade the response while
+the language model is training. Meaning we do API calls during rollouts to attach reward values into responses. Now
+the pro for this is well it is probably the best judge because these models are
+trained for stuff like this. So you can use that and it's going to be the best training run that you can do around
+reward models. The coin is obviously the price. Every roll out cost some money. So, if you're running large experiments,
+it's going to cost a lot of money, too. And because the whole point of this series is to do it in a very
+costefficient way, I'm not going to use the external judge verifier either. The fifth option, and this is the one we're
+going for, is an answer equivalence model. This is a model that's trained specifically to decide whether two
+answers mean the same thing. The pro is that it directly targets is this response equivalent to the reference
+rather than a vague notion of quality. And the second pro is that this model can be much much lighter than the auto
+reggressive reward model that we talked about earlier. See in the auto reggressive reward model we were inputting the prompt and the LLM's
+response and asking the reward model to generate a score. But in an answer equivalence model we are passing the LLM
+response and ground truth response and generating a score. That is a much easier training target because all the
+model needs to do is to just check if the reference and the response have the same meaning and are getting the facts
+right. It doesn't need to arbitrarily understand all of the space that an auto reggressive language model can do
+because it's a much bigger model. Instead, just focus on those two inputs and the score. In a general reward
+model, you just need prompts. That's it. The response comes from the LLM. To use
+answer balance model during training, you actually need access to both the prompts and the ground truth responses.
+And that means you can use pretty much any supervised learning data set to train with answer valance models. And
+luckily we got everything that we need to do this. We're going to take a small model that is just 22 million
+parameters. We can curate a data set that the model does not fall into the F1
+and the bird score traps. The next section we will train this reward model to catch text that sounds right but is
+actually wrong and we'll see how to do that right now.
+Now answer equivalence reward model is a bit of a mouthful. So from here on out I am just going to call it the reward
+model. Now for the fun part training this thing was not a oneshot deal. It was an iterative loop. I'd hit a
+problem, fix it, train, look at the results and that would reveal a brand new problem I hadn't even thought of.
+Let me take you through that journey. And remember the data set, the training code, the trained model and the reward model harness is all open source on
+hugging face and GitHub. So you can just play with it on your own. First let's begin with the model itself. I picked a
+tiny pre-trained sentence embedding model. All mini LM just 22 million parameters. It has to be small and fast
+because it's going to score every single roll out during training. It takes in the reference answer and the response
+and spits out one number. How good is this answer? But a model is nothing without data. So, I took all the models
+I trained in this series, the numerous SFT models, the DPO models, and had them generate thousands of responses to our
+tasks. Then, I used a much bigger model, Deepseek, as a judge to score every one of them from 1 to 5. Luckily, I didn't
+have to do most of this from scratch. Remember those past videos where I evaluated all these models? Deepseek had
+already scored every response on a four-way quality axis. So, all I had to do was average those four numbers into a
+single score. I trained my little 22NEN model on this, [music] and not bad. The way we will evaluate our model is using
+the Spearman rank correlation metric. Basically, we will take the ranks of the
+responses as scored by our reward model and compare how closely do these
+rankings match the rankings from the deepseek judge. You can also use the mean square error loss to measure the
+reward model's quality. And at the end of this section, I will discuss this further. I was constantly comparing
+against birds one and a couple of open- source answer equivalence models. But then I looked closer. The model wasn't
+judging correctness. It was judging word overlap. If a response reused the same keywords as the reference, it scored
+high, even if it was factually dead wrong. It had basically reinvented the F1 score. So here's the fix. I take my
+good, correct answers and ask an LLM to sabotage them. Keep the words almost identical, but flip the facts. A 67%
+becomes 35%. A name gets swapped, a relationship reversed. Now I've got answers that look right, but are
+factually wrong. We can procedurally find named entities and shuffle them. For example, bird becomes resonate.
+Scale a number up or down or flip a verb to its opposite. Increases to decreases. It's screwed, but it's free and
+basically infinite. I score those a three out of five and throw them in. I also shuffled responses from one prompt
+onto another and score those a one, teaching the model to actually pay attention to both the reference and the
+response. So, I train with all these confounds, expecting it to start nailing the errors, but it barely moves. The
+model is [music] better, but it's still getting fooled. And it took me embarrassingly long to figure out why it was the architecture. See, this mini LM
+has six layers. And to keep training cheap, I was only training the last three and freezing the first three. But
+think about what a confound is. A single flipped number in a sentence that's otherwise 95% identical. Those frozen
+bottom layers mash each response into one summary embedding. And because the two share almost all the same words,
+they come out as nearly the same vector. The fix unfreeze five of the six layers so the model can reshape its
+representation all the way down and hold on to that one critical difference. And that's when the confound training
+actually worked out correctly, giving us the best answer equivalence model yet. As we had planned, this model can catch
+incorrect responses even when they have high F1 world overlap. I was super
+excited with this progress. Next problem, and this one was sneaky. The model had quietly decided that shorter
+answers are better answers. And it was my own fault. My five-star answers averaged around 40 words while the
+one-star answers just happened to be long rambling responses. So, it learned
+the incorrect correlation that long is bad and short is good. The fix, instead
+of making good answers wrong, I took bad answers and had an LM rewrite them into excellent ones while keeping them long.
+I also did a bunch of other length confabulations all achieving the same purpose. [music] Now length and quality
+are decoupled and the model has to actually look at the content and this change fix the length bias and [music]
+improve the rank correlation a little bit more. We are getting close to the end of the rope here but we are not
+quite there yet. Then a weird one I did not see coming. After training, as a sanity [music] check, I fed the model a
+response identical to the reference. Same text word for word, and it scored it a three. [music] But it made sense.
+I'd spent all this effort teaching it that a tiny one-word change means wrong. So now, two identical sentences just
+make it suspicious. It had lost the ability to tell a real exact match from a one-word confound. So to fix this, I
+augmented the data set again and this time I just added the original response itself as the response and gave those a
+perfect 55 target. I also replaced random words with a synonym using a LLM.
+Both of these changes along with the confound data we added [music] back in step two helps the model to distinguish
+incorrect responses without being way too suspicious. So far we had been measuring the quality of the reward
+model using rank correlation by checking how the ranks of our answer equivalence
+model matches the ranks of the deepseek judge model. But actually a better approach would be to measure the mean
+squared error loss between the scores generated by our model and the judge. For example, if the reward model scored
+every wrong answer 0.61 and every right answer 62, technically that is a high
+rank correlation. But in reality, such a reward model would be useless [music] in an actual grpo training. So remember to
+always pick the best model from a training run using the MSE error instead. And after all that journey, we
+finally landed on a reward model that outperforms everything else we had tested so far. In [music] the next
+section, we will take this reward model and use it inside the reward function and use reinforcement learning to
+finally train our reasoning language model. But honestly, the benchmark number isn't the convincing part. What
+convinced me was watching [music] it score actual examples. So, let me walk you through a few of the hard ones up on
+screen. Here's the first pair. The reference and response use almost completely different words, but mean the
+same thing. Word overlap methods punish this hard. Our model gives it around 0.83. It sees through the wording to the
+meaning. Next one. I take a good answer and flip a single word to its opposite or swap one number. and the easy sanity
+check, a completely irrelevant response gets flowed at 0.14. In RL, it's the size of that gap that teaches the
+policy. And just sit with the scale of this for a second. That's [music] a 22 million parameter reward model trained
+on roughly 20,000 examples. It was super cheap to train and you will find the
+entire harness as well as training code on my GitHub. Look for this specific markdown file where I got my coding
+agent to document every change and how it progressed our training run. In the next section, we're going to train our
+reasoning model using this reward model. But before that, there is something we got to talk about first.
+Most important thing when we do rollouts is that each group has to contain at least some good answers and some bad
+ones. If every response in a group is great, there's nothing left to learn. The reward function's whole job is to
+discriminate between them. If they're all terrible, there's no signal either. You need variance within each group. So,
+how do we actually manufacture that variance? The easiest way is temperature. We take a single prompt and
+instead of generating one response, we generate a whole group of them with the temperature cranked up. So, the model
+takes a different path each time. Then, we run every one of those responses through our reward model. You can't set
+the temperature too high because what that'll do is it'll make the responses
+look gibberish and the rewards are all going to go down to zero which means you
+won't have enough training signal to actually train the model. And also you cannot set the temperature too low
+because what that will do is it'll uh make all of the LLM responses quite
+similar to each other. meaning again there won't be any reward variance and
+once again that will mean no training signal even if all the responses are correct. So you need a happy medium
+somewhere in the middle where things work fine. And for me it turned out to be around.5. And now you can literally
+watch it work. The same prompt four different answers and the reward model spreads them out. But here's the thing.
+Before we can run a single one of these rollouts, we have a problem. Our SFT model, the one we've been carrying this
+whole series, it can't actually reason. It was never trained to produce a step-by-step thinking chain. That's just
+not a format it has ever seen. If the model literally never generates a reasoning trace, there's nothing there
+for RL to grab onto and amplify. So before we run RL, we need to first teach basic reasoning skills like how to
+format the response and how to think through things step by step and then generate the final answer. To do this,
+we will use something called as the SFT warm-up where we use supervised fine-tuning on a reasoning data set. I
+produced this reasoning data set by once again querying our dear friend Deepseek V4 flash and generate 20,000 reasoning
+rows. This data set is also open sourced on hugging face. All this is just to teach the model the correct format. And
+that warm-up gives us a new model which I'll call the reasoning base. This is our actual RL starting line and where it
+starts is genuinely surprising. Take our old SFT model on raw quality. Our reward
+model scores it around 0.51. Now the reasoning base scores lower around 0.31.
+So yeah, we've actually regressed from our previous SFT model in terms of pure
+performance. Meaning this new reasoning base actually is quite bad at our tasks.
+But at least it follows the format to generate a reasoning trace correctly.
+And what we're going to do next is we're going to do RL on this model and then see how much we can improve its
+performance. And that section is next.
+Now before running any training runs, I wanted to first set some expectations. So I so I took the Quen 0.8 billion
+parameter model and checked its reward scores. It came out to be around 0.6. Our SFT model sits at 0.51 and our new
+reasoning base is sitting at 0.31. If I'm being honest here, I did not expect
+to beat the Quen model and my goal was to see how close we can get. Although if we did end up beating it through some
+miracle, that would be both insane and also highly suspicious given our training SLM is just 135 million
+parameters big almost 126th the size of that Quinn model. Now I have already explained GRPO previously in the video.
+So you may want to quickly check that section. I also have a coding walkthrough video that I did previously
+which you can check out for a detailed deeper dive. For now, I am going to assume that you already know the basics
+and I will focus instead on how to tune the reward function and how to improve training runs step by step. The most
+important setup for our reasoning training is the environment script. The environment contains two things. The
+prompts data set and the reward function. At each stage of training, we will take a batch of prompts from our
+data set. Generate multiple grouped responses using our policy network and score each of them through our reward
+function. and then GRPO can take care of the rest in terms of optimizing the policy network using these rollouts. For
+the prompt, we will use our big 300,000 instruction response pair data set we have used previously in the SFT videos.
+Notice that we do not need to use the reasoning data set we produced for SFT warm-up. Here during RL, we will not
+provide explicit guidance about exact reasoning trace like we did during the warm-up stage. We are going to let the
+model figure out its own reasoning steps and just arrive at an answer. Our
+environment will simply check if this answer scores highly according to our
+reward function and if so incentivize this behavior. This is super cool because you can literally use any prompt
+corpus to run rollouts for RL training as long function to score its quality. Speaking
+of reward functions, let's talk about that. As discussed earlier in the video, we are not just going to use the reward
+model we had trained in the previous section. We are actually going to combine the reward model with verifiable
+feedback signals such as the format reward, the data type reward, the length penalty. The verifiable rewards make
+sure that our responses follow the correct structure and the answer equivalence reward model only scores how
+correct the responses are compared to our ground truth. The goal for this training is simple. [music] We sample a
+prompt from our data set and then ask the model to generate a thinking trace
+followed by a response kind of like this template shown here. We generate several rollouts for the same prompt at a high
+enough temperature like 0.5. Each roll out samples a different reasoning path,
+a different sequence of thinking tokens, and they all arrive at different final answers. We extract these final answers
+and our reward function determines which of them are good and [music] which are bad. The whole point is to increase the
+likelihood of the [music] good responses which indirectly increases the likelihood of those correct reasoning
+traces. This sounds great in theory, but let's see how that works in practice.
+Okay, so before we proceed to this final section of this video, I'll just quickly tell you what to expect from the rest of
+this video. [music] So every time I train a new model, I found some flaws with it. like some reason why the model
+isn't performing as well as I [music] would like. So to explain all that, what I'll do is break them into separate
+experiments. For each experiment, I'll tell you what exactly it was that [music] I changed and how that impacted
+the training run and what happened as an outcome of it. And then I'll go to the next fix and [music] so on. And all of
+this is already documented in the fine-tuning recipes GitHub repository.
+Literally just point any coding agent to this file and it will be able [music] to
+help you to understand what exactly happened and how all of it played out. Let's go. Also, during evaluating the
+models, I use the external DeepSc V4 flash instead of our reward function.
+This makes sure that we use a stronger judge model for evaluation and [music] catch situations where RL tries to hack
+our reward function. more about reward hacking soon, but setting up this external judge was super important so
+that I can always rationally judge the actual quality of a reasoning run and I
+was immediately able to capture a very serious bug after the very first run.
+The model learned that shorter answer is better. It found a hack and the reason is subtle. You see, GRPO normalizes
+rewards within each group. So any component of our reward function that stays roughly constant across [music]
+the group contributes nothing to the gradient. And now let's look at all the components of our reward function. Again
+[music] the way I had coded the length penalty was that responses which are longer than the ground truth will get a
+linearly increasing penalty for each extra token. The other rewards do not have this simple linear ramp because
+they are mostly either booleans like the doom loop or the format rewards or they
+are outright nonlinear such as our reward model score. So the optimization
+naturally found the easiest way to gradient descent along the length penalty. So I removed the linear penalty
+and instead made it into a gate. The penalty will now be only assigned if the response is two factors longer or
+shorter than the target response. Second, I turned off standard deviation normalization on the advantages. That
+generally to standardize the advantages, we subtract the mean of all the advantages and divide by the standard
+deviation. For my training, this division operation was muting the reward differences between each roll out. So I
+decided to turn this division off so that the absolute difference between each roll out remains high enough to
+produce a stronger gradient signal. And for my training task, this worked out very well. And just these two changes
+allowed the model to creep past the SFT model benchmark and to a rockolid 100%.
+And it keeps going. And then the number ticks past 0.6, that distant quen flag I
+never expected us to even get near. And the reward just keeps going up. 0.66 66
+0.7 pushing towards 0.74 which should be amazing except it wasn't because when I
+read the outputs the model had found a new much sneakier hack. It had learned to open almost every single answer with
+the words the passage defines or the passage explains. This is a clear sign of reward hacking because the intention
+of writing the reward function was something else but the optimization found a crazy way of exploiting it. Even
+though the reward increased to insane numbers like 0.75, it was not actually
+as [music] good. Our 22 million parameter reward model is so small that such exploits are to be expected. I
+decided to look deeper into what could be going wrong [music] and the clearest symptom of it was the schema. A huge
+chunk of our tasks ask for structured output. Give me JSON. Give me a list. Give me triplets. But the model had
+figured out [music] that pros overlaps more keywords with the reference than an object does. So it just stopped
+following formats. [music] You'd ask for JSON and it would hand you a paragraph. The reward model scored that paragraph
+higher than a correct JSON [music] answer because the reward model has no idea what a schema even is. So the fix
+was to give the reward function eyes for structure. I added a schema matching reward a simple verifiable heristic
+check sitting right next to the neural one. Did the output type actually match what the question asked for? JSON when
+JSON was requested a list [music] when a list was requested. This was the final reward function that I used. Feel free
+to pause the video here and take a look at what each of them do.
+Another important hyperparameter which made a huge difference in my training run was actually the KL divergence term
+in the standard PPO loss function. Setting it high would prevent the
+training policy to drift too far away from the starting policy. Normally this is used as a stabilization or
+regularization trick. So the reasoning model does not become degenerate and stray too far from the starting policy.
+In our case however because the starting reasoning base model was so trash it was
+required to discard this scale term altogether so the model can hill climb
+the reward function. For the final run I also increased the number of rollouts per prompt so that the model has a
+larger probability to luckily find good responses. And combining all of these things, we finally train the best model
+so [music] far. This one actually gets schema rewards 99% of the time, meaning
+it rarely misses the requested output format, be [music] it JSON, lists or markdown. This is the first model where
+even the DeepSseek V4 flash model rates higher than the Quen model. Our model
+wins just by a whisker, but we will take it. Our domain is pretty narrow and so we can get away with our simple huristic
+functions and our 22 million parameter reward model for a 135 parameter SLM
+these results are pretty good way better than I expected.
+So goodart's law [music] states that when a measure becomes a target it ceases to be a good measure and that's
+something that can be easily applied to reward [music] models or complexely designed reward functions. See, the
+reward models are a proxy of your intent. It's a model [music] of your intent. And like with any other model,
+it's a reflection of the data you trained it on. So naturally, there's almost [music] always a gap between the
+thing you intended and the proxy that you created. And this gap right here,
+the difference between these two things is exactly why [music] we see things like reward hacking. An optimization
+algorithm when it sees your proxy, it tries [music] to maximize the proxy that
+you gave it. And by trying to optimize for it, it has a fair right to [music]
+just optimize for the reward hacks and just go for the gaps that it sees very
+easy to exploit. And again, this type of reward hacking is not just something only exclusive to reward models,
+although it's more prominent in reward models, but it can also happen in [music] complicated uh RLVR environments
+where you've designed a reward function that tries to do too many things at [music] once. Still, that problem is
+much less severe in RLVR environments. Generally speaking, the best next step
+is to replace our reward model with an external judge like the Deepseek V4 model or even train a bigger auto
+reggressive reward model of our own. We went with the more stylistic route of
+training our own small reward model. And honestly, despite all of its shortcomings, I think it is really good
+for an SLM. Like this is a terminal UI that I vibe coded. So, I can play with
+this model. I can totally send it random unseen snippets [music] and ask it questions and it totally gets them
+right. It always gets the format right and outputs perfect JSON as well. Its reasoning still has that this passage
+thing we saw earlier but its responses are much much better. And with that it
+brings us to [music] the end of this video. Uh I'll see you in the next one. And if you like this video, please do
+like the video, give me a comment, and don't forget to check out our Patreon.
+Uh, I'll [music] see you in the next one. Goodbye. You are magnificent.
+[music]

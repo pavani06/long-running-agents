@@ -1,0 +1,140 @@
+It's really been kind of an exciting month or year for artificial intelligence. And what I wanted to talk
+about today was how the conversation is changing. So, it's not really necessarily been a new thing in our sphere. If you're watching my channel,
+you've likely seen me before and you watch a bunch of other AI folks. So, you understand that like, hey, we're kind of in our own bubble. One of the most common comments that I get is whenever
+you step outside of our bubble, you have all kinds of people with their head in the sand or in denial and that sort of thing. And I'll address that a little bit later in the video when we talk
+about adoption curves, which that sounds really boring, but it's basically how fast is this going to change. So, where I wanted to start the video was we have
+another article of once again Google Deep Mind CEO saying AGI is coming. You know, it's kind of like I almost wonder if the rest of the world is suffering
+from alarm fatigue or maybe it's definitional. Um, there are still people that argue over like well AGI is, you know, going to be fundamentally
+different from what we have today. Uh but that's not necessarily true. Like what if it's just a gradient of we keep making the AI that we have better and
+better and better and eventually one day everyone agrees it's AGI. Now there's broadening consensus that you know most
+people's definitions will be satisfied this year. My definition was satisfied last year. There's other techno leaders that have that their definition was
+satisfied last year as well. At this point it's down to semantics. There's not a mathematical definition. There's not anything that anyone agrees on. It's
+a moving target. So, next up is one of the impacts that we're actually starting to see evidence of, and I'm going to
+unpack this in a second, is jobs. So, many companies are talking about the fact that they are actively replacing
+workers with AI. Now, many of you out there know this. Many of this, many of you out there uh kind of have smelled it coming. Some of you have talked about in
+the comments that like this kind of job has dried up. This other kind of job has dried up. And there's actually we're beginning to see some data to back this up. Uh but namely this Forbes article.
+So when Forbes of all places says like, hey, companies are replacing workers with AI, this is when when hopefully
+more and more people are going to sit up and take notice. So that's kind of the framing that I wanted to provide for this story today. And this is the data
+that really kind of uh inspired me to start thinking. So there's people have been disagreeing over the quality of the
+data over uh the data source and those sorts of things. Um but I actually looked it up and verified it and this is
+this pattern is true globally. So let me unpack what we're seeing here. So this is software development job postings on Indeed in the United States. Now this
+curve has been mirrored globally and I'll I'll tell you about that in a second. But over here you have preandemic hiring levels. So in terms of
+in terms of total amount of software developer jobs in the United States that was that was 100%. Then the pandemic
+hits and it and it craters right it drops down to about 63%. Then it slowly ramps up throughout
+the pandemic. Um there's a bunch of reasons for this. One was that companies overhired due to monetary reasons. They
+also, a lot of them overhired because they needed to catch up because they needed to support remote infrastructure and those sorts of things. And then it
+really started tapering off and then it kept going down and down and down. And even though the pandemic has been over for a while, it has continued tapering
+off. So when when and I will admit that you know a year or two ago I made the mistake of thinking that that a lot of
+the a lot of the uh software layoffs were due to like AI but that wasn't true then but it is becoming increasingly
+true now and a lot of people have mis have misinterpreted this graph some people said oh this was the bottom this
+was this was the preandemic hiring so we're only at par that's not true if you look carefully this is prepandemic
+level. So that's 100% and now we're down to like 63%. This data has been borne out globally. Now there's different it's
+it it can be difficult to um to uh verify because data is collected differently in different nations, but
+there is broad and growing consensus that overall software development job openings are down 35% from uh
+prepandemic levels. So what that means though is that at the same time the absolute number of software developers
+is still going up globally. So like I I'm I'm going to temper the warning by saying yes there are new software
+developer jobs coming but it's growing in single digits right we're grow we're growing in like 1% 2% per year. So the
+number of openings is shrinking and the growth rate is also shrinking. Um, so as of right now, becoming a software
+developer is still a viable path, but the the the job openings are narrowing and the first jobs to go are lower level
+entry-level jobs. So, there are plenty of people out there with lots of experience that are still having trouble finding a job. So, like this is not
+financial advice. Uh, but if if it were me, I would I would be very worried if I was if I was like a junior dev or
+whatever, um, or in school for it. Uh now one of the one of the there's two categories that are still staying uh
+powerful in terms of hiring and that is uh niche domain experts or niche domain experts and AI roles. AI roles are still
+one of the fastest growing ones. So if you're in the software development industry, if you're trying to become a dev uh or an engineer, focus on AI and
+robotics. That's where all the jobs are right now. But the data is starting to bear out that like yes, we are losing jobs to AI. Um, so that's all there is
+to it. Now, uh, complete change of topic. This leak came out and I was not I was thinking about not saying anything
+because the sources of of the leaks, the original leak came from a from a a Twitter profile that had 14 followers and was following zero people. And then
+Strawberry Man retweeted it and it's like, okay, I actually saw this happening in real time. I saw the original leak. I saw people reacting to it. I saw Strawberry Man reacting to it.
+So, I was like, "This could be pretty easy to fake, but let me show you what it's actually saying." Um, and and there
+have been more and more people saying that this leak has been confirmed. So, I'm still taking it with a grain of salt. You know, it's like, "Fool me
+once, shame on you. Fool me twice, shame on me." So, this comes with a gigantic disclaimer that this could still be fabricated, but at the same time, there
+is consensus growing. So the basically what this leak says is this is an early uh checkpoint of Grock 3.5. So this
+isn't even the final one. Um so AM 20 uh so the the AM 24 uh benchmark 95% versus
+84%. Um and this outperforms even 03 which remember a few weeks ago I was completely floored by how far and fast
+03 had gone. Amy 2025 uh 92% so that is still head and shoulders above the rest.
+Uh GPQA diamond 88% again above the rest. Simple QA 58% above the rest. And
+MMU um that sounds like it would be like like I don't know a wrestling championship. Anyways um is also head
+and shoulders above the rest. Now what does this mean? If this is accurate and that's still again a big if. This was an
+early checkpoint of Grock 3.5 and it will have just surged past the rest. So this is not necessarily surprising when
+you look at the fact that X.AI had all the one all the the money and data of Twitter. Um but also the gigantic server
+farm that that Musk was able to build um based on what they on the lessons learned from Dojo because they've been
+trying to train uh Teslas to have FSD for a few years. So they are used to training on huge huge huge amounts of data and they are used to hyperscaling.
+Um and then of course Elon Musk, richest person on the planet, I think he is still right now. Anyways, he's a little bit loopy lately. Um, but he's got a
+huge amount of firepower in the form of bank account and businesses and all this other stuff. And so what this really my
+takeaway is if this number is true uh scaling to AGI and beyond like whatever we're we're seeing is just a matter of
+scale like how much compute can you throw at it? It doesn't seem like it's limited by magical, you know, intuition.
+It doesn't seem like the moat has to do with super genius coders and developers, you know, like yes, Ilyasg was was the
+moat for open AI for many years, but since between uh all these American companies, which is, you know, uh X.AI,
+which is OpenAI, and then the the Chinese competitors, which is Deep Seek and Quinn and all those, it seems like intelligence, human intelligence is no
+longer remote. It seems like the way to advance these AI models, everyone knows.
+And then there's a few differences here and there in terms of alignment schemes and and and reinforcement learning schemes, but beyond that, like everyone
+is learning from the same pie like or or from the same pot, right? Like I think I think that that's what that that demonstrates to me. So moving
+on, the one of the last things that I want to talk about is adoption curves.
+So I've been talking about like I've been showing my sigmoid curves and those kinds of things for a while. Um, now what you're this what really
+crystallized to me is that chat bots have just crossed the chasm. So if you've been in this space since late
+2022 when chat GPT launched, chat GPT was like the first shot across the bow.
+So some of us were using GPT technologies before that. So we were the innovators, right? I was fine-tuning
+chat bots with GPT3. uh you go back to my oldest videos, I was trying to do cognitive architectures, which we now just call agents. So that was two and
+three years ago. So two and three years ago, we were like, "Wow, here's this shiny new GPT technology. Let's figure out what we can do with it." Um and so
+that's what we were doing. And then when I was consulting for AI, I was consulting explicitly for the early adopters. These were people trying to
+use GPT2, GPT3, and then a little bit GPT3.5 to help with automating business
+tasks. I remember one client that I had was trying to um read uh hotel listings, but we couldn't get it to go fast enough
+because whenever like when you're, you know, when you're trying to book a hotel page, like you expect it to load like in half a second, but if it's going to
+take, you know, a minute to load all the hotel pages, like that was just too slow. So anyways, that's an example. So
+for the last two years, uh since chat GPT, we've been uh looking at early adopters. So that's the the beginning of
+the acceleration of the adoption of chatbots. Now, however, when Microsoft Copilot and everyone else and their
+brother is building in chat bots into everything, right? Like you've got chat bots built into YouTube, you've got chatbots built into um into uh Google
+Google Docs now. You've got chatbots built into literally everything. That means that this technology has crossed the adoption chasm. So now what we're
+seeing is the ramp up of early majority pragmatists in terms of who is who is adopting chat bots. And we even see this
+echoed in the data. Um in another video I showed that uh that I think it's like what 70% of Fortune 500 companies
+officially use AI chat bots for at least one function now. Um so that's going to be fully saturated in a couple years.
+So, uh, basically in the next year or two, we're going to get to the the 50%
+point where 50% of all companies have adopted chatbots. And of course, in the next year or two, chatbots are going to get infinitely smarter. And then in
+another year or two after that, the rest of the majority will will uh will adopt.
+And then in the 3, five, seven years after that, there's going to be the skeptics that will slowly slowly adopt
+just because they realize that they have to. So I'm thinking like, you know, your local state government that is like, I don't know about this AI chatbot stuff.
+This seems I don't know kind of kind of sci-fi and and who needs that anyways.
+We got everything on paper, right? Like I'm grew up in North Carolina. This is how we think here. Um so um and this to
+be fair this is some people jumped on this tweet and they said like look yes adoption curve. So this is the sig if you see me represent this as a sigmoid
+curve this is the cumul cumulative share of adopters and then if you look at the
+rate of adoption the actual bell curve that's this guy here. So it's the same thing and then I also represent this with computer using agents.
+Now computer using agents are not the same as chatbots. Chat bots are humanoriented tools. Computerus using agents are the next layer of abstraction
+above that and computer using agents are I think going to have we are in the innovators phase of CUA today because
+they just came out like a couple months ago like uh uh computer use and operator and those sorts of things. So agents are
+at this level where they just got in the elevator. The elevator hasn't even started going up. Late this year and next year is when the visionaries, the
+early adopters are going to start saying, "I want agents. I want to start deploying computer using agents." Um, and when you say computer
+using agents, those are the ones that either use your computer or they use a computer in a virtual terminal. I suspect the best deployment method is
+going to be a computer using agent in its own virtual machine. Now, you could run that in your own local virtual machine. You could use Virtual Box. You
+could use KVM, you could use VMware, you can use whatever you want. Um, but what I'm waiting to see is when computer
+using agents where you just sign up on a website and you get a virtual desktop and then you have a chat interface um or even in a voice interface where you can
+tell the AI what to do um uh over the internet and it can and you can just disconnect from the that virtual machine on the internet. Okay, I think you get
+the idea. So, moving on. um this post uh these these graphs were actually shared by Gnome Brown over at OpenAI. So that's
+why they they only show OpenAI models and the only point here is that uh the acceleration keeps accelerating. Now
+what I said on this is this is the year that AI surpasses the majority of human capability. By definition, it kind of
+already has. When GPQA is already the these models are already performing above um human expert PhD level, it's
+already performing above the 99th percentile of math competitors and those are or sorry uh code competitors. So,
+this is only going to keep going and we haven't even seen Grock 3.5 yet. Now, you know, Elon Musk and and and Sam Alman, they're both hype boys, right?
+Like, let's just be fair. They both hype their own stuff, but at the same time, these models are very very useful. Um, that com that competition, so just to
+put a cap in it or put a pin in it, that competition between those guys and China and everyone else, this is actually what is causing the acceleration right now.
+And the reason that that is is because they're all racing to get to the finish line as fast as possible. They're all racing to capture as much market share
+as possible, which is why lately you hear less and less about Anthropic because Anthropic's like, I don't know, we got to hold everything back. So,
+Anthropic is losing market share. Um, and they're also doubling down on safety. Anyways, moving on. The last
+thing that I wanted to cover today was we have a very real possibility of overcoming death um with longevity
+escape velocity. However, there's been this little thing in the back of my mind that I heard many years ago. It was way back in the days of web 1.0, web 2.0 uh
+forums. Um and so we were talking about like, oh yeah, like we can we can cure all disease and cure aging. And someone said, yeah, but if you do them if you do
+the math, then you still have a life expectancy of like 500 years. And so I've been thinking about that for a long time. And I revisited that idea. And I
+went over to 03. I said okay like okay if you if you remove all all age related and and natural causes
+of death what are the remaining causes of death and uh 03 of course just knows those you know the where where to look
+in the data and went and pulled the data and said okay if you look at only exogenous causes of death external causes of death like poisoning falling
+off a cliff those sorts of things you end up with a death rate in America of about 85.3 deaths per 100,000 right now. So if
+America stays as safe as it is today, then your life expectancy will be about 800 years. Meaning even if you stay in a
+20-year-old body, you're still going to something stupid is going to happen. You might drown while you're on vacation, you might fall off a cliff, you might
+choke on a pretzel, there's all kinds of things that can still kill you. Um now when what we did though then was we we
+plotted it out. So based on the external the annual external rate of death per 100,000 um and looking at median life
+expectancy. So in a really dangerous country um so there are some countries that have a external cause of death rate around
+200. I think maybe Brazil was one of them. Um but anyway so like there are dangerous countries out there. Your life expectancy drops down to like 340 years.
+However, if you get down to about uh 20 uh either 10 10 to 20 years or sorry 10 to 20 external causes of death per year,
+then your life expectancy is up to like 7,000 years. So, this really shows how how much the curve can change.
+Now, yes, people in the comments have been saying like, "Oh, yeah, but we can make life safer." We can hypothetically, but you can still get hit by lightning.
+um you can still uh drown in a hurricane and those sorts of things. So, I just wanted to end on that cheery thought that even if we solve aging and disease,
+there's still plenty of ways to die. All right. So, with that being said, have a good

@@ -1,0 +1,484 @@
+Agents are very creative at bringing your infra down. It turns out that agents just like dial up all your
+failure mode. It just multiplies the amplitude of problems you can get. There were agents that went rogue. There were
+agents that may have almost taken down core systems. One of the cool things about projects that can be very concrete
+for people is the idea of tool policies. Let's say you're a person on the HR team
+who's dealing with a bunch of sensitive information. You really don't want the agent to sort of go rogue and put that
+sensitive data into some public Google document that all Stripes can access, but you also don't want to tell them,
+oh, you can't use any tools because your workloads are too sensitive. I love this idea of this like three
+layer triage that a data agent can go through and that's really smart. Find existing reports, then use the analytics
+layer to find the right query. Then if like you really have to fall down to the data catalog and write your own query.
+Your data warehouse has to be very resilient to high volume queries [music] because when in doubt an agent will just
+brute force it. We could test this out and it's going to kick off what is a human in the loop
+workflow. Create a calendar invite for me and Wong tomorrow at 11:00 a.m.
+Pacific. This isn't the fun part. The fun part is what I showed before. Agents are really good. They're very creative.
+So, we got to put some restrictions on them so they don't go rogue.
+[music] Welcome back to How I AI. I'm Claire, product leader and AI obsessive here on
+a mission to help you build better with these new tools. Today we have Sherrod, an engineering manager at Stripe and
+part of the team who built Kai, their internal company brain and company
+agent. He's going to show us why you might want to build your own custom agent for your company. What are the
+governance and control mechanisms of Kai that make it super special and how to build not just a skilluing skill, but a
+skill building platform for your team to share their automations and workflows with the rest of the company. Let's get
+to it. This episode is brought to you by DX. [music] In a recent study across more than 500 engineering organizations,
+DX [music] found that spend on AI tools has grown 28x over the last year. [music] The share of AI authored code is
+climbing, but overall innovation has remained flat. As teams generate code faster, new friction in code review and
+validation is offsetting those early [music] velocity gains. DX tracks speed,
+quality, and cost together across the software development life cycle, giving engineering leaders clear visibility
+into how AI impacts delivery and whether those investments are translating into real value. Download the full report at
+getdx.com/howi [music] ai. That's gdx.com/h
+how I AI. Shared, it's so nice to have you here. And I [snorts] had to reach
+out to the Stripe team because I wanted to learn not just about how Kai, the
+company brain, the company agent works at this big company, but I really wanted
+to understand why in the world you built it yourself. And so I wonder if you
+could just start us there. Why build Kai? What was the problem you all were
+trying to solve? We wondered about this a lot before we built it because we had all this like the this avalanche of AI
+tools. This was like early 2026. Huge number of tools coming out. Plot code had just like taken the world by by
+storm. Like a lot of like really cool things were happening. And the problem that me and my um and my colleague
+Anupam were dealing with is how do we get AI to everyone, right? And we quickly realized it's not just an
+engineering or a technical problem. The harder problems are in trying to replicate the way a company works at
+scale and stripe is an incredibly complex business like all around the world like multitude of products so many
+so many processes that keep uh keep us in a shape so that we can help our users and so we quickly realized that it's not
+about providing AI it's about providing the correct governance structures so
+that everyone can just go use AI and know it'll do the right thing for them. So some of the things that uh we really
+thought about and why we built Kai is uh governance is a is a big thing for us like I just said. The second thing is
+Kai is like really interesting. It's context aware. It knows who you are and what you do at the company and it knows
+what are the things that your colleagues are uh mostly interested in and it has access to the orc chart and your
+projects and all the things that are going on which means that it has a lot more uh mechanisms to do the right thing
+for you and understand what you're trying to do. Um and the other thing that that I really like and our security
+team really likes is that Kai is all hosted on the cloud. It's always on. It's behind our standard security
+boundaries and uh it's very stripey in that everything that we use to build Kai
+actually ends up being standard infrastructure that helps us build great agents for our users. And ultimately uh
+while it's great for me that like we're really helping Stripe be more effective and enabling everyone. I really am happy
+that what we're doing here is helping build the rails that make our stripe users uh get better products uh out of
+this using you know great agents that are coming out. So just to kind of repeat back what I heard and some of the unique things that
+you built into Kai is one this sort of bounded context engine. So you know I'm
+Claire, I work at Stripe. Kai knows about me. It knows about my place in the
+org chart. It knows does it know kind of like strategic projects that I'm working on? Does it know like conversations I'm
+having? Like how how do you how do you ingest that knowledge? What does it know about an individual? We allow people to select how much they
+they they give Kai access to. But out of the box they Kai knows like who you are
+and where do you sit in the art chart, right? And um it also knows some helpful other things like like what day is it
+and what time is it and so on. relevant to you. Personalized context is like who you are by use of the orchart. From
+there on, the standard tools that we have connected to Kai let you talk to our uh um our project management system
+that figures out like all the OKRs and all the recent shipped emails and all the projects you're part of, right? And
+it lets you connect, if you choose to let it, to your Google Drive, to uh to your Slack, right, to private messages,
+things that are like pretty sensitive uh and uh we really like keeping a keeping
+a a tight boundary around. You can choose to let KI know as much as that as you want to. Um, some people choose not
+to, and I'm I'm actually one of those. I I I I turn off and turn on and turn off
+my access every uh every session or every day. Uh, but many people are like, let the AI figure it out and more
+context is better. Great. So, you have this context engine but controlled by the end user to to
+some extent. So, you can decide as an employee how much you want to automatically ingest into the system. um
+you have these you're also building it on some fundamental agent building blocks and you know this is one of the
+you know there are lots of reasons you might build one of these things um at a company one is just to teach your team
+how to build great agents. It's like the perfect dog fooding agent experience,
+which is if you're going to build a great agent for your customers, you should learn to build a great agent for yourself. And then it sounds like you're
+reusing some of that infrastructure, which is nice because then you can pressure test it against Stripe
+employees or or external customers. What else is unique about Kai? What are the places where you're like this we we went
+a little extra on building this so as folks that are listening thinking about building this internally they can decide
+where they want to differentiate their own kind of internal agents. The two things that I'm uh we were very
+intentional about is the idea of projects and projects are primarily a
+governance mechanism but they also let you you have this context engine as you said right but projects are almost like
+intentionally the user is telling you what they are trying to do and that's a very strong signal of intent and that
+lets the uh AI perform a lot better but projects uh you can if you if you see my screen in a second um there's the how I
+AI demo project that I have right here projects are some things that stripes can create. Um it's it's all open,
+right? And what they can do is uh we have projects that have 500 people in
+them. We have projects that have five people in them. The idea is that you create something where someone decides
+what's the appropriate set of things that you should need for the AI to function well and what are the
+appropriate safety controls. Like token spend is top of mind for a lot of companies. A project can kind of say
+like hey here's the default model we want people to use. we don't even want to let them use these like super expensive models, right? Because the the
+job that you're trying to do here doesn't need, you know, uh one of these super models to uh to look at them. So
+projects as a governance mechanism and really um I think we did a lot there because again, Stripe is a very complex
+business, enterprise scale AI requires these sort of mechanisms to make sense of things. uh and I like the fact that
+we can have a few people who are uh very you know knowledgeable knowledgeable
+about the EI and the trade-offs between cost performance and uh latency and they
+can sort of set the stage for everyone to just go use right we should try to minimize the number of people who have
+to actively make these choices every day and just it should do the right thing for them and projects are one way that
+uh we can do that um the other one which is kind of related we'll see that as well our skills the way that we build
+skills and or skill routing. Uh there's a lot there and how we think about skill quality, skill governance, a lot of good
+stuff there that uh that we can get into uh that we've invested a lot in. Uh the thing I'm I think the team has shipped.
+It's going to be interesting. It's going to be a live demo, but I think they shipped a feature where automatically people uh everyone who authors a skill
+gets suggestions on how to make their skill better, how to help client uh built into the platform. I I like this
+because I've seen, you know, we've seen projects for holding context or just simply as an organization structure to
+AI work, right? Like here are the files you need. Just put all my chats in this group. What I haven't seen anybody talk
+about, which I actually think is really interesting, is using projects as a configuration layer on and a governance
+layer on how your team actually uses AI to get a specific job done. And so I
+like that idea of project-based model routing. project based I'm sure connectors or
+approvals or you know all those sorts of things and I'm sure there's more and more and more you could do in the future. Um it's really interesting. So
+let's I mean show us what's Kai good at and why don't you just walk us through a
+a common Kai task and how it how it how this customization
+benefits the end user in particular maybe like someone who's a little less technical. Yeah. Uh absolutely happy to do it. So
+uh I have a few trusty prompts here. What we're going to be doing today is we're actually going to be creating a
+dashboard because Stripes, we love our data. And something that literally everyone at Stripe uh does with Kai is
+create a bunch of dashboards, right? So, we're going to do this live and we're
+going to ask Kai to create a dashboard for us. And uh you know, in the interest of vanity metrics or things that I can
+speak to uh easily, I'm going to ask it to go create um something related to
+Kite itself. Right? So, Hubble is our internal sort of like data querying layer. And I'm going to tell it, hey, go
+find these queries that I usually use to track Kai adoption. And I want you to like create a dashboard for me. And this
+is really interesting. I really like this because some things that I've found uh most people really use AI for. When I
+talk about most people, I'm like, so I'm an engineer. I've been an engineer all my working life. Uh but I'm super
+passionate about how we scale AI to like everyone. And not everyone is necessarily an engineer even if they're
+super technical uh at Strip. So something that people really have been using the EI for is creating dashboards
+that communicate a point and that's what I want to I want to show uh how we would be doing that using Kai today and
+there's a lot of stuff we could get into along the way and I see it it pulling for tools and
+skills. So is this like part of the harness which is it's kind of like tuned to go find what it can use to solve this
+problem? Absolutely. So uh there are two things. Um we have of course we all have we all
+know what tools are and we all know skills are um tools basically being the things you can do and skills are like
+essentially a way to package up relevant tools so that we can find them easier. So the thing that you see Kai doing
+immediately is that it's going to find the skill that says ask data and that's a skill that's going to go figure out
+how to answer any stripe data and uh SQL related question using our standard tools. Using that skill which it's
+loaded up it's got access to a bunch of like internal uh tools and it's going to use those tools and go ahead and and do
+more things right. Um so the tools are a combination of a bunch of different
+things. There are tools that we set up in the harness. Example discovering a skill is itself a kind of tool that we
+give the harness, right? But we also give it things like there's a sandbox that's secure for your session where you
+can do grip and stuff because again unlike our typical agent, this isn't running on your laptop is running in the
+cloud. And so how do we make sure that your session cla and my session don't like eat each other? So we set up the
+secure sandbox and give the harness tools to interact with the sandbox. Uh tools that can securely send data to it.
+Tools that the sandbox can you the agent can use to search things and do things on the sandbox and tools that can like
+get data out of the sandbox. Right? So that's a bunch of tools. Bunch of tools all over the place. Um but the this one
+is pretty cool because again we have a sandbox. You don't even need to know that the sandbox exists, but the agent
+is going to be writing uh some sort of script on your behalf. I don't even know what it does half the time. Uh I know
+it's secure, but it's going to go in. It's it's found the data. It's Yeah, it looks right. I I told it
+not to make any mistakes. So, [laughter] um so that's what these tools and skills
+are doing. Yeah. I I I have a kind of separate question while this is running specifically about making great data
+agents because I took talk to a lot of companies and almost universally the
+first internal agent they build is specifically for this use case. It is like data querying dashboard
+visualization agent. And so I'm curious in Hubble,
+which I think you said is like kind of your data store query engine, were there any things that high level you had to do
+to make Hubble agent ready? Um, oh yeah, because I see like query metadata and,
+you know, ask data and these skills. I'm just curious like if you were building an agent and you needed to ready the
+data warehouse and the query lay layer, what are a couple key things that you think are super important for folks to
+think about? 100%. Uh that is such a great question. So uh like I said,
+luckily at Stripe, we care about our data so much that uh we've invested a lot into both the the data querying
+layer. Uh we use we use Trino as our uh data sort of querying layer and our
+warehouse in that perspective. Um we've invested a lot into making that super resilient, right? And those investments
+have helped agents like slam it like crazy and not bring it down, right? uh we've invested a lot our uh data um the
+data platform side of things we've invested a lot in a catalog of data and
+taring of data. So we have access to schema uh that can quickly tell us oh these are the relevant data sets that
+you might want to find and use and how would you use it right but even there are higher level investments as well
+there's a blessed analytics layer where like the really key metrics go in right
+and like there's a tiering system where you you there's an analytics layer if you fail that you go look at all the
+standard data uh dashboards that we have and you use the queries from there and if you fail that then you use the data
+catalog and search through for the high quality data sets and figure out how to use it. Agents are incredibly good at
+figuring this out. However, the key part and you asked about the ask data skill. The key part is we have uh some really
+smart data scientists as well who sort of said, hey, this is a this is probably the right way that most data queries
+should be handled. And what the skill does if we dig into the cast data skill itself what it's going to be saying here
+is route to direct artifacts first use the uh use the analytics layer first and
+if that fails and fall back and fall back and fall back and until you like hit you actually hit the data catalog
+directly right so these investments were made for humans
+but have held up really well for agents because turns out the reasoning through it you agents have the same problem they
+they can answer the question, but they have no idea if it was the right query or the right table. Uh, and these
+investments have paid off in helping helping guard that. I want people that are listening to hear a couple things and uh, you know, I'm
+going to make the Stripe team blush. I say this specifically about stripe a lot which is I think one of the reasons why
+stripe has been able to benefit so much from AI is prior to AI there's been a
+commitment to developer experience developer platform data platform
+analytics layers like all these things that made humans really efficient at the
+company preai are foundational investments that now give you extreme leverage when you throw agents at it And
+so, you know, when people ask me like, "Claire, what can I do to ship more product with AI?" They think I'm going
+to say something about product development, and I say, "Double the size of your DevX team, double the size of
+your data team." Like, work on platform investments. Good for humans, good for agents. Um, and that's what we'll will
+let you run. The other thing I you said and I don't want people to miss because I love this idea of this like three
+layer um triage that a data agent can go through and that's really smart like find existing reports please then use
+the analytics layer to find the right query then if like you really have to fall down to the data catalog and write your own query. The thing that I also
+heard you say is your data warehouse has to be very resilient to high volume queries because when in doubt an agent
+will just brute force it. And so, um, again, this is like infrastructure
+hardening investment, performance investment, not sexy, not what people are thinking about when you're building
+these data agents, but actually allow agents to do a really effective job because you don't worry about like, you
+know, turning over your your data warehouse because a agent is hammering it 100%. And like everything that you
+said makes so it's it's resonates so much with uh with all of that. my my uh
+personal history at Stripe has actually been on each of the kind of teams that you referenced. So I'm like, "Yes,
+someone gets it." [laughter] Uh so this is great. Um the the thing about resilience um agents are very creative
+at bringing your intro down. What can I say? They're like, it's almost like all these scripts that they were trained on,
+just teach them to be script kitties or something, right? the the the thing that
+um we really did well is thinking about agentic identity like we haven't solved
+this yet, right? But thinking about how do we say that you know this is the this is an agent and this is what it's trying
+to do like what is a use case it's trying to use to uh as it goes around doing its thing in our infrastructure
+and using that as a way to think about priorities and load shedding and all of that good stuff. Again, not super sexy,
+very like deep infra stuff, but the same principles apply. It turns out that agents just like dial
+up all your failure modes like it's just it's it's just ex it just multiplies the
+amplitude of problems you can get, right? And uh the investments I I wouldn't claim that we did not have any
+issues. We definitely had a bunch of issues where when we started doing this like there were agents that went rogue.
+uh um there were agents that you know uh may have almost taken down core systems
+uh but we caught the caught it in time and uh and now we've hardened those systems as well. I
+I love it. Okay, so we've uh yapped while Kai ran. Let's show what Kai
+actually generated using these skills and tools in Sandbox. Yeah, of course. Um so here's what you
+see. you see that uh you know Kai adoption is looking good and uh this is something I'm personally super happy
+about like pretty much everyone at strike uses Kai um like 86 plus% of the
+company now so really AI for everyone uh which is how we started out u process
+and you see this ramp that's gone from a uh fairly low number I I think if we had
+done this a couple of weeks ago it would have been in the hundreds up to a very high number so happy to talk more if you're interested if uh viewers are
+interested into how we uh manage that. But okay, we have a dashboard. Dashboard looks good. It also looks like vaguely
+stripey. Uh so I need to go back and see how the agent figured out that it needs to make things blurable. So uh I got to
+go figure that out. But and it has a bunch of things here. It's an interactive dashboard and has links to a bunch of things, right? That's fine.
+This is great. We can already see how this can be useful for like I now generate a dashboard every meeting I go
+to because it's so easy and it helps me drive uh drive the meeting a lot better. But the real power here starts to come
+in when you talk about multi-turn conversations, right? So great, you have a dashboard. Awesome. But let's do
+something more. Let's sort of like get K to uh iterate on this for us, right? So,
+hey, I love this dashboard, but let's do
+some more here and uh use this query get a breakdown yada yada yada. And it's
+going to do some interesting things here. So, I'm going to kick this off, but I'm going to talk through what I'm doing, right? A the dashboard isn't like
+is the artifact isn't like created and it's not fire and forget, right? We give a chance for people to do deep work by
+iterating on their artifacts and that's really powerful. Uh it's better for token efficiency. You don't want to be
+throwing away a HTML dashboard every every turn. But it's also really moving into this idea where the agent and you
+are collaborating on a task, right? And uh a we have turns that are like super
+deep like hundreds of turns uh over multiple weeks. So the idea here is you
+have sort of like a somewhat like a pretty smart collaborator who has some artifacts and you can iterate with them on it. I'm going to add this query and
+I'm going to do some really interesting things and this is something that I I think it's worth getting into. I'm
+telling it, okay, it's not just pulling the data. It's not about pulling the data and displaying it. I want you to do
+things with the data. I want you to like munchge the data in some way or form so
+I get what I want. And the reason why I'm touching upon this is a lot of the data sort of things that people want to
+do end up being last mile data. You think about people's workflows. It's so different. It's so hard to build a
+dashboard for everyone to do every part of their job and then then you have like a gazillion dashboards and how do you
+manage them? You can't keep the right dashboards at the right level of quality. Using an AI like Kai to do this means
+that you can create like light apps almost like the whole like the lovable style uh thing where people are creating
+apps to just hyper optimize for their workflow. And the fact that they have a
+sandbox that anybody regardless whether they're an engineer or not can get the agent to write code
+for them and do whatever the heck they want with the data. It's really powerful. And I'm pretty sure that again
+as expected it's gone in it sort of like said okay here's the actual data and I
+want you to go do some summation somewhere to do the other tab and um out
+it came. So uh super interesting and if I open up the updated dashboard it's the
+exact same dashboard and you should now see this really cool little uh segment
+below that. So I I could I could keep yapping about this dashboard. [laughter] I love the fact that our marketing team
+is like a 100% allin, [laughter] right? They need it, right? I don't know a
+single marketing person that doesn't either want some sort of app built or some sort of dashboard. So, I think you
+have product market fit. That leads me to my next question, which is how do you roll out I'm just curious kind of, you
+know, inside inside the doors of Stripe. How do you roll something like this out? Is it really organic adoption? How did
+it get built? How did it get shared to the team? Was this like 20 engineers
+team like h how did this come to be? Definitely not 20 engineers. [laughter] Uh Stripe uh we we run fairly lean and
+very nimble and very fast. Uh we built this super quick. It it it's a really
+interesting case because um uh so we had like say me and my colleague we had the idea um um I was moonlighting as an as
+an engineering individual individual contributor again trying to get this out the door and so it took us like one and
+a half people over two weeks to get Vzero out the door and something we realized was a lot of the questions
+became the answers became apparent once we could show people something. It was very hard to tell people why something
+like this is is required in a world where you had the coding agents around and they could be like super powerful.
+But the moment we got that V 0ero out, super inexpensive, one and a half engineers for like two weeks, right? V 0
+out. And then we moved into a pilot stage where we started seeing a lot of um um interest from primarily we had a
+great collaborator uh Ilia on the GTM team um who builds like AI for GTM,
+right? and they were like super interested in this because um like marketers are go to market uh function
+at stripe like they are extremely like they're looking for whatever they can do to to reach more people to reach them
+more uh in the right manner and so on. So they they saw a lot of adoption from them and um that's how it kicked off. It
+went into this pilot stage. We still had about 200 to 300 users at this point. We
+had like two and a half three people working on it. Um and this was the next like month or so things really ramped uh
+once we did like a companywide demo saying that hey we built this thing uh we invited to use it and it just clicked
+for everyone and people started that's when you see the really steep ramp up somewhere here and everyone started
+using it even then the team itself I wouldn't say is humongous like yeah
+10,000 plus people use it every week but the core team that manages the experience is still like less than 10
+people. It's uh and we have a lot of other things we have going on uh with those 10 people as well. Um and the
+things that let us build it, of course, coding agents and the in the productivity that they've given us and
+our devro team are incredible. We've spoken about minions on the show before. We have incredible tools at Stride to
+get more from uh from who we have. Uh and we have all this infrastructure that you referenced and all that has helped
+us. So, I would I would say it's less than 10 people, but I also want to give credit where it's due. Like, there are a lot of people helping those 10 people do
+what they can do. I love it. This episode is brought to you by Hyper Agent, the platform for
+deploying always on agents that actually run your business. With Hyper Agent, you
+build agents in the cloud and deploy them where your work already happens, like Slack, Telegram, or email. [music]
+An agent will scan your inbox and draft replies to vendor follow-ups. Another monitors [music] competitors and spins
+up rich ad kits and landing pages. A third notices a deal going cold in Salesforce and writes the save email
+with full account context. These aren't chat bots waiting for a perfect prompt. They're proactive, [music]
+learning your preferences, retaining your playbooks, and getting better with every run. One user built four agents to
+run an outbound sales pipeline, prospecting, outreach, follow-ups, CRM updates, all in a single afternoon. No
+local setup, no VPS bills, no fragile permissions on your laptop. Just powerful agents with full control over
+skills, tools, and guardrails. How I AI listeners get $100 in free inference to
+start building. Claim yours at hyperagent.com/howi.
+What else? maybe one or two other things that you think are worth pointing out in Kai um that you think make it pretty
+unique or at least you know fun and easy to work with. I'm going to do two things. I'm going to show skills and I'm going to show
+projects, right? So when I come to say skills, we have this thing. It's great.
+Everyone loves the dashboard, but I don't want to be creating this dashboard and paying a bunch of tokens and uh time
+every time. So the thing that I uh think Kai did really well and one reason for
+it product market fit was I can create a skill that basically takes what I've
+done in the session and packages it up so that it can become a loadbearing repeatable workflow right and that's
+when the AI goes from here's something I'm just like iterating with on the side like a chat interface to here's
+something I can trust to run my to sort of like run my business or run my workflows or help me um help me do that
+uh a little bit after you're going to see this kick off this like skill creator skill. It's a skill that the
+harness has that's going to go in and create like take all the things it's learned from this session from its
+interaction with me and package that up nicely into something that I can just like um uh pull up at any time and we'll
+we'll talk a little bit more about um how we do the skill um uh retrieval. I
+think that's a really cool part of the system as well. But but while that's cooking, right, uh let's actually look
+at this other thing I I love about how we built Kai, which is this notion of projects, right? So the thing about
+projects is there's so much stuff happening at St. We have like 2,000 skills, right? Projects are this really
+nice packaging mechanism where we can draw a boundary around those skills and say these are what most people who are
+doing this workflow must be using. We have projects that are created for uh projects like shortlived things. They
+have projects created for teams like the people team has a super secure version of Kai in a different project that's
+backed by a totally secure back end and stuff. The thing about this is again it
+lets one person or a few people who are DR of the space to uh figure out how to
+um get the agent to perform well for everyone. The really interesting thing I have on projects there's this thing
+called settings that like I said you can use it uh you can use a custom agent to power your project. It doesn't have to
+be archive which uh which is pretty good and general purpose. But let's say you have something really bespoke. You can
+use all the same features we have but just backed by a different API in the back end and a different harness right.
+So really again when you talk about uh AI at the enterprise there's going to be hetereroentity there's it's going to be
+a lot of different cases and building this in layers so we can give maximum leverage and customizability.
+One of the cool things about projects that can be very concrete for people is the idea of tool policies. Now, I
+mentioned the people team. Let's say you're a person on the HR team who's dealing with a bunch of sensitive
+information, right? You really don't want the agent to sort of go rogue and
+put that sensitive data into some public Google document that all stripes can access. That seems like a accident
+waiting to happen. We don't like that. But you also don't want to tell them, oh, you can't use any tools because your
+workloads are too sensitive. Right? So what projects let us do is to say for
+this workflow, I'm going to set up a tool policy that says in this case I set the run Hubble uh tool so that I don't
+inadvertently uh put some uh confidential information into the demo. Right?
+But uh we could test this out with some other tool and it's going to uh kick off what is a um is a human in the loop
+workflow. So create a calendar invite for me and Wong tomorrow at 11:00 a.m.
+Pacific, right? And I set this up ahead of time just to show what a human in the loop flow would look like. Uh but you
+can you can see it extends to uh any other kind of tool. What this is going to do is going to tell me hey
+should be familiar to most people uh who've used like cursor or uh or the other uh large you know big products out
+there but I want to do this right the interesting part and why this isn't the
+fun part the fun part is what I showed before which is that someone who is the DRR of a space can decide that certain
+tools are kind of sensitive for the workloads that these people are going to be using. So we need a human in the loop
+to confirm if that action can be taken by the agent. Agents are really good. They're very creative. So we got to put
+some restrictions on them so they don't go rogue, right? And projects help us decide. I also don't want this to be
+happening for every person at Stripe. That would be kind of frictionful. So projects are again drawing a boundary
+around it. Yeah, I I love this because I think a lot of the existing tools let you maybe
+configure some of this at the individual level, but then it applies to every session. it's not contexted to what
+you're working on and you can't share that permission set across different users. And so what I think is
+interesting about Kai is the like permission and context boundaries are
+very purpose-built for how your company works on things. Um, and I think, you
+know, when people are asking themselves either, should I build something myself and does that make a lot of sense or do
+I need to pluck something off the shelf for my enterprise use case? Again, you need to ask yourself, how much
+appropriate or inappropriate friction will this put in everybody's day-to-day work? Because at the end of the day,
+what you want to do is make everybody's life easier without causing chaos or
+trouble. And you want the management requirements to go down really low, right? You don't want everybody to have
+to think every task like, do I need to turn on this connector, off this connector, connect to this data? Um, and
+so I I do think one of the benefits right now of of teams building their own thing is they can really think about
+bespoke agents for bespoke use cases, but kind of hide all that complexity
+from the end employee, the end teammate, um, and just let them get to get to work. That that's super insightful
+because as you were speaking about bespoke agents and I showed a little bit of this earlier, Kai looks like a single
+product. It really isn't. It's like the icing on top of a multi-layer cake and
+each of those layers can be like customized to work at the enterprise. Right? So, uh 100% agree that the notion
+of both customization but lowering the cost of management, the cost of ownership and just the friction. If you
+put too much friction in front of people, they're just going to do unsafe things because that's how humans are,
+right? We we we don't if you if I showed you this every single session for every single tool, eventually you're going to
+press the wrong button, right? Uh so really thinking through that is a big part of what we're trying to do here. So
+that's projects and why I love projects as a unit of governance. Let's hop back really quickly to the skill builder flow
+that I spoke about. Again, we made that dashboard. We want to make this something that I can uh that I can
+reuse, right? And it's not just me. It could be my entire team. Why do we have to like keep things uh close to
+ourselves, right? And so I can now go KA did a skill for me. It's like a standard
+open spec skill that you can use on any of your uh harnesses, right? But for the
+purpose of this, I'm going to go click this button and Kai is going to say, "Okay, what do you want me to do?" Uh
+I'm going to go ahead. I could choose to push it push it to an area. And we'll talk a little bit about area skills. But
+for now, I want to keep it private to myself, right? And of course, this is like nothing special about me here. Any
+user of Kai can do this. And that's why we have a lot of skills uh now that are making people more uh effective. So,
+it's filled in the description for me. It's filled in like when Kai could use it. So, this is important. We'll come
+back to this in like a second, right? And I'm just going to go ahead and export draft.
+Oh man, I already created one. [laughter] Um, again, uh, this is what
+happens if you prepare too well for devils. This is when you when you do it live. I mean, we we believe you. I think what
+what you're showing here. Great. You have kind of a skill creator skill or tool. You have a specific spec that
+you're using to ensure that it's both written well generally for agents, but also written well very specifically for
+the Kai harness. Um, and then I love this idea of a draft
+kind of skill editor, um, that you can test and edit and
+optimize and manage. It's quite nice. Um, I know people just love fussing
+around in Markdown and, you know, Python files, but just a little quality of life
+UI here can go a long way. 100%. Um, we really invested a lot in
+making this feel like a a little bit like an IDE so that everyone can get access to that quality
+of life improvement. Um, go in back here for just a second. Now that I did this,
+I can go and this is the magical part. This is the part that I'm really excited about. [laughter] Um, and the the team has like really
+kicked us here. So, give me the latest PI adoption dashboard.
+Right, that's all I'm going to say. And this is the part where the magic of Kai
+really shines. Now, when you're in a coding agent, you can see what it's picked up. It's picked up the skill that we just like literally just created,
+right? And the reason why this is interesting is when I said all the way at the top of this that you can just go in and start using Kai and it knows what
+to do. This is how it knows. Looks like my uh my my tool policies are too uh are
+too secure, right? So, um now the thing that they've done is in a when you're a
+coding agent, right? you're in a re repository, you're in a folder, you have this natural structure to what you're
+trying to do, right? And so you can pick up the uh the the the skills in the hierarchy of where you're working and
+you get the right set of skills required to do your job. When you're at an enterprise and you're starting to work,
+you don't know like there is no hierarchy of what you're going to do. You're frequently trying to hit like five different systems. And so a large
+part of the investments I've done and what we've um what we've managed to give
+to Stripe is the ability to package skills and retrieve them and we do this like really rigorous flow of knowing
+when the right skills are being invoked so that Kai can perform at a high level right and the number of skills that we
+have we got to do some pretty uh interesting things to ensure that we keep those skills in tip-top shape.
+We've also built out this interesting thing where it's not enough to enable people to build a bunch of skills. How
+do you make sure that they actually know what it's doing and how you keep them in in top shape? And that's the other thing
+that we're really investing in this automatic platformdriven like suggestions for how to improve your
+skills. So that especially since we let anybody publish a shared skill, right,
+that anybody else can pick up, it's become really important to ensure that we can give people the tools to keep
+those in tip-top shape. Again, something that you probably don't worry too much about if you're just using AI for
+yourself, but the moment you introduce like sharing and the enterprise, uh, quality, governance, policies all become
+something really important and they're usually something pretty specific to the company you're working at. And and
+Stripe is no different. You know, the only other thing that I've seen here that I'm curious, maybe you have, but you haven't shown, is we see a lot of
+folks um that are building these internal harnesses do skill and tool
+telemetry and observability and see where like tool calls are failing a lot.
+So, they can auto eval. And then they also have a deprecation policy for skills. So, if skills have not been
+invoked for like 30 days, you get a little notice and it's like, hey, you haven't used a skill. if it's dead, maybe we
+archive it. And if they don't get a response, it goes into like um deprecation status and then they delete
+it two weeks later just to like prune all this stuff that's happening. And so
+I think this enterprise level maintenance of the skill library is
+really important not just from a quality perspective which is what we see here with the evals but honestly from a
+quantity perspective like just is any of this useful anymore 100%. And uh it's I almost think you
+can't separate quality and quantity when it comes to uh these systems because you know context is everything. the more
+unrelated context you throw into the AI, the less good your uh results become. So
+quantity is almost a uh facet of quality. Uh we've uh we started out with
+like a bunch of different uh skills and we do have telemetry um on we have let's
+say 50 skills that are used like hammered every day across the company. We have this long tail of 100 to 150
+other skills that are used by subcategories uh you know parts of the orc chain and we have a bunch of tools
+that are used by two or three people right we need to respect that all of these exist there are teams there are
+three member squads doing some really bespoke thing and they want to share between themselves but then again what
+is the telemetry we have and part of the process I'm showing here is this is the
+userfacing part of it but part of the process is telling us as harness owners these are the kind of skills you
+probably want to promote up into like a general workflow and these are the skills that you want to like delegate
+out and move out of the general workflow because it's just taking up context right so uh definitely uh unfortunately
+don't have something cool I can show around that but it's it is something that there's an ETL pipeline happening somewhere that's doing this
+amazing well I just want to recap for folks because this has been awesome just
+highle things about Kai personalized context um for people. org chart
+awareness um you know tuned tools a sandbox that you can put data in a
+sandbox you can pull data out shared artifacts projects which I feel like if you missed
+that part rewind go back to it because projects are not just how you organize chats across a team but how you give a
+specific space whether that's a team or an initiative access to tools access to data permissions and controls including
+what requires a human in in the loop. Um, a skill builder skill, but not just
+a skill builder skill, a skills platform for the company that allows you to build
+skills, edit skills, eval skills, share skills. Um, and then you know AI that
+just just works for the things that matter, including data analysis, which benefits not just from this tuned
+harness and skills around it, but investment from infrastructure all the
+way up the stack on a great agent ready data layer. And it took one and a half
+agents or one and a half humans, sorry, probably a million agents, many more agents,
+a couple weeks to get V1 going. and now is serving 10,000 stripes with less than
+10 people plus a bunch of great infrastructure that you've been investing pre and post AI. That's it.
+That's all that that's all. [laughter] Not not much not much to it. Um but yeah, it's it's
+uh I think that was a fantastic summary. A lot of good stuff. Um I think it's important also I would be remiss if I
+didn't say it sounds like we figured this all out. We absolutely haven't. like we are we are very cognizant that
+we are in the earliest parts of this journey and um we're hoping that like you said the strong foundations we have
+help us iterate and move forward with the with the times. Um but yeah, it's been a fantastic journey so far and uh
+maybe we'll be back in a year showing you something completely different because that's how quickly the space moves.
+I I really hope I hope I hope sooner than a year. Well, before we get out of here, let's do two lightning round
+questions. Um, my first one is let's just put Kai aside for a minute. Let's put a put put aside Stripe Blurle. What
+are personal AI things that are fun that you're doing or that you're excited
+about as an engineer? Um, you know, when you shut, you know, as you say, we like
+shut the work laptop and open the fun laptop on the weekends. Um, what are you excited about? What's cool? I I'm super
+boring, but So, I'm going to like say something less boring first, which is uh it's helped me like not sound super dumb
+to my to my six-year-old who's right at the stage where he's asking me all these
+complex questions about like exoplanets and um and like galaxies far away and
+I'm like on the side, you know, Gemini on my phone like, "Hey, like can you tell me what's happening?" And then I
+act like I know the answer. So it's helped me, you know, keep up to his model of dad knows everything. So that
+that's that's good. Perfect. Um, but on the work front, honestly, like the stuff that I'm not doing when
+I'm building Kai, it's like my I have this whole workflow now, which is around using the AI to make sure that I don't
+miss things. It's so boring, but it's so good. Uh, we didn't get to show you Kai schedules, but I basically use Kai as
+like my personal assistant. It just tells me things that I'm supposed to be doing and so it's so basic I I almost
+I'm almost embarrassed to say it out loud but it's it's been the biggest life hack. Um just not having to keep it all
+in the in in the brain has been awesome. Yeah. I what I tell people is we think a lot about how to put agents to work. I
+want the agents to put me to work. I want them to say Claire, please fill out this form. Claire,
+please do this thing you said you were going to do. And so I think it's a it's a give and get relationship. And I love
+that. And I also have many children who ask me really existential questions
+about the universe and about dinosaurs and about history. And I agree
+intelligence on demand helps us keep our superiority in that par parental child relationship.
+Yes. Yes. For a few more years at least until they figure out what we're all doing. So last question.
+When Kai Well, maybe not Kai, maybe you're very sweet to Kai, but when AI is not listening,
+what do you do? How do you prompt? Are you a yeller? I I don't know. I feel
+like I'm maybe I'm just subconsciously afraid of uh what it's going to do to me when it figures out, you know, knows
+where I live or something. But I'm very nice to the AI. I just say, "Hey, that's not what I wanted.
+Here, I'm going to say it again." And then maybe I'll like all caps it, but I I don't know. I I don't like shouting an
+AI. It feels uh it feels wrong. It's almost like I'm shouting at the people who built the AI. So, um [laughter]
+maybe. But I I just insist. I just uh I say yell harder to my team, but I
+actually end up just like saying a lot of please, if you will, read the thing I said better. But is it does mess up and
+it's very frustrating. Like like many of our guests, you gentle parent the AI, which is
+this is true. I I know I I know you can do better. I believe in you.
+[laughter] I'm I'm not mad. I'm disappointed. I'm disappointed. I'm just disappointed, Kai. Like, you should have done better.
+I love this. Well, this has been super helpful and interesting for me. It's given me so many ideas about just my own
+use of AI and how I talk to people in enterprises about their use of AI. Where can we find you and how can we be
+helpful to you and the strength team? Well, uh, I'm on, um, I'm on LinkedIn and, uh, I'm happy to connect with
+anyone who's like super interested, um, in learning more about what we built here and how we think about, you know,
+uh, scaling AI for the enterprise. Um, and Stripe is always hiding. We are always on the lookout for people who
+want to, you know, join this crazy band of people trying to build amazing things for for the world. So, um, please look
+out on the Stripe careers page. Um, but otherwise, um, my email is, um, um,
+shared.com and I'm happy to, um, happy to engage with anybody who has questions about
+anything we covered today. Um, but yeah, keep those questions coming. Awesome. Well, thank you to you and
+thank you to the Stripe team for being so generous with all the things that you shared with the audience. We really appreciate it and thanks for joining.
+How I AI. Uh, thank you for having me and this was uh, this was uh, fun. Uh, I don't know
+if I mentioned you're a minor celebrity uh, on the team. So, uh, I now have some reflected glory and, uh, yeah, it has
+been amazing time. Thank you so much. Thank you. Thanks so much for watching. If you
+enjoyed this show, please like and subscribe here on YouTube, or even better, leave us a comment with your thoughts. You can also find this podcast
+on Apple Podcasts, Spotify, or your favorite podcast app. Please consider
+leaving us a rating and review, which will help others find the show. You can see all our episodes and learn more
+about the show at howiaipod.com. [music] See you next time.

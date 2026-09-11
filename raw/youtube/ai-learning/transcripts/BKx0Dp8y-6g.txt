@@ -1,0 +1,574 @@
+So what I think we have not yet conceptually gotten right under and shared understanding is what is this
+future of work going to look like? If you're a tech CEO, you have to be deep inside of what's the tech stack. AI is
+not a technology. It's the future of the firm. One of the dictims I have is don't
+use frontier models for non-frontier problems. I think in the AI age that is
+going to be everything, right? I think I would be very surprised, Reed, if you were sitting here a year from now if the
+world is not completely turned on what is my AI supply chain look like.
+I couldn't be more delighted to introduce a special episode of possible
+with Sacha Nadella, the chairman and CEO of Microsoft. Satcha and I have known
+each other a long time and part of in this this kind of AI revolution for
+humanity. Uh I thought this would be a great episode to get out. I mean we
+covered all kinds of important topics. Sate as always is elegant is cohesive is
+smart is comprehensive and above all humanist in what is our AI future. This
+will be an amazing episode. Actually, one of the things that's great, Satia, about filming this here is it it reminds me of the earliest days when we were
+talking about Microsoft and LinkedIn. That's right. Because we did one of our very very conversations here in the Grey Look office. So, it's like just awesome
+to be back. I want to start with something that I don't know as many people realize and appreciate about you,
+which is with how many books of poetry you have in your house. Um, can you say
+a little bit about your attraction to poetry, favorite poets, what what the engagement is there? Yeah, I mean I
+actually got into it in different times of my life. I remember, you know, uh, as
+a middle schooler, we had this standard issue English poetry book, which I've
+been trying to reclaim and get all my life and unfortunately is out of print. But it sort of had you know even getting
+you know introduced to Shelly or Wsworth and uh it had even sort of Indian
+authors like Surrojani Naidu writing in English and it it is I don't know I felt maybe it was my attention span or what
+have you. I was naturally drawn to poetry as a thing to enjoy and love and and I've always compared it even to code
+right which is it sort of compression in its best form. Um and so whenever I'm
+bored I get to you know go read. I'm not great actually at understanding deeply.
+I've never studied it. I'm not like so that's why my reputation of knowing about poetry is far exceeds my knowledge
+of poetry. Uh but I still you know continue to um
+use poetry as perhaps the best expression of um uh the human experience, right?
+Right. I mean, if you if you sort of broadly think about literature um as sort of what captures more than even
+history um uh the human experience, I think poetry is the compressed form of
+it. I completely agree. Is there a particular poet that you go back to? Yeah. So I the thing that I've really I
+would say the poetry that probably speaks to me most deeply is the Udu poetry that is sort of because I grew up
+in Hyderabad in India and Udu is sort of the in the air um and some of the Udu
+poets uh both modern and sort of uh you know people in the 17th 18th century
+were just extraordinary uh and in particular you know there's there's this uh poet uh whose name who goes by Galibu
+uh as his name um and he's just uh extraordinary or even a modern poet like
+Faz u I was also very having grown up in you know in Hyderabad I was very influenced by Roomie um in fact um you
+know my the high school I went to was fascinating in fact we had um you know the number of languages which were all
+taught was obviously there was English um there was Hindi which was the national language and then um we had
+Sanskrit like basically you know uh like Latin here I guess and then uh we had
+the local language, Telugu, which is my mother tongue. Um, but we also had Udu
+and uh, Persian. And so all of them like in fact when we would break for what was
+called second language I I my second language was Sanskrit. Um, but you know
+they I could I had classmates who would go to Persian, Udu, Telugu, Hindi and it was fascinating. Well, among the
+experiences, I'm experiencing a little bit of language envy because I a joke that I like is, you know, what do you call a person who speaks three
+languages, triilingual, two languages, bilingual, one language American. And unfortunately, I I resemble this joke.
+Um, all right. So, let's we're just coming out of build, which was amazing. Um, let's kind of actually start with
+kind of going back in history. So, you know, Microsoft's first product was a basic interpreter. Um and 50 years later
+here at build framed the company's future around what others can build with AI. So what is the new basic interpreter
+in the world? That's a great one. So in fact it's that that I think is the core
+of the DNA of the company right which is what can others build and therefore what should we build is sort of the two
+questions that we always ask ourselves. And in the AI era to me the answer is uh
+the basic interpreter is the hill climbing machine right because you think of you na bring all of those AI what is
+it it is basically taking an objective an outcome an eval that you have and
+learning how to achieve that by learning uh using data using some reinforcement
+reward and so the the entire conference was about not hey here is a new frontier
+model. It was about helping every developer, every company, whether it's a AI native
+startup or an enterprise building their own hill climbing machine so that they
+can operate at the frontier. Right? So I think that that's it the the idea in fact you know getting very clear about
+the evals and the objectives that you care deeply about knowing how to evaluate them right that it's in some
+sense is the most and keeping that's the new IP yes because everything else is pretty
+mechanical uh but knowing what is the set of data that you want to train a
+model on and how you reward it is probably where the the next level of IP gets created. Well, and one of the
+things, let's dig into a couple different areas here because you and I have had a number of conversations, you
+know, with Microsoft strategy. And one of them is kind of this question about how enterprises
+keep the advantage and integrity of their own data and Microsoft is the most natural company in the entire world to
+do this. So, what say a little bit about how enterprises should be thinking about like we need our own frontier
+intelligence, but we also need to maintain control of our data. Yeah. See that I think is the the question which
+is this economy is going to be shaped going forward by both human capital and
+let's call it this token capital right that is true for Microsoft that is true for a new startup that's going to be
+true for any bank that's been in existence for 100 years right uh doesn't matter all of us will now need to sort
+of in fact the interplay between human capital and token capital and
+compounding the returns of is what you need to do. So if you sort of frame it that way then one of the most important
+thing is not just even thinking of data in its aggregate sense right see what is the tacit knowledge of an enterprise or
+a firm it's the unique ways that you are able to operate pass judgment have taste
+all that's the tacet knowledge mostly captured today in the tacit knowledge that is there with the human capital and
+some artifacts that are digital So now when it comes to AI the the model in
+some sense is able to extract if anything that tacit knowledge through
+human trajectories and encode it in a set of weights in a model. So what I
+claim is that every enterprise now needs to be more mindful about that interplay
+of humans and their digital estate working together those trajectories
+training essentially the models that they keep as IP versus leak it because
+if you leak it it's a one-way door you're done in some sense right which is what is unique what you may have spent a
+hundred years right in fact we don't even know how to articulate it right nobody sort of has a line item in their
+balance sheet called tacid knowledge but we take it for granted that because we
+have human capital we have it now I believe that can leak and in fact it is
+leaking right if you look at even the number how the model companies learn they're essentially setting up these
+gyms with rewards which are employing employees who worked at your company
+previously I mean that sort of should tell you everything what what should not be happening which is so that's one of
+the fundamental reasons why we want is effectively the regime to change or the paradigm to change where you welcome the
+models to come in. They should hill climb inside a machine that you control.
+Your data is your context. You feed the model. You collect in fact these traces or trajectories of how work gets done
+between humans and agents inside the enterprise. But you have a continuous
+loop of that and you're not letting that leak. That I think is the fundamental operation.
+Yep. And actually the related parallel to the tacet knowledge is and this is one of the conversations you and I had
+actually at the the Microsoft board which was what uh is the future role of
+AI employees right because part of the question is say hey we're going to provision not just you know kind of uh
+tools to amplify human work great you know kind of AI companies but we're also going to provision at least specialist
+employees but the challenge with that is is that one of the things that really matters to enterprises is is your
+employees embody a lot of you know tacet knowledge how to what to do you want
+that in other companies and provision or other places what's the your and Microsoft view of the future of work
+when it comes down to how to think about AI as also maybe even specialist
+employees yeah I mean I think that that that's right so the way to think about this you know there are two ways I come at this
+right which is let's let's take one analogy and I'll come back to it right if somebody in the early 80s had come to
+us and said you know what there are going to be four billion typists uh who are going to wake up every
+morning and start typing and we were said what for right it makes no sense right we have a typist pool we have a
+slide pool and we're you know fine uh you know with that but except we
+invented this complete new thing called knowledge work where everybody was
+typing and creating artifacts and so on so what I think we have not yet
+conceptual gotten right under a good understanding and a shared understanding is what is this future of work going to
+look like when you have let's call it you know and let's take Microsoft we have 20,000 employees and we have let's
+say 2 million uh agents or 20 million agents all in a loop
+what is happening uh what is the tacet knowledge that gets created um what is
+you know the artifacts uh that are going between agents, between agents and
+humans and so on. All that's now going to be played out in the next whatever even multiple years. You can see early
+forms of this in coding, right? It's a great place to observe in fact the the
+the even this sort of social change, right? I mean, think about we started in
+a good old IDE and said, hey, AI is ins, you know, in there uh and it's doing
+code completion. That itself was useful, easy to understand. And we've always had spelling correction and IntelliSense was
+there in VS Code, you know, from, you know, 15 years ago. And and it just got better. Then we said, oh, you know,
+instead of going out of band and going to a browser and, you know, going to Stack Overflow and searching, you can
+now bring all the coding knowledge to a chat session. That was al also easy to
+understand. And you still were in the IDE, you had sort of the chat. Then we said okay um you now have reasoning
+models and some you know prim you know preliminary agent loops and so on and so you can assign tasks. So we had agent
+mode right so you not only had chat but you can give it small tasks and you could see it complete um and then you
+could accept what it did and then you could insert it and what have you. And then came the big breakthrough of total
+autonomy and agentic loop working for long periods of time where you could literally fire forget right where you
+could assign a highlevel intent. It would go off and do the full PR and you would accept the PR. So that transition
+right is what I think is going to happen across all work right and now we're
+seeing it with even in co-pilot we now have chat and we have co-work and now in fact at build we announced something
+called scout and autopilot so what is happening in coding will happen even in knowledge work interestingly enough one
+of the things we launched even at build in github was a new feature called
+canvas because what has happened is as we've all gotten so good at using these
+coding agents. In fact, you know, the biggest challenge we now have is I have a 100 CLI sessions open where I'm trying
+to operate these 100, you know, agents and now the cognitive load on me
+managing this is so high, right? I mean, first of all, I don't I mean, like, think about it, right? It's a linear
+chat session in a command line and I have a hundred of them. So, guess what? We now are back to an IDE, right? So I
+have a new ID. We give it a new fancy name. It's called an IDE. It's an agentic development environment. That's
+what the new GitHub app is. The GitHub app looks like an inbox except it's an inbox of agents that are working across
+all the repos in and allowing me to do the micro steering of the macro
+delegation I gave them. uh but it's a complete UI for the agents to deal with
+me and for me to deal with agents and so I feel so we introduced this new feature called canvas in GitHub where it can
+like for example you know sometimes it's easy to have a conbon board visualization as a way to run down your
+PRs very useful both for agents and me to interact versus some chat session so
+I think that that type of innovation is how work will change in fact one of the
+other fascinating things for me as a line of even AI research would be the models will also get much more tuned to
+learning how to stay the course um and understand human preferences in
+steerability right because that's what I want in fact I want models that not only do instruction following but are also
+really steerable uh and that when you have that that's when you have confidence in it so I think the work of
+the future is about tacet knowledge that gets created by this interplay. Just
+like knowledge work got created because of digital artifacts and human capital.
+The new one would be this AI capital and the human capital working together
+creating in some sense the digital artifacts. And what do you think are the things that people miss about how
+important it is to build out additional kind of structure for enabling
+enterprises? So one of them is obviously the enabling humans canvas you know ads
+etc. But what are the like for example notions of like what is uh security in
+an injection? Oh it's a great point. It's a great point. So in fact the to your point one is the experience layer. uh clearly
+that's important and another one which we referenced earlier was hey we need this hill climbing machine as a concept
+that it needs to be instantiated but the third is the manageability of it and the security of it starting with
+observability right one of the first things we did even and we talked about it even yesterday is something called agent 365 I need to know I need to have
+an inventory I said oh there may be 20 million agents at Microsoft I first need to know what are these agents what are
+they doing what are their reasoning traces they need to be fully inspectable, fully auditable. Uh, and by
+the way, when the agents also have this other attribute, they execute
+code and execute. So, you need the environment in which they are executing
+code with maybe even file system access, network access to be think that is
+governed by policy. So, therefore, you now need to give them identities, you need to give them sandboxes, then you
+need to set policies to govern them. And so we built this entire thing called agent 365 which really has you know
+we've extended entra so that you have an identity. We extended defender so that you have security. We extended purview
+so that you can even label the data that it's getting created automatically so that you can have data protection. So I
+think security containment manageability observability is the way we will have
+confidence uh around these agents. The one other thing I'd say uh read also was you know salient in our developer
+conference was how important it is when you're building these longunning agents
+right like if you think about right we have always had um in programming
+languages you know programming models for understanding the ver you know the
+verifiability of a program right and it's exe at runtime so one of the attributes of these longunning agents
+that we added uh to foundry was something called asserts. So this allows
+us to assert what are the boundaries, right? So instead of talking about
+guardrails as a thing that is sort of just a classifier of some form, you really need to now have the ability
+during execution to really have that execution path not go off rails. And so
+there's a lot of engineering sophastication now that's emerging uh as we build out the platform, the runtime,
+the security layer, the management layer, the observability layer. So let's go to a little bit of the role of CEO.
+Um and I think uh Fortune recently described you as acting like a startup CEO inside of Microsoft's AI teams. Um
+but the more general question because I think a lot of CEOs seek you know kind
+of technology strategy advice about what's going on in the world from you. What do you think the CEOs should be
+doing around AI? What um you know kind of when they're
+like AI brings the kind of a refounding moment to lots of companies because of the nature and so what's your advice to
+them for how they should engage? Great question because I've been thinking about this, right? Because in some
+sense, you know, it clearly for if you sort of you're a tech CEO, you have to be deep inside of what's the tech stack,
+right? There's no way you can be a tech CEO and not essentially have a fundamental
+uh worldview on where the future is going and then to be long before its
+conventional wisdom, you have to pass judgment on u you know where the
+company's going, right? So that's sort of the our industry's sort of pretty binary transition. So I think there's no
+hope if you don't have a uh the CEO leading uh from the front and taking the
+shot on goal uh knowing that these are fairly uh harsh transitions. But the
+interesting thing that now I'm up to now if you were not a tech CEO you needed to be a great CEO which means you need to
+be great at banking or healthcare or whatever it is and you could always have great partners and technology advisors
+and what have you but now I'm changing my prior on that right because I think
+because I'm noticing even what's happening and I don't think the the rest of the the the industry and the CEO
+community has broadly woken up um to this and I'm like perplexed at it because they're still you know pretty
+happy doing a press release with a a tech company and saying yeah I've got my AI strategy and you know pointing to
+eight agents they built and some outcome but this is no longer AI is not like a
+sort of a technology it's the future of the firm right it will be like saying oh I don't
+know what the about the human capital in my firm right so I think that this is where my thing would be that you have to
+now get a deep understanding of what's your token capital. Can you answer that
+question? Right? Can you concretely say, "Oh, last night or based on all the work
+that happened across all of our operations, we were able to translate that into a
+set of knowledge that is somehow now part of my token capital. It can be some
+context. It can be some skill. It can be some weights in a model. It doesn't need
+to be any one thing. But you need to be able to spec it. You know, it you need to be able to identify it clearly as
+something that you own, you control, you created, and you put in place a system
+to have that compound. So I think that that is going to be probably the toughest change. So this change is like
+unlike oh how this is like going to a mobile phone era or a PC era or a cloud era where all I needed to do was to have
+an IT department that knew how to deal with a bunch of vendors and did some
+smart things to reduce cost or improve my efficiency. It should start there. I'm not saying that that's not the
+place, but this is about what what happens structurally in your industry
+when AI is sort of basically knows everything that it needs to know about
+being in your industry and if you start there then I think you will start
+understanding that this is not just a tech uh it is really about a fundamental change uh to the firm.
+Yeah. And one of the things that I think thinking of the nature of the firm uh is
+that you've done a great job in leading Microsoft one of the many different genius moments and skills is uh going
+through acquisitions and partnerships right so it's you know whether it's LinkedIn obviously something close to
+our hearts um you know GitHub open AI etc and part of what I think Microsoft
+leads the entire world on is how do you build trust in these other ecosystems and in the world of AI that's going to
+be extremely important especially as firm changes. So, what are some of that the kind of the um the kind of lessons
+you've learned, the things that you are advocating for in order to build and
+maintain that trust? Yeah, it's so it's so key because in some sense I've always sort of thought
+about what's long-term stable, right? Um, even from a Microsoft perspective,
+what is long-term stable is for us to be a tools and a platform company where we
+fundamentally are defined by the amount of value that gets created on top of the platform which should far exceed
+anything that is captured in the platform. Right? It that's the only way to have stability.
+If you do that, then you have trust, right? because the then the customer the
+partner knows that it's not a zero sum. Uh especially it's not a game theoretic
+you know zero sum with these games where oh I'm going to subsidize this until 2
+years or 3 years only to then eat your lunch type of games that the tech people
+are really good at. Um and so I've always felt like hey look that is all
+not the way the way to think about it is to be very principled that you are a platform company that you will really
+live and die by your ability to create success on top of the platform and when they are successful you're going to be
+successful and that is the equation that builds trust and long-term stability for
+both sides right um I think in the AI age that is going to everything right. I
+think I would be very surprised, Reed, if you were sitting here a year from now if the world is not completely turned on
+what is my AI supply chain look like where it is helping me as a firm
+compound the returns of AI that I can uniquely point to as my value in a world
+where we know that these learning systems by definition don't have boundaries. They have to have boundaries
+because of mostly structures of markets and society and other mechanisms.
+Yep. So we've talked a lot about chat bots and code um which have just seen
+amazing explosive progress. Um what are some of the next frontiers for LLMs over
+the next few years? Well, I mean talking about that in fact, you know, one of the things that I know you have gotten very
+very excited about which I'm quite frankly, you know, excited for you, but also has caused us to you to examine
+where you spend your time and I'll let you speak to it, but it's sort of unbelievable uh to see what's happening
+in science. Um and and in fact the company that I you know you started with
+uh Sid and Manis you know it's just a great example um I would say of what has
+happened in let's call it coding and knowledge work if it's start happening in science in fact I would even claim
+that I wish in fact we did it in the reverse order uh right because the per
+social permission for AI would be so much higher if we had started with some
+nice discoveries in science that were having great societal benefits uh then
+people would have really thought of this as a thing that is really going to be more helpful. So I'm really excited uh
+for you Reed with what you're doing. Obviously you have spent a lot of time but maybe you want to talk about that.
+Well, yeah. So, I mean, it was one of the things that uh I realized over the last month was that um we're seeing such
+progress with Manis in actually, in fact, we've got an internal description of move 37 for chemistry because we're
+seeing chemistry that that might actually in fact take shots at really interesting cancers and other things.
+And you know, it's very early, right? And so you know these things take a while with all the ideas but the the
+fact that we are already beginning to see like we've got some of the best computational chemists in the world and they looked at and said that's very
+interesting we've never seen it before and that might work right and so that kind of thing and so you know Sid and I
+were talking about this and I said look I think I need to get back to founder mode uh in terms of how to do this and
+so I need to be able to kind of focus on this and then you know uh part of the you know conversation you and I have had
+this week is to say, okay, um, it's been 10 years on the Microsoft board. It's
+been a huge honor and pleasure with, you know, and not just LinkedIn, but obviously OpenAI, GitHub, a whole bunch
+of things. But, you know, at the end of the year, I should really be transitioning right now to being founder
+mode. So, like, you know, it's like, and you know, we'll always be working together. So, it's like, but but you
+know, it's time to kind of dig back into the company. You know, first of all, it's been such a privilege uh to have
+you on the Microsoft board, work with you obviously through all the partnerships and LinkedIn and um we will
+definitely be missed uh on the Microsoft board, but I know we'll be very connected, but I'm also excited for you
+uh when you say you're going back into founder mode uh you know that means I'm even more curious about what you're
+going to be building uh because it's as you I think you rightfully captured this is the moment where I think the impact
+of these technologies is more broadly felt in the societies that need the are. Yeah. No, [clears throat] exactly. Let's
+come back to you know kind of questions around the patterns of thinking that happen
+with AI because one of the things that I think like I kind of roughly think about
+these things is you've got an alien intelligence right a different version of A that has been built to very much
+heavily mimic human intelligence which creates a whole bunch of utility for us
+but its patterns of reasoning are not the same as ours Right? And people
+frequently encounter that and they go, "Oh, that's scary." You're like, "Well, no, actually that's that's like you have to pay attention to make sure there's
+alignment, but it's also wonderful because it enables new things." And so that's part of the thing like the kinds
+of chemistry we're doing like the humans hadn't discovered this chemistry in Manus, right? What are the other kind of
+thinkings about this pattern of reasoning, right? That that that kind of amplify human capability.
+It's a great one. like you know I've not thought that deeply about sort of how it
+improves the I mean if you sort of sort of say there's you know induction and
+deduction that we do being in this cognitive loop with an AI
+u that is fascinating right because my exploration space is changing um right
+the you know like even in coding one of the most fas fascinating um
+things that one of my colleagues introduced me to is he he wrote a new skill which I have in GitHub copilot
+it's called cognitive coverage right it's fascinating what he's done is you
+know whenever an agent does some work for me he says just like how we had test coverage we now have this new concept
+called cognitive coverage where we as humans are going to learn from what it
+did and So it just creates a quiz. So because I literally think of learning
+uh from and it's sort of it is me matching my ability uh to essentially
+form a deductive understanding in some sense um of what an agent did. Right. So
+to your point it is um um it's a basically it's mimicking it's sort of an imitation game on one side but that
+imitation game does create. So then my ability to then deductively understand
+it uh I think is probably one of the more important human skills we have to
+develop. So this cognitive coverage is I'm like fascinated by it right which is oh I think we're going to have something
+like that which is the agents are working they have to be aligned on one side but the other side of it is what is
+new will be us knowing oh we've cognitively covered what AI did well and
+I think that point intersected with your earlier one about you know kind of token capital and AI capital is that part of
+the skill set for the modern you know kind of human knowledge worker is to say Okay, how do I strategize on the use of
+AI canvas orchestration? Yeah. But also within kind of capital
+allocation balance, right? Because part of what we've seen is people can go crazy on spending lots of tokens in
+ineffective ways. It's like, you know, buying, you know, go back to bad Pentagon days, toilet seats for a
+million dollars. And so putting your thinking together with the cognition together with token management and what
+do you think is part of the question around this skill of blending the
+cognitive coverage with also token intelligence in terms of how do you
+amplify the outcomes? A great one. In fact, I' I've been thinking about like one of the things that um I think one has to study deeply
+is what are all the things that become more valuable in the age of let's call it token abundance. One is what you
+reference which is how to use tokens becomes very valuable. Whoever figures out that oh I can use tokens more
+efficiently for an outcome that matters in the world is going to get ahead right by definition. So then how does one
+build the intuition for it right which is oh what like this is where what is that outcome how do I measure it what's
+a rubric in fact this is where I think the eval the you know if it's it's
+fascinating how much time needs to be spent especially for an RL regime I
+think it's been the clearest where if you really want you want to set up the rubric um and the eval dimensions or the
+rubric's scoring dimensions such that they're really capturing the high taste
+that you only can define because if you did that then you could be token
+efficient, right? In fact, the other side of the token efficiency is um in some of the examples we even showed at
+uh build was let's say you have uh um I don't know um some you're a retailer or
+you're a package goods company and um one of the things you do is handle sort of transactions around uh trade
+promotions. Right now you get all these claims from all the retailers and you have to process them and the humans are
+doing it. You can easily automate that using an agentic workflow. And you could
+say, "Oh, I use a frontier model for it." But then one of the dictims I have is don't use frontier models for
+non-frontier problems. Right? So this is not a frontier problem. You're not trying to discover some new material
+science. This is a repeatable deterministic workflow. Uh but that can
+benefit from all the mistakes humans can make and claims and so on. So therefore
+you do need uh you know intelligence in it but you can take you know a model
+like an Mi5B and use the traces to hill climb in your RLE to perform even
+outperform even a frontier prompted right so that to me is token efficiency.
+So that type of human understanding of both the limits of the system, the
+characteristics of the system I think become high premium at this stage. Yep. I agree. One of the other things
+that um I think is important for people to gro as you know because we've been in a lot of these conversations there's a
+lot of uh concern in other countries about you know kind of sovereign AI and
+I think that it may be useful here given we've just kind of gone into depth about companies and the sovereignty like the
+companies their information their employees what are the parallels between what we're doing for companies and how
+countries should think about kind of also engaging ing and trust in the AI future.
+Yeah. I mean this is interesting because I I I one of the reasons why I have really pivoted to companies is because
+companies exist all over the world right that's the good news here which is because in some sense even countries
+thinking abstractly about sovereignty they can even make big mistakes where
+they ultimately could erode their comparative advantage that is naturally
+there today embodied in the commercial activity happening in the country
+through its company formation and thriving. Uh so therefore preserving
+that is the best form of sovereignty. Sometimes I think people think oh if
+only I had a firewall or all the data was resident or what have you. You know
+I'm not saying those are not considerations. Uh but this is not about even any of that right which is this is
+about making sure that you have an economy. uh that means you need to have companies that means that those
+companies have to thrive in a token economy uh that means they need to be able to build that IP and so therefore
+in fact having partnerships even with companies outside that give you the
+ability I think are more important than sort of suddenly falling behind some frontier right and so I think that
+therefore I think this is one of those places where again even the policy makers have to think about
+infrastructure Right? After all, you know, tokens, they're electrons on one end and tokens on the other end. So, you
+want to be the cheapest, best, environmentally good producers of those
+electrons to token conversion machines called data centers, right? So, that one I think is going to be very important
+for every country to prioritize. Uh, of course, the country should even prioritize whether there's our own
+semiconductor production and what have you, right? That's are all very valid things to do. But beyond that, I think
+the most important thing is to take what Ricardo was always right on which is
+countries have by definition their own comparative advantage and now they need
+to amplify that using AI that means best thing is that whether it's the small
+business or whether it's the large multinational or even the public sector efficiency in the country is getting
+better uh and is operating at the frontier. the worst thing for any country to in the name of sovereignty if
+they're off frontier then that makes no sense because you're falling behind. You
+have to but at the same time being dependent on one frontier model also makes no sense because then you're not
+sovereign. So what's the the way to solve it is to be able to say no we will
+use models to hill climb on our own one firm at a time and at an economy and
+aggregate. That's I think the equation the the gesture at silicon actually um I
+think is a good also um bring up both for companies we are building Maya and
+cobalt um but also of course partnering well with Nvidia and AMD so uh first
+what's the strategic job of Microsoft's own silicon what might companies or countries also learn from that
+yeah so it's interesting if you think about it right we want uh it's a great way to observe it even because I I mean
+if you look at what Nvidia has done or what AMD has done or what Intel has done, they've built generalpurpose
+technology which you know like in fact when I look at what we're doing with GPUs today, we're of course using GPUs
+to do model training, model inferencing, but we're also accelerating other workloads. In fact, one of the exciting
+announcements at build was using uh GPUs to accelerate NVIDIA GPUs to accelerate
+our fabric data warehouse. Right? In fact, one of the things that's happening with the agent take workloads is we need
+know more performance on everything. And so that's a great that's because of the
+general purpose nature, right? GPUs have C, you know, Nvidia has CUDA. CUDA can be used as a programming model on top of
+those to accelerate a variety of workloads. In fact, we're using the older chips of Nvidia to accelerate and
+this also works out economically for us, right? which is smart for us to take a fleet and keep using that fleet over a
+lifetime where we are not only using it for some cutting edge AI but we're also using it to in fact make an old workload
+even better performant that's great for Nvidia great for us but that also speaks
+to what's happened in terms of the new workloads right the new workloads of AI are these data parallel synchronous
+workloads training inference as well as these new agent runtime workloads which have very different call patterns
+very different and and they're highly con like there's a this they didn't exist 3 years ago right at any scale and
+now they exist at scale so it behooves us to start thinking whether it's not even before we even get to the
+semiconductors I'm building my data center my civil engineering is influenced my cooling system my
+mechanical systems in fact the DC toac that they we're trying to make sure that the electrons are coming in in kilowatt
+uh right hundreds of kilowatts straight to the silicon without any losses. Right? So, we're trying to
+minimize even the power distribution in a data center. So, we can optimize to
+the nth degree for these workloads because they're at such scale. And that's what we're doing with Maya,
+right? Maya, for example, is being co-designed with our MAI models and the OpenAI models to get the best
+performance out of them. We're designing Cobalt which is our ARM based uh core uh
+for compute and we're designing it for for example using all the agentic traces
+uh of GitHub right coding you know the call pattern of a coding agent is pretty different than human apps or even
+asynchronous human apps and so therefore we're optimizing and getting massive latency gains performance gains and what
+have you and so we're going to be a systems company that continuously optimizes for the new atscale workloads
+that we have while using general purpose technology from our partners uh to maximize the utility of those and that
+flexibility by the way uh I think is what really is good and that that's where I think your question was so good
+which is countries should think of that right which is if you really think oh there's one thing that answers right if
+I said oh everything is Maya and everything is cobalt that's probably not the right thing for Microsoft uh but at
+the same time if you said we're open to innovation from the outside we will innovate inside we will in fact bench
+benchmark everything will be principled about it ultimately for better economics. Yes. Cuz cuz creating the efficient
+capital token factories that create human prosperity is the goal. Exactly. And enabling many companies to do it.
+So uh different thread. Um one of the things I know from various conversations with you you're very thoughtful on is
+the topic of children in the modern age because obviously we're creating products for tutors, co-workers, etc.,
+etc. And one of the things we're all exploring together is what should we be
+doing as an industry to navigate kind of being of helping children elevate the
+right way and also keeping them safe. What are some of the principles that you know Microsoft's thinking about you're
+thinking about as ways to kind of be good as it regards you know the next
+generation of humanity through children? Yeah, it's a great question. I you know the the there is obviously important
+things that we have to do around child safety right so when any digital
+technology comes out I think we have to now think as first class right there are
+AI safety issues around cyber or boweapons alignment but it's also child
+safety so I think that that one thing that we want to make sure is some of the challenges uh of uh current sort of set
+of let's call it chat bots, right? uh and their conversations with children in
+particular is something that we need to be very mindful of and make sure that we're not uh having children uh not have
+that agency uh that they need to have in order to interact with this on their terms versus u be persuaded for example
+right so those are very important things but the other thing that you're pulling on which I think is super important is
+what does it mean to even be a child in an world like is where there is all this abundance of tokens and that I think is
+the the question right how does should what should how should learning happen uh how should we inspire uh children
+what's their sort of ability to go have a new pedagogical system even that they
+can enter uh because I think even like if you take the traditional ways right
+the anxiety that let's say uh I I had growing up on learning
+Interestingly enough, that's a sort of um an artifact of the scarcity
+uh of opportunity, scarcity of good learning uh and a variety of things
+which may or may not be true going forward. So one of the first things I think is creating an a learning
+environment where students and children in particular from the earliest of ages
+don't develop these phobias for math or science or what have you. In fact
+because everyone's by definition a lot more curious. It's just that contact
+with the world is what you know erodess that curiosity and confidence that
+children have innately. How do we develop that even further by giving them
+the ability to explore? Uh knowing that there's no anxiety because after all the
+expertise is always going to be there in abundance. It's really your cognitive coverage of that expertise that's more
+at a premium. Right? That's if I had sort of somebody had said that to me as
+a 5-year-old, I think I may have approached life very differently. uh and
+so how do we as a society create the necessary conditions for that? I think it'll be probably very important
+and I think it's one of the things you know I know from conversations with you intensely is like this is one of our
+responsibilities as a tech industry right this is like it's a no no we can't abregate it this is like given the
+ubiquity of the AI technology we have to be responsible for the next human generation exactly what both sort of the unintended
+consequences is something we think about from day one and really build in safety
+guardrails and what have then the great advantages of new technology right have to be democratized
+uh and then I think there needs to be structural change right I don't think you can say education remains exactly
+the same and we value the same credentials I don't know I don't think so uh something's got to change
+yeah so one of the things we haven't had a chance to talk about yet which is very natural in this context is Pope Leo's
+encyclical which I thought was actually in fact a magnificent part of leadership
+on the behalf on the behalf of the church. I mean Pope Francis had actually gotten me engaged and helping them talk
+about AI 10 11 years ago. Right? So like the church has been uh amazingly
+front-footed on this and actually part of the thing that didn't surprise me at all in the encyclical was the humanism
+of it. Right? Because people thought, oh it's about religion, it's about how you how you pray. And it's like actually in
+fact the the the at least the parts of the church I've interfaced with have been humanists, right? And um do you
+have any reflections on the pope's encyclical to see the pope weigh in? And from what
+I understand there's historical precedent on this, right? I believe the pope at the time of the industrial
+revolution also had weighed in on the condition of labor and what should it do
+and what have you. And so to have the pope sort of come out in defense of what
+I think all of us could deep deeply care about which is human dignity and human
+agency in the age of AI uh I think is so important and I'm glad uh that he has
+advocated what he thinks is important. Um the other side of this to me is
+what is the societ like if I look at what is at least describing what what when I think about some of the greatest
+ways technological advances were harnessed to create great prosperity.
+The story of the west is pretty unbelievable, right? There's a beautiful book, in fact, that Joel Mkar and a
+couple of other authors have written called two, it's called, I think, two paths to prosperity, which describes the
+thousand-year history of China and the West essentially. And you know I'm
+paraphrasing uh here but fundamentally some of the constructs cultural societal
+constructs in the west on how to use even the scientific revolution the industrial revolution this and they that
+necessitated a real change in how the society was organized so that it could
+fundamentally take advantage of this new uh is sort of really massive uh right
+that in fact defined the modern world. And so one of the things I feel we now
+need is a similar coming together from sort of both the moral philosophy. I
+think the pope basically sort of said this needs to be the moral philosophy that guides uh us going forward. You
+combine that with even what is the market, what is the what is democracy uh
+and then what is the scientific/technological revolution. So if we can somehow get into a virtuous cycle where the morality
+and the scientific sort of breakthroughs the political system and the markets are
+all reinforcing each other then we will have abundance and we will have many
+stakeholders all benefiting and if we don't we are going to lose social permission right so I just don't think I
+think this is what the narrow understanding of the success of the test as just a technological breakthrough uh
+I think is sort of not the case right it's a unbelievable coming together uh
+of a multipitude of sort of forces in a virtuous cycle um it also had really bad
+parts to it um right we know that and so you have to avoid that right which is and so that I think was also some things
+that the pope himself wrote in the encyclical which I thought was great which is even to think about sort of what are the bad parts how do we not
+repeat it. What is the way to be, you know, advocating for this positive
+cycle? Uh, I think it's beautifully captured and I thought it was great that it was kind of a focus on how do you keep
+humans at the center? How do you elevate human dignity? How do you uh address
+needs not just of the wealthy countries but the entire world is I think you know
+a great you know beacon in terms of how we start to think about you know I think deeply about that right for example I've always always you know
+you know been like someone who cared deeply about the global south in some sense finally having their moment where
+there can be real catch-up growth um and so I think that there's a real danger now in the age of AI for even that
+convergence growth to low and in fact go the other way and so what are the again
+the global structures because by the way someone sitting in the United States in
+you know in Paulo Alto may think that somehow it doesn't impact them but there's no such thing right you know we
+share this planet and our destinies are a lot more tied than we think we are uh just because of
+you know being far away from what's happening well um last question before we get to rapid fire um is you and I both though
+um you know in the US and in Europe there's a lot of AI backlash um now part
+of how as you know I've I've been trying to address it is like with books like super agency trying to say no look no
+this is an opportunity to gain agency the transition will be difficult but embracing the agency and the
+transformation ultimately you have to but if you do it with forethought and
+and kind of like leaning into it can be greatly helpful.
+uh what do you think we should be trying to help people in the US and the west
+understand about why it is that actually embracing AI is more important and it
+doesn't mean that there aren't genuine issues and the backlash and obviously work transition all the rest will be
+real issues but how do we help people see that this could be an important part of their future yeah it's I think really
+at least now I've come to the conclusion that um there needs needs to be real
+tangible, practical, well understood um outcomes
+that speak for themselves because I think what has happened and this is one of those places where quite frankly our
+industry even you know the way we have talked about it I mean when you go out and say hey you know all economic
+opportunity will go away for knowledge workers or you know white collar jobs are gone or you know, and and you and
+then you're saying, "I'm excited about building that technology, right? Why would anyone want you to be successful,
+right? Uh I mean, I don't want you to be successful. I mean, this just makes no econ, you know, no social sense. So I
+feel now um right when you know when you have someone in a college commencement
+be booed because they're saying AI is a you know means we have now crossed over
+to people don't believe us and and rightfully so. So therefore I think what do we need to do now? It's time to do
+the hard work. The hard work is if you're building a data center let's make sure that that community believes that
+this data center is great for them. It's the for their tax base, for their community efforts, their real estate
+value, their schools, uh their water use, right? Their electricity prices. It
+can't be again like, oh, I said something. No, it has to be real, right? That's kind of what the way we earn social permission. Same thing I I would
+say with employment. We can't abstractly even say, hey, lump of labor fallacy,
+always there's going to be new jobs. What are the new jobs? What are the wages of the new jobs? uh that I can now
+go apply for train myself for and and how do I really start a new company or
+what have you right I think unless we really get clear or the third thing which we unpacked a lot every firm needs
+to participate in the frontier ecosystem oh it's not like oh I'm just a feeder of data to some foundation model like that
+is like talk about sovereignty and dignity both being lost right at simultaneously right by for countries
+communities and companies companies. So I think now we have to go all the way and say okay this is a positive sum.
+This is in fact the you know challenges of some of the technology we are going to really actively work it. we can
+articulate the tangible benefits and this is where again what you will do at Manus and others are also going to be
+very very helpful because the world needs more proof points that this technology is ultimately helping human
+condition and our societies broadly not narrowly yeah no AI for humanity so uh you don't
+have to answer rapidly but we ask the same questions all our guests um so the first one is is there a movie song or
+book that filled you with optimism for the future It's this uh uh parallel
+paths to prosperity. All right? Because I I the reason why I like that is because it's a good call to action for
+the next thousand years. What's the path to prosperity? There was a blueprint um
+at least at the part of the world got it right in the last thousand. Can we now
+as a an entire planet get it uh right for the next thousand? I think that this
+is where uh some of our very best work has to be done. Agreed. What's a
+question that you wish people would ask you more often? Ah, that's a good I would love for people to ask me what am
+I not excited about because I'm excited about a lot of things. Uh, but I'm not excited, for example, about us losing
+permission on AI by, you know, saying all the wrong things or doing the wrong things even and not having a a complete
+thought on how to truly have a positive sum construct. Yep. 100%. So where do you see progress
+or momentum outside of your industry and given that Microsoft powers a lot of the
+world's industry? Um but you know uh it could be robotics AI etc. But where do
+you see progress that inspires you? I mean I mean to some degree you know the the work in bi I mean if I think
+about it right one of the most complex systems um that we have to have a better
+understanding of is human biology. So anything any tool that can help humans
+take care of humans is probably the thing that will have uh it's it's all
+inspiring. There's this one thing uh we I recently came across right which is this for imunotherapy.
+I believe there's a test um that is uh you know basically a complex costly test
+that figures out whether a particular imunotherapy will work on that tumor or not. Um and so Providence and uh some
+researchers at Udub and Microsoft research came together and built this thing called gigat time uh which is a
+cool model which basically is a simulation of that test and reduces the cost of what could get done only at sort
+of you know for it took a lot of time and a lot of money now can be done by any tertiary sort of hospital in a you
+know in any city and that type of economic sort of availability of sort of
+medicine and and uh and medical practice I think is just breakthrough. So last question can you leave us with a
+final thought on what you think is possible achieve if everything breaks humanity's way in the next 15 years and
+what's our first step? H I think if everything breaks our way,
+I've always gone back like what's the dream um of the world compounding at 10% GDP
+growth, right? Um that is what can
+happen, right? I mean one thought experiment is if the industrial revolution had reached all corners of
+the world at the same time and every country could express their comparative
+advantage fully. Right? That's the maximalist positive sum construct.
+Can we do it? Right? Because we are kind of captive to this what we'll describe as hey that's not how the world works.
+history is about dominance and dominant powers and and I'm not saying we will
+defy all that but the bottom line is since you asked me to dream I'm dreaming
+that if humanity can get back past their bounded rationality and only sort of say
+oh history repeats itself and we are only never going to get better than you know I know fighting these wars and and
+what have you and say no no no let's maybe we can change the course uh then
+the first step would be to accept that that possibility exists is what I would
+say is what'll get us down. Otherwise, we're going to back to relitigating. Oh, we are let me look at history and then
+just try to match. Beautiful dream, Satia. Always a pleasure and I'll see you next week at
+the board meeting. Thank you so much, Reed. Thank you so much. This [laughter] is awesome. Such a fun
+conversation. Yes, exactly. Possible is produced by Pallet Media. It's hosted by Ary Finger and me, Reed
+Hoffman. Our showrunner is Sha Young. Possible is produced by Tanasa Dillos, Katie Sanders, Spencer Stramore, Emozu,
+Amansuri, Lexi Kevin, Danny Garrison, Trent Barbosza, and Tafodisa Mimarund.
+Special thanks to Surya Yalaman Chile, Saya Sepeva, Ian Alice, Greg Biato,
+Parth Patil, and Ben Relis.

@@ -1,0 +1,530 @@
+All right, let's go. Number six, US P2
+patent public search. Technology
+companies spend millions of dollars
+every year constructing an illusion of
+absolute secrecy. They enforce
+incredibly strict non-disclosure
+agreements. They build secure facilities
+with badge access doors, and they
+routinely fire employees for leaking
+even the smallest detail about an
+upcoming hardware release. They host
+massive theatrical keynote presentations
+designed to make their new products look
+like magic that simply materialized out
+of thin air. But the magic is actually
+legally required to be documented,
+diagrammed, and explained to the federal
+government years before that
+presentation ever happens. This is where
+the United States Patent and Trademark
+Office public search tool fundamentally
+breaks the illusion of corporate
+secrecy. In the United States, a patent
+is a legal trade between an inventor and
+the public. The government grants you a
+temporary monopoly to profit from your
+invention, but in exchange you must
+describe exactly how your invention
+works in such precise detail that
+someone else could theoretically
+replicate it. You cannot get the
+protection without providing the
+instruction manual and that instruction
+manual is a public record. The USPTO
+maintains an open searchable database
+containing the full text and images of
+every granted patent and published
+patent application in the country. This
+is the tool that specialized technology
+journalists, financial analysts, and
+competing corporations use to look
+directly into the future. You do not
+have to wait for a company's public
+relations department to announce what
+they are working on. You can simply go
+to the US PTO website, search for an
+assigne like Apple, Google, or a major
+defense contractor, and read the raw,
+unedited engineering documents they are
+currently filing. You will see highly
+detailed schematic drawings of augmented
+reality headsets, new electric vehicle
+battery architectures, or foldable
+smartphone displays long before those
+companies ever admit those projects
+exist. There is a mechanical reality to
+how this works that you have to
+understand. When a company files a
+patent application, there is typically
+an 18-month window where that
+application remains confidential. But
+after those 18 months, the application
+is published and becomes fully
+searchable by the public, regardless of
+whether the product is finished,
+regardless of whether the company is
+ready to announce it, and regardless of
+whether the patent is ultimately
+granted. This means there is a constant
+rolling wave of future technology
+quietly appearing in this database every
+single week. You can run boolean
+searches combining a company's name with
+specific keywords like neural network,
+biometric sensor, or autonomous
+navigation, and the database will hand
+you the exact blueprints. It is not an
+easy read. Patent attorneys write these
+documents in a highly specific,
+notoriously dense legal language
+designed to claim as much intellectual
+property as possible without violating
+prior art. A simple hinge on a laptop
+might be described as a multiaxis
+rotational friction assembly. But once
+you learn to read past the legal
+formatting, you realize you are looking
+at the raw ambitions of the wealthiest
+companies on Earth. They can afford the
+most expensive marketing agencies in the
+world to keep their secrets, but they
+cannot bypass the federal requirement to
+disclose their work. The future of
+technology and commerce is not a closely
+guarded secret hidden in a vault. It is
+simply filed under a boring PDF on a
+government server waiting for anyone
+willing to read the fine print. Number
+five, the FAA aircraft registry. Privacy
+is a commodity that the ultra- rich
+purchase in enormous quantities. They
+buy massive private estates surrounded
+by walls. They travel in vehicles with
+tinted windows and they hire private
+security to keep the public at a
+comfortable distance. But there is a
+massive unavoidable flaw in the
+architecture of extreme wealth. You
+cannot hide a private jet. It does not
+matter if you are a billionaire hedge
+fund manager, a famous politician, or a
+global pop star. Every single civilian
+aircraft operating in the United States
+must wear an N number. It is a unique
+alpha numeric code painted visibly on
+the tail of the aircraft acting as a
+giant inescapable license plate. And the
+Federal Aviation Administration
+maintains a public database detailing
+exactly who is attached to that number.
+The FAA number inquiry database is a
+stark reminder that the Sky is a heavily
+regulated federal jurisdiction, not a
+private playground. When you type an
+aircraft's registration number into this
+database, it instantly generates a
+report. It tells you the make and model
+of the aircraft, the type of engines it
+uses, its airworthiness certification
+status, and most importantly, the
+registered owner. This is the exact tool
+that journalists, open- source
+researchers, and automated tracking
+accounts use to monitor the movements of
+the global elite. Now, the wealthy are
+entirely aware of this database, and
+they actively try to obscure their
+identities within it. A billionaire
+rarely registers a $60 million Gulfream
+jet under their own personal name.
+Instead, they will register the aircraft
+to a shell corporation, usually a
+limited liability company based in a
+state with favorable tax and privacy
+laws like Delaware. If you look up a
+famous CEO's jet, the FAA registry might
+simply say it belongs to something
+called Blue Sky Aviation LLC. But that
+is merely the first layer of the puzzle.
+Once a researcher has the name of that
+LLC from the FAA database, they can
+cross reference it with state corporate
+registries, connect the registered agent
+to a specific wealth management firm and
+easily pierce the corporate veil to
+unmask the true owner. The existence of
+this registry creates a fascinating
+friction between wealth and reality.
+These individuals have enough money to
+avoid almost every inconvenience of
+modern public life. They bypass the
+commercial airport terminals. They skip
+the security lines and they fly strictly
+on their own schedules. But the
+mechanical reality of aviation requires
+air traffic control to know exactly who
+is in the sky at all times to prevent
+midair collisions because the physics of
+flying require absolute transparency.
+The legal framework of flying demands
+public documentation. They can afford
+the $70,000 catering bill for a
+transatlantic flight. and they can
+afford the millions of dollars in jet
+fuel, but they absolutely cannot afford
+to be invisible to the Federal Aviation
+Administration. Their movements are a
+matter of public record, and this
+database is the key to reading it.
+Number four, usaspending.gov.
+Every year, the United States goes
+through the exact same exhausting
+political ritual. Politicians argue
+endlessly on cable news about the
+federal budget, the national deficit,
+and where taxpayer dollars are going.
+Citizens spend months debating
+government spending based entirely on
+sound bites, political ads, and partisan
+talking points. Everyone has a very
+strong opinion about how the government
+spends its money, but an unbelievably
+small percentage of the population ever
+bothers to look at the actual receipts.
+USA usaspending.gov is the official open
+data source for federal spending
+information, and it is the ultimate
+antidote to political rhetoric. This
+database exists because of a series of
+transparency laws culminating in the
+data act of 2014 which legally required
+the government to standardize and
+publish its spending data in a format
+that regular human beings could actually
+use. It tracks exactly where federal tax
+dollars go down to the specific
+contract, grant, loan, and direct
+payment. We are talking about trillions
+of dollars actively flowing out of
+federal agencies into the private
+sector, universities, nonprofits, and
+local governments. The most powerful
+feature of this database is not the
+macroeconomic charts on the homepage.
+The true power is in the advanced search
+tool, specifically a filter called place
+of performance. You do not have to
+search for abstract national concepts.
+You can type in your specific zip code,
+your city, or your congressional
+district, and hit search. The database
+will instantly generate a list of every
+single local entity that is absorbing
+federal money. You can see exactly which
+local paving company received a
+multi-million dollar contract from the
+Department of Transportation. You can
+see the exact dollar amount of the
+research grants your local university
+received from the National Institutes of
+Health. You can look up the defense
+contractors operating quietly in an
+industrial park just a few miles from
+your house, and read the descriptions of
+the military hardware they are being
+paid to manufacture. The database
+differentiates between Prime Awards, the
+primary recipient of the money, and
+subawwards, the smaller companies hired
+by the prime contractor to do the actual
+work. This allows you to track the flow
+of money as it cascades down through the
+economy. When a politician takes credit
+for bringing jobs and investment to a
+district, you can use this tool to
+verify exactly who received that
+investment and how much it actually was.
+When a corporation claims to be entirely
+independent and self-made, you can look
+up exactly how many federal contracts
+are secretly keeping their revenue
+streams alive. There is a profound
+psychological shift that happens when
+you stop listening to arguments about
+the budget and start looking at the raw
+financial data. You realize that the
+government's checkbook is not locked
+inside a secure vault in Washington DC.
+It is an open website with a search bar
+and a download button. The money is
+moving around you every single day,
+building the roads you drive on, funding
+the technology you use and sustaining
+the businesses in your neighborhood. The
+transparency is already there, fully
+funded by your own tax dollars, just
+waiting for you to stop arguing and
+start searching. Number three, Namus.
+True crime is a massive national
+obsession. Millions of Americans spend
+their commutes listening to
+investigative podcasts, watching
+multi-part streaming documentaries, and
+reading detailed forum posts about
+unsolved mysteries. But there is a
+massive disconnect between the
+entertainment consumption of crime and
+the grim bureaucratic reality of actual
+cold cases. While the public consumes
+highly produced stories, the actual raw
+data of human tragedy is sitting in a
+federal database that anyone can access.
+It is called the National Missing and
+Unidentified Persons System or NAMUS and
+it is funded by the Department of
+Justice. Names is the only National
+Information Clearing House and Resource
+Center of its kind that allows direct
+public access. It is actually comprised
+of three interconnected databases. a
+missing person's database, an
+unidentified person's database
+containing information about
+unidentified remains, and an unclaimed
+person's database for deceased
+individuals who have been identified but
+whose families cannot be located. The
+system exists to solve a very specific,
+deeply frustrating problem in American
+law enforcement, the problem of
+jurisdictional borders. If a person goes
+missing in a small town in Ohio and
+their remains are discovered three years
+later in a wooded area in Pennsylvania,
+those two police departments might never
+communicate. The Ohio Department has a
+missing person file and the Pennsylvania
+Department has a John Doe file and those
+files can sit in separate filing
+cabinets for decades without ever
+crossing paths. Name digitizes those
+files, standardizes the information and
+puts them into a single searchable
+national system. But the most incredible
+part of Namos is not just that it
+connects police departments. It is that
+it invites the public to look at the
+data. Regular citizens, web sleuths, and
+families of missing persons can create
+an account and search the database. You
+can filter searches by highly specific
+physical characteristics. You can search
+for a missing person based on their
+exact height, weight, demographic
+profile, or the timeline of their
+disappearance. More importantly, you can
+cross reference those details with the
+unidentified person's database. You can
+search for specific distinctive tattoos,
+unique dental anomalies, surgical
+implants with serial numbers, or the
+exact brand of clothing found on
+unidentified remains. This is not a
+game, and the database does not hide the
+harsh realities of mortality. It is a
+somber, clinical, and often disturbing
+environment, but it is profoundly
+necessary. Over the years, ordinary
+people sitting at their computers at
+home have successfully matched a missing
+person profile to an unidentified
+remains profile simply by noticing a
+detail that a tired detective missed in
+1998. They noticed that a unique piece
+of jewelry matched or that the timeline
+aligned perfectly despite the geographic
+distance. Solving a decad's old cold
+case does not always require a brilliant
+cinematic detective. Sometimes it merely
+requires one incredibly patient person
+with an internet connection, a
+willingness to look at the raw data and
+a system designed to let them connect
+the dots. Number two, SEC Edgar. We live
+in an era of relentless corporate
+marketing. A company's chief executive
+officer can go on a popular podcast and
+confidently declare that their business
+is stronger than ever. The public
+relations department can issue glowing
+press releases about revolutionary new
+products. The social media team can post
+endless charts showing exponential
+growth. But talk is cheap and marketing
+is completely legally subjective. If you
+want to know what is actually happening
+inside a publicly traded company, you
+have to look at the documents where
+lying is a federal crime. You have to
+look at Edgar. Edgar stands for the
+electronic data gathering analysis and
+retrieval system. It is the primary
+database maintained by the Securities
+and Exchange Commission and it is the
+ultimate corporate truth serum.
+Following the stock market crash of
+1929, the federal government passed laws
+requiring publicly traded companies to
+disclose their true financial health to
+the public, ensuring investors actually
+knew what they were buying. Today, all
+of those legally mandated disclosures
+are filed into the Edgar database and
+they are completely free for anyone to
+search and read. If you want to
+understand a company, you do not look at
+their website. You go to Edgar and you
+search for their form 10K. The 10K is a
+comprehensive annual report that a
+company is legally required to file. It
+contains audited financial statements,
+exact revenue numbers, and detailed
+breakdowns of the company's operations.
+But the most revealing part of the 10K
+is a specific section called risk
+factors. In this section, a company is
+legally forced to confess everything
+that could potentially destroy their
+business. They must list their
+vulnerability to supply chain failures,
+the threats posed by their competitors,
+pending lawsuits that could bankrupt
+them, and the specific geographic risks
+to their operations. A company's
+marketing department will tell you their
+product is invincible. Their Edgar
+filing will coldly explain exactly how
+and why they might fail. You can also
+track the real-time behavior of
+corporate executives using form 4. A
+form four must be filed whenever an
+insider like a CEO or a member of the
+board of directors buys or sells shares
+of their own company's stock. If a CEO
+is on television telling retail
+investors to buy the stock because the
+company's future is incredibly bright,
+but you look on Edgar and see that the
+CEO just filed a form for quietly
+selling 40% of their own personal
+shares. You know exactly which action to
+believe. Edgar is built on structured
+data, often using a format called XBRL,
+which means the numbers are standardized
+and machine readable. Financial analysts
+build entire careers simply scraping and
+interpreting the data flowing through
+this system. The truth about a modern
+corporation is never found in a colorful
+slide deck or a charismatic keynote
+speech. It is found in the rigid,
+unglamorous paperwork they are legally
+forced to file under the threat of fines
+and imprisonment. Edgar strips away the
+spin and forces the reality of the
+balance sheet into the open. Number one,
+crest. For nearly two decades, there was
+a very specific, deeply absurd ritual
+required to read the declassified
+secrets of the Central Intelligence
+Agency. The agency was legally obligated
+to make historically declassified
+documents available to the public, but
+they complied in the most restrictive
+way possible. If you wanted to read
+these files, you had to physically
+travel to the National Archives building
+in College Park, Maryland. You had to go
+during normal business hours, sign in,
+and sit at one of only four specific
+computer terminals designated for this
+purpose. The database was called the CIA
+record search tool, or Crest. It
+contained millions of pages of
+declassified history, but the agency
+effectively built a geographical payw
+wall around it, ensuring that only the
+most dedicated researchers and
+journalists would ever bother to look.
+That system survived until 2017 when the
+transparency organization Mukrock filed
+a Freedom of Information Act lawsuit
+against the CIA demanding that the
+database be made accessible on the open
+internet. The agency eventually
+conceded. Today, the entire Crest
+database containing over 12 million
+pages of declassified documents is fully
+searchable from any web browser in the
+world. The contents of this database are
+staggering and they completely bypass
+the need for internet conspiracy
+theories because the documented truth is
+strange enough. You can search the
+database and find the original
+unvarnished files from the height of the
+Cold War. You can read the internal
+memos detailing the construction of the
+Berlin Tunnel, a massive espionage
+operation where the CIA literally dug a
+tunnel under East Berlin to tap into the
+communications network of the Soviet
+military. You can read the daily
+intelligence briefings given to past
+presidents, seeing exactly how global
+crises were analyzed in real time.
+Perhaps the most famous inclusion is the
+declassified documentation of Project
+Stargate. For years, rumors circulated
+that the United States military and the
+intelligence community were spending
+taxpayer money trying to develop psychic
+abilities. Through the Crest database,
+you can read the actual project files.
+You can see the official reports
+detailing experiments in remote viewing
+where individuals were placed in
+isolated rooms and asked to psychically
+visualize classified targets halfway
+across the globe. You can read the
+government's official analysis of the
+spoonbending illusionist Uri Geller,
+treating his claims with bureaucratic
+seriousness. You can also search the
+AY's official reporting files on
+unidentified flying objects, reading the
+raw witness accounts and internal
+evaluations from decades of aerial
+phenomena investigations.
+The database operates exactly like a
+search engine for history. It is filled
+with redacted lines, strange acronyms,
+and the dry clinical tone of federal
+intelligence gathering. But what makes
+Crest so compelling is the realization
+of how much information is completely
+declassified and sitting in plain sight.
+The government is not hiding these
+specific files in a secure bunker
+guarded by armed soldiers. They are
+sitting on a public web server, fully
+indexed and searchable. The most
+shocking secrets the government holds
+regarding these historical events are no
+longer hidden by a massive coverup. They
+are largely hidden by our own refusal to
+simply log on, type in a search term,
+and read the original documents for
+ourselves. That's all for today. I'll be
+making similar videos in the future.

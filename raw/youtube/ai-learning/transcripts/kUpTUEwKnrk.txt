@@ -1,0 +1,674 @@
+Today we're going to be talking about
+how you can build anything with lovable
+and naden. So we're going to be doing a
+live build of spinning up a web page
+with lovable and then also building the
+backend on nadn. But first of all I
+wanted to go over highle what this
+architecture looks like. So right here
+is lovable. This is what we're starting
+off with and this is where we're going
+to be creating the interface that the
+user is interacting with. What we do
+here is we type in a prompt in natural
+language and lovable basically spins up
+that app in seconds. And then we're able
+to talk back and forth and have it make
+minor fixes for us. So what we can do is
+when the user inputs information into
+our lovable website it can send that
+data to naden the nadn workflow that
+we're going to set up can you know use
+an agent to take action in something
+like gmail or slack air tableable or
+quickbooks and then naden can send the
+data back to lovable and display it to
+the user and this is really just the tip
+of the iceberg there's also some really
+cool integrations with lovable and
+superbase or stripe or resend so there's
+a lot of ways you can really use lovable
+to develop a full web app and so while
+we're talking high We just wanted to
+show you an example flow of what this
+naden could look like where we're
+capturing the information the user is
+sending from lovable via web hook. We're
+feeding that to a large language model
+to create some sort of content for us
+and then we're sending that back and it
+will be displayed in the Lovable web
+app. So let's head over to Lovable and
+get started. So if you've never used
+Lovable before, don't worry. I'm going
+to show you guys how simple it is. You
+can also sign up using the link in the
+description for double the credits.
+Okay, so this is all I'm going to start
+with just to show you guys how simple
+this is. I said, "Help me create a web
+app called Get Me Out of This, where a
+user can submit a problem they're
+having." Then I said to use this image
+as design inspiration. So, I Googled
+landing page design inspiration, and I'm
+just going to take a quick screenshot of
+this landing page, copy that, and then
+paste it into Lovable. And then we'll
+fire this off. Cool. So, I just sent
+that off. And on the right hand side,
+we're seeing it's going to spin up a
+preview. So, this is where we'll see the
+actual web app that it's created and get
+to interact with it. Right now, it's
+going to come through and start creating
+some code. And then on the lefth hand
+side is where we're going to have that
+back and forth chat window to talk to
+lovable in order to make changes for us.
+So right now, as you can see, it's going
+to be creating some of this code. We
+don't need to worry about this. Let's go
+into nit real quick and get this
+workflow ready to send data to. Okay, so
+here we are in niten. If you also
+haven't used this app before, there'll
+be a link for it down in the
+description. It's basically just going
+to be a workflow builder and you can get
+a free trial just to get started. So you
+can see I have different workflows here.
+We're going to come in and create a new
+one. And what I'm going to do is we're
+gonna add a first step that's basically
+saying, okay, what actually triggers
+this workflow. So I'm gonna grab a web
+hook. And so all a web hook is is, you
+know, it looks like this. And this is
+basically just a trigger that's going to
+be actively listening for something to
+send data to it. And and data is
+received at this URL. And so right now
+there's a test URL and there's a
+production URL. Don't worry about that.
+We're going to click on this URL to copy
+it to our clipboard. And basically, we
+can give this to Lovable and say, "Okay,
+whenever a user puts in a problem
+they're having, you're going to send the
+data to this web hook." Cool. So,
+hopping over to Lovable. As you can see,
+it's still coding away. And looks like
+it's finishing up right now. And it's
+saying, "I've created a modern
+problem-solving web app with the hero
+section, submission form, and feature
+section in blue color." Um, looks like
+there's an error. So, all we have to do
+is click on try to fix, and it should go
+back in there and continue to spin up
+some more code. Okay. So, now it looks
+like it finished that up. And as you can
+see, we have the website filled up. And
+so it created all of this with just uh
+an image as inspiration as well as just
+me telling it one sentence help me
+create a web app called get me out of
+this where a user can submit a problem
+they're having. So hopefully this should
+already open your eyes to how powerful
+this is. But let's say for the sake of
+this demo we don't want all this. We
+just kind of want one simple landing
+page where they send a problem in. So
+all I'd have to do is on this lefth hand
+side scroll down here and say make this
+page more simple. We only need one
+field which is what
+problem can we help with. So we'll just
+send that off. Very simple query as if
+we were just kind of talking to a
+developer who was building this website
+for us and we'll see it modify the code
+and then we'll see what happens. So down
+here you can see it's modifying the code
+and now we'll see what happens. It's
+just one interface right here. So it's
+created like a title. It has these
+different buttons and we could easily
+say like, okay, when someone clicks on
+the home button, take them here. Or when
+someone clicks on the contact button,
+take them here. And so there's all this
+different stuff we can do, but for the
+sake of this video, we're just going to
+be worrying about this interface right
+here. And just to give it some more
+personality, what we could do is add in
+a logo. So I can go to Google and search
+for a thumbs up logo PNG. And then I can
+say add this logo in the top left. So
+I'll just paste in that image. We'll
+fire this off to lovable. And it should
+put that either right up here or right
+up here. We'll see what it does. But
+either way, if it's not where we like
+it, we can just tell it where to put it.
+Cool. So, as you can see, now we have
+that logo right up there. And let's say
+we didn't like this, all we'd have to do
+is come up to a previous version, hit on
+these three dots, and hit restore. And
+then it would just basically remove
+those changes it just made. Okay. So,
+let's test out the functionality over
+here. Let's say a problem is we want to
+get out of Oh, looks like the font is
+coming through white. So, we need to
+make sure this is changed.
+And boom, we just told it to change the
+text to black and now it's black and we
+can see it. So anyways, I want to say
+get me out of a boring meeting. So we'll
+hit get me out of this and we'll see
+what happens. It says submitting and
+nothing really happens. Even though it
+told us, you know, we'll get back to you
+soon. Nothing really happened. So, what
+we want to do is we want to make sure
+that it knows when we hit this button,
+it's going to send that data to our
+Naden web hook. So, we've already copied
+that web hook to our clipboard, but I'm
+just going to go back into naden. We
+have the web hook. We'll click on this
+right here back into lovable. Basically,
+just saying when I click get me out of
+this, so this button right here, send
+the data to this web hook. And also,
+what we want to do is say as a
+post request because it's going to be
+sending data. So, we're going to send
+that off. And while it's making that
+change to the code, real quick, we want
+to go into nitn and make sure that our
+method for this web hook is indeed post.
+So I don't want to dive into too much
+what that means really, but lovable is
+going to be sending a post request to
+our web hook. Meaning there's going to
+be stuff within this web hook like body
+parameters and different things. And so
+if this wasn't configured as a post
+request, it might not work. So you'll
+see once we actually get the data and we
+catch it in any. But anyways, now when
+the users click on get me out of this,
+the form will send the problem
+description to your web hook via a post
+request. So let's test it out. So we're
+going to say I forgot to prepare a brief
+for my meeting. We're going to go back
+and end it in real quick and make sure
+we hit listen for test event. So now our
+web hook is actively listening back in
+lovable. We'll click get me out of this
+and we will see what happens. We can
+come and end it in and we can now see we
+got this information. So here's the body
+I was talking about where we're
+capturing a problem which is I forgot to
+prepare a brief for my meeting. So, we
+now know that Lovable is able to send
+data to NAND. And now it's on us to
+configure what we want to happen in NAND
+so we can send the data back to Lovable.
+Cool. So, what I'm going to do is I'm
+going to click on the plus that's coming
+off of the web hook. And I'm going to
+grab an AI agent. What this is going to
+do is allow us to connect to a different
+chat model and then the agent's going to
+be able to take this problem and produce
+a response. And I'm going to walk
+through the step by step, but if you
+don't really want to worry about this
+and you just want to worry about the
+lovable side of things, you can download
+the finished template from my free
+school community. I'll link that down in
+the description. That way, you can just
+plug in this workflow and just give
+lovable your noden web hook and you'll
+be set up. But anyways, if you join the
+free school community, you'll click on
+YouTube resources, click on the post
+associated with this video, and you'll
+be able to download the JSON right here.
+And then when you have that JSON, you
+can come into Nadn, open up a new
+workflow, click these three dots in the
+top, and then click import from file.
+And when you open that up, it'll just
+have the finished workflow for you right
+here. But anyways, what I'm going to do
+is click into the AI agent. And the
+first thing is we have to configure what
+information the agent is going to
+actually read. So first of all, we're
+going to set up that as a user prompt.
+We're going to change this from
+connected chat trigger node to define
+below because we don't have a connected
+chat trigger node. We're using a web
+hook as we all know. So we're going to
+click on define below and we are
+basically just going to scroll down
+within the web hook node where the
+actual data we want to look at is which
+is just the problem that was submitted
+by the user. So down here in the body we
+have a problem and we can just drag that
+right in there and that's basically all
+we have to do. And maybe we just want to
+define to the agent what it's looking
+at. So we'll just say like the problem
+and then we'll put a colon. So now you
+can see in the result panel this is what
+the agent will be looking at. And next
+we need to give it a system message to
+understand what it's doing. So, I'm
+going to click on add option, open up a
+system message, and I am going to
+basically tell it what to do. So, here's
+a system message that I came up with
+just for a demo. You are an AI excuse
+generator. Your job is to create clever,
+creative, and context appropriate
+excuses that someone could use to avoid
+or get out of a situation. And then we
+told it to only return the excuse and
+also to add a touch of humor to the
+excuses. So now, before we can actually
+run this to see how it's working, we
+need to connect its brain, which is
+going to be an AI chat model. So, what
+I'm going to do is I'm going to click on
+this plus under chat model. For this
+demo, we'll do an open AI chat model.
+And you have to connect a credential if
+you haven't done so already. So, you
+would basically come into here, click
+create new credential, and you would
+just have to insert your API key. So,
+you can just Google OpenAI API. You'll
+click on API platform. You can log in,
+and once you're logged in, you just have
+to go to your dashboard, and then in the
+left, you'll have an API key section.
+All you'll have to do is create a new
+key. We can call this one um test
+lovable. And then when you create that,
+you just copy this value. Go back into
+Nitn. Paste that right here. And then
+when you hit save, you are now connected
+to OpenAI's API. And we can finally run
+this agent real quick. If I come in here
+and hit test step, we will see that it's
+going to create an excuse for I forgot
+to prepare a brief for my meeting, which
+is sorry, I was too busy trying to bond
+with my coffee machine. Turns out it
+doesn't have a prepare briefs setting.
+So basically what we have is we're
+capturing the problem that a user had.
+We're using an AI agent to create a
+excuse. And then we need to send the
+data back to Lovable. So all we have to
+do here is add the plus coming off of
+the agent. We're going to call this a
+respond to web hook node. And we're just
+going to respond with the first incoming
+item, which is going to be the actual
+response from the agent. But all we have
+to do also to configure this is back in
+the web hook node, there's a section
+right here that says respond. Instead of
+responding immediately, we want to
+respond using the respond to web hook
+node. So now it will be looking over
+here and that's how it's going to send
+data back to lovable. So this is pretty
+much configured the way we need it, but
+we have to configure Lovable now to wait
+for this response. Okay. So what I'm
+telling Lovable is when the data gets
+sent to the web hook, we wait for the
+response from the web hook, then output
+that in a field that says here is your
+excuse. So we'll send this off to
+Lovable and see what it comes up with.
+Okay, so now it said that I've added a
+new section that displays here is your
+excuse along with the response message
+from the web hook when it's received. So
+let's test it out. First, I'm going to
+go back and edit in and we're going to
+hit test workflow. So the web hook is
+now listening for us. So we'll come into
+our lovable web app and say I want to
+skip a boring meeting. We'll hit get me
+out of this. So now that data should be
+captured in Naden. It's running. And now
+the output is I just realized my pet
+goldfish has a lifealtering decision to
+make regarding his tank decorations and
+I simply cannot miss this important
+family meeting. So it doesn't look
+great, but it worked. And if we go into
+NDN, we can see that this run did indeed
+finish up. And the output over here was
+I just realized my pet goldfish has a
+lifealtering decision blah blah blah. So
+basically what what's happening is the
+web hook is returning JSON which is
+coming through in a field called output
+and then we have our actual response
+which is exactly what lovable sent
+through. So it's not very pretty and we
+can basically just tell it to clean that
+up. So what I just did is I said only
+return the output fields value from the
+web hook response not the raw JSON. So
+we wanted to just output this right here
+which is the actual excuse. And so some
+of you guys may not even have had this
+problem pop up. I did a demo of this
+earlier just for testing and I basically
+walked through these same steps and this
+wasn't happening. But you know sometimes
+it happens. Anyways, now it says the
+form only displays the value from the
+output field. So let's give it another
+try. So back in we're going to hit test
+workflow. So it's listening for us in
+lovable. We're going to give it a
+problem. So I'm saying I overslept and
+I'm running late. I'm going to click get
+me out of this. And we'll see the
+workflow just finished up. And now we
+have the response in a clean format
+which is I accidentally hit the snooze
+button until it filed for a restraining
+order against me for harassment. Okay.
+So now that we know that the
+functionality within N is working. It's
+sending data back. We want to customize
+our actual interface a little bit. So
+the first thing I want to do just for
+fun is create a level system. So every
+time someone submits a problem, they're
+going to get a point. And if they get
+five points, they'll level up. If they
+get 20 total points, they'll level up
+again. Okay. So I just sent off create a
+dynamic level system. Every time a user
+submits a problem, they get a point.
+Everyone starts at level one and after
+five points, they reach level two. Then
+after 15 more points, they reach level
+three. And obviously, we'd have to bake
+in the rest of the the levels and how
+many points you need. But this is just
+to show you that this is going to
+increase every time that we submit a
+problem. And also, you'd want to have
+some sort of element where people
+actually log in and get authenticated.
+And you can store that data in Superbase
+or in um, you know, Firebase, whatever
+it is, so that everyone's levels are
+being saved and it's specific to that
+person. Okay. Okay, so looks like it
+just created a level system. It's
+reloading up our preview so we can see
+what that looks like now. Um, looks like
+there may have been an error, but now,
+as you can see right here, we have a
+level system. So, let's give it another
+try. I'm going to go into Nitn. We're
+going to hit test workflow. So, it's
+listening once again, and we're going to
+describe a problem. So, I'm saying my
+boss is mean. I don't want to talk to
+him. We're going to hit submit. The end
+workflow is running right now on the
+back end. And we just got a message
+back, which is, I'd love to chat, but
+I've got a hot date with my couch and
+binge watching the entire season of
+Awkward Bosses. And you can see that we
+got a point. So, four more points to
+unlock level two. But before we continue
+to throw more prompts so that we get up
+to level two, let's add in one more cool
+functionality. Okay, so I'm just firing
+off this message that says add a drop
+down after what problem can we help with
+that gives the user the option to pick a
+tone for the response. So the options
+can be realistic, funny, ridiculous, or
+outrageous. And this data of course
+should be passed along in that web hook
+to NADN because then we can tell the
+agent to say okay here's the problem and
+here's the tone of an excuse the user is
+requesting and now it can make a request
+or a response for us. So looks like it's
+creating that change right now. So now
+we can see our dropown menu that has
+realistic, funny, ridiculous, and
+outrageous. As you can see before you
+click on it, it's maybe not super clear
+that this is actually a drop down. So
+let's make that more clear. And what I'm
+going to do is I'm going to take a
+screenshot of this section right here.
+I'm going to copy this and I'm just
+going to paste it in here and say make
+this more clear that it is a drop-own
+selection and we'll see what it does
+here. Okay, perfect. So, it just added a
+little arrow as well as a placeholder
+text. So, that's way more clear. And now
+what we want to do is test this out.
+Okay, so now to test this out, we're
+going to hit test workflow. But just
+keep in mind that this agent isn't yet
+configured to also look at the tone. So
+this tone won't be accounted for yet.
+But what we're going to do is we have I
+overslept and the response is going to
+be funny. We'll hit generate me a or
+sorry get me out of this. So we have a
+response and our level went up. We got
+another point. But if we go into Nit, we
+can see that it didn't actually account
+for the tone yet. So all we have to do
+is in the actual user message, we're
+basically just going to open this up and
+also add a tone. And we can scroll all
+the way down here and we can grab the
+tone from the body request. And now it's
+getting the problem as well as the tone.
+And now in the system prompt, which is
+basically just defining to the agent its
+role. We have to tell it how to account
+for different tones. Okay, so here's
+what I came up with. I gave it some more
+instructions and I said, "You're going
+to receive a problem as well as a tone.
+And here are the possible tones, which
+are realistic, funny, ridiculous, and
+outrageous." And then I kind of said
+what that means. And then I said, "Your
+excuse should be 1 to three sentences
+long, and match the selected tone." So
+that's all we're going to do. We're
+going to hit save. Okay. So now that
+it's looking at everything, we're going
+to hit test workflow. The web hook's
+listening. We'll come back into here and
+we're going to submit. I broke my
+friend's iPhone and the response tone
+should be outrageous. So, we're going to
+send that off. And it's loading because
+our end workflow is triggering. And now
+we just got it. We also got a message
+that says we earned a point. So, right
+here, we now only need two more for
+level two. But the excuse is I was
+trying to summon a unicorn with my
+telekinetic powers and accidentally
+transformed your iPhone into a rogue
+toaster that launched itself off the
+counter. I swear it was just trying to
+toast a bagel. Okay, so obviously that's
+pretty outrageous and that's how we know
+it's working. So, I'm sure you guys are
+wondering what would you want to do if
+you didn't want to come in here and
+every single time make this thing, you
+know, test workflow. What you would do
+is you'd switch this to an active
+workflow. Now, basically, we're not
+going to see the executions live anymore
+with all these green outlines. But
+what's happening now is it's using the
+production URL. So, we're going to have
+to copy the production URL, come back
+into Lovable, and just basically say I
+switched the URL or sorry, let's call I
+switched the web hook to this. And we'll
+paste that in there, and it should just
+change the data. The logic should be all
+the exact same because we've already
+built that into this app. But we're just
+going to switch the web hook. So now we
+don't have to go click test workflow
+every time in NAN. And super excited. We
+have two more problems to submit and
+then we'll be level two. So now it says
+the web hook URL has been updated. So
+let's test it out. As you can see in
+here, we have an active workflow. We're
+not hitting test workflow. We're going
+to come in here and submit a new
+problem. So we are going to say um I
+want to take four weeks off work, but my
+boss won't let me. We are going to make
+the response tone. Let's just do a
+realistic one. And we'll click get me
+out of this. It's now calling that
+workflow that's active and it's
+listening. So we got a point. We got our
+response which is I've been dealing with
+some unforeseen family matters that need
+my attention. I believe taking four
+weeks off will help me address them
+properly. I plan this time to use this
+time to ensure everything is in order so
+I can return more focused and
+productive. I would definitely say that
+that's realistic. What we can do is come
+into NAN. We can click up here on our
+executions and we can see what just
+happened. So this is our most recent
+execution and if we click into here it
+should have been getting the problem
+which was I want to take four weeks off
+work and the tone which was realistic.
+Cool. Cool. So, now that we know that
+our active new web hook is working,
+let's just do one more query and let's
+earn our level two status. I'm also
+curious to see, you know, we haven't
+worked in any logic of what happens when
+you hit level two. Maybe there's some
+confetti. Maybe it's just a little
+notification. We're about to find out.
+Okay, so I said I got invited on a
+camping trip, but I hate nature. We're
+going to go with ridiculous and we're
+going to send this off. See what we get
+and see what level two looks like. Okay,
+so nothing crazy. We could have worked
+in like, hey, you know, make some
+confetti pop up. All we do is we get
+promoted to level two up here. But, you
+know, as you can see, the bar was
+dynamic. It moved and it did promote us
+to level two. But the excuse is, I'd
+love to join, but unfortunately, I just
+installed a new home system that detects
+the presence of grass, trees, and
+anything remotely outdoorsy. If I go
+camping, my house might launch an
+automated rescue mission to drag me back
+indoors. So, that's pretty ridiculous.
+And also, by the way, up in the preview,
+you can make it mobile. So, we can see
+what this would look like on mobile.
+Obviously, it's not completely optimized
+yet, so we'd have to work on that. But
+that's the ability to do both desktop
+and mobile. And then when you're finally
+good with your app, up in the top right,
+we can hit publish, which is just going
+to show us that we can connect it to a
+custom domain or we can publish it at
+this domain that is made for us right
+here. Anyways, that is going to be it
+for today's video. This is really just
+the tip of the iceberg with, you know,
+nodn already has basically unlimited
+capabilities. But when you connect that
+to a custom front end when you don't
+have to have any sort of coding
+knowledge, as you can see, all of these
+prompts that I use in here was just me
+talking to it as if I was talking to a
+developer. And it's really, really cool
+how quick we spun this up. So, if you
+guys are interested in seeing some more
+in-depth videos with Lovable, like
+connecting to Superbase or Firebase and
+setting up some user authentication
+stuff, definitely let me know. I'd love
+to make some content on that for you
+guys. If you kind of liked this live
+build style, then definitely check out
+my paid community. The link for that
+will be down in the description. It's
+going to be a pretty hands-on approach
+to learning how to build out these
+automations with any or lovable or
+whatever it is you're working with. We
+got a great community of members who are
+always sharing resources and challenges
+that they're running into, as well as a
+classroom section with some deep dive
+topics like building agents, vector
+databases, APIs, and HTTP requests, as
+well as step-by-step builds. And then we
+have five live calls per week to make
+sure you're never getting stuck and also
+meeting other people in the space. So,
+I'd love to see you guys in this
+community on some of these live calls.
+But, as always, appreciate you making it
+to the end of the video. If you learned
+something new or if you enjoyed, please
+give it a like. Definitely helps me out
+a ton. And I will see you guys in the
+next video. Thanks.

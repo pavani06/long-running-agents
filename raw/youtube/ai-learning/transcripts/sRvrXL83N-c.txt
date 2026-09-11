@@ -1,0 +1,1012 @@
+I thought where we would start
+early is a lot of talk right before you joined about
+this world's moving fast.
+XAI, Cursor, OpenAI
+fighting Anthropic. You guys have done
+such a great job
+of stacking going
+from a data business to a lakehouse business
+to now an AI business. Just state of the union,
+view from the top,
+what are you seeing? Frame the landscape for us. What are the biggest things
+that you are thinking about?
+And, I've got a
+bunch of questions that we can talk about, but
+I thought we'd just open it up to what is the biggest
+thing on your mind
+as you think about AI? Yeah, I think you
+guys can chill out. Don't be stressed.
+I think times are
+crazy, and I think it's not warranted, basically. And I think the stress makes
+people do stupid things
+and chase just whatever
+happens to be the crazy thing that everybody's
+talking about on Twitter.
+I think it makes people
+have tunnel vision and not work on the right stuff. Yeah. And I think that's what I see
+with the current generation.
+Like every year we
+have interns coming to Databricks and the interns,
+I do always a session with them, an hour or 90
+minutes or something
+they can ask questions. And last two years
+have been just insane. Before they would ask
+for good career advice,
+and you would give them
+good career advice. Now they're like 22-year-olds
+who are like, oh my God, should I start my own
+company and be a CEO?
+Or if I delay that by six
+months working on something have I ruined my career
+and life is over. And AGI is going to happen,
+and I'm going to miss the boat.
+And what am I going to do? So I'm just trying to tell
+people like, calm down, take a deep breath.
+Things take time. So that's what I would say. I would say, actually, I
+think also in Silicon Valley,
+if you think about it right
+now, what's happening is, and you might disagree
+with some of this, so feel free to push back.
+You guys might disagree too,
+you can push back as well. But there's this quest
+for superintelligence, which I think is unwarranted.
+Because first of
+all, they're not even defining what
+superintelligence is. But it's this godlike, I
+think people reading Kurzweil
+and it's take off
+singularity, this thing that comes and recursive
+self-improvement and cures all
+the diseases and GDP
+jumps by like 10% and unemployment goes to 20%. And there's no more jobs and--
+Fear mongering. UBI to everyone and so on. No, I think they believe it. I think it's not needed. I think we already have AGI.
+So we already have artificial
+general intelligence.
+This is always equally fun. How many people think
+we have AGI already? OK, it's always the same.
+It's always like 10%. How many of you think that a lot
+of people that you interact with
+are not as smart as the
+smartest models that you use? OK.
+Now let's start all over. How many of you think
+we don't have AGI yet? [LAUGHTER]
+By the way, it always works. See, it's like the
+hypnosis is working. For some reason they've
+gotten the whole world
+to believe we don't have AGI. But it's like you just
+answered it, that you have it. But yet, no, you want
+to move the goalpost.
+By the way, I was at
+the research lab in 2009 at UC Berkeley called AMPLab. It was probably the biggest,
+most active important AI
+lab of its time in 2009. And the god of AI was
+working in that lab,
+which is Michael Jordan. His name is actually that. So he was like the
+Michael Jordan of AI. And back then, our definition
+of AGI, Artificial General
+Intelligence, we've hit that
+Like anything we imagine
+would be AGI, we
+already hit that. And those are all the
+leading AI researchers in the United States, many of
+them were working in that lab.
+But I wanted to see if
+I'm just full of it. So I went and asked some of
+those people that were there at the time, and I asked them,
+I said, hey, do you agree?
+And they all said, yeah,
+according to that definition, in 2009, for sure
+we've hit that. But, there's always
+some stupid but.
+We moved the goalpost
+or we want to change it, or we want to have some
+other definition, or AI.
+There's some example that it
+couldn't count the number of Rs in strawberry or something. So therefore, we don't have AGI.
+We already have AGI, OK. It's already smarter
+than many of the people that you interact with. That is general intelligence.
+It is artificial. It's not exactly a human. It's not the way
+human brain works. So we already have that. So in some sense, blowing a
+lot of money on GPUs and data
+centers and all of that kind
+of stuff is not really needed. Then there is at the
+same time, so you asked
+for the state of the Union. On the other hand, you
+have the MIT Tech report that says that 95% of
+the POCs are failing.
+It's kind of right,
+directionally. I don't know if the
+95% might be wrong. Maybe it's just 75%, who knows.
+But if you go inside
+of an enterprise or inside of an organization. You go into any company and you
+look at how they're using stuff,
+the reality is that
+there's no lots of agentic coworkers running
+around doing all the work,
+blending with humans. That's not happening, OK. It's just humans
+shuffling TPS reports.
+It's like Office,
+the QA, the movie. Office Space, the movie, is
+still how the world runs.
+That's the reality. It's just the truth. Even inside the AI companies,
+that's how they run them. It's like they like to think,
+but they're hiring salespeople
+from old school companies,
+and they're running things in old school ways. And I don't see that
+futuristic thing.
+So then what's going on? We have AGI, but on the other
+hand, none of this is working
+and no company is using it. What the hell is going on? I think it's very simple. If you don't get
+all the context that
+exists inside of
+these organizations and how humans work and
+everything, all the contexts, we have in our heads,
+if you don't get that
+to the models and
+the agents, they're going to do lots of stupid
+mistakes and they're useless. And that's what's
+happening right now.
+The agents don't
+have the context that humans have inside
+of organizations, therefore they're useless.
+They do stupid mistakes because
+they don't know all the stuff that we know. Inside of every company,
+there's always like this one guy
+or this one girl, who's like,
+oh, go ask John or Jane. She knows everything. And everybody's like,
+tapping on that person.
+And that's the one person you
+can't lose in the company. If you lose that person,
+the whole company collapses.
+That one person exists in every
+department, in every company, and every organization. And that one person has all
+the context in their head.
+And that person, what
+they have in their head is not inside of the model. So therefore, the
+model can't operate.
+It just doesn't know
+a lot of the stuff. Usually John or
+Jane in that company have been there for 10 years, 15
+years, 20 years, sometimes 30,
+40 years. You need to get that
+transferred to the AI. If you don't, doesn't matter
+if you get super intelligence
+and you can solve really
+difficult math questions.
+And if you can get that
+context into the AIs, we already have AGI and they
+can already crack the problem.
+So my urge to you
+guys would be if you want to have impact
+in the world,
+figure out how to
+get that context into the AIs inside of it. Take an organization,
+how do you transform
+how old school
+business is happening, and how do you get those
+processes into the agents,
+then you will have
+massive impact. Because AGI is already here. That's my state of the Union. AGI is already here.
+You got to download the
+brain into the silicon. Get the carbon to
+talk to the silicon. Yes.
+Actually we were just
+talking about this-- And by the way, cue
+up like, pushbacks. I'm very curious to hear.
+I'm sure a majority disagrees. How many disagree with this? Oh, not that many.
+OK, I'm going to be
+more provocative. We need more pushback. So before we go into AI,
+there's a shadow of AI.
+Software is dead. Software has been
+dead for a while. We've had this four times. Every time it happens,
+it bounces back.
+Some macro reason. Brexit, taper
+tantrum, inflation. This time it's AI.
+And the question
+the class is asking is should we be loading
+up on software stocks?
+So is software dead? Is this a buy the dip situation?
+And I can't think
+of a better person to ask because depending on the
+day you ask, there's software.
+You're a AI company software. Speak about that,
+is software dead? I think you know better. You're an investor. I'm not an investor.
+Also, I don't give
+financial advice. But-- [LAUGHTER]
+Having said that, if
+all software is dead, then isn't OpenAI
+and Anthropic dead? They're just software companies
+with a bunch of researchers
+writing software. So those companies would
+be dead too, right? So they shouldn't have
+trillion dollar valuations.
+SpaceX might make sense
+because they make rockets, but everybody else
+should be dead. NVIDIA should be dead.
+Because they just have
+really smart people who create chip designs, humans that
+use some software to create chip
+designs, and then they ship them
+over the internet, probably, over to TSMC, which is a real
+company creating actual chips.
+But then NVIDIA would
+be dead as well. So the world's most
+valuable company should be dead as well,
+because software is dead.
+So software
+obviously isn't dead, and it's not going to be dead. And NVIDIA and
+OpenAI and Anthropic are not going to
+be dead companies,
+because of whatever
+SaaS apocalypse or whatever you want to call it. But I do think two
+things are true.
+I think that two big
+changes have happened, which is one is
+barriers to entry
+have significantly
+gone down, and then switching costs have
+significantly gone down. So let's talk about those.
+Barriers to entry, because
+it's easier than ever to write software. So that's like a new weapon.
+Anyone can produce software very
+cheaply, almost at zero cost. It's not quite zero cost.
+And it will never be zero
+cost, but much, much cheaper than before. But that weapon is
+available to everyone. So also the people that
+create software now also
+have that weapon. It's not like only some
+new players have that. Everyone now.
+So including Databricks. We're a software company,
+but we also have that weapon, and it's an awesome weapon. I'm using it. Have you used that
+weapon and substituted
+any of your core
+software expenses like your CRM,
+your IT help desk, your office of the CFO software?
+No, I think that's stupid. Also, I think switching costs
+are lowered because it's easier to switch between UIs. Humans
+get locked into software.
+I don't know. How many use Android? No one. OK, wow.
+How many of you use iPhone? OK, wow. All right.
+You don't want to
+switch to Android? Why? You don't know the UI. You don't know how to use it. It's like a different UI.
+You would have to also
+transfer all your data, your phone, contacts, all that. There's too much
+inertia switching costs.
+That's a switching cost. But if in the future you're
+just talking to an agent that switching costs gets
+eliminated, because you're just
+talking to an agent. So who cares if the
+agent is instrumenting your Android, or your iPhone,
+or your Gmail or Outlook,
+or your Salesforce, or the
+competitor or whatever it is. So that's like the switching
+cost coming down as well.
+So yeah, I think it's going
+to be more competition. So I think software
+companies will have to run more efficiently.
+That I think is going to happen. But software is
+not the only moat. There's a good book
+you should read.
+It's called The Seven Powers. How many have read
+The Seven Powers? OK, a bunch of people here. OK. Yeah, so there are moats
+that are not just software.
+I mean, like economies of scale. If you can do things at
+scale better than anyone else so that you can afford
+crazy fixed costs because you're
+amortizing them away because
+of your scale, Amazon, AWS,
+then that's a moat. If you have a brand like
+Ferrari or Rolex, that's a moat.
+People writing cheap
+software can't just come replace that brand. People care about that brand. Trust.
+I'm the only one providing. You can trust my company. We don't get hacked. We have, like, really
+secure software.
+We have special certification. Maybe we have patents. That remains a moat that you
+cannot break that that easily.
+So all these remain. There's a bunch of other ones. Switching costs and
+so on and so on.
+So data is a big moat. If you have special data
+that no one else has,
+that only you have,
+that's a moat. Doesn't matter if they
+can write cheap software. So I think the
+answer is in between.
+The way I say it is, if
+a company has been around for 10 years and they
+have not innovated--
+If their software looks
+the same as 10 years ago, but the revenue has been going
+up, they should be worried.
+Because they have
+not been innovating. And it's probably easier for
+a company that starts today to then, with barriers
+of entry being
+lower, write software
+quickly that's much better than that company. Because that company hasn't
+done anything for 10 years.
+They should be really afraid. And probably they don't have
+the innovation muscle anymore because they're not innovating.
+So obviously they
+don't have innovators. Those kind of companies
+are going to be wiped out. But there's going to
+be other companies that
+have been innovating
+the last 10 years and they're software companies. Or companies that now get
+their [MUTED] together
+because they're nervous
+and they'll be fine, too. Perfect. So what do you think? You're an investor. I mean, I think there's a
+grade, exactly as you said.
+If I was to give the grades to
+types of software companies, I would say if you have got
+a lot of data, like you said.
+If you've got some cyber like
+you're in some core loop, you're probably most
+robust and immune from it.
+Somewhere in the middle is
+all the workflow software, which has not innovated. The UX still looks the same. And you're like scrunching
+down on your shoulder
+and typing I met Ali Ghodsi
+today, these are the notes. That stuff's probably gone.
+If you were, exactly as
+you said, no innovation. You were a part
+of the old habit.
+But any one of those, they
+have customers, they have data. If they build great AI
+and start innovating,
+they can keep on going. They might have to change their
+pricing structure and their cost basis, but they'll be fine.
+In fact, they have a lot of
+advantages against incumbents. They have data,
+they have customers and they have some scale.
+So they have some
+economies of scale going, but they do have to get
+their [MUTED] together. And that's easier
+said than done.
+Yeah, yeah. I'll flash a chart. Have you guys seen this
+chart from Ethan Mollick?
+He talks about AI is
+very good at some things and he calls it the
+jagged frontier.
+This is customer support. Software engineering,
+this would be the frontier
+of maybe software engineering. Maybe this is customer
+support or whatever. But then there's a lot of
+stuff it's terrible at.
+Like this scale or
+this scale and so on. And Ali you see a lot of--
+We're here, man. We're AGI already. We're over there. We're here. We're here.
+They kind of admitted to it. That's right, that's
+right, that's right. Reluctantly. Yeah. Yeah. So you've got what, like
+6,000, 7,000 customers.
+Those are 10,000 customers. No, we have probably
+20,000 customers. 20,000 customers, sorry. As you see this and
+that's a very good sample
+of the entire universe
+of what's happening. So in that sample
+of 20,000 customers, what are areas where AI is like
+hitting home runs and working
+as advertised? And what are areas where
+the frontier is still rough
+and it's not working. The POCs are failing. Yeah. Look, it's not AI's fault.
+I mean, most companies are somewhere here.
+I think we have AGI, but
+I think most companies, if you look at how much
+maybe they're having, AI's helping me in some tasks.
+That's what most
+companies are doing. That's just how it is. And it's because that context
+isn't there in the model.
+So the model can't do it. Take support, which
+everybody said, OK, that's going to be dead. Support is like gone.
+Right? Support is very hard. Support are literally
+the things that humans don't know what to do.
+They get stuck. So take Databricks. Databricks offers support. Databricks is a company,
+it's an advanced platform
+where you can do data
+science, machine learning. You can do advanced
+things on the platform. These are smart people
+who make big salaries,
+they have education, they
+have data science education. They're trying to
+use Databricks, and maybe they get stuck.
+So their machine
+learning models, it's not getting the right F1
+score or something like that
+and they're stuck. And they tried everything
+they call our support. So it's pretty hard
+to automate that.
+You can't actually give it-- none of the current
+support automation. We've tried them all, companies.
+All of them. Immediately, even actually
+when they start talking to us, as soon as they know who
+we are, they're like, whoa, we can't help you.
+Get out of here. So yeah. Most of the world is over here.
+But it's because we
+don't have the context. If AI could have all
+the context of how our support engineers
+at Databricks operate,
+then the AI could do it. It just doesn't have it. Yeah. One of the things we
+used to say at Palantir is your AI strategy starts
+at your data strategy.
+You got to get the roads paved
+and have the data flowing. If you were to bucket the
+best enterprises who are maybe
+starting to head towards the
+right in your customer base of 20,000. What is common
+between the ones who
+are making it work and
+the Ferraris are flying, and ones where I'm guessing it's
+a context problem for the ones
+that it's not working? And what does it take to
+get the context working? Yeah. It's very hard. It's a human problem.
+It's not an AI problem. We already have AGI. It's a human problem. I don't see anyone really
+doing an excellent job at this.
+You have to rewire all your
+processes in the organization to be able to do it. This is like well known.
+I mean, my favorite is
+there's an article actually, that I recommend people reading
+from 1990 produced by Stanford
+professor or researcher. It's called, I think, From
+the Dynamo to the Computer.
+OK. Check it out. So Dynamo to computer. And it looks at different
+technological revolutions
+and how long it took
+for them to have impact on productivity of the economy.
+And it's just
+takes just forever. Like when the PCs
+came out, the joke
+was, the Nobel laureate
+economist Richard
+Saul said that
+computers or PCs, you can find them everywhere except
+in the productivity statistics.
+It just doesn't show
+up in the statistics. Why?
+People were buying PCs and they
+were using them as typewriters. So they would have
+people type on PCs,
+but then print out the sheets
+and then put them in folders, and then have assistants that
+index them and do things.
+So like you didn't see any
+productivity gains from it. And same thing with if you look
+at the Industrial Revolution,
+same thing happened. We had these steam engines. And the steam factories
+were super dense
+and they were running
+like with these, they were called the
+line shafts, which
+were these things that rotate. When the electric engine
+came, that's the Dynamo,
+it took 40 years before they
+saw any productivity gains in the economy. Wow.
+Yeah. Check it out. This is in that article. It took from 1880-- The diffusion took 40 years. From 1880 to 1920, when
+the electric engine
+came, to see impact. So what they were doing is, they
+were going to these factories that already were these
+line shaft factories.
+That were these
+dense factories, we have a steam engine that's
+rotating this line shaft and it's rotating these belts,
+and then everything is working.
+You have these multiple stories. And all they did is, just like
+the PC, they used a typewriter,
+they would replace the steam
+engine with an electric engine. And just replacing
+the PC, you don't
+get any productivity gains. It took till 1920,
+but maybe it was 1915,
+but I'm roughly right,
+until they realized, wait, we have to change the
+whole factory floor.
+We have to move the
+factories out of the cities. We have to have floor plans that
+are much bigger because now we
+can distribute the electricity. It's not like the torque
+that has inefficiency.
+We can spread it out. We can have floor
+plans that are big. And we can run different
+parts of the factory at different rates. Unit drive versus group drive.
+Took a very long time. That's what's going to happen. Same thing now. Rewiring, I know it because I
+have 20,000 customers and I talk
+to them. I was late to this
+meeting because I was meeting one of the CEOs
+of one of the big banks. And same problem.
+He has the same problem. All the organizations I work
+with have the same problem. They're like, I'm not
+seeing any advantage.
+I don't see. They're all like, AI is amazing. It's coming. It's like, I need it. I need to do that. But they're like, I don't
+see any productivity gains
+in my organization. What the hell am I doing wrong? And I tell them we have
+AGI, and they're like, what?
+That is not true. We don't see anything. It's a very tough problem. Because you're like,
+hey, I got the brain,
+but I got to rebuild
+the human body. The hands, the legs. Yeah. Let me give you an
+example from Databricks.
+So Databricks helps you get data
+from all the different systems like Salesforce, Workday, and so
+on, collect them in one place,
+secure it, and then do AI on it. Like you can do predictions,
+you can build predictive models. That's what Databricks is.
+So we built connectors
+to all these systems. These connectors are, it
+would take us 3/4 to build
+a production connector. We're good at. This is what we do for a living. We build these connectors. We can build a connector from
+Databricks to Salesforce.
+Production ready. It would take us 3/4, so
+nine months to do that. Shipped, secure, with so on.
+That's what we did. So as the LLMs got faster
+and faster and faster,
+I started experimenting
+with this myself and I was like, oh, I could
+write a connector in two days. So I went to the team that
+builds this and I was like, hey,
+I can do this in two days. How come it takes you
+guys three quarters? They're like, OK, great point. Let us come back to you.
+So they went and
+they thought about it and they came back in two weeks
+and they said, OK, you're right.
+But you're also not right. We looked at it and
+yeah, this AI is useful. We can compress it down
+from 3/4 by 1 and 1/2 month.
+So we can get it from nine
+months to 7 and 1/2 months. That's it. That's it. I'm like, well, I can
+do it in two days.
+I'm like, no, no, no. No offense to you, but
+this is production code and it really actually works.
+And we have customer feedback
+and it's like secure. And you wrote some toy
+and God knows what.
+I mean, no offense,
+you're great, but. What's the missing link? So I was like, oh man,
+this is kind of depressing.
+But yeah, I'll take the 1
+and 1/2 month improvement. And maybe it's something,
+but maybe I'm just stupid and I don't get it.
+Then I found another
+guy in the company. We went to him and we said, hey,
+can you look at this problem? And he's very first principle.
+He's a very smart guy. And he doesn't care
+about all this, fluff. He's like, he cuts
+through the fluff.
+And he cut through the fluff. And he worked with the
+team and he came back and they said, hey, after
+looking at the problem,
+we can do seven
+connectors in one quarter. Boom. Yeah. Let's go. What is the difference?
+So what's the difference? OK, so what he did is he
+went from first principles with some team members. And they looked at it and
+they said OK, first quarter,
+they're just sending our
+very expensive, very smart, Stanford educated product
+managers out to the customers
+to talk to the customers
+and collect feedback. What exactly is
+your requirement? How do you use
+Salesforce and so on. That takes a full quarter.
+At the end of that quarter our
+amazing smart product managers come back with a 60, 70, 80-page
+super nice report on exactly all
+the requirements. OK, so you're blocked
+for a whole quarter. So for sure you
+can't, Amdahl's law, you can't compress
+it below that.
+Then code writing starts. We have to test this stuff. So testing requires
+you to set up Salesforce, Workday, NetSuite.
+But those are not
+software by Databricks. So we're not very good at that. That takes a very long time. And it's hard to find people
+to do that Databricks.
+So that, again,
+is like a process that takes a long time
+for us to stand up. And it's very error prone. So we couldn't do that either.
+And then we have one
+person for each connector. They go on vacation,
+they get sick, and so on.
+So all of that. So what he did is he just from
+first principles, looked at it and said, we're going to
+just rewire all of this. And a lot of people
+didn't like this.
+They were unhappy about it. But he said that, the
+product requirements, instead of one
+quarter, we're just
+going to take one
+week and quickly write down whatever we have. We might get things wrong,
+but because the software is so fast to write, we
+can rewrite it again.
+So let's iterate faster. Standing up, the
+Salesforce instances, let's outsource that to firms
+that can do that for us.
+And we can just pay them a lot,
+and they do it in parallel. So we can shrink that as well. And then one person per
+connector, let's change it.
+Let's have seven people,
+seven connectors, and then they all work on
+all the connectors together so we don't have
+what's called Bus Factor 1.
+If someone is hit by a bus, the
+whole project is not stopped. So yeah.
+So got it all done
+into one quarter and seven connectors shipped. And so but this had nothing
+to do with really it
+didn't have anything
+to do with AI or AGI or smarter models or
+superintelligence or gigantic.
+The next GPT 7 or
+Opus 6 would not have helped us do this better.
+We needed to make those changes. And that's like a human
+refactoring problem and process
+change. And so this is what the
+whole world is going through. That's what you need to do
+well if you want to succeed.
+Some are doing it
+better, others are not. Hamilton Helmer actually talks
+about this quite a bit actually.
+So for all of you who are
+picking assignment, option one and want to be investors,
+Hamilton Helmer's book
+is a must read on process power. We were debating
+this before this. If, Ali, you had $100 to
+invest across what Jensen calls
+the five-layer stack energy,
+chips, infra model and apps,
+where does value accrue? If you were to put $100 in
+the index of energy and chips
+and infra and so on with let's
+say, a long-term time frame, where would you put it?
+How would you allocate
+the $100 and why? I'm a computer scientist. I'm not an investor.
+I don't give financial advice. But-- [LAUGHTER] If I have $100.
+You are allocating
+Databricks time, Databricks is across
+three of these. Yeah. I would just say,
+look, it's obvious
+that the applications are
+going to be the winners, right. So I would put it in the top. It's kind of like, and
+I'll give you some guesses,
+but who knows, actually. It's very hard to predict. So you would have to have,
+I would go early stage,
+and I would have a seed
+strategy and I would invest in many, many startups. And I would get
+most of them wrong,
+but a few would actually
+make it and there would be the next Google or whatever. But when I did my PhD
+in the early 2000,
+I was in the networking field. Networking was like
+the cool thing to do. It was the advanced thing
+because the internet was,
+you want to work on it. The internet was the
+big thing at the time, and the coolest thing on
+the internet was networking.
+And the hardest problem,
+like the smartest math brains were working on at the
+time-- we all knew what
+the future would look like. The future, everybody knew
+what the most important problem everyone's going to
+work on is what's called the multicast problem.
+What's that? Which is, yeah, see,
+it's problematic that no one knows
+what that is today.
+We were clearly wrong. So multicast is, you want to
+broadcast from one source,
+let's say a soccer
+game or a football game or a basketball game
+to the whole world, because everybody wants to
+watch it at the same time.
+We didn't know how to
+solve that efficiently. So all of the smartest
+brains in the world were trying to work
+on this problem. And bandwidth was scarce.
+While we were doing this. And by the way, we actually
+had pretty good problems and I started the
+company on this.
+And we had a great solution. Unfortunately, the
+cost of bandwidth just plummeted, and they
+just deployed so much fiber
+that this problem was
+not a problem ever. So no one needed to
+buy this software. So it was a complete
+waste of time.
+And at that time, we thought
+the hardest problem was the most interesting
+things to work on are Cisco routers, routing,
+BGP Border Gateway Protocol,
+internet protocol, queuing
+theory, quality of service, these kind of things. Those are the most
+interesting things.
+Because we had tunnel
+vision on the internet. And what is the internet? Well at the time it was
+the internet protocols
+and those things. No apps really existed. So we were all focused on that. And today everybody's focused,
+I would say, on I think chips.
+And I think
+infrastructure, I think people are really right now the
+hot new thing is like NVIDIA,
+OpenAI, Anthropic, DeepMind. These are the things
+everybody's focused on. AGI, superintelligence, what
+I said at the beginning.
+But on the internet
+there were really weird things that took off. The really weird
+things that took off
+were like taxi
+business, which is Uber. Yeah.
+Or selling books, which
+is the lamest thing ever. But that became Amazon,
+which became AWS.
+Yeah, or renting your bedroom
+to people, that's Airbnb.
+Or sending people short
+text which became Twitter.
+And if you said them in those
+words in 2000 to people, people will say, you're out of
+your mind, like you're insane. You're full of it.
+But those were the
+great ideas of the time. Those are the ones that we can. So I think it's the
+same thing here. To throw a few of
+them out there.
+I think healthcare is
+like 17% of US GDP.
+We all still
+unfortunately will die. And we all care about our
+health, and the health
+of our loved ones. I think there's huge, we have
+the propensity to pay for this.
+Like we'd pay anything to be
+able to save lives or our loved ones or our own lives or
+our own health issues.
+And it's not particularly
+well done today. Surprise, surprise. Healthcare is not awesome.
+So imagine a company that
+has seen a billion patients. I have seen hundred
+million patients
+with your genetic composition
+and the kind of issues that you might have in the
+future, and I can help you.
+But what are you willing to pay
+for me to help you with that? That could be a company that's
+trillions of dollars worth.
+To take something out of left
+field that I think people think is really not
+interesting enough.
+But take education. Education actually, in
+VC space, the consensus has always been education
+is a terrible investment.
+Like VC, people say, oh, I
+could never invest in education. What's the last public market
+company you know in education?
+Yeah. What's the last trillion
+dollar education company? Not even 100 billion, yeah. Yeah, yeah. Anything, right.
+But most people have kids. More kids are
+produced and they do
+need to go through to get
+an education whether people, believe it or not.
+And people do care actually if
+the education for their kids are good or not.
+Elections are won and lost. There's cultural issues on these
+things of what you're allowed
+to teach my kids or not. Elections are won
+and lost on that. Not because it's a stupid
+topic, because it matters. Like, what are you
+teaching my kids matters.
+Are my kids being brainwashed
+to do the right thing or the wrong thing? Or are they well equipped to
+get the jobs of the future?
+I think if there
+is a company that can provide amazing
+education, using AI,
+I think a lot of people
+will pay for that. And if it's like proven
+that that does a better job than whatever they're
+getting right now,
+just two flavors of like
+obvious companies that I think will exist, and they could
+be trillion dollar companies if they do it well.
+They will have data moat. They will have
+economies of scale moat. There's winner takes it all
+dynamics in those markets
+at least in countries NGOs. So I think the value
+accrues to the top.
+We can't wait for
+that to happen. But I'm not an investor. Yeah, we can't wait
+for that to happen. Would you push back?
+No, I mean, look, I've written
+extensively about this. Eagerly waiting for this,
+what I call the blue triangle
+to invert. I don't know if
+you've seen this. But basically this is, all of
+the money in AI is with one guy.
+That's why Jensen's so happy
+all the time, as you know.
+These guys are
+fighting for dollars. There's no money there. There's very little money here.
+I mean, people are
+making some money here. And so we'll see. But that's the bet. The bet is that this thing will
+look like a more sustainable.
+Yeah, it will go that way. I mean, all value in
+Silicon Valley, and in tech, and technology moves up
+the stack all the time.
+Yeah. Like even look at the
+greatest companies. Like, OK, the company
+that created the PCs, IBM was like the greatest market cap
+and all the value accrued there.
+But then that
+became commoditized. Then it became the
+software on top of it, which is like the operating
+systems and the Microsofts
+of the world and so on. Then here at Stanford,
+actually a while back, it was like 20
+years ago, VMware,
+which is how do you
+virtualize that software. And that became commoditized. And then so it keeps moving
+up the stack all the time.
+That's how it's
+going to be here too. 100%. And one of the forces that
+is commoditizing this,
+you've spoken about,
+this is Open Source. Open Source is
+getting pretty good. This blue line is Open Source.
+The gap is closing. This is like what,
+three four months. This gap is now like a month.
+But still people are
+spending so much money on these frontier models.
+People cannot wait to get their
+hands on 4.7 from Claude or 5.5
+from GPT. But then there's this whole
+economy of very good open source models.
+What do you make of all this? On one side, you've got people
+earning what, $30 billion now or maybe 40
+billion at Anthropic.
+But on the other side,
+this open source stuff is like nearly free. Obviously you've got
+to pay the hosting.
+How do you think
+this shakes out? Will the proprietary model
+layer accrue any value?
+I think it's going
+to be valuable. And I think people will want it. Whether it's open
+source or not, let's put that aside for a second. I think there will be
+token factories which
+serve this stuff up. It's just like the cloud. I think it would be
+foolish to say you all will have your own little
+mini data center in your living
+rooms, and you're going
+to run your own PCs, and you're going to insert GPU
+cards that you buy at home,
+and you're going to run
+this [MUTED] yourself. Or on your phone or
+MacBook or the Edge. Some of that might
+or will exist. It will come to the edges.
+But I do think there'll be like
+big centralized data centers where this happens. But we haven't discussed already
+running open source models
+or are they running
+proprietary models. And here's a fun fact. So Moonshot, the Chinese
+company released Kimi 2.6.
+Very good model. Two days ago? Three days ago? Yeah, Tuesday. Yeah, Tuesday. So two days ago,
+they released 2.6.
+In January, they released 2.5. And here's a fun fact,
+2.6 that they released on Tuesday is the best model
+ever in the history of mankind
+ever produced, frontier,
+non-frontier, if it just had been released in January. But open source will be here.
+And it will apply
+pricing pressure. And this business of frontier
+models, that core business
+of providing frontier
+models is going to be economies of scale game. And you will have to
+do it at small margins.
+It's like an amazon.com
+bookselling business. That's what it's going to
+look like in the future. Therefore, they're not going to
+be that many people doing it,
+just like on amazon.com,
+and gross margins are going to be tiny. And operating margins
+are going to be small.
+That's my take. Yeah, yeah. I think so too. Three rapid fire
+questions before we wrap.
+Your favorite AI product
+that you use every day. I don't know. That's a tough one.
+I mean, I use all of these. I actually like Cursor. I notice everybody
+loves [? spot ?] code.
+I like the diffs
+and how it works. So like on coding I
+use a combo of those. I still kind of like it.
+Are you still using
+it after Elon owns it? No, I stopped. No, of course. [LAUGHTER]
+Because you're going to lose
+access to Anthropic and OpenAI tokens through
+Cursor, I presume. Yeah. Yeah, man.
+Awesome. It's great. Good, good. Supporter. You've been-- The truth is, I do use
+Databricks as junior products.
+This is the truth. Because inside Databricks,
+most of my decisions
+are like numerical and
+quantitative in nature. Like, should we do this? What's the ROI on this? What's the cost on this?
+What is it going to cost us? So I need something that can
+understand numerical data and time series data.
+So Genie is really
+good for that. So that's what I honestly
+go to quite a bit. Quite often. Right.
+Future for Databricks. You've been at this
+for 15 years or so. What is your vision for the
+next decade for Databricks?
+Well, I think the cost of
+software is going down. And so barriers to entry and
+switching costs are going down.
+So there is a SaaS
+apocalypse of sorts. But not all software
+is going to be dead.
+We would love to partake in
+that and kill some software. Yeah. Right, right. Any advice for students
+in the room who are
+about to make career decisions? Yeah, I think don't be worried
+about the fear mongering.
+Don't be stressed out. Take it easy.
+I was very stressed doing
+my PhD in the early 2000. I thought the world is
+ending with the internet and everything. And working on this
+most important problem
+that we all knew was the
+most important problem, which was the multicast problem. [LAUGHTER]
+Which none of you have heard of. Turned out not to be a problem.
+But I think one
+interesting thing is that in 2000 we had
+the internet, in 2009, Airbnb was started.
+OK. But there's no reason why
+Airbnb should start in 2009. I've made this argument to you.
+Airbnb could have
+started in 2001. There's nothing like we
+needed something additional to happen in the world.
+Airbnb could have
+happened and disrupted hotel businesses in 2001. Yet it took nine years for
+someone to have that idea.
+And that was Brian. And by the way, Brian
+is not like he sat there and he was taking a Stanford
+class thinking about a case
+study project. Brian needed like
+bed and breakfast. Right. Some designer
+conference or something.
+Yeah, he was at a conference and
+he's like, why is this so hard? Like, I'll just
+solve this myself. So it took nine years to
+come up with that good idea.
+So I think good ideas are very
+hard to come by, actually. I think humans are very bad
+at coming up with great ideas.
+And we have this
+tunnel vision and we focus on the wrong
+problems like we did with multicast
+in my earlier,
+my PhD was really stupid. So chill out and take a
+long-term perspective.
+And work on the
+things that you think will have long-term good impact. I think Jeff Bezos did it pretty
+well when he was an investment
+banker in Wall Street. And he said, hey,
+zooming out, what's
+the big thing that's happening? It's the internet. And then he said,
+hey, let's just make a secular bet
+on internet, there's
+going to be more
+and more internet. So it's going to slowly,
+over time, disrupt things. So then he said, OK, in the
+long run probably purchasing
+can move more to the net. Maybe not right now. And then he started
+with he was very modest and he started with the dumbest
+thing you could possibly.
+Like the unsexiest thing,
+which was a complete commodity that looks identical and
+there's no differentiation, which is books.
+And it just started with that. And he just bet on
+that secular trend. And every year it was
+more and more right.
+And now it's like
+everything on the planet, it's the everything store. So think long-term
+like that and don't
+be swayed by the coolest
+thing that everybody is like right now,
+making lots of noise
+on Twitter on because
+chances are it's probably something
+like multicast.
+Yeah, awesome. Well, thank you so much
+for staying longer, folks. Thank you, Ali.

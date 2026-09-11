@@ -1,0 +1,492 @@
+So this is Baris Journey and he's the
+creator of our friend Claw Code and
+these guys have just released their AI
+native SDLC playbook. So if this is a
+new concept to you, SDLC is the software
+development life cycle. Typically in a
+human workflow it looks something like
+this. You plan, you design, you build
+it, you test it, you deploy it and put
+it into production depending on what
+type of an app it is. And then you need
+to look at maintenance and then you go
+right back to the start for the next
+feature, bug or release. So this new
+document from Entropic is all about how
+the team there including Baris work in
+terms of their new AI native software
+development life cycle. So let's give it
+a rapid breakdown. So the big idea here
+is code is no longer the bottleneck.
+It's your process. So before agents came
+along, this is pretty much how an SDLC
+looked. We had the planning stage,
+design, build, test, deploy, and
+maintain. The part that took the longest
+and was typically the most expensive was
+the build stage. But that all changed
+with agents. This part here has been
+squashed down to this part here. Look at
+all this time here we've reclaimed. So
+essentially what Antropic are saying,
+we've done great to shrink this. We're
+two times faster. But how do we improve
+all these other steps with agents as
+well? So traditionally in our planning
+stage, we would sit down, gather
+requirements, create PRDs, have
+workshops, talk to stakeholders, pulling
+it all together. In this new world, we
+start by getting the agent to interview
+us about the feature, the bug, or the
+product that we're building in order to
+build up context. I use my own discovery
+skill called switch dimension discovery.
+You could use grill me from Matt PCO or
+you could use something like
+requirements discovery from cursor. So
+what you want to do is make sure the
+agent asks you repeated questions until
+it has a complete understanding of the
+feature you're building or the bug
+you're trying to solve. You're dumping
+as much of your experience, domain
+experience and context into this
+conversation. So the agent synthesizes
+pain points straight from the sources
+and then captures them in this intent.
+MD file which is human readable and
+machine actionable. So Antropic is
+formalizing this idea around an intent
+MD file. So in the traditional SDLC the
+idea passed through a backlog of user
+entries, user story, story points,
+ownership transfers, handoff. What we're
+talking about in the AI native world is
+the originator of the issue, the
+feature, the product, whatever
+brainstorms with Claude and writes the
+result down as the intent MD. So for
+each one of these steps as we move
+through we're going to be developing
+what's called an artifact chain. First
+we start with an intent.md file. Then
+we're going to have a spec etc. As we go
+through the steps that's building the
+artifact chain. So in your project using
+cursor clawed codecs whatever you want.
+You're just creating a folder called
+intent. And within that that's where
+you're going to save your intent. MD
+file. So in my planning stage here I
+might have a chat with my agent about
+adding dark mode as a feature. and I
+talk about what I want, how I want it to
+operate, and then we go and create an
+intent. MD file from that. Then I get
+the agent to save that as the intent
+file in the intent folder as proposed by
+Entropic. And of course with any of
+these artifacts, your team can do
+whatever they want in terms of a
+workflow. I think what's important here
+is that you start to standardize it and
+not chop and change it too often. That
+way, the team, the agents, the skills
+all work on the same workflow and you
+can grow from there. Now, once that
+intent MD file is created, it doesn't
+stop there. It's it's suggested that the
+originator of the intent goes back over
+what the agent has written to correct
+anything and make sure that both of them
+are happy. Now, the person that creates
+this intent file is called the
+originator. And that doesn't have to be
+a specialist on the team. That can be
+anybody who wants to create the intent.
+It could be a customer who's putting in
+a bug request. It could be a product
+manager who has an idea for a feature.
+It could be a developer who wants to
+capture a process improvement. So you
+might have your own intent capture skill
+that produces something similar to this.
+What you might do over time as you're
+collecting more forms of intent. You
+might prefix the name of the intent
+before your intent file. This is
+something I've been doing myself and
+teach on my course, I call it discovery,
+not intent, but again it's the same
+idea. So the intent really can be
+captured by anyone. Could be a
+developer, uh a customer submitting a
+bug. They're basically just dropping
+their thoughts into this intent.mmd
+file. But then it is the product owner
+that should review these in the form of
+a backlog. These could simply be ordered
+files in a markdown file. All these
+ideas could be captured in notion or
+linear and then organized by either a
+product owner or in some cases I'll
+actually use my agents to triage the
+backlog of issues. You can see they can
+assign tags like front end small or
+large tasks whether it's a feature and
+even the priority level. So then we're
+moving from the intent artifact to the
+spec artifact. Entropic is suggesting
+that once the intent is committed or
+signed off in some way that you create a
+hook or a process that the spec is
+automatically generated. So entropic
+gives us a sample prompt we might use to
+take our intent and turn it into a spec.
+They're not giving us specific skills
+here, but we could certainly create a
+skill around this. So essentially read
+the attached intent MD and produce a
+requirements and design spec. apply
+skills available to you to plan and
+conform to brand guidelines and then
+document the spec fully in spec.md.
+Depending on your workflow, your
+organization, you could just use the
+vanilla plan mode within cursor or claw
+code or codeex or you could just go and
+create a skill that creates bespoke
+specs specific to how your team likes to
+work. There really isn't a
+one-sizefits-all here. Now, when that
+spec is created, it could just be
+through a vanilla agent or you might
+also have a set of guidelines or
+policies or even skills that make sure
+that style guides are applied and
+however the spec is generated is based
+on the best practices of your
+organization. This might be in an
+agents.mmd file. It could be encoded
+into a set of skills. You want to make
+sure that those skills and policies are
+adhered to in your governance
+considerations for when the spec is
+being generated. and that applies to all
+of the artifacts in this chain. A quick
+diversion to talk about our sponsor,
+Neon. If you're using agents heavily in
+your SDLC, I highly recommend you check
+them out. I've been using Neon for years
+for all my database need. I've talked
+loads about how Neon is ideal for agent
+workflows with their awesome branching
+feature. What I love about Neon is their
+totally agent first. So, in all my
+agents, here's an example of Cursor.
+I've got their MCP and the CLI and their
+set of skills plugged in, so I never
+even have to touch the dashboard. The
+agent knows what to do with all their
+services. If you haven't checked in on
+Neon lately, it's now a full-fledged
+platform. It has managed better a
+included which links to your database.
+You've also got longunning functions
+with no timeouts, S3 compatible object
+storage for all your files in your
+projects. If you're building projects
+and working with agents, I highly
+recommend Neon for an easy life. Channel
+subscribers can check them out via the
+link in the description down below. So,
+let's get back to the SDLC. So, next up,
+we're moving into build mode. So, it
+starts essentially by the engineer
+involved in the process pulling in the
+intent and the spec and feeding it into
+claw code either in or in cursor in plan
+mode or something like that. Basically
+feeding the intent and the spec. So,
+what we get then is a plan MD file. So
+what Entropic are suggesting is you
+interrogate the plan by asking what
+changes could break. Essentially you
+want to get to a point where if you were
+just to hand over this plan MD file to
+an engineer, they could go and implement
+the changes without reference to the in
+intent or spec documents. Now that's
+actually an important point because
+we're not going to have one agent carry
+out all of these different stages in the
+software development life cycle. We're
+going to have a context window. We're
+going to have a thread of conversations.
+independent agents, sub aents are going
+to handle this process. So in that
+world, and here's just an example from
+one of my own workflows, you've got
+multiple different agents working on the
+problem. You want to hand off your
+planning, your intent as documents to
+each one so it can start from scratch
+without an understanding of the previous
+conversation that happened. So when the
+engineer is happy, they go and proceed
+with the plan. You've probably seen 50
+ways to write a plan, but essentially
+what Amtropic are saying is you break it
+down into the files that need to be
+changed, the order of work or a type of
+to-do lists, any kind of risks,
+constraints, and then proof. So, you
+want some kind of success criteria and
+checks inevitably to make sure that the
+work was done correctly. This could come
+in a deterministic form of linting and
+tests. A big part of the process in an
+enterprise company is going to be
+governance. So what Entropic suggests is
+that you're saving versions of your
+plan, your intent, your spec.md, who
+touches them and how they are evolved.
+Companies I've worked with find this
+particularly hard, but it's but it's
+really important if you want to track
+the leading and lag indicators for your
+projects and really prove out your dora
+metrics or see how effective AI actually
+is becoming in your workflows. So in
+terms of making your build mode fast,
+Entropic suggests you use auto mode. It
+really does depend though on your own
+organization. What I suggest is that
+when you've got a locked down
+environment that you're working in, that
+you actually start to work in the
+repository with a set of dialedin
+permissions and that you're accepting
+them as you go. Once you've built up a
+policy of what's fair use, what tools
+the agents can access, what web sources,
+what packages they're pulling, and you
+lock that down in terms of cursor or
+clawed permissions, you're going to be
+able to have your agents move a lot
+faster without you involved. There are a
+lot of elements in making sure auto mode
+runs smoothly and you've got a tight
+blast radius for your agent. Not for the
+context of this video, but hopefully
+I'll cover more on that again. The team
+also suggests work trees so you can have
+multiple agents work on multiple things
+at the same time. If that's completely
+over your head, I've got a full video on
+my channel covering Git and Git work
+trees if you're just getting used to
+them when it comes to working with
+agents. So a big part of keeping this
+process autonomous, keeping things
+updated and keeping things on rail are
+the usage of hooks. So as an example in
+the build phase, we might update the
+plan once the implementation is
+complete. We might block the agent from
+working on certain folders or prevented
+from upgrading an MPM package that we
+haven't signed off on yet. Linting has
+been around for a long time. It's
+essentially a deterministic or a coded
+way of running through our code or our
+documents and checking that certain
+criteria are there or not there or that
+we're matching a particular syntax. It's
+going to run through the files. The test
+will pass or not. It's going to be a
+binary yes or no. Something you'll get
+in a good agent harness is the ability
+to run sub agents. So once the plan is
+in place, this is actually baked into
+cursor claw codeex. It divides the plan
+into various different tasks that can be
+done independently and if some are in
+parallel, it can use workree. So we end
+up having multiple agents and sub aents
+working on the build step. So after
+we're finished building, we move into
+the test phase. In the traditional
+software development life cycle, this
+can be a step that really holds things
+up. I might have finished a piece of
+work, pushed it into development, and
+then I have to wait a couple of days for
+a tester to come along or a QA. Then
+there's some changes, feedback, etc. The
+whole cycle takes quite a lot of time.
+In the AI software development life
+cycle, we want the agent to do as much
+testing as possible before a human
+engineer or QA gets near it. Now sorry
+if this diagram diverges a little bit
+from anthropic you're talking about but
+this is the workflow I've been teaching
+on my course at switch dimension which
+is really similar. So essentially once
+we finish the build step here we move
+into testing linting end to end review
+the agent write test to make sure
+nothing is breaking when developed and
+make sure those tests pass. It's going
+to lint and build the project to make
+sure there's no errors. And if you're
+advanced enough and you're using
+something like Playrite, Test Sprite,
+Cursor Browser, you can actually get the
+agent to test the software and take
+screenshots. This is actually something
+that cursor cloud agents do really well.
+They'll actually spin up a server and
+test the software for you and give you a
+screen recording. So theoretically, once
+the testing is complete and it's fairly
+rigorous, it's going to save you a whole
+lot of time when it comes to the human
+review stage. Antropic also suggests
+that you apply eval to any skill change
+or any model upgrade. Now this really is
+optimizing but the idea is that you have
+continuous evaluations in your
+continuous integration. So basically you
+might collect collect 20 or so issues or
+things that you might have solved in the
+codebase you have a set of expected
+outcomes for those and whenever you have
+a new model a new skill or a new
+fundamental change to how you do your
+work you can run this to see if your
+software development life cycle
+regresses or not. So now we're getting
+to the deploy stage. Essentially we've
+done our human review. We're going to
+get the agent to merge or we're going to
+get it to create a pull request to the
+main repository based on whatever
+changes it made. So essentially we have
+a development branch or a production
+branch and our agent is after making
+some changes on its own branch or in a
+work tree. So it's made something called
+a pull request where it's saying hey
+I've made some changes I want you to
+take a look at them and if you're happy
+you can go and add them into the main
+codebase. So, Entropic is suggesting as
+part of your continuous integration or
+whenever a pull request is made that you
+get Claude to jump in and review it
+against your policies and your security
+protocols. And all this is done
+asynchronous. Now, the agent might have
+its own comments on this PR saying it
+doesn't accept it or it wants some
+changes made in and in Entropics SDLC.
+You've got a separate instance of clawed
+code reviewing those comments. And of
+course, it might have different policies
+based on what agents MD, what skills.m
+MD, what hooks, what linting it has in
+place. In terms of governance, you might
+even have a hook in place here that
+would block deployment unless a specific
+permission has been granted unless a
+specific person approves or a release
+gate is met. Here's an example of a set
+of permissions that might be used as
+part of that stage. So once the pull
+request is complete, you have another
+agent that runs the security, the CI
+preview. This could be deterministic
+with some form of linting and gate
+checking as well as just having an agent
+like cursor bugbot or claude security
+review come in and check for any errors
+and that finally brings us to the
+maintenance step. So I think this is
+where the workflow gets really
+aspirational. So we look at our whole
+workflow here. We've moved through
+planning, design, building, testing,
+deploying and now we've reached
+maintenance. So at this point either our
+issue is fixed or our feature is built
+and it's sitting within the codebase.
+So, in a traditional software
+development life cycle, maintenance can
+be a reactive phase. You're out for
+lunch, you're on call, or maybe it's
+3:00 a.m. in the morning, and you get an
+alert to say that your server has fallen
+over. A ticket is sitting in a backlog
+and it gets completely ignored because
+there's just too much in the backlog. In
+the AISDLC,
+a breach, a new ticket, a channel
+message in Slack or some kind of a
+schedule invokes Claude without any kind
+of a person involved to perform
+maintenance. Claude asynchronously goes
+ahead and diagnoses and acts on that in
+and in this case it's generating its own
+intent.mmd file based on the logs that
+it's discovered or whatever ticket or
+message it's been sent. Now how this
+works in practicality is you might
+decide that you have certain metrics
+that you want to uphold to. So maybe in
+your testing a page falls over or your
+API rate limit rapidly increases. That
+might trigger an agent to go and
+diagnose, create an intent to diagnose a
+problem and offer a set of suggestions,
+but all before you've even got to your
+computer. So the whole premise of this
+document is we're moving past agents
+just being involved in the build step to
+being employed in the whole software
+development life cycle. How can we start
+to reduce the amount of human time
+involved in each one of these steps? But
+importantly, keeping humans in the loop
+for the important review steps. It
+depends on your workflow and your need
+and your team. But you can have as many
+humans involved in each step or agents
+or purely just agents on their own if
+there's low criticality. I've worked in
+a lot of companies and I've worked with
+a lot of companies with their AI SDLC.
+And the thing is there really is no
+oneizefits-all. If you're using
+something like superpowers or BMAD or
+you've developed your own version of
+this, I wouldn't throw it completely out
+the window to adopt what Antropic is
+doing here. There's so many different
+ways to approach this from loops to
+graph engineering, fully automated
+loops, large orchestrated systems all
+the way to civilization engineering. I'd
+love to hear how you're working your
+software development life cycle, even if
+it's as simple as plan mode or complete
+vibe code yolo. If you want to learn how
+to make yourself or your development
+team AI native in terms of software
+development life cycle, highly recommend
+you check out Switch Dimension. You can
+sign up the weight list there for the
+next cohort. Thanks so much for your
+time, guys. See you next week.

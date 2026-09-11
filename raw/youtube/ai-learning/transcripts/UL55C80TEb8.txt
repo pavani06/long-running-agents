@@ -1,0 +1,108 @@
+today I thought I would show you the first stage of the swarm of AI agent workers concept I have been working on for a while so basically today we are
+going to look at how I use this UI you can see in the background here to collect data on a set topic uh we also going to look at how this is going to
+work conceptually moving forward so we're going to integrate like the brain you can see the flow chart in the background here we're going to take a
+look at that and how this brain can Mak decisions and call out these agents that can work on the data we are collecting
+uh I think it's better if I just explain it like in a stepbystep way in the flow chart so let's take a look okay so I'm
+going to try to explain this flowart as simple as possible basically the first thing we have to do is use our UI that I
+have created to enter a research topic I think today we just going to search for GPT Vision use cases and from that we
+have some kind of data collection set up here it's not agents but it's kind of a so we take the search query we put in
+like we go to Google we search for that we scrape the links we save it to a Json file we do the same on YouTube we put
+the search query onto YouTube we download the videos maybe like the top three results you can set that yourself and all of this data is going to be
+converted into Json and it's going to be dumped into an AER storage uh I thought it would be easier if you want to fully
+automate this it would be better to have it in the cloud than on our local computer so that is how far we're going to take a look at today so basically
+this is stage one uh coming up it's going to be creating the brain so this is going to be like a master agent with a goal uh this could be example create a
+blog post so this means that we will have to download the data we have and this agent here is going to assign work
+to these different agents so these are just examples so it could be a summary agent a writer agent an SEO agent eval
+evaluation agent uh I have the Outreach agents almost complete so I think we're going to take a quick look at them today
+too uh So the plan here is like uh let's say the master agent decide to send the data uh it already has the overarching
+goal right so it's going to send the data to the summary agent it's going to summarize it and send it back and maybe it can evaluate this by using the
+evaluation agents and if it's happy with that they can send it to the writer agents so that is basically the next step we're going to
+do and when that is complete hopefully we'll get a final output that is aligned with our overarching goal of creating a
+blog post uh so basically I hope you understood this it pretty simple like in theory uh but we will really get it to
+work in practice that we just have to remain to see how that goes uh but now I think we just going to head over and
+start looking at stage one of this workflow okay so how stage one works on the back end and it's pretty simple
+actually we just have a flask app here we have an HTML for the UI right and we have two these kind of data collection
+agents it's not agents but it's kind of way to collect data so in the first we use Ser API to use Google search so we
+can put a query in uh like I said in the UI and it can go to Google and search and scrape the results so we have a
+scrape website function we have a get organic result function and all of this is going to be downloaded tur into Json
+right and it's going to be uploaded to Asher so we have this execute news agent I just call it that just for fun right uh and it's going to save it as news.
+Json uh on aard so we're going to take a look at how those result will look when we have run it uh on the other side we
+have this YouTube agent it's pretty much the same but it has to go uh to a few more steps we have to use whisper among
+that and we have to use PBE and to turn it into an MP3 file so we have like open and save so we have save Json convert to
+Json and we have upload to Asher we have yeah chbt we have download the YouTube video convert it to MP3 we have a way to
+search the YouTube videos and to get the transcripts from the audio so for this we use whisper that works very good uh
+but we have to chunk it so we chunk it into 10 minutes chunks and transfer that to text and then this Execute YouTube
+agent turn it into Json and uploads it to our Asher blob storage under the name
+transcript. Json so that is basically it I think we're just going to run it and we can take a look at some results what
+we get back so yeah I think we're just going to do that so let's just run flask app 2. Pi here we will get like this
+address so we can just open open this and here we can enter our query right uh I don't have any login on stuff here now so we just going to look at the back end
+when this is complete so let's do GPT Vision uh use cases let's say we wanted
+to make a post about that we need some information or data okay so just hit enter uh my plan is to create like a log
+here on the UI but for now I think we're just going to look at this to see what happens right bit smaller like
+this okay hopefully you can see this now so the first thing you can see the
+uh scrape news from Google is already complete that's uploaded to our Asher Bob here so let update that just to see
+yes we have our Json file here so if we go back here now we can
+see that we are now downloading the MP3 file from the YouTube results that that's done so the next thing is to do
+that into chunks and we're going to transcribe it with whisper and turn it into text then convert it into
+Json okay so we actually get a message here you can say both scripts executed successfully so we can just click okay that means that we are finished with
+this UI so we can head back over to Asher we can update and hopefully we have both Json files here now yeah
+that's good so let's take a look at what's exactly are inside of these Json files now okay so here you can see what's inside of news. Json so we get
+article one we get the URL that we actually scraped I like that structure and here are all the text right uh it
+looks a bit weird but uh that that's not the point we have a URL from new.com 10 wild Wales people are using chat this
+new vision feature so you can see it's working we actually get those article we wants for the information for our blog post and we have the scrape data here
+and for article three we have multimodal chat GPT voice Vision images a new multimodal capability of chat gbt okay
+so that's some good data too uh we can also set how many articles we want to scrape so I put this to three now but I
+think we can have up to 10 uh and on the transcript uh you can see basically this is just one big text of all the words
+that were said in the YouTube video we scraped and yeah so this is transcribed by Whisper so but I think I have some
+bit of work to do on the how we should actually search YouTube to get the best results but that's for another time uh
+but yeah basically now we got our data and you can see we have them in here so
+when we create the how should I call it the master brain we can easily download
+these dumb Json f files from Asher to start working on the data and process it with my worker agents so that's going to
+be exciting but that's for other video I think I'm just going to show you like an example of my uh Outreach agents and how
+they are working at the moment so the Outreach agents are a bit different uh we use many of the same uh things here
+we use the Google search we use scrape website because we want to be able to look at websites and get information
+from those sites right uh we have some different functions here uh we don't use all of them of course we use chat GPT and we use the function parts we can set
+up functions here in chat GPT right if you haven't looked at that before we're going to use the GPT 4063 model to get better system prompts
+we have a sleep delay here so we don't run into any rate limits and yeah you can see we use function calling
+here and other than that it's nothing special we have two agent we have a leader agent and a data agent that is
+going to cooperate to find Outreach email addresses in this case so let's take a look at the
+instructions so the one instruction is data agents is an expert in data analysis with Proficiency in online
+research and excellent communication skills so I give these agents like the ability to execute functions since we
+use function calling right so your main functions include uh get organic results scrape URLs save
+and open files so we always going to follow instructions from leader agent that is going to be kind of the boss of
+the data agent So the instructions is to always follow the instructions from leader agents focus on the task and do
+your best uh always do this after you have sa an email address to a. text always respond with email address is
+saved let's move on and the leader agent is an expert leader and coordinator you have the ability to give instructions but you
+can't execute functions I only want one agent to execute functions because sometimes even if I said that it
+doesn't always apply so you're going to instruct data agents to find contact information email addresses to marketing
+companies in Oslo Norway use a search cre avoids the top lists of companies I found that very annoying so we're going
+to uh give an example here of like marketing compass in Oslo site uh.no that works much better I found out so we
+need names of companies so we can find the content info always ask if you can save the email addresses when you don't find any email addresses and the query
+marketing compos Oslo move on to a similar white color business category so what I found out here is like if you can't find any marketing companies
+anymore we can just move on to let's say lawyer firms in Oslo to find more email addresses if if we need that and yeah
+that's basically the setup for the Outreach agent so let's test them and see if we can gather some email addresses okay so I'm going to run this
+now so we're just going to let run for a while and come back and see if we have any
+[Music]
+results okay so I think that was enough this already proves that this is working very good so you can see okay I'm data agent ready to start my assignment and
+here you can see the leader agent gives like the instructions we put up to the the data agent you can see it goes ahead
+types in the search query marketed companies in Oslo Norway it finds a whole bunch of uh addresses here we can
+scrape URLs you can see if there's a I I know this is digital marketing agency so that's good it's on point right and you
+can see now proceed extracting contact information from these websites start with the first link so it gives instructions to scrape like the first
+link we found here perfect uh remember we are looking for email addresses and you can see task one in progress scraping websites for contact
+information so it looks at these sites finds these two email addresses even finds the phone numbers but we are not collecting that now uh great job we have
+found two email addresses uh execute the functions to save file aost text contents are going to be those two email
+addresses uh task one in progress saving the first okay so it was saved well done let's move on to this second website so
+you can see it just does that move on to the second so we can just keep this going in like a it's basically a loop
+right and here it scrapes the second website we found right remember that up here and it looks at uh the results here
+found this email uh great we found another email address save it uh so we save that to
+file great work let's continue with the third website and here I just stopped it so if you look at the results here you can see we have those three email
+addresses so I I think this could be a great way to just set a target of what kind of contact information you want let
+it run or this could be initiated by like a query from the master brain look for outreach we can do in this and this
+topic right so I'm going to explore this more I think I'm going to find a way to integrate this but that will be in other video so yeah this is pretty cool right
+I found very interesting and it's going to just get better as we go on right so yeah that is basically how far I have
+come so far uh nothing else to say uh it's going to be interesting to see where we end up with this project uh over the next week I'm going to probably
+be working more on the master brain to see if we can do some decision prompts that can actually uh instruct agents to
+do work get the results back and go back and forward and try to end up with like an overarching goal and get an output
+based on that so if you found this interesting I'm going to probably be uploading this to my membership here on
+YouTube so if you want to get access you can join and you will get access to the GitHub so you can download this and try
+it out for yourself uh so yeah thank you for tuning in have a great day and I'll see you again soon

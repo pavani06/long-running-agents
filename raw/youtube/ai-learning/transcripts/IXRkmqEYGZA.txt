@@ -1,0 +1,689 @@
+there's one type of aton's agent use
+case that has been trending really
+really fast for the past few weeks and
+we see multiple teams made huge progress
+towards this direction from hyper R
+teams publish a self operating computer
+framework where they let GPD 4V to have
+direct access and control of your whole
+computer so you can open spotlight to
+search for any apps like Google Chrome
+conduct actions like search for a
+specific URL go to Google doc write a h
+block with your Google account as well
+as more advanced actions like Bro
+internet or the pizza book fly tickets
+on the other hand we also see Team from
+multi where they showcase a web AI agent
+that has direct access to the web
+browser and it completes California
+online driving test successfully by
+itself this is the first fully
+autonomous completion of real world
+human knowledge task by AI so this type
+of agent system where it give super
+powerful multimodal model like GPT 4V
+direct computer access to let it become
+a self-operating computer is such a
+fascinating idea as it seems like
+unlocks so much potentials so I did a
+bit research and experimentation and
+today I want to talk about what are the
+use case and opportunities I see that
+the self-operating computer can enable
+and in the end I'm going to take you
+through a example work through of how to
+build an AI that have direct control of
+your web browser and do sophisticated
+web research and tasks so let's get it
+firstly let's talk about what are the
+use case and Market opportunities this
+can potentially unlock one way for me to
+look at this is what were the previous
+attempts when people Tred to build such
+a similar system what were the use case
+and limitations and what are new
+technology or changes now that can
+potentially change the dynamic one very
+direct Market category in my opinion is
+RPA which represent for robotic process
+automation it is basically category of
+software that help Enterprise to build
+automated robot that can handle
+repetitive and standardized task like
+handle invoice or data entry jobs one of
+the most representative platform in this
+category is is UI pass where they build
+a platform that allow you to build that
+here type of automation to access and
+interact directly with your desktop apps
+from calculators browser interactions as
+well as Excel or laxi system that has no
+API endpoint that can be used and this
+provide huge amount of value to
+Enterprise where they have a lot of
+admin tasks that simply move data from
+one system to another it is fast growing
+signment where at 2022 Enterprise
+already spend more than $3 billion every
+year on those process automation
+but the limitation of those RPA solution
+are also quite clear most of those
+system can't really handle
+non-standardized or everchanging process
+not to mention process that involve more
+complex decision making for example
+let's say I am shoe brand and I want the
+robot to do the data scripting of the
+pricing and product from Nike idas and
+Puma I actually need to build very
+specific process for every single
+website because each website structure
+is different and if one of them update
+the website structure the previous
+automation is going to break it as well
+so every single RPA process you build is
+very specific and can be fragile to any
+environment change thus the setup cost
+is very high that's why currently all
+those RPA are mainly used for Enterprise
+where they have standardized and
+repetitive task that has huge volume to
+justify the cost but that's also why
+those multimodal AI agent that can
+directly control the computer and
+browser is so exciting because
+theoretically they can handle much more
+complex situation with much less setup
+cost in the data scpt quipping example
+instead of me setting a very specific
+automation to tell robot that you need
+to look at this HTML tag to get this I
+can simply give agent URL of different
+competitors and let it automatically
+navigates the website take a screenshot
+and extract data regardless of format
+change because agent will do the
+decision making itself and on the other
+hand those AI agent can go Way Beyond
+just automation it can complete
+intelligent task like for a customer
+support agent you can look through the
+conversation history with the customer
+summarize it in auto automatically
+feeling the better data and escalate to
+the writing so if done well I believe
+this web AI agent can potentially open
+up the market for Consumer use case that
+has much less volume and also go beyond
+just normal automation but complete
+actual digital worker job like customer
+support sales and marketing as agent has
+ability to access more and more
+different systems I feel we're
+definitely getting closer and closer to
+have those real AI workers to be
+deployed in the companies however I
+often found the big gap to deliver
+useful AI worker solution it's not
+necessarily just the understanding of
+Technology also the understanding of the
+endtoend workflow for specific job
+functions that's why I want to introduce
+you to a research report that hopspot
+just did where they survey and
+interviewed more than
+1,400 Global sales leaders to really
+understand how does the modern sales
+repap team Works what does their whole
+end to end workflow look like they cover
+a lot of insights from the key
+challenges and opportunities the sales
+team are facing in 2024 as as well as
+how big amount of sales reps shift into
+relationship building which involves a
+lot of teds admin tasks they also dive
+into the best practice as well as a top
+AI use case those sales leaders are
+adopting at the moment so this game a
+super useful Deep dive of how sales
+function works and what other the key
+opportunities there I found it super
+useful so if you're trying to build an
+AI agent for sales function I definitely
+recommend you go have look you can click
+on the link in the description below to
+download this report for free now let's
+back to building a AI web agent but how
+can we get the AI agent to actually
+control the browser or even the whole
+computer there are two common
+implementation so far one method is
+designed before multimodal model like
+GPD 4V is available where they basically
+get a whole HTML Dom which represent the
+web page simplify a little bit and send
+as part of prompt to GPT 3.5 or GPD 4 to
+let it decide what's the next step
+should agent interact with this specific
+Dom element which could be button or
+input box or link to navigator and BAS
+based on output of gbt it red do actual
+interaction with the web browser through
+common Library like pop tier selenium or
+playwright those are all Frameworks that
+has been designed before for endtoend
+testing for web applications which means
+they have ability to interact with web
+apps and one project that is quite
+representative is called taxi AI where
+they develop an open source chome plugin
+that people can give a specific task
+like create a calendar event where it
+will pass the whole Dom to gbd4 and it
+decide what should be done next it is
+already able to interact with a few
+popular website like searching and play
+specific movie on Netflix create
+calendar event on Google Calendar the
+downside of this method is very clear
+because it is sending the Dom to large
+language model so there huge amount of
+noise that has been censored so it is
+very slow cost a lot of money because we
+are sending a lot of information and
+often large model is not able to do
+accurate interaction as the information
+is not clean but with multimodel like
+GPT 4V the solution seems a lot more
+viable solution is often take screenshot
+of the web page of desktop computer draw
+different bonding box on the web page to
+annotate parts that can be interactive
+so gbd 4B can give better instruction
+about which element to interact with and
+form research by giving proper
+annotation GPD 4B can complete task much
+much better so you basically take
+screenshot generate annotation send the
+screenshot with annotation to multi mod
+model like GPD 4V so that it can give
+instruction about what's the next step
+then again use those common libraries to
+control the computer or browser and this
+is exactly how the self-operating
+computer framework works if you try out
+the self operating computer GitHub link
+you will see the way it works it will
+take a screenshot of your current
+desktop computer at a simple annotation
+by dividing the screen into different
+grade so GPD 4B can use this to
+communicate where to click and they give
+a prompt to GPD 4B that giving the
+screenshot and go is should output four
+different outcome it can be either
+simulate a mouse click interaction type
+on a keyboard or search which is a spoly
+search function on MacBook that can be
+used for quickly access application and
+depends on the types of output gbd4 can
+call different functions if it is mouse
+click it will output adjacent format
+about the position it should click
+including the X and Y Bas on the
+personage information sound great and
+then call different actions from Mouse
+click to keyboard type to search and the
+actual interaction is done by package
+called py Auto gii which is python
+package that can simulate Those computer
+interactions like can Mouse click and
+keyboard interaction for example I can
+try to run this self-operating computer
+by open Terminal and try operate it will
+open this and I can click okay to start
+and give instruction what is the latest
+weather in C Australia and click enter
+it refers to take a screenshot as you
+can see on the top to and then feed this
+screenshot to gbt 4V which open the
+Chrome and then it will focus on the URL
+input bar typing the information Sydney
+Australia weather and take a screenshot
+again to feed this information back to
+GPD 4V
+and once it's finished it will output
+information here the latest weather
+information Sy is this one however the
+main challenge at the moment is I don't
+think this personage grade annotation is
+working really well I can often see the
+mouse interaction stuck at some weird
+position that's probably because GPD 4V
+failed to give very accurate estimation
+about percentage but on the other hand
+I'm also not too sure what's better
+solution would be because it is desktop
+computer there's no easy way to
+manipulate and create bounding box
+however if we change the scope of AI
+agent to just web browser then accuracy
+should be much higher because we can
+easily use CSS to create those bounding
+box for web pages and give much more
+accurate annotation for GPD 4V and this
+is example I want to take you through
+today I'm going to show you a stepbystep
+example of how can you build a web AI
+agent that can automatically navigate
+through the website to do research and
+web tasks based on example provided by
+unconventional coding where he buil a GP
+4V powered web scripper this really made
+the whole project a lot e easier so big
+thanks so let's try to build an AI agent
+that can view and interact with your web
+browser and I will take you through two
+examples first let's try to build a
+simple GPT 4V powered web scripper which
+can take screenshot of web page and then
+use GPT 4V to script the data and this
+will be extremely useful because it will
+be using your own web browser so it can
+access website that is commonly hard to
+access like LinkedIn Instagram or other
+websites that normally block the
+scripting service and after that I will
+also show you a more advanced version we
+will create a web AI agent who can
+browse internet like human does by
+looking at the web page find a link that
+is interactable and click on this link
+to find information further so that it
+can do quite sophisticated research
+after this you should have a good idea
+about how can you build a AI agent that
+can control your web browser or your
+computer so let's get it for the first
+one GPD 4V power web scrier We Were Us a
+nodejs library called paper to actually
+take a screenshots and control the web
+browser to do that let's first they open
+Visual Studio code create a file called
+screenshot.jpg
+in called proper extra plugin Stills so
+this is one plugin that will make this
+Auto web browser less detectable for
+website and then I will Define URL that
+we want to script and in here I just use
+a normal Wikipedia page to test I will
+also Define timeout as some web page can
+be quite a long to browse and then I
+creating a sync function so inside our
+first use browser equal to await
+property. launch to create a new browser
+and open a new page set the Viewpoint
+which is how big a screen should be and
+then do page. go to which will open this
+specific URL that we Define above and I
+do wait until document loaded so this
+means this function will only be
+considered as finished after the whole
+Dom HTML content is loaded and then I
+will do page. screenshot to actually
+take a screenshot of the page save that
+screenshot jpack and four page equal to
+four in the end our close this browser
+browser to finish the session so this
+simple function should actually open
+this page and take a screenshot and
+before we run this function we need to
+set up this nodejs project I would do
+mpm initiate and I can just leave
+everything to be empty and you will see
+package.json be created already and next
+thing is I will need to install poer so
+I do mpm install poer and once it's
+finished you will see package log. Json
+that will automatically log all the
+package that has been used for this
+project and on the other hand also need
+to do npm install poer extra and now we
+can try to run this by doing no
+screenshot.jpg if you open inside it a
+screenshot of this Wikipedia page so
+that means this screenshot is actually
+working the problem is with what we have
+here now it will not use my existing
+Chrome profile which means it won't be
+able to access website like LinkedIn
+Instagram or any other website that I
+have paid the subscription on so you
+will need to download a special Chrome
+version called Chrome
+Canary and then I will go to a special
+folder from users your username library
+application support Google and inside
+Chrome you will have default folder I'll
+copy this folder and go back to the
+Chrome and open Chrome can folder then
+paste in this default folder and replace
+existing one so this will copy all my
+old cookie and profile from the other
+account to this one and after I will
+open Google chrom canery and try to log
+in with all the accounts I need like
+LinkedIn Instagram and then I will come
+back to
+screenshot.jpg
+Pap tier should open and in my case it
+will be the Google Canary version and
+also the user data directory I will
+point to Google Chrome Canary SL default
+which is default profile but if you want
+to change this to be other's profile you
+can change it to like profile one or
+profile two and I will also add a weit
+for timeout function here as well
+because sometimes the web page can take
+a while to load so with this pop should
+be able to access any website possible
+with my own Chrome profile let's try
+this I can try again by doing no
+screenshot doj and once finished I
+should take screenshot of a LinkedIn web
+page with the full page lens you can
+play with timeout value a bit more
+depends on your internet speed so this
+JS file will be able to take screenshot
+of any website next step is we want to
+create a python file that can call this
+Javascript file to take a screenshot and
+then let GPT 4V to extract data from
+this screenshot so our create a vision
+scripper py file and also aemv file to
+store the open AI API key inside Vision
+scripper we will import a few different
+libraries load the EMV file and also
+create a model with open AI so our
+firstly create a function called image
+b64 this will basically rate the image
+file into a format that can be passed on
+to GPD 4V and second function called URL
+to screenshot which will take a URL of
+the website remove the old screenshot
+file if it exist and then try to run the
+screenshot doj file by using sub process
+after running this if there's no
+screenshot taken it will show Arrow but
+if there are screenshot taken it will
+return the screenshot file and then
+we'll pass on this screenshot file to
+GPT 4V by calling this function called
+Vision extract inside I will create chat
+completion with gbd 4V I'll give a
+system prompt that you are a web
+scripper your job is to extract
+information based on screenshot of
+website and user instruction and then
+send an second message with image file
+as well as a user prompt in the end
+display the result return from GPD 4B
+and last but not least we will connect
+everything together with a function
+called Vision quot it will generate
+image first and then return the
+extracted information so that's pretty
+much it we can try it out by call Vision
+Crow or pass on the LinkedIn profile and
+then say extract Jason's working
+experience profile based on the
+screenshot so I'll do python Vision s.p
+oh sorry this typle for this JS file on
+the line 23 I would need to change it to
+screenshot and one thing I forgot to do
+is for screenshot.jpg need to replace
+the URL to be process argument value to
+so this is basically referring to a Ser
+argument passed from the python file
+which is URL and let's try this again by
+doing python Vision scraper so image has
+been captured and passed on to GPT 4V so
+you actually look at the screenshot and
+return my working experience and this
+result is a lot better and cleaner than
+the normal scrapping service especially
+if you try out some more complex website
+like pricing page so I can try this
+pricing page of Rance AI URL and then
+say extract the pricing info and do it
+again it successfully get the whole page
+of the pricing and then it return the
+full details of this pricing page and
+for this type of task if you do through
+normal browser L scraping the result is
+a lot more messy but with this one it
+will be able to capture all the details
+by gbd 4V so now you just create a
+simple but super powerful web scripper
+that is probably better than any other
+scripper you will get but next is we
+want to to do something more advanced
+build a AI web agent that can actually
+interact with different websites click
+on the links to navigate around to do
+research and if needed you can even fill
+in the text input and forms I creating
+new Js file called Web agent. JS we
+important list of different libraries
+and if you haven't you will need to
+install a new package for open a as well
+by doing npm install open a and then
+we'll try to create open AI instance as
+well as timeout as we did before and
+after that again we need to create this
+image to 64 which will convert a local
+image into something that can be passed
+on to GPT 4V and then we'll create a
+simple command line interface that allow
+users to type in the prompt as well as
+sleep function to set a timer so that it
+can wait for the page to be fully loaded
+when it is browsing the website and
+after that we will create a very
+important function called highlight
+links so the purpose of that is if you
+remember you want to create some
+bounding box to highlight the elements
+that can be interacted so the way it
+works is that it will first they try to
+remove all the previous highlighted
+bonding box and then return all the
+button input text area as well as the
+links available on the web page and for
+each button or links we will create a
+function inside called is element
+visible which way will go through a few
+criterial to making sure the width
+height OPAC the display visibility is
+not hidden and also the element is
+within the Viewpoint and in the end it
+will return a true or false value about
+whether this element is visible and it
+will first create a border for all the
+interactive elements and if the element
+is visible on the page it will clean up
+the link TX and also set a special
+attribute for that specific Dom element
+called gbt link text so that later we
+can use this as a identifier of what
+elements po should interact with as well
+as a wait for event feature so this will
+be used when we want the AI agent to be
+only executed after certain event is
+happening like page load and that's
+pretty much all the function we need in
+the end we just stitch them together we
+Define the pap tier browser create a new
+page page set a Viewpoint and we will
+Define system message you are a website
+CER you'll be giving instruction about
+what to do to buy browsing you are
+connect to web browser and you will be
+able to given a screenshot website
+you're on the links on the website will
+be highlighted in r in the screenshot
+and always read what is in screenshot
+don't make up link names and you can go
+to specific URL by answering the follow
+Json format URL or you can click on the
+links on the website by referencing the
+text inside the link button by answering
+specific format click and once you found
+the answer you can try to answer with
+regular message and in the beginning go
+to direct URL that you think by continue
+to answer the user question if possible
+use Google search and then we're doing
+console log GPT how can access you today
+let the user to input The Prompt push
+the user prompt as part of the message
+then generate variable URL and
+screenshot taken then we create a loop
+so the agent can continue to navigate
+between different pages until it thinks
+the task has been completed we are
+already find some special behavior for
+situation when screenshot is already
+taken as well as a URL has been defined
+but we'll come back to this later and at
+top we have some special code to handle
+situation after screenshot is taken or
+GPT 4V generate a link that it should be
+script but I will come back to this
+later so firstly we will call the GPT 4V
+and get response back with the system
+message as well as a user prom and after
+that we'll try to get and display the
+message to the user in the terminal and
+then if the message that GP return is in
+the format like click which means agent
+want to click on a specific UI element
+on the website and then it will try to
+get text of the links that agent want to
+interact with display a message to the
+user that agent is try to clicking on a
+specific button and then we try to fetch
+all the elements that has that special
+attribute GPT link text and we'll try to
+do a match so for each interactive
+element we will try to match whether the
+link TX that agent want to interact with
+is either partial or exact same as a
+link taex on the HTML and then it will
+try to interact with that web element by
+doing Dot click and after that clicking
+interaction happen which could either
+take the user to a different page or
+open a specific menu it will try to take
+a screenshot and also set a screenshot
+taken to be true but if agent message is
+not click something but it return a URL
+that it want to fetch then we will try
+to get the URL that agent want to return
+and then continue the loop and now let's
+try to get back to the top so this is
+where this two condition will be used so
+if URL exist which means agent return
+message that it want to script certain
+website now we display message that the
+agent is colling certain page go to that
+specific URL and after the page is
+loaded we will highlight all the links
+wait till the page to be fully loaded
+and highlight all the links on the page
+and take a screenshot then set a
+screenshot taken to be true and the
+other condition if screenshot is taken
+equal to True which means either the web
+browser has jumped to the new URL that
+agent want to script or the agent has
+click on a specific button and take a
+screenshot of the interative state
+already then we will load the image and
+pass on the image to the gbd 4V and tell
+you here a screenshot of website you are
+on right now you can click on the links
+or you can C to another URL if needed if
+you find answer to the user question
+already you can respond normally then
+set screenshot taken to be F and after
+that we'll trigger the message to GPD 4V
+and get a response back so this how the
+wild Loop here works the agent will
+basically continuously click on
+different links to navigate further to
+find information needed or scraping new
+website links after agent finish
+everything then we'll display the result
+to the user and let user to give further
+instructions so this is basically web
+agent that we just created now let's try
+to run this our open Terminal do node
+web agent. JS I can give it instruction
+what's the weather like inin so it will
+firstly try to script the website and
+then return answer that insan is around
+20° if you click on the screenshot jpack
+it actually go to Google highlight all
+the interactive links or input box which
+means it will be able to scrip further
+if it needs and also rate the
+information on the page and to test is
+ability to interact with website I can
+ask a photo op question it give me 10
+days wether forecast for nor C and if
+the agent is smart it should be able to
+click on that specific link to get more
+information so I click enter in return
+message click on 10 days is weather nor
+C which is that specific link as you can
+see it successfully navigate to next
+page and which has 10 days forecast
+information and then GPD 4B read and
+return the list of answer to me on the
+other side I can also ask this AI agent
+to complete some sophisticated task for
+example I quite like the Instagram
+account epic travels and I want GB forv
+to figure out how can a company or
+business to be featured on Epic travels
+so our give askask figure out how to be
+featured on Instagram account epic
+travel so it'll do a Google search first
+and then click on Epic travel's
+Instagram account and load the whole
+Instagram information and find its own
+official website get information and
+then return me the proper answer so this
+a perfect example of how this web AI
+agent is able to navigate through
+multiple different website to find the
+information you want and at moment this
+functionality is still quite limited as
+it didn't really implement the
+functionality of interact with form
+elements and clicking link can often
+goes wrong as well so there's lots of
+error to improve but already it shows
+huge potential to complete complex tasks
+that's it for today I really look
+forward to different type of AI agents
+that you going to create that can have
+Innovative interaction with web browser
+or computer I'll continue post the
+interesting project that I'm doing so
+please consider give me subscribe if you
+like this thank you and I see you next
+time

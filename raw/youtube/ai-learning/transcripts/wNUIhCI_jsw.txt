@@ -1,0 +1,373 @@
+ever catch yourself feeling overwhelmed by all of the AI hype and just not knowing where to start well the good
+news is you're not alone and that's exactly why I created today's video I have an incredible guest joining me for
+this video Talis tashera he's an exh Harvard MBA Professor who has advised
+all sorts of companies from startups to established companies including Mark Zuckerberg in the early days of Facebook
+and what he is going to teach us today is how do you think through the customer value chain so how do you identify the
+problems to solve and then create the software solutions that will solve those
+problems a lot of people do this backwards they create that product because it's cool and because it's
+trendy and then they try to force a customer problem onto that solution which is not the way to go so we're
+going to be talking about the entire customer value chain and how do you think in terms of Frameworks when you're
+trying to come up with your startup ideas and how do you structure your business in the age of AI first of all
+thank you so much for being here today it's such a pleasure to speak with you I know that AI has been all the hype and
+every company is thinking about how do I Implement AI right so how do you think through are you using AI correctly and
+when and where should you actually be using it in ways that help you grow your business instead of just jumping onto
+the hype well thanks for having me it's a pleasure to be here with you I'm really excited about this conversation
+yeah yes I think you you just uh immediately touched on the big question the question now is not anymore should I
+use AI as a company as a manager um with open AI chpt really the the barriers to
+start using the technology anywhere have gone to practically zero very little
+cost very little experience and so all companies managers Executives in my experience are adopting and using AI in
+certain capacity inside their companies and roles and the big question as you ask is am I using it correctly am I
+looking at the right processes in my business at the right functions and features really given that all of the
+tremendous opportunity to use AI gen AI predictive AI automation AI did I choose
+the few areas in the company that will give the biggest bang for the buck the biggest impact and I've seen working
+with both Executives in my capacity as uh owning a digital transformation
+agency I've worked with big companies as well as I teach NBAs and entrepreneurs on how
+to adopt AI in business model Innovation so I've been seeing both sides of this coin so starting with the big company
+Executives you know things that we've seen is for example recently McDonald's tried to use gen through a chatbot in
+their drive-throughs now what happened so first problem number one they
+partnered with a company IBM that I'm sure they've worked with many times before but between you and I IBM is not
+a a company that is really going in the frontier of AI research and AI products
+I never read about anything regarding IB and AI so that is Strike number one it's
+when a company uses a partner that is not known for advancing the tool I'd say
+number two is they focused on an activity that by and large customers are fairly satisfied with people that go to
+McDonald's you know with the few exceptions you don't see long lines in the Drive-Thru it's very fast it's not a
+big issue a big problem for for customers so you're not being very customer Centric if you're not applying
+AI to solve a customer problem you're just applying because hey that seems like a logical step to do so strike
+number two and then strike number three was when they applied it they didn't really test out if that there would have
+significantly reductions in cost time and effort these are the three
+currencies that you should look at do you see improvements in that so when they applied what happened was many
+people that were going through they weren't getting their requests fulfilled correctly because the AI chatbot
+misunderstood them a little bit more time so there's videos on Tik Tok of people ordering things on McDonald's and
+then the AI tool was was saying did I understand you correctly do you want bacon on top of your your ice cream or
+yes do you really want 300 box of chicken nuggets and the consumer is like no that's not what I want I want three boxes not 300
+and you can see that the tool wasn't you know ready for prime time which caused actually an increase in the
+drive-through lines as opposed to a decrease so you know strike three this is not the way to go about it the way I
+advocate for large companies thinking about how to adopt AI is finding the right partner really figuring out what
+are the areas that distinguish your company what I call Strategic drivers of success
+what makes your company distinct in the eyes of customers relative to competitors and in the case of
+McDonald's it's not the drive-thru so don't try to apply AI there apply where
+you have an advantage and you want to leverage that Advantage even further to be more distinct than your competitors
+right and then point number three you should really test test test test and learn make sure that whatever you do
+before you launch it you're actually reducing the cost of the process you're reducing the time for the customers to
+make something that they did before faster and you're making it easier for them so you know I think that's the
+framework that I tend to use for B now for startups using AI there's there's quite a few differences because they
+might be applying it in in an activity to kind of launch a business and again
+I'm really focusing on the customer Centric approach to Innovation and I've written a book called unlocking the
+customer value chain and I've visited dozens and dozens of startups and written Harvard Business School cases on
+them to really identify that the startups that really grow to disrupt markets they start focusing on one or
+two very narrow activities in the customers value chain because they
+identify the established companies are unsuccessful at doing those activities
+well to give an example you know big Banks they do a variety of services for
+customers but historically they've never did payments that well payments you had to go to the bank it took time two three
+days you know High fees all these things and so when PayPal came and said do payments online with us you don't need
+to leave your bank you can still have a checking account you can still have a savings account you can still have your
+mortgage you can go to your bank for all these things but do online payments with us why very little to no costs and it's
+much much faster and simpler and so that's how they disrupted started the process of disrupting the market in
+fintech that's kind of the approach once you understand this approach which I which I call decoupling as a startup you
+should think how can I decouple the activities in the customer value chain and steal one activity that customers
+are unhappy with the established companies with the incumbents and how can I do it better and then you say can
+I use AI to do this thing better so you you you mentioned about decoupling um
+can tell us like how do you break down the customer value chain to find those specific problems you know so you can
+identify things that you can now solve absolutely so so let let me start with an example I used to play video games
+when I was a kid my customer value chain was you know video games were expensive
+and so I didn't want to just buy one that I didn't like so how do I deal with that well first I was interested in a
+console and then I would you know go around with my friends and see who had this console and then I would visit
+their houses say you know let's play together you play my games I play yours I I watch you play your games I learn
+which games I like and then after looking at those games I would say you know okay I'm ready to buy this game
+because I like it and then so I would go physically to a store buy the media whichever it is a cartridge a CD or
+whatever it was come back come home you know play the game try try try improve
+talk to my friends learn watch them play Come Back play my game until essentially I got at the end of the game and then if
+I didn't want it anymore I would try to reset to get more money to to buy another game
+so that was my customer value chain and in if you think about these activities some of them derive value from me when I
+did that activity I got a lot of pleasure value was created for me so
+playing the game created value for me watching my friends play that game created value for me because helped me
+understand which games should I play after I uh bought that game selling the game was a way for me to capture value
+so that's a second type of of activity value creation activities value capturing and when I paid and bought
+that game I I was creating you know a company was capturing value from me and
+everything else you know the act of going to my friend's house the act of going to the store staying in line uh
+the act of buying a game that I didn't like all these things were value eroding activities I was forced to do it but I
+didn't get value out of it so the customer value chain is all the sequence
+of steps that customers do in order to derive value from products and services and you can classify them into value
+creating value capturing value eroding activities okay so having said that you can see this was the traditional
+business model and there were video game manufacturers and retailers and that that were in this business and then
+Innovation started to happening more than 10 years ago these two kids uh college kids from from Yo decided to
+create twitch and what they learned is people were going online to watch other people play games the same way I did
+when I was a kid going to my friend's house to learn to educate myself figure out what games I wanted to play people
+started doing that online and twitch grew dramatically and it had Now 60 70
+million people that are paying not to play a game because you go to Twitch to watch somebody else play a game so
+people are paying for this privilege what twitch realize and build a business around it is instead of saying let's
+create a a video game developer let's like rent game these games everything let's just create a portal which people
+can watch other people play games that was decoupling they looked at all the value chain and they chose one activity
+and say we're going to do this better why because if you go if you do it the old way you have to go find friends you
+have to go across the street go to their houses and then their moms are telling them you got to go home and then on the
+weekends they're traveling you can't do it and now with twitch you can do it 247 for all the games you want and if
+somebody's playing a game that is not playing well you switched to another Channel another another so it became a
+much better experience right this is decoupling decoupling is the act of looking at the customer value chain
+figuring out where customers are unhappy in this case viewing somebody playing a game and build a business around that
+single activity and then you're going to get capture a lot of customers very quickly and then you grow and you start
+offering more and more services right and then twitch started offering more subscription uh tips for you to play if
+you want to be a professional gamer you can do it through twitch and it branched out into more and more activities but
+they started out looking at a very niche market just like PayPal very Niche online payments for small amounts right
+twitch just watch other people play games that is the process of decoupling the way that you looked at things was so
+unique and what really stood out to me is like it's not about the tech and the
+tech has never been easier to do and you know know I I have videos on how you can make a software now in under an hour
+using tools like bolt. new using like replit so now that the technology
+barrier has never been lower anyone and and their their mom can now become you
+know a software Builder so now that the barrier to entry with tech has been so
+much lower compared to ever in the human history it's about finding the problems
+to solve and I think not many people know how to do that very well so for the
+people who are looking to get into the software space how do you suggest that they find uh those problems to solve so
+that you know they can go out and create these softwares now with AI to actually make some money or disrupt certain
+markets that's a great that's that's a very good question well put sometimes we think that the barriers to entry are
+unbelievably low now with technology as you saying you're correct but you know even even five 10 years ago they weren't
+as high as we imagined just to give you two examples so one is um I visited
+Facebook before its IPO I saw Mark Zuckerberg in his flipflops you know famously like programming standing up
+well when I visited Facebook and I asked them you know how are you planning to disrupt the social media Market because
+there were other social media companies they never talked about their unique disruptive Technologies they talked
+about kind of the customer experience you know what what was not good yet what
+they felt could be better and even Netflix and you think Netflix is a tech company they got to have proprietary
+technology but even at the time when Netflix moved from sending DVDs by mail
+which any one of us you and I could have done this we could have bought DVDs build a warehouse and send it by mail
+and then Netflix moved to become to do online streaming they didn't have proprietary Technologies when they did
+that right they didn't have like servers and kind of software that can do that they build it over time to improve so
+what I teach my students is don't think that you need this amazing new technology to become a successful
+entrepreneur start as you say with kind of run-of-the-mill Technology you can improve adapt but that's not going to be
+your differentiation that's not going to be the factor that will as people call it emote very very hard to get emote out
+of Hardware or software nowadays finding the right problem going
+back to your question so you the approach that I've come to realize is first if you want to find a right
+problem you find customers that have that problem right and how do you you go about doing that so back to the customer
+value chain what what I do and I help entrepreneurs that I'm advising in
+startups and big companies to try to find Innovation opportunities is we first map out the customer value chain
+we try to understand end to end what customers are trying to do so that means that you should get out of your head of
+what am I trying to do I'm trying to find a business opportunity I'm trying to make money I'm trying to find a new market of prod forget about that for a
+moment focus on look think about a customer map out all the activities in the customers's value chain what do they
+have to go to do from becoming aware that they have a problem all the way to using and disposing if it's a physical
+product or cancelling if it's like a subscription right online map those
+activities identify which ones are value creating activities which ones are value eroding activities and which ones are
+value cap in activities why is that important because based on my research there's only three avenues for
+disruption you can either create more value creating activities for customers in the sense for example back to Twitch
+it's watching somebody amazing playing the game you can either eliminate value eroding activities back to PayPal I
+don't need to go to the BR to the bank or go on a website and fill out a bunch of information to transfer money through
+wire transfers is very very easy or kind of reduce value capturing activities
+essentially making it cheaper and now fortnite and many of the free to-play games have done that and figure out
+other ways to monetize and once you do that you want to get a sense of where in
+the customers value chain are customers most unsatisfying and one tool that we generally do use is we do you know
+either surveys or go to online reviews and capture that information by activity
+in the customer value chain and we've done that with many in Industries so we've identified what I call weak links
+which is activities that a big enough group of customers are unhappy with
+their current providers I'm unhappy with my bank in this regard I'm unhappy with
+my supermarket in that thing I'm unhappy with my telecom provider there are quite
+a few activities where customers are buy and large unhappy and in my research I
+shown that disruption most likely happens in the weak links of the
+customer value chain so it's about identifying this through surveys interviews talking to people being
+working in the industry and I'm sure if I ask you you know where have you worked before you will see things the say my
+employer the business that I work for wasn't great at doing this or this other activity those are the first activities
+that I would look at to see oh is there a way that I could do this cheaper for
+the customer faster f for the customer or less e effortful for the customer if
+I can find a way to do that with a combination of new kind of value proposition new business model and even
+potentially Technologies then I have a clear shot at really kind of starting to build a disruptive startup that's really
+good that's really good and so after you find this problem to solve how do you
+get your word out there to so that people even know and so this is kind of like two-part question that may not be
+related you know would this same process work in for small businesses like you
+know dentists chiropractors kind of like your traditional businesses is there ways to dis disrupt those markets as
+well so that's a two-part question for there for you sure so so let me give you an example let's let's stop with the
+tech world the startups let's focus on in a a very downto Earth lowtech business which is car washing yeah you
+know car wash you know 50 years ago was manual and then came companies that automated the process you go in no no
+people involved you know you get your car wash but apart from that which is at least like a 30 40y year technology
+virtually no innovation has happened you get your car wash the same way all the car washes have been undifferentiated
+pretty much the same thing then a few years ago a major breakthrough happened
+that caused the companies that adopted this breakthrough to become highly highly profitable
+compared to not only other car washes but even to other traditional businesses it became such a lucrative business that
+VCS and pees started investing in car washes and what was the huge Innovation
+it was not Tech it was a business model Innovation it was we're going to offer you a
+subscription for car wash you will pay this much and you can wash your car as
+many times as you want that caused such a dramatic change because many people
+say hey I don't want to be paying 15 20 25 bucks I can just pay a flat fee and
+I'm going to be able to come and bring my car to wash all the time and you would think well the cost would be so
+high right but when you look at the data what happened is people buy the
+subscription and forget about it it becomes you know gym subscription you have it it's important you feel
+important but how many people are there in the gym they in and out there's a group of people that are and most likely
+are the ones that live very very close to the car wash but the ones who live a little bit farther away they kind of forget and their car is clean anyway why
+am I going to do it and so they go like twice a month but this increased dramatically the value so this business
+model Innovation and it was based on this premise of understanding that consumers often time they want solutions
+that is a what I call set it and forget it right set it up and forget about it I just want convenience I want to set it
+up have a just come in in and out and so that understanding that people didn't
+want to like should I get my car washed is it dirty enough should I wait a little bit more should I pay more should I pay less should I pay $50 $20 all
+these things so that was a huge Innovation that actually changed the market and me made these businesses
+extremely more valuable by kind of this business model Innovation so you know getting back to your question is
+understanding identifying a problem kind of validating somehow through consumer
+Sur surveys reviews talking getting information using it but then like innovating in the business model finding
+another way in a business model is how do you create value and for whom and
+then how do you capture value and from whom so it's a four-part question to really understand your business model
+but once your your second part of the question how do you get the word out yeah right find this crit how do you get
+how do you spread the word out so first if you identify people that have a problem you sell the problem you don't
+sell the solution and that's important so so if we take a step back and think about you know a headache medication you
+know there's aspirin Tylenol ibuprofen all these things and if you look at how people solve their headaches they solve
+it in different ways people will Google I don't know what you Google when you have a headache medication but might you
+might Google a brand because you're like a leave you already know the brand a Le
+right and so that's a brand that you goog I would ask GPT I would say I have
+I I just literally open up my app now and then I turned on the voice and I said I have a headache right now what do
+you recommend and then that's the point that I'm trying to get you're
+searching based on the problem you said I have a headache some people already
+saying you know I want to find painkiller that's already a solution and some people say ol leave or aspirin or
+tylenol that's a brand can you see the difference that you're like trying
+you're trying to find different people one is trying to sell on a brand one is trying to sell on a solution and the
+other one is BAS one what you do if I had a better solution I would try to Target you because I'm trying to Target
+your problem you just described I have a problem and if you identify that that problem is pervasive and the established
+companies aren't solving it just go and try to figure out who's like raising their hand you know figuratively
+speaking like you and saying hey I have this problem I have this problem so Target people that have this problem and
+then bring them in and then offer them a solution and so on and so forth so
+targeting based on problems is is is often one way to kind of get around the fact that you don't have this brand this
+Big Brand I know a lot of people listening will just be just starting out you know and they may be saying well I
+don't have a thousand people to survey and look for those problems and I just
+want to get started so for people who you know may not have those like it you know maybe even put yourself in the
+shoes if you didn't have those resources where would you go to start identifying those problems that you can then perhaps
+use something like a AI software tool to build those solutions to really form
+that software so so the first one is start maybe with a problem that you understand or you had before so for
+example in my consulting company decoupling doco I had a problem which is my clients that uh came to me they came
+with a problem that they wanted some Consulting help with that I didn't think it was their real problem I thought it
+was the symptom of their problem and I needed to dive deeply to understand that
+so from my business point of view my challenge was my client doesn't know he his or her real fundamental that the
+core problem and so I needed to collect data from consumers to kind of show to my client hey your problem is not that
+that's a symptom of your problem the root cause is something else right so then I said well many companies might
+have this right because there's a lot of politics involved you have meetings and CMO says the problem is this the CEO
+says no the problem is that the key problem is this CFO no no no no the problem is something else so they fight
+and so I said well how can we create a tool that eliminates the fighting that gets everybody senior Executives in the
+room we show them one tool that everybody is like points that's the
+problem that's the one that we need to address so you know and then once I identified said I that was my problem
+and then I started seeing are there other companies that have this problem then the answer yes oh so I validated
+this is not just talis's problem many companies have this problem and then I started thinking oh how what's the
+easiest way to address this well let me start surveying customers online but
+then that was expensive because I had to hire hundreds of people thousands of people
+you know to say please fill out the survey this long survey I had to pay them and then they would fill out the
+survey based on the customer value chain and they would tell me what you know where they're unhappy so I can find
+these weak links to tell my client saying these are the weak links but this is long and complicated and expensive so
+then I said well can AI help me and so we created Bots that go online and
+reviews read all of these reviews on online in different websites and gets
+the information on reviewers and tell the reviewer that is written about it says this brand I bought this I brought
+a car from this brand the test drive was amazing but the negotiation was awful and then we started getting that and
+joining with surveys all these reviews to create this map of the customer value chain in the satisfaction in each
+activity and we got you know hundreds of thousands of reviews in each industry so
+now when a client a potential client comes to me in a few days I tell them I
+say I know some of your biggest problems from the customer's point of view and immediately I show them and they're like
+wow that's that's clearly a problem we need to address so again just recapping
+find a problem that you had go check around that other people are having this problem three find the cheapest easiest
+fastest way that you can try to kind of get an MVP of a solution understand if
+this is valuable validate it by showing it to potential clients and then lastly
+collect the data and use AI very very end of the process use AI to help you
+get a lot of scale I couldn't do the reviews evaluating the reviews alone we have hundreds of thousands of in the
+industry and then using AI to get unstructured data to transform it into
+valid insights to kind of feed into this I love what you said there because so many people get caught up that I have to
+use AI because it is the hottest thing around but I love what you just said because you're using AI strategically as
+a goal in this case is analyzing thousands if not hundreds of thousands of reviews here so you're using it in a
+way that actually helps you increase productivity you're not using AI for the sake of using AI so that out of the way
+I just want to say like you know cuz AI is going to disrupt everything from generative AI just humans cannot beat AI
+in terms of speed and I don't know if you've seen things like flaw computer use that just came out that can do that
+last mile now as well so it can actually like navigate your computer um move your
+mouse around and type in the URLs that it needs to go to whether that's a CRM
+or a spreadsheet and not only is it Computing the numbers from data analysis or generating text or image it's
+actually doing that last file of putting that image into a PowerPoint putting those numbers into especially with CRM
+and that technology is only going to get better like the AI we have today is the worst it's ever going to get so how
+should businesses think about how they should change their business models
+going forward to still be competitive in the age of AI sure well you know that
+that in itself is another hour of conversation so we're we're g to scratch the surface here a little bit in my
+company we work with companies in in various different Industries because what I can help them is through customer
+Centric Innovation as opposed to you know improving you know it's we're not a
+Consulting uh industry specific Consulting so we come in and we do workshops as well as uh help identify
+these opportunities for Innovation but kind of from my experience what what I've seen is 80 about 80% of the
+companies that we come in they're saying they're either experimenting or launched AI as a chatbot so in their minds it's
+like AI is a chatbot if you think about it very few companies out there having a
+better chatbot that competitors is a source of a distinct strategic Advantage
+very few right the vast majority won't won't do a dent right if
+you're just trying to learn applications that's fine but they think this is like AI many managers think AI is like
+chatbot and I think they're missing the point you know as all Technologies and we talked about it it's about figuring
+out the value drivers of your business so we have a tool that's called Val value driver mapping you you try to get
+all of the value drivers that make your company distinct relative to other
+competitors in your customer's eyes so we do that with many of our clients and
+we create all of the features right so for example back we talked a little bit about Netflix what makes Netflix
+distinct for us relative to all of the other kind of streaming services you know content obviously but the quality
+of the content is super important the speed of delivery right what Netflix is like has this way that kind of
+interruption is very so latency is very low so you know quality of the content
+kind of very Diversified and very unique but there's another one which is kind of
+the recommendation system because as Netflix started adding more and more stuff we don't know what to watch so the
+recommendation system was very good so they partnered with us to figure out a better recommendation system and we've
+identified that that was a source of a value driver right strategic value
+driver that Netflix said we want to be better at recommending because if we don't recommend well people often times
+don't know what to watch they go in they go out they don't watch and after a while they cancel because they saying oh
+when was the last time I watched the Netflix H three weeks ago I'm Gonna Cancel so we went and say how do you
+improve a recommendation system and what we did is we actually asked people to turn on their webcam with their consent
+and we got a sample of people watching movies and shows and then we identified where people were like most expressive
+using an AI expression tool that figure out are you smiling laughing are you
+like making faces that means that you're engaged and we got all of these Snippets of content we packed them up together
+very tightly and now when you go to Netflix and you kind of hover over one of these kind of a movie or a show it
+doesn't start from the beginning it doesn't just show you the first few minutes or seconds of the show it it
+shows you a random part of the content but one that was like engaging number
+one and emblematic of what you'll likely feel if you go and watch that show from
+the beginning that we showed in an academic paper that we published in the Journal of marketing that actually
+increases engagement increases likelihood of people watching therefore reduces the churn and all of this
+increased in viewers over time goes directly to the bottom line it's not really that expensive so again kind of
+seeing how this process works helps you understand value driver mapping is super critical what all of the value drivers
+that make your company better than competitors in the eyes of the customer
+and once you identify those that's part number one then out of those those are the candidates for you to apply AI AI is
+like a electric motor that value driver helps so let me put a fast growing motor
+on it and then you'll unlock all of this distinct value for your customers that's
+the way that we approach in a two-step process that's awesome that's awesome but all of these changes don't happen in
+vacuum and usually in companies you need a lot of buyin and there's a lot of fear among the general employees around AI
+because there's a fear that it'll replace them or take away their job so how do Executives and business owners
+lead in the age of AI especially with a team that try to sabotage their efforts
+and that was a that's a thing that I'm seeing a lot today as well that's a very thorny issue in reality I I've see two
+things that are happening and these two scenarios will dictate whether AI will be successfully implemented or not one
+is a group of employees that are doing a variety of tasks and
+when they adopt AI they really try and are supported they free up their time to
+do other activities that are higher value creating activities right so this
+is the classical case of not having to write emails summarize research do analyst reports a bunch of things that
+AI gen AI tool can summarize documents much better create content create
+reports much better and then you have to be in the business of managing an AI and
+that's the type of work that I do I always think about AI as my kind of you know 247 intern I have to work with the
+AI to get what I want but if I dedicate enough time and patience and I tell it
+when it's wrong and I I I I also say please and thank you it's been shown
+that being nicer to the AI agents actually improve the outcome why I have
+no clue but you know we're see that it works so I treat it as an as an intern
+that once they do some of this nitty-gritty work that they can do better it unlocks it frees up my time to
+do other things and that increases my productivity when that happens you
+should educate the employees saying this is what's happening we're trying to get you to to save time this so you can use
+up more time to be more productive in the value added activities in which only
+you can do now there are other employees
+other Professionals in which the activities that AI can do better and
+faster are 80 90% of it you know think of low like low skilled copy editing or
+creating images you know editing documents things like that those cases
+the reality is AI tools will do a huge portion of that and then there's a
+problem okay now that you freed up the employe waste time by 80 90% what are
+they going to do with that time now as a company executive you can say I don't know I'm not in the business of trying
+to answer that question I'm going to fire them and some some companies that's the executives are doing that they're
+firing a lot of people that were like in telemarketing or in journalism or in
+copy editing in advertising agencies but I think the intelligent smart executive
+will say now I'm freeing up my employees time to do other things and I have a lot
+of other jobs or ideas or concepts or innovation attempts that I don't have
+time or we don't have enough people to do let me get those people towards working on these
+opportunities right and I even tell my students like don't ever go to a job particularly early on in your career a
+job is a problem solver because you solve the problem like you're basically
+your boss is like thank you for solving that problem it's amazing like try to go for where your boss is saying I see a
+huge opportunity here I'm going to put you to work an opportunity as opposed to P put you to work on a problem that I
+have right now yes we all have to solve problems but if your boss is constantly just putting you to work to solve his or
+her problems you know you're not going to go much far in that organization you know you're valuable when your boss is
+putting you into opportunities so it's part of our jobs as managers of people that are being displaced by AI to help
+them find saying there are a lot of opportunities I'm not just using this as a cost cutting tool right and even even
+for the employees it's about being proactive and seeing like okay so this
+is not going to go away so what's my new value proposition to my employer and you
+know you're probably the best people to identify these opportunities because you're the person on the ground you you
+see what's actually happening whereas sometimes the managers are two or three steps removed and they don't see the
+actual problems being H uh being you know uh that's happening and so you're probably
+the best ones to drive drive forward a lot of these AI Innovations or other opportunities that are presented so s
+yeah yeah so just as we wrap up here any last advice for business Executives or
+St Founders in regards to AI that we haven't touched on today yeah no um
+always think about um I I like to think about AI as three big buckets generative
+AI creates content predictive AI evaluates a future state of the world
+estimates it and then automation AI which actually executes takes humans
+away from the decision process by executing what you talked about Claude and AI agents so always think about kind
+of what's our geni strategy what is our predictive AI strategy and what is our automation strategy and think that
+ultimately you're trying to use these Technologies to kind of save money time
+cost and effort in doing them and then kind of freeing up your human capital to
+do the things that AI cannot do that's perfect I think that summed it up perfectly well thank you so much for
+coming on board today I really appreciate your time and expertise and this has been a very fascinating
+conversation so I really appreciate you being here today my pleasure I enjoyed it too thank you so much

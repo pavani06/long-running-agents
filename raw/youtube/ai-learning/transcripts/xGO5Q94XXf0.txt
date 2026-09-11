@@ -1,0 +1,346 @@
+Open AAI may have just solved
+hallucinations. They just put out a
+paper which identifies the root cause of
+hallucinations and a potential way to
+fix it. And when you hear the reason why
+models hallucinate, it's going to be
+super obvious in retrospect. And this
+video is brought to you by notion. More
+on them later. So, here's a paper just
+released a couple days ago, why language
+models hallucinate. I'm going to break
+down everything you need to know about
+it. According to the paper, language
+models are known to produce
+overconfident plausible falsehoods which
+diminish their utility. So if a model
+confidently gets something wrong, it is
+hard to trust that model. And so where
+in the creation of a new LLM, where in
+that process do these hallucinations
+actually come from? Well, we have to
+assume in the immense corpus of training
+data used to train these models, there
+has to be some inaccuracies. There has
+to be some mistakes. And here's the
+thing, even if you had perfect data,
+meaning not a single thing wrong in the
+entire data set, which again isn't even
+possible, that alone wouldn't be enough
+to prevent hallucinations. According to
+the paper, the distribution of language
+is initially learned from a corpus of
+training examples, which inevitably
+contain errors and halftruths. However,
+we show that even if the training data
+were error-free, the objectives
+optimized during language model training
+would lead to errors being generated.
+So, here's the key phrase, the
+objectives optimized, meaning how the
+model is being told whether it's getting
+something right or wrong or this is a
+good response versus a bad response.
+That's where the problem lies. That's
+where the hallucinations come from. And
+an interesting thing they point out in
+this paper is that generating valid
+responses is actually more difficult
+than figuring out if it is a valid
+response or not. Imagine you're given an
+answer and you're asked, "Is this valid
+or not valid?" That's usually pretty
+easy to answer. But now imagine if
+you're asked to produce the answer
+yourself. That is much more difficult.
+That's what they've pointed out in this
+paper because you not only have to
+produce the right answer, you have to
+avoid all the potential wrong answers
+which could be unlimited. Essentially,
+there are far more wrong answers than
+there are right answers. And thus, it is
+much more difficult to produce a right
+answer than to determine if an answer is
+right or wrong. And actually, if you
+think about how you probably use LLMs,
+that makes a lot of sense intuitively.
+How many times have you prompted an LLM,
+gotten an answer back that was clearly
+not correct, and then you simply said,
+"No, that's not right. Fix it." And then
+the model in return said, "Oh, you're
+absolutely right. Let me fix it in this
+other way." That's also why multiple
+agents working together typically
+produce better results because an agent
+reviewing the answer of another agent is
+much better than just having an agent
+produce one answer the first time. And
+so why does this matter? It actually
+shows that hallucinations are baked into
+the way models are built today. They're
+not just bugs, they're features. But
+does that mean we have to live with
+hallucinations? Does that mean they're
+inevitable? No. And you know what's not
+a hallucination? How awesome the sponsor
+of today's video is. I'm so excited to
+tell you about the sponsor of today's
+video, Notion, which I have been using
+for so many years. And now they have
+just launched Notion AI for work. It is
+a suite of AI tools built into your
+notion workspace. So, first they have AI
+meeting notes. Notion will automatically
+detect that you're in a meeting, start
+taking notes, of course, with your
+approval, and then at the end will
+summarize the notes and send you
+follow-up items as well. It also has
+research mode. It's exactly what it
+sounds like. It is deep research except
+now it has access to all of your
+documents inside of Notion. And you
+could chat with your favorite models
+like the latest open AI models and the
+latest anthropic models directly from
+notion. And the best part, it is
+unlimited usage when you have notion AI.
+So give notion a try. I personally love
+it. My team loves it. We use it for
+everything. So I highly recommend it. So
+get started with notion AI. I'm going to
+drop the link down in the description
+below and I'm also going to put it right
+here on the screen. So thanks again to
+Notion. Now back to the video. An
+example of an area of information which
+models get wrong often, they hallucinate
+often is birthdays. If a model sees a
+person's birthday once in the training
+set, it's not going to be able to
+remember it. And so if you ask later,
+hey, what was that person's birthday?
+It's probably going to guess. Listen to
+this. If 20% of birthday facts appear
+exactly once in the pre-training data,
+then one expects base models to
+hallucinate on at least 20% of birthday
+facts. Okay. So then what happens after
+pre-training? Well, we have
+post-training. And at that stage, we
+should be able to catch hallucinations.
+That's actually where a lot of the
+industry tries to make the models
+hallucinate a lot less. The second
+stage, post-training, refineses the base
+model, often with a goal of reducing
+hallucinations. But why don't the models
+just say, "I don't know." rather than
+trying to guess. It turns out it's kind
+of very similar to what humans do on
+multiplechoice tests. Think about it. If
+you have a multiplechoice test and you
+don't know the answer, you have a higher
+likelihood of getting it right by just
+guessing. Let's say there's four
+potential answers. You guess one of
+them, you have a 25% chance of getting
+the answer right. But if you abstain
+from answering, if you just say, "I
+don't know." and don't even attempt it,
+you are guaranteed to get a zero. And
+that is the crux of why models
+hallucinate. Here it is in the paper.
+When uncertain, students may guess on
+multiplechoice exams and even bluff on
+written exams, submitting plausible
+answers in which they have little
+confidence. Yeah, certainly it makes no
+sense to leave a multiplechoice question
+unanswered. In both settings, guessing
+when unsure maximizes expected score
+under a binary 0ero to one scheme that
+awards one point for a correct answer
+and none for blanks or I don't knows.
+And when you bluff, the bluffs are
+typically very specific. You're trying
+to give a specific answer rather than
+giving more handwavy guesses at an
+answer. Here's an example. Bluffs are
+often overconfident and specific such as
+September 30th rather than sometime in
+autumn for a question about a date.
+Again, because the evaluation, the
+feedback mechanism for models rewards no
+points for guessing rather than trying
+to give a very confident specific answer
+that is wrong. Many language model
+benchmarks mirror standardized human
+exams using binary metrics such as
+accuracy or pass rate. Here's an
+important part. Humans learn the value
+of expressing uncertainty outside of
+school in the school of hard knocks. I
+don't know why they use that phrase, but
+fine. Basically, it looks really bad if
+you confidently give wrong answers
+often. But if you say I don't know or if
+you try to roughly guess at an answer,
+you are actually more highly rewarded in
+the real world. And so let's stop for a
+second. The ultimate problem, the
+ultimate reason models hallucinate is
+because we have no way to tell them good
+job for saying I don't know and good job
+for roughly guessing in the right area.
+We just haven't been doing that to date.
+But can we? First, an assertion that
+they use in this paper is that
+hallucinations are inevitable only for
+base models. Many have argued that
+hallucinations are inevitable. However,
+a non-h hallucinating model could be
+easily created using a question answer
+database and a calculator which answers
+a fixed set of questions such as what is
+the chemical symbol for gold and
+well-informed mathematical calculations
+such as 3 + 8 and otherwise outputs I
+don't know. And this is the key. If it
+knows the answer, great. If it doesn't,
+just say you don't know it. And so the
+very simple solution put forth by this
+paper is answer only if you are above a
+certain threshold of confidence. Let's
+say 75%. Only answer if you are greater
+than 75% confident. Otherwise say I
+don't know. And yes you can post-train
+the model to do that. Look at the
+current evaluations also. GPQA, MMLU
+Pro, Wildbench, Math, Swebench. These
+are all benchmarks that you know if
+you've watched this channel at all. And
+look at this. Do they have binary
+grading? Almost all of them do. The only
+one that doesn't is Wildbench. And do
+any of them give I don't know credits?
+Again, the only one that does is Wild
+Bench. So, it's kind of a two sides of
+the same coin problem. During the post-
+training, models are rewarded only for
+getting the answer right. and they're
+penalized for wrong answers. They are
+also penalized for saying I don't know.
+And then on the flip side, when run
+against the evaluations, the evaluations
+are doing the same exact thing. The
+models then understand that the best
+strategy isn't bluffing. It isn't
+hallucinating. It is giving the right
+answer or saying, "I don't know." They
+call this in the paper behavioral
+calibration. Rather than just checking
+the probabilities of the answers, you're
+checking the probabilities, but it's
+also looking at a certain threshold of
+confidence. So at 50% confidence, are
+the answers right half of the time? And
+at 90%, are they right nine times out of
+10? And that's how you test if the model
+is behaving honestly. All right, so
+let's look at figure two because this
+shows what happens with reinforcement
+learning. It's actually possible for
+base models to be pretty well
+calibrated, but then the reinforcement
+learning pushes them in the wrong
+direction. Check this out. So on the
+left side, we have a base model. On the
+y ais we have the accuracy of the model
+and on the x-axis we have the predicted
+confidence. And when these two things
+line up along the dotted line, that's a
+good thing because when it says I'm 70%
+confident, it should get it right 70% of
+the time. When it says 30% confident,
+yes, it should get it right 30% of the
+time. But then look what happens after
+reinforcement learning, which is
+teaching it to bluff. All of a sudden,
+we have a very different graph. The
+model might think it's 80% confident,
+but get it right much fewer. Let's say
+45% of the time. Reinforcement learning
+is pushing the model to be more helpful,
+more decisive, and sometimes more
+confident than it really should be. And
+even with reasoning, with search, rag,
+all of these tools, which can certainly
+help hallucinations, the hallucinations
+are still there. So, it really needs to
+be solved at reinforcement learning
+time. And we also need to fix the
+evaluations of the models. All right, so
+let's break it down. How do we fix this?
+If you are a benchmark creator, you
+should be adding confidence thresholds.
+You should also be rewarding, abstaining
+from answering the question if the model
+doesn't know. An example, give a plus
+one for a right answer, a zero for an I
+don't know, and a negative score for the
+wrong answer. So, you're penalizing the
+wrong answer, but you're neutral on I
+don't know. And it turns out GPT5 is
+actually starting to do that already.
+Check this out. This is from a Twitter
+user. Cole GPT5 says, "I don't know.
+Thought for 34 seconds. Short answer, I
+don't know, and I can't reliably find
+out. Wouldn't you rather see that than a
+hallucination?" Even Elon Musk said,
+"Yeah, that's an impressive response."
+And that is the right response. And it's
+funny because this isn't the first time
+we've heard of this. Anthropic put out a
+paper a few months ago talking about a
+lot of new ways that they discovered
+that models work internally. And one of
+the things that they talked about is why
+hallucinations happen. They said these
+models essentially have momentum. They
+want to give a full and complete answer.
+They want it to be grammatically
+correct. They want it to be
+syntactically correct. They want the
+spelling to be correct. And once they
+start responding to a prompt, it's let's
+say painful for the model to stop
+responding or to change their response
+mid response. So they have this
+momentum. And the anthropic paper talked
+about the symptom of hallucination, but
+they didn't actually come to the cause
+of hallucination like the OpenAI paper
+did. So, it's interesting to see how
+both of these companies attacked the
+hallucination problem from both sides.
+Hallucinations come from pre-training
+because generating the right response is
+much harder than checking if it's
+correct. Post-training keeps the
+hallucinations alive because benchmarks
+reward bluffing. not saying I don't
+know. So, the answer, we need to fix how
+we grade these models. We need to fix
+how we do reinforcement learning. And
+once again, thank you to Notion for
+sponsoring this video. Links for Notion
+down in the description below. Check
+them out. I found this fascinating.
+Hopefully, you did, too. If you enjoyed
+this video, please consider giving a
+like and subscribe. and I'll see you in
+the next

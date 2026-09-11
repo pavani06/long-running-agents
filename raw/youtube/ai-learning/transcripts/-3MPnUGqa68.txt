@@ -1,0 +1,322 @@
+Today I want to experiment with the
+Hermas agent and see how it can
+coordinate the interactions between
+multiple LLM models during software
+development. In previous videos I showed
+how I used a locally running Gemma for
+model to create a markdown file editor.
+Now it's time to improve that editor and
+implement several complex features in
+it. And these kinds of task are exactly
+what's ideal for testing how multiple
+models can work together on the same
+project. So a few words about today's
+setup. At the center of everything will
+be my single board computer, the Zimma
+board 2 running the Hermes agent. I
+think you have already heard about this
+self-arning agent, so I won't spend too
+much time explaining it. I just want to
+mention why I use the Zimma board to run
+agents instead of my laptop. Science
+that's a common questions in the
+comments. There are two main reasons for
+this. First, I don't have a single main
+computer. Right now, I use both a
+classic desktop and several laptops.
+It's simply more convenient for me, and
+I like it that way. Because of this, I
+don't want my work to be interrupted or
+have to wait for it to finish if I close
+my laptop lead, for example. So, having
+a Zimma board running 24/7 solves this
+problem. The second reason is
+environment isolation. Just as an agent
+can't access what on my computer,
+whatever happens on my computer also
+doesn't affect the agent such as
+reboots, shutdowns, and so on. So now
+about LLM models. Hermes will be using
+the Deep Seek version 4. And it will
+also have access to the newest model
+from the Minimax family, specifically
+version 2.7. Moreover, this model won't
+be running on its own, but through open
+code. Today I'll try to set everything
+up in a way that requires minimal human
+intervention at least in the process of
+writing code and fixing errors. Ideally
+the models should handle all this
+themselves while I simply describe which
+features I want to implement in the
+application. However, I want to clarify
+right away that this is not tutorial
+about how application should be built or
+how prompts should be written correctly.
+This is simply another experiment of
+mine where I want to see how effectively
+multiple models with the help of a
+hermis can work almost autonomously with
+minimal human involvement to create
+something useful and solve real
+practical tasks. So I'm connecting to
+the Zimma board over SSH. I already have
+a T-Max session running there which
+means I can connect and disconnect as
+many times as I want and it won't affect
+whatever is currently running on it. Now
+in one window I launch a Hermes and in
+another I want to configure the miniax
+model to work through open code. But it
+looks like open code isn't installed
+here yet. No problem. It can be
+installed with a single command. Now I
+finally launch open code and configure
+it to use a minimax 2.7 model. Done. All
+right. The models and agents are
+configured. Now I'll clone the
+repository with the editor and install
+the dependencies. By the way, for this I
+am using bun instead of NodeJS. I
+personally like it more, but in
+principle this project can also be used
+with a NodeJS. Now I move into the
+project folder and launch Hermes there.
+After that I ask it to analyze the
+codebase and explain the workflow. As I
+mentioned earlier, for writing code, it
+should use the minimax model through
+open code. And it should also verify
+task completion and try to operate as
+autonomously as possible without my
+involvement. So here analyzed the
+project fairly quickly and generated a
+report about it and actually it found
+one critical issue. The back end of this
+project is written in Rust and I still
+hadn't installed Rust on the Zimma
+board. All right, let me quickly install
+it. The rest website provides a script
+that install everything automatically.
+And by the way, you can already see how
+convenient DMAX is. You don't need to
+interrupt her in order to do something
+in the terminal. I can simply open
+another window to do everything there.
+Of course, shell commands also be
+executed directly from Hermes. But I
+still prefer open a separate terminal
+window and handling it manually. Good.
+Now I return to the agent and tell it
+that everything installed it and that it
+should verify whatever everything is
+working correctly. And now finally about
+the task I want to assign to my agent
+using a third party model. So the
+problem is that right now my markdown
+editor can only work with markdown files
+but it doesn't have such a popular
+feature as PDF export. Therefore the
+task is to add the ability to export the
+currently open file to PDF. And while we
+are at it, it might as well support
+exporting to HTML too. I instruct the
+Hermes that it first needs to create an
+implementation plan for this feature and
+then assign task one by one to other
+model while also verifying the result.
+Well, then Hermes started working and I
+think this is going to take quite a
+while. And moments like this once again
+remind me why I am happy that I set up
+today's entry workflow on a separate
+single board computer instead of my main
+machine because now I can simply close
+my laptop and go other things instead of
+keeping it powered on the whole time.
+All right, Hermes has finally finished
+its work and generated a report
+describing everything that was done. As
+you can see, the tasks were completed
+one after another and the execution of
+each task was verified separately. As a
+reminder, Hermes role here is to
+coordinate the work performed by another
+model, specifically Minimax 2.7 and
+together this entry setup completed the
+job in approximately 9 minutes. At the
+end, it once again verified that all of
+the tasks had been implemented
+correctly. All right, reports are nice.
+But now let's see how well the export
+feature was actually implemented and
+whether it works at all. Since my Zimma
+board isn't connected to a monitor and I
+haven't even installed any graphical
+environment on it in order to verify
+that the application actually works, I
+copied the code to my laptop and launch
+it there instead. All right, it looks
+like the application compiles without
+any errors, which is already good sign.
+Now let's actually take a look at it.
+The markdown file is rendered correctly.
+Nothing seems broken here. There is also
+a new button that should supposedly
+handle exporting. Let's see what's
+happened when I click it. Okay, a menu
+opened with a choice of export formats.
+All three formats that I mentioned in
+the task description are here.
+Excellent. First of all, I'll try
+exporting to PDF. Everything completed
+without errors. Good. Now, the only
+things left is to look at the generated
+PDF file itself. Okay, this actually
+looks great. I like it. It seems that
+everything was transferred into the PDF
+correctly. It's just unfortunate that
+the images didn't make it into the
+document. I'll have to investigate that
+separately. However, everything else,
+the text, formatting, and colors was
+exported to PDF perfectly. Now, let me
+quickly test HTML export as well. Saving
+heat to a file. And now, I'll open it in
+the browser. Oh, this looks absolutely
+perfect. exactly the same as it did
+inside the editor itself. Images,
+formatting, and colors, everything he's
+there. Amazing. It looks like Hermes
+together with minimax model handled the
+task exceptionally well. So, the task of
+adding a new feature to an existing
+project is clear enough, but now I want
+to give the agent something that will
+take significantly longer to work on,
+something more difficult and complex. At
+first, I saw the second task would be to
+add another feature to the markdown
+editor. But then I realized that would
+be fairly boring and not all that
+different from the first task. So
+instead, I decide to build something
+where the back end would play a much
+bigger role and that will be a
+minimalist web service that
+automatically collect fresh articles
+from selected websites and blogs into a
+single convenient feed. But the most
+interesting part of that the service
+must be written in the NIM programming
+language. If you have never heard of
+this language, that's not surprising
+because unfortunately it still hasn't
+become a very popular. However, I
+personally like it a lot and I often
+experiment with it. So today will be
+another one of this experiments. Beside
+this should also serve as very good
+stress test for LLM models. I am also
+going to make some changes to the Hermes
+configuration. In the first task, I
+simply instructed Hermes to use open
+code with another configurate LLM model.
+But now I want Hermes itself to directly
+use the external model through its
+built-in delegate task mechanism.
+Configuring Hermis for this is actually
+pretty simple. First, you need to add
+the description of an additional
+provider inside the delegation section.
+Also, don't forget to update the Hermes
+system prompt and specify that for
+writing code, it should use the delegate
+task tool. All right, I move into the
+folder for the new project and launch
+Hermis there. Then I pass a fairly large
+prompt asking to create a very detailed
+implementation plan for the project. I
+also added suggested implementation
+order to the prompt, but it only contain
+a few points. So nothing particularly
+interesting there. I'm not going to show
+the actual plan generation process
+science. It's basically just waiting for
+Hermes to create the plan and write it
+into a pile. Instead, I'll jump straight
+to the finished generated plan. So, the
+plan is ready. It turned out to be quite
+large and detailed. I like it. Now, the
+only things left is to implement it
+correctly. So, without overinking it, I
+send the plan off for implementation and
+wait for the results. Again, the coding
+process itself will probably take quite
+a long time. So, I'll skip directly to
+the outcome. All right, it looks like
+the plan has been implemented.
+Interestingly, at the end, Hermes decide
+to perform a technical audit of the
+project and it found four bucks. It's a
+bit strange that it didn't fix them
+automatically and instead wait for my
+approval. But that's fine. This is
+already the very end of the process
+anyway and the actual code generations
+happened completely without my
+involvement. So, we have finally reached
+the point where Hermes says everything
+is finished and the project is ready to
+run. All right, then let's do exactly
+that. Since my project folder is
+synchronized across all my computers,
+I'll launch the project from my MacBook,
+so it's easy to open it in a browser.
+Okay, it started without errors. That's
+always makes me happy. The web server is
+running on port 5000. Let's open it in
+the browser. Well, then some kind of
+page has appeared. I don't really like
+the design, but to be fair, I never
+specified any requirements for the
+visual appearance. The model made all
+these decisions on its own. Still, all
+the main sections seems to be there.
+Since our database is still empty, and
+there are no sources configured yet,
+naturally, there are no articles either.
+Let me add some RSS feed. All right, the
+feed was added successfully, but there
+are still no articles. I probably need
+to trigger synchronization somehow.
+There is no dedicated button for that
+yet. So, I'll try to restarting the
+service. Maybe synchronizations happens
+automatically on startup. Yes, just as I
+expected, synchronizations happens
+during startup. Excellent. Now, the
+article titles are visible. Although, it
+seems that clicking on a title doesn't
+do anything. That will need to be
+investigated, but not right now. I think
+this is enough for today. Experiment
+while fixing small bugs and bringing the
+project to a production ready state is
+already a completely separate story for
+another video. Right now I just want to
+show one more reason why I love Nim
+programming language. Look at this. The
+entry server with all of its
+functionality. It's just a single binary
+file smaller than 700 kilobytes. Once
+again, the entry fully working project
+takes up less than 1 MGB. an incredible
+result. Please write in the comments
+whether I should publish the source code
+of this application and whether it would
+be interesting for you. And don't forget
+to leave a like and subscribe so you
+don't miss future episodes. That's
+probably it for today. See you soon.
+Take care.

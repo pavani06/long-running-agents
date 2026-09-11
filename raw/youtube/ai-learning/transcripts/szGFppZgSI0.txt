@@ -1,0 +1,832 @@
+Today guys, I'm going to show you 10 Nam
+community nodes that will take your
+automations from basic to mind-blowing
+in just a few minutes. I've personally
+built over 150 client automations now.
+And some of these nodes I'm going to
+show you today have saved me a ton of
+time. Most people waste hours trying to
+solve problems using the basic n inbuilt
+nodes are going to show you how to do
+the job much quicker. You know that
+feeling when you spend all day trying to
+make a basic HTTP request work only to
+find out there's a specialized node that
+somebody's already built for you that
+would have took seconds to set up. So
+today I'm going to walk you through each
+of these amazing nodes that I found and
+show you exactly how they work so you
+can start using them from today to save
+yourself a load of time as well. So
+let's dive in straight away to the first
+node. So the first one we're going to
+touch on today is TesseractJS which
+sounds really confusing and complicated
+but Tessoract is effectively just an OCR
+technology. So optical character
+recognition. So, think of this when you
+upload receipts to your accounting
+software and it reads everything off
+your receipt. This is exactly what
+Tesseract is going to do for us. But
+instead of having to use an external
+API, we've got an inbuilt node here,
+Tesseract. Quickly on how to set up
+these community nodes, you need to be
+self-hosted to to run these community
+nodes. But in all of these nodes, I've
+got the name that you need to type in to
+the community nodes. So, all you need to
+go do is go to your settings down here.
+Go to your community nodes and you're
+just going to hit install and you're
+going to install the community node
+package there. They are effectively
+coming from the community as they sound.
+So, there is a risk in installing them
+there and you've just got to tick the
+box to say that you're happy with that
+risk. You'll then click install and then
+the community node will then appear as a
+node inside your workflow and you can
+just type in for example tesseract here
+and it will appear here with a little
+cue to suggest it's from the community
+here. So this one in particular is super
+powerful because we don't need an API or
+don't need to connect to an external API
+and what we're doing is just using a
+JavaScript framework Tessact to actually
+extract text from images automatically
+using its OCR technology. So we've got
+that inbuilt effectively in N now. We
+don't need to set up a HTTP request. So
+it can work with things like
+screenshots, receipts, business cards,
+documents, tables. Now it's not the best
+OCR model out there like something like
+Mistl but it's inbuilt. So, it's very
+quick and handy to use for things like
+receipt processing or data extraction
+from images when you just need something
+quickly. So, I've uploaded a sample
+receipt here and you can see it's a
+fairly basic receipt, but what we're
+going to do is just run that through.
+It's stored in Google Drive. We're going
+to run that through and see the output
+inside Tessact. So, the example has come
+back through here as a binary file, but
+if we go to schema or table, we'll be
+able to see exactly what's been
+extracted. So, we've got Joe's Diner,
+where it was, the phone number, the
+date, and the order on from the
+restaurant as well. So, that's extracted
+everything as far as I understand pretty
+well. Total $45. And if we go there, and
+ironically, it's the one thing it hasn't
+extracted there, the total, but it shows
+you this isn't perfect, but actually
+it's a pretty good representation of an
+OCR technology inside N, which is great.
+The second super powerful flow is run
+node with credentials X, and you install
+it using this line here. So, this sounds
+like a confusing one as well, but this
+is really powerful. It's particularly
+powerful where you have multiple
+accounts for the same service provider.
+So, say you have multiple email
+addresses that you want to monitor or
+you want to retrieve messages from.
+Usually, you'd have to copy and paste
+multiple of these Gmail nodes, go inside
+them and actually connect all your
+different credentials. So, say I was
+monitoring four inboxes for example, I
+would have to do exactly that. Or two
+inboxes, I would need to set up the flow
+twice. Now run node with credentials X
+effectively stops you needing to
+duplicate the flow and you can actually
+dynamically pass credentials through
+here. You can think about how powerful
+this is for agencies who run multiple
+client accounts cuz you can run them
+through a single workflow if you just
+have the right conditional logic set up.
+So it' be perfect for things like email
+campaigns, social media posting, API
+integrations, things like that. So you'd
+open up the run node with credentials X
+and what it's effectively doing is it's
+pretending to be the node itself that
+it's going to run. So if for example we
+wanted to run it for Gmail, what we
+would do is let's start a fresh one
+here. Run node with credential X. You
+can effectively see that it's got this
+credentials ID and the node to execute
+here. So those two values we need to
+fill out. So let's say we're doing it
+for Gmail as an example. Let's copy and
+paste that JSON code from the Gmail into
+the node to execute. So this is telling
+the run node with credentials X that
+it's going to execute this node
+specifically. And then we need to grab
+the credentials ID. So if I go back to
+my Gmail, I was effectively logging in
+here with my personal Gmail which is
+stored as a credential in N which has a
+credential ID. So I can see this in the
+code itself. If I scroll down and I see
+the credentials here, I can see that
+this ID is the credentials ID because
+it's stored in there. So if I wanted to
+run this with that account, I would pass
+in that credentials ID. But if I wanted
+to for example run it with my scrapes
+account and not my personal account then
+the credential ID would be totally
+different. If I paste in that now and
+look at the new credential ID here you
+can see if we compare those like for
+like that the credential IDs are totally
+different. And what that means is I can
+now pass those in dynamically to run
+this. So for example let's just run it
+with the previous value. And actually
+we're not going to connect it to
+anything apart from the starting node
+here. Let's just run it with the
+previous value. And all we were doing in
+this was effectively getting many
+messages. So we're returning the last
+five items. So this is effectively going
+to be the Gmail node running with the
+credential ID that is up here. So you
+can see it's returned the last five
+items from the email address there. But
+if I wanted to for example pull it from
+the scopes AI one, then I would actually
+change this. And you can see this last
+snippet was a cow.com one. And if we now
+run it again, it will run as the node
+with the different credentials. So you
+can see this is now from ConvertKit
+instead of cow.com. What you're seeing
+here is the ability to run multiple
+accounts and pass credentials
+dynamically into a workflow which is
+really really powerful especially if
+you're creating larger workflows that
+have multiple accounts associated with
+them. Now what I'm going to show you is
+how to do this dynamically and how to
+pass in those dynamically. We're just
+going to use a simple example of an if a
+value is this then we'll take this
+credential ID. If it's this or if it's
+not that one we'll take a different
+credential ID. But actually, if you were
+to expand this to, you know, 10
+accounts, 20 accounts, etc., you'd
+probably want to use a code node instead
+of a set node here. So, I'm just saying
+the account is equal to scrapes or the
+account is equal to Simon. And if the
+account is equal to Simon, so we've got
+an if statement here. If the account is
+equal to Simon, we'll take this
+credential ID. And if it's not, we'll
+take the other credential ID. So, it's
+just a simple if statement within the
+expression there. And what that means is
+if the value is equal to Simon, it will
+return or it will internal error rather.
+What I'll do is I will just let's
+restart this one by copy and pasting it
+in here. And you can see it's now run
+correctly with that. So we said if it's
+equal to Simon then we'll take this
+credential ID which it has and that's
+returned the convert kit as the latest
+message. Now, let's change it so it's
+not equal to Simon. And it should
+default to the other one where cow.com
+was the most recent message. And for
+some reason, it's not updated in the set
+node. It's still coming through as if
+it's Simon there. How strange. Okay, I
+figured out the issue now. So,
+effectively, I didn't have the correct
+equal sign here. So, when we're writing
+in JavaScript, we need double equals to
+say exactly equal to this value. So, now
+if we run it, we will get the cow.com
+hopefully as the latest email in here.
+cow.com. Perfect. You can see how
+powerful that could be because actually
+we can run any automation with 5, 10,
+15, 20 client accounts all through a
+single automation. So number three is
+actually not a community node, but it's
+still super powerful. If I drag the
+trigger down here, we've effectively got
+the compare data sets node. And I see so
+many people do complex data comparisons,
+but actually never really use this node.
+And it's so powerful to spot differences
+in two data sets immediately. And as you
+can see, you will get the outputs and
+you will see which values in those two
+data sets were the same, which were
+different, which sets were in A only,
+which sets were in B only. And you've
+got the inputs of A and B. So you can
+see how this would be really useful with
+a large data set where we need to filter
+and sort and highlight only the
+differences between those data. So this
+could be used for things like inventory
+tracking, price monitoring, data
+validation, etc. And what I've got here
+is an example of some leads data. So
+just some madeup data with some personal
+information here. And I've actually got
+a duplicate of the data where I've
+changed one value to myself and my own
+data here. So what we can do is we can
+run that through. At the moment it's an
+aggregated leads data set of a few
+leads. So what we're going to do is
+split those out and then compare them
+directly. So if we run that directly
+through we can see exactly which person
+from each data set was in the A branch
+only. So for example here we've got
+Michael Chen who was part of the A data
+but not the B data that went in. We can
+see that there were four that were
+exactly the same. So these four names
+were the same between those two data
+sets. We can see that there were none
+different. And then in the B branch
+only, like I said, I changed one of
+these values and therefore my details
+were in the B branch only as well. So a
+super quick one there, but it's in the
+it's in the flow details here. And
+you've got all of these other great
+nodes. But the compare data sets or
+comparing two inputs for changes, I
+rarely see it use, but it's actually so
+useful. I've used it a lot in my client
+data comparisons. It saves you having to
+use a lot of ifs and switches and all of
+that to compare as well as a code node
+which is often unnecessary and
+complicated. So let's jump on to number
+four. So number four again I've cheated
+a little here because it's an unknown or
+little known natively built node and I
+promise you this is the last natively
+built one. So few people use this before
+they jump to an API request or a HTTP
+request. There is a site called convert
+API and it's converti.com and it's high
+performance file conversion API. So
+effectively if you want to convert a PDF
+to a doc to a PowerPoint to text if you
+want to convert images to between
+formats often I find myself going to
+Google and searching this PDF to PNG PDF
+to dox all of those kind of things but
+convert API actually has a built-in HTTP
+request node that we can use and 250
+requests the first 250 requests are
+completely free for us. So all you need
+to do is you need to go there you need
+to get your API key and then you need to
+find the relevant API endpoint. So you
+can see you can search the API endpoints
+here. We're going to show you an example
+of how you can actually convert
+something like a web page to a PDF which
+is quite a cool use case and very
+useful. So we've got this web to PDF
+API. And if we click on that, all we
+need to do is effectively grab this HTTP
+post here and we will take that back to
+our community node and we will open up
+the convert API HTTP request and we will
+just post that directly into the URL or
+whatever endpoint that you're reaching
+out to. This is exactly like a HTTP
+request. It's just preconfigured to work
+with this service. You'll then put in
+your API key. So you'll create a new
+credential and you'll find your API key
+inside converti.com. Example for this
+request, it will show us there's
+actually two query parameters. And when
+I was testing this out, I worked out
+that you don't put parameters in the
+body here. You put them in the query,
+otherwise it won't work. So we've got
+URL and store file. And store file just
+allows it to store on their system so
+that we can actually retrieve the file.
+So say for example, we're converting a
+website to a PDF. they will store the
+file temporarily so that we can go and
+get that and download it. So I've got my
+agency site here automate.io and we've
+got the store file using those fields.
+You can see exactly what inputs you need
+by going to the specific endpoint and
+seeing, okay, we need a URL and we need
+store file. And potentially, if we
+wanted to, we could give it a file name,
+a timeout, all of this kind of stuff as
+well. But we're going to keep it basic
+here. And this is a really powerful way
+to convert any document to any document.
+And it'd be really cool to use this for
+bulk conversions. And as I said, we get
+250 free. So what we're going to do is
+we're going to run that through and it's
+going to convert that web page into a
+PDF. And then all we're doing is getting
+a HTTP request which is going to grab
+the URL and grab the PDF so we can open
+up here. So we'll download the PDF
+that's pulled here. We'll open it up and
+you'll be able to see the automate.io
+website stored as a PDF. So really cool
+use case and actually would be able to
+do this for any type of files. You can
+just go back here and actually search
+for the file format you want. So this is
+going to save you a ton of time versus
+connecting to a different external API
+when there's a native node called
+convert API HTTP requests in there. I
+tried other things like cloud convert
+for this in the past but they've they're
+quite temperamental. So actually this
+convert API seems to work a little bit
+better. So the next one we're going to
+cover is called airtop and it allows you
+to control any browser through natural
+language literally in n. I did say the
+last one was the last native one. Uh,
+tell a lie. I accidentally I thought
+that was the last one, but actually
+we're moving on to the last native node,
+Airtop. And I'll show you exactly what
+we can do with that. But we've got some
+awesome community nodes coming up for
+the next five. So you might use airtop,
+for example, when you want to scrape
+webpage data, but you need to go via a
+login. You might use it where you need
+to click certain buttons, like scrolling
+through Amazon and extracting product
+listings. Or you might use it for
+pulling certain bits of information from
+a website where you have to go through
+and click some buttons. And airtop
+actually have some really cool examples
+on their website of the different nan
+use cases and templates that they've
+already built out that you can just go
+in here and use. So we've got seller use
+cart AI agent post on X on your behalf.
+Monitor product hunt monitor competitor
+price changes LinkedIn person IP ICP
+scoring so scoring leads based on their
+LinkedIn commenting on Xost. So you can
+see this could be really powerful
+actually. You can set up your own
+operations on here. It doesn't have to
+be restricted to the operations that
+they've already got out there. But today
+we're going to look at the automate
+LinkedIn profile discovery here where
+we've got a sheet of profile information
+and you can see it's very basic broad
+profile information. So it's got person
+info. So we've got people like the CEO
+of Nvidia and we've not said his name.
+We've got Sam Alman. We've got myself
+and what we're going to do is just
+remove these here and I'll show you
+exactly the data that it would return
+here. So we're grabbing the person info
+from that sheet and I've pinned the data
+here because it takes a few minutes to
+actually extract this data. But what
+we've said is let's do an extraction
+from a website. So we're querying a page
+to extract data or ask a question given
+the data on the page. And what it's
+going to do is automatically create a
+new browser window on our behalf rather
+than reusing an existing browser window.
+We're not going to get into the
+complexities of that at the moment. And
+then what we're doing is just passing in
+literally a Google search here of the
+person's info. So for example, for me it
+would say simona automate.io. It's going
+to do a Google search and then we're
+going to put in a prompt at the bottom
+which is effectively like an AI prompt
+telling it what data it's looking for.
+So this is a Google search results. The
+first result should be the LinkedIn page
+of this person's name. So myself or
+Langchain CEO return the LinkedIn URL
+and nothing else. But if you can't find
+the LinkedIn URL, return an empty
+string. And it's uh given some
+predefined rules on like what a good
+LinkedIn URL looks like here. So what
+it's then gone and done if we look at
+the example here is it's opened a
+browser window. It's gone to Google.
+It's searched those directly and then
+found the first couple of links and said
+if the first one is a LinkedIn URL, then
+it will return that. And you can see
+that the data in here has a model
+response for various of these. And I
+think it only didn't return one. And
+then if we unpin this end data here, we
+can actually run the workflow again. And
+you'll see it update these LinkedIn URLs
+in here. It didn't quite work for my
+example. It pulled a post from my page,
+but given I'm not famous like any of
+these people, it did a pretty good job
+to pull a LinkedIn URL that was relevant
+and actually links back to my profile.
+So, like I said, this controls any web
+browser from here. And you can actually
+go to Air Top itself. You need your API
+key to run this. But like with all of
+these that I'm showing you today, you
+get 5,000 credits free or you get
+various credits free to actually use.
+And they've got great documentation and
+it's all about automating the web with
+your words. But the fact that it's a
+built-in node means that you can do
+browser automation really really simply
+versus connecting to an external API. So
+that's great. And now I promise the rest
+of them will be community nodes. So
+we've got ampify next. So some of you
+might be familiar with ampify but a
+actually have a community node inside
+nan and it just makes it really easy to
+connect to any given actor. So if you've
+not used ampify before, we'll go to
+ampify.com. It's a full stack platform
+for web scraping, which basically means
+we can extract or scrape data from all
+of these services that are kind of
+pre-built. So, if we wanted to, for
+example, extract from Instagram, uh we
+could go in here and see all of these
+pre-built actors, they're called, that
+extract various bits of data, and we can
+choose which one we want. So, for this
+Instagram scraper, we would have a look
+at the data it outputs, how much it's
+going to cost us, etc. And Epify gives
+you up to $5 a month free, which doesn't
+sound like a lot, but actually gets you
+a long way with these scrapers. So
+today, we're going to use an example of
+an Apollo scraper. And Apollo is a lead
+generation platform. So you're able to
+scrape engage lead data for certain
+segments of your ICP, for example. And
+what we're going to do is we're going to
+install that. We're going to go and get
+our Apify API key directly from Apify.
+And then what you're going to run is the
+operation that returns all your data set
+items. So you're going to pick the the
+operation here that's run actor
+synchronously with input and then get
+data set items back. So we're passing in
+an input here and we're also getting the
+data set items back. We can ignore most
+of these get rid of any information
+inside web hooks build fields emit
+unwind flatten. We don't need any of
+that. All we're going to do is go down
+to use custom body here. And what we're
+going to do is we're going to pass in
+the parameters that we need to pass in
+for that specific actor. So for example
+here we're using the Apollo scraper and
+it knows that that is an actor that I
+use because it's pulled it directly from
+the console. So any actor you want to
+use. You will go through and you will
+click try for free for example and that
+will add it as an actor to your console.
+And then if I refresh this here you can
+see that I can now see the Instagram
+scraper that we just used. We're going
+to use the Apollo scraper and what we're
+going to do is find this custom body and
+work out how to use that. So we'll go to
+our actors. We'll go to this Apollo
+Scraper Unlimited which is the one we're
+using here. You can see that's the name
+down there. And then I'm just going to
+look at the inputs that we need here. We
+can either look here and put them in as
+fields, but it's easiest just to grab
+the JSON value here. We're going to copy
+that and we're going to take it back to
+the custom body here. And we're going to
+paste in that exact JSON. Now, the only
+difference here is actually what we're
+doing is we're telling it how how much
+data we want it to return. So, we're
+saying only return 10. Pull the emails.
+Don't exclude the ones that have no
+emails. And we're also, for example, for
+this scraper using the search URL from
+Apollo. So we'd grab a specific URL for
+our ICP. And rather than running it
+directly through Apollo, which is
+expensive, we can use something like
+Apify, which pulls the data
+significantly cheaper for us. And
+hopefully by running this one, you can
+see that because Appify has access to
+thousands and thousands, in fact, 4,500
+different scrapers of different
+websites, you can pretty much pull any
+information directly through N. And you
+don't even need to know how to use HTTP
+requests. So that's why this one's so
+powerful and it can be used for
+something like e-commerce monitoring,
+lead generation, content extraction, you
+name it, Apify offers actors for it. Now
+we're going to move on to a really
+powerful one that's great for client use
+cases. So when you are operating
+multiple production use cases, you often
+want to log values. This is something
+that's done traditionally in software
+engineering and anywhere where you've
+got IT infrastructure, you will always
+be logging at certain points in the
+flow. Now, this NAN nodes logger has
+been awesome. I've used it in a lot of
+different client use cases and it allows
+you to track exactly what's happening in
+your workflow. And you don't need to
+modify in a 100 different places if you
+decide to change the output that it's
+given. So, this logger is simply made up
+of two different things. The logger
+workflid, which is the workflow that's
+going to it's going to pass the output
+to. So, whenever an output or an input
+goes into this logger, it's going to
+look for the relevant workflow ID. And
+I'll show you where to get that in a
+second. And it's going to send either
+all items, the first item or one item
+with aggregated values. So likely we're
+going to send either all items or the
+first item to the logger to then be
+logged in our Google sheet or our air
+table or wherever we're logging or a
+database wherever we're logging values.
+It allows us to also log specific
+values. Like for example, I could put in
+the workflow name for this which is
+community nodes. And each time it's
+logged from this position, it will pass
+through that value. But the great thing
+here is if I have multiple workflows and
+I suddenly decide the logging structure
+needs to be different, then I don't need
+to change anything inside this logger,
+it will actually just continue to pull
+all of the same information from
+whatever is passed into it and send it
+to the external logger that we've got
+here. So for example, you might want to
+log things like a name, an execution ID,
+so you can use the par JSON parameters
+here to actually grab specific execution
+data. you can relate back to the
+workflow ID which you can see is the
+actual ID that is stored up here in the
+workflow and we can pass that through to
+the logger as well so we know exactly
+which workflow this is and then for
+example the workflow name exactly like
+we just showed you and you can put as
+much information as you want or as
+little information as you want in here
+and when that passes through it will
+pass through to the logger workflow ID
+that's on here so here is the secondary
+workflow that links to this and you can
+see right now it's extremely basic it's
+effectively just calling a web hook
+trigger and that Web hook trigger just
+receives all of the information that is
+passed to it. And you then connect that
+to something like your air table where
+you're putting information from the
+logger like the flow name, the previous
+node that caused a potential error or
+the previous node before the log, the
+previous node version, the error if
+there was an error pass, the log start
+time, the log time stamp. All of those
+things you can actually take and monitor
+for a specific flow. And the best thing
+about this is actually it will pass
+through all of the information without
+disrupting your flow, without changing
+the output here. So if I wanted to log
+it and then move on to the next output,
+it would effectively pass through
+exactly what's been passed into it. So
+you can log as you go through the
+process. So that one's been an absolute
+gamecher because it means you can change
+it in just one place and it updates the
+rest of the workflow. Now let's move on
+to number eight which is perplexity. So
+Watson created this n perplexity node
+which just makes it significantly easier
+to automate your research task. So
+before you'd have to connect via HTTP
+request to Perplexity and Perplexity is
+effectively like an AI powered or an AI
+backed research search engine. So you
+can perform deep research, you can
+perform search, but it's all backed up
+by actual live online data. So this is
+just a really handy node to have because
+once you've got an API key, you can
+automate a lot of your research research
+tasks. You can get structured data from
+your natural language queries here. You
+can conduct competitor analysis, market
+intelligence research. So for example,
+we could just search something as simple
+as tell me about the history of NAN. We
+will run that with our perplexity API
+key and choose the model etc. Exactly
+like we would with another LLM in here,
+but there's not an inbuilt node for
+Plexity. So what we have to do is get a
+community node for this and makes it
+significantly easier. And then we've got
+the complete answer here backed up by
+data. So you can see that it's got all
+of the references here or the citations
+and we can actually refer then even to
+the citations. So it's a really powerful
+way of doing some research but also
+grabbing the citations associated with
+that research. Let's jump to number nine
+which is firecraw. So firecrawl is
+website data scraping made easy. So you
+can pass any web page for specific
+information and you can also extract
+structured data or unstructured data
+from websites really simply using this
+firecore scraper. There's a few
+different firecore scraper community
+nodes. So I've used the nodes firecore
+scraper here and as an example you can
+ask it to scrape the nan.io IO account
+and this is just asking it to scrape a
+single page and what it's going to do is
+return that text in markdown. Now
+markdown is a simple way to write
+formatted text. So actually the nodes
+sorry sticky notes work on markdown. So
+if I double click into this the double
+hash here basically calls it a header
+too and the stars here say that that
+should be bold as well as the single
+star indicates that it should be a
+bullet point. So it's just a way of
+effectively writing formatted text. And
+the reason that's important is that
+actually LLMs are really great at
+reading markdown text. So taking a an
+unstructured bit of text that is
+traditionally in a HTML format from a
+website front end. This is converted
+directly in firecrawl for us to a
+markdown format. So it's really easy to
+one read that but also pass it into LLM.
+So you can see that this is
+significantly easier to read than if it
+were to come back with TML which would
+have a lot of structured code that would
+be really hard to visibly understand and
+read. There are also various resources
+on firecrawl that allow you to do other
+things other than just general scraping.
+We've got crawl. So you can actually
+crawl through multiple URLs and we'll go
+to firecrawl here to show you. And their
+main selling point is exactly what we
+spoke about. Turn websites into LLM
+ready data. But you can effectively pass
+in multiple web pages and do a crawl
+here. crawl all the pages on a website
+and get data for each page. Or you can
+even use the extract where we specify a
+URL to extract from and also what we
+want to extract. So say it was nan.io
+and we wanted to extract the pricing or
+the offering or the main content from
+the website then we were able to use
+those functions as well in this
+community node. So really powerful way
+of getting LLM ready data from websites
+in a structured format. Now last but
+definitely not least is a little bit
+more than YouTube transcription. It took
+me a while to find a YouTube
+transcription community node that
+actually worked. So the nodes super data
+is a website that again allows you to
+extract certain things, but it's
+specifically designed for web and
+YouTube. And there is an inbuilt YouTube
+node inside N. But you'll see that
+you're not able to actually get any
+transcripts from any of the videos. So
+this super data allows us with 100 free
+requests to get a transcript from a
+video. And that is super powerful for
+creating content for video transcripts.
+Sorry, content from video transcripts.
+So, for example, you could take your own
+videos. I could take my own videos and
+actually repurpose that into social
+media posts. I could use it for research
+on my future videos on how it performed.
+You could create notes around a certain
+video. You could do all sorts of stuff
+with this YouTube data. And you can see
+within the super data, you just need
+your super data API key, but we can
+either connect to the web and do a
+scrape there, but we've already got fire
+call for that. So, for YouTube, it's got
+all of these different functions. So we
+can get any details from our channel.
+Get video data, get a transcript. So
+let's try get a transcript. And I'll put
+in a video here of mine. And then if we
+test that and run that, it should
+effectively return a full transcript of
+the video URL. So that's really powerful
+for being able to recont repurpose this
+kind of content. And you can see it's
+even got the duration of speaking and at
+what second everything was said. So if
+you need to use it in another way, then
+you can do that as well. But if you
+wanted to return it as just a transcript
+that's very readable, you can return it
+as plain text here and it will give you
+all of the content with no timestamps
+here. So that rounds up the 10 community
+nodes that I use really frequently. So
+there you have it. Those are the 10
+community nodes that hopefully going to
+take your automations using the basic
+nodes that you're already using in a and
+actually turn them into even more
+powerful workflows in less time. If you
+like the content, then please give it a
+like and subscribe. It really helps my
+channel in reaching more

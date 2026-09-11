@@ -1,0 +1,546 @@
+[music]
+Yeah. So, hi everyone. My name is
+Phillip. I'm based out of Germany. I'm
+part of the Google DeepMind team, mostly
+working on Gemini API and agents. And we
+are going to talk about why you should
+not ship skills without evals. And maybe
+before we start, I need a little bit of
+your help. So, if you could raise your
+hands if you use coding agents to write
+code. So, yeah, hopefully every every
+hand goes up, right? And do you use
+skills with it? Okay. Do you have evals
+for those skills? Okay, that's um not a
+lot of hands. Everyone uses skills. No
+one has evolves. Hopefully, we can fix
+that today. And like very important is
+like wipe checks fail in productions.
+And um skillbench is a very popular and
+nice like eval or benchmark which um
+indexed like over like 50,000 skills
+from like GitHub and like tried to look
+into him and almost none of those skills
+had evolves. Most of them were AI
+written um not really tested and it's
+very hard to know if your skill is good
+or bad because like agents are really
+nondeterministic. So you might not know
+if your uh task fails because your skill
+is bad or if your task fails because
+it's way too challenging for the model.
+So um very important um before we go
+into it there's I want to like really
+make sure that we know the difference
+between the agents we use and the agents
+we build. Uh most of us use agents for
+writing code doing productivity work.
+That's the agents we use. It's like
+anti-gravity cursor claw code and there
+you are the engineer and you have
+context about skills right? If you write
+some prompt to I don't know like help me
+build a new Gemini API feature and if
+your agent does not invoke the skill on
+the first time, you will notice it very
+quickly. You stop your your task and
+reprompt it or like use slash commands
+for for triggering those skills. When
+you build an agent inside your
+application for consumer or customers,
+they have no idea about what a skill is.
+They don't start their prompt with use
+customer support skill to like help me
+refund or use refund skill to help me
+solve my problem. So there's a big
+difference between the agents we use and
+how we use skills and the agents we
+build and how our customers might want
+to use skills in like the context there.
+And what is a skill? I mean every one of
+us knows hopefully by now what a skill
+is. It's like basically really a a
+folder with a skilld file in it and then
+some additional assets um to make that
+skill really work. And the big
+difference with skills is that they work
+on progressive disclosure. So most of
+the skills start very small. So you have
+the title and the description. The
+description is normally part of um the
+model's context so the model knows when
+to use the skill. Second layer is we
+have a skills body with more
+instructions, more details, and
+hopefully more references to external
+files. And then you can really go deep
+in those reference files where there's
+all of the context the model needs to
+discover to to solve the task. And I
+like to differentiate between two kinds
+of skills. So there are capability
+skills and preference skills. Capability
+skills teach models something they
+cannot do consistently at the moment.
+Maybe it's like I don't know like
+tracing some logs, creating a new react
+app and those capability skills are
+temporary. So the better our model gets,
+the more likely it is that we can remove
+those skills and evolves will tell us
+when we can retire a skill and when not.
+And then we have preference skills.
+Those are more durable mostly encode
+some preferences. So if you have a
+specific workflow in your team or
+specific style language or other
+preferences which are very um specific
+to your company um you will have or
+create preference skills and those uh
+preference skills are then protected
+with evolves because most of like the
+foundation models might not uh integrate
+the knowledge which is very specific to
+your use case or your domain and
+preference skills are very valuable. So
+we really want to make sure that those
+are working and we don't like update our
+agents to uh degradate performance. So
+do skills work? Yes, they do work. And I
+going back to skills bench which has an
+update of 1.1 which has evaluated all
+kinds of open and closed models in
+different harnesses showing that skills
+on average improved the performance by
+roughly 15%. Skillsbench covers around
+100 different tasks uh based on like
+coding and also productivity across
+different languages. It's uh openly
+available and they have a very nice
+website, a very nice leaderboard are
+also very open for uh community
+contributions and then they did a second
+analysis on self-generated or AI
+generated skills. Right? It's very easy
+if you are in a coding agent and you
+work on something tell the model create
+a skill and then it writes a skill MD
+file. We maybe look at it very closely.
+It roughly covers what we want to do and
+then we just accept it and start using
+it. And what I found out is that uh
+human written skills are the best we can
+provide. Uh AI generated skills can
+impact performance negatively and that
+skills or skills.md files should be
+below 500 lines of words. So if you have
+your laptop open and have a skill
+available, if you open that and if it's
+above 500 lines, you should definitely
+look at the skill uh after our session.
+And um the last topic about what is a
+skill and how a skill works. Uh we have
+different ways of triggering our skill,
+right? We can have a model triggered
+skill meaning uh based on the context
+and the description the model decides to
+use or read a skill to uh get more
+context to solve a task. And then there
+are user invoked skills. And I think
+people underestimate how powerful user
+invoked skills are. Um and they most of
+the time just accept u the overhead by
+pro like adding it into the context. I
+have like many user invoked skills for
+more workflow type of task like creating
+a pull request uh staging documentation
+and all like of the very uh normal dev
+work which could be run in a script
+should most likely be a user invoked uh
+skill and when you build agents for
+customer you don't have those user
+invoked skills we are only working in
+the model invoked skills and that's
+where we are like focusing on for the
+small eval section we are going to look
+in a second So writing skills um is an
+important topic. We're going to look at
+eight um examples on how or tips on how
+you can write good skills. And most
+importantly if you work with model
+invoked skills is the description
+because the description are most of the
+time two sentences we provide to the
+system instruction to help the model
+know when it should use a skill or not.
+And it's bad if your description is too
+wake because then it might trigger too
+often or it might not be triggered if
+you need it. So very important is the
+the why and the how for the model. So
+why it should use that skill and then
+how it should use that skill. Um very
+common is like use that skill if you are
+working on a react application for
+example. And then of course the when and
+we should write directives instead of
+essays. So we should not say something
+like hey the interactions a API is
+recommended for multi um multi-hat
+because it handles like session state
+and it's like you should be way more
+directive like use the interactions API
+if you are working on like a chat
+application. So you need to give the
+model like clear instructions and
+directives on when it should use the
+skill and how it should use the skill
+and similar to what we have seen in the
+skills bench uh results we should keep
+the skill lean and layer information. So
+the description is the cost you always
+pay on every model invocation. So on
+every model call the description as part
+of the model context. So you always pay
+that 100 200 tokens cost and you don't
+want to have a super long description
+because then you always have to pay that
+when you have a very long skill MD file.
+It will be always read into context when
+the model decides to read the the the
+skill or to use the skill. Uh which can
+be expensive as well. That's why we want
+to keep it as concise as possible but
+still include all of the reference and
+details for the model to solve that
+task. And then of course the layer three
+is like we can have those reference
+files where the model needs to like um
+go really deep into a very specific
+task. And a good example for this is
+like if you are working in like maybe a
+multi cloud environment and you have a
+skill to deploy your application. You
+might need instruction to deploying to
+AWS and deploying to Google cloud. Those
+should not be part of your skill MD
+file. Those should be references that
+you have a reference for AWS, a
+reference for Google Cloud, maybe a
+reference for Azure so that the model
+can basically explore based on the
+context where it should go to get all of
+that information. Then we should set the
+right level of freedom. Um I see many
+people very clearly describing the exact
+workflow in a skill. Step one, go there.
+Step two do this, step three do this. If
+you have those type of use cases, you
+should not use skills. Maybe you should
+write a script because if the the
+process or the workflow is always the
+same, you don't need to waste models and
+tokens for that exercise. You can create
+a script, you can tell the model, use
+that script to run a specific workflow.
+So rather define goals and constraints.
+So if you need to like deploy to your or
+update or stage your documentation
+describe how the model can do that or
+like for your database uh updating a
+config you should not say like read the
+config update the port and then like
+deploy again the model knows what to do
+just like hey if we need to change the
+config here's the file make the change
+then don't skip negative cases so we
+always look at the when we want to use
+the skill but most of the time we don't
+look at when we don't want to use the
+skill. So if we have a description for
+our skill which says use it for uh web
+development tasks it might overt trigger
+maybe you work with reg react maybe you
+also work with angular and the model
+always loads the skill if you're working
+in like a web development environment
+but if you are very specific for like
+hey only use that skill for react
+components or for table and CSS then the
+model knows hey that's very specific for
+one to use and with evolves we can also
+uh identify those um and then test
+early. So that's what we are going to
+look at. We should really try to test
+when you create a new skill always to
+try to rei to create 10 of 20 prompts. I
+like to create five for like the happy
+path. So when do I want to use that
+skill, five when I don't want to use
+that skill just to make sure the model
+is not over triggering the skill and
+confusing itself. And then if you have
+already some uh customer or production
+traces, try to include those as well
+because nothing is better than than real
+world data. And then uh tip seven which
+is quite new and I have to give all
+credits to Matt. So if you don't know
+Matt, it's a great AI educator and you
+should definitely follow him. He
+published a tweet and also a skill on
+like killing all of the non-ops. And
+what he found is that AI generated
+skills tend to include a lot of noops.
+And no ops basically is an instruction
+which does nothing to change the agents
+behavior. It's like before make an
+implementation easy to read. Like the
+model knows how or when it should make
+something easy to read or write clear
+high quality code. I mean like that's
+what we expect from the model to do
+without telling it really. So um
+definitely look at those noops. He have
+has published a very good skill in in
+his like skills repository. Uh and then
+last but not least, uh know when you
+should retire a skill. Um skills are not
+there to live forever. Models get
+betters, behaviors change, expectation
+change, um the environment changes. So
+um always try to run evals with and
+without the skill enabled. And if the
+model achieves the performance without
+even like triggering the skill, you
+know, you can retire that skill, save
+the cost uh for your tokens. And then
+also um don't keep like red and then so
+save cost at the end and maintenance
+also as well. And to look at a little
+bit of a practical example and also how
+you can create your own small eval or
+evil harness for skills. Um earlier this
+year we wanted to create a new skill for
+the Gemini interactions API. So the
+Gemini interactions API is our new
+interface for working with Gemini models
+and with agents. and the interactions
+API was released after the last training
+of Gemini. So the model or Gemini 3 and
+like 3.1 or even 3.5 has no context
+about what is the re uh the Gemini
+interactions API. So we decided okay
+let's look uh at creating a skill to
+help the model create good code for the
+interactions API to use the latest
+models and to do that we created 117
+test cases those are uh based on like
+data we see uh from real users trying to
+generate uh Gemini code from um
+synthetic generated uh test cases and
+also from like feedback we see people
+like hey the model is like using Gemini
+2.0 even if we are already on 3.0 go and
+the the end result was that we improved
+the the performance up to like almost
+90% for um generating valid interactions
+API code with the latest Gemini models.
+And to do this, we basically only needed
+like two very simple uh assets. So one
+of a JSON file with all of our test
+cases and it's very like no clear
+structure. It's like, hey, we have a
+prompt. That's basically what we expect
+the user to provide. We have a language
+because we wanted to test the skill
+against Typescript and Python. Uh we
+have a should trigger that's basically
+there to tell us if the agent should
+read the skill or not read the skill.
+And then we have different expected
+checks. Uh we look at them in a little
+bit. Those are basically uh very simple
+asserts uh for that prompt if it should
+trigger or not. And then we have a very
+basic Python script which runs a coding
+agent. In this case, it was the Gemini
+CLI which uh passes the output and
+returns it. So we can like take a look
+at the the outcome whether we have valid
+code for the interactions API or not.
+And uh most of the tests or evals for
+skills can be rejects. It's like very
+amazing how good of re redax you can
+write using coding agents. And it's
+really for us it was all about okay do
+we use the correct SDK? Do we use the
+correct um model? Do we use the correct
+methods? Do we use any old patterns? And
+we created um very basic asserts for all
+of those cases which are very cheap to
+run. So we can run our skill against the
+evals many times. So if a new model
+releases, we have an easy way to update
+those asserts to the latest model ids
+and it's very cheap to run for it well
+because we don't need to use like LLM as
+a judge. But of course you can use LLM
+as a judge if you have like more complex
+skills which need to look at the whole
+traces or the whole steps taken. And a
+very easy case is like you just create L
+as a judge with a rubric on like what
+you want to look at and then like take
+the output put it through the L&M as a
+judge try to get a pass or a fail and
+then if it fails look at the data and
+then like try to um improve your skill
+based on that and that's also how we now
+evolve skills at Google Debbine. So the
+we don't use yl but it's like just as
+like an example. Uh we have u tests or
+evals alongside every skill we have
+internally at Google deepmind. Um every
+test has multiple cases with like a
+prompt. Uh we all run them in like clear
+workspaces. So you can define your
+workspace or environment if it should
+include additional files like your
+application environments. You have uh
+startup commands which basically
+preloads or installs libraries into the
+environment. And then you have script
+validators. Those are those red checks
+where we look at all of the traces to
+see was a skill triggered, was a certain
+command run, was a certain CLI run. And
+then we also have LLM as a touch where
+we have some expectations which are
+basically matched against like hey did
+it trigger the skill? Did it run a
+certain bash command to like also
+evaluate it? And we run them on every
+change to the skill. So if a change
+happens to or like a diff to the skill
+file, the eval will be run and there
+will also be a result and the change
+will not be merged if it is not
+improving the test cases. So we always
+have those regression tests for every
+change to the skill. And you can only
+change the skill if it improves the eval
+or add new evals. And um yeah that
+that's how we we basically manage it.
+And then last but not least uh 10
+examples for or best practices for
+skills. You don't need to take photos.
+There are in the blog post I can share
+later. So um the I mean we had it many
+many times the the skill description is
+very important. uh we have seen 50% of
+the failures uh because the skill was
+not triggered correctly because the
+prompt of the user was not uh detailed
+enough for the model to understand hey I
+need to use that skill to solve their
+task and especially if you build agents
+for others they are not aware of the
+skill descriptions you have for your
+model and for your skill. So they might
+write something very um shallow and then
+the model needs to know okay I need to
+trigger that skill. Um we should write
+directives over passive information. So
+we should always think about it. You
+should tell the agent what to do or not
+what to do and not just like hey if you
+feel happy today please use the skill.
+Um include negative tests. Uh we always
+forget negative tests. Start small. Even
+like 10 to 20 skill eval samples are
+better than nothing. You will be
+surprised on how much you will find even
+from like five to 10 examples and then
+like definitely create outcomes not
+paths. We don't want to test if the
+model loads the skill on like the first
+turn. We really want to test if it can
+achieve the task based on the prompt and
+if it loads the skill it loads the
+skill. If not then not. If it um loads
+the skill after five turns that's also
+okay. Then we want to have isolated runs
+because coding agents are very good at
+finding or cheating. So if you run
+inside uh your existing environment, it
+might look up previous chats or it might
+look up some other executions and then
+like try to cheat it and get the context
+from the skill without even using the
+skill. Then definitely run more than one
+trial when running evolves. Like agents
+or models are nondeterministic.
+Maybe the first run works, the second
+one doesn't. So, always run three to six
+trials per case and to measure
+reliability. Um, test across different
+harnesses. If you work with like or if
+you have employees or um people working
+with like different harnesses, not only
+just evaluate against quad code or
+anti-gravity. If you have people working
+with cursor, try to include them as well
+because agent harnesses behave
+differently and of course model behaves
+differently. So maybe your skill is very
+good with a Gemini but very bad with
+codecs and then you have uh customers
+consumers using your harness with codecs
+and then it fails and then um create a
+evil. So if your um model is good enough
+does it doesn't need the skill anymore.
+Keep that evil. You don't need to throw
+that evil away because you throw the
+skill away. You can keep that evil to
+make sure that the model or the agent
+keeps the performance and as soon as you
+start seeing some degradation you can
+reintroduce a skill. You can maybe tweak
+some other tools or pieces to keep like
+the the performance up and then really
+detect when you can retire your skill.
+And you will be very surprised with all
+of the model updates how fast you can
+retire your skill which you might needed
+like six months ago but not today
+anymore. And I have some homework for
+you. So if you are back from holiday on
+Monday, um pick uh the most used skill
+and write five test prompts. uh you can
+also use your coding and ask it to see
+look at your trajectories which are my
+most used skills and then try to create
+some some skills. It's you have seen
+it's like very easy to write your eval
+harness. It's like a JSON or YL file and
+then like some Python script which runs
+your coding agent or your agent harness
+and then like look at the outcome.
+Definitely uh try to look at the
+removing no ops. Maybe it does not
+change the evil performance, but it
+helps you save cost because all of the
+tokens which are not helpful or not
+changing the agent behavior are money
+you will like spend. So look at um
+writing create skills uh from Matt. It's
+you can find it on on GitHub and then
+also run ablation test. So run always
+evolves with your skill loaded and
+without your skill loaded. only that way
+you will know when you can retire a
+skill or if a skill is really helpful
+for your performance. So don't ship
+skills without evils. Thank you.
+[applause]

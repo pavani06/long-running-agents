@@ -1,0 +1,702 @@
+[music]
+All right, let's just uh kick things off. How many people here already saw the keynote that I gave? Okay, not
+everyone. That's good. This talk is effectively going to be a stretched version of what I had given in the main
+stage except two things. One, I want to give you some time to try to set things up yourself, you know, Wi-Fi gods
+permitting. And then also two, be a little more interactive. I I had to be very high level when I was talking about
+what I use Codex for, but here if you have any questions, we have like 70 minutes. If you have any questions, just
+raise your hand and we can start answering some of these things, especially because not a lot of the workflows have been really well documented. And so if you if you're very
+curious on how things work, I'm really happy to uh answer any questions we have here.
+Um, yep. I'm Jason. I work at OpenAI. I don't really know what my job is anymore. We do a lot of things. Um,
+clearly the slides are already in the wrong order as well. But generally, you know, I've done things like doing a lot
+of prototyping work and just writing lots of code and just having a goal run for two days to build a game or some
+kind of web application, right? We've also looked at things like running evals and hill climbing things. Uh I also use
+computer use to edit iMovies and make little videos. I do partnerships and education and operations by taking my
+meeting notes, turning them into documents, working with other vendors, and also working with different
+foundations and programs to get funding. And all of this work is done effectively in the Codeex app. Uh I don't know if
+you can tell, but right now the slide is being served on local host in the inapp browser of the Codeex application. And
+so anytime I find something I don't like, I might just hit the annotate tool, give a comment, and have codeex
+clean up these slides. Um, I'm not the biggest token token maxer.
+Uh, I I think I'm doing all right. I see some folks doing like, you know, a couple couple billion every day. Uh, the
+goal of this talk isn't just to like waste all your tokens, but really help you avoid wasting your tokens by telling
+you what has actually worked and in particular sort of the tricks I use to make these things productive.
+Um, and again, the goal, like I said earlier today, was to catch you up on what's changed in the Codeex app, uh,
+give you some time to set things up. So, if you have time right now and you haven't downloaded Codex, just go ahead and do that. And then we can go a little
+bit deeper into setting things up. And so, I've actually prepared a little monor repo that you can use to clone in,
+get all the skills that you need, get all the setup that you need, and go from there. So, let's go a little bit deeper.
+Um, if you're new, feel free to set things up. If you're pretty experienced, just like chill out, try some of the
+things I'm talking about and then, you know, I think every 15 minutes we'll have some time for questions and we can
+go into the more like what feels like AI psychosis but maybe actually works kind of uh domain of using these systems,
+right? A lot of the work in knowledge work now because the coding is solved, because a lot of this operations work is
+solved is really just understanding what you can do. Right? In a world without AI, maybe I have 10 teammates. Each
+teammate is working on one thing. So, I need to have like 10 things I'm keeping track of. Now, we live in a world where
+like everyone I'm working with has 10 projects. I now have to keep track of like 200 things and I don't know what's
+important. There's definitely a Slack message I've missed. There's probably some email I've missed somewhere by some foundation. And Codeex helped me
+organize all of this stuff. And so, again, the things I really want you to take away from this workshop is the fact
+that compaction works really, really well. Like I have threads now that are
+like five weeks old that have you know 400 sub aents in them and they generally
+just know what they need to do. They know what their job is. I also want you to become really comfortable with talking your computer. Uh earlier today
+I said that Tony Stark is not texting Jarvis, right? And there's really no
+future when text input is the thing that matters. I basically use a foot pedal. So I like
+I have a button that is transcribe and a button that says enter. And so I'll just come by my desk with my hands behind my
+back and I just go like you know fix this make this change also like message this guy on Slack and then I just go
+back to you know talking to my co-workers and trying to figure out what is like the human side of actually working at OpenAI rather than just like
+monitoring Slack all day. Uh appshots is my favorite feature of all time. It's
+like very satisfying. If any of you just like are on Codex right now, just press the command button side by side. You're
+gonna get this real nice animation or you're gonna get a modal to tell you to install computer use, just do that. It's
+amazing. Uh, invest in your personal memory, right? I at this point when
+someone asks me what I'm doing, I don't even have any idea. I kind of have to like look at my threads and look at the conversations to figure out how much
+I've delegated away and how much has been automated. And if you can then invest not only in skills for yourself
+but also plugins for your entire team, you can become the superhero that actually sort of augments the rest of
+your company. It's one thing to say, "Oh man, like I can use all these tokens and look how many tokens I'm using." But
+actually, if you're rewarded by how often the plugins you've built are being used by your teammates, that's a huge
+win, right? How are we doing like implementation? Like one of the most popular skills is just the like finalize
+the codeex app skill. and anyone who makes a pull request basically triggers the skill before review and basically
+everyone at the company uses it and it's always been able to find things that I've done wrong or is against the style guide. Um, one of the skills I have is
+just like reviewing docs and it's basically just copying the poll requests of uh the PR reviews of our friend
+Charlie over here. And so I just have like a review my code like Charlie based off the past year of like feedback he's
+given on poll requests. Review my code like Dominic. And these things are incredibly valuable. And then lastly,
+once you get more comfortable with all those first four things, your pinned threads with automations, these things
+that wake up these threads over time, they're going to feel like teammates. And more interestingly, now that threads
+can talk to each other, so every thread has the ability to list other pin threads, has the ability to rename
+threads, and it has the ability to send messages to each other. Not only can you have teammates, but you can have
+teammates that work together and you can effectively start having managers, right? And so you you went from an IC
+enabled by an IDE, then you have pin threads that feel like a team where you're the manager. And very quickly in
+the future, as models get better, this is where the the puck is going to skate to. You're going to start having your
+like manager threads and then your IC threads. And I'm sure in the future there's going to be some other crazy
+orchestration, right? And all of this really is due to the fact that
+compaction works. Even six months ago, I don't know like how many people here have been told this, but you were always
+told if a conversation goes very long, start a new thread, right? After 20
+messages, it's it's not going to be that good. Um, every feature should be its own its own uh conversation. If you do a
+code review, start a new session. Those things basically aren't true anymore. And a lot of it has to do with compaction. just pin the thread, rename
+it to the project ID, and that project thread should be able to delegate to sub agents, create new threads, and have
+conversations, and then write to your memory vault, which will allow you to just log what's happening. And then with
+automations, you can just wake them up. And so there's really three acts of
+working with AI, right? Working in codecs. You bring the context in, and I'll talk about how you do that and what are the ways you can bring context in.
+Then you work on it, right? For example, the slide deck is just in the Codex app and then you take actions out in the
+real world. [snorts] So I asked this during the keynote, but
+I'm also curious what the audience here is doing, but how many people use dictation when they interact with an AI?
+Nice. How many use dictation even at work?
+Yeah, I think we I think we should all be a little bit more shameless, you know, uh in doing these kinds of things.
+uh you generally talk about three times faster than you type and it's just incredibly productive to be able to give
+the messy version of what you're thinking about to the AI and take that extra time and just try to be even more
+thoughtful to the people you work with, right? It's like now like I don't want to send my coworker like a 15-minute
+voice memo, but I should be I should feel very comfortable sending an AI a 15minute voice memo because you're going
+to include some random tangents. You might just say, "I'm pretty sure I had a meeting with Charlie sometime last week
+about the agents SDK and it will go and read like 35 meeting
+messages to figure out which one it was and make it relevant." And now all of a sudden like whatever memo you're going to write or some project tracker that
+you're trying to do uh is going to work, right? But I would never do that with with um AI.
+So as you guys are doing and uh just listening to this talk like try to just sort of set up codecs the way that I've
+been describing these things right. So once you have your ability to just
+have you input into the machine a lot more effectively you can start thinking about using things like skills and
+plugins. Um skills is a very simple construct. It's just a couple of files and some scripts. A plug-in is a library
+of these things. And as you are just doing things many many times, you can start thinking about creating your own
+skills. And as you package a bunch of skills, you might start thinking about building out a plugin.
+If you want to install the plugins, we have a pretty good ecosystem now. Something I'm really proud of. If you just go in the sidebar, click plugins.
+You can just search whatever plugins make sense for you. So if you use Slack, you can install Slack. If you use Gmail,
+Teams, most of these things are pretty built out. If there's something that you feel like you are missing, just at me on
+Twitter and I'm sure one of my Twitter monitors will pick it up and send a message to someone in the connectors
+team. If you're already actually looking at the plugins panel, I also really
+recommend just starting the process of setting up the Chrome extension as well as computer use. We'll talk about this a
+little bit later, but like computer use was the first time in a long time I
+really sort of felt the AGI of being at work, right? Right. I was in iMovie for the first time. I didn't know how to use
+it and it was just teaching me how to like export the movie. It was able to like figure out where the sound effects
+were and it placed it in the right timestamps. Really small things like this that really make using a computer very fun again, right? Like I don't
+really have the time to like learn new software. But if code if Codex can just show me what's going on, it's it's it's pretty awesome. And as you can see the
+cursor move oftent times we're like cheering for it to to do the right action. If you don't have a link for the Chrome
+extension, you can just click this button here. The difference between computer use is computer use can work
+behind the scenes to control any application, right? So whether it's Slack or some, you know, trading
+software, god forbid, uh it can control all of those things. With the Chrome extension, it just controls everything
+in the Chrome app. But the cool thing here too is again it doesn't take over
+your screen, right? Sometimes I'll just be working on my computer. I'll go to the Chrome browser and I'll realize that
+like Codex has just opened up three tabs to just look at my Twitter DMs and then
+just closes them back up as I'm just, you know, responding to some other email. It's really cool to watch these
+things work in the background. You can connect a bunch of other plugins. I use things like Notion Linear. I also use Obsidian. It's just a
+good time. Once you do this, what you're going to
+find is just by asking really vague questions about your day and just tagging the right plugins, you're going
+to realize the AI can learn a lot about you, right? The AI does not a system now where it does like one search request
+and try to come up with an answer, right? It might check your emails and find a loose thread. It might check Slack or some meetings and figure out
+what's actually going on. Who are these people? I had I had one of my loops basically realize I was meeting with
+somebody look at their LinkedIn and realize that uh we went to the same university at the same time and so the
+moment I jumped on my call I was like hey you were also from water you know do you remember this this and this person and immediately we had a we had a
+connection right and obviously I didn't tell him it was AI but that's kind of some of the small things that you can do by just improving your automation you
+know it can make you closer to people um as you build out your memory system
+right as as you build up the codeex memory system and your your ability to trigger plugins, maybe day one, you have
+to tag everything, but I've become like a worse and worse manager over time. Right now, I'll just
+open up the composer and just say like what has changed about the launch and it'll be able to do a good job, right?
+And it it's that's possible because you have this long history, you have all these pin threads, you have these
+memories, right? It's the same thing with an employee. day one you have to show them every standard operating
+procedure you know but at some point you have an employee that has been here for seven years and you can just say hey I
+think you should make the company more money and they can figure it out but it's only because they have this context
+um one thing you can just do for example if you want to try it out is you can just say hey check out the schedule find all the sessions organize them in a
+markdown file put them in a spread spreadsheet and you'll just realize that we can do these things and maybe it'll
+do it with web search maybe you can do it with Chrome home. Um, lots of fun things here.
+If you want to get inspired by just looking at what kind of skills exist, we have two really great sources. One is if
+you just run the skill installer skill, it will actually list out all of the OpenAI curated skills. These include
+ones for things like GitHub, uh, best practices when writing playright code,
+you know, reotion for example. But you can also check out websites like skill set.sh SH or use uh I think this is like
+Versel's skills uh tool and then you just find other skills, right? So if I'm thinking about doing some more motion
+design or web design or I know that like someone told me I shouldn't do like use memo in React but I don't really know
+what that means. I can now go install the React best practices skill, right? But again, internally, one of the
+highest impact things I think I think you can do as like the AI champion in your company is to figure out what the
+team needs and build out those skills, right? I have a lot of skills on doing things like triage and how how do you do
+comms, right? If there's an outage on Twitter, how do you like convert that? Figure out who who needs to hear this,
+how do you like start the SEV, what stat sig gates do you need to check? All these things are now just automated.
+And that's exactly what I just said in this slide. Um, we also have a really good plug-in creator and a skills creator skill. So if you just ask Codex
+to trigger it, it will try to interview you to figure out what's going on. And even in a more useful way, you can also
+just do it yourself once, document everything, and just tell Codex to make a skill from what you've learned, right?
+And as long as you tell it, hey, by the way, every time you run this skill, you're allowed to edit yourself. If you learn something new, you can edit the
+skill file. These things will also improve over time. And a big theme
+that's happening over this talk really is just you kind of have to just get
+really comfortable with asking. Like we'll obviously try to make more of these things like more slash commands, but more and more like I'm just not
+touching a computer. So it doesn't even make sense for me to like run a slash command. I just want to say what's
+launching this week, check Twitter, you know, look at what I'm seeing in the browser.
+Um the example I've been developing internally has just been this like developer experience triage skills, right? So again this skill just
+documents like every Slack channel that should be uh you should be aware of. It
+knows which engineers have worked on what projects. It knows what Slack channels are taking in feedback. I know
+that if you DM me on Slack and you tell me that some regression has happened, I need to ask for a feedback ID. Right
+now, the agent does this automatically and it does it automatically with
+appshots. So again, I don't know how many times I'm going to say this, but appshots is one of my favorite features. How many
+people here have just like sent a screenshot to Slack to Codeex, right?
+Like almost everybody. But the issue is the screenshot does not have that much information, right? The model has to
+then do OCR. And if you send a screenshot of like a Slack thread, the model has to like read the Slack thread
+and then do a list Slack channels function and then realize like there's a guy named Charlie and then do like a
+list persons. It takes a lot of hops. But with appshots, it takes not only the
+image but the entire accessibility tree of the app. And so when I give it an appshot of a Slack channel, it knows the
+channel ID. So it knows exactly what function to call to post there. It has the user ids of every single person in
+that channel. So if I take an appshot and say do some research and reply, it's only one function call. It knows to send
+the send a message to channel like U12725
+and then because you know it knows that Charlie is like U425, it can do that in
+a very fast hop. So, not only is it a very quick way of getting context into your system, it just gives so much more
+context that these subsequent tool calls do a really good job. I have not like
+filled out a form in like two weeks because I just now tell Codeex to fill out this form, right? It it knows all
+the fields. It then figures out that it's in Chrome and so it'll use the browser extension. If it's in Safari,
+it'll use computer use. The model has become really really intelligent. And so just like you might have a
+manager that gets an email and they forward the email to me with like three question marks and is your job to figure out what's going on. You can kind of
+start doing that with your AI as you start investing in these skills. And most of this is because of the fact that
+you've built out your memory system. So if if you guys are are taking a look at
+these these slides, JXML/personal monorreo template that is actually the
+template I use on my personal computer. It's basically just a directory tree and a bunch of skills that I use to sort of
+grow out my memory. I'll also make one call out which is uh if you open this in your browser just
+press appshots and tell Codus to set this up for you and then you can pay attention to the rest of the talk.
+Yeah. Yeah. Yeah. You can just tell Codeex, Jason has
+written a personal monorreo template on GitHub. Please find it and install it.
+All right. Yep.
+Yeah. So, this is this is a really good point. So like for example on the DX team I make a lot of demos and so I have
+like 16 repos like you know real time demo one like real time demo two like
+funny right you have all these demos I don't create new projects for them right the only project that exists on my
+sidebar is the like personal monor repo sidebar but codeex is able to still manage files
+outside of that project directory and so in my agents MD file I just say,
+don't save any of the code in the monor repo. Save it in like slashdev. And just by that one line, if I tell it
+to clone a new project, it saves it in /dev. If I tell it that I want to work in my slides, it knows that there's like
+a slashdev slides directory. But it's just an easier way of managing everything, right? Like I want to start
+all my projects from my personal vault and then it can touch the file system in
+any way that it wants to. um one column it kind of breaks uh like git review sometimes in the sidebar but generally
+it's been a pretty good experience for me because I just re I just review my code in in GitHub.
+Sweet. Um these are some of the skills I have just installed there. Uh there's no need
+to take a photo just ask codeex afterwards. But um the assistant plugin basically has the ability to uh onboard
+you. It will interview you. It will figure out what plugins you need to install and then it will actually go create the threads it thinks it needs.
+It'll create the automations. It's a pretty fun one. I have a bunch of skills on like auditing AI code and AI writing.
+Um, I don't include this, but one of the my favorite skills of all time is called write like me.
+And if you want to make one like that, all you had to tell Codeex is, "Hey, Codex, I want you to read all the emails
+I've written in the past six months, all the Slack messages I've written the past six months, and write a style guide for
+how to message just like me." And then that's it. And then anytime I tell it to send a Slack message or write
+an email, it'll go, "Okay, this is an email. Clearly, this is just like a customer support form, so I will be much
+more stern in my messaging. Let me go draft this email." Hasn't failed me yet.
+Um, one thing I've also added that I think are are really valuable to call out is I've made my own loop skill just
+because I I do like having a slash command every once in a while. I'll talk about this in in part two. And I also
+have a skill called simple HTML artifact that just designs artifacts the way I like them. I want my backgrounds to be
+white. I want some uh certain style guides. And an Ultra Goal, which is like a super version of Goal that we'll also
+talk a little bit more about. Um, and then if anyone's curious, like new person, new project. That's just a way
+of like writing a script to bootstrap a new person. I kind of have like a palunt here for my personal life now. It's just
+like a CRM. And basically, anytime my AI agent like finds a new person that's emailed me or messages me on Slack or on
+iMessage, I just keep track of these things. And the new project is the same way.
+Let me just double check. Yeah, cool. Um, and so I'll give you maybe like 10 minutes to try to try to set this up and
+we can go in a little bit of a Q&A. I'm happy to answer any questions about like how we bring context into our systems,
+how I've organized my personal memory vault and uh, you know, some other crazy uses of app shots if anyone has any
+questions. Yeah. What's your question? Does this get rid of the need for like an
+[snorts] Yeah. Um, so the question was, do I
+still basically use Obsidian Brain? The answer is yes, because I still want to sort of like keep track of everything.
+Um, one thing I actually really like doing is I make my monor repo vault like
+a git repo. And so maybe it'll work on it for like a couple of days and I'll
+come back and I'll just run git diff. And by running git diff, I can just see like what the model has updated and what
+the model has not updated. And I can just confidently review that over time and just realize that, oh yeah, like I
+guess Charlie did respond to this person and close the loop. And I didn't realize that, but now I know, right? And and
+oftentimes that's relevant in another conversation. More than that, it's also very helpful for when other people are asking me
+questions, right? Codeexes will feel very good about reading my memory vault, drafting a response, and then ask me for
+permission to send that message off. And so if someone messaged me on Slack a
+question that the AI could have answered, the AI will just try to answer it. Um, and it might be simple things
+like, oh, like who should I talk to about this project, right? And the model knows because it's it's in the memory vault. Um, one thing I also call is if
+you want to use more tokens, you can also have like custom automations where the job is to maintain and manage and
+garden your memory vault. Um, but generally that has not been a big issue for me.
+One question over there.
+Yeah, honestly I generally go down the path of
+like yolo one shot only because Oh, that's scared the hell out of me.
+Um, only because I know that like the way I build my skills is that they they
+self-improve all the time, right? Like I think the difference would be if I make
+a skill that I share with my team, I think about that a little bit more, right? Because it's like okay, do do
+does the does the triage plugin know that like who is working on what feature? Can it route correctly? For my
+personal work, I generally just build a skill as quickly as possible and every time it makes a mistake, I just correct
+it and I tell it to to move on. And then generally what happens is if I've used a skill for two months, I just generally
+feel pretty good about sharing with my team because I I've just experienced it working. Um yeah, most of my skills
+connect to so many other plugins and connectors that uh I just don't know how to eval because I
+can't like snapshot my Slack at any given time. There's a question over there.
+Sometimes I'll use the codec cli every once in a while if I want to like
+like be a little bit faster, but generally the desktop app has pretty good has a
+pretty good experience primarily because everything I do is an appshot.
+Like if I'm watching a video, I'll just like appshot like summarize this and I'll continue to watch the video. I'll just watch a video with like the LLM
+like summary, right? Or it's like if I see some kind of form or someone asked me to sign something, I go like appshot
+use docuign like sign this and save it to my desktop. Uh like last week it like docu signed something then like found a
+faxing service and like fax my medical records. Like that's awesome, but the CLI can't really do that. Um yeah,
+any other questions? Yep.
+Why? Like I'm like learning to juggle. I'm like I'm like learning to play the
+drums. Um well, I think it's like two things. Like in the office, what I'm trying to do is I'm trying to like talk
+to more people, right? It's like it's like I'm just the AI's assistant to get more context that the AI can't get. Uh
+no, I think my job when I'm at work really is just when the AI is running, I should be talking to somebody. I should
+be like learning about what they're working on, try to make connections and then figure out what are the, you know,
+points of connection, right? It's like I should be talking to more people in real life as AI works. Like someone had a
+question over there. Oh,
+[snorts] yeah. So the question is like when do I think 55 is overkill versus 53 spark
+I think this is colored by two things like because I have unlimited tokens I I don't really make those decisions and
+then secondly because I'm not watching my AI work like most of these things are automations that run in the background the latency has not really affected me
+the times where I use Spark is primarily when there's a very simple uh
+there's a really simple computer use task Like I just wanted to like click all the buttons and fill out this form like uh I
+think I think I have a thing that just checks me into flights and that is like a spark agent. And so now like anytime
+there's an email that's that's like a flight check in my agent will check me in, download the boarding pass and then
+send the boarding pass to myself on iMessage, right? And like I just never do that
+kind of stuff anymore. Uh again, it is really weird when you're just like working all of a sudden you check your
+you check your Chrome desktop and it's just like you know JetBlue is just like the first page but again it's it speaks
+to the fact that like having access to your computer is uniquely powerful because it has your O and your
+credentials and and your your um your file system. Yeah.
+Over there.
+Yeah. Sorry, you're you're really quiet. Do
+you mind just speaking up? Yeah.
+Yeah.
+Yeah.
+Yeah. So I have we'll talk about this basically in the next section but um
+with remote control I can control both my local computer and like a remote computer. I think the difference is
+computer use is tricky because it has to be on your computer. That's one thing. The second thing too is if you go into
+settings computer use there's a flag called locked use. And if you enable
+that, as long as your laptop is plugged in, even if the monitor is closed, you can still trigger computer use commands
+through your phone. Um, that also gets really weird because like go on.
+Yeah,
+you're you're really quiet. I can't hear you. Okay. Okay, cool. Um, yeah, like if you
+have multiple computers, you can still connect both your your your iPhone to both those devices, right? Like some
+people just have a Mac mini. Uh, I think the difference is do you want to control your codecs or specifically computer use
+because that that requires like an operating system with a guey. Um, but we can talk about this in in a little bit.
+Cool. Like I said before, were there any more
+questions? I don't know if someone just raised their hand. Go ahead. risk
+and how do you control that? Yeah, I mean there's always some kind of risk
+like like I think earlier versions might like edit a document a little too eagerly,
+right? Um, but realistically I think we've done I I think these models have done a really good job of
+being very precautious and more often than not it's me going like no please
+just just do it like just just like just sign the document like this is like please just like send this message. Um I
+found that uh the 55 models are pretty reluctant to take these like destructive actions. That's one thing. The second
+thing is if you look at the sidebar here
+you have the ability to change your permissions. And so as a show of hands,
+like how many people use like uh ask me for every permission?
+Yeah. Yeah. Exactly. Okay. How many people use like full auto full
+permissions yolo mode? Okay. I don't like that. Um and then how
+many people have used auto review? Yeah. So, I think auto review is
+actually has been really really great. And again, I'm usually annoyed by the fact that my models won't do more than I
+want them to do. Um, and so generally has not been as big of an issue. The
+only times the only examples where I'm really annoyed is it will like edit documents it shouldn't be editing, but I
+just like add something with the HSMD and it's never really messed with me too much. Yeah, I know that's not a real
+answer, but I think with a combination of auto review and agents MD file, I have generally felt pretty safe. Yeah.
+And then if you're also at an organization, there's different admin settings that you can have. So, for example, at OpenAI, uh you can't use an
+MCP server to send an email if any of the people in that email is a non OpenAI
+email, right? Or like you can't uh send a Slack message to external Slack channels. Um,
+that's when things get dangerous, right? But these are some things that you can control.
+One question over there. Yeah.
+Do you have any concerns regarding either security and or privacy?
+That's not because I work here. Um, I think that
+I think that's hard to answer because I don't really know what are like data retention policies for like individual versus enterprise. But Charlie, do you
+have any thoughts there? I'm just gonna throw over to you.
+Privacy. Let's say you get a I don't know email offering you a job at a competitor
+company. [snorts] Uh I mean I I think a lot of it goes
+back to we do want to make like the models are fallible, right? I don't think anybody in this room would be shocked to understand that like you can
+still jailbreak a model for example. Uh but both the the models themselves are
+getting smarter and better at not you know doing silly things and at the same time we're figuring out like Jason
+mentioned what are those bigger you know limitations around the sandbox. We we started with very simple sandboxes where
+it was like you can just run this command and nothing else. And slowly the sandbox has grown to the entire computer
+and I think we're figuring out what are the like computer level or organization level you know edges to that sandbox
+that we need to build. This is me using the delegate skill.
+Great answer. Any more questions before we jump into act two? Sweet. Awesome. So, we just talked about
+a bunch of different ways of bringing context into the system, right? You can use your voice, you have plugins, you
+can use appshots, and then you can also design different skills and plugins to figure out how to do more system
+systematic work. So, now we can talk a little bit more about the work itself.
+So, like I said before, like every pinned thread effectively is a teammate in my mind. I have my chief of staff
+thread. I have uh you know, Swix prefers to call it like, you know, the god thread. uh I I have a thread to manage
+the agency SDK whether that's implementation and documentation. It has two sub agents that it delegates to uh
+the CLI, the open source program and uh Twitter.
+But if you want to make it wake up, right, all you have to say is keep an eye on this until sometime, you know,
+keep an eye on this every 30 minutes. If you remember those like secret words, you can effectively automate like about
+everything in your life at this point. Um, and what this does, it will trigger a heartbeat automation, a thread
+automation. You should think of it as a way of scheduling a message back into
+the thread. Right? In the beginning when we set up automations, it was very much the case that a automation would create
+a new thread every time. So it might be give me a morning brief and it would create a new thread and then it would do
+this kind of work. But as these models got better, I think the right design is scheduling these messages into the same
+thread. So for example, because if you if you download the monor repo, we have a loop skill. If you just do loop,
+right, this is the equivalent of just saying keep an eye on this. Uh keep an eye on this pull request anytime there's
+feedback fix it. Make sure it's always mergeable. Make sure it's always rebased on master. Make sure that CI is always
+passing. And it'll just do that. And then maybe you make a pull request in in on a Monday, you get really busy.
+Thursday afternoon, all the feedback has been integrated. You know, CI is passing
+and uh you know, you're not like 4,000 commits behind uh the main thread.
+[snorts] I also do this with support, right? Again, if if someone is like dealing with some issues on on Twitter,
+on Slack, Appshot, right? you know like at like at
+developer experience skill figure this out and it'll say okay this was an issue on the browser side like James is the
+one that works in a browser the channel is called like browser feedback I'm going to post in that channel DM James
+and then I'll use computer use to open up Twitter to let them know that I've like escalated this internally and then
+I will check every hour to figure out if James on that channel has responded and
+then let the user No. And then sometime later in the future, you're like checking your computer and all of a
+sudden like Twitter opens up and it's just like hey so and so this has been resolved and then you just you you just
+hit enter and then you check your thread it's like oh yeah pull request has been made it will get merged by next Thursday
+and like this is a crazy experience to witness right this is this actually
+allows us to do way more support without making it like the worst part of my job.
+And then with a chief of staff thread, oh this is this is I remember this is where my slides get really messed up thanks to a codeex. So I can't do
+everything just yet. Um you can also just do a loop that says check all my
+connectors and give me an update as to what is the most important thing I should be thinking about. You know give
+it give it to me in a nice format. You know make sure you have links to every email that you read. Make sure you have
+a Slack link so you can deep link into the application. And now just it's been really really helpful to track these
+random things. And again I think in my chief of staff thread I had that line that says check into all my flights if
+you can like send me the book the uh the boarding pass on iMessage and it just
+works. And again it's really weird when you start seeing your computer doing doing stuff while you're while you're
+working because again most of these tasks run in the background and because I've had my permissions on it's not like
+it needs to tell me that it's using Safari. I just like find out that it's using Safari that might be scared to
+some people, but you know, it's pretty great. And then lastly, this is
+something that happens really a lot at at OpenAI, which is I don't even know what's what what's launching, right? Is
+something delayed? Has something landed? Is it, you know, going to happen at 11:00 a.m.? Is it happen at 4 p.m.? I
+have no idea. We've actually made a ton of progress on this and I'm pretty sure this is also just automation and AI, but I actually
+used to have codeex make me a PowerPoint every Wednesday night of what's shipping
+for the rest of the week, right? And that's useful. And then you just say, "Great, it's useful for me. Now, let me
+make sure I can just post this on the channel as a Slack message." And now you're again using your skills not only
+to benefit yourself, but benefit your entire team. That's kind of like the plug-in hero mindset.
+And this one's pretty funny too. Uh I have an example. Let me just double check the slide. Yeah, I have another example which has also been pretty crazy
+which is the one I gave during the keynote which is I had been editing like a short film in iMovie and on my bike
+ride someone gave me feedback about the video. So I just went on my phone and I just like sent told the like, "Okay,
+there's a file somewhere. Can you just like find it in iMovie? There's only one iMovie project. Read the Slack message.
+Export the video. If you can't, if the Slack MCP server does not allow file
+upload, use computer use to upload the file and then watch that thread every hour and if they have any feedback,
+reexport the video and reshare it and then like bite home. And by the time I
+got home, it was like, oh, by the way, it was actually way easier to use a Google Drive connector. So, I've just been uploading the same file on Google
+Drive instead. So, they only have like one URL to manage. And uh yeah, we like
+fixed a bunch of stuff in the typography and then we shipped it again like kind of mind-blowing stuff. It's very simple
+but mind-blowing, right? But that's what a heartbeat is, right? A heartbeat is just a way of waking up your thread over
+time to take some actions. The other thing you can do is set goals. So slash
+goal is pretty amazing. It basically defines a verification step and says,
+"Okay, as long as this is running, check this verification step.
+if if it's not done, keep going, right? Very simple idea. Um, and as long as
+there's a verifier, it does really really well. For example, I've just been uh migrating
+a bunch of software into Rust, right? It's like if this is a Python project that is amendable to be
+rewritten in Rustgo, migrate the back end to Rust, make sure
+all the unit tests pass. And I was able to not only rewrite the rich terminal
+library in Rust, I also rewrote UV and TypeScript um just to see if I could and
+uh we're like 100% test coverage. It's it's pretty amazing. Obviously, you should not be doing this in your work,
+but it's it's very helpful to just understand that as these systems have better verification, you can make a lot of progress.
+In the in the monor repo, I've also included a skill called ultra goal. And
+all it does is instead of setting the goal in the app, we set it in a file,
+right? So we have a goal MD file. And what that means is you can edit the goal while it's being run. So you can add
+more scope uh just like many many real projects do. We also define a plan again
+that we can reference. But the benefit of this is as you're learning more about the projects and you're changing the plan and the goal as these as these
+models are just like looping uh it can update it understanding of the system and then sometimes I have like a state
+MD file or a work log just to track these like longer running tasks like if if things are running for like a day or
+two I want to know what's going on and I'm never going to read this like 4 gigabyte like you know session JSON
+object but I can look at the work log have it have another model summarize it using like a side chat and go from
+there. This meant to say remote control, but
+again, if folks are just like on their computers, I also recommend trying that out. In the sidebar, there should be a button that says remote control,
+especially if you have the iOS app. This is the thing where we talked about being able to control your phone. So, control
+your computer through your phone, right? So if you go on the iOS app, you enter codecs, you can you can do this like
+flow where you can scan a QR code and all of a sudden your your your uh touchp
+can message and cue any thread in the in the application including I think remote
+threads. Uh this is super powerful because again oftent times you know
+every time I try to leave the house someone's like asking me for something and now I can just ask codecs. Uh really
+I should just be having something that monitors Slack and just does it. But like I you know I'm not there yet.
+But again this is one of those big uh you know feel the AGI moments,
+right? Yeah. And again like I said the chief of
+staff threat effectively is like the single source of truth for basically what's going on in in in my life on my
+personal computer. I have a different one. Uh lots of good stuff.
+This is all I wrote for mine. Create a create and pin a cha staff thread every day at 8 am. Check all these connectors,
+figure out what's going on, and then uh you know, do a good job. And again, you'll just start you'll start editing
+it over time, right? Maybe you don't like the formatting or you wish you included links. Uh for a while, what I
+made it do was if it found all the emails, not only to ask it to draft the responses, but I would make it open a
+Chrome tab for every email I need to reply to in Chrome. And so I'll open my computer, I'll take a meeting, I come
+back and on my computer is just like seven Chrome tabs and I can just review the drafts and send each one like small
+things like this just to prepare your computer while your meetings are happening. Uh really productive. So now
+we talked a little bit more about like just like doing the work itself, right? We haven't really gone into things like artifacts just yet, but I'm also curious
+if anyone has any questions on how I've been doing things so far over here. So I notic so I do a lot of
+Yeah. I notic.
+Yeah. I get a lot of stuff. Yeah. So, what's your advice?
+I generally always prefer to have the model write the goal or write the write
+the prompt itself. Like more and more of these models are just getting better at doing that. And
+it's like more in distribution to what they want. Um, in reality, I just I will send like a 10-minute voice memo, right?
+I'm just like like, you know, this is some issue that's happening. I think there's a project about some thread. Uh,
+I don't know if they got back to me. I think their name is Dylan. Uh, please look in Gmail. Like, take it's like a
+really really messy. And then it's like, okay, well, do I want to make a set of gold? Do I want it
+to create a new thread? Do I want to make a new skill? Like that's really sort of where my
+taste lies now. It's like, okay, how do I want to organize what the work product is, you know? Do I tell it to then do
+all this work and put it into a index HTML to share it? Do I want to make a
+word doc? That's basically it. But I generally just send very long messages.
+Yeah, like for example here, like this is not the prompt for the chief of staff
+thread. This is the prompt so the model can make the cha staff thread, right?
+And that model will be much that output will be much better at determining how
+verbose the the automation is or how often it should check or what connectors. Um and then because I have
+this monor repo, one of the things I do is every project file has
+a link to every slack channel this project is relevant for. And the model will just see that and you go read those slack channels, right? every like person
+file has their email address, their Slack connector, multiple work
+addresses, and they'll read all those things. I would never prompt that myself. Yeah.
+Yeah. Yeah. So, I think in that example, what I realized was when I mentioned the Slack channels that are relevant for a
+project, the results were better. So, I just added that in the front matter of like the markdown file. But these are
+the things that you grow over time.
+the only I mean I have not tried like the
+deepest. So the question is like what is the difference between this and like an open claw and a Hermes agent? Think I
+think I'm sure there's differences I'm not aware of right now, but I can imagine a world where it's going to get much like very very similar very
+quickly, right? Like most of my work and I'll talk about this later on is like my threads manage themselves, right? It
+could be the same thing as a sub agent. Um I don't know how many people use Hermes agents and open claw for like
+very wide work, right? Like I think I like I think I tried openclaw to do some
+like house automation stuff.
+Yeah.
+Yeah. So the qu the comments like yeah with with these models there's only one thread. I think that's very reasonable
+just in in reality there's just there's just like so many things that we work on that like I need the organization right
+it's like you know it's like is there a world where like my banker and my therapist and my personal trainer and my
+girlfriend is the same person like maybe but like my like you know tiny brain can't figure that out and like it's easy
+for me to understand what the work is by making folders right it's like the
+computer doesn't know the folders is but the folders are for me in some ways if that makes sense Yeah,
+cool. Great. No more. Yeah, one question that one.
+Yeah.
+Yeah. skills, but like I didn't know that it just automatically.
+Yeah. Um I think it depends. I think it depends on how proactive you are in like
+telling the AI to remember these things. So for example, like once I realized I should include Slack channel IDs in like
+project documents, the model's like, "Oh, there's a Slack channel. I should read the Slack channel." And that became
+really obvious. Now I I basically never tag things. I don't really know when that happened. Um but yeah, again a a
+lot of it is just getting the habit of remember this for next time, update the skill for next time, update the agent
+dot for next time. And that is the uh sometimes
+I mean I think it would be hard for me to like prove it. Like there's also a memory system that's like outside of the docs. Generally, I'm like pretty happy
+with the memory. I I don't know if if I can like give you like a time estimate, but I think I'll just try it out, right?
+Like use it for a couple weeks, have make sure memory is turned on, by the way. Like it's also in your settings. I
+know our settings panel is like pretty crazy right now, but um yeah, I think I would just turn memories on and just see
+whether or not these changes happen over time because like I basically never I don't remember a single time I've like
+you like at mentioned something. Um yeah,
+and the last part is pretty pretty fast, right? So we talked about reading context, we talked about working with the context. Now that the last thing to
+do is just like write context. Um most of this has been pretty pretty uh
+simple, right? You can draft emails, you can draft Slack updates. If you feel very brave, you can send them, but like be please be respectful. Like um I'm
+sure Charlie has gotten hundreds of sent from chatbt uh Slack messages from me over time. Uh but I hope they're they
+sound like me more now. Uh building one pages is also pretty good. Like this
+slide deck was made with uh codecs and soon we'll be able to do things like serve applications and now I think you
+know at least internally so much of the work that we do has just been sharing like apps rather than like full
+documents. I don't know how many people know about this but we also have a really good like
+artifacts ecosystem. like more and more uh codeex has become a tool for all of the work that I do. It can open and
+render like Excel spreadsheets, word documents, uh PDFs, slides and with the
+annotation tool uh editing things is like pretty fun. So even with these
+slides, this is this is actually served on the inapp browser of the Codex app. And what I'll do is I'll just give my
+talk and I'll press next and press next. And then when I don't like something, I just select it. It's like, hey, like fix this. I don't like the white space. Like
+these two slides need to be broken up two more slides. I hit enter. As Codex is working to clean this up, I'm just
+going down to get down the slides. And it's it's generally been a pretty natural way of working. Like this this
+deck really came from me reading my own blog post out loud and then generating
+the material as we go along. But, you know, it's still it's still like two or three skills to make the slides look
+this way. Yeah.
+Um Yeah. And then once you do that, you can do again again. It's the same concept over and over again, right? You
+can you can build out these loops that just touch other parts of the system. Like most of our project tractors are just Google Sheets updated with loops.
+Uh the slides are loops and the annotations. Yeah, I just said everything. My bad. Um
+and then one thing that's also very helpful is like as the company gets more like context dense, right? Maybe it's all OA agents, just the ability to like
+summarize things like over Slack has been incredibly useful.
+That was clearly like a slop slide that uh Chad GBT edited in.
+So once you can take actions on these D artifacts, I think the the biggest thing and the thing I really want people to try out is just computer use. Um again,
+it's like it's like the first time I had that like feel the AGI moment, right? Like a cursor is like trying to do some
+action. you can see like move across the screen and like when it does it really well like you really gain a lot of faith
+in the system. So we we obviously have like plugins, right? And this is for sending stack messages, but then the
+inapp browser is going to get even more powerful soon, right? We're going to be able to basically treat this like the
+browser that you use. Like I now try to use the in browser as much as possible. And then for everything else, use computer use. Um how many people have
+used computer use by the way? Very. Oh, it's like 10% of you. What's a crazy
+thing that you've done? What's like the craziest thing anyone's done? Any any volunteers?
+Managing my home. Home lab. Yes. What's a home lab?
+Nice.
+Wow. Any other like crazy computer use stories?
+Got to get AGI pill and try out computer use. Um
+yeah, one thing I'll say is like because computers are so powerful like you get like you mentioned before there is some like safety component. I am now
+remembering this example where like again because the slack connector was not able to upload files. If this model
+is really determined, right? Uh it could be like the one wish willow. it just says, "Okay, great. Well, if I can't add
+a Slack uh file, let me like go on computer use and press file upload and do that, right?" There will be some
+times where the model based on how you prompted becomes really determined and say, "Oh, like I I it seems like I can't
+email someone using the Gmail connector. Let me open up Chrome and hit the send
+button." So, those are the kind of things that you should be really wary about, right? These are like real security issues. And again, um,
+more than not, like having things in the agent MD file has been really, really helpful, especially if you do things like, uh, guardian mode or auto mode,
+excuse me. Um, and it has also really changed the way I think about uh doing work. I feel
+like now when I'm doing things like building an application, if it's a native application, most of my testing
+is just done by codeex using computer use. If it's a website, again, it's just using the inapp browser.
+Um, I think we talked a lot about this already, like handle service work, like
+it's kind of awesome just like being on a checkout page, app shot, you know, find me a coupon. Like, it's made me
+more money than than I I would have uh expected earlier. Uh, filling out forms, testing applications. Um, I haven't
+really had a good use of this just yet, but it can also control the iPhone through screen screen mirroring. So, uh,
+do with that what you will. And this is kind of sort of the escalation of the talk, right? Then the
+question is like what can the computer not do and like why can't it do it? And one of the things that like you can't do is control codecs. But you don't really
+need to because these codeex threads can already talk to each other. Uh you it
+can already control itself in very powerful ways, right? If you think of the example, this is not the slide I
+want. Damn. Okay. I think I think I messed up some slides.
+Earlier in the talk, I talked about this idea that if there was some kind of support issue, I could take an appshot and it'll call this like DX triage skill
+and I will it will rename the skill. It'll do the loop and it communicates like Slack and Twitter and it's very
+nice, but I still need to be the person that triggers these things, right? That's the same thing as me seeing an
+issue and making a polar request in the future. Well, I I mean the future
+for you it's happening already now here. But now what I just have is I just have a single like monitor thread and anytime
+it identifies any of these issues, it will go off and create a new thread and the thread's job is to do all this
+triage. And what might happen is maybe this triage is waiting on someone on Slack to
+acknowledge this issue. Maybe a pull request has been created but it has not merged. If someone else complains again
+in the future, the monitor thread just goes, "Oh, yeah. I think this is the same issue." Not only is the same issue,
+let me send a message to that, you know, downstream thread so that it's aware that this issue is recurring. Maybe that
+thread will send a Slack message, but in the main thread, I'll still see a message that says, "Hey, it's been like the third day this issue has been live
+uh based on Twitter feedback. Should we do something?" And like those
+are the things I'm I'm it's very hard for me to keep track of these things because I'm just like on Twitter all the time. But by the agent being able to
+just manage and consume all this information, it makes these things much more tractable. Um I definitely messed
+up the slides over here, so I'm going to skip a couple slides.
+Yeah, this is this is the example. Um and and I really want you I really
+really want you to play around with this idea. I don't think it's been fully baked yet, right? Most of my work is
+about just having monitors create subthreads. These threads are then managed and pinned onto the sidebar.
+Like that's also one of the best things, right? Like with a sub agent, the thread
+just has these like shapeless entities floating in the background. Uh like you know the JSON thread or like the Galileo
+thread or whatever. The difference with sub aents versus these threads is because they show up in the sidebar, you
+can kind of just notice that something has changed. You know, there's a new issue that's come up, right? And a lot of it too is like just using the sidebar
+as effectively like the hub of understanding like what are the ongoing like work streams. And this has been
+like super powerful for me. But it all just starts from pinning a thread, taking actions, having this monor repo
+to sort of manage all of your context and then having different ways of waking systems up. And earlier these systems
+wake up because you messaged it or you set up a heartbeat. And now these things can be woken up by another thread
+running somewhere else. And so more often than not like most of my automations just happen on the monitor
+level of threads and they trigger and create new threads and then manage themselves.
+Yeah. So I think we talked about a bunch of things, right? tal about computer use structured plugins
+and uh yeah, I think that's basically it. Try
+out some computer use stuff. I I know I can't really I'm like really worried about the Wi-Fi here. I'm going to try
+something too bad, but um yeah, try out app shots, try out computer use, and really play around
+with what uh these models are capable of. There's a question over there. I'll do that one next.
+I don't think I can show you on this computer. They're going to like take me away.
+Um I mean I I can talk about a little bit. So So basically my monor repo is set up so that it looks very much like
+the one over there. I have a projects directory and in that projects directory is a named directory for every
+workstream I'm working on. So maybe it is the you know voice launch video or it
+is the um like the the agents SDK right or it is uh the codeex open source grant
+program. So those are sort of some of the projects. Then I have a people directory which is just like every
+single person that's ever DM me, right? I know what they're working on. I know what kind of problems they're thinking
+about. I know what other like uh like Slack channels they're part of. And then
+I have a bunch of different like loose notes, agent summaries. I have like daily summaries of what I've done. This
+is mostly just to test the limits of AI. I don't think it's very useful for that kind of stuff. Mostly it's just the
+projects and the people, right? Um, and then I have a to-do list that an agent
+just maintains. So I have a single thread just like checks that to-do list. Oh, this says it was undone. Let me have a sub agent verify that like no one has
+done this task. Those things are pretty token token expensive. I don't really
+know if it would be worth people do setting this up for themselves unless they just like don't use that many credits. Um, but I think the biggest
+ones is just like the Shiva staff thread. 9:00 a.m. tell me what's happening today. Tell me what's happening this week. And I think if you
+just do that, you're going to get a lot of uh a lot of juice out of that.
+It's like honestly I just I've never experienced it. I think
+like I think I think the compaction is just like really really good. Um I know this not a very satisfactory answer, but
+like if I could improve parts of the model, I would rather improve like its
+writing tone rather than like its ability to search the context. Um, generally it's been it's been a pretty
+good I think it might have to do with like the way the codeex memories have been set up, but I have not dug in too
+much into those details. I think you had a question over here.
+Yeah. Yeah.
+Yeah.
+Yeah.
+Yeah. So I think the question was just like how do you deal with memories like bleeding across different projects?
+I don't think I have a good answer to that primarily because it's unclear to me what the downstream side effect would
+be. Maybe like one project uses like npm, another project uses like yarn or
+something. But I mean generally I just clean those up in the agent MD files for those specific projects, right? So
+another thing to mention is like every project directory has its own readme and its own agent MD files. And so yeah,
+like I think sometimes like one project I was working on was like npm and one was like PMP. I just clean
+that up in the agents MD. And I was I would be curious like how much of that can be cleaned up just by using those
+simple tools. But talk to me afterwards. I'm really curious like what's so bad about the the bleeding.
+Yeah, maybe that that would be a good example of like having project level scoping versus a single thread. But um
+yeah, I might have to look into more details about how the memory part is actually running.
+Any other questions over here?
+No. So I think um honestly at this point it just kind of
+knows. It's like such a it's such a bad answer but it's almost like an AGI like I feel like to me it feels like a very
+AGI pil. But I think generally in the beginning when I was working with it I would have a skill called like check
+notes and it's like hey if you feel like you need to check your notes like check the notes. All right. And so if I if I had a hunch
+or some intuition that the model might not be able to do this, I would just mention like, hey, check the notes. Um,
+but even like if you look at my like uh open profile, I think like my like check
+notes skill has been used like a 150,000 times, but I've like never mentioned it
+in the past like two three months. It's because again, I think this the memory system has been uh doing a lot of the heavy lifting. But again it's it's like
+onboarding an employee in the in the first you know two three months of onboarding an employee. You have to give
+a lot of instruction. You have to give a lot of you have to give them a lot of context and you have to let them fail and when they fail you have to give them
+an opportunity like write down what they've learned and like clean up itself. Um I would be very surprised if
+you got good results in the first like day of setting this up. But I mean just yet maybe not to your surprise but now
+it's like I don't it kind of just works right. And that that's a great feeling to have, right? Because it it it lets me
+go back in the flow of just like doing my job. You a question? Yeah. Thanks so much for
+asking CSS and
+given that it's rapidly changing
+develop like just so not productivity but just like coding in general. Yeah.
+Yeah,
+I'm so old. That's so long ago. Um,
+like I have a line that's like if you want to have good taste, you kind of have to eat, right? Like I think your
+job is to like consume a little bit more like try out different applications like you know like do you know what a good
+onboarding flow looks like? Do you know what that feels like? Have you built an app that makes you frustrated? And just
+like your ability just like consume more things and develop your vocabulary on like how to
+complain about things that are bad. How do you like complain about like the slop? Those are the things those are the skills I think will be very valuable.
+And specifically around vocabulary, right? like you can't really describe things that you don't really understand.
+Um, and this happens in like both like things like cooking, right? Like if you
+just don't know what the ingredients are, you can't describe that something is too salty or it could be it's like it lacks some acid. Like you just need to
+like consume a little bit more and then think critically about why you like something and why you don't like something. Um
+because I think I think taste is the is a big issue but I think a lot of it is because we are not consuming the right
+like stuff right like try out all the different apps if you're thinking about
+apps for example. Yeah. Any other questions?
+Yep. [snorts] Yeah.
+Yeah.
+Uh which part? So, so
+I understand aast
+Yeah. I mean like unironically that slide just says like threads can talk to each other just ask. Basically there is
+a list thread tool and a send message to thread tool that Codex has available.
+And so typing that is kind of awkward but really I just say
+like sometime last week I was working on slides. Can you go find that thread, rename it and pin it for next time?
+Right? Like I would never type that but again voice input makes it really easy. Um, sometimes I'll say for for example,
+this talk I I I think I messed up some slides. Basically, I had a main slide writing system. Uh, and I said, "Okay,
+like this slide could be split up in three acts. Make up a thread for each act. Pin it, rename it act one, two, and
+three, and uh, review each section. And then once it's done, review the whole slide." Um,
+and yeah, I generally like to just ask it. I mean, I think I'm going to try to add more like commands to be a little
+bit more explicit around thread control, but I think that will just come as the models get better and and as the model
+is like more aware of what codecs can do. Um, but yeah, it really is just like
+like I think one thing you should try to do is just have a thread and just say read all the other threads that are pinned and like rename them and like use
+an emoji to color code its like readiness. And just seeing it do that will be like a first step um to to just
+like understand how this thread control works. This feature is like very new, but it already has been pretty wild to
+just sort of have a single thread. You're just talking to it for like the entire afternoon. Yeah.
+Sweet. If there's no more questions. Yeah, one more.
+Don't say that name to me. No. No. Uh so the question was like do other coding systems um have these kind of tools? Not
+yet. I think I'm sure you know I'm sure they will soon.
+Uh but as far as I know, this goes back to the eating thing like I just have not
+tried like the latest versions of other tools like I don't know if like conductor has these skills but definitely um I'm sure again like very
+competitive space the these features will probably propagate very quickly.
+threads run on old models. Will you have the new threads go back and pull that in as context?
+It depends. Sometimes just say find the old thread and like update the model and it'll just update the model. Like for
+for example, I I I like so when when uh 45 54 came out and then we moved to 55,
+I realized all my old automations were just on 54 and it really bugged me and I
+was like, "Hey guys, like can we add a feature that like has like GPT latest so we can avoid this issue and someone was
+just like tell a thread to update the other threads and I was like yeah like so much of it
+is just ask you just have to like develop the language anguage to figure out what you want to do. But I think that's again like the most important
+most important thing. Yeah. So just ask it and then it'll automatically do it rather than you having to go through it.
+Yeah. Like I think I have an automation that just like cleans up old threads and like by like model ids. Um
+but uh yeah. What's up?
+Uh not yet. I'm not happy with the slides enough that I I'll publish them,
+but I have a blog post. just search if you just Google codeex maxing it's all there uh you know three x's I think
+uh but I I'll I'll share some more stuff on on Twitter go on yeah so you said that you work
+yeah [snorts] so do you have any
+loops you [snorts] get a lot
+into the limit advice
+share how we can limit. Yeah, I think the biggest misconception
+here is that like X high will give me the best results. And so there's like there's a lot of like X high maximalists
+here. I want everything on X high, right? Like uh like I was demoing the like getting a coupon thing and my
+friend like does an app shot and like hits enter. I'm like why did you turn it on X high? right? It ran for like two
+minutes like searching like every website available for like coupons. Um,
+obviously I I can't give that much advice because it's something like on my personal computer I don't really run into limits but really get comfortable
+with like low and medium thinking. Like these models are still very very smart,
+right? Like low thinking on five like five five is like still so much better than prior models. And for a lot of this
+work that's not just like you know make me a video game from scratch. You just don't need that kind of work. Like my my
+chief of staff I think is like default medium. That's very helpful advice. I agree. Just as a follow I guess in a few words
+how do I tell the thread to shut up same thing and oh uh
+I mean the answer is really bad but I just like I just say like if there's no updates just reply with like one word no
+updates. Uh that's one thing and the second thing too is um I would also play around with
+like how often these heartbeats are happening. You know are you running this thing every 30 minutes? are you running this every 9:00 am? That's one thing.
+And the second thing, too, it's like, do you have some kind of stopping criteria? Right? So, for example, like I was I had
+some argument with like Amazon and I'm just like great. Like they put me in a
+75m minute wait list. Like check every five minutes if the queue is like
+better. And once you get to five minute wait time, check every one minute and keep replying until you get my money
+back. And I took a shower and when I came back, I had like $400 in my credit card.
+I've not tried too much there, but it's all possible, right? Because to create a heartbeat is just edit a text file. And
+so you should definitely be able to create your own heartbeat and then change how frequent or infrequent. Um, I
+might try to do that actually. I might just say like, "Hey, like during the weekdays like change your heartbeat to
+be more active and during weekends or in the afternoons change them to um be less active." Yeah. Like I've tried
+versions of the chief of staff thread where I just set a goal that says like never stop and you're only allowed to like set sleep. And that has also worked
+pretty well. It'll be like, "Hey, it's like 900 p.m. Jason like I haven't seen Jason post a Slack message in like two hours. I'm going to sleep for like five
+hours." Uh and that also kind of works. Yeah. But um I I think the biggest one
+honestly is just like people should not be afraid of low reasoning. Like X high is not like X high results. It's just
+like think more

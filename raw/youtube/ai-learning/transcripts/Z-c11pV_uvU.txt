@@ -1,0 +1,432 @@
+[music]
+Okay, getting rolling and uh welcome
+aboard. Just had a little technical
+issues, but uh we resolved them. So, my
+name is Frank Coyle. Uh I am a computer
+science guy. I've been teaching computer
+science for over 30 years and I'm now
+teaching at Berkeley. And one of the
+problems that uh all my students past
+and present are having is AI because
+computer science is no longer the magic
+pathway to a job. So I've been trying to
+figure out ways to uh help them come up
+with schemes to help them get ready for
+this world of Agentic AI. And one of the
+things that sort of uh dropped into my
+uh plate was the something called the
+Claude certified architect exam which I
+will be talking about today and it has
+um a number of aspects to it and I think
+if you're interested in a career in
+Agentic AI to certainly take a look at
+least what the exam is about because I
+feel that u anthropic knows how people
+are using their system and what the
+issues are going to
+So before we jump into that, I want to
+give a little bit of my uh my
+philosophy.
+May have to do this manually. Getting
+stuck.
+So this is a quote from uh a woman named
+Sister Karita Kent. Nothing is a
+mistake. There's no win and no fail.
+There's only make. Bottom line here is
+experiment, experiment, experiment. Not
+only should you read, but you should do,
+you should make stuff. Now, what happens
+when you make stuff? A lot of times
+things don't work.
+Thomas Edison said, "I have not failed.
+I've only found 10,000 ways that don't
+work." And
+what I want to emphasize here is that
+what this shows us are something that in
+the design patterns movement which came
+around in the early 1990s with
+object-orientated programming, we had
+patterns for objects, we now have
+patterns for agents, but there's also
+antiatterns. And I think antiatterns are
+a key to understanding what you should
+not do because understanding what you
+should not do is the key to leading you
+to what you should do.
+So a little bit about the clawed
+certified exam released in March. So
+it's brand new. It is uh it is based on
+scenarios. It is timed. It is proctored.
+It is available to companies in the
+clawed ecosystem, the anthropic
+ecosystem, but individuals can pay $99
+and take the exam once every uh once
+every six months. And it's not just
+multiple choice questions. It is
+multiple choice, but they're s they are
+based on uh realistic constraints and
+realistic scenarios.
+The five domains
+there are five domains that are covered
+and they give you the percentages of
+each. So agentic architecture 27%.
+Claude code how to configure the claude
+code system and workflow 20%. How to
+doing prompt engineering structuring
+your output using JSON all over the
+place. Tool design model context
+protocol integration. These are topics
+that you should understand and know
+whether you're going to take the exam or
+not. This is going to help you get ready
+for whatever
+the agentic world is going to throw at
+you. And then there's going to be
+contact management and reliability. So
+these are the areas of of the kind of
+questions you're going to run into.
+Then there are and they they provide you
+with six production scenarios and your
+the exam will randomly choose four and
+all the questions will be centered
+around the four that they choose. And
+what I'm going to do is walk you through
+um
+the production scenarios and give you
+some antiatterns to be aware of because
+there's a number of ways you can solve
+the problem. But one of the big things
+is what not to do and that often can be
+the key to getting these questions
+right. So number one customer support
+resolution agent. So we have agentic
+loops control something called stop
+reason which is uh what claude code has.
+Every time something happens there's a
+stop reason and you need to take a look
+at that because that can give you a lot
+of information about what's going on. Uh
+scenario two co-generation
+three multi- aent research system which
+we'll look at how do you how do you
+distribute your agents hub and spoke
+who's the orchestrator how much
+information should they know all these
+are important factors um scenario four
+developer
+productivity with code so how do you do
+subtask isolation keep your tasks in
+their little universes and this hearkens
+back to what we learned In computer
+science from doing multi-threaded
+programming, when you have multiple
+threads operating and sharing memory,
+then you get into issues with
+synchronization. You got to put locks
+in. Keep the little threads independent,
+keep your agents independent.
+Um,
+and then some clawed code for continuous
+integration. And then we'll look at some
+patterns for structured data extraction.
+Okay, that's kind of where we're going
+to go.
+Now, here's something that I I like to
+point out. Everybody's talking about
+loops, right? Every the loop is the new
+thing. Um,
+uh, Boris Churnney says he doesn't write
+code, but his job is to write loops. And
+Peter Steinberger,
+master of open claw, says, "I don't I
+don't uh I don't code anymore. I just
+design loops that prompt your agents."
+So loops are the new big thing, right?
+Well, no, they're not. Okay. Um, back in
+the day,
+uh, early days of computing when we had
+programming languages were exploding. We
+had forran, we had cobalt, and there
+were big fights. My program, my
+programming language is better than
+yours. It can do more. No, it can't. We
+can do this. Beaman Jacobini 1966
+proved that if you want a language to be
+touring complete which means can compute
+anything that computers are possibly
+able to compute then you need only three
+things. The ability to to write
+statements sequentially. Okay. To have
+if then conditionals and the third piece
+is the loop. If you add the loop, you
+have Turing computability. And now we
+are seeing this being resurrected in the
+agentic world with the focus on loops
+because up to now we've had sort of
+sequences, you have prompts, you have
+maybe if then but now we have a loop and
+now this is what's giving us the power.
+This is where the agentic stuff is
+getting very exciting.
+Okay,
+start with uh with scenario one.
+customer support resolution.
+So here we have
+a loop operating and the I'm going to
+jump to the anti pattern. What you don't
+want is just to let the agent go and do
+something and get the response back and
+use it. Okay, what you want to do is you
+want to loop with something called the
+stop reason. So I'm going to show you a
+little code here.
+So here we have while loop. It's a while
+true. It's a loop. We're looping right
+here. Okay. So, the first little block
+is where we call uh we call the model.
+Okay. And we pass it the messages. The
+messages are essentially the sequence of
+prompts that exist in the context
+window. Okay. And we are asking the and
+we have a we have a prompt and we have
+we have the context and we have a tool
+and we're asking the LLM to do something
+with this tool. and help us out. The
+problem is the LLM can't do anything. It
+is just a probabilistic next word
+predictor. It can't execute tools. So
+what it does though is it can figure out
+if you point it to a tool, it can figure
+out how to set things up so that you or
+your code can execute it. So it's
+important to understand that the LLM is
+not executing these tools. It can't do
+anything except talk back to you very
+intelligently sometimes, but all it can
+do is talk back to you. So when it
+finishes this task and has a result,
+which is basically
+here is I've I know what you want. I
+know what the tool can do. Here's how I
+it sets up the parameters that can then
+be then used to actually execute the
+tool. So this second block you see why
+did the LLM come back to us that's our
+stop reason tool use oh okay we've
+stopped because the LLM it wants to use
+the tool so let's just run the tool so
+that's what this second block is run
+tool the response is what the LLM said
+and it's basically the parameters that
+it has extracted from the data that you
+provided it okay then it executes ues
+that then it goes back that then it
+continues continues means the LLM sees
+it says oh successful run so okay come
+back down
+we're not running a tool anymore we're
+ended our loop bingo now then we take
+the answer and this is an opportunity
+for you to have a human in the loop
+potentially
+you check the confidence if it looks
+good you keep it if you don't then you
+escalate to a human. So now there's
+another reason why you need to make sure
+you check your stop reason. One of the
+stop reasons may be you have run out of
+tokens and this response is based on
+partial when the LLM had to stop and
+it's going to give you response but if
+you have run out of tokens then you need
+to take action. Okay. Um,
+next scenario,
+uh, code generation with Claude. So,
+Claude code has this has this concept of
+the Claude MD file, a markdown file
+where you put all the things you wanted
+to know. What anthropic recommends is
+you have three levels of Claude.
+one that you have at the top level of
+your project, the other that you have in
+inside your sort of uh the project
+folder and then within directories you
+can also specify. So the idea is to have
+a hierarchical set of rules that that
+could then control how the system is
+going to respond.
+Okay,
+moving right along. uh we have a multi-
+aent research system. So here we're
+going to have uh the the problem is
+how do I how do I get my agents to to go
+off and do stuff and bring the answers
+back in a reasonable way. The anti
+pattern
+you have one agent and you load it up
+with tools. All right. So I like to
+think about you, you know, you hire
+somebody to come to your house. You hire
+a carpenter to come to the house and the
+guy shows up with uh uh plumbing tools,
+carpenter tools, electrical tools. You
+say, "I can do anything." Well, maybe
+you don't want this guy. Maybe you want
+a a professional carpenter. So, that's
+the kind of idea. And this kind of back
+takes us back to some of the the
+functional programming uh ideas that
+function should be do one thing. And if
+you can get your agents to do one thing
+you with maybe one or two tools
+available to it, then that's going to be
+a win and that's going to help you with
+this exam. So specialize, don't
+overload. The other part of this is
+don't let your agents
+context
+spill over into the main context because
+context means tokens, tokens mean money.
+And the more context you have, the more
+confused the LLM is going to be in
+giving you an answer. So even though oh
+a million token context window, I can
+put everything in there. No, no, don't
+put everything in there. limit what's
+going to go in there because then you're
+going to get a much more accurate
+system.
+So here's a
+here's an example of a specialized sub
+aents you're giving it.
+So this would be the critic. So let's
+say you've run some stuff. Now you want
+to get an agent to look at what's
+happened. What you want to do is just
+give it what it needs to solve that
+critic problem. I'm only giving it here
+the um we're passing it the claim and
+the evidence. So this is the claim is
+sort of how we're going to solve the
+problem. Here's here's the evidence, but
+we're not giving it the the thought
+processes that went in to creating this
+claim. Why? When you when you get a
+bunch of agents together collaborating
+and talking to each other, there's a
+tendency to have group think
+and all the agents seem to kind of
+devolve into one idea. I mean, it's it's
+like, you know, you're in a group, you
+know, you're at a party and everybody
+wants pizza except you, but then people
+talk you into, you know, you don't want
+to be uh you don't want to spoil the
+party. So, you go along. And it seems
+that agents kind of work in the same
+way. So, you're going to return
+basically, you're going to give each
+agent only it slice. I didn't think
+about the pizza analogy, but yes, every
+agent gets its own slice and and it uh
+it should come through. Okay,
+fourth scenario,
+developer productivity. So, the anti
+pattern,
+let every subtask dump its full output
+into the primary thread, crowding out
+the context. Again, this is what we're I
+was just talking about. This is bad. Let
+the context grow unbounded. Bad, right?
+For the reasons we just talked about,
+you want to isolate your subtask output
+and you want to compact long sessions.
+I'm going to take a second to talk about
+that. So, here's here's a uh an example
+of a pattern. uh you want to have your
+agent
+uh look at the logs and create a summary
+of where the problems are in the log. So
+here's your task scan all the logs for
+error context fork. So you're forking
+the agent into a like a separate thread
+where whatever the agent does and thinks
+and adds tokens to does not come back
+and pollute the main uh the main
+context. Now
+you see here what happens then you take
+this summation and then you add that
+summation without all the other stuff
+into the overriding context. Now, this
+last little block is kind of
+interesting, I think, because you can
+check your token count and you can
+determine how big the token count is
+and if you can set some limit and you
+know and if if you have more than
+150,000 tokens, then what you want to do
+is you can run a compact. So, Anthropic
+and Claude have these compaction
+algorithms that take this giant context
+and and compact it in some way, shape or
+form. Not quite sure how the
+implementation is of that, but there is
+compaction. Now, a little side effect,
+little side channel. I've been walking
+around. When you walk outside, you see
+see these guys handing out these books.
+Okay, anybody see these guys handing out
+these? But take them. This is this is
+actually a pretty good little book. In
+fact, I was looking at it last night and
+one of the things it had in it was this
+is by this guy Sam Sam Bwa. I have no
+connection. I don't even know Sam. But
+it there's a on line page 32. It says uh
+his company provides custom logic for
+compression of context. So he's got an
+you can write your own. He's got a he's
+got you can extend this base class and
+have your own compression of your data
+whatever you think is important. So I
+think that's kind of an interesting spin
+on this whole thing. Okay.
+Claude code for uh uh continuous
+integration
+uh antiattern
+always have interactive modes in a
+pipeline. Well, no, no, no. Because
+interactive modes mean
+uh claude will stop and ask you, you
+want to do this, you want to do that,
+can I have permission for that? So,
+there are ways to set it up so that
+it'll just run straight through. Okay.
+The other uh the other tip that I'll
+give you here is there's something
+called the uh the batch. So you can take
+your prompts, you can take your work and
+you can put them in a batch and for 50%
+fewer token cost, you will get the
+result they promise in at at least 24
+hours. So if you're going to go take a
+nap, you're going to go on vacation,
+you're going to go out, take a day off,
+run your stuff in batch mode, and you're
+gonna have a less to pay.
+Where am I? Here. All right, I've only
+got a few few minutes left, few seconds
+left, but I want to conclude with this.
+Remember, nothing is a mistake. There's
+no win. There's no fail. There's no
+exam. Only make you do it and you make
+it and you're going to succeed. If you
+want to reach out to me, reach out to
+me. Uh, Coyle at Berkeley. Look at my
+websites. I got a website code supreme
+AAI. I'm a big jazz fan and I named this
+website after John Col Train. Love
+Supreme if you know that song. Great.
+Anyway, that's my story and I'm sticking
+to it and I'm about to zero time. Okay.
+[applause] Thank you.

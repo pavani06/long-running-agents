@@ -1,0 +1,280 @@
+Sabe aqueles valores que às vezes você
+gasta ou na sua conta pessoa física ou
+pessoa jurídica, mas você não consegue
+traquear [música] muito bem quais que
+são? Pois é, ao longo desse vídeo você
+vai aprender a conectar o seu cloud com
+a sua conta do banco, independente se é
+a pessoa jurídica ou pessoa física, e
+vai conseguir fazer perguntas assim como
+essa: quanto que minha empresa gastou
+esse mês até agora? e ele vai te
+responder com números reais, que
+obviamente eu tô borrando aí por
+questões óbvias, quais que foram os
+valores reais gastos por essa conta. E
+além de você poder fazer qualquer
+pergunta sobre a sua empresa,
+faturamento, custos, você também vai ser
+capaz de conectar e criar um [música]
+dashboard que se atualize em tempo real
+a cada movimentação que a sua conta
+tiver aqui dentro do cloud. Então vamos
+lá, vamos colocar nossa mão na massa.
+[música]
+Se você não me conhece, seja muito
+bem-vindo ao canal. Meu nome é Rafael,
+mais conhecido como Rafa Voz. E nesse
+canal você aprende tudo que você precisa
+sobre a plataforma do cloud e também
+sobre todas as principais inteligências
+artificiais que tem no mercado. Esse
+canal é 100% sendo focado em falar com
+pessoas que não sabem sobre programação
+e nem querem aprender para utilizar
+inteligência artificial no seu dia a
+dia, seja no seu trabalho ou então na
+sua vida pessoal. Então, se você gosta
+desse tipo de conteúdo, eu já convido
+você a deixar o seu like, se inscrever
+no canal. Isso realmente me ajuda
+demais. E vamos lá colocar a nossa mão
+na massa. Bom, então como você viu na
+introdução desse vídeo, a gente vai est
+vendo um pouco sobre essa ferramenta que
+permite com que a gente possa dentro do
+nosso cloud se conectar com a nossa
+conta no banco, sendo ela uma conta
+pessoa física ou então pessoa jurídica.
+A gente pode simplesmente perguntar,
+como aqui tem um exemplo, quanto eu
+gastei com iFood nesse mês e ele já
+analisa toda sua conta do banco de forma
+segura, exatamente qual que é o
+resultado. Então, basicamente a gente já
+consegue ver aqui na página deles, né,
+que eles utilizam a Open Finance, né,
+que é exatamente uma conexão com os
+principais bancos aqui do Brasil. Então,
+no Bank, Itaú, Bradesco, Santander,
+Banco do Brasil. E simplesmente através
+desse MCP, você é capaz de ver seu
+saldo, consolidar cinco bancos, talvez
+em uma pergunta só, categorizar e
+justificar gastos com inteligência
+artificial. E isso hoje em dia é muito
+importante, né? A gente vem assinando
+uma plataforma atrás da outra. Gerar
+gráfico de alocação e retabilidade
+funciona dentro do cloud, chat, GPT,
+curso. O sistema que eles utilizam pra
+conexão é o OpenF, que é regulado pelo
+Bassen. E a conexão é realmente muito
+simples. Então eu vou estar fazendo toda
+ela ao longo desse processo e mostrando
+para vocês alguns casos de uso. Nesse
+caso, eu vou est utilizando a minha
+conta PJ. Então, obviamente eu não vou
+estar mostrando ali os valores certinho
+para você. Vou deixar eles um pouquinho
+embaçado, mas de qualquer forma vai ser
+muito interessante para você entender
+exatamente o que tá acontecendo, mas vai
+ser muito interessante para você ver de
+fato um caso de uso na prática. Bom,
+então vamos lá, né? A primeira coisa que
+a gente tem que fazer é selecionar qual
+que é a ferramenta que a gente vai estar
+utilizando. Eu vou estar utilizando o
+cloud, que é a ferramenta que todo mundo
+tá gostando de utilizar aí no dia a dia.
+Eu vou clicar aqui para abrir a tela dos
+conectores. Olha só, e ele já abre
+diretamente lá para mim. E aqui tem
+todos os conectores, que são os MCPs que
+eu já conectei anteriormente. Eu vou
+clicar aqui em cima nesse maisinho
+adicionar conector. Adicionar conector
+personalizado. Então vamos lá, né? Vou
+colocar MCP do banco PJ, mas você pode
+nomear como você queira, tá? Vamos vir
+aqui em Chrome e a gente vai ter que
+colar exatamente esse URL aqui. Então
+vamos copiar. Lembrando que o link desse
+site eu vou deixar aqui embaixo para
+você, tá? Colo exatamente aqui e clica
+em adicionar. Nesse momento ele vai
+pedir pra gente vincular com o nosso
+banco PJ, né? Então vamos clicar aqui em
+vincular. Quando você clica em conectar,
+você vai ter que ter uma conta aqui no
+banco MCP. Então, basicamente aqui você
+pode logar com seu Google. É exatamente
+o que eu vou fazer para ficar um pouco
+mais fácil. Uma vez que você entrar
+nesse site, você tem que vir aqui em
+abrir marketplace, clicar aqui em banco
+MCP, instalar. Nesse momento você vai
+ter que escolher qual banco que você
+quer utilizar, que tem Open Finance, né?
+Então, por exemplo, se você tem o
+Nubank, você pode colocar aqui no Bank
+Empresas para contas PJs. Então, nesse
+caso, por exemplo, eu vou clicar no bank
+empresa. Concordo com termos de uso, né?
+Obviamente você pode ler essa parte e
+conectar com o banco aqui. Então, você
+vai ser direcionado a essa página.
+Então, você clica em continuar, coloca o
+seu CPF, seu CNPJ, conecta a conta.
+Então, depois de todo o processo, você
+vai ter uma conta conectada igual a
+essa. Aqui você clica em vincular a
+conta. E uma vez que você já criou e já
+baixou o MCP, correto, você clica aqui
+em autorizar. E prontinho, a gente
+conseguiu conectar com o MCP do nosso
+banco. E olha só, você clica aqui no MCP
+do banco e você tem que agora permitir
+algumas coisas que ele pode fazer de
+forma automática, né? Para fim de
+demonstração, eu vou deixar tudo aqui
+100% disponível para ele conseguir
+trabalhar livremente. E uma vez que a
+gente já configurou essa parte toda, a
+gente volta aqui no nosso chat e vamos
+fazer o nosso primeiro teste. Uma
+coisinha antes que é importante eu te
+falar é o seguinte. Essa plataforma do
+banco MCP, ela tem alguns planos. Você
+consegue utilizar de forma 100% gratuita
+aqui no seu primeiro teste. Então, um
+banco conectado e 10 perguntas grátis.
+Você não precisa nem colocar o cartão de
+crédito, mas depois você tem todas as
+possibilidades de plano, inclusive para
+uma pessoa jurídica, né, onde você tem
+mais funcionalidades, como conexão em
+mais bancos, perguntas ilimitadas e
+enfim todas as outras possibilidades que
+essa plataforma permite também. Bom,
+então voltando aqui pro nosso cloud,
+vamos começar a fazer nossa primeira
+pergunta. Eu quero saber o quanto que eu
+faturei no último mês na minha empresa.
+E nesse caso, então, eu vou vir aqui
+nesse maisinho, garantir que o MCP do
+banco ele tá ligado e os outros todos
+estão desligados, que é exatamente o
+conector que a gente precisa. Vamos
+então enviar. E olha só o que ele diz,
+né? Perfeito. Vou postar isso do MCP do
+Banco Conectado. Calcular as entradas de
+abril de 2026 e te entregar um número
+fechado, que é exatamente a data do mês
+anterior a esse que eu estou agora, né?
+Nesse momento, olha só, ele já tá
+pegando a lista dos das transações, né?
+Antes mesmo ele pegou a lista ã dos
+bancos que estão conectados, no caso só
+tinha um. E prontinho. Olha só que
+interessante. Obviamente, por questões
+óbvias, eu tenho que tapar aqui na tela
+todos os valores, todos os fornecimento.
+Mas basicamente você já consegue ver,
+né, que ele tem aqui uma coluna origem,
+ou seja, ele tá listando aqui cada
+fornecedor que me pagou, os pagamentos,
+né, a quantidade de vezes e também os
+valores, né, no caso, o valor total que
+eu recebi de cada uma dessas de cada um
+desses fornecedores aqui. Aqui embaixo
+ele faz uma análise, né? Então ele diz
+qual a empresa que sozinha representou
+83% do meu faturamento? Além de eu ficar
+fazendo perguntinhas aqui que obviamente
+já são super interessantes, vamos supor
+que eu queira um painel que ele mostre
+para mim um resultado mensal de todo o
+meu faturamento, de todos os meus
+custos, para que eu possa ter uma visão
+dos últimos seis meses da minha empresa.
+Então vamos pedir exatamente isso. Eu
+quero que agora você faça para mim um
+dashboard financeiro. Ahã.
+onde basicamente eu quero pegar todo o
+meu faturamento dos últimos seis meses,
+dividir ele em um gráfico a cada mês
+para eu ver o quanto que ele tá
+crescendo e o quanto que ele tá
+diminuindo. Além disso, também trace
+todo o custo que eu tive ao longo desses
+meses para eu também ter essa
+visibilidade, por favor. E olha só que
+interessante, né? Ele criou aqui o nosso
+planejamento e você já consegue ver que
+ele tá puxando se meses de transações,
+que é o que ele precisa para ter todos
+os dados que eu pedi. Ele vai
+categorizar em entradas e custos,
+agregar por mês e construir um dashboard
+que seja ao vivo. Então isso daqui é
+exatamente aquela funcionalidade do live
+artifacts que a gente tem aqui. Então,
+automaticamente ele, sempre que eu abrir
+esse dashboard, ele já vai est
+atualizando em tempo real todos os
+números dia a dia. Bom, então para
+finalizar agora, ele só tá pedindo pra
+gente permissão, né, para ele poder
+criar esse dashboard. Vamos clicar aqui
+então. E olha só, nesse momento ele já
+criou o nosso dashboard com base aqui
+nos dados da nossa empresa. Como eu
+falei, infelizmente eu não posso mostrar
+exatamente os dados como eles estão, mas
+é realmente super completo e você pode
+personalizar como você quiser. Isso você
+pode criar tanto pra sua empresa quanto
+pra sua conta pessoa física. As
+possibilidades aqui ficam realmente
+infinitas. Bom, então espero que você
+tenha gostado desse vídeo. Diz aqui
+embaixo se você conseguiu implementar,
+se você ficou com alguma dúvida. Eu
+vendi um pouco mais rápido, exatamente
+para mostrar essa ferramenta que eu
+realmente achei incrível e que realmente
+pode auxiliar muito a gente no nosso dia
+a dia, seja empresarial ou então pessoa
+física mesmo, né? Pra gente gerir, por
+exemplo, nossas assinaturas, que
+constantemente muitas pessoas vão
+assinando plataformas e não sabem para
+onde esse dinheiro vai saindo. É
+realmente incrível. Se você quiser
+aprender mais sobre essa plataforma do
+cloud e ter exatamente insightes
+valiosos como esse que você viu nesse
+vídeo, eu posto semanalmente aqui várias
+dicas super interessantes de
+inteligência artificial. E se você
+quiser aprender ainda mais, de forma
+mais profunda e não ficar para trás
+nesse mundo que tá em constante
+atualização, eu te convido a participar
+também do Cloud Pro, que é o melhor
+curso de cloud do Brasil, com mais de
+2400 alunos por lá, onde você vai
+aprender do zero até o avançado a
+dominar essa plataforma para você
+realmente se tornar um profissional em
+cloud. Se você tiver interesse, é só
+você mirar no QRC que tá aí na sua tela,
+ou então clicar aqui embaixo no primeiro
+link na descrição. No mais, é isso,
+muito obrigado por você ter ficado até
+aqui. Eu vou deixar mais um vídeo aqui
+que eu tenho certeza que você vai
+adorar. E eu te vejo numa próxima.
+Valeu,

@@ -1,0 +1,201 @@
+go to my Gmail and reply to my emails oh my goodness it's actually clicking on
+each one and replying and it even knows to check my Google Calendar to give him my availability this is pretty insane
+all right how about this go on X and like and comment on the first five posts about machine learning and oh my gosh
+it's actually doing this it's searching for machine learning post posts it's liking and commenting on the first five
+posts or let's try this order me the nearest pizza from Uber Eats oh my gosh it's actually going to Uber it's
+selecting a restaurant and pizza for me it's even proceeding to checkout and paying for the order this is pretty insane all right let's try something
+even trickier find the emails of three colleges and send them a cold email about my website development services
+and it's scraping Wikipedia it's going to the websites of each of these colleges and actually extracting the contact emails and then it's proceeding
+to go to Gmail and actually writing a cold email to each of them oh my gosh this can totally automate sales and
+Outreach jobs guys and gals finally we have an AI agent that actually works this agent can autonomously order food
+reply to your emails post and engage on social media and even do sales and Outreach on your behalf this can save
+you so much time and significantly improve your productivity but before we jump into this agent here's the
+backstory in the past year or so I've been trying to hunt down an AI agent that actually works there are a lot of
+things that I just want to get an AI to automate like writing my newsletter or posting on my social media accounts or
+helping me draft a YouTube script but I haven't come across any particular agent that can actually do these tasks well
+without running into any errors I've tried pretty much all of them including Auto GPT autogen baby AGI multi-on Smith
+OS and even claud's recent computer use agent but for all of these they were either really complicated to set up and
+you need to code everything yourself or they would often times get stuck in an endless loop and never proceed further
+down the workflow so up to now now I haven't come across any AI agent that can actually carry out any real world
+task very well now a few weeks ago I heard about this agent called do browser on Twitter or X and their demo reel at
+least was quite impressive so I reached out to the founder asking if I could get early access to this as soon as it was
+ready and then fast forward to this week I finally got access to this so This tool is called do browser and note that
+this video is is not sponsored this is completely organic and I could completely roast it if this tool sucks in this video I'm going to test this out
+on real world tasks and show you how good or bad this AI agent is at least for me the results were quite shocking
+so right now this is available as a Chrome extension I'll link to this in the description below and it's pretty simple you don't need to clone any
+GitHub repo you don't need to work with any code at all all you need to do is click on add to Chrome so let's do that
+and I'm going to click ADD extension so afterwards you should see this do browser has been added to Chrome now to
+use do browser all you need to do is click on the do browser icon at the top right of your Chrome window and this
+should open up this chat interface if you don't see this icon it's probably because you have not pinned this so if
+that's the case then you just need to click on this extensions icon and then click on do browser and again you should
+see this interface another way you can use do browser is to Simply type do in the search bar up here and then once you
+press space you are now using the do browser so whatever prompt you do afterwards it's actually prompting the do browser to carry out the action in
+your Chrome window now if this is your first time opening this then you're going to see this message please sign in to continue now I've been given Early
+Access to this so I can sign in with my email and use this but I'm not sure at least at the time of this recording if
+you can do the same yet I'll keep you posted once they do release it to the general public anyways let's click sign
+in and then once I've signed in with my Gmail account you should see this all right first let's see if it can help me
+reply to all the outstanding emails in my inbox so for the prompt I'm going to write go to Gmail reply to the most
+recent three emails please automatically reply to the emails based on your own judgment no need to ask me for feedback
+if he asks for my availability check my Google Calendar and answer him accordingly so let's press enter and see
+if it can figure this out so first it has decided to go to Gmail and then it looks like it's opening the first email
+so this email is asking about AI tools for research it has decided to click
+reply and now it's typing in a reply and in fact this is happening really quickly so it's already hitting send within like
+2 seconds of opening this email and now it's already proceeding to the second
+email and you can see now it's actually opening Google Calendar to see my availability now as you can see within
+like 2 seconds it was able to open the next email read it write a reply and hit send so this this is blazing fast in
+fact this is happening so fast that I don't even have time to do a voice over explaining all the steps so in fact what I'm going to do is just play this and
+note that this is 1x speed I'm not speeding this up and then after it has finished processing all three emails then I'm going to open up each email and
+show you how it replied but for now note that this is too fast for me to do a voice over explaining all the steps cuz after I explain One Step it's already
+moved on to like the next few steps okay so it's done now note that at the bottom here it says I have successfully
+replied to the three most recent emails in your Gmail inbox let me know if there's anything else you'd like me to do so let's open up my inbox and as you
+can see before these were all unread also this Google Calendar was not open so let's click on this first one for the
+first email he wrote hi Ai search I was wondering if you have any recommendations on AI tools for research search I'd love to hear your feedback so
+the AI agent replied hi Terren thanks for reaching out here are some AI tools that are great for research chat GPT
+excellent for brainstorming and generating ideas zoto a powerful tool for managing research references
+semantic scholar helps in finding academic papers and related research notion AI useful for organizing research
+notes and summarizing content let me know if you need further assistance perfect so it totally understood the email it generated a pretty
+comprehensive reply and it hit send let's go back and inspect the second email so here's the second email hi Ai
+search reaching out to see if you're available to chat about our business let me know a good time to talk and if you remember when it was executing this it
+actually opened up my Google Calendar to see when is a good time to talk now note that I have two times blocked off here
+one is from 5: to 7: and the other is from 9 to 11:00 a.m. so it knows to analyze my calendar and understand that
+okay I'm free after 11:00 a.m. so that's exactly what it wrote Hi Terren thanks for reaching out I'm available to chat
+today after 11:00 a.m. please let me know if that works for you or suggest another time looking forward to your
+response perfect and then finally here is the the third email so in this email Terrence was asking hi Ai search I was
+thinking about our marketing strategy and I wanted to bounce some ideas off you I think we could be doing more to engage with our target audience and I
+was thinking about ways to improve our social media presence here's my strategy post two times a week on Instagram Tik
+Tok and X get an assistant to like and comment on at least 100 posts per week on all platforms discuss giveaway
+opportunities with sponsors to promote on on our social media do you have any thoughts on this I'd love to hear your
+ideas so here's how the AI responded hi Terrence thanks for sharing your marketing strategy ideas I think your
+plan is a great start here are a few additional suggestions to consider collaborate with influencers in your
+Niche to amplify your reach use analytics tools to track engagement and adjust your strategy based on
+performance experiment with different types of content such as reals stories and live sessions to see what resonates
+with your audience consider running targeted ads to reach a broader audience let me know your thoughts on these
+suggestions or if you'd like to discuss further perfect so not only did it understand the message and agree with
+what Terren was saying it also added some further feedback I mean with this AI agent pretty soon we won't actually
+need assistance managing your inbox you can just get an AI to do this for way cheaper and way faster even with this AI
+right now even though it's not perfect this can help me increase my productivity and save so much time for all like trivial emails I can just put
+it into one folder and then get this AI to respond to all those emails in that folder now note that for more important
+emails that require your decision or that involve a lot of money or a lot of high stakes then of course you wouldn't get this AI to reply to those emails but
+for everything else I mean this AI can handle it pretty smoothly all right next let's see if it can help me order food
+from Uber so again I'm going to open up my do browser chat interface and then for the prompt I'm going to type order
+pizza from Uber Eats just pick the nearest one that's under $30 no need to ask me for feedback use your own
+judgment so I'm going to press enter and see if it can pull this off first it's going to the Uber Eats site and note that I'm already logged into my
+Uber Eats account I've already added my address now it knows to search for pizza
+in the top search bar okay so next it's selecting one called Pizza Garden which
+is 1.9 M away next it has added this neopolitan pizza which is $18 so it is
+under $30 and now it's actually I believe going to check out and it's
+actually continuing to the payment let's see if it'll click pay yes it does all
+right so just a warning here if you've already added a payment method and you get this AI agent to order things on
+Uber or buy stuff on Amazon it will actually proceed to buy stuff for you so just a warning there for me I
+deliberately removed my payment options so that it could not proceed further but you can see it got as far as this add a
+payment method and then in the chat here it says it seems the payment method needs to be added to proceed with the order so I need to manually add the
+payment so that's where it ended the workflow but note that this 100% could help you order food from Uber Eats
+simply based on your criteria it can help you search for a restaurant pick the correct items and then even proceed
+to check out and pay for the order thanks to thle for sponsoring this video thly is a powerful AI platform that
+automates phone calls using natural sounding AI voice agents these agents can be set up in just 17 minutes so you
+can quickly start taking calls without needing any staff or complicated systems thly is perfect for automating customer
+service sales and marketing you can create your own voice agents to ensure that it sounds just like your brand and
+meets what customers expect whether it's answering simple questions or handling more complex issues thought Le's voice
+agents can do it all making the customer experience smoother and more enjoyable you can also integrate your AI voice
+engine into most crms like Salesforce Zoho and zendesk thly also provides helpful tools to analyze how well the
+voice agents are performing users can look at detailed reports and real-time data to see how how customers are interacting with the agents this
+information helps businesses understand what their customers want and how they can improve communication thle is a game
+Cher for businesses looking to improve their phone communication by combining smart AI technology with powerful
+analytics it helps companies engage better with their customers while saving time and resources check out thly today
+and get 50% off via the discount code in the description below all right let's test it on another task let's see if it
+can like and comment on X or Twitter on my behalf so here's my prompt go to x
+and find the most popular posts about machine learning and like and comment on the first five posts let's click enter
+and see if it's able to do that all right so the first thing it's doing is it's going to X and now it's clicking on
+explore and now it knows to search machine learning in the top search bar over here
+and then let's see what it's going to do next so it has liked this first post already and it has now proceeded to open
+this post and it has added a reply and now it's moving on to the next post so it it has liked this post and then it's
+clicking on reply and it has added a reply and and it has clicked reply already I mean this is moving so fast I
+barely have time to do a voice over explaining what it's doing step by step so already it's at the third post it has
+opened the popup for it to add a reply and again it's typing in its reply super
+fast and then right now it has found the next post it is like that it has opened the popup and again it only takes it
+like 1 second to add a comment and then click post all right so the fourth post is done now we are moving on to the
+fifth post again it has liked this and then it has clicked this reply window and it has added a reply and clicked
+post so after that is done note that in this chat window it says the comment has been successfully posted on the fifth
+post I have now liked and commented on the first five posts about machine learning as requested so let's actually
+scroll back up and see if it indeed liked and commented on the first five posts so here's the first post you can
+see indeed it has liked the post and indeed the agent added a comment to this
+post so let me go back and then here's the second post it has liked the second post and indeed the agent also commented
+on this post so if I go back here is the third post the agent has liked the the third post and if I click into here note
+that I have also commented on this post so if I go back here here's the fourth post again I have liked the post and I
+have also commented on this post and finally here is the fifth post again the agent has liked this post and commented
+on the post so how insane is that finally we have an agent that can help me automatically like and comment on
+Twitter all right let's try something even trickier let's say you're a web developer and you like to build websites
+and in fact you're planning to start an agency to help colleges or universities build websites or improve their existing
+website now you could manually go find these colleges and reach out to them yourself or what if you can get this AI
+agent to automate the entire process and Outreach for you so let's try this out right now again I'm going to open up
+this do browser chat interface and then for the prompt here's what I'm going to type in search for three colleges assuming you're targeting
+colleges in I don't know Canada try to find the contact email on the site then email them using my Gmail send them a
+cold message asking if they need help with building a website for their business or improving their existing website in the email link to my
+portfolio ibuild website.com which I just made up obviously so let's click click enter and see what it does all
+right so it has decided to go to Google and search for colleges in Canada so you can see right now it's typing in
+colleges in Canada and then it has decided to go to the first result which is a Wikipedia page listing all the
+colleges and then it has decided to click on this one Algonquin College and it looks like it has found the website
+over there so now it's clicking on the webs and now it's searching for the email address so it's now looking for a
+contact us section it has scrolled all the way down to the page but it could not find an email so instead it's going
+to type contact email in the search box to locate the email address and finally it has found an
+address for the president's office president Algonquin college.com so it's going to save this email and then it's
+now going back to the Wikipedia page to select the second college so it has selected cryan college and now it's
+looking for the main website so it has clicked on the official website link and
+it has found a copy email button for it to extract the email of Cambrian College this is lightening fast by the way so
+after copying the email for Cambrian College it's now moving on to the Third College on this Wikipedia page which it
+has selected to be cannador college now interestingly after clicking on the main website link it just goes back to Google
+for some reason so the nice thing is it has identified this error and it's aware that this is not the website for cidor
+college so what it's doing instead is it's searching on Google for Canadore College official website and then it's
+clicking on the first results from Google to actually enter the official website and it has found the contact
+email of this college so now it has opened up my Gmail and now it's proceeding to write cold emails to each
+of these colleges so right now you can see it's filling out the two field the subject
+line and the email body notice how fast this is in a matter of like 1 or 2 seconds it has already filled out and
+sent the first email now it's proceeding to send the second email and again everything is just blazing fast this is
+happening way too fast for me to actually read out everything for you so again I'm just going to wait for this to all finish and then open up each email
+to show you what it actually sent so it has now sent two emails already right now it's sending the final
+email to canor college and again note how blazing fast this is all right so
+finally the chat has ended and you can see in the bottom right here it says all three emails have been sent to the
+respective colleges it's listing out all three colleges let me know if there's anything else you'd like me to assist
+with so if I go to my sent tab you can see that indeed it has sent three emails so let's inspect each one so this one is
+to Algonquin College and here's what it wrote I hope this email finds you well my name is Sam I specialize in building
+and improving websites for businesses and organizations I came across your institution and wanted to offer my
+services to help enhance your online presence you can view my portfolio at ibuild website.com if you're interested
+I'd be happy to discuss how I can assist you further looking forward to hearing from you perfect so here is a
+beautifully written cold email asking if they need help with building or improving websites so let's go back and
+click on the second email it's pretty much the same as the first email but this is sent to Cambrian College and
+then finally the last email again this is pretty much the same but it is sent to canor college so how insane is that I
+think this AI agent is going to change sales forever you no longer need need to hire any sales reps to do prospecting or
+cold Outreach for you you can just get this AI to not only send out cold emails but also do the prospecting it can find
+and gather all the emails of whatever Target clients you're looking for how insane is that keep in mind I've tried a
+handful of other AI agents in the past and none of them were able to do this so smoothly this is a real game changer
+all right next Let's test it on some research data collection task so again
+I'm going to open up the do browser Tab and then for the prompt let's try this number one identify three Recent
+research papers in machine learning in 2024 number two add these research papers to a new Google doc with the
+following info title author publication dates Journal name and summary so there are multiple steps involved here first
+it has to identify three Recent research papers in machine learning then it needs to open a new Google doc and generate
+all this information accordingly and then add it to the Google Doc so let's see if we can figure this out I'm going
+to press send and first it's going to Google and it's typing in recent machine learning research papers 2024 then it's
+clicking on the first result and then it's clicking on the first result from that so right now it's scanning this
+page and then it has extracted all this information from that paper now it's going back to the results page of papers
+with code and then it's clicking on the second result and again it has gathered all the information from the second
+paper and then now it's proceeding to click on the third paper and then after Gathering all this information now it's
+moving on to Google Docs and it has created a new document and now it's
+proceeding to add all the information to this new document and we are done it says I have
+successfully added the details of the three recent machine learning research papers to the Google Doc now there are some flaws with this first of all it
+could not find the journal name from the site papers with code so this is accurate but I would prefer that if it
+couldn't find the journal name that it looked somewhere else to fill in this information also if you go back to this
+papers with code page it seems to have skipped a paper so it got this first one correct demo and then it got moon cake
+as you can see here here's demo here's moon cake but then for some reason it skipped over this paper Moss former and
+then decided to extract the data from this one Auto rag instead so as you can see this third paper is autoag now not
+Moss former so there are some flaws from this demonstration but it is a lot more robust than other agents that I've
+tested out so that sums up my review and tutorial of do browser this is actually surprisingly good and much better than
+any other agent I've tested which is why I've decided to do a full video on it you simply need to prompt it with the
+task and it will carry it out there's no need to code up a team of Agents yourself there's no need to download or clone any repos from GitHub and hit a
+ton of errors this is a really simple Chrome extension and in this video I tried to test it on some realistic use
+cases like social media engagement or doing sales and Outreach or doing data collection and research but I'm sure this agent could likely do a lot more
+than what I showcased anyways let me know in the comments what you think would you be interested in using this
+and if so what would you use it for as always I will be on the lookout for the top AI news and tools to share with you
+so if you enjoyed this video remember to like share subscribe and stay tuned for more content also there's just so much
+happening in the world of AI every week I can't possibly cover everything on my YouTube channel so to really stay up to
+dat with all that's going on in AI be sure to subscribe to my free Weekly Newsletter the link to that will be in the description below thanks for
+watching and I'll see you in the next next one

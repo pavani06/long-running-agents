@@ -1,0 +1,1617 @@
+How many people have
+been to Coachella? Oh, my God, we got to
+do a field trip, Mike.
+Yeah OK. Maybe final project. Surprise project. Yeah, off campus field trip.
+So usually, when you go to
+a concert, for those of you,
+we will make sure that you
+get to a concert, a real one. When you have a headliner,
+you need an opening act,
+to warm up the audience. And so today, I'm
+your opening act for the rest of this quarter. We're going to have Mike,
+in the coming weeks as well,
+who's going to be
+doing a deep dive into a bunch of confidential
+computing stuff. But I'm here to give you some
+context about the speakers
+and the rest of the class. And then we're going to
+do a bit of a deep dive into the area of the world
+I understand most, which
+is compute infrastructure. But both today and for
+the rest of this quarter,
+these really are
+your headliners. Yeah. Make sense? You recognize some
+of these names?
+All right. Yeah. For the ones you
+don't recognize,
+I would recommend
+looking them up because over the
+next few years you're going to hear about
+them a lot more.
+One extra thing, we are
+considering because many of you asked, given the insane
+amount of demand we've had,
+both from speakers,
+as well, you guys. To add more topics
+and more coverage, we might add a virtual
+office hours every Friday
+from noon to 2 PM. Especially for speakers who are
+zooming in from around the world and can't make it in person.
+That will be optional,
+extra credit. A quick show of hands. How many people would
+actually like that?
+OK, I guess we ought
+to do it, Mike. All right. Cool. More details coming. More work. More work.
+This is the swag for this class. I forget who it was, but
+somebody sent me a tweet.
+Apparently there was a tweet
+that went viral yesterday about this class that said,
+be wary of taking classes
+that sound like AI Coachella. And there's lots more serious AI
+classes on campus you can take.
+Totally agree. And by the way, I thought
+that was pretty fun. I think Coachella is pretty fun. So as you guys, I did
+my undergrad here,
+I did grad school. And look, I think we're
+going to be talking a lot about technical
+stuff, but we also
+get to talk in this class
+about life and leadership. And so, I thought before we
+jump in to technical stuff,
+we talked a lot about
+scaling laws last time, and we're going to talk a lot
+about that in this quarter. But I thought I'll give you a
+little preview into Anj's life
+scaling laws.  I think that you should
+take life seriously.
+But not so seriously that
+you forget what's important. Don't forget how to
+have fun and remember
+what makes life worth living. Because look now, you might
+feel like you have all the time
+in the world, and
+sometimes you don't know when you don't have
+much more time left. So enjoy it while you can.
+Don't take for granted. It's a really magical time
+you guys are in right now.
+My view is it's very
+simple actually,
+to live life and scale yourself. Scale your impact, which I
+know many of you want to do.
+A lot of times, a lot
+of the students we've taught over the last few years,
+have come to office hours
+and asked, Anj, Mike,
+you've been so successful, blah, blah, blah. How do you plan your future?
+It's very similar to how
+do you plan a training run. You want to really knock it out
+of the park on capabilities. You want to scale
+capabilities and revenue,
+like we talked about last time. And it's hard to
+forecast these things. So I've actually found a
+pretty simple heuristic
+on how to navigate that
+journey, which is just have fun with people you
+enjoy hanging out with.
+That's pretty much it. I found empirically,
+remember we talked about how scaling laws are
+empirical, not predictive.
+I found empirically, that's
+worked out pretty well.
+So if there's one thing I'd
+love for you all to take away from this quarter, this
+is the last lecture,
+I'm going to be
+giving this quarter. We have lots of
+speakers and so on.
+But I just want to
+leave you with this one. Which is, the most important
+people in this class
+aren't really my
+committee or the speakers. It's you guys.
+Look around and see
+how special it is.
+Really invest in
+these relationships because you won't
+realize how they come in
+and help you out in all
+kinds of ways in life. As you guys saw, I met my
+wife here as a sophomore.
+Say hi, Viv. We've been together 13 years.
+As I mentioned, I have
+started two companies, both with former
+roommates from Stanford. One of them is my current 1 Amp.
+The world is a messy place. It can seem like there's a
+lot of crazy stuff happening
+in the world. We're fighting wars. There's a lot of
+violence, a lot of chaos.
+But you guys are in a very
+special moment in time. Just think about
+all the things that had to come together for all of
+you to be sitting in this room.
+So just, generally see,
+how special and lucky you are to be here.
+And we talked last time
+about how it can feel. I think somebody
+asked, I forget who
+it was, who asked the question. With all these AI labs
+and big companies spending so much on AI and
+infrastructure,
+how could we possibly create
+something interesting or novel or new in science
+and engineering?
+And remember I said, use them. Do things that don't scale or
+be asymmetric about your bets.
+And one of those is,
+obsess over the things you love because there's some
+things that don't scale well,
+especially in large
+organizations. And so throughout this quarter,
+just remember that you actually do have some special weapons.
+And one of those is, the
+obsessions, the love, the trust you have for each
+other, the friendships,
+the relationships
+you'll build here and over the next few
+years, because that will come in very handy. And it'll be things,
+those kinds of things,
+are assets that don't scale,
+as you join larger and larger
+companies or organizations. OK, I'll stop
+being an uncle now,
+and I will say, maybe
+go to the real Coachella while you still can. One of my biggest regrets
+is when I was in campus,
+we were working so
+hard and staying so focused on projects
+and coursework, I've never been to
+Coachella, it turns out.
+And so maybe we will
+go with you guys. Shall we proceed? Yes OK.
+Thank you guys. Quick recap.
+Yeah for those of you who are
+joining us for the first time.
+I'm Anj, I'm one of
+your co instructors. There's Mike. He's going to introduce himself
+during his lecture as well.
+My full name is pronounced
+Anjani, friends call me Anj. I was born in India. Went to high school
+in Singapore.
+Came over for college, here
+at Stanford many years ago. And then I ended up staying.
+This is now my home. I live in San Francisco, with
+my wife, in Presidio Heights. And you guys are all welcome
+to come by anytime you'd like.
+I've been in love with applied
+machine learning for the better part of the last 15 years. I came here as an undergrad.
+I took a bunch of
+coursework in economics and a major that I don't
+think exists anymore, called mathematics and
+computational science.
+And then for grad school,
+I did bio-informatics over at the med school,
+which is essentially machine learning applied to health.
+I've always been a
+very applied thinker. I've always found that
+it's really exciting to look at what machine
+learning systems, when taken out
+into the real world at scale,
+can tell you about the world. Which is often
+actually a pattern you see, not just in computer
+science, but in physics.
+Physics is about trying to
+understand how the world works, looking at large
+patterns empirically, trying to figure out are
+there laws we can derive
+about the world. This is the applied physics part
+of the discipline, of course,
+and I still actually spend
+some of my time on campus at the Physics Department
+as a visiting scientist.
+Where we've been doing a bunch
+of benchmarking on frontier models and how they're good
+or not, at physics and science
+reasoning. Feel free to ask me
+about that any time we'll have office hours. I've had a chance over
+the last 10 to 15 years
+to invest, co-found, or be part
+of the early days of over 10 AI labs. Some of those you guys
+know, Anthropic, Mistral,
+Black Forest. You'll be hearing from many
+of these in this class. And as we just talked
+about, I have a deep, deep.
+I'm deeply thankful for what
+Stanford has done for me. Sometimes I shitpost on Twitter.
+Don't believe everything
+you read on Twitter. But if you're ever wondering
+what my shower thoughts are,
+that's where you can find me. My handle is Anjani Mehta.
+If you guys remember. For those of you who
+were here last time, this is a cheat code to
+the rest of the class.
+And I think the rest of the
+next two years, at least in the industry
+outside of Stanford.
+OK, this is not
+just a CS 153 thing. Hopefully this
+will give you a bit of a framework for how to
+navigate life after college.
+Because if you
+remember, we talked about the goal of this class is
+preparedness for the real world. The goal is not internships.
+The goal is preparedness. What is happening in the
+infrastructure world.
+In the CS systems world, we are
+going through a massive change over the last 10, 15 years.
+With the rise of
+distributed systems, cloud infrastructure,
+a somewhat stable stack
+had emerged, about how we
+create, ship and scale software.
+And these are the
+different layers of the stack that
+I would roughly say dominate the industry. We start with capital,
+which is quite flexible.
+You can put money in everything. Then you have land power shell,
+energy production, data centers, construction, on top of that.
+Or in the data
+centers, you put chips, you then have some
+software infrastructure, called a cloud that
+makes those chips usable.
+And then you start. We hook up all these
+chips together. We train a model. Sometimes we call them agents.
+We then put them
+into an application, we deploy them as solutions. And then lastly, we
+try to figure out
+how to actually
+govern these things. What's the safety, the security,
+the trust, the frameworks? We need to actually make sure
+that these technologies get
+deployed to the real world. When Mike and I started
+this class 4 years ago, it was called Security at Scale. At the time I was running
+the platform org at Discord.
+How many people have
+heard of Discord? Perfect. We did our jobs. And Mike was running
+infrastructure
+at Apple at the time. And both of us had started
+to realize that security was becoming an increasingly
+critical topic in the world,
+but there just weren't that
+many places for people like you guys to learn what the
+frontier, what the cutting edge problems of security were.
+Because you don't get
+to see those on campus. And so this class started
+as the missing systems
+class, that I wish had existed
+when I was an undergrad. And so, that's where
+this all started.
+Since then it's evolved. We started with 50 students. We're now 500. Thank you all for joining us. I think we have another 50
+wait-listed and a few thousand
+people following online. I'm not sure when else we'll
+get to teach this class again. So let's try to
+make the most of it.
+Yeah. OK. We're going through
+the great transition, because we have this
+new technology called
+AI that has unlocked,
+extraordinary value and is about to
+unlock way more value.
+Everybody, every leader
+or every major team, or, I would say, people who care
+about the future at every layer
+of the stack are wondering, how
+do we unblock the bottlenecks? How do we make this stuff
+go faster and safer and more secure?
+And what we're learning
+in the industry, is that it takes revisiting
+a lot of basic assumptions about how the stack works, where
+in the value chain you are,
+what your job is, what
+your technical function is, what your economic function is. And I think you
+will start to see,
+you probably
+already are feeling, what I'm calling the
+great transition.
+Driven by this urgent need
+across all levels of society. You saw the diversity
+in names we have.
+We have people like
+Jensen Huang and Lisa Su, at the chip layer coming
+in to talk to you guys.
+We have folks like Satya
+Nadella who runs Microsoft, who's at the cloud layer.
+We have Sam Altman. How many people
+have heard of Sam? Sam Altman, yeah, there we go. OK. He's coming by to
+talk about models
+and how they're deploying stuff. So this is a really big
+shift that's happening.
+For the first time,
+at least in my life, I can't remember a time when
+there was such a big revisiting
+of assumptions up
+and down the stack, where everyone's trying
+to figure something out. And that's really
+cool, because that
+creates an extraordinary amount
+of opportunity for you guys, because in times of uncertainty,
+That's when things change.
+And people who understand
+where the world is going, who have a point of
+view, get to redesign the systems that have stayed
+quite static in the past.
+OK. I don't what the new world
+is going to look like. I don't think anybody does.
+But for the next
+10 weeks, you are going to hear from
+some of the most, I think, dynamic, talented
+and capable leaders
+reasoning through how to unblock
+the bottlenecks at each part of this ecosystem every week.
+Cool. Sound good? Should we keep going? OK. No, you don't need to
+clap for me every time.
+Don't worry, I got it. Let me earn my keep. So quick recap. Remember, we said what is
+going on at the frontier.
+What is this whole thing
+called intelligence? And a few years ago, when
+I was starting to get
+calls from friends who had
+gone to grad school with or we're running research
+at places like OpenAI.
+I started getting
+calls saying, oh, we think there's an
+opportunity to really take some of this research
+out of the lab and turn it into products and
+services that could impact
+hundreds of millions of people. And at the time, it was a
+pretty craft, bespoke process. And we talked last time, about
+pretty simple recipe on how
+to manufacture intelligence. Compute, data, algorithms. Pretty simple algorithm
+transformer, do
+a little bit of pre-training,
+some fine tuning. Good to go. Plug it into an app. You got ChatGPT.
+We're going to have Liam Fedus,
+the co-creator of ChatGPT, come by and talk to you
+guys later this quarter.
+Things look very different now. In four short years, we've taken
+what was a pretty, I would say,
+bespoke process and turned it
+into an industrial engineering process at scale.
+Back then, three
+or four years ago, the frequency of
+creating a new model
+was maybe once a
+year, twice a year. And today we have this
+industrial scale production process where we do
+base model training,
+at least two times a year on
+100,000 GB, B 300 equivalents. And then we do post training
+with about 10% of that compute.
+So mid training we add more
+capabilities into that. And that happens about 2 to four
+times a year, with about 10%
+of that compute. And then we do this thing
+called continuous post training. Right? With supervised
+fine tuning and RL. And I won't bore you
+with all the details
+that we talked about last time. We'll have assigned readings. Slides will be up. But I'll let you
+guys go do the math
+on how much compute and money
+is being spent on these systems.
+What's the most
+recent, of course, development in all of this. Is that the last mile of this,
+the reinforcement learning part,
+is now consuming
+almost as much compute as all of the rest of
+the pipeline combined.
+And that's very exciting Because one, it's new. But it also means that
+things are changing fast
+and resources and strategies
+are consolidating. And so our hope over
+the next 10 weeks is that you get a bit of a
+window of a front row seat
+into that part of the ecosystem. OK. OK. So what does all this mean
+actually for progress?
+This is where we
+stopped last time. And this is where I'm
+going to pick up today. A quick disclosure list.
+And any good scientist,
+you start by disclosing
+the experiments you've run. This is a list of teams that
+I've had a chance, AI lab teams
+that I've had a
+chance to work with. Many of these were literally
+co-authors on a paper that then we teamed up on, to
+turn into a company or a project
+out in the real world. Some of them, I was involved
+in as an angel investor, some as a co-founder. And you'll hear from
+many of these people
+over the rest of this quarter. But this is also
+disclosure list. I am biased,
+naturally, when you're
+observing an
+empirical experiment, you are naturally biased by
+the data that you're fed.
+And so between Mike and
+myself, what we've tried to do, is at least augment
+our individual biases
+and work experiences with a
+diverse set of as uncorrelated, of a set of perspectives for
+you all across the ecosystem
+as we could in 10 short weeks. So this is the
+crux of the class.
+Of this lecture. What are the bottlenecks
+on these capabilities?
+Many of you are excited
+about these capabilities, I certainly am. As we talked about last time,
+you can use them for everything
+from having a conversation
+when you're by yourself,
+doing your homework. That use case is banned for
+this one, for this class though.
+If you do use any of the coding
+models for your assignments, just tell us about them. That's all fine. But it's a pretty diverse,
+it's a pretty general purpose
+technology. I found these foundation
+models, and so for the next,
+let's say 40 minutes or so,
+what I'm going to try to do, is break down in detail at a
+systems level, what is going on.
+And what, in terms of
+the inputs required to keep these models
+and these systems
+continuing their blistering
+pace of progress. So we can all benefit, apply
+this incredible technology
+beyond chatbots to new areas,
+like curing novel diseases,
+discovering new materials. I'm of the opinion that
+there's an extraordinary number
+of new frontiers to be
+explored and developed with AI,
+but it's not going to happen
+without us as a society,
+figuring out how to unblock
+progress in all the domains that we care about. OK, again, the recipe
+is pretty simple.
+I'm going to break
+down the bottlenecks into four major areas context,
+compute, capital, and culture.
+And we'll see how much we
+can reason through this. Today I'm going to start
+with context and compute
+and then we'll go from there. OK. Might have to do an
+extra overflow office hours or something. OK.
+Context. A couple of prereqs you're
+going to need, to understand
+the next few slides. Reinforcement learning,
+very simple technique, super powerful. Driving a ton of the progress
+at the frontier today.
+We talked about it last time. If you've had a pet, or you've
+had a sibling who you've had to teach to stay
+away from your room,
+you are a successful
+frontier model trainer. Applying reinforcement learning. The key idea is that when you
+have a system that you want
+to improve at a
+given set of tasks, you don't tell the agent
+or the model how to do it. You just tell it what to do,
+what task you want to reward.
+And when it completes
+that successfully, you give it a reward. If it doesn't do
+it successfully, you withhold the reward and
+then you rinse and repeat.
+Very simple idea, has been
+around for a long time. Started really working, I
+would say, in earnest at scale
+about two years ago. And that was because
+when you initialize a reinforcement
+learning environment
+with an agent like LLM,
+that's smart enough, has smart enough priors
+about the real world. It turns out that these systems
+learn much faster than usual,
+and the capabilities
+tend to continue scaling the more compute
+we throw at them, and the more of environmental
+harnesses and contexts
+we give them. Which is pretty
+novel, pretty new. Earlier, over the last 70
+years of computer science,
+as we discussed about the
+bitter lesson in lecture one.
+RL would plateau pretty
+fast in different domains. Chess, Go, et cetera.
+It would surpass
+human performance, but then the rate of
+progress would plateau.
+And the reason it
+seems again, this is, I would say an open
+area of debate, is that the priors, the previous
+inbuilt reasoning capabilities
+of the models, were
+just not general enough to continue learning in
+a scence after a while.
+You guys, you've
+heard the phrase, you can't teach an
+old dog new tricks? Whereas it turns out,
+you can sometimes
+teach a Stanford student to
+come back and teach new classes. This is my dad joke
+kicking in as well.
+I'll try to stay
+away from the puns. So this is the core
+philosophical tension of RL,
+It's working much
+better than expected. It seems to be because LLMs
+have enabled a new era where
+the models, the language models,
+are smart enough to then give us new capabilities. When you use post-training
+to improve them
+on some specific task,
+benchmark or capability. Making sense?
+Everybody following me? No? OK. We might have to
+do an RL tutorial,
+but I would encourage
+you to, how many people have taken a machine learning
+class at Stanford already?
+OK. Keep your hands up. How many of you
+have at least done one P set with an RL problem?
+OK. OK. That's the issue. All right. We're going to have
+about 30% or so. We'll do an office
+hours on that.
+And you're going to have
+some of the co-inventors, some of the pioneers around
+RL actually come talk to you. So they'll probably do
+a better job than me.
+But to recap, where does
+this fit in to what's going on in the industry? As we talked about last time.
+I got a call from some
+friends, Daria and Tom, who are running research at OpenAI. Four years ago
+they said, we want
+to leave and start a new lab. Can we figure out how to
+build a business around this? And so we spent some
+time fleshing out
+how do we turn the scaling of
+capabilities into a business. And this was the simple
+recipe we came up with.
+Raise some money,
+buy some compute, augment it with data, pre-train. Put out a model that's good
+enough, considered state
+of the art, that some people,
+like programmers, want to use them. Deploy it, do inference, run
+the model and that gives you
+two loops. The inference hopefully
+gives you enough money to buy your next
+round of compute
+and gives you context feedback. You can observe in the
+case of a pair programmer, when is the model
+actually accomplishing
+the task you want it to or not. It has your monorepo, your
+git history, your local files.
+And then you pipe that
+back, we call that context. The context feedback loop
+back through RL, hundreds
+and thousands of times as
+many times as you need. With as much
+compute as you need, to improve the capabilities
+of that system in that domain.
+Pretty simple recipe. As I discussed last time,
+we made 22 introductions. I was an angel investor
+at the time in Anthropic,
+made 22 introductions to friends
+up and down Sand Hill Road. They came back with 21 no's.
+And a lot of them just said, it
+sounds theoretically cool Anj, as an idea, but do you
+have any empirical proof?
+Do you have proof? Well, as you guys four years
+later, we do have proof. I won't bore you
+with all the slides
+we talked about last time
+with the Anthropic revenue, et cetera. I think we do have one slide
+later when we talk about
+compute, so I'll
+come back to that. But to fast forward now.
+I think if you believe
+that recipe works. Anthropic has gone from 9
+to 20 billion in revenue.
+Gemini is doing well. OpenAI started to produce
+extraordinary revenue. There's lots of proof
+that this recipe works.
+The question I keep
+getting over and over again is, well who wins?
+Who wins in this? If everybody's going to be
+applying this scaling recipe and it's so easy and
+repeatable, then where
+does the value accrue? And at least one
+opinion I started to observe through all those
+empirical experiments I talked
+about with you guys earlier, is
+that context is critical here.
+Context or the
+environment of the agent. We talked, if you're
+training your dog, it's to fetch in a park.
+That park is the context. It's the environment. All the people in
+the park, the kids that may be running around
+the grass, the physics of rain
+coming down. All of those factors
+of the environment, influence the ability for
+you to improve and train
+your system, your
+pet, to perform better and better in the real world.
+And so I find myself explaining
+this pretty frequently to folks, and I hope it'll make sense
+to you, is that one, where?
+To answer the question of
+where will Frontier progress continue most rapidly? And this is relevant
+for all of your projects
+because many of you
+must be going, OK. Coding seems to be
+well on its way, and image generation is
+also well on its way.
+You have Andreas from
+Black Forest labs, who created Stable
+Diffusion, but where else
+can I make a difference? And one question I
+would ask is, well, where is their
+context that can be
+reliably measured
+and verified when you're working with an agent?
+And I think wherever in
+life we have verifiability, code is verifiable.
+You can write unit tests and
+your code passes it or not. Material science, it turns
+out, is quite verifiable.
+Again, you will hear
+from Liam and DOGE at Periodic Labs
+about how they're using RL from
+physical verification
+to discover new superconductors. Very cool stuff. There's a bunch of robots at
+a 30,000 square foot facility
+in Menlo Park nearby, that maybe
+we do a field trip or something. But where else is the
+context and the environment
+capable of verifying the
+accuracy of the task as performed by the agent?
+That's the question I would
+be asking if I was you. The second question
+that falls out from that is, well, who's going
+to capture that value?
+Because you don't want
+to just be researchers. You guys actually want to do
+sustainable frontier system
+development. Not just one off model drops. You want to scale these things. OK. Well, it's the
+teams that will have
+unique and defensible
+access to some context, if you get there first.
+Or maybe you have some insight. That's where teams will, I
+think, capture the most value.
+So those are the teams I
+think are going to win. And then who's going to lose?
+My view is that the
+teams that get locked out of contexts that are essential
+to improve these models,
+and the capabilities on some
+domain, will not have a chance. Now to bring that
+to life, I thought
+I'd just give you a
+few examples right of this context, these
+context loop wars beginning.
+I think just about a year
+ago, there was a news drop
+that OpenAI tried to acquire
+an IDE, that many of you
+probably use for your
+coding work called Windsurf. How many people have
+heard of windsurf?
+Oh, OK. Cool I mean, we'll be happy
+to hear about that.
+A few days later after it
+was announced that Windsurf was being acquired by OpenAI.
+Anthropic shut off model
+access to Windsurf users,
+doesn't happen often. We don't in our industry. We don't usually shut off an
+API to users without warning.
+But it made total sense. Because if your
+competitor needs access
+to your model, the
+context and can distill from observing how you
+help out customers that you
+want to attack, that's leakage. You have context leakage there. And so to those of
+us in the industry,
+this was very clear to me. It was very normal. I was not surprised, but I
+think for a lot of people started updating their
+mental model again.
+Remember that stack diagram? If your a model provider and
+then your application company, you can always rely
+on your model company
+to keep giving you intelligence. Well, that was one assumption
+that stopped scaling then.
+OK. And this is happening across the
+economy in different contexts,
+whether it's consumers,
+creators, companies, countries, and every part of the economy.
+There's a battle that's raging
+for these context feedback loops.
+And over the next
+10 weeks, you're going to hear from
+many of these people. In fact, you're going
+to hear opposing views.
+And that's our job
+here as instructors. Our job is not to try to
+convince you of our views. It's to try and educate you,
+with an independent view
+as much as possible,
+so you can derive the conclusions you believe
+about where the future is going. Because look, this
+is an open problem.
+Again, we're running
+the grand experiment of how to keep frontier
+progress going around the world.
+It's making sense? Yes? OK.
+Good, people are nodding. Can I hear a yes? OK. Thank you.
+So let's deep dive for a
+second in one of these. How many people
+have heard of Lama?
+Great. One of the creators
+of Llama, was a guy by the name of Guillaume
+Lample, who spoke in our class
+last year. His lectures up on YouTube. Go check it out. Guillaume and his
+college friend,
+Arthur Mensch, who is going to
+be speaking here in a few weeks, teamed up a few years ago.
+Arthur was a
+researcher at DeepMind. He was one of the lead authors
+on a paper called Chinchilla.
+Chinchilla Scaling Laws, have
+been assigned as reading. So a good professor,
+never asks if the students have done the reading.
+I'm going to assume
+you guys have. Good faith. Honor code. Definitely read that
+before Arthur shows up.
+It'll tell you a
+lot about his view. But Mistral was a new frontier
+lab started in Europe, by the co-creators of
+Llama and Chinchilla,
+and their view was very simple. They said, hey, there's going
+to be an extraordinary amount
+of progress in
+closed source models because that context is
+just not that sensitive.
+And people won't mind piping
+their software engineering context if you're a
+developer in Silicon Valley,
+to a cloud server somewhere. But if it's a mission
+critical context, what they call the
+sovereign context, it matters to a government.
+It's national records,
+defense and so on. Well, you need to start
+locking that down locally.
+And that means you need
+models and weights that run locally on
+your infrastructure that you can control.
+And so they started Mistral
+as a way for companies or organizations that needed
+control over their own context
+to deploy models. Open source models locally. And the reason I think
+this is worth talking about
+is because it's quite hard, in
+the world of infrastructure,
+especially software
+infrastructure, to beat the relentless
+flywheel of the decreasing
+marginal cost of production
+in storage, in networking and servers. The history of cloud
+over the last 15 years
+has basically been
+decreasing marginal cost. When Amazon and Google, who both
+had extraordinary businesses
+serving consumers. Google and search. Amazon and shopping. They were just piling
+up lots and lots of servers for their own needs.
+And they started realizing, hey
+it doesn't cost that much for us to add another server and
+another server, another server,
+and basically just rent
+that out to other people. Because at some point, the scale
+of your own first party needs
+is so high, that you can pass
+on the benefits of that scale to third parties. And that's how we
+got AWS, GCP, Azure.
+Mike helped start Azure. Sorry to date you, Mike. But that's basically 15 years
+of relentless consolidation
+in the cloud infrastructure
+world because of the economies of scale.
+For the first time in 15
+years, that's changing. Why do you have President
+Macron, the head of a country,
+and Jensen, the
+world's richest man, or was I think last quarter,
+probably still is showing up
+on stage in Paris, next
+to a 33-year-old scientist who's never run a
+business before?
+Saying this is the
+future of Europe. It's because of context.
+There are governments and
+mission critical workloads that are just too sensitive to
+be run on cloud infrastructure
+overseas. We talked last year in the
+class about the CLOUD Act. How many people have
+heard of the CLOUD Act?
+OK. 0. We've got to assign
+that as reading.
+The CLOUD Act is
+policy that says that if you're running workloads
+on United States servers,
+whether or it's a company or
+it's servers run by a United States company, globally, the
+government has the ability
+to access that data. To some people around
+the world that's not OK.
+And so now suddenly AI workloads
+have gone from being cool, chat bot assistants, to being
+mission critical systems.
+Remember we talked about RL? RL has started to work with a
+level of precision and accuracy in mission critical context.
+And that's why you have a
+huge reshuffling of cloud
+infrastructure globally. And you'll start to hear
+this word sovereign AI and infrastructure
+independence a lot
+more over the next few years. OK. Just to wrap that
+point, that's what's
+allowing startups to un-bundle
+monopolies in the infrastructure world or let me call
+them oligopolies,
+because some of our
+guests won't be happy when I say monopolies at scale.
+At speed and scale. And this is very
+exciting because you guys get to participate in
+this revolution, too. And so one clue you could have
+about where to spend your time,
+is where there's a
+unique context that hasn't been available to you
+because you're not at scale.
+But that you can
+do something unique and get ahead of and
+start being a participant
+in that restructuring
+of that industry. Make sense?
+Yes? Come on, guys, it's spring. Yes. OK.
+Thank you. So how do you actually
+get this going? After doing this for 10
+years and mostly five
+of intense investing,
+company co-founding. Nowadays people call me
+the founding investor.
+Basically means I'm neither
+the CEO, which is all many of the talented folks
+I get to work with,
+who are usually scientists. But I'm not a traditional
+venture capitalist. I don't really write a check. I typically co-found
+these companies on day one
+with these teams, and I
+do this one at a time. My current project is Periodic
+Labs as we've talked about,
+but I've observed a pattern
+over and over again. Which is, you formulate a
+state of the art mission.
+What is a frontier that
+we really want to advance? Material science, coding,
+whatever it might be, and that you make
+that your mission.
+We want to move the frontier. We want to create state
+of the art intelligence in a particular domain.
+You then get enough compute. That's research compute. You do some experiments, you
+figure out how can we actually
+get something novel out to
+the world that doesn't exist, and often in a new domain. That's actually not that hard
+to do because we're early,
+ship it, get it out into a
+context that you have access to, run the feedback loop.
+And then remember we talked
+about that scaling, those two flywheels. Then just keep them going.
+Keep them going
+as long as you can because that is the gift that
+keeps giving because they reinforce each other. Eventually, at some point when
+these flywheels get good enough,
+they start propelling
+themselves. That's what many
+people in the industry call recursive self-improvement. Sometimes people like to call
+this the path to AGI or ASI.
+Well, I'm an infrastructure
+guy, so I think more at the level of the system. I don't necessarily think
+in terms of a model,
+but you can often have a
+company hitting takeoff because they've just figured
+out as a good execution team and how to keep recursively
+improving themselves.
+It doesn't have to be an actual
+model that's super intelligent or whatever. I mean, that's one view. That's fine. You guys should ask our speakers
+if that's how they view it.
+But I think about
+recursive self-improvement at the systems level. That's attacking the
+state of the art mission,
+not really at an individual
+model or API level. So the big question
+where does this
+leave us on the context question
+is, what are the limits to RL?
+And this is a very
+exciting open question. I hope this will be
+answered over my lifetime.
+It may not be I don't how
+much time we have to really figure this out, but
+there's two views on it
+today, that I hear
+in the industry. One is a philosophical, the
+other is the empirical view. The philosophical view is that
+hey, given the right context,
+given sufficient
+compute, these agents should be able to
+learn anything. So once you get that
+recursive takeoff happening,
+why don't you just ask
+the agent to construct, if you have a coding
+agent and the coding agent
+is not very good at
+material science. But at some point,
+if it's good enough, you just tell the coding agent,
+please build yourself a material
+science environment and then
+go do the RL loop yourself, and so on and so forth. That's one view.
+It's not clear right now to me
+that RL is generalizing outside of task distributions, which
+means outside of the domain
+that you started that frontier
+flywheel in the context feedback. It's not clear to me that models
+are generalizing from let's say,
+coding to material science
+to biology, et cetera. I think within the narrow
+distribution of coding
+and so on, what we're seeing, is
+basically relentless progress. It doesn't look like it's
+stopping anytime soon. And look, this is a big
+area of debate, billions
+of dollars being invested
+in trying to figure the answer to this question. My view is closer to
+the second one, which
+is that empirically, what I've
+observed, is that life is messy.
+Progress is fastest in,
+easily verifiable domains.
+And so in domains like
+coding which is verifiable, you will start to see the idea
+of a narrow superintelligence or
+exponential progress. But in areas in the world
+where progress is not
+as easily verifiable. And a great example of that
+is aesthetics, beauty, love.
+What are these? How do you verify? What is a good verifiable
+construct for beauty or love
+or aesthetics? How many of you have
+tried writing a message
+to your friend, like an
+extended blog post or something with Claude or ChatGPT?
+Only four or five people. OK. Clearly you guys
+have real work to do. Unlike me. Writing blogs all the time.
+It's terrible. These models are not good
+at long form writing. At creative writing,
+they hallucinate,
+they make these clichéd
+hyphens and so on. You see the M dashes
+and the, it's not.
+This is a game changer. Ever heard of that phrase
+It's not just x, it's y?
+I sent a blog post. I was writing, like a bit of a
+manifesto about infrastructure to a friend three
+weeks ago, who's
+a founder you'll hear
+from in this class said, can I get your
+sanity check on it?
+He writes back in 30 seconds,
+did you use Claude for this? I was like, no.
+He's like, I don't believe you. Well, it turns out I had
+written the outline myself, and then I'd asked
+Claude to flesh it out.
+We've all done it. And he could tell immediately. And since then, we have
+an internal rule at AMP.
+We don't send each other
+AI generated documents. We think, we sit, we write,
+and we share with each other,
+even if it's raw. So many of the speakers
+you're going to hear from,
+working, in the model
+level are innovating here, trying to answer this question. And I'd encourage you to
+do some research on them.
+A lot of people share openly
+about their strategies online. So do your homework,
+come prepared.
+Push them on these questions. Yeah. The more you prep you
+do, the more work, the more value you're going
+to get out of these lectures.
+And more importantly, I think
+you guys can innovate here too, because it's early and
+there's so many domains
+that maybe you understand
+and only you can verify. Because of your obsession,
+your love, your taste,
+your sense of
+beauty, your culture. And I think that's the
+most valuable thing
+you could be doing. When I get a call
+from a new team that wants me to invest or help them
+build a business, what I'm often
+looking for is, what
+is the unique frontier
+that they can
+verify for humanity? I had one of my favorite, he
+might not like me sharing this,
+but I'll share it
+anyway and we'll publish after getting his permission. How many people here have heard
+of the YouTube channel, 3 Blue 1
+Brown? Whoa. OK. I did not realize. I'm going to have to call Grant.
+Grant Sanderson, who is the
+creator of 3 Blue 1 Brown, and I
+were undergrad drawmates. He lived in Frosoco. I lived in Uj. There were four of us
+who were good friends.
+And then we drew into
+Crothers together. Yeah. Crothers.
+But Grant and I have stayed
+in touch over the years. And he came by. He crashed over at my house
+for the last two days,
+and he unfortunately had to
+fly out this morning at 6 AM. But, we're talking late
+into the night last night
+about what would it take to
+create a truly world class
+educational, learning space. Of the kind, 3Blue1Brown
+does for science and math.
+But for anything. And it was so clear to me, while
+talking to him, that what's unique is his brilliance of
+how and his taste for what
+is the right way to deconstruct
+a really technical topic and really understand it
+from the first principles.
+And I would say the true
+magic of frontier research is distilling the insight
+of somebody who's really
+world class at what they
+do and being able to share that with the world. And RL is just one
+technique to get there.
+I think we'll invent
+many other techniques. OK. Making sense?
+Yes. Oh my God guys. Yes. Thank you.
+Now compute. This is the exciting
+stuff for me.
+I'm a computer nerd. I'm an infrastructure nerd. As I talked about
+earlier, I studied both economics and computer
+science and statistics
+and bio-informatics. And I love the intersection of
+multiple domains and compute and infrastructure is
+really where a lot of that
+comes together. How long do we have? A quick time check. 30 minutes.
+OK. Where's Anthony? Anthony's last year. Dice, can you keep
+me honest and give me a heads up when we
+have 10 minutes left?
+OK thank you. So, what is the big
+idea with scaling?
+It's that scaling
+works predictably. Capabilities scale
+predictably with compute.
+This is a set of
+public estimates that overlay Anthropic's revenue
+over the last four years.
+Correlated with the amount of
+compute that they brought up at the company. What do you notice?
+Anyone notice something
+about the shape of the curve?
+Exponential. Every time. I wouldn't even go, I
+wouldn't go that far.
+I wouldn't say it's
+exponential actually. It is correlated strongly
+with the compute.
+It's predictable. Every time the company
+brought up new compute,
+roughly 60 or 90
+days later, there was a capabilities jump
+and then a revenue jump.
+That is quite special. Dollar in, dollar out,
+dollar of compute in,
+dollar of hard assets. Land, power, shell, which
+in the financial markets, usually trade at 3
+to 4 times revenue.
+Being turned into a dollar
+of software revenue, which usually trades at
+30 to 40 times revenue.
+From a systems perspective,
+what's going on? We have developed
+a predictable way
+to transform one input
+into another, predictably,
+that humanity considers a lot
+more valuable than the input. The output here is
+roughly 10 times more
+valuable to the world, to
+the markets than the input. Remember, this class is
+called Frontier Systems?
+We stopped calling it Security
+at Scale and Infrastructure at Scale for a reason,
+because we are now in the full stack rewrite.
+And I need you guys to
+start thinking up and down the stack, not just as
+engineers, not just as
+or computer scientists
+or electrical engineers. I need you to start thinking
+like full stack thinkers.
+Think about the capital markets. Think about the business. Because if you want to keep
+sustainably doing research at the frontier, you've got to
+run the whole loop, run it back.
+So what's an example
+of that in production? If you look under
+the hood Cloud Code,
+these are commits that the
+agent has been making publicly on GitHub.
+Beautifully correlated
+with the compute buildout. So this is not just revenue. Somebody asked, I think
+last time, Anj, is
+this just like revenue pumping? This is real usage. Sure over here there's
+probably some verbose cloud,
+commits, overeager commits. But by and large, this trend
+has been pretty reliable
+over the last four years. And so even if you
+took revenue out and you just looked
+at usage, this
+is very real fast growing
+exponential usage in coding.
+For this reason,
+what I've called the Great Transition
+in Infrastructure,
+started last year. Once this predictable
+scaling, not just
+of capabilities but of revenue
+of this infrastructure trade became legible to
+the capital markets.
+Everything changed. Over the last three years, the
+five largest tech companies
+have decided to spend more on
+infrastructure, land, power, shell, than they have in the
+preceding 30 years combined.
+Last year, I think,
+spent $300 billion. This year they're going
+to spend $600 billion. Next year, they've announced
+in their earnings reports,
+they're going to spend
+$1.2 trillion on CapEx. These numbers are kind
+of hard to fathom.
+So what happens? What happens when all the
+big boys start spending?
+What do you do?  Step one. Acknowledge reality.
+For the last four
+years, I have lost count of the number of
+times people have called me
+and said, why are you spending
+all this time on compute? It's a commodity. Just give the
+company some money.
+They're going to be able to
+rent from GCP, AWS and so on. That's how the world works.
+Not quite. This is a chart that
+we've been aggregating at AMP of GPU rental
+prices quarter
+by quarter across a
+number of estimates. We have an internal
+system we call the AMP grid, whose job it
+is, to try and understand
+what's going on
+in infrastructure and try to forecast
+intelligently so that our teams and our
+companies that we work with,
+can get a bit of
+a empirical view on where infrastructure
+is going.
+What do you observe about the
+price trend of H100 prices? A chip that's over
+two years old.
+Over the last 90 days.
+Somebody come on. Yes? Thank you. Going up.
+It's pretty simple. Anybody. Who's told you
+chips or commodit,
+should probably get a
+phone call from you, and ask them what
+they think about this. Because chip prices
+are not going down.
+They're going up.  Two years ago, when I was
+calling friends at Clouds Up
+and trying to rent
+them for our teams, the average H100 price
+per hour was $1.73.
+This morning.  I got a friend message
+and say, can we give her
+a quick round of applause?
+The reason I'm doing
+that is because you're going to be thanking him later. Is your chief compute
+intern for this class.
+For your final projects, when
+you need compute credits, he's going to be
+provisioning them for you.
+And so if you have any bugs and
+so on, please don't come to me. Go to who are also married.
+And I think met
+at Stanford here. Been married longer
+than Viv and me. were our undergrad friends,
+and was my master of rituals
+in Aksai. Which I pledged mostly
+to be able to date. Viv OK.
+And hes my co-founder at AMP. So you can bother
+him anytime you want. This morning we had a
+founder who's raised,
+I think $700
+million, $1 billion. I wish I could show
+you the screenshot.
+Said we're in a compute crunch. Yes. Need H100s ASAP.
+How many do you need and when? Take them right now. Price not a problem.
+It's a good time to
+be a drug dealer.  This is a fundamental
+assumption the entire industry
+has been built on. That chips are a commodity. All chips depreciate. Entire publicly traded companies
+are running on this assumption.
+Meanwhile, here, ground
+0 in Silicon Valley. I can tell you it's a very,
+very different picture that's emerging.
+So what does that mean? I like to look at history
+to get clues about where
+the world is going to go. And I'm starting to realize
+that we've seen this before.
+We've lived through
+cycle after cycle of the invention of new
+infrastructure, general purpose
+technologies, and
+then you invent ways to turn that technology
+into useful products.
+Steam engine. Make cars, make shoes,
+whatever it might be. And that results, in
+what is often called
+the Golden Age or
+the Gilded Age, where few people who start
+hoarding those resources get to profit at scales
+we've never seen before.
+And I think that's
+roughly where we are relative to the
+Industrial Revolution.
+So what happens next? I said, let's look at the
+history of infrastructure
+for some clues. This is the econ nerd
+in me coming out. But I promise we'll bring
+it back to computer science.
+I just thought I'd pull some,
+I asked our friend Claude to pull some charts together. So if there's some
+wrong numbers here.
+I'm not to blame,
+though I guess I'm not following my own rules here. But with steel 1867 to 1895.
+There was, if you notice
+this increase in prices,
+then there was
+this panic of 1873 where there was a lot
+of hoarding of the steel
+and prices were going up. Then suddenly there was a panic. Oh, the steel actually
+isn't worth very much. We hoarded too much steel.
+Suddenly the prices collapsed. Super annoying for
+everybody involved.
+Companies go down. People are backstabbing
+each other. Markets up and down,
+wars are being fought.
+Blah, blah, blah. Eventually, as a
+society, we get together and say, OK, this isn't good. We don't want panics.
+We want stable
+production of steel, stable consumption of steel. Let's figure this out.
+And that's what results in
+this plateauing of steel.
+Same with fiber optics. I'm sure everybody here is tired
+of hearing the word AI bubble. Everybody's asking about
+fiber optic overbuild and all
+these companies like Cisco,
+Lucent, Nortel, WorldCom are these chip
+companies the same?
+Why? Because all the
+economists, all the people writing op eds in the
+Wall Street Journal are just looking at
+all the same data.
+Prices go up and then come down. It's a bubble, boom,
+bust, blah, blah, blah. Same thing with DRAM.
+Very violent
+semiconductor cycles. Memory was invented,
+DRAM was invented.
+People go, OK, this
+is really important for personal computing. People start hoarding it.
+Then something happens. Usually it's a panic. It's some usually, honestly,
+it's not something that big.
+It's some stupid news
+or some world event. There's always world
+events happening,
+but it triggers a panic. And that results in
+a self-fulfilling sell off of infrastructure,
+stocks, assets, supplies.
+And then you get back
+up when people realize, no, actually, there's inherent
+valuable technology with this. There's new capabilities here.
+We can do something with it. And then you either
+get another rise or you have a stabilization
+of that resource.
+This is the Baltic Dry
+Index, with shipping. Same thing. These slides will be up. I'm not going to
+bore you with it.
+Uranium, when we were living
+through the nuclear energy boom of the 1970s.
+Same thing. And often what happens. And with uranium,
+this is very clear.
+You have the intervention
+of the government to allow the stabilization
+of that resource.
+And so if you look
+over and over again. And this is our friend the
+H100 GPU that we talked about.
+Prices were dropping after
+the chip came out in June, all the way to August of 2024.
+And since then they've
+steadily been rising. This is actually a bit out
+of date, as they're back up. So what does history tell us?
+One infrastructure
+does is cyclical.
+So at least we've
+got some clues. Hopefully unless this time is
+so different, which it may be
+and which is what I would
+encourage you to quiz our speakers about,
+because many of them are at the frontier
+of these markets.
+Hopefully we as a
+society can figure out how ideally we just skip the
+whole boom and bust thing.
+It's not fun for anybody. But assuming that we're at
+the start of another panic run
+on compute, the
+question, of course, is how do you get to the other
+side as fast as possible?
+So we can all start building
+useful frontier labs and projects without having to
+go wait at around the corner
+and bother Larry and
+Sergey for compute. Now the usual timeline.
+If you just look
+across the digital era the internet and bandwidth
+build outs between these cycles
+is about three years, 2.8 years. For physical infrastructure
+it was 6.3 years.
+And my best guess is that and
+this is the thing about AI that's so novel. It's a combination. AI scaling is a
+combination of massive,
+you have to marshal
+massive physical resources like land, power,
+shell, chips to produce
+this very digital thing
+called software revenue. Intelligence is bits.
+But the production is atoms. Those worlds don't
+like colliding.
+And that's what's new here. And scrambling and
+confusing a lot of people is how do we actually coordinate
+these two things in a way that's
+stable, reliable, and so on. The central question, of course,
+is how do we get compute?
+Or is compute rather
+just a commodity? That's the tension we've been
+talking about over the last 15
+minutes, is compute scarcity. Is it something where
+all of you should be spending your time wondering,
+should you be making chips?
+Should you be making more,
+better, interconnect? Or should you be spending
+time on distilling
+your aesthetics, your
+creativity, your intelligence? 31 blue, 1 Brown, into
+how to teach the world
+new kinds of science
+and math and physics. That's the core tension.
+Good news is this
+class covers both. So for those of you who
+are electrical engineers and want to go into chips,
+you're getting that exposure.
+And for those of you who want to
+be frontier model researchers, you're going to
+get that exposure. And you can decide, OK, we're
+not here to decide for you,
+but here's my view on it as
+one participant macro today.
+Unlike electricity or coal,
+compute is not fungible. Electricity is fungible.
+Megawatts or megawatts
+or megawatts everywhere. Pipe into a grid. You get them out. It wasn't always
+the case, and I'm
+going to talk about
+that in a second. But today compute
+is not a commodity. The prices are rising and
+they are not fungible.
+This chart shows that
+there's varying prices for different chips. Forget chips from different
+companies like AMD and NVIDIA.
+Chips from the same
+manufacturer are not fungible. The H100 is different
+from the GB200 which
+is different from the B300. These numbers may not
+mean anything to you. That's what I spend all day
+talking about with my research
+teams. So number one, the
+problem or the indicator that compute is not a commodity
+is that compute is not fungible
+today. And two, forecasting
+compute at the micro level,
+is very, very hard. Unlike electricity
+where we've developed pretty stable mechanisms for
+how to forecast our consumption,
+barring hurricanes
+and so on there. We're generally like,
+we have power here. I grew up in rural India,
+in a boarding school called
+Rishi Valley, and we used to
+have power outages roughly once in the summer, like
+every other week.
+Today, luckily, I think they've
+put a transmission, like they built a backup generator there. But in most parts
+of the world we've
+had stable forecasting
+of energy and therefore the stable production of that
+energy and supply for what,
+at least 75 years. That's not the
+case with compute.
+Because inside of
+these research labs, one team finds it very hard
+to reason about their needs.
+Training is a spiky thing. You think about, OK, how do
+I create a new capability
+like a frontier
+model for coding? You take an algorithm, you
+play with it on small scale.
+If it starts working,
+then you spike up for your hero training runs. Inference when you
+deploy your chatbot.
+Turns out a lot of people,
+especially if your chatbot is deployed in the US. A lot of people use
+it during the day.
+No one's using it at night. Inference is cyclical too. And so we're in that
+part of humanity
+where, not only is the most
+valuable input a production of intelligence,
+not fungible, it's
+also super hard to forecast. And as a result, we have those
+hoarding cycles going on.
+Remember I showed you those the
+big boys buying up as much land power as they can over the
+next four years going, look,
+there's a pretty reliable
+trade we can make, for hardware to software revenue. Not sure which
+research, which model,
+which breakthrough
+will actually do that, but we might as well
+just buy it all up.
+So the question I spent a lot
+of time recently thinking about, and I think you guys
+should, for those of you who
+are interested in
+infrastructure is what did it take in history to turn this
+scarce, monopolized production
+resource into a productive,
+accessible commodity
+for everyone who's working
+or innovating in the field? And my view is, again,
+history tells us
+that there's two
+key things you need to solve the fungibility
+and the access problem.
+One, you need
+standards AC/DC right
+TCP/IP the standards that we
+convene on over and over again to say this is
+infrastructure to be stable.
+Let's all agree on a standard
+format for this infrastructure to be produced in, so
+we can all consume it
+no matter where it is. And the second is
+you need institutions to enforce those standards,
+because inevitably humans
+are misaligned at some
+scale, and somebody needs to coordinate and align
+human beings to adopt
+those standards at scale. And that's roughly
+where we are right now.
+So what makes a
+commodity fungible? It's pretty simple commodity. This is all, how many
+people have taken Econ 1A?
+Oh, wow. OK. I've got to do some
+econ assignments, too. For those of you who want
+to work at the frontier.
+This is a pretty standard
+textbook definition of a fungibility. What makes a commodity fungible?
+Commodity means a common unit. It needs a standard
+delivery interface. It needs interconnection and
+pooling, needs metering, control
+and settlement. And the buyers can substitute
+one suppliers unit for another.
+OK, you should really
+understand this definition if you intend to train any
+kind of frontier models because this is
+not the case today.
+So this is my point. Technical standards and
+fungibility don't come easy.
+They need institutions
+to enforce them, to reallocate away power from
+those who benefit from hoarding,
+and instead prioritize
+the public benefit. That's what we need more and
+more of in these infrastructure
+cycles. Is somebody or some
+group of people need to start stepping in
+and saying good, for you.
+Great. You have enough compute. Those folks over there don't.
+Let's pool. And let's figure out
+an optimal allocation of this resource across
+society, across a country,
+across the world. That's what we call
+the public benefit.
+Yeah. 10 minutes. OK, perfect. I will try to zip through this. We're almost at the end, so
+the punchline is pretty simple.
+We are in the
+pre-standardization of compute era. If you just look at
+all the previous cycles
+railroads from 1886. Electrification in 1907. Telephone, aviation,
+internet, semiconductors,
+new general purpose technology. Huge explosion in infrastructure
+needs usually consolidation
+amongst three or four players. Sometimes industries
+step in and self-regulate and they come up with standards
+if they can get along.
+Other times a government
+or an institution has to come in and say,
+these are the standards.
+And we're at that moment
+roughly in history for compute.
+So food for thought
+for this quarter. This is your assignment and
+there'll be some readings. But I'd like you to keep this
+at the back of your minds.
+One, what will it take to ensure
+a peaceful transition on compute
+over the next couple of years? And two, what is
+your part in this?
+You can be a part of this
+change because remember, I said at the start
+of this lecture, you are extraordinarily lucky to
+be alive at this moment in time.
+It may not be clear to you. And it's easier to connect
+the dots in hindsight.
+But think of yourselves
+not just as students, but as active participants. And part of the goal and design
+of the project this quarter
+is to try to make you
+more and more active participants in this stack. You can blog, you can
+tweet, you can write,
+you can share your thoughts
+with the world on what are the standards you wish
+emerge so that your job could
+be easier. And hopefully,
+some of the people in this room who
+are going to come
+talk to you, who are running
+many of these institutions who can help evangelize
+these standards,
+adopt them, coordinate them. We'll hear from you. Cool.
+All right. That's all I've got. I have a bonus. This is from last year.
+This is a screenshot
+of RTX 5090 prices in USD over the last 18 months.
+Who knows what RTX 5090 is? OK, cool. Some gamers in the audience. This is NVIDIA's gaming chip.
+It was also the grand prize
+for the best project last year when Jensen came by.
+He signed five 1590s. I think this is whose team made
+a really cool gaming product
+and pretty valuable chip.
+So I'm not going to ask Jensen
+this time for more 1590s because they're a little bit
+more valuable this time around.
+But we'll see. Maybe there'll be surprises. OK thank you guys.

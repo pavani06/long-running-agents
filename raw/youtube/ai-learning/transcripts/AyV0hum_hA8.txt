@@ -1,0 +1,360 @@
+What's good everyone? In today's video,
+we'll be talking about Omnien and
+introducing this feature. This was
+launched in data and AI summit by the
+CTO of Mate. And this is a very
+prominent tool for anyone who's very
+heavily using agentic coding tools or
+any teams that are using it. So, what I
+wanted to do today was first talk about
+what are some of the challenges that do
+exist with agentic coding especially at
+scale when you're going from just a
+prototype to actual like production
+grade with multiple people using
+multiple coding tools. Two, how does
+Omijen kind of solve it? what are some
+of the goodies and features that come
+with it. I won't get way too deep in
+terms of all the kind of sub features
+that exist within it, but at a high
+level, we'll introduce what it's for and
+what are the different tools that you
+can use within it. And then three, we'll
+get hands-on as always and just showcase
+a simple sample that I use. So number
+one, right, in terms of the challenges
+itself that exists within agentic
+coding, it's that it can become very
+isolated
+and it's difficult to collaborate.
+And I'll explain all these in a second.
+And it's also very costly if not kind of
+guard in if guardrails aren't enforced
+properly within it. And the reason for
+this is in reality in many kind of
+production settings many software teams
+are using a multitude of kind of coding
+harnesses. They might be using quad
+code. They might be using openAI agents
+SDK for example for something else. You
+might have codeex whatever else you're
+kind of dealing with. Maybe the Gemini
+API. just many different kind of tools
+that you're using for different tasks.
+Maybe you're using cloud code for actual
+code generation. Maybe you're using
+codeex to review. Maybe you're using
+Gemini for some sort of kind of image
+generation in terms of architecture
+diagrams. And maybe you're using the
+OpenAI SDK, right, for maybe you're
+authoring some sort of documentation
+based off the code that you've
+generated. The problem is right, you can
+imagine this already gets very tricky
+even with one person. You have multiple
+different tabs open, multiple different
+terminals. You're jumping back and
+forth. Sometimes you're manually copying
+and pasting the output from one agent um
+or harness into another and it becomes
+very very difficult to have this as a
+consolidated workflow and then on top of
+it let's say you're sharing this or
+you're kind of pair programming with
+someone. How exactly do you share what
+this agent is generating in live
+especially when you have multiple
+different sessions and multiple
+different types of AI tools that you're
+working with? What Omni kind of does is
+in terms of what it's trying to solve
+for is it gives you a meta harness. I
+know harness is everyone's favorite kind
+of buzz word nowadays, but you can think
+of this as a supervisor agent almost to
+simplify it a little, but that's the way
+I envision it. You know, I'm not the
+best with vocab if you've been on this
+channel. And what it does is it lets you
+kind of consolidate all of these into a
+singular workflow. So maybe you have
+your cloud code that you define and
+everything we'll see soon is in YAML
+files and this is meant for coding and
+then you can point something right such
+as maybe the OpenAI SDK and say this is
+for synthesizing documentation by
+reading the code that's been generated
+by cloud code and it lets you kind of
+stitch these into a consolidated
+workflow and have this all right in a
+more central place and the supervisor
+basically will decide which subh harness
+or sub agent do I use for what use case
+and how can we seamlessly kind of feed
+the outputs of maybe something into the
+input of another harness rather than
+manually doing that itself for us. So in
+terms of development life cycle whether
+it's individual or as a team it gives
+you a lot of kind of consolidation and
+centralization of all these different
+agents that you might be using because
+in reality a lot of these different
+agents or harnesses can be used for
+different things and in production
+settings you're often using more than
+just one of them in a software life
+cycle. Now the other kind of challenges
+we talked about right in terms of cost
+what it does is it also adds something
+known as guardrails and within these
+guardrails you can add these different
+policies basically where you define
+different actions within these policies.
+I butchered the spelling there. Um let
+me rewrite that there. And if there's
+also a cleaner notion page with more of
+these kind of notes written out down
+down below in the description as well if
+you want to follow along there. And here
+within these policies you can define
+things right such as budget. So maybe
+you say for this sub agent or harness
+give an alarm when it's greater than
+dollar five. You can also define things
+like tool calls. Maybe you want to cap a
+certain sub aent for that session to a
+maximum of let's say 12 tool calls. And
+then you can also add things such as
+human in the loop for approval.
+And what I mean by this is right let's
+say you have some sort of action where
+you write to a certain directory. maybe
+you want to maybe stop and ask for
+approval until there's human- based
+approval from the user. We don't want to
+execute this. So these guardrails kind
+of enforce that and that's where you can
+track cost as well. Um and make sure
+there's proper alarms set for anything
+you might blow through because when you
+do have multiple agents a big challenge
+or worry, right? especially if you're on
+your personal environment with your own
+API keys or things of that sort is like
+we don't want to blow the cost and
+iterate and continuously call something
+and not monitor that. And that's where
+you can also use something like data
+bricks uni AI gateway where if you use
+the foundation models behind Unity AI
+gateway to kind of power some of these
+different coding harnesses you do get
+that governance and cost angle but
+either way always set the policies
+around the budget and the tool costs
+that you want to enforce. So after a
+certain while if you want to stop
+calling the harness if it's not
+generating what you need set those guard
+rules there for both the orchestrator
+and the sub agents depending on how fine
+grain you want it to be. Now the final
+thing it also addresses is you can share
+sessions and we won't see this today cuz
+I'm obviously not with someone live
+right now. Maybe that would be a cool
+video idea but you can share sessions.
+So if you want to kind of sh showcase
+any active agents you can grab that kind
+of session URL and showcase that or
+share that in a team. So that by that
+way you can kind of see what the agent
+is actually generating in live what
+exactly is happening. And this is where
+you can really collaborate in a real
+kind of software engineering kind of
+setup um with different teams. And this
+is honestly maybe a kind of glance into
+how software engineering or
+collaboration will look. But let's maybe
+put all this into action a bit or make
+it make a little more sense by looking
+at some of what this setup entails. Um
+we'll come back to the CLI in a second.
+You can start a session basically after
+installing Omnien. Um the setup
+instructions are in the read me for that
+basically. But with the CLI command, it
+will start up a UI. But even before we
+get there, I wanted to come to our code
+real quickly. And if we see in this repo
+that's linked down below, you can ignore
+the app and marketing. These are just
+the assets that are generated basically
+by our coding agent um that we're
+working with. And here these YAML files
+are really the ground source truth that
+we're actually dealing with in terms of
+everything. So for our orchestrator
+supervisor, if we come here, this is the
+one that determines kind of your
+execution flow or which sub harness or
+agent to hit where. We see here this
+executor also has a harness powering it.
+We use a cloud SDK. You can think of
+this as the brains behind the
+orchestrator. Um, and it basically kind
+of delineates and synthesizes the output
+of the different harnesses that you're
+dealing with. And now if you see here,
+we have a system prompt and it has
+access to two different sub aents or sub
+harnesses, whatever word you want to
+call it there. The idea for today's
+video at least is I wanted to tackle a
+use case that I often actually use for
+this channel. I generate code using
+cloud code, but then I also want my kind
+of YouTube description or my notion
+summaries generated for me just so I
+have something to work with. Then I can
+fine-tune and synthesize that, review
+that myself. I promise it's not all AI
+generated. But if we see here, that
+basically is the workflow we have. We
+have a coder that cloud code is going to
+be my harness for that. And for the
+marketer, I'm simply just going to use
+the OpenAI SDK. So think of workflows
+like this for where you can maybe use
+kind of like your this meta harness
+capability where you have multiple
+working together. Here in this
+supervisory though we basically define
+that we explain when to use what sub
+agent for. That's what our system
+prompts doing. But if you see here
+there's also a guardrail section that
+you can work with. And this guardrail
+section specifically for certain OSbased
+tools I want you to ask and check with
+the human before executing. So any this
+is basically enforce human and loop gate
+as you can see in the comment. any kind
+of actions related to creating files and
+things of that sort, I want you to check
+with me. And obviously, you can tune
+this for basically kind of whatever
+policies you need here and add whatever
+budgets or things that you might be
+working with. Now, if we see our sub
+agents, it's more of the same that YAML
+setup. If we see for our coder, we have
+our cloud native, which is our cla code.
+You can see the omni documentation for
+how to delimmit which harness is what.
+We have that for executor. Then we have
+a prompt that explains it. And
+similarly, you can have different types
+of guardrails here as well. Um, and you
+can make these more fine grain. This is
+once again just a prototype. Same with
+Marketer. All that is really changing is
+this executor is going to be GPD40 via
+the OpenI agents SDK harness. And then
+we have a prompt for that. And then you
+have your guardrails. So it's much of
+the same kind of process um that you're
+working with. The CML file really
+contains all the kind of goodies or
+configuration really behind what you're
+leveraging. Now if we come into the CLI
+and you click off omni run and I've
+already ran the session here because I
+didn't want you to have to wait while
+all this code churns and the description
+churns we can come here and we will see
+in this UI neatly you have both terminal
+access and you have chat access to be
+able to interface with this depending on
+what you want to leverage. In the past
+maybe you had a chatbot like the opening
+like chatgbt where you're pasting
+manually like some the description and
+you're like generate um a summary for me
+or things of that sort. We have
+everything kind of unified in a central
+place here and importantly we have our
+agents delimited clearly here along with
+our orchestrator configuration as well
+and this is the kind of source code that
+has been generated there and if we see
+here for this demo this is basically me
+from an earlier session that I was
+essentially leveraging we'll see here I
+said build a simple stream of chatbot
+whose inference runs on data bricks
+foundation models API with opus 46 and
+then I also say propose a few YouTube
+title directions x y and z basically and
+here it understands and what are the
+different sub aents or harnesses it has
+available. It uses a coder which is
+claude code essentially in the
+background and then the marketer after
+in that sequential order because that's
+what it understood or synthesized and we
+will see here that will generate like a
+readme file and different kind of
+resources there. So if we come here you
+will see within marketing I have my repo
+summary because it basically reads that
+app um readme.md and generates this and
+it also has a YouTube description kind
+of similar to what you see down below
+which I'll obviously fine-tune and just
+as well. So that simplifies my workflow
+for me because I have everything in this
+central kind of UI and terminal where I
+can work with everything. Let's say I
+want to wire this up some other things.
+Maybe I want to use Gemini for my
+thumbnail generation. Those didn't
+magically get better because of my
+editing skills. It's cuz the AI got
+better. Um if you couldn't already tell,
+but if I want to add that, that could be
+another part within this harness. And
+that can also once again be centralized
+in this singular place and enforced with
+the policies and guard rules that I need
+basically. So that at a high level is a
+pretty 101 intro to omni. It really
+simplifies this entire kind of vibe
+coding life cycle or agentic coding life
+cycle. And for more mainstream like
+realcase like kind of development, you
+can use the advanced features such as
+the policies. You can use the sharing
+sessions um that you can leverage in a
+real team- based kind of setup. So if
+you are agent code and take it for a
+spin um or if your organization is feel
+free to leave any feedback in the
+comments. If you have any questions,
+doubts as well please leave them down
+below. As always hope this video was
+helpful. Um, if you enjoyed the video,
+feel free to leave a like and subscribe
+and I'll be back with more in this space
+and we'll talk more and more about how
+we can use Omiji. And I'm kind of
+excited to turbocharge some of my
+workflows and honestly hopefully bring
+more concepts to you quicker using tools
+such as such as this one. So, thank you
+everyone and have a good

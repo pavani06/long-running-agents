@@ -1,0 +1,350 @@
+getting the prompt right is hard
+especially if you want the prompt to
+deliver consistent results at scale but
+what if you can control the prompt to
+get specific output structure and get a
+general image and the charts with just
+one single prompt there are few Advanced
+proper engineer Frameworks that I found
+extremely useful but not enough people
+using it and that's what I want to talk
+about today the first one I want to talk
+about is called guidance it is an open
+source framework initially introduced by
+Microsoft and got more than 12 000 stars
+on GitHub fundamentally it is a
+framework that allow you to program the
+prompt to get specific output it gives
+you very specific control of how the
+final output structure should look like
+and also allow you to construct The
+Prompt with for each Loop Define list of
+candidate answers and even insert if
+conditions inside your prompts so this
+allows you to configure the final output
+very easily to get started you can open
+Visual Studio code and then we can
+create a jupyter notebook that we
+install ipy and B so firstly we will
+install the guide lens and open AI
+package and we will import the guidance
+and then to Guidance the large language
+model with openai text DaVinci you can
+also use GPD 3.5 gp4 or even open source
+model like llama as well but they do
+have specific syntax you need to follow
+and the first thing we will try is
+Define a specific output structure you
+want so you can create something like
+prompt template like how you do in
+launching by creating variable with
+guidance and inside here you will Define
+The Prompt template where I would Define
+one variable with this bubble curly
+bracket and also another double curly
+bracket with special term gen the part
+that you actually want large model to
+creating so the final output would look
+something like this when Steve Jobs said
+without guidance AI would do more harm
+than good with this it allow you to get
+a specific structure output and if you
+want you can even change multiple output
+together so I can add another one
+counter argument and let me run this so
+you can see here the large language
+model actually generates this two parts
+and without guidance framework it's
+actually possible to do manually but it
+will just require a a lot of manual work
+and apart from defining the structure
+you can also restrict the actual output
+the large energy model going to generate
+for example I can ask large knowledge
+model to choose one of the predefined
+answers instead of creating their own so
+I can define a list of options here and
+then create another guidance is the
+following sentence offensive where I
+will give an example and ask it to
+select an answer from the three options
+I give here I'll give you example is
+pretty rude your taco tastes like
+and try to run this so it will follow
+that specific structure and give me the
+answer is yes and here I didn't give it
+any extra prompt about what the answer
+should be just follow the list of
+predefined answers I give and if I
+change this to be something more polite
+like your tacos taste can be improved
+and try it again then it will answer no
+so this is a really powerful way that if
+we want to restrict down the answers the
+large language model actually generates
+in use case like writing email or
+customer response where you still want
+to use the reasoning part of the large
+language model but you already got best
+practice and the other part I want to
+talk about is that you can also set up
+Advanced logic like a if condition for
+example in the same use case where we
+asked large language model to classify
+if the user response is root we can
+actually create a workflow where if the
+answer is rude then it will trigger
+specific typo response if the answer is
+not root then the system will generate a
+response like normal the way we will do
+that is we'll still use a slap and give
+the response name root and this
+basically means we will have a variable
+called root that we can use in other
+parts of the prop and then we can create
+a if condition if root is yes which is
+from the predefined condition we give
+then a system will say please be polite
+but and if root is no then a system will
+generate answer so let's try this okay
+with this user response your toggle
+tests are shared the large large model
+detail it is actually root so it
+triggers this workflow where a system
+will say please be polite but if I
+change to something like your taco
+tastes too salty it'll be showing the
+answer is not rude then it actually
+generate a proper response so this is a
+way for you to achieve if condition
+larger in your final output and these
+are the value costs usage as well for
+example I probably don't want this part
+in the middle to be showing in the final
+output because it's kind of internal
+logic so I can actually hide this from
+the final output by creating block to
+wrap this part with attribution hidden
+equal to true and if I run this again
+then the part in the middle will be
+hidden so this is how you can achieve if
+condition and I think if condition is
+probably one of the most powerful use
+case for guidance those are just a few
+functions that guidance have and they
+are actually more things that you can
+learn from their documentations but with
+those basic building blocks you can
+already create very Advanced props for
+example for the use case when I want
+light language model to generate emails
+one problems I always face with is that
+sometimes I do want to use the reasoning
+power of large Range model but I want
+response to be exactly like the best
+practice that I come up with and I don't
+want any creativities around them and on
+the other side I also want to create
+some if conditions there if this client
+is very important then book a meeting
+right away but if it's just general in
+priority then just response like normal
+so to achieve their use case I will
+Define a list of predefined Priority
+First from low to high and I'll create
+one blocks at the beginning to let large
+language model give a priorities and
+then I will ask large language model to
+generate the email response and in the
+end I will hide those two logic blocks
+and showing the email response is
+generated and if the priority is high
+priority then I want to insert this
+specific message to schedule call with
+customers right away with my calendar
+link so that's why I don't want it to be
+created because if you change the link
+it won't work so let's try it assume a
+customer complaint come to my inbox your
+server is so terrible that I want to
+refund this is kind of high stake
+situation that I wanted to schedule call
+right away so you can see here it
+actually generate a message also insert
+the predefined message with my calendar
+link but if I change to be something
+more soft like what features does
+webflow have but Wix don't have then
+this will show a different message and
+won't trigger this specific calendar
+link and on the other side I can also
+use guidance framework to let large
+knowledge model generate real-time hard
+for me with service like quick chart and
+if you don't know what a quick chart is
+it's a open API where it allowed me to
+generate charts in real time by passing
+on the chart data in a URL if I can get
+a URL looks something like this then it
+will generate this chart on the Fly
+which means if we can get large energy
+model to turn a natural language query
+into a data structure like this then we
+can generate charts in real time and
+here we will use another function from
+guidance which is ability to trigger
+custom functions inside the problem so
+the way we will do that is I will give
+the prompt a few short examples so that
+it will learn if the input is this it
+should generate Json data like this and
+once it generates Json data I will use
+this function pause chart link to put
+together a URL and displaying markdown
+so the way I would do that is I would
+Define this function that will pass on
+the Json file into a URL linking
+markdown and then I will Define a few
+short examples here and then I'll create
+another Guidance with this prompt you
+are a world-class data analyst you will
+generate chart output based on the
+natural language which in here I have
+this 4 inch wrapper and I will run this
+q a pair from the predefined list and
+once they finish the free of sharp
+prompts I will insert the actual user
+query and I'll see large language model
+to generate chart data and all this
+logic will be hidden from the final
+output because I wrap under this block
+and the final output will be hello here
+is the charter you want and the result
+will be calling the customer function I
+defined above with the variable chart
+the large language model created which
+is Json data and once I did that I can
+try to use this function create a pie
+chart showing the population of the word
+by continent it will generate this
+response and it is in markdown format so
+if you paste this in a markdown preview
+you will see this is results a
+population breakdown by continent chart
+that generated in real time and if you
+want I also include a streamlined app
+where you can visualize and test those
+three dots better and with the same
+shred of salt you can also use large
+language model to generate image
+straight away with service like
+pollinations and if you don't know what
+pollination is it's also another open
+API they allow you to create an AI image
+on the Fly for example I can do
+image.pollination.ai prompt a cute girl
+and this will generate this image right
+away and this allows us to build a use
+case like if I give a story idea it can
+generate a whole story as well as a
+proper illustration so I can do
+something similar where I will have a
+logic block to ask large language model
+to generate story based on my story idea
+and then have another block to generate
+the image linking markdown based on the
+story and in the end I'll put them
+together and if I try this again it will
+generate a proper story from a single
+prompt and also generate proper
+illustration as well so this is a
+guidance framework I think it's very
+powerful even though it is still a bit
+buggy and the lack of documentation but
+it is quite powerful once I get it I
+have attached all those example codes I
+show you here in the description below
+so feel free to try it out even though
+guidance is a very powerful framework
+but at the end of the day it will be
+still the iterative process you will
+still need to spend a top time fine
+tuning and iterating your prompts to get
+the best results but there are a few
+other community and open source projects
+that I think can really speed up the
+process here one of them is flow GPT so
+flow GPT is one of the biggest prompt
+library and probably one of the biggest
+prompt engineering community as well I
+always go up to flow GPT every time when
+I try to build some specific prompts
+because it's a wide range of collections
+from marketings programming so for
+example if I want to create a prompt for
+SEO blocks I can just come here see what
+are the prompts that Community has voted
+most and I can click on that take a look
+about the problems that other people
+create so this provides me a much better
+starting point and I can also get a
+preview about what the readouts will be
+this is where I learned a lot of tactics
+here for example I actually learned
+about permissions from The Prompt here
+because someone actually built a full
+text-based adventure with just one
+single prop which is super impressive so
+I definitely recommend to use this as a
+prompt Discovery tool at the rare
+beginning and on the outside there's
+also another project called GPT prompt
+engineer and the concept is pretty
+simple it basically asks GPD to generate
+prompt and also use GPT to evaluate and
+test the quality of prompts so it refers
+to use gpd4 to generate a set of prompts
+based on the goal you give it for
+example I can use GPT prompt engineer to
+generate prompt for writing SEO blog
+posts and it will use gpd4 to generate 4
+or 10 different prompts and then it will
+start using gbd4 as evaluation machine
+to do the testing it was starting doing
+20 or 30 rounds of testing across
+prompts and figure out which one is the
+best to be honest from my experience the
+prompts generated by GPD is actually not
+as good as the one set you will come up
+by yourself so I won't rely purely on
+gpe to generate bombs autonomously
+however the part I found is most value
+is actually this evaluation framework
+because normally I will come up with two
+or three different variations between
+the prompts and I want to figure out
+which one gonna performs best at scale
+they're actually someone built a front
+end based on this GPD prompt engineer
+called prompts Royal where you can
+basically get GPT to generate a prompt
+and do the testing and once it finished
+it will show you the evaluation results
+between different prompts and in the end
+give you a score so even though I don't
+really like the default prompts that GPT
+generated but I often use this as a way
+to evaluate different prompts I
+generated so I can manually paste in two
+or three different prompts that I
+created and use this platform to
+evaluate which one is better so those
+are a few learnings I want to share with
+you about problem engineer if you know
+more interesting tactics and Frameworks
+please comment below and let me know if
+you enjoyed this content please consider
+give me subscribe I'll continue posting
+interesting AI projects that I'm
+building thank you and I see you next
+time

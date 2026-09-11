@@ -1,0 +1,275 @@
+over the next decade new AI user interfaces are going to emerge beyond the common chat UI that we're all familiar with so in this episode I will
+be joined by rapael Shad the creator of notion calendar and together we'll review a bunch of Cutting Edge AI interfaces it will give us a glimpse of
+what the future might look like welcome to another episode of design
+[Music]
+review Rafael welcome thank you for joining us today thank you so much for having me yeah talk a little about how you think interfaces are going to change
+in the a age of AI we'll look at some examples in a minute but from a high level what are the differences between
+kind of the say static web-based uh 2D interfaces that we're used to today with where things are going in the future
+sure I think a big difference is that software of today or kind of like up until this point was mostly kind of like just clear things you can point out on
+the screen um that are you know kind of nouns like text forms drop downs buttons Etc and with AI what really changes is I
+think so much of the design of what AI does is kind of more verbs um it's more the workflows Auto Complete Auto suggest um go out and gather some information
+for me Etc and we don't really have the tooling yet to kind of draw verbs on the screen and so that's what's really fascinating how you know this software is now emerging in this new AO World
+awesome well let's take a look at some examples that were submitted by the YC Community the first one that we're going to take a look at here is vapy which is voice AI for Developers
+all right so vapy lets developers build test and deploy voice agents in minutes rather than months and it looks like there's a a microphone icon here where
+we can just click in and give it a try welcome to vapy I'm an assistant that you can talk to like a person so how's your day going going great and it looks
+like this um uh demo and website is really targeted at the developer that would actually implement this technology not so much the user that will EV
+eventually use it your spot on vapy is definitely more geared towards develop who want to integrate Voice Assistant
+capabilities into their apps or phone numbers but hey even if you're not a developer feel free to give it a spin so one of the first things that I noticed
+was that when I was speaking um it wasn't there was no visual feedback um uh making it clear that my voice is
+actually recognized by the microphone um and then similarly when the uh voice was answering um there was no sort of like
+visual indication um that that's what's happening so for example if our laptop was a mute uh we were not sure whether demo is broken or what's going on so
+important I guess to kind of pair multimodal cues um so not just rely on voice um in these type of scenarios where you do have a screen uh on the
+phone that would be a different scenario I think one of the other interesting things to try here is when you're talking to a human um the latency is really important and also interruptions
+and it felt pretty fast and pretty natural when we were conversing I wonder what would happen if we tried to interrupt it would it be able to handle it let's see let's try it and one of the things that I actually do really like
+here is that they always because it's developer Focus they always rendered um kind of like a little label that shows you instantly for each each answer the
+milliseconds of the delay um really kind of building you an intuition you know how many milliseconds feels natural ver it kind of feels like oh I'm talking to
+a robot that's a great point because the latency is the interface in some ways and that how fast it responds to you the
+longer it takes the less it feels like a natural conversation and the more it feels like you're talking to a robot the whole point is to make it seem like you're talking to a human yeah and it's
+almost seems like we're basically talking here kind of like the dev mode um of this technology and so whenever you can and are in this situation like
+what are all the things that you might be able to expose such as kind of the milliseconds of latency kind like think of it as Dev mode versus sort of like
+production mode yep let's try to interrupt her here welcome to VY hi I was wondering if you could tell me what the weather is person so how's your day
+going all right so two things happened one um it didn't pause uh when you were interrupting and then two um it entirely
+missed um your your question when uh when it actually got done with with its own sort of agenda yeah awesome well I
+think my takeaway here is one developer focused number two showing the latency was actually key because that's so much
+of what makes this actually feel natural as a human interface and the voice felt like I was talking to a human which was
+pretty incredible pretty incredible that um you know startups can now have these things that previously kind of felt like a huge company uh needs to build this
+technology yeah it's amazing it's like you would have thought this would be a hundred years away not available today totally great thank you vappy okay next
+up we've got retail Ai and they say supercharge your call operations with voice AI so this is another voice AI um
+what I thought was interesting on this one we can actually try it with live phone calls and having their AI voice
+agent call us and run through uh some of these different scenarios that they have a receptionist uh setting appointments
+lead qualification surveys but I haven't been paying my debts so we're GNA go debt collection here all right and I'll put in my phone number and my
+name and email address submitted wow I'm actually getting a call my phone is
+ringing hi is this Aaron yes this is Aaron hi Aaron this is James from retail
+debt collection company the reason for my call today is to discuss the outstanding balance on your account which is currently $800 this balance is
+pass due have you received our email notification about this oh I'm sorry this is not Aaron this is
+Steve oh my apologies Steve can you connect me with Aron by any chance um you know I haven't seen Aaron for a while he might be on vacation or
+something got it Steve sorry for the mixup we must have made a mistake hope you have a wonderful rest of your
+day all right right I successfully evaded my debt collection awesome first of all latency is is an issue huh that's
+what kind of like breaks the illusion of this being a real person yeah I I think one of the things that stood out to me is like it I threw at a curveball and it
+totally adjusted cuz when I typed in the form here I told it that my name was Aaron and a simple system would just keep referring to me as Aaron throughout
+the entire call and halfway through I told it oh no actually this is not Aaron this is Steve and it referred to me as Steve after that cool yeah so it
+actually learned from the conversation and so like build on that there's room for improvement where you could then not just say like oh sorry I made a mistake
+but actually follow sort of like your cue of you you know knowing um uh Aaron right um but he's on vacation but it kind of like just shut down and that's
+when it started to feel a little bit more robotic and there's clearly kind of like more room for improvement but already like a great first step that I picked that up and again like the voice
+felt incredibly realistic it felt like I was talking to a human I agree with you just the latency was the only thing that gave me a clue that maybe this was not a
+human yeah and one of the interesting things here is that this may kind of be technology used in a first line um of sort of like you know a defense and then
+you can kind of bring a human into the loop um when sort like you know maybe 50% of these calls go through robotically um and then you can bring in
+uh the human for For the Rest like for example you yes absolutely and there's a transcript and and a lot more information that a human could then
+follow up on so this eliminates a lot of the grunt work or you know work that people are just kind of Outsourcing um
+to try to get done um in a in a more automated way totally so you're hinting kind of you know the backside of this product that we currently don't see um
+but you can imagine like really rich UI AI UI that then kind of shows what happened during the call to the um call center operator uh that is a whole other
+side of this this this technology and this company well retail AI this was amazing thank you now let's take a look at some AI agents and so agents are
+effectively um autonomous AI that can go out behind the scenes and can interface with websites it can make phone calls it
+can interact with users um lots of things autonomously and then kind of bring back their findings or complete actions on behalf of uh the business
+right they have a few high level instructions and then just go execute autonomously yep exactly so uh first one we should take a look at here is gum
+Loop 10x your output with AI automation no coding required and I think what they're alluding to here is that when
+you have these agents they're executing autonomously and they're making decisions at each step along the way of
+what to do next and it's hard as a human who's trying to oversee this and making sure that they're doing the right things to monitor that and make sure that
+they're on the right track so this I think is one way to do that which is to show visual workflows which is I think what we're going to get from gum Loop
+here cool let's give it a try let's uh let's try start from a template and we've got one here for web
+scraping scraping the YC directory all right let's try this template and let's begin customizing the template Okay cool
+so it looks like what we've got here is a big open-ended canvas that we can pan around and zoom in on that gives us a
+bunch of uh boxes for each step in the flow mhm and Canabis has really emerged as a really interesting kind of almost
+new document type um that seems to lend itself pretty well to not just kind of for design tools or or kind of brainstorming tools but lends itself
+really well for these sort of modeling these kind of like AI processes yeah it's it's great because it gives us the
+user a visual overflow of exactly what steps the agent is going to take and we can control what it should do at each of
+these steps so for example the first one here is uh it gets input which it says
+specify the batch code like w24 and go get a coffee um so this is
+what what should it ask the user at this step then it combines text where it basically combines it with this URL um right
+here and then it will take that and it will use the web agent scraper to
+execute the URL um to to get all of the data from the website it will then
+extract the data that is on that website combine text put it in a
+list and so you can see all the steps here so one of the things that does pretty well is um using colar um to show
+different type of notes um kind of like input actions um output Etc I almost feel like I would want like a legend
+like which color is what um and then because it is uh canis um kind of having different Zoom levels
+showing different Fidelity so right now we're so zoomed out I can't read any of the small text why not just kind of hide it and make the note almost collapse it
+into just you know in this case a brown Block in this case a Yellow Block to kind of give different Zoom levels different fidelities I think that's kind of one way Um this can really go and
+then here we have uh a pretty linear flow um but the canvas and modeling these kind of like AI ancient decision
+trees gets really really powerful when it isn't something you could just kind of like linearly write in a document like a recipe first do this then do this
+then do this but really the power is in sort of like the multi-dimensionality in the branching um and so for as a starter template to kind of like explain the
+power of this tool to mod these processes I think one that is multi-dimensional would really showcase the power of this yep that's a great point I mean another Advantage for this
+too is that you can just add text blocks kind of next to these as instru instuction so here was a template that that we just pulled down to get started
+with and it's got big text explaining you know if you're going to customize this here are some things that you should consider which is helpful as
+you're just jumping in and trying to learn a product for the first time but I think we're going to see more and more of this canvas interface as we have
+complex workflows that are customizable by users 10 years from now this may be the standard to interact and control and monitor a lot of these agents if they're
+truly everywhere and doing you know so much of the work that we as humans don't want to spend our time doing this is going to be the way that we control it
+yeah and interesting thing is that you know like kind of what what is old is uh is new again so kind of flowcharts Etc probably like chip designers like 50
+years ago they're like oh yeah we used to you know kind of model our things like that and so it's interesting to kind of like see this Paradigm kind of
+getting resurfaced in the AI era so you know we didn't inent invent this today but we're building on a lot of Legacy um and on the Giant on the shoulder of
+giants here yeah and it's always historically been static and it seems like what's new is actually making it interactive yeah awesome thank you gum Loop this is a a pretty incredible
+product and you can tell a lot of attention to detail was paid here all right next up for AI agents we're going to take a look at answer grid answer
+grid has answers at scale and there's a text box here where I can put in some input but it looks like they've got some suggestions for me and this is a really
+nice pattern right whenever you have a free form uh text T box where basically you're expected to prompt um write text
+as an instruction for the llm um kind of the AI engine uh to use as an input having some examples um to just kind of
+like turn examples into buttons where with a single click you can basically fill out uh like a pretty pretty reasonal example is um is something that's you know really good to start yep
+it's hard sometimes you come here and you're like I'm not sure what to use this for and you you're staring at the blank canvas effectively and this gives you some suggestions to make it easy to
+get the value of the product and I would take this even a level further I think it's not just for examples where you know as a demo um but what if you can
+guess or infer from other context of your application like what might be like a good prompt even as you're kind of using the application and then make them
+single click as opposed to just being static examples so get collapsing sort of like suggested prompts into buttons I think is like a really interesting kind
+of dynamic uh uh pattern here yeah I'm about to click on AI companies in San Francisco and there's a lot that happens
+behind this it seems like a simple button but all right so pre-filled it AI companies in San Francisco and wow that's pretty fast okay so I get a bunch
+of uh companies that I'm sure many of the audience has heard of uh open AI anthropic perplexity um and it's got
+some information like uh HQ location and Industry and website URLs um I think what's interesting here is to click on
+the plus button here and we can add something different so let's just say funding raised and basically basically what happened here is we took a prompt
+as an input um and we got the spreadsheet structured data as an output and in the background it went to these websites scraped it assembled this this
+spreadsheet and now we can do is add columns and have sort of the agent go out again not on a sort of like static uh you know set of columns that were
+predefined but our columns like things we want to know kind of putting the human back into the loop yeah and what's cool is it's almost like every cell of
+the spreadsheet gets its own AI agent to get the data that we want which is pretty incredible it's like a spreadsheet on steroids okay let's go
+let's figure out the funding that was raised for each of these companies um so I just put funding raised here um this
+will be a web search um I'll let them pick the format that comes back here um and it looks
+like they give a couple other suggestions like employees and things like that but let's just run this and see what happens cool so you can see each agent working we get the feedback
+in every single cell um curious if they're going to come back in one at a time or all at the same time oh all at the same time was an interesting choice
+of um of kind of like the the Run button was there like this Arrow up um there's probably well first of all kind of uh very interesting choice kind of like oh
+send the agents are like up to the cloud almost um sent them off uh and then maybe as a second point maybe there's some improvement kind of to make make
+this button a little bit clearer like how to actually you want people to click this button basically kind of like Run play Go yep yeah play button would have
+been good too right um what's interesting here is okay the data that we get back is 470 million
+73.6 it feels like it's missing um the unit the unit for the condensed version and maybe that was a setting that I should have added you know I told it to
+pick the um the the data type that was coming back here um but I notice as I click into each of these it shows me the
+answer 6.6 it also shows the sources in line and you can see open eye raises 6.6 billion so that tells me like okay we're
+missing a b but um this is actually really helpful that you can click into each of these and see where it got the information from this is another common
+pattern that we see where if AI is going out and doing a thing how do you know you can trust the results that it brings back you know sometimes it hallucinates
+sometimes it gets the wrong thing and so by having a source closely attached that you can just you know Click on each of these right here you can see immediately
+where the sources came from it helps us to be able to validate and Trust the data that the AI agent is bringing back totally and you know when you Googled
+kind of in the past um you just had a list of websites a list of basically the references or the links and they were your destination but now that you ask
+kind of a chat chat box um and you get the answer back you kind of want to have the links um the references kind of like inlined and I believe it was maybe
+perplexity kind of to to do that pattern first where you had like these little round uh numbered dots right in line with the answer kind of showing you
+which segment um or which which fragment of the answer comes from where and this is a really nice pattern that um is sort of like used here um and it could even
+be used in other context or even be inlined here um I guess in a spreadsheet it works kind of to pull it out into in into its own popover um when you are
+kind of more uh looking for space and to condense it then sort like the pattern of having the footnotes almost directly in the answer is a really really
+successful pattern it's also interesting you know you mentioned before about how um you know we always had flowcharts and these are like modern flowcharts with
+the canvases and it's interesting too that you know a lot of the citing sources in the footnotes is not a new thing that's been around since the
+beginning of books but now it's actually being used in a new way to actually validate and verify information in real time that an agent brings back which is really cool just like an academic papers
+of the past um footnotes you have your references like from which paper which data source you actually draw a conclusion now we kind of see this pattern more and more in software yep
+well very cool thank you answer grid um this is really well done all right so next up let's take a look at another kind of AI interface that I think we've
+seen is pretty common which is you put a prompt and you get some kind of output or action that happens which I think has become pretty common first up we've got
+polyat polyat an AI product designer At Your Service okay very interesting um so you can design and iterate faster with
+AI and get the production ready code and ship faster all right so let's see my first project sure let's start there
+okay so we get the prompt box which is the core element of uh of a lot of these prompt to Output um interfaces that we
+see um it says explain what you want to build and um similarly to um one we looked at before it gives us it looks
+like a bunch of pre-built prompts that are ready to go and it uh seems uh takes multimodal uh input so um we see little
+icons for the microphone uh and even an image so it looks like we might be able to upload a sketch for example of an
+interface and then it will turn it into like the actual thing let's try an intermediate one this says create a dashboard for a treasury management
+software with a floating sidebo uh sidebar with glass morphic collapsible sidebar very specific and super dark orange gradient in the background all
+right that sounds on brand so let's click our tiny little button here at least it's orange at least it's
+orange and Okay so we've got some animations that are um trying to keep us entertained and engaged says at the bottom assembling pixels with tweezers
+so I got some humor in the messages that are popping up um but you know are we going to be waiting 10 seconds or we're going to be waiting 10 minutes here it's
+a little unclear yeah they kind of appear and disappear pretty quickly I almost um for kind of more technical audience um would love to see kind of
+like a log to actually see kind of what's going on under the hood and then also kind of Step by Step just kind of keeping it on the screen um so you kind of see the progress of the machine uh uh
+in the background yeah it's tough to tell you never know um you know cuz because this is one of the main challenges with uh this new kind of
+interface is it takes a long time to generate from a prompt a very complex output like an editable web page that
+can then be safe to code or um a big graphic or a video um you know a lot of times you can go prompt to video and so
+how do you keep the user engaged if it's a short enough window where you can just wait for the output or if it's going to be you know three minutes five minutes
+10 minutes longer than that you know maybe you need a way to just tell them to come back and that you'll email them or message them or something when it's ready and maybe some good prior art um
+to borrow from there is today's uh kind of uh uh meta search engines for flights and they also take a while and they already show you kind of in a low
+resolution some early results and you can always start to interact with the filters ask and more results come in yep okay great um wow this is uh pretty cool
+it looks like we've got some some glass I've never heard glass morphic before but like the glass kind of UI uh I would
+call it that yeah so so actually kind of like the prompt is entirely there were examples for the prompt but it was basically completely free form and I meant not be familiar with some of these
+kind of design terms kind of glass morphic or skoric or flat design or gradient or whatever um and so having
+maybe a a interface here um that gives me sort of like selection and ideas kind of almost like pills maybe these are
+design terms that can almost like you know like Lego bricks can like drag in versus just I need to know these terms and just type them or learn them from
+the examples so there's kind of opportunity to build kind of like a richer prompt Builder yep I think part of the power of these open-ended prompts
+is that they can be anything they can accept any input like glass morphic and it knows what to do like it figured it out it's like good news it can be
+anything bad news it can be anything exactly and and I think the worry as a user when using these interfaces is that you're worried you're going to tell it
+something like glass morphic and it's not going to know what that is and you're going to wait for 2 minutes for it to generate it and then it's it's not going to be the thing that you expected
+and you have to start all over again so that would also be a really interesting uh kind of design challenge um for the output generated what are the things the
+machine actually respected from your prompt and where did it sort of like ignore or struggle with kind of giving that feedback back to the human and the
+prompt maybe with like little squiggly lines or kind of things or with color kind of showing you know what did it index on from The Prompt and execute on
+and what did it sort like maybe your fail if there could be sort of like that feedback loop then it can help the human to refine their prompt and kind of learn
+how to you know interact with the machine and help the AI to figure out what it did well and should keep doing and what it didn't do well and should
+get more data to improve I think what's cool here is like okay this seems pretty interactive it looks like it may oh wow there's even hovers here um so how do we
+now get feedback to this design to improve it it looks like there's an edit button so I guess I can click into these I wonder if I could give it another
+prompt it looked like when you clicked on a um one of the sub elements that you can sort like prompt on a on a sort of like module basis yeah let's see okay so
+I'm editing uh what if I just took this and what if I said okay explain your changes okay so so so make this make the
+sidebar blue mhm run revision okay okay now we're waiting again hopefully this will be faster hopefully it's like an incremental change right where we can
+sort of only submit to Delta and not like do sort of like a single shot do the whole thing over again um not just for kind of to weight but also for you
+know resources um preserve kind of the the existing um design that we did like and did want to turn blue um so let's
+see how I can s like deal with diffs and and for consistency too because you know especially when you're prompting to create Graphics one of the challenges is
+if you want to change one element at a hat on a person it's hard to keep the rest of it consistent that's a common challenge now and so if they're able to
+do this then I I think that that speaks pretty highly yeah so so so any interface designer or technical team kind of figure out the challenge of how
+to kind of add sub prompts or how to only change kind of iteratively um that that that that's kind of like really the
+the frontier it looks like it did it did the rest change or did it no I believe the the rest is is the same here awesome well this is very cool polyat uh great
+work another common pattern uh that we're seeing with some of these new AI interfaces is adaptive uh AI interfaces and why don't you tell the audience a
+little bit about um what that means yeah I think some of the uh adap interface that we see emerge um based on the content of for example an email or
+document the interface then dynamically changes which typically isn't you know static software typically wasn't the case and so here it's kind of like the
+input is the actual content and then the output of the AI llm is then the UI to interact back with that content and so a
+really interesting space to emerge um for kind of like you know looking at the design uh challenges of that yeah it's it's interesting to think about things
+like Microsoft Word right where like the thing that everybody is so familiar with is a billion buttons on the top row because they're never sure which one you
+might need because they don't know the context of how you're editing and with AI now we don't need to show all the buttons we can just show you the buttons that are relevant the challenges of
+course are kind of predictability people love to have like their you know billion buttons and like the exact place and so let's let's have a look how this is uh
+is solved and what the challenges are okay so first up we've got zi and Zuni is building a smarter email app for Founders where you can stay on top of
+your inbox With a Little Help from zi um they've got a demo here so we're going to go ahead and watch the demo and then we we'll comment on that what if you
+could respond to emails as fast as you make decisions with Zuni now you can Zuni makes you faster and more focused by letting you decide not draft your
+responses here in zi my try shows me three important emails it knows I need to act on let's start with the one at the top here looks like I missed a call
+and may want to reschedule on the right hand side I can see responses that zi thinks might apply I'll hit Y to confirm a time let's say
+1: p.m. tomorrow and hit enter to generate my email looks great let's send it and move on staying in control of my
+inbox and ahead of my day okay well one of the interesting things here I think is is this interface on the side where
+it's pulling up the user's email and it's suggesting specific responses to that email based on the content of that
+email it's it's almost changing what the reaction buttons are exactly and seems like what's the right level of abstraction to reply to an email in the
+future so this still makes me kind of process each email just maybe like a little faster but I still have to go do it um if you go like higher level
+abstraction can s like an email inbox of the future just kind of like autopilots do that for me if we go all the way kind of like down the ladder of abstraction
+um we would talk more about s like AI interfaces are more autocomplete and this gets kind of right in the middle sort of like of of the the levels of
+Attraction where you know we process email um there is no draft yet um but there are sort of like predefined
+prompts that are adaptive per email that I can select um I think a really interesting sort of like tweak on that would be what if um sort of like the
+best guest draft for that email would already be sitting in the inbox for me and then I can on a higher level than so
+like text editing I can uh prompt it to change it depending on so like what I as a as a human in the loop actually kind
+of feel um uh the answer should be yep and and I think it's it's interesting that they made these very high level and then when you click on each one if they
+need more information like you click dismiss it'll just go away no other context is needed um the first one here
+it said confirm a call time and the UI actually knew that that we needed input of what call time should we suggest and
+so it knows the next step based on which response you want to give which it's showing you a custom UI for how to
+respond and not showing you a list of five text boxes of which maybe one is the one that you should fill out and respond MH and the little detail here is
+because we're already with hands on the keyboard basically like in email mode um uh and processing the Inbox and typing anyway um being able to access all these
+adaptive kind of like uh uh options by just keyboard shortcut with a single letter um is uh is is really on point
+yeah you had a great Point earlier around if buttons are moving people value consistency and remembering oh that button is there and I go here to
+click it and that is actually interesting where the buttons and the responses are technically changing for every single email but the the keys that
+you're pressing do not and so you can kind of keep your hand right there and and know what to expect each time now one kind of interaction design challenge with these hot keys that are not like
+with a modifier key like a keyboard shortcut so command C for copy for example has a modifier key but these are just hot keys where I just PR press y it
+just does it right um but what if I think that my cursor is focused inserting text and I want to kind of reply yes then basically my first y
+keystroke like submits a button right and so there's always this challenge of really being very clear when an input element is focused and you're typing
+versus now typing on the keyboard will just do stuff in your UI yep adaptive uis of the future here there you go
+awesome thank you zi very cool we've seen some voice examples let's take a look at a video example now this is
+argil argil doai and they have a product that's almost like an AI uh video Studio
+to create production quality videos um this actually has a deep fake AI version
+of me incredible and so um what we can do here is we can type our own custom script right here into this box and make
+it say whatever we want create different blocks where we can change camera angles
+for each of these uh different settings and we can change the body language too so for this one where I say Here I Am uh
+pointing to myself for this point I have selected the point to myself example here you have to select it manually yeah
+so I selected it manually you could imagine in the future they would autodetect it right right that would be really interesting it's cool here that as you hover over these you can see the
+different uh samples of of what will happen yeah you can almost imagine how you could highlight certain parts of the script and then from a drop- down there
+kind of choose suggest but then also kind of standard um uh part of this this Library kind of like you know just try
+point to myself I'm I'm I'm what is it I'm crushing it um or I'm I'm crushed um and so so there's like a lot of kind of
+like interplay with the text interface to the left yep all right so let's hit play and and let's watch it hi I'm Aaron and today we're going to make a new
+design review video All About AI interfaces here I am pointing to myself for this point cool so the the voice was was very good that sounded like me and I
+typed a bunch of text to get that and what was the training data to get to create your deep fake yeah so they just need a few minutes of uh video of me or
+whoever talking and then they can basically process it automatically in their models to create their deep fi and you were saying something completely
+different than this year that's incredible and so let's let's um so if this is all AI generated let's try to to uh change change your name here yeah
+let's say I'm Raphael and today so
+processing hi I'm rapael and today we're going to make a new design review video All About AI interfaces here I am pointing to myself for this point okay
+and so the other thing that you notice here is the video is very blurry and why is that and it's got this thing over it and that's because the easier or the
+faster part in generating this is actually in creating the voice and the hard part is it takes many minutes to
+actually process and generate the video with the right lip movement to match the text that you've entered and so rather
+than showing you something you know lips moving that is off from what you what you've uh put in they first show you just kind of a blurry version with the
+audio so you can get a sense of like what it's going to be like then you click generate here and then that you
+know it says 12 minutes right here is how long it's GNA take so so they're trading off um basically uh Fidelity for
+immediacy and basically putting the human kind back in the loop because if it was just a generate button right we would wait for 12 minutes uh figure out
+that something is not quite right and then kind of like you know give the machine a new prompt and wait until it comes back so this is a really uh clever trick uh to really kind of create this
+iterative human machine collaboration interface um and I think blurring the video is is a is a is a great uh design
+uh approach to do that here's a version that I've generated hello my name is Aaron and today I'll be sharing incredible news straight from the YC
+part ners we're moving YC to four batches by year this is one of the biggest changes YC has made since it launched in 2005 here's the thinking
+behind it previously if you so there you go you can see it looks like me it has the different uh Expressions the camera
+cuts the lips match the the voice that was added pretty incredible yeah I think trading off Fidelity um for latency
+really putting the human in the loop um to iterate uh on the script very quickly um while sort of like the the full-on generation of the video can be uh happen
+later that's one thing the other thing is kind of opportunity um to potentially bring some of the selection UI kind of closer to the input itself the text um
+uh I think there's a lot of room there to grow yeah very cool awesome thank you argel awesome well these were all incredible examples what are some of our
+takeaways from some of the interfaces we've seen today yeah well I think when we start first kind of started to get this llm technology everything was sort of like a chat box and people just kind
+of like prompting it and now within just a few short like like a few short months or or one two years we see this explosion of AI interface and AI
+components that really kind of are built AI natively um totally different modalities how to interact with this new teolog with the llms um and really just
+endless opportunity for uh iteration and uh building a new world of software yeah I I think you said it really well at the
+beginning here which is you know these are all verbs we're creating videos we have agents going out executing tasks and so much of it is how do you keep the
+user in the loop and in control while AI does its magic and we've seen some pretty amazing interfaces to get that
+level of control and and make sure it's doing the right thing that leads to incredible output that would have taken days years it almost feels it almost
+feels like back in like 2010 or so when when touch um devices really kind of came on the market and everything had to reinvented kind of Touch first and we're
+at one of those moments again where like all of software all the components that we kind of took for granted um they are really being reimagined and reshaped by
+the builders and startups and designers out there right now future is going to be incredible yeah yeah well thank you to everybody who submitted these are
+pretty groundbreaking uis that I think are going to continue to evolve over the next decade and really excited to see uh where they end up so thank you Raphael
+for joining me for this episode and uh we'll see you on another design review thank you so much
+[Music]

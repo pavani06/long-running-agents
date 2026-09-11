@@ -1,0 +1,593 @@
+so in my ultimate assistant video we
+utilize an agentic framework called
+parent agent so as you can see we have a
+parent agent right here which is the
+ultimate assistant that's able to send
+tasks to its four child agents down here
+which are different workflows that we
+built out within naden if you haven't
+seen that video I'll tag it right up
+here but how it works is the ultimate
+assistant could get a query from the
+human and decide that it needs to send
+that query to the email agent which
+looks like this and then the email agent
+will be able to use its Tools in Gmail
+and actually take action from there it
+responds to the parent agent and then
+the parent agent is able to take that
+response back from the child agent and
+then respond to us in telegram so it's a
+super cool system it allows us to
+delegate tasks and also these agents can
+be activated in any specific order it
+doesn't always have to be the same but
+is this framework always the most
+effective no so today I'm going to be
+going over four different agentic
+Frameworks that you can use in your NN
+workflows the first one we're going to
+be talking about is prompt chaining the
+second one is routing the third one is
+parallelization and the fourth one is
+evaluator Optimizer so we're going to
+break down how they all work what
+they're good at but make sure you stick
+around to the end because this one the
+evaluator Optimizer is the one that's
+got me most excited so before we get
+into this first framework if you want to
+download these four templates for free
+so you can follow along you can do so by
+joining my free school Community you'll
+come in here click on YouTube resources
+click on the post associated with this
+video and then you'll have the workflow
+right here to download so the link for
+that's down in the description there's
+also going to be a link for my paid
+Community which is if you're looking for
+a more Hands-On approach to learning
+nadn we've got a great community of
+members who are also dedicated to
+learning nadn sharing resources sharing
+challenges sharing projects stuff like
+that we've got a classroom section where
+we're going over different Deep dive
+topics like building agents vect
+databases apis and HTTP requests and I
+also just launched a new course where
+I'm doing the step-by-step tutorials of
+all the videos that I've shown on
+YouTube and finally we've got five live
+calls per week to make sure that you're
+getting questions answered never getting
+stuck and also networking with
+individuals in the space we've also got
+guest speakers coming in in February
+which is super exciting so I'd love to
+see you guys in these calls anyways back
+to the video here the first one we're
+going to be talking about is prompt
+chaining so as you can see the way this
+works we have three agents here and what
+we're doing is we're passing the output
+of an agent directly as the input into
+the next agent and so on so forth so
+here are the main benefits of this type
+of workflow it's going to lead to
+improved accuracy and quality because
+each step focuses on a specific task
+which will help reduce errors and
+hallucinations greater control over each
+step we can refine the system prompt of
+the outline writer and then we can
+refine The Prompt of the evaluator so we
+can really tweak what's going on and how
+data is being transferred specialization
+is going to lead to more effective
+agents so as you can see in this example
+we're having one agent write the outline
+one of them evaluates the outline and
+makes suggestions and then finally we
+pass that revised outline to the blog
+writer who's in charge of actually
+writing the blog so this is going to
+lead to a much more cohesive thought
+through actual blog in the end compared
+to if we would just fed in all of this
+system prompt into one agent and then
+finally with this type of framework
+we've got easier debugging and
+optimization because it's linear we can
+see where things are going wrong finally
+it's going to be more scalable and
+reusable as we're able to plug in
+different agents wherever we need them
+okay so what we have to do here is we're
+just going to enter in a keyword a topic
+for this um blog so I'm just going to
+enter in coffee and we'll see that the
+agents start going to work so the first
+one is an outline writer um one thing
+that's also really cool about this
+framework and some of the other ones
+we're going to cover is that because
+we're splitting up the different tasks
+we're able to utilize different large
+language models so as you can see the
+outline writer we gave 20 flash because
+it's it's free um it's it's powerful but
+not super powerful and we just need a
+brief outline to be written here and
+then we can pass this on to the next one
+that uses for mini it's a little more
+powerful a little more expensive but
+still not too bad and we want this more
+powerful chat model to be doing the
+evaluating and refining of the outline
+and then finally for the actual blog
+writing content we want to use something
+like claw 3.5 or even deep seek R1
+because it's going to be more powerful
+and it's going to take that revised
+outline and then structure a really nice
+blog post for us so that's just part of
+the specialization not only can we split
+up the tasks but we can plug and play
+different chat models where we need to
+rather than feeding everything through
+one you know one deep seek r one blog
+writer at the very beginning so this
+one's finishing up here it's about to
+get pushed into a Google doc where we'll
+be able to go over there and take a look
+at the blog that I got for us about
+coffee so looks like it just finished up
+here we go detailed blog post based on
+option one a comprehensive guide to
+Coffee here's our title um we have a
+rich history of coffee from Bean to cup
+we have um different methods we have
+different coffee varieties we have all
+this kind of stuff health benefits and
+risks um and as you can see this pretty
+much was a four-page Blog we've got a
+conclusion at the end anyways let's dive
+into what's going on here so the concept
+is passing the output into the input and
+then taking that output and passing it
+into the next input so here we have
+here's the topic to write a blog about
+which all it got here was the word
+coffee that's what we typed in the
+system message is that you an expert
+outline writer your job is to generate a
+structured outline for a blog post with
+Section titles and key points so here's
+the first draft at the outline using
+twoof flash then we pass that into an
+outline evaluator that's using foral
+mini we said here's the outline we gave
+it the outline of course and then the
+system message is you're an expert blog
+evaluator your job is to revise this
+outline and make sure it hits these four
+criteria which are engaging uction clear
+section breakdown logical flow and then
+a conclusion so we told it to only
+output the revised outline so now we
+have a new outline over here and finally
+we're sending that into a CLA 3.5 blog
+writer where we gave it the revised
+outline and just said you're an expert
+blog writer generate a detailed blog
+post using this outline with well
+structured paragraphs and engaging
+content so that's how this works you can
+see it will be even more powerful once
+we hook up you know like some internet
+search functionality and if we added
+like an editor at the end before it
+actually pushed it into the the Google
+Doc or whatever it is but that's how
+this framework works but let's move into
+agentic framework number two now we're
+going to talk about the routing
+framework in this case we have an
+initial llm call right here to classify
+incoming emails and based on that
+classification it's going to Route it up
+as high priority customer support
+promotion or finance and billing and as
+you can see there's different actions
+that are going to take place we have
+different agents depending on what type
+of message comes through so the first
+agent which is the text classifier here
+basically just has to decide okay which
+agent do I need to send this email off
+to anyways why would you want to use
+routing because you're going to have an
+optimized response handling so as we
+could see in this case we're able to set
+up different personas for each of our
+agents here rather than having one
+General AI response agent then this can
+be more scalable and modular it's going
+to be faster and more efficient and then
+you can also introduce human escalation
+for critical issues like we do up here
+with our high priority agent and finally
+it's just going to be a better user
+experience for for your team and also
+your customers so I hit test step what
+we're getting here is an email that I
+just sent to myself that says hey I need
+help logging into my account can you
+help me so this email classifier is
+going to label this as customer support
+as soon as we hit play it's going to
+send it down the customer support Branch
+right here as you can see we got one new
+item what's going on in this step is
+that we're just labeling it in our Gmail
+as a customer support email and then
+finally we're going to fire it off to
+the customer support agent in this case
+this one is trained on customer support
+activities um this is where you could
+hook up a customer support database if
+you needed and what it's going to do is
+it's going to create an email draft for
+us in reply to the email that we got so
+let's go take a look at that so here's
+the email we got hey I need help loging
+into my account as you can see our agent
+was able to label it as customer support
+and then finally it created this email
+which was hey Nate thanks for reaching
+out I'd be happy to assist you with
+logging into your account please provide
+me with some more details um about the
+issue you're experiencing blah blah blah
+and then this one signs off best regards
+Kelly because she's the customer support
+rep okay let's take a look at a
+different example um we'll pull in the
+trigger again and this time we're going
+to be getting a different email so as
+you can see this one says Nate this is
+urgent we need your outline tomorrow or
+you're fired so hopefully this one gets
+labeled as high priority it's going to
+go up here to the high priority Branch
+once again we're going to label that
+email as high priority but instead of
+activating an email draft reply tool
+this one has access to a telegram tool
+so what it's going to do is text us
+immediately and say hey this is the
+email you got you need to take care of
+this right away um and obviously the
+logic you can choose of what you want to
+happen based on what route it is but
+let's see we just got telegram message
+urgent email from Nate herkelman stating
+that an outline is needed by tomorrow or
+there will be serious consequences
+potential termination so that way it
+notifies us right away we're able to get
+into our email manually you know get get
+caught up on the thread and then respond
+how we need to and so pretty much the
+same thing for the other two promotional
+email will get labeled as promotion we
+come in here and see that we are able to
+set a different persona for the
+promotion agent which is you're in
+charge of promotional opportunities your
+job is to respond to inquiries in a
+friendly professional manner and use
+this email to send reply to customer all
+we sign off as Meredith from ABC Corp so
+each agent has a different sort of
+persona that it's able to respond to in
+finance agent we have we have this agent
+signing off as as Angela from ABC Corp
+um anyways what I did here was I hooked
+them all up to the same chat model and I
+hooked them all up to the same tool
+because they're all going to be sending
+an email draft here as you can see we're
+using from AI to determine the subject
+the message in the thread ID which it's
+going to pull in from the actual Gmail
+Trigger or sorry the Gmail trigger is
+not using fromi we're we're mapping in
+the Gmail trigger because every time an
+email comes through it can just look at
+that um email in order to determine the
+thread ID for sending out an email but
+you don't have to connect them up to the
+same tool I just did it this way because
+then I only had to create one tool same
+thing with the different chat models
+based on the you know importance of
+what's going through each route you
+could switch out the chat models we
+could have even used a cheaper easier
+one for the classification if we wanted
+to but in this case I just hooked them
+all up to a 40 mini chat model anyways
+this was just a really simple example of
+routing you could have 10 different
+routes you could have just two different
+routes but the idea is that you're using
+one agent up front to determine which
+way to send off the data moving on to
+the third framework we've got
+parallelization what we're going to do
+here is be using three different agents
+and then we're going to merge their
+outputs aggregate them together and then
+feed them all to a final agent to sort
+of you know throw it all into one
+response so what this is going to do is
+give us faster analysis rather than
+processing everything linearly so in
+this case we're going to be sending in
+some input and then we're going to have
+one agent analyze the emotion behind it
+one agent do the intent behind it and
+then one agent analyze any bias rather
+than doing it one by one they're all
+going to be working simultaneously and
+then throwing their outputs together so
+it can decrease the latency there
+they're going to be specialized which
+means we could have specialized system
+prompts like we do here we also could do
+specialized um large language models
+again where we could plug in different
+different models if we wanted to maybe
+feed through the same prompt use CLA up
+here open a eye down here and then you
+know deep seek down here and then
+combine them together to make sure we're
+getting the best thought out answer um
+comprehensive review and then more
+scalability as well but how this one's
+going to work is we're putting in an
+initial message which is I don't trust
+the mainstream media anymore they always
+push a specific agenda and ignore real
+issues people need to wake up and stop
+believing everything they see on the
+news so we're having an emotion agent
+first of all analyze the emot emotional
+tone categorize it as positive mutal
+negative or mixed with a brief
+explanation the intent agent is going to
+analyze the intent behind this text and
+then finally the bias agent is going to
+analyze this text for any potential bias
+so we'll hit this off um we're going to
+get those three separate analysises um
+or analysis and then we're going to be
+sending that into a final agent that's
+going to basically combine all those
+outputs and then write a little bit of
+report based on our input so as you can
+see right now it's waiting here for um
+the input from the bias agent once that
+happens it's going to get AGG created
+and now it's being sent into the final
+agent and then we'll take a look at um
+the report that we got in our Google doc
+okay just finished up let's hop over to
+docs we'll see we got an emotional tone
+intent and bias analysis report overview
+is that um the incoming text has strong
+negative sentiment towards mainstream
+media yep emotional tone is negative
+sentiment intent is persuasive goal um
+the bias analysis has political bias
+generalization emotional language lack
+of evidence um it's got recommendations
+for how we can make this text more
+neutral Revis message and then let's
+just read off the conclusion the
+analysis highlights a significant level
+of negativity and bias in the original
+message directed towards mainstream
+media by implementing the suggested
+recommendations the author can promote a
+more balanced and credible perspective
+that encourages critical assessment of
+media consumption blah blah blah so as
+you can see that's going to be a much
+better you know comprehensive analysis
+than if we would have just fed the
+initial input into an agent and said hey
+can you analyze this text for emotion
+intent and bias but now we got that
+split up merged together put into the
+final one for you know a comprehensive
+review and an output and it's going to
+turn the the you know data in into Data
+out process it's going to be a lot more
+efficient finally the one that gets me
+the most excited um the evaluator
+Optimizer framework where we're going to
+have an evaluator agent decide if what's
+passing through is good or not if it's
+good we're fine but if it's not it's
+going to get optimized and then sent
+back to the evaluator for more
+evaluation and this is going to be an
+endless loop until the evaluator agent
+says okay finally it's good enough we'll
+send it off so if you watch my human in
+the loop video it's going to be just
+like that where we were providing
+feedback and we were the ones basically
+deciding if it was good to go or not but
+in this case we have an agent that does
+that so it's going to be optimizing all
+your workflows on the back end without
+you being in the loop so obviously the
+benefits here are that it's going to
+ensure high quality outputs it's going
+to reduce errors and manual review it's
+going to be flexible and scalable and
+then it's going to optimize the ai's
+performance because it's sort of an
+iterative approach that um you know
+focuses on continuous improvement from
+these AI generated
+responses so what we're doing here is we
+have a biography agent what we told this
+agent to do is um basically write a
+biography you're an expert biography
+writer you'll receive information about
+a person your job is to create an entire
+profile using the information they give
+you and I told it you're allowed to be
+creative from there we're setting the
+bio and we're just doing this here so
+that we can continue to feed this back
+over and over that way if we have five
+revisions it'll still get passed every
+time the most recent version to the
+agent and also the most recent version
+when it's approved will get pushed up
+here to the Google Doc then we have the
+evaluator agent what we told this agent
+to do is um evaluate the biography your
+job is to provide feedback we gave a
+criteria so make sure that it includes a
+quote from the person make sure it's
+light and humorous and make sure it has
+no Emojis only need to Output the
+feedback if the biography is finished
+and all criteria are met then all you
+need to Output is finished so then we
+have a check to say okay does the output
+from the evaluator agent say finished or
+is it feedback if it's feedback it's
+going to go to the optimizer agent and
+continue on this Loop until it says
+finished once it finally says finished
+as you can see we set json. output which
+is the output from the evaluator agent
+equals finished when that happens it'll
+go up here and then we'll see it in our
+Google doc but then what we have in the
+actual Optimizer agent is we're giving
+it the biography and this is where we're
+referencing the set field where we
+earlier right here where we set the bio
+this way the optimizer agent's always
+getting the most updated version of the
+bio and then we're also going to get the
+feedback so this is going to be the
+output from the evaluator agent because
+if it does go down this path the
+evaluator agent means that it output
+feedback rather than saying finished so
+it's getting feedback it's getting the
+biography and then we're saying you're
+an expert reviser your job is to take
+the biography and optimize it based on
+the feedback so it gets all it needs in
+the user message and then it outputs us
+a better optimized version of that
+biography okay so let's do an example
+real quick um if you remember in the
+biography agent well all we have to do
+is give it a you know some information
+about a person to write a biography on
+so I'm going to come in here and I'm
+just going to say gym
+42 um
+lives by the ocean okay so that's all
+we're going to put in we'll see that
+it's writing a brief biography right now
+and then we're going to see it get
+evaluated we're going to see if it you
+know met those criteria if it doesn't
+it's going to get sent to the optimizer
+agent the optimizer agent is going to
+get um basically the criteria it needs
+to hit as well as the original biography
+so here's the evaluator agent look at
+that it decides that it wasn't good
+enough now it's being sent to the
+optimizer agent who is going to optimize
+the bio send it back and then hopefully
+on the second run it'll go up and get
+published in the docs if it's not good
+enough yet then it will come back to the
+agent and it will optimize it once again
+but I think that this agent will do a
+good job there we go we can see it just
+got pushed up into the dock so let's
+take a look at our Google doc here's a
+biography for Jim Thompson he lives in
+California he's 43 um ocean Enthusiast
+passion Adventure a profound respect for
+nature it talks about his early life and
+obviously he's making all this up talks
+about his education talks about his
+career talks about his personal life
+here we have a quote from Jim which is I
+swear the fish are just as curious about
+me as I am about them we've even got
+another quote um a few dad jokes along
+the way why did the fish blush because
+it saw the ocean's bottom so not sure I
+completely get that one oh no I get that
+one um anyways then Hobbies philosophy
+Legacy and a conclusion so this is you
+know a pretty optimized blog post it
+meets all the criteria that we had put
+into our agents as far as you know this
+is what you need to evaluate for it's
+very light there's no Emojis thre some
+jokes in there and then it has some
+quotes from Jim as well so as you can
+see all we put in was Jim 43 livz by the
+ocean and we got a whole basically a
+story written about this guy and once
+again just like all of these Frameworks
+pretty much you have the flexibility
+here to change out your model wherever
+you want so let's say we don't really
+mind up front we could use something
+really cheap and quick and then maybe
+for the actual Optimizer agent we want
+to plug in something a little more um
+you know with reasoning aspect like
+deeps car1 potentially anyways that's
+all I've got for you guys today hope
+this one was helpful hope this one you
+know sparked some ideas for next time
+you're going into Ed end to build an
+agentic workflow maybe looking at I
+could actually have structured my
+workflow in this framework and it would
+have been a little more efficient than
+the current way I'm doing it like I said
+these four templates will be in the free
+school Community if you want to download
+them and just play around with them to
+understand what's going on understand
+you know when to use each framework
+stuff like that anyways as always I
+really really appreciate you guys making
+it to the end of this one if you learned
+something new if it helps you out please
+give it a like it definitely helps me
+out and um yeah um I'll see you guys in
+the next video

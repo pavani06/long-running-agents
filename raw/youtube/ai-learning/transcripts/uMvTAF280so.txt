@@ -1,0 +1,281 @@
+[applause] Hello and thank you very much. And uh I'm very excited to be here in London. I'm sure you could tell by my
+accent that I'm not from here. I came from Florida where it's a lot warmer than here. Uh but I'm here to say
+goodbye slop and welcome to Terminism. So before I get into it, I sort of want
+to qualify what I'm talking about. I'm not just one of those people who goes on
+Twitter or social media and says this model changes everything and you know just talk about AI like it's some fad.
+I'm I'm living this day-to-day. I'm David Kpiano pretty much everywhere online and as was mentioned I have been
+talking about state machines for a long time. I created this open source library called Xate which is a library for
+making state machines and state charts and that was about 10 years ago. Uh five years ago I founded a company called
+stately.ai where we allow you to make it easier to make state machines and I will
+demonstrate a little bit of that later but I have been really really busy. So
+over the last few months, I've been working on a new version of our stately editor, the next version of Xdates V6.
+And to to give you give you an idea, Xate has been a part of many critical systems. It's very useful for complex
+application logic. And if you live in the UK, then I can almost guarantee that
+you've interacted with something that relies on XATE. I I'm not allowed to say
+what that is, but you know, you can maybe guess. Uh also been working on a couple of other open source things like
+XATE storev4. Um a graph library, an open-source completely free uh state
+machine visualizer which you could check out at stately.scetch.ai, some other open source like with
+Tanstack, a couple of large projects that I'm not allowed to talk about. And I'm doing all of this while helping my
+wife take care of a three-month-old who uh is actually in the audience. So, if you hear a crying baby, then that's
+either my son or Claude has gone down and someone is complaining about it. Um,
+but yeah, needless to say, I'm tired. Never as tired as my wife, but definitely tired. And I thought that
+having a baby was actually going to be, you know, not too bad. It's a tiny thing. How hard could it be? You know,
+it's crying, you feed it, it eats. When it's fed, it sleeps. And honestly, for the first couple of days, it was
+embarrassingly deterministic. This is all it was. But then we got home from the hospital, and we soon realized that
+babies are a little bit more complicated than I realized. Uh, this is actually
+something that got me really interested in state machines and state charts. not not having a baby but like 10 years ago
+where there's this thing called state and transition explosion where when things get complex you see an explosion
+of transitions and states everywhere and having a baby taught me about new types of explosions too I won't get into that
+um there's also some unknown transitions where I'm crying along with a baby but
+um yeah I I realized that babies are actually you know pretty non-deterministic like things are
+getting harder and harder. I mean, we're at the three-month mark, so we'll we'll see what happens. But I wanted to define
+determinism because I feel like we throw these terms around a lot. Uh determinism
+in the simplest uh terms possible is given the same input, you have the same
+output. So, conceptually, you could think about this like a pure function. It's not exactly a pure function because
+of course this can be async but the idea is that whatever you give in you know
+exactly what the result is going to be. Non-determinism is different.
+Non-determinism means that given the exact same input you don't exactly know
+what's going to come out. Now this doesn't mean that it's going to be completely random. It could be a fixed
+set of choices and it it it's not exclusive to LLMs. uh I learned about
+determinism and non-determinism through um you know finite state machines. We
+have DFAS which is deterministic finite and NFAS which is non-deterministic
+finite automa. And interestingly enough you could convert NFAs to DFAs. But what
+happens is that the state machine gets a lot more complex. So you're paying for that complexity in structure. And so
+that's where I got really interested in state charts because it sort of helps you contain and reduce that complexity
+and makes it really visual so that you could describe things like Casio watches or microwaves or complex web apps or as
+we're going to see soon AI agents as well. So you know AI agents have changed the
+game. Um, and before AI, I was constantly working on a couple of side projects um that, you know, it would be
+hard for me to finish them. But of course, AI came along and now I have 15 to 20 unfinished side projects. And as
+you previously heard, going to a prototype is easy, but going to production is hard. And I think one of
+the main reasons for this is that AI has actually made it a lot easier to skip
+engineering and just go straight to, you know, let's prompt, let's see what comes
+out and then let's just work with that. And so this is the practice that as I'm
+going to talk about I I I sort of want to see eliminated. So my opinion in what
+the best way to build with AI is is actually the same way that we should build without AI. So if we go back a few
+years before LLMs came about, you know, the the the principles are the same. So
+in my opinion, model thoughtfully. So think about what is the structure of my program? What are the what's the
+vocabulary, the shared language that we should use? And how can we best represent the blueprints of the app
+without building it first? Iterate sufficiently. So you know just going
+back on the code and going from rough prototype to something that's a little bit more solid and realize what the gaps
+are. Go back and keep iterating on it. And also make core logic explicit. This
+is something that I've been talking about for many years and is also why I like state machines and state charts.
+make it so that it's very clear and not scattered all over your codebase
+because the root problem again in my opinion is I it's not vibe coding. It's
+not AI is taking over everything. It's not even AI hallucinating. It's it
+actually starts from us. It's unstructured delegation. It's when we decide, you know what, let's throw
+everything over the wall and let's let the agents take care of judgment, take care of the structure and implementation
+and sometimes even taste. I know, you know, some of you are guilty where it's like, I don't care how it looks, just
+claude, make it look pretty. Um, codeex cannot be trusted to do that yet, but Claude's pretty good at it. Uh, and out
+comes slop. But guess what? The slop works, so who cares? Spoiler alert, your
+users care when the code slowly rots from the inside out and it takes longer
+to maintain features or you have big security holes or things like that. So
+yes, we do need to care and slop is not a new thing. It's not an AI exclusive
+thing. I'm sure you've seen PRs like this before. Maybe not a million lines of code added, but you've seen PRs like
+this. And what is your first instinct? Looks good to me, right? Like, okay, let's just skim through it. Let's accept
+it. And all of a sudden, you know, bun is rewritten in Rust. And you have to just deal with that. And of course,
+we're we're even dealing with this when we work with AI where it gives us this crazy bash command and you're like,
+"Okay, yeah, go for it, dude. I don't I don't know what this does, but I'm sure it's fine and I'm definitely guilty of
+this." So what is slop code exactly? In my
+opinion, slop code is code without a reliable model. It is code that you can't fully understand. You can't fully
+explain. It's code where you're not sure whether all of the edge cases are covered whether it works or not. It
+might look like it works on the surface, but you cannot be entirely sure. So it
+doesn't mean broken code. It might not even be bad code but uh slop code does
+have a lot of properties like no clear domain boundaries. The invariants are
+you know are not explicit. You can't really inspect the states and the behavior is scattered throughout the app
+and there's really no safe way to change it. And like I was saying this stuff existed even before LLMs. So, um, you
+know, but it works, right? And this is why we allow slop code to really
+permeate throughout our codebase. Um, but the problem is that this this
+stuff's addictive. It's like a a this is sort of a triple pun. It's a state machine, slot machine, slop machine.
+And, um, yeah, we just keep pulling that lever. If the code isn't exactly what we want or the behavior is not exactly what
+we want or it doesn't look exactly right, we just pull that lever again and we see, you know, maybe we could get a
+bit of a better result. This is addicting and this is also what just, you know, makes the slop permeates
+throughout our entire codebase and all of our projects. Now, you might be saying, well, isn't AI better than me at
+coding? like it has all of the knowledge everywhere, so surely it's going to make better decisions than me. And I'm going
+to argue that no, that's not exactly the case because LLMs weren't trained on good code. They were trained on all of
+our code. And so what that means is it's going to repeat our patterns. It's going
+to latch on to things that already exist in the codebase and it's just going to keep rolling with those things. So in
+the industry there's really two ways that I'm seeing right now that um that
+behavior and this structure is sort of represented basically where this source of truth lives. The first is markdown
+files. We have things like skills. We have like claw.md agents.md
+you know we have all of our plans in here. And markdown is just a natural language way of trying to describe
+intent. Now a lot of people might argue that the code is a source of truth too
+because of course this is where everything gets executed but I would say that code is a noisy source of truth
+because sure we are encoding all of our intent but we're mixing it with just
+architecture and boilerplate and just all sorts of different patterns. And it
+turns out that probably 90% of our code has nothing to do with the behavioral
+intents that we seek to uh to explain in our markdown. So this really points to
+one hidden layer which is the central theme of this talk which is having an explicit model. So the difference is you
+could think of this as a combination of intent and execution where a model is
+structured. You can still have natural language in the model. The code can map
+directly to the model and also everything that we intend to do in our app can map directly to the model as
+well. And going to demonstrate that later. Um but yeah, so first let me
+define what a model is. And I'm not talking about large language models. I'm talking about just modeling software. So
+in my mind a model is an explicit representation of how the system should behave. And so this is why I like state
+machines so much because um with state machines a a very common way of
+describing the behavior is given when then statements. You might have heard of them as girkin or cucumber. Uh but you
+could say given I'm in this state when this event happens then I'm in this state. And so again, those maps to map
+to states, events, and transitions. And you could basically put that to a graph.
+State machines though are not the only way to model software. And they're not the only aspect of software that you can
+model. So logical flows, you could use state machines, BPMN, state charts, of course, flowcharts, even uh just simple
+diagrams. You could also model your data. And you know, domain driven design
+comes into play a lot here and I'm I'm sure Matt PCO will talk about that
+later, but um it you know, these things are becoming more and more relevant.
+Now, you might also be thinking if models matter so much and they're so
+important to making good software, why doesn't AI tend to go for them? And the
+answer is simple actually. It's because agents are very obedience, but they ironically don't have much agency. You
+tell an agent, build the feature, it's going to pretty much go straight to code. Sure, it has a thinking loop. Um,
+but when you're refining, you're working with that noisy artifact, that noisy source of truth. So, you're just having
+the agent mess around in the code trying to iterate on it. However, if you do
+have knowledge of saying, I know exactly how I want to model this, then the agent
+will provide you that model. So, I'm not saying that you have to create these models from scratch. Instead, you could
+have AI say, I'm going to help you create this model and using that model,
+that shared understanding, we're going to work on the feature. And so when we need to make refinements and iterate on
+it, we can update the model and then reference that model in the code. So we
+still have this executable description of our codebase without all of the noise
+of code. Now I see a lot of failure modes where uh where projects tend to exclude
+models. One of them is oneshotting. And this is definitely popular in uh some of the earlier AI applications I've seen
+where we think, okay, we could go straight from a prompt to the result. And I I I'll demonstrate uh basically
+what the opposite of this is, but the truth is a lot of apps don't actually or
+shouldn't work this way because iteration and human input is still important. Another one is pros control
+flow. So for example, skills are really popular and skills are really useful for
+saying this is important knowledge that you should have uh when you're working in the codebase. But if your skills say
+you must do this, you should never do this, you uh only do this when this happens and then do step one, step two,
+step three, then you're trying to represent control flow in natural language and you're you're really hoping
+that the agent is going to follow it. And sometimes it won't also agents as as
+the system. So sometimes we think throwing more agents at the problem is going to fix everything. And again
+that's just asking for more chaos if we don't constrain the system. Uh there was
+a talk about this later AI in AG Studio that I'm looking forward to which does talk about um basically uh multi- aent
+approach and having a a structure for that or I I hope it does. I didn't see the talk yet. Neither did you. Um and
+there's also entanglements of concerns. AI and agents are really good at just
+getting the job done. They want the software to work and then it will say goal complete. And the result of this is
+the same as if we um you know we go back to being junior developers and we're like okay forget about separation of
+concerns, forget about organization. We're just going to mix everything together and if it works, it works.
+Um, and one solution that we might think will fix all of this is just larger
+context windows. But that's not always the case. Uh, more context does not mean
+more structure. You can't just keep shoving instructions into context and telling it you must do this or you must
+follow this workflow exactly. The context just gets noisier. And um, you
+know, just because models can handle larger context doesn't mean that they're going to perform better. There's many
+many studies on this. Uh, another problem is that if we keep doing this,
+we have compounding slop. And so I've experienced this a lot where I would
+just let the code run a muck and let the agents do whatever they want. The problem is that agents make assumptions.
+They fill in the gaps with what they think is best. And some of those assumptions are going to be wrong. And
+like AI cannot read your mind, so it's going to try to fill in the blanks. And these wrong assumptions are amplified
+throughout your codebase. Again, AI is going to follow the existing patterns in
+your codebase. And so that's just going to make the bad assumptions permeate and
+even get worse. So I like to describe a missing model of the codebase as a
+missing blueprint. Imagine that you're building a house and you decide, okay,
+how do we start? Let's let's start with one wall. Okay, now we need to build a floor over here. Okay, there should
+probably be a wall on this side. And then you keep going and going and you're like, okay, I think we have four walls.
+So now let's try to put a roof on the thing. How do you think that house is going to look? And also, would you live
+in that house? Probably not. It might eventually look good from the outside,
+but structurally, you know, like this was not welld designed or designed at all. We were just building things until
+it sort of looked right. So that's why a blueprint is so important. And um one
+one common thing I've seen in react apps is like uh I I've given talks on use states where you know you would start
+with just this pattern of using state for everything and then it sort of expands and then you get apps that look
+like this and um again AI is just following the patterns that already exist in your codebase.
+So what is the inversion? What is the solution to all of this? Uh Ken Wheeler
+uh recently tweeted about this where he said agent-driven workflows with a sprinkling of deterministic tools are a
+fool's errand. And I completely agree with this. He says to expect these deterministic workflows um to be a
+sprinkling of AI instead of the other way around doing what they're actually
+good at. I I saw another term in an article recently called deterministic core agentic shell which sort of mirrors
+the um functional core imperative shell statement by Carrie Bernard and I I really like this and he actually called
+me out in this article. He said you know you know if this wasn't enough to summon David Keith you know it definitely did
+which is why I'm putting it on the screen but I really like that framing because I I'm starting to see two types
+of apps now. One of them is LLMs that call programs. So basically, all of the
+workflow logic lives in the LLM. We trust the agents to say, you know what, you'll routes and you'll probably do the
+correct thing. You're super smart. We'll let you be the the traffic controller or
+the air traffic controller or whatever. And this is risky. It's also a little
+bit lazy. So I want to invert this and I want to encourage you to write programs
+that instead call LLMs. Basically move the non-determinism to the edges and
+move the determinism to the core. Because like I mentioned, a lot of apps
+don't look like this or shouldn't look like this anymore. Instead, they require
+these steps in the middle where we're iterating. And this is where non-determinism and this deterministic
+structure fits because inside of that iteration step can be that structure
+that those well-defined workflows where we have AI at the nodes at the edges. Um
+Matt is actually going to talk about the software development life cycle later and uh I'm excited to see how he
+incorporates that into into this flow. So this is all to say that AIdriven apps
+are getting more complex and we do need that structure. Now I know that some of you might argue
+that you know some of this might seem like too much ceremony but I will argue that modeling is not ceremony when it
+replaces confusion. So this means that you don't have to model absolutely everything in your app formally really
+only the confusing parts. Um, and I think this is where it's most useful. And also AI is really good at helping
+you model things as well. So you don't have to physically write every single line out yourself. Um, we've seen this a
+lot with uh with rough prototyping when we're doing UX. You start with something rough and then you just keep iterating
+on that until it actually looks good. You don't have to make everything a very
+formalized specification at the beginning. So start rough and then
+iterate on it. Um like I mentioned earlier, I've been working on the next version of the uh
+stately editor and it does have some AI parts. Uh but it's also one of the most complex apps that um you know that me
+and a bunch of others have worked on. And um yeah, so I I have a lot of battle
+scars here and I know that uh because we have a structure um I'll just breeze
+through this real quick, but because we have a structure where the core logic is represented in our case with state
+machines, it makes it really easy to let AI uh actually help with feature
+developments because AI is not going to mix concerns or do anything like that.
+AI has a clear picture of what the core logic is and how it interacts with the
+different parts of our app. So, um, one of the engineering practices that I think is still relevant to this day is
+separation of concerns because AI will, you know, prevent slopping up your
+codebase and making a mess of it if your concerns are explicit and um, and well
+separated. Now I talk about state machines a lot but I will say that you don't
+necessarily need state machines. The important thing is that you need structure. Uh there's there's another
+talk about this later that I'm excited about where agents work well in structure. So you're not only helping
+yourself but you're helping agents as well. And uh while I have a few minutes I want to show you just really a quick
+demo of what exactly I'm talking about. So, let's say that you are tasked with
+creating an AI app that has to draft emails. And so, you would give it a
+prompt and the prompt would be, okay, I want to make an email about something.
+And typically, if we were going back a few years, we would just have the LLM take that prompt and spit out an email.
+But nowadays, the requirements, the the bar is higher because we might want that
+email to be refined. we might want to make sure that that email is uh factually accurate and good to go and
+that nothing is missing. So this app becomes a little bit more complex. And so what I did uh was I used XATE and uh
+I basically formulated this as a state machine so that we could say first work
+on the draft or sorry first work on requirements. see that we have all of the information and then once we have
+everything create a draft and then iterate on that draft with the user and then when we're happy with it send it.
+So instead of throwing this all to AI I'm using a state machine um and basically I'm having that formal model
+help me structure this workflow flow out. So, for example, if I have a draft request of, and I'm actually going to
+show you the state machine here, but if I have a draft request of um talk or
+find me after my talk, that's very vague. And so, it's actually going to
+navigate through the states and it's saying, hey, I need to know who the recipient is or what the subject is. So,
+um I'll add details. It's youample.com and it's my talk on
+determinism. So, it's going to be evaluating again. And I I think that's enough detail. So,
+we're going to go and draft anyway. And then it's going to draft an email.
+And then, uh, this looks really formal, so I'm just going to say, "My name is David." Make it less formal.
+And then it's going to draft again. I'm thankful that the internet works here. And let's see. This looks good. We
+have all of my information. So, I'm just going to go ahead and send it.
+And so, the biggest difference between this and your typical AI app is that we
+have a formal structure and a highly visual one too for how the agent works.
+And so we're not putting the agent in every single part of this workflow. The
+non-deterministic parts are the fuzzy parts like is the email missing anything or even drafting the email something
+that we cannot express fully in code. And the deterministic parts ensure that
+we're at the right state at the right time. So it's it should be impossible to send the email without approving a draft
+and it should be impossible to uh create a draft without having all the
+requirements satisfied. And this is pretty simple again you
+don't need a state machine specifically. The important thing is that you are keeping what should be explicit and
+deterministic in a as the core of your entire application and then at the edges using
+LLMs to actually execute and to do the fuzzy non-deterministic things and then
+you just continue the loop and um honestly this structure works for most things. If you wanted to create your own
+cursor then it's exactly this type of while loop as well.
+So, how do we transition to determinism? What I want you to do, maybe not today,
+maybe tomorrow or next week, look at your existing applications, pick one
+confusing workflow in there, could just be one, and model it explicitly. Think
+about how can you organize this to make more sense. Now, this might look like decoupling UI from the core logic, or
+maybe you have a workflow where you're just handing everything off to an AI agent instead of having that codified in
+your actual code. And uh there's many ways you could do this, but the guiding
+principles I like to do is ask yourself what can be deterministic in there. So,
+don't let your AI agent do non-determinist or do deterministic things. Where is iteration useful? So,
+what parts of it can we actually use a human in the loop um to help refine the
+results? And of course, where can the logic be separate from the UI, which is
+good advice whether you're working with AI or without AI. So, in short,
+non-determinism should be at the edges of your AI applications and determinism
+should be at the core. So, we should prevent doing the things that we've been doing before. oneshotting, putting
+control flow in natural language, letting agents and sub aents run a muck
+and mixing concerns and making our code base messier. So, going back to uh my my baby, our
+son, um things are getting more and more non-deterministic. However, we've had lots of help from friends, family,
+books, lots of resources, and that provides a model for understanding what
+do we do next? What do we do when um when our baby reaches four months, when the baby gets older? It doesn't make the
+complexity go away. It provides a framework so that the complexity of dealing with a baby is survivable. And
+your codebase is your baby or at least your company's baby. I don't know how you feel about your codebase, but the
+the the model is not just, you know, to to be this random artifact. The model is
+for future you. The model is for your team and the model is especially for your agents so that it could stop
+producing slop and actually produce good code. And I believe that the model is
+how collaboration survives the speed like these 10x speeds that we're getting
+by building with AI. So in short, the best practices didn't change. AI of
+course made it easier for us to forget about the best practices, but I really
+feel like the best practices have become more important now than ever. So, thank
+you so much, London, for having me.

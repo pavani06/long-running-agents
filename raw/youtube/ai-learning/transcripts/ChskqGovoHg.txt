@@ -1,0 +1,403 @@
+Graphify just solved Claude Code's
+memory problem. It's able to turn any
+repository and turn it into a wild
+knowledge graph just like the one you
+see here. And in the process, it allows
+Claude Code to give you more accurate
+answers at a fraction of the token
+costs. It's able to do this by
+traversing your entire codebase, mapping
+all the connections, and discerning the
+why behind the connections. And the best
+part is it's also open source and
+completely free. And so today, I'm going
+to show you how you can get this working
+yourself and what's actually going on
+under the hood so you can start
+leveraging it right away. So, Graphify
+came out a couple months ago. It's at
+nearly 60,000 stars. And what it does is
+it allows your AI coding assistant.
+Doesn't have to be clouded code, but
+that's what we'll be using today to map
+your entire project, code, docs, PDF,
+images, and videos into a knowledge
+graph that you can query instead of
+gripping through the files. So we are
+able to take graphify and point it at
+any sort of repo we want and it creates
+this sort of knowledge graph. The reason
+we care about this is when we create a
+knowledge graph, it allows claude code
+to more easily answer questions about
+that repository because everything's
+already mapped out. It's very clear how
+A connects to B, how B connects to C,
+and why those connections matter. This
+is in contrast through grepping through
+files, which is how AI coding assistants
+like Claude Code normally work. kind of
+a simplistic analogy, but it's as if
+it's just doing Ctrl + F and trying to
+search for it versus having a clearly
+mapped out path of how everything's
+going, right? This gives Claude code a
+map while gpping through files doesn't
+at all. So, because of that, it costs
+less tokens to get more accurate answers
+with something like Graphify. Now, how
+significant are those token savings?
+Well, some people are claiming up to
+70X, which I found to be a little on the
+high side, and as you'll see when we
+demo it today, it's a bit lower than
+70x, but still significant. So that's
+the why you should care. Now let's talk
+about how it actually works. How do we
+go from a codebase to some sort of
+knowledge graph like this which looks
+very very similar to something like a
+graph rag knowledge base. Are they the
+same? How does this relate to rag? We'll
+talk about that. Well, the way it works
+is through three different passes. On
+the first pass we are looking at the
+code structure and this is completely
+free. Everything you see right here,
+this is just through pass one. This is
+deterministic. This is an AI doing a
+guessing game. It is literally going
+through the code itself and saying this
+piece of code relates to this second
+piece of code. And that's literally how
+the codebase is written out. These are
+established connections. As it says
+here, a tree sitter parses your code
+files and extracts classes, functions,
+imports, call graphs, and inline
+comments. This runs locally with no LLM
+involved. On pass number two, it's
+looking at video and audio if those
+files exist at all. And if they do
+exist, they're going to be transcribed
+with faster whisper. And so once they're
+actually broken down into text, they
+will also be injected into the knowledge
+graph. Lastly, it does a third pass on
+docs, papers, and images. So if your
+codebase includes things that isn't true
+code, whether that's just like PDF
+files, documentations, images, whatever,
+this gets hit on pass number three. And
+this is where the large language model
+actually comes in and does some sort of
+like semantic analysis, aka what does
+this document actually mean and where
+should it fit in this larger knowledge
+graph. This third pass is kind of
+similar without true embedding to what a
+rag system does. Once it does all that,
+it then begins to create the actual
+knowledge graph itself. It goes into a
+little bit more technical detail in
+here, but all you need to understand is
+it's going to create nodes, which are
+these little circles, right? Each one of
+these circles is a node. We then have
+edges, which are the line between two
+nodes, two things that are connected.
+And then communities. Communities are
+simply large groupings of nodes that are
+similar in nature. What you see here are
+486
+communities. So that's kind of the
+overview of how the data is actually
+extracted and turned into a graph. And
+remember, we care about turning into a
+graph because for all intents and
+purposes, it's a map to clawed code so
+it can more quickly answer questions.
+Now, you probably have a few questions
+at this point. One, what if there is no
+code structure? What if I'm pointing at
+a repository full of markdown files?
+It's just like a bunch of documents that
+I want to create a knowledge graph of
+and I don't want to go full rad. Can I
+do that? Yes, in fact, you can actually
+turn it into an Obsidian vault through
+Graphify. We'll talk about that a little
+bit at the end. The second question you
+probably have is, yeah, this actually
+does look super similar to something
+like Graph Rag. What's actually the
+difference and when should I use one or
+the other? Well, the biggest difference
+between Graphify and a Graph Rag system
+like Light Rag or Rag Anything or
+Microsoft Graph Rag is really going to
+be the embeddings, right? Graphify isn't
+using any embedding system whatsoever.
+The second biggest difference is the use
+cases. So Graphify is best and we get
+the most out of it when we're talking
+about code bases. If we see some sort of
+huge repo, whether it's a new one or one
+we've been working on and we want to
+figure out how it's wired, graphify is
+perfect for that. Graph rag on the other
+hand is great for something that's more
+unstructured. Let's say you have tens of
+thousands of documents that are all PDF
+files or markdown files and you just
+want to ask about them. You know,
+imagine they're all policy documents and
+you're asking like what does the policy
+say about X, right? It could be anywhere
+amongst any of these documents. They
+aren't necessarily connected. It's very
+unstructured. That's where graph rag or
+really any rag system shines. That being
+said, the division between those two
+here is kind of murky because like I
+mentioned on that third pass, we can
+kind of do that with graphify. It's
+almost like a rag light system in that
+sense. So that's what graphify is, how
+it works, and why you should care. Now,
+let's talk about actually installing
+this thing and using it for real. But
+before we jump into that demo, a quick
+word from today's sponsor, me. So, not
+too long ago, I released the Claude Code
+Masterass, and it is the number one way
+to go from zero to AI dev, no matter
+your technical background. This course
+gets updated weekly, and it also
+includes additional master classes like
+the Codeex Masterass and the Clawed OS
+masterass. So, if you're someone who
+wants to take this a little more
+seriously, definitely check it out. You
+can find it inside of Chase AI Plus.
+There is a link in the pin comment. So,
+installing Graphify is relatively
+simple. We have a few prerequisites as
+well as instructions for how to install
+it. If you're using Claude Code, I
+suggest you make it very easy on
+yourself. Just go to the Graphify GitHub
+link. I'll put that down below. Copy it,
+paste it into Cloud Code, and just tell
+it, "Hey, install Graphy for me." But if
+you want to do it manually, you can just
+follow the steps as they are laid out.
+And again, Graphify is platform
+agnostic, and it works with any coding
+agent out there. Now once you have
+graphify installed the next question
+becomes okay how do I use this what are
+the commands well there are quite a few
+commands and there's so many commands in
+fact you are not going to remember any
+of these luckily when you install
+graphify it's going to come with a
+graphify skill the skill is going to
+teach cloud code how to use graphify and
+when it should use which commands
+depending on the natural language you
+use so that being said I suggest you
+take a look at the GitHub repo somewhat
+familiarize yourself with what is
+possible because There is a lot, but
+understand you don't have to have this
+memorized. Claude Code understands what
+to do. But there are a few we should be
+aware of. If I do for/graphify, that's
+going to run the whole thing on whatever
+directory I'm currently on. There are
+also graphify commands for quering the
+knowledge graph. So if I do graphify
+query or graphify explain, it's going to
+explicitly tell cloud code or whatever
+coding agent you're using to, hey, take
+a look at the knowledge graph when you
+answer this question. Don't be lazy and
+just try to answer it on your own.
+Furthermore, we have commands to make
+sure it's always on. So if I do graphify
+claw install that means it's always
+going to use graphify to answer the
+questions. I don't have to be explicit.
+It literally becomes a hook. And there
+are some other interesting flags like
+the obsidian flag which will with one
+command create an entire Obsidian vault
+for you and fill it with whatever
+Graphify comes up with. But again
+remember the skill is installed. So if
+you ever get confused about what makes
+sense, just ask Claude code. It will
+understand. So now let's actually run
+this. For the demo, we are going to be
+pointing clawed code at open design,
+which is a relatively large codebase. If
+you never used open design, it's
+essentially cla but open sourced. So,
+I've cloned it on my machine and I'm
+going to open cloud code inside that
+directory. So, we're inside the
+directory and all I'm going to do is
+forward slashgraphify
+and then dot. That's now going to run
+graphify on this entire folder. So,
+after running for 6 minutes, this is
+what we got. It took a look at 203
+files. It got 197
+nodes, 3,447
+edges and 109 communities. And output
+tokens was just under 120k. So it lists
+the god nodes. The god nodes are pretty
+much like the most prominent nodes, the
+most prominent connections inside
+whatever it traversed. We have
+surprising connections that didn't
+expect and suggested questions. So if we
+want to take a look at the graph, I can
+say go ahead and bring up the graph for
+me. So here's a look at the knowledge
+graph it built. And you can kind of see
+the communities there. It created 109
+communities. And that's really just all
+of these clusters. As we scroll in on
+them, we can see the nodes, which are
+the actual dots, and then the edges are
+the connections between them. When I
+click on the node, you can see over here
+on the top right, it's typed. So it's a
+code node, its community, its source, as
+well as its neighbors. But remember, as
+cool as this visualization is, and it
+does look neat, the real value here
+isn't the knowledge graph. Like this is
+cool looking, but the actual value is
+the fact that now we've handed Claude
+code a map to the open design repository
+and I can now ask questions about it and
+get accurate responses. So what we'll
+test now is we'll ask it a question
+about something to do with the repo and
+we're going to have it use graphify. So
+have it actually use the knowledge graph
+and then we'll ask pretty much the same
+question not using graphify. So just
+have it like grap the answer and we'll
+take a look at what the token difference
+looks like. So to take a look at the
+token difference with and without
+graphify we're going to ask the same
+question to cloud code about the repo.
+The first one is trace how a design
+request flows from the web app to a
+coding agent and back. So we're trying
+to understand how this application
+actually works. And in the first tab
+we're going to say use graphify. And in
+the second tab with the same question,
+we're saying do not use graphify. So we
+can see the graphify skill being loaded
+right away. And then we can see commands
+like graphify query asking the question
+we just gave cloud code. Over here on
+the non-graphify side, we see that cloud
+code has spawned two explore agents to
+take a look at the codebase. And right
+off the rip, we've already used 100,000
+tokens between them. Now, in terms of
+the actual answers we got, they were the
+same. They both identified how this app
+actually works. But with the
+non-graphified version, we needed to run
+those explore agents. So we were looking
+at about 150,000 tokens, give or take,
+with the explore agents, plus an
+additional 50,000 tokens on the main
+session. So, you know, about 200,000
+tokens total versus over here on the
+non-graphify version, we only used
+about 80,000. So about 40% of the total
+cost of the non-graphify, which is
+significant savings. Now, since this
+non-graphified version has now sort of
+crawled through the repo itself, if I
+ask additional questions, the token cost
+won't be as off. However, since we have
+the knowledge graph built, whenever we
+want to ask questions about it via
+graphify, well, we're not going to have
+to deal with that token cost of going
+through it again and again. And that
+kind of leans into the whole memory
+piece. Like, we've built it out already.
+We can always query it for cheap. Now
+the question then becomes if this is a
+living breathing repo what happens when
+we make updates to the repo will this
+knowledge graph also be updated well the
+answer is yes we see this spelled out in
+the workflow in the readme if we run
+graphify hook install it's going to
+autorebuild after each commit and that
+is the a only there's no API cost
+associated with that it's literally just
+looking at what actually changed what is
+it now connected to and it rebuilds that
+tree but it's at no cost to you like
+this is all done in a determinative
+deterministic way furthermore This also
+works in a team setup. So if you had two
+devs working on the same repo in
+parallel, it also deals with that
+situation. So in the end, you get this
+persistent yet living map of whatever
+repo you want that you can give the
+clawed code so you can get more
+efficient answers. And lastly, we hinted
+at it a little bit here with the
+Obsidian flag. We can do all of this
+with a repo that is not codebased. It's
+a little bit different and we are
+actually going to do that in another
+video where we drill down on Graphify
+and Obsidian and sort of what that
+connection looks like. But just
+understand we aren't pigeonhold into
+code only. This is a pretty flexible
+tool. But that is where I'm going to
+leave you guys for today. I think this
+is a really cool tool and we look at the
+spectrum of sort of these like memory
+adjacent applications and plugins that
+we can use alongside things like cloud
+code and codeex. I think graphite sort
+of falls somewhere in between obsidian
+and a true rag system. And I think
+that's great. The more options we have,
+the more tools we have at our disposal,
+the better we can choose the right one
+for the job. We don't have to only use
+obsidian, you know, we might not just be
+doing something in markdown and we don't
+have to go crazy and generate some huge
+rag infrastructure. This is again, it's
+a cool little bit of ground that I think
+is worth exploring. So, as always, let
+me know what you thought. Make sure to
+check out Chase AI Plus if you want to
+get your hands on the Cloud Code
+masterass. Speaking of Obsidian, I'm
+actually going to be running a free live
+webinar next week about Obsidian and
+Cloud Code. I'll put a link to that down
+there as well. And besides that, I'll
+see you

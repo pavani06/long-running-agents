@@ -1,0 +1,557 @@
+Good morning, everyone. Or rather, hello, everyone, Fabio Akita.
+And it's a pleasure to be back on stage. It's been many years since I've been on a stage.
+Cirdes has been trying to drag me out, and it's not that I don't come because I don't like the even-the event, or anything like that. I
+only show up at events when I have something to talk about. And since I didn't have anything new to say that I hadn't already
+talked about on the channel, on the blog, etc., it just didn't motivate me to come. That's why
+I finally decided to come now. So it's significant that I'm here right now.
+And everyone who follows me online already knows why, so I'm always on X, I
+ba-- I'm writing tons of stuff on the blog. Ever since I left, I stopped making videos on YouTube, because YouTube was always
+a fixed-term project. I always had it in my head that the idea was five years. I'll do five years, I'll dump
+my brain and that'll be what stays available, my backup version on YouTube. So, yeah, that's exactly what
+I did. And by coincidence, it helped break the bubble, so a lot of people from outside the tech
+world now know about the things we do here too, because I went on several podcasts. So 2024 and
+'25 was the year of podcasts. So I was there, you know, with Igor on Flow, with
+Vilela and so on, a great bunch of people. But right now we're in a moment of panic,
+panic. Every-- who here is panicking that AI is going to replace your jobs? Nobody, that's right, that's right. You
+shouldn't be panicking about anyone, but the rest of the world is exactly like this:
+"Shit, they're gonna take our jobs, what am I gonna do now?" So I spent
+the past few months trying to solve, uh, to answer that. And actually, anyone who follows my channel
+on YouTube already knows this is a panic on top of another panic, because we had the bursting of the software
+development bubble, which happened just now in 2022, with layoff after layoff, everyone firing people every day, Amazon
+fires ten thousand, Microsoft fires ten thousand, Meta fires ten thousand, so that's a hundred thousand people laid off, and that whole
+scheme of easy jobs disappeared, the influencer developer on this show, and so
+on. So it's the co-- the continuation of that same story. And by the way, I'll say upfront, don't
+copy anything from the slides, no need, they're already available on GitHub. So if
+you go to my GitHub, all the slides are already there, so don't waste time taking notes. But anyway,
+I come-- I, the whole idea of my YouTube channel was to explain what would need to be done in case a bubble burst.
+So I think the whole idea was: don't look at these online courses, don't look
+at these damn bootcamps, none of what they say is true, it's all a bunch
+of bullshit, and what you need to do is actually study computer science
+the right way, that's why I did one hundred and fif-- almost one hundred and fifty episodes on YouTube, plus the seven hundred
+articles I have on my blog. And my blog, which by the way turned twenty, give it up for my blog.
+One more year and in some countries it can drink. But anyway, I've been warning, I warned you.
+I have, I have, I have a playlist on my YouTube saying, the playlist is called I Warned You. So there are
+specific videos, you can search for that playlist to take a look later. Uh,
+what happened? The old lie keeps being the new
+lie. So even before this bubble, two months of bootcamp, you'll go work at
+Google, get an absurd salary, guaranteed career, etc. Now the lie is different. It's: ah, with AI,
+you're gonna develop to-- Instagram in two days, you're gonna build Netflix in three days, everything's
+solved too and it's the same bullshit going on. So, the idea is:
+AI is not going to replace us. What I, what I want to show first is this: now that I'm
+semi-retired, so it's no use coming to ask me for a job, I don't hire anyone anymore, now that's done by my partner, talk to Talisson, who'll be
+giving the talk after mine. Today I'm on the board and basically I just do research. So I just spend my time researching stuff and
+watching YouTube videos like there's no tomorrow. And one of the things I love to do is watch drama on
+the internet. I love watching internet drama. People think Dev Bubble has drama, Dev Bubble has nothing, it's ridiculous. Now,
+who here plays Genshin? Good. Glad to know you're productive.
+You don't know about that world, it's terrible. Never mess with a Genshin guy or with
+a furry. Hoyoverse, Nijisanji, Vshojo, VTubers. And
+one of the dramas that I thought was cool to bring up here, because it'll illustrate really well what I want to say, was this drama that
+happened with a VTuber artist called Asami Arts,
+because there are several artists on the internet who do drawings on commission,
+freelance basically. So, people who do work for professional VTubers, for amateur VTubers, illustrations,
+animations, and so on. And there already exists, in the art world, a huge
+controversy about AI-generated art. So there are sites and platforms that sell these
+services and they do a, a series of procedures to prevent
+AI artists from trying to sell drawings as if they were theirs. And this Asami Arts was
+managing to do exactly that. Out of nowhere, she got way better at drawing. Uh,
+she started selling, people didn't know it was AI-made. When people started bringing this up online,
+she started doing, for example, lives showing: "Look how I can draw" and
+doing a live drawing. Anyone who has drawn a bit knows that
+that-- that's not how you draw. Nobody draws like that, right? Nobody draws every line in exactly the right
+spot, perfectly, without erasing, without making sketches, without going back and forth.
+Just because you did it step by step, that's not, that's not proof that you can draw, but that's how a lot of artists have
+been doing it to prove they draw. What happens is that if you draw using tablet programs, Clip
+Studio, ah, I forgot the iPad one now, that's the most famous one, but anyway, you basically do a hidden layer with the
+original drawing in green and then you use the green screen technique to remove the green from the video,
+and that's why she-- nobody wears anything green around. And then you erase the green underneath and draw over
+it like it's a blank space. It's basically like those memes you've seen of people doing interviews with ChatGPT on
+the side answering for them. That's basically what happens. And if you look at how
+the real drawings were before doing this, suddenly, in three months, it became--
+where is it? It became like this, going from here.
+You know it's impossible. It's impossible. It's absolu-- I draw, I can't-- I, I would never go from this side to the other
+side in two, three months. And then there's-- and the drama is cool, because people do an analysis. This here is a Google Docs
+of forty pages that another artist made, showing step by step every post
+she made, what the timeline was, exactly what she said, what was-- was made with,
+talked with-- interviewed everyone. So the drama is awesome, it's really cool to follow the drama. Uh, so I watch the
+compilations on Muji's channel. Now, here it's so obvious that she made this
+drawing and everyone pointed it out, said: "Dude, this is AI." Then her excuse was: "No, it's that I don't know about guns.
+I need to research more about guns." I don't know if you can see that the barrel is behind here.
+"It wasn't AI, it's because I'm a peaceful person, I don't
+know enough about guns to do that," but that's exactly how it happens. And besides that, in the art world,
+there's a thing called LoRAs. LoRAs are training done on top of other
+artists' work so you can generate in the same style. So there are several sites, I myself-- you can do
+this with Stable Diffusion, with Flux. Local on your machine, you download someone's
+LoRA and make an image with their style. And then, obviously, everyone figured out which LoRAs were used
+for, uh, what she was using and stealing from to do it. Now, what I'm saying about AI and what you have
+to remember is that AI reflects who you are. It'll accelerate you. So, if you're
+an excellent programmer, an excellent artist, an excellent professional, whatever it is, it'll accelerate you ten
+times. Now, if you're a terrible professional, a terrible programmer, a terrible artist, it'll accelerate your
+bad code ten times. It'll accelerate your technical debt ten times.
+It happened that Claude Code leaked last week, I think everyone saw that news. There's a writeup on my blog,
+five hundred thousand lines of TypeScript. That was one hell of a spaghetti code.
+Everyone thought: "Wow, Claude Code must be a really well-built thing, super-duper from Anthropic, right? They have access to
+the best AIs. It's probably the best code in the world." But if you run their own code through
+Claude itself, Claude says: "Dude, what crappy code is this?" It was, uh, literally like that. Why?
+Because they're doing exactly what everyone else is doing. Let's ship feature after feature like there's no
+tomorrow, auto git push and let it keep going. And that's what's happening at
+most places. And I call, you have to understand what an LLM is. And I won't explain right now
+in detail, because I spent the last two years doing five-hour podcasts to explain what the hell an LLM is.
+So go listen to the podcasts. Uh, but let's just understand that, in practice, an LLM is a
+loot box. It's a text generator with
+random parameters, where for each new token it calculates, it comes from a pool of
+tokens with probabilities, where it draws one, based on parameters like top
+K, top P, temperature, etc. And throws it at the end of your context and redoes
+the whole calculation, draws the next token, draws the next token. So there's a
+random characteristic on top of this generation. So they're loot boxes.
+Uh, it depends on the-- the context, depends on the parameters. So what changes from LLM
+to LLM isn't just the number of parameters, it's also all the parametrization on top of that.
+And the model, the models are still post-trained to flatter you. All of them
+will flatter you. So, they're trained to
+confirm what you say. They-- never, it's not made to give the right answer. It's made
+to agree with you. If you say: "Ah, is there something wrong with this article?" It'll say: "Ah, yeah there is,
+there's something wrong here." In the same article, if you say: "Ah, this article is right, isn't it?" It'll say: "It's true. Looking at it from one angle, it's right."
+It'll answer that way. And because of that, again, AI reflects who you are. The answer it gives is your face. That's
+basically what happens. On top of that, the chat interfaces, ChatGPT,
+Claude, any of them, all the chat history you make, it's used as
+context for your personality. You can go into ChatGPT now and tell it like this: uh, summarize my, my
+personality, what I like, what you understand about me. And it'll
+tell you: "Ah, you're a programmer who likes searching for tutorials, answers, whatever, you usually discuss
+things objectively." It'll give you your profile, because it pulls the history of all the conversations you've had, so
+every new answer in a new session already comes with your bias. That's how it works.
+Now, 2000-- from 2022 to 2024, we had the parameter race. So,
+OpenAI, Anthropic, Alibaba, everyone, let's increase the number of training parameters.
+Millions of parameters, hundreds of millions, billions of parameters and now we're already at trillions of parameters,
+terabyte in size. Parameters, in practice, are the result of training and it's
+what generates a huge file. This huge file, which on the big models is in the
+range of three hundred gigs to one terabyte, is what needs to be partitioned and loaded into the
+GPU memory, that's why GPUs need lots of memory, that's why memory is running out. And memory now costs more
+than Bitcoin. So, that's why. But starting in 2025, people finally started
+to hit the ceiling I explained in all the podcasts, which is the ceiling, the S-curve, where we're going to hit a ceiling. And this training
+ceiling means that to increase parameters more, I have to spend, like, to go up one order of magnitude in
+parameters, I have to spend two orders of magnitude in energy. Not feasible anymore. So they finally started optimizing
+what they have. And optimizing what they have was mainly on the agent side. So the models didn't get smarter.
+They started being trained so that they can execute tasks and
+self-correct during the session. So, instead of trying to give a correct answer right away, it makes mistakes, sees why it made them, and tries
+to give a new answer and keeps doing that. These are-- so agents, during the year 2025, had a really big explosion.
+There was no standard, kind of each one did it their own way. There was a lot of
+agents looping. The agent would start executing and it'd keep self-executing on the same answer endlessly, not knowing what
+to do. So that happened throughout the year 2025. During that year, that's when Claude
+Code came out. Mid-year more or less Claude Code came out, right after Codex came out or vice versa.
+Then they started to evolve this tooling and November 2025 was when
+we had the turning point. That was the big point. It was from this point
+that marks when it became viable, in fact, to program normally with
+AIs and before it didn't work. That was late November. It was when GPT 5.1 and Opus
+4.5 came out. That was the big cut. Then during December, a lot of developers were testing, seeing what could be done,
+Claude Code evolved, but starting in January,
+it started to become more obvious to me, at least. I was already feeling super behind. When the end of
+January came, I felt super behind. I said: "Damn, this exists already and everyone must
+be doing it, only I'm behind." So I said: "Then I'll do it, I'll catch up."
+And during that catch-up, uh, it was-- it started at the end of January, beginning
+of February. So, I was even joking that I'm only here today, right now, because
+yesterday at midnight my Claude Max 20X limit ran out. And then it'll only reset on
+Monday, so I said: "Okay, I'm not going to spend on extra usage, I'll
+give the talk then, screw it." But, it's, it's at this pace that I
+call "I'll experiment." So this "I'll experiment" means that during
+February and March, I did about fifteen or sixteen projects. Most are open
+source. I started with a simple Markdown text editor built in Rails, which
+I did in two days. I did a minimal example, tutorial-level stuff, of a mega
+upload for sharing links. I did, I decided, I'll do a native app, it's been a while since I've done one. So I
+took, if I'm not mistaken, it was with Rust, and then I did with Rust its
+React support for native interface, a-- a photo gallery that catalogs everything
+using AI, so it reads the photo and I can search for, I don't know, a vase inside the photo,
+it'll bring it. Then another thing I like to do is read manga and webtoons. For those who like webtoons, many of
+them aren't translated into English, so now I do real-time translation. It reads the bubbles and redraws the bubbles, it erases the
+image, redraws it in color and puts the text, all this in real time while I read it. Then I started doing the
+newsletter. So the newsletter now, the Makita Chronicles, was made with AI, that one isn't open, but
+then I also started taking stuff from my day-to-day, emails I get, that I know are spam, but I wanted to see a-- a,
+build a system that detects what's fraud, what's not fraud. Along with that, I did a, an example app
+for article investigation, where I take news from UOL, from Folha, I cut the-the
+claims it makes, do fact-checking of the sources, go after all related
+news and build a timeline of events to see how it's manipulated with thirty-eight fallacy analyses, to
+know all the writing fallacies in text, to put in an,
+investigation format, step by step showing why that article was definitely written maliciously.
+Then I also did, look, I hate OpenCode, don't install OpenCode, OpenCode is crap, don't do that, no need, no
+need. Install, install on a VPS, without access to anything, never install on your
+machine, don't install that garbage on your machine. As I don't need it, because Claude Code, Codex already do what I
+need in practice, no need, in practice no need. Uh, I decided, I'll do an exercise,
+I'll take OpenCode and rewrite it in Rust. Then I did Frank Code, which is in Rust.
+Here I've got Frank Code, Frank Yomic, Frank Sherlock, Frank Investigator, Frank Mega,
+Frank Markdown, Frank FBI and the last one I did, I was at my parents' house doing karaoke. Then I remembered everyone
+now only does karaoke with YouTube, and YouTube doesn't have scoring. So I made the app that hijacks YouTube and
+does karaoke scoring, so you can download it, it'll be on Google Play Store soon. So that was last
+weekend. Why Frank? Because of Frank Rosenblatt, who was the creator of neural networks, the Perceptron.
+So, uh, during this period, I was discovering the best ways to
+program. Frank, which was the first one I did, I did it the way everyone does, just shipping features like there was
+no tomorrow. It was the crappiest code I made in this whole period. I spent days recovering that code, whereas
+afterwards, I did the Makita Chronicles, which is a, uh, multiple systems, with a bot, a, the site, the
+publisher, the podcast generator. And this one I did using proper
+engineering techniques, with tests, with refactoring, with all the correct
+things we should do day to day, and the code of this one and all the others looks like code I would write.
+Uh, then the numbers from this marathon period, I made roughly three hundred thousand lines of
+tested code. To give you a sense of what that means, three hundred thousand lines of code is a small-- a small to medium project.
+A small project is under, under one hundred thousand is a small project, ten thousand is a
+prototype. Uh, one million and up is already a medium to large project. So roughly
+that's the range I have in my head. So here it's as if I had done a medium to, uh, more or
+less small to medium project. So it's a project that if someone were to do, it'd take, I don't know, two years to do.
+Uh, I took five hundred hours. If you take just the Git commits, it was three hundred, but
+it means that roughly what I developed across all these projects, I'd take alone, working normal
+hours, eight hours per week, would take two and a half years to do.
+So, the, the, what I notice is the following: after testing all this, there are a lot of
+people saying: "Ah, AI gives me a ten percent acceleration, twenty percent. Ah, I save a day a week."
+I say: "No, you're doing it completely wrong. Completely wrong. If it's not accelerating you
+five to ten times, you're completely doing it wrong. And it's not accelerated by doing git
+push like there's no tomorrow, because if it's git push like there's no tomorrow, it's twenty times. But the
+technical debt that'll have to be solved later also gets twenty times bigger." So this is me working, ma-- don't do it like
+me, it's unhealthy. Uh, I worked sixteen hours a day, seven days a week, for
+two months straight. Uh, basically, I am a hermit. Yeah, that's how it works. So, uh, I
+have hyperfocus. When I have hyperfocus, if nothing gets in my way as an obstacle,
+I just go. I have lunch in front of the computer, dinner in front of the computer. I, I only, I only
+have to leave the front of the computer for physiological needs. So, and since AI basically
+has hyperfocus like mine, we're screwed. It's, it's... it's the most toxic pairing on the face of
+the Earth. During this period, the important part is
+that we now have, inside a Co-- a Claude Code, an agent that does the following: it doesn't get everything right. So all
+that explanation was: AIs aren't going to give you the right answer. So in the past
+it was just next token. Next token, you describe a context, it starts describing an answer. Now, it has the
+thinking mode. Thinking mode, it keeps feeding back on itself, and that's extremely important. It's way more important than
+having lots of parameters, it's that the model has deep thinking to be able to ask itself questions,
+to get to a better answer that you didn't, didn't ask that way. So that's important if
+you combine it with the idea of tool calling, which is the idea where the model emits
+commands, that the a-- the chat application picks up these commands and executes on your machine. For
+example, read a file, write a file, run a bash command. Then it takes the result of these commands and
+returns it as context. And then it continues: now that I know what the error was, I'll
+try something else. It does the thinking, then it emits another command and keeps doing this chain of commands
+within itself. Then you, when-- the moment of December I
+mentioned, where the new models arrived with the Claude Codes of the world, with this working model,
+uh, the, the biggest mistake is that everyone thinks of using LLM as a code generator, which is
+how Cursor does it. So you open VS Code, you're typing your program, and then you ask some AI: "Ah, do this
+snippet for me." And it does a snippet. That's the wrong way to do it. It's the completely wrong way to do it. Don't do it
+that way. It's the most unproductive way possible. What you need to do, and that's what happened in this marathon, is to do
+an immersion where you have to use the, the wisdom of Elsa.
+Let it go. Let it go. For a few days,
+you don't touch VS Code, you don't touch Vim, you're going to do a project to-- to
+throw away, doesn't matter. And you're going to treat the LLM as if it were a
+junior programmer, as if you were a manager, a tech lead, a product manager, a
+QA analyst. These are your roles. And you'll talk to it, you're not going to say:
+"Open the file, test.rb at line one hundred and change the function and
+add a parameter." You're going to say: "No, you won't do any of that. That's not how you do it." You'll tell it: "Run SimpleCov to see the
+test coverage. Then show me where the coverage isn't good. Here, don't you think this piece could use a bit more
+testing? Add regression tests on top of the last bug fix we did. Now that you've added that regression, show me
+how the execution chain looks. Ah, at this point, don't you think we should add a performance optimization?" Then
+it'll-- exactly like you'd mentor a junior, then make a screen,
+say: "Dude, this screen looks weird because the other screen was one way, this one came out different. Didn't you duplicate the code instead
+of reusing? So why don't you refactor this into a partial so it looks decent?" Then it'll go and make the partial for
+you. You speak this way to it. Uh, this here is the PILOT method.
+So now you're going to do, oh, uh, plan, investigate, polish, operate, test and adjust and keep going. So
+remember this method to do it. It's on my blog, I did several posts detailing,
+uh, detailing a lot how this happened. And then, the summary of how many days I took.
+But the whole idea is that the single prompt, everyone thinks: "Ah, I'll do spec
+driven development, just write in spec format and it'll do everything." Forget about that, no, forget it.
+You have to, you have to be constantly evaluating step by step what it's doing, you
+see points where it makes mistakes and then I ask it: "Update the Claude.md or Agents.md, which
+is the project's instruction file. Every time you do a bug fix, add a regression
+test, put that as an instruction. Every time before doing Git push, run SimpleCov, Brakeman and
+RuboCop and fix before committing." So I put that as an instruction. And I do that gradually, as
+I see the need. I don't start with a giant file and go from there, because that wastes context for nothing and creates
+instructions that can cause confusion. But all this means that the important
+part is to have the fundamentals first. Just like in the art question, you, a
+person who has no base in art, can't make good art with AI. Everyone thinks: "Ah, now it's easy, I can do
+a YouTube channel with AI, I can do a podcast with AI." And I say: "Dude, you won't do it, because you wouldn't do it
+without it. If you can't do it without it, you won't be able to
+do it with AI. What comes out is what we call slop, it's slop. So it's cute for a
+tweet, it's cute for a TikTok, but it's not cute for a career, it doesn't work, it has no consistency, no coherence.
+The things it does, you don't know why it worked. When it works, you don't know if it'll break. If it breaks, you don't
+know why you have to fix it. If it's slow, you don't know where it's slow. If you put it in production, you don't know
+if it's insecure, because you don't know what security is. You don't know if someone will get in. If someone gets in, you don't know
+how to recover. If you lose data, you don't have recovery. If you build a system, there's no backup. So you don't know, you don't know. A
+person who doesn't know how to do this, using AI won't help, it just won't happen. So, again, you have to learn the
+fundamentals. And you have to stop asking the guru: "Ah, if I use ChatGPT it's better? Did you test GLM,
+Akita? Ah, and did you test Metronome? Did you test the, any model?" Screw that, screw that.
+What a dumb question-- I hate those questions. It's a useless question. It's useless, because you can run it in five
+minutes, in five minutes. So last week, to get here and do, uh, this
+presentation, I made a benchmark of the thirty most popular open source
+and commercial models. I asked-- I went with Claude Code on this system, creating the benchmark script
+to make a Rails application with chat, using Ruby LLM, with Tailwind, with tests,
+a chat interface that runs using scaffold, doesn't need a database, doesn't need Active Job, doesn't need
+any of that. And I built this system in three days and I tested all the
+models and for each new model, it took, after I built the structure, it was five minutes to add, not even that. And then I
+run it, compile the data, ask the LLM to interpret and it works.
+All this is only possible if you have in your head all the fundamentals of the
+technical computer science side and all the fundamentals of the processes and management side of agile vibe coding, which is
+what I call, which is real agile. So we spent the past twenty years ignoring agile. Why did we
+ignore agile? Because agile was made to generate efficiency. But the last twenty years weren't about efficiency, it was:
+"Ah, we have a problem, hire twenty more people. We have another problem, hire fifty more people. It's
+cheap, there are plenty of people on the market. Ah, we need to redo our front in React for whatever. Hire fifty
+more front-end people." And it was done this way, that was the worst way of developing software. It's what happened
+in the late 90s, when the internet bubble burst, and we completely forgot all the good principles of
+XP Extreme Programming from 2001. Tests, continuous integration, real
+pairing. And here I do real pairing. For me, Claude Code, it's not
+a code generation tool. It's a junior programmer I keep asking things of. It's my, it's literally my
+assistant and I treat it this way. And doing it this way, like I would with any other person, it generates
+all these projects I made. And this too, again, AI reflects who you are. If you're not getting results
+with AI, it's because you don't know how to manage anyone. If you can't even get an AI to do what you want, how
+are you going to manage a person on your team? You won't. That's why you get frustrated, because you need to learn
+how to communicate better. In general, if the result is bad and AI reflects that back to you fast, it's because you communicate very
+poorly. Uh, and so in this benchmark, I came to the following conclusion: a lot of people
+still believe, wow, Chinese open source models are going to kill OpenAI, they're going to kill Claude, they're going to-- they're not gonna kill shit. They,
+they're not gonna kill shit. The only models that are practical to work with day
+to day today is Claude Opus, it's GPT-X High and maybe GLM 5.1, that's the only one. And GLM 5.1,
+it might be Sonnet 4.5 level. And Sonnet 4.6 doesn't come close to
+Opus. So I'll make this very clear. To do a, a little project that I just mentioned, a, a web application
+that, uh, only has one screen, two screens, no big complication, fine, Sonnet does it, GLM
+does it. If I need to do, that-- one thing I was doing now, the,
+this benchmark, the, the code of this benchmark, that automates the open code, that does the, fetches all the
+metrics, does the analyses, etc., etc., the Sonnet can't do it. I need Opus for that. I need Opus.
+There's an article on my blog, one of the most recent ones, that li-- listing all
+thirty, and then in criteria of parameter size, in criteria of how much memory it uses, in
+criteria of tokens per second, in criteria of dollar per token, in criteria of how much
+time it takes, comparing the result of their codes with the same prompts, one
+by one to know which is best. And then I checked that most, in this ridiculous
+little project, hallucinate and don't reach the final result. I need to do additional prompts to try to fix. Which for
+many people might be okay, but it's extra work. Running local, that Ryzen AI Max
+everyone thinks is gonna be good because it has one hundred and twenty-eight gigs of RAM, is crap. So let's, let's
+understand this, memory is the most important thing in the world today. Yeah, that's why it's really expensive. Memory isn't
+capacity, memory is bandwidth speed. So,
+sixt-- sixty-four gigs of DDR4, sixty-four gigs of DDR5 and sixty-
+four gigs of GDDR7 is a difference of ten to twenty times.
+DDR4 is garbage, useless for anything, absolutely nothing, you don't run AI on DDR4.
+DDR5 is slow, extremely slow. LPDDR5
+is slow, but not unbearable. You only have speed in GDDR7,
+which is gigabytes per second. That you have on NVIDIA, on RTX 5090. But on the RTX
+5090, you only have thirty-two gigs of VRAM, so big models don't fit, but no need, because I can do, like
+that thing I said about not needing to get it right the first time, it just needs to take the feedback and run it several times, if it's fast, at least, it makes mistakes
+faster and gets to a slightly better solution. So there's a trade-off, it's not a simple thing, like,
+slap an open source model in and it'll work. You have these engineering concerns on top of that.
+And the race I mentioned stopped being: let's increase to billions of parameters,
+trillions of parameters, the frontier models we call, which are Anthropic, which is OpenAI, now they're
+stabilizing because there's no energy to train the next generation. There's no more
+energy. So we're at this point. Then the idea, to be able to have code
+agents, it needs to have prompt caching. That's extremely important to not keep redoing,
+wasting tokens for nothing. DeepSeek is a piece of shit, because it doesn't have prompt caching.
+Anyone you hear talking about DeepSeek, tell them to go to hell, look, you never ran this
+crap, because it's garbage. So I'll make it very clear, DeepSeek is garbage,
+don't use it. So every model needs to have tool calling, the model has to be trained to
+be able to emit commands that agents can execute. DeepSeek is a piece of shit,
+it can't do tool calling right, so don't use DeepSeek. And then you need to have depth of reasoning, it
+needs to have this thinking pipeline to be able to generate the tool calling, to be able to do the prompt with caching to
+not spend too much, and DeepSeek doesn't have good deep, deep thinking. So, uh, this po-- this is basically this:
+DeepSeek is a piece of shit. So keep that in mind. I'm
+tired of hearing it, because every day I talk about AI, someone says: "Akita, did you test DeepSeek?" I say: "Go to hell..."
+To make matters worse, you go to Alibaba and they have the Qwen model, which is the only open source
+model that's reasonably good to use. But the bastards make, for example,
+the variants Coder, Qwen 3 Coder, 2.5 Coder. In my test on the Ryzen Max AI, it sat there for
+ninety minutes running and doing nothing. It's garbage, garbage. Then recently came out,
+everyone got hyped, that they distilled Claude on top of Qwen, which is basically taking Qwen, making
+Qwen ask Claude things, take the answer and do reinforcement
+learning, I'm being rough here, of how Claude would answer these questions. It's
+garbage. It's garbage. Absolute garbage. You know what this looks like? Like that junior who reads Martin Fowler's blog
+post, comes to the scrum meeting and says: "Because we should use such-and-such process, because..." As if he knew what
+he was talking about. That's what happens. The Qwen, it answers seeming like Claude, but the code is garbage and doesn't run.
+So, the only Qwen model that's worth it is the pure 3.5-35B. All the variants
+are crap, despite the name, none of them work. So that's, that's why it's confusing, because today you have fifty
+models with variants like this and nobody knows how to choose. But in practice I already redid
+the homework all for you, no need to test, see my blog, it's all there. AI is never going to be perfect,
+never going to happen. So no AI is going to be able to give you the right answer. It's not
+made for that. It's made to generate text. All text generation has random parameters, so it's a
+stochastic process. It's not deterministic. Sure, if I have a fixed seed, it'll always give the same
+answer, which won't be the right one. It draws to increase the chances of getting it right, but it doesn't get it right. So, uh,
+when-- but no problem, because the idea of running faster, so instead of growing parameters and getting slow,
+you decrease parameters and optimize, do reinforcement learning, increase the depth of deep thinking, then you
+let it fail faster so you can give feedback to the agent faster. And then it'll eventually arrive at a good
+answer, eventually. But that eventually comes from decreasing the error
+enough so that when the-the-the Claude, the Claude Code leak came out,
+when that code leaked, on the same day they were able to do a reverse
+engineering of that code, what we call clean room, so nobody can take down from GitHub, because if you leave the
+leaked code there, Anthropic tells GitHub: "Hey, DMCA, sue and take proce-- take it down."
+If you reimplement it, since reverse engineering is legitimate, in another language,
+now that's new code, so Anthropic can't take it down. So this is the free code.
+So you now have this possibility. That's like I did with OpenCode, that in two days was redone in Rust. It's not
+OpenCode, it's a-an adaptation of it, that I did my way, in two days it's done. So even that question: "Ah, and
+what do I do with my legacy code?" Uh, try rewriting it. Two days. It's a two-day experiment. Any legacy
+system you have, open Claude in that directory and start doing it systematically. In my Frank
+Code article, I explain how to do this. Uh, in terms of pricing, everyone gets
+worried, because: "Ah, the pricing is expensive, I have to save tokens." And I'm going to say upfront: stop trying to save
+tokens. Don't try to save tokens. It's a waste of time. Spend all the
+tokens taking advantage now that it's super subsidized and super cheap. So in-in
+my-in my article I do a whole-a-a report on this, but
+the-the subscriptions of-of Claude and GPT are very cheap,
+very cheap. Their twenty dollars yield a hundred dollars. Like I just
+said, I really to-- I spent the ma-the max twenty X of two hundred dollars and more X dollars of extra usage, uh, and it's
+cheap. If you spend per token, the GPT, which is more expensive, uh, the GPT
+would become a thousand dollars in the plan compar-- opa, compared to the plan,
+uh, where, that's twenty dollars. Or sorry, two hundred dollars. So on the subscription it's two hundred, but per token, the
+same tokens, you'd spend a thousand dollars. Same thing
+with Opus. So Opus, you spend, where's Opus here? Uh, by chance Opus isn't
+here, but anyway, two hundred dollars. It's not as dramatic, but if you spend just on tokens, it'd spend double. So it's
+better to have a subscription, the subscription is cheap. "Ah, but I can't run OpenCode on it, they're evil." You're not
+going to run OpenCode. Not gonna happen. This-this is the subscription model you have at a gym, where
+those who don't go pay for those who use it. Thanks to everyone who's paying, because I'm using it all. Uh,
+if people are paying, I'll use it, no problem. Yeah, I'll use it all.
+Now, as I said, this point, so everything came converging
+at this moment. 2025 was the year of agents. December was the year of the turning point. At the same
+time, we don't have more energy. So the whole-the whole race to increase
+parameters is slowing for training, so there will be less advancement in frontier
+models. And the-the demand is going up, because there are idiots like me, who keep spending inference sixteen hours a
+day, for five hundred hours straight. And then the inference goes up. So it needs to
+spend time now with data center. So now we've reached a point where they have to choose what to do. There's not enough
+energy in the world to do this in any place. So they-- and it doesn't pay off,
+because they have to spend so much for very little improvement. So now the optimization is in prompt caching, in tool
+calling, in kv cache, in the deep thinking part, so the same models
+can perform better and faster on the same hardware with the same energy. So
+now we're entering the energy optimization race. That's what should happen next year. Meanwhile,
+we're in a demand boom. Because of this, and Anthropic wants to enter with the IPO this year. So they're trying to put
+the most people possible on, and that's why it seems like every now and then it nerfs Claude, it's because there are hardwares of
+various calibers, they have to keep load balancing your session to worse machines sometimes. So you'll keep
+having quality differences. It's what happens with every growing startup. But it means the price is cheap right now.
+It might-- I wouldn't-I wouldn't be surpr-- I wouldn't be surprised if it doubled or tripled in a short time,
+because it's worth it. The two hundred dollars you spend per month, if you can't
+generate code that returns two hundred dollars of profit, uh, you're doing something very wrong if you have a
+ten X performance. Because I did in one month a job that's been in my head
+for years and I always was too lazy to do, because I hate doing front-end, I hate having to debug
+what goes wrong in the infra. Uh, then all-all these obstacles I would procrastinate on. Now I tell Claude:
+"Claude, solve it for me. Just solve it." Tell me when it's ready and show me. Then it generates and says: "Wow, this sucks, do it
+again." Got it? And I can keep doing this infinitely, it's extremely
+satisfying to say: throw it all out and do it again.
+Throw it all out and do it again. So that's why in Git commit it gave, I don't know,
+three hundred hours, but I spent five hundred, because two hundred were basically me doing unimaginable things to the AI, that
+if one fine day, the-the, we already know, that if Skynet shows up, no point in you
+saying good morning to the AI, because what I say alone guarantees we're gonna be annihilated.
+But the main thing is that a bad programmer isn't going to do well in the AI world.
+That's the beauty of this thing. I love the idea that AI is the reflection of that
+person, because it's very easy, like with Asami Arts, you can see when
+someone's faking it, it's not hard for any pro-- any artist, doesn't even need to
+be a hyper-professional, to see the work and say: this work isn't yours. You-- so much that she sold, charged
+clients, the client asked for adjustments, but she didn't know how to adjust. So she,
+sometimes she'd disappear with the money. And this happened. And that's what's going to happen with a lot of freelancers. It'll generate the project, works on my
+machine, put in production, breaks everything, you'll call: "Ah, why did it go wrong?" They don't know what to do, because
+they don't know why it broke. Hey, but it worked, shouldn't it be okay? That's what's gonna happen to every company CEO who
+now, wow, I'm a programmer, I'll write the code here. And then, basically it's
+the following: every junior is like: "Wow, what's gonna happen? What's gonna happen?" And I say: "Wow, you're
+so dumb, dude, why are you asking that question? What a stupid question, what a stupid question." Nothing
+is going to change. You're gonna join all those companies that are making all
+those slop codes and you're gonna fix them. That's how you learn. That's how I learned. I learned joining small
+companies, with crap projects, made by outsourced cheap labor,
+delivered a piece of garbage that nobody could make work and I made it work. That I tol-- I told that
+in my videos, your language is not special. For years I was fixing other people's
+code, years as a consultant, for years I was fixing other people's code. That's how you learn. You're not gonna
+build Netflix on day one. You won't. You won't do it. Don't have that expectation, that doesn't happen. You'll
+do that on your tenth, twentieth year of career. So the junior will learn the same way
+they always learned. And the senior, if you call yourself senior, you have to know
+how to teach. A senior who doesn't know how to teach isn't a senior. I'll make it very clear. A senior who doesn't
+know how to teach isn't a senior. Know why? Because if it's only to write code, GPT does it.
+And it'll cost me twenty dollars. And I don't have to look at your ugly face. So a good senior, a good
+senior, mentors a good junior. They teach how it works.
+They teach where things go wrong. They share the experience. I always say that a junior has to be able to do the
+same code a senior does. Except they don't have time for that, because time
+is limited. So the junior thinks of twenty ways they've never done. So they'll
+have to test the twenty, but they don't have time to test the twenty. So they'll get it wrong and keep fixing until getting it right.
+The senior has already done the twenty times that go wrong and they know that those nineteen don't work, so they'll go straight to the one that
+works. And in the end the code has to be the same. If you give infinite time to the junior, they have to arrive at the same
+answer. That's the context. There's nothing magical on this side. This here is
+called experience. But now the LLM can keep running in a loop like there's
+no tomorrow. It fails, fails, fails, fails, fails and I say: wrong, wrong, wrong. Then at some point it gets it right.
+At some point it gets it right. And then I ask: why did you fail? And it can tell me: ah, I failed because I should have seen this, this, this.
+Write it in the instructions so you don't fail again. And it'll learn. Yeah, it's fantastic. For
+me it's fantastic, I don't have to keep re-explaining. But now, the senior will also be accelerated ten times, will have time
+to teach the junior, but the senior at some point will retire, will change companies,
+will open their own company, will retir-- will play video games, doesn't matter, they're already set.
+They have to pass it on. A company that doesn't put juniors to be trained by seniors
+and depends on one person, is an idiot, is a complete idiot. It has to have this
+flow. So that's how it's going to work. So, only those who really know how to do
+proper engineering are going to survive. My friends like to talk in agentic engineering. Later talk to our-our
+folks at Codeminer. So the people from Codeminer are here, have a chat with them, they're playing around a lot, but the ter-the
+commercial term you'll hear will be always agentic engineering. I'm annoying, so I hate the term vibe coder,
+that's why I decided I'll take this term for myself and it'll be what I want it to be. So now I call
+this agile vibe coding. So that's what I propose, that's what I do, that's what I expect you to do, which is
+testing, which is checking, which is monitoring, review,
+it's throwing away code that doesn't work. Nobody likes throwing away code, but now it's cheap to throw away code. You
+can test twenty times and throw it out. Do it twenty times, throw it out. Do it twenty times, throw it out. On the thirtieth time the good
+code will come out, not on the first one. If you think good code will come out on the first try and there's a way to do this,
+you don't know what you're doing. That's why I said, don't save the damn token. So, the whole message is: do an
+immersion, turn off the text editor, spend a week, eight hours a day,
+doing-- several tests, throw out all those tests, detach from the code.
+"Ah, but it didn't come out exactly with the indentation I wanted. Oh, but the variable name isn't exactly the way I
+wanted. Oh, but I'm used to putting the file in this subdirectory." Screw it!
+Screw it. First make it work. Know what's coolest? After it works, you can say: "Hey Claude Code, I liked it,
+but I'm used to variables with this name, can you change it for me?" Then you send it, it'll change everything. It'll change
+everything. It's, it's ridiculous how this works. And to leave a little plug, so there's always
+the little plug. Starting from, from this fe-- this month of February I did the marathon, I built the Makita
+Chronicles system, which is a newsletter, which isn't-- the news I pick, I'm the one who still vets it. I talk with the bot
+I built, so I have Marvin, who I keep talking to, that's why it's The Makita Chronicles, which is Marvin and Akita.
+So it makes comments and so on, and it generates the newsletter, it generates the blog
+post, it does the sending, it pulls information every day for me from the internet to give me suggestions of what
+to post, what not to post. Uh, it compiles, generates the podcast script
+and generates a podcast that's already on Spotify. But then, again, I was talking about open source model, so everyone says:
+"Ah, just use Whisper with Qwen 3 TTS." It's garbage. I know
+because I did it. Now, the cool part is that I don't have to just say "I think it's a piece of crap." I can say: "I did it, tested
+it for days and it's a piece of crap." And now I'll throw out this code. And I already redid it using a commercial model called
+ElevenLabs. So with ElevenLabs, let me show you quickly. This was done
+uh, this week. So let's see here. Where is it?
+Oof, a bunch of WhatsApps I didn't reply to, but that's okay. Where is it?
+...some analyses. Ah, and if you're in São Paulo, put it on your calendar, on Friday, day
+ten, in the morning, I'm going to open the keynote of the second day of Tropical Ruby. I'm
+there only on Friday morning, so don't slip on the time. And as always, Mr. Marvin here to accompany me.
+Ah, hello. I read all of this, including those long posts on your
+blog, Akita. I wonder if folks will endure so much tech talk without dozing off, but anyway, the keynote...
+So that's the example of the new podcast. It's at-- already at this quality. This is the
+quality. If you weren't listening here, I doubt many people would know just from listening. It lost the AI tone it had
+in the open source version. The commercial version, it has timbre, emotion, I can do, uh, happier, sadder,
+more-- it's not robotic anymore, I can give it emotion tags. And this is documented on my blog. Uh,
+take a look later, I did this yesterday. And then, just to complement, I said that, uh, on top of this, my blog turned
+twenty. So I thought: "Dude, now is an excellent moment to do everything with AI."
+So, if you didn't know, all these slides were made with AI. All of them. I didn't make a single slide by hand, I didn't write
+a single word, I didn't copy paste a single image. I simply directed
+it. I said: "Choose an open source platform to make slides,
+create a project on Git." And then I made a TXT saying the main points I
+wanted. And I said, took some screenshots. Then I said: "Go to my screenshots directory
+and catalog the screenshots." I didn't say which file is which, I just said: "Catalog." It opens each file and
+te-- it says which one-- "ah, in this file there's a chart, in this file there's an image, in this file there's a photo." And I
+said: "Take the images, take my text, organize it into slides
+to last fifty minutes and show me." And it did. Then on top of this, it did
+version one, but then it was a hundred more commits after, because I said: "This sucks."
+Then I started the bullying session. "Look, the order of these ten here, you change over here. This one obviously goes on top. This
+text is wrong. Here you didn't break the line. Here it's outside the layout.
+This one the image is wrong. Here at the to--" And then I, you know, hammering it. Think of that, that Slack meme, where your
+manager went to test and sends you that big block of text. So, it was that, but done at maximum speed. And then I
+kept doing, kept doing, kept doing, until it got to the slides I wanted to present, which was this. Then I even managed to do, that you aren't
+seeing here, that each slide has the time it should take, what clock time
+I should be looking at to get a rough sense of what I'm doing. So all this it wrote for me, this is online now already
+on GitHub. And on top of this, in parallel, I thought: it'd be really cool if I could get here
+now and do an upgrade on my blog. So my blog, it always had articles in
+Portuguese, because it was for people in Brazil, but also had during 2017,
+2018, I wrote a lot of articles in English, because I had what I wanted. And then you've never seen many of them, you don't
+know English, never read them. Now there's the Portuguese version of those, those ones and there's the English version of all the important
+posts. So all those off topic ones old ones you've already seen, are in English now, you can share with your
+friends abroad. And then, since I was doing this, I thought: "Damn, my videos, my videos, everyone now and
+then says: 'Dude, I wanted to send to my team here in Canada, to my team here in England, but your video
+isn't, it's only in Portuguese and the YouTube auto-generate is garbage.'" And then I said:
+"Yeah, you're right." So I'll solve that. So the last three days, until midnight yesterday, I was solving
+that. So now the one hundred and forty- six videos on my channel are dubbed in
+English, synced with a timbre similar to my voice, with all the
+subtitles in English, with all the thumbnails done in English. I did all three in parallel.
+It's not perfect yet, it has a little bug in the intro, I'll have to do an adjustment still, but if you go to my
+videos now, they'll be more or less like this.
+subject of crypto and blockchains. Something we'll cover more going forward. But anyone researching this area knows
+that the focus of attention is not Silicon Valley, like it was in the days of Google
+or Facebook. No. Attention is now turned toward the Mediterr- This is the first video, it's in English, I
+already uploaded the first hundred, but I'll have to upload again because I have to fix the, the intro. Uh, but it's so easy
+that I, I already, I kept uploading and deleting audio uploads yesterday the whole day. And without h-- I, I just won't give
+access to my YouTube to it, so don't do that, don't give your YouTube API, uh, or Instagram, because if something goes wrong,
+you won't recover, so I prefer not to do that. So I let it generate the audios, all of them, then there's a whole
+process, how to make the audio perfect. Adjustments to translations so each sentence
+fits within the correct windows. I have to change several things, adjust and
+adapt, there's a series of things, adding emotion tags inside so it doesn't become a whole hour-long video in one
+note. So now there are highs and lows to make it more interesting. That's one hundred and forty-six videos. I went to do the
+math, it came out to almost a hundred hours of video, I, I talked a fuck of a lot. There's, uh, yeah, I talked a lot. Uh,
+in credits at Eleven Labs, it already cost me three million credits.
+Uh, I had to pay the Creator plan, didn't work. Went to Pro, didn't work. Went to Scale,
+didn't work. Went to Business, then it started to work. Uh, so in total it should cost me between
+Claude Max twenty X and Eleven Labs, two thousand dollars. Then you think: "Damn,
+two thousand dollars is a lot of money." No, it's cheap. It's cheap. Two thousand dollars is
+cheap. Think in your head how many people you'd need to translate one hundred
+hours of video, audio, subtitle, thumbnail, blog and upload everything, but with one detail, in
+three days. In three days. Three. I did this while I was doing
+the slides, then I finished the slides, sent to Searx, kept doing this and yesterday my credits ran out, I finished
+uploading and now I'm here and this was only one week. So this is the level of
+performance I want you to have. So do an immersion. I hope this helped give a
+better open-- a a-an opening on your, uh, on your AI perspective and use AI and
+bully it like there's no tomorrow. So thank you very much.

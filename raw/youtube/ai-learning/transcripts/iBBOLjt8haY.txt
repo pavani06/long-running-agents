@@ -1,0 +1,368 @@
+It is been a tough few months
+for the $1.8 trillion
+private credit market.
+The market is going
+through its biggest crisis
+of confidence in its history.
+Private credit firms make loans directly
+to companies giving them a
+way to borrow outside of banks
+and bank-led channels.
+They use money predominantly
+from institutional investors,
+but recently from some
+wealthy retail investors too,
+and became major lenders
+to software companies,
+especially those backed by
+private equity firms, which by
+and large had seemed to
+be going pretty well.
+Now you just have this
+existential risk in the form of AI
+that can change everything
+and private credit's just
+at the center of that now.
+Late last year concerned
+retail investors started
+trying to pull their money out.
+Blue Owl allowed investors to
+take 15% of shares out of one
+of its private credit funds.
+It also sold assets to return capital
+to investors and reduce debt.
+Others got more creative.
+We did see some Blackstone
+employees basically pitch in
+some of their own money to
+help meet redemption requests.
+But this wasn't enough
+to calm investors.
+Blue Owl's shares have fallen sharply
+since the start of the year.
+Industry-wide concern though
+meant it was far from a
+unique case.
+People have been talking for years about
+how private credit has been untested,
+and this is the first time
+that they've really been
+under this amount of pressure.
+Some observers have drawn
+parallels with the lead up
+to the 2008 financial crisis.
+It has the same trappings
+as subprime mortgage repackaging had.
+While others say that fear is overblown,
+especially since private credit
+firms don't use your bank
+deposits to make loans.
+It's just really hard to assess
+because these loans are private.
+Private credit lenders will tell you
+that they made really smart investments,
+but the concern is that,
+what if they didn't?
+Good news, everyone.
+Today you are going to learn
+the connection between one
+of these, lots of these,
+and even this. Private credit.
+You can think of
+private credit as lending
+that's not arranged by banks.
+It could be an insurance company
+or in many cases these days it could be a
+private credit fund.
+These deals are managed by some
+of the biggest names in private
+markets like Blackstone,
+BlackRock, Blue Owl,
+and even some not named
+after colors, Greek gods for instance.
+But what is it?
+It's really a very broad
+umbrella term that refers
+to multiple forms of lending.
+The type that's in the news
+most these days is what's called
+direct lending, and
+that's when basically these
+institutions lend money
+directly to companies.
+If you're a company and
+you need to borrow money,
+you might go to a bank,
+but if you're really, really
+big, a bank can't provide
+that much of a loan to a single company.
+So instead you go to
+the debt capital markets
+where a bank arranges a bond or loan
+and sells it on to multiple
+investors for a fee, of course.
+Private credit is a way
+to accomplish the same
+type of transaction,
+but just directly between the borrower
+and the ultimate buyer of that debt.
+cutting out all those like middle stages.
+And it became central to
+the global financial system.
+Back in 2015, I think this
+market was around $500 billion.
+The overall assets under management
+for private credit is roughly
+1.8 trillion as of today.
+The 1.8 trillion market
+that most people talk
+about is just a subset of
+what some managers see as a
+total opportunity of as big
+as $40 trillion.
+In other words, the
+current market's just the
+tip of the iceberg
+for private credit, far
+bigger opportunities
+lurk underneath.
+There is supply chain finance.
+There is consumer auto loans, mortgages,
+there is railcar financing.
+There is different kinds
+of trade financing,
+music royalties.
+We did a story last year
+about them getting into things
+that would've normally been
+financed by municipal bonds.
+A lot of lenders, especially
+places like Apollo,
+feel like the sky's the limit.
+About two thirds
+of the private debt market
+is in North America.
+Europe takes the next
+biggest slice followed
+by Asia Pacific and the rest of the world.
+And you could say private
+credit has been around for
+decades, really.
+I think the 1980s is probably
+when a lot of this started,
+but really back then it looked
+nothing like it does today.
+One event in particular
+didn't so much grease
+the wheels, as crashed the
+car and set fire to it.
+The 2008 financial crisis
+led to numerous regulations
+to try to keep that from happening again.
+And one of the key things
+regulators essentially said was
+they wanted banks to
+do less risky lending.
+Regulators didn't
+want banks to make a lot
+of loans with their own money,
+and that's what allowed
+private credit to sort of step in
+and start doing a lot of this stuff.
+It can also help out
+when things get choppy
+in other debt markets.
+For example, in 2022,
+the Federal Reserve had
+to start raising interest rates.
+It really caused some problems
+in the high-yield bond
+and leveraged loan markets
+and made those much harder to borrow from.
+And private credit
+lenders really stepped up
+and they saw it as a massive
+way to grow their market share.
+Now, their loans can be more
+expensive than traditional
+financing, but borrowers often accept that
+for speed, certainty,
+and longer-term relationships with lenders
+and software has been one
+of the biggest targets
+for direct lenders in recent years.
+A lot of these companies have
+very strong revenue growth,
+but they're not making money.
+That's something that banks
+have a hard time financing,
+but private credit can do quite easily.
+- This is the S&P 500,
+and since 2022, firms like
+Ares, Apollo, Blackstone,
+and Blue Owl have seen
+their share prices generally
+outperform it as they expanded
+their credit strategies
+and grew their assets
+under management. Over that period
+Blue Owl's AUM flew up from
+around a hundred billion dollars
+to more than 300 billion,
+but something else happened
+in those four years.
+OpenAI is now valued at $852 billion.
+Anthropics making headlines
+almost on a weekly basis.
+The rise of AI has
+completely upended the
+private credit market.
+So now the spotlight is on
+how much exposure private
+credit firms have to software.
+And so retail investors
+in particular have
+been pulling their money.
+Shares of KKR and Blue Owl
+were down as much as 10%.
+Blue Owl is one of the most exposed.
+And it's why investors are trying
+to figure out if those
+loans were underwritten
+with sound principles
+Or based on overly optimistic
+growth trajectories that
+the AI revolution could
+now put in jeopardy.
+Towards the end of 2025,
+Blue Owl co-CEO Marc
+Lipschultz was pretty confident.
+Credit quality is excellent in our book,
+and that doesn't mean no defaults.
+Everyone's gonna have defaults now
+and then, you just can't have many
+and you have to get good recoveries,
+and that's exactly what we do at Blue Owl.
+And by the way, so do our
+peers and so do the banks.
+In November, though it
+called off a merger of two
+of its funds amid scrutiny
+over potential investor losses.
+It coincided with redemption requests.
+That is people asking for their
+money back climbing sharply
+across the industry,
+including at Blackstone
+Blue Owl and Apollo.
+There's really not a fund
+that's been spared over
+the last few months here.
+We've seen huge funds receive
+massive redemption requests
+that are unprecedented in the history
+of private credit markets.
+A lot of the firms
+that had made a big push into
+the retail market have had
+to deal with these redemption
+requests in an amount
+that was unprecedented
+and to preserve the value
+of the funds, they've had
+to limit in many cases the amount of money
+that investors could take out.
+In the first quarter,
+funds were enforcing caps
+and denying billions of
+dollars of withdrawal requests,
+predominantly from wealthy
+retail investors who'd sunk
+capital into special
+products tailored for them
+by private credit firms.
+In some cases, their
+unmet requests were tens
+of percentage points higher
+than the money actually
+allowed to be taken out.
+This all comes years
+after heavy inflows from
+institutional investors
+and retail-focused funds.
+Much of that money going
+into software businesses
+that were seen as durable.
+Now, AI is starting to
+challenge that assumption,
+and all of this is harder to judge
+because the market is so opaque.
+Some of the main drawbacks
+of private credit is there's
+much less transparency.
+Private credit are bespoke loans
+between sophisticated parties
+and it's all private
+loans, are not securities.
+And crucially that privacy
+means they don't really trade,
+so there isn't a market
+deciding what they're worth.
+Skeptics have begun
+questioning the accuracy
+of private loan valuations, particularly
+after a string of investments
+recently had their values
+slashed to zero with little to no warning.
+It follows the collapse of
+subprime auto lender Tricolor
+and auto parts supplier
+First Brands last year.
+While only tangentially
+related to private credit,
+their demise raised broader
+questions about underwriting
+and hidden leverage
+across all credit markets.
+Jamie Dimon has been sort
+of a vocal critic of the
+private credit market, is
+how I would say it.
+The JP Morgan CEO was among
+the bankers facing losses tied
+to Tricolor, and he went
+full insect in his assessment.
+My antenna goes up when
+things like that happen.
+And I probably shouldn't say this,
+but when you see one cockroach,
+there's probably more.
+It's a very visual image
+of hidden problems coming
+to the surface as as cockroaches tend
+to do when lights go off.
+But the bigger point
+that he was making is there
+could be more problems
+and this could be just the beginning
+and no one is really safe.
+This is what led some
+observers to draw comparisons to
+what happened in 2008.
+I think the counter argument to that is
+that the regulation following
+the 2008 financial crisis
+intentionally pushed risky lending off
+of bank balance sheets and
+instead ended up with investors.
+And so they can afford to lose that.
+They may not like to lose that,
+but they can afford to lose that.
+We're not really seeing that sort
+of widespread distress just yet.
+But definitely I think we
+can say that the best days
+for private credit are probably behind us,
+and the next few, quarters
+years, are gonna be more
+challenging.

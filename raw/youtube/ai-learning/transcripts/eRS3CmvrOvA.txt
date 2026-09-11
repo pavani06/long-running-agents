@@ -1,0 +1,504 @@
+After spending 400 hours in cloud code,
+I noticed something. Most people online
+are developing fancy skills for the sake
+of a cool video. But businesses don't
+actually want that. They want six types
+of skills. They're simple. They're
+boring, but they are effective. Skills
+that save time, save money, or remove
+mistakes. And the crazy part is these
+six skills are the ones that clients
+will pay the most for because they allow
+you to build the best agents at the
+lowest cost. So, in this video, I'll
+show you what they are, why they sell,
+and how you can use them to sell AI
+automations. But before we jump into the
+first one, let me show you how I figured
+all of this out. I've worked with real
+estate agencies, HVAC companies,
+coaches, marketing agencies, and more.
+And I've seen the same patterns across
+every business. They're different
+industries, sure, but they face the same
+problems. And these skills keep showing
+up again and again. So, if you're
+watching this and you want to make money
+selling AI in 2026, don't overthink it.
+Just start with what the businesses are
+already paying for. All right, let's get
+into the first skill. So, the first
+skill that I'd install is the one that
+builds every other skill, and it's
+called the skill creator. It's one of
+the official skills from Anthropic. You
+basically just describe what you want in
+plain English. Claude drafts the skill,
+tests it, iterates on it, and it
+packages it into something that you can
+use forever. You don't have to manually
+touch or edit a skill.md file. You don't
+have to figure out the formatting. You
+just talk to Claude like you're
+explaining the job to a co-orker and you
+walk away with a skill that runs the
+same every time. You could even drop in
+like an SOP and it would be able to turn
+that into a reusable skill. So, the
+problem it solves is very simple. Most
+people who get into Claw Code try to
+write skills manually and they
+immediately hit a wall. They don't know
+the structure. They don't know what
+makes a skill reliable versus flaky. So,
+they either give up or they cobble
+something together that breaks the
+second a client touches it. So, the
+skill creator removes all of that
+headache. Now, honestly, the skill
+itself isn't what a client pays for, but
+every single skill that you're going to
+sell to an HR company, a real estate
+agency, a coach, whatever, they all come
+out of this one. It's the factory that
+builds the product. So, indirectly, this
+is the skill that can help make all of
+the other dollars possible. So, here's a
+simple example. Let's say a real estate
+agency tells you they waste hours every
+week writing property descriptions.
+Without skill creator, you'd be writing
+out the whole skill.mmd file, figuring
+out the trigger conditions, testing it
+over and over, and it will probably
+break a few times and you can obviously
+get to a spot where you have a good
+working skill. But with the skill
+creator, you can just explain it more
+naturally and it will help you build,
+test, and package it. So, it just
+compresses that learning curve. To
+install this, you can run /pluginstall
+skill creator. I'll put the full command
+right up here and in the description.
+And I'll include all of the actual
+commands that you'll need in the
+description so you can just copy and
+paste them. I personally installed this
+skill globally on a user scope. So no
+matter what project that I'm actually
+working in, if I ever need to build a
+skill, it just automatically invokes
+this and I don't even have to think
+about it at all. All right, so a quick
+thing before we get into the rest.
+You're going to hear me use the word
+skill throughout this video, but
+technically some of these are plugins. A
+skill is basically a package that you
+install that teaches Claude how to do a
+specific job better. It is the markdown
+file, but a plugin is a bigger package
+around that skill because it can contain
+multiple other skills plus extra things
+like hooks or MCP servers. And all of
+that changes how Cloud Code behaves
+under the hood because of that plugin.
+Also, because I know you guys are going
+to say so in the comments. I'm not an AI
+avatar. This is really me here speaking
+to you guys. But anyways, for this
+video, I'm going to be calling some of
+[music] these skills because the point
+isn't the technical category. It's that
+each one of these makes Claude
+noticeably better at its job. Anyways,
+the next skill is called superpowers.
+And this one literally gives Claude
+superpowers. It's a great name. It
+forces Claude to work the way that a
+senior developer works. Meaning, instead
+of jumping in and writing code right
+away, Claude will now step back and plan
+the whole thing first. It works in an
+isolated environment, so nothing breaks
+your main project. It writes tests
+before it writes code. It brainstorms
+and it reviews its own work in two
+stages. Once for whether it actually
+matches the spec and once for code
+quality. The problem it solves is the
+number one failure mode when people use
+cloud code which is rushed or sloppy
+code. You ask for something, Claude
+sprints to write it and on the surface
+it looks fine but then when you start to
+run it and use it, it falls apart or
+worse your client runs it and it falls
+apart. So superpowers slows Claude down
+just enough to actually think the
+problem through and it doesn't let
+Claude skip steps. So really any project
+where you're building software or
+automations that will actually be put
+into production needs this skill. An
+HVAC company paying for a dispatch
+system, a marketing agency paying for a
+custom reporting tool. These clients
+don't care how many lines of code you
+wrote. They care that the system works
+when their business depends on it.
+Without a framework like superpowers,
+Claude might write the whole automation
+in one shot and miss an edge case. But
+with superpowers, Claude can plan it
+out. It can write the tests. It can find
+edge case scenarios and it can catch
+those gaps before it ever reaches your
+client. Now, it's not realistic to say
+that it's still going to be able to
+oneshot everything. Ultimately, when
+you're building, a large part of your
+job is QA, quality assurance. And on
+your first pass, if you can get
+somewhere like 80% of the way there
+rather than just like 60% of the way
+there, that's a win. Fewer debugging
+cycles means less time spent fixing
+things and lower token costs. This is
+also why superpowers is one of the most
+popular community skills out there with
+over 150,000 stars on GitHub. So, to
+install it, just run this command right
+up here. I threw this in the
+description. And by the way, I also made
+a full YouTube video breaking down this
+superpower skill and talking about the
+tokens that it actually spends. So you
+can check that out right up here. All
+right, skill number three is called GSD,
+which stands for get done. And if
+superpowers is about how Claude writes
+code, then GSD is about the environment
+that Claude actually writes that code
+in. Every Claude Code user eventually
+hits that wall, right? You start a
+session, things are going great.
+Claude's nailing everything. Then
+somewhere around halfway through your
+context window, it starts to fall apart.
+You know, code gets sloppy. Cloud
+forgets requirements that you set at
+[music] the beginning of the session. It
+starts skipping steps and it actually
+cuts corners and it might tell you
+things are done when they're not. And
+this is essentially called context rot.
+Now GSD fixes this with context
+engineering. Instead of letting one big
+session slowly degrade, it spawns fresh
+sub aents for each task. And each one
+has a clean context window focused on
+only what they need to know. So your
+main session stays clean. Each task gets
+the full power of Claude's context
+window instead of just the leftovers. It
+also has built-in quality gates that
+catch real problems during execution.
+Scope reduction detection catches the
+planner when it silently drops a
+requirement that you asked for. Security
+enforcement anchors verification to your
+threat model. These aren't things that
+you'd manually think to go check
+through, especially if you're not coming
+from a software engineering background,
+which is exactly why having them
+automated really matters. There's also
+an autonomous mode if you want to hand
+claw a spec and just walk away. It'll
+plan, execute, commit, and work through
+the whole project without you having to
+babysit it as much. Now, one thing I
+want to be upfront about is that GSD
+isn't really a tokens plugin. All of
+these sub aents cost tokens, but what it
+saves you is the hours you'd otherwise
+spend redoing work that Claude broke
+because it forgot what you asked in the
+first place. So, superpowers gives
+Claude the process, plan, [music] test,
+review, repeat. GSD gives Claude the
+clean context so that processing
+actually works every time. So, to
+install this one, just run this command
+in your terminal. And then you can also
+type /gsd-help
+inside of cloud code to see what other
+commands are available within that
+plugin. Okay. So, the fourth one isn't
+actually a skill that you install. It's
+already built into Claude Code. And most
+people just aren't using it. It's the
+/re command and its more powerful cousin
+/ ultra review. So when you finish
+writing code and you type /re, claw does
+a structured code review on what you
+just built. It looks for bugs, edge
+cases, and design issues. All of the
+stuff that a careful reviewer would be
+flagging. It runs locally. It's fast. It
+costs you nothing beyond your usual
+usage tokens. And then we have / Ultra
+review, which launched alongside Opus
+4.7. Now this one, instead of running
+locally, it uploads your branch to a
+cloud sandbox and spins up a fleet of
+reviewer agents in parallel. Each agent
+will attack your codebase from a
+different angle, logic, security,
+performance, edge cases. And here's the
+part that's really cool. Before any bug
+shows up on your list, it has to be
+independently reproduced and verified.
+So you're not going to get a pile of
+style nitpicks or false positives.
+You're going to be getting confirmed
+bugs. Practically, I mean, this fits at
+the end of any Claude code workflow. You
+plan with superpowers. You execute with
+clean context using GSD. And then before
+you merge anything important, you
+run/traview to catch the bugs that
+Claude missed on its own. A few things
+to know before you run it. You need
+Claude code version 2.1.86 or later. You
+need to be signed in with a claude
+account. An API key alone won't work.
+And when you run the / ultra review, it
+could take, you know, 10 to 20 minutes,
+but it runs in the background so that
+you can keep working. You'll want to use
+/re for fast feedback on everything. And
+you can use / ultra review when you're
+about to merge something that actually
+matters, like a big refactor or anything
+touching payments or off or a database
+migration. The kind of commit where a
+production bug costs way more than the
+time and the tokens that ultra review
+may cost you. And also, a quick heads
+up, ultra review isn't free. Pro and max
+plans get three free runs to try. It
+might have changed by the time you're
+watching this, but after that it might
+cost 5 to 20 bucks per run depending on
+size. Once again, you don't need to go
+install this if you're on cloud code
+2.186 or later. Just type /re or/ ultra
+review in your terminal and it should
+work. All right, this fifth plugin is
+context mode. So here is the problem.
+Every tool call that you make, Claude
+dumps raw data into your context window.
+So a playright snapshot might be 56
+kilobytes. 20 GitHub issues might be 59
+kilobytes. And after about 30 minutes of
+real work, 40% of your context window is
+just garbage. Log output, raw data, you
+know, stuff that you never actually need
+Claude to look at. And when Claude runs
+out of space and compacts the
+conversation, it forgets what files it
+was editing, what tasks were in
+progress, and what you last asked it to
+do. So context mode's job is to fix both
+halves of these problems. First, it
+keeps the garbage out. When Claude runs
+a command or fetches a URL, context mode
+routes that call through a sandbox. So
+your code runs in an isolated
+subprocess. The raw output gets captured
+and only the part that Claude actually
+needs comes back into the context
+window. Now according to their own
+benchmarks, a 56 kilob playright
+snapshot becomes 299 bytes. A 46 kilob
+access log becomes 155 bytes. So over a
+full session, 315 kilobytes of raw
+output becomes 5 kilobytes total. That's
+obviously from their published
+benchmarks and you can see your own
+numbers by running/context mode colon
+ctx-st stats at any point. Now, second,
+and this is the part that I didn't even
+know I needed until I had it. Context
+mode tracks every meaningful event in
+your session in a local SQL database.
+Every file you edit, every task you
+create, every decision you make, every
+error that comes up when Claude compacts
+the conversation, it doesn't lose any of
+that. Context mode rebuilds a session
+snapshot and injects it back in. So, the
+model picks up exactly where you left
+off with your files, your tasks, and
+your last prompt [music] intact.
+Practically, what does this mean for
+your Cloud Code projects? sessions that
+used to fall apart around the 30-minute
+mark now run for three hours because you
+don't hit any slowdown. You stop wasting
+prompts reminding Claude of the context
+that it already had. So to install this
+one on Claude Code, just type in these
+two commands right here. And then you
+restart Claude Code and that's basically
+it. The plug-in auto installs the MCP
+server, the hooks, and the routing
+instructions. All right. And now this
+last skill is called Claude Mem. And if
+context mode keeps your current session
+clean, then Claude MEM is what carries
+knowledge across all of your future
+sessions. Cloud code starts every new
+session from scratch. So you open up a
+session and you're explaining the
+project for the fifth time this month
+because every new conversation costs you
+maybe 10 minutes and thousands of tokens
+just getting Claude caught up. Now you
+can try to solve this with things like
+your cloudmd files and your memory files
+which obviously are important and these
+are plain text files that you write to
+give Claude persistent project
+instructions and those work but you do
+have to kind of think about maintaining
+them by hand. So if you miss an update
+on one of those files then claude will
+also miss that context. So claude mem
+basically takes this completely over. It
+hooks into Claude's session life cycle
+and it automatically captures what
+happened during your session. It'll look
+at the file edits, the decisions, the
+bug fixes, the commands, things like
+that. And then it will use Claude's own
+agent SDK to compress all of that
+semantic summaries and stores everything
+into a local SQLite database with vector
+search. So when you open up a new
+session, the relevant parts get injected
+back in automatically. And it also
+autogenerates folder level cloud.MD
+files and updates them as you work. So
+your project documentation literally
+writes itself while you code and it's
+automated. Now, the part that actually
+saves tokens is the retrieval. So,
+instead of dumping every past
+observation into your context, Claude
+Mem uses a three-layer search system. It
+first returns a compact index of
+observations, and then you can pull a
+timeline around the ones that matter.
+And only then does it fetch the full
+details for the handoff that you need.
+So, this repo reports about 10 times
+token savings on retrieval compared to
+dumping everything in at the session
+start. So, practically all of your cloud
+code projects, you stop paying the
+startup tax on every new session. You
+stop repeating yourself. You pick up a
+project where you haven't touched in two
+weeks and Cloud already knows exactly
+what you're working on and what you've
+decided and where you left off. And
+because everything runs locally on your
+machine with a web viewer, you can
+actually see what Cloud remembers about
+your project and you can look through it
+yourself. Now, inside of Cloud Code, you
+can install this using the plug-in
+marketplace with the commands right here
+on screen. Now, one quick warning from
+the repo itself. You don't have to run
+this npm install command that installs
+the SDK library only, and nothing
+actually works because the hooks never
+register. So, stick with the two
+commands above. And that, ladies and
+gentlemen, was number six on our list
+today. But real quick, because I know a
+lot of you guys are doing things with
+website design or, you know, building
+out slide decks and whatnot, bonus skill
+number seven is the official front-end
+design skill from Enthropic. You just
+install it using the command on screen.
+And I would go ahead and just install
+that globally. So, whenever you're doing
+things like actually designing things in
+Claude Code, it will make them look a
+lot less AI generated because of that
+front-end design skill. Now, this type
+of stuff also is natively baked into
+Anthropic Lab's new product called Cloud
+Design. But if you do bring that project
+back into cloud code, you're going to
+want to use this skill. Okay, so now
+that you know these skills and what they
+do, here's how to actually sell them.
+Because I see so many people starting
+out trying to sell the actual workflow,
+but you need to be selling something
+else. You need to be selling the
+outcome. You need to be selling saving
+the business owner 10 hours a week or
+cutting their admin mistakes and their
+human error. You need to be selling the
+result like speeding up their leads or
+getting them more leads. That's what
+they actually want to pay for. So
+instead of offering to build an AI
+workflow, you're actually just offering
+to save time, cut costs, and help them
+focus on making more profit for their
+business. And there's actually a simple
+way to start doing this. If you're brand
+new, don't try to use all six of these
+right away. Just pick one, learn it,
+build out a few workflows using it, and
+show a business owner a demo. They won't
+really care about your experience.
+They'll care about the value of what
+you're showing them. And once you start
+to understand how these skills work and
+how they piece together, you're able to
+build better automations quicker and
+hopefully for cheaper, which means you
+can make more demos, you can make more
+content, you can automate more parts of
+your own business. All of that
+experience is going to help you
+communicate the value of what you know
+to business owners much better. So, I
+know that we covered a ton of
+information in this video. So, what I
+did is I threw all of this into a
+resource guide that you can access for
+completely free inside of my free school
+community. You can check that out using
+the link in the description. And if you
+want to see exactly how I make money in
+2026, then check out this video right up
+here. But anyways, that is going to do
+it for today. So, if you guys enjoyed or
+you learned something new, then please
+give it a like. It helps me out a ton.
+And as always, I appreciate you guys
+made it to the end of the video and I
+will see you all in the next one. Thanks
+everyone.

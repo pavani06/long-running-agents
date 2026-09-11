@@ -1,0 +1,325 @@
+Next up, we have Brett Taylor. He was part of the, I think, first APM program at Google where he famously rewrote all
+of Google Maps in a weekend. Then he founded a company. Then he went ahead and was just CTO of Facebook for a
+while. And then he founded another company, which we're lucky enough to be in business with him on, which is redefining the front door for
+businesses. and Brett will be joined by our partner RVY who used to deliver
+groceries and now gives people money. About the same. Please welcome RV
+and [Applause] Brett. Yeah, but a lot of groceries.
+Okay. Um I thought Pat was saying I was the legend, so I was pretty pretty upset
+when apparently it was Brett. You're a legend to me. Thank you. I really appreciate you saying that. Having Jeff Dean and then Brett Taylor is like
+having like LeBron and Steph of engineers. It's amazing. Or Ruof, two random rugby people that only you know,
+you know, like that maybe an analogy you'd get. Um, all right. I want to ask you a
+question. There's very few people that have been described as 10,000x engineers probably in general, but also extremely
+extremely few people who've done that and also been good at enterprise sales. Okay. Um, and I think one of the things
+that'll be fun today is we can like be like high flutin and talk about where the world's going, but we can also talk about like how to sell things. And so
+the question I have before we get to tactical advice on that is like what made you even think that you could do
+something other than just be an amazing engineer? Yeah, I actually think this is uh one of
+the greatest challenges to overcome as an entrepreneur. uh this is really reductive but I think if you talk to an
+entrepreneur they often have some unique insight on the business they're creating. So maybe it's a technical insight. If they come from a background
+in say business development, maybe they see an opportunity in the market uh that they can take advantage of as a
+partnership or business opportunity uh in the financial services industry. Maybe you see an inefficiency in the
+market you can take advantage of. The issue I see with a lot of entrepreneurs is you sort of become single issue
+voters. It's like every time there's a problem uh in your business, if you're a product person, you go change the
+product. There's always the like famed redesign like the dead cat bounce before your company gets destroyed. And it
+turns out that as you're growing your business at any given point, you may have a go to market problem, you may
+have a product problem, you have a competitive problem. And I think the hardest thing is when you come out of
+business with what you're comfortable with, you regress to sort of what makes you comfortable. For me, uh my most like
+vulnerable moment was when I was 29. and I became the CTO of Facebook. Uh I was one of the older people at Facebook at
+the time. Good. Well, I didn't know what the what I was about to cuss. I shouldn't cuss. I
+didn't know what I was doing. You told me this was recorded. I have to like I think that you should not give away state secrets about open
+a fine. It's good. And um I uh I wouldn't have self-described that I was
+sort of struggling in my job, but I think I was. I was sort of trying to do everything myself. Uh, and Cheryl
+Sanberg, who was the chief operating officer at the time, took me aside and kind of had a sort of come to Jesus conversation with me. Um, essentially
+saying, "You need to hold your team to as high of a standards you hold yourself. You need to stop trying to do the work yourself and you need to
+identify the people who aren't meeting your needs, replace them, but you need you're not scaling the way you're
+operating effectively." And it was kind of the conversation I needed to have at that moment. I felt really shitty for
+about an hour and then like woke up the next day with kind of a fire in my belly. And I realized upon reflection uh
+she didn't sort of diagnose it this way, but upon my reflection I was going into work every day and trying to say how do
+I conform this job to me and my strengths. Um and instead of thinking
+like what's the most important thing to do in this job today even if it's not something I find delightful or
+interesting. So, I sort of came at the job uh and I I always modeled it as giving myself advice like I was sort of
+my own board of directors and sometimes it would be people, sometimes it would be business, sometimes it would be
+technology. I was the CTO so hopefully it wasn't that some of the time. Um and
+interestingly enough, um I got more joy from it. Um I realized at that point I actually just appreciated having an
+impact more than I appreciated any act of doing my job. And so I ended up with this really nice reinforcement of, wow,
+I'm better at my job than I was last month because I'm not just doing what I like or what I feel comfortable doing.
+Um, and that ended up like a really virtuous cycle. So I've had a I've been a little bit of a chameleon. I've, you
+know, it's interesting. If I meet people from Facebook, they think of me as an engineer. If I meet people from Salesforce, they think of me like a
+suit, you know, like or I don't know, generously. I something the boss. And I'm not any one of those things. I just
+sort of showed up every day to, you know, be uh to have an impact. And as I said, I just I gain a ton of joy from
+it. And the reason I bring it up for the entrepreneurs in the room is I think at every stage of your company at the
+beginning, product is all that matters. You know, finding your first and happy customers. As you scale, what you need
+to be great at changes. And I think having uh the self-awareness and self-reflection to actually change what
+you spend your time on is actually I think one of the greatest challenges of not having your company sort of get away
+from you and continuing to be effective leader at that company. I I would tell you I think it's something just so you
+have it. It's something I have taken and sharing with my kids which is like don't let something you're good at become who
+you are. Right. And I think that that is something I've learned from you that I really appreciate and I think you're doing in the day-to-day. So tell people
+about Sierra. Why did you and Clay start it? What's the vision? What are you guys up to? Uh at Sierra, we help companies
+build customerf facing AI agents. Um we started on the hypothesis that uh every
+company's main digital interface will be an AI agent, you know, and maybe in in
+uh 20 years ago, your main digital presence was your website, your dot. Uh
+remember listing on Yahoo directory was the bees knees, you know, back in the day. Um I do I do remember that. Yeah.
+Thank you for Yeah. Thank you for noticing. Yeah. You know, and then for a lot of brands, whether it was like your social profile or your mobile app, you
+know, companies have a lot of different digital touch points today. Our hypothesis, I don't know if you measured it like what percentage of digital
+interactions happen on a touchcreen now versus a keyboard. It never replaces, but it certainly sort of displaces. Our
+hypothesis is you fast forward 5 years, the vast majority of digital interactions will happen via an agent.
+And as a consequence, every company will need their singular agent, not plural, the one that has their brand at the top
+that represents the whole of their customer experience. And um so we've uh worked with a lot of different companies
+from ADT home security to Sirius XM to help them build their primary customer-f
+facing AI agent. Um a lot of it is AI and it's an agent, but a lot of it is also business. You know, like what is
+the customer experience you're providing for ADT home security? your alarm might be going off, your alarm might be broken
+for SiriusXM, someone might want a better price on their plan uh because their promotional period expired. So,
+it's actually really interesting because just like your website, I don't think most people think of websites as a piece of technology nowadays, right? It's
+almost just an expression of your brand and your business, that's actually kind of the agents that that companies are
+building on our platform. Uh but I hope, you know, if we're successful, if you run across an branded AI agent in the
+wild, I hope it's powered by our platform. That's what we're trying to do. And one of the things that comes up a lot is like what are the foundation
+models going to do versus what are the application layer companies going to go do, right? And I think you have probably
+the most unique vantage point on this being the chair of OpenAI as well as building an application layer company. So can you help our founders here think
+about what is going to belong to them versus the foundation models? Yeah, I've um I'll say strong opinion loosely held
+uh on this. So I think there's really three big markets that I see and I'll end with the one I think is the most
+exciting. Uh first you have the foundation models and Jeff said something similar to this but I think
+there's going to be a ton of consolidation in the foundation model market. It's fundamentally just a
+capital intensive business just like building data centers. Effectively it is building data centers you know at the core of the expense. And as a
+consequence, it just, you know, if you have large-scale capex, you can generate more capex and it sort of benefits
+scale. And as a consequence, I think it'll end up a little bit like the cloud infrastructure market, a handful of
+players, relatively low margin, but very very high scale and sort of collecting taxes from everyone in the AI ecosystem.
+Uh I think the the next market is is really making tools, the proverbial pickaxes and the gold rush. Um and uh I
+think you know a lot of uh companies created prior to large language models like you know data bricks and snowflake
+will sort of be in that category but a lot of new ones as well. Um there's a lot of nuance there. I think that will
+be a market that can really uh be threatened by the foundation model companies. I imagine every cloud
+infrastructure company has some there's probably an AWS or Azure equivalent to
+what they do. And so you end up with a naturally sort of more challenging, but it can be very high scale. Um, but it's
+just a you definitely are closer to the sun, you know, the closer you are to the models themselves. And then there's the
+AI applied AI market. And I actually think this will manifest its form as as agents. Um, so uh, you know, there's
+companies like Harvey that make an agent for the legal profession. There's companies like Sierra that make it for customer experience. Uh, there's
+companies that make it for marketing. There's companies that do for visual effects. Uh my view is this is sort of
+the new software as a service. Um companies will the form factor of purchasing AI will be purchasing an
+agent that does a job. Um I I think there's a it's a really exciting time. I
+actually I think I have assume a lot of folks in this room are working on sort of applied applications in AI. Um the
+reason I think it's exciting are sort of twofold. One is I think it's the way software should be consumed. Uh I think
+right now a lot of particularly large enterprises uh in the excitement after chat GBT licensed a lot of models and
+and as we all know software is like a lawn. You have to tend to it. So I think there's a lot of buyer remorse right now
+from a lot of spend and a lot of proofs of concept but not a lot of value. Um
+the second thing is I think it changes the markets. you know, there's these markets where like selling enhanced
+productivity to attorneys is not like a huge tam and so you sort of run up against just a natural thing like even
+if you get you know 80% market share how big could this company be you know but if you're actually selling antirust
+review or or something I don't know much about the law so I just made that sound credible really you you are the you
+know crisis to the stars and you don't know anything about the law that seems you know it turns out the crisis to the
+stars um you know uh that has a ton of value
+um because you're essentially you know providing something that very high cost labor produced before and as a
+consequence I think if you look at the total addressable market of you know all these vertical specific domain specific
+agents the market is gigantic um and actually it's interesting if you look at the public markets if you look at the
+top uh you know five software companies that dominate um the S&P 500 that
+dominate the stock market. None of them are sort of pure play software as a service companies. Obviously, Microsoft
+is and it has some enterprise software. Amazon has AWS, but they're infrastructure companies. They're consumer. Um, and if you look at the
+software as a service companies, Service Now, Salesforce, SAP, Oracle, they're all sort of in that sort of 200 to30
+billion market cap range, you wonder in this new world of agents, will we see
+our first trillion dollar sort of applied enterprise software company? And I I think the answer is yes. Uh because
+you're going from selling productivity enhancement to selling outcomes and outcomes are valuable. Uh some outcomes
+are extremely valuable. Um and so I think there's been a little understandably a little too much
+excitement around the models themselves. Not that I I mean obviously at Open Eye were very excited about it, but as an
+entrepreneur I think that it's sort of the the pickaxes are obvious, but actually the value is elsewhere in my
+mind. I think the value is taking these this amazing next generation technology
+solving a very valuable business problem that was high cost before and selling something valuable for an order of
+magnitude less money than the current cost is really easy. Um so I
+just think it's a great business and I'm I'm super excited about the future of the software industry as a consequence. What do you think is the right way to
+price those outcomes when you think about them? Right. I think that there's all the former seatbased models, right?
+And now Sierra obviously does it differently. How applicing model and then also talk about how applicable you
+think that is or isn't to other agent companies. Yeah, at Sierra we do we call it outcomesbased pricing. So uh for our
+median customer that typically means when the AI agent resolves the issue for the customer autonomously there's a
+pre-negotiated rate for that and if we do have to escalate to a person it's free. uh we do that just to align with
+the the business model of our customers and uh I actually view it as sort of a natural evolution of software. We went
+from uh box software with a perpetual license to you know once you delivered
+software in a browser most everyone's on the same version. you needed to sort of invent a new business model to sustain
+R&D which led to software as a service subscription based business and we just thought from first principles and said
+hey if you're selling software that completes a job what is sort of the secular business model for that and it
+felt like let's pay for a job well done you know sales people get paid a sales commission you know why not the AI as well um it it does really disrupt the
+way you build a software company in my mind though um if you look at particularly the enterprise software ecosystem
+there tends to be sort of an armslength relationship between software vendors and customers. Uh typically you'll sell
+a piece of software and be done. Uh then you'll have systems integrators come in and spend you know for large scale
+enterprise software deployments sometimes 6 months or a year to implement that software. Um and that's
+well I mean by the time the software is being used you know the vendor has been probably not gone they're probably going to sell them more things but effectively
+gone for uh 6 to 12 months that so as a consequence there's almost like an
+active disassociation with the act with the outcomes um and so you end up with a
+confluence of I think a lot of different factors that I think are interesting uh there was a question just before I
+walked up here about you know uh agents that can code what will that do to the professional services industry broadly
+um there's a question of if the right thing for AI software is outcomes, how do you actually align your company with
+that kind of accountability? I think it sort of blows up a lot of the model. Um but that's why, you know, as Steve Jobs
+said, it's more fun to be a pirate than it is to be in the Navy. And I think it's a really good time to be a startup because, uh most people in this room are
+not encumbered by a business model. Um which is a funny way of thinking about it. But if you look at the history of
+software, Salesforce beating seable systems uh you know service now beating the plethora of ITSM companies that came
+before it's actually much closing a technology gap in your
+product is is hard but not impossible. Changing your business model is really
+hard. Uh, and you look at Microsoft transitioning from Windows to Azure and
+how incredibly awkward that transition was and Satcha deserves a bunch of
+credit. Shantenu did a great job at Adobe going to ratible revenue, but there's like a graveyard of CEOs who've
+been fired because they couldn't make that transition in part because public company investors are horribly impatient
+in these things. And so I just think that what's exciting about AI is I think it's going to give rise to new delivery
+models, new technology models, but as importantly, new business models. And I think that if you think about what are
+the opportunities for startups relative to incumbents, don't lose sight of the business models. I actually think it's
+usually um one of the greatest advantages that startups have relative to incumbents. Yeah, I I think
+historically speed has been something, but I think on this point it's like you also have this enormous benefit of, you know, you're not encumbered by the old
+business model. Well, you referenced the uh previous companies that you've been in and you started. One of the things
+we've talked about is like there are things that are similar about building a company now and there are things that are different. What are some of the
+things that are the same as the previous companies that you've built that you're doing now? And what are some of the things that are different? Uh well, at
+Friend Feed, my not so successful social network, we built our own servers. Can you tell the story? Can you tell the
+story about the Facebook IPO real quick? just about friend feed for everyone where uh you got recognized. Um can you
+I'll I'll do that then. I'll do it then. I'll do that. Okay. It's a good story. It's a good story. We stand between these people and drinks, man. You got to
+make them laugh like let's go. You know, hit them with something. You're pulling out the deep cuts.
+Um you know, I think a lot has changed just in the infrastructure world. You know, I think literally we built our own
+servers uh at friend feed and you know like brought them into the colo. We
+brought our site down once by tripping over a power wire in the colo. Uh that was Sajjie Sajie's fault. We love him.
+No, I'm just kidding. It was like so it's just a different era. Um you know I do think it is uh as we've uh
+virtualized infrastructure uh and built you know just the software development life cycle we have today from uh cloud
+infrastructure like Azure and Amazon web services to GitHub and GitHub actions and you know all the incredible open
+source libraries um and then you have sort of the virtual infrastructure to help support your
+companies like you know ramp you know and rippling you end up where uh there's
+a certain like there's a very different level of focus now in starting a
+company. Uh it used to be you just had to do all these things to like build the scaffolding of your company and it was
+actually like a non-trivial amount of work. And the thing I find just so exciting about like the future of
+entrepreneurship is you there's just so little overhead now in terms of just like intellectual overhead. Uh, and I
+remember actually just how hard it was to get like credit cards for our employees. Like they had to all get a credit check. I'm like, are you kidding
+me? Like it's it's our bank account. Like what are they? And you know, now you can, you know, print a virtual, you know, uh, credit card with, you know,
+things like ramp. It's so easy. Um, so I think we've just seen every aspect of
+starting a company that was about sort of like the operational sort of scaffolding infrastructure to do so. Uh,
+many startups that you all have funded are now doing that. And so as a consequence, you can focus on just
+purely what defines your company and what makes it different. My color
+commentary on that is I actually think one of the mistakes a lot of smaller companies make is spending their
+resources and time on things that aren't core to their business. Uh and it's a
+it's more than a hidden cost. I think like every ounce of time you're spending on something that fundamentally should
+be a commodity to your business is time you're not spending on like selling your product to more customers or like
+working on like true differentiation and it takes a lot of discipline because a lot of those things are like catnip you
+know it's like fun to work on that part of your business and I always like to say like you know what Clay who's
+somewhere around here we always talk about like what will make us happy a year from now and that's always our metric and then some you could take it
+to 10 years if you want to be like no one knows what the hell is going to happen in 10 years. By the way, if you don't know what's going to happen in 10 years, nobody knows what's going to
+happen in 10 years. And I do think it's very clarifying and I just think it's I it always surprises me how much I tend
+towards some of those things that are, you know, wholly undifferiated at this point. Okay. Well, you mentioned some of
+the companies that Sierra works with, right? And some of those are companies that have been around for a long time,
+right? They are established companies. What does the T and ADT stand for? Telegraph. Telegraph. Okay. So, how do
+establish companies? It's cool, by the way. Home security over telegraph. I actually imagine someone coming to like
+the Sequoia of that day. It's like home security over telegraph. It's like YouTube for cats, you know, and like and
+uh and it and they built that business. It really was. And now they're actually doing home security with AI agents. What
+a cool privilege. I think it's awesome. And you know, it's a better acronym than AD AI, you know. Um Okay. So, but what
+do they have to do? What are the ones that are going to succeed? what are they going to do to in a world of changing technology and what are the ones that
+are not going to succeed? What is holding them back? So, and how can this group help all of
+those established companies succeed? Yeah. So, I think it's a really interesting
+opportunity for uh companies in competitive markets like home security
+um or a company like SiriusXM that's got incredible unique original content, but
+they have a lot of cord cutting and a lot of competition around them. You have this technology and AI that drives
+incredible amounts of productivity in departments that had previously been incredibly underserved uh by software.
+uh everything from you know largecale contact centers to we talked about things like legal departments large
+operations departments um and as a consequence companies that lean into this can really change the cost
+structure of their business um uh if you think about I mean there's companies that have like 20,000 person contact
+centers and you know this costs hundreds of millions of dollars every single year and if you can take all of that opex and
+put it back into your business you can lower prices you can invest in growth
+and so it's really interesting I think it is one of those opportunities where these shovelready applications of AI
+even if it's indirect because they can drive such structural changes to the uh
+essentially essentially the unit economics of so many companies businesses I think it will change market
+share and so I think that it's a little bit like the birth of the internet you know and you know Walmart did very well
+uh since the birth of the browser even in the face of Amazon, there were a lot of retailers like Blockbuster who did
+not. And so I think uh because most executives running these companies now
+lived through the web browser era, saw the birth of the smartphone uh and saw
+the growth of things like Instacart and Door Dash and others. They see this. They're not and they're they're modeling
+what is the future of our industry going to look like. And you know, you mentioned enterprise sales. I think the
+key thing about selling anything is speaking the language of your customer
+and having empathy. Um, I think one of the things I see a lot with entrepreneurs is they'll go into a meeting and sell their product. Um, if
+you ever see a really good salesperson, the first thing you'll see them do is ask a lot of questions. But then the
+next thing you need to do is actually listen and understand what they're saying and then reflect the value that
+your technology provides through the problems that they just described. And I actually think that actually a lot of
+the technologies in AI will immediately benefit a lot of these businesses, but they're being pitched by 20 AI vendors
+every single day. And they all sound the same. They literally all sound the same. you could see like the you know first
+call deck of startups that do completely different things and there's like the same words on the slides and so this is
+the I think the really opportunity right now is how do you actually stand out in such a saturated market I actually Clay
+and I talk a lot about this because we both started web design companies in high school you know like during the dot bubble I went door todoor flower shops
+he did more like graphical things for I think he made a little more money than you did in high school yeah I it's he
+did his successful. He also got sued by the California Raisins, but that's a whole another story. Um, so true story, his
+name's Clay. He named his company Claymation. Bad look. Um, sorry, Clay. I
+didn't know this a public. It's public now. Um, love you, man. Uh, and this guy doesn't know anything
+about the law. Yeah. uh we we talk a lot about the experience that you we were
+young and I not in the center of it during the dotcom bubble where you didn't just have Google you had alt
+vista all the web uh you had intome which was a B2B search player that was
+uh quite we respected quite a bit uh you had amazon.com and you had buy.com and
+half.com you had eBay and you know you had uh PayPal and all the other folks
+pursuing payments I think now like victors write the history book. So you you look at all these magnificent coming
+out of that era and you forget that it was like a fight to the death. Um the idea that hey maybe we should search the
+internet was not exactly novel. Um the but the actual like detailed execution
+of those ideas was paramount. And I think you know going back to like how do you help companies like ADT succeed? the
+first thing you need to do is like show up as a partner to them and help them solve their acute business problems. And
+that's a uncomfortable sort of conversation because I think a lot of people don't feel equipped to do it. Uh
+you know, one trick that I would just recommend is before you meet a customer, do deep research on them. And by that I mean like the actual feature deep
+research and chat dbt. Um you know, show up educated in these conversations. And
+I think you find the more you spend researching your customer and understanding their needs and less time
+you thinking about like the next feature going to launch, the better that conversation will go. And I think you'll end up finding that, you know, sweet
+spot between like where is the intersection of what you do differently and actual business value. That's awesome. Let's go to audience questions.
+I just realized that I've taken up a lot of Brett's time. So, uh, please go ahead.
+Thank you. Um,
+hi, I'm Robin. What are your learnings in building branded AI agents for specific verticals and how is it
+different to building horizontally? Uh, I really believe in verticals in AI.
+Uh I think that if you think about what the job proverbally of an AI agent is uh
+for a telecommunications company and you think about what's important to them uh
+versus uh say a commercial bank uh versus say a residential uh bank uh
+versus an insurance company who might be concerned about claims processing versus a health insurance company that's uh you
+know answering things like explanation of benefits. every single one of those applications is actually quite specialized and you
+know right now uh I think that the companies that can actually provide
+value quickly around these core workflows of these businesses that are actually valuable to them uh actually
+sort of when I talk about sort of like coming into those conversations and actually providing value really quickly just have a leg up. Um I am fairly
+skeptical of horizontal AI platforms. Um, it doesn't mean they won't succeed by the way. There's always an exception
+to every rule. But, uh, you know, things like lang chain I think probably will succeed. They're open source and you
+know, you end up sort of you need to sort of develop a horizontal business in a different way. But it just, you know,
+pure play enterprise business. I think it's very hard to go in with a horizontal platform because there's just
+lots of good enough. Um, there's lots of homegrown solutions. There's lots of not invented here. Um, and you know, having
+a slightly better mouse trap is rarely uh, you know, doesn't pass the like vitamin painkiller uh, threshold
+generally speaking. So, my rule of thumb is like the closer you get to uh,
+solving a problem for a company, the more successful your your business will be, assuming you're talking about an
+enterprise business. Um, and you know, the other thing that I I really learned uh from Mark Ben off at Salesforce is
+like if you have one successful customer, make it two, and if you have two, make it 10. And if you have 10,
+make it 100. Um, I do think there's a certain amount of tactical excellence that comes in when you're building a B2B
+software business. And ivory tower cleverness rarely wins. It doesn't mean
+you shouldn't have a long-term strategy by the way, but uh there's a certain if you focus on making your customers
+successful, that's where the truth is and where your like product should go. Um sometimes you can be led astray by
+that mechanism. You like the the first one was not representative. That's rarely the concern though. Usually it's
+uh being very very clever and sort of ivory tower with your strategy. So that's why I love verticals.
+Uh maybe one more. Hey Brad. Um I was really interested in the question around how you price uh AI agents.
+Specifically, have you seen customers being more open to you taking a cut of cost savings or of incremental revenue
+that you've created? And what are the main kind of push backs that you that you're hearing from customers? Because
+impact pricing has been historically quite hard. Um so wondering what you're seeing there. Yeah. Um we see interest
+in both. Um, you know, if you're owned by a private equity firm and have a big bunch of debt, you probably say the word
+Ebatel like 20 times a day. It's like what you do at private equity owned companies. And you probably care a lot
+about cost savings. Um, though, and if you're That's basically all you do. You just walk around. Yeah. Yeah. He
+actually really simplified it. He got it. Yeah. It's like, see, I I know finance too. Yeah. Yeah. Yeah. you have
+not ever let an oified version of yourself slow you down you know please and uh in contrast you know if you're in a
+very competitive market like if you talk to any CEO they generally care more about growth than they do cost savings
+and in fact I think one of the counterintuitive things there's lots of talk about with models becoming cheaper
+will demand for infrastructure go down no in fact demand will go up just because new use cases will emerge I
+think the same will be true of most cost savings in AI I think most sophisticated companies will recoup those soft cost
+savings and reinvest in growth. And so it won't actually be cost savings necessarily. It will actually uh flow to
+other parts of the business just because that's what capitalism does, right? It's like you know what saving a lot of money
+for what reason? Like you want to grow, you want to beat your competitors. Um so
+sort of first principles and and our lived experience is that you know topline matters more. There's just no
+doubt about it. And if you can drive a measurable topline outcome that's always more valuable. But cost savings do
+matter because fundamentally if you you know look at sort of productivity growth in the world over the past 30 years it
+hasn't been as uh dramatic as I think many people thought it would be after the '9s where we saw a huge uh spike in
+productivity growth. So fundamentally just like in the economy we're driving efficiency productivity in the economy
+and so the answer is definitely both. The interesting thing about cost savings is I assume those will be compressed
+over time. You know, right now most of your AI startups are being compared to the labor costs. 10 years from now when
+it's all AI agents, you're going to be compared to other AI agent. So the other thing about cost savings is it's a
+temporary drug, you know, because the costs of actually all these things are
+going to change because of the presence of of technology. Um, so it's a little bit like, you know, your mobile phone
+plans or actually always think about as like the computers we used to buy growing up in the the 80s and 90s. they
+would get cheaper and better every single time. And that's sort of where we are in this AI market. So our view is
+that like figure out what the outcomes are that your customers want and it really depends on the application honestly. Um even how you price it is
+interesting. One of my favorite stories, I don't know if this is actually true, but I uh I heard it and even if it's not
+true, it changed I think which was uh when LinkedIn was at one point um trying
+to grow the recruiting business, they started to do they started out with some usagebased model, but it turns out HR
+departments don't have a lot of uh license to spend like you know in a variable amount. So making it a
+subscription model just help with the procurement process. I love that example because it's a really nuanced and
+insightful go to market point which is that department HR is generally a cost center in most companies unlike
+marketing departments which have like you know money flowing from the the ceiling you know this is a department that has to go through a pretty rigorous
+procurement department so actually going to a subscription model was necessary to actually sell a product into that
+department it's that type of thing I think is where it's like is it cost savings or topline yes both also like
+who are you selling to? How do they buy? Uh who are the gate uh gatekeepers to
+approving how they spend? That's how you grow like an enterprise software business. You really need to understand
+who your decision makers are, who's approving it, and actually like how do they budget? Um and I have a lot of
+counterintuitive things, but it's like sometimes easier for companies to prepay for things than to pay on demand. Counterintuitive, but just I think
+that's like you really need to get into the details of your buying cycle to answer that in a in a accurate way. I'm
+going to wrap us up. Brett, thank you. Uh they say you should do business with people you like, trust, and admire, and
+you are that for me. So, I really appreciate you doing this, and all of us do as well. Thank you. Thank you.

@@ -1,0 +1,112 @@
+When I talk to developers, a lot of folks are worried about how AI might take their job.
+Maybe they've been pressured to pick up a new AI-assisted coding tool, or they're being told to become AI native.
+But what does this all really mean?
+And what should you be doing to prepare yourself for the future?
+Well, most people think that it's because of productivity gains and how AI can make software development easier.
+But a model evaluation and threat research organization published a controlled study on open source developers.
+Who thought that they were 20% faster thanks to the coding tools that they were using.
+Now, turns out they were actually 20% less productive and slower because of these new tools that were introduced.
+So the question isn't, can AI write code?
+Yes, it definitely can, but why isn't AI translating into real improvements across
+this entire software development lifecycle?
+So let me explain.
+Let's draw out the typical software delivery lifecycle,
+where we begin with determining the requirements for our application, designing what this ideal system would look like,
+building this, so actually coding and being able to test these features that we built,
+releasing this in a stable and predictable way, and then operating, which means maintaining this application.
+Well, this is how we've delivered high quality software for decades, but let me give you a little secret.
+A lot of the time that you would think spent in this entire lifecycle is not spent writing code.
+It's the waiting from a, for example, developer waiting on the product team in order to clarify a story that we need to build out,
+or to, let's say for example, ops, ops waiting on developer for their release.
+And then, hey, QA is over here and QA needs to test out a new build.
+So everyone in this entire lifecycle, all these teams,
+all these engineers are waiting for each other across a series of fragmented tools and platforms in order to just deliver software.
+And these environments might be different because what the QA and production team sees is gonna be
+different than staging and the product team who are just trying to build out these features and test things out.
+And when AI makes one box in this diagram faster, so for example here, with the coding part,
+well those gains get absorbed by all of the other phases and you don't see that
+big of an impact for the entire software delivery lifecycle.
+So sure, maybe you're coding three times faster, but the surrounding processes aren't changing, but just not yet.
+So typically when teams try to use AI for the build phase, a lot of them fall in one
+of two situations and you can kind of think of it like a spectrum.
+So on one end, you have over delegation, where you hand a frontier model a big
+ambiguous problem, like, hey, I want you to code me an e-commerce platform.
+And you expect that to run autonomously across this entire software delivery lifecycle.
+But the problem with this request is it's full of unstated decisions.
+What about the payments, the authentication, the shipping,
+all of these that typically would be thought of during the requirements and the design stage
+has now been hand it over to one model to do everything and generate thousands
+of lines of code that they didn't read through.
+And this process seldom works, especially for production, because review is slow.
+And so in this stage of testing, you're typically waiting for a team to be able to review your code.
+And that requires so much time that you essentially lose all of these gains where you typically
+would be able to build code faster because you're not able to review and
+you're constantly going back and forth based on decisions that a model did.
+So you slow down the software development lifecycle.
+On the other end is under delegation.
+So let's say for example, a senior developer does all of the planning and they break down the tasks themselves.
+And they're inserting AI into specific areas like, hey, write this function or review this code for SQL vulnerabilities.
+Now, this part actually produces good code.
+But the intellectual heavy lifting now is still 100% human.
+So you're putting all of the time and effort into these first two places, but without using AI.
+And that slows down productivity, because yes, you might be coding some parts faster,
+but you're still spending a lot of time on the design and architectural stages of the software development lifecycle.
+At this point, you may be thinking, well, dang, AI doesn't work.
+It's all hype.
+Or maybe you're in the other camp.
+You think, hey, it's fine, but it's not useful, and it's the 10x in productivity that we thought it would be.
+So what happens when you redesign the lifecycle around AI instead of sticking AI onto the existing lifecycle?
+Well, instead of trying to generate more lines of code, let's look around to other high-impact areas,
+starting with the requirements and design, where now lots of unstructured data coming from surveys, user reports, emails.
+Conversations with stakeholders.
+All of this can be synthesized to understand your user behavior bottlenecks and usage patterns.
+This can help us to generate user stories, which then builds out the next set of
+features and capabilities for the software we're trying to deliver.
+Or as an example, we can use an agent to analyze logs and bug reports to identify root causes of problems.
+And this over here can even help us at this beginning stage of requirements and design.
+To develop our software by knowing what works and what fails in production.
+Now, let's talk about coding because the vibe coding of today simply doesn't scale.
+Instead of asking AI to build entire systems, we can focus on small and well-defined tasks.
+This is where spec-driven development becomes really important,
+not just for breaking work into tasks,
+but taking the intent that we have for the software we need to build and turning
+that into a specification that a model can read and follow.
+So your agent, or the harness which includes the entire system around the agent like tools,
+allows us to take that original specification and build it out with subagents.
+So one to do, say for example, research on a specific topic and dependencies you're using.
+One to use with MCP servers in order to pull data from different sources your team needs.
+And then one to do code editing
+in order to build out the new features and functions that allow us to create this next
+set of features in the software development lifecycle.
+Being able to use different capabilities like the agents.markdown,
+allow us share context around different teams in our organization,
+and be able to you skills to make sure that each time we get an output from a model,
+whether it's one that's running locally or a private one or something in the Cloud,
+we're getting the same response back as we're building out our application.
+Now, moving to testing, because we know manual testing is a classic bottleneck,
+but just as AI models can generate code,
+we can also build unique test data for, say for example, unit testing specific cases that might come up in our application,
+and we can do this even directly from a user's story,
+and this can all help the QA team down the line, but with the amount of log data generated by our applications,
+AI can help diagnose problems like a stack trace error that might be helpful when the system goes down at 3 a.m.
+Finally, with deployment where we release and maintain our software, well, models
+are well-trained with infrastructure as code.
+And so writing things like Ansible scripts in order to update virtual machines
+or Kubernetes YAML in order to deploy our containerized applications to the
+hybrid cloud, well, all of this is already possible with today's agents.
+Now a big use case for AI and software development is modernizing, whoa, legacy software
+systems that no one really understands and the original developers aren't around anymore to maintain.
+And what AI is able to do is explain this code and help us to reverse engineer systems to give you a path forward.
+So you can still use a software development lifecycle,
+but use AI to understand what the purpose of the code was and what functions do in a language that you might not understand.
+But the productivity gain from AI isn't because of a better model or tool.
+It's from redesigning the software delivery lifecycle around the model.
+Like moving the human role from typing to validating and working with other teams in the organization.
+We're removing friction and coordinating work across the software development lifecycle.
+And instead of measuring metrics like the lines of code generated, it's all about outcomes.
+So how's the health of our systems?
+What's our code maintainability and complexity?
+And are we reducing the time for changes and new features in the software?
+And all of this is to make the developer's life easier all around, but also all of the teams that developers work with.
+So if you found this topic interesting, let me know what we should cover in the next video.
+And feel free to like the video if you learned something today.

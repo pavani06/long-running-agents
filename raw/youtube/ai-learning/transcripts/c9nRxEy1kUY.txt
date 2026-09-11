@@ -1,0 +1,531 @@
+My name is David Andre and over the past three years, I've spent well over 2,000 hours coding with AI. And I've also
+personally interviewed some of the most legit and productive people in the space of Agentic Engineering. And in this
+video, I'm going to show you my full Aentic engineering setup as it currently stands, holding nothing back. Starting
+with the interface, right? This is how you interact with agents. So currently, my main interface is BB. This is an open
+source project. It's completely free and it allows you to use any subscription, any agent, any model inside of a single
+interface. Right? So we can see we have CEX, cloud code, pi, cursor CLI, open code, uh grot and hermes all within the
+same UI. The problem with apps like you know codeex or uh cursor is that they
+only allow their own models, their own subscription and you cannot utilize the most out of your subscriptions which is
+absolutely essential in 2026. Now inside of BB there's a lot of different useful things. You can see that I have different projects on the side. I can
+easily close them. I can easily open them, reorganize them if I wanted to. There's also agents and you can launch
+sub agents. So, for example, here I told it to run the total review skill. I'm going to go a bit more into detail on my
+skills later on. But basically, what it did is it launched these two sub agents and uh yeah, I didn't have to write that
+prompt. I didn't have to manage this sub agent. The parent manager agent launched them and you can easily click into them.
+It's very nice. all the features you like from uh you know cursor or codex apps which again those are two great
+apps don't get me wrong they are inside of BB and the benefit is that BB is fully open source so you can fork it you
+can look into side of the code and again it's free to run that's why I use it but it's not the only thing in my agentic
+engineering setup in terms of the interfaces another one is CMAX cm is a great way to have different projects uh
+you can see here for example I have a bunch of codexes so I will split this thing five different codexes how they
+behave when they lose internet access and you can do that easily because when you launch a new workspace inside of CMAX you can just uh divide the screen
+like this just like you would do in T-Max and that's why the similar name it's a terminal right so each of these
+are terminal panes uh you can launch different harness there's also built-in browser CMAX is great the the issue with
+CMAX is where it breaks is once you have a lot of different agents a lot of different workspaces the left sidebar
+really is not the right primitive it's not the right interface it it's really hard to work add big projects inside of
+Cmax. It's fine if you have like a couple of things going on and if you're using couple of agents, but anytime you
+want to do serious energetic engineering work, CMAX is not going to work. Another thing I'm using is Ghost T as my
+terminal because it's very fast and it's native and inside of Ghost Ty, you can run her which is basically like T-Max
+but for agents. It's a a backend runtime for agents. Herder is really good. It's
+lightweight. The issues I had with for example cursor app is that it was breaking. It was just crashing and it was running like five plus agents in
+work trees. More on work trees in a bit. But herder is very minimal, very lightweight. It lives in the terminal
+and allows you to um again start new agents and new sessions very easily and
+you know cd into folders and build stuff very quickly, very easily. And when the agents finish their state is clocked on
+the left right. So you can see which agent is done, which is idle, which is blocked and which is running which is essential. So for example here if I
+start like codex and I can say hi you can see he's working right he's moved to the bottom he's working and you don't
+have to pay attention to him and now he's idle right so this is very important tracking the states of AI agents and my prediction is that in 3 to
+6 months as agentic engineering grows as a field we're going to see this become more and more important because you're
+not just going to be talking to a single agent you're going to be talking to a manager agent that manages a lot of different worker agents because again
+human attention is fundamentally limited that's why having a good interface is essential Right. Another thing is coral.
+This is something I developed myself. It had multiple versions. This one is fork of zeron. But basically the way this
+works is that instead of randomly switching between agents whenever they finish, which is you know how like for
+example inside of herder it works. There's no real order. What I realized is that like every agent has a different
+importance, right? Different priority. So when you have like a agent that's P1, when he finishes, he should go to the top. And it should never you should
+never like respond to an agent that's P4 when a P1 agent has finished running. So this is what I call coral. I still need
+to like open source and finish it. We'll see if it has any reception. But this is in terms of interfaces. That's what my
+agentic engineering setup looks like. Now I already touched on this briefly but the next thing I need to talk about is models and subscription. Right? How
+do you get the most value out of your money? So these are the four main subscriptions right now. And again, this could be completely different two months
+from now, but right now the best deal completely is open code go. Okay, $10
+and it gives you Kimik K3. It gives you Gro 4.6, GLM 5.3, Deepseek V4 Pro.
+Insane $10. Really good, but it doesn't have the best models like Fable and GB 5.6.
+And the limits are kind of small, right? So once you get open code go if you can afford more money you need to buy
+another subscription $20 you're going to start with a $20 subscription probably start with chbt1
+or cloth you know if you really have a strong preference or cursor if you want to have more models the issue is with
+cursor you don't get as large of a subsidy right these two subscriptions will give you the best deal in terms of
+like usage but they only have their own models right the this one only has JGBT models this one only has anropic models
+so Again, if you have $30 to spend, go with Open Code, go with CHBT Codex. If
+you have $50 to spend, add in Cloth Code $20 subscription on top of that. If you have $70 to spend per month, add in
+Cursor's $20 a month subscription and you have the lowest tier of all subscriptions. Now, once you have more budget, let's say you have $110 per
+month, you want to go with one of the big plans, right? Because these are the ones that give you by far the best deal.
+So, CHGBD Codex is going to give you a better deal than CLOT. It is what it is. You know, OpenAI has more compute.
+They're willing to subsidize it more. So, for the foreseeable future, if you go with a CH GB subscription, doesn't
+matter if it's 100 or 200, you're going to get a better deal than Cloud Code. Now, if you can, you should afford both,
+right? If you have like $210 a month to spend, you should just get this one, this one, and this one. Cursor is very
+underrated. A lot of people are don't realizing that Cursor aka Grock is going to become a great subscription because
+of SpaceX acquisition, right? SpaceX AI, Elon Musk's company, has uh loads and
+loads of compute. They have so many GPUs, which means they're allowed to play the game. They can play the game of
+subsidizing. Now, it's not true yet. You know, cursor subscription is not yet as
+subsidized as codeex or cloth code. So, keep that in mind. But very easy
+prediction that I'm confident in. In 2, 3, 4 months, we're going to see the cursor subscription become a great deal.
+Already with Grock 4.6, it's a great deal. Gro 4.7 is all around the corner. This is going to become an insanely
+valuable deal. I I predict. But right now, these two subscriptions are better. And you know, if you can afford it, just
+get the 200s because those are 20x, right? No matter what, do not pay API pricing. Do not pay API pricing. This is
+the worst deal. Uh because, you know, there is no subsidy. There is no deal. There is no uh like more tokens for
+less. You want to get as many tokens as possible for as little as money as possible. That's why subscriptions are
+essential and u yeah depending on your budget. Just combine these four however it makes sense for you. Next up, cloud
+agents. It's pretty inevitable that cloud agents are the future. I think this is obvious to anybody who's been paying attention to what's happening in
+agentic engineering. You can see the moves of cursor, AMP, Devon, Codex, all
+of these companies are just going all in on cloud agents. And by the way, the proof is just this graph, right? This is
+internal 7-day rolling share of merged PRs from cloud agents at cursor. And you can see that the start of this year, it
+was like around 10 15%. Now in uh you know, second half of 2026,
+it's the majority. It's approaching near 60%. which means most of the work done at
+cursor inside of cursor and this is not just like you know automations that run
+a PR and it doesn't get merged this is merged PRs so it's the stuff that actually gets used most of it comes from
+cloud agents okay so what is a cloud agent well all of the things that like I'm showing you for example here in BB
+these things are running locally these things are running on my computer right they're local local agents running on my
+machine the issue with this is that it's not scalable You cannot run hundreds of agents at once because your computer
+will probably not handle it. All it takes is couple of agents to decide to run database tests at the same time or
+to run your entire test suite at once and it's going to use up most of the resources of a computer. Another thing
+is isolated environments. Another thing is persistent sessions uh durable access to internet or electricity. You know
+when you close your laptop you lose your sessions um when you lose even when you lose internet for like a couple minutes
+um the harnesses cannot recover. So cloud agents are absolutely the future. Not 100% obviously there's still going
+to be use case for running agents locally on your computer but more and
+more of the AI that's running and exists is moving to the cloud. I mean just look at Grogbot, right? Grogbot is again a
+hugely successful product. It's blowing up and it's just another way of doing cloud agents. The problem however that I
+have with these solutions is that they have insane level of ecosystem blocking. Right? When you set up any of these
+cloud agents and you set up the environments, add all of your secrets and environment variables
+that is first of all a lot of hours to set it up correctly and second of all like you just lock yourself in. You
+know, you have all your agent sessions there. You're using their subscription or their pricing and you give them all
+your context and they can train models on it. And even if they don't train models, that's the thing. There's so many other ways to use your data. They
+can look at it, they can analyze it, they can compare it even if they don't train on it, right? So the biggest
+problem is ecosystem lockin. Like once you set up any of these, if you migrate your whole company to them, switching
+away is going to be such a pain and so expensive. So what is the solution? Solution is to have your own server,
+right? It's not that scary. It's actually very simple. I'm going to show you in a second. And on that server, you run her and you SSH into it. Herder
+gives you persistent agent sessions and you can have many agents running at once. And SSH allows you to connect to
+your server in a easy way. Okay, you can do it from your phone. You can do it from laptop. Anything that supports SSH
+and you can literally achieve the 8020 for just a couple of dollars. So, let me show you how to actually set this up so
+you can benefit from this cloud agent revolution for a fraction of the cost without locking you into an ecosystem
+that you might not want to be in. So, the first thing you need to build your own cloud agents is a server. And the
+easiest way is to just buy a VPS. So, I think the best option is Hostinger. I've been using them for years now. All of my
+VPS's and everyone on my team that has a VPS uses Hostinger. Not only because it's one of the most affordable options,
+but because it's so easy to set up. Let me just show you. So, when you get to the landing page, which by the way, I'm going to link that below as the first
+link. Just select the plan. KVF2 plan is enough. But if you prefer to go more, like, you know, if you want to have
+hundreds of agents running at the same VPS, you can just go with one of the more powerful servers. I'm going to go with KVM2 here. So, click on choose
+plan. This is going to take you to the Hostinger card. Now, for the period, go with either 12 months or 24 months. I
+would recommend going with 24 months because you get the biggest savings, the biggest deal. And again, every month
+we're running more and more EI agents, so you might as well get early while other people take another 6 months to realize this. Now, again, this gives you
+the biggest cost savings. But if you want to save additional 10% off, go to the right, click on have a coupon code,
+and type in code David to save another 10% off on the one year or two-year
+plan. Then on the left, we don't need the Noxious credits. You can uncheck that. We don't need this. Keep all of
+these unchecked, but select a server location that's close to you. So, right now, I'm in Warsaw, Poland. So, Germany
+is pretty close. So, select that. But then at the bottom, you need to select a location. So, just click on that and see like what's the latency to where you
+are. So, you can see Germany's at the lowest latency. So, I'm just going to go with that and then click on continue. Next, you need to log into your
+Hostinger account or if you don't have one, just register. Takes like 20 seconds. It's super easy. And then fill
+out your card and billing details to complete the purchase. Okay. Once you purchase the VPS, it will look like
+this. You'll get redirected to the hostinger panel. Uh on the left, you can always go to VPS and click on the one you just purchased. So, uh this is your
+IP address, IPv4. This is your root access and uh the password. Hopefully, you saved that during setup. If you
+haven't, just click on reset password, create a new one, and save it to your password manager. Then, once you saved
+your root password, what I actually would do is I would use an agent to help you set up your environment for cloud
+agents. So, for example, we can use CMAX here. Okay. So I went into root level. So again CD you can change directory go
+to root level of your computer to you know or go into a specific folder that's up to you but the main thing is
+launching a coding agent right you can use cloth code you can use uh codeex I'm
+going to use cursor CLI because you can use any model here and for this I think Grock 4.6 is good uh we don't even need
+extra fast I'm going to select high and fast um Grog 4.6 ICS is surprisingly
+great to work with. So, we're going to use it here. I'm going to need your help to SSH into a VPS and set up some
+dependencies here. Always answer in plain English. Be very concise. So, this is what I call presending, right?
+Sometimes it's good to like present a prompt to tell it like what is this session about? And uh okay, so it's
+actually in following my skill, which by the way, you can get from my skills repo. That's also going to be linked below completely free. So, I already
+have a skill that teaches the agents how to use um SSH, how to use hosting VPSs,
+but I'm going to tell it, hold up for now. This is a brand new VPS I set up. Don't use any skills yet. Don't uh rush
+anywhere, okay? I'm going to tell you what to do. So, I'm using Super Whisper here to dictate because it's way faster than typing. Even though I type very
+fast, if you want to know how I type fast, just go to mike type.com and, you know, do some typing. You can measure
+it. But even if you type 150 words per second, you can speak at 300. If you are really fast, you can probably speak at
+least 250, right? So most of you are slow typers. You type at like 40 or 50 words per minute. You can speak three to
+four times faster instantly. So just get a voice transcription tool. You know, there's a Glo from Jack Roberts. That's
+a good one. I use Super Whisper. There's a Whisper Flow. It doesn't really matter that much. Okay? Use a voice
+transcription tool. Um, sometimes you cannot use it if you're in public. that's fine. But if you can use it, use
+it. It's super OP and it will allow you to send prompts way faster. And that's what you're going to see me watching in
+this video when I'm able to speak into my microphone and get the prompts out super quickly. It's because I use super
+whisper. So anyways, we have the agent primed here and we have the other pane. So I'm going to actually tell it use
+Cmax. Okay. So, I'm going to tag the skill. Use the skill to find the other
+empty pane uh in this uh CMAX workspace where I just ran the command pwd. Let me
+know if you can find this pane. This is where I want you to run all future terminal commands once I tell you what
+VPS to SSH into. This is why I like to use CMAX for these types of setups is
+because uh first of all, it's like straight in the terminal, right? You can see everything that's happening. If you use like claw the desktop app or codex
+app, it hides a lot of the details. And you know, it's good for beginners. It's good for nontechnical people. But if you
+want to be a serious agentic engineer, you cannot be scared of the terminal. The terminal is your friend. It's just a
+way to access the computer, right? There's nothing to be scared about. So it found it. Okay. So that's good. It
+found the pane. So now it can interact it. So like send a test command in there.
+I just want to test if the agent can interact with this pane and because of this skill right of the CMAX skill which
+again it's in my skills repo. Uh it can and it sent echo test. This is very
+important because I'm going to use this agent to do everything. I'm going to give him the credentials to the VPS and I'm going to have him set up the
+environment and I'm just going to talk in plain English. This is the alpha guys. You can use the agents for so much more than you're currently using it. Let
+me just show you. Okay. Okay. So, let me switch back to Hostinger. I'm going to copy the root access command here. I'm
+going to go to the right pane, paste that in. And for the credential, like, you know, pasting the IP and the password. You probably want to do that
+yourself. If you're repeating it long enough, you can store it in a secret uh env.local
+and mention only the location of the environment file in your skills. Never put credentials or enviables into skills
+or into prompts. Okay, it's a very bad practice. But anyways, now it's asking for the password. So, I'm going to fill in the root password. There it is. And
+now we're SSH. So, I'm going to speak. Okay, check it again. Check the pane
+again. I just SSH to the VPS. Do you see it? If so, run a few test commands to
+learn more about that virtual private server. And now we're going to see the speed gains of using an AI agent, right?
+So even though like even if you're a professional developer or a backet engineer, DevOps expert, you can only
+read so fast, the agents can read insanely fast and they can run write
+code and terminal commands like super quickly. So what the agent can do is basically analyze the VPS and learn
+everything about it in a matter of a few seconds. Right? So that's what it learned. Ubuntu blah blah blah to vCPU
+cores about 8 GB of RAM. Okay. So great. Great. Exactly. So now I want you to set
+up the following dev environment on the on that VPS.
+Right. So we need to install her. Also make sure there is Node.js. Also make sure there is Python 3. Make sure
+there's Git. Start by installing all of these. And instead of me like having to go and visit these sites and copy their
+installer commands, the agent can just make sure that we get the latest version, the latest stable releases of all of these dependencies to set up our
+cloud agents environment on this VPS. And again, a single hosting VPS like this can handle many different agents.
+You can literally have a Hermes agent running with your personal stuff. You can have another open cloud there and
+then you can have all of your coding agents, right? Cloodes, codexes, cursors, droid, prime agent, whatever
+you're using, it doesn't matter. And if you ever need to upgrade, it's very easy. You can just do it from your hostinger panel, which takes, you know,
+a couple of clicks. Much easier than upgrading your home server or your entire, you know, setup at home, buying
+a new laptop, migrating everything over, that is a lot more expensive and a lot more inconvenient. And again, you need
+some cloud setup. You need some cloud environment set up where if you have a long running task and you want to start
+it and let's say you need to go to a cafe or you need to close your laptop or you are in a place with a buggy internet
+you cannot run it locally on your computer. So you use cloudations for that and with the your own VPS you can
+customize it however you want. And the main thing I want to get across is that you don't need to be an expert in terms
+of VPS's. You don't need to be an expert in terms of DevOps Linux none of that. Just talk to your agent in plain
+English. Look at what I'm doing. I'm talking to Grock 4.6 in plain English and he's doing all of this for me. So,
+whatever you want, whatever cloud setup you want, you know, connectors, whatever harness, whatever interface, however you
+want it to work with, how you want it to to interact, to work, chronops, whatever
+you want to set up, describe it in plain English. Tell it to give you free options and just walk through the main
+decisions. Educate yourself. Focus on main choices, but forget the syntax. Forget specific terminal commands. The
+agent can do it. So literally all you need is CMAX and a coding agent running
+on the left. on the right. You just do a terminal into VPS and you can set up any type of cloud agent setup and you can
+completely avoid all of the ecosystem lockin that comes from these companies which they have a massive incentive to
+move you to their own cloud agents platform right why because it's very low churn because once you set up you know
+any of these and I get I don't want to hit on a specific company but any of these once you set them up it's nearly
+impossible to switch away so I would recommend doing that and instead get your own VPS PS, set up herder, set up
+SSH, and just run your own cloud agents. It's not that difficult. We're like, we're literally in the second half of
+2026. AI agents are super powerful. Just describe what you want in plain English and have them build it for you. In fact,
+it's done now. So, we can literally say uh start herder or we can just run that command oursel again. I want to show you
+the power that really agent can do anything. So, it's going to read the state of the interface and now it started the herder. You can see that we
+have it here. Let me resize that a bit more. So now here we can like for example launch PI agent. We haven't
+installed PI agent. So I say now install PI agent use deep API to learn what is
+the official installer. Boom. And that's another OP thing. It's like you really need one agent and then use that agent
+to compound and set up other ones, right? So, for example, for Pi, uh, it can find an installer, it can install
+it, it can set it up, it can probably find an open router API key on my machine and copy it and can do the full
+PI agent setup for me on this fresh VPS just by me telling it, right? So,
+really, if you have a computer, you need to fight to set up the first agent, right? No, I don't care what it takes. I
+don't care if you need to cancel a meeting. Sit down, set up the first agent on the computer.
+After that, everything else is so much easier. And yeah, look how easy it was to set up herder. We have the spaces, we
+have agents. Obviously, um the agents are not installed yet. Can try cloth code. Okay, it's installing pi now, so
+I'm not going to interrupt it. But yeah, that's how fast it was to install her. It's running on the VPS. Really just
+talking to your agent and describing what you want is underrated. All you need is work ethic initiative and just
+push through the friction. That's it. Now, while the Pi is getting installed, let me continue with my agentic engineering setup and talk about
+harnesses because this is what we already touched on. So, let me go deeper on that. First of all, Pi Agent, the goat, you know, the simplest, most
+minimal hardness out there. If you want to get it, pi.dev. Again, it's open source. It's completely free. Just download it. Um, I had Mario on the
+podcast. And also, Armen is releasing, the episode of Armen is going to be released in the next week or so, so stay
+tuned for that. Make sure to subscribe if you don't want to miss that. I've been really doubling down on the podcast interviews, interviewing some of the
+most impressive people in the AI space. So if you want to make sure that you see all of them and you didn't don't miss
+any of them, please subscribe. It's completely free and it takes two seconds. So go below the video and click subscribe. Okay. So PI agent again this
+is what OpenClaw is built upon. It is a super minimal hardness with just four tools and yeah it always runs in YOLO
+mode. It supports any model any provider. Very elegant very easy to use.
+Super configurable configurable and customizable. And this is why it's becoming one of the most popular harnesses out there and why a lot of
+people built on top of Pi. So absolutely non-negotiable. You need to be using Pi. You need to have it installed. And
+that's why I put it as the first harness on this VPS. Seems like it is installed. So now I say, "Okay, good. Now go
+through the setup. Um, go through it fully yourself. And if you need an open router API key, just analyze my MacBook
+and find one and then use that same one on the VPS to get Pi running until you
+get a model. Let's go with GPD 5.6. until you get that model running inside
+of the PI agent with open router. Keep going through the setup. Uh you have my permission.
+Boom. And literally Grog will just do all of it. And again, it doesn't matter. I'm using cursor CLI, but you can use
+cloth code, you can use codex, whatever you want to use, just use it and it it
+will do the full setup for you. So, while it's finishing the PI agent walkthrough on boarding, what is the
+other harness? Cursi. This is what I'm using. very underrated harness uh because you can use all the models right
+inside of cursor as long as you have some subscription. You can use grock, you can use GPT models will actually
+open AAI wants to remove them but that's another story. You can use enthropic models. You can use Kim K3. So many
+different models. And this harness is actually good. Like if you aren't using it, you can like easily tag skills, you
+know, you can presend messages. Even close code doesn't have the ability to preset messages. So CLI very
+underrated harness. Next up, we have self-learning harnesses, right? So this is for stuff where you're not sure what
+to do. If you're starting some task where you're like, hm, I don't really know what this should look like. I don't
+really know what I'm doing here. You need to be using a self-improving harness. And the two main ones are
+Hermes agent. Of course, Hermes is the OG when it comes to self-improvement and self-learning harness. Prime Agent is a
+bit newer. Um is a very different approach compared to Hermes. Both are promising. Just make sure you use a
+selfimproving like choose one. Okay? Test both. Choose one of them. If you are doing a task where you don't know
+what you're doing and you have a lot of uncertainty, a lot of confusion, a lot of figuring out to do, use a
+self-improving harness because this creates skills and improves with you over time. If you're doing something specific like I'm doing inside of Cmax
+to set up or like if you're developing software or you don't want random skills created, then yeah, just stick to codex
+or you know, pi or or cloth code or cursor. But if you're doing something new, use either Hermes or Prime. Next
+up, the classic cloth code or codex. The reason I put it like this is because um
+so for me, all I need to do is type in CC and this will launch cloth code with dangerously bypass permissions. A lot of
+people are doing u unnecessary typing by doing clo-dangerously
+skip permissions. Like there's no way you're typing this daily. Okay, extremely slow, extremely unefficient.
+just create a global alias like CC launches cloth code with dangerous script permissions and I have the same
+thing with codeex just type in CX launches codex in yolo mode so I have to type in the parameter the argument every
+single time right it's very inefficient very slow that's like the half of the agentic engineer it's like how can you
+work faster how can you get more done in the same amount of time and creating these global aliases for the
+long terminal commands you run often is one example So absolutely essential and
+yeah these are the harnesses that you should be using and that I'm using. Next up let's talk about skills right. So my
+skills repo went viral last month. A lot of famous people in the AI space retweeted it and posted that it's one of
+the most valuable repos. That's their words not mine. And I made a full video on this actually recently right here. So
+if you want to watch that just go ahead and watch that later. It's a 30-minute video just breaking down um eight skills
+from my skills repo that I absolutely use all the time. But specific to this video, you know, the agentic
+engineering, I picked out ones that are the most relevant to my AI coding or agentic engineering setup. The first one
+is total review. So this one you can access. Again, my skills repo is completely free, guys. This is, you know, this is I don't make any money
+from my skills repo. It's totally free, open source. Um feel free to get it. Feel free to fork it. This one if you go
+into skills folder and you go into agent orchestration you can see at the bottom is total review.
+What this does is that it runs two other skills GP review and fable review to
+just review any changes you're doing. Right? So if I go into VB and let's say here I just ran it. So this was a like a
+preparing this repo for public release and I just told it to review the changes with total review and instead of me
+saying like launch fable give it the context tell it to review everything like a senior developer. Why would I do
+that? Anything you repeat anything you do more than enough you should either turn it into a prompt. So for example
+look I have these uh keyboard shortcuts right? This is text replacements. So anything I'm doing like often enough I
+can just type instantly. So like answer in short in plain English. Now get to work and execute this plan fully and completely like a tennics engineer
+would. Make your previous answer simpler and shorter formatted in a nice readable markdown. Be very concise. All of these
+things I'm typing them instantly. Why? Because I got text text replacements. I'm super tryh hard. So I have them as
+raycast snippets. But you can start just by using the text replacements on Mac OS. It's perfectly fine. Or just use
+raycast if you want the fastest ones like I'm using right here. But look at these prompts, right? this prompt, it
+would take me like two minutes to speak out and I would probably make a mistake and it wouldn't be consistent every
+time. I just have it as a as a you know preset. Same thing with like make your
+answer short in plain English. Same thing with like stage files, write a clear comment, push to GitHub. Don't overthink this, right? These are the
+things I'm repeating. So if it's like a single step, you want to have a text replacement. If it's a more advanced
+workflow, you want to have a skill such as total review. This invokes two other
+skills which are called GPT review and fable review which again it's pretty self-explanatory reviews whatever code
+changes you just did with either GPD 5.6 soul or fable 5.
+This is very important because you want to review your changes with the best models right but total review takes you to the next level. it runs both of them
+and then it decouples them into a single list. So it, you know, you're not like
+wasting tokens. And yeah, when anytime you do mediumsiz to large changes, you
+should just run total review on it to make sure it's all good. And especially if you run a different model. So for example, if we run something with uh if
+we do something with let's say Grog 4.6, you definitely want to review what changes Grog does with GBD 5.6 six soul
+or fable 5 because it's a totally different model and it will find it in a different way, right? Like imagine if
+you're doing something important, maybe you're submitting a job application or really something that matters in your life and you ask one smart friend to
+review it. Obviously, that's a good idea. This total like that's that's basically what like GPT review is or
+fable review. Total review is like you ask the all of your smartest friends to
+review it and then you tell them to like just put it in the WhatsApp chat and like only give you the decoupled most
+biggest issues with your job application in this example, right? And they would just give you the things that really matter. This is total review. Next
+skill. I mean I guys I can speak on my skills forever. Again I I made a full detailed video on it. just watch that if
+you want me to go more in depth or comment below if you want me to like really break down these skills in more detail because this is what I spend
+hundreds of hours doing. Okay, so I don't want to make this video 20 hours long. So I'm just going to give you the
+8020. Next up, ask and build. This is one of the newer skills u that I absolutely love. I use it every single
+day. Let's see where we can find it. Okay, thinking and docs here. So inside of the thinking and docs subfolder, we
+can find it here. And this skill basically what it does is before you do any building you run like
+decisions right so let's say here I would say like I want to make this Linux and Windows
+compatible run ask then build on the main five decisions. So instead of you saying like
+make this Windows compatible it's the issue with that like okay it can work but it's going to do some decisions. is
+going to make some choices that are like important architectural choices or important software design choices that
+you might regret later. Okay, if you run this skill as build, you frontload a
+little bit of work extra for making your codebase a lot more scalable, avoiding a lot more tech debt and just you know
+building creative software, better software. So this is what I use literally all day every day ask net
+build before any changes. So you see like how complete is the first Linux Windows ship and now you have four options. Do you want it to be same
+product on Windows? Do you want it to be Linux gets the full product then Windows gets binary only? Like you get to make
+the decisions. AI models are great at coding. They're great at implementation following a plan. They don't have the
+taste. They don't have good judgment. They don't have good decision-m you as the human need to stay in charge of
+that. And this skill helps you exactly achieve that. Now before I go through more skills, let me check what happened
+here. So seems like uh Grog finished and we have a fully running PI agent. Let me
+send a prompt. Hi. Fully running installed PI agent with open router as the provider powered by
+GP5.6. We can even choose the reasoning effort inside of PI. It's one of the main keyboard shortcuts. Shift tab to
+cycle between the reasoning efforts. And yeah, this is running fully inside of our VPS. So if I kill this, if my
+computer loses access, if if my MacBook explodes, those agents will keep running. And just like that, we have our
+own cloud environment for agents. And it's so like so easy. Like literally, I can launch a new one here. Boom. We can
+see we have different agents uh different pi agents here. And here I can do model and we can do let's say fable,
+right? And we are running fable and this one is running u GB 5.6ole. Both are
+running in the cloud on my own VPS. It's a virtual private server. I have full root level access to the YUbuntu
+machine. And yeah, it really is this easy to set up your own custom environment for cloud agents. And again,
+if you want to do that yourself, just grab yourself a Hostinger VPS. The link is going to be below the video. It's going to be the first link in the
+description and use the code David to save another 10% off. Oh, and shout out to Hostinger for sponsoring this video.
+Now, let me go to my skills again. The next one is deep API. This is what I use
+for any deep research, any scraping. um anything related. So like let's say we're about to do a a big like let's say
+here it's a good good example. So here before building the Linux or the Windows installation I would do something like
+use the deep API skill to run eight fast web searches with DB API to figure out what is the best way to do this on Linux
+and Windows like the different technical options you the different best practices to do this and present me with the top
+three options answer in short in plain English. Right. So again, I just voice prompted that super quickly and it's
+going to use the deep API skill to search up do in this case I instructed it very specifically to do fast web
+searches but you can also tell it to scrape you know Twitter what's happening to scrape GitHub uh to do a deep research whatever you need to do like if
+you have a person you can tell it to like find three different ways of contacting that person you know like
+find his email find his WhatsApp phone number find his LinkedIn whatever like
+this skill is so versatile basically anything the agents are struggling to do which you know codex and cloth code they
+come with basic web search but they don't have any scraping they don't have any DB research and they get blocked
+easily so that's where DB API comes into place it's very OP and literally I use it all the time everyone on my team uses
+it um yeah that's one of the main skills I use next up is two skills is the push lock and guard hook these are a bit more
+boring but absolutely essential okay and you only set them up once so if we go
+into ops and setup We can see it here. Global agent guard rails. This is a
+skill that also it comes with a hook. So if we go into the root level and go into hooks, all of these are connected that
+skill. It just makes sure your agents never like wipe your disc. Make sure your agents never override history and
+do any of these like dangerous patterns. I don't know how people live without this. Obviously, it's kind of crazy. Uh
+like there's so many things that like your agents could do. Like you could say, look at this, right? like recursive
+deletes, uh dangerous GitHub CLI commands or Git commands
+piping and downloading stuff from the web, you know, without uh without
+checking like just dangerous stuff. Like look at this. All of these commands you would never want your agents to run or
+at least these are patterns. So accessing like different password managers, right? Like imagine you get prompt injected and some skill like
+tells your agent to print out password manager or do something to your password manager. You never want to do that. Um,
+this is this guard drill prevents that. So again, you can find this inside of the skills repo in the skills folder in
+uh ops and setup global agent guardrails. Just run this and set it up on your computer. Do not ever use yolo
+mode or dangerous escape permissions without this. You're just risking too much for no reason. And anytime you see
+on Twitter somebody getting his uh you know disc wiped or database hacked or stuff like that all they could have had
+is a simple hook pre-tool call hook such as I have here with the global agent guard rails that triggers before the
+agent does the tool call. So it cannot trigger because the hook runs before the tool call.
+Another [clears throat] one is push log. This one is for those of you who are advanced, those of you who are running a lot of different work trees. The issue
+is still when you're merging these work trees into the main branch and pushing into production, if you're running many
+agents like let's say 15 plus in parallel, it will inevitably happen when there's like two or three agents who
+want to push at the same time. And um you know it's going to clog your CI/CD.
+It can like cause issues with merge conflicts and stuff like that. You need some Q. You need some lock on pushing.
+And this is uh how I do that. So I have the skill pro push.
+Pro push. And actually I can just have an agent explain it. So let me just go
+here. Boom. Explain how the pro push skill works. So the agent is a bit verbose, but I can just prefire. Make
+your previous answer simpler and shorter and format it in a nice readable markdown. Very underrated guys. Don't
+read long confusing messages. Just tell him make it simpler, shorter. You need to value your time. Your input tokens
+are just as valuable as agents. So the problem many agents can already explain this. So it's a one OS system OS level
+lock. So on the whole operating system, a real kernel log flock only one agent
+may run the full ship. Everyone else waits. So it's merge, verify, push, CI, deploy, health check. Right? So yeah,
+this is how it works. Absolutely essential. I couldn't live without it. But if you're not running many different worksheets, you probably can survive
+without that one. But again, my skills repo is going to be linked below. Completely free. Don't install all of
+the skills. Just grab the ones you need. You know, don't bloat your agents with skills you're never going to use. Next
+up, talking about work trees, right? So work trees, you should avoid them for small projects. What are workshes if you
+don't know? Uh it's basically copy of your folder. So your primary checkout, like if we go here, uh actually, let's
+go here. So here we're on the main branch. This is fine. This is a small project reposing just to use internally.
+I'm probably going to open source it actually. I think it's already open sourced. Yeah, I think I already open sourced it. The crazy part is I have so
+many things uh happening. I should probably delete that's the that's the dangerous part of AI you know you can
+build anything but if like if you can build so much stuff
+everything becomes distraction right so yeah I think this project has been open source yes it's already open source
+under MIT license okay good so here the reason I'm showing you is I'm not using work trees why because it's a small
+project here it would be absolutely overkill to use work trees and this is another good thing about BB is that they
+have built-in work trees so it's very easy to just launch launch a new work tree and it actually remembers it unlike
+the cursor app which doesn't remember it and you have to do /work tree every time which is extremely annoying but if we go
+to deep API which is a much bigger repository you can see that when I click plus it remembers that on the repos sync
+I work locally on the main branch and it remembers that on the API I always want a new work tree based off of origin/main
+really good this is why BB is my main uh interface for a genetic engineering. But
+basically the way to explain it is that you don't have to worry about worksheets at all if you're running a small project and if you're running less than 15 plus
+agents in parallel on medium to large size projects where you're running really 20 30 plus agents at all times.
+There's no way to avoid it. You need to use work trees and they're essential and you're going to be in a lot of pain if you don't use work trees because again
+these agents are going to be conflicting. They're going to be reversing each other's changes. they're going to be, you know, building other
+stuff. They're going to be like fighting each other. It's it's going to be a mess. Okay. What a work tree allows you
+to do is basically copies the primary checkout into a separate folder. And then in that folder, it creates a new kit branch so the agents can really work
+in parallel completely isolated from each other and not fighting against each
+other. It's as simple as that. So work trees depending on whether it's a small project you don't need them avoid them
+just stay on a single branch if it's a bigger project you absolutely need to use them. All right next up I'm going to
+do a rapid fire on some topics that um I mean you guys can see I can talk about this for 20 hours right so I want to be
+respectful of your time and let's do rapid fire on some agentic engineering topics. So you need to deeply understand
+when to use each model, right? Uh it's not just like okay, I have subscription, I should use this model. Like if you're
+designing the plan, you should probably use Fable. Like if you're working on a new project, use Fable. It has like the
+most sparks of genius. If you're fixing a deep serious bug that really needs
+attention to detail, 5.6 soul, max reasoning effort. You can do / goal even
+you know just go through it put more more effort than any other model for default chatting for like your main
+chatting of the model like here use grog 4.6 like usually high or extra high really good really consistent model
+really predictable model almost the same intelligence as fable and 5.6 soul, but it's two times cheaper and two times
+faster. So, a great model. Front end design, obviously, Kim K3 is right now
+the best for front end. Um, yeah, I mean, you need to know when to use each model, right? And again, this only comes
+with you actually getting your hands dirty and using all of these models. Don't be one of these people that like is only using the COX app and therefore
+only using GPD models and never testing anthropic models or, you know, Deepseek models or GLM or Kimmy. Don't be that
+those person. Okay? When a new model comes, legit set aside a day. Like seriously, guys, anytime a major new
+model is released, set aside a day where you can only use that model at least a
+day to really get a good feel of it. Like don't listen to what people say on Twitter. Try it yourself. Use it for
+your own workflows. See how good it is. Next up, uh, so you need to know when to push
+into production directly and when to like run total review or GP review or
+fable review, right? Like I'm not running the SL total review skill on every change if it's a small to front end tweak. I'm I'm pushing to prod right
+away. And again, this comes with experience. This comes with building more project with uh just, you know,
+creating more software. But uh you cannot just waste tokens by like reviewing everything. And also you
+cannot do these recursive reviews. This is a huge mistake. People go from like either doing no reviews, which is a
+mistake, or just like review after review after review. These models will invent imaginary bugs that are not
+there. Okay? So, just do one check. Okay? If you build something with Fable, review it with GPT, fix the worst
+things, and push it. Don't do like Fable into GPT into Fable into GPT. You're
+never going to ship anything. And these models will hallucinate. If you tell him find the five biggest issues with this codebase, it's not going to say like
+listen, the codebase is already good enough. You should do something else. That's what a human, you know, great developer would say. It's going to be
+like, okay, here are the five issues. Even if the codebase is like perfectly fine, so don't do this endless reviews,
+but also you should do reviews, you know, don't do zero reviews either.
+That's also bad. We already talked about this presending. Okay. So, yeah, basically
+I mean there's a funny video that uh we can actually put it here u on the screen. It's basically one of the people
+on my team recorded. It's me like presending like six different messages of me like knowing what happens, right? So basically when you have like fable or
+like let's say here it's like you know present with a plan then you can say like implement the plan. Then you can say like run fable review on this. Then
+if it's too long you can say like make your answer simple and shorter. And you know you can kind of predict these. So like say like when was the last git
+commit. Okay. So I can I can present that say like give me a plan to review those changes
+properly. Okay. So I can do execute that plan and I can do run fable review and I
+know it's going to already be concise. So I can do previous shorter and say like run stop overthinking and tell me
+what really matters and say like now fix those things. See like I can easily like
+usually it's like one or two or three sometimes it can be five or six I know what the agents will do and I know that
+the sequences look like if I'm if this is like too constant what I can do is u
+turn that into like a broader skill right so obviously it depends on the situation not every time is like so easy
+and elegant where you can just present the next five steps but sometimes it just lines up where you know like what's
+going to happen and what needs to happen or you can just present, right? And presending messages is essential. You
+should never use a harness or a GUI that doesn't allow you to present. Uh that's why, you know,
+BB is very nice because you can actually preset stuff. Okay, next up we have sub agents. So sub agents are very like
+overused. I feel like a lot of people just burn their limits on sub agents. I use them when I'm in control, right? For
+example, here we showcased how you can run the GBT review and Fable review, but
+I don't really like to have my agents randomly launching other agents. I know it's the future, but you need to have
+control over this. Like sub agents are definitely the future, and it's not going to be named sub agents. Like, I
+like the term manager and worker. It's way way more clear which agent does what. But if I run Fable 5, like a lot
+of these apps, they like delegated to a trash model, right? Like Haiku 4.5. You should never use that or GBD 5.6 Luna. I
+mean that's a lot better than the Hiku 4.5, but still I want to select which model runs in the sub agent. Okay, I
+know what subscriptions I have. I know what limits I have. I don't want to have a cheap model implementing my changes on
+a you know code base that I value. So I have my own skills such as you know the total review and similar or like /b sub
+aents uh which includes all the information about how to launch
+any sub aents inside of BB and I only do it when I want it. I don't let my agents
+randomly delegate random stuff to sub agents. I I don't think we're there yet. in the future. Obviously, it's going to
+be the future where you're talking to a manager agent and he launches a bunch of workers, but you still need to design
+that system. You still need to be in charge of the rules and the permissions and like the conditions when a sub agent
+is launched. I don't want somebody at anopic designing that like cloth code is full of slop, right? There's a reason
+why Pi exists. Pi exists because cloth code is bloated and there's a bunch of
+trash and slop and extra stuff that's wasting your tokens and and and changing
+your system underneath you. You don't want that. I don't want some guy at at Enthropic or OpenAI deciding when a sub
+agent is ran and which model is ran. If if you're happy with that, you're not a serious agentic engineer.
+Uh so yeah, you should be in charge of your sub agents. You should develop skills and rules and practices when sub
+agents should be started instead of just uh letting the default harnesses choose that for you. Next up we have ADRs. So
+basically this is a way to document decisions inside of a codebase so that future agents and humans can know why is
+it built this way. So I have it /docadr. Basically this is like one of the first
+folders I create. So here is a beautiful example repos. It's a small project and
+I have four decisions here like autonomous continuous operation secret guard file file name only default branch
+only homebrew cask distribution so whatever are the core architectural decisions in any project I document it
+inside of /doc/adr so that any future agents I can just point here and they instantly understand
+all of the decisions I made and anytime you want to change a decision in the future it's all documented the reasoning
+why you made that decision what was the state of the project at that time. Really essential like if you're not doing this, you should start doing this
+because the main thing is saving your context inside of a codebase so that future people or agents working in that
+codebase know how it came to be, how it evolved over time, why are there
+different decisions? Because some of the things can be read from code but not everything. And the
+the stuff that cannot be easily read from code should be documented as clear markdown files inside of this format. We
+already talked about that turning repeating pros patterns into skills or removing tests. Guys, what this is crazy
+especially if you use like I'll show you if you use soul gb 516 soul this model
+it adds so many tests even on the smallest repos like
+are there any tests on this project even on the smallest repos where it
+doesn't make sense these models will keep adding tests unit tests integration tests database tests component tests
+people at openai they just went crazy and They made this model always add new tests even when it makes no sense. So
+what you need to do is tell it like you almost need to tell the model to not add tests so that you land at the perfect
+amount. Okay, think about this. This is like advanced agentic engineering. If you don't tell the model to add tests,
+it like adds so much. It adds like insane amount. If you tell it don't add tests, it's still going to add some and
+then you land at the right amount. So maybe this will change with the next generation of models. Right now these
+agents just bloat your repo with tests. They add hundreds of tests even for
+stuff where it makes no sense. So yes, adding tests, unit tests, you know, end
+to end tests, whatever makes sense. When it makes sense, you should do it.
+But right now, I'm telling you, if you don't put some check on these agents and you tell them only add new tests when it
+truly makes sense. If you don't give them instructions like that, they're going to completely bloat your repo with
+pointless tests. Text snippets. We talked about that. Oh, this is huge. This is basically datadriven
+development, right? User like usage driven development. Maybe I should describe it like that. Any product that
+has real usage. You should give your agents read only access to production database. Actually, I have a skill for
+this pro uh read pro database. Right. I created a new like postgress role where
+these agents can have a read only role. So they cannot up like don't give your agents full access to database.
+Terrible mistake. You will regret it. You know maybe like 99.9% of the time
+it's fine. But all it takes is like one issue and it's like deletes a user or
+wipes a table some irre irreversible change and you're going to regret it. So
+don't give your agents right access to the database. But not giving it any access is also a mistake. Once you have
+some users, you can analyze your your data so much faster with an agent. See like what are the most popular things
+and features. What are the power users doing that the users that churn often are not doing? You know like what are
+the most common types of errors that are happening in production? You would have to go into that data look at it. It
+would take you so much time. If you simply create a readonly Postgress role
+and give your agents read only access to your production database, it's going to save you so much time. And anytime you
+build any feature, you check it. You give it a reality check. Does this feature even make sense? Does this even
+happen in production? Check the production database. Like, do people have this issue? Are they even using this feature? Should I be like improving
+this UI of this feature or is it like one of the least used features, right? absolutely essential, priceless. I wish
+I did this sooner. Maximizing of subscriptions. We already talked about that. Tracking agentic productivity. Uh actually, let me show you. We just
+released a new repo on this under Vectoral Labs. So, by the way, guys, I'm going to be posting less on this YouTube
+channel uh less often than I was before. But what I started doing is writing daily articles. So, if you want those,
+go to vectalabs.com and you can see that every day I'm releasing an article human written by
+myself. Um so, for example, yesterday I released it. Why aren't there more agents? Just trying to reason through
+it. You know, why are we running thousands of agents? The models are good enough, the harnesses are good enough.
+What is the issue? So anyways, this is the articles. But the second thing that Vector Labs does, which is you know my
+kind of research lab, basically experimental innovation lab is that we release open source projects. The newest
+one is agentic productivity which you can get find here. And this tracks your
+productivity. you know, how many commits are you doing, how many uh agent sessions are you running, how many user problems. I mean, each of these is kind
+of a bad metrics on its own, but when you combine these three metrics and you see a long-term trend across all
+different harnesses, then you can see like whether you're becoming a better agentic engineer in terms of your actual
+output. So, yeah, this is one of the repos that we released fully open source. And again, go to vectalabs.com.
+I'm going to link it below the video to access all of these uh projects, open source projects for free or just read my
+articles because as I mentioned, I'm going to be posting less YouTube videos, but I'm going I'm writing articles daily
+highly, you know, high signal articles on like the cutting edge of AI. So, if you're interested in AI coding, agentic
+engineering, or just staying at the frontier of AI, vectal.com
+is your place to go. With that being said, I think we can wrap it up here, guys. So, thank you so much for watching. Hopefully you enjoyed this
+kind of raw highle video of my edeting engineering setup. If you did, comment below and I can make a part two. Maybe
+in a month because this this changes all the time, okay? So, in a month it's probably going to be different. And again, if you don't have your own VPS
+and your own cloud agents, set up your own hosting VPS right now. Just go ahead and do it right now. It's the first link
+below the video. It's one of the most affordable options out there. It's super easy. I literally showed you how to do it with an agent in this video and
+you're going to be prepared for the future where all of us are going to be running hundreds and thousands of agents in the cloud and you're not going to be
+ecosystem locked in because you're going to have your own VPS. So go ahead and click to the first link below the video. With that being said, thank you guys for
+watching and I wish you a wonderful productive week. See you.

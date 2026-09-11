@@ -1,0 +1,801 @@
+My name is David Andre and in this video
+I'll show you how to create any NA10
+workflow using Chad GPD. If you aren't
+using AI in order to build your AI
+agents, you're honestly falling behind
+because in this video I'll show you how
+you can literally send text prompts in
+plain English into JBT and as an output
+get an NA10 automation that other people
+would spend multiple hours building. All
+right, so let me show you how to
+actually do this inside of JGBT. The
+first thing we're going to do is create
+a new project. So open your sidebar on
+the left and click on new project. We're
+going to name it naden builder create
+and then in here we need to add
+instructions. So click on that and here
+we can set a system prompt specific for
+this JBD project. So I already prepared
+a very detailed prompt. You are an AI
+agent designed to create any JSON
+workflow files and all the other
+details. Now feel free to pause and read
+through it but basically it describes
+how it should output the JSON files for
+NA10 modules. So then click on save. So
+now that we set the instructions inside
+of a project, we need to also add in
+example files. So let's click on add
+files. And I prepared four different
+JSON examples. By the way, all of these
+files as well as the prompts are
+available inside of the new society. So
+when you go into the classroom and
+scroll down, you'll see the templates
+and preset section. In here, you can
+access all of my pre-built automations,
+AI agents from past videos, checklists,
+startup ideas, as well as all of the
+prompts and instructions from this
+video, as well as past videos. The link
+to the new society will be below the
+video. All right, so make sure that
+these files finish uploading and then
+you should see them in here. Four files
+attached plus the instructions. This
+will be referenced in every single chat
+you do in this NA10 builder. And by the
+way, if you actually watch until the
+end, you will know how to create or
+clone any NA10 workflow just by using
+CHBT. You don't need to be an A10
+expert. You don't even need to
+understand what JSON is, and you
+certainly don't need to be programmer.
+All you need to do is follow the steps
+in this video and you'll have everything
+you need to create any NA10 agent. Now,
+what I'm going to be building in this
+video is a bug form collection agent.
+So, the input will be a form that
+collects bug reports, then sorts them by
+type, and then based on the type, it
+goes into a specialized AI agent that
+checks a Google sheet form to see if
+this is a new bug or something that
+already was reported. And if it's new,
+it will be appended to the list and
+emailed the team. So really you can sell
+this to any development company or any
+software you know any startup because
+instead of having some like ticket
+support stuff like this where you have
+to pay VAS this AI agent automates a lot
+of work. So there are literally
+thousands of companies in the world that
+would pay big money for something like
+this. Okay. So let's go back into chat
+GBT and let's send the prompt. Here's
+the one I prepared. You're creating a
+system where someone can report a bug
+through form. They'll pick out from a
+drop-own menu what type of a bug it is
+and describe what went wrong. So
+basically just more detail what I told
+you what this agent should be like and
+what the NA10 outline should look like.
+So I'm just going to send this and
+actually before I send it select 03.
+This is the best model inside of JGBT
+right now. Maybe you're watching this in
+the future and 04 is released right but
+currently 03 is the best. So make sure
+to select it. If you don't have access
+to 03 because you're using the free
+version of Chad GBT it's time to update.
+All right. Uh it's probably the best
+like $20 you can spend to be honest. So
+definitely upgrade to the paid version
+of CHGBT so you have access to 03
+because it can do advanced reasoning and
+that's essential in building the NA10
+agents. So once you send that let me
+close the sidebar it will start working
+on the request. It will start reasoning
+about how it should structure the NA10
+automation how the JSON should look like
+what order the nodes should be in and
+stuff like that. All right there it is.
+So 03 has fought for 1 minute 20
+seconds. This is exactly why you need to
+use a reasoning model because if you
+just used 40 O it would respond to you
+instantly without doing all this
+thinking, all this reasoning. So I've
+put together a ready to import NA10
+workflow that implements the end to- end
+bug reporting system. And again, you can
+customize this for anything you want.
+So, let's say you want to build a lead
+collection system or email responding
+NA10 agent, whatever you need, as long
+as you can describe it in a prompt and
+as long as you follow the steps of
+putting the example files and adding the
+system prompt, this method will work for
+you. And most importantly, if you do
+what I'm about to show you correctly
+inside of NA10, you'll be able to build
+any AI agent faster than anybody else.
+All right, so let's scroll down and
+let's see what's inside. components form
+trigger buck report form captures drop
+down buck type. Okay, so then we have a
+switch and then five parallel buck agent
+branches. So it basically describes what
+to do and then how we should finish
+wiring it up. Man, 03 is really strong.
+So what I'm going to do is click on
+download the workflow JSON. Then I'm
+going to save the file inside of my
+folder right here. Save. Then let's
+switch to NA10. Let's click on the plus
+to create a new workflow. I'm going to
+rename it to bug report form. And in the
+top right, you should see these three
+dots right here. This three dots. Click
+on that and import from file. Go into
+the same folder and find the JSON that
+JGBT just gave you. Click on open. And
+there it is. Don't get intimidated by
+all the errors. We're going to fix those
+in a bit. But let's quickly look at the
+structure. So we have the bug form
+report. That looks good. By the way,
+anytime you make changes inside of any
+10, click on save. So let's just click
+on save and let's start making some
+changes. So let's see. We have error
+here. Then we have the switch. The
+switch looks good. And then this is
+organized in a not so nice way. So I'm
+going to highlight these. Just move
+these to the right or like below like
+this. And then highlight all of these
+and just move them like this. Much
+better. Save. Okay. So now that we have
+this organized nicely so we can actually
+see what's going on. Let's see. We have
+five different AI agents. All of them
+are using OpenAI as the model and all of
+them have multiple tools. Google Sheets
+tool, two Google Sheets tools and a
+Gmail tool. But first, the bigger issue
+with our AI agent is that it's not
+deployed anywhere. So even if you use CH
+GBD to build the most advanced NA10
+agent under the sun, if it's not
+deployed, it will never run. But
+luckily, there's a simple solution for
+this, and that is the Hostinger NA10
+VPS. This is how me and my team run all
+of our AI agents because it is by far
+the most easy and affordable solution,
+far more affordable than the NA10 cloud.
+So, here is how to actually set this up.
+If you get the KVM2 plan, which I would
+recommend you to get, you can literally
+run hundreds of AI agents on this plan.
+And it will cost you way less than if
+you used the NA10 cloud, especially if
+you go with the 24 month option, which I
+definitely recommend you do because you
+want your AI agents running forever. You
+build them once and they save you time
+in perpetuity. And since Hostinger was
+kind enough to sponsor this video, if
+you use the coupon code David, you will
+save additional 10% off on your annual
+or two-year plan. Then what remains is
+selecting the server location. So just
+select whatever is closest to you. I'm
+in Czech Republic, so Germany is super
+close. And then for the operating
+system, click on NA10. They literally
+have a one-click install template for
+NA10. It couldn't be any easier. So
+click on confirm. And then click on
+continue and login with your hosting
+account or just create one. And the last
+thing that remains is filling out your
+billing details and your credit card.
+I've been using Hostinger for months to
+host my enter agents. And it really is
+the simplest and most affordable way to
+do so. So again, make sure to check out
+the link description and remember to use
+code David to get 10% off. All right,
+let's get back into NA10 and let's start
+by fixing the buck report form error.
+Now with any error, you can just click
+on the module and see what's happening.
+So here the issue is that there is no
+form title. So, I'm just going to put in
+report your bug. Okay. And that was
+enough to fix errors. So, let's save.
+Anytime you make changes, again, I need
+to repeat this. Make sure to save your
+progress inside of any otherwise you're
+going to be wishing you did because uh
+it's an easy way to, you know, work for
+30 minutes, ignore this button, and then
+accidentally reload the site or
+whatever, and lose all your progress.
+So, save often. Anyways, even though we
+fixed an error in the buck report form,
+we're not quite done yet because we need
+to customize the questions, right? We
+don't have anything in here. So, even
+though we can click on this test URL and
+we can actually open it as a new browser
+form trigger isn't listening yet. So,
+here we need to click on test step.
+Let's see. Let's reload. Boom. And this
+is our form. So, this is actually front-
+end UI that you can use to collect
+information. And you have the production
+URL, you have the test URL. So this is
+deactivated. So it needs to be activated
+for the production URL to exist. And
+that's because we have
+inactive uh bug report form, but we're
+going to do that once we fix the errors.
+In the meantime, we can use the test
+form URL. So let's close this. Uhuh.
+This is good. But we need to add the
+questions, right? So we have the form
+title. Report your bug. We can add a
+description. Take two minutes to quickly
+report the bug you
+found. Right. Test step. Reload. There's
+our description. Let's go back. Form
+elements. We don't have any form
+elements. So, let's click on add form
+element. And the first field is going to
+be the question. So, we're going to ask
+what kind of a bug is it, right? And
+then instead of text, we going to do
+drop-own list. And we need to add some
+options. So, first option UI bug. Second
+option notes related. Third option tasks
+related. And again, I'm adding these
+based on what we actually have inside of
+vector. Right? So this could be things
+I'm actually going to be using for my
+own startup vector.ai. These bugs, you
+know, we have nodes, tasks, stuff like
+that. So this is what people would say.
+UI related to chat, stuff like that. So
+I'm not just showing you random examples
+like other content creators that just
+build random animated agents that nobody
+needs or uses. This is real example that
+I need for my AI startup, you know, bug
+reporting. And we already do a really
+good job of that with our Discord
+server, but still an in agent that can
+summarize it and check if that back
+already exists and maybe add more
+context to it. There's a lot where you
+can take this, right? So again, feel
+free to customize it for your own use
+case. But the main point I'm trying to
+make is that all of us should be
+building AI agents for ourselves, for
+what we need or if you're working for a
+client, obviously for what they need. So
+I'm going to do uh agent
+related and then I'm going to do other
+right in case it doesn't fit any of the
+four options. Now I'm going to leave
+multi-ch and I'm going to make this a
+required field because it is required.
+So let's click on test step and let's
+reload and there is our question. What
+kind of bug is it? So we can select task
+related and then we need to add a second
+field because uh this is not enough
+right
+like people actually need to describe
+the bug. So let's go back. Let's click
+on add form. Oh, actually first let's
+save. Let's save. Let's go back and
+let's add a second form element right
+here. And this is going to be a general
+describe the bug in detail. Actually
+describe the bug. And then I'm going to
+say in detail describe how you how to
+replicate the bug and what exactly it
+looks like. Okay. And this is a required
+field. So let's click on test step
+again. And when we reload the form,
+there it is. We have a second input
+field. So once people select no notes
+related bug, it
+say note blah blah blah. Okay. And
+submit. And let's see if we get this
+data. The step problem running workflow,
+please resolve outstanding issue. Save.
+Uh uh
+uh. Did we get that data? Activate this
+workflow. Okay. Okay. So, what I'm going
+to do actually, I'm going to deactivate
+these AI agents. So, I'm just going to
+select all and click on
+deactivate. I'm going to save. Okay.
+We're getting some errors. So, I
+deactivated all of these other nodes
+just so we can get a test running here.
+Oh, there it is. So, when you click on
+test, well, let me do that again. You
+can test either the entire workflow or
+each node, right? So, let's click on
+test workflow. This will open up the
+form. is a UI
+bug does not work on Samsung Galaxy
+whatever. Submit. Boom. Okay, let's
+close this. We have our data. We have a
+green. So, workflow executed
+successfully and we can click on this
+and we can see the data. Boom. We have
+back UI describe the back. So, now what
+we need to do is go into our switch. So,
+this is set up correctly. Our first node
+works. Next, let's go into the switch
+and we need to wire it up.
+So what kind of a bug is it is the
+routing rules. So let's drag this over
+here. Actually need to be
+deleted. So when this is equal to UI,
+the output name UI will be triggered.
+Okay. So let's test it out because this
+is Wait, was this UI bug? Yeah, this was
+a UI bug. So let's test this. Save and
+test. Boom. There it is. It it toggled
+the green line. And then since we
+deactivated the agent, it didn't do
+anything, right? But this is how you
+need to set it up. So for all of these,
+you need to put in the exact options we
+have on the first four module. So again,
+let's delete this. And this is the same.
+What kind of a bug is it? But then this
+is the notes, right? So let's click on
+here and we need to copy the exact
+thing. We have exact thing. So notes
+related. Copy that. Put in under nodes
+related. It needs to match exact keyword
+you have and save it. So then if the
+type of the bug was not related, it
+would route right here into the nodes
+bug agent. So you get the point. For
+each of these, there's a specialized
+agent that can take different actions
+based on which bug it is. For example,
+for the simple bugs, right, you might
+not even need to contact the developers.
+You may need to just spin up a codeex
+agent, right? the open AI codeex that
+just came out inside of JGBD and it may
+try to fix it itself. Guys, you don't
+think you re I don't think you realize
+that we are living in the future.
+There's going to be like AI agents so
+advanced and so competent that they're
+not going to replace one person or like
+one position in the company. They're
+going to replace entire departments.
+Like it's coming. So learn the skill of
+building AI agents because this is one
+of the most futurep proof skills you can
+possibly have. And by the way, if you
+want to really take it to the next
+level, join the new society because in
+here we have a lot of exclusive content
+on how to build your first AI agent, how
+to build an AI startup from scratch, how
+to use Codex, which is the best coding
+agent in the world right now. This is a
+brand new workshop we're releasing for
+people who want to take coding seriously
+and who want to triple their coding
+productivity with Codex. So there's a
+lot of exclusive content in the new
+society about AI agents. So if you are
+serious about AI, make sure to join.
+It's linked below. And if you join in
+May, you will get a personalized AI
+strategy made for you. So again, this
+offer is only available in May and there
+is like 5 days left. So if you want me
+to make you a personalized AI strategy
+to future proof yourself and your
+business and access to all of the
+exclusive content plus the templates,
+presets, pre-built AI agents, and
+everything else we have inside. Make
+sure to join your society. The link is
+going to be below the video. Right, back
+to any. So once you properly wire up the
+switch so that each option is properly
+routed to the AI agent, then the next
+step is to actually set up the AI
+agents. So we have the UI pack agent and
+all of these are deactivated by the way.
+All you need to do is just highlight
+these and activate if you deactivated
+them. I did that because uh it didn't
+let us test the workflow and that's kind
+of annoying. So first off, what we need
+to do is add the model because an AI
+agent without the model is like a human
+without a brain, right? The LLM, the AI
+model is basically its brain. So let's
+click on that. We're using OpenAI here.
+U if you've never done this, you need to
+connect the credential right at the top.
+So click on this and click on create new
+credential in here. We need to put in
+our OpenAI API key. Now, if you've never
+worked with API keys, no need to panic.
+Getting this is like super easy. takes
+less than two minutes and anything
+literally tells us what to do right
+here. So, log into your OpenAI account.
+Let's click on that. Boom. Just
+controlclick. This opens
+platform.openi.com. Then we should open
+the OpenAI API key page. So, let's click
+on that. And by the way, here if you're
+not logged in, as you see in the top
+right, I'm logged in. Log in with the
+same account used for CHBT. Right? So,
+all of you I presume hopefully have a
+CHBT account here in the platform.
+Opening a platform. Just log in with the
+same account in the top right. Super
+easy. Then once you click on this link
+to open the API keys page, if you've
+never done this, you will not have your
+API keys. Otherwise, you will see your
+API keys. But in the top right, click on
+create new secret key. I'm going to name
+it NA10 bug report agent. Create secret
+key. And again, do not share these with
+anybody. Treat them as passwords. So
+back to N10. Paste it in. API key. Save.
+This will test it. Boom. There it is.
+Connection tested successfully. If you
+do run into any errors at this point,
+you need to go back into the open
+platform and go to settings and billing
+and charge up a few dollars because uh
+most likely those errors are if you
+haven't connected your credit card. So,
+you just need to charge up like two $3
+so that OpenAI knows you're legit and
+that you're a real person. After you do
+that, what we need to do is select the
+model. I would highly recommend use 4.1
+GPD 4.1. This is super great model, very
+cheap. like the cost to performance is
+great and it's super reliable because it
+follows instructions super well. So 4.1
+currently my favorite model to build AI
+agents with. Okay, so once we do that,
+we no longer see an error here.
+Beautiful. So let's save and actually we
+can now test this step. So let's click
+on well let's click on the AI agent and
+let's click on test step. We don't have
+any prompt selected. So that's error. So
+even though we already have the system
+prompt written out, we do need to uh
+specify the user prompt, right? All
+right. So here we need to define the
+user prompt. So, let's actually delete
+this. I'm going to say, let's think
+about this, right? We need to pass in
+the kind of a buck and the buck. So, I'm
+going to say buck type and drag in
+this. Okay. And then I'm going to do
+shift enter. I'm going to say user buck
+description. And I'm going to drag in
+the output of describe the bug. So,
+let's test the step. Okay. So, there it
+is. Uh the input. Let me zoom out a bit.
+I'm too zoomed in. Here's the input. So
+the system prompt and then buck human
+buck type UI user bug description. So
+the input is formatted correctly. First
+we get the system prompt which we can
+read quickly. UI bug handling agent
+receive bug description. Use Google
+Sheets to check existing bugs. If bug
+already exists, respond known bug. If
+new, it should be
+appended and sent email to developers
+via Gmail. And again, you can customize
+this so much. Let's say you use Discord
+for your team like we do. You would send
+a message to a Discord server through a
+Discord bot. Or maybe you use Telegram
+and you want to have a Telegram bot
+message you. So many options, guys.
+Don't just get limited by what I'm doing
+in the videos. I'm trying to show you
+how to do it. Not like you should build
+this specific agent. Just follow these
+steps how to do it. And with Chad GBT
+and with my videos, you should be able
+to create anything, right? Like if you
+get stuck at any point, just go back
+into ChatGBT. And with
+03, I I don't believe you can get stuck
+for long. All 03, tell it to do web
+search. Describe the bug clearly. You'll
+get through this. Just don't panic.
+Don't take the bugs personally. And
+especially if you watch until the end so
+that you can see all the bugs I
+encounter so that you can avoid them.
+That is another major value by watching
+someone how to do it. Anyways, let's
+save the changes. And now we need to fix
+the errors in these tools because our AI
+agent already works. It already knows
+what to do and it already called the
+tools in the right order. Right? You can
+literally see this. But the tools
+themselves are not working. So let's fix
+that. First, we need to set up the tool
+to read the Google sheet. Right? And
+actually, let's create a Google sheet
+first. All right. So, here is an empty
+folder inside of Google Drive. I'm going
+to click on Google sheet. I'm going to
+name it um
+NA10 bug
+reporter. Boom. And in terms of the
+headers, what we need to define, let me
+zoom in a
+bit. We obviously need the type and the
+description, right? We need to know what
+type of a bug it was and as well as
+description by user. So this is our
+sheet. Let's go back into
+NA10. Put it close. And we need to
+connect it together. So let's click on
+this. And again, N10 always shows you
+the error. So, first off, if you have an
+error at the top because you haven't
+connected a credential, click on that
+and click on create new credential. In
+my previous N10 video, I've showed you
+specifically how to connect Google
+related credentials. So, watch this
+video on screen because that's going to
+give you step by step how to go into
+Google Cloud Console and connect Gmail,
+Google Sheets, Google Drive, Google
+Calendar, any service from Google. So,
+if you haven't watched that already, now
+is the time. Now, once you have a Google
+credential connected, select it at the
+top. So under operation we need to do
+get rows. Then we need to select the
+document. This is going to be the N10
+bug reporter. Not sure why I'm not
+seeing it. Let's copy the ID of the
+document. Uh uh I'm going to do by ID.
+Let's see if that works. It works.
+Beautiful. So I don't know if this uh if
+your document is not loading, just copy
+the ID from the URL. Paste that in
+there. I just solved that error on the
+spot. Super fast. I'm actually impressed
+with myself. And then for the sheet,
+just select sheet one, right? Because
+here we don't have any more sheets.
+Okay, so that should be it. Let's save
+that. And u let's test the agent again,
+I guess. No, we can't. Why? Oh, we
+didn't pin the data. Okay, whatever.
+Yeah, so anytime. Okay, that's because
+we reloaded. We should have pinned the
+data from the test. But actually, let's
+first resolve the other issues, right?
+This one tool is fixed. Two more to go.
+So, UI sheets append. So, operation
+append row. This is when
+uh it's a new bug, right? That doesn't
+exist already. So, document again. I'm
+going to do by ID. I'm going to paste in
+ID sheet
+select mapping each column mode. And
+then let's have these generated by the
+AI. So, again, click this AI generated
+button, right?
+This is going to be empty for you. Click
+this button. Let the model define this
+parameter. Click those and that should
+be good. Let's save. We'll see if we run
+into any errors. I'll show you how to
+fix them. And then the Gmail. Same issue
+here. Select your credential at the top
+or whatever email you want the
+notification to be sent from, right?
+Doesn't matter. Could be a different one
+actually. Here we need operation should
+be sent. And then two is what email
+should receive the report. So in my case
+it will be actually
+support vectal.ai because that's our
+support email. Right? So if you're a
+vectoral user you can email us any bug
+you find or any idea for a new feature
+any request you might have or if you are
+in the discord server right here below
+my webcam where I'm pointing in the
+bottom right corner. It's even easier.
+You can literally talk to me directly
+and the developers.
+Anyways just select the email you want
+to receive your emails in. And then as
+for the subject and the message, we can
+click once again. Let the model define
+those. Okay. So we have fixed all three
+bugs in the UI bug agent. So let me try
+it again. Let's test the workflow. Boom.
+Let's do UIC scribe. The site is
+clipping out of view. Whatever. Submit.
+Boom. We have the data. Let's close
+this. actually going to go in there. I'm
+going to pin the
+data so that we can work with it
+multiple
+times. All right. So, it went under
+switch since it's UI. It went up into
+our AI agent. Okay. The AI agent did a
+bit too much. Okay,
+guys. I think it works. We don't have
+any errors. But I wanted to show you one
+step at a time. So, I'm going to
+actually delete the test and show you
+one step at a time because yeah, it
+worked. So, let's run it one note at a
+time. But let's click save. So I'm going
+to run this node. Boom. Again, the
+switch categorize it as a UI goes into
+AI agent. Let's run the AI
+agent. So it calls the read tool, reads
+all of the all of the reports in our
+sheet. And then okay, so this time it
+didn't execute the other tools because
+if we go here and reload, we will see
+that it has been added, right? UI the
+side is clipping out of view. So it's
+been added here. And that's why it
+didn't add a new a new row because it's
+a known buck, right? So, we only wanted
+new box, new fresh u I mean, doesn't
+matter if it's UI back or not, but
+unique box, right? That's what I wanted
+to say. New unique box, that's what we
+wanted to add it to the sheet. And by
+the way, if you're wondering if I
+received the email, I have received the
+email. There it is. But let me test it
+properly so you can see all the steps.
+So, I'm going to actually delete the
+entire workflow and I'm going to unpin
+this data so we can test everything from
+scratch. So, test
+workflow. Let me zoom out so you can see
+all of it. Actually, I can reposition it
+a bit. It's easier to see. And again,
+you would replicate all these steps for
+the other agents, right? Nodes, agent,
+and all the other bug types you have,
+nodes, tasks, doesn't matter. All of it
+can be replicated this way. And again,
+you can customize it. So, for nodes, it
+can do a different thing than for UI.
+And also like you might have a UI
+developer so that it emails him, right?
+Or it sends him a Slack message and then
+a person that's focuses on notes, a
+person that focuses on mobile app. Guys,
+this is really the future of management
+of working with the users everything. So
+let's do go again. Let's test this step.
+Boom. Let's do UI. I'm going to say uh
+there is no white mode. Okay. Submit.
+Let's close it. Then switch easily will
+categorize it as UI goes into our UI
+pack agent. So now what do we expect? We
+don't have any complaint or description
+of a white mode missing. So we expect it
+to be added to the form and we expect a
+new email to be received, right? So we
+did get this email previously, but we
+want a new email for for this new unique
+bug. So let's run the AI agent. It's
+connecting the model. It's reading all
+the rows and then it should append the
+sheet and send email. It does those in
+parallel by the way. Beautiful. And then
+contacts the model once again. We can
+see the final response um the output.
+Beautiful. So everything has executed
+without issues. And we check the form.
+We have the new new submission here. UI.
+There is no white mode. And we check the
+email. A new email came. New UI back
+reported. No white mode. Please review
+and address the issue. Man, we really do
+live in the future. This is crazy. So
+there's two last things we need to do.
+We need to activate the AI agent so that
+it can actually run. And then inside of
+here, you have the production URL which
+you can send or like embed into your
+website or send it to your customers
+whatever. So you can actually start
+collecting feedback and have this AI
+agent running in parallel. Now if you
+want it to be running autonomously
+deployed on the cloud, not just on your
+computer, make sure to set up the
+hosting or the VPS. This is so easy to
+set up and it's actually the most
+affordable way as well. The issue with
+going for like the N10 cloud or other
+alternatives is they usually charge you
+per executions, right? And that limits
+how many agents you can have and how
+many times they can run. Hostinger
+doesn't do that. They don't care how
+many a agents you have. They don't care
+how many executions you do. You're just
+renting a VPS. You have your entire
+server for you. That's enough to run
+hundreds of AI agents, right? So on this
+KVM2 plan, which I would recommend you
+go with, especially for the 24-month
+term because that's the most affordable,
+you get 8 gigs of RAM, two vCPU cores,
+100 GB of NVME disk space, and 8
+terabyte bandwidth. So you can run this,
+you can run hundreds, maybe even
+thousands of N10 agents on this for in
+perpetuity. They are not tracking the
+number of executions unlike other
+alternatives. That's why I'm using
+Hostinger myself and my entire team is
+using Hostinger for all of our NA10
+agents. So again, use the link below the
+video and if you use code David, you'll
+save even more money. Thank you guys for
+watching until the end. Now you know how
+to use Chad GBT to create or clone any
+NA10 workflow and then how to fix up the
+bugs after that. If you want me to make
+more videos on NA10, make sure to hit
+subscribe and comment below the video
+NA10. That way I know I should make more
+of this content. With that being said, I
+wish you a wonderful, productive week.
+See you.

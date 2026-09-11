@@ -1,0 +1,379 @@
+[music]
+Okay. Hello everybody. So I know I am
+the person standing between you and your
+lunch and but this is going to be a very
+interesting talk that combines the the
+previous two talks into the future and
+that's what I want to talk about today.
+So back in November 2022, what we used
+to do was we used to go to charg and ask
+charg to um create a component and we
+would just copy paste. You had to ask
+replying code blocks then you know again
+fix it repeat and this is what I call
+the poor man's bite coding. And we have
+come a long way um it it kind of worked.
+Um it was very exciting. you could get u
+models to could actually build some UI
+for you. Um and surely that was not
+going to write better code than me,
+right? And then things improved very
+very rapidly, very very fast.
+What happened last year and if you are
+aware what happened in the the the last
+months of 2025 was this acceleration an
+incredible inflection point uh where
+things changed and it will go down in
+the history books as uh things changed
+very fast all at once and this is in
+part because of the release of uh two
+very important models which were uh 5.2
+charg sorry it was yeah GPT 5.2 2 and
+Oppus 4.5 and they were not just very
+good at uh most of the task uh long
+horizon tasks they were also very good
+at high fidelity UI generation
+and they were producing very good
+working UI sometimes thoughtful
+sometimes really really good and also
+very fast.
+Now I experienced this when um I tried
+one of these models uh tried to rewrite
+my my blog. I know people have used this
+in a more creative ways but I just tried
+you know a single prompt rewrite my blog
+and then it did this which I didn't ask
+for. um it created a nice nice search
+box with a blur animation with
+accessibility out of the box and then
+that's when I realized that in the space
+of of three years uh from when charg was
+released to today we went from ah you
+know few lines of code is great uh it
+can it runs oh it now can write better
+front end code than me
+and you know I I don't mind no ego u
+it's just reality um so here's a
+question if these models are so good at
+writing UI code why are we still stuck
+in this mainly old paradigm of mostly
+static UI
+and where is where is that Jarvis moment
+that we've been talking about um earlier
+where are my floating UI windows that
+appear and disappear and why are we not
+there yet? So, my name is Ruen Casses. I
+am a staff engineer at Postman and I've
+been looking at uh UI and generative UI
+for the past year and I've been working
+with MCP apps as well and today I want
+to show you what we're doing today and
+where we're going in the future. So, the
+news are we have a new computer and as
+Andrew Karpathy put it, interacting with
+this new computer is like talking to the
+terminal. You have direct access to this
+operating system.
+And the guey has not been invented yet.
+It's like we are in the 70s where
+everything was just text and we have a
+super intelligence but we don't have a
+mature interface language.
+And today we are still trying to figure
+out what is this new interface for for
+this computer and people ask is it chat?
+So I'll show you what we what we're
+doing today. And actually, this was a
+very recent uh a tweet last week where
+people were complaining that most SAS
+companies have been adding um chat to
+their their home pages and everybody's
+just putting chat everywhere and and
+that's that's fine. I don't have a
+problem with chat. Um it's not the final
+UI. It's okay for now.
+But the question is if it's not chat
+then then what is the interface uh for
+this computer? On the other hand, as we
+have seen with um Chachi MCP apps is
+there [clears throat] is another uh
+thought which is we will have one app or
+a super app to rule them all. And this
+is where MCP apps comes in where instead
+of putting all of these chat windows
+into your homepages and into every
+single app that you use, we will have a
+super app like chatbt or cloud or Gemini
+where you will be interfacing with most
+of the the UI and the websites that we
+have today. Um and this is good. Uh this
+is the way we're using uh uh MCP apps
+today to to render third party UI inside
+one agent environment.
+Now these two options both could be
+valid and and I believe these are part
+of the evolution towards finding out
+what is that new interface for uh that
+computer and to be honest I don't know
+which one is going to be the the final
+one. consumers will tell us but one
+thing is that these are two different
+questions. Um the question is uh where
+does the uh UI runs or in this case is a
+third party UI a super app or in this
+case chat everywhere but most
+interesting is what is the model
+generating and this is what I want to
+talk about today in terms of how are we
+generating uh this UI and you have seen
+this we have mostly static declarative
+and uh generative UI
+and I'm going to describe uh briefly
+this one so we have um to start with the
+the static components way of render
+rendering UI which is what most agents
+uh do today. Uh the agent is just an
+orchestrator. The agent makes a tool
+call via MCP apps or the direct um agent
+tool call. Then we will have some
+parameters and data passed to predefined
+static components that have been created
+by developers and this is very similar
+to we what we have been doing uh for the
+past 20 years with with UI. um and then
+the client renders the component. And if
+you see here, it's very similar to just
+getting a server to send some data and
+then the UI will be rendered by the
+client. But in this case, the agent will
+be uh generating that data and the props
+uh to to do this. And some examples that
+we have today are the AG UI protocol.
+They have an SDK when you can register a
+uh client tool that uh maps to a react
+component. The tool call will receive
+some props. those props will be mapped
+to a static component that then will be
+rendered to to the user. Another example
+is um goose. Um goose is an an MCP
+client where you can try most of the MCP
+features and goose has this really
+interesting feature called goose auto
+visualizer where you can just pass any
+type of data to goose and goose will try
+to match that data organize it and then
+pass it to a set of predefined
+components that the goose team have
+created. In this case, we have a few um
+interesting components that you can uh
+use to visualize your data.
+So that's the static way. That's the
+most common way of generating UI today.
+But I have seen an evolution recently uh
+what we call now declarative UI. And
+declarative UI uh takes it to uh the
+next level. So we will still have some
+predefined static components that
+developers build and it contains your
+design system and all these components
+that you have. But instead of the agent
+just passing the props and the data, the
+agent uses a a descriptor that could be
+either JSON or YAML or I've seen Python
+as well with with fastcp zoo and they
+have a a descriptor in in Python that
+maps to these predefined static
+components and then you have this
+translation rendering engine that takes
+those descriptors and convert them into
+the final UI. How is this different?
+Well, in this case, um, it is more
+dynamic. There are still static
+components, but it's more personalized.
+And you, if you look at this and you
+think that this might look familiar as
+well, it's because it is not new. Um,
+Netflix has been doing this for a long
+time uh since the the personalization
+and serverdriven UI era where when you
+go to the Netflix homepage, you will get
+a UI that is completely personalized to
+you, but that's still mapped to the
+Netflix components and UI elements.
+Another very good um tool that I've seen
+recently is uh JSON render. Uh JSON
+render is uh been built by Versell and
+it is a way to map your components using
+JSON and also YAML. They released the
+YAML support recently and create all of
+these very dynamic, very good UI
+interactions uh that you can use today.
+But now JSON render uh still they say is
+constrained to your static components.
+And yes, there's still static
+components. The LLM is not gener
+generating those components. LLM is
+generating the JSON. However, I think in
+at this point in time, uh declarative
+generative UI is probably the perfect
+balance today in terms of flexibility
+and consistency because you would still
+want your design system, you still want
+to have uh predictability of what the UI
+is going to be generated, also faster
+and also potentially cheaper at this
+point. uh so you don't create and uh use
+a lot of tokens to create the UI. But as
+I mentioned at the beginning, why why
+are we still stuck here and what's the
+next level? I think the next level would
+be uh generative components and
+generative components uh goes into like
+the premise I put at the beginning where
+the models are good at writing front-end
+code. They are good at writing react.
+They are good at react uh creating
+JavaScript, CSS.
+And the question is why we don't let
+them just write that on demand at
+runtime. What could possibly go wrong
+with that? Right?
+This model um of generating the UI uses
+the aging capabilities and in this case
+you can also use a tool call but instead
+of calling this uh layout rendering
+engine you can call the same model with
+reverse sampling or you can call another
+model that will generate the HTML CSS
+JavaScript on demand and then it will be
+passed to the client. I did this
+experiment um I work at Pusman and this
+experiment where I created uh this
+weather agent that goes to the API, the
+weather API. It creates a joke. It
+creates the HTML, CSS, JavaScript all in
+one tool call and you get presented with
+this random but very uh imaginative UI
+where everything is created by the
+agent. There is no component. There is
+no translation.
+So there is of course a problem with
+this approach. Uh and the problem with
+this approach is uh if we don't trust
+third party code well we should not
+trust um code that is being generated by
+LLMs and then just present it to the
+user. Uh generative UI and this level of
+generative UI needs a distribution model
+and this distribution model requires a
+boundary requires containment and
+requires a sandbox which is what we were
+talking about earlier. This is where I
+think MCP apps matter a lot because MCP
+apps are the best uh delivery mechanism
+uh for uh generative UI. We have the
+features provided by MCP including
+authentication and tool calling and
+message passing between the UI and the
+agent. Uh is sandbox by default with
+that double eye frame is the default for
+third party UI delivery today. That's
+this become the standard. And one
+interesting thing is it's not just for
+third party UI. It can also be used for
+firstparty UI. And this is why I think
+what Antropic is doing with the the
+visualizer feature is very interesting
+strategically speaking because they
+could have just created their own
+rendering um and an architecture
+mechanism for delivering this
+interaction in cloud but they decided to
+go with MCP apps because MCP apps
+provide most of those um features that I
+mentioned earlier uh out of the box. So
+if Anthropic decided to use MCP apps for
+the first party UI, uh you can ask
+yourselves why cannot do the same. It is
+um a very very strong protocol and
+especially when the UI is being
+generated on the fly by the agents by
+the the code uh coding models then is
+the best um mechanism for delivery.
+Now
+today is probably not the final form and
+people keep saying is chat the final
+form is MCP apps the final form we're
+still we're still trying to figure this
+out and the obvious future is probably
+too obvious and we said about where is
+my Jarvis where is my floating windows
+and if you think about it that's the
+obvious thing that people would think
+how we would look like if we were
+generating or creating a new uh user
+interaction
+but what I think is we don't have enough
+imagination yet and and this analogy I
+heard recently is very interesting when
+when uh radio came out in the 30s
+um the the first um sorry the the TV
+came out the first uh TV shows were
+radio shows with cameras
+because they could not imagine what you
+could do with this new technology. So
+this new technology that we have today
+is very similar when television came out
+and we are still in the radio era where
+we don't know all the amazing things
+that we will do in the future with this
+new media with this the new power that
+we have with the with the new computer
+and we can see that we cannot even
+imagine what it's going to look like.
+Uh, of course this is a speculative but
+what do I think is actually going to
+happen is we are going to be moving uh
+beyond components and more towards a
+collaboration uh true human agent
+collaboration. If you haven't heard
+about the Scalroid MCP app uh definitely
+check it out because the Scalroid MCP
+app is not just for um output and
+visualization of diagrams.
+The Scaly Draw MCP app does something
+very interesting which it creates a a
+shared artifact. It creates a canvas
+where a human and an agent can
+collaborate together into a shared space
+where you can go back and forth with the
+agent and ask you know change this but
+you can also click around modify the UI
+the way that you are used to and that
+becomes the new way of interacting the
+new way of experiencing the the agent um
+powers and and at the moment again we
+are very constrained to our imagination
+and and I believe these agents are very
+very powerful for just to just use them
+as a orchestrator and a delivery
+mechanism to show me some
+visualizations. So I believe beyond
+components
+it will be the future of generative UI
+will be more a collaborative experience
+where yes we will have some generative
+UI but that UI is going to be super
+personalized and it's going to be
+collaborative.
+So we we are still early. Um
+we don't have the answer. People say you
+know what is what is the future of the
+user interaction the user interfaces. We
+don't know yet but we can shape that
+future uh and create this uh new
+computer. And that's me. Thank you so
+much uh for listening to this.
+[applause] You can find me uh and ask
+any questions.
+Thank you.

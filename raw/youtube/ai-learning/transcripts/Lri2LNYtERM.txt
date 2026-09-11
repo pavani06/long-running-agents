@@ -1,0 +1,1223 @@
+We are super lucky to have with
+us today, Garry Tan and Diana Hu from YC. [APPLAUSE]
+Before we dive in, I'm going to
+do a couple of minutes of warm
+up. This is a really special
+lecture for a couple of reasons.
+One, this class, CS 153, which,
+as you know, Mike and I started
+teaching four years ago,
+which was security at scale, small group, 50
+people, was inspired by
+is a composite of
+several different classes that have been taught at
+Stanford by Silicon Valley
+leaders. And when I was an undergrad,
+sophomore year, Peter Thiel,
+taught the first version of
+how to start zero to one. It was CS 183.
+How to start a startup, and that
+became the book Zero to One. The following year, YC taught
+a version of that class
+that Sam put together. And Gary was at YC at the
+time, or had just initialized.
+And so those are the spiritual
+descendants of this class. And then there's CS 43, which
+was Terry Winograd's class.
+We've talked about those
+Computers and the Open Society, which was the first
+freshman seminar I took. And so over the
+years, we've tried
+to take the best parts
+of all those classes and bring it together in 153.
+But it's just really
+poetic to have Gary back, because based on
+many of the things
+Gary learned here
+at Stanford, he went out and took the spirit of
+Stanford out to Silicon Valley.
+And to have him back and be able
+to talk about all of his work,
+and now with Diana helping to
+update some of the YC philosophy
+that we're going to talk about,
+it's a close the loop moment. So thank you guys
+for coming back.
+It's really appreciated. Thanks for having us. Oh, no. This is the fun part. So I'm going to
+let you-- before we
+dive in, I'd like to give a
+couple of minutes of context on why this is an important
+lecture for you guys.
+So as you know, 153
+is a systems class. You've heard up and down the
+stack from landpower shell
+and energy like Scott Nolan
+at General Matter to the chip layer. We had Jensen last week.
+There's a full rewrite
+of systems going on to unblock bottlenecks
+on frontier progress right in the world.
+One of those things that we
+need to unblock bottlenecks on is capital. And as you heard from Ben
+Horowitz a few weeks ago,
+Mark and Ben came
+up with a system to try and scale the deployment
+of capital in Silicon Valley over 10 years ago and are
+now thinking through how
+to update that system. And YC is very
+similar, and I'd like
+to connect the dots between
+lecture 1, where we talked about the compute bottleneck. And if you remember,
+one of the reasons
+I talked about how compute
+is a bottleneck today is because we're in
+the pre-standardization
+of compute era. And if you zoom back to
+the Industrial Revolution, one of the things that allowed
+this very important thing called
+electricity to become
+a stable resource, a piece of infrastructure that
+lots of people could develop on
+and access, was the
+development of standards. One of them was
+AC, DC, and then we
+had institutions
+enforce those standards. One of those institutions
+was utility companies
+that developed a grid to
+coordinate the production, demand, and supply
+of electricity.
+In the capital world,
+when I showed up
+in Silicon Valley in 2011, we
+were in the pre-standardization
+of venture capital. It was a complete mess. There were a bunch of
+VC firms, who were all trying to do their own deals
+and figure out how to negotiate
+with founders and so on. And into that mess stepped Paul
+Graham and Jessica Livingston
+and introduced a
+new standard for how capital should be allocated,
+and that was called The SAFE.
+How many people have
+heard of The SAFE? There we go. OK, so this is living proof. At the time, it wasn't legible
+to me how profound The SAFE was.
+It was basically a two
+page legal document that YC put up online
+and said, here's how we're going
+to fund startups.
+It's called The SAFE, Simple
+Agreement for Future Equity. And at the time I was
+like, I was a student here,
+and I saw it. I was like, OK,
+whatever, legal document. In hindsight now, it's
+so obvious to many of us
+in the ecosystem that that was
+a pivotal moment in the history of Silicon Valley, where the
+YC team saw what was going
+on and realized-- at that
+point, there was another-- We were living through the
+rise of the cloud and SaaS era.
+AWS and GCP and
+so on had started to make compute
+quite accessible, and that had reduced the
+marginal cost of innovation
+in the valley. But venture capital still
+hadn't caught up with that era. It didn't cost much
+to produce software,
+and so there was a moment
+of abundance we knew we were going to go
+through back then, but to get capital out to
+innovators like you guys,
+there was a venture
+capital bottleneck at that time, which now seems
+cute given the numbers we're
+living through today. But at that time,
+it really did feel like it was hard to
+get time with VCs and get good deals and so on.
+And so when into that mess,
+stepped YC and published The SAFE, it became a standard
+for how early stage startups
+were going to be funded. And then by enforcing it,
+YC became an institution that standardized
+seed stage funding.
+And the arc of Silicon Valley
+would have looked very different without that one document.
+And so as it's very
+obvious to me at AMP,
+we live through this every
+day on the compute side. We might even at some point
+open source a standard agreement
+for future compute,
+something like that, but, we look to what
+YC has done as somewhat
+of a spiritual ancestor
+for the work we're doing. And so it's very cool
+to have you guys back.
+Within that context,
+I hope this gives you a little bit connect
+the dots moment for why
+lecture 1 and this
+lecture are parallels. And systems design is not just
+something you do in engineering.
+You can do it in
+any domain you're in to try and accelerate
+the pace of progress
+and unblock bottlenecks. Is this making sense to people? Can I get a yes?
+Yes. Come on. It's spring quarter, guys. Can I get a yes? Yes. Yes. Thank you.
+All right, with that
+over to you guys. Thank you so much for coming. Why don't we start with,
+introductions about yourself,
+how you got here, and
+then you can dive in. Absolutely. Hey, everyone. I'm Garry Tan. I was a Stanford class of '03.
+I took a lot of classes in here. I fell asleep in this lecture
+hall a great many times. Thank you so much
+for bringing me back.
+It's great to be
+back to the farm. And every time I come
+back to the farm, I'm shocked that I get to be up
+here because I feel like I just
+blinked and I was in your seat. And zooming out, that's
+actually desperately what I want for every
+single one of you
+is, what we were talking about
+here is there's a grand shift.
+All those historical things
+literally, the new standards are being established
+right now, and there
+are people in this
+room who are actually going to be the people who
+establish those things. And then Diana and I
+and the team at YC,
+we're hoping that we're-- The SAFE was a legal
+instrument, what we're going to talk about
+today is actually code.
+And not just code,
+Markdown is code. Literally the new,
+and we're going
+to link it all the way over to
+what a startup is, what people in this room are
+going to be spending your entire lives building the
+railroad for the rest of society
+over. For our generation, we
+were building the internet and we were building
+mobile phones
+and we were building
+social networks, and your generation is going
+to create the cognitive layer
+for all of society. And what we're talking
+about is just stuff that--
+these are our hunches even. You guys are going to go
+and actually build it. And so thank you for
+bringing us back.
+Diana, do you want to
+introduce yourself. Thank you for having us. I'm Diana. I'm one of the general
+partners at YC,
+and we are living
+through an exciting time, as you all know with what
+all the capabilities with AI
+is unlocking. And we have a lot of interesting
+things to share for all of you
+in this lecture. We've seen unprecedented
+growth from a lot of the companies
+in our portfolio
+that have gone from
+zero to tens of millions in dollars in revenue
+in one year, which
+was impossible
+before within a year. It would have taken
+four or five years to get to basically
+series B level traction.
+And hundreds of millions
+of dollars in capital. It's just a different moment. Different world.
+And we're going to tell you how
+these founders have done it, and we're going to
+go through really what it means to build a
+company now to be AI native.
+So with that, it's a
+pretty packed lecture, so we're going to
+just get right in.
+AI is going to change
+the unit of production. When I was sitting
+in your seat, I knew that I needed
+to raise money,
+I needed to hire
+a lot of people. This was about me learning
+how create a new cult.
+Palantir was like that, YC,
+ultimately, it's a religion. This is something
+that we believe
+that nobody else believes yet. That is still true. All the things we're
+going to talk about a team
+is still valuable, human
+beings are still valuable, but it's not going
+to be just humans. It's going to be
+humans in concert
+with agents, with memory, and
+evals and a customer loop. So by the end of
+this talk, you're going to understand what
+we're talking about.
+Right now, it sounds
+a bunch of buzzwords. We don't want this to
+be a bunch of buzzwords. We want you to take these
+ideas and actually implement
+them and remake society, and
+we think you will do that. Let's see.
+I'll tell you my personal story. In 2008, I got into YC. We raised about $4 million.
+I hired 10 people. We created Posterous, which is
+a dead simple blog platform, and we sold that to
+Twitter three years later
+for $20 million. And honestly, I was able
+to create all the software
+we made over two years with 10
+people and all that capital, but me with the $200 a
+month Claude code Max plan.
+And anyone in this room
+could do that. and? It didn't take two years. It took about five days.
+So I experienced that speed up. Recently, I created
+Gary's List and then that
+caused me to create GStack. We're going to talk about
+what those things are. But as Diana said,
+we're in 2026 now,
+and so a six-person
+team can hit 10 million in revenue with just the things
+that we're talking about today.
+And a lot of you
+already this, so it might be review,
+but for some of you, this is some
+astonishing good news.
+So let's talk about GStack. This is something
+that I discovered. Late last year, I saw Steve
+Yaghi, a famous blogger
+and engineer. I believe he was
+an early Googler. He wrote that "people using AI
+coding agents are 10 to 100x
+more productive as engineers
+using Cursor in chat today." And then at Anthropic there
+are about 1000x as productive
+as Googlers were in 2005. And I was like,
+what is going on? And so I had to try it.
+I opened Claude
+code, and, of course, I ended up writing around
+a million lines of code in,
+which is really, really crazy. Let's see. Let's just talk about
+the things that you
+might read on the internet. These are all wrong. It's not just AI slop. Actually, yes, LLMs are
+very verbose and some of it
+is boilerplate, but when
+you create your own software factory, this is actually
+what you're fighting.
+This is actually what
+you're preventing from happening by default. Yes, there are hallucinations.
+Yes, those are
+actually the things that we're trying to control. Can you make demo
+code very quickly?
+Yes, but how do you
+get it to production? Well, you actually have to
+get to 100%, or 80% to 90%
+test coverage. That's actually one
+of the main reasons why plan dash, en dash
+review as a skill exists.
+That's the number one
+with a bullet skill that I use about 20 times a day
+to get to 80%, 90% test coverage
+so that I am not shipping slop. I'm shipping something that
+is actually literally usable
+and that I rely on
+every day in production. This is very controversial. I've gotten in
+trouble over this.
+I apologize to people for who
+took my trolling as serious.
+Is LOC gamble and something
+that might be not usable?
+Actually, yes. LOC on its own can be wrong,
+but on the other hand, if you have tests,
+if the real measure
+of whether or not these
+things work is actually look down and does
+it work for you? Does it work for your customers?
+Are people actually paying? That's actually the true metric. Look, it might be
+a garbage metric, but I might argue that
+in the age of-- there's
+nothing in Claude Code or
+the model or the harness, or GStack, or any
+of these things
+that tell the model to write as
+many lines of code as possible. If anything, the reverse
+is probably true.
+We're trying to write as
+dense and concise code as possible to
+serve the purpose.
+And I think that
+that's something that's quite important to talk about. This is my experience. I got to 87,000 stars.
+My other project,
+GBrain, is 13,000 stars. So I mean, basically for someone
+who was not coding at all
+in December of last year, I have
+more than 100,000 GitHub stars and about 15,000 people
+use it every single day.
+Hundreds of thousands
+of skill invocations. And so I don't know. This is what I'm learning.
+Last year, probably
+before Claude 4.5-- Opus 4.5 came out, we were
+talking about Copilot.
+Today, I think we're really
+talking about a software factory. And so if you use GStack, you'll
+understand this is actually
+what's happening. What I discovered is that-- and this is more or
+less by accident,
+as I was writing half
+a million lines of code for recreating my
+startup that I created
+two other times previously,
+but doing it in about five days or during the course of
+several months creating GStack,
+I realized that it's
+actually really useful to pull out specific
+personas of what
+is already in the latent space. And so the most famous
+skill that a lot of people use that it's actually
+interestingly,
+a distillation of what we
+already do at Y Combinator when we have 15 partners,
+16 partners at YC,
+when you have an idea and you're
+doing office hours with us, we're mainly asking
+questions about what's
+the problem, who's the
+customer, how do you know that, and then what are we building. And so that's what the
+office hours skill is.
+We basically took actually
+three or four months of transcripts across
+thousands of conversations,
+distilled that into
+something very, very potent. And then I had to
+distill that down by 90%.
+And then that's what is
+shipped in open source/office hours in GStack. But as I went, it
+turns out there
+are lots of different things
+that I like to use to actually make it easier and far better--
+the product that you can
+create with coding agents can be better if you're
+literally pulling out the latent
+space for a particular
+vibe and thing that you're trying to go for. So plan-ceo-review,
+for instance.
+My favorite thing about that
+is it asks the question-- OK, well, it has context. It knows what you're
+trying to build--
+What is the 10x version of that? What is the platonic
+ideal of that? And so when I was a product
+manager at both Palantir
+and Microsoft and a
+founder for my startups, when I thought about product,
+that's what I wanted to do.
+I wanted to figure out, what
+is the perfect manifestation of the thing that
+we could build. And then when I build--
+what I'm building
+right now needs to be on a roadmap that is a
+straight line from where we want
+to go, from where we are now. And then the other
+thing that I discovered as we were doing this stuff is
+that you can boil the ocean.
+Who here remembers that
+term, boil the ocean? If you go and work
+someplace, you're
+going to go into a meeting where
+people start saying things that are a little too scary, and then
+immediately people in that room
+are going to say, whoa, whoa,
+whoa, let's not boil the ocean. And my response to that,
+based on my experience
+with coding agents and
+what's happening right now, is actually, let's
+boil the ocean. The things that you can do, like
+basically you sitting in front
+of one of these terminals, you
+can do the work of about 500 to 1,000 people.
+And if that's true, then all
+of the expectations that we currently have in society
+around what a founder can do,
+what a company can do,
+what a small team can do, what you can do sitting
+in front of a computer, they're actually 1,000x wrong.
+And actually what's funny is
+that's baked into the model weights. Who here has asked
+Claude Code before,
+how long is this going to take? And it'll give
+you, oh, it's going to take about three weeks
+to code all of this stuff,
+and then you press
+approve on the plan and then literally it's
+done in about an hour. So, I mean, all of us
+have experienced that.
+The models themselves have not
+caught up to this new reality that we can actually
+boil the ocean.
+So anyway, use GStack. There's a lot of stuff in there. We have very little time, so I
+feel like I need to skip ahead.
+GStack was basically
+my understanding of building open source
+and putting it out there,
+and I'm still working on it. But the new thing that I've
+been working that everyone at YC
+has been just
+completely immersed in is OpenClaw and Hermes
+agent, and they're actually
+teaching us brand new primitives
+on how to think about code, how to think about markdown, and
+how those things work together
+to do real work. And so this is
+somewhat obvious, but I
+have to say it because I keep--
+like anytime I would build an agentic system and it broke,
+it would every single time
+break because something
+was wrong about what I was trying to do.
+I was either trying to do
+deterministic work, things that should be in code in
+my markdown skill,
+or I was trying to do latent
+stuff, actually the things
+that my agent should be doing
+using the LLM in the code. And a concrete
+example, for instance,
+is we spend a lot of time
+trying to curate the experience of people at YC events.
+Anyone actually can
+just use Claude. You don't even need Claude Code. You could use ChatGPT.
+Put in bios of eight people
+coming to your dinner party and you can have it go
+and Google that person,
+run a dossier and then figure
+out who should sit next to who. That's very easy to
+do in latent space,
+but try to do that with an
+800-person dinner party or with the 6,000 people that are
+coming to start up school.
+You can't do it. The model's not big enough. It hallucinates. It doesn't work.
+And so what do you do? Well, that's the
+perfect example of you need to make the
+latent space work
+with the deterministic space. And so how do you
+actually do that?
+The toy example here is
+like, well, what is a skill? Who here has played with a
+skill or used a skill file?
+So skill file is actually-- I mean, it sounds facile. If you go on Twitter
+and believe the haters,
+they're going to
+say like, ha, ha, it's just a bunch
+of markdown files. Who cares? But the big difference
+now with LLMs
+is like you can actually do
+real work with this stuff. The thing that keeps coming
+back over and over again
+is that you can do real
+investigations about it. And so basically
+what is a skill?
+It's basically just a runbook. If you've ever thrown
+an event and you
+need to throw that event over
+and over again, what do you do? You go into your
+notebook and you just write down, well, one, we
+need to do to secure a venue.
+Two, let's figure
+out who should come. It's just this-- any
+human being or agent should be able to look at it and
+say, OK, after I read 1, 2, 3,
+4, 5, 6, however many steps
+it is, maybe it's branching. It could be very
+complicated, actually. Do I know how to do that thing?
+This is a very simple concept,
+but the really cool thing is that you can actually
+make it call code.
+And that's what I find myself
+doing inside of OpenClaw and Hermes all the time.
+And this is where
+it links to what you guys are doing as founders. And this is the
+pattern that we're
+seeing inside every YC founder
+or inside every YC startup now. We're not picking up the
+phone and doing it ourselves,
+just like we're not opening VS
+code and writing code ourselves. Claude Code revolutionized
+how we write code
+and we don't open like-- Me, Karpathy, and tons of
+other people in this room probably don't open
+the editor at all.
+The same thing is happening
+with OpenClaw and Hermes agent.
+So all non-technical
+or process oriented things in knowledge work are
+now-- you can do it in OpenClaw.
+Like you can have
+Twilio call someone. You can use Gemini Live
+to actually book a thing
+or buy a thing or
+here's my credit card, all of these things. Who he remembers
+that Google demo
+where they stood up on
+one of their conferences and they're like,
+so proud, Gemini can now call, and get
+you an appointment?
+And then they never
+ship that thing. You don't need to wait for them
+to ship that anymore because you can have that yourself. And that's the most
+empowering thing.
+So code is code. The concrete example I have is
+like who here uses OpenClaw?
+And it always, for some
+reason thinks that you're in Greenwich in the UK.
+And so this is a
+perfect example of I had to write code in TypeScript.
+It's context-now.mjs
+and I have tests for it, and then I have it built into
+my system so that I don't rely
+on the latent space to do it. It just tells me,
+here's the time. And then actually, here's the
+things that are coming up.
+And if I don't do that,
+left to its own devices, the latent space will be
+like, oh yeah, it's 3:00 AM.
+Why are you still up? And it's like, what
+are you talking about? It's the afternoon right now.
+The next important thing
+that we discovered, anyone who has used
+Claude Code a lot, has probably seen this error
+message at the top of Claude
+saying, you're Claude.md is
+40,000 tokens or 40,000 lines or something like that.
+And then you Google around
+and you're like, OK, well, how do I fix that? Well, how you fix it
+is actually a resolver.
+So a resolver is
+actually really important because it's amazing how
+much you have to spend time
+getting this right.  Claude.md is a whole bunch
+of instructions on how
+to do things that you develop. You got mad that Claude
+Code did this or that, or wrote the changelog
+in a certain way,
+and you say, hey, I
+don't want it like that. Don't do it like that anymore. Well, turning it into
+a proper resolver
+means you take that
+instruction and it's like anytime you have to
+write to the changelog, load changelog.md.
+And so suddenly you don't
+need that in your context. The agent itself
+knows, oh, OK, here's
+this master directory of all
+the things I know how to do. And I need to load
+the instruction only
+when I actually need it. It sounds so simple, but
+it's kind of obvious. But this is actually the core
+of having a really great agent.
+Actually, it's
+having a resolver. When I need to
+check signatures, I want it to actually go to my
+executive assistant skill, who
+is a particular
+person like, well, I needed to look up in my
+brain repo how to do that.
+And I have a skill,
+a specific code path. And it's not a code path. It's like a markdown code path.
+I call it a skill pack. I have a skill pack
+specifically for that thing. I did it once, and
+then that's where--
+here's another primitive
+that I discovered that I find myself doing
+about 20 times a day when I'm using OpenClaw
+or Hermes agent.
+It's called Skillify. So you're going up one
+level in abstraction.
+So let's use one
+of these examples. Save this article. Well, I do that once.
+I look at the input,
+I look at the output, I get the agent to do
+exactly what I want.
+And then once I have it in
+a position where I like it, I actually tell it skillify.
+And then on the right, that's
+actually what the skill says. And this is a summarized
+version of it.
+I have an article on
+X about it if you want to see all the full details. But long story short, you write
+the skill, you write the code.
+And then here's the part that is
+actually broken in Hermes agent. I think they're about
+to fix this, actually, but it's not enough
+to do it once.
+You actually need to test it. You have to-- if you work
+in a finance organization,
+think about all the
+people, like 10% or 20% of people who work in some
+of these organizations just do compliance.
+And you're like, what are
+all these people doing? Actually, in an
+agentic system, this is exactly the
+illustration of that.
+Look at all these steps. Writing the skill and
+writing the code is only 2 out of the 10 steps. All of the rest of
+it is making sure
+that this messy system that
+is more like a human system than perfect, beautiful beam of
+light code can still work and do
+work that you want. OK. So you did something
+in Claude Code,
+or you did something
+in OpenClaw. You made it work. Then you say, skillify. What does it actually do? Well, you have to write unit
+tests for the actual code.
+You have to write LLM
+evals for the skill file. Then you have to write
+an integration test.
+Then you have to make sure
+that there's a resolver trigger, an agent.md. And then you have to test that.
+You need an LLM as
+judge eval to make sure that when that
+thing comes up, it's
+broad enough that it
+actually gets triggered. And then there's
+this other concept that you can look up in GBrain
+called check resolvable that
+is very important. You want it to be DRY,
+Don't Repeat Yourself. Otherwise, you end up with 1,000
+skills that do all the same
+thing. You need an end
+to end smoke test and then ultimately
+you need a schema. You need to figure
+out where does this
+live in my memory and my repo. So we're going really
+fast, but that's why memory is actually
+really important.
+And so my next project that
+is out now that I'm working on is called Gbrain. It's actually a
+three-layer memory system
+built on top of what
+Karpathy already talked about with his Knowledge Wiki. So I started with the
+Knowledge Wiki as well.
+And then it started falling
+over because it just uses grep. And so I had to add vector
+search, RRF fusion, backlinks,
+I added a graph database. It's a type knowledge graph. I'm about to add an
+epistemology systems so
+that we know that things are-- there are hunches or
+beliefs by specific people
+or world knowledge. And I want to track when
+things-- what's funny about-- maybe this is very
+specific to me.
+I'm super fascinated with the
+idea that people in this room are going to go on to--
+your journey as a
+founder, literally is that you have a hunch. You think that the world needs
+x, nobody believes that yet.
+But I want my
+knowledge system to be able to track like, oh,
+well, I heard so-and-so, this person in this room,
+this person in a red shirt
+right here, he tweeted this. And nobody else
+believed that yet. But he's going to go and
+spend like a year, two years,
+five years proving it correct. And then if my GBrain is
+actually working properly,
+it's going to spot that. It's going to be like, oh,
+actually here's at Stanford, there was this one
+person who believed x.
+And then they manifested it. And so I don't know. For me, philosophically, I'm
+fascinated by knowledge systems
+truly capturing what's going on. And that's what--
+I think about this. I'm just building
+software for myself.
+This is the stuff that
+we have to think about. And if you spot in my voice
+like, I'm excited about this
+because I'm building again
+and I'm building for myself. And then we're open
+sourcing this stuff because we want all of you
+to actually be able to do it.
+I feel like I need to expand
+on-- one of the things that GBrain does is like it's a
+very specific schema for my use
+case. But one of the last things I
+need to do before I go to V1, hopefully in the next
+couple weeks, is I actually
+need to make fully
+dynamic ontology, which is a great buzzword that I've
+learned from Palantir back
+in the day. Right now the schema
+is built for me, but there's no reason why
+it can't be built for you.
+Whether you're a researcher,
+whether you're a journalist, whether you're a
+politician, each person is going to have a
+different schema.
+We need to support
+all of those things. So zooming out, I'm about
+to pass it over to Diana to take it all the way home.
+I gave you the primitives that
+we're learning literally week by week. I didn't even know about
+Skillify until it flew out
+of my hands at 3:00
+AM using OpenClaw. And then I put it on
+X, and that went viral.
+I'm just learning as I go. I'm not an expert. Sometimes it's like my
+favorite line from Alan Watts,
+if you guys know Alan Watts is
+he goes to a room like this. He used to give lectures and
+he would say, I am not a guru.
+I am just an entertainer. So I want to pass this over.
+We're talking about
+the agentic company. Diana's going to tell
+you a lot more about it. But the concepts that I just
+talked about, one of the weirder
+things we realized is these
+actually map to the company. So a skill is a
+squishy human being
+who's an employee
+who has a capability. A resolver is the org chart. Who Handles what?
+How does it happen? The filing rules, where
+it goes in the brain
+is the internal process. Where does the information live? Check resolvable is this
+thing that makes sure that the resolver works
+for the set of things
+that you want to get done. And that's like
+audit and compliance. When I was sitting
+in your seat, I
+had no idea why so many people
+in so many human organizations had to spend so much time
+on audit and compliance.
+But now, at age 45, building
+a lot of agentic systems and looking at Skillify and how
+much time I spend just trying
+to make the things like friggin'
+work, I actually understand now. Human systems are
+very messy, and that's
+what check resolvable is. And in the end,
+the funniest thing is what a trigger eval is, you
+would think, oh, well, of course
+it's in the trigger. It's in the result-- in
+agents.md it should just work. But no, you even
+have to check that.
+That itself is its own latent
+space squishy operation that you have to check.
+And in an org those are
+performance reviews. So with that, I want to
+hand this over to Diana
+to take us to the actual applied
+portion that will actually help you.
+So I think a couple of
+things that Garry went over are a lot of the details on
+how you could implement it
+with a lot of the
+building blocks. And if we really backtrack and
+step now a couple layers up,
+one of the key concepts of
+building an AI native company is you need to change fundamentally
+how companies are run.
+I think normally today, pre
+AI, companies are basically run as a open loop.
+People make decisions and
+a lot of those decisions take a while to come back
+and is basically lossy.
+There's no concrete
+tight feedback loop. If a lot of you have
+studied control systems-- how many of you have taken
+control systems and know
+the difference between open
+loops and closed loops? The problem with open loop
+systems is as error accumulates,
+the systems become
+more erroneous, and then it goes off the
+rails, as opposed to let's say,
+a closed loop system. Very famous closed loop systems
+could be like PID controllers.
+You have a tight feedback
+loop into the controller so that a lot of the
+error stays within check.
+And this is how a lot of robotic
+systems work a lot better. So we basically now with
+AI, have the capability
+to take a lot of these lossy
+information of how companies run into becoming a
+closed loop system.
+So what that means fundamentally
+today for old-school companies, information lives in
+people's head in an org.
+They have a lot of side
+conversations, DMs in Slack. They have a lot of meeting
+notes that are not written.
+They have just vibes, how they
+feel about a particular decision and all very lossy.
+This is basically how decision
+in companies are made. And now the ability is
+to change all of that
+into a closed loop system where
+you tie these agents that Garry described and how
+to implement it
+into basically the
+fabric of how you make decisions for a company. So the idea is
+that you would have
+an agent like a Hermes
+or OpenClaw embedded into all the decision making. And what it means
+the agent needs
+to have read access to
+every single artifact that the company produces. So for some of you
+that might be working
+on some projects in
+school, you could have a small version of this. You could have an agent
+that basically connects
+to your GitHub codebase,
+connects to your Discord, and even start recording
+all the meetings you
+have with your teammates
+as you make progress. And as you get all
+these contexts,
+the agent can then suggest
+what are the best next items to work on, or bug fixes.
+And put it in your GBrain. Put it in your GBrain
+and the memory context. And this is how
+you start embedding this agentic system that
+starts building the system
+and self-healing. So that's one of the
+things that we're seeing companies do where they
+can pull this crazy stats of one
+employee making in the revenue
+per company at least one or $2 million, which
+now the public comps--
+take like a Salesforce. Maybe the employee comps of
+how much revenue they bring in is under six figures.
+So this is huge. It's at least a 10x based
+on what we're seeing on the startups. And what does this
+look specifically
+is when agents are able
+to read the full state. In practice, we actually
+implemented this also at YC
+with our engineering team. We're basically able to cut the
+sprint time in half and produce 10x the amount of work.
+And some of you may
+have read this blog post from Jack Dorsey about
+the agentic organization.
+How many of you
+have read that post? Some of you are familiar
+with this concept. And I think it talks a lot about
+now making an organization very
+flat and basically getting less
+need for middle management,
+because middle
+management used to be just all about this lossy
+information routing. You end up basically having
+three roles in a company.
+One is everyone starts building,
+so everyone becomes effectively an individual contributor that
+ships something, and even people
+that are non-technical,
+you now have the power to build with all these tools. So even a salesperson
+could be building
+their whole pipeline
+of calls and meetings and automate all of that. And then the other
+person is the DRI
+who tends to be--
+some of you are familiar with this
+term from Apple. How many of you DRI? The concept of a direct
+responsible individual,
+that every outcome in
+a company trades down to a particular owner
+that owns the outcome.
+And the way it works is that
+the DRI orchestrates with the IC to make sure
+something gets done. For example, a goal for a
+company might be we need
+to increase the revenue by
+3x by the end of the week. They're responsible to
+orchestrate all the things that
+need to happen to get there. They work with the
+sales team to get all the calls booked
+with the engineering team to ship all of these.
+And that tends to be
+oftentimes the founder. Now, the new role that comes
+into this AI native organization
+is we call it AI founder. If you hear Garry, he
+really much embodies this,
+is you're living at the edge of
+the future with all the tools. In order to get your
+company to run fast,
+you've got to be
+trying all the tools. Everything is changing
+and moving so quickly. Literally, we had this big
+revolution with agentic coding
+that just happened end of
+last year with Claude 4.5. When it came out, that's
+when things started to work.
+But if you were not building,
+if you were not at the edge, you would not be able to
+bring all those innovations
+into your company. So that's one of the
+things that we're seeing the best founders at YC do.
+Yeah, there are
+people who are still operating like Copilot
+level from last year, and it's not going
+to make it, bro.
+They're not going to make it. Now, the other thing that get
+talked a lot about is in order
+to build all these
+agentic systems to avoid, quote unquote the "AI slob"
+is what cannot be delegated.
+It's really a
+concept of a taste. How many of you have been
+hearing a lot on the taste is what's going to be durable?
+I think a lot of you
+agree with this, right? Coding, let's just
+call it, shipping code
+is going to zero,
+the cost of it. But what is not going
+to zero is the taste to build something
+good, the taste
+to discern what's good or bad. And as part of that, that really
+manifests in terms of evals
+into the systems for how
+you build all these agents. And what that means is that
+generic benchmarks won't make it
+whether your product works. I know sometimes
+people are trying to just hit some generic
+public benchmark MMLU.
+It doesn't tell you whether your
+product or agents are really working or upsetting the user.
+A lot of the product that a
+lot of you-- if some of you want to hopefully start
+companies, raise your hand.
+Maybe. Yeah. Great. So part of it, the
+actual judge ultimately
+of whether something is good is
+whether users really want it. And with that, it's
+going to be different
+in every single domain. There's no way to automate that. And how can you tell? I think the agent-- you will
+have to go into all the details
+deep. Did it follow the instructions? Was the answer correct?
+Did it preserve
+the customer trust? Was this something
+that was spewing correctly or incorrectly?
+Did it actually hit
+the business goals? Did it comply with
+the domain rules? So a lot of these
+things that Garry
+talked about in
+terms of resolvers and skillifying it and
+improving the system apply here.
+But in order to
+do that, you still need the human in the loop to
+tell when something goes wrong
+and to basically label
+a particular interaction or pipeline or workflow
+that is incorrect.
+And that is
+something that you're going to have to own and do
+and painstakingly actually
+look through all the traces. This is how, Garry, you go
+through a lot of the system, too. You read through the traces and
+click when it's wrong or right
+and decide to
+skillify it, right? Yeah. Well, what's cool though, is
+once you get the basics going,
+my favorite thing that I haven't
+released yet but I will release is a cross-modal eval. So I'm about to add the
+skillify where you can actually
+have the frontier
+models of Opus, GPT 5.5, and DeepSeek V4 all evaluate
+the inputs and the outputs,
+and then rate it and then feed
+it back to the original subagent saying, this is the
+rating, and here's what you
+need to do for the next try. And then you actually iterate. And so you can meta
+prompt to get something
+that is 10 times better than
+the first version of what it is. What's weird is like these
+abstractions are basically
+stacking because that's what-- I learned that from GStack. A lot of YC founders said,
+well, I like Claude Code,
+but that's like my ADHD CEO. And then Codex is my nearly
+non-verbal 200 IQ CTO,
+and I need both of them to
+do cross-modal analysis. And then it ships
+with zero bugs. So these are all things
+that are like stacking.
+We're just discovering these
+things like week to week right now. And this is
+effectively the section
+on all the founders here
+would be the ones building the evals and exactly that. As part of doing this
+cross-modal evaluation,
+you have to start with
+being able to capture a lot of the traces. And the way you
+capture the traces is going to be very context
+dependent on the product
+you build. And if you're building let's
+say, a video application,
+it's very different than a
+speech application, consumer model, B2B, SaaS,
+all very different.
+And then you need to convert
+a lot of the failure cases. And you have to detect when
+they fail into actually evals
+that you use. And then the step 3 is to be
+able to replay this constantly into the system in order
+to self-heal and improve
+the system, and improve
+the prompts automatically, which is exactly what
+Garry's describing that he's going to ship.
+He's doing like a general
+version, but for each of you, you can build all of these. These are still the
+same principles.
+Can we meta a prompt
+here for a second? You're sitting here listening
+to a lecture about this stuff, but the lecture
+is totally useless
+if you don't go and open your
+own Hermes agent and OpenClaw and load up your own
+GBrain and actually
+use-- there are 40
+skills that you can test out and try inside GBrain.
+And some of it is make your own. Basically do stuff and then
+skillify your own stuff
+and then release
+it open source too and see what other people want. We're getting there together.
+And so the exhortation
+is like, not only are we meta prompting
+the machines themselves,
+we need to meta prompt
+one another to be better and to be able to fuse
+with the machines in a new
+and more profound
+way every single day. Now, the last lecture,
+we're going to go over is that for some of you
+here in the audience that
+are excited to start
+a company, this is probably one of the
+best times in history
+ever to start a company. And this is not
+an overstatement. You might have heard this from
+other lecturers that came here.
+Is that right? The times right now are
+unprecedented, and part of it
+is we're seeing this. A lot of the wedge in practice
+is you pick a painful workflow.
+You go inside deep
+into the customers, and you basically become
+the forward deploy engineer.
+And what that looks like, we've
+seen it across many industries, and these are
+examples of companies that have done this crazy
+growth that I'm telling you,
+that gone zero to eight figures
+in revenue within a year. For example, Salient
+is this company
+that's doing voice agents
+for loan servicing. They closed some of the
+top banks in the US.
+And the way they did
+it is they built agents how Garry described it. Other companies, HappyRobot as
+well that closed the series B
+recently last year and
+10x the revenue in a year. Same thing. They embedded themselves
+with freight forwarders
+and built the best
+agents to automate a lot of that cruddy
+work with truckers
+and coordinating timelines. And then the other
+one is Reducto. I don't know how many of you may
+have heard of this company that
+is doing document processing. The other opportunity is
+there's just so much tooling
+that needs to be built
+for all these tools. Just the fact of doing
+better document processing is making all of
+the other agents
+better, because they all
+need to not read documents. But if you increase
+it, it improves RAG and memory and brain
+to be a lot better.
+So Reducto is another of
+these teams that are growing. So what this means is that a
+lot of these companies that
+are seeing all these
+impressive growth is they're just demoing AI or
+some side project.
+They're actually
+deploying full solutions. And part of it, if you want to
+start a company in this fashion,
+you basically go undercover
+because some of you-- a lot of you probably don't
+have necessarily a background--
+the founders of
+Salient or HappyRobot did not come from a finance
+background or logistics. Not in the training set.
+Not in the training set, but the
+way they became experts is they actually shadow, or
+took a job and learn
+the depths of everything
+that had to be done with it, and then they were
+able to automate a lot of the repetitive
+labor and handle
+a lot of messy domains
+into this latent space that Garry described.
+And all these workflows
+before were just done by phone or
+email, spreadsheets
+and all very random places
+where an agent embedded into all the system could
+just create a solution that
+would just work. And I guess the
+other thing is we want to show you this
+graph that Anthropic
+posted in terms
+of the deployment in different industries.
+And we're seeing that right
+now I think a lot of you-- I don't know if a lot of you
+in computer science-- how many
+of you are a little bit
+afraid of the CS jobs after you graduate? I mean, there's a real fear
+because for this chart taken
+by Anthropic, 50% penetration
+into the usage of these tools.
+But what is interesting
+is these giant whitespace in all these other domains in
+terms of back office, finance,
+data, academics, cybersecurity,
+customer service. This is like a huge white space. There's room for hundreds
+and hundreds of AI unicorns
+that are waiting to be
+started, perhaps by some of you in the room. I guarantee it. Because some of
+you may feel it's
+like all the ideas are
+done, but what we're seeing that is not the case. Yeah, we're at the first
+pitch of the first inning
+on the revolution, and you
+guys are the shock troops. And one other stat
+I want to give you from the last batch at YC,
+is that in the past, only
+the best top 1% of the companies
+grew 10% week over week. That was the metric that PG set.
+And in the past, perhaps
+the batch of Airbnb only-- maybe Airbnb,
+another company hit it. But now what we're seeing,
+things have dramatically changed
+where on average this is the
+growth of companies that within three months they basically 3x.
+Yeah, in the history of YC,
+this has never happened before. So we get to live in this
+moment where people in this room
+can create something that
+actually has a real impact, and you can see it and you can
+tell because your customers are
+going to say, I can't believe
+this exists, and thank you, and they'll pay you. And then every week, 10% more
+people will be paying you.
+And what we want
+to close off here, I know a lot of
+the lecture theme has been about how you could
+build a one-person frontier lab.
+This whole lecture was about
+that lab can become a one-person company, and that could be you.
+We just gave you all
+the secrets here. Thank you, everyone.

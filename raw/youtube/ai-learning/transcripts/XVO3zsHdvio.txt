@@ -1,0 +1,381 @@
+my name is David Andre and in this video I'm going to teach you how to build AI agents even if you're a complete
+beginner the popularity of AI agents is absolutely exploding it's clear that 2025 will be the year of AI agents but
+just like with internet and Bitcoin most people are going to miss out so don't be one of them watch until the end and
+start building AI agents real quick I'm hiring a developer to help me build VL so if you have full stack experience and
+want to join the team the link is going to be below the video all right so to get started with n8n you have to go to
+n8n doio and click on get started for free so once you log in you'll see the dashboard so just click on open and in
+here you'll see all of your workflows so as you can see I have one workflow here but I'm going to click on create new workflow now you can do this even if
+you're never coded before because n8n is a no code tool so you don't have to be programmer at all seriously anyone can
+do this okay so the first step is choosing the trigger this is perhaps the most important part of the automation
+because it determines what starts the autom now when you click on this you can see multiple different triggers we have
+so it could be a manual trigger on app event on a schedule for example everyday every hour on web hook call there is
+like so many things think of n8n as me.com on steroids in fact here's how
+n8n growth compares to make.com as you can see it's growing exponentially and in the past week it has been searched up
+three times more than make.com so now that you know how to set up na10 let's start by creating a telegram trigger
+because I think I think that's one of the most popular triggers and again you can choose anything else right like you can choose WhatsApp you can choose
+Google Sheets you can choose slag message any automation you want to make you can make it with n10 let's just
+choose Telegram and we're going to do on message don't get overwhelmed by these UI once you understand it's actually
+very simple so on the left it's what's coming in Middle is setting up this current block and on the right we see
+what the data looks like after this blog runs so we need to connect our telegram account so if you've never done this
+click on create new credential and in here we need the access token right once you have your telegram account created
+the thing we have to do is chat with the bot F right so click on this and click
+on open telegram but the bot f is basically a way to interact and manage Bots right so let's just follow the
+official tutorial from the end at end docs let's type in new bot SL new bot
+boom all right the new bot how are you going to call it so I'm going to call it um Google AI agent and you'll see by in
+a bit good now choose a username for this so I'm going to say so I'm going to name it new Society Google
+bot boom there it is and now we have this link if we click on that and click on start we can chat with this new bot
+but what we actually need is the access token right here so copy that do not share this to anybody obviously this is
+private I'm going to change it before uploading the video Once you copy this let's go back into n8n and paste it in
+right here click on Save and now let's wait 1 second we should see a popup connection tested successfully beautiful
+we can go back and by the way anytime you do this I recommend you click on save that way you don't lose your progress so now we have the telegram
+trigger and let's actually we can test it out right let's go test step it's listening for a test event so if we
+click on if we switch back to Telegram and I'm going to say hello world boom there it is so it correctly
+found our message and we can see our text right here hello world so we have the trigger working we can see that if we send a message to telegram na10
+successfully recognizes that so what is the next step well actually it is to set up a switch that way we can use both
+text messages and voice messages okay so let's do this I'm going to do switch and
+then in here we have to set up the values so here we're going to have two different routes one for text and one
+for voice so I want to make sure our AI agent works with both so first we're doing the text I'm going to rename it to
+text and we need to make sure that this value right here exists so we need to do
+string and exists if this exists it's a text and now I'm going to test the trigger again but with a voice message
+so we can properly wire that up so click on delete this deletes the test and now
+um when we click on test workflow it's waiting for us to create a test event in telegram so let's switch
+to Telegram and I'm going to say this is a test message 1 2 3
+4 boom there it is so now let's go into switch and as you can see this is
+different we have the the audio and we have the file ID so let's create another route this one is going to be named to
+voice and we just need to make sure that the file ID equals to string exists so
+if this exists we know we have a voice message if this exists we know we have a
+text message they cannot exist at the same time so now our switch is currently outputting two different scenarios a
+text scenario and a voice scenario so in case of a text output we actually want to use edit fields and to set this up
+I'm going to do a text output again okay so let's do another test click on test workflow I'm going to send um hello
+there and now we can actually work with this so the reason why you want to test it each time is that you want to drag
+and drop stuff you can copy paste the code from my video but that's a very bad strategy what's much better is if you
+wire it by dragging the actual field itself because then you have it guaranteed to work okay so we need to
+add a field for the name I'm just going to do text and for the value I'm going to drag in the text right here
+boom that's good now what if it's a voice right well we have to process it a
+bit so if it's a voice click on plus click on Telegram and we actually need to find the voice file so click on get
+file and in here file get and we to get the file ID now again as you can see we
+have no data right here because we currently tested a text message not a voice message so let's delete our
+testing by the way when you click this delete it just deletes the current you know data in the test it doesn't doesn't delete anything about the setup so don't
+be afraid to do that so let me delete this test and now let's rerun it but with a voice message again okay so it
+doesn't let me run it with this field empty so I'm just going to put test in there I don't know if that's enough oh
+seems to be enough that's annoying anyways let's test the voice message again this is a test voice message hello
+world David here okay boom boom boom and now okay so we if we double click it as you can see now we see the data because
+it's no longer a text output it's a Voice output so every time make sure you actually run the test so you work with
+the data so anyways we need the file ID in here so let's delete this obviously that's incorrect okay so that's my bad
+make sure to connect the file ID not just the ID we have to drag in the file ID okay beautiful so let's try it again
+like actually rerun this boom and now it's executed successfully but when we find the file ID we have to do something
+with the file that's where open AI comes into place so click on open Ai and then
+click on transcribe a recording first we need to connect an open a account so if you if
+you didn't do this before click on create new credential and all you need is an API key now if you've never worked
+with API Keys stop panicking it's actually super simple all you need to do is go to platform. open.com and on the
+left click on API keys in here you can actually log in with the same account you use in chbt so this takes 20 seconds
+once you're in here click on create new secret key I'm going to name it na10 transcri subscribe create secret key
+again do not share this with anybody I will revoke my key before uploading this video treat them as passwords okay so
+once you copy this go back into here paste it in here click on Save and wait one second for connection tested
+successfully beautiful I don't think you actually need to do any changes in here anyways let's test it out click on test
+step executing note boom so this is the text thanks so much for listening my
+friends I'll see you that's not what I said okay maybe actually my setup was wrong in Telegram and it was using a
+wrong mic uh now it's using my proper mic so let me try again as you can see the audio waveform was silent so didn't
+pick up the audio so that's my bad let's click on open AI okay David here test says beautiful so now it's correctly
+transcribing because the audio is correct okay so that's why you need to test at every step otherwise you just
+can run into issues that later on will be much harder to debug okay so we're successfully handling both text and
+voice now we're ready for the main part of n connecting the AI agent so let's
+click on Plus in here do AI agent boom so this is by far the main module and we
+actually want to connect both into the input okay let's go back to vectal so we did set up the switch okay one more
+thing if you want this whole Automation and you want to just copy paste it you're like oh my God David this is too complex I don't have time to set this up
+all of that will be in the new Society so inside of the new Society if you click on classroom and then templates and presets you can get all of my
+automation AI agents code prompts and everything else that I've made in previous videos and also exclusively for
+new Society so specifically in pre-build automations you can find this one na10 Google agent so you can literally just
+download this and paste it into your n and you don't have to spend an hour building it so if you want to access to
+all of my automations as well as tons of exclusive content make sure to join the new Society it's going to be linked
+below okay so next step is adding our AI agent and this is the best part about a
+this is what makes it better than zapier and make.com this AI agent is very powerful and it's unfortunate because
+you can only appreciate it after you build your own AI startup like I did with vectal and after you try giving an
+llm different tools memory and stuff like that luckily naden makes this super easy compared to what it's like when you
+actually build it with code so here's what we have so we can use Azure open AI if you want open AI models with privacy
+anthropic mistal Gro if you want super fast responses ama if you want open source models open AI obviously and
+Google gini models I'm going to use anthropic cuz right now Sonet the new Sonet is my favorite model but be
+careful because by default this is the old Sonet the new Sonet is 1022 so make
+sure to select the new Sonet now we have to connect our anthropic account mine is already connected but if you don't have
+it connected click on create new credential and as always we need to paste in an API key so you need to go to
+console. anthropic docomo that way it's easier for you to
+to access then click on settings at the top and on the left click on API Keys
+now again if you don't have an account you can use the same account you have on CLA if you don't have clot no comment
+anyways you can create an account in like 30 seconds super easy so once you log in once you go to settings and API
+Keys click on create key workspace I'm going to do default and I'm going to name n10 AI agent add and again do not
+share this with anybody I will delete my key before uploading this video okay so the reason I say that is because always
+there's like a few people in the comments oh my God he showed his keys guys I'm not an amateur so once you
+paste the in and click on Save you'll see connection tested successfully so now our AI agent is using the world's
+best AI model at least currently and when you click away you can actually see it very nicely you can see the chat
+model is using anthropic chat model and let's click on save so now there's two
+more things we have to give it right tools this is what separates it from a simple chat bot right where just chatting with the l
+for an actual pop powerful AI agent it's the tools tools and memory but honestly
+memory that's an entire different video how to create Vector databases how to like take thousands of words and
+hundreds of documents and put them into Vector database and how to give them to your AI agents so that AI agents can
+have infinite memory by the way if you want me to make a video on that you know connecting AI agents to a vector database comment below anyways what
+really makes a agents powerful is the tools right so let's actually first skip this and let's set up the output and the
+reason for that is I want to see if our AI agent is working so for the output we're going to use telegram as well
+again you can use anything else like you can use WhatsApp you can use Gmail you can use slack whatever else you want do
+not be an NPC and you know do not blindly follow what I'm doing instead actually adapt it to your use case to
+whatever you need to automate take this and modify it so I'm going to go with telegram again Telegram and I'm going to
+say actually we need to do send a text message send a text message okay so make
+sure this is the same account you connected at the start message send message Chat ID and actually before we
+set these two Fields up let's first run the AI agent for that we need to set in the system prompt so underneath prompt
+Source we need to change that to Define below and let's drag in the open AI output in here json. text okay now
+underneath options we can actually add a system message which is the system prom so you are a helpful assistant I'm going
+to say always respond in full caps that's just for testing right so let's
+do test step okay test step it says it executed successfully but it's not doing anything okay so when stuff isn't
+working sometimes it's best to delete the data and try again so let's do test workflow which day is after Monday super
+simple question to test if this working so text uh it's a text field boom beautiful so now when I click on aian we
+can see the output Tuesday comes after Monday blah BL blah it's full cap so it does see our system ProMed but the error
+is in the telegram message and that's because we didn't wire it up so let's do it now so for the text we just need to drag in the output from the AI agent
+because we want the exact same text as the AI agent right and for the chat ID
+we actually need to scroll down to the switch find chat and then the ID right
+here boom and let's actually test the step
+boom let's go into telegram do we see anything not yet I'm going to run this again still didn't set anything okay so
+let's delete it again test workflow what is 4 + 4 right let's see
+boom there it is so we got a first successful completion now this is not done yet because we still need to
+connect the tools and actually make this powerfull right so okay so now one thing I should probably explain let's click on
+Save first is that we're in testing mode meaning the workflow is inactive right if I were like once you're happy with it
+we were going to trigger this on and it's going to be active always but now when you do test you need to delete it and do test workflow again so that's why
+now I didn't get a response and boom June comes for July so there it is all
+right so let's delete it again actually we can keep it but what we need to do is we need to add the tools for a agent so
+as you can see in vectal I have the steps by the way if you're someone who likes to be super productive make sure to check out vectal this is a task
+management tool that actually saves you time it has built-in AI as that automatically sort your task and help
+you complete them so for example I can say um I've completed the AI agent task
+obviously it's a simple request but let's say you have too many tasks you want to move half of them to tomorrow or you want to reorganize them like for
+example today I want to focus on business only it will decrease the priority of personal tasks increase the
+priority of business tasks it can do a lot more so go to vector. Ai and try it yourself all right so the next step is
+adding tools to our AI agent and this is really what makes the agent powerful so
+the reason I name it Google agent is because I'm going to add some Google features right first and foremost being
+Gmail so let's click on tools and click on Gmail let's start by giving it access
+to the inbox right and giving it access to all the unread messages so for the
+operation we need to change it from send to get many that way you can get
+multiple emails limit you can leave on 50 I mean it's going to increase your token cost if you have lot of unread
+emails so maybe consider changing that to like 20 it's up to you leave simplify on and actually at the top the first
+thing you need to do is connect your Gmail so again if you don't have it connected click on create new credential
+and click on sign in with Google here choose the email account you want to sign in with once it says account
+connected we're good so once you have the account connected scroll all the way down and we need to set up the filters
+so label names or IDs in here we need to select inbox so scroll down and click on
+inbox and the second thing is unread so right now it can get your unread emails
+now if you don't want just unread emails you can obviously ly set it up to anything else that's entirely up to you
+but for this use case I'm going to have emails that come into the inbox meaning it's not going to be some promotional
+material and then only unread emails are going to show up so that's good let's
+exit out of this so now the chat agent has the tool and it should be able to use it now in terms of the prompt we
+actually have to specify that a bit more so in here I'm going to change the system prompt to actually something more custom and by the way if you want to
+access to that again it's in the new Society into templates and presets underneath prompts and instructions
+right here if you scroll down you'll find the na10 AI agent system prompt so again if you want access to all of my
+system prompts make sure to join the new Society all right so once I've pasted this in I'm going to save again and now
+it has knowledge of the Gmail tool that's the main thing in the prompt we give it knowledge of the tools it has and how to use them so let's test out
+the execution I'm going to delete this uh I'm going to do Telegram and actually
+first we need to click on test workflow and I'm going to do a text this time it's good to you know alternate between
+voice message and text I'm going to say what is my latest un R email enter and
+let's look at okay so we go into AI agent boom it starts activates the tool goes back into aeropic model man this is
+so beautiful to watch and now we get a response so actually if we check this
+out here's my email right now from Google no reply security alert oh yeah so it is this okay I thought it it would
+be this one but I didn't realize we got a new email in the meantime so yes it correctly it correctly found this email
+okay let's do one more test but this with voice so let's delete this let's start test workflow summarize all of my
+unread emails into a concise message okay let's see so we transcribed recording okay boom a agent now it chose
+to do the tool now it goes back oh my God this is so crazy guys you have no idea how difficult this is to code if
+you want to do it in code n setting this up in code will take you multiple hours
+with na10 it's like 5 minutes and you have the AI AG set up it's so beautiful I wish I wish you guys like you can only
+appreciate how beautiful it is if you actually try building it with anthropic API in Python man anyways we got the
+response and it summarized all 400 emails so security alert cognition AI
+YouTube notification and another secur security alert and there it is actually you know what let's mark this one as red
+to simplify it a bit so now we should only have these three but as you can see it access all of them so that's one tool
+okay it can already do a lot more than ch gbd right like now anytime I go into telegram whether it's on my phone or on
+on the desktop app I can just have it summarize my emails but you know we're just getting started over here the agent
+is about to get a lot more powerful okay so one tool we have the Gmail actually
+we can probably rename this no I'm going to say get many rename okay now the next tool I'm going
+to give it is to send an email so again Gmail and instead of yeah actually
+operation send so in here N1 is actually telling us what to do use the Expression from AI placeholder name for any data to
+be filled by the model so let's copy that and let's paste it everywhere what
+the AI model should fill out so to subject email type HTML or text uh H
+let's let's do text and let's put it everywhere literally everywhere and okay so that looks interesting now
+I'm going to also rename it from Gmail to Gmail send and we have to update the
+system prompt of our a agent giving it information of this new tool so I'm going to say you also have access to
+Gmail send tool which allows you to write emails and send them to anyone
+okay let's see if this is enough actually I'm curious if that's enough let's click on Save now added a new tool
+and I'm going to delete this and I'm going to click on test workflow for the email since I need it to be exactly I
+want to do a test um I'm going to do a text message that way I know the email address is exactly correct so I'm say
+send a friendly lunch invitation to daviddavid and.com I think that could be
+enough so let's do send let's see what happens I'm going to wait on my phone I have it loaded up here send email and we
+have a eror okay I see the eror right here invalid something invalid okay boom
+no actually let's see I have it on my phone right here well let's see what
+happened uh telegram I apologize but I'm experiencing technical difficulties
+Gmail sent up it seems to be issue how the email parameters need to be formatted okay so let's see what the
+error is exactly invalid email address okay let's double click this what is the issue placeholder name to subject all
+right so maybe this is a good place to actually use the n10 assistant so ask
+assistant analyzing the error let's see the error you encountered blah blah blah is not resolving while Emil to resolve
+the issue ensure that the expression used in the two is previous name
+previous node name. item okay so the issue here is actually quite fundamental
+so pay attention the mistake I made is that I put from AI placeholder name into all of them and we have to change that
+we have to give it a clear description what should be in this right so in here I'm going to say two I'm going to give
+it a description I'm going to say raw email address of the
+recipient and this is actually an instruction for the AI so now it doesn't work because we have the incorrect
+parameters on the next test run this should work so okay so we fixed the two now we need to fix the subject in the
+same manner so delete everything in the parenthesis here we just need to do what
+it did here but we need need to give it a description subject this is going to be a clear and and concise subject line
+okay and then for the message let's click on
+body so actually the AI already knew how to do this we just didn't format it properly okay so for the body I'm going
+to say the body of the email itself and end it with a quotation
+mark okay so now if we click out and save delete this test and let's test it
+again test workflow switch on telegram I'm going to copy same exact email send
+a friendly large email to David Onre boom and thropic it should choose to send the email right here boom correct
+okay let me check my phone okay boom there it is new AI
+Society okay so the body is all right so it did send the email however we have an
+issue the subject is not pared so it it send the whole thing right all right all right right so we need to look into what
+happened here oh I need to switch it to expression that's my bad let's run this again save test
+workflow let's let's do a different one let's do send a party invite to my good friend
+David Andre at David David
+and.com boom let's check the phone still writing still writing oh there it is
+party inven now it's correct guys can you guys see this this is beautiful party invitation let's make it legendary
+but man now it wrote the email and formatted it correctly so now let's give it more Powers let's give it Google
+Calendar as well okay so let's click on tool again plus do calendar Google
+Calendar tool and in here let's start by having it read events okay so if we go
+into Google Calendar I don't have anything in here but let's see let's maybe try I'm going to do like a dinner
+here I'm going to do dinner with my YouTube subscribers if you want to be
+invited to this non-existent event make sure to subscribe okay so let's save
+that now if we give it the ability to read so operation is going to be able to
+get many and then from list select calendar oh okay okay so as you can see
+we did not add the credential I made the same mistake first time we should always start by selecting the credential so
+let's click on that create a new credential sign in with Google account connected and now inside of here we
+should be able to select uh new AI Society so this is my main calendar for
+this account maybe we can do like after and then select date and time could be
+like start of this month or whatever something like that yeah the expression should be like this let's see if that's
+good you know maybe you don't want to load super old events okay so this looks correct and I mean the easiest way to
+test that is just just to test that right so uh I'm going to delete this and actually let's update our AI agent we
+need to tell it that it also has the access to calendar so let's put that here you can also access the what's it
+named Google Calendar we should probably rename it actually get Okay Google
+Calendar get many calendar calendar read it's probably
+easier to name it calendar read tool then get many so let's put it here you
+can also access the calendar read tool which lets you see all of the events on
+the user on the user's Google Calendar all right so let's save that
+and let's test this workflow I'm going to say do I have any
+calendar events for today if so what are they
+okay let's see so we're going a agent hopefully it calls the calendar read oh it did boom okay that's green let's see
+let's go back let's go back in telegram boom there it is dinner with my YouTube subscribers from 20 okay from 8:00 p.m.
+to 9:00 p.m. Dubai time let's check that and it's correct so now it can access our calendar which is amazing but what's
+even better is if it can create events so let's give it that right now calendar
+Google Calendar tool instead of yeah operation on create beautiful select calendar the main one and then
+the start okay so this should be AI again we have to make sure that this is filled with AI and we have to do the
+same thing as we did before so let's copy this boom and paste it in here and
+we have to instruct it right so let's switch to expression and delete the stuff inside of the
+brackets parenthesis and since this is the start date we need to instruct it how to format it right so we're going to do quote start quote comma and then a
+clear description this is basically description for the AI so it should be date and time when the event should
+start okay and let's copy this expression and paste it into the
+end boom and instead of start obviously it's going to be end and when the event should
+end beautiful and inside of additional Fields I'm going to add summary and in
+here let's switch on expression as well we need to do the title of the event so title change that to title and the
+description Chang it the title of the event calendar create okay looks good
+and again let's click on Save and the best way to test it is to test it so let's Okay we tried speaking I want to
+say create actually you know what let's let's do something else let's try to
+create an event in the past so I'm going to say create a 15minute
+event starting today at 5:00 p.m. or maybe I could say track the last
+15 minute in Google Calendar by adding a new event named recording for YouTube
+let's see if it can do this oh actually I I didn't do test workflow but whatever
+let's click that all right so successfully create event boom there it is let's see the
+response I've added the event let's click on Google Calendar refresh and it's not here why not oh it
+might not have knowledge of today okay wait wait what do we name it recording
+recording recording for YouTube oh it put it January 2024 oh my God okay so
+that's crazy uh January wow it's last year so the issue
+is that okay so the issue is actually in the AI agent it doesn't really have knowledge of what the date is so let's
+click on the a agent we have to update that uh it should have it in the now why doesn't it know it maybe we should
+actually repeat this let's copy this I'm going to put it in here go
+calendar uh actually oh we didn't put in the calender create okay that's one bad let's put it
+in here I'm going to rename this to Calendar
+create calendar create let's scroll down to system prompt and let's update the knowledge of
+that so yeah I'm going to say use the calendar create event to add any new
+events into the users Google Calendar
+important here is today's actual date then if you click on
+expression we should see date time 2025
+okay maybe we can put more after this make sure to set the start
+and end times accordingly accordingly okay so save
+that and delete it and let's try again test workflow create a new event in my
+calendar for the last 15 minutes saying that I'm uploading a video to my YouTube
+channel okay let's see boom please call the create
+event eror okay let's click on that better Quest please check your parameters double click what is the
+issue it says workflow successful but it didn't succeed on the first try and it didn't succeed now oh okay okay okay so
+yeah it tried to just do now that's an issue I should probably yeah I should probably tell
+it yeah okay wait did it create the event or no okay it's creating January
+20 why January 9 2024 we are somehow not giving it today's date date and time
+2025 the year 2025 just started so make sure you are deeply aware of today's due
+date now do not use any other dates as
+today this is the official date of today okay so hopefully
+that is clear enough we have to convince the assistant that it's 2025 because its knowledge cut off
+is in the past so let's save that and let's let's try again okay so I'm going
+to delete it I'm going to do it actually I'm going to name it
+um building in eight and end okay let's
+do that and let's do test workflow boom Oh actually one more thing
+I should have SP specified yeah okay so now it might work wait let's let's go back to today oh
+there it is oh it's it's very specific 516 to 531 that's really good okay
+that's really good one more thing I should have done though is inside of the AI agent I should have specified the format because in here I need to specify
+this type format okay so maybe actually we can use chbt take this date and give
+me the general date and time format this is written in answer in short and then I
+can specify that furthermore in the system prompt for oh my God I me I meant
+like yeah I can specify that in the system prompt so that it knows it exactly okay actually
+we can copy this message right here and include that in our AI agent so let's
+pop that out and in here here is today's actual
+date make sure to set the start accordingly in this format okay I'm
+going to paste this in delete this it's redundant year year
+room okay year month day T second time offset okay maybe that actually is not
+needed to be honest anyways let's save delete and I'm going to create a
+new event in my calendar for today from 6:30 p.m. lasting 45 minutes and it
+should be reading okay let's see if we can do that
+there the workflow okay the a agent chose the right tool okay it's basically always does that and let's see okay the
+tool executed successfully so let's hope this is correct reading oh this is not 45 minutes though the end time is
+correct okay maybe I confused it actually maybe the is is in here start
+why is the start did I mess this up anyways let's save that
+delete test workflow okay event was created let's see oh okay there it is it
+works it works is it yes it's beautiful beautiful so yeah that was my issue I
+set up the calendar wrong and that's why you need to do ton of testing see the secret of building with N1 is testing at
+every step you literally should test test test like no matter anytime you change do a test and it's the same
+programming to be honest but yeah like in here it's super clear you need to test every tool you add you
+need to test any prompt change because you never know what happens right and especially the more complex your AI
+agents and automations become the more testing you have to do so now our AI agent is actually quite
+powerful it can read all of our unread messages it can send response to them
+for example it can read the calendar like get our events for today or for
+other days and it can create calendar events now again if you want to add more tools just click on the plus icon next
+to Tool and literally it's almost endless like they have so many things right so you you can like do calculator
+you can do air table you can even call other nadn workflows that's where it gets real crazy you can literally have
+custom workflows for anything and then just add them as tools to a agent you can do like let's say you know you want
+to add Google Docs Google Drive Google Sheets let's say setup API is Google
+search so for example if you do CLA you can give it Google search and suddenly you have clot with web search which is
+even more powerful than CLA AI you can you can do anything slack like just look
+at the look at the opportunities right Hacker News jira Microsoft Outlook mongod DB even databases like do they
+have super base they even have super base oh that's actually kind of crazy okay did I could actually integrate this into vectal in some way hm now we're
+talking as you can see n10 is really the most advanced AI agent out there now
+actually let me show you what to do once you're ready so once you're happy with it it's like okay I'm finished building
+I'm finished testing click on save as always and then flip it to active Okay
+so workflow activated don't show again got it and now it's active so we can actually delete this test doesn't matter
+and if we go into telegram it will work every time so let me do it let me do it from my phone so you guys can see it
+truly works open up the Google AI agent right here quickly summarize what unread
+emails are in my inbox okay so let's say you're busy you don't have time like let's see if there's anything important
+boom there it is you can you can see it on the screen you can see it on the computer better but this is the response
+so it took like what four or five seconds and we have the summary of the three unread emails we have in here so
+that's just one Automation and that can save you hours per year or even per month like see the
+the beauty about these automations and AI agents you build them once and they work forever and if you are considering like should I use they Pier should I use
+make.com sure I use n the worst thing about an is the name other than that it's great like the product is amazing
+the AI agent is insanely powerful and this is honestly the the easiest way to build AI agents for yourself you can do
+this with zero coding experience as you can see we didn't write any code in this video and you can still build very
+powerful AI agents that you can use from WhatsApp telegram slack messenger Google Sheets Gmail anywhere like you can
+integrate them anywhere they have literally thousands of possible triggers inside of n10 so really the the ball is
+in your corner there's no more excuses there is a amazing tool that doesn't
+require any coding that's visual that's easy to use that's very powerful that
+allows you to build AI agents if you don't use this if you don't build AI agents and in two years like oh my God
+David I'm behind you know AI has changed the world it's it's up to you you now have all you need to know to start
+building a agents start automating your tasks if you have let's you have a job right show this to your manager show
+this go as high as you can in the company leadership you know go to the leadership levels and show this to them
+and say like look we can use this to automate just you know let me do something let me automate some part of
+our workflow if it works I would be happy to discuss a potential race most
+leaders most CEOs will be more than happy to do that if you can automate something that's costing the company hundreds of human hours per month with
+an automation that's predictable and does the job just as well if not better that's one of the best ways fastest ways
+to get a race of course you can build these automations for clients I mean there's so many options but where you
+should start is build them for yourself so whatever you need you can build it with na10 and honestly I think I'll make
+more videos on end that being said hopefully you found the video valuable if you did make sure to subscribe and
+more importantly go to vector. currently I'm hiring for the developer and what that means for you people who are using
+you know my vectal customers is that the tool is about to get a lot better even though now I've been adding features and
+improvements like every few days now it's going to be basically every day once I have a full time developer man vect is going to become a
+real real software real Contender to to doist and ocean very very quickly so if
+you want to be one of the first people using VL make sure to sign up now and if you don't then well you'll sign up in
+the future anyway because the tools only going to get better with that being said thank you guys for watching and I wish you a wonderful productive week see yeah

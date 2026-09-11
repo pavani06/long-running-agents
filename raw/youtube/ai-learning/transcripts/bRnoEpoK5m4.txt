@@ -1,0 +1,448 @@
+As we're online today, you can't raise
+your hands, but just not at your screen.
+How many of you have spent a significant
+part of your career making making
+software move from one computer to
+another? CI pipelines, package
+registries, container images, app store
+reviews. That entire stack exists to
+solve exactly one problem. get a frozen
+artifact that code from the machine
+where it was built to the machine where
+it runs safely, reproducibly once.
+And here's what I think everyone is
+missing. That entire stack is built
+around one idea that is so old that is
+so old that we stop seeing it as a
+choice. One version of your software for
+everyone. We've shipped it that way for
+so long that almost nobody asks why
+anymore.
+I'm Iris. I'm one of the co-founders of
+Differ. My co-founder, Nom, was the
+first engineer at JROG. He helped build
+the pipeline that I'm about to tell you
+is dying. I came at it from the other
+end. I spent a decade in fintech. I was
+early at a digital bank that we skilled
+and exited. Shipping software in the
+environments least willing to tolerate
+what I'm about to propose. So, I totally
+get any reservations and I've had them
+myself as well.
+However, I'm telling you it's coming
+anyway. And that's not a warning. It's
+the best thing that's happened to
+software in a long time. Every piece of
+distribution infrastructure that you've
+touched encodes the same assumption.
+Software is produced in one place, it
+runs in another, and the thing in the
+middle, the artifact, is frozen.
+And that assumption was correct. For
+decades, it was just true.
+Why?
+Because producing a correct change was
+expensive. It took skilled humans hours
+or days. So you did it rarely. It was a
+central event. You verified it and froze
+it. And you ship that frozen thing to
+everyone.
+So the oneway pipeline isn't arbitrary.
+It's the direct consequence of
+production of software being expensive
+and risky.
+And of course the frozen artifact has
+some advantages. You get repres
+reproducibility, reviewability, roll
+back and every guarantee that we lean on
+in production flows from one fact. There
+is one artifact and it doesn't change
+after we ship it.
+That's the deal. One version for
+everyone frozen.
+We got reliability.
+But the price was that the software
+couldn't really be for anyone in
+particular.
+And nobody ever made that decision.
+There was never a meeting where someone
+put one version for everyone versus a
+version for each person and picked the
+first one. And it wasn't because the
+second option if a version for each
+person was worse. It just wasn't an
+option. Giving to users different
+software meant forking the codebase and
+handmaintaining both.
+A version per user at any real skill
+wasn't really a viable option. And one
+version where everyone never had to win
+an argument. It was just how it was. It
+was the only shape software could take.
+And we started treating it as the fact
+about software, like gravity, like
+something that that is just true. But it
+was never really a fact about software.
+It was effective about cost and budget
+and the economics and that cost just
+changed. Now you might you might expect
+me to go into AI can code but everyone
+has already said it then that's table
+stakes and to me that's not really the
+interesting part. The interesting part
+is where and how cheap the cost of
+producing a correct and scope change is
+collapsing towards zero. And
+just as importantly,
+the production of the software no longer
+has to happen in one place up front
+before anyone runs it. Part of it can be
+run on the server, part of it on the
+client, part in the user's live session.
+And as each step stops being a decision,
+you freeze at build time and and now
+starts becoming more of a realtime one.
+That also means that each p each each p
+piece can be placed wherever it makes
+most sense including right in front of
+the user in their context. And so this
+whole one-way pipeline existed because
+making software was the expensive
+central and rare event and running it
+was cheap.
+So he separated development from
+distribution. But now as making a change
+becomes as cheap as running one and it
+can happen in the same place as um as
+where you run it. The reason to separate
+them is dissolving. So far I've talked
+about the supply side. Producing code
+has become cheap, easy, we can now make
+a change on a per user basis. But I also
+want to address the demand side. People
+have always wanted software that fits
+them and we have decades of proof for
+that.
+It just wasn't really possible for most
+types of software because of cost.
+To start with one example, the forward
+deployed engineer. Enterprise software
+has always had a line item called
+professional services and a whole
+industry exists around that.
+If you're a big client of a company like
+Salesforce, you probably have
+consultants that are helping you
+implement custom setups, configurations,
+you have an engineer living in your
+Slack channel. And it's not that smaller
+customers
+can benefit from this type of
+customization. It just didn't make sense
+financially until today. To give another
+example that might resonate with you as
+engineers,
+think about your dot files, your editor
+config, key bindings.
+You rebuilt every tool you touch into
+your tool by hand on every machine. It's
+another example of a demand for
+personalized software.
+And lastly, Excel, the most successful
+business software ever created. And
+Excel isn't really a static program.
+It's millions of people that all built
+their own programs on top of it.
+So as it's clear, give people the power
+to make software to make their software
+theirs and they take it. Seen on the
+social feed that per user wins on wins
+from one size fits all on every metric
+that mattered. This is more of an
+example of content versus software.
+But now that we have uh better coding,
+now that we have coding agents and
+better coding agents, we can move this
+also to the software layer. So my point
+is none of this is really new demand.
+We've seen it for decades. There have
+been predecessors like feature flags,
+segmentation, AB testing. There's an
+enormous industry around uh around this
+and we've been trying to make software
+diverge for many years. But
+we go forced into a specific shape that
+of creating buckets and segments that
+you declare in advance.
+And now for the first time we can make
+software truly adaptive. So to get back
+to the title of this talk when the agent
+is to runtime
+when the thing that runs your software
+can also modify it development and
+distribution stop being two phases. the
+boundary blurs and it's gone.
+And the shape that we bet on at differ
+is that instead of one code base gated
+by flex and shipped to everyone, you
+deploy one canonical stem and every user
+runs their own divergence of it.
+Same origin but individually adapted
+live.
+It's going from the least first version
+for everyone to the best version for
+anyone.
+Now, if you're an infrastructure person,
+you might be a little worried. Your
+stomach might be turning because I have
+just deleted the frozen artifact and the
+frozen artifact was what was holding up
+the entire the the entire building. And
+I do we do get these objections for
+example from a call that I had with a
+CTO recently who is right to be
+skeptical. What he said roughly was, "I
+can already barely reason about one AI
+generated codebase, and you want me to
+run millions of these?" You're not
+describing a capability. You're
+describing my worst problem, multiplied.
+And if that's your reaction, that's not
+surprising. It's the right instinct, but
+perhaps aimed at the wrong target.
+Here's the distinction that we make. The
+brittleleness that you are picturing is
+a specific type of failure mode. It's an
+unmanaged divergence inside a single
+artifact. thousand line files everything
+can touch everything else no boundaries
+and that's not that's not necessarily
+brittle because it's AI generated it's
+brittle because there's no structure
+separating things
+in our ver in our vision we we're
+thinking about per user divergences and
+done right that is the opposite of that
+you've got a stem plus divergences the
+divergences are bounded isolated and
+individually reversible a bad variant
+can silently corrupt the stem or reach
+another user which means that the blast
+radius of a change isn't a system. It's
+one context and any single divergence
+can roll back live with no deploy. So
+the answer to the previous objection
+isn't trust us AI is good at
+coordination or at coding. The
+honest answer is you're brittle because
+there's a tangled artifact with no
+boundaries. In our case, we don't ship
+you a thousand tangled artifacts. We
+ship one stem and bounded divergences,
+each isolated, each reversible.
+The thing that you're afraid of is the
+thing that this architecture exists to
+prevent.
+And as a developer, you can also set
+controls and boundaries. what can and
+cannot be adapted. To give a small
+example, um we can have a scenario where
+we've got a form and the form can be
+adapted in order to improve conversion
+rate for example. However, as a
+developer, you can always indicate that
+specific fields can never be dropped or
+parts of your app like off or payments
+should always be out of um uh should
+always be off limits for any sort of
+adaptation.
+To give another example to make adaptive
+software a bit more concrete,
+uh think of for example um a CRM.
+In this case, uh, we've got an investor
+who's using a CRM, whereas the CRM was
+mostly built with a salesperson in mind.
+And as an investor, you might use it
+slightly differently. So, this investor,
+she often logs founder intros and she's
+always logging who introed her to which
+deal. So, the system observes that and
+creates a um create creates a intro
+path.
+The system can also observe that she's
+always skipping specific fields. She
+never fills them out. So over time, the
+system learns and doesn't surface those
+fields, but instead it surfaces fields
+that he that she cares about more.
+Another example can be the fact that she
+is always
+um always checking specific types of
+deals or founders and it doesn't exactly
+follow
+the prioritization that the system sets
+by default. So again can can we learn
+and make that smarter so that the
+information that the user cares about is
+surface first. Not only can the system
+observe, the idea is also that the user
+can proactively request changes and as
+long as these changes are within the
+boundaries that the developer sets and
+as long as they are within the spirit of
+the software, within the purpose of what
+the software was originally made for, it
+can be implemented without having to go
+back to the developer.
+So you can imagine for a for a
+horizontal SAS like a CRM,
+you can address a much wider number of
+customer personas without increasing
+your R&D spend.
+Now, of course, there is there are many
+hard parts when it comes to bringing
+this to life.
+And I'm going to discuss a couple of
+hard challenges and problem and problems
+that we're that we're working on as
+we're making adaptive software real at
+scale. We haven't solved all of them,
+but we have a we have a point of view on
+each of them, and it's it's exactly what
+we're working on day in day out.
+So what changes when there's no single
+artifact?
+Firstly,
+the source of truth. So when there's no
+single artifact, you can wonder what is
+the software.
+In our case, we consider the software to
+be the stem plus the plus all the
+imutual immutable divergences.
+But of course that creates a line
+problem. What is this user running and
+why? That now becomes more of a graph
+query versus a version number. A bug
+report describes a program that exists
+for that specific user. How do you debug
+or inspect that? The answer is every
+divergence is immutable, inspectable,
+attributable
+and
+we also need to trace any version back
+to this signal led to this specific
+recommendation and this exact
+adaptation.
+That's one of the parts that we're
+working on.
+Second is correctness. like how do you
+test that the um how do you test that
+the code change that you've just
+implemented works that the UI is correct
+and yeah testing at
+a much larger scale of users means that
+you need to reason about the stem and
+also every possible divergence of it
+and then desiraability because
+perhaps you made a code change it's
+perfectly correct and working.
+But you also need to know that whether
+whether this was desirable.
+Was it actually a good change? Because
+anyone can make a code change now. But
+the hard part is knowing whether you
+actually found
+an improvement, an uplift.
+And yeah, that that is something that is
+extremely important to to keep track of
+and to measure and to consider what the
+goals for the company are. And this is
+not going to be the same for every
+single piece of software. In some cases,
+it might be retention or less churn or
+lowering this number of support tickets.
+So, it's extremely important to keep
+track of what what are the goals that
+we're chasing of adaptive software and
+do the adaptations reach to improve
+improve improve the metrics that matter.
+Next is autonomy versus control. And the
+conservative answer here would be start
+with just recommendations and don't make
+any autonomous changes. And that's not a
+wrong strategy. But in our case, it's
+not really our vision. The vision is a
+system that understands the user well
+enough to act without asking the
+developer for permission every time
+first.
+So for us, the challenge isn't building
+more control. It's winning enough trust
+that you don't have to. And it's a hard
+problem, but also also a very
+interesting one. And you know, how do
+you make a system good enough, legible
+enough, reliable enough that humans in a
+loop choose to step back? And that's
+certainly what we are building towards.
+And lastly, coordination. Everyone on
+their own version. How do you push new
+updates? How do how do changes propagate
+to like a million different versions?
+And this is one of the challenges that
+we've been thinking hardest about.
+Yeah. And the answer that we keep coming
+back to is don't merge code, merge
+intent, merge outcome. which means not
+everyone has to run the same commit or
+this ex exact same piece of code but
+everyone converges on the same goal
+through their own path and if it wasn't
+already clear the challenges that I just
+address addressed are the hard
+challenges generation has become easy
+and I would say that's actually the easy
+80% calling a model to write some code
+is something that everyone can do the
+other part observability validation
+coordination ation that is the entire
+business.
+Anyone can call an LM but the substrate
+the stem plus diver plus divergences
+provenence validation
+that is really the hard part and
+something that we're working on every
+single day
+to close off with. When I started out in
+fintech, a bank with no branches sounded
+reckless.
+A decade later,
+the the branch is the weird part.
+My co-founder Noam used to fight with
+engineers about why you need builds and
+CI.
+We've seen this. We've seen these shifts
+before and adaptive software is the same
+type of shift.
+It doesn't feel obvious.
+until it does. To go back to the start
+of the talk, the pipeline didn't fail
+because it didn't work anymore. But the
+constraint it was built for went away.
+The assumption underneath it that
+software is expensive, so we need to
+freeze it and ship it once. That
+assumption stopped being true.
+And when making software gets as cheap
+as running it, the line between
+distribution and development isn't in
+line anymore.
+We spent 20 years getting good at
+shipping one version for everyone. The
+next 20 are about shipping the right
+version to anyone with the isolation and
+provenence that makes it safe instead of
+terrifying.
+I'm Iris. This is Differ and that's what
+we're building. Thank you for watching.
