@@ -17,6 +17,7 @@ people: []
 claims: ["Peça: iniciar o pedido ativa um processo mental e emocional que começa a produzir resultados, mesmo sem entender seu mecanismo", "O gargalo não é receber (que é automático), mas falhar em pedir; verifique se suas metas estão sequer escritas no papel", "Trate o sucesso como abundante e não racionado; aumente sua capacidade de receber trocando a 'colher de chá' por um 'balde'", "Peça com inteligência: seja claro e específico — quanto, quando, que tamanho, que cor, quão alto — definindo e descrevendo exatamente o que quer", "Quanto melhor descritas as metas, maior a força magnética que elas exercem sobre sua direção", "Peça com fé: faça planos como adulto, mas acredite neles com a confiança de uma criança, sem ceticismo adulto", "Teste a fórmula por 90 dias antes de descartá-la; é sempre possível voltar ao método antigo"]
 deep_dive: "low"
 deep_dive_reason: "Discurso motivacional genérico sobre metas e pedir, sem densidade de insight técnico, arquitetural ou novidade relevante para harness, context-engineering, evals, agent-fleets, governança ou ontologia de agentes."
+relates-to: []
 ---
 
 # How to Get Whatever You Want
