@@ -4,5 +4,9 @@
   "handle": "trending_repos",
   "text": "Trending repository of the day 📈\n\ni-have-adhd\n\nA skill to stop your coding agent from burying the answer. ADHD-friendly output.\n\nLast 24h: 3,882 ⭐\nTotal: 39,963 ⭐️\nhttps://t.co/7vgycOaB0j",
   "created_at": "2026-09-11T12:07:36.000Z",
-  "url": "https://x.com/trending_repos/status/2098382953235562613"
+  "url": "https://x.com/trending_repos/status/2098382953235562613",
+  "links": [
+    "https://github.com/ayghri/i-have-adhd"
+  ],
+  "media": []
 }

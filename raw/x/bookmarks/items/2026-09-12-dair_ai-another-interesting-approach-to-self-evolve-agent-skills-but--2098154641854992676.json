@@ -4,5 +4,9 @@
   "handle": "dair_ai",
   "text": "Another interesting approach to self-evolve agent skills.\n\nBut it's important to know that skill self-evolution loops fail in two specific ways:\n\n1. Direction instability. Effective corrections get overwritten by iteration-local feedback instead of accumulating, so the loop keeps https://t.co/zXaujlZK1j",
   "created_at": "2026-09-10T21:00:23.000Z",
-  "url": "https://x.com/dair_ai/status/2098154641854992676"
+  "url": "https://x.com/dair_ai/status/2098154641854992676",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HR4khuzbEAAdvjh.png"
+  ]
 }

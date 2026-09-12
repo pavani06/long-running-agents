@@ -4,5 +4,7 @@
   "handle": "TencentAI_News",
   "text": "The open-source WeKnora (MIT, 22k stars) just shipped v0.8.0. A new step from RAG toward agentic RAG: a self-remembering, safely sandboxed knowledge agent platform.\n\nWhat's new:\n🧠  Cross-session memory: profile, preference, fact, task and interest, each proposed for your",
   "created_at": "2026-09-10T14:00:46.000Z",
-  "url": "https://x.com/TencentAI_News/status/2098049042773397683"
+  "url": "https://x.com/TencentAI_News/status/2098049042773397683",
+  "links": [],
+  "media": []
 }

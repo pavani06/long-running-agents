@@ -4,5 +4,11 @@
   "handle": "GoogleResearch",
   "text": "Introducing ToolGrad: an efficient framework for generating tool-use datasets. By generating ground-truth tool-use chains before prompts, it achieves a nearly 100% pass rate and improved LLM tool-use performance. More: https://t.co/YFwzfX9Rfc https://t.co/BLkVTqgZ04",
   "created_at": "2026-09-10T22:56:22.000Z",
-  "url": "https://x.com/GoogleResearch/status/2098183830968705163"
+  "url": "https://x.com/GoogleResearch/status/2098183830968705163",
+  "links": [
+    "https://goo.gle/4xNKTNH"
+  ],
+  "media": [
+    "https://pbs.twimg.com/media/HR4-_mXbYAAtbYn.jpg"
+  ]
 }

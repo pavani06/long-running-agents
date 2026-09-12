@@ -4,5 +4,9 @@
   "handle": "simonw",
   "text": "Wow. Turns out another OpenAI agent swarm was busy spamming and exploiting RubyGems way back in May, within days of the previously uncovered Wiki attacks: https://t.co/FJsoJrqODN",
   "created_at": "2026-09-12T00:45:38.000Z",
-  "url": "https://x.com/simonw/status/2098573718142452055"
+  "url": "https://x.com/simonw/status/2098573718142452055",
+  "links": [
+    "https://simonwillison.net/2026/Sep/12/openai-agents-rubygems/"
+  ],
+  "media": []
 }

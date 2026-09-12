@@ -4,5 +4,9 @@
   "handle": "tydsh",
   "text": "🚨A novel way to do RL in LLM post-training! \n\nInspired by our previous path-not-taken work (https://t.co/n7StFdRGDw), we dig deep into the learning trajectory of RL and find that optimizing singular vectors (i.e., rotation) of weight matrices suffices for good performance in RL. https://t.co/MvZjCLloz0",
   "created_at": "2026-07-25T05:04:16.000Z",
-  "url": "https://x.com/tydsh/status/2080881800877134004"
+  "url": "https://x.com/tydsh/status/2080881800877134004",
+  "links": [
+    "https://arxiv.org/abs/2511.08567"
+  ],
+  "media": []
 }

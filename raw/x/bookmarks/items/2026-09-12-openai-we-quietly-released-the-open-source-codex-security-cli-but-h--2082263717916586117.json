@@ -4,5 +4,9 @@
   "handle": "OpenAI",
   "text": "We quietly released the open-source Codex Security CLI, but Hacker News found it before we had a chance to share it here...\n\nYou can now use it to scan repositories, track findings across runs, verify fixes, and add security checks to CI/CD. \n\nThis is an early release, and we're https://t.co/4AbAn1ZRym",
   "created_at": "2026-07-29T00:35:31.000Z",
-  "url": "https://x.com/OpenAI/status/2082263717916586117"
+  "url": "https://x.com/OpenAI/status/2082263717916586117",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HOWvAa-bAAAw2hd.jpg"
+  ]
 }

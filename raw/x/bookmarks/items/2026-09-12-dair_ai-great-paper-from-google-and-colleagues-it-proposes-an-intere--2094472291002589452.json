@@ -4,5 +4,9 @@
   "handle": "dair_ai",
   "text": "Great paper from Google and colleagues.\n\nIt proposes an interesting approach to improve agents on long-horizon tasks.\n\nLong-running agents slow down and start poisoning their own context.\n\nBoth symptoms come from the same design choice, which is keeping execution alive by https://t.co/gtPThVBz49",
   "created_at": "2026-08-31T17:08:02.000Z",
-  "url": "https://x.com/dair_ai/status/2094472291002589452"
+  "url": "https://x.com/dair_ai/status/2094472291002589452",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HREPcr8a0AAc8wH.jpg"
+  ]
 }

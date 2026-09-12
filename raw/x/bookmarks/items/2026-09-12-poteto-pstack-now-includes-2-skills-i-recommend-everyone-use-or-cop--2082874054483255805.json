@@ -4,5 +4,10 @@
   "handle": "poteto",
   "text": "pstack now includes 2 skills i recommend everyone use or copy:\n\n/create-verification-skill\nhttps://t.co/LTkFSzFc4n\n\n/maintain-verification-skill\nhttps://t.co/0UIK37pZLz\n\nif you don't already have one, /create-verification-skill creates a skill that teaches your agent how to run,",
   "created_at": "2026-07-30T17:00:47.000Z",
-  "url": "https://x.com/poteto/status/2082874054483255805"
+  "url": "https://x.com/poteto/status/2082874054483255805",
+  "links": [
+    "https://github.com/cursor/plugins/blob/main/pstack/skills/create-verification-skill/SKILL.md",
+    "https://github.com/cursor/plugins/blob/main/pstack/skills/maintain-verification-skill/SKILL.md"
+  ],
+  "media": []
 }

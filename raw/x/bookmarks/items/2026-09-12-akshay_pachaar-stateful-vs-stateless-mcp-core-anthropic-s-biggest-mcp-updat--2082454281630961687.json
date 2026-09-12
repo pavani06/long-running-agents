@@ -4,5 +4,9 @@
   "handle": "akshay_pachaar",
   "text": "Stateful vs. Stateless MCP core.\n\n(Anthropic's biggest MCP update)\n\nLet me explain what that means:\n\nUntil this release, talking to an MCP server worked like a phone call. Both sides ran an initialize handshake, and the server returned a session id carried on every later request. https://t.co/giNRDf0vy4 https://t.co/xkQSVjhhQQ",
   "created_at": "2026-07-29T13:12:45.000Z",
-  "url": "https://x.com/akshay_pachaar/status/2082454281630961687"
+  "url": "https://x.com/akshay_pachaar/status/2082454281630961687",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2082451799387361280/img/MNNknWSolW-6CeEP.jpg"
+  ]
 }

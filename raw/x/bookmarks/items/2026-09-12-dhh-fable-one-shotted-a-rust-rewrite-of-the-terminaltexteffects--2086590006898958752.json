@@ -4,5 +4,9 @@
   "handle": "dhh",
   "text": "Fable one-shotted a Rust rewrite of the TerminalTextEffects Python library in 11M tokens. Startup time went from 87ms to 2ms and rendering speed is up by 9.6x. Now zero dependencies and a 3mb single exec 🤯 https://t.co/3cTEQAqYdO",
   "created_at": "2026-08-09T23:06:39.000Z",
-  "url": "https://x.com/dhh/status/2086590006898958752"
+  "url": "https://x.com/dhh/status/2086590006898958752",
+  "links": [
+    "https://claude.ai/code/artifact/287825bc-7aad-4541-a7e7-fa4ba8d03612"
+  ],
+  "media": []
 }

@@ -4,5 +4,9 @@
   "handle": "ClaudeDevs",
   "text": "New in Claude Code: claude plugin eval\n\nSee what value your plugin is adding, or if it needs more work.\n\nYou can create test cases, run your plugin or skill against those test cases, score those runs, then run each case again without the plugin to see the differences. https://t.co/qfPU6WHueV",
   "created_at": "2026-09-11T19:56:41.000Z",
-  "url": "https://x.com/ClaudeDevs/status/2098500999656923145"
+  "url": "https://x.com/ClaudeDevs/status/2098500999656923145",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HR9cG20bcAAbBP6.jpg"
+  ]
 }

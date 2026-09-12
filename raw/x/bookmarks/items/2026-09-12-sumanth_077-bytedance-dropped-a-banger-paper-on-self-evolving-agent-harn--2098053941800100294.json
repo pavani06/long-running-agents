@@ -4,5 +4,9 @@
   "handle": "Sumanth_077",
   "text": "ByteDance dropped a banger paper on self-evolving agent harnesses!\n\nHarnessDev evaluates whether AI agents can build a runnable harness from scratch and iteratively improve it using execution feedback.\n\nMost agent benchmarks keep the harness fixed and only evaluate the model https://t.co/kcmry7R8y4",
   "created_at": "2026-09-10T14:20:14.000Z",
-  "url": "https://x.com/Sumanth_077/status/2098053941800100294"
+  "url": "https://x.com/Sumanth_077/status/2098053941800100294",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HR3I46hbEAAifSR.png"
+  ]
 }

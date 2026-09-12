@@ -4,5 +4,9 @@
   "handle": "ClaudeDevs",
   "text": "MCP 2026-07-28 is live and it's the largest update to the protocol since launch.\n\nMCP is now stateless, making it easier to deploy and scale remote servers. \n\nhttps://t.co/K8KqxbUh4e",
   "created_at": "2026-07-28T18:00:16.000Z",
-  "url": "https://x.com/ClaudeDevs/status/2082164248697069935"
+  "url": "https://x.com/ClaudeDevs/status/2082164248697069935",
+  "links": [
+    "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude"
+  ],
+  "media": []
 }

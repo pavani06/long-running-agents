@@ -4,5 +4,7 @@
   "handle": "poteto",
   "text": "pstack 0.15.0 is here! this release contains mainly token usage improvements (between 3 to 11% savings depending on how many skills are loaded by pstack in your session), removing some stray semicolons and emdashes so pstack skills aren't a bad influence, and lots of mannered",
   "created_at": "2026-09-08T17:42:50.000Z",
-  "url": "https://x.com/poteto/status/2097380152703615396"
+  "url": "https://x.com/poteto/status/2097380152703615396",
+  "links": [],
+  "media": []
 }

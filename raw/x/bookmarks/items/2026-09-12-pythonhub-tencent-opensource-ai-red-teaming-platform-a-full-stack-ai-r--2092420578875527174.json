@@ -4,5 +4,9 @@
   "handle": "PythonHub",
   "text": "Tencent opensource AI Red Teaming platform\n\nA full-stack AI Red Teaming platform securing AI ecosystems via Agent Scan, Skills Scan, MCP scan, AI Infra scan and LLM jailbreak evaluation.\n\nhttps://t.co/sc80BnQgcE",
   "created_at": "2026-08-26T01:15:15.000Z",
-  "url": "https://x.com/PythonHub/status/2092420578875527174"
+  "url": "https://x.com/PythonHub/status/2092420578875527174",
+  "links": [
+    "https://github.com/tencent/AI-Infra-Guard"
+  ],
+  "media": []
 }

@@ -4,5 +4,11 @@
   "handle": "ClaudeDevs",
   "text": "We've added `ant apply` to the ant CLI. \n\nNow you can declare Claude Managed Agent environments, agents, skills, memory stores, and deployments as files in your repository and keep the API's resources in sync with them using `ant apply`.\n\nDocs: https://t.co/qQchmDjTmm https://t.co/7hX3OV3h29",
   "created_at": "2026-09-03T23:12:14.000Z",
-  "url": "https://x.com/ClaudeDevs/status/2095651107645145538"
+  "url": "https://x.com/ClaudeDevs/status/2095651107645145538",
+  "links": [
+    "https://platform.claude.com/docs/en/cli-sdks-libraries/cli/apply"
+  ],
+  "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2095650094054068224/img/hvX6SIXBRvLUPici.jpg"
+  ]
 }

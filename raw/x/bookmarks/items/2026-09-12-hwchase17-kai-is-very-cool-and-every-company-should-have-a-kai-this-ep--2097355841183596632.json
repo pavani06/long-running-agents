@@ -4,5 +4,9 @@
   "handle": "hwchase17",
   "text": "kai is very cool, and every company should have a kai\n\nthis episode is a great resource on how stripe built it\n\nhere's another blog for some additional context: https://t.co/ylWBJz6ZCu https://t.co/HnR7ZIs1fq",
   "created_at": "2026-09-08T16:06:14.000Z",
-  "url": "https://x.com/hwchase17/status/2097355841183596632"
+  "url": "https://x.com/hwchase17/status/2097355841183596632",
+  "links": [
+    "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents"
+  ],
+  "media": []
 }

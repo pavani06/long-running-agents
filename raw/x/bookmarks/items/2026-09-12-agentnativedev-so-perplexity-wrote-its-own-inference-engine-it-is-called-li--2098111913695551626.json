@@ -4,5 +4,9 @@
   "handle": "agentnativedev",
   "text": "So Perplexity wrote its own inference engine.\n\nIt is called Lily, it is specialized for exactly one model (Qwen3.6–35B-A3B) on exactly one hardware family (Apple Silicon), and on September 2 they open-sourced it under Apache-2.0. https://t.co/7n7nyAPMk1",
   "created_at": "2026-09-10T18:10:35.000Z",
-  "url": "https://x.com/agentnativedev/status/2098111913695551626"
+  "url": "https://x.com/agentnativedev/status/2098111913695551626",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HR39pEOa0AAvEFR.png"
+  ]
 }

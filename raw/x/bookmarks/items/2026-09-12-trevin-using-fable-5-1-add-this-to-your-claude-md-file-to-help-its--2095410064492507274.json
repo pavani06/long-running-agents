@@ -4,5 +4,9 @@
   "handle": "trevin",
   "text": "Using Fable 5.1? Add this to your CLAUDE.md file to help its writing: “Please remove all mannered prose.” https://t.co/BnilrETrPT",
   "created_at": "2026-09-03T07:14:24.000Z",
-  "url": "https://x.com/trevin/status/2095410064492507274"
+  "url": "https://x.com/trevin/status/2095410064492507274",
+  "links": [
+    "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1#writing-density"
+  ],
+  "media": []
 }

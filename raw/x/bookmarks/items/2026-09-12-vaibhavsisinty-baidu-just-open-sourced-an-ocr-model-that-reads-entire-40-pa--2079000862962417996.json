@@ -4,5 +4,9 @@
   "handle": "VaibhavSisinty",
   "text": "Baidu just open-sourced an OCR model that reads entire 40-page documents in one shot.\n\nIt's called Unlimited-OCR. 3 billion parameters but only 500 million active during inference. Runs 100% locally on your machine.\n\nWhy this matters: traditional OCR tools chop documents page by https://t.co/QCCUz8eP9C",
   "created_at": "2026-07-20T00:30:06.000Z",
-  "url": "https://x.com/VaibhavSisinty/status/2079000862962417996"
+  "url": "https://x.com/VaibhavSisinty/status/2079000862962417996",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2079000840921366528/img/R5yXw8xXXRyFeTWD.jpg"
+  ]
 }

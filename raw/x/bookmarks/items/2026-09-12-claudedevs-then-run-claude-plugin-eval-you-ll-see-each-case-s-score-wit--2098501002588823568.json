@@ -4,5 +4,7 @@
   "handle": "ClaudeDevs",
   "text": "Then run `claude plugin eval`\n\nYou'll see each case's score with and without your plugin in your terminal, plus an HTML report with the full detail. If your account supports it, the report is also published as a private artifact.",
   "created_at": "2026-09-11T19:56:41.000Z",
-  "url": "https://x.com/ClaudeDevs/status/2098501002588823568"
+  "url": "https://x.com/ClaudeDevs/status/2098501002588823568",
+  "links": [],
+  "media": []
 }

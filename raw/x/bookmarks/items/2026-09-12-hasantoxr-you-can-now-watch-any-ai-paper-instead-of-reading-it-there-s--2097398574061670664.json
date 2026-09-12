@@ -4,5 +4,12 @@
   "handle": "hasantoxr",
   "text": "You can now watch any AI paper instead of reading it\n\nThere's a new site called arXivisual that turns ANY arXiv paper into a fully animated breakdown for free.\n\nJust add \"isual\" to the link\n\nhttps://t.co/gHyoMdnfAk becomes https://t.co/aXnNgbuFAG\n\nPaste it and an agent pipeline https://t.co/QRZfBceooI",
   "created_at": "2026-09-08T18:56:02.000Z",
-  "url": "https://x.com/hasantoxr/status/2097398574061670664"
+  "url": "https://x.com/hasantoxr/status/2097398574061670664",
+  "links": [
+    "https://arxiv.org/abs/1706.03762",
+    "https://arxivisual.org/abs/1706.03762"
+  ],
+  "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2097398519313416192/img/I7xjKTKYrBdEuZ-r.jpg"
+  ]
 }

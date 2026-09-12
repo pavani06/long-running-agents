@@ -4,5 +4,9 @@
   "handle": "elune0x",
   "text": "10 agent evals every AI engineer should know\n\n1) golden set\n\na frozen set of cases you run after every prompt model or tool change\n\nuse it as your baseline to see whether the system improved or quietly broke\n\nOpenAI Evals helps you build repeatable benchmark sets and compare https://t.co/9LCOejp0ZU https://t.co/gaocdCvwNS",
   "created_at": "2026-07-24T17:42:34.000Z",
-  "url": "https://x.com/elune0x/status/2080710242929697122"
+  "url": "https://x.com/elune0x/status/2080710242929697122",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2080659759661768704/img/IAlO9I16I4KjI8xD.jpg"
+  ]
 }

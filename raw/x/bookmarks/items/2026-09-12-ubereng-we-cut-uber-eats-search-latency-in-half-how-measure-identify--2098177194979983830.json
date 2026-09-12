@@ -4,5 +4,9 @@
   "handle": "UberEng",
   "text": "⚡ We cut Uber Eats search latency in half.\n\nHow? Measure. Identify. Fix. Validate. Repeat.\n\nAn AI coding agent helped us find bottlenecks, test fixes, and validate impact—turning optimization into a continuous feedback loop.\n\nSee how → https://t.co/N2Cm0yQkm5",
   "created_at": "2026-09-10T22:30:00.000Z",
-  "url": "https://x.com/UberEng/status/2098177194979983830"
+  "url": "https://x.com/UberEng/status/2098177194979983830",
+  "links": [
+    "https://www.uber.com/us/en/blog/uber-eats-search-pipeline/"
+  ],
+  "media": []
 }

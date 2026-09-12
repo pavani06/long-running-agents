@@ -4,5 +4,9 @@
   "handle": "RLanceMartin",
   "text": "i recently added this command to the claude-api skill. run it in Claude Code to fix common prompting \"anti-patterns\" that can hobble frontier models:\n\n/claude-api prompt-audit\n \npatterns include: \n\n1/Verification rituals. Instructions like \"double-check your work” or \"verify https://t.co/axksoCDCes https://t.co/l76vCH6NuG",
   "created_at": "2026-09-02T15:20:29.000Z",
-  "url": "https://x.com/RLanceMartin/status/2095170001175199771"
+  "url": "https://x.com/RLanceMartin/status/2095170001175199771",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HROHdWLbgAAE6HA.jpg"
+  ]
 }

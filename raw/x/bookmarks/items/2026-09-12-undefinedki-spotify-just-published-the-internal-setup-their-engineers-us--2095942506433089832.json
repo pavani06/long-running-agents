@@ -4,5 +4,9 @@
   "handle": "undefinedKi",
   "text": "Spotify just published the internal setup their engineers use with Claude Code, the one that cut token usage by 90 percent. Here is how it works.\n\nThe observation behind it: most of what a coding assistant does is not thinking. It opens five files to answer a question about one https://t.co/sBbTHBufQc https://t.co/2eB8LZ0OMx",
   "created_at": "2026-09-04T18:30:08.000Z",
-  "url": "https://x.com/undefinedKi/status/2095942506433089832"
+  "url": "https://x.com/undefinedKi/status/2095942506433089832",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HRZIh24acAAYlCY.jpg"
+  ]
 }

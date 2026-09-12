@@ -4,5 +4,11 @@
   "handle": "tom_doerr",
   "text": "Hyperresearch turns Claude Code into a research agent that ingests hundreds of sources, verifies citations, and generates adversarially-audited reports.\n\nhttps://t.co/dkguNJNhJt https://t.co/dCW2t9K2Xa",
   "created_at": "2026-09-10T00:17:48.000Z",
-  "url": "https://x.com/tom_doerr/status/2097841937642332595"
+  "url": "https://x.com/tom_doerr/status/2097841937642332595",
+  "links": [
+    "https://github.com/jordan-gibbs/hyperresearch"
+  ],
+  "media": [
+    "https://pbs.twimg.com/media/HR0IIByWcAQqg6J.jpg"
+  ]
 }

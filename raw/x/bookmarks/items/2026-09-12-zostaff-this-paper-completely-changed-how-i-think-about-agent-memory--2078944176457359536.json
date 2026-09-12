@@ -4,5 +4,9 @@
   "handle": "zostaff",
   "text": "This paper completely changed how I think about agent memory access:\n\nRewrite -&gt; Tag -&gt; Traverse -&gt; Prune -&gt; Reconstruct\n\nHere is the 5-step blueprint:\n\nRewrite: Every dialogue turn becomes a self-contained sentence, pronouns resolved to entities and relative times converted to https://t.co/Pb8NCdPbS9 https://t.co/oUI9j0F2Pb",
   "created_at": "2026-07-19T20:44:51.000Z",
-  "url": "https://x.com/zostaff/status/2078944176457359536"
+  "url": "https://x.com/zostaff/status/2078944176457359536",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HNnAEWpWoAAVfzm.jpg"
+  ]
 }

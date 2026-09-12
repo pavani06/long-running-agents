@@ -4,5 +4,9 @@
   "handle": "ClaudeDevs",
   "text": "Retailers running shopping agents on Claude have seen carts up to 35% larger and shoppers 60% more likely to complete a purchase.\n\nSee our blog to learn more about the architecture, latency &amp; cost techniques, and eval practices:\nhttps://t.co/lAgsVD5JSL",
   "created_at": "2026-09-02T19:33:47.000Z",
-  "url": "https://x.com/ClaudeDevs/status/2095233746366808420"
+  "url": "https://x.com/ClaudeDevs/status/2095233746366808420",
+  "links": [
+    "https://claude.com/blog/the-anatomy-of-effective-commerce-agents"
+  ],
+  "media": []
 }

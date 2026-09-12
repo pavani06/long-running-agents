@@ -4,5 +4,9 @@
   "handle": "cwolferesearch",
   "text": "Why is evaluating agents so difficult relative to evaluating a standard LLM?\n\nAn LLM generates a single response to a prompt. An agent instead interacts with an environment by reasoning, calling tools, observing the results, and repeating. Rather than evaluating a single output, https://t.co/SPrKJMlAdB",
   "created_at": "2026-08-01T16:20:59.000Z",
-  "url": "https://x.com/cwolferesearch/status/2083588813675274301"
+  "url": "https://x.com/cwolferesearch/status/2083588813675274301",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HOpk7z0XIAAYjFl.png"
+  ]
 }
