@@ -1,0 +1,73 @@
+name: X Bookmarks (collect + version)
+
+on:
+  schedule:
+    - cron: "45 8 * * *"   # daily 05:45 America/Sao_Paulo — after youtube-transcripts
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "daily = write new bookmarks; dry-run = fetch + diff only"
+        type: choice
+        default: daily
+        options: [daily, dry-run]
+
+permissions:
+  contents: write
+
+# Serialize runs: the refresh token is single-use and rotated in place, so two
+# concurrent runs would race and break the chain.
+concurrency:
+  group: x-bookmarks
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade requests
+
+      - name: Resolve mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "MODE=${{ github.event.inputs.mode }}" >> "$GITHUB_ENV"
+          else
+            echo "MODE=daily" >> "$GITHUB_ENV"
+          fi
+
+      - name: Run pipeline
+        env:
+          X_REFRESH_TOKEN: ${{ secrets.X_REFRESH_TOKEN }}
+          X_CLIENT_ID: ${{ secrets.X_CLIENT_ID }}
+          X_CLIENT_KEY: ${{ secrets.X_CLIENT_KEY }}
+          GH_TOKEN: ${{ secrets.GH_SECRETS_PAT }}   # PAT with secrets:write, for the refresh write-back
+        run: |
+          set +e
+          python scripts/x-bookmarks/pipeline.py "$MODE"
+          echo "PIPELINE_RC=$?" >> "$GITHUB_ENV"
+
+      - name: Commit new bookmarks
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add raw/x/bookmarks
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+            exit 0
+          fi
+          added=$(git diff --cached --name-only --diff-filter=A -- 'raw/x/bookmarks/items/*.json' | wc -l | tr -d ' ')
+          git commit -m "data(x): collect bookmarks ($(TZ=America/Sao_Paulo date +%F)) [+${added}]"
+          git push
+
+      - name: Fail if pipeline went red
+        run: |
+          if [ "${PIPELINE_RC}" != "0" ]; then
+            echo "pipeline exited red (rc=${PIPELINE_RC})"
+            exit 1
+          fi
