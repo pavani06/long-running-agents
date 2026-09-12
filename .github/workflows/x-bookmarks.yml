@@ -10,8 +10,6 @@ on:
         type: choice
         default: daily
         options: [daily, dry-run]
-  push:
-    branches: ["issue/222-x-bookmarks-collector"]   # TEMP: branch testing (dry-run); remove before merge
 
 permissions:
   contents: write
@@ -39,8 +37,6 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "MODE=${{ github.event.inputs.mode }}" >> "$GITHUB_ENV"
-          elif [ "${{ github.event_name }}" = "push" ]; then
-            echo "MODE=dry-run" >> "$GITHUB_ENV"
           else
             echo "MODE=daily" >> "$GITHUB_ENV"
           fi
