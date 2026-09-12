@@ -53,8 +53,34 @@ def resolve_user_id(session: requests.Session, token: str, *, timeout: int = 30)
     return str(uid), data.get("username", "unknown")
 
 
+def _extract_links(t: dict) -> list[str]:
+    """External URLs the tweet points to (expanded), minus self/quote/media links."""
+    out: list[str] = []
+    for u in t.get("entities", {}).get("urls", []):
+        exp = u.get("expanded_url", "")
+        low = exp.lower()
+        if not exp or "twitter.com/" in low or "x.com/" in low:
+            continue  # self-permalink, quoted tweet, or pic link — not a reading target
+        if exp not in out:
+            out.append(exp)
+    return out
+
+
+def _extract_media(t: dict, media_map: dict) -> list[str]:
+    """Media URLs attached to the tweet (photo url, or video/gif preview)."""
+    out: list[str] = []
+    for key in t.get("attachments", {}).get("media_keys", []):
+        m = media_map.get(key, {})
+        u = m.get("url") or m.get("preview_image_url")
+        if u and u not in out:
+            out.append(u)
+    return out
+
+
 def _pairs(body: dict) -> list[Bookmark]:
-    users = {u["id"]: u for u in body.get("includes", {}).get("users", [])}
+    includes = body.get("includes", {})
+    users = {u["id"]: u for u in includes.get("users", [])}
+    media_map = {m["media_key"]: m for m in includes.get("media", []) if m.get("media_key")}
     out: list[Bookmark] = []
     for t in body.get("data", []) or []:
         sid = t.get("id")
@@ -68,6 +94,8 @@ def _pairs(body: dict) -> list[Bookmark]:
             text=t.get("text", ""),
             created_at=t.get("created_at", ""),
             url=f"https://x.com/{handle}/status/{sid}",
+            links=_extract_links(t),
+            media=_extract_media(t, media_map),
         ))
     return out
 
@@ -83,9 +111,10 @@ def fetch_bookmarks(token: str, user_id: str, *, max_pages: int = 50,
     for _ in range(max_pages):
         params = {
             "max_results": 100,
-            "expansions": "author_id",
-            "tweet.fields": "created_at",
+            "expansions": "author_id,attachments.media_keys",
+            "tweet.fields": "created_at,entities",
             "user.fields": "username",
+            "media.fields": "type,url,preview_image_url",
         }
         if next_token:
             params["pagination_token"] = next_token

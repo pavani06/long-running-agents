@@ -7,7 +7,7 @@ what is already under items/, keyed by status id parsed from filenames.
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, field
 from pathlib import Path
 
 from naming import build_filename, parse_status_id
@@ -22,6 +22,8 @@ class Bookmark:
     text: str
     created_at: str          # tweet creation time (ISO), from the API
     url: str                 # https://x.com/<handle>/status/<status_id>
+    links: list[str] = field(default_factory=list)   # expanded external URLs in the tweet
+    media: list[str] = field(default_factory=list)    # media URLs (photo/video/gif)
 
 
 @dataclass
@@ -65,11 +67,26 @@ class BookmarkStore:
         return out
 
     # ── writes ───────────────────────────────────────────────────────────
-    def write_item(self, collection_date: str, bookmark: Bookmark) -> str:
-        """Write one bookmark as JSON under the naming scheme; return filename."""
+    def write_item(self, collection_date: str, bookmark: Bookmark,
+                   disk_map: dict[str, str] | None = None) -> str:
+        """Write one bookmark as JSON; return filename. Idempotent by status id.
+
+        If an item with this status id already exists, its filename and original
+        `collected` date are preserved and only the content is refreshed (used by
+        the reprocess/enrichment path). Otherwise a fresh name is stamped with
+        `collection_date`.
+        """
         self.items_dir.mkdir(parents=True, exist_ok=True)
-        fname = build_filename(collection_date, bookmark.handle, bookmark.text, bookmark.status_id)
-        payload = {"collected": collection_date, **asdict(bookmark)}
+        disk_map = self.scan_disk() if disk_map is None else disk_map
+        existing = disk_map.get(bookmark.status_id)
+        if existing:
+            prior = json.loads((self.items_dir / existing).read_text(encoding="utf-8"))
+            collected = prior.get("collected", collection_date)
+            fname = existing
+        else:
+            collected = collection_date
+            fname = build_filename(collection_date, bookmark.handle, bookmark.text, bookmark.status_id)
+        payload = {"collected": collected, **asdict(bookmark)}
         (self.items_dir / fname).write_text(
             json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         return fname
