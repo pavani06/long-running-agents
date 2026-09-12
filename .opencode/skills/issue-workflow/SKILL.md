@@ -1,6 +1,6 @@
 ---
 name: issue-workflow
-description: Manage GitHub Issues through full lifecycle: create, track, and complete. Use when (1) creating issues from story breakdowns or planning discussions, (2) starting work on a feature branch, (3) tracking progress with commits and changes, (4) completing issues and updating parent epics. Triggers on: branch names like `issue/N-slug`, keywords like "create issue" or "close issue", reading breakdown files or plans, or discussing epics/stories/tasks.
+description: 'Manage GitHub Issues through full lifecycle: create, track, and complete. Use when (1) creating issues from story breakdowns or planning discussions, (2) starting work on a feature branch, (3) tracking progress with commits and changes, (4) completing issues and updating parent epics. Triggers on: branch names like `issue/N-slug`, keywords like "create issue" or "close issue", reading breakdown files or plans, or discussing epics/stories/tasks.'
 ---
 
 # GitHub Issue Workflow

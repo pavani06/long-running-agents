@@ -1,6 +1,6 @@
 ---
 name: refine-issue
-description: Break down GitHub issues into executable sub-issues with dependencies. Deep codebase exploration, single-file-focused tasks, dependency graphs, and verification gate. Use when the user mentions "refine", "break down", "decompose", or "plan" for an issue. Also triggers on: analyzing issue scope, creating implementation sub-tasks, or planning multi-step work from an existing issue.
+description: 'Break down GitHub issues into executable sub-issues with dependencies. Deep codebase exploration, single-file-focused tasks, dependency graphs, and verification gate. Use when the user mentions "refine", "break down", "decompose", or "plan" for an issue. Also triggers on: analyzing issue scope, creating implementation sub-tasks, or planning multi-step work from an existing issue.'
 ---
 
 # Refine Issue
