@@ -178,15 +178,16 @@ Topicos cobertos: `testes-qa`.
 
 Pipelines automatizadas em GitHub Actions que coletam e destilam conteúdo externo em corpora versionados no próprio repo. Modelo comum: enumeração + fetch → camada `raw/` → camada `extracts/`, com diff stateless (o repositório é a fonte de verdade) e commit diário por `github-actions[bot]` tocando só a pasta da camada.
 
-Topicos cobertos: `corpus-pipelines`, `stack-tooling`, `governanca`.
+Topicos cobertos: `corpus-pipelines`, `stack-tooling`, `governanca`. Tags de conteúdo do corpus de bookmarks (interesses de leitura do operador, registrados aqui para o vocabulário controlado dos extracts — Rule 16.4): `performance`, `ciclismo`, `startups`, `mercado-brasileiro` (finanças/economia usam as tags já existentes `investimentos`/`macroeconomia`).
 
 | Fonte | Cobre |
 |---|---|
 | [[raw/youtube/ai-learning/README|raw/youtube/ai-learning/]] | Camada **raw** de transcripts da playlist "AI - Learning". Enumeração: YouTube Data API v3; transcript: SerpApi. Código: `scripts/youtube-transcripts/`; workflow `.github/workflows/youtube-transcripts.yml` (diário `30 8 * * *` + retry-missing aos domingos). Secrets: `YOUTUBE_API_KEY`, `SERPAPI_API_KEY`. |
 | `extracts/youtube/ai-learning/` | Camada **extract** (triagem Nível-1 + grafo implícito) sobre os transcripts — 1 nota Obsidian por vídeo via GLM (`glm-5.3`), com vocabulário de tags controlado e guard de prompt-injection. Código: `scripts/youtube-extracts/`; workflow `.github/workflows/youtube-extracts.yml` (encadeado por `workflow_run` do anterior). Secret: `ZAI_API_KEY`. |
 | [[raw/x/bookmarks/README|raw/x/bookmarks/]] | Camada **raw** dos bookmarks do X (@fepavani). Coleta: API oficial X v2 (`GET /2/users/:id/bookmarks`, OAuth2 user-context) com access token derivado a cada run de um refresh token single-use rotacionado e persistido de volta no secret via PAT. Código: `scripts/x-bookmarks/`; workflow `.github/workflows/x-bookmarks.yml` (diário `45 8 * * *`). Secrets: `X_CLIENT_ID`, `X_CLIENT_KEY`, `X_REFRESH_TOKEN`, `GH_SECRETS_PAT`. |
+| `extracts/x/bookmarks/` | Camada **extract** dos bookmarks — 1 nota Obsidian por tweet via GLM (`glm-5.3`), schema enxuto (`topic`/`summary`/`tags`/`entities`/`content_type`/`revisit`) com vocabulário controlado (opção B: dinâmico + seed de bookmarks) e guard `<untrusted_source>`; `links`/`media` factuais vêm do item raw. Código: `scripts/x-extracts/`; workflow `.github/workflows/x-extracts.yml` (encadeado por `workflow_run` do x-bookmarks). Secret: `ZAI_API_KEY`. |
 
-> **Pendente**: camadas `extracts/x/bookmarks/` e `digests/x/` (extract via GLM + digest), quando implementadas (ver plano do pipeline de bookmarks).
+> **Pendente**: camada `digests/x/` (síntese temática + email), quando implementada (ver plano do pipeline de bookmarks).
 
 ## Decisões de arquitetura (ADRs)
 

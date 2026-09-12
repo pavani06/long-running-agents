@@ -1,0 +1,86 @@
+name: X Extracts (bookmarks)
+
+on:
+  workflow_run:
+    workflows: ["X Bookmarks (collect + version)"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Pipeline mode"
+        type: choice
+        default: incremental
+        options: [incremental, full, rebuild]
+      cap:
+        description: "Per-run extract cap (blank = default)"
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: x-extracts
+  cancel-in-progress: false
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    # For the chained trigger, only run when the collect workflow succeeded.
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade requests
+
+      - name: Resolve mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "MODE=${{ github.event.inputs.mode }}" >> "$GITHUB_ENV"
+            if [ -n "${{ github.event.inputs.cap }}" ]; then
+              echo "EXTRACT_CAP=${{ github.event.inputs.cap }}" >> "$GITHUB_ENV"
+            fi
+          else
+            echo "MODE=incremental" >> "$GITHUB_ENV"
+          fi
+
+      - name: Run pipeline
+        env:
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+        run: |
+          set +e
+          python scripts/x-extracts/pipeline.py "$MODE"
+          echo "PIPELINE_RC=$?" >> "$GITHUB_ENV"
+
+      - name: Commit new extracts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add extracts/x/bookmarks
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+            exit 0
+          fi
+          added=$(git diff --cached --name-only --diff-filter=A -- 'extracts/x/bookmarks/*.md' | wc -l | tr -d ' ')
+          git commit -m "data(x): add bookmark extracts ($(TZ=America/Sao_Paulo date +%F)) [+${added}]"
+          # A concurrent push to main (e.g. the collect workflow) can reject ours;
+          # rebase and retry so the extract commit isn't dropped.
+          for attempt in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push && exit 0
+            echo "push attempt ${attempt} rejected; rebased, retrying"
+            sleep 5
+          done
+          echo "push failed after retries"
+          exit 1
+
+      - name: Fail if pipeline went red
+        run: |
+          if [ "${PIPELINE_RC}" != "0" ]; then
+            echo "pipeline exited red (rc=${PIPELINE_RC})"
+            exit 1
+          fi
