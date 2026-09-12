@@ -67,10 +67,14 @@ def persist_refresh_token(new_refresh_token: str, repo: str,
     Requires GH_TOKEN in the environment to be a PAT with secrets:write. The
     value goes through stdin so it never appears in the process argv/logs.
     """
-    proc = subprocess.run(
-        ["gh", "secret", "set", secret_name, "--repo", repo],
-        input=new_refresh_token, text=True, capture_output=True, check=False,
-    )
+    try:
+        proc = subprocess.run(
+            ["gh", "secret", "set", secret_name, "--repo", repo],
+            input=new_refresh_token, text=True, capture_output=True, check=False,
+        )
+    except OSError as e:
+        # e.g. gh not on PATH — still a hard failure so the caller exits red.
+        raise PersistError(f"could not run gh to persist the rotated token: {e}")
     if proc.returncode != 0:
         # stderr may include a gh message but not our token value.
         raise PersistError(f"gh secret set exited {proc.returncode}: {proc.stderr.strip()[:200]}")

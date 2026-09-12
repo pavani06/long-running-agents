@@ -1,8 +1,8 @@
 """Disk-backed corpus state for X bookmarks: the repository is the source of truth.
 
 Stateless — "what do we already have?" comes from the files on disk, never from
-a separate seen-list. `new_ids()` is the bookmarks the API returned minus what is
-already under items/, keyed by status id parsed from filenames.
+a separate seen-list. `new_bookmarks()` is the bookmarks the API returned minus
+what is already under items/, keyed by status id parsed from filenames.
 """
 from __future__ import annotations
 
