@@ -36,6 +36,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.append(str(Path(__file__).resolve().parent.parent / "youtube-transcripts"))
 
 import glm  # noqa: E402
+from gitio import commit_push  # noqa: E402
 from glm import AuthError, ExtractError, RateLimited, fetch_extract  # noqa: E402
 from render import VideoMeta, build_note  # noqa: E402
 from store import ExtractStore  # noqa: E402
@@ -66,7 +67,8 @@ def watch_url(video_id: str) -> str:
     return f"https://www.youtube.com/watch?v={video_id}"
 
 
-def run(mode: str, cap: int, youtube_key: str, zai_key: str) -> int:
+def run(mode: str, cap: int, youtube_key: str, zai_key: str,
+        *, commit_batch: int = 0, committer=commit_push) -> int:
     store = ExtractStore(REPO_ROOT)
     pending = store.pending(rebuild=(mode == "rebuild"))
     if not pending:
@@ -88,13 +90,23 @@ def run(mode: str, cap: int, youtube_key: str, zai_key: str) -> int:
         summary(f"cap {cap}: extracting {len(targets)} now, {len(pending) - cap} left for next run")
 
     date = today()
-    done = skipped = 0
+    done = skipped = uncommitted = 0
+
+    def flush(final: bool = False) -> None:
+        nonlocal uncommitted
+        if commit_batch <= 0 or uncommitted == 0:
+            return
+        if committer(REPO_ROOT, f"data(youtube): add ai-learning extracts ({date}) [+{uncommitted}]"):
+            summary(f"committed batch of {uncommitted}" + (" (final)" if final else ""))
+        uncommitted = 0
+
     for i, (vid, tfile) in enumerate(targets, 1):
         text = store.read_transcript(tfile)
         try:
             extract = fetch_extract(text, zai_key, vocab)
         except AuthError as e:
             summary(f"RED: {e}")
+            flush(final=True)  # persist what we already wrote before going red
             return 1
         except RateLimited:
             summary(f"WARNING: GLM rate-limited after {done} — leaving the rest for next run")
@@ -116,9 +128,13 @@ def run(mode: str, cap: int, youtube_key: str, zai_key: str) -> int:
         )
         name = store.write_extract(tfile, build_note(meta, extract, vocab, EXTRACT_VERSION, glm.MODEL))
         done += 1
+        uncommitted += 1
         summary(f"[{i}/{len(targets)}] {vid} — ok (deep_dive={extract.get('deep_dive')}) -> {name}")
+        if commit_batch > 0 and uncommitted >= commit_batch:
+            flush()
         time.sleep(PACING_SECONDS)
 
+    flush(final=True)
     summary(f"done: {done} extracts written, {skipped} skipped, {len(pending) - done} still pending")
     return 0
 
@@ -151,7 +167,11 @@ def main() -> int:
     else:
         cap = DEFAULT_CAP if args.mode == "incremental" else 10_000
 
-    return run(args.mode, cap, youtube_key, zai_key)
+    # 0 = disabled (commit handled by the workflow / local dry runs); the CI
+    # workflow sets COMMIT_BATCH so backfills persist progress as they go.
+    commit_batch = int(os.environ.get("COMMIT_BATCH", "0"))
+
+    return run(args.mode, cap, youtube_key, zai_key, commit_batch=commit_batch)
 
 
 if __name__ == "__main__":
