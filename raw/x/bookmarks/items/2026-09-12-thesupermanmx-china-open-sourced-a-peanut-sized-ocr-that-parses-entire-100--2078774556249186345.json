@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2078774556249186345",
+  "handle": "thesupermanmx",
+  "text": "China open-sourced a peanut-sized OCR that parses entire 100-page PDFs in one shot..\n\nIt's called Unlimited-OCR. Only 3B params. Runs locally.\n\nEvery other OCR tool chops your doc into pages and loses the thread. this one reads the whole thing in a single pass.\n\n→ One-shot https://t.co/ca9rX8pY9b",
+  "created_at": "2026-07-19T09:30:50.000Z",
+  "url": "https://x.com/thesupermanmx/status/2078774556249186345"
+}

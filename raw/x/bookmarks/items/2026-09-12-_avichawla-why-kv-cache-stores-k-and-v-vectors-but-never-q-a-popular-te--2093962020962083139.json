@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2093962020962083139",
+  "handle": "_avichawla",
+  "text": "Why KV cache stores K and V vectors but never Q?\n\n(a popular technical LLM interview question)\n\nLLMs are autoregressive so each token is predicted from every token before it, one at a time.\n\nThis autoregressive nature has a direct consequence inside the model.\n\nA forward pass https://t.co/io7XW3n1Rq https://t.co/9QeBohqAwj",
+  "created_at": "2026-08-30T07:20:24.000Z",
+  "url": "https://x.com/_avichawla/status/2093962020962083139"
+}

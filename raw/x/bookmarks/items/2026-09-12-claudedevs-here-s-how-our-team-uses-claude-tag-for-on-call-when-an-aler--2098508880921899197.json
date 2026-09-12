@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2098508880921899197",
+  "handle": "ClaudeDevs",
+  "text": "Here's how our team uses Claude Tag for on-call:\n\nWhen an alert fires in Slack, Claude pulls metrics, diffs deploys, and checks flags. It finds a likely cause and proposes a fix, which we can approve and merge. Every minute counts, so we love that it starts right away! https://t.co/15gdEHjI7d",
+  "created_at": "2026-09-11T20:28:00.000Z",
+  "url": "https://x.com/ClaudeDevs/status/2098508880921899197"
+}

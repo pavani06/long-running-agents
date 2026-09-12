@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2095464614498619493",
+  "handle": "adiix_official",
+  "text": "How to run your whole Grok Bot workday on loops instead of prompts.\n\n📁 grok-bot-system \n┃\n┣ 📂 coordinator\n┃  ┣ /triage\n┃  ┣ /delegate\n┃  ┣ /watch-handoffs\n┃  ┣ /collect-deliverable\n┃  ┗ /escalate-only-if-needed\n┃\n┣ 📂 bot-contract\n┃  ┣ /job\n┃  ┣ /sources\n┃ https://t.co/8M8Qwtz1tl https://t.co/5cjNonwjpD",
+  "created_at": "2026-09-03T10:51:10.000Z",
+  "url": "https://x.com/adiix_official/status/2095464614498619493"
+}

@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2085323411903889876",
+  "handle": "fchollet",
+  "text": "I would have assumed it was fairly obvious, but in case it's not: a million-line codebase (also known as a \"harness\"), running at inference time, orchestrating thousands of calls to a neural network for any given task, is the exact definition of a \"neurosymbolic architecture\"",
+  "created_at": "2026-08-06T11:13:39.000Z",
+  "url": "https://x.com/fchollet/status/2085323411903889876"
+}

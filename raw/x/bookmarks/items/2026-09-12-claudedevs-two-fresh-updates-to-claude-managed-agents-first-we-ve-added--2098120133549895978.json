@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2098120133549895978",
+  "handle": "ClaudeDevs",
+  "text": "Two fresh updates to Claude Managed Agents:\n\nFirst, we've added a session viewer to the ant CLI.\n\n`ant beta:sessions connect` attaches your terminal to a running session, and `--web` opens a web UI served from localhost. https://t.co/1UgRRLyxUA",
+  "created_at": "2026-09-10T18:43:15.000Z",
+  "url": "https://x.com/ClaudeDevs/status/2098120133549895978"
+}

@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2080009527467114737",
+  "handle": "ClaudeDevs",
+  "text": "Before, creating a session and sending it events took separate API calls.\n\nYou can now seed a new session with up to 50 user_message and define_outcome events in the create call. https://t.co/cGt8m6izG2",
+  "created_at": "2026-07-22T19:18:10.000Z",
+  "url": "https://x.com/ClaudeDevs/status/2080009527467114737"
+}

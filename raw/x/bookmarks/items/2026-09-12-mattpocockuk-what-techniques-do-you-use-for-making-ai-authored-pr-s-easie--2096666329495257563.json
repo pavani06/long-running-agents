@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2096666329495257563",
+  "handle": "mattpocockuk",
+  "text": "What techniques do you use for making AI-authored PR's easier to review?\n\n- I.e. use /show-me by @dexhorthy for easy-to-read diffs\n- Describe the changes in pseudocode\n- Mermaid diagrams\n- Evidence of TDD\n\nThe wildest version of this I've heard is @dctanner's agent, who uses",
+  "created_at": "2026-09-06T18:26:21.000Z",
+  "url": "https://x.com/mattpocockuk/status/2096666329495257563"
+}

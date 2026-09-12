@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2098662421644853433",
+  "handle": "addyosmani",
+  "text": "How do you hold the bar on production agent code?:\n\n1. Agree on the outcome and the constraints first. \n\nWhat does \"done\" look like? what must it not touch? is the simpler design is to refactor or reuse what you already have? Then let Claude cook. You do not need a long planning https://t.co/WML75VmHmm",
+  "created_at": "2026-09-12T06:38:07.000Z",
+  "url": "https://x.com/addyosmani/status/2098662421644853433"
+}

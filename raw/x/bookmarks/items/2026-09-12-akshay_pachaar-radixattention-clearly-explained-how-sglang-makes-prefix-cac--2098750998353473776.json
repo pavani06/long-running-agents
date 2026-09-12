@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2098750998353473776",
+  "handle": "akshay_pachaar",
+  "text": "RadixAttention, clearly explained.\n\n(how SGLang makes prefix caching highly efficient)\n\nPrefix caching sounds simple until requests start branching.\n\nConsider an AI coding assistant serving these three conversations:\n\nRequest 1 Context:\nSystem prompt → Python repo → https://t.co/eggzf8WfWx https://t.co/kXfgMTZ9Hd",
+  "created_at": "2026-09-12T12:30:05.000Z",
+  "url": "https://x.com/akshay_pachaar/status/2098750998353473776"
+}

@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2097956088792396200",
+  "handle": "realfxw",
+  "text": "想要真正吃透 Multi-Agent 架构，最好的方法是从零写一遍。\n\n推荐 Victor Dibia 的开源项目 designing-multiagent-systems（书籍配套代码库）。项目内置了从零构建的教学型框架 PicoAgents，不依赖黑盒框架，把多智能体系统的底层逻辑拆解得极其透彻：\n\n基础与进阶：从 Agent Loop、Tool Calling 到",
+  "created_at": "2026-09-10T07:51:24.000Z",
+  "url": "https://x.com/realfxw/status/2097956088792396200"
+}

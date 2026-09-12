@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2097555607389896732",
+  "handle": "dair_ai",
+  "text": "Good work on improving memory for long-horizon agents.\n\nThey separate two things that agent memory papers usually collapse into one. How memories get merged when they are written, and how retrieved content gets assembled into the prompt.\n\nThe setting is a tight prompt budget of https://t.co/xKuweav6zG",
+  "created_at": "2026-09-09T05:20:02.000Z",
+  "url": "https://x.com/dair_ai/status/2097555607389896732"
+}

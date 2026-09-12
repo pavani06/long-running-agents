@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2086079311279493389",
+  "handle": "akshay_pachaar",
+  "text": "Stanford researchers did it again.\n\nThey just built the agent-native version of Git.\n\nWhen an agent works on a longer task, the run builds up a lot of state.\n\nThis includes files edited/created, a dev server, a database, installed packages, KV cache, etc.\n\nSay the agent is at https://t.co/4Yce8RaBnY https://t.co/Xdk42RtlX6",
+  "created_at": "2026-08-08T13:17:19.000Z",
+  "url": "https://x.com/akshay_pachaar/status/2086079311279493389"
+}

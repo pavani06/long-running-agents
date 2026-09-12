@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2098140712504332411",
+  "handle": "omarsar0",
+  "text": "This is a brilliant paper.\n\nIt's of the cleanest long-context agent designs I have seen in the past couple of months.\n\nSequential memory agents read chunks one after another while maintaining a compact memory state.\n\nThis behavior ties reasoning depth to document traversal and https://t.co/fd8KwSURym",
+  "created_at": "2026-09-10T20:05:02.000Z",
+  "url": "https://x.com/omarsar0/status/2098140712504332411"
+}

@@ -1,0 +1,1800 @@
+{
+  "source": "X API v2 GET /2/users/:id/bookmarks (OAuth2 user-context)",
+  "count": 299,
+  "items": [
+    {
+      "status_id": "2079234800766816633",
+      "handle": "0xCodez",
+      "url": "https://x.com/0xCodez/status/2079234800766816633",
+      "file": "2026-09-12-0xcodez-andrew-ng-just-released-a-1-hour-course-on-building-agentic--2079234800766816633.json"
+    },
+    {
+      "status_id": "2082482596135485822",
+      "handle": "0xCodez",
+      "url": "https://x.com/0xCodez/status/2082482596135485822",
+      "file": "2026-09-12-0xcodez-anthropic-pays-785k-year-for-forward-deployed-engineers-in-t--2082482596135485822.json"
+    },
+    {
+      "status_id": "2095820416069849496",
+      "handle": "0xCodio",
+      "url": "https://x.com/0xCodio/status/2095820416069849496",
+      "file": "2026-09-12-0xcodio-anthropic-engineer-built-an-agent-that-keeps-a-map-of-what-i--2095820416069849496.json"
+    },
+    {
+      "status_id": "2081050632727793775",
+      "handle": "0xDeliriumm",
+      "url": "https://x.com/0xDeliriumm/status/2081050632727793775",
+      "file": "2026-09-12-0xdeliriumm-boris-cherny-lead-of-claude-code-at-anthropic-published-a-pi--2081050632727793775.json"
+    },
+    {
+      "status_id": "2078468804276019504",
+      "handle": "0xMortyx",
+      "url": "https://x.com/0xMortyx/status/2078468804276019504",
+      "file": "2026-09-12-0xmortyx-andrej-karpathy-just-broke-the-entire-premise-of-modern-ai-a--2078468804276019504.json"
+    },
+    {
+      "status_id": "2079985963862786352",
+      "handle": "0xMovez",
+      "url": "https://x.com/0xMovez/status/2079985963862786352",
+      "file": "2026-09-12-0xmovez-anthropic-engineer-80-of-our-engineers-are-using-selfimprovi--2079985963862786352.json"
+    },
+    {
+      "status_id": "2094868247162360099",
+      "handle": "0xMovez",
+      "url": "https://x.com/0xMovez/status/2094868247162360099",
+      "file": "2026-09-12-0xmovez-spacexai-engineer-lauren-tan-at-spacexai-90-of-engineers-run--2094868247162360099.json"
+    },
+    {
+      "status_id": "2078942607863148919",
+      "handle": "1amageek",
+      "url": "https://x.com/1amageek/status/2078942607863148919",
+      "file": "2026-09-12-1amageek-ontologyaif-aif-llm-https-t-co-fdlellgvjk--2078942607863148919.json"
+    },
+    {
+      "status_id": "2093962020962083139",
+      "handle": "_avichawla",
+      "url": "https://x.com/_avichawla/status/2093962020962083139",
+      "file": "2026-09-12-_avichawla-why-kv-cache-stores-k-and-v-vectors-but-never-q-a-popular-te--2093962020962083139.json"
+    },
+    {
+      "status_id": "2080673389497253950",
+      "handle": "_guillecasaus",
+      "url": "https://x.com/_guillecasaus/status/2080673389497253950",
+      "file": "2026-09-12-_guillecasaus-tu-ordenador-windows-tiene-mas-de-200-servicios-ejecutandose--2080673389497253950.json"
+    },
+    {
+      "status_id": "2094421798326800432",
+      "handle": "_vmlops",
+      "url": "https://x.com/_vmlops/status/2094421798326800432",
+      "file": "2026-09-12-_vmlops-most-people-learn-ml-few-learn-how-to-run-ml-in-production-t--2094421798326800432.json"
+    },
+    {
+      "status_id": "2078877591923036378",
+      "handle": "_yusufknl",
+      "url": "https://x.com/_yusufknl/status/2078877591923036378",
+      "file": "2026-09-12-_yusufknl-as-someone-who-s-been-shipping-llms-since-the-gpt-2-days-thi--2078877591923036378.json"
+    },
+    {
+      "status_id": "2086906363947737406",
+      "handle": "a16z",
+      "url": "https://x.com/a16z/status/2086906363947737406",
+      "file": "2026-09-12-a16z-an-hour-of-agentic-computer-use-may-now-be-cheaper-than-an-h--2086906363947737406.json"
+    },
+    {
+      "status_id": "2076720361560003039",
+      "handle": "a16z",
+      "url": "https://x.com/a16z/status/2076720361560003039",
+      "file": "2026-09-12-a16z-for-most-of-history-the-bottleneck-on-making-something-was-n--2076720361560003039.json"
+    },
+    {
+      "status_id": "2079585013482561548",
+      "handle": "a16z",
+      "url": "https://x.com/a16z/status/2079585013482561548",
+      "file": "2026-09-12-a16z-today-applied-intuition-is-launching-dana-an-agentic-platfor--2079585013482561548.json"
+    },
+    {
+      "status_id": "2098662421644853433",
+      "handle": "addyosmani",
+      "url": "https://x.com/addyosmani/status/2098662421644853433",
+      "file": "2026-09-12-addyosmani-how-do-you-hold-the-bar-on-production-agent-code-1-agree-on--2098662421644853433.json"
+    },
+    {
+      "status_id": "2079442194449232227",
+      "handle": "addyosmani",
+      "url": "https://x.com/addyosmani/status/2079442194449232227",
+      "file": "2026-09-12-addyosmani-https-t-co-4inznxfrzn--2079442194449232227.json"
+    },
+    {
+      "status_id": "2077600055159357548",
+      "handle": "addyosmani",
+      "url": "https://x.com/addyosmani/status/2077600055159357548",
+      "file": "2026-09-12-addyosmani-https-t-co-qrftl7vgum--2077600055159357548.json"
+    },
+    {
+      "status_id": "2095464614498619493",
+      "handle": "adiix_official",
+      "url": "https://x.com/adiix_official/status/2095464614498619493",
+      "file": "2026-09-12-adiix_official-how-to-run-your-whole-grok-bot-workday-on-loops-instead-of-p--2095464614498619493.json"
+    },
+    {
+      "status_id": "2095064938351940049",
+      "handle": "adiix_official",
+      "url": "https://x.com/adiix_official/status/2095064938351940049",
+      "file": "2026-09-12-adiix_official-https-t-co-f9qonbhusb--2095064938351940049.json"
+    },
+    {
+      "status_id": "2096612794145911260",
+      "handle": "agenticgirl",
+      "url": "https://x.com/agenticgirl/status/2096612794145911260",
+      "file": "2026-09-12-agenticgirl-ripwire-from-red-hat-emerging-technologies-is-a-remarkably-s--2096612794145911260.json"
+    },
+    {
+      "status_id": "2098111913695551626",
+      "handle": "agentnativedev",
+      "url": "https://x.com/agentnativedev/status/2098111913695551626",
+      "file": "2026-09-12-agentnativedev-so-perplexity-wrote-its-own-inference-engine-it-is-called-li--2098111913695551626.json"
+    },
+    {
+      "status_id": "2076155135366135903",
+      "handle": "AiCamila_",
+      "url": "https://x.com/AiCamila_/status/2076155135366135903",
+      "file": "2026-09-12-aicamila_-context-window-management-and-optimization-for-agents-agents--2076155135366135903.json"
+    },
+    {
+      "status_id": "2097897898235269173",
+      "handle": "aiedge_",
+      "url": "https://x.com/aiedge_/status/2097897898235269173",
+      "file": "2026-09-12-aiedge_-absolute-goldmine-of-a-website-for-all-grok-bot-users-a-reso--2097897898235269173.json"
+    },
+    {
+      "status_id": "2095186765535392249",
+      "handle": "AkitaOnRails",
+      "url": "https://x.com/AkitaOnRails/status/2095186765535392249",
+      "file": "2026-09-12-akitaonrails-acabei-de-soltar-a-versao-2-0-do-meu-ai-memory-e-eu-acho-que--2095186765535392249.json"
+    },
+    {
+      "status_id": "2098042808221511836",
+      "handle": "akshay_pachaar",
+      "url": "https://x.com/akshay_pachaar/status/2098042808221511836",
+      "file": "2026-09-12-akshay_pachaar-finally-an-open-source-runtime-security-layer-for-your-agent--2098042808221511836.json"
+    },
+    {
+      "status_id": "2098398242727940442",
+      "handle": "akshay_pachaar",
+      "url": "https://x.com/akshay_pachaar/status/2098398242727940442",
+      "file": "2026-09-12-akshay_pachaar-karpathys-agentic-engineering-finally-has-proper-devtools-wh--2098398242727940442.json"
+    },
+    {
+      "status_id": "2098750998353473776",
+      "handle": "akshay_pachaar",
+      "url": "https://x.com/akshay_pachaar/status/2098750998353473776",
+      "file": "2026-09-12-akshay_pachaar-radixattention-clearly-explained-how-sglang-makes-prefix-cac--2098750998353473776.json"
+    },
+    {
+      "status_id": "2086079311279493389",
+      "handle": "akshay_pachaar",
+      "url": "https://x.com/akshay_pachaar/status/2086079311279493389",
+      "file": "2026-09-12-akshay_pachaar-stanford-researchers-did-it-again-they-just-built-the-agent--2086079311279493389.json"
+    },
+    {
+      "status_id": "2082454281630961687",
+      "handle": "akshay_pachaar",
+      "url": "https://x.com/akshay_pachaar/status/2082454281630961687",
+      "file": "2026-09-12-akshay_pachaar-stateful-vs-stateless-mcp-core-anthropic-s-biggest-mcp-updat--2082454281630961687.json"
+    },
+    {
+      "status_id": "2080776965070496115",
+      "handle": "alex_frantic",
+      "url": "https://x.com/alex_frantic/status/2080776965070496115",
+      "file": "2026-09-12-alex_frantic-how-to-graph-max-with-codex-and-5-6-sol-1-draw-a-graph-liter--2080776965070496115.json"
+    },
+    {
+      "status_id": "2097035352707858528",
+      "handle": "alex_prompter",
+      "url": "https://x.com/alex_prompter/status/2097035352707858528",
+      "file": "2026-09-12-alex_prompter-chatgpt-wants-access-to-your-gmail-slack-and-drive-so-it-can--2097035352707858528.json"
+    },
+    {
+      "status_id": "2097792667795276241",
+      "handle": "alex_verem",
+      "url": "https://x.com/alex_verem/status/2097792667795276241",
+      "file": "2026-09-12-alex_verem-hashimoto-s-rule-for-ai-agents-is-that-every-mistake-becomes--2097792667795276241.json"
+    },
+    {
+      "status_id": "2097522164316647514",
+      "handle": "AlexFinn",
+      "url": "https://x.com/AlexFinn/status/2097522164316647514",
+      "file": "2026-09-12-alexfinn-everything-you-need-to-master-in-2026-to-get-rich-using-astr--2097522164316647514.json"
+    },
+    {
+      "status_id": "2097844489448775708",
+      "handle": "AlexFinn",
+      "url": "https://x.com/AlexFinn/status/2097844489448775708",
+      "file": "2026-09-12-alexfinn-this-has-sped-up-my-ai-coding-20x-prompt-at-the-end-before-b--2097844489448775708.json"
+    },
+    {
+      "status_id": "2097661439901048852",
+      "handle": "alperortac",
+      "url": "https://x.com/alperortac/status/2097661439901048852",
+      "file": "2026-09-12-alperortac-pro-tip-for-anyone-using-grill-me-tell-the-agent-fyi-we-dont--2097661439901048852.json"
+    },
+    {
+      "status_id": "2080702441809399834",
+      "handle": "AnatoliKopadze",
+      "url": "https://x.com/AnatoliKopadze/status/2080702441809399834",
+      "file": "2026-09-12-anatolikopadze-anthropic-engineer-you-re-not-supposed-to-babysit-the-model--2080702441809399834.json"
+    },
+    {
+      "status_id": "2080286550005358977",
+      "handle": "AnatoliKopadze",
+      "url": "https://x.com/AnatoliKopadze/status/2080286550005358977",
+      "file": "2026-09-12-anatolikopadze-anthropic-engineer-you-re-not-supposed-to-prompt-claude-you--2080286550005358977.json"
+    },
+    {
+      "status_id": "2077720293729091888",
+      "handle": "AnatoliKopadze",
+      "url": "https://x.com/AnatoliKopadze/status/2077720293729091888",
+      "file": "2026-09-12-anatolikopadze-anthropic-just-dropped-a-100-free-course-on-loop-engineering--2077720293729091888.json"
+    },
+    {
+      "status_id": "2079915295230038426",
+      "handle": "AnatoliKopadze",
+      "url": "https://x.com/AnatoliKopadze/status/2079915295230038426",
+      "file": "2026-09-12-anatolikopadze-demis-hassabis-in-the-near-future-one-person-who-knows-ai-wi--2079915295230038426.json"
+    },
+    {
+      "status_id": "2076366894655848871",
+      "handle": "AnatoliKopadze",
+      "url": "https://x.com/AnatoliKopadze/status/2076366894655848871",
+      "file": "2026-09-12-anatolikopadze-google-just-dropped-a-1-hour-course-on-agentic-engineering-f--2076366894655848871.json"
+    },
+    {
+      "status_id": "2082835611921138029",
+      "handle": "AnatoliKopadze",
+      "url": "https://x.com/AnatoliKopadze/status/2082835611921138029",
+      "file": "2026-09-12-anatolikopadze-still-the-best-hour-on-graph-engineering-ever-recorded-andre--2082835611921138029.json"
+    },
+    {
+      "status_id": "2097134891833917946",
+      "handle": "andrebrov",
+      "url": "https://x.com/andrebrov/status/2097134891833917946",
+      "file": "2026-09-12-andrebrov-my-biggest-recent-discovery-herdrdev-this-is-wow-i-run-25-ai--2097134891833917946.json"
+    },
+    {
+      "status_id": "2086567854850384054",
+      "handle": "AndrewCurran_",
+      "url": "https://x.com/AndrewCurran_/status/2086567854850384054",
+      "file": "2026-09-12-andrewcurran_-a-man-in-australia-asked-his-agent-claude-running-on-opencla--2086567854850384054.json"
+    },
+    {
+      "status_id": "2082199333920027009",
+      "handle": "AndrewYNg",
+      "url": "https://x.com/AndrewYNg/status/2082199333920027009",
+      "file": "2026-09-12-andrewyng-fifteen-years-ago-coursera-and-online-courses-changed-educat--2082199333920027009.json"
+    },
+    {
+      "status_id": "2093388974194872781",
+      "handle": "AndrewYNg",
+      "url": "https://x.com/AndrewYNg/status/2093388974194872781",
+      "file": "2026-09-12-andrewyng-how-have-software-engineering-fundamentals-changed-with-agen--2093388974194872781.json"
+    },
+    {
+      "status_id": "2092315079576555806",
+      "handle": "AndrewYNg",
+      "url": "https://x.com/AndrewYNg/status/2092315079576555806",
+      "file": "2026-09-12-andrewyng-openworker-an-open-source-agent-that-doesn-t-just-chat-but-c--2092315079576555806.json"
+    },
+    {
+      "status_id": "2095890279865721217",
+      "handle": "AndrewYNg",
+      "url": "https://x.com/AndrewYNg/status/2095890279865721217",
+      "file": "2026-09-12-andrewyng-the-most-important-skills-for-using-ai-coding-agents-effecti--2095890279865721217.json"
+    },
+    {
+      "status_id": "2098459474608672916",
+      "handle": "AndrewYNg",
+      "url": "https://x.com/AndrewYNg/status/2098459474608672916",
+      "file": "2026-09-12-andrewyng-with-ai-engineering-skills-you-actively-shape-the-build-you--2098459474608672916.json"
+    },
+    {
+      "status_id": "2082626169132720290",
+      "handle": "AnnaEconomist",
+      "url": "https://x.com/AnnaEconomist/status/2082626169132720290",
+      "file": "2026-09-12-annaeconomist-a-guide-to-warsh-s-rhetorical-techniques-since-we-ll-living--2082626169132720290.json"
+    },
+    {
+      "status_id": "2097679796687769689",
+      "handle": "AnthropicAI",
+      "url": "https://x.com/AnthropicAI/status/2097679796687769689",
+      "file": "2026-09-12-anthropicai-anthropics-economics-team-is-sharing-a-new-model-of-how-ai-m--2097679796687769689.json"
+    },
+    {
+      "status_id": "2098097512544444447",
+      "handle": "AnthropicAI",
+      "url": "https://x.com/AnthropicAI/status/2098097512544444447",
+      "file": "2026-09-12-anthropicai-we-re-publishing-our-most-detailed-threat-intelligence-repor--2098097512544444447.json"
+    },
+    {
+      "status_id": "2095264908762140823",
+      "handle": "AravSrinivas",
+      "url": "https://x.com/AravSrinivas/status/2095264908762140823",
+      "file": "2026-09-12-aravsrinivas-we-re-open-sourcing-lily-perplexity-s-local-inference-engine--2095264908762140823.json"
+    },
+    {
+      "status_id": "2082193490956476521",
+      "handle": "Argona0x",
+      "url": "https://x.com/Argona0x/status/2082193490956476521",
+      "file": "2026-09-12-argona0x-whoever-leaked-this-has-bigger-balls-than-sense-two-research--2082193490956476521.json"
+    },
+    {
+      "status_id": "2098309348858704095",
+      "handle": "askalphaxiv",
+      "url": "https://x.com/askalphaxiv/status/2098309348858704095",
+      "file": "2026-09-12-askalphaxiv-introducing-deepseek-v4-1-flash-for-understanding-research-p--2098309348858704095.json"
+    },
+    {
+      "status_id": "2085977214365896731",
+      "handle": "bakigulai",
+      "url": "https://x.com/bakigulai/status/2085977214365896731",
+      "file": "2026-09-12-bakigulai-ai-agentlar-icin-ack-kaynak-palantir-yapmslar-semantica-veri--2085977214365896731.json"
+    },
+    {
+      "status_id": "2098217571153838124",
+      "handle": "bcherny",
+      "url": "https://x.com/bcherny/status/2098217571153838124",
+      "file": "2026-09-12-bcherny-every-day-i-get-a-lot-of-of-emails-and-messages-like-this-on--2098217571153838124.json"
+    },
+    {
+      "status_id": "2098217573276131577",
+      "handle": "bcherny",
+      "url": "https://x.com/bcherny/status/2098217573276131577",
+      "file": "2026-09-12-bcherny-hey-i-think-there-is-room-for-both-1-prototypes-and-other-th--2098217573276131577.json"
+    },
+    {
+      "status_id": "2077929379661844559",
+      "handle": "bcherny",
+      "url": "https://x.com/bcherny/status/2077929379661844559",
+      "file": "2026-09-12-bcherny-i-talk-to-engineers-at-other-companies-every-day-and-hear-th--2077929379661844559.json"
+    },
+    {
+      "status_id": "2095590515765060076",
+      "handle": "bcherny",
+      "url": "https://x.com/bcherny/status/2095590515765060076",
+      "file": "2026-09-12-bcherny-your-input-needed-would-you-use-this-this-is-an-early-look-a--2095590515765060076.json"
+    },
+    {
+      "status_id": "2082158002958741746",
+      "handle": "benjaminsehl",
+      "url": "https://x.com/benjaminsehl/status/2082158002958741746",
+      "file": "2026-09-12-benjaminsehl-adding-to-every-agents-md-file-for-the-rest-of-time-h-t-rich--2082158002958741746.json"
+    },
+    {
+      "status_id": "2095871467359473974",
+      "handle": "BHolmesDev",
+      "url": "https://x.com/BHolmesDev/status/2095871467359473974",
+      "file": "2026-09-12-bholmesdev-favorite-accounts-to-follow-in-ai-software-dev-right-now-mat--2095871467359473974.json"
+    },
+    {
+      "status_id": "2094100103740977319",
+      "handle": "BoringBiz_",
+      "url": "https://x.com/BoringBiz_/status/2094100103740977319",
+      "file": "2026-09-12-boringbiz_-if-you-are-looking-for-a-primer-on-leveraged-finance-restruc--2094100103740977319.json"
+    },
+    {
+      "status_id": "2096961137031975189",
+      "handle": "BradSchoenfeld",
+      "url": "https://x.com/BradSchoenfeld/status/2096961137031975189",
+      "file": "2026-09-12-bradschoenfeld-why-do-some-people-gain-more-muscle-than-others-last-year-i--2096961137031975189.json"
+    },
+    {
+      "status_id": "2098245580539510881",
+      "handle": "brenopires",
+      "url": "https://x.com/brenopires/status/2098245580539510881",
+      "file": "2026-09-12-brenopires-a-revistapiaui-publica-agora-uma-serie-de-reportagens-que-ja--2098245580539510881.json"
+    },
+    {
+      "status_id": "2095704063081849159",
+      "handle": "bzuer_",
+      "url": "https://x.com/bzuer_/status/2095704063081849159",
+      "file": "2026-09-12-bzuer_-victorosaraiva-pergunto-quem-e-jefferson-silva-quem-usa-hewl--2095704063081849159.json"
+    },
+    {
+      "status_id": "2083463694931902561",
+      "handle": "chamath",
+      "url": "https://x.com/chamath/status/2083463694931902561",
+      "file": "2026-09-12-chamath-here-is-my-ai-investing-guide-sitting-here-august-2026-my-cu--2083463694931902561.json"
+    },
+    {
+      "status_id": "2098065296968011853",
+      "handle": "ChatGPT",
+      "url": "https://x.com/ChatGPT/status/2098065296968011853",
+      "file": "2026-09-12-chatgpt-now-everyone-can-put-data-to-work-were-introducing-a-new-dat--2098065296968011853.json"
+    },
+    {
+      "status_id": "2098555200680218872",
+      "handle": "ChrisShort",
+      "url": "https://x.com/ChrisShort/status/2098555200680218872",
+      "file": "2026-09-12-chrisshort-alibaba-open-code-review-battle-tested-at-alibaba-s-scale-hy--2098555200680218872.json"
+    },
+    {
+      "status_id": "2097836812958097915",
+      "handle": "clare_liguori",
+      "url": "https://x.com/clare_liguori/status/2097836812958097915",
+      "file": "2026-09-12-clare_liguori-i-just-published-a-manifesto-for-all-the-developers-out-ther--2097836812958097915.json"
+    },
+    {
+      "status_id": "2086891169217122586",
+      "handle": "claudeai",
+      "url": "https://x.com/claudeai/status/2086891169217122586",
+      "file": "2026-09-12-claudeai-we-re-making-claude-sonnet-5-s-introductory-pricing-permanen--2086891169217122586.json"
+    },
+    {
+      "status_id": "2095233747562180849",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2095233747562180849",
+      "file": "2026-09-12-claudedevs-also-see-our-open-source-reference-implementation-this-inclu--2095233747562180849.json"
+    },
+    {
+      "status_id": "2080009527467114737",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2080009527467114737",
+      "file": "2026-09-12-claudedevs-before-creating-a-session-and-sending-it-events-took-separat--2080009527467114737.json"
+    },
+    {
+      "status_id": "2089471692762673408",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2089471692762673408",
+      "file": "2026-09-12-claudedevs-claude-code-can-design-now-the-new-design-skill-research-pre--2089471692762673408.json"
+    },
+    {
+      "status_id": "2098501003666702344",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2098501003666702344",
+      "file": "2026-09-12-claudedevs-evals-call-the-model-so-they-use-tokens-and-results-vary-pil--2098501003666702344.json"
+    },
+    {
+      "status_id": "2098508880921899197",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2098508880921899197",
+      "file": "2026-09-12-claudedevs-here-s-how-our-team-uses-claude-tag-for-on-call-when-an-aler--2098508880921899197.json"
+    },
+    {
+      "status_id": "2097369738968195513",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2097369738968195513",
+      "file": "2026-09-12-claudedevs-https-t-co-bagbeytkga--2097369738968195513.json"
+    },
+    {
+      "status_id": "2079654423828304282",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2079654423828304282",
+      "file": "2026-09-12-claudedevs-https-t-co-rx3fqsosu0--2079654423828304282.json"
+    },
+    {
+      "status_id": "2082164248697069935",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2082164248697069935",
+      "file": "2026-09-12-claudedevs-mcp-2026-07-28-is-live-and-it-s-the-largest-update-to-the-pr--2082164248697069935.json"
+    },
+    {
+      "status_id": "2098500999656923145",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2098500999656923145",
+      "file": "2026-09-12-claudedevs-new-in-claude-code-claude-plugin-eval-see-what-value-your-pl--2098500999656923145.json"
+    },
+    {
+      "status_id": "2085817074816070014",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2085817074816070014",
+      "file": "2026-09-12-claudedevs-new-in-claude-code-your-sessions-can-now-message-each-other--2085817074816070014.json"
+    },
+    {
+      "status_id": "2097437571634639035",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2097437571634639035",
+      "file": "2026-09-12-claudedevs-our-ci-team-s-on-call-first-responder-is-claude-tag-it-reads--2097437571634639035.json"
+    },
+    {
+      "status_id": "2095233748719817153",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2095233748719817153",
+      "file": "2026-09-12-claudedevs-read-the-full-announcement-https-t-co-cdudn3gvhd--2095233748719817153.json"
+    },
+    {
+      "status_id": "2095233746366808420",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2095233746366808420",
+      "file": "2026-09-12-claudedevs-retailers-running-shopping-agents-on-claude-have-seen-carts--2095233746366808420.json"
+    },
+    {
+      "status_id": "2098501001447870499",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2098501001447870499",
+      "file": "2026-09-12-claudedevs-start-in-your-plugin-s-folder-and-run-claude-plugin-eval-ini--2098501001447870499.json"
+    },
+    {
+      "status_id": "2098501002588823568",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2098501002588823568",
+      "file": "2026-09-12-claudedevs-then-run-claude-plugin-eval-you-ll-see-each-case-s-score-wit--2098501002588823568.json"
+    },
+    {
+      "status_id": "2098120133549895978",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2098120133549895978",
+      "file": "2026-09-12-claudedevs-two-fresh-updates-to-claude-managed-agents-first-we-ve-added--2098120133549895978.json"
+    },
+    {
+      "status_id": "2095233745167282602",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2095233745167282602",
+      "file": "2026-09-12-claudedevs-we-re-open-sourcing-claude-commerce-agents-this-is-a-bluepri--2095233745167282602.json"
+    },
+    {
+      "status_id": "2097415273645228460",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2097415273645228460",
+      "file": "2026-09-12-claudedevs-we-sat-down-with-the-founders-of-wisprflow-useactively-and-p--2097415273645228460.json"
+    },
+    {
+      "status_id": "2095651107645145538",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2095651107645145538",
+      "file": "2026-09-12-claudedevs-we-ve-added-ant-apply-to-the-ant-cli-now-you-can-declare-cla--2095651107645145538.json"
+    },
+    {
+      "status_id": "2082707454383751305",
+      "handle": "coolcoder56",
+      "url": "https://x.com/coolcoder56/status/2082707454383751305",
+      "file": "2026-09-12-coolcoder56-openai-software-engineer-interview-experience-https-t-co-iz8--2082707454383751305.json"
+    },
+    {
+      "status_id": "2083953532903059846",
+      "handle": "coreyhainesco",
+      "url": "https://x.com/coreyhainesco/status/2083953532903059846",
+      "file": "2026-09-12-coreyhainesco-i-made-a-skill-that-watches-videos-for-me-watch-video-youtub--2083953532903059846.json"
+    },
+    {
+      "status_id": "2091570446164733962",
+      "handle": "cwolferesearch",
+      "url": "https://x.com/cwolferesearch/status/2091570446164733962",
+      "file": "2026-09-12-cwolferesearch-getting-ready-to-publish-my-complete-guide-to-rl-for-llms-to--2091570446164733962.json"
+    },
+    {
+      "status_id": "2091872097723359673",
+      "handle": "cwolferesearch",
+      "url": "https://x.com/cwolferesearch/status/2091872097723359673",
+      "file": "2026-09-12-cwolferesearch-i-just-published-my-complete-guide-to-reinforcement-learning--2091872097723359673.json"
+    },
+    {
+      "status_id": "2095256315476000817",
+      "handle": "cwolferesearch",
+      "url": "https://x.com/cwolferesearch/status/2095256315476000817",
+      "file": "2026-09-12-cwolferesearch-really-awesome-mopd-reading-list-here-is-also-another-well-w--2095256315476000817.json"
+    },
+    {
+      "status_id": "2078915960094761007",
+      "handle": "cwolferesearch",
+      "url": "https://x.com/cwolferesearch/status/2078915960094761007",
+      "file": "2026-09-12-cwolferesearch-this-post-was-initially-a-short-writeup-on-a-few-papers-that--2078915960094761007.json"
+    },
+    {
+      "status_id": "2083588813675274301",
+      "handle": "cwolferesearch",
+      "url": "https://x.com/cwolferesearch/status/2083588813675274301",
+      "file": "2026-09-12-cwolferesearch-why-is-evaluating-agents-so-difficult-relative-to-evaluating--2083588813675274301.json"
+    },
+    {
+      "status_id": "2098557144580735156",
+      "handle": "dabit3",
+      "url": "https://x.com/dabit3/status/2098557144580735156",
+      "file": "2026-09-12-dabit3-fusion-is-the-most-efficient-frontier-harness-for-gpt-6-astr--2098557144580735156.json"
+    },
+    {
+      "status_id": "2076699431207154069",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2076699431207154069",
+      "file": "2026-09-12-dair_ai-an-anatomy-of-cli-coding-agent-trajectories-bookmark-it-when--2076699431207154069.json"
+    },
+    {
+      "status_id": "2098154641854992676",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2098154641854992676",
+      "file": "2026-09-12-dair_ai-another-interesting-approach-to-self-evolve-agent-skills-but--2098154641854992676.json"
+    },
+    {
+      "status_id": "2095539831141220620",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2095539831141220620",
+      "file": "2026-09-12-dair_ai-banger-paper-from-baai-if-you-are-building-research-agents-t--2095539831141220620.json"
+    },
+    {
+      "status_id": "2093324233158045788",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2093324233158045788",
+      "file": "2026-09-12-dair_ai-banger-paper-from-google-if-you-maintain-a-skill-library-for--2093324233158045788.json"
+    },
+    {
+      "status_id": "2094872928240447665",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2094872928240447665",
+      "file": "2026-09-12-dair_ai-banger-paper-from-the-qwen-team-if-you-evaluate-agents-on-an--2094872928240447665.json"
+    },
+    {
+      "status_id": "2095880318146507139",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2095880318146507139",
+      "file": "2026-09-12-dair_ai-brilliant-new-paper-from-the-qwen-team-it-provides-insights--2095880318146507139.json"
+    },
+    {
+      "status_id": "2097555607389896732",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2097555607389896732",
+      "file": "2026-09-12-dair_ai-good-work-on-improving-memory-for-long-horizon-agents-they-s--2097555607389896732.json"
+    },
+    {
+      "status_id": "2094472291002589452",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2094472291002589452",
+      "file": "2026-09-12-dair_ai-great-paper-from-google-and-colleagues-it-proposes-an-intere--2094472291002589452.json"
+    },
+    {
+      "status_id": "2095172426925801608",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2095172426925801608",
+      "file": "2026-09-12-dair_ai-harness-of-harness-exciting-new-research-on-coding-agents-th--2095172426925801608.json"
+    },
+    {
+      "status_id": "2076341711580672483",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2076341711580672483",
+      "file": "2026-09-12-dair_ai-https-t-co-aw0w9vyrrj--2076341711580672483.json"
+    },
+    {
+      "status_id": "2096617880515211328",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2096617880515211328",
+      "file": "2026-09-12-dair_ai-https-t-co-i6tfmwnuqg--2096617880515211328.json"
+    },
+    {
+      "status_id": "2098592449568591902",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2098592449568591902",
+      "file": "2026-09-12-dair_ai-it-s-well-known-that-agents-hack-benchmark-rewards-the-usual--2098592449568591902.json"
+    },
+    {
+      "status_id": "2086846794840019178",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2086846794840019178",
+      "file": "2026-09-12-dair_ai-the-bitter-lesson-of-tool-calling-tool-calling-is-a-design-c--2086846794840019178.json"
+    },
+    {
+      "status_id": "2098411466697097235",
+      "handle": "Dan_Jeffries1",
+      "url": "https://x.com/Dan_Jeffries1/status/2098411466697097235",
+      "file": "2026-09-12-dan_jeffries1-tell-me-you-have-zero-devops-skills-without-telling-me-you-g--2098411466697097235.json"
+    },
+    {
+      "status_id": "2090266638356566321",
+      "handle": "dani_avila7",
+      "url": "https://x.com/dani_avila7/status/2090266638356566321",
+      "file": "2026-09-12-dani_avila7-anthropic-shipped-a-skill-called-discernment-nudge-that-does--2090266638356566321.json"
+    },
+    {
+      "status_id": "2081056595555868752",
+      "handle": "daniel_mac8",
+      "url": "https://x.com/daniel_mac8/status/2081056595555868752",
+      "file": "2026-09-12-daniel_mac8-fable-advisor-now-uses-opus-5-as-orchestrator-opus-5-shines--2081056595555868752.json"
+    },
+    {
+      "status_id": "2097795113237762544",
+      "handle": "daniel_mac8",
+      "url": "https://x.com/daniel_mac8/status/2097795113237762544",
+      "file": "2026-09-12-daniel_mac8-oh-boy-this-is-amazingly-cool-very-happy-i-found-this-diagra--2097795113237762544.json"
+    },
+    {
+      "status_id": "2082696597528592594",
+      "handle": "daradoescode",
+      "url": "https://x.com/daradoescode/status/2082696597528592594",
+      "file": "2026-09-12-daradoescode-new-agents-md-after-theo-s-stream-td-https-t-co-pkqqjcgm5l--2082696597528592594.json"
+    },
+    {
+      "status_id": "2098255698933006755",
+      "handle": "david_agape_",
+      "url": "https://x.com/david_agape_/status/2098255698933006755",
+      "file": "2026-09-12-david_agape_-mendonca-tirou-o-sigilo-da-pet-15-556-e-de-14-processos-do-m--2098255698933006755.json"
+    },
+    {
+      "status_id": "2093337464215932962",
+      "handle": "David_TornAI",
+      "url": "https://x.com/David_TornAI/status/2093337464215932962",
+      "file": "2026-09-12-david_tornai-people-are-using-notebooklm-to-mass-produce-specialized-clau--2093337464215932962.json"
+    },
+    {
+      "status_id": "2097720691596591345",
+      "handle": "davidsenra",
+      "url": "https://x.com/davidsenra/status/2097720691596591345",
+      "file": "2026-09-12-davidsenra-every-company-says-they-have-forward-deployed-engineers-now--2097720691596591345.json"
+    },
+    {
+      "status_id": "2097686462523146734",
+      "handle": "davidsenra",
+      "url": "https://x.com/davidsenra/status/2097686462523146734",
+      "file": "2026-09-12-davidsenra-my-conversation-with-mati-staniszewski-mati-co-founder-of-el--2097686462523146734.json"
+    },
+    {
+      "status_id": "2095669635538370934",
+      "handle": "dexhorthy",
+      "url": "https://x.com/dexhorthy/status/2095669635538370934",
+      "file": "2026-09-12-dexhorthy-finally-got-to-watching-mattpocockuk-s-interview-with-uncleb--2095669635538370934.json"
+    },
+    {
+      "status_id": "2087569590268391897",
+      "handle": "dexhorthy",
+      "url": "https://x.com/dexhorthy/status/2087569590268391897",
+      "file": "2026-09-12-dexhorthy-https-t-co-l0g15qt1tv--2087569590268391897.json"
+    },
+    {
+      "status_id": "2097373602366861631",
+      "handle": "dexhorthy",
+      "url": "https://x.com/dexhorthy/status/2097373602366861631",
+      "file": "2026-09-12-dexhorthy-software-factories-hands-on-with-real-builders-ai-that-works--2097373602366861631.json"
+    },
+    {
+      "status_id": "2086590006898958752",
+      "handle": "dhh",
+      "url": "https://x.com/dhh/status/2086590006898958752",
+      "file": "2026-09-12-dhh-fable-one-shotted-a-rust-rewrite-of-the-terminaltexteffects--2086590006898958752.json"
+    },
+    {
+      "status_id": "2082141532669333653",
+      "handle": "dkare1009",
+      "url": "https://x.com/dkare1009/status/2082141532669333653",
+      "file": "2026-09-12-dkare1009-andrew-ng-just-dropped-a-3-hour-course-on-how-to-become-an-a--2082141532669333653.json"
+    },
+    {
+      "status_id": "2084362367500955826",
+      "handle": "doctorinigo",
+      "url": "https://x.com/doctorinigo/status/2084362367500955826",
+      "file": "2026-09-12-doctorinigo-a-representation-of-the-lactate-shuttle-lactate-produced-by--2084362367500955826.json"
+    },
+    {
+      "status_id": "2096296686750666868",
+      "handle": "doctorinigo",
+      "url": "https://x.com/doctorinigo/status/2096296686750666868",
+      "file": "2026-09-12-doctorinigo-very-excited-to-share-these-results-from-our-work-with-bioli--2096296686750666868.json"
+    },
+    {
+      "status_id": "2094413457407819979",
+      "handle": "DuquesaDetax",
+      "url": "https://x.com/DuquesaDetax/status/2094413457407819979",
+      "file": "2026-09-12-duquesadetax-to-vendo-muita-gente-feliz-com-o-adiamento-do-split-obrigato--2094413457407819979.json"
+    },
+    {
+      "status_id": "2093248985435705642",
+      "handle": "dwrowland",
+      "url": "https://x.com/dwrowland/status/2093248985435705642",
+      "file": "2026-09-12-dwrowland-in-2022-i-wrote-a-thread-called-how-to-prepare-for-utmb-that--2093248985435705642.json"
+    },
+    {
+      "status_id": "2080710242929697122",
+      "handle": "elune0x",
+      "url": "https://x.com/elune0x/status/2080710242929697122",
+      "file": "2026-09-12-elune0x-10-agent-evals-every-ai-engineer-should-know-1-golden-set-a--2080710242929697122.json"
+    },
+    {
+      "status_id": "2076525778477461623",
+      "handle": "eng_khairallah1",
+      "url": "https://x.com/eng_khairallah1/status/2076525778477461623",
+      "file": "2026-09-12-eng_khairallah1-anthropic-just-showed-a-27-minute-workshop-on-how-to-actuall--2076525778477461623.json"
+    },
+    {
+      "status_id": "2068620025045418032",
+      "handle": "eng_khairallah1",
+      "url": "https://x.com/eng_khairallah1/status/2068620025045418032",
+      "file": "2026-09-12-eng_khairallah1-https-t-co-hnwk3geozx--2068620025045418032.json"
+    },
+    {
+      "status_id": "2075998771415031856",
+      "handle": "eng_khairallah1",
+      "url": "https://x.com/eng_khairallah1/status/2075998771415031856",
+      "file": "2026-09-12-eng_khairallah1-this-is-f-cking-gold-andrej-karpathy-joined-anthropic-five-w--2075998771415031856.json"
+    },
+    {
+      "status_id": "2079305065991385235",
+      "handle": "eng_khairallah1",
+      "url": "https://x.com/eng_khairallah1/status/2079305065991385235",
+      "file": "2026-09-12-eng_khairallah1-this-is-f-cking-gold-how-to-build-your-first-ai-agent-full-g--2079305065991385235.json"
+    },
+    {
+      "status_id": "2086866306167656901",
+      "handle": "Eric_Wallace_",
+      "url": "https://x.com/Eric_Wallace_/status/2086866306167656901",
+      "file": "2026-09-12-eric_wallace_-today-we-are-releasing-gpt-5-6-cyber-the-model-is-our-first--2086866306167656901.json"
+    },
+    {
+      "status_id": "2082365410369024407",
+      "handle": "Eva200699",
+      "url": "https://x.com/Eva200699/status/2082365410369024407",
+      "file": "2026-09-12-eva200699-32-200345-zip2paypalspacex0-https-t-co-7lvhsrqclh--2082365410369024407.json"
+    },
+    {
+      "status_id": "2080691057906323907",
+      "handle": "expemillyweb3",
+      "url": "https://x.com/expemillyweb3/status/2080691057906323907",
+      "file": "2026-09-12-expemillyweb3-a-father-asked-karpathy-what-to-teach-his-8-year-old-before--2080691057906323907.json"
+    },
+    {
+      "status_id": "2097801524579864803",
+      "handle": "eya0",
+      "url": "https://x.com/eya0/status/2097801524579864803",
+      "file": "2026-09-12-eya0-every-ai-accountant-fails-the-same-way-fluent-confident-unve--2097801524579864803.json"
+    },
+    {
+      "status_id": "2094501145536315670",
+      "handle": "fazle_karim1",
+      "url": "https://x.com/fazle_karim1/status/2094501145536315670",
+      "file": "2026-09-12-fazle_karim1-googleresearch-i-wonder-how-it-would-do-on-this-research-of--2094501145536315670.json"
+    },
+    {
+      "status_id": "2085323411903889876",
+      "handle": "fchollet",
+      "url": "https://x.com/fchollet/status/2085323411903889876",
+      "file": "2026-09-12-fchollet-i-would-have-assumed-it-was-fairly-obvious-but-in-case-it-s--2085323411903889876.json"
+    },
+    {
+      "status_id": "2094849655167471773",
+      "handle": "felixrieseberg",
+      "url": "https://x.com/felixrieseberg/status/2094849655167471773",
+      "file": "2026-09-12-felixrieseberg-today-we-re-releasing-fable-5-1-and-mythos-5-1-while-the-mod--2094849655167471773.json"
+    },
+    {
+      "status_id": "2098168161455514035",
+      "handle": "finviz_com",
+      "url": "https://x.com/finviz_com/status/2098168161455514035",
+      "file": "2026-09-12-finviz_com-introducing-the-finviz-matrix-we-created-a-tool-that-no-othe--2098168161455514035.json"
+    },
+    {
+      "status_id": "2096756333802311828",
+      "handle": "ggreenwald",
+      "url": "https://x.com/ggreenwald/status/2096756333802311828",
+      "file": "2026-09-12-ggreenwald-mauriciomoraes-opaulomm-se-algum-dia-eu-me-pegar-defendendo--2096756333802311828.json"
+    },
+    {
+      "status_id": "2096649629068624378",
+      "handle": "glaucia_lemos86",
+      "url": "https://x.com/glaucia_lemos86/status/2096649629068624378",
+      "file": "2026-09-12-glaucia_lemos86-caraca-absurdo-isso-aqui-segui-o-conselho-do-pvncher-em-pedi--2096649629068624378.json"
+    },
+    {
+      "status_id": "2094483372718580066",
+      "handle": "GoogleResearch",
+      "url": "https://x.com/GoogleResearch/status/2094483372718580066",
+      "file": "2026-09-12-googleresearch-introducing-timesfm-3-a-state-of-the-art-time-series-foundat--2094483372718580066.json"
+    },
+    {
+      "status_id": "2098183830968705163",
+      "handle": "GoogleResearch",
+      "url": "https://x.com/GoogleResearch/status/2098183830968705163",
+      "file": "2026-09-12-googleresearch-introducing-toolgrad-an-efficient-framework-for-generating-t--2098183830968705163.json"
+    },
+    {
+      "status_id": "2098103620080369854",
+      "handle": "guanlan",
+      "url": "https://x.com/guanlan/status/2098103620080369854",
+      "file": "2026-09-12-guanlan-exo-harness-now-runs-natively-on-runta-in-frontierharness-ev--2098103620080369854.json"
+    },
+    {
+      "status_id": "2082839180736889054",
+      "handle": "hackernoon",
+      "url": "https://x.com/hackernoon/status/2082839180736889054",
+      "file": "2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054.json"
+    },
+    {
+      "status_id": "2095111361181405259",
+      "handle": "hasantoxr",
+      "url": "https://x.com/hasantoxr/status/2095111361181405259",
+      "file": "2026-09-12-hasantoxr-stop-renting-a-chatbot-and-calling-it-your-companys-brain-ut--2095111361181405259.json"
+    },
+    {
+      "status_id": "2097398574061670664",
+      "handle": "hasantoxr",
+      "url": "https://x.com/hasantoxr/status/2097398574061670664",
+      "file": "2026-09-12-hasantoxr-you-can-now-watch-any-ai-paper-instead-of-reading-it-there-s--2097398574061670664.json"
+    },
+    {
+      "status_id": "2098162367075164170",
+      "handle": "hliriani",
+      "url": "https://x.com/hliriani/status/2098162367075164170",
+      "file": "2026-09-12-hliriani-yesterday-we-announced-our-series-a-to-reimagine-crm-as-a-bu--2098162367075164170.json"
+    },
+    {
+      "status_id": "2098603214065332290",
+      "handle": "hnshah",
+      "url": "https://x.com/hnshah/status/2098603214065332290",
+      "file": "2026-09-12-hnshah-im-late-to-this-party-but-https-t-co-2qvqvyamhq-just-showed--2098603214065332290.json"
+    },
+    {
+      "status_id": "2097410530717704546",
+      "handle": "hwchase17",
+      "url": "https://x.com/hwchase17/status/2097410530717704546",
+      "file": "2026-09-12-hwchase17-harnesses-should-make-context-engineering-easy-forking-subag--2097410530717704546.json"
+    },
+    {
+      "status_id": "2097355841183596632",
+      "handle": "hwchase17",
+      "url": "https://x.com/hwchase17/status/2097355841183596632",
+      "file": "2026-09-12-hwchase17-kai-is-very-cool-and-every-company-should-have-a-kai-this-ep--2097355841183596632.json"
+    },
+    {
+      "status_id": "2079254281274740959",
+      "handle": "IA_Quijote",
+      "url": "https://x.com/IA_Quijote/status/2079254281274740959",
+      "file": "2026-09-12-ia_quijote-guarda-esta-clase-magistral-de-1-hora-se-llama-how-to-speak--2079254281274740959.json"
+    },
+    {
+      "status_id": "2098218598997336384",
+      "handle": "ibesh_tech",
+      "url": "https://x.com/ibesh_tech/status/2098218598997336384",
+      "file": "2026-09-12-ibesh_tech-bcherny-the-review-bar-should-follow-blast-radius-not-who-wr--2098218598997336384.json"
+    },
+    {
+      "status_id": "2076340132370583992",
+      "handle": "ImadeIyamu",
+      "url": "https://x.com/ImadeIyamu/status/2076340132370583992",
+      "file": "2026-09-12-imadeiyamu-https-t-co-dskqwecp3z-great-collection-of-exceptional-writin--2076340132370583992.json"
+    },
+    {
+      "status_id": "2079197849502294287",
+      "handle": "JesusFerna7026",
+      "url": "https://x.com/JesusFerna7026/status/2079197849502294287",
+      "file": "2026-09-12-jesusferna7026-yesterday-i-highlighted-the-distributional-concerns-raised-b--2079197849502294287.json"
+    },
+    {
+      "status_id": "2082136535676404215",
+      "handle": "JohnHellemans",
+      "url": "https://x.com/JohnHellemans/status/2082136535676404215",
+      "file": "2026-09-12-johnhellemans-proud-to-present-the-definitive-guide-to-altitude-training-f--2082136535676404215.json"
+    },
+    {
+      "status_id": "2082194990592069660",
+      "handle": "josesilesdata",
+      "url": "https://x.com/josesilesdata/status/2082194990592069660",
+      "file": "2026-09-12-josesilesdata-el-web-scraping-ha-muerto-han-creado-pixelrag-un-sistema-ope--2082194990592069660.json"
+    },
+    {
+      "status_id": "2079610838143623371",
+      "handle": "karpathy",
+      "url": "https://x.com/karpathy/status/2079610838143623371",
+      "file": "2026-09-12-karpathy-one-pattern-i-find-useful-for-working-with-llms-is-a-nice-lo--2079610838143623371.json"
+    },
+    {
+      "status_id": "2098270561151676829",
+      "handle": "Kay2289123",
+      "url": "https://x.com/Kay2289123/status/2098270561151676829",
+      "file": "2026-09-12-kay2289123-ai-infra-ai-kv--2098270561151676829.json"
+    },
+    {
+      "status_id": "2097766199450829151",
+      "handle": "keepgoings0",
+      "url": "https://x.com/keepgoings0/status/2097766199450829151",
+      "file": "2026-09-12-keepgoings0-oalanicolas-from-my-experience-for-the-orchestrator-astra-xh--2097766199450829151.json"
+    },
+    {
+      "status_id": "2098444890602455431",
+      "handle": "kevinwhinnery",
+      "url": "https://x.com/kevinwhinnery/status/2098444890602455431",
+      "file": "2026-09-12-kevinwhinnery-the-era-of-the-dumb-token-pipe-is-ending-agent-harness-apis--2098444890602455431.json"
+    },
+    {
+      "status_id": "2079307547610366340",
+      "handle": "KobeissiLetter",
+      "url": "https://x.com/KobeissiLetter/status/2079307547610366340",
+      "file": "2026-09-12-kobeissiletter-the-ai-boom-is-creating-a-generational-divide-in-software-jo--2079307547610366340.json"
+    },
+    {
+      "status_id": "2080980071813177629",
+      "handle": "leopardracer",
+      "url": "https://x.com/leopardracer/status/2080980071813177629",
+      "file": "2026-09-12-leopardracer-the-2-2m-anthropic-engineer-who-built-this-graph-system-just--2080980071813177629.json"
+    },
+    {
+      "status_id": "2082108948505674112",
+      "handle": "leoxbtt",
+      "url": "https://x.com/leoxbtt/status/2082108948505674112",
+      "file": "2026-09-12-leoxbtt-bro-el-ingeniero-que-creo-claude-code-solto-un-video-de-28-m--2082108948505674112.json"
+    },
+    {
+      "status_id": "2082694020698935359",
+      "handle": "leoxbtt",
+      "url": "https://x.com/leoxbtt/status/2082694020698935359",
+      "file": "2026-09-12-leoxbtt-jensen-huang-acaba-de-matar-el-prompt-engineering-el-ceo-de--2082694020698935359.json"
+    },
+    {
+      "status_id": "2086046112142545061",
+      "handle": "levelsio",
+      "url": "https://x.com/levelsio/status/2086046112142545061",
+      "file": "2026-09-12-levelsio-this-finally-stopped-claude-s-crazy-pursuit-of-talking-more--2086046112142545061.json"
+    },
+    {
+      "status_id": "2082512842742489258",
+      "handle": "marionlepert",
+      "url": "https://x.com/marionlepert/status/2082512842742489258",
+      "file": "2026-09-12-marionlepert-catching-skin-cancer-early-is-a-home-robotics-problem-melano--2082512842742489258.json"
+    },
+    {
+      "status_id": "2098027728624570486",
+      "handle": "Marwan_3atef",
+      "url": "https://x.com/Marwan_3atef/status/2098027728624570486",
+      "file": "2026-09-12-marwan_3atef-cloudflare-ai-gateway-custom-costs-finally-understand-prompt--2098027728624570486.json"
+    },
+    {
+      "status_id": "2097986925088903355",
+      "handle": "Marwan_3atef",
+      "url": "https://x.com/Marwan_3atef/status/2097986925088903355",
+      "file": "2026-09-12-marwan_3atef-datadog-put-agent-observability-in-your-coding-agent-and-the--2097986925088903355.json"
+    },
+    {
+      "status_id": "2097976275373531523",
+      "handle": "Marwan_3atef",
+      "url": "https://x.com/Marwan_3atef/status/2097976275373531523",
+      "file": "2026-09-12-marwan_3atef-google-cloud-put-data-agent-kit-in-the-ide-and-the-pitch-is--2097976275373531523.json"
+    },
+    {
+      "status_id": "2094787007184511082",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2094787007184511082",
+      "file": "2026-09-12-mattpocockuk-15-months-later-and-i-would-probably-now-describe-the-effect--2094787007184511082.json"
+    },
+    {
+      "status_id": "2095902639158440210",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2095902639158440210",
+      "file": "2026-09-12-mattpocockuk-ai-has-eaten-tactical-programming-so-juniors-need-strategic--2095902639158440210.json"
+    },
+    {
+      "status_id": "2097710169245323303",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2097710169245323303",
+      "file": "2026-09-12-mattpocockuk-alper-is-right-setting-expectations-on-software-quality-earl--2097710169245323303.json"
+    },
+    {
+      "status_id": "2097611379763007870",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2097611379763007870",
+      "file": "2026-09-12-mattpocockuk-atpaawej-1-learn-to-read-code-2-learn-to-use-the-terminal-3--2097611379763007870.json"
+    },
+    {
+      "status_id": "2098062605407461744",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2098062605407461744",
+      "file": "2026-09-12-mattpocockuk-coming-soon-to-mattpocock-skills-retro-gives-you-opportuniti--2098062605407461744.json"
+    },
+    {
+      "status_id": "2097638166232457451",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2097638166232457451",
+      "file": "2026-09-12-mattpocockuk-i-ve-been-trying-to-use-ai-for-knowledge-work-course-plannin--2097638166232457451.json"
+    },
+    {
+      "status_id": "2097238983226868194",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2097238983226868194",
+      "file": "2026-09-12-mattpocockuk-if-you-give-me-a-drawer-i-will-eventually-fill-it-with-cable--2097238983226868194.json"
+    },
+    {
+      "status_id": "2095554201136791656",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2095554201136791656",
+      "file": "2026-09-12-mattpocockuk-if-you-re-looking-for-someone-to-blame-for-opus-5-loving-the--2095554201136791656.json"
+    },
+    {
+      "status_id": "2088290952704151671",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2088290952704151671",
+      "file": "2026-09-12-mattpocockuk-just-saw-a-comment-saying-that-i-ve-never-made-a-proper-over--2088290952704151671.json"
+    },
+    {
+      "status_id": "2096906181121818702",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2096906181121818702",
+      "file": "2026-09-12-mattpocockuk-knowledge-work-is-so-much-harder-to-automate-with-agents-tha--2096906181121818702.json"
+    },
+    {
+      "status_id": "2084985277102031137",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2084985277102031137",
+      "file": "2026-09-12-mattpocockuk-mattpocock-skills-v1-2-is-out-we-re-now-the-19th-most-starre--2084985277102031137.json"
+    },
+    {
+      "status_id": "2087555290174566491",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2087555290174566491",
+      "file": "2026-09-12-mattpocockuk-my-ide-is-discord-https-t-co-xsihrc2kle--2087555290174566491.json"
+    },
+    {
+      "status_id": "2097967205216379355",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2097967205216379355",
+      "file": "2026-09-12-mattpocockuk-one-thing-that-scares-me-about-coding-with-ai-is-that-it-s-h--2097967205216379355.json"
+    },
+    {
+      "status_id": "2094500508224409852",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2094500508224409852",
+      "file": "2026-09-12-mattpocockuk-starting-to-wonder-if-the-smartest-way-to-reduce-slop-is-jus--2094500508224409852.json"
+    },
+    {
+      "status_id": "2094156122441625770",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2094156122441625770",
+      "file": "2026-09-12-mattpocockuk-this-has-ended-up-being-better-than-expected-and-fills-an-in--2094156122441625770.json"
+    },
+    {
+      "status_id": "2086838432102228008",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2086838432102228008",
+      "file": "2026-09-12-mattpocockuk-vibed-out-an-app-today-and-i-haven-t-looked-at-the-internals--2086838432102228008.json"
+    },
+    {
+      "status_id": "2082774006189449355",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2082774006189449355",
+      "file": "2026-09-12-mattpocockuk-wayfinder-lets-you-plan-your-most-ambitious-projects-ever-yo--2082774006189449355.json"
+    },
+    {
+      "status_id": "2096666329495257563",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2096666329495257563",
+      "file": "2026-09-12-mattpocockuk-what-techniques-do-you-use-for-making-ai-authored-pr-s-easie--2096666329495257563.json"
+    },
+    {
+      "status_id": "2095895922576085034",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2095895922576085034",
+      "file": "2026-09-12-mattpocockuk-writing-for-agents-helps-but-not-without-human-oversight-har--2095895922576085034.json"
+    },
+    {
+      "status_id": "2098155792327381294",
+      "handle": "mattyp",
+      "url": "https://x.com/mattyp/status/2098155792327381294",
+      "file": "2026-09-12-mattyp-giving-grok-bot-a-phone-00-19-installing-dialbot-00-54-bland--2098155792327381294.json"
+    },
+    {
+      "status_id": "2098050525279478059",
+      "handle": "MaxForAI",
+      "url": "https://x.com/MaxForAI/status/2098050525279478059",
+      "file": "2026-09-12-maxforai-nvidia-harness-sol-pi-nvlabs-sol-pi-scaling-auto-research-lo--2098050525279478059.json"
+    },
+    {
+      "status_id": "2097725977199865964",
+      "handle": "mem0ai",
+      "url": "https://x.com/mem0ai/status/2097725977199865964",
+      "file": "2026-09-12-mem0ai-https-t-co-tcm1ujyofb--2097725977199865964.json"
+    },
+    {
+      "status_id": "2095166860740174273",
+      "handle": "mihail_eric",
+      "url": "https://x.com/mihail_eric/status/2095166860740174273",
+      "file": "2026-09-12-mihail_eric-im-excited-to-finally-announce-the-newest-edition-my-stanfor--2095166860740174273.json"
+    },
+    {
+      "status_id": "2098097592001548319",
+      "handle": "mihail_eric",
+      "url": "https://x.com/mihail_eric/status/2098097592001548319",
+      "file": "2026-09-12-mihail_eric-line-by-line-code-review-will-soon-disappear-the-future-is-a--2098097592001548319.json"
+    },
+    {
+      "status_id": "2079048927593275868",
+      "handle": "milesdeutscher",
+      "url": "https://x.com/milesdeutscher/status/2079048927593275868",
+      "file": "2026-09-12-milesdeutscher-this-is-the-one-github-repo-that-everyone-needs-to-save-the--2079048927593275868.json"
+    },
+    {
+      "status_id": "2097762463072612533",
+      "handle": "mindarchx",
+      "url": "https://x.com/mindarchx/status/2097762463072612533",
+      "file": "2026-09-12-mindarchx-a-dead-mit-professor-accidentally-destroyed-the-25-billion-e--2097762463072612533.json"
+    },
+    {
+      "status_id": "2085525434385695137",
+      "handle": "MTSlive",
+      "url": "https://x.com/MTSlive/status/2085525434385695137",
+      "file": "2026-09-12-mtslive-xiaoyin-qu-breaks-down-deepseek-s-cheap-inference-philosophy--2085525434385695137.json"
+    },
+    {
+      "status_id": "2089457435459404093",
+      "handle": "natebjones",
+      "url": "https://x.com/natebjones/status/2089457435459404093",
+      "file": "2026-09-12-natebjones-psa-if-you-are-tired-of-claude-lish-or-chat-lish-tell-your-a--2089457435459404093.json"
+    },
+    {
+      "status_id": "2097889337073680776",
+      "handle": "naval",
+      "url": "https://x.com/naval/status/2097889337073680776",
+      "file": "2026-09-12-naval-the-frontier-lab-flywheel-is-to-get-the-smartest-people-to-u--2097889337073680776.json"
+    },
+    {
+      "status_id": "2080052566377763071",
+      "handle": "naval",
+      "url": "https://x.com/naval/status/2080052566377763071",
+      "file": "2026-09-12-naval-when-software-was-expensive-thin-horizontal-best-of-breed-so--2080052566377763071.json"
+    },
+    {
+      "status_id": "2097369705791307952",
+      "handle": "nikogrupen",
+      "url": "https://x.com/nikogrupen/status/2097369705791307952",
+      "file": "2026-09-12-nikogrupen-https-t-co-fg8fnikqv3--2097369705791307952.json"
+    },
+    {
+      "status_id": "2096996689680978148",
+      "handle": "OhansEmmanuel",
+      "url": "https://x.com/OhansEmmanuel/status/2096996689680978148",
+      "file": "2026-09-12-ohansemmanuel-mermaid-diagrams-are-the-floor-every-pr-at-coldteaai-ships-w--2096996689680978148.json"
+    },
+    {
+      "status_id": "2097059598960132110",
+      "handle": "omarsar0",
+      "url": "https://x.com/omarsar0/status/2097059598960132110",
+      "file": "2026-09-12-omarsar0-a-few-days-ago-anthropic-shared-this-brilliant-prompt-i-was--2097059598960132110.json"
+    },
+    {
+      "status_id": "2098524621439914375",
+      "handle": "omarsar0",
+      "url": "https://x.com/omarsar0/status/2098524621439914375",
+      "file": "2026-09-12-omarsar0-agents-api-is-a-bigger-deal-than-it-seems-openai-s-bet-on-ma--2098524621439914375.json"
+    },
+    {
+      "status_id": "2097449134202503657",
+      "handle": "omarsar0",
+      "url": "https://x.com/omarsar0/status/2097449134202503657",
+      "file": "2026-09-12-omarsar0-find-the-whole-collection-here-https-t-co-hskmmhjf1l--2097449134202503657.json"
+    },
+    {
+      "status_id": "2097449131648197024",
+      "handle": "omarsar0",
+      "url": "https://x.com/omarsar0/status/2097449131648197024",
+      "file": "2026-09-12-omarsar0-harness-engineering-is-a-top-skill-right-now-i-saw-a-great-o--2097449131648197024.json"
+    },
+    {
+      "status_id": "2098426608793362916",
+      "handle": "omarsar0",
+      "url": "https://x.com/omarsar0/status/2098426608793362916",
+      "file": "2026-09-12-omarsar0-harness-engineering-is-a-top-skill-right-now-this-new-meta-p--2098426608793362916.json"
+    },
+    {
+      "status_id": "2097790938911498494",
+      "handle": "omarsar0",
+      "url": "https://x.com/omarsar0/status/2097790938911498494",
+      "file": "2026-09-12-omarsar0-highly-recommended-model-harness-co-optimization-is-where-yo--2097790938911498494.json"
+    },
+    {
+      "status_id": "2098140712504332411",
+      "handle": "omarsar0",
+      "url": "https://x.com/omarsar0/status/2098140712504332411",
+      "file": "2026-09-12-omarsar0-this-is-a-brilliant-paper-it-s-of-the-cleanest-long-context--2098140712504332411.json"
+    },
+    {
+      "status_id": "2098531286319341932",
+      "handle": "omarsar0",
+      "url": "https://x.com/omarsar0/status/2098531286319341932",
+      "file": "2026-09-12-omarsar0-very-cool-paper-on-memory-compression-for-agents-if-you-run--2098531286319341932.json"
+    },
+    {
+      "status_id": "2089517641320788148",
+      "handle": "opapoeconomico",
+      "url": "https://x.com/opapoeconomico/status/2089517641320788148",
+      "file": "2026-09-12-opapoeconomico-saiu-no-journal-of-financial-economics-o-estudo-mais-complet--2089517641320788148.json"
+    },
+    {
+      "status_id": "2098118191029624911",
+      "handle": "OpenAI",
+      "url": "https://x.com/OpenAI/status/2098118191029624911",
+      "file": "2026-09-12-openai-now-available-chatgpt-for-financial-services-this-is-a-tailo--2098118191029624911.json"
+    },
+    {
+      "status_id": "2082263717916586117",
+      "handle": "OpenAI",
+      "url": "https://x.com/OpenAI/status/2082263717916586117",
+      "file": "2026-09-12-openai-we-quietly-released-the-open-source-codex-security-cli-but-h--2082263717916586117.json"
+    },
+    {
+      "status_id": "2098502006935814272",
+      "handle": "OpenAIDevs",
+      "url": "https://x.com/OpenAIDevs/status/2098502006935814272",
+      "file": "2026-09-12-openaidevs-habitat-is-openai-s-online-storage-platform-that-powers-ever--2098502006935814272.json"
+    },
+    {
+      "status_id": "2098502018998649036",
+      "handle": "OpenAIDevs",
+      "url": "https://x.com/OpenAIDevs/status/2098502018998649036",
+      "file": "2026-09-12-openaidevs-python-allowed-for-rapid-prototyping-of-our-platform-to-supp--2098502018998649036.json"
+    },
+    {
+      "status_id": "2098502031338340416",
+      "handle": "OpenAIDevs",
+      "url": "https://x.com/OpenAIDevs/status/2098502031338340416",
+      "file": "2026-09-12-openaidevs-while-we-ve-now-launched-a-rust-rewrite-we-re-sharing-those--2098502031338340416.json"
+    },
+    {
+      "status_id": "2093994412770566256",
+      "handle": "openhonor",
+      "url": "https://x.com/openhonor/status/2093994412770566256",
+      "file": "2026-09-12-openhonor-puro-2b-is-open-beyond-the-weights-technical-report-final-in--2093994412770566256.json"
+    },
+    {
+      "status_id": "2075945480463466519",
+      "handle": "pankajkumar_dev",
+      "url": "https://x.com/pankajkumar_dev/status/2075945480463466519",
+      "file": "2026-09-12-pankajkumar_dev-opus-5-leaks-opus-5-is-targeting-a-launch-by-the-end-of-this--2075945480463466519.json"
+    },
+    {
+      "status_id": "2086732722261643450",
+      "handle": "PawelHuryn",
+      "url": "https://x.com/PawelHuryn/status/2086732722261643450",
+      "file": "2026-09-12-pawelhuryn-opus-5-is-way-better-than-4-8-but-cutting-80-of-its-instruct--2086732722261643450.json"
+    },
+    {
+      "status_id": "2098288931620184216",
+      "handle": "polydao",
+      "url": "https://x.com/polydao/status/2098288931620184216",
+      "file": "2026-09-12-polydao-claude-obsidian-loop-engineering-a-vault-that-runs-itself-th--2098288931620184216.json"
+    },
+    {
+      "status_id": "2094457600259842065",
+      "handle": "poteto",
+      "url": "https://x.com/poteto/status/2094457600259842065",
+      "file": "2026-09-12-poteto-i-m-writing-a-guide-to-pstack-here-s-part-one-https-t-co-4yj--2094457600259842065.json"
+    },
+    {
+      "status_id": "2094967827019243547",
+      "handle": "poteto",
+      "url": "https://x.com/poteto/status/2094967827019243547",
+      "file": "2026-09-12-poteto-new-in-dr-eggbot-v0-2-0-eggbot-can-do-a-health-check-on-all--2094967827019243547.json"
+    },
+    {
+      "status_id": "2097380152703615396",
+      "handle": "poteto",
+      "url": "https://x.com/poteto/status/2097380152703615396",
+      "file": "2026-09-12-poteto-pstack-0-15-0-is-here-this-release-contains-mainly-token-usa--2097380152703615396.json"
+    },
+    {
+      "status_id": "2082874054483255805",
+      "handle": "poteto",
+      "url": "https://x.com/poteto/status/2082874054483255805",
+      "file": "2026-09-12-poteto-pstack-now-includes-2-skills-i-recommend-everyone-use-or-cop--2082874054483255805.json"
+    },
+    {
+      "status_id": "2098634643323142286",
+      "handle": "poteto",
+      "url": "https://x.com/poteto/status/2098634643323142286",
+      "file": "2026-09-12-poteto-what-questions-do-you-have-about-pstack-https-t-co-lopojdztt--2098634643323142286.json"
+    },
+    {
+      "status_id": "2082797844889485453",
+      "handle": "ProSyn",
+      "url": "https://x.com/ProSyn/status/2082797844889485453",
+      "file": "2026-09-12-prosyn-amid-reports-of-mass-lay-https-t-co-ot2ngxlflm--2082797844889485453.json"
+    },
+    {
+      "status_id": "2095991462416490862",
+      "handle": "pvncher",
+      "url": "https://x.com/pvncher/status/2095991462416490862",
+      "file": "2026-09-12-pvncher-https-t-co-idl6i25aqu--2095991462416490862.json"
+    },
+    {
+      "status_id": "2097931902594265474",
+      "handle": "PythonHub",
+      "url": "https://x.com/PythonHub/status/2097931902594265474",
+      "file": "2026-09-12-pythonhub-autosaddler-automatic-harness-optimization-with-durable-upda--2097931902594265474.json"
+    },
+    {
+      "status_id": "2092662174443249870",
+      "handle": "PythonHub",
+      "url": "https://x.com/PythonHub/status/2092662174443249870",
+      "file": "2026-09-12-pythonhub-soup-fine-tune-and-post-train-llms-in-one-command-no-ssh-no--2092662174443249870.json"
+    },
+    {
+      "status_id": "2092420578875527174",
+      "handle": "PythonHub",
+      "url": "https://x.com/PythonHub/status/2092420578875527174",
+      "file": "2026-09-12-pythonhub-tencent-opensource-ai-red-teaming-platform-a-full-stack-ai-r--2092420578875527174.json"
+    },
+    {
+      "status_id": "2085408811104534754",
+      "handle": "quxiaoyin",
+      "url": "https://x.com/quxiaoyin/status/2085408811104534754",
+      "file": "2026-09-12-quxiaoyin-if-you-left-your-coding-agent-alone-for-more-than-1h-don-t-h--2085408811104534754.json"
+    },
+    {
+      "status_id": "2095157452904018263",
+      "handle": "QwenDevs",
+      "url": "https://x.com/QwenDevs/status/2095157452904018263",
+      "file": "2026-09-12-qwendevs-alibabas-zvec-team-open-sourced-zg-a-local-search-tool-for-d--2095157452904018263.json"
+    },
+    {
+      "status_id": "2097956088792396200",
+      "handle": "realfxw",
+      "url": "https://x.com/realfxw/status/2097956088792396200",
+      "file": "2026-09-12-realfxw-multi-agent-victor-dibia-designing-multiagent-systems-picoag--2097956088792396200.json"
+    },
+    {
+      "status_id": "2095170001175199771",
+      "handle": "RLanceMartin",
+      "url": "https://x.com/RLanceMartin/status/2095170001175199771",
+      "file": "2026-09-12-rlancemartin-i-recently-added-this-command-to-the-claude-api-skill-run-it--2095170001175199771.json"
+    },
+    {
+      "status_id": "2098044628058689738",
+      "handle": "robotbird01",
+      "url": "https://x.com/robotbird01/status/2098044628058689738",
+      "file": "2026-09-12-robotbird01-harness-pi-agent-skill-https-t-co-6eqhirel54--2098044628058689738.json"
+    },
+    {
+      "status_id": "2082695402953031825",
+      "handle": "rohanpaul_ai",
+      "url": "https://x.com/rohanpaul_ai/status/2082695402953031825",
+      "file": "2026-09-12-rohanpaul_ai-claude-code-creator-boris-cherny-bcherny-for-people-who-aren--2082695402953031825.json"
+    },
+    {
+      "status_id": "2097335398536212741",
+      "handle": "RoundtableSpace",
+      "url": "https://x.com/RoundtableSpace/status/2097335398536212741",
+      "file": "2026-09-12-roundtablespace-supermemory-is-1st-on-every-major-ai-memory-benchmark-95-rec--2097335398536212741.json"
+    },
+    {
+      "status_id": "2080975096345247876",
+      "handle": "RoundtableSpace",
+      "url": "https://x.com/RoundtableSpace/status/2080975096345247876",
+      "file": "2026-09-12-roundtablespace-this-guy-makes-complex-ai-agent-concepts-ridiculously-easy-t--2080975096345247876.json"
+    },
+    {
+      "status_id": "2082562583131726050",
+      "handle": "rvaniaaaa",
+      "url": "https://x.com/rvaniaaaa/status/2082562583131726050",
+      "file": "2026-09-12-rvaniaaaa-someone-published-the-architecture-for-an-ai-agent-that-neve--2082562583131726050.json"
+    },
+    {
+      "status_id": "2097944667291635819",
+      "handle": "Ryrenz",
+      "url": "https://x.com/Ryrenz/status/2097944667291635819",
+      "file": "2026-09-12-ryrenz-ai-no-ai-slop-github-7700-star-7-peter-yang-creator-economy--2097944667291635819.json"
+    },
+    {
+      "status_id": "2084202666058481781",
+      "handle": "SandCResearch",
+      "url": "https://x.com/SandCResearch/status/2084202666058481781",
+      "file": "2026-09-12-sandcresearch-cold-water-immersion-has-historically-been-used-to-speed-rec--2084202666058481781.json"
+    },
+    {
+      "status_id": "2076323181154230284",
+      "handle": "satyanadella",
+      "url": "https://x.com/satyanadella/status/2076323181154230284",
+      "file": "2026-09-12-satyanadella-https-t-co-xv6csf1sbv--2076323181154230284.json"
+    },
+    {
+      "status_id": "2093042350427881973",
+      "handle": "signulll",
+      "url": "https://x.com/signulll/status/2093042350427881973",
+      "file": "2026-09-12-signulll-talked-to-a-guy-from-anthropic-for-a-long-time-last-night-fa--2093042350427881973.json"
+    },
+    {
+      "status_id": "2094214737957691854",
+      "handle": "simonw",
+      "url": "https://x.com/simonw/status/2094214737957691854",
+      "file": "2026-09-12-simonw-here-s-my-attempt-at-explaining-what-chatgpt-work-can-actual--2094214737957691854.json"
+    },
+    {
+      "status_id": "2094864223683903800",
+      "handle": "simonw",
+      "url": "https://x.com/simonw/status/2094864223683903800",
+      "file": "2026-09-12-simonw-just-noticed-the-chatgpt-desktop-app-previously-named-codex--2094864223683903800.json"
+    },
+    {
+      "status_id": "2098573718142452055",
+      "handle": "simonw",
+      "url": "https://x.com/simonw/status/2098573718142452055",
+      "file": "2026-09-12-simonw-wow-turns-out-another-openai-agent-swarm-was-busy-spamming-a--2098573718142452055.json"
+    },
+    {
+      "status_id": "2089763604371218674",
+      "handle": "SitkoSebastian",
+      "url": "https://x.com/SitkoSebastian/status/2089763604371218674",
+      "file": "2026-09-12-sitkosebastian-you-don-t-need-a-power-meter-to-know-how-many-watts-a-rider--2089763604371218674.json"
+    },
+    {
+      "status_id": "2098087369224405122",
+      "handle": "skeptrune",
+      "url": "https://x.com/skeptrune/status/2098087369224405122",
+      "file": "2026-09-12-skeptrune-sharing-a-map-of-the-most-important-skills-for-inference-eng--2098087369224405122.json"
+    },
+    {
+      "status_id": "2098112529796878408",
+      "handle": "sophiamyang",
+      "url": "https://x.com/sophiamyang/status/2098112529796878408",
+      "file": "2026-09-12-sophiamyang-someone-please-tell-me-this-exists-a-meta-harness-kanban-boa--2098112529796878408.json"
+    },
+    {
+      "status_id": "2078969602189746340",
+      "handle": "Sprytixl",
+      "url": "https://x.com/Sprytixl/status/2078969602189746340",
+      "file": "2026-09-12-sprytixl-stanford-and-anthropic-spent-3-1m-to-prove-your-agent-perfor--2078969602189746340.json"
+    },
+    {
+      "status_id": "2080899298838098034",
+      "handle": "steipete",
+      "url": "https://x.com/steipete/status/2080899298838098034",
+      "file": "2026-09-12-steipete-hit-a-new-record-with-our-autoreview-skill-66-rounds-on-a-gn--2080899298838098034.json"
+    },
+    {
+      "status_id": "2098130889486274820",
+      "handle": "stevendcoffey",
+      "url": "https://x.com/stevendcoffey/status/2098130889486274820",
+      "file": "2026-09-12-stevendcoffey-today-we-re-launching-the-agents-api-a-brand-new-way-to-buil--2098130889486274820.json"
+    },
+    {
+      "status_id": "2096439998539321653",
+      "handle": "stretchcloud",
+      "url": "https://x.com/stretchcloud/status/2096439998539321653",
+      "file": "2026-09-12-stretchcloud-spotify-s-engineering-team-cut-claude-code-token-usage-by-90--2096439998539321653.json"
+    },
+    {
+      "status_id": "2098053941800100294",
+      "handle": "Sumanth_077",
+      "url": "https://x.com/Sumanth_077/status/2098053941800100294",
+      "file": "2026-09-12-sumanth_077-bytedance-dropped-a-banger-paper-on-self-evolving-agent-harn--2098053941800100294.json"
+    },
+    {
+      "status_id": "2098416224803987968",
+      "handle": "Sumanth_077",
+      "url": "https://x.com/Sumanth_077/status/2098416224803987968",
+      "file": "2026-09-12-sumanth_077-i-built-a-self-evolving-code-review-agent-most-code-review-a--2098416224803987968.json"
+    },
+    {
+      "status_id": "2098026202464243908",
+      "handle": "suraj_sharma14",
+      "url": "https://x.com/suraj_sharma14/status/2098026202464243908",
+      "file": "2026-09-12-suraj_sharma14-as-an-ai-engineer-you-must-build-these-projects-systems-that--2098026202464243908.json"
+    },
+    {
+      "status_id": "2098489252707541305",
+      "handle": "svpino",
+      "url": "https://x.com/svpino/status/2098489252707541305",
+      "file": "2026-09-12-svpino-i-ve-been-trying-codex-to-analyze-a-dataset-and-honestly-i-v--2098489252707541305.json"
+    },
+    {
+      "status_id": "2098489264749334565",
+      "handle": "svpino",
+      "url": "https://x.com/svpino/status/2098489264749334565",
+      "file": "2026-09-12-svpino-the-frontieragent-framework-is-here-star-the-repo-https-t-co--2098489264749334565.json"
+    },
+    {
+      "status_id": "2080877747338113444",
+      "handle": "swapnakpanda",
+      "url": "https://x.com/swapnakpanda/status/2080877747338113444",
+      "file": "2026-09-12-swapnakpanda-stanford-s-free-courses-on-ai-amp-ml-cs221-artificial-intell--2080877747338113444.json"
+    },
+    {
+      "status_id": "2082728912165986348",
+      "handle": "tashecon",
+      "url": "https://x.com/tashecon/status/2082728912165986348",
+      "file": "2026-09-12-tashecon-remarkable-how-the-economist-appears-to-have-been-captured-b--2082728912165986348.json"
+    },
+    {
+      "status_id": "2098049042773397683",
+      "handle": "TencentAI_News",
+      "url": "https://x.com/TencentAI_News/status/2098049042773397683",
+      "file": "2026-09-12-tencentai_news-the-open-source-weknora-mit-22k-stars-just-shipped-v0-8-0-a--2098049042773397683.json"
+    },
+    {
+      "status_id": "2097357231293358126",
+      "handle": "tferriss",
+      "url": "https://x.com/tferriss/status/2097357231293358126",
+      "file": "2026-09-12-tferriss-the-1-most-clicked-link-in-the-latest-5-bullet-friday-editio--2097357231293358126.json"
+    },
+    {
+      "status_id": "2082684092768751792",
+      "handle": "thenarrator",
+      "url": "https://x.com/thenarrator/status/2082684092768751792",
+      "file": "2026-09-12-thenarrator-a-prediction-markets-true-quality-metric-is-repricing-latenc--2082684092768751792.json"
+    },
+    {
+      "status_id": "2081066227619836308",
+      "handle": "ThePrimeagen",
+      "url": "https://x.com/ThePrimeagen/status/2081066227619836308",
+      "file": "2026-09-12-theprimeagen-something-that-has-greatly-improved-the-reliability-of-the-c--2081066227619836308.json"
+    },
+    {
+      "status_id": "2078774556249186345",
+      "handle": "thesupermanmx",
+      "url": "https://x.com/thesupermanmx/status/2078774556249186345",
+      "file": "2026-09-12-thesupermanmx-china-open-sourced-a-peanut-sized-ocr-that-parses-entire-100--2078774556249186345.json"
+    },
+    {
+      "status_id": "2098612714704891959",
+      "handle": "thsottiaux",
+      "url": "https://x.com/thsottiaux/status/2098612714704891959",
+      "file": "2026-09-12-thsottiaux-hi-astra-users-a-reset-and-a-quick-update-on-quality-issues--2098612714704891959.json"
+    },
+    {
+      "status_id": "2082241164850364555",
+      "handle": "thsottiaux",
+      "url": "https://x.com/thsottiaux/status/2082241164850364555",
+      "file": "2026-09-12-thsottiaux-more-opensource-goodness-we-have-just-released-a-cli-and-typ--2082241164850364555.json"
+    },
+    {
+      "status_id": "2097736079122067907",
+      "handle": "togethercompute",
+      "url": "https://x.com/togethercompute/status/2097736079122067907",
+      "file": "2026-09-12-togethercompute-https-t-co-k3m6rc8eg3--2097736079122067907.json"
+    },
+    {
+      "status_id": "2097841937642332595",
+      "handle": "tom_doerr",
+      "url": "https://x.com/tom_doerr/status/2097841937642332595",
+      "file": "2026-09-12-tom_doerr-hyperresearch-turns-claude-code-into-a-research-agent-that-i--2097841937642332595.json"
+    },
+    {
+      "status_id": "2098020699365355709",
+      "handle": "trending_repos",
+      "url": "https://x.com/trending_repos/status/2098020699365355709",
+      "file": "2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098020699365355709.json"
+    },
+    {
+      "status_id": "2098382953235562613",
+      "handle": "trending_repos",
+      "url": "https://x.com/trending_repos/status/2098382953235562613",
+      "file": "2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098382953235562613.json"
+    },
+    {
+      "status_id": "2098350898732990886",
+      "handle": "trendtech33566",
+      "url": "https://x.com/trendtech33566/status/2098350898732990886",
+      "file": "2026-09-12-trendtech33566-aiui-skills3-7vercellinearaiskill-ui-web-react-native-swift--2098350898732990886.json"
+    },
+    {
+      "status_id": "2095410064492507274",
+      "handle": "trevin",
+      "url": "https://x.com/trevin/status/2095410064492507274",
+      "file": "2026-09-12-trevin-using-fable-5-1-add-this-to-your-claude-md-file-to-help-its--2095410064492507274.json"
+    },
+    {
+      "status_id": "2098531560643539440",
+      "handle": "trq212",
+      "url": "https://x.com/trq212/status/2098531560643539440",
+      "file": "2026-09-12-trq212-we-heard-feedback-that-it-s-hard-to-know-if-your-skills-are--2098531560643539440.json"
+    },
+    {
+      "status_id": "2080710971228918066",
+      "handle": "trq212",
+      "url": "https://x.com/trq212/status/2080710971228918066",
+      "file": "2026-09-12-trq212-we-removed-80-of-the-claude-code-system-prompt-for-our-newes--2080710971228918066.json"
+    },
+    {
+      "status_id": "2097955506891469272",
+      "handle": "txbrraa",
+      "url": "https://x.com/txbrraa/status/2097955506891469272",
+      "file": "2026-09-12-txbrraa-github-acaba-de-solucionar-el-mayor-problema-del-vibe-coding--2097955506891469272.json"
+    },
+    {
+      "status_id": "2080881800877134004",
+      "handle": "tydsh",
+      "url": "https://x.com/tydsh/status/2080881800877134004",
+      "file": "2026-09-12-tydsh-a-novel-way-to-do-rl-in-llm-post-training-inspired-by-our-pr--2080881800877134004.json"
+    },
+    {
+      "status_id": "2098177194979983830",
+      "handle": "UberEng",
+      "url": "https://x.com/UberEng/status/2098177194979983830",
+      "file": "2026-09-12-ubereng-we-cut-uber-eats-search-latency-in-half-how-measure-identify--2098177194979983830.json"
+    },
+    {
+      "status_id": "2095876609689498067",
+      "handle": "undefinedKi",
+      "url": "https://x.com/undefinedKi/status/2095876609689498067",
+      "file": "2026-09-12-undefinedki-https-t-co-1p5kgpb1x8--2095876609689498067.json"
+    },
+    {
+      "status_id": "2095942506433089832",
+      "handle": "undefinedKi",
+      "url": "https://x.com/undefinedKi/status/2095942506433089832",
+      "file": "2026-09-12-undefinedki-spotify-just-published-the-internal-setup-their-engineers-us--2095942506433089832.json"
+    },
+    {
+      "status_id": "2079000862962417996",
+      "handle": "VaibhavSisinty",
+      "url": "https://x.com/VaibhavSisinty/status/2079000862962417996",
+      "file": "2026-09-12-vaibhavsisinty-baidu-just-open-sourced-an-ocr-model-that-reads-entire-40-pa--2079000862962417996.json"
+    },
+    {
+      "status_id": "2098033757504634982",
+      "handle": "Voxyz_ai",
+      "url": "https://x.com/Voxyz_ai/status/2098033757504634982",
+      "file": "2026-09-12-voxyz_ai-a-lot-of-people-have-asked-how-to-configure-this-cost-effici--2098033757504634982.json"
+    },
+    {
+      "status_id": "2097814698204832116",
+      "handle": "Voxyz_ai",
+      "url": "https://x.com/Voxyz_ai/status/2097814698204832116",
+      "file": "2026-09-12-voxyz_ai-codex-tip-a-cost-efficient-luna-sol-agent-tree-orchestrated--2097814698204832116.json"
+    },
+    {
+      "status_id": "2077622505184100831",
+      "handle": "wayen_ai",
+      "url": "https://x.com/wayen_ai/status/2077622505184100831",
+      "file": "2026-09-12-wayen_ai-20-github-understand-anything--2077622505184100831.json"
+    },
+    {
+      "status_id": "2098361620493660493",
+      "handle": "witcheer",
+      "url": "https://x.com/witcheer/status/2098361620493660493",
+      "file": "2026-09-12-witcheer-a-hermes-agent-community-member-built-a-kit-that-changes-two--2098361620493660493.json"
+    },
+    {
+      "status_id": "2098020649662816503",
+      "handle": "witcheer",
+      "url": "https://x.com/witcheer/status/2098020649662816503",
+      "file": "2026-09-12-witcheer-a-hermes-agent-community-member-built-a-layer-that-sits-on-t--2098020649662816503.json"
+    },
+    {
+      "status_id": "2085526335506592087",
+      "handle": "Xudong07452910",
+      "url": "https://x.com/Xudong07452910/status/2085526335506592087",
+      "file": "2026-09-12-xudong07452910-agent-agent-scheduler-loopx-codexclaude-codecursorpi-agent--2085526335506592087.json"
+    },
+    {
+      "status_id": "2095444189743902927",
+      "handle": "Xudong07452910",
+      "url": "https://x.com/Xudong07452910/status/2095444189743902927",
+      "file": "2026-09-12-xudong07452910-netflix-llm-as-a-judge-netflix-judge-judge-rart-judge--2095444189743902927.json"
+    },
+    {
+      "status_id": "2098655277197201752",
+      "handle": "Xudong07452910",
+      "url": "https://x.com/Xudong07452910/status/2098655277197201752",
+      "file": "2026-09-12-xudong07452910-openai-skills-agents-md-blog-agent-engineering-astra-skill--2098655277197201752.json"
+    },
+    {
+      "status_id": "2096970626036855197",
+      "handle": "ycombinator",
+      "url": "https://x.com/ycombinator/status/2096970626036855197",
+      "file": "2026-09-12-ycombinator-harnesses-often-get-dismissed-as-just-scaffolding-just-promp--2096970626036855197.json"
+    },
+    {
+      "status_id": "2097428458120835085",
+      "handle": "yenkel",
+      "url": "https://x.com/yenkel/status/2097428458120835085",
+      "file": "2026-09-12-yenkel-great-to-see-the-muse-team-took-security-seriously-https-t-c--2097428458120835085.json"
+    },
+    {
+      "status_id": "2078222648539271430",
+      "handle": "zodchiii",
+      "url": "https://x.com/zodchiii/status/2078222648539271430",
+      "file": "2026-09-12-zodchiii-moonshot-just-cloned-claude-code-and-made-it-free-it-s-calle--2078222648539271430.json"
+    },
+    {
+      "status_id": "2079182515462369399",
+      "handle": "zodchiii",
+      "url": "https://x.com/zodchiii/status/2079182515462369399",
+      "file": "2026-09-12-zodchiii-the-creator-of-claude-code-boris-cherny-every-night-i-have-h--2079182515462369399.json"
+    },
+    {
+      "status_id": "2081088443698868526",
+      "handle": "zostaff",
+      "url": "https://x.com/zostaff/status/2081088443698868526",
+      "file": "2026-09-12-zostaff-a-jane-street-engineer-in-a-talk-on-how-an-exchange-is-actua--2081088443698868526.json"
+    },
+    {
+      "status_id": "2076695008824955216",
+      "handle": "zostaff",
+      "url": "https://x.com/zostaff/status/2076695008824955216",
+      "file": "2026-09-12-zostaff-ray-dalio-founder-of-bridgewater-associates-150b-on-diary-of--2076695008824955216.json"
+    },
+    {
+      "status_id": "2078944176457359536",
+      "handle": "zostaff",
+      "url": "https://x.com/zostaff/status/2078944176457359536",
+      "file": "2026-09-12-zostaff-this-paper-completely-changed-how-i-think-about-agent-memory--2078944176457359536.json"
+    }
+  ]
+}

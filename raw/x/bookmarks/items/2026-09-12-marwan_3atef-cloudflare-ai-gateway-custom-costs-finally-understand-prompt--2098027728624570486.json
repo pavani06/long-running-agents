@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2098027728624570486",
+  "handle": "Marwan_3atef",
+  "text": "Cloudflare AI Gateway custom costs finally understand prompt caching. Stick per_cache_read_token / per_cache_write_token in cf-aig-custom-cost and negotiated cache rates show up in metrics instead of billing every token like full price. Omitted cache rate defaults to",
+  "created_at": "2026-09-10T12:36:04.000Z",
+  "url": "https://x.com/Marwan_3atef/status/2098027728624570486"
+}

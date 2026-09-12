@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2080702441809399834",
+  "handle": "AnatoliKopadze",
+  "text": "Anthropic engineer:\n\n\"You're not supposed to babysit the model. Put it in a graph, and it catches its own mistakes and runs a dozen tasks at once.\"\n\nIn 25 minutes he breaks down exactly how Anthropic builds agents that run in parallel, check each other's work, and recover when https://t.co/833cHHJjj6 https://t.co/1TTKaFlyc8",
+  "created_at": "2026-07-24T17:11:34.000Z",
+  "url": "https://x.com/AnatoliKopadze/status/2080702441809399834"
+}

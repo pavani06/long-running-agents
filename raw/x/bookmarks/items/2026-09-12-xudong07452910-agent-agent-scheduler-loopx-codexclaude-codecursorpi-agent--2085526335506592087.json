@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2085526335506592087",
+  "handle": "Xudong07452910",
+  "text": "很多 Agent 单轮任务做得不错，一旦工作跨过几天、多个会话和多个 Agent，真正麻烦的事情才开始出现：目标变了，证据过期了，任务没人接，scheduler 却还在继续烧额度。\n\n最近看到的 LoopX，就是专门处理这类问题的开源项目。\n\n它在 Codex、Claude Code、Cursor、Pi 等 Agent",
+  "created_at": "2026-08-07T00:40:00.000Z",
+  "url": "https://x.com/Xudong07452910/status/2085526335506592087"
+}

@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2096439998539321653",
+  "handle": "stretchcloud",
+  "text": "Spotify's engineering team cut Claude Code token usage by 90% with a two-model routing approach they call Portal. The mechanism is worth understanding because it's not prompt engineering, it's hard blocks at the architecture level.\n\nTwo cheaper \"assistant\" models handle the tasks https://t.co/4Kd8y24ILo",
+  "created_at": "2026-09-06T03:27:00.000Z",
+  "url": "https://x.com/stretchcloud/status/2096439998539321653"
+}

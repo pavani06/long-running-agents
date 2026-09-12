@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2098501001447870499",
+  "handle": "ClaudeDevs",
+  "text": "Start in your plugin's folder and run `claude plugin eval init`\n\nYou tell Claude what good and bad output looks like and bring a few real prompts. Claude drafts the test cases and checks, pilots the suite, and tells you what a full run will cost.",
+  "created_at": "2026-09-11T19:56:41.000Z",
+  "url": "https://x.com/ClaudeDevs/status/2098501001447870499"
+}

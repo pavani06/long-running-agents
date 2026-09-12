@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2098217573276131577",
+  "handle": "bcherny",
+  "text": "Hey ████,\n\nI think there is room for both.\n\n1. Prototypes and other throw-away code can be treated as totally black box. If you’re going to throw it away anyway, and if the blast radius of it breaking is low, it doesn’t need to be perfect.\n2. Production code written by Claude",
+  "created_at": "2026-09-11T01:10:27.000Z",
+  "url": "https://x.com/bcherny/status/2098217573276131577"
+}

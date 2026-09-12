@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2098050525279478059",
+  "handle": "MaxForAI",
+  "text": "🔥NVIDIA 开源了他们的Harness：SoL-Pi\n\n刚刚看到 NVLabs 开源了 SoL-Pi（Scaling Auto-Research Loops for Efficient Agent Harnesses）\n\n它不是从零做了一套新的 Agent Harness，而是基于 Pi 做了一套 Harness 效率增强层，然后用 MIT License 开源。\n\n这个项目的重点是 @NVIDIAAI 在让 Agent",
+  "created_at": "2026-09-10T14:06:39.000Z",
+  "url": "https://x.com/MaxForAI/status/2098050525279478059"
+}

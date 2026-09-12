@@ -1,0 +1,8 @@
+{
+  "collected": "2026-09-12",
+  "status_id": "2098416224803987968",
+  "handle": "Sumanth_077",
+  "text": "I built a self-evolving code review agent!\n\nMost code review agents use the same prompt every time they run. They can review a diff and generate comments, but they do not remember what your team accepted, rejected, or corrected in previous reviews.\n\nThat means the same mistakes https://t.co/W9nhuSpMI8 https://t.co/1qatZ07XCt",
+  "created_at": "2026-09-11T14:19:49.000Z",
+  "url": "https://x.com/Sumanth_077/status/2098416224803987968"
+}
