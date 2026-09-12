@@ -1,0 +1,79 @@
+name: YouTube Transcripts (AI - Learning)
+
+on:
+  schedule:
+    - cron: "30 8 * * *"   # daily 05:30 America/Sao_Paulo — fetch new videos
+    - cron: "30 8 * * 0"   # Sunday 05:30 SP — also retry the known-missing
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Pipeline mode"
+        type: choice
+        default: daily
+        options: [daily, retry-missing, full-rescan, migrate]
+      max_fetch:
+        description: "Per-run fetch cap (blank = default 25)"
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: youtube-transcripts
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade requests
+
+      - name: Resolve mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "MODE=${{ github.event.inputs.mode }}" >> "$GITHUB_ENV"
+          elif [ "${{ github.event.schedule }}" = "30 8 * * 0" ]; then
+            echo "MODE=retry-missing" >> "$GITHUB_ENV"
+          else
+            echo "MODE=daily" >> "$GITHUB_ENV"
+          fi
+          if [ -n "${{ github.event.inputs.max_fetch }}" ]; then
+            echo "MAX_FETCH=${{ github.event.inputs.max_fetch }}" >> "$GITHUB_ENV"
+          fi
+
+      - name: Run pipeline
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
+        run: |
+          set +e
+          python scripts/youtube-transcripts/pipeline.py "$MODE"
+          echo "PIPELINE_RC=$?" >> "$GITHUB_ENV"
+
+      - name: Commit new transcripts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add raw/youtube/ai-learning
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+            exit 0
+          fi
+          added=$(git diff --cached --name-only --diff-filter=A -- 'raw/youtube/ai-learning/transcripts/*.txt' | wc -l | tr -d ' ')
+          git commit -m "data(youtube): update ai-learning transcripts ($(TZ=America/Sao_Paulo date +%F)) [+${added}]"
+          git push
+
+      - name: Fail if pipeline went red
+        run: |
+          if [ "${PIPELINE_RC}" != "0" ]; then
+            echo "pipeline exited red (rc=${PIPELINE_RC})"
+            exit 1
+          fi

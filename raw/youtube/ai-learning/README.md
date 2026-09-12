@@ -1,30 +1,57 @@
 # raw/youtube/ai-learning
 
-Transcripts crus dos vídeos da playlist **AI - Learning** (owner: Futan Bear / @Futanbear).
+Camada **raw** de transcripts da playlist do YouTube **AI - Learning**
+(owner: Futan Bear / @Futanbear). Alimenta o modelo raw → conexões → extrato.
 
-- Fonte do transcript: **SerpApi**, engine `youtube_video_transcript` (a chave conectada no treg).
-- 1 arquivo `.txt` por vídeo em `transcripts/<video_id>.txt` — texto limpo (trechos unidos, sem timestamps).
-- `index.json` — id, url, idioma, nº de trechos, nº de chars por vídeo.
-- `missing.json` — vídeos sem transcript ou que falharam.
+## Conteúdo
+- `transcripts/<YYYY-MM-DD>-<title-slug>--<video_id>.txt` — 1 arquivo por vídeo,
+  texto limpo (trechos unidos, sem timestamps). A data é a **data de extração**
+  (America/Sao_Paulo); o `<video_id>` (11 chars) é a chave estável do diff.
+- `index.json` — regenerado do disco a cada run: `id`, `url`, `file`, `chars` e,
+  para os buscados sob esta pipeline, `lang`/`segments`.
+- `missing.json` — vídeos sem legenda em nenhum idioma (pulados no diff diário,
+  re-tentados no run semanal / sob demanda).
 
-## Estado atual
-`transcripts/` contém **1 vídeo de amostra** (`kCc8FmEb1nY`, Karpathy — "Let's build GPT"),
-extraído e validado ponta a ponta. Os demais são preenchidos rodando o script abaixo.
+## Como é atualizado
+Rotina diária em **GitHub Actions** (`.github/workflows/youtube-transcripts.yml`),
+sem depender de máquina local ligada:
 
-## Preencher o resto (rodar no WSL)
+- **Enumeração:** YouTube Data API v3 (`playlistItems.list`) — oficial, paginada,
+  grátis dentro da quota, sem bloqueio de IP no runner.
+- **Transcript:** SerpApi (engine `youtube_video_transcript`), `en` com fallback
+  para qualquer idioma disponível.
+- **Diff stateless:** o repositório é a fonte de verdade — a cada run enumera a
+  playlist e subtrai o que já está em `transcripts/` + `missing.json`.
+- **Commit:** direto na `main` como `github-actions[bot]`, tocando só esta pasta.
+
+### Agendamento
+- Diário `30 8 * * *` UTC (05:30 SP) → busca vídeos novos.
+- Domingo `30 8 * * 0` UTC → também re-tenta os `missing`.
+- `workflow_dispatch` → modos `daily` / `retry-missing` / `full-rescan` / `migrate`
+  e override do teto (`max_fetch`).
+
+### Comportamento
+- Teto `MAX_FETCH=25` por run; exceder → run **vermelho** (anomalia).
+- 429: pacing + backoff; o que sobrar fica pro próximo run → **verde com aviso**.
+- **Vermelho** (email nativo do GitHub): chave inválida (401/403), enumeração
+  retornou 0 vídeos, ou diff acima do teto.
+
+## Secrets (repo → Settings → Secrets → Actions)
+- `YOUTUBE_API_KEY` — chave gratuita do Google Cloud (YouTube Data API v3).
+- `SERPAPI_API_KEY` — chave da SerpApi.
+
+## Código
+Lógica em `scripts/youtube-transcripts/` (`pipeline.py` + `youtube.py` /
+`serpapi.py` / `store.py` / `naming.py`). Testes em
+`tests/unit/youtube_transcripts_test.py` (funções puras, sem rede):
+
 ```bash
-pip install requests yt-dlp
-export SERPAPI_API_KEY="sua_chave_serpapi"   # a mesma conectada no treg
-python3 fetch_transcripts.py
+python3 tests/unit/youtube_transcripts_test.py
 ```
-O script enumera todos os vídeos da playlist com `yt-dlp` (sem teto — pega os 372),
-puxa cada transcript pela SerpApi e grava direto aqui. É idempotente: pula os que já existem.
 
-Custo SerpApi: ~US$0,015/vídeo (~US$5,6 pelos 372; ~US$3 por ~200).
+Rodar a pipeline manualmente (as chaves só em env var — nunca commitadas):
 
-## Chamada de referência (mesma coisa via treg, 1 vídeo)
+```bash
+export YOUTUBE_API_KEY=... SERPAPI_API_KEY=...
+python3 scripts/youtube-transcripts/pipeline.py daily
 ```
-engine=youtube_video_transcript  v=<VIDEO_ID>  language_code=en
-```
-No treg, chamada pelo endpoint `serpapi.youtube.search.videos` forçando o `engine`
-(o engine de transcript não tem endpoint nomeado próprio no catálogo, mas responde).
