@@ -8,6 +8,7 @@ going-forward stateless diff.
 from __future__ import annotations
 
 import time
+from urllib.parse import urlparse
 
 import requests
 
@@ -53,14 +54,23 @@ def resolve_user_id(session: requests.Session, token: str, *, timeout: int = 30)
     return str(uid), data.get("username", "unknown")
 
 
+def _is_x_host(url: str) -> bool:
+    """True if the URL's host is X/Twitter itself (self-link, quote, or pic).
+
+    Matches on the parsed host, not a substring, so external domains that merely
+    end in the same letters (e.g. vox.com, netflix.com) are NOT misclassified.
+    """
+    host = urlparse(url).netloc.lower().split("@")[-1].split(":")[0]
+    return host in ("x.com", "twitter.com") or host.endswith((".x.com", ".twitter.com"))
+
+
 def _extract_links(t: dict) -> list[str]:
     """External URLs the tweet points to (expanded), minus self/quote/media links."""
     out: list[str] = []
     for u in t.get("entities", {}).get("urls", []):
         exp = u.get("expanded_url", "")
-        low = exp.lower()
-        if not exp or "twitter.com/" in low or "x.com/" in low:
-            continue  # self-permalink, quoted tweet, or pic link — not a reading target
+        if not exp or _is_x_host(exp):
+            continue  # unresolved, self-permalink, quoted tweet, or pic — not a reading target
         if exp not in out:
             out.append(exp)
     return out

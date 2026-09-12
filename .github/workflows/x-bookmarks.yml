@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "daily = new only; dry-run = fetch+diff only; reprocess = rewrite all (enrich)"
+        description: "daily = new only; dry-run = fetch+diff only; reprocess = rewrite fetchable items (enrich)"
         type: choice
         default: daily
         options: [daily, dry-run, reprocess]

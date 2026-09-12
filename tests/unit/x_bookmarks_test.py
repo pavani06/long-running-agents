@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "x-bookmarks"))
 
+from bookmarks import _extract_links, _extract_media  # noqa: E402
 from naming import build_filename, clean_handle, parse_status_id, slugify  # noqa: E402
 from store import Bookmark, BookmarkStore  # noqa: E402
 
@@ -41,6 +42,38 @@ def test_slug_and_handle_fold_ascii():
     assert slugify("Ação & Café — top!") == "acao-cafe-top"
     assert clean_handle("@José_Silva") == "jose_silva"  # underscores are valid in handles
     assert clean_handle("") == "unknown"
+
+
+# ── link / media extraction ───────────────────────────────────────────────
+def test_extract_links_keeps_external_drops_x():
+    t = {"entities": {"urls": [
+        {"expanded_url": "https://www.vox.com/2024/story"},      # ends in x.com — must KEEP
+        {"expanded_url": "https://netflix.com/title/1"},         # ends in x.com — must KEEP
+        {"expanded_url": "https://x.com/user/status/123"},       # self-link — drop
+        {"expanded_url": "https://twitter.com/a/status/9"},      # self-link — drop
+        {"expanded_url": "https://pic.twitter.com/abc"},         # media — drop (.twitter.com)
+        {"expanded_url": "https://www.vox.com/2024/story"},      # duplicate — collapse
+        {"url": "https://t.co/xyz"},                             # no expanded_url — skip
+    ]}}
+    assert _extract_links(t) == ["https://www.vox.com/2024/story", "https://netflix.com/title/1"]
+
+
+def test_extract_links_empty():
+    assert _extract_links({}) == []
+
+
+def test_extract_media_url_and_preview():
+    t = {"attachments": {"media_keys": ["k1", "k2", "k3"]}}
+    media_map = {
+        "k1": {"type": "photo", "url": "https://pbs.twimg.com/p.jpg"},
+        "k2": {"type": "video", "preview_image_url": "https://pbs.twimg.com/v.jpg"},  # no url
+        # k3 absent from map — skipped
+    }
+    assert _extract_media(t, media_map) == ["https://pbs.twimg.com/p.jpg", "https://pbs.twimg.com/v.jpg"]
+
+
+def test_extract_media_none():
+    assert _extract_media({}, {}) == []
 
 
 # ── store diff ──────────────────────────────────────────────────────────

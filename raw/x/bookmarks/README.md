@@ -26,7 +26,8 @@ Rotina diária em **GitHub Actions** (`.github/workflows/x-bookmarks.yml`):
 ### Agendamento
 - Diário `45 8 * * *` UTC (05:45 SP), depois do `youtube-transcripts`.
 - `workflow_dispatch` → modos `daily` / `dry-run` / `reprocess` (dry-run: coleta e faz o diff,
-  não grava; reprocess: rebusca tudo e reescreve os items enriquecidos, preservando nome/data).
+  não grava; reprocess: rebusca e reescreve os items enriquecidos que ainda estão na janela
+  recente da API, preservando nome/data — items que já saíram da janela não são reprocessados).
 
 ### Comportamento
 - **Vermelho** (email nativo do GitHub): refresh falhou (re-consentir), refresh rotacionado

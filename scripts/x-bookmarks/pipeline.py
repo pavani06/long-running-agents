@@ -9,8 +9,9 @@ Modes:
   daily     write new bookmarks + regenerate index (default)
   dry-run   refresh + persist + fetch + diff, but write/commit nothing
             (still rotates the refresh token — that is unavoidable)
-  reprocess re-fetch all bookmarks and rewrite every item in place (enrich
-            existing + add new), preserving each item's filename and date
+  reprocess re-fetch the current bookmark window and rewrite each fetched item
+            in place (enrich existing + add new), preserving filename and date;
+            items already aged out of the API window are not reprocessed
 
 Environment:
   X_REFRESH_TOKEN  OAuth2 refresh token (rotated in place each run)  — required
