@@ -1,1990 +1,2351 @@
 {
   "playlist_url": "https://www.youtube.com/playlist?list=PLdJYvRCSB6rO2Mm_0wGnHgFfoy34OaC0S",
-  "source": "SerpApi youtube_video_transcript",
+  "source": "enumeration: YouTube Data API v3; transcript: SerpApi youtube_video_transcript",
   "count": 361,
   "videos": [
     {
-      "id": "E6Nx8cYaqUQ",
-      "url": "https://www.youtube.com/watch?v=E6Nx8cYaqUQ",
-      "skipped": true
-    },
-    {
-      "id": "LoMOPj-lO8U",
-      "url": "https://www.youtube.com/watch?v=LoMOPj-lO8U",
-      "skipped": true
-    },
-    {
-      "id": "KgKA0A3qlz0",
-      "url": "https://www.youtube.com/watch?v=KgKA0A3qlz0",
-      "skipped": true
-    },
-    {
-      "id": "c9nRxEy1kUY",
-      "url": "https://www.youtube.com/watch?v=c9nRxEy1kUY",
-      "skipped": true
-    },
-    {
-      "id": "UzMNBN6xLLA",
-      "url": "https://www.youtube.com/watch?v=UzMNBN6xLLA",
-      "skipped": true
-    },
-    {
-      "id": "BqRhBq-_kgE",
-      "url": "https://www.youtube.com/watch?v=BqRhBq-_kgE",
-      "skipped": true
-    },
-    {
-      "id": "B-YQANvDOq0",
-      "url": "https://www.youtube.com/watch?v=B-YQANvDOq0",
-      "skipped": true
-    },
-    {
-      "id": "lUhXa8GiXns",
-      "url": "https://www.youtube.com/watch?v=lUhXa8GiXns",
-      "skipped": true
-    },
-    {
-      "id": "hm8NzEd5io0",
-      "url": "https://www.youtube.com/watch?v=hm8NzEd5io0",
-      "skipped": true
-    },
-    {
-      "id": "n9xKblqyQ28",
-      "url": "https://www.youtube.com/watch?v=n9xKblqyQ28",
-      "skipped": true
-    },
-    {
-      "id": "AbZODZ_4VaM",
-      "url": "https://www.youtube.com/watch?v=AbZODZ_4VaM",
-      "skipped": true
-    },
-    {
-      "id": "0uC6u0lJJl4",
-      "url": "https://www.youtube.com/watch?v=0uC6u0lJJl4",
-      "skipped": true
-    },
-    {
-      "id": "QrMcNe2jjt8",
-      "url": "https://www.youtube.com/watch?v=QrMcNe2jjt8",
-      "skipped": true
-    },
-    {
-      "id": "F3lL98Pj90o",
-      "url": "https://www.youtube.com/watch?v=F3lL98Pj90o",
-      "lang": "en",
-      "segments": 444,
-      "chars": 16899
-    },
-    {
-      "id": "xxfMT-bPEmU",
-      "url": "https://www.youtube.com/watch?v=xxfMT-bPEmU",
-      "skipped": true
-    },
-    {
-      "id": "S-sYlFiGFv8",
-      "url": "https://www.youtube.com/watch?v=S-sYlFiGFv8",
-      "lang": "en",
-      "segments": 657,
-      "chars": 23612
-    },
-    {
-      "id": "G2B0YWuJUgI",
-      "url": "https://www.youtube.com/watch?v=G2B0YWuJUgI",
-      "skipped": true
-    },
-    {
-      "id": "U_YyqxUBNiQ",
-      "url": "https://www.youtube.com/watch?v=U_YyqxUBNiQ",
-      "skipped": true
-    },
-    {
-      "id": "Uny6LpmjraI",
-      "url": "https://www.youtube.com/watch?v=Uny6LpmjraI",
-      "skipped": true
-    },
-    {
-      "id": "DrTdD-ttjCY",
-      "url": "https://www.youtube.com/watch?v=DrTdD-ttjCY",
-      "skipped": true
-    },
-    {
-      "id": "pqlWNihgdjI",
-      "url": "https://www.youtube.com/watch?v=pqlWNihgdjI",
-      "skipped": true
-    },
-    {
-      "id": "FLUoowDJg4I",
-      "url": "https://www.youtube.com/watch?v=FLUoowDJg4I",
-      "skipped": true
-    },
-    {
-      "id": "0oXOOlqVu5M",
-      "url": "https://www.youtube.com/watch?v=0oXOOlqVu5M",
-      "skipped": true
-    },
-    {
-      "id": "4qjEgPojjzM",
-      "url": "https://www.youtube.com/watch?v=4qjEgPojjzM",
-      "skipped": true
-    },
-    {
-      "id": "fUcnE6pjq5w",
-      "url": "https://www.youtube.com/watch?v=fUcnE6pjq5w",
-      "skipped": true
-    },
-    {
-      "id": "_ehJyfHg1Vk",
-      "url": "https://www.youtube.com/watch?v=_ehJyfHg1Vk",
-      "skipped": true
-    },
-    {
-      "id": "KHudyx5wW3U",
-      "url": "https://www.youtube.com/watch?v=KHudyx5wW3U",
-      "lang": "en",
-      "segments": 499,
-      "chars": 19097
-    },
-    {
-      "id": "QBfXiWvM0qc",
-      "url": "https://www.youtube.com/watch?v=QBfXiWvM0qc",
-      "skipped": true
-    },
-    {
-      "id": "ow1we5PzK-o",
-      "url": "https://www.youtube.com/watch?v=ow1we5PzK-o",
-      "skipped": true
-    },
-    {
-      "id": "mav15aW9lLM",
-      "url": "https://www.youtube.com/watch?v=mav15aW9lLM",
-      "skipped": true
-    },
-    {
-      "id": "IlqJqcl8ONE",
-      "url": "https://www.youtube.com/watch?v=IlqJqcl8ONE",
-      "skipped": true
-    },
-    {
-      "id": "J0hj0ms2ddo",
-      "url": "https://www.youtube.com/watch?v=J0hj0ms2ddo",
-      "skipped": true
-    },
-    {
-      "id": "kxypcfrkUBI",
-      "url": "https://www.youtube.com/watch?v=kxypcfrkUBI",
-      "skipped": true
-    },
-    {
-      "id": "njHuj8OxIVI",
-      "url": "https://www.youtube.com/watch?v=njHuj8OxIVI",
-      "skipped": true
-    },
-    {
-      "id": "u6jJcIFDLE4",
-      "url": "https://www.youtube.com/watch?v=u6jJcIFDLE4",
-      "skipped": true
-    },
-    {
-      "id": "il1c1a2FufU",
-      "url": "https://www.youtube.com/watch?v=il1c1a2FufU",
-      "skipped": true
-    },
-    {
-      "id": "jPPiZ22DY3g",
-      "url": "https://www.youtube.com/watch?v=jPPiZ22DY3g",
-      "skipped": true
-    },
-    {
-      "id": "CxXgV54KzpQ",
-      "url": "https://www.youtube.com/watch?v=CxXgV54KzpQ",
-      "skipped": true
-    },
-    {
-      "id": "Tt2kX2sgQio",
-      "url": "https://www.youtube.com/watch?v=Tt2kX2sgQio",
-      "skipped": true
-    },
-    {
-      "id": "l0FLhNqBOic",
-      "url": "https://www.youtube.com/watch?v=l0FLhNqBOic",
-      "skipped": true
-    },
-    {
-      "id": "RfTalFEeKKE",
-      "url": "https://www.youtube.com/watch?v=RfTalFEeKKE",
-      "skipped": true
-    },
-    {
-      "id": "8ZgpAXe5V5w",
-      "url": "https://www.youtube.com/watch?v=8ZgpAXe5V5w",
-      "skipped": true
-    },
-    {
-      "id": "31GUkCBD-Uc",
-      "url": "https://www.youtube.com/watch?v=31GUkCBD-Uc",
-      "skipped": true
-    },
-    {
-      "id": "XNX-1h2K-9U",
-      "url": "https://www.youtube.com/watch?v=XNX-1h2K-9U",
-      "skipped": true
-    },
-    {
-      "id": "HI2q3ci3Iuc",
-      "url": "https://www.youtube.com/watch?v=HI2q3ci3Iuc",
-      "skipped": true
-    },
-    {
-      "id": "UWjh5Z4s8jY",
-      "url": "https://www.youtube.com/watch?v=UWjh5Z4s8jY",
-      "skipped": true
-    },
-    {
-      "id": "FU5_kpTAVDo",
-      "url": "https://www.youtube.com/watch?v=FU5_kpTAVDo",
-      "skipped": true
-    },
-    {
-      "id": "BOOfy3Yshtw",
-      "url": "https://www.youtube.com/watch?v=BOOfy3Yshtw",
-      "skipped": true
-    },
-    {
-      "id": "BrpB-h1e--k",
-      "url": "https://www.youtube.com/watch?v=BrpB-h1e--k",
-      "skipped": true
-    },
-    {
-      "id": "zenIB7XLZxQ",
-      "url": "https://www.youtube.com/watch?v=zenIB7XLZxQ",
-      "skipped": true
-    },
-    {
-      "id": "19HDQ9HppOA",
-      "url": "https://www.youtube.com/watch?v=19HDQ9HppOA",
-      "skipped": true
-    },
-    {
-      "id": "utb7zYbK10c",
-      "url": "https://www.youtube.com/watch?v=utb7zYbK10c",
-      "skipped": true
-    },
-    {
-      "id": "K0X9QDRkIdg",
-      "url": "https://www.youtube.com/watch?v=K0X9QDRkIdg",
-      "skipped": true
-    },
-    {
-      "id": "bMMv0bZzONg",
-      "url": "https://www.youtube.com/watch?v=bMMv0bZzONg",
-      "skipped": true
-    },
-    {
-      "id": "eRrc1pUY5oU",
-      "url": "https://www.youtube.com/watch?v=eRrc1pUY5oU",
-      "skipped": true
-    },
-    {
-      "id": "Z-c11pV_uvU",
-      "url": "https://www.youtube.com/watch?v=Z-c11pV_uvU",
-      "skipped": true
-    },
-    {
-      "id": "xgkjtF89-44",
-      "url": "https://www.youtube.com/watch?v=xgkjtF89-44",
-      "skipped": true
-    },
-    {
-      "id": "rCmvMDrCWjs",
-      "url": "https://www.youtube.com/watch?v=rCmvMDrCWjs",
-      "skipped": true
-    },
-    {
-      "id": "MBxhzARQNeo",
-      "url": "https://www.youtube.com/watch?v=MBxhzARQNeo",
-      "skipped": true
-    },
-    {
-      "id": "ZqGSg4b_cZA",
-      "url": "https://www.youtube.com/watch?v=ZqGSg4b_cZA",
-      "skipped": true
-    },
-    {
-      "id": "tivaWTTVRhY",
-      "url": "https://www.youtube.com/watch?v=tivaWTTVRhY",
-      "skipped": true
-    },
-    {
-      "id": "t0GiTyz4syY",
-      "url": "https://www.youtube.com/watch?v=t0GiTyz4syY",
-      "skipped": true
-    },
-    {
-      "id": "d95J8yzvjbQ",
-      "url": "https://www.youtube.com/watch?v=d95J8yzvjbQ",
-      "skipped": true
-    },
-    {
-      "id": "kCc8FmEb1nY",
-      "url": "https://www.youtube.com/watch?v=kCc8FmEb1nY",
-      "skipped": true
-    },
-    {
-      "id": "ckoi0RTEgcY",
-      "url": "https://www.youtube.com/watch?v=ckoi0RTEgcY",
-      "skipped": true
-    },
-    {
-      "id": "qyPCVqFUyDo",
-      "url": "https://www.youtube.com/watch?v=qyPCVqFUyDo",
-      "skipped": true
-    },
-    {
-      "id": "Ib5GBkD555M",
-      "url": "https://www.youtube.com/watch?v=Ib5GBkD555M",
-      "skipped": true
-    },
-    {
-      "id": "Sir59K8ZDPU",
-      "url": "https://www.youtube.com/watch?v=Sir59K8ZDPU",
-      "skipped": true
-    },
-    {
-      "id": "eBUyTS7SzV4",
-      "url": "https://www.youtube.com/watch?v=eBUyTS7SzV4",
-      "skipped": true
-    },
-    {
-      "id": "GbzEDgcuGJU",
-      "url": "https://www.youtube.com/watch?v=GbzEDgcuGJU",
-      "skipped": true
-    },
-    {
-      "id": "sRvrXL83N-c",
-      "url": "https://www.youtube.com/watch?v=sRvrXL83N-c",
-      "skipped": true
-    },
-    {
-      "id": "ZIt_R8GwP7s",
-      "url": "https://www.youtube.com/watch?v=ZIt_R8GwP7s",
-      "skipped": true
-    },
-    {
-      "id": "AwXmUXpjNw4",
-      "url": "https://www.youtube.com/watch?v=AwXmUXpjNw4",
-      "skipped": true
-    },
-    {
-      "id": "IHbsfvbfAto",
-      "url": "https://www.youtube.com/watch?v=IHbsfvbfAto",
-      "skipped": true
-    },
-    {
-      "id": "n97BCfyFIvw",
-      "url": "https://www.youtube.com/watch?v=n97BCfyFIvw",
-      "skipped": true
-    },
-    {
-      "id": "A7WFt2JQ5sg",
-      "url": "https://www.youtube.com/watch?v=A7WFt2JQ5sg",
-      "skipped": true
-    },
-    {
-      "id": "0vphxNt4wyk",
-      "url": "https://www.youtube.com/watch?v=0vphxNt4wyk",
-      "skipped": true
-    },
-    {
-      "id": "WkBPX-oDMnA",
-      "url": "https://www.youtube.com/watch?v=WkBPX-oDMnA",
-      "skipped": true
-    },
-    {
-      "id": "pMggiOb18tc",
-      "url": "https://www.youtube.com/watch?v=pMggiOb18tc",
-      "skipped": true
-    },
-    {
-      "id": "sBg90v2qfas",
-      "url": "https://www.youtube.com/watch?v=sBg90v2qfas",
-      "skipped": true
-    },
-    {
-      "id": "YqjR4vQwbTc",
-      "url": "https://www.youtube.com/watch?v=YqjR4vQwbTc",
-      "skipped": true
-    },
-    {
-      "id": "xUnRQ9vLXxo",
-      "url": "https://www.youtube.com/watch?v=xUnRQ9vLXxo",
-      "skipped": true
-    },
-    {
-      "id": "Yy3JH6dDugc",
-      "url": "https://www.youtube.com/watch?v=Yy3JH6dDugc",
-      "lang": "en",
-      "segments": 482,
-      "chars": 26238
-    },
-    {
-      "id": "mWvtOHlZM-I",
-      "url": "https://www.youtube.com/watch?v=mWvtOHlZM-I",
-      "skipped": true
-    },
-    {
-      "id": "bRnoEpoK5m4",
-      "url": "https://www.youtube.com/watch?v=bRnoEpoK5m4",
-      "skipped": true
-    },
-    {
-      "id": "kxstlfc8Lw4",
-      "url": "https://www.youtube.com/watch?v=kxstlfc8Lw4",
-      "skipped": true
-    },
-    {
-      "id": "9fubhllmsBU",
-      "url": "https://www.youtube.com/watch?v=9fubhllmsBU",
-      "skipped": true
-    },
-    {
-      "id": "agSRMrhNTf4",
-      "url": "https://www.youtube.com/watch?v=agSRMrhNTf4",
-      "skipped": true
-    },
-    {
-      "id": "ZD9-4fW2HhM",
-      "url": "https://www.youtube.com/watch?v=ZD9-4fW2HhM",
-      "skipped": true
-    },
-    {
-      "id": "5_LLMZfKI6w",
-      "url": "https://www.youtube.com/watch?v=5_LLMZfKI6w",
-      "skipped": true
-    },
-    {
-      "id": "Su8r4YKX_ls",
-      "url": "https://www.youtube.com/watch?v=Su8r4YKX_ls",
-      "skipped": true
-    },
-    {
-      "id": "dRmWYHuIJxM",
-      "url": "https://www.youtube.com/watch?v=dRmWYHuIJxM",
-      "skipped": true
-    },
-    {
-      "id": "F4a8aMLb678",
-      "url": "https://www.youtube.com/watch?v=F4a8aMLb678",
-      "skipped": true
-    },
-    {
-      "id": "AyV0hum_hA8",
-      "url": "https://www.youtube.com/watch?v=AyV0hum_hA8",
-      "skipped": true
-    },
-    {
-      "id": "5AkdMangfNk",
-      "url": "https://www.youtube.com/watch?v=5AkdMangfNk",
-      "skipped": true
-    },
-    {
-      "id": "lplVBFr0Ndc",
-      "url": "https://www.youtube.com/watch?v=lplVBFr0Ndc",
-      "skipped": true
-    },
-    {
-      "id": "nIVu3zfYprI",
-      "url": "https://www.youtube.com/watch?v=nIVu3zfYprI",
-      "skipped": true
-    },
-    {
-      "id": "uMvTAF280so",
-      "url": "https://www.youtube.com/watch?v=uMvTAF280so",
-      "skipped": true
-    },
-    {
-      "id": "UNzCG3lw6O0",
-      "url": "https://www.youtube.com/watch?v=UNzCG3lw6O0",
-      "skipped": true
-    },
-    {
-      "id": "whue9_YquGA",
-      "url": "https://www.youtube.com/watch?v=whue9_YquGA",
-      "skipped": true
-    },
-    {
-      "id": "-QFHIoCo-Ko",
-      "url": "https://www.youtube.com/watch?v=-QFHIoCo-Ko",
-      "skipped": true
-    },
-    {
-      "id": "nQwJVHCtDDY",
-      "url": "https://www.youtube.com/watch?v=nQwJVHCtDDY",
-      "skipped": true
-    },
-    {
-      "id": "ZRM_TfEZcIo",
-      "url": "https://www.youtube.com/watch?v=ZRM_TfEZcIo",
-      "skipped": true
-    },
-    {
-      "id": "Qsq-Sj_rojU",
-      "url": "https://www.youtube.com/watch?v=Qsq-Sj_rojU",
-      "skipped": true
-    },
-    {
-      "id": "f61DCDwvFis",
-      "url": "https://www.youtube.com/watch?v=f61DCDwvFis",
-      "skipped": true
-    },
-    {
-      "id": "oYxTTirKY8M",
-      "url": "https://www.youtube.com/watch?v=oYxTTirKY8M",
-      "skipped": true
-    },
-    {
-      "id": "kYkIdXwW2AE",
-      "url": "https://www.youtube.com/watch?v=kYkIdXwW2AE",
-      "skipped": true
-    },
-    {
-      "id": "mjTgkm-h__M",
-      "url": "https://www.youtube.com/watch?v=mjTgkm-h__M",
-      "skipped": true
-    },
-    {
-      "id": "f32W5BEzWN0",
-      "url": "https://www.youtube.com/watch?v=f32W5BEzWN0",
-      "skipped": true
-    },
-    {
-      "id": "c8bE0cj7vHY",
-      "url": "https://www.youtube.com/watch?v=c8bE0cj7vHY",
-      "skipped": true
-    },
-    {
-      "id": "OZ3ZNhrPbF4",
-      "url": "https://www.youtube.com/watch?v=OZ3ZNhrPbF4",
-      "skipped": true
-    },
-    {
-      "id": "VeU6gScy92s",
-      "url": "https://www.youtube.com/watch?v=VeU6gScy92s",
-      "skipped": true
-    },
-    {
-      "id": "iQyg-KypKAA",
-      "url": "https://www.youtube.com/watch?v=iQyg-KypKAA",
-      "skipped": true
-    },
-    {
-      "id": "fQmlML9Lay4",
-      "url": "https://www.youtube.com/watch?v=fQmlML9Lay4",
-      "skipped": true
-    },
-    {
-      "id": "4wMRXmLpdA8",
-      "url": "https://www.youtube.com/watch?v=4wMRXmLpdA8",
-      "skipped": true
-    },
-    {
-      "id": "VKFKyrrK-Iw",
-      "url": "https://www.youtube.com/watch?v=VKFKyrrK-Iw",
-      "skipped": true
-    },
-    {
-      "id": "yBBhd0-Os74",
-      "url": "https://www.youtube.com/watch?v=yBBhd0-Os74",
-      "skipped": true
-    },
-    {
-      "id": "zFHzTy7XLbM",
-      "url": "https://www.youtube.com/watch?v=zFHzTy7XLbM",
-      "skipped": true
-    },
-    {
-      "id": "BKx0Dp8y-6g",
-      "url": "https://www.youtube.com/watch?v=BKx0Dp8y-6g",
-      "skipped": true
-    },
-    {
-      "id": "OaRhpwz_TGM",
-      "url": "https://www.youtube.com/watch?v=OaRhpwz_TGM",
-      "skipped": true
-    },
-    {
-      "id": "wSuQQYv-E64",
-      "url": "https://www.youtube.com/watch?v=wSuQQYv-E64",
-      "lang": "en",
-      "segments": 546,
-      "chars": 50010
-    },
-    {
-      "id": "ObTPqBGsEbA",
-      "url": "https://www.youtube.com/watch?v=ObTPqBGsEbA",
-      "skipped": true
-    },
-    {
-      "id": "Q7l8YGiMgUw",
-      "url": "https://www.youtube.com/watch?v=Q7l8YGiMgUw",
-      "skipped": true
-    },
-    {
-      "id": "U3bZavG8qQY",
-      "url": "https://www.youtube.com/watch?v=U3bZavG8qQY",
-      "skipped": true
-    },
-    {
-      "id": "x2VHFgyawPE",
-      "url": "https://www.youtube.com/watch?v=x2VHFgyawPE",
-      "skipped": true
-    },
-    {
-      "id": "W6x-hb44C0c",
-      "url": "https://www.youtube.com/watch?v=W6x-hb44C0c",
-      "skipped": true
-    },
-    {
-      "id": "uCKhOmth2ms",
-      "url": "https://www.youtube.com/watch?v=uCKhOmth2ms",
-      "skipped": true
-    },
-    {
-      "id": "MY9F9K7wWX4",
-      "url": "https://www.youtube.com/watch?v=MY9F9K7wWX4",
-      "skipped": true
-    },
-    {
-      "id": "F_7M4Hc-usM",
-      "url": "https://www.youtube.com/watch?v=F_7M4Hc-usM",
-      "skipped": true
-    },
-    {
-      "id": "SrvKmhJRlKI",
-      "url": "https://www.youtube.com/watch?v=SrvKmhJRlKI",
-      "skipped": true
-    },
-    {
-      "id": "UOWSHg18cL0",
-      "url": "https://www.youtube.com/watch?v=UOWSHg18cL0",
-      "skipped": true
-    },
-    {
-      "id": "7zCsfe57tpU",
-      "url": "https://www.youtube.com/watch?v=7zCsfe57tpU",
-      "lang": "en",
-      "segments": 202,
-      "chars": 19432
-    },
-    {
-      "id": "VktrqzQgytY",
-      "url": "https://www.youtube.com/watch?v=VktrqzQgytY",
-      "skipped": true
-    },
-    {
-      "id": "rmvDxxNubIg",
-      "url": "https://www.youtube.com/watch?v=rmvDxxNubIg",
-      "skipped": true
-    },
-    {
-      "id": "O7u6myBRsns",
-      "url": "https://www.youtube.com/watch?v=O7u6myBRsns",
-      "skipped": true
-    },
-    {
-      "id": "Dqp_b8GHLXU",
-      "url": "https://www.youtube.com/watch?v=Dqp_b8GHLXU",
-      "skipped": true
-    },
-    {
-      "id": "ghJmWQCIHRM",
-      "url": "https://www.youtube.com/watch?v=ghJmWQCIHRM",
-      "skipped": true
-    },
-    {
-      "id": "so9l_MwS2yg",
-      "url": "https://www.youtube.com/watch?v=so9l_MwS2yg",
-      "skipped": true
-    },
-    {
-      "id": "am_oeAoUhew",
-      "url": "https://www.youtube.com/watch?v=am_oeAoUhew",
-      "skipped": true
-    },
-    {
-      "id": "6BB6exR8Zd8",
-      "url": "https://www.youtube.com/watch?v=6BB6exR8Zd8",
-      "skipped": true
-    },
-    {
-      "id": "v4F1gFy-hqg",
-      "url": "https://www.youtube.com/watch?v=v4F1gFy-hqg",
-      "skipped": true
-    },
-    {
-      "id": "_B4Pv9ttFgY",
-      "url": "https://www.youtube.com/watch?v=_B4Pv9ttFgY",
-      "skipped": true
-    },
-    {
-      "id": "ChskqGovoHg",
-      "url": "https://www.youtube.com/watch?v=ChskqGovoHg",
-      "skipped": true
-    },
-    {
-      "id": "gTeujlv8qK0",
-      "url": "https://www.youtube.com/watch?v=gTeujlv8qK0",
-      "skipped": true
-    },
-    {
-      "id": "EcqMYoIV57A",
-      "url": "https://www.youtube.com/watch?v=EcqMYoIV57A",
-      "skipped": true
-    },
-    {
-      "id": "NDdc39KYqDU",
-      "url": "https://www.youtube.com/watch?v=NDdc39KYqDU",
-      "skipped": true
-    },
-    {
-      "id": "zKk7sDMGDEQ",
-      "url": "https://www.youtube.com/watch?v=zKk7sDMGDEQ",
-      "skipped": true
-    },
-    {
-      "id": "dtAJ2dOd3ko",
-      "url": "https://www.youtube.com/watch?v=dtAJ2dOd3ko",
-      "skipped": true
-    },
-    {
-      "id": "vy7o1g2iHY8",
-      "url": "https://www.youtube.com/watch?v=vy7o1g2iHY8",
-      "skipped": true
-    },
-    {
-      "id": "C842vFY5kRo",
-      "url": "https://www.youtube.com/watch?v=C842vFY5kRo",
-      "skipped": true
-    },
-    {
-      "id": "ulNsa0sD8N0",
-      "url": "https://www.youtube.com/watch?v=ulNsa0sD8N0",
-      "skipped": true
-    },
-    {
-      "id": "KA5kPbdkK2E",
-      "url": "https://www.youtube.com/watch?v=KA5kPbdkK2E",
-      "skipped": true
-    },
-    {
-      "id": "YwZR6tc7qYg",
-      "url": "https://www.youtube.com/watch?v=YwZR6tc7qYg",
-      "skipped": true
-    },
-    {
-      "id": "504PvfXou5Y",
-      "url": "https://www.youtube.com/watch?v=504PvfXou5Y",
-      "skipped": true
-    },
-    {
-      "id": "hCMrEfPG2Yg",
-      "url": "https://www.youtube.com/watch?v=hCMrEfPG2Yg",
-      "skipped": true
-    },
-    {
-      "id": "xzp1yHH_vAg",
-      "url": "https://www.youtube.com/watch?v=xzp1yHH_vAg",
-      "skipped": true
-    },
-    {
-      "id": "LeUUxLRdvho",
-      "url": "https://www.youtube.com/watch?v=LeUUxLRdvho",
-      "skipped": true
-    },
-    {
-      "id": "F8X9_Dp3ZUk",
-      "url": "https://www.youtube.com/watch?v=F8X9_Dp3ZUk",
-      "skipped": true
-    },
-    {
-      "id": "EfM546A79aM",
-      "url": "https://www.youtube.com/watch?v=EfM546A79aM",
-      "skipped": true
-    },
-    {
-      "id": "-qm0ln33G24",
-      "url": "https://www.youtube.com/watch?v=-qm0ln33G24",
-      "lang": "en",
-      "segments": 694,
-      "chars": 60252
-    },
-    {
-      "id": "3W36pd50Wqw",
-      "url": "https://www.youtube.com/watch?v=3W36pd50Wqw",
-      "skipped": true
-    },
-    {
-      "id": "3_gYbhABcAE",
-      "url": "https://www.youtube.com/watch?v=3_gYbhABcAE",
-      "skipped": true
-    },
-    {
-      "id": "7gujZrJ9L5I",
-      "url": "https://www.youtube.com/watch?v=7gujZrJ9L5I",
-      "lang": "en",
-      "segments": 590,
-      "chars": 21575
-    },
-    {
-      "id": "esY99nYXxR4",
-      "url": "https://www.youtube.com/watch?v=esY99nYXxR4",
-      "skipped": true
-    },
-    {
-      "id": "abvQEhvRI_c",
-      "url": "https://www.youtube.com/watch?v=abvQEhvRI_c",
-      "skipped": true
-    },
-    {
-      "id": "ib74sLgjIBM",
-      "url": "https://www.youtube.com/watch?v=ib74sLgjIBM",
-      "skipped": true
-    },
-    {
-      "id": "B9h9ovW5H9U",
-      "url": "https://www.youtube.com/watch?v=B9h9ovW5H9U",
-      "skipped": true
-    },
-    {
-      "id": "LdQpoK2TzSo",
-      "url": "https://www.youtube.com/watch?v=LdQpoK2TzSo",
-      "skipped": true
-    },
-    {
-      "id": "eURcW5_uS60",
-      "url": "https://www.youtube.com/watch?v=eURcW5_uS60",
-      "skipped": true
-    },
-    {
-      "id": "FB-MLPhL9Ms",
-      "url": "https://www.youtube.com/watch?v=FB-MLPhL9Ms",
-      "skipped": true
-    },
-    {
-      "id": "i_AjyQmYvbE",
-      "url": "https://www.youtube.com/watch?v=i_AjyQmYvbE",
-      "skipped": true
-    },
-    {
-      "id": "ngBraLDqzdI",
-      "url": "https://www.youtube.com/watch?v=ngBraLDqzdI",
-      "skipped": true
-    },
-    {
-      "id": "cmUo4841KQw",
-      "url": "https://www.youtube.com/watch?v=cmUo4841KQw",
-      "skipped": true
-    },
-    {
-      "id": "Z4BXg02i8sI",
-      "url": "https://www.youtube.com/watch?v=Z4BXg02i8sI",
-      "skipped": true
-    },
-    {
-      "id": "BEKc4P87XKo",
-      "url": "https://www.youtube.com/watch?v=BEKc4P87XKo",
-      "skipped": true
-    },
-    {
-      "id": "z7xyZQVK4Dg",
-      "url": "https://www.youtube.com/watch?v=z7xyZQVK4Dg",
-      "skipped": true
-    },
-    {
-      "id": "JomVvNDjGb8",
-      "url": "https://www.youtube.com/watch?v=JomVvNDjGb8",
-      "skipped": true
-    },
-    {
-      "id": "C_GG5g38vLU",
-      "url": "https://www.youtube.com/watch?v=C_GG5g38vLU",
-      "skipped": true
-    },
-    {
-      "id": "Ubwb6NzegyA",
-      "url": "https://www.youtube.com/watch?v=Ubwb6NzegyA",
-      "skipped": true
-    },
-    {
-      "id": "-3MPnUGqa68",
-      "url": "https://www.youtube.com/watch?v=-3MPnUGqa68",
-      "skipped": true
-    },
-    {
-      "id": "yVqMxBahjfA",
-      "url": "https://www.youtube.com/watch?v=yVqMxBahjfA",
-      "skipped": true
-    },
-    {
-      "id": "D6XWu54oG4g",
-      "url": "https://www.youtube.com/watch?v=D6XWu54oG4g",
-      "skipped": true
-    },
-    {
-      "id": "O5PfU_uDhS0",
-      "url": "https://www.youtube.com/watch?v=O5PfU_uDhS0",
-      "skipped": true
-    },
-    {
-      "id": "vfF011ko89o",
-      "url": "https://www.youtube.com/watch?v=vfF011ko89o",
-      "skipped": true
-    },
-    {
-      "id": "CBaLU0dDEY8",
-      "url": "https://www.youtube.com/watch?v=CBaLU0dDEY8",
-      "skipped": true
-    },
-    {
-      "id": "6nUl_w5W9Wk",
-      "url": "https://www.youtube.com/watch?v=6nUl_w5W9Wk",
-      "skipped": true
-    },
-    {
-      "id": "BQrJ4lHAjhc",
-      "url": "https://www.youtube.com/watch?v=BQrJ4lHAjhc",
-      "skipped": true
-    },
-    {
-      "id": "B8NvdfssGac",
-      "url": "https://www.youtube.com/watch?v=B8NvdfssGac",
-      "skipped": true
-    },
-    {
-      "id": "tsQB0n0YV3k",
-      "url": "https://www.youtube.com/watch?v=tsQB0n0YV3k",
-      "lang": "en",
-      "segments": 617,
-      "chars": 61334
-    },
-    {
-      "id": "Lri2LNYtERM",
-      "url": "https://www.youtube.com/watch?v=Lri2LNYtERM",
-      "skipped": true
-    },
-    {
-      "id": "fBfY7tWCecU",
-      "url": "https://www.youtube.com/watch?v=fBfY7tWCecU",
-      "skipped": true
-    },
-    {
-      "id": "-KfrrWRl3FA",
-      "url": "https://www.youtube.com/watch?v=-KfrrWRl3FA",
-      "skipped": true
-    },
-    {
-      "id": "OsLRf6r5U9E",
-      "url": "https://www.youtube.com/watch?v=OsLRf6r5U9E",
-      "skipped": true
-    },
-    {
-      "id": "5ze3ZNvOdRY",
-      "url": "https://www.youtube.com/watch?v=5ze3ZNvOdRY",
-      "skipped": true
-    },
-    {
-      "id": "I8VUN141MjU",
-      "url": "https://www.youtube.com/watch?v=I8VUN141MjU",
-      "skipped": true
-    },
-    {
-      "id": "aR20FWCCjAs",
-      "url": "https://www.youtube.com/watch?v=aR20FWCCjAs",
-      "skipped": true
-    },
-    {
-      "id": "2VktR2fAmF0",
-      "url": "https://www.youtube.com/watch?v=2VktR2fAmF0",
-      "skipped": true
-    },
-    {
-      "id": "znKb71kLG5c",
-      "url": "https://www.youtube.com/watch?v=znKb71kLG5c",
-      "skipped": true
-    },
-    {
-      "id": "AKoBE4gKaXQ",
-      "url": "https://www.youtube.com/watch?v=AKoBE4gKaXQ",
-      "skipped": true
-    },
-    {
-      "id": "Csjy_A3Kj9s",
-      "url": "https://www.youtube.com/watch?v=Csjy_A3Kj9s",
-      "skipped": true
-    },
-    {
-      "id": "6eBSHbLKuN0",
-      "url": "https://www.youtube.com/watch?v=6eBSHbLKuN0",
-      "skipped": true
-    },
-    {
-      "id": "gv0WHhKelSE",
-      "url": "https://www.youtube.com/watch?v=gv0WHhKelSE",
-      "skipped": true
-    },
-    {
-      "id": "kRgdkOw82F0",
-      "url": "https://www.youtube.com/watch?v=kRgdkOw82F0",
-      "skipped": true
-    },
-    {
-      "id": "wApaJjvNZFs",
-      "url": "https://www.youtube.com/watch?v=wApaJjvNZFs",
-      "skipped": true
-    },
-    {
-      "id": "eRS3CmvrOvA",
-      "url": "https://www.youtube.com/watch?v=eRS3CmvrOvA",
-      "skipped": true
-    },
-    {
-      "id": "iBBOLjt8haY",
-      "url": "https://www.youtube.com/watch?v=iBBOLjt8haY",
-      "skipped": true
-    },
-    {
-      "id": "mR-WAvEPRwE",
-      "url": "https://www.youtube.com/watch?v=mR-WAvEPRwE",
-      "skipped": true
-    },
-    {
-      "id": "OpsGJaijG10",
-      "url": "https://www.youtube.com/watch?v=OpsGJaijG10",
-      "skipped": true
-    },
-    {
-      "id": "eSP7PLTXNy8",
-      "url": "https://www.youtube.com/watch?v=eSP7PLTXNy8",
-      "skipped": true
-    },
-    {
-      "id": "jWy39wavbjY",
-      "url": "https://www.youtube.com/watch?v=jWy39wavbjY",
-      "skipped": true
-    },
-    {
-      "id": "R9K2574YEAg",
-      "url": "https://www.youtube.com/watch?v=R9K2574YEAg",
-      "skipped": true
-    },
-    {
-      "id": "tL3sXpxpCPs",
-      "url": "https://www.youtube.com/watch?v=tL3sXpxpCPs",
-      "skipped": true
-    },
-    {
-      "id": "Wj6ttdIeBnE",
-      "url": "https://www.youtube.com/watch?v=Wj6ttdIeBnE",
-      "skipped": true
-    },
-    {
-      "id": "6qAB6aUMIeA",
-      "url": "https://www.youtube.com/watch?v=6qAB6aUMIeA",
-      "skipped": true
-    },
-    {
-      "id": "I8fs4omN1no",
-      "url": "https://www.youtube.com/watch?v=I8fs4omN1no",
-      "skipped": true
-    },
-    {
-      "id": "8-boBsWcr5A",
-      "url": "https://www.youtube.com/watch?v=8-boBsWcr5A",
-      "lang": "en",
-      "segments": 855,
-      "chars": 90599
-    },
-    {
-      "id": "b6Doq2fz81U",
-      "url": "https://www.youtube.com/watch?v=b6Doq2fz81U",
-      "skipped": true
-    },
-    {
-      "id": "1G-X70bnJEg",
-      "url": "https://www.youtube.com/watch?v=1G-X70bnJEg",
-      "skipped": true
-    },
-    {
-      "id": "3tng5VWbWXU",
-      "url": "https://www.youtube.com/watch?v=3tng5VWbWXU",
-      "skipped": true
-    },
-    {
-      "id": "4eCFmbX5rAQ",
-      "url": "https://www.youtube.com/watch?v=4eCFmbX5rAQ",
-      "skipped": true
-    },
-    {
-      "id": "_NLHFoVNlbg",
-      "url": "https://www.youtube.com/watch?v=_NLHFoVNlbg",
-      "skipped": true
-    },
-    {
-      "id": "44eFf-tRiSg",
-      "url": "https://www.youtube.com/watch?v=44eFf-tRiSg",
-      "skipped": true
-    },
-    {
-      "id": "C06FBVXMLCY",
-      "url": "https://www.youtube.com/watch?v=C06FBVXMLCY",
-      "skipped": true
-    },
-    {
-      "id": "xGO5Q94XXf0",
-      "url": "https://www.youtube.com/watch?v=xGO5Q94XXf0",
-      "skipped": true
-    },
-    {
-      "id": "H-oCV5brtU4",
-      "url": "https://www.youtube.com/watch?v=H-oCV5brtU4",
-      "skipped": true
-    },
-    {
-      "id": "emV9Wo_UuGQ",
-      "url": "https://www.youtube.com/watch?v=emV9Wo_UuGQ",
-      "skipped": true
-    },
-    {
-      "id": "Pya-G_Y6m7E",
-      "url": "https://www.youtube.com/watch?v=Pya-G_Y6m7E",
-      "skipped": true
-    },
-    {
-      "id": "0tLHVyd7WtM",
-      "url": "https://www.youtube.com/watch?v=0tLHVyd7WtM",
-      "skipped": true
-    },
-    {
-      "id": "EH5jx5qPabU",
-      "url": "https://www.youtube.com/watch?v=EH5jx5qPabU",
-      "skipped": true
-    },
-    {
-      "id": "QIsJe-nZ5XE",
-      "url": "https://www.youtube.com/watch?v=QIsJe-nZ5XE",
-      "skipped": true
-    },
-    {
-      "id": "oulVKbk0umo",
-      "url": "https://www.youtube.com/watch?v=oulVKbk0umo",
-      "skipped": true
-    },
-    {
-      "id": "8QN23ZThdRY",
-      "url": "https://www.youtube.com/watch?v=8QN23ZThdRY",
-      "skipped": true
-    },
-    {
-      "id": "ITMouQ_EuXI",
-      "url": "https://www.youtube.com/watch?v=ITMouQ_EuXI",
-      "skipped": true
-    },
-    {
-      "id": "ysPbXH0LpIE",
-      "url": "https://www.youtube.com/watch?v=ysPbXH0LpIE",
-      "skipped": true
-    },
-    {
-      "id": "huR0Oa2odxA",
-      "url": "https://www.youtube.com/watch?v=huR0Oa2odxA",
-      "skipped": true
-    },
-    {
-      "id": "3Zvk4AMCrG8",
-      "url": "https://www.youtube.com/watch?v=3Zvk4AMCrG8",
-      "skipped": true
-    },
-    {
-      "id": "TjAbtsPC-Sw",
-      "url": "https://www.youtube.com/watch?v=TjAbtsPC-Sw",
-      "skipped": true
-    },
-    {
-      "id": "RUHU-w4Lz1I",
-      "url": "https://www.youtube.com/watch?v=RUHU-w4Lz1I",
-      "skipped": true
-    },
-    {
-      "id": "6IE2UygjcQw",
-      "url": "https://www.youtube.com/watch?v=6IE2UygjcQw",
-      "skipped": true
-    },
-    {
-      "id": "e85AxYW0Qyk",
-      "url": "https://www.youtube.com/watch?v=e85AxYW0Qyk",
-      "skipped": true
-    },
-    {
-      "id": "xWYb7tImErI",
-      "url": "https://www.youtube.com/watch?v=xWYb7tImErI",
-      "skipped": true
-    },
-    {
-      "id": "SbUxRluVRwk",
-      "url": "https://www.youtube.com/watch?v=SbUxRluVRwk",
-      "skipped": true
-    },
-    {
-      "id": "7ARBJQn6QkM",
-      "url": "https://www.youtube.com/watch?v=7ARBJQn6QkM",
-      "skipped": true
+      "id": "Dt6u-yFEpsk",
+      "url": "https://www.youtube.com/watch?v=Dt6u-yFEpsk",
+      "file": "2026-09-11-10-insane-ai-agent-use-cases-in-n8n-steal-these--Dt6u-yFEpsk.txt",
+      "chars": 16717
     },
     {
       "id": "8kMaTybvDUw",
       "url": "https://www.youtube.com/watch?v=8kMaTybvDUw",
-      "skipped": true
-    },
-    {
-      "id": "8rABwKRsec4",
-      "url": "https://www.youtube.com/watch?v=8rABwKRsec4",
-      "skipped": true
-    },
-    {
-      "id": "plbXQ2SbAMg",
-      "url": "https://www.youtube.com/watch?v=plbXQ2SbAMg",
-      "skipped": true
-    },
-    {
-      "id": "UaJSXjNX3wo",
-      "url": "https://www.youtube.com/watch?v=UaJSXjNX3wo",
-      "skipped": true
-    },
-    {
-      "id": "Bugs0dVcNI8",
-      "url": "https://www.youtube.com/watch?v=Bugs0dVcNI8",
-      "skipped": true
-    },
-    {
-      "id": "9lSRViLugE0",
-      "url": "https://www.youtube.com/watch?v=9lSRViLugE0",
-      "skipped": true
-    },
-    {
-      "id": "-gtlrI1TqZE",
-      "url": "https://www.youtube.com/watch?v=-gtlrI1TqZE",
-      "skipped": true
-    },
-    {
-      "id": "DL82mGde6wo",
-      "url": "https://www.youtube.com/watch?v=DL82mGde6wo",
-      "skipped": true
-    },
-    {
-      "id": "WI8ikp5YyRw",
-      "url": "https://www.youtube.com/watch?v=WI8ikp5YyRw",
-      "skipped": true
-    },
-    {
-      "id": "pR51uBNb5es",
-      "url": "https://www.youtube.com/watch?v=pR51uBNb5es",
-      "skipped": true
-    },
-    {
-      "id": "kTs3kDlKc8w",
-      "url": "https://www.youtube.com/watch?v=kTs3kDlKc8w",
-      "skipped": true
-    },
-    {
-      "id": "lZuxqbw8IX4",
-      "url": "https://www.youtube.com/watch?v=lZuxqbw8IX4",
-      "lang": "en",
-      "segments": 801,
-      "chars": 30193
-    },
-    {
-      "id": "cHVQj7w9TD4",
-      "url": "https://www.youtube.com/watch?v=cHVQj7w9TD4",
-      "skipped": true
-    },
-    {
-      "id": "K4s6Cgicw_A",
-      "url": "https://www.youtube.com/watch?v=K4s6Cgicw_A",
-      "skipped": true
-    },
-    {
-      "id": "4keUCOVpsxQ",
-      "url": "https://www.youtube.com/watch?v=4keUCOVpsxQ",
-      "lang": "en",
-      "segments": 318,
-      "chars": 33102
-    },
-    {
-      "id": "9tj4MxCV6g0",
-      "url": "https://www.youtube.com/watch?v=9tj4MxCV6g0",
-      "skipped": true
-    },
-    {
-      "id": "EN0-KNqs6aA",
-      "url": "https://www.youtube.com/watch?v=EN0-KNqs6aA",
-      "skipped": true
-    },
-    {
-      "id": "szGFppZgSI0",
-      "url": "https://www.youtube.com/watch?v=szGFppZgSI0",
-      "skipped": true
-    },
-    {
-      "id": "Dt6u-yFEpsk",
-      "url": "https://www.youtube.com/watch?v=Dt6u-yFEpsk",
-      "skipped": true
-    },
-    {
-      "id": "w87UvmMcmW4",
-      "url": "https://www.youtube.com/watch?v=w87UvmMcmW4",
-      "skipped": true
-    },
-    {
-      "id": "uAtSMEBosGU",
-      "url": "https://www.youtube.com/watch?v=uAtSMEBosGU",
-      "skipped": true
-    },
-    {
-      "id": "06Beyp_iDL0",
-      "url": "https://www.youtube.com/watch?v=06Beyp_iDL0",
-      "lang": "en",
-      "segments": 446,
-      "chars": 54859
-    },
-    {
-      "id": "kUpTUEwKnrk",
-      "url": "https://www.youtube.com/watch?v=kUpTUEwKnrk",
-      "skipped": true
-    },
-    {
-      "id": "ldETapkr8Hg",
-      "url": "https://www.youtube.com/watch?v=ldETapkr8Hg",
-      "skipped": true
-    },
-    {
-      "id": "EvtPBaaykdo",
-      "url": "https://www.youtube.com/watch?v=EvtPBaaykdo",
-      "skipped": true
-    },
-    {
-      "id": "ZbIVOy_GPyQ",
-      "url": "https://www.youtube.com/watch?v=ZbIVOy_GPyQ",
-      "skipped": true
-    },
-    {
-      "id": "nSQnJoqK4DQ",
-      "url": "https://www.youtube.com/watch?v=nSQnJoqK4DQ",
-      "skipped": true
-    },
-    {
-      "id": "_a8EnBX8DSU",
-      "url": "https://www.youtube.com/watch?v=_a8EnBX8DSU",
-      "lang": "en",
-      "segments": 418,
-      "chars": 22014
-    },
-    {
-      "id": "9FuNtfsnRNo",
-      "url": "https://www.youtube.com/watch?v=9FuNtfsnRNo",
-      "skipped": true
-    },
-    {
-      "id": "Hm0DZtiKUI8",
-      "url": "https://www.youtube.com/watch?v=Hm0DZtiKUI8",
-      "skipped": true
-    },
-    {
-      "id": "HdafI0t3sEY",
-      "url": "https://www.youtube.com/watch?v=HdafI0t3sEY",
-      "skipped": true
-    },
-    {
-      "id": "7j1t3UZA1TY",
-      "url": "https://www.youtube.com/watch?v=7j1t3UZA1TY",
-      "skipped": true
-    },
-    {
-      "id": "WLvQCIUWebs",
-      "url": "https://www.youtube.com/watch?v=WLvQCIUWebs",
-      "lang": "en",
-      "segments": 403,
-      "chars": 46740
-    },
-    {
-      "id": "GhIJs4zbH0o",
-      "url": "https://www.youtube.com/watch?v=GhIJs4zbH0o",
-      "skipped": true
-    },
-    {
-      "id": "hrQy6m48F4E",
-      "url": "https://www.youtube.com/watch?v=hrQy6m48F4E",
-      "skipped": true
-    },
-    {
-      "id": "uOcKF-aLHyw",
-      "url": "https://www.youtube.com/watch?v=uOcKF-aLHyw",
-      "skipped": true
-    },
-    {
-      "id": "T9aRN5JkmL8",
-      "url": "https://www.youtube.com/watch?v=T9aRN5JkmL8",
-      "skipped": true
-    },
-    {
-      "id": "PduJ0P6r_8o",
-      "url": "https://www.youtube.com/watch?v=PduJ0P6r_8o",
-      "skipped": true
-    },
-    {
-      "id": "p09yRj47kNM",
-      "url": "https://www.youtube.com/watch?v=p09yRj47kNM",
-      "skipped": true
-    },
-    {
-      "id": "ABCqfaTjNd4",
-      "url": "https://www.youtube.com/watch?v=ABCqfaTjNd4",
-      "skipped": true
-    },
-    {
-      "id": "yNpbnrlAFzA",
-      "url": "https://www.youtube.com/watch?v=yNpbnrlAFzA",
-      "skipped": true
-    },
-    {
-      "id": "_K_F_icxtrI",
-      "url": "https://www.youtube.com/watch?v=_K_F_icxtrI",
-      "skipped": true
-    },
-    {
-      "id": "ydJNqND6N_Y",
-      "url": "https://www.youtube.com/watch?v=ydJNqND6N_Y",
-      "skipped": true
-    },
-    {
-      "id": "b2GqTDWtg6s",
-      "url": "https://www.youtube.com/watch?v=b2GqTDWtg6s",
-      "skipped": true
-    },
-    {
-      "id": "D7_ipDqhtwk",
-      "url": "https://www.youtube.com/watch?v=D7_ipDqhtwk",
-      "lang": "en",
-      "segments": 112,
-      "chars": 14410
-    },
-    {
-      "id": "scsW6_2SPC4",
-      "url": "https://www.youtube.com/watch?v=scsW6_2SPC4",
-      "lang": "en",
-      "segments": 726,
-      "chars": 91672
-    },
-    {
-      "id": "Js1gU6L1Zi8",
-      "url": "https://www.youtube.com/watch?v=Js1gU6L1Zi8",
-      "lang": "en",
-      "segments": 779,
-      "chars": 29747
-    },
-    {
-      "id": "0QPf-9El_2s",
-      "url": "https://www.youtube.com/watch?v=0QPf-9El_2s",
-      "lang": "en",
-      "segments": 140,
-      "chars": 18090
-    },
-    {
-      "id": "xlQB_0Nzoog",
-      "url": "https://www.youtube.com/watch?v=xlQB_0Nzoog",
-      "lang": "en",
-      "segments": 325,
-      "chars": 36207
-    },
-    {
-      "id": "1XvN5EBDnDw",
-      "url": "https://www.youtube.com/watch?v=1XvN5EBDnDw",
-      "lang": "en",
-      "segments": 511,
-      "chars": 18348
-    },
-    {
-      "id": "nkhrEnuZi20",
-      "url": "https://www.youtube.com/watch?v=nkhrEnuZi20",
-      "lang": "en",
-      "segments": 186,
-      "chars": 22419
-    },
-    {
-      "id": "0vBKv9yAQi4",
-      "url": "https://www.youtube.com/watch?v=0vBKv9yAQi4",
-      "lang": "en",
-      "segments": 490,
-      "chars": 17934
-    },
-    {
-      "id": "d5EltXhbcfA",
-      "url": "https://www.youtube.com/watch?v=d5EltXhbcfA",
-      "lang": "en",
-      "segments": 150,
-      "chars": 18225
-    },
-    {
-      "id": "wv779vmyPVY",
-      "url": "https://www.youtube.com/watch?v=wv779vmyPVY",
-      "lang": "en",
-      "segments": 223,
-      "chars": 12377
-    },
-    {
-      "id": "1Pf2rW5FsqQ",
-      "url": "https://www.youtube.com/watch?v=1Pf2rW5FsqQ",
-      "lang": "en",
-      "segments": 288,
-      "chars": 24899
-    },
-    {
-      "id": "DBhSfROq3wU",
-      "url": "https://www.youtube.com/watch?v=DBhSfROq3wU",
-      "lang": "en",
-      "segments": 275,
-      "chars": 38618
-    },
-    {
-      "id": "jmeGqDu4tPU",
-      "url": "https://www.youtube.com/watch?v=jmeGqDu4tPU",
-      "lang": "en",
-      "segments": 286,
-      "chars": 26298
-    },
-    {
-      "id": "afN8U7kAiLc",
-      "url": "https://www.youtube.com/watch?v=afN8U7kAiLc",
-      "lang": "en",
-      "segments": 367,
-      "chars": 43548
-    },
-    {
-      "id": "bFnY2tONtSs",
-      "url": "https://www.youtube.com/watch?v=bFnY2tONtSs",
-      "lang": "en",
-      "segments": 408,
-      "chars": 15356
-    },
-    {
-      "id": "XVO3zsHdvio",
-      "url": "https://www.youtube.com/watch?v=XVO3zsHdvio",
-      "lang": "en",
-      "segments": 381,
-      "chars": 38319
+      "file": "2026-09-11-12-factor-agents-patterns-of-reliable-llm-applications-dex-horthy-humanlayer--8kMaTybvDUw.txt",
+      "chars": 20237
     },
     {
       "id": "HkFDWwmtZ-M",
       "url": "https://www.youtube.com/watch?v=HkFDWwmtZ-M",
+      "file": "2026-09-11-2025-ai-agent-masterclass-learn-how-to-build-anything-with-llms--HkFDWwmtZ-M.txt",
+      "chars": 36144,
       "lang": "en",
-      "segments": 338,
-      "chars": 36144
+      "segments": 338
     },
     {
-      "id": "O6DtzLGLNWY",
-      "url": "https://www.youtube.com/watch?v=O6DtzLGLNWY",
-      "lang": "en",
-      "segments": 421,
-      "chars": 15996
+      "id": "OpsGJaijG10",
+      "url": "https://www.youtube.com/watch?v=OpsGJaijG10",
+      "file": "2026-09-11-24h-inside-a-30m-silicon-valley-ai-startup-with-no-employees--OpsGJaijG10.txt",
+      "chars": 16919
     },
     {
-      "id": "yQ4F553zhQw",
-      "url": "https://www.youtube.com/watch?v=yQ4F553zhQw",
+      "id": "jmeGqDu4tPU",
+      "url": "https://www.youtube.com/watch?v=jmeGqDu4tPU",
+      "file": "2026-09-11-26-key-takeaways-from-building-150-agents-in-9-months--jmeGqDu4tPU.txt",
+      "chars": 26298,
       "lang": "en",
-      "segments": 155,
-      "chars": 17018
+      "segments": 286
     },
     {
-      "id": "wwC86t5k77Y",
-      "url": "https://www.youtube.com/watch?v=wwC86t5k77Y",
+      "id": "06Beyp_iDL0",
+      "url": "https://www.youtube.com/watch?v=06Beyp_iDL0",
+      "file": "2026-09-11-3-ai-workflows-step-by-step-beginner-s-guide-to-n8n--06Beyp_iDL0.txt",
+      "chars": 54859,
       "lang": "en",
-      "segments": 119,
-      "chars": 12650
+      "segments": 446
     },
     {
-      "id": "aIAxWr5ix1o",
-      "url": "https://www.youtube.com/watch?v=aIAxWr5ix1o",
-      "lang": "en",
-      "segments": 107,
-      "chars": 11245
-    },
-    {
-      "id": "MSO4qCiwTjQ",
-      "url": "https://www.youtube.com/watch?v=MSO4qCiwTjQ",
-      "lang": "en",
-      "segments": 224,
-      "chars": 24547
-    },
-    {
-      "id": "DAC3YQgLv5E",
-      "url": "https://www.youtube.com/watch?v=DAC3YQgLv5E",
-      "lang": "en",
-      "segments": 199,
-      "chars": 12097
-    },
-    {
-      "id": "DgAu_oJ2-TA",
-      "url": "https://www.youtube.com/watch?v=DgAu_oJ2-TA",
-      "lang": "en",
-      "segments": 513,
-      "chars": 51483
-    },
-    {
-      "id": "E0Jbaikf0o4",
-      "url": "https://www.youtube.com/watch?v=E0Jbaikf0o4",
-      "lang": "en",
-      "segments": 648,
-      "chars": 24284
-    },
-    {
-      "id": "WFD2wMiduIE",
-      "url": "https://www.youtube.com/watch?v=WFD2wMiduIE",
-      "lang": "en",
-      "segments": 647,
-      "chars": 24550
-    },
-    {
-      "id": "vRTcE19M-KE",
-      "url": "https://www.youtube.com/watch?v=vRTcE19M-KE",
-      "lang": "en",
-      "segments": 534,
-      "chars": 57155
-    },
-    {
-      "id": "1yvBqasHLZs",
-      "url": "https://www.youtube.com/watch?v=1yvBqasHLZs",
-      "lang": "en",
-      "segments": 186,
-      "chars": 19109
-    },
-    {
-      "id": "Hn27upT2m_o",
-      "url": "https://www.youtube.com/watch?v=Hn27upT2m_o",
-      "lang": "en",
-      "segments": 354,
-      "chars": 40678
-    },
-    {
-      "id": "_PgBDk_GhPo",
-      "url": "https://www.youtube.com/watch?v=_PgBDk_GhPo",
-      "lang": "en",
-      "segments": 730,
-      "chars": 28066
-    },
-    {
-      "id": "yHDvCGNjIqk",
-      "url": "https://www.youtube.com/watch?v=yHDvCGNjIqk",
-      "lang": "en",
-      "segments": 128,
-      "chars": 12505
-    },
-    {
-      "id": "6GBFiseyDnk",
-      "url": "https://www.youtube.com/watch?v=6GBFiseyDnk",
-      "lang": "en",
-      "segments": 133,
-      "chars": 15829
-    },
-    {
-      "id": "3eDrAHjSqXo",
-      "url": "https://www.youtube.com/watch?v=3eDrAHjSqXo",
-      "lang": "en",
-      "segments": 347,
-      "chars": 12760
-    },
-    {
-      "id": "gZKLPNhWXxE",
-      "url": "https://www.youtube.com/watch?v=gZKLPNhWXxE",
-      "lang": "en",
-      "segments": 243,
-      "chars": 9141
-    },
-    {
-      "id": "KqiQ4kC8OJI",
-      "url": "https://www.youtube.com/watch?v=KqiQ4kC8OJI",
-      "lang": "en",
-      "segments": 306,
-      "chars": 24070
-    },
-    {
-      "id": "wNUIhCI_jsw",
-      "url": "https://www.youtube.com/watch?v=wNUIhCI_jsw",
-      "lang": "en",
-      "segments": 373,
-      "chars": 37854
-    },
-    {
-      "id": "8oD7juOSEN0",
-      "url": "https://www.youtube.com/watch?v=8oD7juOSEN0",
-      "lang": "en",
-      "segments": 225,
-      "chars": 7551
-    },
-    {
-      "id": "lZsZX5p6eHQ",
-      "url": "https://www.youtube.com/watch?v=lZsZX5p6eHQ",
-      "lang": "en",
-      "segments": 110,
-      "chars": 13328
-    },
-    {
-      "id": "38N8pgnNANQ",
-      "url": "https://www.youtube.com/watch?v=38N8pgnNANQ",
-      "lang": "en",
-      "segments": 180,
-      "chars": 19718
-    },
-    {
-      "id": "cN6NraQXwHA",
-      "url": "https://www.youtube.com/watch?v=cN6NraQXwHA",
-      "lang": "en",
-      "segments": 355,
-      "chars": 13386
-    },
-    {
-      "id": "jC4v5AS4RIM",
-      "url": "https://www.youtube.com/watch?v=jC4v5AS4RIM",
-      "lang": "en",
-      "segments": 242,
-      "chars": 9185
-    },
-    {
-      "id": "EOmgC3-hznM",
-      "url": "https://www.youtube.com/watch?v=EOmgC3-hznM",
-      "lang": "en",
-      "segments": 337,
-      "chars": 12730
-    },
-    {
-      "id": "mJwPvyc4-rk",
-      "url": "https://www.youtube.com/watch?v=mJwPvyc4-rk",
-      "lang": "en",
-      "segments": 457,
-      "chars": 41574
-    },
-    {
-      "id": "UnH7S5044GA",
-      "url": "https://www.youtube.com/watch?v=UnH7S5044GA",
-      "lang": "en",
-      "segments": 169,
-      "chars": 21374
-    },
-    {
-      "id": "XeWZIzndlY4",
-      "url": "https://www.youtube.com/watch?v=XeWZIzndlY4",
-      "lang": "en",
-      "segments": 201,
-      "chars": 23375
-    },
-    {
-      "id": "Es5Qb9weRmA",
-      "url": "https://www.youtube.com/watch?v=Es5Qb9weRmA",
-      "lang": "en",
-      "segments": 564,
-      "chars": 21609
-    },
-    {
-      "id": "TBmcvEmPXJ4",
-      "url": "https://www.youtube.com/watch?v=TBmcvEmPXJ4",
-      "lang": "en",
-      "segments": 139,
-      "chars": 18610
-    },
-    {
-      "id": "pC17ge_2n0Q",
-      "url": "https://www.youtube.com/watch?v=pC17ge_2n0Q",
-      "lang": "en",
-      "segments": 148,
-      "chars": 22419
-    },
-    {
-      "id": "_al9YYnF2xI",
-      "url": "https://www.youtube.com/watch?v=_al9YYnF2xI",
-      "lang": "en",
-      "segments": 173,
-      "chars": 6660
-    },
-    {
-      "id": "ASABxNenD_U",
-      "url": "https://www.youtube.com/watch?v=ASABxNenD_U",
-      "lang": "en",
-      "segments": 317,
-      "chars": 42875
-    },
-    {
-      "id": "1SfUMQ1yTY8",
-      "url": "https://www.youtube.com/watch?v=1SfUMQ1yTY8",
-      "lang": "en",
-      "segments": 500,
-      "chars": 50342
-    },
-    {
-      "id": "uc1lUchiaJ0",
-      "url": "https://www.youtube.com/watch?v=uc1lUchiaJ0",
-      "lang": "en",
-      "segments": 332,
-      "chars": 12445
-    },
-    {
-      "id": "sNpQ9ULDMoo",
-      "url": "https://www.youtube.com/watch?v=sNpQ9ULDMoo",
-      "lang": "en",
-      "segments": 281,
-      "chars": 10675
-    },
-    {
-      "id": "RPVxwzJtp4o",
-      "url": "https://www.youtube.com/watch?v=RPVxwzJtp4o",
-      "lang": "en",
-      "segments": 333,
-      "chars": 38502
-    },
-    {
-      "id": "ohiK708oMd4",
-      "url": "https://www.youtube.com/watch?v=ohiK708oMd4",
-      "lang": "en",
-      "segments": 400,
-      "chars": 15234
-    },
-    {
-      "id": "-5PZj_Wshk0",
-      "url": "https://www.youtube.com/watch?v=-5PZj_Wshk0",
-      "lang": "en",
-      "segments": 377,
-      "chars": 14434
-    },
-    {
-      "id": "5XaXLLA4gK0",
-      "url": "https://www.youtube.com/watch?v=5XaXLLA4gK0",
-      "lang": "en",
-      "segments": 76,
-      "chars": 10967
-    },
-    {
-      "id": "2gBcO3ht0ws",
-      "url": "https://www.youtube.com/watch?v=2gBcO3ht0ws",
-      "lang": "en",
-      "segments": 311,
-      "chars": 33188
-    },
-    {
-      "id": "Wfk_zhfIn4U",
-      "url": "https://www.youtube.com/watch?v=Wfk_zhfIn4U",
-      "lang": "en",
-      "segments": 145,
-      "chars": 17815
-    },
-    {
-      "id": "g90sjbWrwoY",
-      "url": "https://www.youtube.com/watch?v=g90sjbWrwoY",
-      "lang": "en",
-      "segments": 315,
-      "chars": 12085
-    },
-    {
-      "id": "AtZiJzQSH7k",
-      "url": "https://www.youtube.com/watch?v=AtZiJzQSH7k",
-      "lang": "en",
-      "segments": 296,
-      "chars": 11219
+      "id": "nSQnJoqK4DQ",
+      "url": "https://www.youtube.com/watch?v=nSQnJoqK4DQ",
+      "file": "2026-09-11-4-agentic-frameworks-for-more-efficient-workflows-in-n8n--nSQnJoqK4DQ.txt",
+      "chars": 22740
     },
     {
       "id": "4bZUZeeiacU",
       "url": "https://www.youtube.com/watch?v=4bZUZeeiacU",
+      "file": "2026-09-11-5-brand-new-digital-marketing-strategies-for-2025-biggest-change-yet--4bZUZeeiacU.txt",
+      "chars": 11790,
       "lang": "en",
-      "segments": 311,
-      "chars": 11790
+      "segments": 311
+    },
+    {
+      "id": "Es5Qb9weRmA",
+      "url": "https://www.youtube.com/watch?v=Es5Qb9weRmA",
+      "file": "2026-09-11-5-notebooklm-hacks-that-will-blow-your-mind--Es5Qb9weRmA.txt",
+      "chars": 21609,
+      "lang": "en",
+      "segments": 564
+    },
+    {
+      "id": "WLvQCIUWebs",
+      "url": "https://www.youtube.com/watch?v=WLvQCIUWebs",
+      "file": "2026-09-11-5-simple-ai-agents-you-must-have-beginners-guide--WLvQCIUWebs.txt",
+      "chars": 46740,
+      "lang": "en",
+      "segments": 403
+    },
+    {
+      "id": "emV9Wo_UuGQ",
+      "url": "https://www.youtube.com/watch?v=emV9Wo_UuGQ",
+      "file": "2026-09-11-5-simple-but-weird-chatgpt-5-tricks-to-get-a-10x-better-response--emV9Wo_UuGQ.txt",
+      "chars": 14085
+    },
+    {
+      "id": "E6Nx8cYaqUQ",
+      "url": "https://www.youtube.com/watch?v=E6Nx8cYaqUQ",
+      "file": "2026-09-11-6-government-databases-most-people-dont-know-are-public--E6Nx8cYaqUQ.txt",
+      "chars": 19902
+    },
+    {
+      "id": "F4a8aMLb678",
+      "url": "https://www.youtube.com/watch?v=F4a8aMLb678",
+      "file": "2026-09-11-7-insane-loops-you-need-to-try-right-now--F4a8aMLb678.txt",
+      "chars": 15433
     },
     {
       "id": "8IUkOAvMP-M",
       "url": "https://www.youtube.com/watch?v=8IUkOAvMP-M",
+      "file": "2026-09-11-7-mind-blowing-new-use-cases-for-chatgpt-in-2025-big-changes-ahead--8IUkOAvMP-M.txt",
+      "chars": 15499,
       "lang": "en",
-      "segments": 407,
-      "chars": 15499
+      "segments": 407
     },
     {
-      "id": "u5Vcrwpzoz8",
-      "url": "https://www.youtube.com/watch?v=u5Vcrwpzoz8",
+      "id": "ohiK708oMd4",
+      "url": "https://www.youtube.com/watch?v=ohiK708oMd4",
+      "file": "2026-09-11-7-tiny-digital-products-guaranteed-to-sell-in-2025--ohiK708oMd4.txt",
+      "chars": 15234,
       "lang": "en",
-      "segments": 759,
-      "chars": 29069
+      "segments": 400
     },
     {
-      "id": "TRjq7t2Ms5I",
-      "url": "https://www.youtube.com/watch?v=TRjq7t2Ms5I",
-      "lang": "en",
-      "segments": 139,
-      "chars": 20561
+      "id": "QBfXiWvM0qc",
+      "url": "https://www.youtube.com/watch?v=QBfXiWvM0qc",
+      "file": "2026-09-11-75m-founder-reveals-his-agentic-engineering-setup--QBfXiWvM0qc.txt",
+      "chars": 53948
     },
     {
-      "id": "IXRkmqEYGZA",
-      "url": "https://www.youtube.com/watch?v=IXRkmqEYGZA",
-      "lang": "en",
-      "segments": 689,
-      "chars": 26262
+      "id": "UzMNBN6xLLA",
+      "url": "https://www.youtube.com/watch?v=UzMNBN6xLLA",
+      "file": "2026-09-11-9-things-people-get-wrong-with-my-grill-skills--UzMNBN6xLLA.txt",
+      "chars": 15593
     },
     {
-      "id": "kBFjvQxKnOs",
-      "url": "https://www.youtube.com/watch?v=kBFjvQxKnOs",
+      "id": "WFD2wMiduIE",
+      "url": "https://www.youtube.com/watch?v=WFD2wMiduIE",
+      "file": "2026-09-11-9-usos-do-notebooklm-que-vao-explodir-sua-cabeca-incrivel--WFD2wMiduIE.txt",
+      "chars": 24550,
       "lang": "en",
-      "segments": 134,
-      "chars": 5089
+      "segments": 647
     },
     {
-      "id": "69bH4IHZivs",
-      "url": "https://www.youtube.com/watch?v=69bH4IHZivs",
-      "lang": "en",
-      "segments": 350,
-      "chars": 13398
+      "id": "O7u6myBRsns",
+      "url": "https://www.youtube.com/watch?v=O7u6myBRsns",
+      "file": "2026-09-11-a-leaders-guide-to-advanced-team-structures-in-an-agentic-world-aws-events--O7u6myBRsns.txt",
+      "chars": 28540
     },
     {
-      "id": "UL55C80TEb8",
-      "url": "https://www.youtube.com/watch?v=UL55C80TEb8",
+      "id": "KHudyx5wW3U",
+      "url": "https://www.youtube.com/watch?v=KHudyx5wW3U",
+      "file": "2026-09-11-agent-frameworks-considered-harmful-remi-louf-txt--KHudyx5wW3U.txt",
+      "chars": 19097,
       "lang": "en",
-      "segments": 108,
-      "chars": 13012
+      "segments": 499
     },
     {
-      "id": "8fMnAZI1bdA",
-      "url": "https://www.youtube.com/watch?v=8fMnAZI1bdA",
-      "lang": "en",
-      "segments": 181,
-      "chars": 11751
+      "id": "e85AxYW0Qyk",
+      "url": "https://www.youtube.com/watch?v=e85AxYW0Qyk",
+      "file": "2026-09-11-agentic-ai-how-bots-came-for-our-workflows-and-drudgery-ft-working-it--e85AxYW0Qyk.txt",
+      "chars": 11169
     },
     {
-      "id": "yfHHvmaMkcA",
-      "url": "https://www.youtube.com/watch?v=yfHHvmaMkcA",
+      "id": "FU5_kpTAVDo",
+      "url": "https://www.youtube.com/watch?v=FU5_kpTAVDo",
+      "file": "2026-09-11-agentic-engineering-explained-by-a-10x-developer--FU5_kpTAVDo.txt",
+      "chars": 46591
+    },
+    {
+      "id": "BEKc4P87XKo",
+      "url": "https://www.youtube.com/watch?v=BEKc4P87XKo",
+      "file": "2026-09-11-agentic-engineering-working-with-ai-not-just-using-it-brendan-o-leary--BEKc4P87XKo.txt",
+      "chars": 27072
+    },
+    {
+      "id": "Ubwb6NzegyA",
+      "url": "https://www.youtube.com/watch?v=Ubwb6NzegyA",
+      "file": "2026-09-11-agentic-evaluations-at-scale-for-everybody-nicholas-kang-michael-aaron-google-de--Ubwb6NzegyA.txt",
+      "chars": 21812
+    },
+    {
+      "id": "4wMRXmLpdA8",
+      "url": "https://www.youtube.com/watch?v=4wMRXmLpdA8",
+      "file": "2026-09-11-ai-in-the-sdlc-rethinking-ai-coding-tools-ai-agents--4wMRXmLpdA8.txt",
+      "chars": 9084
+    },
+    {
+      "id": "DBhSfROq3wU",
+      "url": "https://www.youtube.com/watch?v=DBhSfROq3wU",
+      "file": "2026-09-11-ai-interfaces-of-the-future-design-review--DBhSfROq3wU.txt",
+      "chars": 38618,
       "lang": "en",
-      "segments": 346,
-      "chars": 33214
+      "segments": 275
+    },
+    {
+      "id": "Pya-G_Y6m7E",
+      "url": "https://www.youtube.com/watch?v=Pya-G_Y6m7E",
+      "file": "2026-09-11-ai-mobility-the-near-future-with-carlo-van-de-weijer-singularity-university--Pya-G_Y6m7E.txt",
+      "chars": 50565
+    },
+    {
+      "id": "T9aRN5JkmL8",
+      "url": "https://www.youtube.com/watch?v=T9aRN5JkmL8",
+      "file": "2026-09-11-ai-prompt-engineering-a-deep-dive--T9aRN5JkmL8.txt",
+      "chars": 79482
+    },
+    {
+      "id": "l0FLhNqBOic",
+      "url": "https://www.youtube.com/watch?v=l0FLhNqBOic",
+      "file": "2026-09-11-ai-tools-for-forward-deployed-engineering-vasuman-moza-varick-agents--l0FLhNqBOic.txt",
+      "chars": 21253
+    },
+    {
+      "id": "Js1gU6L1Zi8",
+      "url": "https://www.youtube.com/watch?v=Js1gU6L1Zi8",
+      "file": "2026-09-11-anthropic-cpo-mike-krieger-building-ai-products-from-the-bottom-up--Js1gU6L1Zi8.txt",
+      "chars": 29747,
+      "lang": "en",
+      "segments": 779
+    },
+    {
+      "id": "B-YQANvDOq0",
+      "url": "https://www.youtube.com/watch?v=B-YQANvDOq0",
+      "file": "2026-09-11-anthropic-just-dropped-the-biggest-claude-code-update-yet--B-YQANvDOq0.txt",
+      "chars": 20083
+    },
+    {
+      "id": "K0X9QDRkIdg",
+      "url": "https://www.youtube.com/watch?v=K0X9QDRkIdg",
+      "file": "2026-09-11-anthropic-s-applied-ai-team-on-the-evolution-of-agentic-surfaces--K0X9QDRkIdg.txt",
+      "chars": 31958
+    },
+    {
+      "id": "Z-c11pV_uvU",
+      "url": "https://www.youtube.com/watch?v=Z-c11pV_uvU",
+      "file": "2026-09-11-anthropic-s-cca-exam-as-a-field-guide-for-agentic-engineering-frank-coyle-uc-ber--Z-c11pV_uvU.txt",
+      "chars": 15433
+    },
+    {
+      "id": "mR-WAvEPRwE",
+      "url": "https://www.youtube.com/watch?v=mR-WAvEPRwE",
+      "file": "2026-09-11-anthropic-workshop-build-agents-that-run-for-hours-ash-prabaker-andrew-wilson--mR-WAvEPRwE.txt",
+      "chars": 71861
+    },
+    {
+      "id": "xzp1yHH_vAg",
+      "url": "https://www.youtube.com/watch?v=xzp1yHH_vAg",
+      "file": "2026-09-11-as-tecnologias-que-vao-mudar-o-mundo-na-proxima-decada-market-makers-368--xzp1yHH_vAg.txt",
+      "chars": 105319
+    },
+    {
+      "id": "ydJNqND6N_Y",
+      "url": "https://www.youtube.com/watch?v=ydJNqND6N_Y",
+      "file": "2026-09-11-automate-complex-workflows-with-openai-o3--ydJNqND6N_Y.txt",
+      "chars": 2834
+    },
+    {
+      "id": "E0Jbaikf0o4",
+      "url": "https://www.youtube.com/watch?v=E0Jbaikf0o4",
+      "file": "2026-09-11-automatize-todo-o-seu-trabalho-com-a-ia-project-mariner-do-google-incrivel--E0Jbaikf0o4.txt",
+      "chars": 24284,
+      "lang": "en",
+      "segments": 648
+    },
+    {
+      "id": "504PvfXou5Y",
+      "url": "https://www.youtube.com/watch?v=504PvfXou5Y",
+      "file": "2026-09-11-bdd-adr-prd-wtf-capturing-decisions-for-humans-and-ai-alike-michal-cichra-safe-i--504PvfXou5Y.txt",
+      "chars": 10117
+    },
+    {
+      "id": "zKk7sDMGDEQ",
+      "url": "https://www.youtube.com/watch?v=zKk7sDMGDEQ",
+      "file": "2026-09-11-benchmarking-semantic-code-retrieval-on-claude-code-kuba-rogut-turbopuffer--zKk7sDMGDEQ.txt",
+      "chars": 17172
+    },
+    {
+      "id": "hCMrEfPG2Yg",
+      "url": "https://www.youtube.com/watch?v=hCMrEfPG2Yg",
+      "file": "2026-09-11-beyond-components-designing-generative-ui-for-mcp-apps-ruben-casas-postman--hCMrEfPG2Yg.txt",
+      "chars": 14032
+    },
+    {
+      "id": "uMvTAF280so",
+      "url": "https://www.youtube.com/watch?v=uMvTAF280so",
+      "file": "2026-09-11-beyond-the-prompt-goodbye-slop-welcome-determinism-david-khourshid--uMvTAF280so.txt",
+      "chars": 26733
+    },
+    {
+      "id": "1SfUMQ1yTY8",
+      "url": "https://www.youtube.com/watch?v=1SfUMQ1yTY8",
+      "file": "2026-09-11-bolt-tutorial-for-beginners-with-the-bolt-ceo-eric-simons--1SfUMQ1yTY8.txt",
+      "chars": 50342,
+      "lang": "en",
+      "segments": 500
+    },
+    {
+      "id": "yHDvCGNjIqk",
+      "url": "https://www.youtube.com/watch?v=yHDvCGNjIqk",
+      "file": "2026-09-11-bolt-vs-lovable-which-ai-app-builder-comes-out-on-top--yHDvCGNjIqk.txt",
+      "chars": 12505,
+      "lang": "en",
+      "segments": 128
+    },
+    {
+      "id": "qyPCVqFUyDo",
+      "url": "https://www.youtube.com/watch?v=qyPCVqFUyDo",
+      "file": "2026-09-11-boris-cherny-we-cut-80-of-claude-codes-prompt--qyPCVqFUyDo.txt",
+      "chars": 35427
+    },
+    {
+      "id": "ib74sLgjIBM",
+      "url": "https://www.youtube.com/watch?v=ib74sLgjIBM",
+      "file": "2026-09-11-build-a-claude-knowledge-base-that-self-improves--ib74sLgjIBM.txt",
+      "chars": 36797
+    },
+    {
+      "id": "6GBFiseyDnk",
+      "url": "https://www.youtube.com/watch?v=6GBFiseyDnk",
+      "file": "2026-09-11-build-a-new-100k-month-a-i-saas-with-me-in-20-minutes-no-code-is-insane--6GBFiseyDnk.txt",
+      "chars": 15829,
+      "lang": "en",
+      "segments": 133
+    },
+    {
+      "id": "eSP7PLTXNy8",
+      "url": "https://www.youtube.com/watch?v=eSP7PLTXNy8",
+      "file": "2026-09-11-build-a-proactive-agent-workflow-with-claude-code--eSP7PLTXNy8.txt",
+      "chars": 19266
     },
     {
       "id": "pJwR5pv0_gs",
       "url": "https://www.youtube.com/watch?v=pJwR5pv0_gs",
+      "file": "2026-09-11-build-ai-agent-workforce-multi-agent-framework-with-metagpt-chatdev--pJwR5pv0_gs.txt",
+      "chars": 15332,
       "lang": "en",
-      "segments": 401,
-      "chars": 15332
+      "segments": 401
     },
     {
-      "id": "AVInhYBUnKs",
-      "url": "https://www.youtube.com/watch?v=AVInhYBUnKs",
+      "id": "TjAbtsPC-Sw",
+      "url": "https://www.youtube.com/watch?v=TjAbtsPC-Sw",
+      "file": "2026-09-11-build-an-agent-in-10-mins-with-ai-sdk-5-with-nico-albanese-from-vercel-ai-demo-d--TjAbtsPC-Sw.txt",
+      "chars": 15233
+    },
+    {
+      "id": "OZ3ZNhrPbF4",
+      "url": "https://www.youtube.com/watch?v=OZ3ZNhrPbF4",
+      "file": "2026-09-11-build-an-obsidian-system-not-a-second-brain--OZ3ZNhrPbF4.txt",
+      "chars": 9796
+    },
+    {
+      "id": "kUpTUEwKnrk",
+      "url": "https://www.youtube.com/watch?v=kUpTUEwKnrk",
+      "file": "2026-09-11-build-anything-with-lovable-n8n-ai-agents-beginner-s-guide--kUpTUEwKnrk.txt",
+      "chars": 25917
+    },
+    {
+      "id": "EN0-KNqs6aA",
+      "url": "https://www.youtube.com/watch?v=EN0-KNqs6aA",
+      "file": "2026-09-11-build-anything-with-lovable-n8n-ai-agents-no-code--EN0-KNqs6aA.txt",
+      "chars": 23462
+    },
+    {
+      "id": "z7xyZQVK4Dg",
+      "url": "https://www.youtube.com/watch?v=z7xyZQVK4Dg",
+      "file": "2026-09-11-build-anything-with-tmux-here-s-how--z7xyZQVK4Dg.txt",
+      "chars": 29050
+    },
+    {
+      "id": "XVO3zsHdvio",
+      "url": "https://www.youtube.com/watch?v=XVO3zsHdvio",
+      "file": "2026-09-11-build-everything-with-ai-agents-here-s-how--XVO3zsHdvio.txt",
+      "chars": 38319,
       "lang": "en",
-      "segments": 618,
-      "chars": 23670
+      "segments": 381
+    },
+    {
+      "id": "ITMouQ_EuXI",
+      "url": "https://www.youtube.com/watch?v=ITMouQ_EuXI",
+      "file": "2026-09-11-build-hour-gpt-5--ITMouQ_EuXI.txt",
+      "chars": 57468
+    },
+    {
+      "id": "UaJSXjNX3wo",
+      "url": "https://www.youtube.com/watch?v=UaJSXjNX3wo",
+      "file": "2026-09-11-build-n8n-agents-into-full-stack-apps-heres-how--UaJSXjNX3wo.txt",
+      "chars": 30533
+    },
+    {
+      "id": "ZD9-4fW2HhM",
+      "url": "https://www.youtube.com/watch?v=ZD9-4fW2HhM",
+      "file": "2026-09-11-build-systems-not-code-angie-jones-agentic-ai-foundation--ZD9-4fW2HhM.txt",
+      "chars": 16431
+    },
+    {
+      "id": "_B4Pv9ttFgY",
+      "url": "https://www.youtube.com/watch?v=_B4Pv9ttFgY",
+      "file": "2026-09-11-building-agent-interfaces-lessons-from-chrome-devtools-mcp-for-agents-michael-ha--_B4Pv9ttFgY.txt",
+      "chars": 19736
+    },
+    {
+      "id": "_al9YYnF2xI",
+      "url": "https://www.youtube.com/watch?v=_al9YYnF2xI",
+      "file": "2026-09-11-building-ai-agents-with-claude-demo--_al9YYnF2xI.txt",
+      "chars": 6660,
+      "lang": "en",
+      "segments": 173
+    },
+    {
+      "id": "whue9_YquGA",
+      "url": "https://www.youtube.com/watch?v=whue9_YquGA",
+      "file": "2026-09-11-building-an-autonomous-engineering-org-angie-jones-agentic-ai-foundation--whue9_YquGA.txt",
+      "chars": 15238
+    },
+    {
+      "id": "d5EltXhbcfA",
+      "url": "https://www.youtube.com/watch?v=d5EltXhbcfA",
+      "file": "2026-09-11-building-and-evaluating-ai-agents-sayash-kapoor-ai-snake-oil--d5EltXhbcfA.txt",
+      "chars": 18225,
+      "lang": "en",
+      "segments": 150
+    },
+    {
+      "id": "31GUkCBD-Uc",
+      "url": "https://www.youtube.com/watch?v=31GUkCBD-Uc",
+      "file": "2026-09-11-building-closed-loop-evals-for-a-multimodal-agent-at-scale-soumya-gupta-jai-chop--31GUkCBD-Uc.txt",
+      "chars": 20268
+    },
+    {
+      "id": "XNX-1h2K-9U",
+      "url": "https://www.youtube.com/watch?v=XNX-1h2K-9U",
+      "file": "2026-09-11-building-docs-for-agents-not-humans-inside-openwiki--XNX-1h2K-9U.txt",
+      "chars": 18014
+    },
+    {
+      "id": "UNzCG3lw6O0",
+      "url": "https://www.youtube.com/watch?v=UNzCG3lw6O0",
+      "file": "2026-09-11-building-great-agent-skills-the-missing-manual--UNzCG3lw6O0.txt",
+      "chars": 22735
+    },
+    {
+      "id": "DrTdD-ttjCY",
+      "url": "https://www.youtube.com/watch?v=DrTdD-ttjCY",
+      "file": "2026-09-11-building-gtm-ai-agents-lessons-from-deploying-to-6-000-users-sait-izmit-snowflak--DrTdD-ttjCY.txt",
+      "chars": 22343
+    },
+    {
+      "id": "TRjq7t2Ms5I",
+      "url": "https://www.youtube.com/watch?v=TRjq7t2Ms5I",
+      "file": "2026-09-11-building-production-ready-rag-applications-jerry-liu--TRjq7t2Ms5I.txt",
+      "chars": 20561,
+      "lang": "en",
+      "segments": 139
+    },
+    {
+      "id": "OsLRf6r5U9E",
+      "url": "https://www.youtube.com/watch?v=OsLRf6r5U9E",
+      "file": "2026-09-11-building-the-real-world-infrastructure-for-ai-with-google-cisco-a16z--OsLRf6r5U9E.txt",
+      "chars": 31683
+    },
+    {
+      "id": "RUHU-w4Lz1I",
+      "url": "https://www.youtube.com/watch?v=RUHU-w4Lz1I",
+      "file": "2026-09-11-building-the-universal-ai-automation-layer-ft-n8n-ceo-jan-oberhauser--RUHU-w4Lz1I.txt",
+      "chars": 38916
+    },
+    {
+      "id": "9lSRViLugE0",
+      "url": "https://www.youtube.com/watch?v=9lSRViLugE0",
+      "file": "2026-09-11-chatgpt-for-business-updates--9lSRViLugE0.txt",
+      "chars": 21572
+    },
+    {
+      "id": "VktrqzQgytY",
+      "url": "https://www.youtube.com/watch?v=VktrqzQgytY",
+      "file": "2026-09-11-ci-cd-is-dead-agents-need-continuous-compute-and-computers-hugo-santos-and-madis--VktrqzQgytY.txt",
+      "chars": 16422
+    },
+    {
+      "id": "6IE2UygjcQw",
+      "url": "https://www.youtube.com/watch?v=6IE2UygjcQw",
+      "file": "2026-09-11-cia-spy-trick-to-speak-like-the-1-and-influence-anyone--6IE2UygjcQw.txt",
+      "chars": 19484
+    },
+    {
+      "id": "afN8U7kAiLc",
+      "url": "https://www.youtube.com/watch?v=afN8U7kAiLc",
+      "file": "2026-09-11-claude-3-7-is-pure-insanity--afN8U7kAiLc.txt",
+      "chars": 43548,
+      "lang": "en",
+      "segments": 367
+    },
+    {
+      "id": "gv0WHhKelSE",
+      "url": "https://www.youtube.com/watch?v=gv0WHhKelSE",
+      "file": "2026-09-11-claude-code-best-practices-code-w-claude--gv0WHhKelSE.txt",
+      "chars": 26479
+    },
+    {
+      "id": "LoMOPj-lO8U",
+      "url": "https://www.youtube.com/watch?v=LoMOPj-lO8U",
+      "file": "2026-09-11-claude-codes-new-intent-md-what-is-it--LoMOPj-lO8U.txt",
+      "chars": 18685
+    },
+    {
+      "id": "lplVBFr0Ndc",
+      "url": "https://www.youtube.com/watch?v=lplVBFr0Ndc",
+      "file": "2026-09-11-claude-fable-5-use-cases-you-must-do-now-or-lose-thousands-in-1-week--lplVBFr0Ndc.txt",
+      "chars": 13779
+    },
+    {
+      "id": "aIAxWr5ix1o",
+      "url": "https://www.youtube.com/watch?v=aIAxWr5ix1o",
+      "file": "2026-09-11-claude-mcp-how-to-modify-your-servers-to-the-next-level--aIAxWr5ix1o.txt",
+      "chars": 11245,
+      "lang": "en",
+      "segments": 107
+    },
+    {
+      "id": "EvtPBaaykdo",
+      "url": "https://www.youtube.com/watch?v=EvtPBaaykdo",
+      "file": "2026-09-11-code-with-claude-opening-keynote--EvtPBaaykdo.txt",
+      "chars": 71744
+    },
+    {
+      "id": "wwC86t5k77Y",
+      "url": "https://www.youtube.com/watch?v=wwC86t5k77Y",
+      "file": "2026-09-11-coding-with-openai-o1-in-cursor-can-we-replace-claude-3-5-now--wwC86t5k77Y.txt",
+      "chars": 12650,
+      "lang": "en",
+      "segments": 119
+    },
+    {
+      "id": "bFnY2tONtSs",
+      "url": "https://www.youtube.com/watch?v=bFnY2tONtSs",
+      "file": "2026-09-11-como-automatizei-um-escritorio-de-advocacia-com-6-agentes-i-a--bFnY2tONtSs.txt",
+      "chars": 15356,
+      "lang": "en",
+      "segments": 408
+    },
+    {
+      "id": "rCmvMDrCWjs",
+      "url": "https://www.youtube.com/watch?v=rCmvMDrCWjs",
+      "file": "2026-09-11-conducting-effective-negotiations--rCmvMDrCWjs.txt",
+      "chars": 66035
+    },
+    {
+      "id": "fQmlML9Lay4",
+      "url": "https://www.youtube.com/watch?v=fQmlML9Lay4",
+      "file": "2026-09-11-conductor-ceo-charlie-holtz-walks-us-through-his-ai-coding-setup--fQmlML9Lay4.txt",
+      "chars": 17617
+    },
+    {
+      "id": "abvQEhvRI_c",
+      "url": "https://www.youtube.com/watch?v=abvQEhvRI_c",
+      "file": "2026-09-11-context-graphs-for-explainable-decision-aware-ai-agents-andreas-kollegger-zaid-z--abvQEhvRI_c.txt",
+      "chars": 15793
+    },
+    {
+      "id": "UL55C80TEb8",
+      "url": "https://www.youtube.com/watch?v=UL55C80TEb8",
+      "file": "2026-09-11-could-a-swarm-of-autonomous-ai-agents-be-the-ultimate-business-asset-stage-1--UL55C80TEb8.txt",
+      "chars": 13012,
+      "lang": "en",
+      "segments": 108
+    },
+    {
+      "id": "2VktR2fAmF0",
+      "url": "https://www.youtube.com/watch?v=2VktR2fAmF0",
+      "file": "2026-09-11-create-anything-with-nano-banana-pro-heres-how--2VktR2fAmF0.txt",
+      "chars": 64971
+    },
+    {
+      "id": "1XvN5EBDnDw",
+      "url": "https://www.youtube.com/watch?v=1XvN5EBDnDw",
+      "file": "2026-09-11-creating-agents-that-co-create-karina-nguyen-openai--1XvN5EBDnDw.txt",
+      "chars": 18348,
+      "lang": "en",
+      "segments": 511
+    },
+    {
+      "id": "8QN23ZThdRY",
+      "url": "https://www.youtube.com/watch?v=8QN23ZThdRY",
+      "file": "2026-09-11-cursor-ai-agents-work-like-10-developers-cursor-vp-live-demo--8QN23ZThdRY.txt",
+      "chars": 29967
+    },
+    {
+      "id": "GbzEDgcuGJU",
+      "url": "https://www.youtube.com/watch?v=GbzEDgcuGJU",
+      "file": "2026-09-11-deep-agents-explained--GbzEDgcuGJU.txt",
+      "chars": 44310
+    },
+    {
+      "id": "xGO5Q94XXf0",
+      "url": "https://www.youtube.com/watch?v=xGO5Q94XXf0",
+      "file": "2026-09-11-did-openai-just-solve-hallucinations--xGO5Q94XXf0.txt",
+      "chars": 13156
+    },
+    {
+      "id": "0vphxNt4wyk",
+      "url": "https://www.youtube.com/watch?v=0vphxNt4wyk",
+      "file": "2026-09-11-don-t-ship-skills-without-evals-philipp-schmid-google-deepmind--0vphxNt4wyk.txt",
+      "chars": 20838
+    },
+    {
+      "id": "5AkdMangfNk",
+      "url": "https://www.youtube.com/watch?v=5AkdMangfNk",
+      "file": "2026-09-11-dynamic-subagents-how-to-run-parallel-agents-reliably-in-deep-agents--5AkdMangfNk.txt",
+      "chars": 27188
+    },
+    {
+      "id": "tL3sXpxpCPs",
+      "url": "https://www.youtube.com/watch?v=tL3sXpxpCPs",
+      "file": "2026-09-11-emil-michael-the-department-of-war-is-moving-faster-than-silicon-valley-on-ai-th--tL3sXpxpCPs.txt",
+      "chars": 26599
+    },
+    {
+      "id": "eBUyTS7SzV4",
+      "url": "https://www.youtube.com/watch?v=eBUyTS7SzV4",
+      "file": "2026-09-11-every-company-should-have-a-brain-garry-tan-y-combinator--eBUyTS7SzV4.txt",
+      "chars": 18879
+    },
+    {
+      "id": "YwZR6tc7qYg",
+      "url": "https://www.youtube.com/watch?v=YwZR6tc7qYg",
+      "file": "2026-09-11-everything-we-got-wrong-about-research-plan-implement-dexter-horthy--YwZR6tc7qYg.txt",
+      "chars": 31760
+    },
+    {
+      "id": "xUnRQ9vLXxo",
+      "url": "https://www.youtube.com/watch?v=xUnRQ9vLXxo",
+      "file": "2026-09-11-everything-we-knew-about-software-has-changed-theo-browne-t3dotgg--xUnRQ9vLXxo.txt",
+      "chars": 15191
+    },
+    {
+      "id": "wNUIhCI_jsw",
+      "url": "https://www.youtube.com/watch?v=wNUIhCI_jsw",
+      "file": "2026-09-11-ex-harvard-professor-reveals-the-hidden-ai-formula-for-explosive-startup-growth--wNUIhCI_jsw.txt",
+      "chars": 37854,
+      "lang": "en",
+      "segments": 373
+    },
+    {
+      "id": "xgkjtF89-44",
+      "url": "https://www.youtube.com/watch?v=xgkjtF89-44",
+      "file": "2026-09-11-ex-nasa-dev-reveals-his-agentic-engineering-workflow--xgkjtF89-44.txt",
+      "chars": 72642
+    },
+    {
+      "id": "utb7zYbK10c",
+      "url": "https://www.youtube.com/watch?v=utb7zYbK10c",
+      "file": "2026-09-11-ex-uber-dev-explains-his-multi-agent-workflow--utb7zYbK10c.txt",
+      "chars": 56122
+    },
+    {
+      "id": "U3bZavG8qQY",
+      "url": "https://www.youtube.com/watch?v=U3bZavG8qQY",
+      "file": "2026-09-11-fabio-akita-minha-experiencia-com-agile-vibe-coding--U3bZavG8qQY.txt",
+      "chars": 53056
+    },
+    {
+      "id": "9fubhllmsBU",
+      "url": "https://www.youtube.com/watch?v=9fubhllmsBU",
+      "file": "2026-09-11-field-guide-to-fable-thariq-shihipar-anthropic--9fubhllmsBU.txt",
+      "chars": 17844
+    },
+    {
+      "id": "XeWZIzndlY4",
+      "url": "https://www.youtube.com/watch?v=XeWZIzndlY4",
+      "file": "2026-09-11-finally-this-ai-agent-actually-works--XeWZIzndlY4.txt",
+      "chars": 23375,
+      "lang": "en",
+      "segments": 201
+    },
+    {
+      "id": "kxstlfc8Lw4",
+      "url": "https://www.youtube.com/watch?v=kxstlfc8Lw4",
+      "file": "2026-09-11-fine-tune-the-biggest-open-source-models-even-with-a-bad-pc--kxstlfc8Lw4.txt",
+      "chars": 30470
+    },
+    {
+      "id": "AKoBE4gKaXQ",
+      "url": "https://www.youtube.com/watch?v=AKoBE4gKaXQ",
+      "file": "2026-09-11-foundation-ai-a-especializacao-dos-modelos-dicionario-do-programador--AKoBE4gKaXQ.txt",
+      "chars": 16780
+    },
+    {
+      "id": "pqlWNihgdjI",
+      "url": "https://www.youtube.com/watch?v=pqlWNihgdjI",
+      "file": "2026-09-11-from-ai-assisted-to-ai-native-building-a-frontier-development-team-clare-liguori--pqlWNihgdjI.txt",
+      "chars": 18160
+    },
+    {
+      "id": "xxfMT-bPEmU",
+      "url": "https://www.youtube.com/watch?v=xxfMT-bPEmU",
+      "file": "2026-09-11-from-coding-to-knowledge-work-agents-karan-vaidya-composio--xxfMT-bPEmU.txt",
+      "chars": 18005
+    },
+    {
+      "id": "EH5jx5qPabU",
+      "url": "https://www.youtube.com/watch?v=EH5jx5qPabU",
+      "file": "2026-09-11-from-zero-to-your-first-ai-agent-in-25-minutes-no-coding--EH5jx5qPabU.txt",
+      "chars": 29180
+    },
+    {
+      "id": "1G-X70bnJEg",
+      "url": "https://www.youtube.com/watch?v=1G-X70bnJEg",
+      "file": "2026-09-11-full-interview-googles-sundar-pichai-reveals-future-of-ai-in-candid-talk-with-ma--1G-X70bnJEg.txt",
+      "chars": 41017
+    },
+    {
+      "id": "-QFHIoCo-Ko",
+      "url": "https://www.youtube.com/watch?v=-QFHIoCo-Ko",
+      "file": "2026-09-11-full-walkthrough-workflow-for-ai-coding-matt-pocock---QFHIoCo-Ko.txt",
+      "chars": 88462
+    },
+    {
+      "id": "il1c1a2FufU",
+      "url": "https://www.youtube.com/watch?v=il1c1a2FufU",
+      "file": "2026-09-11-full-workshop-setting-yourself-up-for-success-jason-liu-openai-codex--il1c1a2FufU.txt",
+      "chars": 70909
+    },
+    {
+      "id": "eRrc1pUY5oU",
+      "url": "https://www.youtube.com/watch?v=eRrc1pUY5oU",
+      "file": "2026-09-11-garry-tan-own-your-intelligence--eRrc1pUY5oU.txt",
+      "chars": 36080
+    },
+    {
+      "id": "AyV0hum_hA8",
+      "url": "https://www.youtube.com/watch?v=AyV0hum_hA8",
+      "file": "2026-09-11-getting-started-with-omnigent-the-coding-agent-meta-harness--AyV0hum_hA8.txt",
+      "chars": 13730
+    },
+    {
+      "id": "F8X9_Dp3ZUk",
+      "url": "https://www.youtube.com/watch?v=F8X9_Dp3ZUk",
+      "file": "2026-09-11-google-aws-veteran-what-top-tier-software-architects-do-differently--F8X9_Dp3ZUk.txt",
+      "chars": 68117
+    },
+    {
+      "id": "I8VUN141MjU",
+      "url": "https://www.youtube.com/watch?v=I8VUN141MjU",
+      "file": "2026-09-11-google-deepmind-developers-how-nano-banana-was-made--I8VUN141MjU.txt",
+      "chars": 61486
+    },
+    {
+      "id": "38N8pgnNANQ",
+      "url": "https://www.youtube.com/watch?v=38N8pgnNANQ",
+      "file": "2026-09-11-google-gemini-2-0-is-amazing-realtime-stream-tested-multimodal-api--38N8pgnNANQ.txt",
+      "chars": 19718,
+      "lang": "en",
+      "segments": 180
+    },
+    {
+      "id": "p09yRj47kNM",
+      "url": "https://www.youtube.com/watch?v=p09yRj47kNM",
+      "file": "2026-09-11-google-s-9-hour-ai-prompt-engineering-course-in-20-minutes--p09yRj47kNM.txt",
+      "chars": 24232
+    },
+    {
+      "id": "MY9F9K7wWX4",
+      "url": "https://www.youtube.com/watch?v=MY9F9K7wWX4",
+      "file": "2026-09-11-google-s-okf-the-new-way-to-structure-your-knowledge-for-agents--MY9F9K7wWX4.txt",
+      "chars": 17447
+    },
+    {
+      "id": "KgKA0A3qlz0",
+      "url": "https://www.youtube.com/watch?v=KgKA0A3qlz0",
+      "file": "2026-09-11-gpt-6-astra-fable-5-1-god-mode--KgKA0A3qlz0.txt",
+      "chars": 13774
+    },
+    {
+      "id": "kBFjvQxKnOs",
+      "url": "https://www.youtube.com/watch?v=kBFjvQxKnOs",
+      "file": "2026-09-11-gpt-builder-2-0-upgrade-custom-gpt-with-parallel-function-calling-advanced-gpts--kBFjvQxKnOs.txt",
+      "chars": 5089,
+      "lang": "en",
+      "segments": 134
+    },
+    {
+      "id": "IXRkmqEYGZA",
+      "url": "https://www.youtube.com/watch?v=IXRkmqEYGZA",
+      "file": "2026-09-11-gpt4v-puppeteer-ai-agent-browse-web-like-human--IXRkmqEYGZA.txt",
+      "chars": 26262,
+      "lang": "en",
+      "segments": 689
+    },
+    {
+      "id": "cmUo4841KQw",
+      "url": "https://www.youtube.com/watch?v=cmUo4841KQw",
+      "file": "2026-09-11-gpus-tpus-the-economics-of-ai-explained-gavin-baker-interview--cmUo4841KQw.txt",
+      "chars": 91526
+    },
+    {
+      "id": "fBfY7tWCecU",
+      "url": "https://www.youtube.com/watch?v=fBfY7tWCecU",
+      "file": "2026-09-11-grant-lee-building-gammas-ai-presentation-company-to-100-million-users--fBfY7tWCecU.txt",
+      "chars": 61796
+    },
+    {
+      "id": "0QPf-9El_2s",
+      "url": "https://www.youtube.com/watch?v=0QPf-9El_2s",
+      "file": "2026-09-11-grok-3-5-leaks-ai-takes-software-dev-jobs--0QPf-9El_2s.txt",
+      "chars": 18090,
+      "lang": "en",
+      "segments": 140
+    },
+    {
+      "id": "dtAJ2dOd3ko",
+      "url": "https://www.youtube.com/watch?v=dtAJ2dOd3ko",
+      "file": "2026-09-11-handoff-is-my-new-favourite-skill--dtAJ2dOd3ko.txt",
+      "chars": 13633
+    },
+    {
+      "id": "I8fs4omN1no",
+      "url": "https://www.youtube.com/watch?v=I8fs4omN1no",
+      "file": "2026-09-11-hard-won-lessons-from-building-effective-ai-coding-agents-nik-pash-cline--I8fs4omN1no.txt",
+      "chars": 12563
+    },
+    {
+      "id": "am_oeAoUhew",
+      "url": "https://www.youtube.com/watch?v=am_oeAoUhew",
+      "file": "2026-09-11-harness-engineering-how-to-build-software-when-humans-steer-agents-execute-ryan--am_oeAoUhew.txt",
+      "chars": 43036
+    },
+    {
+      "id": "Ib5GBkD555M",
+      "url": "https://www.youtube.com/watch?v=Ib5GBkD555M",
+      "file": "2026-09-11-harness-engineering-is-not-enough-why-software-factories-fail-dex-horthy-humanla--Ib5GBkD555M.txt",
+      "chars": 21384
+    },
+    {
+      "id": "ulNsa0sD8N0",
+      "url": "https://www.youtube.com/watch?v=ulNsa0sD8N0",
+      "file": "2026-09-11-harness-engineering-what-separates-top-agentic-engineers-right-now--ulNsa0sD8N0.txt",
+      "chars": 19325
+    },
+    {
+      "id": "C_GG5g38vLU",
+      "url": "https://www.youtube.com/watch?v=C_GG5g38vLU",
+      "file": "2026-09-11-harnesses-in-ai-a-deep-dive-tejas-kumar-ibm--C_GG5g38vLU.txt",
+      "chars": 22048
+    },
+    {
+      "id": "kRgdkOw82F0",
+      "url": "https://www.youtube.com/watch?v=kRgdkOw82F0",
+      "file": "2026-09-11-head-of-claude-code-on-the-future-of-work-and-productivity--kRgdkOw82F0.txt",
+      "chars": 20076
+    },
+    {
+      "id": "UOWSHg18cL0",
+      "url": "https://www.youtube.com/watch?v=UOWSHg18cL0",
+      "file": "2026-09-11-headroom-a-context-optimization-layer-for-llm-applications-tejas-chopra-netflix--UOWSHg18cL0.txt",
+      "chars": 36292
+    },
+    {
+      "id": "UWjh5Z4s8jY",
+      "url": "https://www.youtube.com/watch?v=UWjh5Z4s8jY",
+      "file": "2026-09-11-hermes-co-founder-on-building-an-ai-agent-that-improves-itself-karan-malhotra--UWjh5Z4s8jY.txt",
+      "chars": 46442
+    },
+    {
+      "id": "-3MPnUGqa68",
+      "url": "https://www.youtube.com/watch?v=-3MPnUGqa68",
+      "file": "2026-09-11-hermes-deepseek-4-minimax-2-7-multi-model-coding-on-a-zimaboard---3MPnUGqa68.txt",
+      "chars": 12225
+    },
+    {
+      "id": "iBBOLjt8haY",
+      "url": "https://www.youtube.com/watch?v=iBBOLjt8haY",
+      "file": "2026-09-11-how-ai-is-disrupting-a-1-8-trillion-market--iBBOLjt8haY.txt",
+      "chars": 10208
+    },
+    {
+      "id": "xlQB_0Nzoog",
+      "url": "https://www.youtube.com/watch?v=xlQB_0Nzoog",
+      "file": "2026-09-11-how-ai-is-reinventing-software-business-models-ft-bret-taylor-of-sierra--xlQB_0Nzoog.txt",
+      "chars": 36207,
+      "lang": "en",
+      "segments": 325
+    },
+    {
+      "id": "eURcW5_uS60",
+      "url": "https://www.youtube.com/watch?v=eURcW5_uS60",
+      "file": "2026-09-11-how-brian-chesky-is-redesigning-airbnb-for-the-ai-era--eURcW5_uS60.txt",
+      "chars": 93558
+    },
+    {
+      "id": "bMMv0bZzONg",
+      "url": "https://www.youtube.com/watch?v=bMMv0bZzONg",
+      "file": "2026-09-11-how-companies-are-building-their-own-intelligence-sonya-huang-sequoia-capital--bMMv0bZzONg.txt",
+      "chars": 18171
+    },
+    {
+      "id": "f61DCDwvFis",
+      "url": "https://www.youtube.com/watch?v=f61DCDwvFis",
+      "file": "2026-09-11-how-did-we-make-deepseek-outperform-opus-4-7--f61DCDwvFis.txt",
+      "chars": 30015
+    },
+    {
+      "id": "hm8NzEd5io0",
+      "url": "https://www.youtube.com/watch?v=hm8NzEd5io0",
+      "file": "2026-09-11-how-founders-build-on-claude-managed-agents--hm8NzEd5io0.txt",
+      "chars": 37660
+    },
+    {
+      "id": "7gujZrJ9L5I",
+      "url": "https://www.youtube.com/watch?v=7gujZrJ9L5I",
+      "file": "2026-09-11-how-google-deepmind-runs-agents-at-scale-kp-sawhney-ian-ballantyne-google-deepmi--7gujZrJ9L5I.txt",
+      "chars": 21575,
+      "lang": "en",
+      "segments": 590
+    },
+    {
+      "id": "FLUoowDJg4I",
+      "url": "https://www.youtube.com/watch?v=FLUoowDJg4I",
+      "file": "2026-09-11-how-i-automate-my-own-job-at-hugging-face-using-agents-niels-rogge-hugging-face--FLUoowDJg4I.txt",
+      "chars": 19271
+    },
+    {
+      "id": "vy7o1g2iHY8",
+      "url": "https://www.youtube.com/watch?v=vy7o1g2iHY8",
+      "file": "2026-09-11-how-i-deleted-95-of-my-agent-skills-and-got-better-results-nick-nisi-workos--vy7o1g2iHY8.txt",
+      "chars": 18114
+    },
+    {
+      "id": "PduJ0P6r_8o",
+      "url": "https://www.youtube.com/watch?v=PduJ0P6r_8o",
+      "file": "2026-09-11-how-i-use-ai-agents-to-make-money-vibe-marketing-tutorial--PduJ0P6r_8o.txt",
+      "chars": 21884
+    },
+    {
+      "id": "Tt2kX2sgQio",
+      "url": "https://www.youtube.com/watch?v=Tt2kX2sgQio",
+      "file": "2026-09-11-how-kepler-built-verifiable-ai-for-financial-services-vinoo-ganesh--Tt2kX2sgQio.txt",
+      "chars": 21723
+    },
+    {
+      "id": "KA5kPbdkK2E",
+      "url": "https://www.youtube.com/watch?v=KA5kPbdkK2E",
+      "file": "2026-09-11-how-lovable-self-improves-every-hour-benjamin-verbeek-lovable--KA5kPbdkK2E.txt",
+      "chars": 18333
+    },
+    {
+      "id": "S-sYlFiGFv8",
+      "url": "https://www.youtube.com/watch?v=S-sYlFiGFv8",
+      "file": "2026-09-11-how-the-claude-code-team-uses-claude-code--S-sYlFiGFv8.txt",
+      "chars": 23612,
+      "lang": "en",
+      "segments": 657
+    },
+    {
+      "id": "zFHzTy7XLbM",
+      "url": "https://www.youtube.com/watch?v=zFHzTy7XLbM",
+      "file": "2026-09-11-how-to-build-a-remarkable-brand-in-the-age-of-ai-seth-godin--zFHzTy7XLbM.txt",
+      "chars": 35065
+    },
+    {
+      "id": "Hm0DZtiKUI8",
+      "url": "https://www.youtube.com/watch?v=Hm0DZtiKUI8",
+      "file": "2026-09-11-how-to-build-a-startup-team-of-ai-agents-n8n-openai-feedhive--Hm0DZtiKUI8.txt",
+      "chars": 19291
+    },
+    {
+      "id": "yQ4F553zhQw",
+      "url": "https://www.youtube.com/watch?v=yQ4F553zhQw",
+      "file": "2026-09-11-how-to-build-deep-research-google-docs-ai-agents-full-tutorial--yQ4F553zhQw.txt",
+      "chars": 17018,
+      "lang": "en",
+      "segments": 155
+    },
+    {
+      "id": "gZKLPNhWXxE",
+      "url": "https://www.youtube.com/watch?v=gZKLPNhWXxE",
+      "file": "2026-09-11-how-to-build-perfect-looking-apps-with-bolt-new-easy-hack--gZKLPNhWXxE.txt",
+      "chars": 9141,
+      "lang": "en",
+      "segments": 243
+    },
+    {
+      "id": "MSO4qCiwTjQ",
+      "url": "https://www.youtube.com/watch?v=MSO4qCiwTjQ",
+      "file": "2026-09-11-how-to-build-super-effective-ai-agents-full-tutorial-cursor-openai--MSO4qCiwTjQ.txt",
+      "chars": 24547,
+      "lang": "en",
+      "segments": 224
+    },
+    {
+      "id": "oulVKbk0umo",
+      "url": "https://www.youtube.com/watch?v=oulVKbk0umo",
+      "file": "2026-09-11-how-to-build-your-entire-ai-workforce-in-one-afternoon-live-demo--oulVKbk0umo.txt",
+      "chars": 28297
+    },
+    {
+      "id": "8fMnAZI1bdA",
+      "url": "https://www.youtube.com/watch?v=8fMnAZI1bdA",
+      "file": "2026-09-11-how-to-create-agent-swarms-with-the-new-openai-assistants-api--8fMnAZI1bdA.txt",
+      "chars": 11751,
+      "lang": "en",
+      "segments": 181
+    },
+    {
+      "id": "lZuxqbw8IX4",
+      "url": "https://www.youtube.com/watch?v=lZuxqbw8IX4",
+      "file": "2026-09-11-how-to-create-any-n8n-workflow-using-chatgpt--lZuxqbw8IX4.txt",
+      "chars": 30193,
+      "lang": "en",
+      "segments": 801
+    },
+    {
+      "id": "AtZiJzQSH7k",
+      "url": "https://www.youtube.com/watch?v=AtZiJzQSH7k",
+      "file": "2026-09-11-how-to-do-digital-marketing-with-0--AtZiJzQSH7k.txt",
+      "chars": 11219,
+      "lang": "en",
+      "segments": 296
+    },
+    {
+      "id": "sNpQ9ULDMoo",
+      "url": "https://www.youtube.com/watch?v=sNpQ9ULDMoo",
+      "file": "2026-09-11-how-to-generate-yourself-literally-anywhere-flux-lora-tutorial--sNpQ9ULDMoo.txt",
+      "chars": 10675,
+      "lang": "en",
+      "segments": 281
+    },
+    {
+      "id": "0tLHVyd7WtM",
+      "url": "https://www.youtube.com/watch?v=0tLHVyd7WtM",
+      "file": "2026-09-11-how-to-get-ahead-of-99-of-people-with-ai--0tLHVyd7WtM.txt",
+      "chars": 23636
+    },
+    {
+      "id": "zenIB7XLZxQ",
+      "url": "https://www.youtube.com/watch?v=zenIB7XLZxQ",
+      "file": "2026-09-11-how-to-get-to-production-faster-with-claude-managed-agents--zenIB7XLZxQ.txt",
+      "chars": 31971
+    },
+    {
+      "id": "uOcKF-aLHyw",
+      "url": "https://www.youtube.com/watch?v=uOcKF-aLHyw",
+      "file": "2026-09-11-how-to-get-whatever-you-want--uOcKF-aLHyw.txt",
+      "chars": 3130
+    },
+    {
+      "id": "uAtSMEBosGU",
+      "url": "https://www.youtube.com/watch?v=uAtSMEBosGU",
+      "file": "2026-09-11-how-to-instantly-build-ai-agents-in-n8n-using-claude--uAtSMEBosGU.txt",
+      "chars": 13238
+    },
+    {
+      "id": "9tj4MxCV6g0",
+      "url": "https://www.youtube.com/watch?v=9tj4MxCV6g0",
+      "file": "2026-09-11-how-to-instantly-generate-n8n-workflows-using-claude--9tj4MxCV6g0.txt",
+      "chars": 20796
+    },
+    {
+      "id": "wv779vmyPVY",
+      "url": "https://www.youtube.com/watch?v=wv779vmyPVY",
+      "file": "2026-09-11-how-to-master-ai-powered-creativity-in-just-13-minutes-jeremy-utley--wv779vmyPVY.txt",
+      "chars": 12377,
+      "lang": "en",
+      "segments": 223
+    },
+    {
+      "id": "VeU6gScy92s",
+      "url": "https://www.youtube.com/watch?v=VeU6gScy92s",
+      "file": "2026-09-11-how-to-read-like-a-pro-with-ai--VeU6gScy92s.txt",
+      "chars": 14765
+    },
+    {
+      "id": "hrQy6m48F4E",
+      "url": "https://www.youtube.com/watch?v=hrQy6m48F4E",
+      "file": "2026-09-11-how-to-scale-ai-application-inference-100x-ft-fireworks-lin-qiao--hrQy6m48F4E.txt",
+      "chars": 8297
+    },
+    {
+      "id": "QIsJe-nZ5XE",
+      "url": "https://www.youtube.com/watch?v=QIsJe-nZ5XE",
+      "file": "2026-09-11-how-to-sell-ai-workflows-without-starting-an-agency--QIsJe-nZ5XE.txt",
+      "chars": 19001
+    },
+    {
+      "id": "mjTgkm-h__M",
+      "url": "https://www.youtube.com/watch?v=mjTgkm-h__M",
+      "file": "2026-09-11-how-to-think-so-clearly-people-assume-you-re-brilliant--mjTgkm-h__M.txt",
+      "chars": 18023
+    },
+    {
+      "id": "4qjEgPojjzM",
+      "url": "https://www.youtube.com/watch?v=4qjEgPojjzM",
+      "file": "2026-09-11-how-to-understand-the-next-wave-of-ai-before-everyone-else-tibo-interview--4qjEgPojjzM.txt",
+      "chars": 45241
+    },
+    {
+      "id": "mJwPvyc4-rk",
+      "url": "https://www.youtube.com/watch?v=mJwPvyc4-rk",
+      "file": "2026-09-11-how-to-use-ai-to-build-your-saas-startup-lovable-supabase--mJwPvyc4-rk.txt",
+      "chars": 41574,
+      "lang": "en",
+      "segments": 457
+    },
+    {
+      "id": "uc1lUchiaJ0",
+      "url": "https://www.youtube.com/watch?v=uc1lUchiaJ0",
+      "file": "2026-09-11-how-to-use-ai-to-write-viral-reel-scripts-claude-projects-tutorial--uc1lUchiaJ0.txt",
+      "chars": 12445,
+      "lang": "en",
+      "segments": 332
+    },
+    {
+      "id": "2gBcO3ht0ws",
+      "url": "https://www.youtube.com/watch?v=2gBcO3ht0ws",
+      "file": "2026-09-11-how-to-use-cursor-agent-for-beginners--2gBcO3ht0ws.txt",
+      "chars": 33188,
+      "lang": "en",
+      "segments": 311
+    },
+    {
+      "id": "5_LLMZfKI6w",
+      "url": "https://www.youtube.com/watch?v=5_LLMZfKI6w",
+      "file": "2026-09-11-how-to-use-rlms-in-deep-agents--5_LLMZfKI6w.txt",
+      "chars": 6531
+    },
+    {
+      "id": "Bugs0dVcNI8",
+      "url": "https://www.youtube.com/watch?v=Bugs0dVcNI8",
+      "file": "2026-09-11-how-uber-built-ai-agents-that-save-21-000-developer-hours-with-langgraph-langcha--Bugs0dVcNI8.txt",
+      "chars": 17580
+    },
+    {
+      "id": "yVqMxBahjfA",
+      "url": "https://www.youtube.com/watch?v=yVqMxBahjfA",
+      "file": "2026-09-11-how-uber-runs-60-000-ai-agent-tasks-per-week-with-mcp--yVqMxBahjfA.txt",
+      "chars": 12509
+    },
+    {
+      "id": "SrvKmhJRlKI",
+      "url": "https://www.youtube.com/watch?v=SrvKmhJRlKI",
+      "file": "2026-09-11-how-valkey-uses-ai-agents-without-losing-control-madelyn-olson-aws--SrvKmhJRlKI.txt",
+      "chars": 24997
+    },
+    {
+      "id": "D7_ipDqhtwk",
+      "url": "https://www.youtube.com/watch?v=D7_ipDqhtwk",
+      "file": "2026-09-11-how-we-build-effective-agents-barry-zhang-anthropic--D7_ipDqhtwk.txt",
+      "chars": 14410,
+      "lang": "en",
+      "segments": 112
+    },
+    {
+      "id": "IlqJqcl8ONE",
+      "url": "https://www.youtube.com/watch?v=IlqJqcl8ONE",
+      "file": "2026-09-11-how-we-claude-code--IlqJqcl8ONE.txt",
+      "chars": 25225
+    },
+    {
+      "id": "esY99nYXxR4",
+      "url": "https://www.youtube.com/watch?v=esY99nYXxR4",
+      "file": "2026-09-11-how-we-solved-context-management-in-agents-sally-ann-delucia--esY99nYXxR4.txt",
+      "chars": 19175
+    },
+    {
+      "id": "KqiQ4kC8OJI",
+      "url": "https://www.youtube.com/watch?v=KqiQ4kC8OJI",
+      "file": "2026-09-11-i-built-a-4589-website-in-minutes-with-bolt-new-and-cursor-ai--KqiQ4kC8OJI.txt",
+      "chars": 24070,
+      "lang": "en",
+      "segments": 306
+    },
+    {
+      "id": "ldETapkr8Hg",
+      "url": "https://www.youtube.com/watch?v=ldETapkr8Hg",
+      "file": "2026-09-11-i-built-a-marketing-team-with-1-ai-agent-and-no-code-free-n8n-template--ldETapkr8Hg.txt",
+      "chars": 43687
+    },
+    {
+      "id": "9FuNtfsnRNo",
+      "url": "https://www.youtube.com/watch?v=9FuNtfsnRNo",
+      "file": "2026-09-11-i-built-the-ultimate-team-of-ai-agents-in-n8n-with-no-code-free-template--9FuNtfsnRNo.txt",
+      "chars": 30336
+    },
+    {
+      "id": "3Zvk4AMCrG8",
+      "url": "https://www.youtube.com/watch?v=3Zvk4AMCrG8",
+      "file": "2026-09-11-i-got-a-private-lesson-on-google-s-new-nano-banana-ai-model--3Zvk4AMCrG8.txt",
+      "chars": 27436
+    },
+    {
+      "id": "6BB6exR8Zd8",
+      "url": "https://www.youtube.com/watch?v=6BB6exR8Zd8",
+      "file": "2026-09-11-i-stopped-using-grill-me-for-coding-heres-what-i-use-instead--6BB6exR8Zd8.txt",
+      "chars": 17091
+    },
+    {
+      "id": "Qsq-Sj_rojU",
+      "url": "https://www.youtube.com/watch?v=Qsq-Sj_rojU",
+      "file": "2026-09-11-i-studied-1-460-onboarding-flows-here-s-what-i-found--Qsq-Sj_rojU.txt",
+      "chars": 9589
+    },
+    {
+      "id": "_PgBDk_GhPo",
+      "url": "https://www.youtube.com/watch?v=_PgBDk_GhPo",
+      "file": "2026-09-11-i-tested-bolt-and-lovable-here-s-what-s-best-for-your-project--_PgBDk_GhPo.txt",
+      "chars": 28066,
+      "lang": "en",
+      "segments": 730
+    },
+    {
+      "id": "kxypcfrkUBI",
+      "url": "https://www.youtube.com/watch?v=kxypcfrkUBI",
+      "file": "2026-09-11-i-trained-a-reasoning-language-model-with-rl-on-an-unverifiable-task--kxypcfrkUBI.txt",
+      "chars": 36974
+    },
+    {
+      "id": "eRS3CmvrOvA",
+      "url": "https://www.youtube.com/watch?v=eRS3CmvrOvA",
+      "file": "2026-09-11-i-tried-100-claude-code-skills-these-6-are-the-best--eRS3CmvrOvA.txt",
+      "chars": 19139
+    },
+    {
+      "id": "u5Vcrwpzoz8",
+      "url": "https://www.youtube.com/watch?v=u5Vcrwpzoz8",
+      "file": "2026-09-11-i-want-llama3-to-perform-10x-with-my-private-knowledge-local-agentic-rag-w-llama--u5Vcrwpzoz8.txt",
+      "chars": 29069,
+      "lang": "en",
+      "segments": 759
+    },
+    {
+      "id": "1yvBqasHLZs",
+      "url": "https://www.youtube.com/watch?v=1yvBqasHLZs",
+      "file": "2026-09-11-ilya-sutskever-sequence-to-sequence-learning-with-neural-networks-what-a-decade--1yvBqasHLZs.txt",
+      "chars": 19109,
+      "lang": "en",
+      "segments": 186
+    },
+    {
+      "id": "aR20FWCCjAs",
+      "url": "https://www.youtube.com/watch?v=aR20FWCCjAs",
+      "file": "2026-09-11-ilya-sutskever-we-re-moving-from-the-age-of-scaling-to-the-age-of-research--aR20FWCCjAs.txt",
+      "chars": 73786
+    },
+    {
+      "id": "Uny6LpmjraI",
+      "url": "https://www.youtube.com/watch?v=Uny6LpmjraI",
+      "file": "2026-09-11-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipeline--Uny6LpmjraI.txt",
+      "chars": 13412
+    },
+    {
+      "id": "D6XWu54oG4g",
+      "url": "https://www.youtube.com/watch?v=D6XWu54oG4g",
+      "file": "2026-09-11-inside-cogent-s-three-agent-architecture-for-autonomous-defense-geng-sng-co-foun--D6XWu54oG4g.txt",
+      "chars": 83200
+    },
+    {
+      "id": "GhIJs4zbH0o",
+      "url": "https://www.youtube.com/watch?v=GhIJs4zbH0o",
+      "file": "2026-09-11-inside-openai-s-stargate-megafactory-with-sam-altman-the-circuit--GhIJs4zbH0o.txt",
+      "chars": 40147
+    },
+    {
+      "id": "wApaJjvNZFs",
+      "url": "https://www.youtube.com/watch?v=wApaJjvNZFs",
+      "file": "2026-09-11-inside-stanford-s-elite-student-hackathon-full-documentary-on-treehacks-2026--wApaJjvNZFs.txt",
+      "chars": 109189
+    },
+    {
+      "id": "x2VHFgyawPE",
+      "url": "https://www.youtube.com/watch?v=x2VHFgyawPE",
+      "file": "2026-09-11-inside-the-mind-of-anthropic-ceo-dario-amodei-the-circuit-extended-interview--x2VHFgyawPE.txt",
+      "chars": 74757
+    },
+    {
+      "id": "i_AjyQmYvbE",
+      "url": "https://www.youtube.com/watch?v=i_AjyQmYvbE",
+      "file": "2026-09-11-integre-o-claude-cowork-com-seu-banco-openfinance-pj-ou-pf--i_AjyQmYvbE.txt",
+      "chars": 10557
+    },
+    {
+      "id": "44eFf-tRiSg",
+      "url": "https://www.youtube.com/watch?v=44eFf-tRiSg",
+      "file": "2026-09-11-intro-to-agent-builder--44eFf-tRiSg.txt",
+      "chars": 4432
+    },
+    {
+      "id": "H-oCV5brtU4",
+      "url": "https://www.youtube.com/watch?v=H-oCV5brtU4",
+      "file": "2026-09-11-intro-to-fine-tuning-large-language-models--H-oCV5brtU4.txt",
+      "chars": 111732
+    },
+    {
+      "id": "LdQpoK2TzSo",
+      "url": "https://www.youtube.com/watch?v=LdQpoK2TzSo",
+      "file": "2026-09-11-introducing-managed-deep-agents-interrupt-26--LdQpoK2TzSo.txt",
+      "chars": 16116
+    },
+    {
+      "id": "nIVu3zfYprI",
+      "url": "https://www.youtube.com/watch?v=nIVu3zfYprI",
+      "file": "2026-09-11-introducing-openwiki-an-open-source-agent-for-repo-documentation--nIVu3zfYprI.txt",
+      "chars": 7403
+    },
+    {
+      "id": "5ze3ZNvOdRY",
+      "url": "https://www.youtube.com/watch?v=5ze3ZNvOdRY",
+      "file": "2026-09-11-is-there-an-ai-bubble-gavin-baker-and-david-george--5ze3ZNvOdRY.txt",
+      "chars": 30642
+    },
+    {
+      "id": "3eDrAHjSqXo",
+      "url": "https://www.youtube.com/watch?v=3eDrAHjSqXo",
+      "file": "2026-09-11-is-this-the-best-vibe-coding-platform-lovable-ai--3eDrAHjSqXo.txt",
+      "chars": 12760,
+      "lang": "en",
+      "segments": 347
+    },
+    {
+      "id": "7zCsfe57tpU",
+      "url": "https://www.youtube.com/watch?v=7zCsfe57tpU",
+      "file": "2026-09-11-is-this-the-only-skill-left--7zCsfe57tpU.txt",
+      "chars": 19432,
+      "lang": "en",
+      "segments": 202
+    },
+    {
+      "id": "AwXmUXpjNw4",
+      "url": "https://www.youtube.com/watch?v=AwXmUXpjNw4",
+      "file": "2026-09-11-jamie-dimon-talks-trump-ai-and-americas-future-on-the-axios-show-full-interview--AwXmUXpjNw4.txt",
+      "chars": 43461
+    },
+    {
+      "id": "CxXgV54KzpQ",
+      "url": "https://www.youtube.com/watch?v=CxXgV54KzpQ",
+      "file": "2026-09-11-jeff-dean-the-1-rule-for-building-in-ai--CxXgV54KzpQ.txt",
+      "chars": 51635
+    },
+    {
+      "id": "Yy3JH6dDugc",
+      "url": "https://www.youtube.com/watch?v=Yy3JH6dDugc",
+      "file": "2026-09-11-jensen-huang-why-companies-need-open-agent-systems--Yy3JH6dDugc.txt",
+      "chars": 26238,
+      "lang": "en",
+      "segments": 482
+    },
+    {
+      "id": "8ZgpAXe5V5w",
+      "url": "https://www.youtube.com/watch?v=8ZgpAXe5V5w",
+      "file": "2026-09-11-l8-principal-s-agentic-engineering-setup-just-copy-him--8ZgpAXe5V5w.txt",
+      "chars": 61973
+    },
+    {
+      "id": "iQyg-KypKAA",
+      "url": "https://www.youtube.com/watch?v=iQyg-KypKAA",
+      "file": "2026-09-11-l8-principal-s-agentic-engineering-workflow--iQyg-KypKAA.txt",
+      "chars": 42646
+    },
+    {
+      "id": "4eCFmbX5rAQ",
+      "url": "https://www.youtube.com/watch?v=4eCFmbX5rAQ",
+      "file": "2026-09-11-larry-ellison-keynote-on-oracle-s-vision-and-strategy-oracle-ai-world-2025--4eCFmbX5rAQ.txt",
+      "chars": 66293
+    },
+    {
+      "id": "EOmgC3-hznM",
+      "url": "https://www.youtube.com/watch?v=EOmgC3-hznM",
+      "file": "2026-09-11-learn-80-of-notebooklm-in-under-13-minutes--EOmgC3-hznM.txt",
+      "chars": 12730,
+      "lang": "en",
+      "segments": 337
+    },
+    {
+      "id": "kCc8FmEb1nY",
+      "url": "https://www.youtube.com/watch?v=kCc8FmEb1nY",
+      "file": "2026-09-11-let-s-build-gpt-from-scratch-in-code-spelled-out--kCc8FmEb1nY.txt",
+      "chars": 108990
+    },
+    {
+      "id": "BOOfy3Yshtw",
+      "url": "https://www.youtube.com/watch?v=BOOfy3Yshtw",
+      "file": "2026-09-11-loop-engineering-to-graph-engineering--BOOfy3Yshtw.txt",
+      "chars": 43591
+    },
+    {
+      "id": "jC4v5AS4RIM",
+      "url": "https://www.youtube.com/watch?v=jC4v5AS4RIM",
+      "file": "2026-09-11-master-the-perfect-chatgpt-prompt-formula-in-just-8-minutes--jC4v5AS4RIM.txt",
+      "chars": 9185,
+      "lang": "en",
+      "segments": 242
+    },
+    {
+      "id": "6eBSHbLKuN0",
+      "url": "https://www.youtube.com/watch?v=6eBSHbLKuN0",
+      "file": "2026-09-11-mastering-claude-code-in-30-minutes--6eBSHbLKuN0.txt",
+      "chars": 28630
+    },
+    {
+      "id": "nQwJVHCtDDY",
+      "url": "https://www.youtube.com/watch?v=nQwJVHCtDDY",
+      "file": "2026-09-11-matt-pococks-agentic-engineering-workflow-just-copy-him--nQwJVHCtDDY.txt",
+      "chars": 65273
+    },
+    {
+      "id": "BqRhBq-_kgE",
+      "url": "https://www.youtube.com/watch?v=BqRhBq-_kgE",
+      "file": "2026-09-11-mcp-just-got-a-whole-lot-better--BqRhBq-_kgE.txt",
+      "chars": 5935
+    },
+    {
+      "id": "7j1t3UZA1TY",
+      "url": "https://www.youtube.com/watch?v=7j1t3UZA1TY",
+      "file": "2026-09-11-mcp-vs-api-simplifying-ai-agent-integration-with-external-data--7j1t3UZA1TY.txt",
+      "chars": 9950
+    },
+    {
+      "id": "yBBhd0-Os74",
+      "url": "https://www.youtube.com/watch?v=yBBhd0-Os74",
+      "file": "2026-09-11-mental-models-that-change-how-you-think-bill-gurley--yBBhd0-Os74.txt",
+      "chars": 57339
+    },
+    {
+      "id": "w87UvmMcmW4",
+      "url": "https://www.youtube.com/watch?v=w87UvmMcmW4",
+      "file": "2026-09-11-microsoft-ceo-satya-nadella-on-the-future-of-ai--w87UvmMcmW4.txt",
+      "chars": 20144
+    },
+    {
+      "id": "1Pf2rW5FsqQ",
+      "url": "https://www.youtube.com/watch?v=1Pf2rW5FsqQ",
+      "file": "2026-09-11-model-context-protocol-mcp-overview-why-you-care--1Pf2rW5FsqQ.txt",
+      "chars": 24899,
+      "lang": "en",
+      "segments": 288
+    },
+    {
+      "id": "c9nRxEy1kUY",
+      "url": "https://www.youtube.com/watch?v=c9nRxEy1kUY",
+      "file": "2026-09-11-my-agentic-engineering-workflow-after-6-775-sessions--c9nRxEy1kUY.txt",
+      "chars": 59751
+    },
+    {
+      "id": "DgAu_oJ2-TA",
+      "url": "https://www.youtube.com/watch?v=DgAu_oJ2-TA",
+      "file": "2026-09-11-n8n-6-exemplos-praticos-ia-chatbots-c-hugo-autotic--DgAu_oJ2-TA.txt",
+      "chars": 51483,
+      "lang": "en",
+      "segments": 513
+    },
+    {
+      "id": "ZbIVOy_GPyQ",
+      "url": "https://www.youtube.com/watch?v=ZbIVOy_GPyQ",
+      "file": "2026-09-11-n8n-full-tutorial-building-ai-agents-in-2025-for-beginners--ZbIVOy_GPyQ.txt",
+      "chars": 31604
+    },
+    {
+      "id": "-gtlrI1TqZE",
+      "url": "https://www.youtube.com/watch?v=-gtlrI1TqZE",
+      "file": "2026-09-11-n8n-mcp-simplified-0-hype-what-why-how-of-mcp---gtlrI1TqZE.txt",
+      "chars": 10005
+    },
+    {
+      "id": "69bH4IHZivs",
+      "url": "https://www.youtube.com/watch?v=69bH4IHZivs",
+      "file": "2026-09-11-next-level-prompts-10-mins-into-advanced-prompting--69bH4IHZivs.txt",
+      "chars": 13398,
+      "lang": "en",
+      "segments": 350
+    },
+    {
+      "id": "rmvDxxNubIg",
+      "url": "https://www.youtube.com/watch?v=rmvDxxNubIg",
+      "file": "2026-09-11-no-vibes-allowed-solving-hard-problems-in-complex-codebases-dex-horthy-humanlaye--rmvDxxNubIg.txt",
+      "chars": 23630
+    },
+    {
+      "id": "plbXQ2SbAMg",
+      "url": "https://www.youtube.com/watch?v=plbXQ2SbAMg",
+      "file": "2026-09-11-novo-agente-com-passos-infinitos-destronou-manus-flowith-perplexity-labs--plbXQ2SbAMg.txt",
+      "chars": 23117
+    },
+    {
+      "id": "cN6NraQXwHA",
+      "url": "https://www.youtube.com/watch?v=cN6NraQXwHA",
+      "file": "2026-09-11-novo-chatgpt-acessa-camera-e-tela-do-celular-e-pc--cN6NraQXwHA.txt",
+      "chars": 13386,
+      "lang": "en",
+      "segments": 355
+    },
+    {
+      "id": "nkhrEnuZi20",
+      "url": "https://www.youtube.com/watch?v=nkhrEnuZi20",
+      "file": "2026-09-11-nvidia-ceo-jensen-huang-rebuilding-industrial-power-ai-factories-the-return-of-u--nkhrEnuZi20.txt",
+      "chars": 22419,
+      "lang": "en",
+      "segments": 186
+    },
+    {
+      "id": "7ARBJQn6QkM",
+      "url": "https://www.youtube.com/watch?v=7ARBJQn6QkM",
+      "file": "2026-09-11-nvidia-ceo-jensen-huang-s-vision-for-the-future--7ARBJQn6QkM.txt",
+      "chars": 55204
+    },
+    {
+      "id": "Z4BXg02i8sI",
+      "url": "https://www.youtube.com/watch?v=Z4BXg02i8sI",
+      "file": "2026-09-11-o-treinamento-secreto-da-ia-que-vai-mudar-tudo-vetto-ai--Z4BXg02i8sI.txt",
+      "chars": 74075
+    },
+    {
+      "id": "J0hj0ms2ddo",
+      "url": "https://www.youtube.com/watch?v=J0hj0ms2ddo",
+      "file": "2026-09-11-ontology-in-ai-the-hidden-skill-that-makes-architecture-and-your-career-work--J0hj0ms2ddo.txt",
+      "chars": 15050
+    },
+    {
+      "id": "U_YyqxUBNiQ",
+      "url": "https://www.youtube.com/watch?v=U_YyqxUBNiQ",
+      "file": "2026-09-11-ontology-vs-graph-db-why-use-them-together-talkit-global-191-infasis-pwc-consult--U_YyqxUBNiQ.txt",
+      "chars": 6231
+    },
+    {
+      "id": "Hn27upT2m_o",
+      "url": "https://www.youtube.com/watch?v=Hn27upT2m_o",
+      "file": "2026-09-11-openai-devday-2024-virtual-ama-with-sam-altman-moderated-by-harry-stebbings-20vc--Hn27upT2m_o.txt",
+      "chars": 40678,
+      "lang": "en",
+      "segments": 354
+    },
+    {
+      "id": "C06FBVXMLCY",
+      "url": "https://www.youtube.com/watch?v=C06FBVXMLCY",
+      "file": "2026-09-11-openai-just-destroyed-ai-coding-codex-2-0--C06FBVXMLCY.txt",
+      "chars": 55376
+    },
+    {
+      "id": "scsW6_2SPC4",
+      "url": "https://www.youtube.com/watch?v=scsW6_2SPC4",
+      "file": "2026-09-11-openais-cpo-on-how-ai-changes-must-have-skills-moats-coding-startup-playbooks-mo--scsW6_2SPC4.txt",
+      "chars": 91672,
+      "lang": "en",
+      "segments": 726
+    },
+    {
+      "id": "sBg90v2qfas",
+      "url": "https://www.youtube.com/watch?v=sBg90v2qfas",
+      "file": "2026-09-11-openwiki-brains-general-purpose-memory-for-agents--sBg90v2qfas.txt",
+      "chars": 12413
+    },
+    {
+      "id": "Wj6ttdIeBnE",
+      "url": "https://www.youtube.com/watch?v=Wj6ttdIeBnE",
+      "file": "2026-09-11-palantir-ceo-on-iran-ai-weapons-and-american-domination-a16z-american-dynamism-s--Wj6ttdIeBnE.txt",
+      "chars": 29907
+    },
+    {
+      "id": "fUcnE6pjq5w",
+      "url": "https://www.youtube.com/watch?v=fUcnE6pjq5w",
+      "file": "2026-09-11-parallels-parag-agrawal-building-a-new-web-for-ai-agents--fUcnE6pjq5w.txt",
+      "chars": 46185
+    },
+    {
+      "id": "ZIt_R8GwP7s",
+      "url": "https://www.youtube.com/watch?v=ZIt_R8GwP7s",
+      "file": "2026-09-11-performance-monitor-is-going-enterprise--ZIt_R8GwP7s.txt",
+      "chars": 13248
+    },
+    {
+      "id": "gTeujlv8qK0",
+      "url": "https://www.youtube.com/watch?v=gTeujlv8qK0",
+      "file": "2026-09-11-pi-architecture-explained-agent-loop-tools-tui-and-more--gTeujlv8qK0.txt",
+      "chars": 31928
     },
     {
       "id": "y7wMTwJN7rA",
       "url": "https://www.youtube.com/watch?v=y7wMTwJN7rA",
+      "file": "2026-09-11-power-each-ai-agent-with-a-different-local-llm-autogen-ollama-tutorial--y7wMTwJN7rA.txt",
+      "chars": 17333,
       "lang": "en",
-      "segments": 451,
-      "chars": 17333
+      "segments": 451
+    },
+    {
+      "id": "ysPbXH0LpIE",
+      "url": "https://www.youtube.com/watch?v=ysPbXH0LpIE",
+      "file": "2026-09-11-prompting-101-code-w-claude--ysPbXH0LpIE.txt",
+      "chars": 27606
+    },
+    {
+      "id": "lUhXa8GiXns",
+      "url": "https://www.youtube.com/watch?v=lUhXa8GiXns",
+      "file": "2026-09-11-pstack-is-agent-overkill-use-it-anyway--lUhXa8GiXns.txt",
+      "chars": 14611
+    },
+    {
+      "id": "UnH7S5044GA",
+      "url": "https://www.youtube.com/watch?v=UnH7S5044GA",
+      "file": "2026-09-11-pydanticai-the-new-agent-builder-on-the-block--UnH7S5044GA.txt",
+      "chars": 21374,
+      "lang": "en",
+      "segments": 169
+    },
+    {
+      "id": "cHVQj7w9TD4",
+      "url": "https://www.youtube.com/watch?v=cHVQj7w9TD4",
+      "file": "2026-09-11-rag-is-exploding-58-new-rag-methods-in-48-hours--cHVQj7w9TD4.txt",
+      "chars": 31038
+    },
+    {
+      "id": "HdafI0t3sEY",
+      "url": "https://www.youtube.com/watch?v=HdafI0t3sEY",
+      "file": "2026-09-11-rag-vs-cag-solving-knowledge-gaps-in-ai-models--HdafI0t3sEY.txt",
+      "chars": 13192
+    },
+    {
+      "id": "AVInhYBUnKs",
+      "url": "https://www.youtube.com/watch?v=AVInhYBUnKs",
+      "file": "2026-09-11-research-agent-3-0-build-a-group-of-ai-researchers-here-is-how--AVInhYBUnKs.txt",
+      "chars": 23670,
+      "lang": "en",
+      "segments": 618
+    },
+    {
+      "id": "O6DtzLGLNWY",
+      "url": "https://www.youtube.com/watch?v=O6DtzLGLNWY",
+      "file": "2026-09-11-rip-to-rpa-how-ai-makes-operations-work--O6DtzLGLNWY.txt",
+      "chars": 15996,
+      "lang": "en",
+      "segments": 421
+    },
+    {
+      "id": "c8bE0cj7vHY",
+      "url": "https://www.youtube.com/watch?v=c8bE0cj7vHY",
+      "file": "2026-09-11-ryan-lopopolo-harness-engineering-how-to-build-software-when-humans-steer-and-ag--c8bE0cj7vHY.txt",
+      "chars": 26939
+    },
+    {
+      "id": "BKx0Dp8y-6g",
+      "url": "https://www.youtube.com/watch?v=BKx0Dp8y-6g",
+      "file": "2026-09-11-satya-nadella-ai-is-the-future-of-the-firm--BKx0Dp8y-6g.txt",
+      "chars": 55564
+    },
+    {
+      "id": "8-boBsWcr5A",
+      "url": "https://www.youtube.com/watch?v=8-boBsWcr5A",
+      "file": "2026-09-11-satya-nadella-how-microsoft-thinks-about-agi--8-boBsWcr5A.txt",
+      "chars": 90599,
+      "lang": "en",
+      "segments": 855
+    },
+    {
+      "id": "_a8EnBX8DSU",
+      "url": "https://www.youtube.com/watch?v=_a8EnBX8DSU",
+      "file": "2026-09-11-satya-nadella-on-ai-agents-rebuilding-the-web-the-future-of-work-and-more--_a8EnBX8DSU.txt",
+      "chars": 22014,
+      "lang": "en",
+      "segments": 418
+    },
+    {
+      "id": "b2GqTDWtg6s",
+      "url": "https://www.youtube.com/watch?v=b2GqTDWtg6s",
+      "file": "2026-09-11-scaling-agents-for-gen-ai-products-anju-kambadur-bloomberg-head-of-ai-engineerin--b2GqTDWtg6s.txt",
+      "chars": 18435
+    },
+    {
+      "id": "-KfrrWRl3FA",
+      "url": "https://www.youtube.com/watch?v=-KfrrWRl3FA",
+      "file": "2026-09-11-seeing-the-future-from-ai-companions-to-personal-software---KfrrWRl3FA.txt",
+      "chars": 50720
+    },
+    {
+      "id": "19HDQ9HppOA",
+      "url": "https://www.youtube.com/watch?v=19HDQ9HppOA",
+      "file": "2026-09-11-ship-your-first-managed-agent--19HDQ9HppOA.txt",
+      "chars": 39375
+    },
+    {
+      "id": "0oXOOlqVu5M",
+      "url": "https://www.youtube.com/watch?v=0oXOOlqVu5M",
+      "file": "2026-09-11-so-i-tried-matt-s-skills--0oXOOlqVu5M.txt",
+      "chars": 41096
+    },
+    {
+      "id": "v4F1gFy-hqg",
+      "url": "https://www.youtube.com/watch?v=v4F1gFy-hqg",
+      "file": "2026-09-11-software-fundamentals-matter-more-than-ever-matt-pocock--v4F1gFy-hqg.txt",
+      "chars": 17801
+    },
+    {
+      "id": "TBmcvEmPXJ4",
+      "url": "https://www.youtube.com/watch?v=TBmcvEmPXJ4",
+      "file": "2026-09-11-sora-da-openai-e-lancada-primeiras-impressoes-das-funcoes--TBmcvEmPXJ4.txt",
+      "chars": 18610,
+      "lang": "en",
+      "segments": 139
+    },
+    {
+      "id": "b6Doq2fz81U",
+      "url": "https://www.youtube.com/watch?v=b6Doq2fz81U",
+      "file": "2026-09-11-stanford-ai-club-jason-wei-on-3-key-ideas-in-ai-in-2025--b6Doq2fz81U.txt",
+      "chars": 26564
+    },
+    {
+      "id": "6nUl_w5W9Wk",
+      "url": "https://www.youtube.com/watch?v=6nUl_w5W9Wk",
+      "file": "2026-09-11-stanford-cs153-frontier-systems-amit-jain-from-luma-ai-on-unified-intelligence-s--6nUl_w5W9Wk.txt",
+      "chars": 59765
+    },
+    {
+      "id": "CBaLU0dDEY8",
+      "url": "https://www.youtube.com/watch?v=CBaLU0dDEY8",
+      "file": "2026-09-11-stanford-cs153-frontier-systems-andreas-blattmann-from-black-forest-labs-on-visu--CBaLU0dDEY8.txt",
+      "chars": 56006
+    },
+    {
+      "id": "O5PfU_uDhS0",
+      "url": "https://www.youtube.com/watch?v=O5PfU_uDhS0",
+      "file": "2026-09-11-stanford-cs153-frontier-systems-anjney-midha-from-amp-pbc-on-frontier-systems--O5PfU_uDhS0.txt",
+      "chars": 59465
+    },
+    {
+      "id": "B8NvdfssGac",
+      "url": "https://www.youtube.com/watch?v=B8NvdfssGac",
+      "file": "2026-09-11-stanford-cs153-frontier-systems-ben-horowitz-from-a16z-on-venture-capital-system--B8NvdfssGac.txt",
+      "chars": 56876
+    },
+    {
+      "id": "tsQB0n0YV3k",
+      "url": "https://www.youtube.com/watch?v=tsQB0n0YV3k",
+      "file": "2026-09-11-stanford-cs153-frontier-systems-jensen-huang-from-nvidia-on-the-compute-behind-i--tsQB0n0YV3k.txt",
+      "chars": 61334,
+      "lang": "en",
+      "segments": 617
+    },
+    {
+      "id": "vfF011ko89o",
+      "url": "https://www.youtube.com/watch?v=vfF011ko89o",
+      "file": "2026-09-11-stanford-cs153-frontier-systems-mati-staniszewski-from-elevenlabs-on-the-future--vfF011ko89o.txt",
+      "chars": 64884
+    },
+    {
+      "id": "BQrJ4lHAjhc",
+      "url": "https://www.youtube.com/watch?v=BQrJ4lHAjhc",
+      "file": "2026-09-11-stanford-cs153-frontier-systems-nikhyl-singhal-from-skip-on-product-management-i--BQrJ4lHAjhc.txt",
+      "chars": 59066
+    },
+    {
+      "id": "F_7M4Hc-usM",
+      "url": "https://www.youtube.com/watch?v=F_7M4Hc-usM",
+      "file": "2026-09-11-stanford-cs153-frontier-systems-scale-agi-and-the-future-of-everything--F_7M4Hc-usM.txt",
+      "chars": 39631
+    },
+    {
+      "id": "Lri2LNYtERM",
+      "url": "https://www.youtube.com/watch?v=Lri2LNYtERM",
+      "file": "2026-09-11-stanford-cs153-frontier-systems-the-ai-native-company-how-one-founder-becomes-a--Lri2LNYtERM.txt",
+      "chars": 44763
+    },
+    {
+      "id": "_NLHFoVNlbg",
+      "url": "https://www.youtube.com/watch?v=_NLHFoVNlbg",
+      "file": "2026-09-11-stanford-cs230-autumn-2025-lecture-1-introduction-to-deep-learning--_NLHFoVNlbg.txt",
+      "chars": 52235
+    },
+    {
+      "id": "NDdc39KYqDU",
+      "url": "https://www.youtube.com/watch?v=NDdc39KYqDU",
+      "file": "2026-09-11-stanford-cs25-transformers-united-v6-i-from-language-models-to-native-multimodal--NDdc39KYqDU.txt",
+      "chars": 50175
+    },
+    {
+      "id": "EfM546A79aM",
+      "url": "https://www.youtube.com/watch?v=EfM546A79aM",
+      "file": "2026-09-11-stanford-cs336-language-modeling-from-scratch-spring-2026-lecture-10-inference--EfM546A79aM.txt",
+      "chars": 61471
+    },
+    {
+      "id": "-qm0ln33G24",
+      "url": "https://www.youtube.com/watch?v=-qm0ln33G24",
+      "file": "2026-09-11-stanford-cs336-language-modeling-from-scratch-spring-2026-lecture-13-data-source---qm0ln33G24.txt",
+      "chars": 60252,
+      "lang": "en",
+      "segments": 694
+    },
+    {
+      "id": "Csjy_A3Kj9s",
+      "url": "https://www.youtube.com/watch?v=Csjy_A3Kj9s",
+      "file": "2026-09-11-stanford-leadership-forum-2026-conversation-with-ken-griffin--Csjy_A3Kj9s.txt",
+      "chars": 38339
+    },
+    {
+      "id": "sRvrXL83N-c",
+      "url": "https://www.youtube.com/watch?v=sRvrXL83N-c",
+      "file": "2026-09-11-stanford-ms-e435-economics-of-the-ai-supercycle-spring-2026-infrasctructure-ente--sRvrXL83N-c.txt",
+      "chars": 40143
+    },
+    {
+      "id": "3W36pd50Wqw",
+      "url": "https://www.youtube.com/watch?v=3W36pd50Wqw",
+      "file": "2026-09-11-stanford-robotics-seminar-engr319-spring-2026-integrated-learning-and-planning--3W36pd50Wqw.txt",
+      "chars": 49764
+    },
+    {
+      "id": "vRTcE19M-KE",
+      "url": "https://www.youtube.com/watch?v=vRTcE19M-KE",
+      "file": "2026-09-11-stanford-webinar-large-language-models-get-the-hype-but-compound-systems-are-the--vRTcE19M-KE.txt",
+      "chars": 57155,
+      "lang": "en",
+      "segments": 534
+    },
+    {
+      "id": "K4s6Cgicw_A",
+      "url": "https://www.youtube.com/watch?v=K4s6Cgicw_A",
+      "file": "2026-09-11-startup-ideas-you-can-now-build-with-ai--K4s6Cgicw_A.txt",
+      "chars": 42387
+    },
+    {
+      "id": "DL82mGde6wo",
+      "url": "https://www.youtube.com/watch?v=DL82mGde6wo",
+      "file": "2026-09-11-state-of-the-art-prompting-for-ai-agents--DL82mGde6wo.txt",
+      "chars": 32564
+    },
+    {
+      "id": "lZsZX5p6eHQ",
+      "url": "https://www.youtube.com/watch?v=lZsZX5p6eHQ",
+      "file": "2026-09-11-steal-this-ai-agent-idea-today-big-opportunity--lZsZX5p6eHQ.txt",
+      "chars": 13328,
+      "lang": "en",
+      "segments": 110
+    },
+    {
+      "id": "pR51uBNb5es",
+      "url": "https://www.youtube.com/watch?v=pR51uBNb5es",
+      "file": "2026-09-11-stop-hallucinations-best-n8n-ai-agent-settings-explained--pR51uBNb5es.txt",
+      "chars": 20289
+    },
+    {
+      "id": "szGFppZgSI0",
+      "url": "https://www.youtube.com/watch?v=szGFppZgSI0",
+      "file": "2026-09-11-stop-using-basic-n8n-nodes-these-10-will-change-everything--szGFppZgSI0.txt",
+      "chars": 31948
+    },
+    {
+      "id": "SbUxRluVRwk",
+      "url": "https://www.youtube.com/watch?v=SbUxRluVRwk",
+      "file": "2026-09-11-structuring-a-modern-ai-team-denys-linkov-wisedocs--SbUxRluVRwk.txt",
+      "chars": 18290
+    },
+    {
+      "id": "C842vFY5kRo",
+      "url": "https://www.youtube.com/watch?v=C842vFY5kRo",
+      "file": "2026-09-11-system-design-course-apis-databases-caching-cdns-load-balancing-production-infra--C842vFY5kRo.txt",
+      "chars": 116756
+    },
+    {
+      "id": "oYxTTirKY8M",
+      "url": "https://www.youtube.com/watch?v=oYxTTirKY8M",
+      "file": "2026-09-11-system-design-explained-apis-databases-caching-cdns-load-balancing-production-in--oYxTTirKY8M.txt",
+      "chars": 115730
+    },
+    {
+      "id": "wSuQQYv-E64",
+      "url": "https://www.youtube.com/watch?v=wSuQQYv-E64",
+      "file": "2026-09-11-systems-thinking-for-leaders-designing-solutions-that-work--wSuQQYv-E64.txt",
+      "chars": 50010,
+      "lang": "en",
+      "segments": 546
+    },
+    {
+      "id": "IHbsfvbfAto",
+      "url": "https://www.youtube.com/watch?v=IHbsfvbfAto",
+      "file": "2026-09-11-thariq-claude-code-anthropic--IHbsfvbfAto.txt",
+      "chars": 29344
+    },
+    {
+      "id": "0vBKv9yAQi4",
+      "url": "https://www.youtube.com/watch?v=0vBKv9yAQi4",
+      "file": "2026-09-11-the-agent-development-life-cycle-zack-reneau-wedeen-sierra--0vBKv9yAQi4.txt",
+      "chars": 17934,
+      "lang": "en",
+      "segments": 490
+    },
+    {
+      "id": "jWy39wavbjY",
+      "url": "https://www.youtube.com/watch?v=jWy39wavbjY",
+      "file": "2026-09-11-the-agent-development-lifecycle-build-test-deploy-monitor-interrupt-26--jWy39wavbjY.txt",
+      "chars": 38609
+    },
+    {
+      "id": "VKFKyrrK-Iw",
+      "url": "https://www.youtube.com/watch?v=VKFKyrrK-Iw",
+      "file": "2026-09-11-the-agent-for-your-agent--VKFKyrrK-Iw.txt",
+      "chars": 2727
+    },
+    {
+      "id": "ghJmWQCIHRM",
+      "url": "https://www.youtube.com/watch?v=ghJmWQCIHRM",
+      "file": "2026-09-11-the-agent-ready-web-simplify-user-actions-with-webmcp-tara-agyemang-google--ghJmWQCIHRM.txt",
+      "chars": 17014
+    },
+    {
+      "id": "huR0Oa2odxA",
+      "url": "https://www.youtube.com/watch?v=huR0Oa2odxA",
+      "file": "2026-09-11-the-ai-product-going-viral-with-doctors-openevidence-with-ceo-daniel-nadler--huR0Oa2odxA.txt",
+      "chars": 62218
+    },
+    {
+      "id": "jPPiZ22DY3g",
+      "url": "https://www.youtube.com/watch?v=jPPiZ22DY3g",
+      "file": "2026-09-11-the-art-of-loop-engineering-how-to-build-agents-that-improve-over-time--jPPiZ22DY3g.txt",
+      "chars": 38851
+    },
+    {
+      "id": "uCKhOmth2ms",
+      "url": "https://www.youtube.com/watch?v=uCKhOmth2ms",
+      "file": "2026-09-11-the-best-ai-agents-are-simpler-than-you-think--uCKhOmth2ms.txt",
+      "chars": 89160
+    },
+    {
+      "id": "YqjR4vQwbTc",
+      "url": "https://www.youtube.com/watch?v=YqjR4vQwbTc",
+      "file": "2026-09-11-the-best-ai-agents-need-less-code-than-you-think--YqjR4vQwbTc.txt",
+      "chars": 56366
+    },
+    {
+      "id": "Wfk_zhfIn4U",
+      "url": "https://www.youtube.com/watch?v=Wfk_zhfIn4U",
+      "file": "2026-09-11-the-best-and-worst-ai-website-builders-godaddy-mixo-10web-elementor-etc--Wfk_zhfIn4U.txt",
+      "chars": 17815,
+      "lang": "en",
+      "segments": 145
+    },
+    {
+      "id": "ABCqfaTjNd4",
+      "url": "https://www.youtube.com/watch?v=ABCqfaTjNd4",
+      "file": "2026-09-11-the-best-chatgpt-prompt-i-ve-ever-created-i-spent-2-months-curating-this-prompt--ABCqfaTjNd4.txt",
+      "chars": 9776
+    },
+    {
+      "id": "RPVxwzJtp4o",
+      "url": "https://www.youtube.com/watch?v=RPVxwzJtp4o",
+      "file": "2026-09-11-the-death-of-the-personal-brand-the-future-of-creative-work--RPVxwzJtp4o.txt",
+      "chars": 38502,
+      "lang": "en",
+      "segments": 333
+    },
+    {
+      "id": "WI8ikp5YyRw",
+      "url": "https://www.youtube.com/watch?v=WI8ikp5YyRw",
+      "file": "2026-09-11-the-easiest-way-to-use-community-nodes-in-n8n--WI8ikp5YyRw.txt",
+      "chars": 11804
+    },
+    {
+      "id": "QrMcNe2jjt8",
+      "url": "https://www.youtube.com/watch?v=QrMcNe2jjt8",
+      "file": "2026-09-11-the-end-of-the-static-screen-architecting-intent-driven-ux-gus-iwanaga-commercet--QrMcNe2jjt8.txt",
+      "chars": 20720
+    },
+    {
+      "id": "n97BCfyFIvw",
+      "url": "https://www.youtube.com/watch?v=n97BCfyFIvw",
+      "file": "2026-09-11-the-engineer-of-the-future-is-the-person-who-is-able-to-choose-what-is-worth-doi--n97BCfyFIvw.txt",
+      "chars": 17199
+    },
+    {
+      "id": "AbZODZ_4VaM",
+      "url": "https://www.youtube.com/watch?v=AbZODZ_4VaM",
+      "file": "2026-09-11-the-enterprise-ai-stack-behind-stripes-company-brain-kai--AbZODZ_4VaM.txt",
+      "chars": 50556
+    },
+    {
+      "id": "ckoi0RTEgcY",
+      "url": "https://www.youtube.com/watch?v=ckoi0RTEgcY",
+      "file": "2026-09-11-the-entire-ai-data-center-explained-from-electricity-to-chatgpt--ckoi0RTEgcY.txt",
+      "chars": 43329
+    },
+    {
+      "id": "_ehJyfHg1Vk",
+      "url": "https://www.youtube.com/watch?v=_ehJyfHg1Vk",
+      "file": "2026-09-11-the-era-of-compound-engineering-kieran-klaassen-every-cora--_ehJyfHg1Vk.txt",
+      "chars": 16744
+    },
+    {
+      "id": "-5PZj_Wshk0",
+      "url": "https://www.youtube.com/watch?v=-5PZj_Wshk0",
+      "file": "2026-09-11-the-exact-system-to-go-from-0-800-000-on-youtube---5PZj_Wshk0.txt",
+      "chars": 14434,
+      "lang": "en",
+      "segments": 377
+    },
+    {
+      "id": "R9K2574YEAg",
+      "url": "https://www.youtube.com/watch?v=R9K2574YEAg",
+      "file": "2026-09-11-the-future-of-ai-agents-what-will-interrupt-2027-look-like-interrupt-26--R9K2574YEAg.txt",
+      "chars": 21406
+    },
+    {
+      "id": "OaRhpwz_TGM",
+      "url": "https://www.youtube.com/watch?v=OaRhpwz_TGM",
+      "file": "2026-09-11-the-future-of-ai-agents-with-andrew-ng-interrupt-26--OaRhpwz_TGM.txt",
+      "chars": 30429
+    },
+    {
+      "id": "pMggiOb18tc",
+      "url": "https://www.youtube.com/watch?v=pMggiOb18tc",
+      "file": "2026-09-11-the-golden-age-of-ai-engineering-alexander-embiricos-romain-huet-peter-steinberg--pMggiOb18tc.txt",
+      "chars": 24224
+    },
+    {
+      "id": "RfTalFEeKKE",
+      "url": "https://www.youtube.com/watch?v=RfTalFEeKKE",
+      "file": "2026-09-11-the-harvard-principles-of-negotiation--RfTalFEeKKE.txt",
+      "chars": 6872
+    },
+    {
+      "id": "ZqGSg4b_cZA",
+      "url": "https://www.youtube.com/watch?v=ZqGSg4b_cZA",
+      "file": "2026-09-11-the-java-story-the-official-documentary--ZqGSg4b_cZA.txt",
+      "chars": 63393
+    },
+    {
+      "id": "yNpbnrlAFzA",
+      "url": "https://www.youtube.com/watch?v=yNpbnrlAFzA",
+      "file": "2026-09-11-the-master-prompt-method-build-your-ai-operating-system--yNpbnrlAFzA.txt",
+      "chars": 72163
+    },
+    {
+      "id": "_K_F_icxtrI",
+      "url": "https://www.youtube.com/watch?v=_K_F_icxtrI",
+      "file": "2026-09-11-the-master-prompt-method-unlock-ais-full-potential-part-1--_K_F_icxtrI.txt",
+      "chars": 38461
+    },
+    {
+      "id": "FB-MLPhL9Ms",
+      "url": "https://www.youtube.com/watch?v=FB-MLPhL9Ms",
+      "file": "2026-09-11-the-maturity-phases-of-running-evals-phil-hetzel-braintrust--FB-MLPhL9Ms.txt",
+      "chars": 16542
+    },
+    {
+      "id": "ow1we5PzK-o",
+      "url": "https://www.youtube.com/watch?v=ow1we5PzK-o",
+      "file": "2026-09-11-the-multi-agent-architecture-that-actually-ships-luke-alvoeiro-factory--ow1we5PzK-o.txt",
+      "chars": 17771
+    },
+    {
+      "id": "6qAB6aUMIeA",
+      "url": "https://www.youtube.com/watch?v=6qAB6aUMIeA",
+      "file": "2026-09-11-the-new-ai-growth-playbook-for-2026-how-lovable-hit-200m-arr-in-one-year--6qAB6aUMIeA.txt",
+      "chars": 96184
+    },
+    {
+      "id": "8rABwKRsec4",
+      "url": "https://www.youtube.com/watch?v=8rABwKRsec4",
+      "file": "2026-09-11-the-new-code-sean-grove-openai--8rABwKRsec4.txt",
+      "chars": 18344
+    },
+    {
+      "id": "xWYb7tImErI",
+      "url": "https://www.youtube.com/watch?v=xWYb7tImErI",
+      "file": "2026-09-11-the-only-trait-for-success-in-the-ai-erahow-to-build-it-carnegie-mellon-universi--xWYb7tImErI.txt",
+      "chars": 22547
+    },
+    {
+      "id": "bRnoEpoK5m4",
+      "url": "https://www.youtube.com/watch?v=bRnoEpoK5m4",
+      "file": "2026-09-11-the-pipeline-is-dead-iris-ten-teije-sky-valley-ambient-computing--bRnoEpoK5m4.txt",
+      "chars": 15715
+    },
+    {
+      "id": "ObTPqBGsEbA",
+      "url": "https://www.youtube.com/watch?v=ObTPqBGsEbA",
+      "file": "2026-09-11-the-production-ai-playbook-deploying-agents-at-enterprise-scale-sandipan-bhaumik--ObTPqBGsEbA.txt",
+      "chars": 35833
+    },
+    {
+      "id": "G2B0YWuJUgI",
+      "url": "https://www.youtube.com/watch?v=G2B0YWuJUgI",
+      "file": "2026-09-11-the-prompting-playbook--G2B0YWuJUgI.txt",
+      "chars": 25896
+    },
+    {
+      "id": "d95J8yzvjbQ",
+      "url": "https://www.youtube.com/watch?v=d95J8yzvjbQ",
+      "file": "2026-09-11-the-thinking-game-full-documentary-tribeca-film-festival-official-selection--d95J8yzvjbQ.txt",
+      "chars": 70598
+    },
+    {
+      "id": "f32W5BEzWN0",
+      "url": "https://www.youtube.com/watch?v=f32W5BEzWN0",
+      "file": "2026-09-11-the-weird-future-of-user-interfaces--f32W5BEzWN0.txt",
+      "chars": 17748
+    },
+    {
+      "id": "kTs3kDlKc8w",
+      "url": "https://www.youtube.com/watch?v=kTs3kDlKc8w",
+      "file": "2026-09-11-this-ai-agent-can-do-basically-everything-agent-zero--kTs3kDlKc8w.txt",
+      "chars": 49964
+    },
+    {
+      "id": "njHuj8OxIVI",
+      "url": "https://www.youtube.com/watch?v=njHuj8OxIVI",
+      "file": "2026-09-11-this-claude-code-x-obsidian-agentic-os-will-be-the-new-meta--njHuj8OxIVI.txt",
+      "chars": 28120
+    },
+    {
+      "id": "ChskqGovoHg",
+      "url": "https://www.youtube.com/watch?v=ChskqGovoHg",
+      "file": "2026-09-11-this-open-source-repo-just-solved-claude-code-s-1-problem--ChskqGovoHg.txt",
+      "chars": 15283
+    },
+    {
+      "id": "mWvtOHlZM-I",
+      "url": "https://www.youtube.com/watch?v=mWvtOHlZM-I",
+      "file": "2026-09-11-tool-skill-or-subagent-decomposing-an-agent-that-outgrew-its-prompt--mWvtOHlZM-I.txt",
+      "chars": 41659
+    },
+    {
+      "id": "4keUCOVpsxQ",
+      "url": "https://www.youtube.com/watch?v=4keUCOVpsxQ",
+      "file": "2026-09-11-top-4-must-have-ai-agents-for-beginners-easy-setup-guide--4keUCOVpsxQ.txt",
+      "chars": 33102,
+      "lang": "en",
+      "segments": 318
+    },
+    {
+      "id": "ZRM_TfEZcIo",
+      "url": "https://www.youtube.com/watch?v=ZRM_TfEZcIo",
+      "file": "2026-09-11-turn-10-994-notes-into-memory-paul-iusztin-decoding-ai-louis-francois-bouchard-t--ZRM_TfEZcIo.txt",
+      "chars": 35128
+    },
+    {
+      "id": "WkBPX-oDMnA",
+      "url": "https://www.youtube.com/watch?v=WkBPX-oDMnA",
+      "file": "2026-09-11-understanding-is-the-new-bottleneck-geoffrey-litt-notion--WkBPX-oDMnA.txt",
+      "chars": 19843
+    },
+    {
+      "id": "Dqp_b8GHLXU",
+      "url": "https://www.youtube.com/watch?v=Dqp_b8GHLXU",
+      "file": "2026-09-11-unlock-autonomous-ai-agents-with-auth-md-michael-grinich-mcp-night-agent-mode-ke--Dqp_b8GHLXU.txt",
+      "chars": 34362
+    },
+    {
+      "id": "yfHHvmaMkcA",
+      "url": "https://www.youtube.com/watch?v=yfHHvmaMkcA",
+      "file": "2026-09-11-vector-embeddings-tutorial-code-your-own-ai-assistant-with-gpt-4-api-langchain-n--yfHHvmaMkcA.txt",
+      "chars": 33214,
+      "lang": "en",
+      "segments": 346
+    },
+    {
+      "id": "ASABxNenD_U",
+      "url": "https://www.youtube.com/watch?v=ASABxNenD_U",
+      "file": "2026-09-11-vertical-ai-agents-could-be-10x-bigger-than-saas--ASABxNenD_U.txt",
+      "chars": 42875,
+      "lang": "en",
+      "segments": 317
+    },
+    {
+      "id": "F3lL98Pj90o",
+      "url": "https://www.youtube.com/watch?v=F3lL98Pj90o",
+      "file": "2026-09-11-wayfinder-nothing-is-too-big-to-plan-anymore--F3lL98Pj90o.txt",
+      "chars": 16899,
+      "lang": "en",
+      "segments": 444
+    },
+    {
+      "id": "dRmWYHuIJxM",
+      "url": "https://www.youtube.com/watch?v=dRmWYHuIJxM",
+      "file": "2026-09-11-we-cut-94-of-ai-coding-tokens-with-a-local-code-index-rajkumar-sakthivel-tesco--dRmWYHuIJxM.txt",
+      "chars": 7210
+    },
+    {
+      "id": "pC17ge_2n0Q",
+      "url": "https://www.youtube.com/watch?v=pC17ge_2n0Q",
+      "file": "2026-09-11-we-ve-been-building-ai-agents-wrong-until-now--pC17ge_2n0Q.txt",
+      "chars": 22419,
+      "lang": "en",
+      "segments": 148
+    },
+    {
+      "id": "8oD7juOSEN0",
+      "url": "https://www.youtube.com/watch?v=8oD7juOSEN0",
+      "file": "2026-09-11-web-scraping-has-never-been-easier-use-google-gemini-2-0--8oD7juOSEN0.txt",
+      "chars": 7551,
+      "lang": "en",
+      "segments": 225
+    },
+    {
+      "id": "3tng5VWbWXU",
+      "url": "https://www.youtube.com/watch?v=3tng5VWbWXU",
+      "file": "2026-09-11-what-is-google-s-agentic-ai-strategy-explained-by-google-cloud-s-cto--3tng5VWbWXU.txt",
+      "chars": 47863
+    },
+    {
+      "id": "Su8r4YKX_ls",
+      "url": "https://www.youtube.com/watch?v=Su8r4YKX_ls",
+      "file": "2026-09-11-what-is-systems-thinking--Su8r4YKX_ls.txt",
+      "chars": 5020
+    },
+    {
+      "id": "HI2q3ci3Iuc",
+      "url": "https://www.youtube.com/watch?v=HI2q3ci3Iuc",
+      "file": "2026-09-11-when-to-build-your-own-agent-harness-harrison-chase-langchain--HI2q3ci3Iuc.txt",
+      "chars": 26744
+    },
+    {
+      "id": "Sir59K8ZDPU",
+      "url": "https://www.youtube.com/watch?v=Sir59K8ZDPU",
+      "file": "2026-09-11-why-agentic-systems-need-ontologies-frank-coyle-uc-berkeley--Sir59K8ZDPU.txt",
+      "chars": 16420
+    },
+    {
+      "id": "tivaWTTVRhY",
+      "url": "https://www.youtube.com/watch?v=tivaWTTVRhY",
+      "file": "2026-09-11-why-ai-is-going-vertical-again-dianne-penn-anthropic--tivaWTTVRhY.txt",
+      "chars": 86060
+    },
+    {
+      "id": "znKb71kLG5c",
+      "url": "https://www.youtube.com/watch?v=znKb71kLG5c",
+      "file": "2026-09-11-why-are-palantir-and-openai-scared-of-alex-bores-the-ezra-klein-show--znKb71kLG5c.txt",
+      "chars": 86025
+    },
+    {
+      "id": "agSRMrhNTf4",
+      "url": "https://www.youtube.com/watch?v=agSRMrhNTf4",
+      "file": "2026-09-11-why-enterprise-ai-adoption-is-slower-than-you-think-aaron-levie-box-harrison-cha--agSRMrhNTf4.txt",
+      "chars": 31303
+    },
+    {
+      "id": "DAC3YQgLv5E",
+      "url": "https://www.youtube.com/watch?v=DAC3YQgLv5E",
+      "file": "2026-09-11-why-every-small-business-needs-to-use-this-method--DAC3YQgLv5E.txt",
+      "chars": 12097,
+      "lang": "en",
+      "segments": 199
+    },
+    {
+      "id": "EcqMYoIV57A",
+      "url": "https://www.youtube.com/watch?v=EcqMYoIV57A",
+      "file": "2026-09-11-why-more-context-makes-your-agent-dumber-and-what-to-do-about-it-nupur-sharma-qo--EcqMYoIV57A.txt",
+      "chars": 22167
+    },
+    {
+      "id": "t0GiTyz4syY",
+      "url": "https://www.youtube.com/watch?v=t0GiTyz4syY",
+      "file": "2026-09-11-why-netflix-is-betting-on-systems-thinkersnot-specialistsin-the-ai-era-elizabeth--t0GiTyz4syY.txt",
+      "chars": 72596
+    },
+    {
+      "id": "3_gYbhABcAE",
+      "url": "https://www.youtube.com/watch?v=3_gYbhABcAE",
+      "file": "2026-09-11-why-senior-engineers-struggle-to-build-ai-agents-philipp-schmid-google-deepmind--3_gYbhABcAE.txt",
+      "chars": 9524
+    },
+    {
+      "id": "LeUUxLRdvho",
+      "url": "https://www.youtube.com/watch?v=LeUUxLRdvho",
+      "file": "2026-09-11-why-the-best-software-engineers-focus-on-system-design--LeUUxLRdvho.txt",
+      "chars": 48771
+    },
+    {
+      "id": "Q7l8YGiMgUw",
+      "url": "https://www.youtube.com/watch?v=Q7l8YGiMgUw",
+      "file": "2026-09-11-why-the-frontrunners-say-coding-is-solved-but-engineering-is-not--Q7l8YGiMgUw.txt",
+      "chars": 49178
+    },
+    {
+      "id": "n9xKblqyQ28",
+      "url": "https://www.youtube.com/watch?v=n9xKblqyQ28",
+      "file": "2026-09-11-why-the-harness-matters-more-than-the-model-yc-paper-club--n9xKblqyQ28.txt",
+      "chars": 62966
+    },
+    {
+      "id": "u6jJcIFDLE4",
+      "url": "https://www.youtube.com/watch?v=u6jJcIFDLE4",
+      "file": "2026-09-11-why-we-killed-our-multi-agent-pipeline-subbiah-sethuraman-and-abhilash-asokan-zs--u6jJcIFDLE4.txt",
+      "chars": 14534
+    },
+    {
+      "id": "B9h9ovW5H9U",
+      "url": "https://www.youtube.com/watch?v=B9h9ovW5H9U",
+      "file": "2026-09-11-why-your-agents-need-decision-traces-not-just-documents-zach-blumenfeld-neo4j--B9h9ovW5H9U.txt",
+      "chars": 14989
+    },
+    {
+      "id": "mav15aW9lLM",
+      "url": "https://www.youtube.com/watch?v=mav15aW9lLM",
+      "file": "2026-09-11-why-your-enterprise-tech-stack-isnt-ready-for-ai-agents-christopher-lovejoy-saul--mav15aW9lLM.txt",
+      "chars": 18670
+    },
+    {
+      "id": "5XaXLLA4gK0",
+      "url": "https://www.youtube.com/watch?v=5XaXLLA4gK0",
+      "file": "2026-09-11-windsurf-ai-made-me-rank-1-instantly-free-tool--5XaXLLA4gK0.txt",
+      "chars": 10967,
+      "lang": "en",
+      "segments": 76
+    },
+    {
+      "id": "W6x-hb44C0c",
+      "url": "https://www.youtube.com/watch?v=W6x-hb44C0c",
+      "file": "2026-09-11-wtf-is-loop-engineer-how-to-setup-for-real--W6x-hb44C0c.txt",
+      "chars": 24418
+    },
+    {
+      "id": "ngBraLDqzdI",
+      "url": "https://www.youtube.com/watch?v=ngBraLDqzdI",
+      "file": "2026-09-11-yann-lecun-on-what-comes-after-llms--ngBraLDqzdI.txt",
+      "chars": 79748
+    },
+    {
+      "id": "kYkIdXwW2AE",
+      "url": "https://www.youtube.com/watch?v=kYkIdXwW2AE",
+      "file": "2026-09-11-yann-lecun-s-1b-bet-against-llms-part-1--kYkIdXwW2AE.txt",
+      "chars": 35431
+    },
+    {
+      "id": "so9l_MwS2yg",
+      "url": "https://www.youtube.com/watch?v=so9l_MwS2yg",
+      "file": "2026-09-11-your-attention-is-the-bottleneck-not-your-agents-zack-proser-workos--so9l_MwS2yg.txt",
+      "chars": 28679
+    },
+    {
+      "id": "JomVvNDjGb8",
+      "url": "https://www.youtube.com/watch?v=JomVvNDjGb8",
+      "file": "2026-09-11-your-coding-agent-should-do-ai-system-engineering-ben-burtenshaw-hugging-face--JomVvNDjGb8.txt",
+      "chars": 18810
+    },
+    {
+      "id": "0uC6u0lJJl4",
+      "url": "https://www.youtube.com/watch?v=0uC6u0lJJl4",
+      "file": "2026-09-11-your-company-brain-will-leak-secrets-how-we-stopped-it-for-big-banks-tanmai-gopa--0uC6u0lJJl4.txt",
+      "chars": 26217
+    },
+    {
+      "id": "g90sjbWrwoY",
+      "url": "https://www.youtube.com/watch?v=g90sjbWrwoY",
+      "file": "2026-09-11-youtube-is-now-on-easy-mode-for-business-owners-2025-algorithm--g90sjbWrwoY.txt",
+      "chars": 12085,
+      "lang": "en",
+      "segments": 315
+    },
+    {
+      "id": "MBxhzARQNeo",
+      "url": "https://www.youtube.com/watch?v=MBxhzARQNeo",
+      "file": "2026-09-11-zero-click-marketing-how-founders-win-when-google-social-llms-stop-sending-traff--MBxhzARQNeo.txt",
+      "chars": 31905
+    },
+    {
+      "id": "A7WFt2JQ5sg",
+      "url": "https://www.youtube.com/watch?v=A7WFt2JQ5sg",
+      "file": "2026-09-11-zta-zero-token-architecture-kelsey-hightower-platformcon-2026--A7WFt2JQ5sg.txt",
+      "chars": 28114
+    },
+    {
+      "id": "BrpB-h1e--k",
+      "url": "https://www.youtube.com/watch?v=BrpB-h1e--k",
+      "file": "BrpB-h1e--k.txt",
+      "chars": 24199
     }
   ]
 }
