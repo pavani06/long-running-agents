@@ -20,6 +20,10 @@ BASE_URL = "https://api.z.ai/api/coding/paas/v4"
 MODEL = "glm-5.3"
 MAX_TEXT_CHARS = 8_000  # a tweet/thread is short; cap defensively
 
+# A crafted tweet could embed the closing delimiter to break out of the guard;
+# neutralize any source-tag occurrence in the untrusted text before wrapping.
+_DELIM_RE = re.compile(r"</?\s*untrusted_source\s*>", re.I)
+
 REQUIRED_KEYS = {"topic", "summary", "tags", "entities", "content_type", "revisit"}
 REVISIT_VALUES = {"high", "medium", "low"}
 CONTENT_TYPES = {"thread", "announcement", "resource", "opinion", "tool",
@@ -39,7 +43,7 @@ class ExtractError(Exception):
 
 
 def build_messages(text: str, handle: str, links: list[str], allowed_tags: list[str]) -> list[dict]:
-    text = text[:MAX_TEXT_CHARS]
+    text = _DELIM_RE.sub("[source-tag]", text[:MAX_TEXT_CHARS])
     link_ctx = ("\nLinks externos no tweet (contexto factual, NÃO invente outros): "
                 + ", ".join(links)) if links else ""
     system = (
