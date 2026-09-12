@@ -1,0 +1,73 @@
+---
+title: "Building Agent Interfaces: Lessons from Chrome DevTools (MCP) for Agents — Michael Hablich, Google"
+type: "extract"
+source: "youtube"
+video_id: "_B4Pv9ttFgY"
+url: "https://www.youtube.com/watch?v=_B4Pv9ttFgY"
+channel: "AI Engineer"
+extracted: "2026-09-12"
+model: "glm-5.3"
+extract_version: 1
+transcript: "[[raw/youtube/ai-learning/transcripts/2026-09-11-building-agent-interfaces-lessons-from-chrome-devtools-mcp-for-agents-michael-ha--_B4Pv9ttFgY.txt]]"
+tags: ["agent-tooling", "harness", "context-engineering", "token-budgeting", "error-handling", "evals", "permissions", "governanca", "gate-design", "multi-agent", "agent-fleets", "verification", "arquitetura", "production"]
+thesis: "Agentes de IA são uma classe de usuário distinta dos humanos — com preferência por schemas claros, eficiência em tokens, autocorreção e limites de confiança explícitos — e o time do Chrome DevTools derivou quatro preocupações de engenharia (token burn rate, recuperação de erros, descobribilidade de ferramentas e limites de confiança) ao construir seu servidor MCP para agentes."
+concepts: ["Agentes como segmento/classe de usuário distinto com requisitos não-funcionais próprios", "Diferentes gargalos cognitivos: humanos preferem interfaces visuais (layout, cor); LLMs preferem não-visuais (clareza de schema, densidade de dados)", "Tokens per successful outcome — métrica que balanceia efetividade (jornada concluída) e eficiência (tokens, tool calls, duração)", "Comparar métricas apenas dentro da mesma jornada/tarefa, nunca globalmente", "Resumos semânticos em markdown em vez de dumps brutos ('aponte para a frase certa, não obrigue a ler o livro inteiro')", "Dump zone e estouro de janela de contexto com traces de múltiplos megabytes / 50 mil linhas de JSON", "Tool categorization: esconder ferramentas de nicho do contexto padrão", "Slim mode: expor apenas ~3 ferramentas (select page, navigate page, evaluate script) com trade-off de turnos extras e capacidades reduzidas", "CLI espelhada ao MCP para encadeamento de comandos e pós-processamento local via piping, poupando tokens", "Error recovery como espectro: mensagens de erro acionáveis, desvios proativos (proactive detours), playbooks/skills de diagnóstico", "Autocorreção (self-healing) do agente habilitada por mensagens de erro ricas", "Descobribilidade: decomposição de ferramenta monolítica ('debug web page') em 25 ferramentas focadas", "O schema é a UI do agente; 97% das descrições de ferramentas MCP têm quality smells (segundo paper citado)", "Minimum viable description e o trade-off entre descrições ricas, tamanho de contexto e viés em modelos menores", "Skills não são almoço grátis: excesso aumenta o contexto e induz chamadas indevidas — o trade-off se desloca, não desaparece", "Fricção por design: consentimento humano explícito a cada conexão; não persistir escolhas de permissão para agentes", "Trifecta letal (prompt injection) de Simon Willison como base do raciocínio de confiança", "Três tiers de agentes de navegador: local com humano no loop, CI isolado, e internet plena ('yolo mode')", "Separação de dados em CI via containers, perfis Chrome separados e porta de debug remota", "Allow lists de domínio e mitigações de prompt injection para agentes com acesso pleno à internet", "Agentes locais e frotas de agentes podem compartilhar a mesma ferramenta, mas nada mais do modelo de segurança"]
+tools: ["Chrome DevTools", "Chrome DevTools for Agents (servidor MCP + CLI)", "MCP (Model Context Protocol)", "Claude Code", "Codex", "OpenClaw", "Gemini CLI (transcrição parcialmente ilegível)", "Remote debugging port do Chrome", "Skills (ex.: troubleshooting skill)", "Lighthouse (audit)"]
+people: ["Mik Habik (PM de Chrome DevTools, Google)", "Google / equipe do Chrome DevTools", "Simon Willison (blog post sobre a trifecta letal)", "Matt (palestrante sobre 'dump zone')"]
+claims: ["Meça 'tokens por resultado bem-sucedido' (efetividade × eficiência) e compare apenas dentro da mesma jornada de usuário ou classe de tarefa, nunca globalmente", "Retorne resumos semânticos em markdown em vez de arquivos brutos de trace de múltiplos megabytes que estouram a janela de contexto do agente", "Esconda ferramentas de nicho e parâmetros avançados do contexto padrão via tool categorization (ex.: debugging de extensões Chrome fora do default)", "Ofereça um slim mode com ~3 ferramentas básicas, aceitando o trade-off de turnos extras e ausência de capacidades específicas (ex.: captura de requisições de rede)", "Disponibilize uma CLI espelhando o servidor MCP para que agentes encadeiem comandos e façam pós-processamento localmente via piping (ex.: extrair accessibility tree e alimentar o ID no comando de click), poupando tokens", "Escreva mensagens de erro com dicas acionáveis (ex.: qual entrada de histórico não foi encontrada) para permitir que o agente se autocorrija sem intervenção humana", "Implemente desvios proativos para redirecionar o modelo quando o treinamento padrão induz à ferramenta errada (ex.: performance trace em vez de Lighthouse audit)", "Forneça skills/playbooks de diagnóstico (ex.: troubleshooting de setup do servidor MCP) para aumentar a resiliência do harness", "Decomponha ferramentas monolíticas em ferramentas focadas e invista em descrições com propósito claro e critérios de ativação — o schema é a UI do agente", "Evite descrições excessivamente longas: aumentam o contexto e enviesam modelos menores a usar ferramentas inadequadas; persiga a 'minimum viable description' continuamente", "Não empilhe skills sem controle: excesso aumenta o tamanho do contexto e leva agentes a invocá-las indevidamente, apenas deslocando o problema", "Projete fricção deliberada: exija consentimento humano a cada conexão do agente (autoconnect) e não ofereça 'lembrar minha escolha' em permissões para agentes", "Segregue agentes de navegação em três tiers: local com humano no loop (acesso temporário e limitado ao perfil padrão do Chrome), CI com isolamento via containers/perfis separados/porta de debug remota, e internet plena com allow lists de domínio e mitigações de prompt injection", "Agentes locais (tier 1) e frotas de agentes de pesquisa (tier 3) podem compartilhar a mesma ferramenta, mas não devem compartilhar nada mais do modelo de segurança", "Priorize otimizações a partir de dashboards da métrica (barras curtas = piores casos de uso) e prefira medições imperfeitas a decisões por intuição", "Valide resultados após ações do agente (ex.: conferir que a página ficou de fato mais rápida) para evitar agentes 'voando às cegas'"]
+deep_dive: "medium"
+deep_dive_reason: "Apresentação-síntese com boa densidade de heurísticas acionáveis e relevantes (métrica de tokens por resultado, tiers de confiança, descrições de ferramentas), mas sem profundidade arquitetural nem novidade substancial, já que o próprio palestrante assume cobertura superficial e muito do conteúdo agrega ideias já estabelecidas (dump zone, trifecta letal, paper de quality smells)."
+---
+
+# Building Agent Interfaces: Lessons from Chrome DevTools (MCP) for Agents — Michael Hablich, Google
+
+## Tese
+Agentes de IA são uma classe de usuário distinta dos humanos — com preferência por schemas claros, eficiência em tokens, autocorreção e limites de confiança explícitos — e o time do Chrome DevTools derivou quatro preocupações de engenharia (token burn rate, recuperação de erros, descobribilidade de ferramentas e limites de confiança) ao construir seu servidor MCP para agentes.
+
+## Conceitos-chave
+- Agentes como segmento/classe de usuário distinto com requisitos não-funcionais próprios
+- Diferentes gargalos cognitivos: humanos preferem interfaces visuais (layout, cor); LLMs preferem não-visuais (clareza de schema, densidade de dados)
+- Tokens per successful outcome — métrica que balanceia efetividade (jornada concluída) e eficiência (tokens, tool calls, duração)
+- Comparar métricas apenas dentro da mesma jornada/tarefa, nunca globalmente
+- Resumos semânticos em markdown em vez de dumps brutos ('aponte para a frase certa, não obrigue a ler o livro inteiro')
+- Dump zone e estouro de janela de contexto com traces de múltiplos megabytes / 50 mil linhas de JSON
+- Tool categorization: esconder ferramentas de nicho do contexto padrão
+- Slim mode: expor apenas ~3 ferramentas (select page, navigate page, evaluate script) com trade-off de turnos extras e capacidades reduzidas
+- CLI espelhada ao MCP para encadeamento de comandos e pós-processamento local via piping, poupando tokens
+- Error recovery como espectro: mensagens de erro acionáveis, desvios proativos (proactive detours), playbooks/skills de diagnóstico
+- Autocorreção (self-healing) do agente habilitada por mensagens de erro ricas
+- Descobribilidade: decomposição de ferramenta monolítica ('debug web page') em 25 ferramentas focadas
+- O schema é a UI do agente; 97% das descrições de ferramentas MCP têm quality smells (segundo paper citado)
+- Minimum viable description e o trade-off entre descrições ricas, tamanho de contexto e viés em modelos menores
+- Skills não são almoço grátis: excesso aumenta o contexto e induz chamadas indevidas — o trade-off se desloca, não desaparece
+- Fricção por design: consentimento humano explícito a cada conexão; não persistir escolhas de permissão para agentes
+- Trifecta letal (prompt injection) de Simon Willison como base do raciocínio de confiança
+- Três tiers de agentes de navegador: local com humano no loop, CI isolado, e internet plena ('yolo mode')
+- Separação de dados em CI via containers, perfis Chrome separados e porta de debug remota
+- Allow lists de domínio e mitigações de prompt injection para agentes com acesso pleno à internet
+- Agentes locais e frotas de agentes podem compartilhar a mesma ferramenta, mas nada mais do modelo de segurança
+
+## Ferramentas & pessoas
+**Ferramentas:** Chrome DevTools, Chrome DevTools for Agents (servidor MCP + CLI), MCP (Model Context Protocol), Claude Code, Codex, OpenClaw, Gemini CLI (transcrição parcialmente ilegível), Remote debugging port do Chrome, Skills (ex.: troubleshooting skill), Lighthouse (audit)
+
+**Pessoas/orgs:** Mik Habik (PM de Chrome DevTools, Google), Google / equipe do Chrome DevTools, Simon Willison (blog post sobre a trifecta letal), Matt (palestrante sobre 'dump zone')
+
+## Claims acionáveis
+- Meça 'tokens por resultado bem-sucedido' (efetividade × eficiência) e compare apenas dentro da mesma jornada de usuário ou classe de tarefa, nunca globalmente
+- Retorne resumos semânticos em markdown em vez de arquivos brutos de trace de múltiplos megabytes que estouram a janela de contexto do agente
+- Esconda ferramentas de nicho e parâmetros avançados do contexto padrão via tool categorization (ex.: debugging de extensões Chrome fora do default)
+- Ofereça um slim mode com ~3 ferramentas básicas, aceitando o trade-off de turnos extras e ausência de capacidades específicas (ex.: captura de requisições de rede)
+- Disponibilize uma CLI espelhando o servidor MCP para que agentes encadeiem comandos e façam pós-processamento localmente via piping (ex.: extrair accessibility tree e alimentar o ID no comando de click), poupando tokens
+- Escreva mensagens de erro com dicas acionáveis (ex.: qual entrada de histórico não foi encontrada) para permitir que o agente se autocorrija sem intervenção humana
+- Implemente desvios proativos para redirecionar o modelo quando o treinamento padrão induz à ferramenta errada (ex.: performance trace em vez de Lighthouse audit)
+- Forneça skills/playbooks de diagnóstico (ex.: troubleshooting de setup do servidor MCP) para aumentar a resiliência do harness
+- Decomponha ferramentas monolíticas em ferramentas focadas e invista em descrições com propósito claro e critérios de ativação — o schema é a UI do agente
+- Evite descrições excessivamente longas: aumentam o contexto e enviesam modelos menores a usar ferramentas inadequadas; persiga a 'minimum viable description' continuamente
+- Não empilhe skills sem controle: excesso aumenta o tamanho do contexto e leva agentes a invocá-las indevidamente, apenas deslocando o problema
+- Projete fricção deliberada: exija consentimento humano a cada conexão do agente (autoconnect) e não ofereça 'lembrar minha escolha' em permissões para agentes
+- Segregue agentes de navegação em três tiers: local com humano no loop (acesso temporário e limitado ao perfil padrão do Chrome), CI com isolamento via containers/perfis separados/porta de debug remota, e internet plena com allow lists de domínio e mitigações de prompt injection
+- Agentes locais (tier 1) e frotas de agentes de pesquisa (tier 3) podem compartilhar a mesma ferramenta, mas não devem compartilhar nada mais do modelo de segurança
+- Priorize otimizações a partir de dashboards da métrica (barras curtas = piores casos de uso) e prefira medições imperfeitas a decisões por intuição
+- Valide resultados após ações do agente (ex.: conferir que a página ficou de fato mais rápida) para evitar agentes 'voando às cegas'
+
+> **Deep dive:** `medium` — Apresentação-síntese com boa densidade de heurísticas acionáveis e relevantes (métrica de tokens por resultado, tiers de confiança, descrições de ferramentas), mas sem profundidade arquitetural nem novidade substancial, já que o próprio palestrante assume cobertura superficial e muito do conteúdo agrega ideias já estabelecidas (dump zone, trifecta letal, paper de quality smells).

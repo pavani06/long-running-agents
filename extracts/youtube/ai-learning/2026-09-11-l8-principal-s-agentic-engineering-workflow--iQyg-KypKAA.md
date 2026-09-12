@@ -1,0 +1,71 @@
+---
+title: "L8 Principal's Agentic Engineering Workflow"
+type: "extract"
+source: "youtube"
+video_id: "iQyg-KypKAA"
+url: "https://www.youtube.com/watch?v=iQyg-KypKAA"
+channel: "Kun Chen"
+extracted: "2026-09-12"
+model: "glm-5.3"
+extract_version: 1
+transcript: "[[raw/youtube/ai-learning/transcripts/2026-09-11-l8-principal-s-agentic-engineering-workflow--iQyg-KypKAA.txt]]"
+tags: ["agent-fleets", "agent-loop", "agent-tooling", "agentic-coding", "code-review", "context-engineering", "escalation", "evals", "gate-design", "harness", "harness-engineering", "memory-architecture", "multi-agent", "token-budgeting", "verification", "testes-qa"]
+thesis: "Escalar engenharia com uma frota de agentes de código exige tratar o humano como capitão/diretor de engenharia: ramp-up dos agentes via arquivos de memória enxutos e skills com disclosure progressivo, ferramentas otimizadas para ergonomia de agente, um pipeline automatizado de validação até o PR (revisão adversarial em contexto fresco com evidência de teste), worktrees paralelas e um agente orquestrador ('first mate') para gerenciar as sessões em paralelo."
+concepts: ["Mindset de engenheiro como gerente/diretor: cultura e processos no lugar de revisão manual de diffs", "Arquivos de memória globais (minimalistas, entram no system prompt de toda sessão) vs. memória de projeto (aprendizado coletivo acumulado das sessões)", "Symlink entre CLAUDE.md e AGENTS.md para compartilhar memória entre harnesses", "Skills com progressive disclosure: só a descrição entra no system prompt; o corpo é lido sob demanda", "Correção de viés do modelo: não superestimar custo de desenvolvimento em decisões técnicas (modelos herdam estimativas humanas e escolhem soluções baratas e ruins)", "Bug fixes começando com reprodução end-to-end em vez de unit tests por padrão", "Ergonomia de agente como cidadão de primeira classe no design de tools", "Benchmark de acesso ao GitHub: MCP vs CLI (custo de token e latência)", "Lavish editor: artefatos HTML visuais com o design system do projeto para planejamento e feedback anotado", "Pipeline No Mistakes: branch, commit, worktree isolado, análise de intenção da sessão, rebase, revisão adversarial em contexto fresco, teste e2e com evidência gravada, pass de documentação, lint, push e babysitting do PR", "Escalonamento de decisões ambíguas com implicação de produto para humanos", "Revisão baseada em risco: diffs de baixo risco não são revisados manualmente", "Loops de longa duração overnight com token cap, iteration cap e stop conditions explícitas", "Git worktrees para paralelismo sem conflito entre agentes, com reaproveitamento de worktrees ociosas", "Padrão 'first mate': agente orquestrador que spawn, gerencia e valida múltiplas sessões", "Concentração do esforço humano no início (planejamento) e no fim (barra de qualidade), automatizando o meio", "Workflow agnóstico de agente/modelo devido à rápida mudança do landscape", "Terminal-centrismo para manter flow (mãos no teclado) e o mesmo workflow em qualquer dispositivo"]
+tools: ["WezTerm", "tmux", "Neovim", "Claude Code", "Codex CLI", "pi coding agent", "OpenCode", "CLAUDE.md / AGENTS.md", "Skill Creator (Anthropic)", "npx skills (Vercel)", "superwhisper", "GitHub MCP Server", "GitHub CLI", "Axi (padrão de design de tools para agentes)", "GitHub Axi", "Chrome DevTools Axi", "Lavish editor", "No Mistakes", "Good Night, Have Fun", "Treehouse", "First Mate", "Program Bench", "git worktree", "/goal (Codex/Claude Code)", "npm"]
+people: ["Kun (autor)", "Meta", "Microsoft", "Amazon", "Atlassian", "Anthropic", "Vercel", "Stanford", "Dario Amodei", "Andrej Karpathy"]
+claims: ["Mantenha o arquivo de memória global minimalista (ex.: ~27 linhas) porque todo conteúdo dele é carregado no system prompt de todas as sessões e consome tokens silenciosamente", "Use symlinks para unificar CLAUDE.md e AGENTS.md num único arquivo compartilhado entre harnesses", "Mova informações condicionalmente úteis (ex.: instruções de teste e2e) do arquivo de memória para skills, explorando progressive disclosure para economizar tokens", "Adicione à memória global a regra de não dar peso excessivo ao custo de desenvolvimento em decisões técnicas, pois os modelos herdam estimativas humanas e tendem a escolher soluções baratas de baixa qualidade", "Exija que bug fixes comecem reproduzindo o bug end-to-end o mais próximo possível da experiência do usuário, em vez de unit tests insuficientes por padrão", "Não instale skills aleatórias da internet: elas podem instruir o agente a executar qualquer coisa na máquina (risco de vazamento de credenciais) e benchmarks mostram que algumas degradam performance (+5% tokens com resultados piores)", "Popularidade (GitHub stars) não é evidência de qualidade de skill; exija avaliação rigorosa antes de adotar", "Substitua o GitHub MCP Server pela CLI: benchmarks mostram ~3x mais custo de tokens e mais que o dobro da latência para as mesmas tarefas", "Formate a saída das ferramentas para eficiência de tokens (padrões Axi): formatos token-efficient economizam ~40% vs JSON", "Adote input por voz com transcrição local (superwhisper), que é ~3x mais rápido que digitar segundo paper de Stanford, e configure um prompt inicial com vocabulário do projeto para melhorar a transcrição", "Ao invés de revisar diffs manualmente, roteie a saída do agente por um pipeline automatizado: branch, commit, worktree isolado, rebase no main, revisão adversarial em contexto fresco, teste e2e com evidência gravada, pass de documentação, lint e PR", "Use a avaliação de risco do PR para calibrar profundidade de revisão: mudanças de baixo risco não precisam de revisão de diff, pois o pipeline já captura os problemas", "Esclareça requisitos na fase de planejamento com artefatos visuais (Lavish) anotáveis, evitando paredes de texto no terminal, e só então libere o agente para implementar sem interferência", "Para tarefas overnight, use loops com token cap, iteration cap e stop conditions explícitos em vez de comandos de goal sem limites que podem consumir a quota semanal", "Use git worktrees para rodar múltiplos agentes em paralelo no mesmo repo sem conflitos, com ferramenta de gestão (Treehouse) que cria e reaproveita worktrees automaticamente", "Delegue a coordenação das sessões paralelas a um agente orquestrador ('first mate') que spawna tabs, cria worktrees, executa os agentes e roda o pipeline de validação", "Com o gargalo operacional removido, redirecione sua energia para descobrir o que importa (usuários, landscape competitivo, roadmap) — a transição de marinheiro para capitão"]
+deep_dive: "high"
+deep_dive_reason: "Alta densidade de insight acionável e arquitetural sobre harness, context-engineering (memória/skills/progressive disclosure), token-budgeting com dados de benchmark, gate-design (pipeline adversarial com evidência e risco), agent-fleets e orquestração (first mate), com ferramentas próprias e originais em vez de conteúdo promocional genérico."
+---
+
+# L8 Principal's Agentic Engineering Workflow
+
+## Tese
+Escalar engenharia com uma frota de agentes de código exige tratar o humano como capitão/diretor de engenharia: ramp-up dos agentes via arquivos de memória enxutos e skills com disclosure progressivo, ferramentas otimizadas para ergonomia de agente, um pipeline automatizado de validação até o PR (revisão adversarial em contexto fresco com evidência de teste), worktrees paralelas e um agente orquestrador ('first mate') para gerenciar as sessões em paralelo.
+
+## Conceitos-chave
+- Mindset de engenheiro como gerente/diretor: cultura e processos no lugar de revisão manual de diffs
+- Arquivos de memória globais (minimalistas, entram no system prompt de toda sessão) vs. memória de projeto (aprendizado coletivo acumulado das sessões)
+- Symlink entre CLAUDE.md e AGENTS.md para compartilhar memória entre harnesses
+- Skills com progressive disclosure: só a descrição entra no system prompt; o corpo é lido sob demanda
+- Correção de viés do modelo: não superestimar custo de desenvolvimento em decisões técnicas (modelos herdam estimativas humanas e escolhem soluções baratas e ruins)
+- Bug fixes começando com reprodução end-to-end em vez de unit tests por padrão
+- Ergonomia de agente como cidadão de primeira classe no design de tools
+- Benchmark de acesso ao GitHub: MCP vs CLI (custo de token e latência)
+- Lavish editor: artefatos HTML visuais com o design system do projeto para planejamento e feedback anotado
+- Pipeline No Mistakes: branch, commit, worktree isolado, análise de intenção da sessão, rebase, revisão adversarial em contexto fresco, teste e2e com evidência gravada, pass de documentação, lint, push e babysitting do PR
+- Escalonamento de decisões ambíguas com implicação de produto para humanos
+- Revisão baseada em risco: diffs de baixo risco não são revisados manualmente
+- Loops de longa duração overnight com token cap, iteration cap e stop conditions explícitas
+- Git worktrees para paralelismo sem conflito entre agentes, com reaproveitamento de worktrees ociosas
+- Padrão 'first mate': agente orquestrador que spawn, gerencia e valida múltiplas sessões
+- Concentração do esforço humano no início (planejamento) e no fim (barra de qualidade), automatizando o meio
+- Workflow agnóstico de agente/modelo devido à rápida mudança do landscape
+- Terminal-centrismo para manter flow (mãos no teclado) e o mesmo workflow em qualquer dispositivo
+
+## Ferramentas & pessoas
+**Ferramentas:** WezTerm, tmux, Neovim, Claude Code, Codex CLI, pi coding agent, OpenCode, CLAUDE.md / AGENTS.md, Skill Creator (Anthropic), npx skills (Vercel), superwhisper, GitHub MCP Server, GitHub CLI, Axi (padrão de design de tools para agentes), GitHub Axi, Chrome DevTools Axi, Lavish editor, No Mistakes, Good Night, Have Fun, Treehouse, First Mate, Program Bench, git worktree, /goal (Codex/Claude Code), npm
+
+**Pessoas/orgs:** Kun (autor), Meta, Microsoft, Amazon, Atlassian, Anthropic, Vercel, Stanford, Dario Amodei, Andrej Karpathy
+
+## Claims acionáveis
+- Mantenha o arquivo de memória global minimalista (ex.: ~27 linhas) porque todo conteúdo dele é carregado no system prompt de todas as sessões e consome tokens silenciosamente
+- Use symlinks para unificar CLAUDE.md e AGENTS.md num único arquivo compartilhado entre harnesses
+- Mova informações condicionalmente úteis (ex.: instruções de teste e2e) do arquivo de memória para skills, explorando progressive disclosure para economizar tokens
+- Adicione à memória global a regra de não dar peso excessivo ao custo de desenvolvimento em decisões técnicas, pois os modelos herdam estimativas humanas e tendem a escolher soluções baratas de baixa qualidade
+- Exija que bug fixes comecem reproduzindo o bug end-to-end o mais próximo possível da experiência do usuário, em vez de unit tests insuficientes por padrão
+- Não instale skills aleatórias da internet: elas podem instruir o agente a executar qualquer coisa na máquina (risco de vazamento de credenciais) e benchmarks mostram que algumas degradam performance (+5% tokens com resultados piores)
+- Popularidade (GitHub stars) não é evidência de qualidade de skill; exija avaliação rigorosa antes de adotar
+- Substitua o GitHub MCP Server pela CLI: benchmarks mostram ~3x mais custo de tokens e mais que o dobro da latência para as mesmas tarefas
+- Formate a saída das ferramentas para eficiência de tokens (padrões Axi): formatos token-efficient economizam ~40% vs JSON
+- Adote input por voz com transcrição local (superwhisper), que é ~3x mais rápido que digitar segundo paper de Stanford, e configure um prompt inicial com vocabulário do projeto para melhorar a transcrição
+- Ao invés de revisar diffs manualmente, roteie a saída do agente por um pipeline automatizado: branch, commit, worktree isolado, rebase no main, revisão adversarial em contexto fresco, teste e2e com evidência gravada, pass de documentação, lint e PR
+- Use a avaliação de risco do PR para calibrar profundidade de revisão: mudanças de baixo risco não precisam de revisão de diff, pois o pipeline já captura os problemas
+- Esclareça requisitos na fase de planejamento com artefatos visuais (Lavish) anotáveis, evitando paredes de texto no terminal, e só então libere o agente para implementar sem interferência
+- Para tarefas overnight, use loops com token cap, iteration cap e stop conditions explícitos em vez de comandos de goal sem limites que podem consumir a quota semanal
+- Use git worktrees para rodar múltiplos agentes em paralelo no mesmo repo sem conflitos, com ferramenta de gestão (Treehouse) que cria e reaproveita worktrees automaticamente
+- Delegue a coordenação das sessões paralelas a um agente orquestrador ('first mate') que spawna tabs, cria worktrees, executa os agentes e roda o pipeline de validação
+- Com o gargalo operacional removido, redirecione sua energia para descobrir o que importa (usuários, landscape competitivo, roadmap) — a transição de marinheiro para capitão
+
+> **Deep dive:** `high` — Alta densidade de insight acionável e arquitetural sobre harness, context-engineering (memória/skills/progressive disclosure), token-budgeting com dados de benchmark, gate-design (pipeline adversarial com evidência e risco), agent-fleets e orquestração (first mate), com ferramentas próprias e originais em vez de conteúdo promocional genérico.

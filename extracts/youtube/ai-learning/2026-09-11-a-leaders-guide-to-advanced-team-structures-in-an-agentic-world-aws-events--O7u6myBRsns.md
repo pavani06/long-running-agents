@@ -1,0 +1,68 @@
+---
+title: "A leader’s guide to advanced team structures in an agentic world | AWS Events"
+type: "extract"
+source: "youtube"
+video_id: "O7u6myBRsns"
+url: "https://www.youtube.com/watch?v=O7u6myBRsns"
+channel: "AWS Events"
+extracted: "2026-09-12"
+model: "glm-5.3"
+extract_version: 1
+transcript: "[[raw/youtube/ai-learning/transcripts/2026-09-11-a-leaders-guide-to-advanced-team-structures-in-an-agentic-world-aws-events--O7u6myBRsns.txt]]"
+tags: ["governanca", "arquitetura", "agentes-orquestracao", "multi-agent", "gate-design", "permissions", "decision-discipline", "model-selection", "investimentos", "instituicoes", "observability", "runtime", "process", "analise"]
+thesis: "Vencer na era da IA agêntica depende menos do modelo de IA em si e mais do modelo operacional ao redor dela: decisões econômicas por workflow (use/compose/build), pods seniores embarcados sobre uma plataforma compartilhada, pipeline júnior deliberadamente protegido e governança executada como código no gateway, fora do loop do LLM."
+concepts: ["exposição observada vs. exposição teórica (estudo Anthropic sobre tarefas realmente automatizadas)", "tesoura de precificação: custo de treino subindo 2,4x/ano vs. custo de inferência caindo 10x/ano", "três mundos: use (gerenciado ponta a ponta), compose (APIs de fronteira + seu workflow), build (treinar/fine-tunar)", "expert generalist (arquetipo orquestrador de Martin Fowler com sete características)", "Renaissance developer (especialista alargado + generalista aprofundado convergindo)", "formas de equipe: pirâmide, diamante (armadilha), pod pirâmide invertida, organização ampulheta (hourglass)", "hiperconvergência: 2-3 generalistas + agentes por workflow, sem handoffs", "quatro forças simultâneas: multiplicador de especialistas, deslocamento do gargalo (dados/decisão), imposto de verificação (código 10x mais rápido, validação 3x mais difícil), armadilha de deskilling (+17% código, -17% compreensão)", "erisão de moats de software; valor concentra no que não pode ser paralelizado (operação acumulada, confiança)", "não-determinismo como feature: tolerância à variância de execução com rigor na variância de resultado", "metáfora do rio: definir as margens (outcomes/policy) e deixar o agente achar o caminho", "Modelos A/B/C de operação: throw-over-the-wall (morto), pods embarcados (you build it, you run it), pods + plataforma (runtime, memória, identidade, observabilidade)", "plataforma que habilita sem constranger: autonomia total do pod, accountability total", "governança como infraestrutura: política é código executado no gateway, fora do loop do LLM", "quatro perguntas pré-ação: quem é o agente/quem autorizou, o que pode fazer, está performando, é auditável", "gestão de identidade verificável para agentes como pré-requisito", "cadeias de accountability humana (toda ação do agente rastreável a uma pessoa nomeada)", "risco de coordenação multi-agente (disputa, escalonamento, comportamento emergente)", "bifurcação do mercado de trabalho: hiring júnior -14% em ocupações expostas, sem aumento de desemprego sistemático", "pipeline de expertise: cortar juniores hoje gera escassez de seniores em 2034"]
+tools: ["Claude (dados de uso do Anthropic)", "ChatGPT", "AWS Agent Core", "AI Verify", "Global AI Assurance Pilot", "ONET (banco de dados de ocupações)", "Crossbeam (ferramenta de licenciamento da Califórnia, vencedora do hackathon)"]
+people: ["Steven Brovich (Amazon/AWS)", "Scott Galloway", "Martin Fowler / ThoughtWorks", "Werner Vogels", "Matt Garman (CEO da AWS)", "Josephine Teo / IMDA (Cingapura)", "Anthropic", "Amazon / AWS", "MIT (scores de exposição de Eloundou)", "Harvard Business Review (estudo de AI readiness patrocinado pela AWS)", "PwC"]
+claims: ["Decida use, compose ou build por workflow, não por empresa; evolua naturalmente (fronteira no dia 1, mix no mês 6, build só onde há volume + diferenciação) e nunca decrete 'build shop' no dia 1", "Monte pods de 3 a 5 engenheiros seniores full-stack; se não consegue montar um pod só de seniores, não está pronto para build — use ou compose", "Modelo A (engenharia constrói e joga por cima do muro para operações) está morto: execute um plano de transição, não uma estratégia de debate; em escala (10+ pods) use B+C com plataforma compartilhada de runtime, memória, identidade e observabilidade", "Aplique a política no gateway antes de o LLM ver a requisição, separando quem escreve a política (segurança) de quem escreve o agente (engenharia) — nunca confie em pedir gentilmente ao agente", "Responda as quatro perguntas de governança antes de qualquer ação do agente: identidade/autorização, permissões, performance esperada e auditabilidade (convergência IMDA Cingapura + AWS Agent Core)", "Passe a gerenciar resultados, não passos: relaxe o controle de execução, aperte a medição de resultados e construa guardrails em torno do que importa", "Não corte contratação de juniores para pagar talento sênior de IA: juniores são o pipeline de expertise de 2034 e ninguém mais vai reconstruir a base da ampulheta", "Contrate pelas sete características do expert generalist (curiosidade, colaboração, foco no cliente, primeiros princípios etc.), não pelo framework do ano", "Planeje o gargalo de revisão: código 10x mais rápido e 3x mais difícil de validar engole a velocidade se o processo de verificação não for redesenhado", "Siga os seis passos de segunda-feira em ord: (1) economics — um workflow, use/compose/build; (2) talent — quem está no pod; (3) structure — A, B ou C com honestidade; (4) governance; (5) people — dobre a aposta em especialistas de domínio sêniores; (6) pipeline — proteja os juniores", "Espere que 95% dos pilotos de IA falhem sob o Modelo A por causa de modos de falha empilhados (runbooks determinísticos, cultura de ticket, telemetria cega aos agentes, degradação de 91% dos modelos, ITIL desatualizado)", "Leia o Model AI Governance Framework for Agentic AI de Cingapura (IMDA, 2026) capa a capa se você é CIO em setor regulado: primeira exigência de identidade verificável de agente, testes em cinco categorias de risco e tratamento explícito de coordenação multi-agente"]
+deep_dive: "high"
+deep_dive_reason: "Densidade alta de decisões acionáveis e pontos arquiteturais (use/compose/build por workflow, modelos A/B/C, política executada fora do loop do LLM, quatro perguntas de governança com convergência IMDA-Agent Core) diretamente relevantes a governança e agent-fleets, com dados empíricos recentes — ainda que seja um keynote organizacional e não engenharia profunda de harness ou evals."
+---
+
+# A leader’s guide to advanced team structures in an agentic world | AWS Events
+
+## Tese
+Vencer na era da IA agêntica depende menos do modelo de IA em si e mais do modelo operacional ao redor dela: decisões econômicas por workflow (use/compose/build), pods seniores embarcados sobre uma plataforma compartilhada, pipeline júnior deliberadamente protegido e governança executada como código no gateway, fora do loop do LLM.
+
+## Conceitos-chave
+- exposição observada vs. exposição teórica (estudo Anthropic sobre tarefas realmente automatizadas)
+- tesoura de precificação: custo de treino subindo 2,4x/ano vs. custo de inferência caindo 10x/ano
+- três mundos: use (gerenciado ponta a ponta), compose (APIs de fronteira + seu workflow), build (treinar/fine-tunar)
+- expert generalist (arquetipo orquestrador de Martin Fowler com sete características)
+- Renaissance developer (especialista alargado + generalista aprofundado convergindo)
+- formas de equipe: pirâmide, diamante (armadilha), pod pirâmide invertida, organização ampulheta (hourglass)
+- hiperconvergência: 2-3 generalistas + agentes por workflow, sem handoffs
+- quatro forças simultâneas: multiplicador de especialistas, deslocamento do gargalo (dados/decisão), imposto de verificação (código 10x mais rápido, validação 3x mais difícil), armadilha de deskilling (+17% código, -17% compreensão)
+- erisão de moats de software; valor concentra no que não pode ser paralelizado (operação acumulada, confiança)
+- não-determinismo como feature: tolerância à variância de execução com rigor na variância de resultado
+- metáfora do rio: definir as margens (outcomes/policy) e deixar o agente achar o caminho
+- Modelos A/B/C de operação: throw-over-the-wall (morto), pods embarcados (you build it, you run it), pods + plataforma (runtime, memória, identidade, observabilidade)
+- plataforma que habilita sem constranger: autonomia total do pod, accountability total
+- governança como infraestrutura: política é código executado no gateway, fora do loop do LLM
+- quatro perguntas pré-ação: quem é o agente/quem autorizou, o que pode fazer, está performando, é auditável
+- gestão de identidade verificável para agentes como pré-requisito
+- cadeias de accountability humana (toda ação do agente rastreável a uma pessoa nomeada)
+- risco de coordenação multi-agente (disputa, escalonamento, comportamento emergente)
+- bifurcação do mercado de trabalho: hiring júnior -14% em ocupações expostas, sem aumento de desemprego sistemático
+- pipeline de expertise: cortar juniores hoje gera escassez de seniores em 2034
+
+## Ferramentas & pessoas
+**Ferramentas:** Claude (dados de uso do Anthropic), ChatGPT, AWS Agent Core, AI Verify, Global AI Assurance Pilot, ONET (banco de dados de ocupações), Crossbeam (ferramenta de licenciamento da Califórnia, vencedora do hackathon)
+
+**Pessoas/orgs:** Steven Brovich (Amazon/AWS), Scott Galloway, Martin Fowler / ThoughtWorks, Werner Vogels, Matt Garman (CEO da AWS), Josephine Teo / IMDA (Cingapura), Anthropic, Amazon / AWS, MIT (scores de exposição de Eloundou), Harvard Business Review (estudo de AI readiness patrocinado pela AWS), PwC
+
+## Claims acionáveis
+- Decida use, compose ou build por workflow, não por empresa; evolua naturalmente (fronteira no dia 1, mix no mês 6, build só onde há volume + diferenciação) e nunca decrete 'build shop' no dia 1
+- Monte pods de 3 a 5 engenheiros seniores full-stack; se não consegue montar um pod só de seniores, não está pronto para build — use ou compose
+- Modelo A (engenharia constrói e joga por cima do muro para operações) está morto: execute um plano de transição, não uma estratégia de debate; em escala (10+ pods) use B+C com plataforma compartilhada de runtime, memória, identidade e observabilidade
+- Aplique a política no gateway antes de o LLM ver a requisição, separando quem escreve a política (segurança) de quem escreve o agente (engenharia) — nunca confie em pedir gentilmente ao agente
+- Responda as quatro perguntas de governança antes de qualquer ação do agente: identidade/autorização, permissões, performance esperada e auditabilidade (convergência IMDA Cingapura + AWS Agent Core)
+- Passe a gerenciar resultados, não passos: relaxe o controle de execução, aperte a medição de resultados e construa guardrails em torno do que importa
+- Não corte contratação de juniores para pagar talento sênior de IA: juniores são o pipeline de expertise de 2034 e ninguém mais vai reconstruir a base da ampulheta
+- Contrate pelas sete características do expert generalist (curiosidade, colaboração, foco no cliente, primeiros princípios etc.), não pelo framework do ano
+- Planeje o gargalo de revisão: código 10x mais rápido e 3x mais difícil de validar engole a velocidade se o processo de verificação não for redesenhado
+- Siga os seis passos de segunda-feira em ord: (1) economics — um workflow, use/compose/build; (2) talent — quem está no pod; (3) structure — A, B ou C com honestidade; (4) governance; (5) people — dobre a aposta em especialistas de domínio sêniores; (6) pipeline — proteja os juniores
+- Espere que 95% dos pilotos de IA falhem sob o Modelo A por causa de modos de falha empilhados (runbooks determinísticos, cultura de ticket, telemetria cega aos agentes, degradação de 91% dos modelos, ITIL desatualizado)
+- Leia o Model AI Governance Framework for Agentic AI de Cingapura (IMDA, 2026) capa a capa se você é CIO em setor regulado: primeira exigência de identidade verificável de agente, testes em cinco categorias de risco e tratamento explícito de coordenação multi-agente
+
+> **Deep dive:** `high` — Densidade alta de decisões acionáveis e pontos arquiteturais (use/compose/build por workflow, modelos A/B/C, política executada fora do loop do LLM, quatro perguntas de governança com convergência IMDA-Agent Core) diretamente relevantes a governança e agent-fleets, com dados empíricos recentes — ainda que seja um keynote organizacional e não engenharia profunda de harness ou evals.

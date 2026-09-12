@@ -1,0 +1,72 @@
+---
+title: "The Agent Development Lifecycle: Build, Test, Deploy, Monitor | Interrupt 26"
+type: "extract"
+source: "youtube"
+video_id: "jWy39wavbjY"
+url: "https://www.youtube.com/watch?v=jWy39wavbjY"
+channel: "LangChain"
+extracted: "2026-09-12"
+model: "glm-5.3"
+extract_version: 1
+transcript: "[[raw/youtube/ai-learning/transcripts/2026-09-11-the-agent-development-lifecycle-build-test-deploy-monitor-interrupt-26--jWy39wavbjY.txt]]"
+tags: ["harness", "harness-engineering", "agent-loop", "context-engineering", "context-management", "memory-architecture", "evals", "observability", "tracing", "telemetry", "data-platform", "agent-tooling", "agents", "multi-agent", "arquitetura", "governanca", "production", "runtime", "model-selection", "monitoramento", "frameworks", "stack-tooling"]
+thesis: "Construir agentes em produção exige um ciclo de desenvolvimento próprio (build, test, deploy, monitor) com traces no centro, e a LangChain está entregando a plataforma completa para acelerá-lo — do harness Deep Agents ao banco dedicado SmithDB e ao agente proativo LangSmith Engine."
+concepts: ["Ciclo de desenvolvimento de agentes (build, test, deploy, monitor) distinto do SDLC tradicional", "Espaço de entrada infinito (linguagem natural, imagens, áudio) + não-determinismo dos LLMs tornam agentes imprevisíveis antes do lançamento", "Agente = LLM em loop chamando tools; o harness adiciona batteries incluídas", "Agent harness: ambiente de execução, gestão de contexto built-in, steering humano, delegação para subagentes", "Espectro de ambiente de execução: virtual file system (banco exposto como FS) → CodeInterpreter (QuickJS, subset JS, multi-tenant leve) → sandbox completo com Docker", "Context management automático no harness: summarization (memória de curto prazo), context offloading, prompt caching, skills e memory", "Tendência de modelos abertos (DeepSeek, GLM, Nemotron) impulsionada por custo crescente de modelos de fronteira", "Streaming protocol para eventos complexos de agentes (texto, tool calls, imagens, raciocínio, subagentes) com SDKs front-end", "Avaliações de agentes: datasets de referência, métricas (correção, alucinação), experimentos para hill climbing e prevenção de regressões", "Requisitos de produção: multi-tenancy, auth, execução durável, ~30 endpoints de API padrão", "Auth proxy fora do sandbox injeta API keys no tráfego sem expô-las ao agente (mitigação de prompt injection e vazamento)", "Evolução do contexto: prompts → agents.md → skills → LLM wikis (padrão Karpathy); agentes.md e skills são padrões abertos", "Memória de agentes deve ser padrão aberto, não locked-in a LLM, framework ou plataforma", "Governança em escala (10-100 agentes): controle de custo (spend limits, visibilidade de gasto) e exposição de dados (guardrails de PII/secrets)", "Observabilidade de agentes como problema único de infraestrutura de dados: traces profundamente aninhados, payloads grandes e não-delimitados, multimodais (imagem/voz), padrões de consulta complexos", "Métricas reais de escala: cliente com 150M traces/semana, P50 de payload 6KB→37KB, P99 364KB→12MB, 50TB/dia de um cliente, trace com 8,1M tokens", "Arquitetura SmithDB: object storage barato e infinito, separação compute-storage, cluster manager com sticky routing, ingestão em batches, meta store em Postgres, cache SSD/memória, serviço de compaction", "Desafios técnicos: merge de spans distribuídos (start/end a horas de distância), queries top-K com planos customizados por janela de tempo, leading-edge queries servidas de buffer em memória/SSD", "Stack Rust + Apache DataFusion (query engine) + Vortex (formato de arquivo com encodings customizados) + inverted index custom para full-text search sobre object storage", "Agentes como usuários (não só observados) do sistema de observabilidade: ferramentas lentas viram gargalo tipo lei de Amdahl", "Agente ambiente e proativo (LangSmith Engine) sobre traces: detecta e prioriza issues, sugere evals, mudanças de código/prompt e pontos de dataset"]
+tools: ["LangChain", "LangGraph", "LangChain 1.0", "Deep Agents", "Deep Agents 0.6", "Deep Agents Code", "CodeInterpreter (QuickJS)", "GLM5", "DeepSeek V4", "Nemotron", "Fireworks", "BaseTen", "NVIDIA", "LangSmith", "LangSmith Deployments", "LangSmith Sandboxes", "LangSmith Context Hub", "LangSmith LLM Gateway", "Managed Deep Agents", "SmithDB", "LangSmith Engine", "Prompt Hub", "CopilotKit", "Assistant UI", "Vercel", "MCP", "Arcade", "Redis", "Elastic", "MongoDB", "Pinecone", "Postgres", "Apache DataFusion", "Vortex", "OpenAI", "Anthropic"]
+people: ["Harrison Chase", "Ankush Gola", "LangChain", "Andrej Karpathy", "Jeff Dean", "Workday", "Cisco", "Etsy", "Podium", "ByteDance", "Monday.com", "Clay", "Vanta"]
+claims: ["Times que constroem agentes confiáveis publicam cedo e iteram rápido — padrão repetido entre empresas em produção", "CodeInterpreter com QuickJS é um meio-termo leve e multi-tenant entre virtual file system e sandbox completo, sem Docker por agente", "Sandboxes da LangSmith sobem em menos de 1 segundo, com persistência entre interações, snapshots e forks", "Auth proxy fora do sandbox intercepta tráfego e injeta API keys, evitando que o agente as veja e vaze via prompt injection", "Context Hub versiona agents.md, skills e LLM wikis com tags e comentários, utilizáveis em CLI, harnesses próprios ou como virtual file system no Deep Agents", "agents.md e skills são padrões abertos e a LangChain cofirma memória de agentes como padrão aberto com Redis, Elastic, Mongo e Pinecone", "LLM Gateway (beta) oferece spend limits, visibilidade total de gasto e guardrails de PII/secrets, com integração a coding agents e tracing automático", "Managed Deep Agents (preview privado) unifica harness, deployments, Context Hub, sandboxes, MCPs/Arcade e streaming protocol numa única API", "SmithDB tornou cargas do LangSmith 6x a 15x mais rápidas e já serve todo o US Cloud", "SmithDB usa layout de inverted index custom sobre object storage para full-text search interativo em traces", "Queries top-K em SmithDB usam plano de execução custom baseado em janela de tempo para evitar scans caros em object storage", "Dados recém-ingeridos ficam bufferizados em memória e SSD para servir leading-edge queries sem baixar muitos arquivos pequenos", "LangSmith Engine (beta público) varre traces em background, detecta e prioriza issues com evidência, e sugere evals online, mudanças de código/prompt e datapoints de dataset, reduzindo tempo de detecção e triage", "LangSmith Deployments já serviu 100M+ agent runs com ~30 endpoints padrão (streaming, human-in-the-loop, auth)", "Aumentar o uso de modelos abertos é resposta ao custo crescente de modelos de fronteira; Deep Agents 0.6 mira ser o melhor harness para modelos abertos"]
+deep_dive: "high"
+deep_dive_reason: "Densidade alta de detalhe arquitetural e acionável (internos do SmithDB, espectro de ambientes de execução, auth proxy anti-injection, design de harness) com lançamentos inéditos diretamente relevantes a harness, context-engineering, evals, observabilidade e governança."
+---
+
+# The Agent Development Lifecycle: Build, Test, Deploy, Monitor | Interrupt 26
+
+## Tese
+Construir agentes em produção exige um ciclo de desenvolvimento próprio (build, test, deploy, monitor) com traces no centro, e a LangChain está entregando a plataforma completa para acelerá-lo — do harness Deep Agents ao banco dedicado SmithDB e ao agente proativo LangSmith Engine.
+
+## Conceitos-chave
+- Ciclo de desenvolvimento de agentes (build, test, deploy, monitor) distinto do SDLC tradicional
+- Espaço de entrada infinito (linguagem natural, imagens, áudio) + não-determinismo dos LLMs tornam agentes imprevisíveis antes do lançamento
+- Agente = LLM em loop chamando tools; o harness adiciona batteries incluídas
+- Agent harness: ambiente de execução, gestão de contexto built-in, steering humano, delegação para subagentes
+- Espectro de ambiente de execução: virtual file system (banco exposto como FS) → CodeInterpreter (QuickJS, subset JS, multi-tenant leve) → sandbox completo com Docker
+- Context management automático no harness: summarization (memória de curto prazo), context offloading, prompt caching, skills e memory
+- Tendência de modelos abertos (DeepSeek, GLM, Nemotron) impulsionada por custo crescente de modelos de fronteira
+- Streaming protocol para eventos complexos de agentes (texto, tool calls, imagens, raciocínio, subagentes) com SDKs front-end
+- Avaliações de agentes: datasets de referência, métricas (correção, alucinação), experimentos para hill climbing e prevenção de regressões
+- Requisitos de produção: multi-tenancy, auth, execução durável, ~30 endpoints de API padrão
+- Auth proxy fora do sandbox injeta API keys no tráfego sem expô-las ao agente (mitigação de prompt injection e vazamento)
+- Evolução do contexto: prompts → agents.md → skills → LLM wikis (padrão Karpathy); agentes.md e skills são padrões abertos
+- Memória de agentes deve ser padrão aberto, não locked-in a LLM, framework ou plataforma
+- Governança em escala (10-100 agentes): controle de custo (spend limits, visibilidade de gasto) e exposição de dados (guardrails de PII/secrets)
+- Observabilidade de agentes como problema único de infraestrutura de dados: traces profundamente aninhados, payloads grandes e não-delimitados, multimodais (imagem/voz), padrões de consulta complexos
+- Métricas reais de escala: cliente com 150M traces/semana, P50 de payload 6KB→37KB, P99 364KB→12MB, 50TB/dia de um cliente, trace com 8,1M tokens
+- Arquitetura SmithDB: object storage barato e infinito, separação compute-storage, cluster manager com sticky routing, ingestão em batches, meta store em Postgres, cache SSD/memória, serviço de compaction
+- Desafios técnicos: merge de spans distribuídos (start/end a horas de distância), queries top-K com planos customizados por janela de tempo, leading-edge queries servidas de buffer em memória/SSD
+- Stack Rust + Apache DataFusion (query engine) + Vortex (formato de arquivo com encodings customizados) + inverted index custom para full-text search sobre object storage
+- Agentes como usuários (não só observados) do sistema de observabilidade: ferramentas lentas viram gargalo tipo lei de Amdahl
+- Agente ambiente e proativo (LangSmith Engine) sobre traces: detecta e prioriza issues, sugere evals, mudanças de código/prompt e pontos de dataset
+
+## Ferramentas & pessoas
+**Ferramentas:** LangChain, LangGraph, LangChain 1.0, Deep Agents, Deep Agents 0.6, Deep Agents Code, CodeInterpreter (QuickJS), GLM5, DeepSeek V4, Nemotron, Fireworks, BaseTen, NVIDIA, LangSmith, LangSmith Deployments, LangSmith Sandboxes, LangSmith Context Hub, LangSmith LLM Gateway, Managed Deep Agents, SmithDB, LangSmith Engine, Prompt Hub, CopilotKit, Assistant UI, Vercel, MCP, Arcade, Redis, Elastic, MongoDB, Pinecone, Postgres, Apache DataFusion, Vortex, OpenAI, Anthropic
+
+**Pessoas/orgs:** Harrison Chase, Ankush Gola, LangChain, Andrej Karpathy, Jeff Dean, Workday, Cisco, Etsy, Podium, ByteDance, Monday.com, Clay, Vanta
+
+## Claims acionáveis
+- Times que constroem agentes confiáveis publicam cedo e iteram rápido — padrão repetido entre empresas em produção
+- CodeInterpreter com QuickJS é um meio-termo leve e multi-tenant entre virtual file system e sandbox completo, sem Docker por agente
+- Sandboxes da LangSmith sobem em menos de 1 segundo, com persistência entre interações, snapshots e forks
+- Auth proxy fora do sandbox intercepta tráfego e injeta API keys, evitando que o agente as veja e vaze via prompt injection
+- Context Hub versiona agents.md, skills e LLM wikis com tags e comentários, utilizáveis em CLI, harnesses próprios ou como virtual file system no Deep Agents
+- agents.md e skills são padrões abertos e a LangChain cofirma memória de agentes como padrão aberto com Redis, Elastic, Mongo e Pinecone
+- LLM Gateway (beta) oferece spend limits, visibilidade total de gasto e guardrails de PII/secrets, com integração a coding agents e tracing automático
+- Managed Deep Agents (preview privado) unifica harness, deployments, Context Hub, sandboxes, MCPs/Arcade e streaming protocol numa única API
+- SmithDB tornou cargas do LangSmith 6x a 15x mais rápidas e já serve todo o US Cloud
+- SmithDB usa layout de inverted index custom sobre object storage para full-text search interativo em traces
+- Queries top-K em SmithDB usam plano de execução custom baseado em janela de tempo para evitar scans caros em object storage
+- Dados recém-ingeridos ficam bufferizados em memória e SSD para servir leading-edge queries sem baixar muitos arquivos pequenos
+- LangSmith Engine (beta público) varre traces em background, detecta e prioriza issues com evidência, e sugere evals online, mudanças de código/prompt e datapoints de dataset, reduzindo tempo de detecção e triage
+- LangSmith Deployments já serviu 100M+ agent runs com ~30 endpoints padrão (streaming, human-in-the-loop, auth)
+- Aumentar o uso de modelos abertos é resposta ao custo crescente de modelos de fronteira; Deep Agents 0.6 mira ser o melhor harness para modelos abertos
+
+> **Deep dive:** `high` — Densidade alta de detalhe arquitetural e acionável (internos do SmithDB, espectro de ambientes de execução, auth proxy anti-injection, design de harness) com lançamentos inéditos diretamente relevantes a harness, context-engineering, evals, observabilidade e governança.

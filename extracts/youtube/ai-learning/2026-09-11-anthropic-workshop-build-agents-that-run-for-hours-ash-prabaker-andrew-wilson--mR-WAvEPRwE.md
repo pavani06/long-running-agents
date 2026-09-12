@@ -1,0 +1,73 @@
+---
+title: "Anthropic Workshop: Build Agents That Run for Hours — Ash Prabaker & Andrew Wilson"
+type: "extract"
+source: "youtube"
+video_id: "mR-WAvEPRwE"
+url: "https://www.youtube.com/watch?v=mR-WAvEPRwE"
+channel: "AI Engineer"
+extracted: "2026-09-12"
+model: "glm-5.3"
+extract_version: 1
+transcript: "[[raw/youtube/ai-learning/transcripts/2026-09-11-anthropic-workshop-build-agents-that-run-for-hours-ash-prabaker-andrew-wilson--mR-WAvEPRwE.txt]]"
+tags: ["harness", "harness-engineering", "agent-loop", "context-engineering", "context-management", "evals", "multi-agent", "agent-fleets", "agentic-coding", "verification", "state", "memory-architecture", "tracing", "testes-qa", "model-selection", "agents"]
+thesis: "Agentes que rodam por horas ou dias exigem harnesses que co-evoluem com os modelos, e o padrão adversarial gerador-avaliador — com contratos de 'done' negociados entre agentes antes de construir e avaliação via uso real do app — resolve as falhas de autocrítica, planejamento e gestão de contexto dos LLMs atuais."
+concepts: ["co-evolução modelo-harness (cada release de modelo vem com mudanças de harness)", "context rot, context anxiety e amnesia entre sessões", "padrão adversarial gerador-avaliador inspirado em GANs com context windows e prompts separados", "contratos negociados de definition of done entre gerador e avaliador via arquivos em disco", "avaliador que usa o app real (Playwright) em vez de só ler diffs", "rubrica de quatro critérios: design, originalidade, craft e funcionalidade", "calibração de gosto do avaliador com exemplos de referência contra 'AI slop'", "artefatos persistentes (feature-list.json, progress file, init script, git)", "progressive disclosure em skills (só o front matter carrega no contexto)", "programmatic tool calling (código on-the-fly encadeia tool calls e devolve só o resultado)", "compação server-side vs janelas de contexto frescas por tarefa", "handoffs estruturados e filesystem como estado compartilhado para agentes de longa duração", "Ralph Wiggum loop (Geoffrey Huntley) e variante com stop hooks, max iterations e safe word dentro de uma única sessão", "agent teams: subagentes comunicam-se entre si e só reportam ao agente principal quando necessário", "planejador deliberadamente high-level (sprints) para evitar cascata de erros em horizontes multi-hora", "capacidade de pivô: descartar tudo e recomeçar do zero quando não consegue subir a rubrica", "leitura de traces como loop primário de debugging do harness", "granularidade de critérios de contrato (~27 por app) para críticas acionáveis", "ajuste do harness ao perfil spiky de cada geração de modelo (ex.: context anxiety no Opus 4.5 ausente no 4.6)", "divisão de papéis PM/IC/QA com context window própria para cada papel"]
+tools: ["Claude Code", "Agent SDK (ex-Claude Code SDK)", "Claude Code 2.0 (checkpoints)", "MCP (Model Context Protocol)", "Playwright", "Playwright MCP", "Claude for Chrome MCP", "Computer Use", "Puppeteer", "Skills", "Auto mode", "Git", "FastAPI (citado em exemplo de bug)", "Claude Opus 4.6", "Claude Sonnet 4.5 / 4.6", "Claude Haiku 4.5", "Claude Opus 4.5", "Sonnet 3.7 / 3.5", "Opus 3.7"]
+people: ["Ash (engenheiro de Applied AI na Anthropic)", "Andrew (solution architect de Applied AI na Anthropic, Londres)", "Anthropic", "Boris (criador do Claude Code)", "Geoffrey Huntley (autor da técnica Ralph Wiggum)", "AI Engineer Conference", "Joan / Psiide (pergunta no Q&A)"]
+claims: ["Substitua autoavaliação por um avaliador adversarial separado: ajustar um crítico standalone para ser rigoroso é tratável, ensinar o construtor a ser autocrítico não é", "Antes de gerar código, faça gerador e avaliador negociarem um contrato granular de done via arquivos markdown; o avaliador deve graduar contra o contrato negociado, não contra o spec original do planejador", "Mantenha o plano do planejador deliberadamente high-level (sprints, não detalhes técnicos) para evitar que um erro cascadeie por todos os sprints em horizontes multi-hora", "Use JSON para artefatos persistentes (ex.: feature-list.json) porque modelos sobrescrevem markdown mais facilmente do que JSON", "Faça o avaliador usar o app de verdade (Playwright MCP ou Claude for Chrome MCP), o que captura bugs que passam em CI — ex.: ordenação de rotas FastAPI que passa testes unitários mas quebra em produção, bug booleano na tecla delete", "Gradue qualidade subjetiva escrevendo uma rubrica (design, originalidade, craft, funcionalidade) ponderada por modelo e calibrada com poucos exemplos de referência até o gosto do avaliador convergir com o seu", "Critérios granulares (ex.: 27 por app) geram críticas acionáveis; critérios vagos geram críticas vagas e o gerador 'dá de ombros'", "O loop primário de debugging é ler os traces e ajustar prompts onde o julgamento do agente divergiu do humano — mesma músculo de ler stack trace — não rodar mais experimentos", "Pipe dos transcripts dos agentes para arquivos e use outro agente para grep-á-los e atualizar os prompts, fechando o loop de construção do próprio harness", "Com Opus 4.6, abandone o reset de contexto entre sessões: uma sessão contínua com compação basta; compação não equivale a coerência, então prefira handoffs estruturados e filesystem como estado compartilhado", "Reduza a cadência do avaliador (ao fim da geração one-shot em vez de a cada sprint) e simplifique o harness conforme a fronteira avança — o harness não estava errado, estava certo para o modelo anterior", "Replicável hoje com primitivos públicos: auto mode, subagentes customizados com system prompt harsh + rubrica detalhada, Playwright/Chrome MCP, computer use para apps nativos e skills para embalar rubricas de avaliação", "O domínio do avaliador deve ser reutilizável entre projetos: capture padrões comuns das fraquezas do modelo (ex.: o que é bom design vs AI slop) em vez de overfitar para um app específico", "Modelos 4.6 demonstram disposição de descartar tudo e recomeçar do zero quando não conseguem hill-climbar na rubrica — curso-correção em horizontes longos que loops single-pass e Ralph não têm", "Claude out-of-the-box é um péssimo agente de QA (sycophancy/generosity bias); espere encontrar bugs e dizer 'conserta depois' — exige tuning extensivo de prompts com edge cases e bugs de layout", "Espera-se que compaction e context rot sejam problemas temporários: trate peças do harness como candidatas a remoção em futuras gerações de modelo", "Métricas de referência: Opus 3.7 rodava ~1h com 50% de conclusão em scaffold mínimo vs 12h no Opus 4.6; Sonnet 4.5 chegou a ~30h; apps completos hoje levam tipicamente 3-5h (exemplo do harness: US$ 200 e 6h)"]
+deep_dive: "high"
+deep_dive_reason: "Densa em insights arquiteturais acionáveis e inéditos (contratos negociados gerador-avaliador, rubricas calibradas de gosto, ajuste de harness por geração de modelo, leitura de traces como loop de debug), diretamente relevantes a harness, context-engineering, evals e agent-fleets."
+---
+
+# Anthropic Workshop: Build Agents That Run for Hours — Ash Prabaker & Andrew Wilson
+
+## Tese
+Agentes que rodam por horas ou dias exigem harnesses que co-evoluem com os modelos, e o padrão adversarial gerador-avaliador — com contratos de 'done' negociados entre agentes antes de construir e avaliação via uso real do app — resolve as falhas de autocrítica, planejamento e gestão de contexto dos LLMs atuais.
+
+## Conceitos-chave
+- co-evolução modelo-harness (cada release de modelo vem com mudanças de harness)
+- context rot, context anxiety e amnesia entre sessões
+- padrão adversarial gerador-avaliador inspirado em GANs com context windows e prompts separados
+- contratos negociados de definition of done entre gerador e avaliador via arquivos em disco
+- avaliador que usa o app real (Playwright) em vez de só ler diffs
+- rubrica de quatro critérios: design, originalidade, craft e funcionalidade
+- calibração de gosto do avaliador com exemplos de referência contra 'AI slop'
+- artefatos persistentes (feature-list.json, progress file, init script, git)
+- progressive disclosure em skills (só o front matter carrega no contexto)
+- programmatic tool calling (código on-the-fly encadeia tool calls e devolve só o resultado)
+- compação server-side vs janelas de contexto frescas por tarefa
+- handoffs estruturados e filesystem como estado compartilhado para agentes de longa duração
+- Ralph Wiggum loop (Geoffrey Huntley) e variante com stop hooks, max iterations e safe word dentro de uma única sessão
+- agent teams: subagentes comunicam-se entre si e só reportam ao agente principal quando necessário
+- planejador deliberadamente high-level (sprints) para evitar cascata de erros em horizontes multi-hora
+- capacidade de pivô: descartar tudo e recomeçar do zero quando não consegue subir a rubrica
+- leitura de traces como loop primário de debugging do harness
+- granularidade de critérios de contrato (~27 por app) para críticas acionáveis
+- ajuste do harness ao perfil spiky de cada geração de modelo (ex.: context anxiety no Opus 4.5 ausente no 4.6)
+- divisão de papéis PM/IC/QA com context window própria para cada papel
+
+## Ferramentas & pessoas
+**Ferramentas:** Claude Code, Agent SDK (ex-Claude Code SDK), Claude Code 2.0 (checkpoints), MCP (Model Context Protocol), Playwright, Playwright MCP, Claude for Chrome MCP, Computer Use, Puppeteer, Skills, Auto mode, Git, FastAPI (citado em exemplo de bug), Claude Opus 4.6, Claude Sonnet 4.5 / 4.6, Claude Haiku 4.5, Claude Opus 4.5, Sonnet 3.7 / 3.5, Opus 3.7
+
+**Pessoas/orgs:** Ash (engenheiro de Applied AI na Anthropic), Andrew (solution architect de Applied AI na Anthropic, Londres), Anthropic, Boris (criador do Claude Code), Geoffrey Huntley (autor da técnica Ralph Wiggum), AI Engineer Conference, Joan / Psiide (pergunta no Q&A)
+
+## Claims acionáveis
+- Substitua autoavaliação por um avaliador adversarial separado: ajustar um crítico standalone para ser rigoroso é tratável, ensinar o construtor a ser autocrítico não é
+- Antes de gerar código, faça gerador e avaliador negociarem um contrato granular de done via arquivos markdown; o avaliador deve graduar contra o contrato negociado, não contra o spec original do planejador
+- Mantenha o plano do planejador deliberadamente high-level (sprints, não detalhes técnicos) para evitar que um erro cascadeie por todos os sprints em horizontes multi-hora
+- Use JSON para artefatos persistentes (ex.: feature-list.json) porque modelos sobrescrevem markdown mais facilmente do que JSON
+- Faça o avaliador usar o app de verdade (Playwright MCP ou Claude for Chrome MCP), o que captura bugs que passam em CI — ex.: ordenação de rotas FastAPI que passa testes unitários mas quebra em produção, bug booleano na tecla delete
+- Gradue qualidade subjetiva escrevendo uma rubrica (design, originalidade, craft, funcionalidade) ponderada por modelo e calibrada com poucos exemplos de referência até o gosto do avaliador convergir com o seu
+- Critérios granulares (ex.: 27 por app) geram críticas acionáveis; critérios vagos geram críticas vagas e o gerador 'dá de ombros'
+- O loop primário de debugging é ler os traces e ajustar prompts onde o julgamento do agente divergiu do humano — mesma músculo de ler stack trace — não rodar mais experimentos
+- Pipe dos transcripts dos agentes para arquivos e use outro agente para grep-á-los e atualizar os prompts, fechando o loop de construção do próprio harness
+- Com Opus 4.6, abandone o reset de contexto entre sessões: uma sessão contínua com compação basta; compação não equivale a coerência, então prefira handoffs estruturados e filesystem como estado compartilhado
+- Reduza a cadência do avaliador (ao fim da geração one-shot em vez de a cada sprint) e simplifique o harness conforme a fronteira avança — o harness não estava errado, estava certo para o modelo anterior
+- Replicável hoje com primitivos públicos: auto mode, subagentes customizados com system prompt harsh + rubrica detalhada, Playwright/Chrome MCP, computer use para apps nativos e skills para embalar rubricas de avaliação
+- O domínio do avaliador deve ser reutilizável entre projetos: capture padrões comuns das fraquezas do modelo (ex.: o que é bom design vs AI slop) em vez de overfitar para um app específico
+- Modelos 4.6 demonstram disposição de descartar tudo e recomeçar do zero quando não conseguem hill-climbar na rubrica — curso-correção em horizontes longos que loops single-pass e Ralph não têm
+- Claude out-of-the-box é um péssimo agente de QA (sycophancy/generosity bias); espere encontrar bugs e dizer 'conserta depois' — exige tuning extensivo de prompts com edge cases e bugs de layout
+- Espera-se que compaction e context rot sejam problemas temporários: trate peças do harness como candidatas a remoção em futuras gerações de modelo
+- Métricas de referência: Opus 3.7 rodava ~1h com 50% de conclusão em scaffold mínimo vs 12h no Opus 4.6; Sonnet 4.5 chegou a ~30h; apps completos hoje levam tipicamente 3-5h (exemplo do harness: US$ 200 e 6h)
+
+> **Deep dive:** `high` — Densa em insights arquiteturais acionáveis e inéditos (contratos negociados gerador-avaliador, rubricas calibradas de gosto, ajuste de harness por geração de modelo, leitura de traces como loop de debug), diretamente relevantes a harness, context-engineering, evals e agent-fleets.
