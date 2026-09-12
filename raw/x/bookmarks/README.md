@@ -5,7 +5,8 @@ sem depender de máquina local — alimenta o modelo raw → (futuro) extrato �
 
 ## Conteúdo
 - `items/<YYYY-MM-DD>-<handle>-<slug>--<status_id>.json` — 1 arquivo por bookmark,
-  com o tweet como a API devolve (`text`, `handle`, `created_at`, `url`). A data é a
+  com o tweet como a API devolve: `text`, `handle`, `created_at`, `url`, `links`
+  (URLs externas expandidas que o tweet aponta) e `media` (URLs de imagem/vídeo). A data é a
   **data de coleta** (America/Sao_Paulo); o `<status_id>` numérico é a chave estável do diff.
 - `index.json` — regenerado do disco a cada run: `status_id`, `handle`, `url`, `file`.
 
@@ -24,7 +25,9 @@ Rotina diária em **GitHub Actions** (`.github/workflows/x-bookmarks.yml`):
 
 ### Agendamento
 - Diário `45 8 * * *` UTC (05:45 SP), depois do `youtube-transcripts`.
-- `workflow_dispatch` → modos `daily` / `dry-run` (dry-run: coleta e faz o diff, não grava).
+- `workflow_dispatch` → modos `daily` / `dry-run` / `reprocess` (dry-run: coleta e faz o diff,
+  não grava; reprocess: rebusca e reescreve os items enriquecidos que ainda estão na janela
+  recente da API, preservando nome/data — items que já saíram da janela não são reprocessados).
 
 ### Comportamento
 - **Vermelho** (email nativo do GitHub): refresh falhou (re-consentir), refresh rotacionado

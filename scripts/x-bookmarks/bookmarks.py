@@ -8,6 +8,7 @@ going-forward stateless diff.
 from __future__ import annotations
 
 import time
+from urllib.parse import urlparse
 
 import requests
 
@@ -53,8 +54,43 @@ def resolve_user_id(session: requests.Session, token: str, *, timeout: int = 30)
     return str(uid), data.get("username", "unknown")
 
 
+def _is_x_host(url: str) -> bool:
+    """True if the URL's host is X/Twitter itself (self-link, quote, or pic).
+
+    Matches on the parsed host, not a substring, so external domains that merely
+    end in the same letters (e.g. vox.com, netflix.com) are NOT misclassified.
+    """
+    host = urlparse(url).netloc.lower().split("@")[-1].split(":")[0]
+    return host in ("x.com", "twitter.com") or host.endswith((".x.com", ".twitter.com"))
+
+
+def _extract_links(t: dict) -> list[str]:
+    """External URLs the tweet points to (expanded), minus self/quote/media links."""
+    out: list[str] = []
+    for u in t.get("entities", {}).get("urls", []):
+        exp = u.get("expanded_url", "")
+        if not exp or _is_x_host(exp):
+            continue  # unresolved, self-permalink, quoted tweet, or pic — not a reading target
+        if exp not in out:
+            out.append(exp)
+    return out
+
+
+def _extract_media(t: dict, media_map: dict) -> list[str]:
+    """Media URLs attached to the tweet (photo url, or video/gif preview)."""
+    out: list[str] = []
+    for key in t.get("attachments", {}).get("media_keys", []):
+        m = media_map.get(key, {})
+        u = m.get("url") or m.get("preview_image_url")
+        if u and u not in out:
+            out.append(u)
+    return out
+
+
 def _pairs(body: dict) -> list[Bookmark]:
-    users = {u["id"]: u for u in body.get("includes", {}).get("users", [])}
+    includes = body.get("includes", {})
+    users = {u["id"]: u for u in includes.get("users", [])}
+    media_map = {m["media_key"]: m for m in includes.get("media", []) if m.get("media_key")}
     out: list[Bookmark] = []
     for t in body.get("data", []) or []:
         sid = t.get("id")
@@ -68,6 +104,8 @@ def _pairs(body: dict) -> list[Bookmark]:
             text=t.get("text", ""),
             created_at=t.get("created_at", ""),
             url=f"https://x.com/{handle}/status/{sid}",
+            links=_extract_links(t),
+            media=_extract_media(t, media_map),
         ))
     return out
 
@@ -83,9 +121,10 @@ def fetch_bookmarks(token: str, user_id: str, *, max_pages: int = 50,
     for _ in range(max_pages):
         params = {
             "max_results": 100,
-            "expansions": "author_id",
-            "tweet.fields": "created_at",
+            "expansions": "author_id,attachments.media_keys",
+            "tweet.fields": "created_at,entities",
             "user.fields": "username",
+            "media.fields": "type,url,preview_image_url",
         }
         if next_token:
             params["pagination_token"] = next_token

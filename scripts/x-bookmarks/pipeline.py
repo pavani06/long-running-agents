@@ -9,6 +9,9 @@ Modes:
   daily     write new bookmarks + regenerate index (default)
   dry-run   refresh + persist + fetch + diff, but write/commit nothing
             (still rotates the refresh token — that is unavoidable)
+  reprocess re-fetch the current bookmark window and rewrite each fetched item
+            in place (enrich existing + add new), preserving filename and date;
+            items already aged out of the API window are not reprocessed
 
 Environment:
   X_REFRESH_TOKEN  OAuth2 refresh token (rotated in place each run)  — required
@@ -92,8 +95,26 @@ def run(mode: str, cap: int, *, refresh_token: str, client_id: str,
         return 1
 
     store = BookmarkStore(REPO_ROOT)
+    disk_map = store.scan_disk()
+    date = today()
+
+    if mode == "reprocess":
+        # Re-fetch everything and rewrite each item in place (enrich existing +
+        # add any new). write_item preserves the original filename/date by id.
+        seen: set[str] = set()
+        written = 0
+        for b in fetched:
+            if b.status_id in seen:
+                continue
+            seen.add(b.status_id)
+            store.write_item(date, b, disk_map)
+            written += 1
+        count = store.regenerate_index()
+        summary(f"@{uname}: reprocess rewrote {written} item(s); corpus now {count}.")
+        return 0
+
     new = store.new_bookmarks(fetched)
-    summary(f"@{uname}: fetched {len(fetched)}, on disk {len(store.scan_disk())}, "
+    summary(f"@{uname}: fetched {len(fetched)}, on disk {len(disk_map)}, "
             f"new {len(new)}")
 
     if not new:
@@ -104,12 +125,11 @@ def run(mode: str, cap: int, *, refresh_token: str, client_id: str,
                 + ", ".join(f"@{b.handle}/{b.status_id}" for b in new[:5]))
         return 0
 
-    date = today()
     targets = new[:cap]
     if len(new) > cap:
         summary(f"cap {cap}: writing {len(targets)} now, {len(new) - cap} left for next run")
     for b in targets:
-        store.write_item(date, b)
+        store.write_item(date, b, disk_map)
     count = store.regenerate_index()
     summary(f"done: wrote {len(targets)} new item(s); corpus now {count}.")
     return 0
@@ -117,7 +137,8 @@ def run(mode: str, cap: int, *, refresh_token: str, client_id: str,
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("mode", nargs="?", default="daily", choices=["daily", "dry-run"])
+    ap.add_argument("mode", nargs="?", default="daily",
+                    choices=["daily", "dry-run", "reprocess"])
     args = ap.parse_args()
 
     env = {k: os.environ.get(k) for k in
