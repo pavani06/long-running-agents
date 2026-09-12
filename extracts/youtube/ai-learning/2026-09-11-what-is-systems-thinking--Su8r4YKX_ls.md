@@ -18,6 +18,7 @@ claims: ["Injetar grande quantidade de moeda em uma economia de videogame causa 
 deep_dive: "low"
 deep_dive_reason: "Conteúdo introdutório e promocional sobre pensamento sistêmico e a ferramenta Minations, sem densidade técnica ou insights acionáveis relevantes a harness, context-engineering, evals ou arquitetura de agentes de IA."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-systems-thinking-for-leaders-designing-solutions-that-work--wSuQQYv-E64|Systems Thinking for Leaders: Designing Solutions That Work]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-think-so-clearly-people-assume-you-re-brilliant--mjTgkm-h__M|How To Think SO Clearly People Assume You're Brilliant]]"]
+theme: "Processo de Engenharia Agêntica"
 ---
 
 # What is Systems Thinking?

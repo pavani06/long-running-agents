@@ -18,6 +18,7 @@ claims: ["Negócio do apresentador triplicou de $60.000 para $200.000 em 2 anos 
 deep_dive: "low"
 deep_dive_reason: "Conteúdo promocional de marketing em YouTube com passos genéricos, sem densidade técnica, novidade ou relevância para harness, context-engineering, evals, agent-fleets, governança ou ontologia."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-youtube-is-now-on-easy-mode-for-business-owners-2025-algorithm--g90sjbWrwoY|YouTube is now on EASY MODE for business owners (2025 algorithm)]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-do-digital-marketing-with-0--AtZiJzQSH7k|How to do Digital Marketing with $0]]", "[[extracts/youtube/ai-learning/2026-09-11-5-brand-new-digital-marketing-strategies-for-2025-biggest-change-yet--4bZUZeeiacU|5 BRAND NEW Digital Marketing Strategies for 2025 (BIGGEST Change Yet!)]]", "[[extracts/youtube/ai-learning/2026-09-11-7-tiny-digital-products-guaranteed-to-sell-in-2025--ohiK708oMd4|7 TINY Digital Products Guaranteed To Sell in 2025]]", "[[extracts/youtube/ai-learning/2026-09-11-zero-click-marketing-how-founders-win-when-google-social-llms-stop-sending-traff--MBxhzARQNeo|Zero-Click Marketing: How Founders Win When Google, Social & LLMs Stop Sending Traffic]]", "[[extracts/youtube/ai-learning/2026-09-11-9-usos-do-notebooklm-que-vao-explodir-sua-cabeca-incrivel--WFD2wMiduIE|9 USOS do NotebookLM que vão EXPLODIR SUA CABEÇA (INCRÍVEL!!!)]]"]
+theme: "Crescimento e marketing com IA"
 ---
 
 # The EXACT System To Go From $0-$800,000 On YouTube

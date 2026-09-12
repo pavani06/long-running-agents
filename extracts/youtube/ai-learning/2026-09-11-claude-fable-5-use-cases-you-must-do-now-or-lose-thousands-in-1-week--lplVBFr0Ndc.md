@@ -18,6 +18,7 @@ claims: ["Planeje os projetos antes de 7 de julho, pois Fable 5 fica limitado a 
 deep_dive: "medium"
 deep_dive_reason: "Há padrões acionáveis concretos (roteamento de modelos, auditoria cross-session com subagentes, revisores paralelos com dedupe, PRD-driven), mas o formato é listicle de YouTube com segmento promocional e sem profundidade arquitetural ou novidade significativa."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-gpt-6-astra-fable-5-1-god-mode--KgKA0A3qlz0|GPT 6 Astra + Fable 5.1 = GOD MODE]]", "[[extracts/youtube/ai-learning/2026-09-11-code-with-claude-opening-keynote--EvtPBaaykdo|Code with Claude Opening Keynote]]", "[[extracts/youtube/ai-learning/2026-09-11-i-tried-100-claude-code-skills-these-6-are-the-best--eRS3CmvrOvA|I Tried 100+ Claude Code Skills. These 6 Are The Best]]", "[[extracts/youtube/ai-learning/2026-09-11-boris-cherny-we-cut-80-of-claude-codes-prompt--qyPCVqFUyDo|Boris Cherny: We Cut 80% of Claude Code’s Prompt]]", "[[extracts/youtube/ai-learning/2026-09-11-field-guide-to-fable-thariq-shihipar-anthropic--9fubhllmsBU|Field Guide to Fable — Thariq Shihipar, Anthropic]]", "[[extracts/youtube/ai-learning/2026-09-11-this-claude-code-x-obsidian-agentic-os-will-be-the-new-meta--njHuj8OxIVI|This Claude Code x Obsidian Agentic OS Will Be The New Meta]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # Claude Fable 5 Use Cases You Must Do NOW (Or Lose Thousands in 1 Week)

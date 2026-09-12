@@ -18,6 +18,7 @@ claims: ["Ambos Lovable e Bolt construíram um app de tarefas estilo Trello func
 deep_dive: "low"
 deep_dive_reason: "Demonstração comparativa superficial de produtos, sem densidade de insight arquitetural sobre harness, context-engineering, evals ou governança, e com tom parcialmente promocional do canal."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-i-tested-bolt-and-lovable-here-s-what-s-best-for-your-project--_PgBDk_GhPo|I Tested Bolt and Lovable Here's What's Best for Your Project]]", "[[extracts/youtube/ai-learning/2026-09-11-is-this-the-best-vibe-coding-platform-lovable-ai--3eDrAHjSqXo|Is this the Best Vibe Coding Platform? (Lovable AI)]]", "[[extracts/youtube/ai-learning/2026-09-11-bolt-tutorial-for-beginners-with-the-bolt-ceo-eric-simons--1SfUMQ1yTY8|Bolt tutorial for beginners with the Bolt CEO Eric Simons]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-build-perfect-looking-apps-with-bolt-new-easy-hack--gZKLPNhWXxE|How to Build PERFECT Looking Apps With Bolt.new (Easy Hack)]]", "[[extracts/youtube/ai-learning/2026-09-11-build-anything-with-lovable-n8n-ai-agents-no-code--EN0-KNqs6aA|Build Anything With Lovable + n8n AI Agents (No-Code)]]", "[[extracts/youtube/ai-learning/2026-09-11-build-a-new-100k-month-a-i-saas-with-me-in-20-minutes-no-code-is-insane--6GBFiseyDnk|Build a NEW $100K/Month A.I SaaS WITH ME in 20 minutes (No-code Is INSANE)]]"]
+theme: "Agentes de IA No-Code"
 ---
 
 # Bolt vs Lovable: which AI app builder comes out on top?

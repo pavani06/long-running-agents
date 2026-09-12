@@ -18,6 +18,7 @@ claims: ["Agentes estão entregando PRs de 50.000 linhas, tornando inviável man
 deep_dive: "medium"
 deep_dive_reason: "Oferece práticas concretas e replicáveis (explainers, quizzes, micro-mundos, espaços compartilhados) com novidade conceitual real, mas é uma palestra de prática/mindset de design sem densidade arquitetural em harness, evals, context-engineering ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-no-vibes-allowed-solving-hard-problems-in-complex-codebases-dex-horthy-humanlaye--rmvDxxNubIg|No Vibes Allowed: Solving Hard Problems in Complex Codebases – Dex Horthy, HumanLayer]]", "[[extracts/youtube/ai-learning/2026-09-11-ex-nasa-dev-reveals-his-agentic-engineering-workflow--xgkjtF89-44|Ex-NASA dev reveals his Agentic Engineering Workflow]]", "[[extracts/youtube/ai-learning/2026-09-11-from-coding-to-knowledge-work-agents-karan-vaidya-composio--xxfMT-bPEmU|From coding to Knowledge work agents — Karan Vaidya, Composio]]", "[[extracts/youtube/ai-learning/2026-09-11-thariq-claude-code-anthropic--IHbsfvbfAto|Thariq (Claude Code) @ Anthropic]]", "[[extracts/youtube/ai-learning/2026-09-11-why-the-frontrunners-say-coding-is-solved-but-engineering-is-not--Q7l8YGiMgUw|Why the Frontrunners Say Coding Is Solved BUT Engineering is Not]]", "[[extracts/youtube/ai-learning/2026-09-11-75m-founder-reveals-his-agentic-engineering-setup--QBfXiWvM0qc|$75M founder reveals his Agentic Engineering setup]]"]
+theme: "Processo de Engenharia Agêntica"
 ---
 
 # Understanding is the new bottleneck — Geoffrey Litt, Notion

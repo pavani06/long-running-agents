@@ -18,6 +18,7 @@ claims: ["Anthropic removeu 80% do system prompt do Claude Code porque a nova cl
 deep_dive: "medium"
 deep_dive_reason: "Oferece práticas acionáveis de harness/context-engineering e dados concretos (remoção de 80% do system prompt, técnicas de mapeamento de unknowns) com novidade sobre a nova classe de modelos, mas boa parte do talk é motivacional/autobiográfica sem densidade arquitetural profunda."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-thariq-claude-code-anthropic--IHbsfvbfAto|Thariq (Claude Code) @ Anthropic]]", "[[extracts/youtube/ai-learning/2026-09-11-gpt-6-astra-fable-5-1-god-mode--KgKA0A3qlz0|GPT 6 Astra + Fable 5.1 = GOD MODE]]", "[[extracts/youtube/ai-learning/2026-09-11-matt-pococks-agentic-engineering-workflow-just-copy-him--nQwJVHCtDDY|Matt Pocock’s Agentic Engineering Workflow (just copy him)]]", "[[extracts/youtube/ai-learning/2026-09-11-agentic-engineering-explained-by-a-10x-developer--FU5_kpTAVDo|Agentic Engineering, explained by a 10x developer]]", "[[extracts/youtube/ai-learning/2026-09-11-claude-fable-5-use-cases-you-must-do-now-or-lose-thousands-in-1-week--lplVBFr0Ndc|Claude Fable 5 Use Cases You Must Do NOW (Or Lose Thousands in 1 Week)]]", "[[extracts/youtube/ai-learning/2026-09-11-boris-cherny-we-cut-80-of-claude-codes-prompt--qyPCVqFUyDo|Boris Cherny: We Cut 80% of Claude Code’s Prompt]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # Field Guide to Fable — Thariq Shihipar, Anthropic

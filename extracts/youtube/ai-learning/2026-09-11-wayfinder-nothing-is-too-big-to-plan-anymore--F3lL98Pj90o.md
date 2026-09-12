@@ -18,6 +18,7 @@ claims: ["Use planejamento single-session quando o trabalho cabe em uma sessão;
 deep_dive: "high"
 deep_dive_reason: "Apesar do tom promocional, o transcript detalha uma arquitetura concreta e replicável de orquestração cross-session (mapa/fronteira/fog-of-war, tipos de ticket, dependências, writeback de resoluções, spec não-persistente com rastreio à fonte primária) altamente acionável para harness e context-engineering."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-l8-principal-s-agentic-engineering-workflow--iQyg-KypKAA|L8 Principal's Agentic Engineering Workflow]]", "[[extracts/youtube/ai-learning/2026-09-11-so-i-tried-matt-s-skills--0oXOOlqVu5M|So I tried Matt's skills...]]", "[[extracts/youtube/ai-learning/2026-09-11-full-workshop-setting-yourself-up-for-success-jason-liu-openai-codex--il1c1a2FufU|Full Workshop: Setting Yourself Up for Success —Jason Liu, OpenAI Codex]]", "[[extracts/youtube/ai-learning/2026-09-11-matt-pococks-agentic-engineering-workflow-just-copy-him--nQwJVHCtDDY|Matt Pocock’s Agentic Engineering Workflow (just copy him)]]", "[[extracts/youtube/ai-learning/2026-09-11-l8-principal-s-agentic-engineering-setup-just-copy-him--8ZgpAXe5V5w|L8 Principal's Agentic Engineering Setup (just copy him)]]", "[[extracts/youtube/ai-learning/2026-09-11-building-great-agent-skills-the-missing-manual--UNzCG3lw6O0|Building Great Agent Skills: The Missing Manual]]"]
+theme: "Skills e conhecimento para agentes"
 ---
 
 # /wayfinder: Nothing is too big to plan anymore

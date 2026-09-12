@@ -18,6 +18,7 @@ claims: ["Selecione palavras-chave com KD ≤ 10 e domínios com DR 0–9 ranque
 deep_dive: "low"
 deep_dive_reason: "Tutorial demonstrativo e superficial com final promocional: mostra velocidade de geração de sites com Windsurf mas não aprofunda em arquitetura, harness, evals, engenharia de contexto ou governança de agentes."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-the-best-and-worst-ai-website-builders-godaddy-mixo-10web-elementor-etc--Wfk_zhfIn4U|The Best and Worst AI Website Builders (godaddy, mixo, 10Web, elementor, etc)]]", "[[extracts/youtube/ai-learning/2026-09-11-how-i-use-ai-agents-to-make-money-vibe-marketing-tutorial--PduJ0P6r_8o|How I use AI agents to make money (Vibe Marketing Tutorial)]]", "[[extracts/youtube/ai-learning/2026-09-11-i-built-a-4589-website-in-minutes-with-bolt-new-and-cursor-ai--KqiQ4kC8OJI|I Built a $4589 Website in Minutes with Bolt.new and Cursor AI!]]", "[[extracts/youtube/ai-learning/2026-09-11-zero-click-marketing-how-founders-win-when-google-social-llms-stop-sending-traff--MBxhzARQNeo|Zero-Click Marketing: How Founders Win When Google, Social & LLMs Stop Sending Traffic]]"]
+theme: "Crescimento e marketing com IA"
 ---
 
 # Windsurf AI Made Me Rank #1 Instantly (FREE TOOL!) 🚀

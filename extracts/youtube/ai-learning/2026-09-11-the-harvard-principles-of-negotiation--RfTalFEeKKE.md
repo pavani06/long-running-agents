@@ -18,6 +18,7 @@ claims: ["Prefira princípios a regras em contextos cooperativos, pois princípi
 deep_dive: "low"
 deep_dive_reason: "Conteúdo é uma palestra introdutória e genérica sobre negociação baseada em princípios, sem densidade técnica, novidade ou relevância para harness, context-engineering, evals, agent-fleets ou governança de agentes."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-conducting-effective-negotiations--rCmvMDrCWjs|Conducting Effective Negotiations]]"]
+theme: "Disciplina em Negociação"
 ---
 
 # The Harvard Principles of Negotiation

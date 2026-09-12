@@ -18,6 +18,7 @@ claims: ["Use MCP apenas quando for reusar ferramentas em múltiplos workflows; 
 deep_dive: "medium"
 deep_dive_reason: "Contém orientação prática acionável sobre quando usar/não usar MCP, estruturação de servidores e delegação multi-agente, mas é um tutorial introdutório sem profundidade arquitetural ou novidade relevante para harness, evals ou context-engineering avançados."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-mcp-just-got-a-whole-lot-better--BqRhBq-_kgE|MCP Just Got a Whole Lot Better]]", "[[extracts/youtube/ai-learning/2026-09-11-model-context-protocol-mcp-overview-why-you-care--1Pf2rW5FsqQ|Model Context Protocol (MCP) Overview - Why You Care!]]", "[[extracts/youtube/ai-learning/2026-09-11-mcp-vs-api-simplifying-ai-agent-integration-with-external-data--7j1t3UZA1TY|MCP vs API: Simplifying AI Agent Integration with External Data]]", "[[extracts/youtube/ai-learning/2026-09-11-how-uber-runs-60-000-ai-agent-tasks-per-week-with-mcp--yVqMxBahjfA|How Uber Runs 60,000 AI Agent Tasks Per Week With MCP]]", "[[extracts/youtube/ai-learning/2026-09-11-the-agent-ready-web-simplify-user-actions-with-webmcp-tara-agyemang-google--ghJmWQCIHRM|The agent-ready web: Simplify user actions with WebMCP — Tara Agyemang, Google]]", "[[extracts/youtube/ai-learning/2026-09-11-claude-mcp-how-to-modify-your-servers-to-the-next-level--aIAxWr5ix1o|Claude MCP - How To Modify Your Servers To The Next Level]]"]
+theme: "MCP e Interfaces de Agentes"
 ---
 
 # N8N MCP Simplified | 0% Hype | What, Why & How of MCP

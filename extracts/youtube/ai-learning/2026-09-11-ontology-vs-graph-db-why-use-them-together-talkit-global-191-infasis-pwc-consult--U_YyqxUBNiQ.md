@@ -18,6 +18,7 @@ claims: ["Armazene contexto temporal e espacial junto aos valores de dados: um v
 deep_dive: "medium"
 deep_dive_reason: "O conteúdo é relevante para ontologia e gestão de conhecimento com algumas ideias acionáveis (armazenar contexto, resultados, falhas e VOC), mas permanece em nível conceitual de consultoria, sem profundidade arquitetural, novidade técnica ou detalhes de implementação."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-ontology-in-ai-the-hidden-skill-that-makes-architecture-and-your-career-work--J0hj0ms2ddo|Ontology in AI: The Hidden Skill That Makes Architecture and Your Career Work]]", "[[extracts/youtube/ai-learning/2026-09-11-why-agentic-systems-need-ontologies-frank-coyle-uc-berkeley--Sir59K8ZDPU|Why Agentic Systems Need Ontologies — Frank Coyle, UC Berkeley]]", "[[extracts/youtube/ai-learning/2026-09-11-context-graphs-for-explainable-decision-aware-ai-agents-andreas-kollegger-zaid-z--abvQEhvRI_c|Context Graphs for Explainable, Decision-Aware AI Agents — Andreas Kollegger & Zaid Zaim, Neo4j]]", "[[extracts/youtube/ai-learning/2026-09-11-why-your-agents-need-decision-traces-not-just-documents-zach-blumenfeld-neo4j--B9h9ovW5H9U|Why your agents need decision traces, not just documents — Zach Blumenfeld, Neo4j]]"]
+theme: "Arquiteturas de Deep Agents"
 ---
 
 # Ontology vs. Graph DB: Why Use Them Together? [TalkIT Global 191, Infasis, PwC Consulting]

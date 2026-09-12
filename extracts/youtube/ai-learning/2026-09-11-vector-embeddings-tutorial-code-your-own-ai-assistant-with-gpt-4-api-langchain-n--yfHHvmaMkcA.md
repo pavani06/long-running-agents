@@ -18,6 +18,7 @@ claims: ["Embeddings permitem encontrar palavras/documentos semanticamente simil
 deep_dive: "low"
 deep_dive_reason: "Curso introdutório e tutorial de fundamentos de embeddings e vector search, com viés promocional (DataStax Astra DB/OpenAI) e sem novidade arquitetural ou densidade de insight para os domínios de harness, evals ou governança de agentes."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-benchmarking-semantic-code-retrieval-on-claude-code-kuba-rogut-turbopuffer--zKk7sDMGDEQ|Benchmarking semantic code retrieval on Claude Code — Kuba Rogut, Turbopuffer]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # Vector Embeddings Tutorial – Code Your Own AI Assistant with GPT-4 API + LangChain + NLP

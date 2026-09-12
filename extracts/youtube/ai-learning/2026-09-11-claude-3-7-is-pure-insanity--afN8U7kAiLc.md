@@ -18,6 +18,7 @@ claims: ["Usar frases-chave como 'make it visually appealing', 'use CSS JS and H
 deep_dive: "low"
 deep_dive_reason: "Conteúdo é uma review entusiasta e promocional de produto, com demonstrações superficiais e insights limitados a frases de prompt e números de benchmark, sem profundidade arquitetural em harness, context-engineering, evals ou governança de agentes."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-code-with-claude-opening-keynote--EvtPBaaykdo|Code with Claude Opening Keynote]]", "[[extracts/youtube/ai-learning/2026-09-11-mastering-claude-code-in-30-minutes--6eBSHbLKuN0|Mastering Claude Code in 30 minutes]]", "[[extracts/youtube/ai-learning/2026-09-11-coding-with-openai-o1-in-cursor-can-we-replace-claude-3-5-now--wwC86t5k77Y|Coding With OpenAI-o1 in Cursor - Can We Replace Claude 3.5 Now?]]", "[[extracts/youtube/ai-learning/2026-09-11-this-claude-code-x-obsidian-agentic-os-will-be-the-new-meta--njHuj8OxIVI|This Claude Code x Obsidian Agentic OS Will Be The New Meta]]", "[[extracts/youtube/ai-learning/2026-09-11-i-tried-100-claude-code-skills-these-6-are-the-best--eRS3CmvrOvA|I Tried 100+ Claude Code Skills. These 6 Are The Best]]", "[[extracts/youtube/ai-learning/2026-09-11-boris-cherny-we-cut-80-of-claude-codes-prompt--qyPCVqFUyDo|Boris Cherny: We Cut 80% of Claude Code’s Prompt]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # Claude 3.7 is pure insanity

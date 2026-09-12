@@ -18,6 +18,7 @@ claims: ["Prefira Lovable ao Bolt.new quando precisar de app completo com banco,
 deep_dive: "low"
 deep_dive_reason: "Tutorial promocional introdutório sobre ferramenta no-code, sem densidade técnica, novidade ou relevância para harness, context-engineering, evals, agent-fleets ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-bolt-vs-lovable-which-ai-app-builder-comes-out-on-top--yHDvCGNjIqk|Bolt vs Lovable: which AI app builder comes out on top?]]", "[[extracts/youtube/ai-learning/2026-09-11-i-tested-bolt-and-lovable-here-s-what-s-best-for-your-project--_PgBDk_GhPo|I Tested Bolt and Lovable Here's What's Best for Your Project]]", "[[extracts/youtube/ai-learning/2026-09-11-bolt-tutorial-for-beginners-with-the-bolt-ceo-eric-simons--1SfUMQ1yTY8|Bolt tutorial for beginners with the Bolt CEO Eric Simons]]", "[[extracts/youtube/ai-learning/2026-09-11-build-anything-with-lovable-n8n-ai-agents-beginner-s-guide--kUpTUEwKnrk|Build Anything with Lovable + n8n AI Agents (beginner's guide)]]", "[[extracts/youtube/ai-learning/2026-09-11-build-anything-with-lovable-n8n-ai-agents-no-code--EN0-KNqs6aA|Build Anything With Lovable + n8n AI Agents (No-Code)]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-build-perfect-looking-apps-with-bolt-new-easy-hack--gZKLPNhWXxE|How to Build PERFECT Looking Apps With Bolt.new (Easy Hack)]]"]
+theme: "Agentes de IA No-Code"
 ---
 
 # Is this the Best Vibe Coding Platform? (Lovable AI)

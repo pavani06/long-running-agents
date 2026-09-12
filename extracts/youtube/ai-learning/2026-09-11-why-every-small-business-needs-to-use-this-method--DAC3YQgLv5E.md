@@ -18,6 +18,7 @@ claims: ["Não é necessário software para mapear processos; quadro branco e po
 deep_dive: "low"
 deep_dive_reason: "É um tutorial introdutório e parcialmente promocional sobre uma técnica clássica de negócios dos anos 1920, sem densidade arquitetural, novidade ou relevância direta para harness, context-engineering, evals, agent-fleets, governança ou ontologia de agentes de IA."
 relates-to: []
+theme: "Mapeamento de Processos"
 ---
 
 # Why Every Small Business Needs to Use This Method

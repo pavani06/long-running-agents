@@ -18,6 +18,7 @@ claims: ["Um loop exige apenas duas coisas: um gatilho e uma meta — o gatilho 
 deep_dive: "medium"
 deep_dive_reason: "Traz taxonomia acionável (trigger/meta, verificável vs LLM-as-judge) e receitas concretas de loops prontos para copiar, mas é tutorial introdutório com trechos promocionais (Digital Ocean, here.now, consultoria) e sem profundidade arquitetural sobre harness, evals formais ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-wtf-is-loop-engineer-how-to-setup-for-real--W6x-hb44C0c|wtf is Loop Engineer & how to setup for real]]", "[[extracts/youtube/ai-learning/2026-09-11-the-art-of-loop-engineering-how-to-build-agents-that-improve-over-time--jPPiZ22DY3g|The Art of Loop Engineering: How to Build Agents That Improve Over Time]]", "[[extracts/youtube/ai-learning/2026-09-11-loop-engineering-to-graph-engineering--BOOfy3Yshtw|Loop Engineering to Graph Engineering]]", "[[extracts/youtube/ai-learning/2026-09-11-full-walkthrough-workflow-for-ai-coding-matt-pocock---QFHIoCo-Ko|Full Walkthrough: Workflow for AI Coding — Matt Pocock]]", "[[extracts/youtube/ai-learning/2026-09-11-how-lovable-self-improves-every-hour-benjamin-verbeek-lovable--KA5kPbdkK2E|How Lovable self-improves every hour — Benjamin Verbeek, Lovable]]", "[[extracts/youtube/ai-learning/2026-09-11-ex-nasa-dev-reveals-his-agentic-engineering-workflow--xgkjtF89-44|Ex-NASA dev reveals his Agentic Engineering Workflow]]"]
+theme: "Processo de Engenharia Agêntica"
 ---
 
 # 7 INSANE loops you need to try right now

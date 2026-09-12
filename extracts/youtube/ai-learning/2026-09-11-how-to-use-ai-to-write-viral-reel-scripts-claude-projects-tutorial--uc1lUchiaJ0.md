@@ -18,6 +18,7 @@ claims: ["Um roteiro escrito pelo Claude alcançou 1,7 milhão de views no Insta
 deep_dive: "low"
 deep_dive_reason: "Tutorial introdutório de uso consumer do Claude Projects para geração de conteúdo, com dicas práticas úteis mas sem profundidade arquitetural, evals, harness, governança ou novidade técnica relevante."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-how-to-instantly-build-ai-agents-in-n8n-using-claude--uAtSMEBosGU|How to INSTANTLY Build AI Agents in N8N Using Claude]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-instantly-generate-n8n-workflows-using-claude--9tj4MxCV6g0|How to INSTANTLY Generate N8N Workflows Using Claude]]", "[[extracts/youtube/ai-learning/2026-09-11-building-ai-agents-with-claude-demo--_al9YYnF2xI|Building AI Agents with Claude! (Demo)]]", "[[extracts/youtube/ai-learning/2026-09-11-boris-cherny-we-cut-80-of-claude-codes-prompt--qyPCVqFUyDo|Boris Cherny: We Cut 80% of Claude Code’s Prompt]]", "[[extracts/youtube/ai-learning/2026-09-11-how-the-claude-code-team-uses-claude-code--S-sYlFiGFv8|How the Claude Code team uses Claude Code]]", "[[extracts/youtube/ai-learning/2026-09-11-mastering-claude-code-in-30-minutes--6eBSHbLKuN0|Mastering Claude Code in 30 minutes]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # How To Use AI to Write Viral Reel Scripts - Claude Projects Tutorial

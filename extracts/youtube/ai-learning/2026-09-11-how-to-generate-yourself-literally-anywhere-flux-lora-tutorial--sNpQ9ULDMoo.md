@@ -18,6 +18,7 @@ claims: ["20 a 25 fotos de alta resolução, tiradas de ângulos e condições d
 deep_dive: "low"
 deep_dive_reason: "Tutorial introdutório passo a passo de fine-tuning de imagem com forte caráter promocional, sem densidade arquitetural nem relevância para harness, context-engineering, evals, agent-fleets ou ontologia de agentes."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-fine-tune-the-biggest-open-source-models-even-with-a-bad-pc--kxstlfc8Lw4|Fine-Tune the biggest open-source models (even with a bad PC)]]", "[[extracts/youtube/ai-learning/2026-09-11-create-anything-with-nano-banana-pro-heres-how--2VktR2fAmF0|Create Anything with Nano Banana Pro, Here’s How]]", "[[extracts/youtube/ai-learning/2026-09-11-stanford-cs153-frontier-systems-amit-jain-from-luma-ai-on-unified-intelligence-s--6nUl_w5W9Wk|Stanford CS153 Frontier Systems | Amit Jain from Luma AI on Unified Intelligence Systems]]", "[[extracts/youtube/ai-learning/2026-09-11-sora-da-openai-e-lancada-primeiras-impressoes-das-funcoes--TBmcvEmPXJ4|SORA da OPENAI é LANÇADA! PRIMEIRAS IMPRESSÕES das FUNÇÕES 🤯]]"]
+theme: "Stack de IA e Prompting"
 ---
 
 # How To Generate Yourself LITERALLY Anywhere - Flux LoRA Tutorial

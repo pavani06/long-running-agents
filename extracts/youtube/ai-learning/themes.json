@@ -1,0 +1,765 @@
+{
+  "resolution": 2.0,
+  "count": 20,
+  "themes": [
+    {
+      "id": "t01",
+      "size": 57,
+      "members": [
+        "0QPf-9El_2s",
+        "1G-X70bnJEg",
+        "1XvN5EBDnDw",
+        "1yvBqasHLZs",
+        "3tng5VWbWXU",
+        "4eCFmbX5rAQ",
+        "4qjEgPojjzM",
+        "5ze3ZNvOdRY",
+        "7ARBJQn6QkM",
+        "8-boBsWcr5A",
+        "ASABxNenD_U",
+        "AwXmUXpjNw4",
+        "B8NvdfssGac",
+        "BKx0Dp8y-6g",
+        "BQrJ4lHAjhc",
+        "Csjy_A3Kj9s",
+        "CxXgV54KzpQ",
+        "F_7M4Hc-usM",
+        "GhIJs4zbH0o",
+        "Hn27upT2m_o",
+        "Js1gU6L1Zi8",
+        "K4s6Cgicw_A",
+        "O5PfU_uDhS0",
+        "OaRhpwz_TGM",
+        "OsLRf6r5U9E",
+        "Pya-G_Y6m7E",
+        "R9K2574YEAg",
+        "Wj6ttdIeBnE",
+        "Yy3JH6dDugc",
+        "_NLHFoVNlbg",
+        "_a8EnBX8DSU",
+        "aR20FWCCjAs",
+        "agSRMrhNTf4",
+        "b6Doq2fz81U",
+        "bMMv0bZzONg",
+        "ckoi0RTEgcY",
+        "cmUo4841KQw",
+        "d95J8yzvjbQ",
+        "fUcnE6pjq5w",
+        "hrQy6m48F4E",
+        "huR0Oa2odxA",
+        "iBBOLjt8haY",
+        "nkhrEnuZi20",
+        "sRvrXL83N-c",
+        "scsW6_2SPC4",
+        "tL3sXpxpCPs",
+        "tivaWTTVRhY",
+        "tsQB0n0YV3k",
+        "uCKhOmth2ms",
+        "vRTcE19M-KE",
+        "vfF011ko89o",
+        "w87UvmMcmW4",
+        "x2VHFgyawPE",
+        "xlQB_0Nzoog",
+        "xzp1yHH_vAg",
+        "yBBhd0-Os74",
+        "znKb71kLG5c"
+      ],
+      "top_tags": [
+        "agents",
+        "investimentos",
+        "governanca"
+      ],
+      "top_concepts": [
+        "test-time compute",
+        "harness de agentes"
+      ],
+      "label_auto": "agents, investimentos, governanca",
+      "label_llm": "Estratégias corporativas de agentes",
+      "description": "Líderes de big techs e investidores debatem a visão estratégica dos agentes de IA, da corrida por compute e dados à governança empresarial e às dúvidas sobre bolha de investimento.",
+      "slug": "estrategias-corporativas-de-agentes",
+      "name": "Estratégias corporativas de agentes"
+    },
+    {
+      "id": "t02",
+      "size": 45,
+      "members": [
+        "06Beyp_iDL0",
+        "1SfUMQ1yTY8",
+        "2gBcO3ht0ws",
+        "3eDrAHjSqXo",
+        "44eFf-tRiSg",
+        "4keUCOVpsxQ",
+        "6GBFiseyDnk",
+        "8QN23ZThdRY",
+        "9FuNtfsnRNo",
+        "DgAu_oJ2-TA",
+        "Dt6u-yFEpsk",
+        "EH5jx5qPabU",
+        "EN0-KNqs6aA",
+        "HkFDWwmtZ-M",
+        "Hm0DZtiKUI8",
+        "IXRkmqEYGZA",
+        "KqiQ4kC8OJI",
+        "MSO4qCiwTjQ",
+        "PduJ0P6r_8o",
+        "QIsJe-nZ5XE",
+        "TjAbtsPC-Sw",
+        "UaJSXjNX3wo",
+        "UnH7S5044GA",
+        "WI8ikp5YyRw",
+        "WLvQCIUWebs",
+        "XVO3zsHdvio",
+        "XeWZIzndlY4",
+        "ZbIVOy_GPyQ",
+        "_PgBDk_GhPo",
+        "bFnY2tONtSs",
+        "gZKLPNhWXxE",
+        "jmeGqDu4tPU",
+        "kBFjvQxKnOs",
+        "kUpTUEwKnrk",
+        "lZsZX5p6eHQ",
+        "lZuxqbw8IX4",
+        "ldETapkr8Hg",
+        "nSQnJoqK4DQ",
+        "oulVKbk0umo",
+        "pC17ge_2n0Q",
+        "pR51uBNb5es",
+        "plbXQ2SbAMg",
+        "szGFppZgSI0",
+        "yHDvCGNjIqk",
+        "ydJNqND6N_Y"
+      ],
+      "top_tags": [
+        "agent-tooling",
+        "stack-tooling",
+        "agents"
+      ],
+      "top_concepts": [
+        "RAG (Retrieval Augmented Generation)",
+        "Vector database e embeddings"
+      ],
+      "label_auto": "agent-tooling, stack-tooling, agents",
+      "label_llm": "Agentes de IA No-Code",
+      "description": "Tutoriais para iniciantes que ensinam a construir agentes e aplicativos com IA sem programar, usando ferramentas como n8n, Bolt, Lovable, Cursor e Agent Builder.",
+      "slug": "agentes-de-ia-no-code",
+      "name": "Agentes de IA No-Code"
+    },
+    {
+      "id": "t03",
+      "size": 43,
+      "members": [
+        "-3MPnUGqa68",
+        "-QFHIoCo-Ko",
+        "4wMRXmLpdA8",
+        "504PvfXou5Y",
+        "7zCsfe57tpU",
+        "8rABwKRsec4",
+        "BEKc4P87XKo",
+        "C842vFY5kRo",
+        "C_GG5g38vLU",
+        "F4a8aMLb678",
+        "F8X9_Dp3ZUk",
+        "HI2q3ci3Iuc",
+        "I8fs4omN1no",
+        "Ib5GBkD555M",
+        "KA5kPbdkK2E",
+        "LeUUxLRdvho",
+        "Q7l8YGiMgUw",
+        "SrvKmhJRlKI",
+        "Su8r4YKX_ls",
+        "UWjh5Z4s8jY",
+        "W6x-hb44C0c",
+        "WkBPX-oDMnA",
+        "YwZR6tc7qYg",
+        "_ehJyfHg1Vk",
+        "am_oeAoUhew",
+        "c8bE0cj7vHY",
+        "f61DCDwvFis",
+        "jPPiZ22DY3g",
+        "mR-WAvEPRwE",
+        "mjTgkm-h__M",
+        "n97BCfyFIvw",
+        "n9xKblqyQ28",
+        "oYxTTirKY8M",
+        "ow1we5PzK-o",
+        "pMggiOb18tc",
+        "pqlWNihgdjI",
+        "rmvDxxNubIg",
+        "so9l_MwS2yg",
+        "t0GiTyz4syY",
+        "ulNsa0sD8N0",
+        "v4F1gFy-hqg",
+        "wSuQQYv-E64",
+        "xgkjtF89-44"
+      ],
+      "top_tags": [
+        "verification",
+        "agentic-coding",
+        "process"
+      ],
+      "top_concepts": [
+        "harness engineering",
+        "system design"
+      ],
+      "label_auto": "verification, agentic-coding, process",
+      "label_llm": "Processo de Engenharia Agêntica",
+      "description": "Como estruturar o ciclo de desenvolvimento em torno de agentes de IA com especificações executáveis (ADR, PRD, BDD), harnesses, verificação e fluxos de trabalho clássicos de engenharia adaptados à programação autônoma.",
+      "slug": "processo-de-engenharia-agentica",
+      "name": "Processo de Engenharia Agêntica"
+    },
+    {
+      "id": "t04",
+      "size": 41,
+      "members": [
+        "19HDQ9HppOA",
+        "6eBSHbLKuN0",
+        "9fubhllmsBU",
+        "9tj4MxCV6g0",
+        "B-YQANvDOq0",
+        "BOOfy3Yshtw",
+        "BrpB-h1e--k",
+        "C06FBVXMLCY",
+        "ChskqGovoHg",
+        "EvtPBaaykdo",
+        "IHbsfvbfAto",
+        "ITMouQ_EuXI",
+        "IlqJqcl8ONE",
+        "K0X9QDRkIdg",
+        "KgKA0A3qlz0",
+        "LoMOPj-lO8U",
+        "S-sYlFiGFv8",
+        "UOWSHg18cL0",
+        "Z-c11pV_uvU",
+        "_al9YYnF2xI",
+        "aIAxWr5ix1o",
+        "afN8U7kAiLc",
+        "dRmWYHuIJxM",
+        "eRS3CmvrOvA",
+        "eSP7PLTXNy8",
+        "fQmlML9Lay4",
+        "gv0WHhKelSE",
+        "hm8NzEd5io0",
+        "i_AjyQmYvbE",
+        "ib74sLgjIBM",
+        "kRgdkOw82F0",
+        "lplVBFr0Ndc",
+        "njHuj8OxIVI",
+        "qyPCVqFUyDo",
+        "uAtSMEBosGU",
+        "uc1lUchiaJ0",
+        "wwC86t5k77Y",
+        "yfHHvmaMkcA",
+        "z7xyZQVK4Dg",
+        "zKk7sDMGDEQ",
+        "zenIB7XLZxQ"
+      ],
+      "top_tags": [
+        "agent-tooling",
+        "context-engineering",
+        "agentic-coding"
+      ],
+      "top_concepts": [
+        "human-in-the-loop",
+        "Model Context Protocol (MCP)"
+      ],
+      "label_auto": "agent-tooling, context-engineering, agentic-coding",
+      "label_llm": "Codificação Agêntica com Claude Code",
+      "description": "Uso do Claude Code e Managed Agents como plataforma para construir e operacionalizar agentes de código, dominando ferramentas, function hooks e engenharia de contexto para elevar a produtividade no desenvolvimento de software.",
+      "slug": "codificacao-agentica-com-claude-code",
+      "name": "Codificação Agêntica com Claude Code"
+    },
+    {
+      "id": "t05",
+      "size": 28,
+      "members": [
+        "0tLHVyd7WtM",
+        "2VktR2fAmF0",
+        "38N8pgnNANQ",
+        "3Zvk4AMCrG8",
+        "69bH4IHZivs",
+        "6nUl_w5W9Wk",
+        "8IUkOAvMP-M",
+        "8oD7juOSEN0",
+        "9lSRViLugE0",
+        "ABCqfaTjNd4",
+        "CBaLU0dDEY8",
+        "DL82mGde6wo",
+        "E0Jbaikf0o4",
+        "EOmgC3-hznM",
+        "Es5Qb9weRmA",
+        "G2B0YWuJUgI",
+        "I8VUN141MjU",
+        "T9aRN5JkmL8",
+        "TBmcvEmPXJ4",
+        "WFD2wMiduIE",
+        "_K_F_icxtrI",
+        "cN6NraQXwHA",
+        "emV9Wo_UuGQ",
+        "jC4v5AS4RIM",
+        "p09yRj47kNM",
+        "sNpQ9ULDMoo",
+        "yNpbnrlAFzA",
+        "ysPbXH0LpIE"
+      ],
+      "top_tags": [
+        "process",
+        "analise",
+        "stack-tooling"
+      ],
+      "top_concepts": [
+        "democratização da execução",
+        "fulfillment engines (fluxogramas de processo)"
+      ],
+      "label_auto": "process, analise, stack-tooling",
+      "label_llm": "Stack de IA e Prompting",
+      "description": "Uso prático e hands-on de modelos frontier (ChatGPT, Gemini, Nano Banana) com técnicas avançadas de prompting, APIs e tooling para automatizar tarefas multimodais ponta-a-ponta.",
+      "slug": "stack-de-ia-e-prompting",
+      "name": "Stack de IA e Prompting"
+    },
+    {
+      "id": "t06",
+      "size": 26,
+      "members": [
+        "5AkdMangfNk",
+        "5_LLMZfKI6w",
+        "B9h9ovW5H9U",
+        "Bugs0dVcNI8",
+        "D6XWu54oG4g",
+        "EcqMYoIV57A",
+        "GbzEDgcuGJU",
+        "HdafI0t3sEY",
+        "J0hj0ms2ddo",
+        "LdQpoK2TzSo",
+        "Sir59K8ZDPU",
+        "TRjq7t2Ms5I",
+        "U_YyqxUBNiQ",
+        "Uny6LpmjraI",
+        "VKFKyrrK-Iw",
+        "YqjR4vQwbTc",
+        "abvQEhvRI_c",
+        "cHVQj7w9TD4",
+        "esY99nYXxR4",
+        "gTeujlv8qK0",
+        "jWy39wavbjY",
+        "kTs3kDlKc8w",
+        "kxypcfrkUBI",
+        "mWvtOHlZM-I",
+        "u5Vcrwpzoz8",
+        "y7wMTwJN7rA"
+      ],
+      "top_tags": [
+        "context-engineering",
+        "arquitetura",
+        "agents"
+      ],
+      "top_concepts": [
+        "RAG (Retrieval-Augmented Generation)",
+        "Subagentes dinâmicos (spawn e coordenação programáticos via código)"
+      ],
+      "label_auto": "context-engineering, arquitetura, agents",
+      "label_llm": "Arquiteturas de Deep Agents",
+      "description": "Padrões de orquestração e engenharia de contexto — subagentes dinâmicos, grafos de decisão, ontologias e otimização seletiva de contexto — para levar agentes profundos a confiabilidade em produção.",
+      "slug": "arquiteturas-de-deep-agents",
+      "name": "Arquiteturas de Deep Agents"
+    },
+    {
+      "id": "t07",
+      "size": 24,
+      "members": [
+        "0oXOOlqVu5M",
+        "0uC6u0lJJl4",
+        "0vphxNt4wyk",
+        "6BB6exR8Zd8",
+        "F3lL98Pj90o",
+        "MY9F9K7wWX4",
+        "OZ3ZNhrPbF4",
+        "QBfXiWvM0qc",
+        "UNzCG3lw6O0",
+        "UzMNBN6xLLA",
+        "XNX-1h2K-9U",
+        "ZRM_TfEZcIo",
+        "c9nRxEy1kUY",
+        "dtAJ2dOd3ko",
+        "eBUyTS7SzV4",
+        "eRrc1pUY5oU",
+        "iQyg-KypKAA",
+        "il1c1a2FufU",
+        "lUhXa8GiXns",
+        "nIVu3zfYprI",
+        "nQwJVHCtDDY",
+        "sBg90v2qfas",
+        "vy7o1g2iHY8",
+        "xxfMT-bPEmU"
+      ],
+      "top_tags": [
+        "agent-tooling",
+        "context-engineering",
+        "knowledge-management"
+      ],
+      "top_concepts": [
+        "AI skills como arquivos markdown",
+        "descrição de skill como gatilho (não documentação)"
+      ],
+      "label_auto": "agent-tooling, context-engineering, knowledge-management",
+      "label_llm": "Skills e conhecimento para agentes",
+      "description": "Criação, avaliação e estruturação de skills em markdown e bases de conhecimento persistentes (wikis, OKF, memórias) que dão aos agentes de IA contexto confiável, seguro e testável.",
+      "slug": "skills-e-conhecimento-para-agentes",
+      "name": "Skills e conhecimento para agentes"
+    },
+    {
+      "id": "t08",
+      "size": 22,
+      "members": [
+        "-5PZj_Wshk0",
+        "4bZUZeeiacU",
+        "5XaXLLA4gK0",
+        "6qAB6aUMIeA",
+        "AtZiJzQSH7k",
+        "MBxhzARQNeo",
+        "OpsGJaijG10",
+        "Qsq-Sj_rojU",
+        "RPVxwzJtp4o",
+        "RUHU-w4Lz1I",
+        "SbUxRluVRwk",
+        "VeU6gScy92s",
+        "Wfk_zhfIn4U",
+        "eURcW5_uS60",
+        "fBfY7tWCecU",
+        "g90sjbWrwoY",
+        "mJwPvyc4-rk",
+        "ohiK708oMd4",
+        "wNUIhCI_jsw",
+        "wv779vmyPVY",
+        "xWYb7tImErI",
+        "zFHzTy7XLbM"
+      ],
+      "top_tags": [
+        "process",
+        "analise",
+        "agents"
+      ],
+      "top_concepts": [
+        "conteúdo evergreen",
+        "estratégia baseada em busca (search-based)"
+      ],
+      "label_auto": "process, analise, agents",
+      "label_llm": "Crescimento e marketing com IA",
+      "description": "Estratégias modernas de growth e marketing digital potencializadas por IA — de táticas orgânicas gratuitas e SEO com agentes de código ao playbook de startups nativas de IA e a adaptação à web zero-click.",
+      "slug": "crescimento-e-marketing-com-ia",
+      "name": "Crescimento e marketing com IA"
+    },
+    {
+      "id": "t09",
+      "size": 19,
+      "members": [
+        "0vBKv9yAQi4",
+        "31GUkCBD-Uc",
+        "AbZODZ_4VaM",
+        "DrTdD-ttjCY",
+        "FB-MLPhL9Ms",
+        "Lri2LNYtERM",
+        "O6DtzLGLNWY",
+        "O7u6myBRsns",
+        "ObTPqBGsEbA",
+        "Tt2kX2sgQio",
+        "Ubwb6NzegyA",
+        "Z4BXg02i8sI",
+        "b2GqTDWtg6s",
+        "d5EltXhbcfA",
+        "e85AxYW0Qyk",
+        "l0FLhNqBOic",
+        "mav15aW9lLM",
+        "u6jJcIFDLE4",
+        "whue9_YquGA"
+      ],
+      "top_tags": [
+        "production",
+        "agents",
+        "evals"
+      ],
+      "top_concepts": [
+        "Agente como produto (every agent is a product)",
+        "Ciclo de vida de desenvolvimento de agentes (Agent Development Life Cycle)"
+      ],
+      "label_auto": "production, agents, evals",
+      "label_llm": "Agentes em Produção com Evals",
+      "description": "Como empresas como Sierra, Uber, Stripe e Snowflake implantam agentes de IA em escala empresarial, tratando-os como produtos com ciclos de vida, governança e loops de avaliação contínua (evals) que garantem qualidade e confiabilidade.",
+      "slug": "agentes-em-producao-com-evals",
+      "name": "Agentes em Produção com Evals"
+    },
+    {
+      "id": "t10",
+      "size": 13,
+      "members": [
+        "-KfrrWRl3FA",
+        "-gtlrI1TqZE",
+        "1Pf2rW5FsqQ",
+        "7j1t3UZA1TY",
+        "BqRhBq-_kgE",
+        "DBhSfROq3wU",
+        "Dqp_b8GHLXU",
+        "QrMcNe2jjt8",
+        "_B4Pv9ttFgY",
+        "f32W5BEzWN0",
+        "ghJmWQCIHRM",
+        "hCMrEfPG2Yg",
+        "yVqMxBahjfA"
+      ],
+      "top_tags": [
+        "arquitetura",
+        "agent-tooling",
+        "stack-tooling"
+      ],
+      "top_concepts": [
+        "Model Context Protocol (MCP)",
+        "Chatbots como era DOS das interfaces de IA e o vindouro 'momento Windows/Mac OS'"
+      ],
+      "label_auto": "arquitetura, agent-tooling, stack-tooling",
+      "label_llm": "MCP e Interfaces de Agentes",
+      "description": "Padronização da integração entre agentes de IA e ferramentas/dados externos via Model Context Protocol (MCP), junto com a evolução das interfaces de usuário para paradigmas AI-nativos, generativos e orientados a agentes autônomos.",
+      "slug": "mcp-e-interfaces-de-agentes",
+      "name": "MCP e Interfaces de Agentes"
+    },
+    {
+      "id": "t11",
+      "size": 13,
+      "members": [
+        "7gujZrJ9L5I",
+        "8ZgpAXe5V5w",
+        "8fMnAZI1bdA",
+        "AVInhYBUnKs",
+        "AyV0hum_hA8",
+        "FLUoowDJg4I",
+        "JomVvNDjGb8",
+        "UL55C80TEb8",
+        "kxstlfc8Lw4",
+        "pJwR5pv0_gs",
+        "utb7zYbK10c",
+        "wApaJjvNZFs",
+        "yQ4F553zhQw"
+      ],
+      "top_tags": [
+        "agent-tooling",
+        "agents",
+        "multi-agent"
+      ],
+      "top_concepts": [
+        "harness agêntico (Antigravity) como plataforma unificada para múltiplos casos de uso",
+        "gerenciamento de quota de tokens por usuário/time"
+      ],
+      "label_auto": "agent-tooling, agents, multi-agent",
+      "label_llm": "Orquestração Multiagente em Escala",
+      "description": "Construção e operação de harnesses, swarms e frotas de agentes de IA em produção, cobrindo orquestração hierárquica de tarefas, pipelines de verificação, controle de custos e automação do próprio trabalho com agentes.",
+      "slug": "orquestracao-multiagente-em-escala",
+      "name": "Orquestração Multiagente em Escala"
+    },
+    {
+      "id": "t12",
+      "size": 12,
+      "members": [
+        "3_gYbhABcAE",
+        "8kMaTybvDUw",
+        "A7WFt2JQ5sg",
+        "D7_ipDqhtwk",
+        "FU5_kpTAVDo",
+        "KHudyx5wW3U",
+        "U3bZavG8qQY",
+        "VktrqzQgytY",
+        "ZD9-4fW2HhM",
+        "bRnoEpoK5m4",
+        "uMvTAF280so",
+        "xUnRQ9vLXxo"
+      ],
+      "top_tags": [
+        "agent-loop",
+        "arquitetura",
+        "agents"
+      ],
+      "top_concepts": [
+        "texto como novo estado (semantic meaning vs data structures)",
+        "delegar controle (dispatcher vs traffic controller)"
+      ],
+      "label_auto": "agent-loop, arquitetura, agents",
+      "label_llm": "Engenharia de Agentes Confiáveis",
+      "description": "Como construir agentes de IA confiáveis assumindo a propriedade do loop de controle, o contexto e as ferramentas, com arquiteturas simples e determinísticas, em vez de delegar a frameworks ou aplicar práticas tradicionais de software.",
+      "slug": "engenharia-de-agentes-confiaveis",
+      "name": "Engenharia de Agentes Confiáveis"
+    },
+    {
+      "id": "t13",
+      "size": 10,
+      "members": [
+        "-qm0ln33G24",
+        "3W36pd50Wqw",
+        "AKoBE4gKaXQ",
+        "EfM546A79aM",
+        "H-oCV5brtU4",
+        "NDdc39KYqDU",
+        "kCc8FmEb1nY",
+        "kYkIdXwW2AE",
+        "ngBraLDqzdI",
+        "xGO5Q94XXf0"
+      ],
+      "top_tags": [
+        "arquitetura",
+        "analise",
+        "curriculo-conteudo"
+      ],
+      "top_concepts": [
+        "JEPA (Joint Embedding Predictive Architecture)",
+        "estágios do pipeline: pre-training, mid-training e post-training"
+      ],
+      "label_auto": "arquitetura, analise, curriculo-conteudo",
+      "label_llm": "Fundamentos e Arquitetura de LLMs",
+      "description": "Aulas, cursos e análises sobre construção de modelos de linguagem do zero, cobrindo dados de treinamento, inferência, fine-tuning, multimodalidade e debates sobre os limites do paradigma autoregressivo.",
+      "slug": "fundamentos-e-arquitetura-de-llms",
+      "name": "Fundamentos e Arquitetura de LLMs"
+    },
+    {
+      "id": "t14",
+      "size": 2,
+      "members": [
+        "RfTalFEeKKE",
+        "rCmvMDrCWjs"
+      ],
+      "top_tags": [
+        "process",
+        "decision-discipline",
+        "analise"
+      ],
+      "top_concepts": [
+        "princípios vs. regras",
+        "separar a pessoa da questão"
+      ],
+      "label_auto": "process, decision-discipline, analise",
+      "label_llm": "Disciplina em Negociação",
+      "description": "Métodos estruturados de negociação baseados nos princípios de Harvard, BATNA e relacionamentos de longo prazo para alcançar acordos win-win.",
+      "slug": "disciplina-em-negociacao",
+      "name": "Disciplina em Negociação"
+    },
+    {
+      "id": "t15",
+      "size": 1,
+      "members": [
+        "6IE2UygjcQw"
+      ],
+      "top_tags": [
+        "analise",
+        "process"
+      ],
+      "top_concepts": [
+        "controle de conversa",
+        "perguntas abertas vs. fechadas"
+      ],
+      "label_auto": "analise, process",
+      "label_llm": "Controle de conversa com perguntas",
+      "description": "Técnicas de influência e espionagem para dominar diálogos fazendo perguntas abertas, extraindo informações sem parecer um interrogatório.",
+      "slug": "controle-de-conversa-com-perguntas",
+      "name": "Controle de conversa com perguntas"
+    },
+    {
+      "id": "t16",
+      "size": 1,
+      "members": [
+        "DAC3YQgLv5E"
+      ],
+      "top_tags": [
+        "process",
+        "analise",
+        "knowledge-management"
+      ],
+      "top_concepts": [
+        "Process Mapping (mapeamento de processos)",
+        "Mapa as-is / estado atual"
+      ],
+      "label_auto": "process, analise, knowledge-management",
+      "label_llm": "Mapeamento de Processos",
+      "description": "Técnica de transformar fluxos de trabalho invisíveis e repetidos em diagramas visuais que revelam erros, atrasos e oportunidades de melhoria sem precisar de software especializado.",
+      "slug": "mapeamento-de-processos",
+      "name": "Mapeamento de Processos"
+    },
+    {
+      "id": "t17",
+      "size": 1,
+      "members": [
+        "E6Nx8cYaqUQ"
+      ],
+      "top_tags": [
+        "analise",
+        "data-platform",
+        "index"
+      ],
+      "top_concepts": [
+        "pacto da patente como troca legal: monopólio temporário em exchange por divulgação completa ('manual de instruções' público)",
+        "janela de confidencialidade de 18 meses antes da publicação obrigatória de pedidos de patente"
+      ],
+      "label_auto": "analise, data-platform, index",
+      "label_llm": "Bases de Dados Governamentais Públicas",
+      "description": "Análise de bases de dados governamentais de acesso público obrigatório por lei, revelando como a transparência legal expõe informações corporativas e estatais normalmente mantidas em sigilo.",
+      "slug": "bases-de-dados-governamentais-publicas",
+      "name": "Bases de Dados Governamentais Públicas"
+    },
+    {
+      "id": "t18",
+      "size": 1,
+      "members": [
+        "ZIt_R8GwP7s"
+      ],
+      "top_tags": [
+        "monitoramento",
+        "observability",
+        "telemetry"
+      ],
+      "top_concepts": [
+        "monitoramento de SQL Server",
+        "serviço Windows headless desacoplado do viewer"
+      ],
+      "label_auto": "monitoramento, observability, telemetry",
+      "label_llm": "Monitoramento Enterprise de SQL Server",
+      "description": "Evolução de ferramentas gratuitas de monitoramento de SQL Server rumo a uma arquitetura headless contínua com backend TimescaleDB para coleta de telemetria em escala.",
+      "slug": "monitoramento-enterprise-de-sql-server",
+      "name": "Monitoramento Enterprise de SQL Server"
+    },
+    {
+      "id": "t19",
+      "size": 1,
+      "members": [
+        "ZqGSg4b_cZA"
+      ],
+      "top_tags": [
+        "arquitetura",
+        "governanca",
+        "runtime"
+      ],
+      "top_concepts": [
+        "write once, run anywhere (portabilidade binária via JVM)",
+        "máquina virtual e runtime como local das inovações radicais"
+      ],
+      "label_auto": "arquitetura, governanca, runtime",
+      "label_llm": "Evolução da Plataforma Java",
+      "description": "A trajetória do Java como plataforma sustentável por meio de governança de compatibilidade, abertura gradual do código e modernização decisiva de linguagem, runtime e processo de release.",
+      "slug": "evolucao-da-plataforma-java",
+      "name": "Evolução da Plataforma Java"
+    },
+    {
+      "id": "t20",
+      "size": 1,
+      "members": [
+        "uOcKF-aLHyw"
+      ],
+      "top_tags": [
+        "process",
+        "decision-discipline"
+      ],
+      "top_concepts": [
+        "arte de pedir (asking)",
+        "recebimento automático"
+      ],
+      "label_auto": "process, decision-discipline",
+      "label_llm": "A Arte de Pedir",
+      "description": "Defende que pedir de forma clara, específica e com fé é o processo central para receber e alcançar o que se deseja na vida.",
+      "slug": "a-arte-de-pedir",
+      "name": "A Arte de Pedir"
+    }
+  ]
+}

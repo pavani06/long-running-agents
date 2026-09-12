@@ -18,6 +18,7 @@ claims: ["OpenAI habilitou câmera em tempo real e compartilhamento de tela no C
 deep_dive: "low"
 deep_dive_reason: "É um vídeo de primeiras impressões/demo de produto com trecho promocional de curso, sem densidade de insight arquitetural ou acionável relevante para harness, context-engineering, evals ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-google-gemini-2-0-is-amazing-realtime-stream-tested-multimodal-api--38N8pgnNANQ|Google Gemini 2.0 is AMAZING - Realtime Stream TESTED | Multimodal API]]", "[[extracts/youtube/ai-learning/2026-09-11-web-scraping-has-never-been-easier-use-google-gemini-2-0--8oD7juOSEN0|Web Scraping Has Never Been Easier  - Use Google Gemini 2.0]]", "[[extracts/youtube/ai-learning/2026-09-11-7-mind-blowing-new-use-cases-for-chatgpt-in-2025-big-changes-ahead--8IUkOAvMP-M|7 Mind-Blowing NEW Use Cases For ChatGPT in 2025 (Big Changes Ahead)]]", "[[extracts/youtube/ai-learning/2026-09-11-sora-da-openai-e-lancada-primeiras-impressoes-das-funcoes--TBmcvEmPXJ4|SORA da OPENAI é LANÇADA! PRIMEIRAS IMPRESSÕES das FUNÇÕES 🤯]]", "[[extracts/youtube/ai-learning/2026-09-11-chatgpt-for-business-updates--9lSRViLugE0|ChatGPT for Business Updates]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-understand-the-next-wave-of-ai-before-everyone-else-tibo-interview--4qjEgPojjzM|How to Understand the Next Wave of AI Before Everyone Else | Tibo Interview]]"]
+theme: "Stack de IA e Prompting"
 ---
 
 # NOVO! CHATGPT acessa CÂMERA e TELA do Celular e PC 🤯🤯

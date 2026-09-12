@@ -18,6 +18,7 @@ claims: ["Instale tmux via 'brew install tmux' (macOS) ou 'apt install tmux' (Ub
 deep_dive: "low"
 deep_dive_reason: "Tutorial introdutório e patrocinado sobre uma prática consagrada (tmux+VPS) com dicas operacionais úteis, mas sem novidade arquitetural nem profundidade em harness, evals, context-engineering ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-mastering-claude-code-in-30-minutes--6eBSHbLKuN0|Mastering Claude Code in 30 minutes]]", "[[extracts/youtube/ai-learning/2026-09-11-claude-code-best-practices-code-w-claude--gv0WHhKelSE|Claude Code best practices | Code w/ Claude]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-use-cursor-agent-for-beginners--2gBcO3ht0ws|How to use Cursor Agent for beginners]]", "[[extracts/youtube/ai-learning/2026-09-11-pi-architecture-explained-agent-loop-tools-tui-and-more--gTeujlv8qK0|PI Architecture EXPLAINED | Agent Loop, Tools, TUI and More]]", "[[extracts/youtube/ai-learning/2026-09-11-full-workshop-setting-yourself-up-for-success-jason-liu-openai-codex--il1c1a2FufU|Full Workshop: Setting Yourself Up for Success —Jason Liu, OpenAI Codex]]", "[[extracts/youtube/ai-learning/2026-09-11-5-simple-ai-agents-you-must-have-beginners-guide--WLvQCIUWebs|5 simple AI Agents you must have - beginners guide]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # Build Anything with Tmux, Here's How

@@ -18,6 +18,7 @@ claims: ["Perfis do Google totalmente preenchidos têm 7x mais probabilidade de 
 deep_dive: "low"
 deep_dive_reason: "Conteúdo promocional de marketing genérico para pequenos negócios, sem densidade técnica, novidade ou relevância para harness, context-engineering, evals, agent-fleets ou governança de agentes de IA."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-5-brand-new-digital-marketing-strategies-for-2025-biggest-change-yet--4bZUZeeiacU|5 BRAND NEW Digital Marketing Strategies for 2025 (BIGGEST Change Yet!)]]", "[[extracts/youtube/ai-learning/2026-09-11-zero-click-marketing-how-founders-win-when-google-social-llms-stop-sending-traff--MBxhzARQNeo|Zero-Click Marketing: How Founders Win When Google, Social & LLMs Stop Sending Traffic]]", "[[extracts/youtube/ai-learning/2026-09-11-the-exact-system-to-go-from-0-800-000-on-youtube---5PZj_Wshk0|The EXACT System To Go From $0-$800,000 On YouTube]]", "[[extracts/youtube/ai-learning/2026-09-11-7-tiny-digital-products-guaranteed-to-sell-in-2025--ohiK708oMd4|7 TINY Digital Products Guaranteed To Sell in 2025]]", "[[extracts/youtube/ai-learning/2026-09-11-how-i-use-ai-agents-to-make-money-vibe-marketing-tutorial--PduJ0P6r_8o|How I use AI agents to make money (Vibe Marketing Tutorial)]]", "[[extracts/youtube/ai-learning/2026-09-11-the-new-ai-growth-playbook-for-2026-how-lovable-hit-200m-arr-in-one-year--6qAB6aUMIeA|The new AI growth playbook for 2026 | How Lovable hit $200M ARR in one year]]"]
+theme: "Crescimento e marketing com IA"
 ---
 
 # How to do Digital Marketing with $0

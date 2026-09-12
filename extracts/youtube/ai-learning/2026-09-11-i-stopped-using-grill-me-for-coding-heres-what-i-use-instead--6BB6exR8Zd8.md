@@ -18,6 +18,7 @@ claims: ["Use Grill with Docs quando houver codebase; use Grill Me quando não h
 deep_dive: "high"
 deep_dive_reason: "Apresenta um padrão arquitetural concreto e replicável (glossário ubíquo persistente + ADRs + skill de interrogatório) que integra DDD clássico a context-engineering e harness de agentes com impacto medível em tokens, alinhamento cross-session e navegação do código."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-9-things-people-get-wrong-with-my-grill-skills--UzMNBN6xLLA|9 Things People Get Wrong With My /grill-* skills]]", "[[extracts/youtube/ai-learning/2026-09-11-so-i-tried-matt-s-skills--0oXOOlqVu5M|So I tried Matt's skills...]]", "[[extracts/youtube/ai-learning/2026-09-11-matt-pococks-agentic-engineering-workflow-just-copy-him--nQwJVHCtDDY|Matt Pocock’s Agentic Engineering Workflow (just copy him)]]", "[[extracts/youtube/ai-learning/2026-09-11-bdd-adr-prd-wtf-capturing-decisions-for-humans-and-ai-alike-michal-cichra-safe-i--504PvfXou5Y|BDD, ADR, PRD, WTF: Capturing Decisions for Humans and AI Alike — Michal Cichra, Safe Intelligence]]", "[[extracts/youtube/ai-learning/2026-09-11-full-workshop-setting-yourself-up-for-success-jason-liu-openai-codex--il1c1a2FufU|Full Workshop: Setting Yourself Up for Success —Jason Liu, OpenAI Codex]]", "[[extracts/youtube/ai-learning/2026-09-11-handoff-is-my-new-favourite-skill--dtAJ2dOd3ko|/handoff is my new favourite skill]]"]
+theme: "Skills e conhecimento para agentes"
 ---
 
 # I stopped using /grill-me for coding. Here’s what I use instead:

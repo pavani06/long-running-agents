@@ -18,6 +18,7 @@ claims: ["Graphify constrói o grafo em três passes: (1) extração determinís
 deep_dive: "medium"
 deep_dive_reason: "Explica a arquitetura dos três passes, traz um benchmark real de tokens e detalhes de integração via hook, mas é majoritariamente um tutorial de produto com segmentos promocionais e sem profundidade em harness, evals ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-this-claude-code-x-obsidian-agentic-os-will-be-the-new-meta--njHuj8OxIVI|This Claude Code x Obsidian Agentic OS Will Be The New Meta]]", "[[extracts/youtube/ai-learning/2026-09-11-mastering-claude-code-in-30-minutes--6eBSHbLKuN0|Mastering Claude Code in 30 minutes]]", "[[extracts/youtube/ai-learning/2026-09-11-code-with-claude-opening-keynote--EvtPBaaykdo|Code with Claude Opening Keynote]]", "[[extracts/youtube/ai-learning/2026-09-11-benchmarking-semantic-code-retrieval-on-claude-code-kuba-rogut-turbopuffer--zKk7sDMGDEQ|Benchmarking semantic code retrieval on Claude Code — Kuba Rogut, Turbopuffer]]", "[[extracts/youtube/ai-learning/2026-09-11-build-a-claude-knowledge-base-that-self-improves--ib74sLgjIBM|Build A Claude Knowledge Base That Self-Improves!]]", "[[extracts/youtube/ai-learning/2026-09-11-how-the-claude-code-team-uses-claude-code--S-sYlFiGFv8|How the Claude Code team uses Claude Code]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # This Open Source Repo Just Solved Claude Code's #1 Problem

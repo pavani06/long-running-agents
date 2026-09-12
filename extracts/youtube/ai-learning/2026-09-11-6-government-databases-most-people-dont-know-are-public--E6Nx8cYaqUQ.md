@@ -18,6 +18,7 @@ claims: ["Pedidos de patente nos EUA são publicados e pesquisáveis 18 meses ap
 deep_dive: "low"
 deep_dive_reason: "Listicle de divulgação geral sobre bases de dados públicas governamentais, sem densidade arquitetural nem relevância para harness, context-engineering, evals, agent-fleets ou governança de agentes de IA."
 relates-to: []
+theme: "Bases de Dados Governamentais Públicas"
 ---
 
 # 6 Government Databases Most People Don’t Know Are Public

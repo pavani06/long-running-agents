@@ -18,6 +18,7 @@ claims: ["Separe perguntas de baixa fidelidade (resolvíveis por Q&A) das de alt
 deep_dive: "medium"
 deep_dive_reason: "Contém heurísticas acionáveis e relevantes a context-engineering e model-selection (fidelidade de perguntas, dumb zone ~120K, handoff/PRD, paralelismo), mas é conteúdo instrucional de nível workflow com trechos promocionais e repetitivos, sem profundidade arquitetural em harness, evals ou agent-fleets."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-i-stopped-using-grill-me-for-coding-heres-what-i-use-instead--6BB6exR8Zd8|I stopped using /grill-me for coding. Here’s what I use instead:]]", "[[extracts/youtube/ai-learning/2026-09-11-matt-pococks-agentic-engineering-workflow-just-copy-him--nQwJVHCtDDY|Matt Pocock’s Agentic Engineering Workflow (just copy him)]]", "[[extracts/youtube/ai-learning/2026-09-11-so-i-tried-matt-s-skills--0oXOOlqVu5M|So I tried Matt's skills...]]", "[[extracts/youtube/ai-learning/2026-09-11-building-great-agent-skills-the-missing-manual--UNzCG3lw6O0|Building Great Agent Skills: The Missing Manual]]", "[[extracts/youtube/ai-learning/2026-09-11-full-walkthrough-workflow-for-ai-coding-matt-pocock---QFHIoCo-Ko|Full Walkthrough: Workflow for AI Coding — Matt Pocock]]", "[[extracts/youtube/ai-learning/2026-09-11-handoff-is-my-new-favourite-skill--dtAJ2dOd3ko|/handoff is my new favourite skill]]"]
+theme: "Skills e conhecimento para agentes"
 ---
 
 # 9 Things People Get Wrong With My /grill-* skills

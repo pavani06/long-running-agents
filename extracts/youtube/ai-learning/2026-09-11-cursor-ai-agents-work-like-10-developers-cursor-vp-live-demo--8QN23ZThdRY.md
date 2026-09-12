@@ -18,6 +18,7 @@ claims: ["Abra um novo chat para cada tarefa discreta; acima de ~80-90% da janel
 deep_dive: "medium"
 deep_dive_reason: "Há densidade razoável de dicas acionáveis sobre higiene de contexto, harness de autocorreção e automação headless, mas o tom é tutorial-promocional do próprio produto, sem profundidade arquitetural, de evals ou de governança que justificasse o tier alto."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-how-to-use-cursor-agent-for-beginners--2gBcO3ht0ws|How to use Cursor Agent for beginners]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-build-super-effective-ai-agents-full-tutorial-cursor-openai--MSO4qCiwTjQ|How to Build Super Effective AI AGENTS - FULL TUTORIAL | Cursor - OpenAI]]", "[[extracts/youtube/ai-learning/2026-09-11-l8-principal-s-agentic-engineering-setup-just-copy-him--8ZgpAXe5V5w|L8 Principal's Agentic Engineering Setup (just copy him)]]", "[[extracts/youtube/ai-learning/2026-09-11-agentic-engineering-explained-by-a-10x-developer--FU5_kpTAVDo|Agentic Engineering, explained by a 10x developer]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-build-your-entire-ai-workforce-in-one-afternoon-live-demo--oulVKbk0umo|How to Build Your Entire AI Workforce in One Afternoon (Live Demo)]]", "[[extracts/youtube/ai-learning/2026-09-11-ex-nasa-dev-reveals-his-agentic-engineering-workflow--xgkjtF89-44|Ex-NASA dev reveals his Agentic Engineering Workflow]]"]
+theme: "Agentes de IA No-Code"
 ---
 
 # Cursor AI Agents Work Like 10 Developers (Cursor VP Live Demo)

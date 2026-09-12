@@ -18,6 +18,7 @@ claims: ["O dashboard 'full' está sendo descontinuado; a versão 'light' portá
 deep_dive: "low"
 deep_dive_reason: "Trata-se de um anúncio promocional de roadmap de produto com decisões arquiteturais razoáveis mas convencionais (migração de backend e desacoplamento de serviço), sem densidade de insight sobre harness, context-engineering, evals, agent-fleets ou governança de agentes."
 relates-to: []
+theme: "Monitoramento Enterprise de SQL Server"
 ---
 
 # Performance Monitor is Going Enterprise

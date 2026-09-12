@@ -18,6 +18,7 @@ claims: ["Ative function hooks com CLAUDE_CODE_ENABLE_FUNCTION_HOOKS=1 claude, o
 deep_dive: "high"
 deep_dive_reason: "Alta densidade de mecanismos acionáveis e arquiteturalmente novos (middleware de tool calls, rewriting de input, stores de memória cross-session, gates humanos, UI do harness, auditoria) diretamente relevantes a harness-engineering, context-engineering, gates e governança, superando o trecho promocional intermediário."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-claude-code-best-practices-code-w-claude--gv0WHhKelSE|Claude Code best practices | Code w/ Claude]]", "[[extracts/youtube/ai-learning/2026-09-11-code-with-claude-opening-keynote--EvtPBaaykdo|Code with Claude Opening Keynote]]", "[[extracts/youtube/ai-learning/2026-09-11-this-claude-code-x-obsidian-agentic-os-will-be-the-new-meta--njHuj8OxIVI|This Claude Code x Obsidian Agentic OS Will Be The New Meta]]", "[[extracts/youtube/ai-learning/2026-09-11-mastering-claude-code-in-30-minutes--6eBSHbLKuN0|Mastering Claude Code in 30 minutes]]", "[[extracts/youtube/ai-learning/2026-09-11-build-a-proactive-agent-workflow-with-claude-code--eSP7PLTXNy8|Build a proactive agent workflow with Claude Code]]", "[[extracts/youtube/ai-learning/2026-09-11-i-tried-100-claude-code-skills-these-6-are-the-best--eRS3CmvrOvA|I Tried 100+ Claude Code Skills. These 6 Are The Best]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # Anthropic Just Dropped the Biggest Claude Code Update Yet

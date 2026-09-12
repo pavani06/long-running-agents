@@ -18,6 +18,7 @@ claims: ["Combine palavras-chave pesquisáveis com um resultado específico e in
 deep_dive: "low"
 deep_dive_reason: "Conteúdo promocional e superficial sobre marketing no YouTube, sem densidade técnica, arquitetural ou relevância para harness, evals, context-engineering ou engenharia de agentes."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-the-exact-system-to-go-from-0-800-000-on-youtube---5PZj_Wshk0|The EXACT System To Go From $0-$800,000 On YouTube]]", "[[extracts/youtube/ai-learning/2026-09-11-5-brand-new-digital-marketing-strategies-for-2025-biggest-change-yet--4bZUZeeiacU|5 BRAND NEW Digital Marketing Strategies for 2025 (BIGGEST Change Yet!)]]", "[[extracts/youtube/ai-learning/2026-09-11-zero-click-marketing-how-founders-win-when-google-social-llms-stop-sending-traff--MBxhzARQNeo|Zero-Click Marketing: How Founders Win When Google, Social & LLMs Stop Sending Traffic]]"]
+theme: "Crescimento e marketing com IA"
 ---
 
 # YouTube is now on EASY MODE for business owners (2025 algorithm)

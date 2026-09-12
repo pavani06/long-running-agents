@@ -18,6 +18,7 @@ claims: ["Trate falhas de tool call de modelos abertos como problema de harness,
 deep_dive: "high"
 deep_dive_reason: "Densidade alta e acionável de engenharia de harness: taxonomia concreta dos erros de tool call, padrão de migrations determinísticas, mecanismo de repair note com efeito comprovado no comportamento do modelo e dados de produção em escala trilionária — diretamente relevante a harness, error-handling e context-engineering, apesar do viés promocional do produto."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-the-prompting-playbook--G2B0YWuJUgI|The prompting playbook]]", "[[extracts/youtube/ai-learning/2026-09-11-anthropic-workshop-build-agents-that-run-for-hours-ash-prabaker-andrew-wilson--mR-WAvEPRwE|Anthropic Workshop: Build Agents That Run for Hours — Ash Prabaker & Andrew Wilson]]", "[[extracts/youtube/ai-learning/2026-09-11-how-lovable-self-improves-every-hour-benjamin-verbeek-lovable--KA5kPbdkK2E|How Lovable self-improves every hour — Benjamin Verbeek, Lovable]]", "[[extracts/youtube/ai-learning/2026-09-11-build-hour-gpt-5--ITMouQ_EuXI|Build Hour: GPT-5]]", "[[extracts/youtube/ai-learning/2026-09-11-how-the-claude-code-team-uses-claude-code--S-sYlFiGFv8|How the Claude Code team uses Claude Code]]", "[[extracts/youtube/ai-learning/2026-09-11-why-the-harness-matters-more-than-the-model-yc-paper-club--n9xKblqyQ28|Why The Harness Matters More Than The Model | YC Paper Club]]"]
+theme: "Processo de Engenharia Agêntica"
 ---
 
 # how did we make deepseek outperform opus 4.7?

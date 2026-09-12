@@ -18,6 +18,7 @@ claims: ["Não entre em negociação em que você absolutamente precisa do acord
 deep_dive: "low"
 deep_dive_reason: "Conteúdo é uma aula geral de negociação de negócios com zero densidade técnica em IA, harness, context-engineering, evals ou arquitetura de agentes, sendo inaplicável aos critérios de tier alto."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-the-harvard-principles-of-negotiation--RfTalFEeKKE|The Harvard Principles of Negotiation]]"]
+theme: "Disciplina em Negociação"
 ---
 
 # Conducting Effective Negotiations

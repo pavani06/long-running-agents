@@ -18,6 +18,7 @@ claims: ["Forneça o máximo de detalhes possível na descrição do negócio no
 deep_dive: "low"
 deep_dive_reason: "É uma review de consumo de construtores de sites com IA, promocional no final e sem densidade de insight arquitetural sobre harness, context-engineering, evals, agent-fleets ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-windsurf-ai-made-me-rank-1-instantly-free-tool--5XaXLLA4gK0|Windsurf AI Made Me Rank #1 Instantly (FREE TOOL!) 🚀]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-use-ai-to-build-your-saas-startup-lovable-supabase--mJwPvyc4-rk|How to use AI to build your SaaS startup (Lovable, Supabase)]]", "[[extracts/youtube/ai-learning/2026-09-11-i-built-a-4589-website-in-minutes-with-bolt-new-and-cursor-ai--KqiQ4kC8OJI|I Built a $4589 Website in Minutes with Bolt.new and Cursor AI!]]"]
+theme: "Crescimento e marketing com IA"
 ---
 
 # The Best and Worst AI Website Builders (godaddy, mixo, 10Web, elementor, etc)

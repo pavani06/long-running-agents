@@ -18,6 +18,7 @@ claims: ["Exporte as 'memóries' acumuladas do ChatGPT e cole nas preferências 
 deep_dive: "medium"
 deep_dive_reason: "Há densidade razoável de insight acionável em injeção de contexto persistente, protocolos por gatilho e conhecimento silado, mas a técnica é essencialmente context engineering de nível usuário já conhecida, sem novidade em harness, evals ou arquitetura de agentes, e com tom parcialmente promocional."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-the-master-prompt-method-build-your-ai-operating-system--yNpbnrlAFzA|The Master Prompt Method: Build Your AI Operating System]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-get-ahead-of-99-of-people-with-ai--0tLHVyd7WtM|How to Get Ahead of 99% of People (with AI)]]", "[[extracts/youtube/ai-learning/2026-09-11-state-of-the-art-prompting-for-ai-agents--DL82mGde6wo|State-Of-The-Art Prompting For AI Agents]]", "[[extracts/youtube/ai-learning/2026-09-11-prompting-101-code-w-claude--ysPbXH0LpIE|Prompting 101 | Code w/ Claude]]", "[[extracts/youtube/ai-learning/2026-09-11-5-simple-but-weird-chatgpt-5-tricks-to-get-a-10x-better-response--emV9Wo_UuGQ|5 simple (but weird) ChatGPT-5 tricks to get a 10x better response]]", "[[extracts/youtube/ai-learning/2026-09-11-google-s-9-hour-ai-prompt-engineering-course-in-20-minutes--p09yRj47kNM|Google's 9 Hour AI Prompt Engineering Course In 20 Minutes]]"]
+theme: "Stack de IA e Prompting"
 ---
 
 # The Master Prompt Method: Unlock AI’s Full Potential (Part 1)

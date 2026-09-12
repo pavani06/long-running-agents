@@ -18,6 +18,7 @@ claims: ["É possível conectar o Claude a contas bancárias PF/PJ brasileiras a
 deep_dive: "low"
 deep_dive_reason: "Tutorial passo a passo introdutório e parcialmente promocional (curso pago), sem densidade de insight arquitetural, harness, evals ou novidade além da configuração básica de um conector MCP."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-building-ai-agents-with-claude-demo--_al9YYnF2xI|Building AI Agents with Claude! (Demo)]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-instantly-build-ai-agents-in-n8n-using-claude--uAtSMEBosGU|How to INSTANTLY Build AI Agents in N8N Using Claude]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-instantly-generate-n8n-workflows-using-claude--9tj4MxCV6g0|How to INSTANTLY Generate N8N Workflows Using Claude]]", "[[extracts/youtube/ai-learning/2026-09-11-claude-mcp-how-to-modify-your-servers-to-the-next-level--aIAxWr5ix1o|Claude MCP - How To Modify Your Servers To The Next Level]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # INTEGRE o CLAUDE COWORK com SEU BANCO (OpenFinance - PJ ou PF)

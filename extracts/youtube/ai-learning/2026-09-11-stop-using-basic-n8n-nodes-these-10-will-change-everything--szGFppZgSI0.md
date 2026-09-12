@@ -18,6 +18,7 @@ claims: ["Nós comunitários do n8n exigem instância self-hosted e aceitar risc
 deep_dive: "low"
 deep_dive_reason: "Vídeo-tutorial promocional em formato lista que apresenta ferramentas com dicas práticas, mas sem densidade arquitetural, novidade ou relevância para harness, context-engineering, evals ou governança de agentes."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-the-easiest-way-to-use-community-nodes-in-n8n--WI8ikp5YyRw|The Easiest Way to Use Community Nodes in n8n]]", "[[extracts/youtube/ai-learning/2026-09-11-n8n-6-exemplos-praticos-ia-chatbots-c-hugo-autotic--DgAu_oJ2-TA|N8N: 6 exemplos práticos (IA & Chatbots) c/ Hugo Autotic]]", "[[extracts/youtube/ai-learning/2026-09-11-5-simple-ai-agents-you-must-have-beginners-guide--WLvQCIUWebs|5 simple AI Agents you must have - beginners guide]]", "[[extracts/youtube/ai-learning/2026-09-11-3-ai-workflows-step-by-step-beginner-s-guide-to-n8n--06Beyp_iDL0|3 AI Workflows Step-by-Step (Beginner's Guide to n8n)]]", "[[extracts/youtube/ai-learning/2026-09-11-10-insane-ai-agent-use-cases-in-n8n-steal-these--Dt6u-yFEpsk|10 Insane AI Agent Use Cases in n8n! (steal these)]]", "[[extracts/youtube/ai-learning/2026-09-11-n8n-full-tutorial-building-ai-agents-in-2025-for-beginners--ZbIVOy_GPyQ|N8N Full Tutorial: Building AI Agents in 2025 for Beginners!]]"]
+theme: "Agentes de IA No-Code"
 ---
 
 # STOP Using Basic n8n Nodes! These 10 Will Change Everything

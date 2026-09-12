@@ -18,6 +18,7 @@ claims: ["Estruture prompts com as cinco seções CRAFT (Context, Role, Action, 
 deep_dive: "low"
 deep_dive_reason: "Conteúdo introdutório de prompt engineering para usuários casuais, com trechos promocionais (captura de e-mail, links), sem densidade de insight arquitetural nem relevância para harness, evals, context-engineering avançado, agent-fleets ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-master-the-perfect-chatgpt-prompt-formula-in-just-8-minutes--jC4v5AS4RIM|Master the Perfect ChatGPT Prompt Formula (in just 8 minutes)!]]", "[[extracts/youtube/ai-learning/2026-09-11-next-level-prompts-10-mins-into-advanced-prompting--69bH4IHZivs|\"Next Level Prompts?\" - 10 mins into advanced prompting]]", "[[extracts/youtube/ai-learning/2026-09-11-5-simple-but-weird-chatgpt-5-tricks-to-get-a-10x-better-response--emV9Wo_UuGQ|5 simple (but weird) ChatGPT-5 tricks to get a 10x better response]]", "[[extracts/youtube/ai-learning/2026-09-11-state-of-the-art-prompting-for-ai-agents--DL82mGde6wo|State-Of-The-Art Prompting For AI Agents]]", "[[extracts/youtube/ai-learning/2026-09-11-google-s-9-hour-ai-prompt-engineering-course-in-20-minutes--p09yRj47kNM|Google's 9 Hour AI Prompt Engineering Course In 20 Minutes]]", "[[extracts/youtube/ai-learning/2026-09-11-the-prompting-playbook--G2B0YWuJUgI|The prompting playbook]]"]
+theme: "Stack de IA e Prompting"
 ---
 
 # The best ChatGPT Prompt I've ever created - I spent 2 months curating this prompt to write prompts

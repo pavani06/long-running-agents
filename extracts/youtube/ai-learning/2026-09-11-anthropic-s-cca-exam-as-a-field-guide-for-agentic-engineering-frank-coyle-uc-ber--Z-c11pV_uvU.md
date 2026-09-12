@@ -18,6 +18,7 @@ claims: ["Verificar sempre o stop_reason no loop do agente (tool_use, end_turn, 
 deep_dive: "medium"
 deep_dive_reason: "Oferece anti-padrões acionáveis relevantes a harness e context-engineering (stop_reason, isolamento de contexto, compaction, batch mode), mas em tom introdutório de visão geral do exame, sem novidade arquitetural profunda."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-ex-nasa-dev-reveals-his-agentic-engineering-workflow--xgkjtF89-44|Ex-NASA dev reveals his Agentic Engineering Workflow]]", "[[extracts/youtube/ai-learning/2026-09-11-how-we-build-effective-agents-barry-zhang-anthropic--D7_ipDqhtwk|How We Build Effective Agents: Barry Zhang, Anthropic]]", "[[extracts/youtube/ai-learning/2026-09-11-loop-engineering-to-graph-engineering--BOOfy3Yshtw|Loop Engineering to Graph Engineering]]", "[[extracts/youtube/ai-learning/2026-09-11-boris-cherny-we-cut-80-of-claude-codes-prompt--qyPCVqFUyDo|Boris Cherny: We Cut 80% of Claude Code’s Prompt]]", "[[extracts/youtube/ai-learning/2026-09-11-code-with-claude-opening-keynote--EvtPBaaykdo|Code with Claude Opening Keynote]]", "[[extracts/youtube/ai-learning/2026-09-11-agentic-engineering-working-with-ai-not-just-using-it-brendan-o-leary--BEKc4P87XKo|Agentic Engineering: Working With AI, Not Just Using It — Brendan O'Leary]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # Anthropic's CCA Exam as a Field-Guide for Agentic Engineering — Frank Coyle, UC Berkeley

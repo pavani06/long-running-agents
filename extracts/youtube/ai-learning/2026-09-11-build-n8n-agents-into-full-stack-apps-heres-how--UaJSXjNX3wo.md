@@ -18,6 +18,7 @@ claims: ["Google Trends retorna RSS em XML bagunçado que precisa ser parseado c
 deep_dive: "low"
 deep_dive_reason: "Tutorial introdutório e fortemente promocional (patrocínio Hostinger e upsell de comunidade) com padrão arquitetural comum (pipeline de scraping + enriquecimento LLM), sem densidade ou novidade relevante em harness, context-engineering, evals, agent-fleets ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-5-simple-ai-agents-you-must-have-beginners-guide--WLvQCIUWebs|5 simple AI Agents you must have - beginners guide]]", "[[extracts/youtube/ai-learning/2026-09-11-build-everything-with-ai-agents-here-s-how--XVO3zsHdvio|Build Everything with AI Agents: Here's How]]", "[[extracts/youtube/ai-learning/2026-09-11-i-built-a-marketing-team-with-1-ai-agent-and-no-code-free-n8n-template--ldETapkr8Hg|I Built a Marketing Team with 1 AI Agent and No Code (free n8n template)]]", "[[extracts/youtube/ai-learning/2026-09-11-build-anything-with-lovable-n8n-ai-agents-beginner-s-guide--kUpTUEwKnrk|Build Anything with Lovable + n8n AI Agents (beginner's guide)]]", "[[extracts/youtube/ai-learning/2026-09-11-n8n-6-exemplos-praticos-ia-chatbots-c-hugo-autotic--DgAu_oJ2-TA|N8N: 6 exemplos práticos (IA & Chatbots) c/ Hugo Autotic]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-build-a-startup-team-of-ai-agents-n8n-openai-feedhive--Hm0DZtiKUI8|How To Build a Startup Team of AI Agents (n8n, OpenAI, FeedHive)]]"]
+theme: "Agentes de IA No-Code"
 ---
 
 # Build n8n agents into full-stack apps, here’s how

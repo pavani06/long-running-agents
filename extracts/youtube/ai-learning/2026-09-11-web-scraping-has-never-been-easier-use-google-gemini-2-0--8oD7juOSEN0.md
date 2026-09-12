@@ -18,6 +18,7 @@ claims: ["Acesse aistudio.google.com, selecione o recurso 'stream real time', es
 deep_dive: "low"
 deep_dive_reason: "Demo tutorial superficial e de tom promocional, mostrando casos de uso básicos de extração de dados por visão de tela sem densidade de insight arquitetural, harness, evals ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-google-gemini-2-0-is-amazing-realtime-stream-tested-multimodal-api--38N8pgnNANQ|Google Gemini 2.0 is AMAZING - Realtime Stream TESTED | Multimodal API]]", "[[extracts/youtube/ai-learning/2026-09-11-novo-chatgpt-acessa-camera-e-tela-do-celular-e-pc--cN6NraQXwHA|NOVO! CHATGPT acessa CÂMERA e TELA do Celular e PC 🤯🤯]]", "[[extracts/youtube/ai-learning/2026-09-11-automatize-todo-o-seu-trabalho-com-a-ia-project-mariner-do-google-incrivel--E0Jbaikf0o4|AUTOMATIZE TODO O SEU TRABALHO com a IA “Project Mariner” do GOOGLE - INCRÍVEL!]]", "[[extracts/youtube/ai-learning/2026-09-11-i-got-a-private-lesson-on-google-s-new-nano-banana-ai-model--3Zvk4AMCrG8|I got a private lesson on Google's NEW Nano Banana AI Model]]", "[[extracts/youtube/ai-learning/2026-09-11-create-anything-with-nano-banana-pro-heres-how--2VktR2fAmF0|Create Anything with Nano Banana Pro, Here’s How]]"]
+theme: "Stack de IA e Prompting"
 ---
 
 # Web Scraping Has Never Been Easier  - Use Google Gemini 2.0

@@ -18,6 +18,7 @@ claims: ["Esconda recursos radicais no runtime e mantenha a superfície da lingu
 deep_dive: "medium"
 deep_dive_reason: "Documento histórico denso em lições acionáveis de governança de plataforma, estratégia de adoção e engenharia de release, mas sem relevância direta a harness, context-engineering, evals ou agentes de IA."
 relates-to: []
+theme: "Evolução da Plataforma Java"
 ---
 
 # The Java Story  |  The Official Documentary

@@ -18,6 +18,7 @@ claims: ["Prompt chaining melhora acurácia e reduz alucinações porque cada ag
 deep_dive: "medium"
 deep_dive_reason: "Conteúdo acionável com implementações práticas no n8n (persistência de estado no loop, gate de 'finished', seleção de modelo por etapa), mas os quatro padrões são bem conhecidos e sem novidade arquitetural, avaliação ou governança em profundidade."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-n8n-full-tutorial-building-ai-agents-in-2025-for-beginners--ZbIVOy_GPyQ|N8N Full Tutorial: Building AI Agents in 2025 for Beginners!]]", "[[extracts/youtube/ai-learning/2026-09-11-5-simple-ai-agents-you-must-have-beginners-guide--WLvQCIUWebs|5 simple AI Agents you must have - beginners guide]]", "[[extracts/youtube/ai-learning/2026-09-11-3-ai-workflows-step-by-step-beginner-s-guide-to-n8n--06Beyp_iDL0|3 AI Workflows Step-by-Step (Beginner's Guide to n8n)]]", "[[extracts/youtube/ai-learning/2026-09-11-i-built-the-ultimate-team-of-ai-agents-in-n8n-with-no-code-free-template--9FuNtfsnRNo|I Built the Ultimate Team of AI Agents in n8n With No Code (Free Template)]]", "[[extracts/youtube/ai-learning/2026-09-11-n8n-6-exemplos-praticos-ia-chatbots-c-hugo-autotic--DgAu_oJ2-TA|N8N: 6 exemplos práticos (IA & Chatbots) c/ Hugo Autotic]]", "[[extracts/youtube/ai-learning/2026-09-11-top-4-must-have-ai-agents-for-beginners-easy-setup-guide--4keUCOVpsxQ|Top 4 Must-Have AI Agents for Beginners – Easy Setup Guide]]"]
+theme: "Agentes de IA No-Code"
 ---
 
 # 4 Agentic Frameworks for More Efficient Workflows in n8n

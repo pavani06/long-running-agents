@@ -18,6 +18,7 @@ claims: ["Uma membresia leve de US$29/mês pode substituir integralmente a renda
 deep_dive: "low"
 deep_dive_reason: "Conteúdo promocional de marketing e monetização de produtos digitais, superficial e sem qualquer densidade técnica, arquitetural ou relacionada a agentes de IA, harness, evals ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-the-exact-system-to-go-from-0-800-000-on-youtube---5PZj_Wshk0|The EXACT System To Go From $0-$800,000 On YouTube]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-do-digital-marketing-with-0--AtZiJzQSH7k|How to do Digital Marketing with $0]]", "[[extracts/youtube/ai-learning/2026-09-11-5-brand-new-digital-marketing-strategies-for-2025-biggest-change-yet--4bZUZeeiacU|5 BRAND NEW Digital Marketing Strategies for 2025 (BIGGEST Change Yet!)]]", "[[extracts/youtube/ai-learning/2026-09-11-the-death-of-the-personal-brand-the-future-of-creative-work--RPVxwzJtp4o|The Death Of The Personal Brand (& The Future Of Creative Work)]]"]
+theme: "Crescimento e marketing com IA"
 ---
 
 # 7 TINY Digital Products Guaranteed To Sell in 2025

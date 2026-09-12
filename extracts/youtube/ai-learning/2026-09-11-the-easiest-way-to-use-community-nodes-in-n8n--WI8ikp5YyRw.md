@@ -18,6 +18,7 @@ claims: ["É necessário rodar n8n versão 1.94 ou posterior para usar community
 deep_dive: "low"
 deep_dive_reason: "É um tutorial procedural de produto (instalação de nodes no n8n) com passos práticos mas sem densidade de insight arquitetural, novidade ou relevância para harness, evals ou governança de agentes."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-stop-using-basic-n8n-nodes-these-10-will-change-everything--szGFppZgSI0|STOP Using Basic n8n Nodes! These 10 Will Change Everything]]", "[[extracts/youtube/ai-learning/2026-09-11-3-ai-workflows-step-by-step-beginner-s-guide-to-n8n--06Beyp_iDL0|3 AI Workflows Step-by-Step (Beginner's Guide to n8n)]]"]
+theme: "Agentes de IA No-Code"
 ---
 
 # The Easiest Way to Use Community Nodes in n8n

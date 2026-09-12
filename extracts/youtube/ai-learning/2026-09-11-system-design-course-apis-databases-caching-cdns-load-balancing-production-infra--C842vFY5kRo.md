@@ -18,6 +18,7 @@ claims: ["Empresas pagam salários sênior por decisões arquiteturais e tradeof
 deep_dive: "low"
 deep_dive_reason: "Conteúdo é um curso introdutório padrão de system design (bancos, load balancing, APIs), útil mas redundante, sem novidade e sem relevância para tópicos específicos de agentes de IA como harness, context-engineering, evals ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-system-design-explained-apis-databases-caching-cdns-load-balancing-production-in--oYxTTirKY8M|System Design Explained: APIs, Databases, Caching, CDNs, Load Balancing & Production Infra]]", "[[extracts/youtube/ai-learning/2026-09-11-why-the-best-software-engineers-focus-on-system-design--LeUUxLRdvho|Why The Best Software Engineers Focus On System Design]]", "[[extracts/youtube/ai-learning/2026-09-11-google-aws-veteran-what-top-tier-software-architects-do-differently--F8X9_Dp3ZUk|Google & AWS Veteran: What Top Tier Software Architects Do Differently]]"]
+theme: "Processo de Engenharia Agêntica"
 ---
 
 # System Design Course – APIs, Databases, Caching, CDNs, Load Balancing & Production Infra

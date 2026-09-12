@@ -18,6 +18,7 @@ claims: ["Use auto mode (shift+tab) no Claude Code em vez de modo manual de apro
 deep_dive: "high"
 deep_dive_reason: "Apresenta arquitetura acionável e nova de verificação agent-native (contratos de dados no DOM, invariantes, sondas, três superfícies, evidências gravadas) combinada a práticas de context-engineering (HTML vs markdown) e harness usadas em produção pela equipe do Claude Code."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-how-the-claude-code-team-uses-claude-code--S-sYlFiGFv8|How the Claude Code team uses Claude Code]]", "[[extracts/youtube/ai-learning/2026-09-11-claude-code-best-practices-code-w-claude--gv0WHhKelSE|Claude Code best practices | Code w/ Claude]]", "[[extracts/youtube/ai-learning/2026-09-11-boris-cherny-we-cut-80-of-claude-codes-prompt--qyPCVqFUyDo|Boris Cherny: We Cut 80% of Claude Code’s Prompt]]", "[[extracts/youtube/ai-learning/2026-09-11-mastering-claude-code-in-30-minutes--6eBSHbLKuN0|Mastering Claude Code in 30 minutes]]", "[[extracts/youtube/ai-learning/2026-09-11-claude-codes-new-intent-md-what-is-it--LoMOPj-lO8U|Claude Codes New INTENT.MD, What is It?]]", "[[extracts/youtube/ai-learning/2026-09-11-loop-engineering-to-graph-engineering--BOOfy3Yshtw|Loop Engineering to Graph Engineering]]", "[[extracts/youtube/ai-learning/2026-09-11-thariq-claude-code-anthropic--IHbsfvbfAto|Thariq (Claude Code) @ Anthropic]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # How we Claude Code

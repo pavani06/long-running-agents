@@ -18,6 +18,7 @@ claims: ["Conectores respeitam e reforçam as permissões existentes do usuário
 deep_dive: "medium"
 deep_dive_reason: "Demo de lançamento com detalhes arquiteturais genuínos (reescrita de queries, enforcement de permissões em tempo real, conectores MCP publicáveis), mas tom majoritariamente promocional e sem profundidade em harness, evals ou design de agent-fleets."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-7-mind-blowing-new-use-cases-for-chatgpt-in-2025-big-changes-ahead--8IUkOAvMP-M|7 Mind-Blowing NEW Use Cases For ChatGPT in 2025 (Big Changes Ahead)]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-get-ahead-of-99-of-people-with-ai--0tLHVyd7WtM|How to Get Ahead of 99% of People (with AI)]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-understand-the-next-wave-of-ai-before-everyone-else-tibo-interview--4qjEgPojjzM|How to Understand the Next Wave of AI Before Everyone Else | Tibo Interview]]", "[[extracts/youtube/ai-learning/2026-09-11-novo-chatgpt-acessa-camera-e-tela-do-celular-e-pc--cN6NraQXwHA|NOVO! CHATGPT acessa CÂMERA e TELA do Celular e PC 🤯🤯]]", "[[extracts/youtube/ai-learning/2026-09-11-learn-80-of-notebooklm-in-under-13-minutes--EOmgC3-hznM|Learn 80% of NotebookLM in Under 13 Minutes!]]", "[[extracts/youtube/ai-learning/2026-09-11-build-ai-agent-workforce-multi-agent-framework-with-metagpt-chatdev--pJwR5pv0_gs|Build AI agent workforce - Multi agent framework with MetaGPT & chatDev]]"]
+theme: "Stack de IA e Prompting"
 ---
 
 # ChatGPT for Business Updates

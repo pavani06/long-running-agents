@@ -18,6 +18,7 @@ claims: ["MCP foi introduzido pela Anthropic no fim de 2024 como um padrão aber
 deep_dive: "medium"
 deep_dive_reason: "Explainer introdutório com boa clareza arquitetural (primitivas do MCP, descoberta dinâmica em runtime, camadas sobre APIs), mas sem novidade nem profundidade em harness, evals, governança ou implementação de produção."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-model-context-protocol-mcp-overview-why-you-care--1Pf2rW5FsqQ|Model Context Protocol (MCP) Overview - Why You Care!]]", "[[extracts/youtube/ai-learning/2026-09-11-mcp-just-got-a-whole-lot-better--BqRhBq-_kgE|MCP Just Got a Whole Lot Better]]", "[[extracts/youtube/ai-learning/2026-09-11-n8n-mcp-simplified-0-hype-what-why-how-of-mcp---gtlrI1TqZE|N8N MCP Simplified | 0% Hype | What, Why & How of MCP]]", "[[extracts/youtube/ai-learning/2026-09-11-how-uber-runs-60-000-ai-agent-tasks-per-week-with-mcp--yVqMxBahjfA|How Uber Runs 60,000 AI Agent Tasks Per Week With MCP]]", "[[extracts/youtube/ai-learning/2026-09-11-the-agent-ready-web-simplify-user-actions-with-webmcp-tara-agyemang-google--ghJmWQCIHRM|The agent-ready web: Simplify user actions with WebMCP — Tara Agyemang, Google]]", "[[extracts/youtube/ai-learning/2026-09-11-unlock-autonomous-ai-agents-with-auth-md-michael-grinich-mcp-night-agent-mode-ke--Dqp_b8GHLXU|Unlock Autonomous AI Agents with auth.md, Michael Grinich | MCP Night: Agent Mode Keynote]]"]
+theme: "MCP e Interfaces de Agentes"
 ---
 
 # MCP vs API: Simplifying AI Agent Integration with External Data

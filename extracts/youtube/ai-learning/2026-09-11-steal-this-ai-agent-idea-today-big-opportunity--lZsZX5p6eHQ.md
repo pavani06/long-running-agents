@@ -18,6 +18,7 @@ claims: ["Temperatura 1.1 na Realtime API torna a conversa mais natural e variá
 deep_dive: "low"
 deep_dive_reason: "Demo promocional com walkthrough raso de código: apenas duas dicas acionáveis pontuais (temperatura 1.1 e injeção de extração no system message) sobre um pipeline Twilio+Realtime+Whisper já bem conhecido, sem novidade nem densidade arquitetural relevante a harness, evals ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-how-to-build-your-entire-ai-workforce-in-one-afternoon-live-demo--oulVKbk0umo|How to Build Your Entire AI Workforce in One Afternoon (Live Demo)]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-build-super-effective-ai-agents-full-tutorial-cursor-openai--MSO4qCiwTjQ|How to Build Super Effective AI AGENTS - FULL TUTORIAL | Cursor - OpenAI]]", "[[extracts/youtube/ai-learning/2026-09-11-10-insane-ai-agent-use-cases-in-n8n-steal-these--Dt6u-yFEpsk|10 Insane AI Agent Use Cases in n8n! (steal these)]]", "[[extracts/youtube/ai-learning/2026-09-11-from-zero-to-your-first-ai-agent-in-25-minutes-no-coding--EH5jx5qPabU|From Zero to Your First AI Agent in 25 Minutes (No Coding)]]", "[[extracts/youtube/ai-learning/2026-09-11-como-automatizei-um-escritorio-de-advocacia-com-6-agentes-i-a--bFnY2tONtSs|Como Automatizei um Escritório de Advocacia com 6 Agentes I.A]]", "[[extracts/youtube/ai-learning/2026-09-11-build-everything-with-ai-agents-here-s-how--XVO3zsHdvio|Build Everything with AI Agents: Here's How]]"]
+theme: "Agentes de IA No-Code"
 ---
 
 # Steal This AI AGENT Idea Today - BIG OPPORTUNITY!

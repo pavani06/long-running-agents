@@ -18,6 +18,7 @@ claims: ["Para cada tipo de serviço existe um servidor MCP específico que fala
 deep_dive: "medium"
 deep_dive_reason: "Explicação arquitetural clara e didática do MCP (reflexão, mapeamento cliente-servidor, padrão sandbox local, gateway via APIM), mas é conteúdo introdutório e amplamente conhecido, sem técnicas novas em harness, evals ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-mcp-vs-api-simplifying-ai-agent-integration-with-external-data--7j1t3UZA1TY|MCP vs API: Simplifying AI Agent Integration with External Data]]", "[[extracts/youtube/ai-learning/2026-09-11-n8n-mcp-simplified-0-hype-what-why-how-of-mcp---gtlrI1TqZE|N8N MCP Simplified | 0% Hype | What, Why & How of MCP]]", "[[extracts/youtube/ai-learning/2026-09-11-mcp-just-got-a-whole-lot-better--BqRhBq-_kgE|MCP Just Got a Whole Lot Better]]", "[[extracts/youtube/ai-learning/2026-09-11-how-uber-runs-60-000-ai-agent-tasks-per-week-with-mcp--yVqMxBahjfA|How Uber Runs 60,000 AI Agent Tasks Per Week With MCP]]", "[[extracts/youtube/ai-learning/2026-09-11-the-agent-ready-web-simplify-user-actions-with-webmcp-tara-agyemang-google--ghJmWQCIHRM|The agent-ready web: Simplify user actions with WebMCP — Tara Agyemang, Google]]", "[[extracts/youtube/ai-learning/2026-09-11-claude-mcp-how-to-modify-your-servers-to-the-next-level--aIAxWr5ix1o|Claude MCP - How To Modify Your Servers To The Next Level]]"]
+theme: "MCP e Interfaces de Agentes"
 ---
 
 # Model Context Protocol (MCP) Overview - Why You Care!

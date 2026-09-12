@@ -18,6 +18,7 @@ claims: ["Peça: iniciar o pedido ativa um processo mental e emocional que come�
 deep_dive: "low"
 deep_dive_reason: "Discurso motivacional genérico sobre metas e pedir, sem densidade de insight técnico, arquitetural ou novidade relevante para harness, context-engineering, evals, agent-fleets, governança ou ontologia de agentes."
 relates-to: []
+theme: "A Arte de Pedir"
 ---
 
 # How to Get Whatever You Want

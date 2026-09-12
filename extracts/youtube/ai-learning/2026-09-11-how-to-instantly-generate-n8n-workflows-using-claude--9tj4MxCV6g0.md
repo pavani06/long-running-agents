@@ -18,6 +18,7 @@ claims: ["Configure um Claude Project com instruções de sistema (prompt XML) e
 deep_dive: "low"
 deep_dive_reason: "Tutorial promocional de agência com um único padrão replicável (projeto Claude + base de exemplos JSON) apresentado em demos superficiais, sem profundidade em harness, evals, arquitetura ou governança."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-how-to-instantly-build-ai-agents-in-n8n-using-claude--uAtSMEBosGU|How to INSTANTLY Build AI Agents in N8N Using Claude]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-create-any-n8n-workflow-using-chatgpt--lZuxqbw8IX4|How to create any n8n workflow using ChatGPT]]", "[[extracts/youtube/ai-learning/2026-09-11-build-everything-with-ai-agents-here-s-how--XVO3zsHdvio|Build Everything with AI Agents: Here's How]]", "[[extracts/youtube/ai-learning/2026-09-11-mastering-claude-code-in-30-minutes--6eBSHbLKuN0|Mastering Claude Code in 30 minutes]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-use-ai-to-write-viral-reel-scripts-claude-projects-tutorial--uc1lUchiaJ0|How To Use AI to Write Viral Reel Scripts - Claude Projects Tutorial]]", "[[extracts/youtube/ai-learning/2026-09-11-how-the-claude-code-team-uses-claude-code--S-sYlFiGFv8|How the Claude Code team uses Claude Code]]", "[[extracts/youtube/ai-learning/2026-09-11-integre-o-claude-cowork-com-seu-banco-openfinance-pj-ou-pf--i_AjyQmYvbE|INTEGRE o CLAUDE COWORK com SEU BANCO (OpenFinance - PJ ou PF)]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # How to INSTANTLY Generate N8N Workflows Using Claude

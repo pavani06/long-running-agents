@@ -18,6 +18,7 @@ claims: ["Instale via npm e rode `openwiki init` para gerar a documentação ini
 deep_dive: "low"
 deep_dive_reason: "É um walkthrough promocional de lançamento com passos de uso básicos e repetitivos, sem densidade de insight arquitetural, evals ou novidade conceitual além do próprio produto."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-building-docs-for-agents-not-humans-inside-openwiki--XNX-1h2K-9U|Building Docs for Agents, Not Humans: Inside OpenWiki]]", "[[extracts/youtube/ai-learning/2026-09-11-openwiki-brains-general-purpose-memory-for-agents--sBg90v2qfas|OpenWiki Brains, general-purpose memory for agents]]", "[[extracts/youtube/ai-learning/2026-09-11-the-best-ai-agents-need-less-code-than-you-think--YqjR4vQwbTc|The best AI agents need less code than you think]]", "[[extracts/youtube/ai-learning/2026-09-11-the-agent-for-your-agent--VKFKyrrK-Iw|The Agent for Your Agent.]]", "[[extracts/youtube/ai-learning/2026-09-11-deep-agents-explained--GbzEDgcuGJU|Deep Agents Explained]]", "[[extracts/youtube/ai-learning/2026-09-11-how-i-automate-my-own-job-at-hugging-face-using-agents-niels-rogge-hugging-face--FLUoowDJg4I|How I automate my own job at Hugging Face using agents — Niels Rogge, Hugging Face]]"]
+theme: "Skills e conhecimento para agentes"
 ---
 
 # Introducing OpenWiki, an open source agent for repo documentation

@@ -18,6 +18,7 @@ claims: ["Defina o orquestrador/supervisor e cada sub-agente em arquivos YAML se
 deep_dive: "medium"
 deep_dive_reason: "É uma introdução 101 com detalhes acionáveis reais (estrutura YAML, políticas de budget/tool calls, HITL, gateway de governança), mas sem profundidade arquitetural ou novidade conceitual além do que a ferramenta expõe, com tom parcialmente promocional."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-harnesses-in-ai-a-deep-dive-tejas-kumar-ibm--C_GG5g38vLU|Harnesses in AI: A Deep Dive — Tejas Kumar, IBM]]", "[[extracts/youtube/ai-learning/2026-09-11-harness-engineering-what-separates-top-agentic-engineers-right-now--ulNsa0sD8N0|Harness Engineering: What Separates Top Agentic Engineers Right Now]]", "[[extracts/youtube/ai-learning/2026-09-11-introducing-managed-deep-agents-interrupt-26--LdQpoK2TzSo|Introducing Managed Deep Agents | Interrupt 26]]", "[[extracts/youtube/ai-learning/2026-09-11-how-google-deepmind-runs-agents-at-scale-kp-sawhney-ian-ballantyne-google-deepmi--7gujZrJ9L5I|How Google DeepMind Runs Agents at Scale — KP Sawhney & Ian Ballantyne, Google DeepMind]]", "[[extracts/youtube/ai-learning/2026-09-11-how-founders-build-on-claude-managed-agents--hm8NzEd5io0|How founders build on Claude Managed Agents]]", "[[extracts/youtube/ai-learning/2026-09-11-l8-principal-s-agentic-engineering-setup-just-copy-him--8ZgpAXe5V5w|L8 Principal's Agentic Engineering Setup (just copy him)]]"]
+theme: "Orquestração Multiagente em Escala"
 ---
 
 # Getting Started with Omnigent | The Coding Agent Meta-Harness

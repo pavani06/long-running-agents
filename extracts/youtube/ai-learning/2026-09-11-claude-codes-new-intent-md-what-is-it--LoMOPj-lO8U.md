@@ -18,6 +18,7 @@ claims: ["Capture contexto fazendo o agente entrevistar o originador repetidamen
 deep_dive: "high"
 deep_dive_reason: "Alta densidade de insight acionável e arquitetural (cadeia de artefatos, hooks, gates de release, evals em CI, governança versionada) com novidade recente e relevância direta a harness, context-engineering, evals e gate-design."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-how-we-claude-code--IlqJqcl8ONE|How we Claude Code]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-get-to-production-faster-with-claude-managed-agents--zenIB7XLZxQ|How to get to production faster with Claude Managed Agents]]", "[[extracts/youtube/ai-learning/2026-09-11-how-the-claude-code-team-uses-claude-code--S-sYlFiGFv8|How the Claude Code team uses Claude Code]]", "[[extracts/youtube/ai-learning/2026-09-11-build-a-proactive-agent-workflow-with-claude-code--eSP7PLTXNy8|Build a proactive agent workflow with Claude Code]]", "[[extracts/youtube/ai-learning/2026-09-11-loop-engineering-to-graph-engineering--BOOfy3Yshtw|Loop Engineering to Graph Engineering]]", "[[extracts/youtube/ai-learning/2026-09-11-code-with-claude-opening-keynote--EvtPBaaykdo|Code with Claude Opening Keynote]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # Claude Codes New INTENT.MD, What is It?

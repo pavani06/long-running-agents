@@ -18,6 +18,7 @@ claims: ["A pessoa que faz mais perguntas controla a conversa, não a que fala m
 deep_dive: "low"
 deep_dive_reason: "Conteúdo genérico de comunicação e psicologia de autoajuda com insert promocional, sem densidade técnica, novidade ou relevância para harness, context-engineering, evals, agent-fleets, governança ou ontologia de agentes de IA."
 relates-to: []
+theme: "Controle de conversa com perguntas"
 ---
 
 # CIA Spy Trick to Speak Like the 1% (And Influence Anyone)

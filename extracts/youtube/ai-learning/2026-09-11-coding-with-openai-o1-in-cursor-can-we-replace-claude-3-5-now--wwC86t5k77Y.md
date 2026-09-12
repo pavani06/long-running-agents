@@ -18,6 +18,7 @@ claims: ["o1 one-shot gerou um app HTML funcional de voz via WebRTC com dropdown
 deep_dive: "medium"
 deep_dive_reason: "Teste informal mas com observações acionáveis concretas (latências medidas, capacidade de one-shot, estratégia de alternância de modelos e padrão de documentação-no-contexto), porém sem profundidade arquitetural em harness, evals, governança ou ontologia."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-claude-3-7-is-pure-insanity--afN8U7kAiLc|Claude 3.7 is pure insanity]]", "[[extracts/youtube/ai-learning/2026-09-11-code-with-claude-opening-keynote--EvtPBaaykdo|Code with Claude Opening Keynote]]", "[[extracts/youtube/ai-learning/2026-09-11-build-hour-gpt-5--ITMouQ_EuXI|Build Hour: GPT-5]]", "[[extracts/youtube/ai-learning/2026-09-11-boris-cherny-we-cut-80-of-claude-codes-prompt--qyPCVqFUyDo|Boris Cherny: We Cut 80% of Claude Code’s Prompt]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-build-super-effective-ai-agents-full-tutorial-cursor-openai--MSO4qCiwTjQ|How to Build Super Effective AI AGENTS - FULL TUTORIAL | Cursor - OpenAI]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-use-cursor-agent-for-beginners--2gBcO3ht0ws|How to use Cursor Agent for beginners]]"]
+theme: "Codificação Agêntica com Claude Code"
 ---
 
 # Coding With OpenAI-o1 in Cursor - Can We Replace Claude 3.5 Now?

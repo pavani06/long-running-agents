@@ -18,6 +18,7 @@ claims: ["Forneça todo o contexto sobre você e sua organização de uma só ve
 deep_dive: "medium"
 deep_dive_reason: "Há técnica acionável de context-engineering com demos concretos e métricas quantificadas (master prompt de 20 páginas, 6 meses → 30 minutos), mas a abordagem é básica para praticantes, sem profundidade em harness, evals, governança ou arquitetura de agentes, e o evento é em parte promocional para um programa pago."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-11-the-master-prompt-method-unlock-ais-full-potential-part-1--_K_F_icxtrI|The Master Prompt Method: Unlock AI’s Full Potential (Part 1)]]", "[[extracts/youtube/ai-learning/2026-09-11-state-of-the-art-prompting-for-ai-agents--DL82mGde6wo|State-Of-The-Art Prompting For AI Agents]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-get-ahead-of-99-of-people-with-ai--0tLHVyd7WtM|How to Get Ahead of 99% of People (with AI)]]", "[[extracts/youtube/ai-learning/2026-09-11-google-s-9-hour-ai-prompt-engineering-course-in-20-minutes--p09yRj47kNM|Google's 9 Hour AI Prompt Engineering Course In 20 Minutes]]", "[[extracts/youtube/ai-learning/2026-09-11-ai-prompt-engineering-a-deep-dive--T9aRN5JkmL8|AI prompt engineering: A deep dive]]", "[[extracts/youtube/ai-learning/2026-09-11-stanford-cs153-frontier-systems-the-ai-native-company-how-one-founder-becomes-a--Lri2LNYtERM|Stanford CS153 Frontier Systems | The AI Native Company: How One Founder Becomes a 1000x Engineer]]"]
+theme: "Stack de IA e Prompting"
 ---
 
 # The Master Prompt Method: Build Your AI Operating System
