@@ -145,6 +145,51 @@ def test_store_pending_diff():
         assert len(store.pending(rebuild=True)) == 2           # rebuild = all
 
 
+# ── commit batching ─────────────────────────────────────────────────────
+def _run_with_fakes(root: Path, *, commit_batch: int, n: int):
+    import pipeline
+    tdir = root / "raw" / "youtube" / "ai-learning" / "transcripts"
+    tdir.mkdir(parents=True)
+    ids = ["kCc8FmEb1nY", "Uvl-tRga98g", "g90sjbWrwoY", "A7WFt2JQ5sg", "HkFDWwmtZ-M"][:n]
+    for i, vid in enumerate(ids):
+        (tdir / f"2026-09-11-v{i}--{vid}.txt").write_text("transcript", encoding="utf-8")
+
+    fake_extract = {"thesis": "t", "concepts": [], "tools": [], "people": [],
+                    "claims": [], "tags": [], "deep_dive": "low", "deep_dive_reason": "r"}
+    orig = (pipeline.REPO_ROOT, pipeline.PACING_SECONDS,
+            pipeline.enumerate_playlist, pipeline.fetch_extract)
+    pipeline.REPO_ROOT = root
+    pipeline.PACING_SECONDS = 0
+    pipeline.enumerate_playlist = lambda *a, **k: []
+    pipeline.fetch_extract = lambda *a, **k: dict(fake_extract)
+    calls: list[str] = []
+    try:
+        rc = pipeline.run("full", 100, "yk", "zk",
+                          commit_batch=commit_batch,
+                          committer=lambda repo, msg: (calls.append(msg), True)[1])
+    finally:
+        (pipeline.REPO_ROOT, pipeline.PACING_SECONDS,
+         pipeline.enumerate_playlist, pipeline.fetch_extract) = orig
+    written = len(list((root / "extracts" / "youtube" / "ai-learning").glob("*.md")))
+    return rc, calls, written
+
+
+def test_commit_batching_flushes_every_n_and_final():
+    with tempfile.TemporaryDirectory() as d:
+        rc, calls, written = _run_with_fakes(Path(d), commit_batch=2, n=5)
+        assert rc == 0
+        assert written == 5
+        assert len(calls) == 3  # 2 + 2 + final 1
+
+
+def test_commit_batching_disabled_never_commits():
+    with tempfile.TemporaryDirectory() as d:
+        rc, calls, written = _run_with_fakes(Path(d), commit_batch=0, n=3)
+        assert rc == 0
+        assert written == 3
+        assert calls == []  # workflow handles the commit when batching is off
+
+
 def _run_all():
     fns = [g for name, g in sorted(globals().items()) if name.startswith("test_") and callable(g)]
     for fn in fns:

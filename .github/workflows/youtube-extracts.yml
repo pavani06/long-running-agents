@@ -49,19 +49,25 @@ jobs:
             echo "MODE=incremental" >> "$GITHUB_ENV"
           fi
 
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Run pipeline
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+          COMMIT_BATCH: "25"   # persist progress every 25 extracts (resilient backfills)
         run: |
           set +e
           python scripts/youtube-extracts/pipeline.py "$MODE"
           echo "PIPELINE_RC=$?" >> "$GITHUB_ENV"
 
-      - name: Commit new extracts
+      - name: Commit leftover extracts
+        # Safety net: the pipeline commits in batches; this catches anything it
+        # wrote but did not commit (e.g. if the process was killed mid-batch).
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add extracts/youtube/ai-learning
           if git diff --cached --quiet; then
             echo "no changes to commit"
