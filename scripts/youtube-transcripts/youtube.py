@@ -28,6 +28,7 @@ class PlaylistVideo:
     video_id: str
     title: str
     published_at: str  # when the item was added to the playlist (ISO 8601)
+    channel: str = ""  # videoOwnerChannelTitle, when present
 
 
 class EnumerationError(RuntimeError):
@@ -112,6 +113,7 @@ def _parse_item(item: dict) -> PlaylistVideo | None:
         video_id=video_id,
         title=snippet.get("title") or "",
         published_at=content.get("videoPublishedAt") or snippet.get("publishedAt") or "",
+        channel=snippet.get("videoOwnerChannelTitle") or "",
     )
 
 
