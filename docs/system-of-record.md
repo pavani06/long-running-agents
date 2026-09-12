@@ -3,7 +3,7 @@ title: "System of Record"
 type: system-of-record
 aliases: ["system of record", "source of truth", "governance index", "SOR", "governanca", "precedencia", "taxonomia"]
 tags: ["index", "arquitetura", "governanca", "harness-engineering", "agentic-coding", "spec-driven-development", "decision-discipline", "testes-qa"]
-last_updated: 2026-09-02
+last_updated: 2026-09-12
 relates-to: []
 sources: []
 ---
@@ -173,6 +173,20 @@ Topicos cobertos: `testes-qa`.
 | [[docs/canonical/skill-testing-conventions|Skill Testing Conventions]] | Framework de test harness para skills |
 | [[docs/canonical/measured-harness-evolution-lifecycle|Measured Harness Evolution Lifecycle]] | Ciclo de vida BUILD → STABILIZE → SIMPLIFY → REMOVE |
 | [[docs/evidence/2026-09-01-qi-loop-telemetry-correlation-break|Caso de regressão: telemetria do qi-loop]] | Primeiro caso do failure flywheel em `docs/evidence/`: quebra de correlação pai-filho na telemetria (classe Tool misuse, divergência da taxonomia documentada no caso) |
+
+### Corpus e pipelines de dados
+
+Pipelines automatizadas em GitHub Actions que coletam e destilam conteúdo externo em corpora versionados no próprio repo. Modelo comum: enumeração + fetch → camada `raw/` → camada `extracts/`, com diff stateless (o repositório é a fonte de verdade) e commit diário por `github-actions[bot]` tocando só a pasta da camada.
+
+Topicos cobertos: `corpus-pipelines`, `stack-tooling`, `governanca`.
+
+| Fonte | Cobre |
+|---|---|
+| [[raw/youtube/ai-learning/README|raw/youtube/ai-learning/]] | Camada **raw** de transcripts da playlist "AI - Learning". Enumeração: YouTube Data API v3; transcript: SerpApi. Código: `scripts/youtube-transcripts/`; workflow `.github/workflows/youtube-transcripts.yml` (diário `30 8 * * *` + retry-missing aos domingos). Secrets: `YOUTUBE_API_KEY`, `SERPAPI_API_KEY`. |
+| `extracts/youtube/ai-learning/` | Camada **extract** (triagem Nível-1 + grafo implícito) sobre os transcripts — 1 nota Obsidian por vídeo via GLM (`glm-5.3`), com vocabulário de tags controlado e guard de prompt-injection. Código: `scripts/youtube-extracts/`; workflow `.github/workflows/youtube-extracts.yml` (encadeado por `workflow_run` do anterior). Secret: `ZAI_API_KEY`. |
+| [[raw/x/bookmarks/README|raw/x/bookmarks/]] | Camada **raw** dos bookmarks do X (@fepavani). Coleta: API oficial X v2 (`GET /2/users/:id/bookmarks`, OAuth2 user-context) com access token derivado a cada run de um refresh token single-use rotacionado e persistido de volta no secret via PAT. Código: `scripts/x-bookmarks/`; workflow `.github/workflows/x-bookmarks.yml` (diário `45 8 * * *`). Secrets: `X_CLIENT_ID`, `X_CLIENT_KEY`, `X_REFRESH_TOKEN`, `GH_SECRETS_PAT`. |
+
+> **Pendente**: camadas `extracts/x/bookmarks/` e `digests/x/` (extract via GLM + digest), quando implementadas (ver plano do pipeline de bookmarks).
 
 ## Decisões de arquitetura (ADRs)
 
@@ -507,8 +521,24 @@ Diagnósticos do backend MHC/KODA em `docs/analysis/mhc-backend/`:
 
 ## Planos
 
-- [[docs/plans/2026-05-26-curriculum-completion-strategy|docs/plans/2026-05-26-curriculum-completion-strategy.md]] — estratégia de execução para completar o currículo via GitHub Issues/Milestones
+Planos de execução em `docs/plans/` (precedência baixa — entrada, não autoritativa):
+
+- [[docs/plans/2026-05-26-curriculum-completion-strategy|2026-05-26-curriculum-completion-strategy.md]] — estratégia para completar o currículo via GitHub Issues/Milestones
+- [[docs/plans/2026-06-10-fill-document-aliases|2026-06-10-fill-document-aliases.md]] — preenchimento de aliases nos documentos
+- [[docs/plans/2026-06-10-obsidian-reading-improvements|2026-06-10-obsidian-reading-improvements.md]] — melhorias de leitura/navegação no Obsidian
+- [[docs/plans/2026-06-12-analyze-and-improve-post-review-fixes|2026-06-12-analyze-and-improve-post-review-fixes.md]] — correções pós-review do analyze-and-improve (IDSD)
+- [[docs/plans/2026-06-14-analyze-and-improve-session-quality-fixes|2026-06-14-analyze-and-improve-session-quality-fixes.md]] — correções de qualidade de sessão do analyze-and-improve
+- [[docs/plans/2026-06-17-readme-rewrite|2026-06-17-readme-rewrite.md]] — reescrita do README
+- [[docs/plans/2026-06-18-obs-fase5-runtime-integration|2026-06-18-obs-fase5-runtime-integration.md]] — integração de runtime (Obsidian fase 5)
+- [[docs/plans/2026-06-23-skill-canons-bridge-execution|2026-06-23-skill-canons-bridge-execution.md]] — execução da ponte skill-canons
+- [[docs/plans/2026-08-30-qi-loop-kavak-fixes|2026-08-30-qi-loop-kavak-fixes.md]] — correções do qi-loop (Kavak)
+- [[docs/plans/2026-08-31-adversarial-review-pipeline-hardening|2026-08-31-adversarial-review-pipeline-hardening.md]] — hardening do pipeline (análise adversarial, round 2)
+- [[docs/plans/2026-08-31-qi-loop-ingest-and-improve-hardening|2026-08-31-qi-loop-ingest-and-improve-hardening.md]] — hardening do qi-loop ingest-and-improve
+- [[docs/plans/2026-08-31-skill-hardening-adversarial-findings|2026-08-31-skill-hardening-adversarial-findings.md]] — hardening de skills (achados adversariais)
+- [[docs/plans/2026-09-01-qi-loop-iter4-review-195-fixes|2026-09-01-qi-loop-iter4-review-195-fixes.md]] — correções do adversarial review da issue #195 (qi-loop iter 4)
+
+Pacotes de plano em YAML (formato legacy, não wikilinkados): `2026-06-11-incremental-mental-model.yaml`, `2026-06-12-analysis-artifact-renaming.yaml`, `2026-06-12-quality-gates-analyze-and-improve.yaml`, `2026-06-12-quality-gates-implementation.yaml`, `harness-session-improvements.yaml`.
 
 ---
 
-*Última atualização: 2026-09-02*
+*Última atualização: 2026-09-12*
