@@ -60,6 +60,12 @@ def test_parse_id_with_internal_dashes():
     assert parse_video_id("-ubIUNA-zRA.txt") == "-ubIUNA-zRA"
 
 
+def test_parse_id_containing_double_dash():
+    # base64url ids can contain "--"; recovered via the 11-char tail.
+    assert parse_video_id("BrpB-h1e--k.txt") == "BrpB-h1e--k"
+    assert parse_video_id("2026-09-11-some-talk--BrpB-h1e--k.txt") == "BrpB-h1e--k"
+
+
 def test_parse_rejects_non_transcript():
     assert parse_video_id("index.json") is None
 
@@ -77,19 +83,24 @@ def test_store_scan_and_rename(tmp=None):
         # one legacy file, one already-migrated file
         (data / "transcripts" / "kCc8FmEb1nY.txt").write_text("legacy body", encoding="utf-8")
         (data / "transcripts" / "2026-09-11-already--Uvl-tRga98g.txt").write_text("new body", encoding="utf-8")
+        # legacy file whose id itself contains "--"
+        (data / "transcripts" / "BrpB-h1e--k.txt").write_text("dash body", encoding="utf-8")
         corpus = Corpus(data)
 
         scanned = corpus.scan_disk()
         assert scanned["kCc8FmEb1nY"] == "kCc8FmEb1nY.txt"
         assert scanned["Uvl-tRga98g"] == "2026-09-11-already--Uvl-tRga98g.txt"
+        assert scanned["BrpB-h1e--k"] == "BrpB-h1e--k.txt"
 
-        renamed = corpus.rename_legacy({"kCc8FmEb1nY": "Lets build GPT"}, "2026-09-11")
-        assert renamed == [("kCc8FmEb1nY.txt", "2026-09-11-lets-build-gpt--kCc8FmEb1nY.txt")]
-        # migrated file untouched
+        renamed = dict(corpus.rename_legacy(
+            {"kCc8FmEb1nY": "Lets build GPT", "BrpB-h1e--k": "Dash Id"}, "2026-09-11"))
+        assert renamed["kCc8FmEb1nY.txt"] == "2026-09-11-lets-build-gpt--kCc8FmEb1nY.txt"
+        assert renamed["BrpB-h1e--k.txt"] == "2026-09-11-dash-id--BrpB-h1e--k.txt"
+        # already-migrated file untouched
         assert (data / "transcripts" / "2026-09-11-already--Uvl-tRga98g.txt").exists()
 
         n = corpus.regenerate_index()
-        assert n == 2
+        assert n == 3
         assert corpus.index_path.exists()
 
 

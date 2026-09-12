@@ -72,7 +72,10 @@ class Corpus:
         """Rename `<id>.txt` files to `<date>-<slug>--<id>.txt`. Returns [(old,new)]."""
         renamed: list[tuple[str, str]] = []
         for vid, fname in self.scan_disk().items():
-            if "--" in fname:
+            # Legacy files are named exactly "<id>.txt". Detect that precisely
+            # rather than looking for "--", since a video id can itself contain
+            # "--" (base64url allows consecutive dashes, e.g. "BrpB-h1e--k").
+            if fname != f"{vid}.txt":
                 continue  # already migrated
             title = id_to_title.get(vid, "")
             new_name = build_filename(extraction_date, title, vid)
