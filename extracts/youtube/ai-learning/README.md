@@ -53,3 +53,13 @@ python3 tests/unit/youtube_extracts_test.py
 ajustável. Workflow `.github/workflows/youtube-connections.yml` (disparo por
 `workflow_run` após os extratos + `workflow_dispatch` com `k`/`floor`/`dry_run`).
 Secret: `OPENAI_API_KEY`. Base pra futura camada de temas/clusters.
+
+## Camada de temas/clusters
+`themes.json` (clusters canônicos) + campo `theme` no frontmatter de cada extrato
++ uma nota MOC por tema em `themes/<slug>.md` são gerados por
+`scripts/youtube-themes/` — detecção de comunidades (`networkx`
+greedy-modularity, ponderado pelo cosseno das arestas do `connections.json`,
+resolução ajustável) com rótulo **determinístico** (top tags/conceitos) +
+**polish opcional via GLM** (`ZAI_API_KEY`; fallback pro rótulo determinístico).
+Workflow `.github/workflows/youtube-themes.yml` (disparo por `workflow_run` após
+as conexões + `workflow_dispatch` com `resolution`/`dry_run`). Não re-embeda.

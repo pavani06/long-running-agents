@@ -1,0 +1,73 @@
+name: YouTube Themes (AI - Learning)
+
+on:
+  workflow_run:
+    workflows: ["YouTube Connections (AI - Learning)"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      resolution:
+        description: "Greedy-modularity resolution (blank = 1.0)"
+        type: string
+        default: ""
+      dry_run:
+        description: "Log community count/sizes only (no writes)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: youtube-themes
+  cancel-in-progress: false
+
+jobs:
+  themes:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --upgrade requests networkx
+
+      - name: Resolve inputs
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            [ -n "${{ github.event.inputs.resolution }}" ] && echo "THEME_RESOLUTION=${{ github.event.inputs.resolution }}" >> "$GITHUB_ENV"
+            [ "${{ github.event.inputs.dry_run }}" = "true" ] && echo "THEME_DRY_RUN=1" >> "$GITHUB_ENV"
+          fi
+          true
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Run pipeline
+        env:
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+        run: |
+          set +e
+          python scripts/youtube-themes/pipeline.py
+          echo "PIPELINE_RC=$?" >> "$GITHUB_ENV"
+
+      - name: Commit themes
+        run: |
+          git add extracts/youtube/ai-learning
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+            exit 0
+          fi
+          git commit -m "data(youtube): update ai-learning themes ($(TZ=America/Sao_Paulo date +%F))"
+          git push
+
+      - name: Fail if pipeline went red
+        run: |
+          if [ "${PIPELINE_RC}" != "0" ]; then
+            echo "pipeline exited red (rc=${PIPELINE_RC})"
+            exit 1
+          fi
