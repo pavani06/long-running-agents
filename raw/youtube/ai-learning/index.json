@@ -454,6 +454,12 @@
       "chars": 38916
     },
     {
+      "id": "BrpB-h1e--k",
+      "url": "https://www.youtube.com/watch?v=BrpB-h1e--k",
+      "file": "2026-09-11-building-with-claude-managed-agents-and-asana-ai-teammates--BrpB-h1e--k.txt",
+      "chars": 24199
+    },
+    {
       "id": "9lSRViLugE0",
       "url": "https://www.youtube.com/watch?v=9lSRViLugE0",
       "file": "2026-09-11-chatgpt-for-business-updates--9lSRViLugE0.txt",
@@ -2340,12 +2346,6 @@
       "url": "https://www.youtube.com/watch?v=A7WFt2JQ5sg",
       "file": "2026-09-11-zta-zero-token-architecture-kelsey-hightower-platformcon-2026--A7WFt2JQ5sg.txt",
       "chars": 28114
-    },
-    {
-      "id": "BrpB-h1e--k",
-      "url": "https://www.youtube.com/watch?v=BrpB-h1e--k",
-      "file": "BrpB-h1e--k.txt",
-      "chars": 24199
     }
   ]
 }
