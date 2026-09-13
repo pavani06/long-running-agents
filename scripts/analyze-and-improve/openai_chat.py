@@ -25,7 +25,7 @@ def model_from_env() -> str:
 
 
 def chat_json(messages: list[dict], api_key: str, *, model: str | None = None,
-              temperature: float = 0.0, timeout: int = 90, max_retries: int = 2,
+              temperature: float = 0.0, timeout: int = 180, max_retries: int = 2,
               backoff_base: float = 3.0, sleep=time.sleep) -> dict:
     """POST an OpenAI chat completion; return the reply parsed as JSON.
 

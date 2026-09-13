@@ -75,7 +75,7 @@ def content_from_sse_lines(lines) -> str:
 
 
 def chat_json(messages: list[dict], api_key: str, *, model: str = MODEL,
-              temperature: float = 0.2, timeout: int = 90, max_retries: int = 2,
+              temperature: float = 0.2, timeout: int = 180, max_retries: int = 2,
               backoff_base: float = 4.0, sleep=time.sleep) -> dict:
     """POST a streaming chat completion and return the reply parsed as a JSON object.
 
