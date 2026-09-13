@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""Control plane for analyze-and-improve v4 (Etapa 0) — no LLM, read-only.
-
-Two deterministic jobs, no model judgment (that lands in Etapa 1+):
+"""Control plane + judgment plane (Fases 0-2) for analyze-and-improve v4.
 
   queue    List the `deep_dive: high` sources still needing an analysis package
            (stateless diff over the `analyzed:` marker). No network, no writes.
@@ -12,8 +10,13 @@ Two deterministic jobs, no model judgment (that lands in Etapa 1+):
            embeds and prints the pairwise-cosine distribution (to calibrate the
            floor, #262) without writing the index.
 
+  analyze  Run Fases 1->0->2 (GLM) for one transcript and write the partial
+           package to docs/analysis/<slug>/ (mental-model, analysis, patterns).
+           Fase 0 updates the mental model incrementally from the git delta scan.
+
 Environment:
-  OPENAI_API_KEY   embeddings for `index` (not needed for `queue`)   — required there
+  OPENAI_API_KEY   embeddings for `index`                          — required there
+  ZAI_API_KEY      GLM generator for `analyze` (Fases 0-2)          — required there
 
 Exit: 0 = success (incl. nothing-to-do); 1 = red (missing/invalid key, git failure).
 """
@@ -23,20 +26,28 @@ import argparse
 import json
 import os
 import sys
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import deltascan  # noqa: E402
+from analysis_queue import scan_pending  # noqa: E402
 from embed import AuthError, EmbedError, embed_texts  # noqa: E402
 from floor import PROVISIONAL_FLOOR, distribution  # noqa: E402
 from index_store import (index_vectors, merge_index, records_for,  # noqa: E402
                          select_to_embed)
-from analysis_queue import scan_pending  # noqa: E402
+
+# The judgment-plane modules (Fases 0-2) and their yaml dependency are imported
+# lazily inside run_analyze, so `queue`/`index` stay requests-only.
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 EXTRACTS_DIR = REPO_ROOT / "extracts" / "youtube" / "ai-learning"
 STATE_PATH = REPO_ROOT / ".runtime" / "analyze-and-improve" / "index.json"
+MENTAL_DIR = REPO_ROOT / "mapa-mental-repo"
+TZ = ZoneInfo("America/Sao_Paulo")
+MAX_DELTA_SECTIONS = 40  # cap Fase 0 context so a full scan can't blow cost
 
 
 def summary(line: str) -> None:
@@ -122,18 +133,114 @@ def run_index(full: bool, dist_only: bool) -> int:
     return 0
 
 
+def _today() -> str:
+    return datetime.now(TZ).strftime("%Y-%m-%d")
+
+
+def _slug_from_transcript(path: Path) -> str:
+    """`<date>-<source-slug>` — the transcript stem minus the `--<video_id>` tail."""
+    stem = path.stem
+    return stem.rsplit("--", 1)[0] if "--" in stem else stem
+
+
+def _latest_mental_model() -> tuple[dict | None, str | None]:
+    """Most recent active model in mapa-mental-repo/ and its base_commit, or (None, None)."""
+    import yaml
+    if not MENTAL_DIR.exists():
+        return None, None
+    models = sorted(MENTAL_DIR.glob("*-mental-model.yaml"), reverse=True)
+    if not models:
+        return None, None
+    data = yaml.safe_load(models[0].read_text(encoding="utf-8")) or {}
+    return data, (data.get("meta") or {}).get("base_commit")
+
+
+def _delta_sections(base_commit: str | None) -> list[dict]:
+    """Changed target sections since `base_commit` (or a capped full scan initially)."""
+    if base_commit:
+        paths = deltascan.changed_files(REPO_ROOT, base_commit)
+    else:
+        paths = deltascan.full_scan(REPO_ROOT)
+    sections: list[dict] = []
+    for rel in paths:
+        fp = REPO_ROOT / rel
+        if not fp.exists():
+            continue
+        for r in records_for(rel, fp.read_text(encoding="utf-8")):
+            sections.append({"path": r.path, "heading": r.heading, "text": r.text})
+            if len(sections) >= MAX_DELTA_SECTIONS:
+                return sections
+    return sections
+
+
+def run_analyze(transcript_path: str, slug: str | None, with_mental: bool) -> int:
+    api_key = os.environ.get("ZAI_API_KEY")
+    if not api_key:
+        summary("analyze: ZAI_API_KEY not set")
+        return 1
+    src = Path(transcript_path)
+    if not src.exists():
+        summary(f"analyze: transcript not found: {transcript_path}")
+        return 1
+
+    import phase0_mental_model
+    import phase1_extract
+    import phase2_patterns
+    from analysis_package import write_package
+    from glm import AuthError as GLMAuthError
+    from glm import GLMError, RateLimited
+
+    slug = slug or _slug_from_transcript(src)
+    transcript = src.read_text(encoding="utf-8")
+
+    try:
+        extraction = phase1_extract.run(transcript, api_key)          # Fase 1
+        patterns = phase2_patterns.run(extraction, api_key)           # Fase 2
+        mental_model = None
+        if with_mental:                                               # Fase 0
+            prev, base = _latest_mental_model()
+            meta = {"title": slug, "date": _today(), "repo": "long-running-agents",
+                    "type": "mental-model", "base_commit": deltascan.head_sha(REPO_ROOT)}
+            mental_model = phase0_mental_model.run(prev, _delta_sections(base), api_key, meta=meta)
+    except GLMAuthError as e:
+        summary(f"analyze: {e}")
+        return 1
+    except (RateLimited, GLMError) as e:
+        summary(f"analyze: {e}")
+        return 1
+
+    written = write_package(REPO_ROOT, slug, mental_model=mental_model,
+                            extraction=extraction, patterns=patterns)
+    if mental_model is not None:
+        MENTAL_DIR.mkdir(parents=True, exist_ok=True)
+        import serialize
+        (MENTAL_DIR / f"{slug}-mental-model.yaml").write_text(
+            serialize.to_yaml(mental_model), encoding="utf-8")
+    summary(f"analyze: wrote {len(written)} file(s) to docs/analysis/{slug}/")
+    for w in written:
+        print(f"  - {w}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(description="analyze-and-improve control plane (Etapa 0)")
+    ap = argparse.ArgumentParser(description="analyze-and-improve control + judgment plane")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("queue", help="list deep_dive:high sources pending analysis")
     pi = sub.add_parser("index", help="build/refresh the repo semantic index")
     pi.add_argument("--full", action="store_true", help="embed every target section")
     pi.add_argument("--distribution", action="store_true",
                     help="embed + print cosine distribution, write nothing")
+    pa = sub.add_parser("analyze", help="run Fases 1->0->2 (GLM) for one transcript")
+    pa.add_argument("transcript", help="path to the raw transcript .txt")
+    pa.add_argument("--slug", help="package slug (default: derived from the filename)")
+    pa.add_argument("--mental-model", action="store_true",
+                    help="also run Fase 0 (incremental repo mental model)")
     args = ap.parse_args(argv)
 
     if args.cmd == "queue":
         return run_queue()
+    if args.cmd == "analyze":
+        return run_analyze(args.transcript, args.slug, args.mental_model)
     return run_index(args.full, args.distribution)
 
 
