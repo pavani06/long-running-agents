@@ -89,3 +89,34 @@ def build_context(dense_sections: list[dict], grep_hits: list[dict]) -> str:
     else:
         parts.append("_(nenhuma)_")
     return "\n\n".join(parts)
+
+
+def make_pattern_retriever(patterns: list[dict], index: dict, openai_key: str,
+                           repo_root: Path, *, k: int = 8, embed_fn=None):
+    """A `retriever(need_more)->context` closure for Fase 3, shared by the CLI and
+    the spine runner. need_more=None → dense top-k for the patterns' text + grep of
+    the pattern names; otherwise grep the model-named identifiers + append the named
+    files. `embed_fn` is injectable (defaults to the OpenAI embeddings client)."""
+    if embed_fn is None:
+        from embed import embed_texts as embed_fn
+
+    def _dense(query_text: str) -> list[dict]:
+        qvec = embed_fn([query_text], openai_key)[0]
+        return fetch_texts(rank_sections(qvec, index, k=k), repo_root)
+
+    def retriever(need_more):
+        if need_more is None:
+            query = "\n".join(f"{p.get('name','')} {p.get('problem','')} {p.get('mechanism','')}"
+                              for p in patterns)
+            grep = grep_identifiers([p.get("name", "") for p in patterns], repo_root)
+            return build_context(_dense(query), grep)
+        grep = grep_identifiers(need_more.get("greps", []), repo_root)
+        extra = []
+        for rel in need_more.get("files", []):
+            fp = repo_root / rel
+            if fp.exists():
+                extra.append({"path": rel, "heading": "(arquivo pedido)", "score": 0.0,
+                              "text": fp.read_text(encoding="utf-8")[:4000]})
+        return build_context(extra, grep)
+
+    return retriever

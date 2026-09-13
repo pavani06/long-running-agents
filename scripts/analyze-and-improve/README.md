@@ -46,6 +46,29 @@ unit-tested with no network.
 | `analysis_package.py` | Write the partial package to `docs/analysis/<slug>/` | I/O over the pure serializers |
 | `pipeline.py` | CLI: `queue`, `index`, `analyze`, `classify` | — |
 
+### Machine gate + landing (Etapa 3 — closes Tier A)
+
+The gate that replaces the operator (who can't review at volume): deterministic
+checks + an adversarial evaluator + quarantine + a landing library.
+
+| Module | Role | Pure? |
+|---|---|---|
+| `dedup.py` | Cosine duplication check vs the Etapa-0 index (a proposed artifact at/above the threshold is held) | ✅ (`is_duplicate`/`nearest`) |
+| `openai_chat.py` | OpenAI chat client (the evaluator's transport — a *different* provider from GLM) | `extract_json` reused; HTTP not tested |
+| `evaluator.py` | Adversarial evaluator: fixed rubric (fidelity/evidence/non-duplication/format), provisional min score | `build_messages`/`parse_evaluation` pure; `run` injects client |
+| `quarantine.py` | Route accept vs `proposed/`; fail-closed gate report | ✅ |
+| `landing.py` | Build the PR body + rolling quarantine-Issue digest; `LandingPlan` (`auto_merge`, `dry_run`) — the library, **not** the workflow | ✅ |
+| `spine.py` | `run_spine` — chains Fases 0→3 + gates + evaluator + route + landing (the entry point #262 invokes) | `artifact_for_eval`/`dedup_text` pure; `run_spine` needs both keys |
+
+**Boundaries.** The evaluator is OpenAI on purpose — a different provider from
+the GLM generator, so it never grades its own homework (`OPENAI_API_KEY`, model
+via `OPENAI_EVAL_MODEL`, provisional default). `auto_merge=False` is the
+require-approval brake, usable from day 1; the **real Actions wiring**
+(open/auto-merge PR, update the rolling quarantine Issue) is **#266**, not here.
+Both the dedup threshold and the evaluator's minimum score are **provisional** —
+final calibration is **#262**. Fases that create/mutate the product (4–7) are out
+of scope for this Tier-A slice.
+
 **Dependencies:** control plane needs only `requests` (+ stdlib). The judgment
 plane's `serialize.py` needs **PyYAML** — a workflow running `analyze` must
 `pip install requests pyyaml`. `queue`/`index` do not import PyYAML (the
@@ -57,6 +80,7 @@ Tests — run in isolation (the repo's convention for its pipeline tests):
 python3 -m pytest tests/unit/analyze_and_improve_test.py -q          # control plane
 python3 -m pytest tests/unit/analyze_and_improve_phases_test.py -q   # judgment plane (Fases 0–2)
 python3 -m pytest tests/unit/analyze_and_improve_classify_test.py -q # Fase 3 (retrieval + grep-verify)
+python3 -m pytest tests/unit/analyze_and_improve_spine_test.py -q    # Etapa 3 (dedup + rubric + quarantine + landing)
 ```
 
 ## CLI
