@@ -2,7 +2,7 @@ name: X Extracts (bookmarks)
 
 on:
   workflow_run:
-    workflows: ["X Bookmarks (collect + version)"]
+    workflows: ["X Ingest (bookmark link content)"]   # runs after link content is ingested
     types: [completed]
   workflow_dispatch:
     inputs:

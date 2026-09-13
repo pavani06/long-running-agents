@@ -39,7 +39,7 @@ from taxonomy import build_vocabulary  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 TZ = ZoneInfo("America/Sao_Paulo")
-EXTRACT_VERSION = 1
+EXTRACT_VERSION = 2  # v2: deep extract reads ingested link content (+key_points, +grounded_in)
 DEFAULT_CAP = 50
 PACING_SECONDS = 1.5
 
@@ -64,7 +64,9 @@ def run(mode: str, cap: int, zai_key: str) -> int:
         return 0
 
     vocab = build_vocabulary(REPO_ROOT)
-    summary(f"{len(pending)} bookmarks pending; vocab={len(vocab)} tags")
+    ingest_index = store.ingest_index()
+    summary(f"{len(pending)} bookmarks pending; vocab={len(vocab)} tags; "
+            f"ingest entries={len(ingest_index)}")
 
     over_cap = len(pending) > cap
     targets = pending[:cap]
@@ -78,8 +80,10 @@ def run(mode: str, cap: int, zai_key: str) -> int:
         text = item.get("text", "")
         handle = item.get("handle", "unknown")
         links = item.get("links", []) or []
+        grounded_in, source_text = store.source_for(item, ingest_index)
         try:
-            extract = fetch_extract(text, handle, links, zai_key, vocab)
+            extract = fetch_extract(text, handle, links, zai_key, vocab,
+                                    source_text=source_text, grounded=(grounded_in == "article"))
         except AuthError as e:
             summary(f"RED: {e}")
             return 1
@@ -101,10 +105,11 @@ def run(mode: str, cap: int, zai_key: str) -> int:
             extracted=date,
             links=links,
             media=item.get("media", []) or [],
+            grounded_in=grounded_in,
         )
         name = store.write_extract(ifile, build_note(meta, extract, vocab, EXTRACT_VERSION, glm.MODEL))
         done += 1
-        summary(f"[{i}/{len(targets)}] {sid} — ok (revisit={extract.get('revisit')}) -> {name}")
+        summary(f"[{i}/{len(targets)}] {sid} — ok ({grounded_in}, revisit={extract.get('revisit')}) -> {name}")
         time.sleep(PACING_SECONDS)
 
     summary(f"done: {done} extracts written, {skipped} skipped, {len(pending) - done} still pending")
