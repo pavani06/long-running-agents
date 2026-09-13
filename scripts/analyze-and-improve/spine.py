@@ -45,7 +45,14 @@ def dedup_text(extraction: dict, patterns: list[dict]) -> str:
 
 
 def validate_obsidian_ok(repo_root: Path) -> bool:
-    """Run the repo's own doc validator; True on exit 0 (I/O)."""
+    """Run the repo's own doc validator; True on exit 0 (I/O).
+
+    NOTE (Tier-A limitation): `run_spine` does not materialise the proposed
+    artifact to disk (writing is out of scope — #262/#266), so this gate
+    currently validates the *committed* repo, not the generated package. It only
+    gains teeth once the write step feeds the artifact through validate-obsidian
+    before landing; until then it guards against a repo that is already dirty.
+    """
     return subprocess.run(
         ["npx", "tsx", "scripts/validate-obsidian.ts"],
         cwd=str(repo_root), capture_output=True, text=True,
