@@ -106,10 +106,13 @@ def run_index(full: bool, dist_only: bool) -> int:
         vectors = {r.id: v for r, v in zip(to_embed, embedded)}
 
     merged = merge_index(state, changed, deleted, vectors)
-    dist = distribution(index_vectors(merged))
-    summary(f"index: distribution {json.dumps(dist)}")
 
     if dist_only:
+        # The full pairwise distribution is O(n^2 * dim) — only pay it when the
+        # caller actually wants a floor-calibration snapshot (#262), not on
+        # every incremental index run.
+        dist = distribution(index_vectors(merged))
+        summary(f"index: distribution {json.dumps(dist)}")
         summary("index: --distribution set, not writing state")
         return 0
 

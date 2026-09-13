@@ -36,15 +36,22 @@ def _git(repo_root: Path, *args: str) -> subprocess.CompletedProcess:
 
 def changed_files(repo_root: Path, base: str, head: str = "HEAD",
                   targets: tuple[str, ...] = DEFAULT_TARGETS) -> list[str]:
-    """Target `.md` files that changed between `base` and `head` (added/modified)."""
-    out = _git(repo_root, "diff", "--name-only", "--diff-filter=d", base, head).stdout
+    """Target `.md` files that changed between `base` and `head` (added/modified).
+
+    `--no-renames` decomposes a rename into add + delete, so a renamed doc's old
+    path shows up in `deleted_files` and its stale index records self-heal
+    (otherwise a rename leaves orphan records until a `--full` rebuild).
+    """
+    out = _git(repo_root, "diff", "--name-only", "--no-renames",
+               "--diff-filter=d", base, head).stdout
     return under_targets(out.splitlines(), targets)
 
 
 def deleted_files(repo_root: Path, base: str, head: str = "HEAD",
                   targets: tuple[str, ...] = DEFAULT_TARGETS) -> list[str]:
-    """Target `.md` files deleted between `base` and `head`."""
-    out = _git(repo_root, "diff", "--name-only", "--diff-filter=D", base, head).stdout
+    """Target `.md` files deleted between `base` and `head` (renames included)."""
+    out = _git(repo_root, "diff", "--name-only", "--no-renames",
+               "--diff-filter=D", base, head).stdout
     return under_targets(out.splitlines(), targets)
 
 
