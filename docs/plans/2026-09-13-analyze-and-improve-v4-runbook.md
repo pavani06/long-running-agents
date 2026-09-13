@@ -79,7 +79,8 @@ e) issue-finish: `/issue-finish <ISSUE_ALVO>` — merge (squash, auto-merge, --d
 
 ## 4. Housekeeping (obrigatório, no fim)
 - Remover worktree isolado; `git remote prune origin`; branch local removida.
-- `git pull --ff-only origin main` na cópia principal (se seguro).
+- `git pull --ff-only origin main` na cópia principal — SÓ se nenhuma sessão concorrente estiver
+  usando o working tree principal (o `--ff-only` aborta em vez de sobrescrever; na dúvida, pule).
 - Atualizar a memória do projeto com o que a etapa entregou/aprendeu.
 - Confirmar: sem resíduo (worktrees/branches/arquivos temporários).
 
@@ -93,7 +94,8 @@ e) issue-finish: `/issue-finish <ISSUE_ALVO>` — merge (squash, auto-merge, --d
    - Para cada uma ainda aberta, cheque se o que ESTA etapa revelou muda escopo/DoD/deps/premissas.
    - Se mudar, edite a sub-issue (`gh issue edit <N> --body ...`) com o ajuste + 1 linha do porquê.
    - Se algo novo emergiu (gap/risco), crie sub-issue nova e vincule ao épico
-     (`gh api -X POST repos/pavani06/long-running-agents/issues/257/sub_issues -F sub_issue_id=<id>`).
+     (`gh api -X POST repos/pavani06/long-running-agents/issues/257/sub_issues -F sub_issue_id=<id>`
+     — `<id>` é o id NUMÉRICO do banco, obtido com `gh issue view <N> --json id`, NÃO o número `#<N>`).
    - Se nada muda, registre explicitamente "revisão pós-Etapa X: nenhuma alteração nas restantes".
 
 ## 6. Parar e escalar (não force)
