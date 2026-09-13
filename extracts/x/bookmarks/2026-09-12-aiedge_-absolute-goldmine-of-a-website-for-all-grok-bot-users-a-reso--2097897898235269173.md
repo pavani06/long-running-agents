@@ -22,6 +22,7 @@ links: ["https://www.grokhub.io/"]
 media: ["https://pbs.twimg.com/amplify_video_thumb/2097897866857693184/img/u6HlGpwPtDjfS0FE.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-adiix_official-how-to-run-your-whole-grok-bot-workday-on-loops-instead-of-p--2095464614498619493|Orquestração de Grok Bot em loops]]", "[[extracts/x/bookmarks/2026-09-12-poteto-what-questions-do-you-have-about-pstack-https-t-co-lopojdztt--2098634643323142286|pstack agent workflow tool]]", "[[extracts/x/bookmarks/2026-09-12-mattyp-giving-grok-bot-a-phone-00-19-installing-dialbot-00-54-bland--2098155792327381294|Agent fazendo chamadas telefônicas]]", "[[extracts/x/bookmarks/2026-09-12-andrebrov-my-biggest-recent-discovery-herdrdev-this-is-wow-i-run-25-ai--2097134891833917946|Console para orquestrar agentes de código]]", "[[extracts/x/bookmarks/2026-09-12-qwendevs-alibabas-zvec-team-open-sourced-zg-a-local-search-tool-for-d--2095157452904018263|busca local para agentes de IA]]", "[[extracts/x/bookmarks/2026-09-12-simonw-here-s-my-attempt-at-explaining-what-chatgpt-work-can-actual--2094214737957691854|Capacidades do ChatGPT Work]]"]
 thin: false
+theme: "Tooling agêntico de engenharia"
 ---
 
 # Grok Bot resource hub

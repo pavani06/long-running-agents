@@ -22,6 +22,7 @@ links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-alex_prompter-chatgpt-wants-access-to-your-gmail-slack-and-drive-so-it-can--2097035352707858528|prompt anti-escrita-IA genérica]]", "[[extracts/x/bookmarks/2026-09-12-tferriss-the-1-most-clicked-link-in-the-latest-5-bullet-friday-editio--2097357231293358126|IA como designer de alto nível]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-a-few-days-ago-anthropic-shared-this-brilliant-prompt-i-was--2097059598960132110|Prompt de escrita da Anthropic]]", "[[extracts/x/bookmarks/2026-09-12-trendtech33566-aiui-skills3-7vercellinearaiskill-ui-web-react-native-swift--2098350898732990886|UI design skills para IA]]", "[[extracts/x/bookmarks/2026-09-12-chrisshort-alibaba-open-code-review-battle-tested-at-alibaba-s-scale-hy--2098555200680218872|ferramenta de code review híbrida]]", "[[extracts/x/bookmarks/2026-09-12-natebjones-psa-if-you-are-tired-of-claude-lish-or-chat-lish-tell-your-a--2089457435459404093|guia de estilo para IA]]", "[[extracts/x/bookmarks/2026-09-12-josesilesdata-el-web-scraping-ha-muerto-han-creado-pixelrag-un-sistema-ope--2082194990592069660|PixelRAG: web scraping visual]]", "[[extracts/x/bookmarks/2026-09-12-_guillecasaus-tu-ordenador-windows-tiene-mas-de-200-servicios-ejecutandose--2080673389497253950|otimização de serviços Windows]]"]
 thin: false
+theme: "Ecossistema Claude e Agentic Coding"
 ---
 
 # no-ai-slop: removedor de estilo IA em textos

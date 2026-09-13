@@ -22,6 +22,7 @@ links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2085813483652976641/img/TCMAKrzeWd8F8gsQ.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-leoxbtt-bro-el-ingeniero-que-creo-claude-code-solto-un-video-de-28-m--2082108948505674112|Uso avançado do Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-before-creating-a-session-and-sending-it-events-took-separat--2080009527467114737|Seeding de eventos na criação de sessão]]", "[[extracts/x/bookmarks/2026-09-12-polydao-claude-obsidian-loop-engineering-a-vault-that-runs-itself-th--2098288931620184216|Claude + Obsidian vault como estado do agente]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-two-fresh-updates-to-claude-managed-agents-first-we-ve-added--2098120133549895978|Session viewer no ant CLI]]", "[[extracts/x/bookmarks/2026-09-12-pawelhuryn-opus-5-is-way-better-than-4-8-but-cutting-80-of-its-instruct--2086732722261643450|CLAUDE.md blocks for Opus 5]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-here-s-how-our-team-uses-claude-tag-for-on-call-when-an-aler--2098508880921899197|On-call automation with Claude]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-stateful-vs-stateless-mcp-core-anthropic-s-biggest-mcp-updat--2082454281630961687|Stateful vs. Stateless MCP]]"]
 thin: false
+theme: "Ecossistema Claude e Agentic Coding"
 ---
 
 # Mensageria entre sessões no Claude Code

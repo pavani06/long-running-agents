@@ -22,6 +22,7 @@ links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-benjaminsehl-adding-to-every-agents-md-file-for-the-rest-of-time-h-t-rich--2082158002958741746|Simplified Technical English em AGENTS.md]]", "[[extracts/x/bookmarks/2026-09-12-levelsio-this-finally-stopped-claude-s-crazy-pursuit-of-talking-more--2086046112142545061|Controlar estilo do Claude via memória]]", "[[extracts/x/bookmarks/2026-09-12-xudong07452910-openai-skills-agents-md-blog-agent-engineering-astra-skill--2098655277197201752|OpenAI ensina Skills e AGENTS.md]]", "[[extracts/x/bookmarks/2026-09-12-trendtech33566-aiui-skills3-7vercellinearaiskill-ui-web-react-native-swift--2098350898732990886|UI design skills para IA]]", "[[extracts/x/bookmarks/2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098020699365355709|Skill ADHD-friendly para agentes de código]]", "[[extracts/x/bookmarks/2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098382953235562613|Skill de output direto para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-alex_prompter-chatgpt-wants-access-to-your-gmail-slack-and-drive-so-it-can--2097035352707858528|prompt anti-escrita-IA genérica]]", "[[extracts/x/bookmarks/2026-09-12-ryrenz-ai-no-ai-slop-github-7700-star-7-peter-yang-creator-economy--2097944667291635819|no-ai-slop: removedor de estilo IA em textos]]"]
 thin: false
+theme: "Ecossistema Claude e Agentic Coding"
 ---
 
 # guia de estilo para IA

@@ -22,6 +22,7 @@ links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-tashecon-remarkable-how-the-economist-appears-to-have-been-captured-b--2082728912165986348|Influência russa na The Economist]]", "[[extracts/x/bookmarks/2026-09-12-boringbiz_-if-you-are-looking-for-a-primer-on-leveraged-finance-restruc--2094100103740977319|Primer de leveraged finance]]", "[[extracts/x/bookmarks/2026-09-12-mindarchx-a-dead-mit-professor-accidentally-destroyed-the-25-billion-e--2097762463072612533|Palestra MIT sobre comunicação executiva]]", "[[extracts/x/bookmarks/2026-09-12-imadeiyamu-https-t-co-dskqwecp3z-great-collection-of-exceptional-writin--2076340132370583992|Índice Billion Dollar PDFs]]", "[[extracts/x/bookmarks/2026-09-12-zostaff-ray-dalio-founder-of-bridgewater-associates-150b-on-diary-of--2076695008824955216|Concentração de vencedores e perdedores]]", "[[extracts/x/bookmarks/2026-09-12-0xmortyx-andrej-karpathy-just-broke-the-entire-premise-of-modern-ai-a--2078468804276019504|Agentes como destilação em escala]]", "[[extracts/x/bookmarks/2026-09-12-ggreenwald-mauriciomoraes-opaulomm-se-algum-dia-eu-me-pegar-defendendo--2096756333802311828|Acusações contra ministro do STF]]", "[[extracts/x/bookmarks/2026-09-12-brenopires-a-revistapiaui-publica-agora-uma-serie-de-reportagens-que-ja--2098245580539510881|Relatório PF sobre Toffoli e Vorcaro]]"]
 thin: false
+theme: "Macroeconomia, IA e investimentos"
 ---
 
 # Técnicas retóricas de Kevin Warsh

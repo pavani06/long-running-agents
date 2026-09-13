@@ -22,6 +22,7 @@ links: []
 media: ["https://pbs.twimg.com/media/HM88ayjaAAA1xK_.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-pawelhuryn-opus-5-is-way-better-than-4-8-but-cutting-80-of-its-instruct--2086732722261643450|CLAUDE.md blocks for Opus 5]]", "[[extracts/x/bookmarks/2026-09-12-daniel_mac8-fable-advisor-now-uses-opus-5-as-orchestrator-opus-5-shines--2081056595555868752|fable-advisor com Opus 5 como orquestrador]]", "[[extracts/x/bookmarks/2026-09-12-leoxbtt-bro-el-ingeniero-que-creo-claude-code-solto-un-video-de-28-m--2082108948505674112|Uso avançado do Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-felixrieseberg-today-we-re-releasing-fable-5-1-and-mythos-5-1-while-the-mod--2094849655167471773|Lançamento Fable 5.1 e Mythos 5.1]]", "[[extracts/x/bookmarks/2026-09-12-trevin-using-fable-5-1-add-this-to-your-claude-md-file-to-help-its--2095410064492507274|Prompting Claude Fable 5.1]]", "[[extracts/x/bookmarks/2026-09-12-zodchiii-moonshot-just-cloned-claude-code-and-made-it-free-it-s-calle--2078222648539271430|Lançamento do Kimi Code CLI]]", "[[extracts/x/bookmarks/2026-09-12-claudeai-we-re-making-claude-sonnet-5-s-introductory-pricing-permanen--2086891169217122586|Preço permanente do Claude Sonnet 5]]"]
 thin: false
+theme: "Ecossistema Claude e Agentic Coding"
 ---
 
 # Vazamento Claude Opus 5
