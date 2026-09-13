@@ -1,0 +1,69 @@
+name: A/B Validate (Tier A · #262)
+
+# One-off validation gate for Etapa 4 (#262): runs the Tier-A spine (Fases 0->3)
+# live against a source and compares its classification to the historical package,
+# checks the cosine dedup catches a seeded duplicate, and prints the empirical
+# index distribution so the provisional floor/cut can be calibrated. Read-only:
+# it writes nothing to the repo. This is NOT the daily pipeline (that is #266).
+
+on:
+  workflow_dispatch:
+    inputs:
+      transcript:
+        description: "Source transcript (repo-relative)"
+        type: string
+        default: "raw/youtube/ai-learning/transcripts/2026-09-11-12-factor-agents-patterns-of-reliable-llm-applications-dex-horthy-humanlayer--8kMaTybvDUw.txt"
+      historical_yaml:
+        description: "Historical classification.yaml to compare against"
+        type: string
+        default: "docs/analysis/2026-06-09-12-factor-agents/2026-06-09-12-factor-agents-classification.yaml"
+      seed_section:
+        description: "Known indexed file used as the seeded duplicate"
+        type: string
+        default: "docs/canonical/error-context-hygiene.md"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ab-validate
+  cancel-in-progress: false
+
+jobs:
+  ab-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --upgrade requests pyyaml
+
+      - name: Build repo semantic index (full)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/analyze-and-improve/pipeline.py index --full
+
+      - name: Run A/B validation
+        id: ab
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+        run: |
+          set +e
+          python scripts/analyze-and-improve/ab_validate.py \
+            "${{ github.event.inputs.transcript }}" \
+            "${{ github.event.inputs.historical_yaml }}" \
+            "${{ github.event.inputs.seed_section }}"
+          rc=$?
+          echo "AB_RC=$rc" >> "$GITHUB_OUTPUT"
+          echo "ab_validate exit: $rc (0 = PROSSEGUIR, 1 = ITERAR/setup)"
+
+      - name: Decision
+        run: |
+          if [ "${{ steps.ab.outputs.AB_RC }}" = "0" ]; then
+            echo "A/B PASSED — proceed to Tier B. See the job summary for the report."
+          else
+            echo "A/B did not pass (rc=${{ steps.ab.outputs.AB_RC }}) — iterate. See the job summary."
+          fi
