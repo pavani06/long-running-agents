@@ -47,6 +47,7 @@ def build_messages(text: str, handle: str, links: list[str], allowed_tags: list[
                    *, source_text: str = "", grounded: bool = False) -> list[dict]:
     text = _DELIM_RE.sub("[source-tag]", text[:MAX_TEXT_CHARS])
     src = _DELIM_RE.sub("[source-tag]", (source_text or "")[:MAX_SOURCE_CHARS])
+    handle = _DELIM_RE.sub("[source-tag]", handle or "")  # handle sits inside the guard too
     link_ctx = ("\nLinks externos no tweet (contexto factual, NÃO invente outros): "
                 + ", ".join(links)) if links else ""
     system = (
