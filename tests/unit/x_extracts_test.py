@@ -18,6 +18,8 @@ from naming import extract_name_for, status_id_from  # noqa: E402
 from render import BookmarkMeta, build_note, normalize_extract  # noqa: E402
 from store import ExtractStore  # noqa: E402
 from taxonomy import build_vocabulary  # noqa: E402
+from thin import is_thin  # noqa: E402
+from annotate_thin import set_thin  # noqa: E402
 
 VOCAB = ["evals", "performance", "harness-engineering"]
 SID = "1798557144580735156"
@@ -75,6 +77,34 @@ def test_build_note_frontmatter_valid_and_deep_fields():
 def test_normalize_key_points_coerced():
     assert normalize_extract({"key_points": "notalist"}, VOCAB)["key_points"] == []
     assert normalize_extract({"key_points": ["a", "", "b"]}, VOCAB)["key_points"] == ["a", "b"]
+
+
+# ── thin flag ─────────────────────────────────────────────────────────────
+def test_is_thin_predicate():
+    assert is_thin([], "tweet") is True            # no substance + tweet-only
+    assert is_thin(["p1"], "tweet") is False       # has key_points
+    assert is_thin([], "article") is False         # read the article (3 real cases)
+    assert is_thin(None, "tweet") is True           # None key_points
+
+
+def test_build_note_emits_thin():
+    meta = BookmarkMeta(SID, "h", "u", "c", f"2026-09-12-h-x--{SID}.json", "2026-09-12",
+                        grounded_in="tweet")
+    thin_extract = dict(SAMPLE, key_points=[])      # tweet + no key_points -> thin
+    note = build_note(meta, thin_extract, VOCAB, 2, "glm-5.3")
+    assert "thin: true" in note.split("---")[1]
+    # SAMPLE is article-grounded with key_points -> not thin
+    meta2 = BookmarkMeta(SID, "h", "u", "c", f"2026-09-12-h-x--{SID}.json", "2026-09-12",
+                         grounded_in="article")
+    assert "thin: false" in build_note(meta2, SAMPLE, VOCAB, 2, "glm-5.3").split("---")[1]
+
+
+def test_set_thin_inserts_and_replaces():
+    doc = '---\ntitle: "T"\ngrounded_in: "tweet"\n---\n\nbody\n'
+    once = set_thin(doc, True)
+    assert "thin: true" in once and 'title: "T"' in once and "body" in once
+    twice = set_thin(once, False)
+    assert twice.count("thin:") == 1 and "thin: false" in twice
 
 
 # ── glm parsing ─────────────────────────────────────────────────────────

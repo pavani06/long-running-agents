@@ -21,6 +21,7 @@ grounded_in: "article"
 links: ["https://goo.gle/4x5WGpD"]
 media: ["https://pbs.twimg.com/media/HREZb7FbwAAUjhK.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-fazle_karim1-googleresearch-i-wonder-how-it-would-do-on-this-research-of--2094501145536315670|GlucoFM: foundation model para CGM]]", "[[extracts/x/bookmarks/2026-09-12-openhonor-puro-2b-is-open-beyond-the-weights-technical-report-final-in--2093994412770566256|Puro-2B: receita aberta de pré-treinamento barato]]", "[[extracts/x/bookmarks/2026-09-12-openai-now-available-chatgpt-for-financial-services-this-is-a-tailo--2098118191029624911|ChatGPT para serviços financeiros]]", "[[extracts/x/bookmarks/2026-09-12-googleresearch-introducing-toolgrad-an-efficient-framework-for-generating-t--2098183830968705163|ToolGrad: geração de datasets de tool-use]]", "[[extracts/x/bookmarks/2026-09-12-akitaonrails-acabei-de-soltar-a-versao-2-0-do-meu-ai-memory-e-eu-acho-que--2095186765535392249|ai-memory 2.0: memória compartilhada de agentes]]", "[[extracts/x/bookmarks/2026-09-12-dabit3-fusion-is-the-most-efficient-frontier-harness-for-gpt-6-astr--2098557144580735156|Harness Fusion para modelos frontier]]", "[[extracts/x/bookmarks/2026-09-12-finviz_com-introducing-the-finviz-matrix-we-created-a-tool-that-no-othe--2098168161455514035|Lançamento Finviz Matrix]]"]
+thin: false
 ---
 
 # TimesFM-3: forecasting multivariado

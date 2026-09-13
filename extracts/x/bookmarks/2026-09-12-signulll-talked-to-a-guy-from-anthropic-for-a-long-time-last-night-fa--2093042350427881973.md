@@ -21,6 +21,7 @@ grounded_in: "tweet"
 links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-naval-the-frontier-lab-flywheel-is-to-get-the-smartest-people-to-u--2097889337073680776|Flywheel de dados dos frontier labs]]", "[[extracts/x/bookmarks/2026-09-12-0xcodez-anthropic-pays-785k-year-for-forward-deployed-engineers-in-t--2082482596135485822|Anthropic Forward Deployed Engineers]]", "[[extracts/x/bookmarks/2026-09-12-davidsenra-my-conversation-with-mati-staniszewski-mati-co-founder-of-el--2097686462523146734|Entrevista co-founder ElevenLabs]]", "[[extracts/x/bookmarks/2026-09-12-a16z-for-most-of-history-the-bottleneck-on-making-something-was-n--2076720361560003039|IA elimina gargalos de execução]]", "[[extracts/x/bookmarks/2026-09-12-a16z-an-hour-of-agentic-computer-use-may-now-be-cheaper-than-an-h--2086906363947737406|custo de agentes vs trabalho humano]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]"]
+thin: false
 ---
 
 # hiring em frontier labs

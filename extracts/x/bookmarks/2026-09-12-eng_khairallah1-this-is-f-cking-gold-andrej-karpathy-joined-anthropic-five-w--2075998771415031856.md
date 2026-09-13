@@ -21,6 +21,7 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HM9t4EmXgAAtRZV.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-leoxbtt-jensen-huang-acaba-de-matar-el-prompt-engineering-el-ceo-de--2082694020698935359|loops vs prompt engineering]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-anthropic-just-dropped-a-100-free-course-on-loop-engineering--2077720293729091888|Curso gratuito de loops agênticos]]", "[[extracts/x/bookmarks/2026-09-12-zodchiii-the-creator-of-claude-code-boris-cherny-every-night-i-have-h--2079182515462369399|Engenharia com loops de agentes]]", "[[extracts/x/bookmarks/2026-09-12-leoxbtt-bro-el-ingeniero-que-creo-claude-code-solto-un-video-de-28-m--2082108948505674112|Uso avançado do Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-0xmortyx-andrej-karpathy-just-broke-the-entire-premise-of-modern-ai-a--2078468804276019504|Agentes como destilação em escala]]", "[[extracts/x/bookmarks/2026-09-12-0xmovez-anthropic-engineer-80-of-our-engineers-are-using-selfimprovi--2079985963862786352|agentes auto-melhorantes orquestrados por grafos]]", "[[extracts/x/bookmarks/2026-09-12-expemillyweb3-a-father-asked-karpathy-what-to-teach-his-8-year-old-before--2080691057906323907|educação infantil pré-AGI segundo Karpathy]]"]
+thin: true
 ---
 
 # LOOPS.md prompt file hype

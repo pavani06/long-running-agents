@@ -21,6 +21,7 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HRJ7022asAAhhSK.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-dair_ai-brilliant-new-paper-from-the-qwen-team-it-provides-insights--2095880318146507139|Ambientes de treino de agentes]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-retailers-running-shopping-agents-on-claude-have-seen-carts--2095233746366808420|Arquitetura de agentes de comércio com Claude]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-banger-paper-from-baai-if-you-are-building-research-agents-t--2095539831141220620|Skills para research agents]]", "[[extracts/x/bookmarks/2026-09-12-svpino-the-frontieragent-framework-is-here-star-the-repo-https-t-co--2098489264749334565|FrontierAgent: runtime de agentes e evals]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-also-see-our-open-source-reference-implementation-this-inclu--2095233747562180849|implementação de referência de agentes de comércio]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-harness-engineering-is-a-top-skill-right-now-this-new-meta-p--2098426608793362916|Harness engineering e Auto-RecSys]]", "[[extracts/x/bookmarks/2026-09-12-thenarrator-a-prediction-markets-true-quality-metric-is-repricing-latenc--2082684092768751792|Métrica de qualidade em prediction markets]]"]
+thin: false
 ---
 
 # Benchmark longitudinal de agentes e-commerce

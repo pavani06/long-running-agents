@@ -11,6 +11,7 @@ import json
 from dataclasses import dataclass, field
 
 from glm import CONTENT_TYPES
+from thin import is_thin
 
 
 @dataclass(frozen=True)
@@ -84,6 +85,7 @@ def build_note(meta: BookmarkMeta, extract: dict, allowed_tags: list[str],
         _fm("content_type", e["content_type"]),
         _fm("revisit", e["revisit"]),
         _fm("grounded_in", meta.grounded_in),
+        _fm("thin", is_thin(e["key_points"], meta.grounded_in)),
         _fm("links", meta.links),
         _fm("media", meta.media),
     ]

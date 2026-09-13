@@ -21,6 +21,7 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HRDZ8BWW8AALWFl.jpg", "https://pbs.twimg.com/media/HRDZ8BTWYAAwIJv.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-eya0-every-ai-accountant-fails-the-same-way-fluent-confident-unve--2097801524579864803|Agentes de IA contáveis verificáveis]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-good-work-on-improving-memory-for-long-horizon-agents-they-s--2097555607389896732|Memória para agentes longos]]", "[[extracts/x/bookmarks/2026-09-12-boringbiz_-if-you-are-looking-for-a-primer-on-leveraged-finance-restruc--2094100103740977319|Primer de leveraged finance]]", "[[extracts/x/bookmarks/2026-09-12-chamath-here-is-my-ai-investing-guide-sitting-here-august-2026-my-cu--2083463694931902561|Guia de investimento em IA]]", "[[extracts/x/bookmarks/2026-09-12-prosyn-amid-reports-of-mass-lay-https-t-co-ot2ngxlflm--2082797844889485453|Bolha da IA e finanças]]", "[[extracts/x/bookmarks/2026-09-12-naval-when-software-was-expensive-thin-horizontal-best-of-breed-so--2080052566377763071|Software barato e integração vertical]]"]
+thin: false
 ---
 
 # Split payment na reforma tributária

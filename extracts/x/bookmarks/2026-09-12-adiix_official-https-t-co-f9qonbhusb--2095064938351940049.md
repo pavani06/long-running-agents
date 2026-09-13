@@ -21,6 +21,7 @@ grounded_in: "tweet"
 links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-undefinedki-https-t-co-1p5kgpb1x8--2095876609689498067|link sem contexto extraível]]", "[[extracts/x/bookmarks/2026-09-12-eng_khairallah1-https-t-co-hnwk3geozx--2068620025045418032|conteúdo inacessível]]", "[[extracts/x/bookmarks/2026-09-12-nikogrupen-https-t-co-fg8fnikqv3--2097369705791307952|link sem contexto]]", "[[extracts/x/bookmarks/2026-09-12-dexhorthy-https-t-co-l0g15qt1tv--2087569590268391897|conteúdo inacessível]]", "[[extracts/x/bookmarks/2026-09-12-pvncher-https-t-co-idl6i25aqu--2095991462416490862|link externo sem conteúdo]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-https-t-co-rx3fqsosu0--2079654423828304282|Link externo sem contexto]]", "[[extracts/x/bookmarks/2026-09-12-togethercompute-https-t-co-k3m6rc8eg3--2097736079122067907|link sem conteúdo resolvido]]"]
+thin: true
 ---
 
 # link inacessível

@@ -21,6 +21,7 @@ grounded_in: "tweet"
 links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-andrewyng-the-most-important-skills-for-using-ai-coding-agents-effecti--2095890279865721217|Skills para agentes de codificação]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-how-have-software-engineering-fundamentals-changed-with-agen--2093388974194872781|AI Engineering Skills para software]]", "[[extracts/x/bookmarks/2026-09-12-kay2289123-ai-infra-ai-kv--2098270561151676829|Reading list de AI Infra]]", "[[extracts/x/bookmarks/2026-09-12-agentnativedev-so-perplexity-wrote-its-own-inference-engine-it-is-called-li--2098111913695551626|Engine de inferência Lily da Perplexity]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-with-ai-engineering-skills-you-actively-shape-the-build-you--2098459474608672916|AI engineering key skills]]", "[[extracts/x/bookmarks/2026-09-12-suraj_sharma14-as-an-ai-engineer-you-must-build-these-projects-systems-that--2098026202464243908|Projetos práticos para AI Engineers]]", "[[extracts/x/bookmarks/2026-09-12-aravsrinivas-we-re-open-sourcing-lily-perplexity-s-local-inference-engine--2095264908762140823|Perplexity Lily inferência local]]"]
+thin: true
 ---
 
 # mapa de habilidades de inference engineering
