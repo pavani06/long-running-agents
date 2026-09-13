@@ -17,6 +17,11 @@ Projetos ativos do operador (@fepavani). O **x-digest** lê este arquivo para an
 - **scripts** — Infra do runtime Sisyphus: pipeline de telemetria (systemd), sync do vault CIOT, dispatch runners, tooling de reflexão.
 - **papers-journal** — Jornal diário dos Daily Papers do Hugging Face: busca, triagem contra perfil de interesse, publica em markdown/HTML.
 - **llm-council** — Conselho de LLMs com avaliação cruzada cega (quatro provedores respondem, avaliam-se sem autoria, presidente sintetiza). CLI + MCP.
+- **chatshop-io/chatbot-ai** — Umbrella (map + remote control) da frota chatshop-io: manifest `repos.yaml`, justfile runner, agent roles. Sem app code.
+- **chatshop-io/mhc-knowledge-base** — KB alinhada a IDSD: governança humana (intents, expectations) + decision contracts executáveis do agente KODA. Monorepo docs-first (Obsidian).
+- **chatshop-io/mhc-backend** — Backend do MHC/KODA (agente de conversational commerce esportivo).
+- **chatshop-io/commerce** — Serviço de commerce da chatshop-io. _[refinar: 1 linha concreta]_
+- **govevo** — GovEvo. _[refinar: 1 linha concreta do projeto]_
 
 ## Tier 2
 
