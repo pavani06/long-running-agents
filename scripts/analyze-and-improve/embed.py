@@ -15,6 +15,16 @@ import requests
 URL = "https://api.openai.com/v1/embeddings"
 MODEL = "text-embedding-3-large"
 BATCH = 100
+# text-embedding-3-large rejects any input over 8192 tokens. Section chunks can
+# exceed that (a very long heading section), which 400s the whole batch. Cap each
+# input by chars — 16k stays under 8192 tokens even at a dense ~2 chars/token, and
+# the head of a section carries its topic, which is what retrieval needs.
+MAX_INPUT_CHARS = 16000
+
+
+def cap_input(text: str) -> str:
+    """Truncate one embedding input to stay under the model's token limit. Pure."""
+    return text[:MAX_INPUT_CHARS]
 
 
 class AuthError(Exception):
@@ -28,7 +38,11 @@ class EmbedError(Exception):
 def embed_texts(texts: list[str], api_key: str, *, timeout: int = 120,
                 max_retries: int = 3, backoff_base: float = 3.0,
                 sleep=time.sleep) -> list[list[float]]:
-    """One vector per input text, order preserved. Batches internally."""
+    """One vector per input text, order preserved. Batches internally.
+
+    Each input is capped to MAX_INPUT_CHARS so an over-long section can't 400 the
+    whole batch on the model's 8192-token limit."""
+    texts = [cap_input(t) for t in texts]
     vectors: list[list[float]] = []
     for start in range(0, len(texts), BATCH):
         chunk = texts[start:start + BATCH]
