@@ -39,9 +39,12 @@ unit-tested with no network.
 | `phase1_extract.py` | Fase 1 — extraction from the full raw transcript | `build_messages`/`parse_extraction` pure; `run` injects the client |
 | `phase0_mental_model.py` | Fase 0 — incremental repo mental model from the delta scan | `build_messages`/`parse_model` pure; `run` injects the client |
 | `phase2_patterns.py` | Fase 2 — patterns synthesised over the Fase 1 output | `build_messages`/`parse_patterns` pure; `run` injects the client |
+| `retrieval.py` | Fase 3 hybrid retrieval — dense top-k over the index + grep | `rank_sections`/`build_context` pure; embed/grep/file reads I/O |
+| `grep_verify.py` | Deterministic grep-verify of citations (existence + content) | `verify_citation`/`all_ok` pure; `verify_all` reads files |
+| `phase3_classify.py` | Fase 3 — classify Missing/Partial/Exists/Better, 1 'ask-for-more' round | `build_messages`/`parse_*`/`citations_of` pure; `run` injects client + retriever |
 | `serialize.py` | Render phase outputs to `.yaml`/`.md` (PyYAML) | ✅ |
 | `analysis_package.py` | Write the partial package to `docs/analysis/<slug>/` | I/O over the pure serializers |
-| `pipeline.py` | CLI: `queue`, `index`, `analyze` | — |
+| `pipeline.py` | CLI: `queue`, `index`, `analyze`, `classify` | — |
 
 **Dependencies:** control plane needs only `requests` (+ stdlib). The judgment
 plane's `serialize.py` needs **PyYAML** — a workflow running `analyze` must
@@ -51,8 +54,9 @@ judgment-plane imports are lazy).
 Tests — run in isolation (the repo's convention for its pipeline tests):
 
 ```bash
-python3 -m pytest tests/unit/analyze_and_improve_test.py -q         # control plane
-python3 -m pytest tests/unit/analyze_and_improve_phases_test.py -q  # judgment plane (Fases 0–2)
+python3 -m pytest tests/unit/analyze_and_improve_test.py -q          # control plane
+python3 -m pytest tests/unit/analyze_and_improve_phases_test.py -q   # judgment plane (Fases 0–2)
+python3 -m pytest tests/unit/analyze_and_improve_classify_test.py -q # Fase 3 (retrieval + grep-verify)
 ```
 
 ## CLI
@@ -69,7 +73,20 @@ python3 scripts/analyze-and-improve/pipeline.py index --distribution  # embed + 
 # Run Fases 1->0->2 (GLM) for one transcript (needs ZAI_API_KEY)
 python3 scripts/analyze-and-improve/pipeline.py analyze <transcript.txt>                  # Fases 1 + 2
 python3 scripts/analyze-and-improve/pipeline.py analyze <transcript.txt> --mental-model   # also Fase 0
+
+# Run Fase 3 (classify a package's patterns against the repo) — needs OPENAI_API_KEY + ZAI_API_KEY
+python3 scripts/analyze-and-improve/pipeline.py classify <slug>        # reads <slug>-patterns.yaml, writes classification
+python3 scripts/analyze-and-improve/pipeline.py classify <slug> -k 12  # more dense sections in context
 ```
+
+**Fase 3 (classification).** Hybrid retrieval builds the context: dense top-k
+sections from the Etapa-0 index (the query is the patterns' text, embedded) plus
+`git grep` on the pattern identifiers. The model classifies each pattern
+Missing/Partial/Exists/Better with `file:line` evidence; if it declares the
+context insufficient it names exact greps/files (`need_more`) and the code does
+**one** more retrieval + call. Every cited `file:line` is then **grep-verified**
+deterministically (the line exists and contains the claimed quote); a
+classification whose citations fail verification is flagged `verified: false`.
 
 ## Stateless markers & state
 

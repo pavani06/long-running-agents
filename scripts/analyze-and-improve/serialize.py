@@ -64,3 +64,24 @@ def patterns_md(patterns: list[dict]) -> str:
                   f"- **Mecanismo:** {p.get('mechanism','')}",
                   f"- **Trade-offs:** {p.get('tradeoffs','')}", ""]
     return "\n".join(lines)
+
+
+def _evidence(ev) -> str:
+    if not ev:
+        return "_(sem evidência)_"
+    return "; ".join(f"{e.get('file','')}:{e.get('line','')}"
+                     + (f" — “{e.get('quote')}”" if e.get("quote") else "")
+                     for e in ev)
+
+
+def classification_md(classifications: list[dict]) -> str:
+    lines = ["# Classification (Fase 3)", ""]
+    if not classifications:
+        lines += ["_(nenhuma classificação)_", ""]
+    for c in classifications:
+        verified = c.get("verified")
+        badge = "" if verified is None else ("  ✅ citações verificadas" if verified else "  ⚠️ citação não verificada")
+        lines += [f"## {c.get('pattern','')} — **{c.get('verdict','')}**{badge}",
+                  f"- **Evidência:** {_evidence(c.get('evidence', []))}",
+                  f"- **Racional:** {c.get('rationale','')}", ""]
+    return "\n".join(lines)
