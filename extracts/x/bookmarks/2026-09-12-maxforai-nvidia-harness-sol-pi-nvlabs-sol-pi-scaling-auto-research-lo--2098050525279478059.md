@@ -20,6 +20,7 @@ revisit: "high"
 grounded_in: "tweet"
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-sumanth_077-bytedance-dropped-a-banger-paper-on-self-evolving-agent-harn--2098053941800100294|HarnessDev: self-evolving agent harnesses]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-agents-api-is-a-bigger-deal-than-it-seems-openai-s-bet-on-ma--2098524621439914375|OpenAI Agents API e harness-as-a-service]]", "[[extracts/x/bookmarks/2026-09-12-pythonhub-autosaddler-automatic-harness-optimization-with-durable-upda--2097931902594265474|Otimização automática de agent harness]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-harness-of-harness-exciting-new-research-on-coding-agents-th--2095172426925801608|Harness-of-Harness: agentes de código autônomos]]", "[[extracts/x/bookmarks/2026-09-12-dabit3-fusion-is-the-most-efficient-frontier-harness-for-gpt-6-astr--2098557144580735156|Harness Fusion para modelos frontier]]", "[[extracts/x/bookmarks/2026-09-12-stevendcoffey-today-we-re-launching-the-agents-api-a-brand-new-way-to-buil--2098130889486274820|OpenAI Agents API launch]]"]
 ---
 
 # NVIDIA open-sources SoL-Pi agent harness

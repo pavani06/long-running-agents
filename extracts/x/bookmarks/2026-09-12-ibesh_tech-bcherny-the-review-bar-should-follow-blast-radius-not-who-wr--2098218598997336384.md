@@ -20,6 +20,7 @@ revisit: "medium"
 grounded_in: "tweet"
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-bcherny-hey-i-think-there-is-room-for-both-1-prototypes-and-other-th--2098217573276131577|Rigor de revisão em código gerado por IA]]", "[[extracts/x/bookmarks/2026-09-12-mihail_eric-line-by-line-code-review-will-soon-disappear-the-future-is-a--2098097592001548319|revisão de código risco-gateada]]", "[[extracts/x/bookmarks/2026-09-12-steipete-hit-a-new-record-with-our-autoreview-skill-66-rounds-on-a-gn--2080899298838098034|Autoreview: code review multi-engine]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-starting-to-wonder-if-the-smartest-way-to-reduce-slop-is-jus--2094500508224409852|reduzir código para reduzir slop]]", "[[extracts/x/bookmarks/2026-09-12-0xdeliriumm-boris-cherny-lead-of-claude-code-at-anthropic-published-a-pi--2081050632727793775|pipeline de code review com agentes]]", "[[extracts/x/bookmarks/2026-09-12-sumanth_077-i-built-a-self-evolving-code-review-agent-most-code-review-a--2098416224803987968|Agente de code review auto-evolutivo]]"]
 ---
 
 # Code review e blast radius

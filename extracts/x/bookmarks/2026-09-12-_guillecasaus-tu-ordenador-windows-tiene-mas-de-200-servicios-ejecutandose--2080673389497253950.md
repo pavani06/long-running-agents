@@ -20,6 +20,7 @@ revisit: "low"
 grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HOAJWpRWgAAnYJF.png"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-andrewyng-openworker-an-open-source-agent-that-doesn-t-just-chat-but-c--2092315079576555806|OpenWorker: agente open source de tarefas locais]]", "[[extracts/x/bookmarks/2026-09-12-poteto-what-questions-do-you-have-about-pstack-https-t-co-lopojdztt--2098634643323142286|pstack agent workflow tool]]", "[[extracts/x/bookmarks/2026-09-12-leoxbtt-bro-el-ingeniero-que-creo-claude-code-solto-un-video-de-28-m--2082108948505674112|Uso avançado do Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-ryrenz-ai-no-ai-slop-github-7700-star-7-peter-yang-creator-economy--2097944667291635819|no-ai-slop: removedor de estilo IA em textos]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-finally-an-open-source-runtime-security-layer-for-your-agent--2098042808221511836|runtime security layer para agentes]]", "[[extracts/x/bookmarks/2026-09-12-vaibhavsisinty-baidu-just-open-sourced-an-ocr-model-that-reads-entire-40-pa--2079000862962417996|OCR open-source da Baidu]]"]
 ---
 
 # otimização de serviços Windows

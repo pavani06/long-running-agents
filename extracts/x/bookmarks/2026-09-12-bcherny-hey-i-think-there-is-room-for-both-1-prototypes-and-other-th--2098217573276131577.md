@@ -20,6 +20,7 @@ revisit: "medium"
 grounded_in: "tweet"
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-mihail_eric-line-by-line-code-review-will-soon-disappear-the-future-is-a--2098097592001548319|revisão de código risco-gateada]]", "[[extracts/x/bookmarks/2026-09-12-0xdeliriumm-boris-cherny-lead-of-claude-code-at-anthropic-published-a-pi--2081050632727793775|pipeline de code review com agentes]]", "[[extracts/x/bookmarks/2026-09-12-theprimeagen-something-that-has-greatly-improved-the-reliability-of-the-c--2081066227619836308|técnica de confiabilidade em código via LLM]]", "[[extracts/x/bookmarks/2026-09-12-ibesh_tech-bcherny-the-review-bar-should-follow-blast-radius-not-who-wr--2098218598997336384|Code review e blast radius]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-ai-has-eaten-tactical-programming-so-juniors-need-strategic--2095902639158440210|desenvolvimento de juniores com IA]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-what-techniques-do-you-use-for-making-ai-authored-pr-s-easie--2096666329495257563|revisão de PRs gerados por IA]]", "[[extracts/x/bookmarks/2026-09-12-addyosmani-how-do-you-hold-the-bar-on-production-agent-code-1-agree-on--2098662421644853433|padrão de qualidade em código de agentes]]"]
 ---
 
 # Rigor de revisão em código gerado por IA

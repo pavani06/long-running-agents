@@ -20,6 +20,7 @@ revisit: "low"
 grounded_in: "article"
 links: ["https://alphaXiv.org"]
 media: ["https://pbs.twimg.com/amplify_video_thumb/2098309061972516864/img/DP_6eFpfjjzQ25aD.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-hasantoxr-you-can-now-watch-any-ai-paper-instead-of-reading-it-there-s--2097398574061670664|arXivisual: papers em vídeo animado]]", "[[extracts/x/bookmarks/2026-09-12-tom_doerr-hyperresearch-turns-claude-code-into-a-research-agent-that-i--2097841937642332595|Agente de pesquisa profunda para Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-akitaonrails-acabei-de-soltar-a-versao-2-0-do-meu-ai-memory-e-eu-acho-que--2095186765535392249|ai-memory 2.0: memória compartilhada de agentes]]", "[[extracts/x/bookmarks/2026-09-12-googleresearch-introducing-toolgrad-an-efficient-framework-for-generating-t--2098183830968705163|ToolGrad: geração de datasets de tool-use]]", "[[extracts/x/bookmarks/2026-09-12-bakigulai-ai-agentlar-icin-ack-kaynak-palantir-yapmslar-semantica-veri--2085977214365896731|Semantica: knowledge graph e provenance para agentes]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]"]
 ---
 
 # alphaXiv AI paper Q&A

@@ -20,6 +20,7 @@ revisit: "medium"
 grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HOyTR7vWAAAhsh2.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-doctorinigo-a-representation-of-the-lactate-shuttle-lactate-produced-by--2084362367500955826|Lactate Shuttle em fisiologia muscular]]", "[[extracts/x/bookmarks/2026-09-12-doctorinigo-very-excited-to-share-these-results-from-our-work-with-bioli--2096296686750666868|Biossensor contínuo de lactato]]", "[[extracts/x/bookmarks/2026-09-12-johnhellemans-proud-to-present-the-definitive-guide-to-altitude-training-f--2082136535676404215|Altitude training guide]]", "[[extracts/x/bookmarks/2026-09-12-sitkosebastian-you-don-t-need-a-power-meter-to-know-how-many-watts-a-rider--2089763604371218674|estimativa de watts sem medidor]]", "[[extracts/x/bookmarks/2026-09-12-bradschoenfeld-why-do-some-people-gain-more-muscle-than-others-last-year-i--2096961137031975189|variabilidade individual na hipertrofia]]", "[[extracts/x/bookmarks/2026-09-12-ubereng-we-cut-uber-eats-search-latency-in-half-how-measure-identify--2098177194979983830|Uber Eats search latency halving]]"]
 ---
 
 # Imersão em água fria e recuperação

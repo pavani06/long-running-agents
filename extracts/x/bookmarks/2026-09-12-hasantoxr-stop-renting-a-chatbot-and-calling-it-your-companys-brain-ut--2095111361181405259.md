@@ -20,6 +20,7 @@ revisit: "low"
 grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2095111334279151617/img/EbdAA2c98tVwIsJD.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-bakigulai-ai-agentlar-icin-ack-kaynak-palantir-yapmslar-semantica-veri--2085977214365896731|Semantica: knowledge graph e provenance para agentes]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-we-re-open-sourcing-claude-commerce-agents-this-is-a-bluepri--2095233745167282602|agentes de comércio open-source]]", "[[extracts/x/bookmarks/2026-09-12-akitaonrails-acabei-de-soltar-a-versao-2-0-do-meu-ai-memory-e-eu-acho-que--2095186765535392249|ai-memory 2.0: memória compartilhada de agentes]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-i-ve-been-trying-to-use-ai-for-knowledge-work-course-plannin--2097638166232457451|IA para trabalho de conhecimento]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-openworker-an-open-source-agent-that-doesn-t-just-chat-but-c--2092315079576555806|OpenWorker: agente open source de tarefas locais]]", "[[extracts/x/bookmarks/2026-09-12-hliriani-yesterday-we-announced-our-series-a-to-reimagine-crm-as-a-bu--2098162367075164170|CRM como business world model]]"]
 ---
 
 # modelo de conhecimento corporativo open-source

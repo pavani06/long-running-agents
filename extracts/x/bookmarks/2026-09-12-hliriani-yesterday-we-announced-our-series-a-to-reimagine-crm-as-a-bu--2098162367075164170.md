@@ -20,6 +20,7 @@ revisit: "medium"
 grounded_in: "tweet"
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-hasantoxr-stop-renting-a-chatbot-and-calling-it-your-companys-brain-ut--2095111361181405259|modelo de conhecimento corporativo open-source]]", "[[extracts/x/bookmarks/2026-09-12-openai-now-available-chatgpt-for-financial-services-this-is-a-tailo--2098118191029624911|ChatGPT para serviços financeiros]]", "[[extracts/x/bookmarks/2026-09-12-davidsenra-my-conversation-with-mati-staniszewski-mati-co-founder-of-el--2097686462523146734|Entrevista co-founder ElevenLabs]]", "[[extracts/x/bookmarks/2026-09-12-naval-when-software-was-expensive-thin-horizontal-best-of-breed-so--2080052566377763071|Software barato e integração vertical]]", "[[extracts/x/bookmarks/2026-09-12-naval-the-frontier-lab-flywheel-is-to-get-the-smartest-people-to-u--2097889337073680776|Flywheel de dados dos frontier labs]]", "[[extracts/x/bookmarks/2026-09-12-a16z-for-most-of-history-the-bottleneck-on-making-something-was-n--2076720361560003039|IA elimina gargalos de execução]]"]
 ---
 
 # CRM como business world model

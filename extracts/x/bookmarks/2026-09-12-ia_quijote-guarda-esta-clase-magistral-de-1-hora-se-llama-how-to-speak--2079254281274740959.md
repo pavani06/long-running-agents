@@ -20,6 +20,7 @@ revisit: "low"
 grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2056369642222845952/img/gLSt2I93IE2X8xs7.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-mindarchx-a-dead-mit-professor-accidentally-destroyed-the-25-billion-e--2097762463072612533|Palestra MIT sobre comunicação executiva]]", "[[extracts/x/bookmarks/2026-09-12-_yusufknl-as-someone-who-s-been-shipping-llms-since-the-gpt-2-days-thi--2078877591923036378|Aula de cross-entropy em LLMs]]", "[[extracts/x/bookmarks/2026-09-12-eva200699-32-200345-zip2paypalspacex0-https-t-co-7lvhsrqclh--2082365410369024407|Palestra de Musk em Stanford (2003)]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-fifteen-years-ago-coursera-and-online-courses-changed-educat--2082199333920027009|Personalização do aprendizado com IA]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-demis-hassabis-in-the-near-future-one-person-who-knows-ai-wi--2079915295230038426|IA e produtividade individual]]", "[[extracts/x/bookmarks/2026-09-12-swapnakpanda-stanford-s-free-courses-on-ai-amp-ml-cs221-artificial-intell--2080877747338113444|Cursos gratuitos de Stanford em IA/ML]]"]
 ---
 
 # Clássica aula de comunicação do MIT

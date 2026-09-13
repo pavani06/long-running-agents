@@ -20,6 +20,7 @@ revisit: "medium"
 grounded_in: "tweet"
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-with-ai-engineering-skills-you-actively-shape-the-build-you--2098459474608672916|AI engineering key skills]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-i-ve-been-trying-to-use-ai-for-knowledge-work-course-plannin--2097638166232457451|IA para trabalho de conhecimento]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-the-most-important-skills-for-using-ai-coding-agents-effecti--2095890279865721217|Skills para agentes de codificação]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-how-have-software-engineering-fundamentals-changed-with-agen--2093388974194872781|AI Engineering Skills para software]]", "[[extracts/x/bookmarks/2026-09-12-skeptrune-sharing-a-map-of-the-most-important-skills-for-inference-eng--2098087369224405122|mapa de habilidades de inference engineering]]", "[[extracts/x/bookmarks/2026-09-12-_vmlops-most-people-learn-ml-few-learn-how-to-run-ml-in-production-t--2094421798326800432|Repositório-guia de MLOps]]", "[[extracts/x/bookmarks/2026-09-12-xudong07452910-netflix-llm-as-a-judge-netflix-judge-judge-rart-judge--2095444189743902927|LLM-as-a-Judge em produção na Netflix]]"]
 ---
 
 # Projetos práticos para AI Engineers

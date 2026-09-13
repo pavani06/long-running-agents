@@ -20,6 +20,7 @@ revisit: "medium"
 grounded_in: "tweet"
 links: ["https://portal.stf.jus.br/processos/detalhe.asp?incidente=7473347", "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7450195", "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7473336", "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7498168"]
 media: ["https://pbs.twimg.com/media/HR6AK-EXYAMicz5.png"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-brenopires-a-revistapiaui-publica-agora-uma-serie-de-reportagens-que-ja--2098245580539510881|Relatório PF sobre Toffoli e Vorcaro]]", "[[extracts/x/bookmarks/2026-09-12-ggreenwald-mauriciomoraes-opaulomm-se-algum-dia-eu-me-pegar-defendendo--2096756333802311828|Acusações contra ministro do STF]]", "[[extracts/x/bookmarks/2026-09-12-imadeiyamu-https-t-co-dskqwecp3z-great-collection-of-exceptional-writin--2076340132370583992|Índice Billion Dollar PDFs]]", "[[extracts/x/bookmarks/2026-09-12-cwolferesearch-really-awesome-mopd-reading-list-here-is-also-another-well-w--2095256315476000817|MOPD reading list]]", "[[extracts/x/bookmarks/2026-09-12-bzuer_-victorosaraiva-pergunto-quem-e-jefferson-silva-quem-usa-hewl--2095704063081849159|verificação de metadados de documento]]", "[[extracts/x/bookmarks/2026-09-12-boringbiz_-if-you-are-looking-for-a-primer-on-leveraged-finance-restruc--2094100103740977319|Primer de leveraged finance]]"]
 ---
 
 # Sigilo STF caso Master
