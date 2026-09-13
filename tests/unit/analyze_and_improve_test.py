@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
 from analysis_queue import Pending, is_pending, pending_from_texts  # noqa: E402
 from chunking import Section, split_sections, strip_frontmatter  # noqa: E402
 from deltascan import DEFAULT_TARGETS, under_targets  # noqa: E402
+from embed import MAX_INPUT_CHARS, cap_input  # noqa: E402
 from floor import PROVISIONAL_FLOOR, cosine, distribution  # noqa: E402
 from frontmatter import (mark_analyzed, parse_frontmatter,  # noqa: E402
                          read_analyzed, set_analyzed)
@@ -125,6 +126,14 @@ def test_under_targets_dedupes():
 def test_default_targets_shape():
     assert "docs/canonical/" in DEFAULT_TARGETS
     assert ".opencode/skills/" in DEFAULT_TARGETS
+
+
+# ── embed input cap (guards the 8192-token embedding limit) ───────────────
+def test_cap_input_truncates_long_and_keeps_short():
+    assert cap_input("short") == "short"
+    long = "x" * (MAX_INPUT_CHARS + 5000)
+    assert len(cap_input(long)) == MAX_INPUT_CHARS
+    assert cap_input(long) == long[:MAX_INPUT_CHARS]
 
 
 # ── chunking by heading ───────────────────────────────────────────────────
