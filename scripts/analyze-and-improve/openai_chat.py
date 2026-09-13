@@ -13,7 +13,8 @@ import time
 
 import requests
 
-from glm import AuthError, GLMError, RateLimited, extract_json
+from glm import (AuthError, GLMError, RateLimited, content_from_sse_lines,
+                 extract_json)
 
 URL = "https://api.openai.com/v1/chat/completions"
 DEFAULT_MODEL = "gpt-4o"  # provisional; override with OPENAI_EVAL_MODEL
@@ -33,7 +34,7 @@ def chat_json(messages: list[dict], api_key: str, *, model: str | None = None,
     contract as glm.chat_json, so callers handle one set of exceptions."""
     payload = {"model": model or model_from_env(), "messages": messages,
                "temperature": temperature,
-               "response_format": {"type": "json_object"}}
+               "response_format": {"type": "json_object"}, "stream": True}
     last = ""
     for attempt in range(max_retries + 1):
         try:
@@ -42,10 +43,8 @@ def chat_json(messages: list[dict], api_key: str, *, model: str | None = None,
                 headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
                 json=payload,
                 timeout=timeout,
+                stream=True,
             )
-        except requests.RequestException as e:
-            last = f"network error: {e}"
-        else:
             if r.status_code in (401, 403):
                 raise AuthError(f"OpenAI HTTP {r.status_code} (invalid/revoked key)")
             if r.status_code == 429:
@@ -57,12 +56,12 @@ def chat_json(messages: list[dict], api_key: str, *, model: str | None = None,
             elif r.status_code != 200:
                 raise GLMError(f"OpenAI HTTP {r.status_code}: {r.text[:200]}")
             else:
-                try:
-                    body = r.json()
-                    content = body["choices"][0]["message"]["content"]
-                except (ValueError, KeyError, IndexError, TypeError):
-                    raise GLMError("no choices/content in OpenAI reply")
-                return extract_json(content)
+                content = content_from_sse_lines(r.iter_lines(decode_unicode=True))
+                if content.strip():
+                    return extract_json(content)
+                last = "empty stream response"
+        except requests.RequestException as e:
+            last = f"network error: {e}"
         if attempt < max_retries:
             sleep(backoff_base * (2 ** attempt))
     raise GLMError(f"OpenAI chat failed after {max_retries + 1} attempts: {last}")

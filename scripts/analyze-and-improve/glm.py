@@ -48,16 +48,44 @@ def extract_json(content: str) -> dict:
         raise GLMError(f"unparseable JSON in GLM reply: {e}")
 
 
+def content_from_sse_lines(lines) -> str:
+    """Assemble the message content from OpenAI-compatible SSE `data:` lines.
+
+    Each line is `data: {"choices":[{"delta":{"content":"..."}}]}` or `data: [DONE]`.
+    Pure: malformed/keepalive lines are skipped. This is what makes streaming work —
+    tokens arrive incrementally, so a long generation never trips the read timeout."""
+    parts: list[str] = []
+    for raw in lines:
+        if not raw:
+            continue
+        line = raw.decode("utf-8") if isinstance(raw, (bytes, bytearray)) else raw
+        line = line.strip()
+        if not line.startswith("data:"):
+            continue
+        data = line[len("data:"):].strip()
+        if data == "[DONE]":
+            break
+        try:
+            delta = json.loads(data)["choices"][0]["delta"].get("content")
+        except (json.JSONDecodeError, KeyError, IndexError, TypeError):
+            continue
+        if delta:
+            parts.append(delta)
+    return "".join(parts)
+
+
 def chat_json(messages: list[dict], api_key: str, *, model: str = MODEL,
               temperature: float = 0.2, timeout: int = 90, max_retries: int = 2,
               backoff_base: float = 4.0, sleep=time.sleep) -> dict:
-    """POST a chat completion and return the reply parsed as a JSON object.
+    """POST a streaming chat completion and return the reply parsed as a JSON object.
 
-    Raises AuthError (401/403), RateLimited (429 past retries), or GLMError
-    (other HTTP failure, empty reply, or unparseable JSON).
-    """
+    Streaming (`stream: True`) is deliberate: the read timeout then applies between
+    chunks (tokens keep arriving during generation) instead of to the whole body,
+    so a slow Fase-3 generation doesn't read-time-out. Raises AuthError (401/403),
+    RateLimited (429 past retries), or GLMError (other HTTP failure, empty reply,
+    or unparseable JSON)."""
     payload = {"model": model, "messages": messages,
-               "temperature": temperature, "stream": False}
+               "temperature": temperature, "stream": True}
     url = f"{BASE_URL}/chat/completions"
     last = ""
     for attempt in range(max_retries + 1):
@@ -67,10 +95,8 @@ def chat_json(messages: list[dict], api_key: str, *, model: str = MODEL,
                 headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
                 json=payload,
                 timeout=timeout,
+                stream=True,
             )
-        except requests.RequestException as e:
-            last = f"network error: {e}"
-        else:
             if r.status_code in (401, 403):
                 raise AuthError(f"GLM HTTP {r.status_code} (invalid/revoked key)")
             if r.status_code == 429:
@@ -83,19 +109,12 @@ def chat_json(messages: list[dict], api_key: str, *, model: str = MODEL,
                 # Other 4xx (400/404/422/…) are permanent; retrying just wastes calls.
                 raise GLMError(f"GLM HTTP {r.status_code}: {r.text[:200]}")
             else:
-                try:
-                    body = r.json()
-                except ValueError as e:
-                    raise GLMError(f"GLM envelope not JSON: {e}")
-                return _content_json(body)
+                content = content_from_sse_lines(r.iter_lines(decode_unicode=True))
+                if content.strip():
+                    return extract_json(content)
+                last = "empty stream response"
+        except requests.RequestException as e:
+            last = f"network error: {e}"
         if attempt < max_retries:
             sleep(backoff_base * (2 ** attempt))
     raise GLMError(f"GLM failed after {max_retries + 1} attempts: {last}")
-
-
-def _content_json(body: dict) -> dict:
-    try:
-        content = body["choices"][0]["message"]["content"]
-    except (KeyError, IndexError, TypeError):
-        raise GLMError("no choices/content in GLM reply")
-    return extract_json(content)
