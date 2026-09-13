@@ -59,6 +59,7 @@ checks + an adversarial evaluator + quarantine + a landing library.
 | `quarantine.py` | Route accept vs `proposed/`; fail-closed gate report | ✅ |
 | `landing.py` | Build the PR body + rolling quarantine-Issue digest; `LandingPlan` (`auto_merge`, `dry_run`) — the library, **not** the workflow | ✅ |
 | `spine.py` | `run_spine` — chains Fases 0→3 + gates + evaluator + route + landing (the entry point #262 invokes) | `artifact_for_eval`/`dedup_text` pure; `run_spine` needs both keys |
+| `ab_validate.py` | A/B validation (Etapa 4, #262): fresh-vs-historical label agreement + seeded-duplicate check + report; suggests the calibrated floor/cut | `label_agreement`/`decide_ab`/`ab_report`/`suggest_floor` pure; `run` needs both keys |
 
 **Boundaries.** The evaluator is OpenAI on purpose — a different provider from
 the GLM generator, so it never grades its own homework (`OPENAI_API_KEY`, model
@@ -81,7 +82,20 @@ python3 -m pytest tests/unit/analyze_and_improve_test.py -q          # control p
 python3 -m pytest tests/unit/analyze_and_improve_phases_test.py -q   # judgment plane (Fases 0–2)
 python3 -m pytest tests/unit/analyze_and_improve_classify_test.py -q # Fase 3 (retrieval + grep-verify)
 python3 -m pytest tests/unit/analyze_and_improve_spine_test.py -q    # Etapa 3 (dedup + rubric + quarantine + landing)
+python3 -m pytest tests/unit/analyze_and_improve_ab_test.py -q       # Etapa 4 (A/B agreement + report)
 ```
+
+### A/B validation (Etapa 4, #262 — Tier-B progression gate)
+
+The live A/B run needs the API keys, which live in **GitHub Actions secrets** —
+so it runs as the `A/B Validate (Tier A · #262)` workflow (`workflow_dispatch`,
+read-only, writes nothing to the repo): it builds the index, runs `run_spine`
+for the 12-factor source, compares the fresh classification labels to the
+historical package (agreement ≥ 80%), confirms the cosine dedup catches a seeded
+duplicate, and prints the empirical distribution so the **provisional** floor
+(`floor.PROVISIONAL_FLOOR`), dedup threshold (`dedup.PROVISIONAL_DUP_THRESHOLD`)
+and evaluator cut (`evaluator.PROVISIONAL_MIN_MEAN`) can be finalized. The job's
+exit reflects the gate (0 = proceed to Tier B, 1 = iterate).
 
 ## CLI
 
