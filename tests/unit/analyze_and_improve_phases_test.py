@@ -20,7 +20,8 @@ import phase0_mental_model as p0  # noqa: E402
 import phase1_extract as p1  # noqa: E402
 import phase2_patterns as p2  # noqa: E402
 import serialize  # noqa: E402
-from glm import AuthError, GLMError, RateLimited, chat_json, extract_json  # noqa: E402
+from glm import (AuthError, GLMError, RateLimited, chat_json,  # noqa: E402
+                 content_from_sse_lines, extract_json)
 
 
 # ── glm.extract_json (output parsing) ─────────────────────────────────────
@@ -47,17 +48,21 @@ def test_extract_json_bad_json_raises():
 
 
 # ── glm.chat_json error contract (HTTP mocked, no network) ────────────────
-class _Resp:
-    def __init__(self, status, json_data=None, text="", raise_json=False):
-        self.status_code = status
-        self._json = json_data
-        self.text = text
-        self._raise_json = raise_json
+def _sse(content_str):
+    """Build the SSE lines a streaming reply would yield for one content string."""
+    import json as _json
+    chunk = {"choices": [{"delta": {"content": content_str}}]}
+    return ["data: " + _json.dumps(chunk), "", "data: [DONE]"]
 
-    def json(self):
-        if self._raise_json:
-            raise ValueError("envelope not json")
-        return self._json
+
+class _Resp:
+    def __init__(self, status, sse_lines=None, text=""):
+        self.status_code = status
+        self._sse = sse_lines or []
+        self.text = text
+
+    def iter_lines(self, decode_unicode=True):
+        return iter(self._sse)
 
 
 def _patch_post(monkeypatch, responses):
@@ -66,7 +71,17 @@ def _patch_post(monkeypatch, responses):
 
 
 def _ok_envelope(content):
-    return _Resp(200, {"choices": [{"message": {"content": content}}]})
+    return _Resp(200, sse_lines=_sse(content))
+
+
+def test_content_from_sse_lines_assembles_and_stops():
+    lines = ['data: {"choices":[{"delta":{"content":"Hel"}}]}',
+             '',                                          # keepalive — skipped
+             'data: {"choices":[{"delta":{"content":"lo"}}]}',
+             'garbage line',                              # not data: — skipped
+             'data: [DONE]',
+             'data: {"choices":[{"delta":{"content":"AFTER"}}]}']  # after DONE — ignored
+    assert content_from_sse_lines(lines) == "Hello"
 
 
 def test_chat_json_success(monkeypatch):
@@ -104,10 +119,10 @@ def test_chat_json_5xx_then_success(monkeypatch):
     assert chat_json([], "KEY", max_retries=1, sleep=lambda *_: None) == {"ok": 1}
 
 
-def test_chat_json_bad_envelope_raises_glm_error(monkeypatch):
-    _patch_post(monkeypatch, [_Resp(200, raise_json=True)])
+def test_chat_json_empty_stream_raises_glm_error(monkeypatch):
+    _patch_post(monkeypatch, [_Resp(200, sse_lines=[])])   # 200 but no content
     with pytest.raises(GLMError):
-        chat_json([], "KEY", sleep=lambda *_: None)
+        chat_json([], "KEY", max_retries=0, sleep=lambda *_: None)
 
 
 # ── Fase 1 — extraction ───────────────────────────────────────────────────
