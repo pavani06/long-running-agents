@@ -23,7 +23,8 @@ def package_dir(repo_root: Path, slug: str) -> Path:
 
 
 def write_package(repo_root: Path, slug: str, *, mental_model: dict | None = None,
-                  extraction: dict | None = None, patterns: list[dict] | None = None) -> list[str]:
+                  extraction: dict | None = None, patterns: list[dict] | None = None,
+                  classifications: list[dict] | None = None) -> list[str]:
     """Write the phase artifacts present; return the repo-relative paths written."""
     out = package_dir(repo_root, slug)
     out.mkdir(parents=True, exist_ok=True)
@@ -43,4 +44,7 @@ def write_package(repo_root: Path, slug: str, *, mental_model: dict | None = Non
     if patterns is not None:
         _write("patterns.yaml", serialize.to_yaml({"patterns": patterns}))
         _write("patterns.md", serialize.patterns_md(patterns))
+    if classifications is not None:
+        _write("classification.yaml", serialize.to_yaml({"classifications": classifications}))
+        _write("classification.md", serialize.classification_md(classifications))
     return sorted(written)

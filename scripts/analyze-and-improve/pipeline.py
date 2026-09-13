@@ -222,6 +222,87 @@ def run_analyze(transcript_path: str, slug: str | None, with_mental: bool) -> in
     return 0
 
 
+def _make_retriever(patterns: list[dict], index: dict, openai_key: str, *, k: int):
+    """A `retriever(need_more)->context` closure over the Etapa-0 index.
+
+    need_more=None → initial context: dense top-k for the patterns' text + grep
+    of the pattern names. Otherwise: grep the model-named identifiers + append
+    the named files' content. Embedding (network) happens here, not in Fase 3.
+    """
+    import retrieval
+    from embed import embed_texts
+
+    def _dense(query_text: str) -> list[dict]:
+        qvec = embed_texts([query_text], openai_key)[0]
+        return retrieval.fetch_texts(retrieval.rank_sections(qvec, index, k=k), REPO_ROOT)
+
+    def retriever(need_more):
+        if need_more is None:
+            query = "\n".join(f"{p.get('name','')} {p.get('problem','')} {p.get('mechanism','')}"
+                              for p in patterns)
+            dense = _dense(query)
+            grep = retrieval.grep_identifiers([p.get("name", "") for p in patterns], REPO_ROOT)
+            return retrieval.build_context(dense, grep)
+        grep = retrieval.grep_identifiers(need_more.get("greps", []), REPO_ROOT)
+        extra = []
+        for rel in need_more.get("files", []):
+            fp = REPO_ROOT / rel
+            if fp.exists():
+                extra.append({"path": rel, "heading": "(arquivo pedido)", "score": 0.0,
+                              "text": fp.read_text(encoding="utf-8")[:4000]})
+        return retrieval.build_context(extra, grep)
+
+    return retriever
+
+
+def run_classify(slug: str, k: int) -> int:
+    openai_key = os.environ.get("OPENAI_API_KEY")
+    zai_key = os.environ.get("ZAI_API_KEY")
+    if not openai_key or not zai_key:
+        summary("classify: OPENAI_API_KEY and ZAI_API_KEY both required")
+        return 1
+
+    import yaml
+
+    import phase3_classify
+    from analysis_package import package_dir, write_package
+    from glm import AuthError as GLMAuthError
+    from glm import GLMError, RateLimited
+    from grep_verify import verify_all
+
+    patterns_file = package_dir(REPO_ROOT, slug) / f"{slug}-patterns.yaml"
+    if not patterns_file.exists():
+        summary(f"classify: patterns not found: {patterns_file.relative_to(REPO_ROOT)} (run `analyze` first)")
+        return 1
+    patterns = (yaml.safe_load(patterns_file.read_text(encoding="utf-8")) or {}).get("patterns", [])
+    index = load_state()
+    if not index.get("records"):
+        summary("classify: empty index — run `index --full` first")
+        return 1
+
+    retriever = _make_retriever(patterns, index, openai_key, k=k)
+    try:
+        classifications = phase3_classify.run(patterns, zai_key, retriever=retriever)
+    except GLMAuthError as e:
+        summary(f"classify: {e}")
+        return 1
+    except (RateLimited, GLMError) as e:
+        summary(f"classify: {e}")
+        return 1
+
+    # grep-verify every citation; flag each classification (verdict-aware).
+    verified = verify_all(phase3_classify.citations_of(classifications), REPO_ROOT)
+    phase3_classify.mark_verified(classifications, verified)
+
+    written = write_package(REPO_ROOT, slug, classifications=classifications)
+    bad = sum(1 for v in verified if not v.get("ok"))
+    summary(f"classify: {len(classifications)} classification(s), {bad} unverified citation(s); "
+            f"wrote {len(written)} file(s) to docs/analysis/{slug}/")
+    for w in written:
+        print(f"  - {w}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="analyze-and-improve control + judgment plane")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -235,12 +316,17 @@ def main(argv: list[str] | None = None) -> int:
     pa.add_argument("--slug", help="package slug (default: derived from the filename)")
     pa.add_argument("--mental-model", action="store_true",
                     help="also run Fase 0 (incremental repo mental model)")
+    pc = sub.add_parser("classify", help="run Fase 3 (classify patterns) for a package")
+    pc.add_argument("slug", help="package slug (must already have <slug>-patterns.yaml)")
+    pc.add_argument("-k", type=int, default=8, help="dense top-k sections (default: 8)")
     args = ap.parse_args(argv)
 
     if args.cmd == "queue":
         return run_queue()
     if args.cmd == "analyze":
         return run_analyze(args.transcript, args.slug, args.mental_model)
+    if args.cmd == "classify":
+        return run_classify(args.slug, args.k)
     return run_index(args.full, args.distribution)
 
 
