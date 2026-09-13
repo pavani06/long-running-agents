@@ -41,7 +41,8 @@ class IngestStore:
         for path in sorted(self.items_dir.glob("*.json")):
             data = json.loads(path.read_text(encoding="utf-8"))
             for u in data.get("links", []) or []:
-                if u not in seen:
+                u = u.strip()  # match url_key's normalization so dedup is exact
+                if u and u not in seen:
                     seen.add(u)
                     out.append(u)
         return out

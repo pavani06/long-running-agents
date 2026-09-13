@@ -13,6 +13,7 @@ content until the extract stage wraps it in <untrusted_source>.
 from __future__ import annotations
 
 import hashlib
+import ipaddress
 from urllib.parse import urlparse
 
 import requests
@@ -30,9 +31,26 @@ def classify_url(url: str) -> str:
     host = p.netloc.lower().split("@")[-1].split(":")[0]
     if host in ("youtube.com", "www.youtube.com", "m.youtube.com", "youtu.be"):
         return "youtube"
-    if p.path.lower().endswith(".pdf") or host in ("arxiv.org", "www.arxiv.org") and "/pdf/" in p.path.lower():
+    if p.path.lower().endswith(".pdf") or (host in ("arxiv.org", "www.arxiv.org") and "/pdf/" in p.path.lower()):
         return "pdf"
     return "article"
+
+
+def is_blocked_host(url: str) -> bool:
+    """True if the URL points at a private/loopback/link-local IP literal.
+
+    Guards the trafilatura fallback (a direct GET from the runner) against SSRF.
+    Hostnames (non-literal) are allowed — full DNS-resolution SSRF is out of v1
+    scope; Jina (layer 1) fetches server-side, not from the runner.
+    """
+    host = urlparse(url).hostname or ""
+    if host in ("localhost", "localhost.localdomain"):
+        return True
+    try:
+        ip = ipaddress.ip_address(host)
+    except ValueError:
+        return False
+    return ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved
 
 
 def classify_status(text: str) -> str:
@@ -57,6 +75,8 @@ def _via_jina(url: str, timeout: int) -> tuple[str, str] | None:
 
 
 def _via_trafilatura(url: str, timeout: int) -> tuple[str, str] | None:
+    if is_blocked_host(url):
+        return None  # SSRF guard: never GET a private/loopback address from the runner
     try:
         r = requests.get(url, headers={"User-Agent": UA}, timeout=timeout)
     except requests.RequestException:

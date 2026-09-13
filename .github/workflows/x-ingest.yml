@@ -45,7 +45,9 @@ jobs:
               echo "INGEST_CAP=${{ github.event.inputs.cap }}" >> "$GITHUB_ENV"
             fi
           else
-            echo "MODE=incremental" >> "$GITHUB_ENV"
+            # chained daily: retry re-fetches missing AND previously-failed links,
+            # so transient failures (e.g. Jina rate-limit) self-heal next run.
+            echo "MODE=retry" >> "$GITHUB_ENV"
           fi
 
       - name: Run pipeline

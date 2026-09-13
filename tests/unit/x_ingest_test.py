@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "x-ingest"))
 
-from fetch import classify_status, classify_url, content_hash  # noqa: E402
+from fetch import classify_status, classify_url, content_hash, is_blocked_host  # noqa: E402
 from naming import content_name, key_from_name, url_key  # noqa: E402
 from store import IngestStore  # noqa: E402
 
@@ -50,6 +50,14 @@ def test_classify_status_by_length():
 def test_content_hash_stable():
     assert content_hash("abc") == content_hash("abc")
     assert content_hash("abc") != content_hash("abd")
+
+
+def test_is_blocked_host_ssrf_guard():
+    assert is_blocked_host("http://127.0.0.1/x") is True
+    assert is_blocked_host("http://169.254.169.254/latest/meta-data") is True   # cloud metadata
+    assert is_blocked_host("http://10.0.0.5/") is True
+    assert is_blocked_host("http://localhost:8080/") is True
+    assert is_blocked_host("https://www.vox.com/story") is False               # normal host allowed
 
 
 # ── store diff ──────────────────────────────────────────────────────────
