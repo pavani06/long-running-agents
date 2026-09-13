@@ -1,29 +1,38 @@
 ---
-title: "Tema: Codificação Agêntica com Claude Code"
+title: "Tema: Engenharia de Contexto e Agentes"
 type: "theme"
 source: youtube
-tags: ["agent-tooling", "context-engineering", "agentic-coding"]
-size: 41
+tags: ["context-engineering", "agent-tooling", "stack-tooling"]
+size: 63
 ---
 
-# Tema: Codificação Agêntica com Claude Code
+# Tema: Engenharia de Contexto e Agentes
 
-_Uso do Claude Code e Managed Agents como plataforma para construir e operacionalizar agentes de código, dominando ferramentas, function hooks e engenharia de contexto para elevar a produtividade no desenvolvimento de software._
+_Domínio prático do stack de agentes de IA — Claude Code, Managed Agents, computer use e automações N8N — combinado com técnicas de engenharia de prompts e hierarquias de contexto para levar agentes a produção._
 
-**Tags dominantes:** agent-tooling, context-engineering, agentic-coding
+**Tags dominantes:** context-engineering, agent-tooling, stack-tooling
 
-## Vídeos (41)
+## Vídeos (63)
+- [[extracts/youtube/ai-learning/2026-09-11-next-level-prompts-10-mins-into-advanced-prompting--69bH4IHZivs|"Next Level Prompts?" - 10 mins into advanced prompting]]
+- [[extracts/youtube/ai-learning/2026-09-11-5-notebooklm-hacks-that-will-blow-your-mind--Es5Qb9weRmA|5 NotebookLM Hacks That Will Blow Your Mind!]]
+- [[extracts/youtube/ai-learning/2026-09-11-5-simple-but-weird-chatgpt-5-tricks-to-get-a-10x-better-response--emV9Wo_UuGQ|5 simple (but weird) ChatGPT-5 tricks to get a 10x better response]]
+- [[extracts/youtube/ai-learning/2026-09-11-7-mind-blowing-new-use-cases-for-chatgpt-in-2025-big-changes-ahead--8IUkOAvMP-M|7 Mind-Blowing NEW Use Cases For ChatGPT in 2025 (Big Changes Ahead)]]
+- [[extracts/youtube/ai-learning/2026-09-11-9-usos-do-notebooklm-que-vao-explodir-sua-cabeca-incrivel--WFD2wMiduIE|9 USOS do NotebookLM que vão EXPLODIR SUA CABEÇA (INCRÍVEL!!!)]]
+- [[extracts/youtube/ai-learning/2026-09-11-ai-prompt-engineering-a-deep-dive--T9aRN5JkmL8|AI prompt engineering: A deep dive]]
 - [[extracts/youtube/ai-learning/2026-09-11-anthropic-just-dropped-the-biggest-claude-code-update-yet--B-YQANvDOq0|Anthropic Just Dropped the Biggest Claude Code Update Yet]]
 - [[extracts/youtube/ai-learning/2026-09-11-anthropic-s-applied-ai-team-on-the-evolution-of-agentic-surfaces--K0X9QDRkIdg|Anthropic's Applied AI team on the Evolution of Agentic Surfaces]]
 - [[extracts/youtube/ai-learning/2026-09-11-anthropic-s-cca-exam-as-a-field-guide-for-agentic-engineering-frank-coyle-uc-ber--Z-c11pV_uvU|Anthropic's CCA Exam as a Field-Guide for Agentic Engineering — Frank Coyle, UC Berkeley]]
+- [[extracts/youtube/ai-learning/2026-09-13-automatize-todo-o-seu-trabalho-com-a-novidade-computer-use-do-claude-incrivel--5V33ny4p_DU|AUTOMATIZE TODO O SEU TRABALHO com a novidade “Computer use” do CLAUDE - INCRÍVEL!]]
 - [[extracts/youtube/ai-learning/2026-09-11-benchmarking-semantic-code-retrieval-on-claude-code-kuba-rogut-turbopuffer--zKk7sDMGDEQ|Benchmarking semantic code retrieval on Claude Code — Kuba Rogut, Turbopuffer]]
 - [[extracts/youtube/ai-learning/2026-09-11-boris-cherny-we-cut-80-of-claude-codes-prompt--qyPCVqFUyDo|Boris Cherny: We Cut 80% of Claude Code’s Prompt]]
 - [[extracts/youtube/ai-learning/2026-09-11-build-a-claude-knowledge-base-that-self-improves--ib74sLgjIBM|Build A Claude Knowledge Base That Self-Improves!]]
 - [[extracts/youtube/ai-learning/2026-09-11-build-a-proactive-agent-workflow-with-claude-code--eSP7PLTXNy8|Build a proactive agent workflow with Claude Code]]
+- [[extracts/youtube/ai-learning/2026-09-11-build-an-obsidian-system-not-a-second-brain--OZ3ZNhrPbF4|Build an Obsidian SYSTEM Not a Second Brain!]]
 - [[extracts/youtube/ai-learning/2026-09-11-build-anything-with-tmux-here-s-how--z7xyZQVK4Dg|Build Anything with Tmux, Here's How]]
 - [[extracts/youtube/ai-learning/2026-09-11-build-hour-gpt-5--ITMouQ_EuXI|Build Hour: GPT-5]]
 - [[extracts/youtube/ai-learning/2026-09-11-building-ai-agents-with-claude-demo--_al9YYnF2xI|Building AI Agents with Claude! (Demo)]]
 - [[extracts/youtube/ai-learning/2026-09-11-building-with-claude-managed-agents-and-asana-ai-teammates--BrpB-h1e--k|Building with Claude Managed Agents and Asana AI teammates]]
+- [[extracts/youtube/ai-learning/2026-09-11-chatgpt-for-business-updates--9lSRViLugE0|ChatGPT for Business Updates]]
 - [[extracts/youtube/ai-learning/2026-09-11-claude-3-7-is-pure-insanity--afN8U7kAiLc|Claude 3.7 is pure insanity]]
 - [[extracts/youtube/ai-learning/2026-09-11-claude-code-best-practices-code-w-claude--gv0WHhKelSE|Claude Code best practices | Code w/ Claude]]
 - [[extracts/youtube/ai-learning/2026-09-11-claude-codes-new-intent-md-what-is-it--LoMOPj-lO8U|Claude Codes New INTENT.MD, What is It?]]
@@ -33,24 +42,37 @@ _Uso do Claude Code e Managed Agents como plataforma para construir e operaciona
 - [[extracts/youtube/ai-learning/2026-09-11-coding-with-openai-o1-in-cursor-can-we-replace-claude-3-5-now--wwC86t5k77Y|Coding With OpenAI-o1 in Cursor - Can We Replace Claude 3.5 Now?]]
 - [[extracts/youtube/ai-learning/2026-09-11-conductor-ceo-charlie-holtz-walks-us-through-his-ai-coding-setup--fQmlML9Lay4|Conductor CEO Charlie Holtz Walks Us Through His AI Coding Setup]]
 - [[extracts/youtube/ai-learning/2026-09-11-field-guide-to-fable-thariq-shihipar-anthropic--9fubhllmsBU|Field Guide to Fable — Thariq Shihipar, Anthropic]]
+- [[extracts/youtube/ai-learning/2026-09-13-github-top-trending-tool-just-fixed-the-ai-agents-biggest-problem--cyIWQHYoUg8|Github Top Trending Tool Just Fixed The AI Agent’s Biggest Problem]]
+- [[extracts/youtube/ai-learning/2026-09-11-google-s-9-hour-ai-prompt-engineering-course-in-20-minutes--p09yRj47kNM|Google's 9 Hour AI Prompt Engineering Course In 20 Minutes]]
 - [[extracts/youtube/ai-learning/2026-09-11-gpt-6-astra-fable-5-1-god-mode--KgKA0A3qlz0|GPT 6 Astra + Fable 5.1 = GOD MODE]]
 - [[extracts/youtube/ai-learning/2026-09-11-head-of-claude-code-on-the-future-of-work-and-productivity--kRgdkOw82F0|Head of Claude Code on the future of work and productivity]]
 - [[extracts/youtube/ai-learning/2026-09-11-headroom-a-context-optimization-layer-for-llm-applications-tejas-chopra-netflix--UOWSHg18cL0|Headroom: A Context Optimization Layer for LLM Applications - Tejas Chopra, Netflix, Inc.]]
+- [[extracts/youtube/ai-learning/2026-09-11-how-did-we-make-deepseek-outperform-opus-4-7--f61DCDwvFis|how did we make deepseek outperform opus 4.7?]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-founders-build-on-claude-managed-agents--hm8NzEd5io0|How founders build on Claude Managed Agents]]
+- [[extracts/youtube/ai-learning/2026-09-11-how-lovable-self-improves-every-hour-benjamin-verbeek-lovable--KA5kPbdkK2E|How Lovable self-improves every hour — Benjamin Verbeek, Lovable]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-the-claude-code-team-uses-claude-code--S-sYlFiGFv8|How the Claude Code team uses Claude Code]]
+- [[extracts/youtube/ai-learning/2026-09-11-how-to-get-ahead-of-99-of-people-with-ai--0tLHVyd7WtM|How to Get Ahead of 99% of People (with AI)]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-get-to-production-faster-with-claude-managed-agents--zenIB7XLZxQ|How to get to production faster with Claude Managed Agents]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-instantly-build-ai-agents-in-n8n-using-claude--uAtSMEBosGU|How to INSTANTLY Build AI Agents in N8N Using Claude]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-instantly-generate-n8n-workflows-using-claude--9tj4MxCV6g0|How to INSTANTLY Generate N8N Workflows Using Claude]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-use-ai-to-write-viral-reel-scripts-claude-projects-tutorial--uc1lUchiaJ0|How To Use AI to Write Viral Reel Scripts - Claude Projects Tutorial]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-we-claude-code--IlqJqcl8ONE|How we Claude Code]]
 - [[extracts/youtube/ai-learning/2026-09-11-i-tried-100-claude-code-skills-these-6-are-the-best--eRS3CmvrOvA|I Tried 100+ Claude Code Skills. These 6 Are The Best]]
+- [[extracts/youtube/ai-learning/2026-09-11-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipeline--Uny6LpmjraI|Inside Clay's Eval Stack: 300M Agent Runs, One LangSmith Pipeline]]
 - [[extracts/youtube/ai-learning/2026-09-11-integre-o-claude-cowork-com-seu-banco-openfinance-pj-ou-pf--i_AjyQmYvbE|INTEGRE o CLAUDE COWORK com SEU BANCO (OpenFinance - PJ ou PF)]]
+- [[extracts/youtube/ai-learning/2026-09-11-learn-80-of-notebooklm-in-under-13-minutes--EOmgC3-hznM|Learn 80% of NotebookLM in Under 13 Minutes!]]
 - [[extracts/youtube/ai-learning/2026-09-11-loop-engineering-to-graph-engineering--BOOfy3Yshtw|Loop Engineering to Graph Engineering]]
+- [[extracts/youtube/ai-learning/2026-09-11-master-the-perfect-chatgpt-prompt-formula-in-just-8-minutes--jC4v5AS4RIM|Master the Perfect ChatGPT Prompt Formula (in just 8 minutes)!]]
 - [[extracts/youtube/ai-learning/2026-09-11-mastering-claude-code-in-30-minutes--6eBSHbLKuN0|Mastering Claude Code in 30 minutes]]
 - [[extracts/youtube/ai-learning/2026-09-11-openai-just-destroyed-ai-coding-codex-2-0--C06FBVXMLCY|OpenAI just destroyed AI coding… Codex 2.0]]
+- [[extracts/youtube/ai-learning/2026-09-11-prompting-101-code-w-claude--ysPbXH0LpIE|Prompting 101 | Code w/ Claude]]
 - [[extracts/youtube/ai-learning/2026-09-11-ship-your-first-managed-agent--19HDQ9HppOA|Ship your first Managed Agent]]
+- [[extracts/youtube/ai-learning/2026-09-11-state-of-the-art-prompting-for-ai-agents--DL82mGde6wo|State-Of-The-Art Prompting For AI Agents]]
 - [[extracts/youtube/ai-learning/2026-09-11-thariq-claude-code-anthropic--IHbsfvbfAto|Thariq (Claude Code) @ Anthropic]]
+- [[extracts/youtube/ai-learning/2026-09-11-the-best-chatgpt-prompt-i-ve-ever-created-i-spent-2-months-curating-this-prompt--ABCqfaTjNd4|The best ChatGPT Prompt I've ever created - I spent 2 months curating this prompt to write prompts]]
+- [[extracts/youtube/ai-learning/2026-09-11-the-master-prompt-method-build-your-ai-operating-system--yNpbnrlAFzA|The Master Prompt Method: Build Your AI Operating System]]
+- [[extracts/youtube/ai-learning/2026-09-11-the-master-prompt-method-unlock-ais-full-potential-part-1--_K_F_icxtrI|The Master Prompt Method: Unlock AI’s Full Potential (Part 1)]]
+- [[extracts/youtube/ai-learning/2026-09-11-the-prompting-playbook--G2B0YWuJUgI|The prompting playbook]]
 - [[extracts/youtube/ai-learning/2026-09-11-this-claude-code-x-obsidian-agentic-os-will-be-the-new-meta--njHuj8OxIVI|This Claude Code x Obsidian Agentic OS Will Be The New Meta]]
 - [[extracts/youtube/ai-learning/2026-09-11-this-open-source-repo-just-solved-claude-code-s-1-problem--ChskqGovoHg|This Open Source Repo Just Solved Claude Code's #1 Problem]]
-- [[extracts/youtube/ai-learning/2026-09-11-vector-embeddings-tutorial-code-your-own-ai-assistant-with-gpt-4-api-langchain-n--yfHHvmaMkcA|Vector Embeddings Tutorial – Code Your Own AI Assistant with GPT-4 API + LangChain + NLP]]
 - [[extracts/youtube/ai-learning/2026-09-11-we-cut-94-of-ai-coding-tokens-with-a-local-code-index-rajkumar-sakthivel-tesco--dRmWYHuIJxM|We Cut 94% of AI Coding Tokens With a Local Code Index - Rajkumar Sakthivel, Tesco]]
