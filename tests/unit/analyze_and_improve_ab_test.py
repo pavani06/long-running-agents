@@ -71,19 +71,25 @@ def test_label_agreement_no_overlap_is_zero():
 
 # ── decision ──────────────────────────────────────────────────────────────
 def test_decide_ab_pass():
-    d = ab.decide_ab({"agreement": 0.85}, True)
+    d = ab.decide_ab({"agreement": 0.85, "shared": 10}, True)
     assert d["passed"] is True and d["criteria"] == {"label_agreement": True,
                                                      "seeded_duplicate_caught": True}
 
 
 def test_decide_ab_fail_on_low_agreement():
-    d = ab.decide_ab({"agreement": 0.5}, True)
+    d = ab.decide_ab({"agreement": 0.5, "shared": 10}, True)
     assert d["passed"] is False and d["criteria"]["label_agreement"] is False
 
 
 def test_decide_ab_fail_on_missed_duplicate():
-    d = ab.decide_ab({"agreement": 0.95}, False)
+    d = ab.decide_ab({"agreement": 0.95, "shared": 10}, False)
     assert d["passed"] is False and d["criteria"]["seeded_duplicate_caught"] is False
+
+
+def test_decide_ab_fail_on_tiny_shared_sample():
+    # high agreement but only 1 shared pattern → criterion 1 must NOT pass
+    d = ab.decide_ab({"agreement": 1.0, "shared": 1}, True, min_shared=5)
+    assert d["passed"] is False and d["criteria"]["label_agreement"] is False
 
 
 # ── floor suggestion + report ─────────────────────────────────────────────

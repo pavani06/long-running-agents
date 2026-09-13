@@ -27,6 +27,10 @@ _CANON = {
     "better implementation": "Better", "better": "Better",
 }
 MIN_AGREEMENT = 0.80  # epic criterion 1
+# Criterion 1 also needs a meaningful sample: agreement over 1-2 coincidental
+# name matches (fresh names are GLM-generated, historical are curated) would pass
+# ≥80% trivially. Require at least this many shared patterns before it can pass.
+MIN_SHARED = 5
 
 
 def canonical_verdict(label: str) -> str | None:
@@ -77,10 +81,14 @@ def label_agreement(fresh: list[dict], historical: list[dict]) -> dict:
             "agreement": round(agreement, 3), "mismatches": mismatches}
 
 
-def decide_ab(agreement: dict, dup_caught: bool, *, min_agreement: float = MIN_AGREEMENT) -> dict:
-    """Both epic criteria must pass to green-light Tier B."""
-    c1 = agreement["agreement"] >= min_agreement
+def decide_ab(agreement: dict, dup_caught: bool, *, min_agreement: float = MIN_AGREEMENT,
+              min_shared: int = MIN_SHARED) -> dict:
+    """Both epic criteria must pass to green-light Tier B. Criterion 1 also needs
+    a meaningful shared sample (>= min_shared) so a lucky 1-2 name matches can't
+    green-light on their own."""
+    c1 = agreement.get("shared", 0) >= min_shared and agreement["agreement"] >= min_agreement
     return {"passed": bool(c1 and dup_caught), "min_agreement": min_agreement,
+            "min_shared": min_shared,
             "criteria": {"label_agreement": c1, "seeded_duplicate_caught": bool(dup_caught)}}
 
 
@@ -92,9 +100,12 @@ def ab_report(agreement: dict, dup: dict, distribution: dict, evaluator_mean, de
         "# A/B validation — Tier A vs histórico (12-factor-agents)", "",
         f"## Veredito: {verdict}", "",
         "## Critérios",
-        f"1. Concordância de rótulos ≥ {int(decision['min_agreement']*100)}%: "
+        f"1. Concordância de rótulos ≥ {int(decision['min_agreement']*100)}% "
+        f"(sobre ≥ {decision.get('min_shared', MIN_SHARED)} padrões compartilhados): "
         f"**{agreement['agreement']*100:.0f}%** ({agreement['matched']}/{agreement['shared']} "
-        f"padrões compartilhados) — {'PASS' if decision['criteria']['label_agreement'] else 'FAIL'}",
+        f"compartilhados) — {'PASS' if decision['criteria']['label_agreement'] else 'FAIL'}"
+        + ("  ⚠️ amostra compartilhada abaixo do mínimo"
+           if agreement["shared"] < decision.get("min_shared", MIN_SHARED) else ""),
         f"2. Duplicado-semente pego pelo dedup: score {dup.get('score')} — "
         f"{'PASS' if decision['criteria']['seeded_duplicate_caught'] else 'FAIL'}", "",
         "## Divergências de rótulo (padrões compartilhados)",

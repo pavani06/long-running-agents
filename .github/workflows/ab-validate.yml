@@ -50,20 +50,25 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+          # Inputs go through env (never interpolated into the script body) to
+          # avoid the GitHub Actions script-injection anti-pattern.
+          TRANSCRIPT: ${{ github.event.inputs.transcript }}
+          HISTORICAL_YAML: ${{ github.event.inputs.historical_yaml }}
+          SEED_SECTION: ${{ github.event.inputs.seed_section }}
         run: |
           set +e
-          python scripts/analyze-and-improve/ab_validate.py \
-            "${{ github.event.inputs.transcript }}" \
-            "${{ github.event.inputs.historical_yaml }}" \
-            "${{ github.event.inputs.seed_section }}"
+          python scripts/analyze-and-improve/ab_validate.py "$TRANSCRIPT" "$HISTORICAL_YAML" "$SEED_SECTION"
           rc=$?
           echo "AB_RC=$rc" >> "$GITHUB_OUTPUT"
           echo "ab_validate exit: $rc (0 = PROSSEGUIR, 1 = ITERAR/setup)"
 
-      - name: Decision
+      - name: Decision (job status reflects the gate)
+        env:
+          AB_RC: ${{ steps.ab.outputs.AB_RC }}
         run: |
-          if [ "${{ steps.ab.outputs.AB_RC }}" = "0" ]; then
+          if [ "$AB_RC" = "0" ]; then
             echo "A/B PASSED — proceed to Tier B. See the job summary for the report."
           else
-            echo "A/B did not pass (rc=${{ steps.ab.outputs.AB_RC }}) — iterate. See the job summary."
+            echo "A/B did not pass (rc=$AB_RC) — iterate. See the job summary."
+            exit 1
           fi
