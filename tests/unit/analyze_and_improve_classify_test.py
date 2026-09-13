@@ -152,6 +152,37 @@ def test_citations_of_flattens_evidence():
     assert cits == [{"file": "a.md", "line": 1, "quote": "q", "pattern": "P1"}]
 
 
+# ── mark_verified (verdict-aware policy) ──────────────────────────────────
+def test_mark_verified_missing_needs_no_citation():
+    cls = [{"pattern": "M", "verdict": "Missing", "evidence": []}]
+    p3.mark_verified(cls, [])
+    assert cls[0]["verified"] is True
+
+
+def test_mark_verified_exists_needs_content_checked_citation():
+    cls = [{"pattern": "E", "verdict": "Exists", "evidence": [{"file": "a.md", "line": 1, "quote": "q"}]}]
+    p3.mark_verified(cls, [{"pattern": "E", "ok": True, "quote": "q"}])
+    assert cls[0]["verified"] is True
+
+
+def test_mark_verified_exists_empty_evidence_is_false():
+    cls = [{"pattern": "E", "verdict": "Exists", "evidence": []}]
+    p3.mark_verified(cls, [])
+    assert cls[0]["verified"] is False        # bare existence claim, nothing verified
+
+
+def test_mark_verified_exists_empty_quote_is_false():
+    cls = [{"pattern": "E", "verdict": "Better", "evidence": [{"file": "a.md", "line": 1}]}]
+    p3.mark_verified(cls, [{"pattern": "E", "ok": True, "quote": ""}])
+    assert cls[0]["verified"] is False        # line exists but content never checked
+
+
+def test_mark_verified_failing_citation_is_false():
+    cls = [{"pattern": "E", "verdict": "Partial", "evidence": [{"file": "a.md", "line": 9, "quote": "q"}]}]
+    p3.mark_verified(cls, [{"pattern": "E", "ok": False, "quote": "q"}])
+    assert cls[0]["verified"] is False
+
+
 # ── phase3.run — one 'ask for more' round ─────────────────────────────────
 def test_run_no_ask_for_more():
     final = {"classifications": [{"pattern": "P", "verdict": "Exists", "evidence": []}]}

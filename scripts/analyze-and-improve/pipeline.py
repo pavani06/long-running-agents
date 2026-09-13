@@ -290,14 +290,9 @@ def run_classify(slug: str, k: int) -> int:
         summary(f"classify: {e}")
         return 1
 
-    # grep-verify every citation; annotate each classification with the verdict.
+    # grep-verify every citation; flag each classification (verdict-aware).
     verified = verify_all(phase3_classify.citations_of(classifications), REPO_ROOT)
-    ok_by_pattern: dict[str, bool] = {}
-    for v in verified:
-        pat = v.get("pattern")
-        ok_by_pattern[pat] = ok_by_pattern.get(pat, True) and bool(v.get("ok"))
-    for c in classifications:
-        c["verified"] = ok_by_pattern.get(c.get("pattern"), True)
+    phase3_classify.mark_verified(classifications, verified)
 
     written = write_package(REPO_ROOT, slug, classifications=classifications)
     bad = sum(1 for v in verified if not v.get("ok"))

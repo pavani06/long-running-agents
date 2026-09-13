@@ -81,6 +81,30 @@ def citations_of(classifications: list[dict]) -> list[dict]:
     return out
 
 
+def mark_verified(classifications: list[dict], verified_citations: list[dict]) -> list[dict]:
+    """Set each classification's `verified` flag with verdict-aware policy.
+
+    A `Missing` verdict claims nothing exists, so it needs no citation → verified.
+    Any existence verdict (Exists/Better/Partial) is only `verified` when it has
+    at least one citation whose **content** was checked (a non-empty quote that
+    grep-verified) and none of its citations failed. This closes two gaps: an
+    empty-quote citation (line exists but content unchecked) and a bare verdict
+    with no evidence at all no longer count as verified.
+    """
+    by_pat: dict[str, list[dict]] = {}
+    for v in verified_citations:
+        by_pat.setdefault(v.get("pattern"), []).append(v)
+    for c in classifications:
+        cits = by_pat.get(c.get("pattern"), [])
+        if c.get("verdict") == "Missing":
+            c["verified"] = True
+        else:
+            has_content = any(x.get("ok") and (x.get("quote") or "").strip() for x in cits)
+            no_failures = all(x.get("ok") for x in cits)
+            c["verified"] = bool(cits) and has_content and no_failures
+    return classifications
+
+
 def run(patterns: list[dict], api_key: str, *, retriever, client=chat_json) -> list[dict]:
     """Fase 3 with one 'ask for more' round. `retriever(need_more)->context` and
     `client` are injectable. need_more=None asks for the initial context."""
