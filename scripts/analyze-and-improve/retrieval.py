@@ -72,14 +72,20 @@ def grep_identifiers(identifiers: list[str], repo_root: Path, *, max_hits: int =
     return hits
 
 
+# Cap each section's text in the classifier context. Unbounded section text made
+# the Fase 3 prompt huge (k sections × full body), which timed the GLM call out.
+# The head of a section carries its point; this keeps the prompt bounded.
+MAX_SECTION_CHARS = 1600
+
+
 def build_context(dense_sections: list[dict], grep_hits: list[dict]) -> str:
     """Format retrieved evidence for the classifier prompt. Pure."""
     parts = ["## Seções relevantes (dense retrieval)"]
     if dense_sections:
         for s in dense_sections:
             head = s.get("heading") or "(preamble)"
-            parts.append(f"### {s.get('path')} :: {head}  (score {s.get('score', 0):.3f})\n"
-                         + (s.get("text", "") or "").strip())
+            body = (s.get("text", "") or "").strip()[:MAX_SECTION_CHARS]
+            parts.append(f"### {s.get('path')} :: {head}  (score {s.get('score', 0):.3f})\n" + body)
     else:
         parts.append("_(nenhuma)_")
     parts.append("\n## Ocorrências exatas (grep)")
