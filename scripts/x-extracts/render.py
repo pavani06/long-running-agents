@@ -23,6 +23,7 @@ class BookmarkMeta:
     extracted: str            # YYYY-MM-DD
     links: list[str] = field(default_factory=list)
     media: list[str] = field(default_factory=list)
+    grounded_in: str = "tweet"  # 'article' if the extract read ingested link content, else 'tweet'
 
 
 def _as_str_list(value) -> list[str]:
@@ -44,6 +45,7 @@ def normalize_extract(extract: dict, allowed_tags: list[str]) -> dict:
     return {
         "topic": str(extract.get("topic", "")).strip(),
         "summary": str(extract.get("summary", "")).strip(),
+        "key_points": _as_str_list(extract.get("key_points")),
         "tags": tags,
         "entities": _as_str_list(extract.get("entities")),
         "content_type": ctype,
@@ -77,9 +79,11 @@ def build_note(meta: BookmarkMeta, extract: dict, allowed_tags: list[str],
         _fm("tags", e["tags"]),
         _fm("topic", e["topic"]),
         _fm("summary", e["summary"]),
+        _fm("key_points", e["key_points"]),
         _fm("entities", e["entities"]),
         _fm("content_type", e["content_type"]),
         _fm("revisit", e["revisit"]),
+        _fm("grounded_in", meta.grounded_in),
         _fm("links", meta.links),
         _fm("media", meta.media),
     ]
@@ -92,6 +96,10 @@ def build_note(meta: BookmarkMeta, extract: dict, allowed_tags: list[str],
     lines.append("## Resumo")
     lines.append(e["summary"] or "_(sem resumo extraído)_")
     lines.append("")
+    if e["key_points"]:
+        lines.append("## Pontos-chave")
+        lines += [f"- {p}" for p in e["key_points"]]
+        lines.append("")
     if meta.links:
         lines.append("## Links")
         lines += [f"- {u}" for u in meta.links]
@@ -99,6 +107,6 @@ def build_note(meta: BookmarkMeta, extract: dict, allowed_tags: list[str],
     lines.append("## Entidades")
     lines.append(", ".join(e["entities"]) if e["entities"] else "—")
     lines.append("")
-    lines.append(f"> **Revisit:** `{e['revisit']}`")
+    lines.append(f"> **Revisit:** `{e['revisit']}` · **fonte:** `{meta.grounded_in}`")
     lines.append("")
     return "\n".join(lines)

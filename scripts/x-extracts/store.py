@@ -24,6 +24,40 @@ class ExtractStore:
     def extracts_dir(self) -> Path:
         return self.repo_root / "extracts" / "x" / "bookmarks"
 
+    @property
+    def ingest_dir(self) -> Path:
+        return self.repo_root / "ingest" / "x"
+
+    def ingest_index(self) -> dict[str, dict]:
+        """Map url -> ingest entry ({file, status, ...}); empty if no ingest layer."""
+        p = self.ingest_dir / "index.json"
+        if not p.exists():
+            return {}
+        data = json.loads(p.read_text(encoding="utf-8"))
+        return {it["url"]: it for it in data.get("items", []) if it.get("url")}
+
+    def source_for(self, item: dict, index: dict[str, dict] | None = None) -> tuple[str, str]:
+        """(grounded_in, source_text) for a bookmark, from the ingest layer.
+
+        Returns ("article", <cleaned body>) using the first of the item's links
+        whose ingested content is usable (status ok/paywall); else ("tweet", "").
+        """
+        index = self.ingest_index() if index is None else index
+        for u in item.get("links", []) or []:
+            entry = index.get(u.strip())
+            if entry and entry.get("status") in ("ok", "paywall"):
+                body = self._ingest_body(entry.get("file", ""))
+                if body.strip():
+                    return "article", body
+        return "tweet", ""
+
+    def _ingest_body(self, filename: str) -> str:
+        path = self.ingest_dir / filename
+        if not filename or not path.exists():
+            return ""
+        parts = path.read_text(encoding="utf-8").split("---", 2)
+        return parts[2] if len(parts) >= 3 else ""
+
     def _scan(self, directory: Path, suffix: str) -> dict[str, str]:
         out: dict[str, str] = {}
         if not directory.exists():

@@ -25,6 +25,7 @@ SID = "1798557144580735156"
 SAMPLE = {
     "topic": "Context engineering",
     "summary": "Context, not model size, is the bottleneck.",
+    "key_points": ["Budget the context window", "Add an eval tier before scaling"],
     "tags": ["evals", "not-a-real-tag", "performance"],
     "entities": ["Anthropic"],
     "content_type": "opinion",
@@ -54,18 +55,26 @@ def test_normalize_defaults_bad_enums():
     assert e["content_type"] == "other" and e["revisit"] == "low"
 
 
-def test_build_note_frontmatter_valid_and_links_carried():
+def test_build_note_frontmatter_valid_and_deep_fields():
     meta = BookmarkMeta(SID, "karpathy", f"https://x.com/karpathy/status/{SID}",
                         "2026-09-11T00:00:00Z", f"2026-09-11-karpathy-x--{SID}.json",
-                        "2026-09-12", links=["https://ex.com/a"], media=[])
-    note = build_note(meta, SAMPLE, VOCAB, 1, "glm-5.3")
+                        "2026-09-12", links=["https://ex.com/a"], media=[], grounded_in="article")
+    note = build_note(meta, SAMPLE, VOCAB, 2, "glm-5.3")
     fm = note.split("---")[1]
     for line in fm.strip().splitlines():
         _, _, value = line.partition(": ")
         json.loads(value)  # raises if any frontmatter value is malformed
     assert "not-a-real-tag" not in note
-    assert "https://ex.com/a" in note          # factual link carried through
+    assert "https://ex.com/a" in note              # factual link carried through
     assert "# Context engineering" in note
+    assert "## Pontos-chave" in note               # key_points rendered
+    assert "Budget the context window" in note
+    assert '"article"' in fm and "`article`" in note  # grounded_in in fm + body
+
+
+def test_normalize_key_points_coerced():
+    assert normalize_extract({"key_points": "notalist"}, VOCAB)["key_points"] == []
+    assert normalize_extract({"key_points": ["a", "", "b"]}, VOCAB)["key_points"] == ["a", "b"]
 
 
 # ── glm parsing ─────────────────────────────────────────────────────────
@@ -135,6 +144,36 @@ def test_store_pending_diff():
         assert [sid for sid, _ in store.pending()] == ["222222"]   # only un-extracted
         assert len(store.pending(rebuild=True)) == 2               # rebuild = all
         assert store.read_item("2026-09-12-b-y--222222.json")["text"] == "u"
+
+
+def test_source_for_reads_ingest_layer():
+    with tempfile.TemporaryDirectory() as d:
+        root = Path(d)
+        ing = root / "ingest" / "x"
+        ing.mkdir(parents=True)
+        (ing / "ex-com--abc123def456.md").write_text(
+            "---\nstatus: \"ok\"\n---\n\nO argumento central do artigo.", encoding="utf-8")
+        (ing / "index.json").write_text(json.dumps({"items": [
+            {"url": "https://ex.com/a", "status": "ok", "file": "ex-com--abc123def456.md"},
+            {"url": "https://paywalled.com/b", "status": "failed", "file": "x.md"},
+        ]}), encoding="utf-8")
+        store = ExtractStore(root)
+        # link with ok ingest -> grounded article + body
+        g, src = store.source_for({"links": ["https://ex.com/a"]})
+        assert g == "article" and "argumento central" in src
+        # link whose ingest failed -> falls back to tweet
+        g2, src2 = store.source_for({"links": ["https://paywalled.com/b"]})
+        assert g2 == "tweet" and src2 == ""
+        # no links -> tweet
+        assert store.source_for({"links": []}) == ("tweet", "")
+
+
+def test_build_messages_grounded_includes_article():
+    msgs = glm.build_messages("tweet txt", "h", ["https://ex.com/a"], VOCAB,
+                              source_text="ARTIGO longo aqui", grounded=True)
+    user = msgs[1]["content"]
+    assert "ARTIGO LINKADO:" in user and "ARTIGO longo aqui" in user
+    assert user.count("</untrusted_source>") == 1   # single controlled delimiter
 
 
 def _run_all():
