@@ -1,15 +1,25 @@
-# scripts/analyze-and-improve — control plane (Etapa 0)
+# scripts/analyze-and-improve — control plane + judgment plane (Fases 0–2)
 
-Deterministic control plane for the **analyze-and-improve v4** rewrite
+The **analyze-and-improve v4** rewrite
 ([EPIC #257](https://github.com/pavani06/long-running-agents/issues/257) ·
-design: `docs/plans/2026-09-13-analyze-and-improve-v4.md`). This is the
-**Etapa 0** slice: only the code plane + the repo's semantic index. **No LLM
-calls** here — model judgment (Fases 0–6) lands in Etapa 1+.
+design: `docs/plans/2026-09-13-analyze-and-improve-v4.md`). Two planes:
+
+- **Control plane (Etapa 0, #258)** — deterministic, no LLM: stateless queue +
+  the repo's per-section semantic index.
+- **Judgment plane (Etapa 1, #259)** — HTTP-portable GLM 5.3 (generator): Fases
+  0 (repo mental model, incremental), 1 (source extraction), 2 (patterns), as
+  stateless functions. Classification (Fase 3, #260) and the adversarial
+  gate/quarantine (#261) come later.
 
 Mirrors the stateless pattern of the YouTube/X pipelines: the repo is the source
-of truth, so every job is a diff and re-runs are idempotent.
+of truth, so every job is a diff and re-runs are idempotent. The pure control
+plane stays free of I/O; the judgment plane isolates the single GLM call per
+phase behind an injectable client so prompt-assembly and output-parsing are
+unit-tested with no network.
 
 ## Modules
+
+### Control plane (Etapa 0)
 
 | Module | Role | Pure? |
 |---|---|---|
@@ -20,14 +30,29 @@ of truth, so every job is a diff and re-runs are idempotent.
 | `index_store.py` | Section records + incremental index merge (re-embed only changed chunks) | ✅ (vectors supplied by caller) |
 | `floor.py` | Cosine + pairwise-similarity distribution + provisional floor | ✅ |
 | `embed.py` | OpenAI embeddings client (reused technique; network — not unit-tested) | — |
-| `pipeline.py` | CLI tying the above (`queue`, `index`) | — |
 
-Tests: `tests/unit/analyze_and_improve_test.py` — the pure functions the DoD
-names (diff, chunking, frontmatter) plus floor and the incremental merge.
-Run in isolation (the repo's convention for its pipeline tests):
+### Judgment plane (Etapa 1 — GLM, Fases 0–2)
+
+| Module | Role | Pure? |
+|---|---|---|
+| `glm.py` | Generic GLM chat client, JSON-strict + backoff (`chat_json`, `extract_json`) | `extract_json` pure; HTTP not tested |
+| `phase1_extract.py` | Fase 1 — extraction from the full raw transcript | `build_messages`/`parse_extraction` pure; `run` injects the client |
+| `phase0_mental_model.py` | Fase 0 — incremental repo mental model from the delta scan | `build_messages`/`parse_model` pure; `run` injects the client |
+| `phase2_patterns.py` | Fase 2 — patterns synthesised over the Fase 1 output | `build_messages`/`parse_patterns` pure; `run` injects the client |
+| `serialize.py` | Render phase outputs to `.yaml`/`.md` (PyYAML) | ✅ |
+| `analysis_package.py` | Write the partial package to `docs/analysis/<slug>/` | I/O over the pure serializers |
+| `pipeline.py` | CLI: `queue`, `index`, `analyze` | — |
+
+**Dependencies:** control plane needs only `requests` (+ stdlib). The judgment
+plane's `serialize.py` needs **PyYAML** — a workflow running `analyze` must
+`pip install requests pyyaml`. `queue`/`index` do not import PyYAML (the
+judgment-plane imports are lazy).
+
+Tests — run in isolation (the repo's convention for its pipeline tests):
 
 ```bash
-python3 -m pytest tests/unit/analyze_and_improve_test.py -q
+python3 -m pytest tests/unit/analyze_and_improve_test.py -q         # control plane
+python3 -m pytest tests/unit/analyze_and_improve_phases_test.py -q  # judgment plane (Fases 0–2)
 ```
 
 ## CLI
@@ -40,6 +65,10 @@ python3 scripts/analyze-and-improve/pipeline.py queue
 python3 scripts/analyze-and-improve/pipeline.py index --full          # initial full index
 python3 scripts/analyze-and-improve/pipeline.py index                 # incremental (git delta scan)
 python3 scripts/analyze-and-improve/pipeline.py index --distribution  # embed + print distribution, write nothing
+
+# Run Fases 1->0->2 (GLM) for one transcript (needs ZAI_API_KEY)
+python3 scripts/analyze-and-improve/pipeline.py analyze <transcript.txt>                  # Fases 1 + 2
+python3 scripts/analyze-and-improve/pipeline.py analyze <transcript.txt> --mental-model   # also Fase 0
 ```
 
 ## Stateless markers & state
