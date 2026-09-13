@@ -1,0 +1,36 @@
+name: GLM latency probe (#262)
+
+# Diagnostic for the #262 investigation: measures GLM-via-HTTP streaming latency
+# (TTFT, total, chunk count) and lists available models. Short, read-only.
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "GLM model id to probe (blank = default glm-5.3)"
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: glm-probe
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --upgrade requests
+      - name: Probe GLM latency
+        env:
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+          GLM_PROBE_MODEL: ${{ github.event.inputs.model }}
+        run: python scripts/analyze-and-improve/glm_probe.py
