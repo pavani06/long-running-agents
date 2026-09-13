@@ -51,6 +51,13 @@ def test_build_context_dense_and_grep():
     assert "src/x.py:12" in ctx and "`Foo`" in ctx
 
 
+def test_build_context_caps_section_text():
+    long_body = "z" * (retrieval.MAX_SECTION_CHARS + 4000)
+    dense = [{"path": "docs/canonical/a.md", "heading": "X", "score": 0.9, "text": long_body}]
+    ctx = retrieval.build_context(dense, [])
+    assert ctx.count("z") == retrieval.MAX_SECTION_CHARS   # truncated, not full body
+
+
 def test_build_context_empty():
     ctx = retrieval.build_context([], [])
     assert ctx.count("_(nenhuma)_") == 2
