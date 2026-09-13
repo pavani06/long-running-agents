@@ -58,7 +58,7 @@ estratégia não é cortar, é **separar, cachear e mover o gate**:
 
 | Dimensão | Decisão |
 |---|---|
-| **Topologia** | **só-LRA** — cadeia inteira (fonte → análise → produto) dentro de `long-running-agents`. Elimina o Step -1 (dual-path `/mnt/c` vs `/home`, vault registry) do `ingest-and-improve`. |
+| **Topologia** | **só-LRA** — cadeia inteira (fonte → análise → produto) dentro de `long-running-agents`. Elimina o **Step -1 do `ingest-and-improve`** (skill do repo externo `raw-knowledge`): resolução de vault canônico + dual-path `/mnt/c` vs `/home`. _Não confundir com o "Step -1" de bootstrap do `harness-analyze-and-improve`, que é outra coisa._ |
 | **Runtime** | **HTTP portátil** — sem opencode `task()`. Cada fase = chamada(s) de modelo + aplicação determinística por código. |
 | **Extensão da automação** | **Fases 0–6 full-auto** (não-supervisionado). |
 | **Gate de qualidade** | Máquina no lugar do humano: **gates determinísticos + evaluator adversarial (LLM) + quarentena**, com **escalação-fina**. |
