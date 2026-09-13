@@ -21,6 +21,7 @@ grounded_in: "tweet"
 links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-doctorinigo-very-excited-to-share-these-results-from-our-work-with-bioli--2096296686750666868|Biossensor contínuo de lactato]]", "[[extracts/x/bookmarks/2026-09-12-sitkosebastian-you-don-t-need-a-power-meter-to-know-how-many-watts-a-rider--2089763604371218674|estimativa de watts sem medidor]]", "[[extracts/x/bookmarks/2026-09-12-doctorinigo-a-representation-of-the-lactate-shuttle-lactate-produced-by--2084362367500955826|Lactate Shuttle em fisiologia muscular]]", "[[extracts/x/bookmarks/2026-09-12-tydsh-a-novel-way-to-do-rl-in-llm-post-training-inspired-by-our-pr--2080881800877134004|Dinâmica de aprendizado do RLVR]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-demis-hassabis-in-the-near-future-one-person-who-knows-ai-wi--2079915295230038426|IA e produtividade individual]]", "[[extracts/x/bookmarks/2026-09-12-zostaff-ray-dalio-founder-of-bridgewater-associates-150b-on-diary-of--2076695008824955216|Concentração de vencedores e perdedores]]", "[[extracts/x/bookmarks/2026-09-12-sandcresearch-cold-water-immersion-has-historically-been-used-to-speed-rec--2084202666058481781|Imersão em água fria e recuperação]]"]
+thin: true
 ---
 
 # variabilidade individual na hipertrofia

@@ -21,6 +21,7 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HNrLZ--WcAAV4gm.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-anthropicai-anthropics-economics-team-is-sharing-a-new-model-of-how-ai-m--2097679796687769689|Cenários macroeconômicos da IA até 2030]]", "[[extracts/x/bookmarks/2026-09-12-zostaff-ray-dalio-founder-of-bridgewater-associates-150b-on-diary-of--2076695008824955216|Concentração de vencedores e perdedores]]", "[[extracts/x/bookmarks/2026-09-12-kobeissiletter-the-ai-boom-is-creating-a-generational-divide-in-software-jo--2079307547610366340|IA e emprego jovem em software]]", "[[extracts/x/bookmarks/2026-09-12-tashecon-remarkable-how-the-economist-appears-to-have-been-captured-b--2082728912165986348|Influência russa na The Economist]]", "[[extracts/x/bookmarks/2026-09-12-opapoeconomico-saiu-no-journal-of-financial-economics-o-estudo-mais-complet--2089517641320788148|Apostas esportivas e finanças domésticas]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-good-work-on-improving-memory-for-long-horizon-agents-they-s--2097555607389896732|Memória para agentes longos]]"]
+thin: false
 ---
 
 # Envelhecimento populacional e distribuição

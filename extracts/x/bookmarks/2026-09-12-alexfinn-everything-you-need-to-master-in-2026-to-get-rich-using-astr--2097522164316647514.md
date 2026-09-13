@@ -21,6 +21,7 @@ grounded_in: "tweet"
 links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-andrewyng-the-most-important-skills-for-using-ai-coding-agents-effecti--2095890279865721217|Skills para agentes de codificação]]", "[[extracts/x/bookmarks/2026-09-12-bholmesdev-favorite-accounts-to-follow-in-ai-software-dev-right-now-mat--2095871467359473974|contas a seguir em AI dev]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-how-have-software-engineering-fundamentals-changed-with-agen--2093388974194872781|AI Engineering Skills para software]]", "[[extracts/x/bookmarks/2026-09-12-rvaniaaaa-someone-published-the-architecture-for-an-ai-agent-that-neve--2082562583131726050|arquitetura de agente autodidata]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-with-ai-engineering-skills-you-actively-shape-the-build-you--2098459474608672916|AI engineering key skills]]", "[[extracts/x/bookmarks/2026-09-12-0xmovez-anthropic-engineer-80-of-our-engineers-are-using-selfimprovi--2079985963862786352|agentes auto-melhorantes orquestrados por grafos]]", "[[extracts/x/bookmarks/2026-09-12-roundtablespace-this-guy-makes-complex-ai-agent-concepts-ridiculously-easy-t--2080975096345247876|didática de conceitos de agentes de IA]]"]
+thin: true
 ---
 
 # Lista de habilidades de IA para 2026

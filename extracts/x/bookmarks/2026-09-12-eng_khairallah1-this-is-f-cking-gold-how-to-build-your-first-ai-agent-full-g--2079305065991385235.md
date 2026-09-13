@@ -21,6 +21,7 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HNss70DWoAA24TK.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-roundtablespace-this-guy-makes-complex-ai-agent-concepts-ridiculously-easy-t--2080975096345247876|didática de conceitos de agentes de IA]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-google-just-dropped-a-1-hour-course-on-agentic-engineering-f--2076366894655848871|Curso Google de engenharia agêntica]]", "[[extracts/x/bookmarks/2026-09-12-dexhorthy-software-factories-hands-on-with-real-builders-ai-that-works--2097373602366861631|Software factories com IA]]", "[[extracts/x/bookmarks/2026-09-12-xudong07452910-openai-skills-agents-md-blog-agent-engineering-astra-skill--2098655277197201752|OpenAI ensina Skills e AGENTS.md]]", "[[extracts/x/bookmarks/2026-09-12-clare_liguori-i-just-published-a-manifesto-for-all-the-developers-out-ther--2097836812958097915|frontier engineering com agentes de IA]]", "[[extracts/x/bookmarks/2026-09-12-daradoescode-new-agents-md-after-theo-s-stream-td-https-t-co-pkqqjcgm5l--2082696597528592594|agents.md para agentes de código]]", "[[extracts/x/bookmarks/2026-09-12-johnhellemans-proud-to-present-the-definitive-guide-to-altitude-training-f--2082136535676404215|Altitude training guide]]"]
+thin: true
 ---
 
 # guia construção do primeiro agente de IA
