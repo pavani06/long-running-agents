@@ -1,33 +1,39 @@
 ---
-title: "Kit de UI para bots no Hermes Desktop"
+title: "kit para bots no Hermes Desktop"
 type: "extract"
 source: "x"
 status_id: "2098361620493660493"
 handle: "witcheer"
 url: "https://x.com/witcheer/status/2098361620493660493"
 created_at: "2026-09-11T10:42:50.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-witcheer-a-hermes-agent-community-member-built-a-kit-that-changes-two--2098361620493660493.json]]"
-tags: ["agent-tooling", "agents", "observability", "multi-agent"]
-topic: "Kit de UI para bots no Hermes Desktop"
-summary: "Membro da comunidade do Hermes Agent criou um kit que altera o chat principal do Hermes Desktop para exibir apenas mensagens, escondendo tool calls e timers, e mantendo visíveis aprovações e mensagens entre bots. Vale salvar como exemplo de customização de UX/observabilidade na execução de agentes multi-bot."
+tags: ["agent-tooling", "agents", "stack-tooling"]
+topic: "kit para bots no Hermes Desktop"
+summary: "Um membro da comunidade do Hermes Agent criou um kit que altera o chat principal dos bots no Hermes Desktop, exibindo apenas as mensagens em vez de cada tool call e timer. O tweet também menciona mudanças em approvals e mensagens entre bots, mas parece truncado."
+key_points: ["O chat principal do bot passa a mostrar somente mensagens, ocultando tool calls e timers que normalmente aparecem ao lado", "O kit também altera como approvals e mensagens entre bots são tratados/exibidos no Hermes Desktop"]
 entities: ["Hermes Agent", "Hermes Desktop", "@witcheer"]
 content_type: "announcement"
-revisit: "medium"
+revisit: "low"
+grounded_in: "tweet"
 links: []
 media: []
 ---
 
-# Kit de UI para bots no Hermes Desktop
+# kit para bots no Hermes Desktop
 
 **@witcheer** · [2098361620493660493](https://x.com/witcheer/status/2098361620493660493) · `announcement`
 
 ## Resumo
-Membro da comunidade do Hermes Agent criou um kit que altera o chat principal do Hermes Desktop para exibir apenas mensagens, escondendo tool calls e timers, e mantendo visíveis aprovações e mensagens entre bots. Vale salvar como exemplo de customização de UX/observabilidade na execução de agentes multi-bot.
+Um membro da comunidade do Hermes Agent criou um kit que altera o chat principal dos bots no Hermes Desktop, exibindo apenas as mensagens em vez de cada tool call e timer. O tweet também menciona mudanças em approvals e mensagens entre bots, mas parece truncado.
+
+## Pontos-chave
+- O chat principal do bot passa a mostrar somente mensagens, ocultando tool calls e timers que normalmente aparecem ao lado
+- O kit também altera como approvals e mensagens entre bots são tratados/exibidos no Hermes Desktop
 
 ## Entidades
 Hermes Agent, Hermes Desktop, @witcheer
 
-> **Revisit:** `medium`
+> **Revisit:** `low` · **fonte:** `tweet`

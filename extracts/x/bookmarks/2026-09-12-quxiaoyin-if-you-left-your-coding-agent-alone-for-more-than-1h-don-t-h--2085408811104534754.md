@@ -1,33 +1,41 @@
 ---
-title: "Custo de cache em sessões de agentes"
+title: "expiração de cache de prompt em agentes de código"
 type: "extract"
 source: "x"
 status_id: "2085408811104534754"
 handle: "quxiaoyin"
 url: "https://x.com/quxiaoyin/status/2085408811104534754"
 created_at: "2026-08-06T16:53:00.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-quxiaoyin-if-you-left-your-coding-agent-alone-for-more-than-1h-don-t-h--2085408811104534754.json]]"
-tags: ["token-budgeting", "context-management", "agents", "agent-tooling", "process"]
-topic: "Custo de cache em sessões de agentes"
-summary: "O cache de prompt/KV da sessão expira em exatamente 60 minutos; continuar depois de pausas multiplica o custo dos tokens (1.3x, 1.6x, até 13x). Dica prática: em vez de 'continue', abra uma nova sessão e reenvie a mesma mensagem."
-entities: ["@quxiaoyin"]
+tags: ["token-budgeting", "agentic-coding", "agent-tooling", "context-management"]
+topic: "expiração de cache de prompt em agentes de código"
+summary: "O cache de prompt que sustenta a sessão de um agente de código expira em exatamente 60 minutos; retomar depois de pausas longas faz o contexto inteiro ser reprocessado, multiplicando o custo em até ~13x. Por isso, após mais de 1h longe, é mais barato abrir uma sessão nova do que clicar em continue."
+key_points: ["O cache da sessão expira em exatamente 60 minutos de inatividade; após isso, todo o contexto acumulado precisa ser reprocessado sem desconto de cache", "Custo relativo da retomada: 1x durante uso contínuo, ~1,3x após uma pausa curta (café), ~1,6x após uma ligação, ~13x após o almoço (cache expirado)", "Recomendação prática: se ficou ausente por mais de 1h, não use 'continue' — abra uma nova sessão e reenvie exatamente a mesma mensagem", "Implicação de fluxo de trabalho: concentrar interações com o agente em janelas contínuas preserva os cache hits e reduz drasticamente o custo por token"]
+entities: ["quxiaoyin"]
 content_type: "opinion"
 revisit: "medium"
+grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HPAAnKObIAAWMfB.jpg"]
 ---
 
-# Custo de cache em sessões de agentes
+# expiração de cache de prompt em agentes de código
 
 **@quxiaoyin** · [2085408811104534754](https://x.com/quxiaoyin/status/2085408811104534754) · `opinion`
 
 ## Resumo
-O cache de prompt/KV da sessão expira em exatamente 60 minutos; continuar depois de pausas multiplica o custo dos tokens (1.3x, 1.6x, até 13x). Dica prática: em vez de 'continue', abra uma nova sessão e reenvie a mesma mensagem.
+O cache de prompt que sustenta a sessão de um agente de código expira em exatamente 60 minutos; retomar depois de pausas longas faz o contexto inteiro ser reprocessado, multiplicando o custo em até ~13x. Por isso, após mais de 1h longe, é mais barato abrir uma sessão nova do que clicar em continue.
+
+## Pontos-chave
+- O cache da sessão expira em exatamente 60 minutos de inatividade; após isso, todo o contexto acumulado precisa ser reprocessado sem desconto de cache
+- Custo relativo da retomada: 1x durante uso contínuo, ~1,3x após uma pausa curta (café), ~1,6x após uma ligação, ~13x após o almoço (cache expirado)
+- Recomendação prática: se ficou ausente por mais de 1h, não use 'continue' — abra uma nova sessão e reenvie exatamente a mesma mensagem
+- Implicação de fluxo de trabalho: concentrar interações com o agente em janelas contínuas preserva os cache hits e reduz drasticamente o custo por token
 
 ## Entidades
-@quxiaoyin
+quxiaoyin
 
-> **Revisit:** `medium`
+> **Revisit:** `medium` · **fonte:** `tweet`

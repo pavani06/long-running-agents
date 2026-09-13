@@ -1,33 +1,39 @@
 ---
-title: "Falhas em loops de auto-evolução de skills"
+title: "falhas em auto-evolução de skills de agentes"
 type: "extract"
 source: "x"
 status_id: "2098154641854992676"
 handle: "dair_ai"
 url: "https://x.com/dair_ai/status/2098154641854992676"
 created_at: "2026-09-10T21:00:23.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-dair_ai-another-interesting-approach-to-self-evolve-agent-skills-but--2098154641854992676.json]]"
-tags: ["agents", "agent-loop", "evals", "cross-session", "memory-architecture"]
-topic: "Falhas em loops de auto-evolução de skills"
-summary: "Comentário do DAIR.AI sobre abordagens de auto-evolução de habilidades em agentes, apontando dois modos de falha específicos — o primeiro é a instabilidade direcional, onde correções efetivas são sobrescritas por feedback local de iteração em vez de acumular, fazendo o loop regredir. Vale salvar como alerta prático para quem desenha loops de melhoria contínua de agentes."
-entities: ["DAIR.AI"]
+tags: ["agents", "agent-loop", "analise"]
+topic: "falhas em auto-evolução de skills de agentes"
+summary: "Comentário sobre abordagens de auto-evolução de habilidades de agentes, alertando que loops de self-evolution falham de formas específicas — começando pela instabilidade de direção, onde correções efetivas são sobrescritas por feedback local da iteração em vez de acumular."
+key_points: ["Direction instability: correções efetivas são sobrescritas por feedback iteration-local em vez de se acumularem, fazendo o loop persistir no erro", "O tweet cita dois modos específicos de falha, mas o segundo está truncado no conteúdo disponível"]
+entities: ["dair_ai"]
 content_type: "opinion"
-revisit: "high"
+revisit: "medium"
+grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HR4khuzbEAAdvjh.png"]
 ---
 
-# Falhas em loops de auto-evolução de skills
+# falhas em auto-evolução de skills de agentes
 
 **@dair_ai** · [2098154641854992676](https://x.com/dair_ai/status/2098154641854992676) · `opinion`
 
 ## Resumo
-Comentário do DAIR.AI sobre abordagens de auto-evolução de habilidades em agentes, apontando dois modos de falha específicos — o primeiro é a instabilidade direcional, onde correções efetivas são sobrescritas por feedback local de iteração em vez de acumular, fazendo o loop regredir. Vale salvar como alerta prático para quem desenha loops de melhoria contínua de agentes.
+Comentário sobre abordagens de auto-evolução de habilidades de agentes, alertando que loops de self-evolution falham de formas específicas — começando pela instabilidade de direção, onde correções efetivas são sobrescritas por feedback local da iteração em vez de acumular.
+
+## Pontos-chave
+- Direction instability: correções efetivas são sobrescritas por feedback iteration-local em vez de se acumularem, fazendo o loop persistir no erro
+- O tweet cita dois modos específicos de falha, mas o segundo está truncado no conteúdo disponível
 
 ## Entidades
-DAIR.AI
+dair_ai
 
-> **Revisit:** `high`
+> **Revisit:** `medium` · **fonte:** `tweet`

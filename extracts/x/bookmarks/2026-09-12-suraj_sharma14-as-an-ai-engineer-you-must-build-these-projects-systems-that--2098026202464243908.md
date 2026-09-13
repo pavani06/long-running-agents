@@ -6,28 +6,35 @@ status_id: "2098026202464243908"
 handle: "suraj_sharma14"
 url: "https://x.com/suraj_sharma14/status/2098026202464243908"
 created_at: "2026-09-10T12:30:00.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-suraj_sharma14-as-an-ai-engineer-you-must-build-these-projects-systems-that--2098026202464243908.json]]"
-tags: ["curriculo-conteudo", "production", "arquitetura", "roadmap"]
+tags: ["production", "arquitetura", "process", "roadmap"]
 topic: "Projetos práticos para AI Engineers"
-summary: "Lista de projetos que engenheiros de IA deveriam construir para provar capacidade de retrieval, raciocínio e entrega, começando por um pipeline RAG de produção (ingestão, chunking, busca híbrida, reranking e respostas citadas sobre 1000+ documentos). Vale salvar como referência de roadmap de portfólio técnico."
-entities: ["Suraj Sharma (@suraj_sharma14)", "Production RAG Pipeline"]
-content_type: "thread"
+summary: "Lista de projetos que um AI engineer deve construir para demonstrar capacidade de recuperar, raciocinar e entregar; o item visível detalha um pipeline RAG de produção completo sobre 1000+ documentos."
+key_points: ["Construir um pipeline RAG de produção com as etapas: ingestão → chunking → busca híbrida → reranking → respostas com citações, operando sobre 1000+ documentos.", "A qualidade da recuperação (retrieval) é o fator decisivo para o sucesso de um produto com LLM.", "Projetos práticos servem como prova de competência em engenharia de IA, mais que apenas teoria."]
+entities: ["Suraj Sharma", "RAG Pipeline"]
+content_type: "resource"
 revisit: "medium"
+grounded_in: "tweet"
 links: []
 media: []
 ---
 
 # Projetos práticos para AI Engineers
 
-**@suraj_sharma14** · [2098026202464243908](https://x.com/suraj_sharma14/status/2098026202464243908) · `thread`
+**@suraj_sharma14** · [2098026202464243908](https://x.com/suraj_sharma14/status/2098026202464243908) · `resource`
 
 ## Resumo
-Lista de projetos que engenheiros de IA deveriam construir para provar capacidade de retrieval, raciocínio e entrega, começando por um pipeline RAG de produção (ingestão, chunking, busca híbrida, reranking e respostas citadas sobre 1000+ documentos). Vale salvar como referência de roadmap de portfólio técnico.
+Lista de projetos que um AI engineer deve construir para demonstrar capacidade de recuperar, raciocinar e entregar; o item visível detalha um pipeline RAG de produção completo sobre 1000+ documentos.
+
+## Pontos-chave
+- Construir um pipeline RAG de produção com as etapas: ingestão → chunking → busca híbrida → reranking → respostas com citações, operando sobre 1000+ documentos.
+- A qualidade da recuperação (retrieval) é o fator decisivo para o sucesso de um produto com LLM.
+- Projetos práticos servem como prova de competência em engenharia de IA, mais que apenas teoria.
 
 ## Entidades
-Suraj Sharma (@suraj_sharma14), Production RAG Pipeline
+Suraj Sharma, RAG Pipeline
 
-> **Revisit:** `medium`
+> **Revisit:** `medium` · **fonte:** `tweet`

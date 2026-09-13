@@ -1,36 +1,45 @@
 ---
-title: "IA e impacto econômico até 2030"
+title: "Cenários macroeconômicos da IA até 2030"
 type: "extract"
 source: "x"
 status_id: "2097679796687769689"
 handle: "AnthropicAI"
 url: "https://x.com/AnthropicAI/status/2097679796687769689"
 created_at: "2026-09-09T13:33:31.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-anthropicai-anthropics-economics-team-is-sharing-a-new-model-of-how-ai-m--2097679796687769689.json]]"
-tags: ["macroeconomia", "analise", "instituicoes"]
-topic: "IA e impacto econômico até 2030"
-summary: "O time de Economia da Anthropic lançou um modelo interativo com cenários de como a IA pode afetar crescimento, empregos e salários até 2030. Permite comparar as próprias respostas com as de mais de 10 mil americanos."
-entities: ["Anthropic", "Anthropic Economics Team"]
+tags: ["macroeconomia", "analise", "investimentos"]
+topic: "Cenários macroeconômicos da IA até 2030"
+summary: "O time de Economia da Anthropic publicou um explorador de cenários baseado no relatório 'Economic Scenarios for Transformative AI' (Korinek et al., 2026), que modela a economia dos EUA como pacotes de tarefas (taxonomia O*NET) e projeta PIB, desemprego, salários e divisão trabalho-capital até 2030 conforme capacidades e adoção da IA. Vale salvar por quantificar três futuros distintos e permitir comparar as próprias previsões com as de mais de 10 mil americanos."
+key_points: ["A economia é modelada como somatório de instâncias de tarefas (baseado na taxonomia O*NET do Departamento de Trabalho dos EUA); a IA pode aumentar, automatizar, não afetar ou criar novas tarefas, e cada combinação gera efeitos diretos em PIB, mercado de trabalho e participação dos trabalhadores na renda", "Três cenários: modesto (impacto tipo internet, dentro da norma histórica), substancial (IA faz metade do trabalho cognitivo até 2030, maioria autonomamente; economia cresce ao dobro da taxa normal; salários de knowledge workers não sobem) e extremo (IA autorrecursiva adotada rapidamente; PIB cresce ~15% ao ano, economia dobra a cada 4,5 anos, mas desemprego supera níveis recessivos históricos)", "Pesquisa com 10.980 americanos: as respostas típicas implicam o cenário substancial (PIB 10% maior em 2030, desemprego total ~5%); cerca de 10% dos respondentes têm visões alinhadas ao cenário extremo", "Nos cenários transformadores, salários médios sobem mas concentrados fora do trabalho cognitivo (ex.: coders e atendentes migrando para eletricista/enfermeira); salários de knowledge workers estagnam ou caem com piora no desemprego específico", "A fatia do trabalho na renda cai e a do capital sobe (de ~60/40 hoje) mesmo com salários subindo; no cenário extremo, a renda total do trabalho quase não muda até 2030 — o desafio central é distribuir amplamente os ganhos, não gerar crescimento"]
+entities: ["Anthropic", "Anthropic Economics team", "Korinek", "US Department of Labor O*NET", "Anthropic Economic Index"]
 content_type: "resource"
-revisit: "medium"
+revisit: "high"
+grounded_in: "article"
 links: ["https://www.anthropic.com/institute/econ-scenarios"]
 media: []
 ---
 
-# IA e impacto econômico até 2030
+# Cenários macroeconômicos da IA até 2030
 
 **@AnthropicAI** · [2097679796687769689](https://x.com/AnthropicAI/status/2097679796687769689) · `resource`
 
 ## Resumo
-O time de Economia da Anthropic lançou um modelo interativo com cenários de como a IA pode afetar crescimento, empregos e salários até 2030. Permite comparar as próprias respostas com as de mais de 10 mil americanos.
+O time de Economia da Anthropic publicou um explorador de cenários baseado no relatório 'Economic Scenarios for Transformative AI' (Korinek et al., 2026), que modela a economia dos EUA como pacotes de tarefas (taxonomia O*NET) e projeta PIB, desemprego, salários e divisão trabalho-capital até 2030 conforme capacidades e adoção da IA. Vale salvar por quantificar três futuros distintos e permitir comparar as próprias previsões com as de mais de 10 mil americanos.
+
+## Pontos-chave
+- A economia é modelada como somatório de instâncias de tarefas (baseado na taxonomia O*NET do Departamento de Trabalho dos EUA); a IA pode aumentar, automatizar, não afetar ou criar novas tarefas, e cada combinação gera efeitos diretos em PIB, mercado de trabalho e participação dos trabalhadores na renda
+- Três cenários: modesto (impacto tipo internet, dentro da norma histórica), substancial (IA faz metade do trabalho cognitivo até 2030, maioria autonomamente; economia cresce ao dobro da taxa normal; salários de knowledge workers não sobem) e extremo (IA autorrecursiva adotada rapidamente; PIB cresce ~15% ao ano, economia dobra a cada 4,5 anos, mas desemprego supera níveis recessivos históricos)
+- Pesquisa com 10.980 americanos: as respostas típicas implicam o cenário substancial (PIB 10% maior em 2030, desemprego total ~5%); cerca de 10% dos respondentes têm visões alinhadas ao cenário extremo
+- Nos cenários transformadores, salários médios sobem mas concentrados fora do trabalho cognitivo (ex.: coders e atendentes migrando para eletricista/enfermeira); salários de knowledge workers estagnam ou caem com piora no desemprego específico
+- A fatia do trabalho na renda cai e a do capital sobe (de ~60/40 hoje) mesmo com salários subindo; no cenário extremo, a renda total do trabalho quase não muda até 2030 — o desafio central é distribuir amplamente os ganhos, não gerar crescimento
 
 ## Links
 - https://www.anthropic.com/institute/econ-scenarios
 
 ## Entidades
-Anthropic, Anthropic Economics Team
+Anthropic, Anthropic Economics team, Korinek, US Department of Labor O*NET, Anthropic Economic Index
 
-> **Revisit:** `medium`
+> **Revisit:** `high` · **fonte:** `article`

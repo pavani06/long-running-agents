@@ -1,33 +1,41 @@
 ---
-title: "Exo Harness custo-eficiência em eval"
+title: "Exo Harness custo por tarefa"
 type: "extract"
 source: "x"
 status_id: "2098103620080369854"
 handle: "guanlan"
 url: "https://x.com/guanlan/status/2098103620080369854"
 created_at: "2026-09-10T17:37:38.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-guanlan-exo-harness-now-runs-natively-on-runta-in-frontierharness-ev--2098103620080369854.json]]"
-tags: ["harness", "harness-engineering", "evals", "agents", "performance", "token-budgeting", "runtime"]
-topic: "Exo Harness custo-eficiência em eval"
-summary: "Exo Harness roda nativamente no Runta e, no FrontierHarness Eval, foi o mais barato por tarefa concluída ($1.05); na tarefa mais difícil respeitou seu cap de 51 steps e parou a $1.46 enquanto concorrentes continuaram gastando. Destaque para o harness que reescreve a si mesmo e um Executor sem estado durável."
-entities: ["Exo Harness", "Runta", "FrontierHarness Eval", "Exo Executor", "guanlan"]
-content_type: "data"
+tags: ["harness", "evals", "harness-engineering", "token-budgeting", "state", "agents"]
+topic: "Exo Harness custo por tarefa"
+summary: "Anúncio de que o Exo Harness roda nativamente na Runta; no FrontierHarness Eval foi o mais barato por tarefa concluída ($1.05), abandonando a tarefa mais difícil ao atingir seu cap de 51 passos ($1.46) enquanto outros harnesses seguiam gastando. Vale salvar como referência de trade-off custo/limite de passos em harness de agentes."
+key_points: ["Exo Harness agora roda nativamente na Runta", "No FrontierHarness Eval, Exo foi o mais barato por tarefa concluída: $1.05", "Na tarefa mais difícil, atingiu o cap de 51 passos e desistiu a $1.46, enquanto outros harnesses continuaram gastando sem limite", "Executor do Exo não mantém estado durável (tweet truncado nesse ponto), o que implica harness sem memória persistente entre execuções"]
+entities: ["Exo Harness", "Exo", "Runta", "FrontierHarness Eval", "guanlan"]
+content_type: "announcement"
 revisit: "high"
+grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HR3vWjlbIAA-kDm.jpg"]
 ---
 
-# Exo Harness custo-eficiência em eval
+# Exo Harness custo por tarefa
 
-**@guanlan** · [2098103620080369854](https://x.com/guanlan/status/2098103620080369854) · `data`
+**@guanlan** · [2098103620080369854](https://x.com/guanlan/status/2098103620080369854) · `announcement`
 
 ## Resumo
-Exo Harness roda nativamente no Runta e, no FrontierHarness Eval, foi o mais barato por tarefa concluída ($1.05); na tarefa mais difícil respeitou seu cap de 51 steps e parou a $1.46 enquanto concorrentes continuaram gastando. Destaque para o harness que reescreve a si mesmo e um Executor sem estado durável.
+Anúncio de que o Exo Harness roda nativamente na Runta; no FrontierHarness Eval foi o mais barato por tarefa concluída ($1.05), abandonando a tarefa mais difícil ao atingir seu cap de 51 passos ($1.46) enquanto outros harnesses seguiam gastando. Vale salvar como referência de trade-off custo/limite de passos em harness de agentes.
+
+## Pontos-chave
+- Exo Harness agora roda nativamente na Runta
+- No FrontierHarness Eval, Exo foi o mais barato por tarefa concluída: $1.05
+- Na tarefa mais difícil, atingiu o cap de 51 passos e desistiu a $1.46, enquanto outros harnesses continuaram gastando sem limite
+- Executor do Exo não mantém estado durável (tweet truncado nesse ponto), o que implica harness sem memória persistente entre execuções
 
 ## Entidades
-Exo Harness, Runta, FrontierHarness Eval, Exo Executor, guanlan
+Exo Harness, Exo, Runta, FrontierHarness Eval, guanlan
 
-> **Revisit:** `high`
+> **Revisit:** `high` · **fonte:** `tweet`

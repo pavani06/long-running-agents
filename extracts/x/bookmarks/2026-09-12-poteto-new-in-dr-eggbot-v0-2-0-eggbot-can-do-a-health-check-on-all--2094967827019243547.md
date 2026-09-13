@@ -1,33 +1,40 @@
 ---
-title: "Dr Eggbot v0.2.0 routines update"
+title: "Dr Eggbot rotinas health check"
 type: "extract"
 source: "x"
 status_id: "2094967827019243547"
 handle: "poteto"
 url: "https://x.com/poteto/status/2094967827019243547"
 created_at: "2026-09-02T01:57:07.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-poteto-new-in-dr-eggbot-v0-2-0-eggbot-can-do-a-health-check-on-all--2094967827019243547.json]]"
-tags: ["agent-tooling", "monitoramento", "performance"]
-topic: "Dr Eggbot v0.2.0 routines update"
-summary: "Anúncio da v0.2.0 do Dr Eggbot, que agora roda health checks semanais (padrão) nas routines do usuário para detectar as não usadas ou caras. Tweet truncado antes de listar a segunda novidade."
+tags: ["monitoramento", "agent-tooling", "process"]
+topic: "Dr Eggbot rotinas health check"
+summary: "Anúncio da v0.2.0 do Dr Eggbot: o bot agora roda health checks nas rotinas do usuário para identificar rotinas não usadas ou caras, oferecendo a checagem na primeira instalação e permitindo agendá-la como rotina recorrente (padrão semanal)."
+key_points: ["v0.2.0 introduz health check que detecta rotinas não utilizadas ou caras (custosas)", "Ao adicionar o Dr Eggbot pela primeira vez, ele pergunta se você quer rodar uma checagem", "A checagem pode virar uma rotina recorrente, com frequência padrão semanal"]
 entities: ["Dr Eggbot", "poteto"]
 content_type: "announcement"
 revisit: "low"
+grounded_in: "tweet"
 links: []
 media: []
 ---
 
-# Dr Eggbot v0.2.0 routines update
+# Dr Eggbot rotinas health check
 
 **@poteto** · [2094967827019243547](https://x.com/poteto/status/2094967827019243547) · `announcement`
 
 ## Resumo
-Anúncio da v0.2.0 do Dr Eggbot, que agora roda health checks semanais (padrão) nas routines do usuário para detectar as não usadas ou caras. Tweet truncado antes de listar a segunda novidade.
+Anúncio da v0.2.0 do Dr Eggbot: o bot agora roda health checks nas rotinas do usuário para identificar rotinas não usadas ou caras, oferecendo a checagem na primeira instalação e permitindo agendá-la como rotina recorrente (padrão semanal).
+
+## Pontos-chave
+- v0.2.0 introduz health check que detecta rotinas não utilizadas ou caras (custosas)
+- Ao adicionar o Dr Eggbot pela primeira vez, ele pergunta se você quer rodar uma checagem
+- A checagem pode virar uma rotina recorrente, com frequência padrão semanal
 
 ## Entidades
 Dr Eggbot, poteto
 
-> **Revisit:** `low`
+> **Revisit:** `low` · **fonte:** `tweet`

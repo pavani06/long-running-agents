@@ -1,33 +1,40 @@
 ---
-title: "Spotify Portal two-model routing"
+title: "Portal: roteamento de dois modelos no Claude Code"
 type: "extract"
 source: "x"
 status_id: "2096439998539321653"
 handle: "stretchcloud"
 url: "https://x.com/stretchcloud/status/2096439998539321653"
 created_at: "2026-09-06T03:27:00.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-stretchcloud-spotify-s-engineering-team-cut-claude-code-token-usage-by-90--2096439998539321653.json]]"
-tags: ["model-selection", "token-budgeting", "arquitetura", "performance", "agent-tooling", "analise"]
-topic: "Spotify Portal two-model routing"
-summary: "Spotify's engineering team cut Claude Code token usage by 90% with Portal, a two-model routing approach where cheaper assistant models handle most tasks. The savings come from hard blocks at the architecture level rather than prompt engineering, making it a concrete case study in cost-efficient agent design."
+tags: ["model-selection", "token-budgeting", "performance", "arquitetura", "agent-tooling"]
+topic: "Portal: roteamento de dois modelos no Claude Code"
+summary: "Spotify reduziu em 90% o uso de tokens do Claude Code com Portal, uma arquitetura de roteamento que delega tarefas a dois modelos 'assistentes' mais baratos. O ganho vem de bloqueios duros no nível de arquitetura, não de engenharia de prompt."
+key_points: ["Redução de 90% no consumo de tokens do Claude Code", "Dois modelos 'assistentes' mais baratos executam as tarefas em vez do modelo principal", "Mecanismo baseado em hard blocks na arquitetura, não em prompt engineering"]
 entities: ["Spotify", "Claude Code", "Portal"]
 content_type: "resource"
 revisit: "high"
+grounded_in: "tweet"
 links: []
 media: []
 ---
 
-# Spotify Portal two-model routing
+# Portal: roteamento de dois modelos no Claude Code
 
 **@stretchcloud** · [2096439998539321653](https://x.com/stretchcloud/status/2096439998539321653) · `resource`
 
 ## Resumo
-Spotify's engineering team cut Claude Code token usage by 90% with Portal, a two-model routing approach where cheaper assistant models handle most tasks. The savings come from hard blocks at the architecture level rather than prompt engineering, making it a concrete case study in cost-efficient agent design.
+Spotify reduziu em 90% o uso de tokens do Claude Code com Portal, uma arquitetura de roteamento que delega tarefas a dois modelos 'assistentes' mais baratos. O ganho vem de bloqueios duros no nível de arquitetura, não de engenharia de prompt.
+
+## Pontos-chave
+- Redução de 90% no consumo de tokens do Claude Code
+- Dois modelos 'assistentes' mais baratos executam as tarefas em vez do modelo principal
+- Mecanismo baseado em hard blocks na arquitetura, não em prompt engineering
 
 ## Entidades
 Spotify, Claude Code, Portal
 
-> **Revisit:** `high`
+> **Revisit:** `high` · **fonte:** `tweet`

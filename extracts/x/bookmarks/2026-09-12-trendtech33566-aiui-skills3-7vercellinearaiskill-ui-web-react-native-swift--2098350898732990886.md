@@ -1,33 +1,42 @@
 ---
-title: "Skill collection for AI UI design"
+title: "UI design skills para IA"
 type: "extract"
 source: "x"
 status_id: "2098350898732990886"
 handle: "trendtech33566"
 url: "https://x.com/trendtech33566/status/2098350898732990886"
 created_at: "2026-09-11T10:00:14.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-trendtech33566-aiui-skills3-7vercellinearaiskill-ui-web-react-native-swift--2098350898732990886.json]]"
-tags: ["agentic-coding", "context-engineering", "agent-tooling", "stack-tooling", "knowledge-management"]
-topic: "Skill collection for AI UI design"
-summary: "Promotes a ~37k-star skill set that gives AI the design knowledge of Vercel/Linear veterans. Useful for optimizing UI animation curves and speeds, supporting Web/React Native/Swift design, auditing existing UIs with improvement suggestions, and preventing generic mass-produced AI designs."
+tags: ["agent-tooling", "stack-tooling"]
+topic: "UI design skills para IA"
+summary: "Divulga uma coleção de skills (~37 mil estrelas) que injeta em IA o conhecimento de design de veteranos da Vercel e Linear, elevando a qualidade de UIs geradas por IA. Vale salvar como referência prática para evitar designs genéricos de IA e auditar UIs existentes."
+key_points: ["Otimiza curvas e velocidade de animações de UI", "Cobre design para Web, React Native e Swift", "Capaz de auditar UI existente e propor melhorias", "Previne o 'design de linha de produção' típico de IA generativa", "Baseia-se em conhecimento de designers experientes da Vercel e Linear"]
 entities: ["Vercel", "Linear", "React Native", "Swift"]
 content_type: "resource"
 revisit: "medium"
+grounded_in: "tweet"
 links: []
 media: []
 ---
 
-# Skill collection for AI UI design
+# UI design skills para IA
 
 **@trendtech33566** · [2098350898732990886](https://x.com/trendtech33566/status/2098350898732990886) · `resource`
 
 ## Resumo
-Promotes a ~37k-star skill set that gives AI the design knowledge of Vercel/Linear veterans. Useful for optimizing UI animation curves and speeds, supporting Web/React Native/Swift design, auditing existing UIs with improvement suggestions, and preventing generic mass-produced AI designs.
+Divulga uma coleção de skills (~37 mil estrelas) que injeta em IA o conhecimento de design de veteranos da Vercel e Linear, elevando a qualidade de UIs geradas por IA. Vale salvar como referência prática para evitar designs genéricos de IA e auditar UIs existentes.
+
+## Pontos-chave
+- Otimiza curvas e velocidade de animações de UI
+- Cobre design para Web, React Native e Swift
+- Capaz de auditar UI existente e propor melhorias
+- Previne o 'design de linha de produção' típico de IA generativa
+- Baseia-se em conhecimento de designers experientes da Vercel e Linear
 
 ## Entidades
 Vercel, Linear, React Native, Swift
 
-> **Revisit:** `medium`
+> **Revisit:** `medium` · **fonte:** `tweet`

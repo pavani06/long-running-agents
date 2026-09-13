@@ -1,33 +1,40 @@
 ---
-title: "Configuração de árvore de agentes com Codex"
+title: "Configuração de agent tree com Codex"
 type: "extract"
 source: "x"
 status_id: "2098033757504634982"
 handle: "Voxyz_ai"
 url: "https://x.com/Voxyz_ai/status/2098033757504634982"
 created_at: "2026-09-10T13:00:02.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-voxyz_ai-a-lot-of-people-have-asked-how-to-configure-this-cost-effici--2098033757504634982.json]]"
-tags: ["multi-agent", "agentes-orquestracao", "agentic-coding", "agent-tooling", "arquitetura", "token-budgeting"]
-topic: "Configuração de árvore de agentes com Codex"
-summary: "Guia prático de como configurar a árvore de agentes Astra + Luna + Sol (focada em custo-eficiência) para uso com Codex, incluindo a opção de entregar o diagrama ao próprio Codex para que ele configure o projeto. Vale salvar como referência de setup de orquestração multi-agent de baixo custo."
-entities: ["Voxyz_ai", "Astra", "Luna", "Sol", "Codex"]
+tags: ["agent-tooling", "agentes-orquestracao", "agents", "stack-tooling"]
+topic: "Configuração de agent tree com Codex"
+summary: "Explica como configurar a árvore de agentes Astra + Luna + Sol (focada em eficiência de custo) de múltiplas formas, dependendo do fluxo de uso do Codex; a primeira opção é delegar ao próprio Codex o setup a partir do diagrama."
+key_points: ["A árvore de agentes Astra + Luna + Sol é apresentada como uma configuração de baixo custo (cost-efficient) para execução de agentes.", "Existem múltiplas formas de configurar o setup, adaptadas a diferentes formas de usar o Codex.", "Abordagem 1: passar o diagrama da árvore para o Codex e pedir que ele mesmo configure os arquivos de configuração em nível de projeto (o tweet está truncado; as demais opções não estão visíveis)."]
+entities: ["Codex", "Astra", "Luna", "Sol", "Voxyz"]
 content_type: "thread"
-revisit: "high"
+revisit: "medium"
+grounded_in: "tweet"
 links: []
 media: []
 ---
 
-# Configuração de árvore de agentes com Codex
+# Configuração de agent tree com Codex
 
 **@Voxyz_ai** · [2098033757504634982](https://x.com/Voxyz_ai/status/2098033757504634982) · `thread`
 
 ## Resumo
-Guia prático de como configurar a árvore de agentes Astra + Luna + Sol (focada em custo-eficiência) para uso com Codex, incluindo a opção de entregar o diagrama ao próprio Codex para que ele configure o projeto. Vale salvar como referência de setup de orquestração multi-agent de baixo custo.
+Explica como configurar a árvore de agentes Astra + Luna + Sol (focada em eficiência de custo) de múltiplas formas, dependendo do fluxo de uso do Codex; a primeira opção é delegar ao próprio Codex o setup a partir do diagrama.
+
+## Pontos-chave
+- A árvore de agentes Astra + Luna + Sol é apresentada como uma configuração de baixo custo (cost-efficient) para execução de agentes.
+- Existem múltiplas formas de configurar o setup, adaptadas a diferentes formas de usar o Codex.
+- Abordagem 1: passar o diagrama da árvore para o Codex e pedir que ele mesmo configure os arquivos de configuração em nível de projeto (o tweet está truncado; as demais opções não estão visíveis).
 
 ## Entidades
-Voxyz_ai, Astra, Luna, Sol, Codex
+Codex, Astra, Luna, Sol, Voxyz
 
-> **Revisit:** `high`
+> **Revisit:** `medium` · **fonte:** `tweet`

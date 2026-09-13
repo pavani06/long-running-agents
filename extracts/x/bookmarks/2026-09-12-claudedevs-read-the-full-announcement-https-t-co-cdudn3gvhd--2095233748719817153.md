@@ -1,36 +1,45 @@
 ---
-title: "Claude para agentes de comércio"
+title: "Blueprint de agentes de comércio com Claude"
 type: "extract"
 source: "x"
 status_id: "2095233748719817153"
 handle: "ClaudeDevs"
 url: "https://x.com/ClaudeDevs/status/2095233748719817153"
 created_at: "2026-09-02T19:33:47.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-claudedevs-read-the-full-announcement-https-t-co-cdudn3gvhd--2095233748719817153.json]]"
-tags: ["agents", "agent-tooling", "stack-tooling"]
-topic: "Claude para agentes de comércio"
-summary: "Tweet do @ClaudeDevs apenas aponta para o anúncio completo no blog oficial da Anthropic sobre 'Claude for Commerce Agents'. Vale salvar como referência do lançamento de capacidades do Claude voltadas a agentes de comércio, com detalhes a confirmar no post."
-entities: ["Anthropic", "Claude", "ClaudeDevs", "Claude for Commerce Agents"]
+tags: ["agents", "agent-tooling", "harness", "production", "governanca"]
+topic: "Blueprint de agentes de comércio com Claude"
+summary: "Anthropic lançou um blueprint para construir commerce agents no Claude, com harnesses, padrões e guardrails, além de implementações de referência de shopping agent e merchant agent para varejo, viagem, telecom e ticketing. Varejistas relatam carrinhos até 35% maiores e 60% mais conversão de compra."
+key_points: ["Repositório em github.com/anthropics/commerce-agents traz implementações completas e funcionais de shopping agent e merchant agent usando Messages API, Agent SDK ou Claude Managed Agents (beta), com plugin do Claude Code para customização por catálogo, políticas e marca.", "O shopping agent monta carrinhos a partir de pedidos multi-item em linguagem natural, personaliza por preferências e histórico, renderiza produtos/comparações/carrinho dentro da conversa, entrega ao checkout e responde questões de atendimento (rastreio, trocas, reembolso) no mesmo fluxo — pagamento fica a cargo do deployer.", "Guardrails projetados para restringir preços e produtos aos dados reais do catálogo e evitar padrões manipulativos de upsell; capacidades empacotadas como skills/tools de busca em catálogo, planejamento multi-item, deep research, personalização, customer care e UI na conversa.", "O merchant agent responde perguntas de performance de vendas sobre dados próprios, monitora inventário e sinaliza problemas proativamente, recomenda preços/promoções e redige campanhas — sempre com aprovação humana antes de qualquer mudança ir ao ar.", "Deploy nas superfícies onde Claude já roda (Claude API, Amazon Bedrock, Microsoft Foundry, Google Cloud Vertex AI), com parceiros como Accenture, Mastercard e Visa; clientes citados incluem Shopify e Priceline; deep-dive de engenharia em claude.com/blog/the-anatomy-of-effective-commerce-agents."]
+entities: ["Anthropic", "Claude", "Claude Code", "Shopify", "Priceline", "Amazon Bedrock", "Microsoft Foundry", "Google Cloud Vertex AI", "Accenture", "Mastercard", "Visa", "Agent SDK", "Messages API", "Claude Managed Agents"]
 content_type: "announcement"
-revisit: "medium"
+revisit: "high"
+grounded_in: "article"
 links: ["https://claude.com/blog/claude-for-commerce-agents"]
 media: []
 ---
 
-# Claude para agentes de comércio
+# Blueprint de agentes de comércio com Claude
 
 **@ClaudeDevs** · [2095233748719817153](https://x.com/ClaudeDevs/status/2095233748719817153) · `announcement`
 
 ## Resumo
-Tweet do @ClaudeDevs apenas aponta para o anúncio completo no blog oficial da Anthropic sobre 'Claude for Commerce Agents'. Vale salvar como referência do lançamento de capacidades do Claude voltadas a agentes de comércio, com detalhes a confirmar no post.
+Anthropic lançou um blueprint para construir commerce agents no Claude, com harnesses, padrões e guardrails, além de implementações de referência de shopping agent e merchant agent para varejo, viagem, telecom e ticketing. Varejistas relatam carrinhos até 35% maiores e 60% mais conversão de compra.
+
+## Pontos-chave
+- Repositório em github.com/anthropics/commerce-agents traz implementações completas e funcionais de shopping agent e merchant agent usando Messages API, Agent SDK ou Claude Managed Agents (beta), com plugin do Claude Code para customização por catálogo, políticas e marca.
+- O shopping agent monta carrinhos a partir de pedidos multi-item em linguagem natural, personaliza por preferências e histórico, renderiza produtos/comparações/carrinho dentro da conversa, entrega ao checkout e responde questões de atendimento (rastreio, trocas, reembolso) no mesmo fluxo — pagamento fica a cargo do deployer.
+- Guardrails projetados para restringir preços e produtos aos dados reais do catálogo e evitar padrões manipulativos de upsell; capacidades empacotadas como skills/tools de busca em catálogo, planejamento multi-item, deep research, personalização, customer care e UI na conversa.
+- O merchant agent responde perguntas de performance de vendas sobre dados próprios, monitora inventário e sinaliza problemas proativamente, recomenda preços/promoções e redige campanhas — sempre com aprovação humana antes de qualquer mudança ir ao ar.
+- Deploy nas superfícies onde Claude já roda (Claude API, Amazon Bedrock, Microsoft Foundry, Google Cloud Vertex AI), com parceiros como Accenture, Mastercard e Visa; clientes citados incluem Shopify e Priceline; deep-dive de engenharia em claude.com/blog/the-anatomy-of-effective-commerce-agents.
 
 ## Links
 - https://claude.com/blog/claude-for-commerce-agents
 
 ## Entidades
-Anthropic, Claude, ClaudeDevs, Claude for Commerce Agents
+Anthropic, Claude, Claude Code, Shopify, Priceline, Amazon Bedrock, Microsoft Foundry, Google Cloud Vertex AI, Accenture, Mastercard, Visa, Agent SDK, Messages API, Claude Managed Agents
 
-> **Revisit:** `medium`
+> **Revisit:** `high` · **fonte:** `article`

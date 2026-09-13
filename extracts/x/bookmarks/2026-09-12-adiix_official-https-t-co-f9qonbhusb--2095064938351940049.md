@@ -1,33 +1,35 @@
 ---
-title: "link sem contexto"
+title: "link inacessível"
 type: "extract"
 source: "x"
 status_id: "2095064938351940049"
 handle: "adiix_official"
 url: "https://x.com/adiix_official/status/2095064938351940049"
 created_at: "2026-09-02T08:23:00.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-adiix_official-https-t-co-f9qonbhusb--2095064938351940049.json]]"
 tags: []
-topic: "link sem contexto"
-summary: "O tweet contém apenas uma URL encurtada (t.co) sem texto, título ou descrição que permita identificar o conteúdo ou a relevância. Vale salvar somente se o destino do link for conhecido ou verificado depois."
-entities: []
+topic: "link inacessível"
+summary: "O bookmark contém apenas uma URL encurtada (t.co) sem texto ou contexto, e o destino não pôde ser recuperado para extração de conteúdo."
+key_points: []
+entities: ["adiix_official"]
 content_type: "other"
 revisit: "low"
+grounded_in: "tweet"
 links: []
 media: []
 ---
 
-# link sem contexto
+# link inacessível
 
 **@adiix_official** · [2095064938351940049](https://x.com/adiix_official/status/2095064938351940049) · `other`
 
 ## Resumo
-O tweet contém apenas uma URL encurtada (t.co) sem texto, título ou descrição que permita identificar o conteúdo ou a relevância. Vale salvar somente se o destino do link for conhecido ou verificado depois.
+O bookmark contém apenas uma URL encurtada (t.co) sem texto ou contexto, e o destino não pôde ser recuperado para extração de conteúdo.
 
 ## Entidades
-—
+adiix_official
 
-> **Revisit:** `low`
+> **Revisit:** `low` · **fonte:** `tweet`

@@ -1,33 +1,40 @@
 ---
-title: "Blueprint de agentes de comércio"
+title: "agentes de comércio open-source"
 type: "extract"
 source: "x"
 status_id: "2095233745167282602"
 handle: "ClaudeDevs"
 url: "https://x.com/ClaudeDevs/status/2095233745167282602"
 created_at: "2026-09-02T19:33:47.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-claudedevs-we-re-open-sourcing-claude-commerce-agents-this-is-a-bluepri--2095233745167282602.json]]"
-tags: ["agents", "frameworks", "agent-tooling", "arquitetura", "production"]
-topic: "Blueprint de agentes de comércio"
-summary: "A Anthropic open-sourcou os Claude Commerce Agents, um blueprint com implementações de referência para agentes de compra e merchant em varejo, viagens, telecom e entretenimento. Vale salvar como arquitetura de referência pronta para estudar e adaptar em produtos agentivos."
+tags: ["agents", "agent-tooling", "frameworks", "arquitetura"]
+topic: "agentes de comércio open-source"
+summary: "A Anthropic anunciou o open-source do Claude Commerce Agents, um blueprint para construir agentes de compra e de merchant, com implementações de referência em varejo, viagens, telecom e entretenimento. Vale salvar como arquitetura de referência para agentes comerciais em produção."
+key_points: ["Open-source de um blueprint dedicado a shopping agents e merchant agents.", "Inclui implementações de referência em quatro setores: varejo, viagens, telecom e entretenimento.", "Serve como padrão comparativo de arquitetura e design de agente para casos de uso comerciais da Anthropic."]
 entities: ["Anthropic", "Claude", "Claude Commerce Agents"]
 content_type: "announcement"
 revisit: "high"
+grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2095231624053219328/img/vb_u5Aj_IDsHxvvP.jpg"]
 ---
 
-# Blueprint de agentes de comércio
+# agentes de comércio open-source
 
 **@ClaudeDevs** · [2095233745167282602](https://x.com/ClaudeDevs/status/2095233745167282602) · `announcement`
 
 ## Resumo
-A Anthropic open-sourcou os Claude Commerce Agents, um blueprint com implementações de referência para agentes de compra e merchant em varejo, viagens, telecom e entretenimento. Vale salvar como arquitetura de referência pronta para estudar e adaptar em produtos agentivos.
+A Anthropic anunciou o open-source do Claude Commerce Agents, um blueprint para construir agentes de compra e de merchant, com implementações de referência em varejo, viagens, telecom e entretenimento. Vale salvar como arquitetura de referência para agentes comerciais em produção.
+
+## Pontos-chave
+- Open-source de um blueprint dedicado a shopping agents e merchant agents.
+- Inclui implementações de referência em quatro setores: varejo, viagens, telecom e entretenimento.
+- Serve como padrão comparativo de arquitetura e design de agente para casos de uso comerciais da Anthropic.
 
 ## Entidades
 Anthropic, Claude, Claude Commerce Agents
 
-> **Revisit:** `high`
+> **Revisit:** `high` · **fonte:** `tweet`

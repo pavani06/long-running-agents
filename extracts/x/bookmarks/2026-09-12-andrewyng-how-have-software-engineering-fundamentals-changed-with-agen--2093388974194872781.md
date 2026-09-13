@@ -1,33 +1,39 @@
 ---
-title: "AI engineering skills map"
+title: "AI Engineering Skills para software"
 type: "extract"
 source: "x"
 status_id: "2093388974194872781"
 handle: "AndrewYNg"
 url: "https://x.com/AndrewYNg/status/2093388974194872781"
 created_at: "2026-08-28T17:23:19.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-andrewyng-how-have-software-engineering-fundamentals-changed-with-agen--2093388974194872781.json]]"
-tags: ["agentic-coding", "curriculo-conteudo", "roadmap", "process", "agents"]
-topic: "AI engineering skills map"
-summary: "Andrew Ng compartilha um mapa de habilidades de engenharia de software revisado para a era do agentic coding, mostrando como os fundamentos tradicionais mudaram. Vale salvar como referência de currículo e estruturação de competências em IA."
-entities: ["Andrew Ng"]
+tags: ["agentic-coding", "curriculo-conteudo"]
+topic: "AI Engineering Skills para software"
+summary: "Andrew Ng compartilha o mapa de AI Engineering Skills do seu time sobre como os fundamentos de engenharia de software mudaram com agentic coding. Vale salvar como referência de currículo para quais habilidades priorizar na era de agentes."
+key_points: ["Mapeia como fundamentos de engenharia de software se transformam quando o código é escrito de forma agentic", "Funciona como guia de habilidades (skills map) para engenheiros que trabalham com coding agents"]
+entities: ["Andrew Ng", "DeepLearning.AI"]
 content_type: "resource"
-revisit: "high"
+revisit: "medium"
+grounded_in: "tweet"
 links: []
 media: []
 ---
 
-# AI engineering skills map
+# AI Engineering Skills para software
 
 **@AndrewYNg** · [2093388974194872781](https://x.com/AndrewYNg/status/2093388974194872781) · `resource`
 
 ## Resumo
-Andrew Ng compartilha um mapa de habilidades de engenharia de software revisado para a era do agentic coding, mostrando como os fundamentos tradicionais mudaram. Vale salvar como referência de currículo e estruturação de competências em IA.
+Andrew Ng compartilha o mapa de AI Engineering Skills do seu time sobre como os fundamentos de engenharia de software mudaram com agentic coding. Vale salvar como referência de currículo para quais habilidades priorizar na era de agentes.
+
+## Pontos-chave
+- Mapeia como fundamentos de engenharia de software se transformam quando o código é escrito de forma agentic
+- Funciona como guia de habilidades (skills map) para engenheiros que trabalham com coding agents
 
 ## Entidades
-Andrew Ng
+Andrew Ng, DeepLearning.AI
 
-> **Revisit:** `high`
+> **Revisit:** `medium` · **fonte:** `tweet`

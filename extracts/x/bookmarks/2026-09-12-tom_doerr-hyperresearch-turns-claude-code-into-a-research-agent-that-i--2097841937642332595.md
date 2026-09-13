@@ -1,36 +1,45 @@
 ---
-title: "Hyperresearch: agente de pesquisa"
+title: "Agente de pesquisa profunda para Claude Code"
 type: "extract"
 source: "x"
 status_id: "2097841937642332595"
 handle: "tom_doerr"
 url: "https://x.com/tom_doerr/status/2097841937642332595"
 created_at: "2026-09-10T00:17:48.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-tom_doerr-hyperresearch-turns-claude-code-into-a-research-agent-that-i--2097841937642332595.json]]"
-tags: ["agents", "agent-tooling", "verification", "context-management"]
-topic: "Hyperresearch: agente de pesquisa"
-summary: "Hyperresearch transforma o Claude Code em agente de pesquisa que ingere centenas de fontes, verifica citações e gera relatórios auditados adversarialmente. Vale salvar como referência de arquitetura de pesquisa com verificação e auditoria adversarial para agentes."
-entities: ["Hyperresearch", "Claude Code", "Jordan Gibbs"]
+tags: ["agents", "multi-agent", "harness-engineering", "verification", "knowledge-management", "cross-session", "context-management", "gate-design", "memory-architecture", "evals", "model-selection"]
+topic: "Agente de pesquisa profunda para Claude Code"
+summary: "Hyperresearch transforma o Claude Code em agente de deep research com pipeline tier-adaptive de 16 passos, verificação de citações, críticos adversariais e vault persistente de fontes reutilizável entre sessões; lidera (internamente, validação externa pendente) o DeepResearch-Bench RACE. Vale salvar como referência de arquitetura de harness multi-agente com verificação e memória cross-session."
+key_points: ["Pipeline de 16 passos com roteamento por tier: light (~30-40 min, 5 passos), full (~1.5-2.5 h, todos os passos + cite-check) e dissertation opt-in (4-8 h, 300-450 fontes, 25K-80K palavras em capítulos); 'gears' configuráveis em config.toml ajustam alvos de fontes, profundidade e modelos por agente.", "Verificação como gate rígido: cite-checker cético audita se cada fonte citada sustenta a frase correspondente (citações alucinadas e retratações não reconhecidas bloqueiam o ship); auditoria de independência agrupa cópias derivativas para que 5 reprints contem como 1 fonte.", "Padrão 'patch, never regenerate': 4 críticos adversariais atacam o rascunho em paralelo e o patcher é tool-locked em [Read, Edit] no allowlist do Claude Code — mecanicamente incapaz de reescrever o relatório; findings grandes demais escalam como problemas estruturais.", "Vault persistente markdown+SQLite: toda fonte lida fica indexada e buscável para sessões futuras (texto completo de paywalls via Unpaywall/Europe PMC/CORE, substituições divulgadas); 'markdown is truth, SQLite is cache' com índice reconstruível; runs crashados resumem do passo exato via manifest.", "Context engineering explícito: skill de entrada é um router fino que invoca um step skill por fase, carregando o procedimento só quando o passo roda (evita queda silenciosa de passos por 'context rot'); 8 fontes acadêmicas (OpenAlex, Crossref, CORE, DOAB, ClinicalTrials.gov, SEC EDGAR, FRED) via um cliente só, dedup por DOI/título."]
+entities: ["Hyperresearch", "Claude Code", "DeepResearch-Bench", "OpenAlex", "Crossref", "CORE", "DOAB", "ClinicalTrials.gov", "SEC EDGAR", "FRED", "Unpaywall", "Europe PMC", "SQLite", "crawl4ai", "pymupdf", "Claude-in-Chrome", "Sonnet", "Opus", "Haiku", "@tom_doerr"]
 content_type: "tool"
-revisit: "medium"
+revisit: "high"
+grounded_in: "article"
 links: ["https://github.com/jordan-gibbs/hyperresearch"]
 media: ["https://pbs.twimg.com/media/HR0IIByWcAQqg6J.jpg"]
 ---
 
-# Hyperresearch: agente de pesquisa
+# Agente de pesquisa profunda para Claude Code
 
 **@tom_doerr** · [2097841937642332595](https://x.com/tom_doerr/status/2097841937642332595) · `tool`
 
 ## Resumo
-Hyperresearch transforma o Claude Code em agente de pesquisa que ingere centenas de fontes, verifica citações e gera relatórios auditados adversarialmente. Vale salvar como referência de arquitetura de pesquisa com verificação e auditoria adversarial para agentes.
+Hyperresearch transforma o Claude Code em agente de deep research com pipeline tier-adaptive de 16 passos, verificação de citações, críticos adversariais e vault persistente de fontes reutilizável entre sessões; lidera (internamente, validação externa pendente) o DeepResearch-Bench RACE. Vale salvar como referência de arquitetura de harness multi-agente com verificação e memória cross-session.
+
+## Pontos-chave
+- Pipeline de 16 passos com roteamento por tier: light (~30-40 min, 5 passos), full (~1.5-2.5 h, todos os passos + cite-check) e dissertation opt-in (4-8 h, 300-450 fontes, 25K-80K palavras em capítulos); 'gears' configuráveis em config.toml ajustam alvos de fontes, profundidade e modelos por agente.
+- Verificação como gate rígido: cite-checker cético audita se cada fonte citada sustenta a frase correspondente (citações alucinadas e retratações não reconhecidas bloqueiam o ship); auditoria de independência agrupa cópias derivativas para que 5 reprints contem como 1 fonte.
+- Padrão 'patch, never regenerate': 4 críticos adversariais atacam o rascunho em paralelo e o patcher é tool-locked em [Read, Edit] no allowlist do Claude Code — mecanicamente incapaz de reescrever o relatório; findings grandes demais escalam como problemas estruturais.
+- Vault persistente markdown+SQLite: toda fonte lida fica indexada e buscável para sessões futuras (texto completo de paywalls via Unpaywall/Europe PMC/CORE, substituições divulgadas); 'markdown is truth, SQLite is cache' com índice reconstruível; runs crashados resumem do passo exato via manifest.
+- Context engineering explícito: skill de entrada é um router fino que invoca um step skill por fase, carregando o procedimento só quando o passo roda (evita queda silenciosa de passos por 'context rot'); 8 fontes acadêmicas (OpenAlex, Crossref, CORE, DOAB, ClinicalTrials.gov, SEC EDGAR, FRED) via um cliente só, dedup por DOI/título.
 
 ## Links
 - https://github.com/jordan-gibbs/hyperresearch
 
 ## Entidades
-Hyperresearch, Claude Code, Jordan Gibbs
+Hyperresearch, Claude Code, DeepResearch-Bench, OpenAlex, Crossref, CORE, DOAB, ClinicalTrials.gov, SEC EDGAR, FRED, Unpaywall, Europe PMC, SQLite, crawl4ai, pymupdf, Claude-in-Chrome, Sonnet, Opus, Haiku, @tom_doerr
 
-> **Revisit:** `medium`
+> **Revisit:** `high` · **fonte:** `article`

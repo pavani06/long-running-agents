@@ -1,33 +1,40 @@
 ---
-title: "Coleção de papers sobre harness engineering"
+title: "coleção de papers sobre harness engineering"
 type: "extract"
 source: "x"
 status_id: "2097449131648197024"
 handle: "omarsar0"
 url: "https://x.com/omarsar0/status/2097449131648197024"
 created_at: "2026-09-08T22:16:56.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-omarsar0-harness-engineering-is-a-top-skill-right-now-i-saw-a-great-o--2097449131648197024.json]]"
-tags: ["harness-engineering", "harness", "knowledge-management", "agent-tooling"]
-topic: "Coleção de papers sobre harness engineering"
-summary: "Elango/Omar (@omarsar0) compartilha uma coleção curada dos principais papers sobre harness engineering, montada a partir de uma visão geral apresentada em um YC Paper Club. Vale salvar como referência estruturada para dominar a área."
-entities: ["Omar Sanseviero (@omarsar0)", "YC Paper Club", "Y Combinator"]
+tags: ["harness", "harness-engineering", "agents", "frameworks"]
+topic: "coleção de papers sobre harness engineering"
+summary: "Omar Sanseviero montou uma coleção curada dos principais papers sobre harness engineering, skill que ele aponta como das mais valorizadas no momento, a partir de uma visão geral apresentada em um talk do YC Paper Club. Vale salvar como referência de estudo estruturado sobre o tema."
+key_points: ["Harness engineering é apontada como uma das habilidades de topo atuais para quem trabalha com agentes/LLMs", "A coleção deriva de um overview apresentado em talk recente do YC Paper Club", "O material consiste em uma lista curada dos principais papers da área, organizada como coleção navegável"]
+entities: ["Omar Sanseviero", "Y Combinator", "YC Paper Club"]
 content_type: "resource"
 revisit: "high"
+grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HRuicKYXgAAXWXI.jpg"]
 ---
 
-# Coleção de papers sobre harness engineering
+# coleção de papers sobre harness engineering
 
 **@omarsar0** · [2097449131648197024](https://x.com/omarsar0/status/2097449131648197024) · `resource`
 
 ## Resumo
-Elango/Omar (@omarsar0) compartilha uma coleção curada dos principais papers sobre harness engineering, montada a partir de uma visão geral apresentada em um YC Paper Club. Vale salvar como referência estruturada para dominar a área.
+Omar Sanseviero montou uma coleção curada dos principais papers sobre harness engineering, skill que ele aponta como das mais valorizadas no momento, a partir de uma visão geral apresentada em um talk do YC Paper Club. Vale salvar como referência de estudo estruturado sobre o tema.
+
+## Pontos-chave
+- Harness engineering é apontada como uma das habilidades de topo atuais para quem trabalha com agentes/LLMs
+- A coleção deriva de um overview apresentado em talk recente do YC Paper Club
+- O material consiste em uma lista curada dos principais papers da área, organizada como coleção navegável
 
 ## Entidades
-Omar Sanseviero (@omarsar0), YC Paper Club, Y Combinator
+Omar Sanseviero, Y Combinator, YC Paper Club
 
-> **Revisit:** `high`
+> **Revisit:** `high` · **fonte:** `tweet`

@@ -1,36 +1,38 @@
 ---
-title: "pstack questions invitation"
+title: "pstack agent workflow tool"
 type: "extract"
 source: "x"
 status_id: "2098634643323142286"
 handle: "poteto"
 url: "https://x.com/poteto/status/2098634643323142286"
 created_at: "2026-09-12T04:47:44.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-poteto-what-questions-do-you-have-about-pstack-https-t-co-lopojdztt--2098634643323142286.json]]"
-tags: ["agents", "stack-tooling"]
-topic: "pstack questions invitation"
-summary: "@poteto pede perguntas da audiência sobre 'pstack' e compartilha um link para um bot/plugin no x.ai que provavelmente responde sobre o tema. Vale salvar apenas se você acompanha o trabalho do autor ou quer descobrir o que é pstack."
-entities: ["poteto", "pstack", "x.ai"]
-content_type: "question"
+tags: ["agent-tooling", "agentic-coding"]
+topic: "pstack agent workflow tool"
+summary: "Anúncio/promoção do pstack, listagem no Cursor Marketplace para Grok Bot: proposta de escrever menos código e com mais qualidade via agent workflows rigorosos e paralelizáveis. Vale apenas como ponteiro para investigar a ferramenta depois."
+key_points: []
+entities: ["pstack", "Grok Bot", "Cursor Marketplace", "poteto"]
+content_type: "tool"
 revisit: "low"
+grounded_in: "article"
 links: ["https://x.ai/bot/plugin/9717366"]
 media: []
 ---
 
-# pstack questions invitation
+# pstack agent workflow tool
 
-**@poteto** · [2098634643323142286](https://x.com/poteto/status/2098634643323142286) · `question`
+**@poteto** · [2098634643323142286](https://x.com/poteto/status/2098634643323142286) · `tool`
 
 ## Resumo
-@poteto pede perguntas da audiência sobre 'pstack' e compartilha um link para um bot/plugin no x.ai que provavelmente responde sobre o tema. Vale salvar apenas se você acompanha o trabalho do autor ou quer descobrir o que é pstack.
+Anúncio/promoção do pstack, listagem no Cursor Marketplace para Grok Bot: proposta de escrever menos código e com mais qualidade via agent workflows rigorosos e paralelizáveis. Vale apenas como ponteiro para investigar a ferramenta depois.
 
 ## Links
 - https://x.ai/bot/plugin/9717366
 
 ## Entidades
-poteto, pstack, x.ai
+pstack, Grok Bot, Cursor Marketplace, poteto
 
-> **Revisit:** `low`
+> **Revisit:** `low` · **fonte:** `article`

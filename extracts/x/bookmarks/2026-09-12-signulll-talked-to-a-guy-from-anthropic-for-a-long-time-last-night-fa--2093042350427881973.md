@@ -1,33 +1,39 @@
 ---
-title: "Escassez de talento em labs de IA"
+title: "hiring em frontier labs"
 type: "extract"
 source: "x"
 status_id: "2093042350427881973"
 handle: "signulll"
 url: "https://x.com/signulll/status/2093042350427881973"
 created_at: "2026-08-27T18:25:57.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-signulll-talked-to-a-guy-from-anthropic-for-a-long-time-last-night-fa--2093042350427881973.json]]"
-tags: ["startups", "instituicoes", "analise"]
-topic: "Escassez de talento em labs de IA"
-summary: "Relato de conversa com alguém da Anthropic: mesmo em escala, um dos maiores problemas da empresa segue sendo contratar. Há falta de pessoas excepcionais, sobretudo para apostas de longo prazo e alta convicção em direções ainda não óbvias."
+tags: ["startups"]
+topic: "hiring em frontier labs"
+summary: "Anedota de conversa com alguém da Anthropic: mesmo em um lab de fronteira, um dos maiores gargalos segue sendo contratação. Escassez de pessoas excepcionais, sobretudo para apostas de longo prazo e alta convicção em direções ainda não óbvias."
+key_points: ["Contratação permanece um dos maiores problemas da Anthropic, mesmo com todo o capital e visibilidade do setor", "A escassez específica é de pessoas capazes de sustentar apostas de longo prazo e alta convicção em problemas cujas soluções ainda não são óbvias"]
 entities: ["Anthropic"]
 content_type: "opinion"
 revisit: "low"
+grounded_in: "tweet"
 links: []
 media: []
 ---
 
-# Escassez de talento em labs de IA
+# hiring em frontier labs
 
 **@signulll** · [2093042350427881973](https://x.com/signulll/status/2093042350427881973) · `opinion`
 
 ## Resumo
-Relato de conversa com alguém da Anthropic: mesmo em escala, um dos maiores problemas da empresa segue sendo contratar. Há falta de pessoas excepcionais, sobretudo para apostas de longo prazo e alta convicção em direções ainda não óbvias.
+Anedota de conversa com alguém da Anthropic: mesmo em um lab de fronteira, um dos maiores gargalos segue sendo contratação. Escassez de pessoas excepcionais, sobretudo para apostas de longo prazo e alta convicção em direções ainda não óbvias.
+
+## Pontos-chave
+- Contratação permanece um dos maiores problemas da Anthropic, mesmo com todo o capital e visibilidade do setor
+- A escassez específica é de pessoas capazes de sustentar apostas de longo prazo e alta convicção em problemas cujas soluções ainda não são óbvias
 
 ## Entidades
 Anthropic
 
-> **Revisit:** `low`
+> **Revisit:** `low` · **fonte:** `tweet`

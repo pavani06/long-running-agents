@@ -1,37 +1,46 @@
 ---
-title: "skills de verificação para agentes"
+title: "Skill de verificação para agentes"
 type: "extract"
 source: "x"
 status_id: "2082874054483255805"
 handle: "poteto"
 url: "https://x.com/poteto/status/2082874054483255805"
 created_at: "2026-07-30T17:00:47.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-poteto-pstack-now-includes-2-skills-i-recommend-everyone-use-or-cop--2082874054483255805.json]]"
-tags: ["agent-tooling", "agentic-coding", "verification", "stack-tooling"]
-topic: "skills de verificação para agentes"
-summary: "@poteto anunciou que o pstack agora inclui duas skills recomendadas para usar ou copiar: /create-verification-skill, que cria uma skill ensinando o agente a executar verificações, e /maintain-verification-skill para mantê-la atualizada. Links apontam para os SKILL.md no repo cursor/plugins, prontos para reutilização em setups de agentes."
-entities: ["poteto", "pstack", "Cursor", "create-verification-skill", "maintain-verification-skill"]
-content_type: "announcement"
+tags: ["agent-tooling", "harness-engineering", "verification", "agentic-coding", "testes-qa", "process"]
+topic: "Skill de verificação para agentes"
+summary: "A skill /create-verification-skill do pstack gera uma skill project-local (.cursor/skills/verify-<app>/) que ensina um agente a lançar, dirigir e comprovar o comportamento real do app como um usuário faria, capturando evidências. É um blueprint denso e reutilizável para harnesses de verificação agent-driven em qualquer linguagem/framework."
+key_points: ["A skill entrevista o codebase (Surface, Run, Drive, Observe, Isolate) e só pergunta ao usuário o que não pode observar; prefere harnesses existentes (Playwright/Cypress, expect, curl, porta de debug) antes de receitas genéricas (CDP, tmux/PTY, HTTP).", "Padrão de prova: exercitar o caminho real do usuário, não setters internos ou endpoints de teste; capturar ação + estado resultante + side effects (arquivos, linhas no DB, mensagens); mocks só onde já existe fronteira de produção; dry-runs são validados por observação, não pelo nome.", "Estrutura gerada: Launch (comando exato + sinal de pronto + teardown), Doctor (check read-only de saúde da instância), Drive (recipe com seletores estáveis reais do repo), Evidence, Cleanup (matar só o que iniciou, nunca por nome de processo; evidência sobrevive ao teardown) e Helpers executáveis.", "Inclui feature map (top 3-5 features, um arquivo por feature com sub-features, acesso POV usuário, driving com harness e gotchas) como fonte mantida de verdade da verificação; /maintain-verification-skill mantém o mapa honesto conforme o app muda.", "Uma skill gerada deve ser executada end-to-end uma vez (launch, doctor, drive de uma feature, evidence, cleanup, confirmar que a evidência sobreviveu) — nunca executada é rascunho, não entrega; e o cleanup roda também após iterações falhas para não deixar processos e portas órfãos."]
+entities: ["pstack", "create-verification-skill", "maintain-verification-skill", "Cursor", "Playwright", "Cypress", "tmux", "Electron"]
+content_type: "tool"
 revisit: "high"
+grounded_in: "article"
 links: ["https://github.com/cursor/plugins/blob/main/pstack/skills/create-verification-skill/SKILL.md", "https://github.com/cursor/plugins/blob/main/pstack/skills/maintain-verification-skill/SKILL.md"]
 media: []
 ---
 
-# skills de verificação para agentes
+# Skill de verificação para agentes
 
-**@poteto** · [2082874054483255805](https://x.com/poteto/status/2082874054483255805) · `announcement`
+**@poteto** · [2082874054483255805](https://x.com/poteto/status/2082874054483255805) · `tool`
 
 ## Resumo
-@poteto anunciou que o pstack agora inclui duas skills recomendadas para usar ou copiar: /create-verification-skill, que cria uma skill ensinando o agente a executar verificações, e /maintain-verification-skill para mantê-la atualizada. Links apontam para os SKILL.md no repo cursor/plugins, prontos para reutilização em setups de agentes.
+A skill /create-verification-skill do pstack gera uma skill project-local (.cursor/skills/verify-<app>/) que ensina um agente a lançar, dirigir e comprovar o comportamento real do app como um usuário faria, capturando evidências. É um blueprint denso e reutilizável para harnesses de verificação agent-driven em qualquer linguagem/framework.
+
+## Pontos-chave
+- A skill entrevista o codebase (Surface, Run, Drive, Observe, Isolate) e só pergunta ao usuário o que não pode observar; prefere harnesses existentes (Playwright/Cypress, expect, curl, porta de debug) antes de receitas genéricas (CDP, tmux/PTY, HTTP).
+- Padrão de prova: exercitar o caminho real do usuário, não setters internos ou endpoints de teste; capturar ação + estado resultante + side effects (arquivos, linhas no DB, mensagens); mocks só onde já existe fronteira de produção; dry-runs são validados por observação, não pelo nome.
+- Estrutura gerada: Launch (comando exato + sinal de pronto + teardown), Doctor (check read-only de saúde da instância), Drive (recipe com seletores estáveis reais do repo), Evidence, Cleanup (matar só o que iniciou, nunca por nome de processo; evidência sobrevive ao teardown) e Helpers executáveis.
+- Inclui feature map (top 3-5 features, um arquivo por feature com sub-features, acesso POV usuário, driving com harness e gotchas) como fonte mantida de verdade da verificação; /maintain-verification-skill mantém o mapa honesto conforme o app muda.
+- Uma skill gerada deve ser executada end-to-end uma vez (launch, doctor, drive de uma feature, evidence, cleanup, confirmar que a evidência sobreviveu) — nunca executada é rascunho, não entrega; e o cleanup roda também após iterações falhas para não deixar processos e portas órfãos.
 
 ## Links
 - https://github.com/cursor/plugins/blob/main/pstack/skills/create-verification-skill/SKILL.md
 - https://github.com/cursor/plugins/blob/main/pstack/skills/maintain-verification-skill/SKILL.md
 
 ## Entidades
-poteto, pstack, Cursor, create-verification-skill, maintain-verification-skill
+pstack, create-verification-skill, maintain-verification-skill, Cursor, Playwright, Cypress, tmux, Electron
 
-> **Revisit:** `high`
+> **Revisit:** `high` · **fonte:** `article`

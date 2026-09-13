@@ -1,33 +1,40 @@
 ---
-title: "AFK agent workflow para coding"
+title: "AFK agent workflow vs /implement-spec"
 type: "extract"
 source: "x"
 status_id: "2094156122441625770"
 handle: "mattpocockuk"
 url: "https://x.com/mattpocockuk/status/2094156122441625770"
 created_at: "2026-08-30T20:11:41.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-mattpocockuk-this-has-ended-up-being-better-than-expected-and-fills-an-in--2094156122441625770.json]]"
-tags: ["agentic-coding", "agents", "process", "spec-driven-development"]
-topic: "AFK agent workflow para coding"
-summary: "Matt Pocock recomenda montar um workflow de agente AFK (away-from-keyboard), afirmando que ele supera /implement-spec; este último continua sendo útil e barato enquanto os tokens são baratos. Vale salvar como sinal de direção em workflows de agentic coding."
+tags: ["agentic-coding", "agents", "process"]
+topic: "AFK agent workflow vs /implement-spec"
+summary: "Matt Pocock recomenda montar um workflow de agente AFK (rodando sem supervisão), que ele considera melhor que /implement-spec e uma lacuna de skill comum. Ele ainda valida /implement-spec como opção boa, simples e barata enquanto tokens custam pouco."
+key_points: ["A maioria das pessoas ainda não tem um workflow de agente AFK configurado — segundo ele, vale montar um.", "O workflow AFK superou expectativas e é avaliado como melhor que /implement-spec.", "Rodar /implement-spec continua sendo bom e muito simples, especialmente enquanto tokens são baratos."]
 entities: ["Matt Pocock", "/implement-spec"]
 content_type: "opinion"
-revisit: "medium"
+revisit: "low"
+grounded_in: "tweet"
 links: []
 media: []
 ---
 
-# AFK agent workflow para coding
+# AFK agent workflow vs /implement-spec
 
 **@mattpocockuk** · [2094156122441625770](https://x.com/mattpocockuk/status/2094156122441625770) · `opinion`
 
 ## Resumo
-Matt Pocock recomenda montar um workflow de agente AFK (away-from-keyboard), afirmando que ele supera /implement-spec; este último continua sendo útil e barato enquanto os tokens são baratos. Vale salvar como sinal de direção em workflows de agentic coding.
+Matt Pocock recomenda montar um workflow de agente AFK (rodando sem supervisão), que ele considera melhor que /implement-spec e uma lacuna de skill comum. Ele ainda valida /implement-spec como opção boa, simples e barata enquanto tokens custam pouco.
+
+## Pontos-chave
+- A maioria das pessoas ainda não tem um workflow de agente AFK configurado — segundo ele, vale montar um.
+- O workflow AFK superou expectativas e é avaliado como melhor que /implement-spec.
+- Rodar /implement-spec continua sendo bom e muito simples, especialmente enquanto tokens são baratos.
 
 ## Entidades
 Matt Pocock, /implement-spec
 
-> **Revisit:** `medium`
+> **Revisit:** `low` · **fonte:** `tweet`

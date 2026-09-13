@@ -1,33 +1,41 @@
 ---
-title: "Plataforma de storage Habitat da OpenAI"
+title: "Habitat: storage da OpenAI em Rust"
 type: "extract"
 source: "x"
 status_id: "2098502006935814272"
 handle: "OpenAIDevs"
 url: "https://x.com/OpenAIDevs/status/2098502006935814272"
 created_at: "2026-09-11T20:00:41.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-openaidevs-habitat-is-openai-s-online-storage-platform-that-powers-ever--2098502006935814272.json]]"
-tags: ["performance", "production", "data-platform", "arquitetura", "runtime"]
-topic: "Plataforma de storage Habitat da OpenAI"
-summary: "Habitat é a plataforma de armazenamento online da OpenAI que sustenta ChatGPT e Codex, crescendo mais de 10x ao ano; antes da reescrita em Rust, o serviço Python processava mais de 20 milhões de requisições por segundo no pico. Números raros de escala real de produção, úteis como referência de arquitetura e reescrita de runtime."
+tags: ["data-platform", "performance", "production", "arquitetura"]
+topic: "Habitat: storage da OpenAI em Rust"
+summary: "Habitat é a plataforma de armazenamento online da OpenAI que sustenta ChatGPT e Codex, crescendo mais de 10x ao ano. Antes da reescrita em Rust, o serviço em Python lidava com mais de 20 milhões de requisições por segundo no pico."
+key_points: ["Habitat é a plataforma de armazenamento que serve de fundação para produtos como ChatGPT e Codex", "A plataforma cresceu mais de 10x ano a ano, exigindo reescrita da infraestrutura", "O serviço original em Python sustentava mais de 20 milhões de requisições por segundo no pico", "A reescrita em Rust indica mudança arquitetural para ganho de performance e eficiência em escala extrem"]
 entities: ["OpenAI", "Habitat", "ChatGPT", "Codex", "Rust", "Python"]
 content_type: "announcement"
-revisit: "high"
+revisit: "medium"
+grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HR9gdG8bcAAyssB.jpg"]
 ---
 
-# Plataforma de storage Habitat da OpenAI
+# Habitat: storage da OpenAI em Rust
 
 **@OpenAIDevs** · [2098502006935814272](https://x.com/OpenAIDevs/status/2098502006935814272) · `announcement`
 
 ## Resumo
-Habitat é a plataforma de armazenamento online da OpenAI que sustenta ChatGPT e Codex, crescendo mais de 10x ao ano; antes da reescrita em Rust, o serviço Python processava mais de 20 milhões de requisições por segundo no pico. Números raros de escala real de produção, úteis como referência de arquitetura e reescrita de runtime.
+Habitat é a plataforma de armazenamento online da OpenAI que sustenta ChatGPT e Codex, crescendo mais de 10x ao ano. Antes da reescrita em Rust, o serviço em Python lidava com mais de 20 milhões de requisições por segundo no pico.
+
+## Pontos-chave
+- Habitat é a plataforma de armazenamento que serve de fundação para produtos como ChatGPT e Codex
+- A plataforma cresceu mais de 10x ano a ano, exigindo reescrita da infraestrutura
+- O serviço original em Python sustentava mais de 20 milhões de requisições por segundo no pico
+- A reescrita em Rust indica mudança arquitetural para ganho de performance e eficiência em escala extrem
 
 ## Entidades
 OpenAI, Habitat, ChatGPT, Codex, Rust, Python
 
-> **Revisit:** `high`
+> **Revisit:** `medium` · **fonte:** `tweet`

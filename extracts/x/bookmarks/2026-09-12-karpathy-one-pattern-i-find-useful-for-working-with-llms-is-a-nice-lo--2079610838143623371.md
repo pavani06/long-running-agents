@@ -1,33 +1,40 @@
 ---
-title: "Padrão de voz para dar contexto a LLMs"
+title: "contexto via voz para LLMs"
 type: "extract"
 source: "x"
 status_id: "2079610838143623371"
 handle: "karpathy"
 url: "https://x.com/karpathy/status/2079610838143623371"
 created_at: "2026-07-21T16:53:55.000Z"
-extracted: "2026-09-12"
+extracted: "2026-09-13"
 model: "glm-5.3"
-extract_version: 1
+extract_version: 2
 item: "[[raw/x/bookmarks/items/2026-09-12-karpathy-one-pattern-i-find-useful-for-working-with-llms-is-a-nice-lo--2079610838143623371.json]]"
-tags: ["context-engineering", "process", "agent-tooling"]
-topic: "Padrão de voz para dar contexto a LLMs"
-summary: "Karpathy compartilha o hábito de usar modo de voz para 'ramble' (~10 min) e transferir mais bits de contexto ao LLM quando digitar seria preguiçoso demais. Dica prática de comunicação/contexto ao trabalhar com modelos."
-entities: ["karpathy"]
+tags: ["context-engineering", "process"]
+topic: "contexto via voz para LLMs"
+summary: "Karpathy compartilha o padrão de usar o modo de voz para 'ramble' de ~10 minutos quando o LLM precisa de mais contexto do que você está disposto a digitar. Vale salvar como técnica de baixo esforço para transferir contexto rico em interações com LLMs."
+key_points: ["LLMs frequentemente precisam de mais bits de contexto do que o usuário está disposto a digitar manualmente", "Voz elimina a fricção de digitação, permitindo despejar contexto extenso e não estruturado sem esforço", "A técnica funciona como sessão de alinhamento informal antes de refinar o pedido em texto"]
+entities: ["Andrej Karpathy", "LLMs", "modo de voz"]
 content_type: "opinion"
-revisit: "medium"
+revisit: "low"
+grounded_in: "tweet"
 links: []
 media: []
 ---
 
-# Padrão de voz para dar contexto a LLMs
+# contexto via voz para LLMs
 
 **@karpathy** · [2079610838143623371](https://x.com/karpathy/status/2079610838143623371) · `opinion`
 
 ## Resumo
-Karpathy compartilha o hábito de usar modo de voz para 'ramble' (~10 min) e transferir mais bits de contexto ao LLM quando digitar seria preguiçoso demais. Dica prática de comunicação/contexto ao trabalhar com modelos.
+Karpathy compartilha o padrão de usar o modo de voz para 'ramble' de ~10 minutos quando o LLM precisa de mais contexto do que você está disposto a digitar. Vale salvar como técnica de baixo esforço para transferir contexto rico em interações com LLMs.
+
+## Pontos-chave
+- LLMs frequentemente precisam de mais bits de contexto do que o usuário está disposto a digitar manualmente
+- Voz elimina a fricção de digitação, permitindo despejar contexto extenso e não estruturado sem esforço
+- A técnica funciona como sessão de alinhamento informal antes de refinar o pedido em texto
 
 ## Entidades
-karpathy
+Andrej Karpathy, LLMs, modo de voz
 
-> **Revisit:** `medium`
+> **Revisit:** `low` · **fonte:** `tweet`
