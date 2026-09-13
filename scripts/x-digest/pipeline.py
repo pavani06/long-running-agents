@@ -52,6 +52,13 @@ def summary(line: str) -> None:
             fh.write(line + "\n")
 
 
+def scope_for(extracts: list[Extract], mode: str, date: str) -> list[Extract]:
+    """bootstrap = all; daily = extracts written today (`extracted` field)."""
+    if mode == "bootstrap":
+        return list(extracts)
+    return [e for e in extracts if e.extracted == date]
+
+
 def _chips(members: list[Extract], neighbors: dict[str, list[str]],
            by_id: dict[str, Extract], *, limit: int = 5) -> list[Extract]:
     """Connection neighbors of a theme's members that sit in OTHER themes."""
@@ -78,10 +85,7 @@ def run(mode: str, zai_key: str | None) -> int:
     pbrief = projects_brief(projects)
     date = today()
 
-    if mode == "bootstrap":
-        scope = list(by_id.values())
-    else:
-        scope = [e for e in by_id.values() if e.collected == date]
+    scope = scope_for(list(by_id.values()), mode, date)
 
     thin = [e for e in scope if e.thin]
     live = [e for e in scope if not e.thin]

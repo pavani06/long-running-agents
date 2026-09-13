@@ -9,6 +9,7 @@ sys.path.insert(0, str(ROOT / "scripts" / "x-digest"))
 from corpus import Extract, parse_frontmatter  # noqa: E402
 from projects import parse_projects, projects_brief  # noqa: E402
 from rank import read_order  # noqa: E402
+from pipeline import scope_for, _chips  # noqa: E402
 import render  # noqa: E402
 
 
@@ -86,6 +87,25 @@ def test_build_digest_full_shape():
                              theme_blocks=blocks, thin=thin, total=2)
     assert "bootstrap do acervo" in md and "## Leia nesta ordem" in md
     assert "## Tz  (1)" in md and "## A investigar (1)" in md
+
+
+# ── scope (guards the daily/extracted bug) + chips ─────────────────────────
+def test_scope_for_daily_uses_extracted():
+    items = [_e("1", extracted="2026-09-13"), _e("2", extracted="2026-09-12"), _e("3", extracted="")]
+    daily = scope_for(items, "daily", "2026-09-13")
+    assert [e.status_id for e in daily] == ["1"]                 # only today's extract
+    assert len(scope_for(items, "bootstrap", "2026-09-13")) == 3  # all
+
+
+def test_chips_cross_theme_nonthin_dedup():
+    a = _e("1", theme="Tx"); b = _e("2", theme="Tx")
+    x = _e("10", theme="Ty"); y = _e("11", theme="Tz"); z = _e("12", theme="Tx")  # same theme, excluded
+    t = _e("13", theme="Ty", thin=True)                                            # thin, excluded
+    by_id = {e.status_id: e for e in (a, b, x, y, z, t)}
+    neighbors = {"1": ["10", "12", "13"], "2": ["10", "11"]}       # 10 dup across members
+    chips = _chips([a, b], neighbors, by_id, limit=5)
+    ids = [c.status_id for c in chips]
+    assert ids == ["10", "11"]        # 10 (dedup), 11; 12 same-theme out, 13 thin out
 
 
 # ── corpus ──────────────────────────────────────────────────────────────

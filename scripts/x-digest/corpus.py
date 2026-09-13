@@ -29,8 +29,8 @@ class Extract:
     thin: bool = False
     theme: str = ""
     links: list[str] = field(default_factory=list)
-    created_at: str = ""
-    collected: str = ""
+    created_at: str = ""   # tweet post time (for recency ranking)
+    extracted: str = ""    # date the extract was written (for the daily scope)
 
     def stem(self) -> str:
         return self.file[:-3] if self.file.endswith(".md") else self.file
@@ -73,7 +73,7 @@ def load_extracts(extracts_dir: Path) -> dict[str, Extract]:
             revisit=fm.get("revisit", "low"), grounded_in=fm.get("grounded_in", "tweet"),
             thin=bool(fm.get("thin", False)), theme=fm.get("theme", ""),
             links=[str(u) for u in fm.get("links", []) if str(u).strip()],
-            created_at=fm.get("created_at", ""), collected=fm.get("collected", ""),
+            created_at=fm.get("created_at", ""), extracted=fm.get("extracted", ""),
         )
     return out
 
