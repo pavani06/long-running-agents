@@ -195,13 +195,13 @@ def run_analyze(transcript_path: str, slug: str | None, with_mental: bool) -> in
 
     try:
         extraction = phase1_extract.run(transcript, api_key)          # Fase 1
-        patterns = phase2_patterns.run(extraction, api_key)           # Fase 2
         mental_model = None
         if with_mental:                                               # Fase 0
             prev, base = _latest_mental_model()
             meta = {"title": slug, "date": _today(), "repo": "long-running-agents",
                     "type": "mental-model", "base_commit": deltascan.head_sha(REPO_ROOT)}
             mental_model = phase0_mental_model.run(prev, _delta_sections(base), api_key, meta=meta)
+        patterns = phase2_patterns.run(extraction, api_key)           # Fase 2
     except GLMAuthError as e:
         summary(f"analyze: {e}")
         return 1

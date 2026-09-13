@@ -77,10 +77,17 @@ def chat_json(messages: list[dict], api_key: str, *, model: str = MODEL,
                 last = "HTTP 429"
                 if attempt == max_retries:
                     raise RateLimited("GLM 429 after retries")
+            elif r.status_code in (500, 502, 503, 504):
+                last = f"HTTP {r.status_code}: {r.text[:200]}"     # transient — retry
             elif r.status_code != 200:
-                last = f"HTTP {r.status_code}: {r.text[:200]}"
+                # Other 4xx (400/404/422/…) are permanent; retrying just wastes calls.
+                raise GLMError(f"GLM HTTP {r.status_code}: {r.text[:200]}")
             else:
-                return _content_json(r.json())
+                try:
+                    body = r.json()
+                except ValueError as e:
+                    raise GLMError(f"GLM envelope not JSON: {e}")
+                return _content_json(body)
         if attempt < max_retries:
             sleep(backoff_base * (2 ** attempt))
     raise GLMError(f"GLM failed after {max_retries + 1} attempts: {last}")

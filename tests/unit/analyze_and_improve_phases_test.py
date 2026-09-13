@@ -15,11 +15,12 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
 
 import analysis_package  # noqa: E402
+import glm  # noqa: E402
 import phase0_mental_model as p0  # noqa: E402
 import phase1_extract as p1  # noqa: E402
 import phase2_patterns as p2  # noqa: E402
 import serialize  # noqa: E402
-from glm import GLMError, extract_json  # noqa: E402
+from glm import AuthError, GLMError, RateLimited, chat_json, extract_json  # noqa: E402
 
 
 # ── glm.extract_json (output parsing) ─────────────────────────────────────
@@ -43,6 +44,70 @@ def test_extract_json_no_object_raises():
 def test_extract_json_bad_json_raises():
     with pytest.raises(GLMError):
         extract_json('{"a": }')
+
+
+# ── glm.chat_json error contract (HTTP mocked, no network) ────────────────
+class _Resp:
+    def __init__(self, status, json_data=None, text="", raise_json=False):
+        self.status_code = status
+        self._json = json_data
+        self.text = text
+        self._raise_json = raise_json
+
+    def json(self):
+        if self._raise_json:
+            raise ValueError("envelope not json")
+        return self._json
+
+
+def _patch_post(monkeypatch, responses):
+    seq = list(responses)
+    monkeypatch.setattr(glm.requests, "post", lambda *a, **k: seq.pop(0))
+
+
+def _ok_envelope(content):
+    return _Resp(200, {"choices": [{"message": {"content": content}}]})
+
+
+def test_chat_json_success(monkeypatch):
+    _patch_post(monkeypatch, [_ok_envelope('{"ok": true}')])
+    assert chat_json([], "KEY", sleep=lambda *_: None) == {"ok": True}
+
+
+def test_chat_json_auth_error_no_retry(monkeypatch):
+    calls = {"n": 0}
+
+    def fake_post(*a, **k):
+        calls["n"] += 1
+        return _Resp(401, text="nope")
+
+    monkeypatch.setattr(glm.requests, "post", fake_post)
+    with pytest.raises(AuthError):
+        chat_json([], "KEY", sleep=lambda *_: None)
+    assert calls["n"] == 1                       # 401 is fatal — no retry
+
+
+def test_chat_json_non_retryable_4xx(monkeypatch):
+    _patch_post(monkeypatch, [_Resp(400, text="bad request")])
+    with pytest.raises(GLMError):
+        chat_json([], "KEY", sleep=lambda *_: None)
+
+
+def test_chat_json_429_exhausts_to_ratelimited(monkeypatch):
+    _patch_post(monkeypatch, [_Resp(429), _Resp(429)])
+    with pytest.raises(RateLimited):
+        chat_json([], "KEY", max_retries=1, sleep=lambda *_: None)
+
+
+def test_chat_json_5xx_then_success(monkeypatch):
+    _patch_post(monkeypatch, [_Resp(503, text="down"), _ok_envelope('{"ok": 1}')])
+    assert chat_json([], "KEY", max_retries=1, sleep=lambda *_: None) == {"ok": 1}
+
+
+def test_chat_json_bad_envelope_raises_glm_error(monkeypatch):
+    _patch_post(monkeypatch, [_Resp(200, raise_json=True)])
+    with pytest.raises(GLMError):
+        chat_json([], "KEY", sleep=lambda *_: None)
 
 
 # ── Fase 1 — extraction ───────────────────────────────────────────────────

@@ -3,6 +3,13 @@
 Naming mirrors the historical packages: `<slug>-mental-model.{md,yaml}`,
 `<slug>-analysis.{md,yaml}`, `<slug>-patterns.{md,yaml}` (classification is
 Etapa 2 / #260). Thin I/O over the pure serializers.
+
+TODO (integration — Etapa 5/6): the generated `.md` files carry no Obsidian
+frontmatter, so committing a package as-is would fail `validate-obsidian`
+(Check 2 requires `type: analysis` + `date`/`aliases`/`tags`/`relates-to` for
+docs/analysis/*.md). This Etapa-1 slice only *produces* the partial package (not
+committed here); the landing/integration step must add compliant frontmatter
+(taxonomy tags + relates-to) before any package is committed to docs/analysis/.
 """
 from __future__ import annotations
 
