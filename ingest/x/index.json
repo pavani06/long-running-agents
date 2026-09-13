@@ -1,0 +1,570 @@
+{
+  "source": "Jina Reader (r.jina.ai) + trafilatura fallback",
+  "count": 62,
+  "status_counts": {
+    "ok": 49,
+    "failed": 7,
+    "paywall": 5,
+    "unsupported": 1
+  },
+  "items": [
+    {
+      "key": "4b87f810cdf0",
+      "file": "academy-dair-ai--4b87f810cdf0.md",
+      "url": "https://academy.dair.ai/papers/collections/harness-engineering",
+      "status": "ok",
+      "final_url": "https://academy.dair.ai/papers/collections/harness-engineering",
+      "method": "trafilatura",
+      "text_len": 10196
+    },
+    {
+      "key": "371c86a57209",
+      "file": "akitaonrails-com--371c86a57209.md",
+      "url": "https://akitaonrails.com/2026/09/02/ai-memory-2-0-melhor-sistema-memoria-agentes-e-times/",
+      "status": "ok",
+      "final_url": "https://akitaonrails.com/2026/09/02/ai-memory-2-0-melhor-sistema-memoria-agentes-e-times/",
+      "method": "trafilatura",
+      "text_len": 12874
+    },
+    {
+      "key": "f5c762c9079a",
+      "file": "alphaxiv-org--f5c762c9079a.md",
+      "url": "https://alphaXiv.org",
+      "status": "ok",
+      "final_url": "https://www.alphaxiv.org/",
+      "method": "trafilatura",
+      "text_len": 1090
+    },
+    {
+      "key": "00e8ccf571b9",
+      "file": "anthropic-com--00e8ccf571b9.md",
+      "url": "https://www.anthropic.com/institute/econ-scenarios",
+      "status": "ok",
+      "final_url": "https://www.anthropic.com/institute/econ-scenarios",
+      "method": "trafilatura",
+      "text_len": 16464
+    },
+    {
+      "key": "ae6b06de1130",
+      "file": "apodex-ai--ae6b06de1130.md",
+      "url": "https://www.apodex.ai/",
+      "status": "failed",
+      "final_url": "https://www.apodex.ai/",
+      "method": "",
+      "text_len": 0
+    },
+    {
+      "key": "142254380142",
+      "file": "arxiv-org--142254380142.md",
+      "url": "https://arxiv.org/abs/2608.27370",
+      "status": "ok",
+      "final_url": "https://arxiv.org/abs/2608.27370",
+      "method": "trafilatura",
+      "text_len": 3726
+    },
+    {
+      "key": "32b9d4c781c8",
+      "file": "arxiv-org--32b9d4c781c8.md",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "status": "ok",
+      "final_url": "https://arxiv.org/abs/1706.03762",
+      "method": "trafilatura",
+      "text_len": 3209
+    },
+    {
+      "key": "dc8e284c3c3c",
+      "file": "arxiv-org--dc8e284c3c3c.md",
+      "url": "https://arxiv.org/abs/2511.08567",
+      "status": "ok",
+      "final_url": "https://arxiv.org/abs/2511.08567",
+      "method": "trafilatura",
+      "text_len": 3604
+    },
+    {
+      "key": "6ec33e9f9ebf",
+      "file": "arxivisual-org--6ec33e9f9ebf.md",
+      "url": "https://arxivisual.org/abs/1706.03762",
+      "status": "failed",
+      "final_url": "https://arxivisual.org/abs/1706.03762",
+      "method": "",
+      "text_len": 0
+    },
+    {
+      "key": "00462353b732",
+      "file": "billiondollarpdf-com--00462353b732.md",
+      "url": "https://billiondollarpdf.com/",
+      "status": "ok",
+      "final_url": "https://billiondollarpdf.com/",
+      "method": "trafilatura",
+      "text_len": 553
+    },
+    {
+      "key": "7a5a749ff916",
+      "file": "biolinq-com--7a5a749ff916.md",
+      "url": "https://www.biolinq.com/technology",
+      "status": "ok",
+      "final_url": "https://www.biolinq.com/technology",
+      "method": "trafilatura",
+      "text_len": 539
+    },
+    {
+      "key": "6a79ba453489",
+      "file": "cameronrwolfe-substack-com--6a79ba453489.md",
+      "url": "https://cameronrwolfe.substack.com/p/llm-rl",
+      "status": "failed",
+      "final_url": "https://cameronrwolfe.substack.com/p/llm-rl",
+      "method": "",
+      "text_len": 0
+    },
+    {
+      "key": "c3e484611463",
+      "file": "cfo-ai--c3e484611463.md",
+      "url": "https://cfo.ai",
+      "status": "ok",
+      "final_url": "https://cfo.ai/",
+      "method": "trafilatura",
+      "text_len": 943
+    },
+    {
+      "key": "66ea2067482c",
+      "file": "claude-ai--66ea2067482c.md",
+      "url": "https://claude.ai/code/artifact/287825bc-7aad-4541-a7e7-fa4ba8d03612",
+      "status": "paywall",
+      "final_url": "https://claude.ai/code/artifact/287825bc-7aad-4541-a7e7-fa4ba8d03612",
+      "method": "trafilatura",
+      "text_len": 41
+    },
+    {
+      "key": "0be88df60680",
+      "file": "claude-com--0be88df60680.md",
+      "url": "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude",
+      "status": "ok",
+      "final_url": "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude",
+      "method": "trafilatura",
+      "text_len": 3346
+    },
+    {
+      "key": "278c9d7a7917",
+      "file": "claude-com--278c9d7a7917.md",
+      "url": "https://claude.com/blog/the-anatomy-of-effective-commerce-agents",
+      "status": "ok",
+      "final_url": "https://claude.com/blog/the-anatomy-of-effective-commerce-agents",
+      "method": "trafilatura",
+      "text_len": 34550
+    },
+    {
+      "key": "64447158c810",
+      "file": "claude-com--64447158c810.md",
+      "url": "https://claude.com/blog/claude-for-commerce-agents",
+      "status": "ok",
+      "final_url": "https://claude.com/blog/claude-for-commerce-agents",
+      "method": "trafilatura",
+      "text_len": 4658
+    },
+    {
+      "key": "87bac08c42f2",
+      "file": "code-claude-com--87bac08c42f2.md",
+      "url": "https://code.claude.com/docs/en/plugin-evals",
+      "status": "ok",
+      "final_url": "https://code.claude.com/docs/en/plugin-evals",
+      "method": "trafilatura",
+      "text_len": 32929
+    },
+    {
+      "key": "b3a15571332a",
+      "file": "eutoday-net--b3a15571332a.md",
+      "url": "https://eutoday.net/an-open-letter-to-arkady-ostrovsky-of-the-economist-by-victor-rud/",
+      "status": "ok",
+      "final_url": "https://eutoday.net/an-open-letter-to-arkady-ostrovsky-of-the-economist-by-victor-rud/",
+      "method": "trafilatura",
+      "text_len": 20239
+    },
+    {
+      "key": "100723b5206a",
+      "file": "github-com--100723b5206a.md",
+      "url": "https://github.com/MakazhanAlpamys/Soup",
+      "status": "ok",
+      "final_url": "https://github.com/MakazhanAlpamys/Soup",
+      "method": "trafilatura",
+      "text_len": 18621
+    },
+    {
+      "key": "1587826a358a",
+      "file": "github-com--1587826a358a.md",
+      "url": "https://github.com/anthropics/commerce-agents",
+      "status": "ok",
+      "final_url": "https://github.com/anthropics/commerce-agents",
+      "method": "trafilatura",
+      "text_len": 10544
+    },
+    {
+      "key": "16169d530ca6",
+      "file": "github-com--16169d530ca6.md",
+      "url": "https://github.com/ayghri/i-have-adhd",
+      "status": "ok",
+      "final_url": "https://github.com/ayghri/i-have-adhd",
+      "method": "trafilatura",
+      "text_len": 1449
+    },
+    {
+      "key": "2267a687e75f",
+      "file": "github-com--2267a687e75f.md",
+      "url": "https://github.com/cursor/plugins/blob/main/pstack/skills/create-verification-skill/SKILL.md",
+      "status": "ok",
+      "final_url": "https://github.com/cursor/plugins/blob/main/pstack/skills/create-verification-skill/SKILL.md",
+      "method": "trafilatura",
+      "text_len": 5559
+    },
+    {
+      "key": "2d456bd9848b",
+      "file": "github-com--2d456bd9848b.md",
+      "url": "https://github.com/tencent/AI-Infra-Guard",
+      "status": "ok",
+      "final_url": "https://github.com/tencent/AI-Infra-Guard",
+      "method": "trafilatura",
+      "text_len": 20125
+    },
+    {
+      "key": "458b21aa11f2",
+      "file": "github-com--458b21aa11f2.md",
+      "url": "https://github.com/microsoft/AutoSaddler",
+      "status": "ok",
+      "final_url": "https://github.com/microsoft/AutoSaddler",
+      "method": "trafilatura",
+      "text_len": 11336
+    },
+    {
+      "key": "65f8a2e3eddb",
+      "file": "github-com--65f8a2e3eddb.md",
+      "url": "https://github.com/openai/codex-security",
+      "status": "ok",
+      "final_url": "https://github.com/openai/codex-security",
+      "method": "trafilatura",
+      "text_len": 3912
+    },
+    {
+      "key": "7244b069975d",
+      "file": "github-com--7244b069975d.md",
+      "url": "https://github.com/thu-pacman/Puro-Megatron",
+      "status": "ok",
+      "final_url": "https://github.com/thu-pacman/Puro-Megatron",
+      "method": "trafilatura",
+      "text_len": 7427
+    },
+    {
+      "key": "734b186ea6e1",
+      "file": "github-com--734b186ea6e1.md",
+      "url": "https://github.com/jordan-gibbs/hyperresearch",
+      "status": "ok",
+      "final_url": "https://github.com/jordan-gibbs/hyperresearch",
+      "method": "trafilatura",
+      "text_len": 28356
+    },
+    {
+      "key": "9d0bf70f6e5a",
+      "file": "github-com--9d0bf70f6e5a.md",
+      "url": "https://github.com/openclaw/agent-skills/blob/main/skills/autoreview/SKILL.md",
+      "status": "ok",
+      "final_url": "https://github.com/openclaw/agent-skills/blob/main/skills/autoreview/SKILL.md",
+      "method": "trafilatura",
+      "text_len": 11556
+    },
+    {
+      "key": "ab781712d254",
+      "file": "github-com--ab781712d254.md",
+      "url": "https://github.com/anthropics/claude-code/issues/91870",
+      "status": "ok",
+      "final_url": "https://github.com/anthropics/claude-code/issues/91870",
+      "method": "trafilatura",
+      "text_len": 5223
+    },
+    {
+      "key": "ac0e3a9c40a1",
+      "file": "github-com--ac0e3a9c40a1.md",
+      "url": "https://github.com/cursor/plugins/blob/main/pstack/skills/maintain-verification-skill/SKILL.md",
+      "status": "ok",
+      "final_url": "https://github.com/cursor/plugins/blob/main/pstack/skills/maintain-verification-skill/SKILL.md",
+      "method": "trafilatura",
+      "text_len": 4773
+    },
+    {
+      "key": "bfc01f4b86fd",
+      "file": "github-com--bfc01f4b86fd.md",
+      "url": "https://github.com/coldteadotai/pr-lens",
+      "status": "ok",
+      "final_url": "https://github.com/coldteadotai/pr-lens",
+      "method": "trafilatura",
+      "text_len": 10211
+    },
+    {
+      "key": "cf935b1146d5",
+      "file": "github-com--cf935b1146d5.md",
+      "url": "https://github.com/ApodexAI/FrontierAgent",
+      "status": "ok",
+      "final_url": "https://github.com/ApodexAI/FrontierAgent",
+      "method": "trafilatura",
+      "text_len": 12726
+    },
+    {
+      "key": "3116996862d8",
+      "file": "goo-gle--3116996862d8.md",
+      "url": "https://goo.gle/4xNKTNH",
+      "status": "ok",
+      "final_url": "https://research.google/blog/toolgrad-efficient-tool-use-dataset-generation-with-textual-gradients/?utm_source=twitter&utm_medium=social&utm_campaign=social_post&utm_content=gr-acct",
+      "method": "trafilatura",
+      "text_len": 7175
+    },
+    {
+      "key": "a4ba66794355",
+      "file": "goo-gle--a4ba66794355.md",
+      "url": "https://goo.gle/4x5WGpD",
+      "status": "ok",
+      "final_url": "https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/?utm_source=twitter&utm_medium=social&utm_campaign=social_post&utm_content=gr-acct",
+      "method": "trafilatura",
+      "text_len": 7393
+    },
+    {
+      "key": "5df0e232996f",
+      "file": "grokhub-io--5df0e232996f.md",
+      "url": "https://www.grokhub.io/",
+      "status": "ok",
+      "final_url": "https://www.grokhub.io/",
+      "method": "trafilatura",
+      "text_len": 468
+    },
+    {
+      "key": "2d2f41f5915e",
+      "file": "hackernoon-com--2d2f41f5915e.md",
+      "url": "https://hackernoon.com/what-happens-to-your-engineering-platform-when-ai-raises-the-baseline",
+      "status": "ok",
+      "final_url": "https://hackernoon.com/what-happens-to-your-engineering-platform-when-ai-raises-the-baseline",
+      "method": "trafilatura",
+      "text_len": 17814
+    },
+    {
+      "key": "3ab263af469a",
+      "file": "huggingface-co--3ab263af469a.md",
+      "url": "https://huggingface.co/collections/apodex/apodex-11",
+      "status": "ok",
+      "final_url": "https://huggingface.co/collections/apodex/apodex-11",
+      "method": "trafilatura",
+      "text_len": 961
+    },
+    {
+      "key": "d715675b81e5",
+      "file": "huggingface-co--d715675b81e5.md",
+      "url": "https://huggingface.co/collections/thu-pacman/puro-2b",
+      "status": "paywall",
+      "final_url": "https://huggingface.co/collections/thu-pacman/puro-2b",
+      "method": "trafilatura",
+      "text_len": 111
+    },
+    {
+      "key": "33d422a6e467",
+      "file": "kiro-dev--33d422a6e467.md",
+      "url": "https://kiro.dev/topics/frontier-engineering/",
+      "status": "ok",
+      "final_url": "https://kiro.dev/topics/frontier-engineering/",
+      "method": "trafilatura",
+      "text_len": 2806
+    },
+    {
+      "key": "eda69f380226",
+      "file": "langchain-com--eda69f380226.md",
+      "url": "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents",
+      "status": "ok",
+      "final_url": "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents",
+      "method": "trafilatura",
+      "text_len": 12283
+    },
+    {
+      "key": "c7d3c8aeae42",
+      "file": "openai-com--c7d3c8aeae42.md",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one",
+      "status": "ok",
+      "final_url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "method": "trafilatura",
+      "text_len": 18179
+    },
+    {
+      "key": "d3fbdfbf0cd7",
+      "file": "openai-com--d3fbdfbf0cd7.md",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "status": "ok",
+      "final_url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "method": "trafilatura",
+      "text_len": 6088
+    },
+    {
+      "key": "dc0bdad50280",
+      "file": "openai-com--dc0bdad50280.md",
+      "url": "https://openai.com/index/introducing-the-agents-api/",
+      "status": "ok",
+      "final_url": "https://openai.com/index/introducing-the-agents-api/",
+      "method": "trafilatura",
+      "text_len": 5135
+    },
+    {
+      "key": "03598dc62719",
+      "file": "piaui-uol-com-br--03598dc62719.md",
+      "url": "https://piaui.uol.com.br/web/as-196-paginas-sigilo-stf-vorcaro-toffoli/",
+      "status": "ok",
+      "final_url": "https://piaui.uol.com.br/web/as-196-paginas-sigilo-stf-vorcaro-toffoli/",
+      "method": "trafilatura",
+      "text_len": 3994
+    },
+    {
+      "key": "0763d98ef819",
+      "file": "platform-claude-com--0763d98ef819.md",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1#writing-density",
+      "status": "ok",
+      "final_url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1#writing-density",
+      "method": "trafilatura",
+      "text_len": 28885
+    },
+    {
+      "key": "ae0a2a4ad026",
+      "file": "platform-claude-com--ae0a2a4ad026.md",
+      "url": "https://platform.claude.com/docs/en/cli-sdks-libraries/cli/apply",
+      "status": "ok",
+      "final_url": "https://platform.claude.com/docs/en/cli-sdks-libraries/cli/apply",
+      "method": "trafilatura",
+      "text_len": 10739
+    },
+    {
+      "key": "5710a26eeba2",
+      "file": "portal-stf-jus-br--5710a26eeba2.md",
+      "url": "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7473347",
+      "status": "failed",
+      "final_url": "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7473347",
+      "method": "",
+      "text_len": 0
+    },
+    {
+      "key": "5acbef926741",
+      "file": "portal-stf-jus-br--5acbef926741.md",
+      "url": "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7473336",
+      "status": "failed",
+      "final_url": "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7473336",
+      "method": "",
+      "text_len": 0
+    },
+    {
+      "key": "8898fb22e021",
+      "file": "portal-stf-jus-br--8898fb22e021.md",
+      "url": "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7450195",
+      "status": "failed",
+      "final_url": "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7450195",
+      "method": "",
+      "text_len": 0
+    },
+    {
+      "key": "c8fae7c35d0b",
+      "file": "portal-stf-jus-br--c8fae7c35d0b.md",
+      "url": "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7498168",
+      "status": "failed",
+      "final_url": "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7498168",
+      "method": "",
+      "text_len": 0
+    },
+    {
+      "key": "cac9d0c47595",
+      "file": "project-syndicate-org--cac9d0c47595.md",
+      "url": "https://www.project-syndicate.org/onpoint/the-ai-boom-and-the-future-of-finance",
+      "status": "ok",
+      "final_url": "https://www.project-syndicate.org/onpoint/the-ai-boom-and-the-future-of-finance",
+      "method": "trafilatura",
+      "text_len": 922
+    },
+    {
+      "key": "43369154b5e5",
+      "file": "research-google--43369154b5e5.md",
+      "url": "https://research.google/blog/glucofm-foundation-model-for-continuous-glucose-monitoring/?utm_source=twitter&utm_medium=social&utm_campaign=social_post&utm_content=gr-acct",
+      "status": "ok",
+      "final_url": "https://research.google/blog/glucofm-foundation-model-for-continuous-glucose-monitoring/?utm_source=twitter&utm_medium=social&utm_campaign=social_post&utm_content=gr-acct",
+      "method": "trafilatura",
+      "text_len": 11791
+    },
+    {
+      "key": "4d868a9b8577",
+      "file": "research-meta-ai--4d868a9b8577.md",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "status": "ok",
+      "final_url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "method": "trafilatura",
+      "text_len": 24568
+    },
+    {
+      "key": "323851edc12d",
+      "file": "rlhfbook-com--323851edc12d.md",
+      "url": "https://rlhfbook.com/",
+      "status": "ok",
+      "final_url": "https://rlhfbook.com/",
+      "method": "trafilatura",
+      "text_len": 5993
+    },
+    {
+      "key": "2ed54a20b866",
+      "file": "simonwillison-net--2ed54a20b866.md",
+      "url": "https://simonwillison.net/2026/Sep/12/openai-agents-rubygems/",
+      "status": "ok",
+      "final_url": "https://simonwillison.net/2026/Sep/12/openai-agents-rubygems/",
+      "method": "trafilatura",
+      "text_len": 2729
+    },
+    {
+      "key": "517370741c36",
+      "file": "simonwillison-net--517370741c36.md",
+      "url": "https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/",
+      "status": "ok",
+      "final_url": "https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/",
+      "method": "trafilatura",
+      "text_len": 11069
+    },
+    {
+      "key": "527bf000c8ef",
+      "file": "tidd-ly--527bf000c8ef.md",
+      "url": "https://tidd.ly/3QR44pK",
+      "status": "paywall",
+      "final_url": "https://link.springer.com/book/10.1007/978-981-95-8992-0?sv1=affiliate&sv_campaign_id=2938963&awc=26429_1789301078_c6fb8a6a47f2c5be2d599b6a512fbd98&utm_medium=affiliate&utm_source=awin&utm_campaign=CONR_BOOKS_ECOM_GL_PBOK_06YUE_GL_ALWYS_DEEPLINK&utm_content=textlink&utm_term=2938963",
+      "method": "trafilatura",
+      "text_len": 321
+    },
+    {
+      "key": "15c3f33e67f3",
+      "file": "uber-com--15c3f33e67f3.md",
+      "url": "https://www.uber.com/us/en/blog/uber-eats-search-pipeline/",
+      "status": "ok",
+      "final_url": "https://www.uber.com/us/en/blog/uber-eats-search-pipeline/",
+      "method": "trafilatura",
+      "text_len": 16778
+    },
+    {
+      "key": "f78221bbc352",
+      "file": "x-ai--f78221bbc352.md",
+      "url": "https://x.ai/bot/plugin/9717366",
+      "status": "paywall",
+      "final_url": "https://x.ai/bot/plugin/9717366",
+      "method": "trafilatura",
+      "text_len": 304
+    },
+    {
+      "key": "26cdae1d6c0b",
+      "file": "youtube-com--26cdae1d6c0b.md",
+      "url": "https://www.youtube.com/watch?v=0kOXsQUNzss",
+      "status": "unsupported",
+      "final_url": "https://www.youtube.com/watch?v=0kOXsQUNzss",
+      "method": "youtube",
+      "text_len": 0
+    },
+    {
+      "key": "7157918c4aed",
+      "file": "yumoxu-notion-site--7157918c4aed.md",
+      "url": "https://yumoxu.notion.site/multi-teacher-on-policy-distillation",
+      "status": "paywall",
+      "final_url": "https://yumoxu.notion.site/multi-teacher-on-policy-distillation",
+      "method": "trafilatura",
+      "text_len": 88
+    }
+  ]
+}
