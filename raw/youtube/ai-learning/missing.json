@@ -1,15 +1,10 @@
 {
-  "count": 12,
+  "count": 10,
   "videos": [
     {
       "id": "-ubIUNA-zRA",
       "reason": "sem transcript",
       "url": "https://www.youtube.com/watch?v=-ubIUNA-zRA"
-    },
-    {
-      "id": "5V33ny4p_DU",
-      "reason": "sem transcript",
-      "url": "https://www.youtube.com/watch?v=5V33ny4p_DU"
     },
     {
       "id": "6AbhxD_8Wo0",
@@ -30,11 +25,6 @@
       "id": "Uvl-tRga98g",
       "reason": "sem transcript",
       "url": "https://www.youtube.com/watch?v=Uvl-tRga98g"
-    },
-    {
-      "id": "cyIWQHYoUg8",
-      "reason": "sem transcript",
-      "url": "https://www.youtube.com/watch?v=cyIWQHYoUg8"
     },
     {
       "id": "foxeK2AXfHQ",

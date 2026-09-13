@@ -1,0 +1,490 @@
+É, se você achava que a nova função de
+voz do chat GPT era algo revolucionário,
+acho que é melhor você rever seus
+conceitos, assim como eu estou revendo
+também. Assim, não é que não é
+revolucionário, né, o modo de voz do
+chat PT, mas o Cloud vai lançar agora
+uma coisa que eu achei incrível. Eles
+até anunciaram isso aqui há algumas
+semanas atrás, mas eu não vi tanta gente
+falando por aí. E para mim isso é muito
+incrível. Se bobear, eu acho que até
+mais incrível do que o chat PT te falar
+naturalmente, como ele tem o modo novo
+modo de voz. Claro que ainda tá no
+início, mas eu quero mostrar aqui para
+você hoje o grande poder do computer us
+que o Cloud tá lançando e que é muito
+interessante. Se você não conhece tanto
+o Cloud, ele é meio que um competidor do
+chatt, faz tarefas muito similares, tem
+outras coisas diferentes, mas ele é uma
+um chat de EPT de texto também com o
+chatt e com algumas coisas a mais. Mas
+agora essa nova funcionalidade eu achei
+incrível. Não sei nem se depois o chatpt
+vai tentar fazer também, se o Gemini
+também vai tentar fazer também. Vamos
+ver como é que vai acelerar para esse
+caminho agora a corrida das, né, já que
+elas estavam mais para uma resposta
+natural eh dela te responder como se
+fosse o filme do H que a gente falava,
+né, que é um filme muito bom para você
+que também gosta do assunto de
+inteligentes artificiais. Mas eu quero
+mostrar aqui para vocês três vídeos
+então que o Cloud lançou dessa grande
+novidade que é o computer use. E vou
+trazer também informações adicionais
+também para te ajudar. Então já vamos
+direto aqui pro vídeo para eu te
+mostrar. Eu só vou te botar uma
+sementinha na sua cabeça antes da gente
+chegar nesse vídeo que é o seguinte. O
+que que eu considero que é esse essa
+funcionalidade do cloud? Acredito que a
+partir disso aqui e quando eles
+realmente lançarem pro usuário, sendo
+que você já pode utilizar se você for
+programador, você vai deixar de ser a IA
+passiva para a IA ativa. E você vai
+entender um pouquinho melhor aqui no
+vídeo e eu vou dar um exemplo depois
+mais específico disso e vou resumir para
+vocês. Mas vamos lá. Aqui tá o vídeo que
+eles lançaram. São três vídeos, cada um
+para uma tarefa diferente. Esse primeiro
+vídeo aqui eles falam sobre utilizar o
+cloud, o computer use para automações de
+operações. Então o que que ele vai fazer
+aqui? Ele vai pedir para ele fazer uma
+atividade para ele. O o cloud vai
+realmente acessar o seu computador e vai
+fazer uma atividade para você de algo
+que você pediu para ele. Vou botar aqui
+para vocês verem e eu vou comentando ao
+longo do vídeo.
+[Música]
+Então em resumo, né, o que que ele vai
+fazer? Eu vou até aqui te dar um hack
+também. Se você tiver vendo um vídeo lá
+de fora e tiver escrito em inglês, você
+quiser ver o prompt, porque aqui eu vou
+também mostrar para vocês certas coisas
+na minúcia que nesse vídeo aqui de 2
+minutos eles passam muito rápido para
+você entender um pouco melhor da
+capacidade. Então eu vou selecionar aqui
+com o Google Lens e vou selecionar
+traduzir. O que que ele pediu aqui no
+prompt dele de comando, né? Preenche o
+formulário de solicitação de fornecedor
+para entmento. Isso aqui é uma planilha
+que ele tem aqui na esquerda em que tem
+o nome das empresas e depois os dados.
+Em resumo, o que ele tá falando é:
+"Olha, Cloud, dá uma olhada aqui nessa
+planilha, eh, pesquisa um a a empresa
+Equipment CO usando os dados da plan de
+fornecedor ou das guias do portal.
+Então, eh, liste, verifique cada campo
+ao preencher o formulário da janela
+dois. O que que vai acontecer? Olha, se
+não tiver o dado dessa empresa aqui, dá
+uma olhadinha nesse outro site aqui que
+tá nessa outra aba e pesquisa ali dentro
+as informações e pega essas informações
+e se não tiver lá dentro, coloca aqui
+nesse formulário que ele vai preencher,
+que é como se fosse para preencher para
+essa planilha aqui. Então é como se
+fosse um estagiário para você. Ele tá
+pedindo pro estagiário, olha estagiário,
+verifica aqui se tem informação dessa
+empresa aqui. Se não tiver, pesquisa na
+internet e e coloca aqui para mim. E
+agora você vai ver a mágica acontecer
+diante dos seus olhos.
+[Música]
+Cord's going to then fill out the
+formation
+across the vendor form. First thing
+happening screenshots and quickly
+realizes equipment.
+Então ele começa pegando e imagens de
+tela, tá, da da tela dele e entendendo
+do que que se trata a partir desse
+prompt. E aí ele vai começar a executar
+sempre. Ele vai mostrar aqui na esquerda
+como é que tá executando, tá? E aqui na
+direita é é ao vivo que ele está
+fazendo.
+E ele vai explicando, ó. Movi o cursor
+aqui para essa parte, dei um botão
+esquerda, ah, viu o screenshot? Tá, já
+entendi que é essa parte aqui. Agora eu
+vou começar a pesquisar.
+[Música]
+Ele achou a informação daquela empresa.
+Agora ele vai olhar a página como um
+todo e vai começar a preencher, olhando
+ali pra direita. Ah, nome da empresa, tá
+aqui, tá o nome da empresa e e-mail
+aqui. Account e-mail tá aqui também. Ah,
+qual é o endereço aqui? Então ele
+preenche tudo para você.
+[Música]
+[Música]
+Lembrando que ele não tá fazendo nada,
+tá? Ele só escreveu aquele prompt e o
+Cloud tá fazendo tudo aqui sozinho. Ele
+podia estar com a mão pro alto aqui e o
+Cloud estaria fazendo.
+[Música]
+Legal. Aqui você já deu para entender e
+já tá começando a abrir a sua cabeça.
+Agora vamos ver a próxima etapa, né?
+Aquilo ali você pode ver para tarefas
+muito específicas, né, de trabalho,
+tarefas repetitivas. Agora vamos ver o
+cloud fazendo isso para eh outras
+tarefas que você poderia utilizar, por
+exemplo, no seu dia a dia.
+Aqui, por exemplo, ó, o amigo dela, vou
+pegar aqui novamente para traduzir aqui
+com Golemens, para ser mais fácil a
+gente pegar na íntegra. Vamos lá
+traduzir aqui, ó. Meu amigo está vindo
+para São Francisco e quero assistir o
+Nascer do Sol com ele na ponte Golden
+Gate amanhã de manhã. Viemos de Pacific
+Hates. Você poderia nos encontrar num
+local ótimo de observação, verificar o
+horário de viagem e horário do nascer do
+sol e em seguida configurar o evento no
+calendário que nos dê suficiente eh
+tempo suficiente para chegar lá. Então
+você tá passando uma tarefa complexa
+para ele, né, que você não passaria para
+uma IA fazer para você, porque
+antigamente as IA eram passivas, como eu
+falei, de que você tinha que, por
+exemplo, ah, eh, você dá uma lista de
+coisas e ele analisa e aí ele ele vê,
+mas você tem que levantar a lista. Agora
+você tá dando uma tarefa e ele está com
+acesso ao seu computador e vai fazer
+tudo isso por você. Então agora vamos
+ver novamente essa mágica acontecer
+aqui.
+Ele foi no Google, pesquisou, achou uma
+informação. Vamos ver ele proceder
+[Música]
+aqui na esquerda, né? Como se fosse o,
+tá mostrando a sequência de pensamento
+dentro do cloud, ele falando, né? E ele
+falou que, ah, deixa eu clicar aqui no
+Sally Blog Post e entender mais
+detalhes. Aí ele, ah, agora que eu
+confirmei, o melhor lugar é battery
+Spencer. Deixa eu procurar aqui como é
+que tá o tempo de de deslocamento
+utilizando o mapa. Então aqui na
+esquerda você vai ver como se fosse uma
+pessoa dentro da cabeça do Cloud, ele
+pensando enquanto ele faz a tarefa.
+Cool.
+Aí ele agora ele falou aqui, ó, vou
+procurar aqui pelo tempo que vai e
+nascer o sol amanhã.
+[Música]
+E agora ele abriu o calendário da pessoa
+para poder agendar.
+[Música]
+ainda tá colocando detalhes aqui no
+calendário que atencioso é esse cloud,
+não é mesmo?
+Viu? Então aqui eu mostrei para vocês um
+uso de trabalho, um uso de trabalho
+operacional, agora um uso que você
+poderia usar no seu dia a dia. E agora
+eu vou mostrar aqui para vocês como é
+que pode ser o cloud até mesmo
+programando. Mas antes disso, eu queria
+pedir você para você dar um like nesse
+vídeo aqui, se você tiver gostando, você
+se inscrever aqui no canal e ativar o
+sininho para ser notificado de novas
+novidades, como esse vídeo aqui, como
+essa nova funcionalidade do cloud, que
+em breve vai estar disponível pro
+público geral, por enquanto só para
+desenvolvedores, e comentar qualquer
+coisa, que isso ajuda muito esse vídeo a
+ser entregue para mais pessoas. E você
+também se inscrevendo, você fica sempre
+a par do que tá acontecendo no mercado,
+de dicas específicas, como por exemplo
+vídeos que a gente fez com tutoriais
+incríveis. Então não deixa de se
+inscrever e aproveitar tudo aqui no
+canal. E é falando sobre automatizar o
+seu trabalho com IAS, eu quero te trazer
+o patrocinador desse vídeo, a Bitrix 24.
+Deixe que a Bitrix 24 gerencie a sua
+empresa por você. O software de
+automação empresarial da Brix24 consegue
+ajudar você e a sua equipe nos processos
+rotineiros da sua empresa. Gere ideias,
+crie textos, resuma mensagens, crie
+sites, tarefas e muito mais com o
+copilot Brix 24. Ele ainda oferece um
+plano 100% grátis e para usuários
+ilimitados. Clique aqui no link da
+descrição ou do comentário fixado e
+comece a usar hoje mesmo. Então agora,
+né, o que que ele vai fazer aqui? Ele
+falou: "Por favor, navegue para uma nova
+janela no Chrome e entre no cloud AI e
+quando carregado, pergunte ao cloud para
+criar um site pessoal com o estilo dos
+anos 90." Nesse caso aqui, já tem uma
+coisa que eu percebi, eu acho que eles
+botaram o site com estilo dos anos 90
+para ser um site mais simples, mas ficou
+mesmo assim interessante o jeito que
+eles fizeram. Mas eu acho que eles
+botaram isso aqui de propósito nesse
+vídeo aqui de demonstração para poder
+ficar um pouco mais fácil, porque se
+fosse um site mais moderno ia ter muito
+mais código, ia ser mais complicado.
+[Música]
+Aqui ele mostrando novamente o que que
+ele tá pensando. Primeiro vamos abrir o
+Chrome. Então a gente vai pro cloud,
+depois carregado a gente vai fazer,
+depois a gente vai entregar o request.
+[Música]
+Agora uma parte interessante, né, que
+ele não chega a falar no vídeo, mas
+primeiro que tem aqui quase um
+inception, né, um cloud usando um cloud,
+porque o cloud aqui tá rodando, ele
+entrou no cloud para poder fazer. Mas o
+interessante mesmo é que se você parar
+para ver o prompt que ele deu ali em
+cima era amplo. Era um prompt falando:
+"Ah, cria um site dos anos 90". Mas se
+você for ler com detalhes aqui, eu vou
+aumentar aqui o vídeo para você ver, o
+outro cloud, ele começa a inventar
+certos detalhes baseado nessa informação
+do site dos anos 90. Então aqui ele
+falou: "Ah, cria um site pessoal para
+você no estilo dos anos 90, inclui
+elementos como gifs animados, um
+contador de visitantes, um background
+que seja bastante colorido, cores claras
+e um clássico e sobre construção em cima
+um banner." Então, ele pegou, tipo, da
+cabeça dele e inventou coisas que são
+características de site dos anos 90. E
+depois ele falou: "Escreve HTML o código
+para esse site". Então o cloud de certa
+forma ele foi proativo no que você
+pediu. Você deu um prompt um pouco mais
+amplo e ele inventou em cima disso,
+sendo mais específico para o outro cloud
+executar.
+[Música]
+Então ele falou que ficou legal, que o
+Cloud gerou lá dentro o site, ele já
+mostra ali o preview do site, como é que
+tá, mas ele falou que ele agora ele
+pediu uma informação a mais, né? Então
+porque como é que funciona isso? você
+pede pro CL as tarefas e você pode ir
+coordenando ele, dando outro prompt, eh,
+se ele parou numa certa parte ou se ele
+acabou fazendo algo errado, você pode ir
+corrigindo ele e dando novas
+informações. Então, nesse caso aqui, ele
+pediu para ele baixar o arquivo e depois
+abrir no editor de código esse arquivo
+que ele baixou.
+button
+upsode.
+Então aqui ele acabou então, né, com
+esse prompt ele fez três tarefas, né?
+Ele baixou, ele entrou nos arquivos
+locais, procurou pelo arquivo e abriu o
+aplicativo de editor de código.
+[Música]
+E agora ele pediu para então startar o
+site.
+Mas ele encontrou um erro durante essa
+tarefa. não tem o Python instalado no
+computador.
+Então aí ele vê esse erro, ele
+identifica que tá com esse erro, ele
+fala: "Ah, não, tudo bem. Então eu vou
+eu mesmo instalar aqui o Python 3 na sua
+máquina".
+Então agora ele viu que tinha um erro,
+ele corrigiu esse erro e fez o site
+funcionar.
+man take
+output
+então aí o usuário viu que estava com um
+erro e mandou um outro prompt para ele.
+Você pode, por favor, corrigir o erro no
+terminal e removendo a parte
+problemática na linha do arquivo aberto.
+Bodalou,
+descobriu qual era o problema, você
+falou: "Ó, você tem que ter um erro
+aqui, você pode descobrir qual o
+problema". Ele descobriu e aí o usuário
+pediu, tá bom? Então, tire essa parte,
+delete essa parte.
+Aí ele salvou o arquivo e vai rodar o
+site novamente. Vai atualizar o site.
+Viu? Eu achei isso incrível. Como eu
+falei para vocês, eh, não é mais aquela
+coisa de, ah, eu vou pegar um código,
+jogar no chat GPT, o chat GPT vai me
+retornar o código, eu mesmo tenho que
+pegar esse código, jogar lá depois esse
+código para subir um site, aí depois,
+ah, tá dando algum erro, eu tenho que
+pegar esse código, jogar no chat PT de
+novo. Não, o cloud vai conseguir fazer
+isso. Eu acho que é uma questão de tempo
+pro chat GPT, outros tentarem
+implementar, mas isso para mim realmente
+e deixa e há de deixar de ser passiva
+para ativa e aí sim começa a aumentar o
+impacto tanto na produtividade como no
+trabalho das pessoas como um todo
+também, tá? Então, de forma geral,
+assim, também informações importantes
+para você saber sobre isso, né? Então,
+acesso à tela e contexto, ele tá tendo
+acesso à sua tela, ele pode visualizar a
+tela através de capturas. Ele é capaz de
+entender o contexto e interagir com os
+aplicativos, eh seja vários aplicativos,
+seja os seus documentos e muito mais. E
+ele se adapta às diferentes tarefas e os
+problemas que ele encontra no caminho.
+Ele então tem interações e
+funcionalidades, como por exemplo, é
+capaz de mover o cursor, que nem a gente
+faz, clicar nos botões e digitar texto.
+É quase um usuário normal, né? permite
+navegar entre aplicações de forma
+intuitiva e ele automativa tarefas com
+preencher formulários, pesquisar dados,
+criar relatórios e até mesmo programar,
+como eu mostrei aqui para vocês. Em
+resumo, é um estagiário como se ele
+tivesse utilizando aquele aplicativo,
+não sei se você conhece o Team Viewer,
+que é outra pessoa que acessa
+remotamente o seu computador, como se
+fosse uma pessoa que vai corrigir seu
+computador com algum problema de
+software, um suporte. Então, é como se
+fosse alguém que está acessando o seu
+computador remotamente e mexendo nele.
+Agora, por exemplo, se a gente for
+pensar em usos, né, do dia a dia, eu
+gostaria que ele respondesse meus
+e-mails enquanto eu durmo. Eu tenho
+tenho zilhões de e-mails e eu não tenho
+tempo para responder os meus e-mails e
+organizar todos os meus e-mails. Ou pelo
+menos eu poderia pedir para ele só
+organizar os meus e-mails. Ele poderia
+fazer isso tranquilamente enquanto eu
+como, enquanto eu almo enquanto eu durmo
+ou várias outras partes do dia. Então é
+realmente muito interessante como as
+pessoas vão começar a utilizar aí agora
+mais ativamente no seu trabalho de
+formas que a gente nem imagina. E o
+cloud é incrível, mas você saber que
+também tem muitas outras e ferramentas
+muito interessantes como o cloud também.
+A gente sempre tenta trazer aqui para
+vocês grátis ou ou promoções também no
+link da descrição. Então clica aqui no
+link da descrição ou no Qcode que vai tá
+aqui do lado que você pode ver algumas
+que a gente separou aqui para vocês.
+Também temos cursos grátis, temos uma
+player com mais de 500 promps, tem muita
+coisa legal. Dá uma olhadinha aqui no
+link da descrição ou no QRcode também
+que você não vai se arrepender, assim
+como o Mind Master que eu tô usando aqui
+para fazer esses mind maps incríveis e
+que eu já fiz até vídeo recentemente que
+a gente mostrava como é que você faz um
+mindap com chatt fazendo esse mindmap
+para você. Então tem um estado atual e
+limitações, tá? Ele ainda tá em fase
+beta com acesso limitado a
+desenvolvedores, empresas parceiro.
+Então hoje em dia só quem tem acesso à
+API ou sua empresa parceira consegue
+utilizar. Eu até vi uns vídeos, algumas
+pessoas tentando rodar, mas eu não
+trouxe aqui, não fiz tanto assim de
+tentar rodar aqui na minha máquina e
+tal, porque ainda não tá muito amigável.
+Em breve, né, daqui alguns meses vão
+lançar uma versão amigável e aí sim vai
+ser revolução, porque por enquanto ainda
+tá muito em teste, dá problema, tem bugs
+a serem resolvidos e você tem que rodar
+na sua máquina. Não é tão simples ter
+acesso à API, colocar sua chave de EPI,
+não é amigável ainda. Então, outra coisa
+também que eles até falam em v outros
+lugares falando, tem que tomar muito
+cuidado com o uso e faz sentido porque
+se ele pode abrir qualquer aplicativo
+seu e qualquer documento, ele pode fazer
+besteira, como por exemplo, ele pode
+mandar um documento para uma pessoa
+errada, ele pode abrir sem querer o seu
+computador e fazer uma transação ou
+alguma coisa dessa. Então, tem que ter
+certas limitações. Acredito que depois
+eles vão crier certas limitações, como
+por exemplo, você pode falar para ele
+nunca abrir aplicativos privados, nunca
+abrir em sites de bancos ou algo do
+tipo. Então é algo que ainda tá muito
+sendo testado e pela sua própria conta e
+risco. Mas imagino que a própria cloud
+deve botar certas limitações é nisso.
+Então assim, vai ter bastante impacto e
+tem muito potencial, como aumentar a
+automação de tarefas e produtividades,
+como a gente já vê aqui de cara, mas
+ainda requer bastante supervisão humana,
+mas eu acredito que é um grande passo
+pras agora e para quem quer aumentar a
+sua produtividade. E falando em aumentar
+produtividade IAS, se você quiser saber
+tudo sobre IAS também eu recomendo você
+ver essa playlist aqui que tem acho que
+já quase 200 vídeos de IAS, marketing,
+negócios e muito mais. Não perde e
+aproveita que tem muita coisa boa e
+grátis para você empreender bastante.

@@ -1,7 +1,7 @@
 {
   "playlist_url": "https://www.youtube.com/playlist?list=PLdJYvRCSB6rO2Mm_0wGnHgFfoy34OaC0S",
   "source": "enumeration: YouTube Data API v3; transcript: SerpApi youtube_video_transcript",
-  "count": 361,
+  "count": 363,
   "videos": [
     {
       "id": "Dt6u-yFEpsk",
@@ -2346,6 +2346,22 @@
       "url": "https://www.youtube.com/watch?v=A7WFt2JQ5sg",
       "file": "2026-09-11-zta-zero-token-architecture-kelsey-hightower-platformcon-2026--A7WFt2JQ5sg.txt",
       "chars": 28114
+    },
+    {
+      "id": "5V33ny4p_DU",
+      "url": "https://www.youtube.com/watch?v=5V33ny4p_DU",
+      "file": "2026-09-13-automatize-todo-o-seu-trabalho-com-a-novidade-computer-use-do-claude-incrivel--5V33ny4p_DU.txt",
+      "chars": 17653,
+      "lang": "en",
+      "segments": 490
+    },
+    {
+      "id": "cyIWQHYoUg8",
+      "url": "https://www.youtube.com/watch?v=cyIWQHYoUg8",
+      "file": "2026-09-13-github-top-trending-tool-just-fixed-the-ai-agents-biggest-problem--cyIWQHYoUg8.txt",
+      "chars": 14856,
+      "lang": "en",
+      "segments": 387
     }
   ]
 }
