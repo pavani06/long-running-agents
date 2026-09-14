@@ -16,20 +16,41 @@ def _norm(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
 
-def verify_citation(file_text: str, line: int, quote: str = "", *, window: int = 2) -> dict:
-    """Check `line` exists in `file_text` and (if given) `quote` appears within
-    ±window lines of it. Pure. Returns {ok, reason}."""
+# CANDIDATE (#288 Track D — NOT the merged production behaviour; staged for the RED gate).
+# The ±2-line matcher rejected ~68% of legitimate existence citations (E/R/V run): the
+# quote is real and in the right file, but the model's line number is approximate or the
+# quote spans/reflows across lines. Fix = a whole-file fallback, GUARDED by a minimum
+# normalized length so short/common strings can't false-accept (offline: cross-file
+# false-accept 0%, short-common 0/7 at ≥40; recall 32%→85%). The presence check still
+# does NOT judge semantic support — that is the verdict/E-axis's job, by design.
+MIN_WHOLEFILE_QUOTE_CHARS = 40
+
+
+def verify_citation(file_text: str, line: int, quote: str = "", *, window: int = 2,
+                    min_wholefile_chars: int = MIN_WHOLEFILE_QUOTE_CHARS) -> dict:
+    """Check the cited `quote` is real evidence in `file_text`. Pure. Returns {ok, reason}.
+
+    Order: (1) precise — quote within ±window of the cited line (strongest signal);
+    (2) guarded whole-file — quote present anywhere, but only if it is at least
+    `min_wholefile_chars` normalized chars (blocks short/common-string false-accepts).
+    An empty quote just asserts the line exists."""
     lines = file_text.splitlines()
-    if line < 1 or line > len(lines):
-        return {"ok": False, "reason": f"line {line} out of range (file has {len(lines)})"}
-    if not quote or not quote.strip():
-        return {"ok": True, "reason": "line exists (no quote to match)"}
-    lo = max(0, line - 1 - window)
-    hi = min(len(lines), line - 1 + window + 1)
-    hay = _norm(" ".join(lines[lo:hi]))
-    if _norm(quote) in hay:
-        return {"ok": True, "reason": "quote found near cited line"}
-    return {"ok": False, "reason": "quote not found near cited line"}
+    line_in_range = 1 <= line <= len(lines)
+    nquote = _norm(quote)
+    if not nquote:
+        return ({"ok": True, "reason": "line exists (no quote to match)"} if line_in_range
+                else {"ok": False, "reason": f"line {line} out of range (file has {len(lines)})"})
+    if line_in_range:
+        lo = max(0, line - 1 - window)
+        hi = min(len(lines), line - 1 + window + 1)
+        if nquote in _norm(" ".join(lines[lo:hi])):
+            return {"ok": True, "reason": "quote found near cited line"}
+    present = nquote in _norm(file_text)
+    if present and len(nquote) >= min_wholefile_chars:
+        return {"ok": True, "reason": f"quote found in file (whole-file, ≥{min_wholefile_chars} chars)"}
+    if present:
+        return {"ok": False, "reason": f"quote present but < {min_wholefile_chars} chars and not near cited line"}
+    return {"ok": False, "reason": "quote not found near cited line or in file"}
 
 
 def verify_all(citations: list[dict], repo_root: Path) -> list[dict]:
