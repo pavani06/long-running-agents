@@ -1,0 +1,273 @@
+# Concept Canon — curated ground-truth for the metamorphic eval-harness (#288 PoC).
+#
+# 10 concepts × 5 paraphrases = 50 cases. Distribution: 5 exist in the repo, 3 do
+# not, 2 are partial/borderline. Each concept carries `expected_repo_state.exists`
+# (the correctness anchor, condition (a)) and, for anything that exists even
+# partially, mandatory `evidence[]` pointing at REAL repo paths (validated at load).
+#
+# The paraphrases under `variants` are DELIBERATELY authored by a different model
+# than the GLM classifier (condition (b) — diverse source, no circularity): they
+# are hand-written adversarial reformulations, not GLM output.
+#
+# `expected_repo_state.exists` rots as the repo evolves (documented limitation):
+# the "partial" concepts and their evidence lines are the first to drift. This is
+# curated, assumedly-subjective ground-truth with a maintenance cost.
+version: 1
+
+concepts:
+  # ── EXISTS (5) — implemented, greppable code mechanisms ───────────────────
+  - concept_id: adversarial-evaluator-cross-provider
+    canonical_definition: >-
+      A generated artifact is scored by an evaluator running on a DIFFERENT model
+      provider than the generator, so the judge cannot rubber-stamp its own
+      output. Here the generator is GLM and the evaluator is OpenAI on purpose.
+    aliases: ["cross-provider evaluator", "different-provider judge", "adversarial evaluator", "generator vs evaluator separation"]
+    positive_examples:
+      - "The OpenAI evaluator scores GLM's artifact against a fixed rubric before it can land."
+      - "The judge model is deliberately a different vendor from the model that wrote the text."
+    negative_examples:
+      - "The same model both writes and grades its own answer."
+      - "A human reviewer approves the pull request."
+    expected_repo_state: {exists: true}
+    expected_verdict: Exists
+    evidence:
+      - {file: scripts/analyze-and-improve/evaluator.py, quote: "different providers"}
+      - {file: scripts/analyze-and-improve/openai_chat.py, quote: "different provider from the GLM generator"}
+    variants:
+      - "Use a judge from a second AI vendor to grade whatever the first model wrote, so nobody marks their own homework."
+      - "The scoring model and the writing model must come from different providers to avoid self-confirmation bias in evaluation."
+      - "An external evaluator — running on another provider's model — checks the generator's output against a rubric before it can land."
+      - "Grading is delegated to a separate-vendor LLM so the generator isn't reviewing itself."
+      - "Split generation and evaluation across two model families so the critic has an outside perspective on the author's work."
+
+  - concept_id: cosine-dedup-gate
+    canonical_definition: >-
+      Before an artifact is treated as net-new, its embedding is compared by
+      cosine similarity to the repo's existing indexed sections; at or above a
+      threshold it is flagged a likely duplicate and held rather than landed.
+    aliases: ["duplication gate", "near-duplicate detection", "cosine dedup", "already-covered check"]
+    positive_examples:
+      - "Embed the proposed doc and if it is >=0.85 cosine to an existing section, block it as a duplicate."
+      - "A deterministic gate that stops re-creating content the repo already has."
+    negative_examples:
+      - "Merge every proposal regardless of overlap with existing content."
+      - "Detect duplicates by exact string match only."
+    expected_repo_state: {exists: true}
+    expected_verdict: Exists
+    evidence:
+      - {file: scripts/analyze-and-improve/dedup.py, quote: "DUP_THRESHOLD = 0.85"}
+      - {file: scripts/analyze-and-improve/dedup.py, quote: "the nearest existing section"}
+    variants:
+      - "Catch proposals that just restate something already in the repo by measuring embedding closeness to existing sections."
+      - "A similarity threshold on vector distance decides whether a new artifact is really new or a rehash of what exists."
+      - "Guard against duplication: compare the candidate's embedding to the nearest indexed section and hold it if they are too close."
+      - "Deterministic near-duplicate screening using cosine to the repo index, so we do not re-add covered material."
+      - "If a proposed section is semantically almost identical to one already stored, quarantine it instead of landing it."
+
+  - concept_id: hybrid-retrieval-dense-plus-grep
+    canonical_definition: >-
+      Evidence for classification is assembled from two complementary axes: dense
+      top-k embedding search over the section index for conceptual matches, plus
+      exact grep of identifiers (filenames, ADR numbers, symbols) for literal ones.
+    aliases: ["hybrid retrieval", "dense plus lexical", "embedding plus grep", "two-axis retrieval"]
+    positive_examples:
+      - "Combine vector top-k with literal grep so both paraphrased concepts and exact symbols are found."
+      - "Dense retrieval for meaning, grep for exact identifiers."
+    negative_examples:
+      - "Retrieve only by keyword grep."
+      - "Use embeddings alone with no exact-match step."
+    expected_repo_state: {exists: true}
+    expected_verdict: Exists
+    evidence:
+      - {file: scripts/analyze-and-improve/retrieval.py, quote: "dense top-k over the Etapa-0 index + grep"}
+      - {file: scripts/analyze-and-improve/retrieval.py, quote: "grep pins exact identifiers"}
+    variants:
+      - "Gather context two ways at once: semantic vector search for related sections and exact text search for specific names."
+      - "Pair embedding-based top-k with a literal identifier grep so nothing conceptual or exact slips through."
+      - "Retrieval mixes dense similarity ranking with grep on symbols and filenames to cover both meaning and exact tokens."
+      - "Use cosine top-k for the conceptual axis and grep for filenames and ADR numbers on the lexical axis."
+      - "A hybrid evidence collector: neural retrieval plus keyword grep feeding the classifier's context."
+
+  - concept_id: stateless-diff-idempotent-pipeline
+    canonical_definition: >-
+      Each pipeline job is a stateless diff against the repo as the source of
+      truth — pending work is (candidates) minus (already-marked) — so re-runs are
+      idempotent and resumable and no external progress state is kept.
+    aliases: ["stateless diff", "idempotent re-run", "repo as source of truth", "diff-based pipeline"]
+    positive_examples:
+      - "The queue is all high-tier sources minus those already carrying an analyzed marker."
+      - "Re-running produces no duplicate work because state lives in the repo."
+    negative_examples:
+      - "A stateful worker that tracks progress in an external database."
+      - "A pipeline that reprocesses everything on every run."
+    expected_repo_state: {exists: true}
+    expected_verdict: Exists
+    evidence:
+      - {file: scripts/analyze-and-improve/analysis_queue.py, quote: "the extract frontmatter is the source of truth"}
+      - {file: scripts/analyze-and-improve/analysis_queue.py, quote: "re-running is idempotent and resumable"}
+    variants:
+      - "Every run just diffs the repo against markers to find leftover work, so running it twice changes nothing."
+      - "Hold no external progress state: the repo itself records what is done, making jobs idempotent and resumable."
+      - "Pending work equals what should be processed minus what already carries a done-marker in the repo."
+      - "The pipeline is a pure diff over the repo's own frontmatter, so re-execution is safe and picks up where it left off."
+      - "No database of progress — reprocessing is decided by subtracting the analyzed set from the candidate set each time."
+
+  - concept_id: incremental-index-reembedding-on-delta
+    canonical_definition: >-
+      The semantic index is refreshed incrementally: a git delta scan finds
+      changed files and per-chunk content hashes decide which sections actually
+      changed, so only those are re-embedded rather than the whole corpus.
+    aliases: ["incremental re-embedding", "delta re-index", "hash-gated embedding", "changed-chunk re-embed"]
+    positive_examples:
+      - "Only re-embed sections whose content hash differs from the stored one."
+      - "A git delta scan plus per-chunk hashing avoids re-embedding unchanged text."
+    negative_examples:
+      - "Re-embed the entire repo on every run."
+      - "Never update the index once built."
+    expected_repo_state: {exists: true}
+    expected_verdict: Exists
+    evidence:
+      - {file: scripts/analyze-and-improve/index_store.py, quote: "compares hashes so only the"}
+      - {file: scripts/analyze-and-improve/index_store.py, quote: "changed get re-embedded"}
+    variants:
+      - "Refresh embeddings only for the chunks that actually changed, using file deltas and content hashes."
+      - "A git diff narrows to changed files; hashes then narrow to changed sections, and just those get re-embedded."
+      - "Avoid re-embedding the whole corpus — hash each chunk and only re-vectorize the ones that moved."
+      - "Incremental indexing: re-embed the delta, reuse stored vectors for everything untouched."
+      - "Per-section content hashing gates re-embedding so an index update costs only the changed chunks."
+
+  # ── MISSING (3) — plausible in-domain but absent ─────────────────────────
+  - concept_id: speech-to-text-live-meeting-capture
+    canonical_definition: >-
+      Live meeting audio is captured and transcribed in real time via a
+      speech-to-text engine, producing a running transcript of a call as it
+      happens (streaming ASR, optional diarization).
+    aliases: ["live STT", "real-time meeting transcription", "call transcription", "streaming ASR"]
+    positive_examples:
+      - "Stream microphone audio through an STT model to transcribe a meeting live."
+      - "Capture and diarize a video call in real time."
+    negative_examples:
+      - "Fetch pre-existing YouTube transcripts via an API."
+      - "Summarize a written document."
+    expected_repo_state: {exists: false}
+    expected_verdict: Missing
+    evidence: []
+    variants:
+      - "Transcribe conversations from live audio as they occur, feeding a running speech-to-text stream."
+      - "A real-time engine that turns microphone input from a call into text on the fly."
+      - "Capture spoken meetings and convert the audio to a transcript live, speaker by speaker."
+      - "Streaming automatic speech recognition over an ongoing call."
+      - "Live audio-to-text of meetings, producing transcripts while the meeting is still happening."
+
+  - concept_id: kubernetes-operator-agent-autoscaling
+    canonical_definition: >-
+      A Kubernetes operator watches a work queue and autoscales the number of
+      agent worker pods up or down based on queue depth or backlog.
+    aliases: ["k8s operator autoscaling", "queue-depth autoscaler", "agent pod scaling", "HPA for agents"]
+    positive_examples:
+      - "A custom controller scales agent replicas by pending-task count."
+      - "Kubernetes autoscaling of worker pods driven by queue length."
+    negative_examples:
+      - "Run jobs on a fixed GitHub Actions cron schedule."
+      - "A single always-on process with no scaling."
+    expected_repo_state: {exists: false}
+    expected_verdict: Missing
+    evidence: []
+    variants:
+      - "Elastically add or remove agent worker pods in a cluster according to how deep the task queue is."
+      - "A controller reconciling desired agent replicas against backlog, scaling on Kubernetes."
+      - "Queue-driven horizontal autoscaling of agent workers managed by a k8s operator."
+      - "Spin up more worker containers when the backlog grows and tear them down when it shrinks, via a cluster operator."
+      - "An operator pattern that right-sizes the agent worker fleet in Kubernetes from queue metrics."
+
+  - concept_id: differential-privacy-metric-noise
+    canonical_definition: >-
+      Calibrated random noise is injected into aggregated metrics or query
+      results to provide differential-privacy guarantees, bounding what any single
+      record contributes to a released statistic under a privacy budget.
+    aliases: ["differential privacy", "DP noise injection", "privacy budget", "epsilon noise"]
+    positive_examples:
+      - "Add Laplace noise to counts so no single user is identifiable from the aggregate."
+      - "Track an epsilon privacy budget across queries."
+    negative_examples:
+      - "Report exact raw counts."
+      - "Encrypt data at rest."
+    expected_repo_state: {exists: false}
+    expected_verdict: Missing
+    evidence: []
+    variants:
+      - "Perturb aggregate statistics with calibrated noise to guarantee differential privacy."
+      - "Bound each record's influence on a released metric by adding random noise under a privacy budget."
+      - "Inject epsilon-scaled noise into query results so individuals cannot be re-identified."
+      - "Differentially private aggregation: noisy counts that protect any single contributor."
+      - "Add Laplace or Gaussian noise to metrics to meet a formal privacy guarantee."
+
+  # ── PARTIAL / BORDERLINE (2) — mechanism present but incomplete ──────────
+  - concept_id: iterative-ask-for-more-retrieval
+    canonical_definition: >-
+      When the classifier lacks enough context to decide, it names the exact
+      greps and files it still needs and a follow-up retrieval round fetches them
+      before it classifies — an iterative ask-for-more loop. (The repo implements
+      exactly one such round, not an unbounded multi-round loop.)
+    aliases: ["ask for more context", "iterative retrieval", "need-more round", "context top-up"]
+    positive_examples:
+      - "The model returns need_more with greps/files and gets a second context bundle."
+      - "A bounded follow-up retrieval when the first context is insufficient."
+    negative_examples:
+      - "Always classify from a single fixed context with no follow-up."
+      - "Let the model browse the filesystem freely."
+    expected_repo_state: {exists: true}
+    expected_verdict: Partial
+    evidence:
+      - {file: scripts/analyze-and-improve/phase3_classify.py, quote: "with one 'ask for more' round"}
+      - {file: scripts/analyze-and-improve/phase3_classify.py, quote: "pedir mais"}
+    variants:
+      - "If context is thin, let the classifier request specific files and greps, then re-run with the enriched context."
+      - "A follow-up retrieval round triggered when the model says it needs more evidence to decide."
+      - "The classifier can ask for named files and patterns once and gets them appended before its final verdict."
+      - "Bounded iterative context-gathering: the model declares what is missing and a second pass supplies it."
+      - "Instead of guessing on weak context, the model names the exact evidence it needs and retrieval tops it up."
+
+  - concept_id: evaluator-cut-distribution-calibration
+    canonical_definition: >-
+      The evaluator's pass/fail cut is calibrated from the distribution of scores
+      over many runs rather than fixed at a provisional point — the threshold is
+      derived from empirical percentiles instead of a hand-set constant. (The repo
+      has a provisional point cut and calibrates the retrieval floor from a
+      distribution, but the evaluator cut itself is not yet N-calibrated.)
+    aliases: ["distribution-calibrated cut", "percentile threshold", "empirical score cut", "calibrated pass bar"]
+    positive_examples:
+      - "Set the pass bar from the p-th percentile of observed evaluator means."
+      - "Calibrate the cut from a distribution of N runs, not a single guess."
+    negative_examples:
+      - "Hard-code the pass score to 3.0 forever."
+      - "Have no scoring threshold at all."
+    expected_repo_state: {exists: true}
+    expected_verdict: Partial
+    evidence:
+      - {file: scripts/analyze-and-improve/evaluator.py, quote: "PROVISIONAL_MIN_MEAN = 3.0"}
+      - {file: scripts/analyze-and-improve/floor.py, quote: "pairwise cosine similarities"}
+    variants:
+      - "Derive the evaluator's minimum passing score from the empirical distribution of scores across many runs."
+      - "Replace the hand-set pass threshold with a percentile-based cut learned from observed evaluator means."
+      - "Calibrate the accept/reject bar statistically from a sample of runs instead of pinning a constant."
+      - "The score cut should come from the run distribution's percentiles, not a provisional n=2 guess."
+      - "Tune the evaluator threshold to the observed score distribution rather than a fixed magic number."
+
+# Near-but-distinct pairs the matcher must NOT merge (T4 novelty discrimination).
+near_miss_pairs:
+  - [cosine-dedup-gate, hybrid-retrieval-dense-plus-grep]
+  - [cosine-dedup-gate, incremental-index-reembedding-on-delta]
+  - [adversarial-evaluator-cross-provider, evaluator-cut-distribution-calibration]
+  - [hybrid-retrieval-dense-plus-grep, iterative-ask-for-more-retrieval]
+  - [stateless-diff-idempotent-pipeline, incremental-index-reembedding-on-delta]
+
+# Reranker sanity mini-eval (condition (c)): known same/different pairs. If the
+# reranker cannot pass its own sanity check it is not a trustworthy instrument.
+reranker_sanity:
+  - {a: "Use a second-vendor model to grade what the first model wrote.", b: "The judge runs on a different provider than the generator so it can't rubber-stamp itself.", same: true}
+  - {a: "A cross-provider evaluator scores the artifact.", b: "Add calibrated noise to aggregate metrics for differential privacy.", same: false}
+  - {a: "Block a proposal whose embedding is too close to an existing indexed section.", b: "Near-duplicate detection by cosine similarity to the repo index.", same: true}
+  - {a: "Dense top-k plus grep over the section index.", b: "Autoscale agent worker pods on Kubernetes by queue depth.", same: false}
+  - {a: "Deterministic dedup gate using cosine to the index.", b: "Hybrid retrieval combining dense top-k with exact grep.", same: false}
+  - {a: "Every run diffs the repo against done-markers so re-runs are idempotent.", b: "A stateless pipeline where the repo is the source of truth and reprocessing is safe.", same: true}
