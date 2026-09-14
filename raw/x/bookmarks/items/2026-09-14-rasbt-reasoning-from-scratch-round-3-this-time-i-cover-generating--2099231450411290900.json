@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-14",
+  "status_id": "2099231450411290900",
+  "handle": "rasbt",
+  "text": "Reasoning from scratch round 3: This time, I cover generating a verifier for...\n\na) ...evaluation (base model versus any future model improvement)\nb) ...the reinforcement learning with verifiable rewards (RLVR) training later on\n\n00:00 Introduction\n01:21 Four approaches to LLM https://t.co/Aeu4UK1zJl",
+  "created_at": "2026-09-13T20:19:14.000Z",
+  "url": "https://x.com/rasbt/status/2099231450411290900",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2099200754993295360/img/O9TgrxbUCayWoZzj.jpg"
+  ]
+}

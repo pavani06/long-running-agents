@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-14",
+  "status_id": "2098986025397977287",
+  "handle": "rohanpaul_ai",
+  "text": "Stanford + MIT paper on Model Harnesses shows that AI performance depends not just on the model itself, but on the surrounding system code — the “harness”.\n\nThis is what decides what to store, retrieve, show to the model, and how the workflow runs. With the same underlying LLM, https://t.co/F2WQGzVfcl",
+  "created_at": "2026-09-13T04:04:00.000Z",
+  "url": "https://x.com/rohanpaul_ai/status/2098986025397977287",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HSEDrGVakAE0hNz.png"
+  ]
+}

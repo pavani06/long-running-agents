@@ -1,0 +1,10 @@
+{
+  "collected": "2026-09-14",
+  "status_id": "2099247007454142644",
+  "handle": "andrewchen",
+  "text": "current homelab setup for local AI experimentation:\n\n- hermes box hosted on a Framework Desktop Mainboard AI Max+ 395\n- 5090 eGPU running Qwen 3.8 27B for fast tok/s LLM use - sometimes 150+ tok/s\n- 2x DGX Spark: running Deepseek v4 Flash 0731 - better but slower model\n- pi 5 for",
+  "created_at": "2026-09-13T21:21:03.000Z",
+  "url": "https://x.com/andrewchen/status/2099247007454142644",
+  "links": [],
+  "media": []
+}

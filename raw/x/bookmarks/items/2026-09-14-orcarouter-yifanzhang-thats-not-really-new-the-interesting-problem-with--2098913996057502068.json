@@ -1,0 +1,10 @@
+{
+  "collected": "2026-09-14",
+  "status_id": "2098913996057502068",
+  "handle": "OrcaRouter",
+  "text": "@yifanzhang_ That’s not really new. The interesting problem with recurrent depth isn’t “infinite reasoning”, it’s observability. More computation can move into latent states where CoT monitoring can’t see it. Safety alignments will get abliterated.",
+  "created_at": "2026-09-12T23:17:47.000Z",
+  "url": "https://x.com/OrcaRouter/status/2098913996057502068",
+  "links": [],
+  "media": []
+}

@@ -1,6 +1,6 @@
 {
   "source": "X API v2 GET /2/users/:id/bookmarks (OAuth2 user-context)",
-  "count": 299,
+  "count": 348,
   "items": [
     {
       "status_id": "2079234800766816633",
@@ -1795,6 +1795,300 @@
       "handle": "zostaff",
       "url": "https://x.com/zostaff/status/2078944176457359536",
       "file": "2026-09-12-zostaff-this-paper-completely-changed-how-i-think-about-agent-memory--2078944176457359536.json"
+    },
+    {
+      "status_id": "2099210491059122471",
+      "handle": "addyosmani",
+      "url": "https://x.com/addyosmani/status/2099210491059122471",
+      "file": "2026-09-14-addyosmani-get-more-out-of-your-fable-usage-by-using-opus-for-subagents--2099210491059122471.json"
+    },
+    {
+      "status_id": "2099113391591923822",
+      "handle": "akshay_pachaar",
+      "url": "https://x.com/akshay_pachaar/status/2099113391591923822",
+      "file": "2026-09-14-akshay_pachaar-13-attention-mechanisms-ai-engineers-must-know-bookmark-this--2099113391591923822.json"
+    },
+    {
+      "status_id": "2098880333676761514",
+      "handle": "alex_verem",
+      "url": "https://x.com/alex_verem/status/2098880333676761514",
+      "file": "2026-09-14-alex_verem-mit-published-a-brutally-honest-report-on-what-ai-is-doing-t--2098880333676761514.json"
+    },
+    {
+      "status_id": "2099247007454142644",
+      "handle": "andrewchen",
+      "url": "https://x.com/andrewchen/status/2099247007454142644",
+      "file": "2026-09-14-andrewchen-current-homelab-setup-for-local-ai-experimentation-hermes-bo--2099247007454142644.json"
+    },
+    {
+      "status_id": "2099278183837397469",
+      "handle": "andrewchen",
+      "url": "https://x.com/andrewchen/status/2099278183837397469",
+      "file": "2026-09-14-andrewchen-ethereaglehq-classifies-it-upfront-but-the-way-i-set-up-the--2099278183837397469.json"
+    },
+    {
+      "status_id": "2099279190491353442",
+      "handle": "andrewchen",
+      "url": "https://x.com/andrewchen/status/2099279190491353442",
+      "file": "2026-09-14-andrewchen-vitostrokov-agreed-but-i-think-theres-two-issues-you-really--2099279190491353442.json"
+    },
+    {
+      "status_id": "2097201160038068278",
+      "handle": "andrewchen",
+      "url": "https://x.com/andrewchen/status/2097201160038068278",
+      "file": "2026-09-14-andrewchen-you-want-to-spend-zero-time-on-the-left-this-is-where-ai-win--2097201160038068278.json"
+    },
+    {
+      "status_id": "2098759228269682727",
+      "handle": "antoniolupetti",
+      "url": "https://x.com/antoniolupetti/status/2098759228269682727",
+      "file": "2026-09-14-antoniolupetti-a-mathematical-explanation-of-transformers-is-a-recent-paper--2098759228269682727.json"
+    },
+    {
+      "status_id": "2098988144892797057",
+      "handle": "aryan_sakhala",
+      "url": "https://x.com/aryan_sakhala/status/2098988144892797057",
+      "file": "2026-09-14-aryan_sakhala-yifanzhang-https-t-co-r9fe8sx8jh-where-it-all-started--2098988144892797057.json"
+    },
+    {
+      "status_id": "2098652326248493447",
+      "handle": "cyrilXBT",
+      "url": "https://x.com/cyrilXBT/status/2098652326248493447",
+      "file": "2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447.json"
+    },
+    {
+      "status_id": "2099168306863190147",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2099168306863190147",
+      "file": "2026-09-14-dair_ai-https-t-co-b0r0rw2yrc--2099168306863190147.json"
+    },
+    {
+      "status_id": "2098864248197976465",
+      "handle": "dair_ai",
+      "url": "https://x.com/dair_ai/status/2098864248197976465",
+      "file": "2026-09-14-dair_ai-very-interesting-paper-if-you-are-building-with-agents-how-s--2098864248197976465.json"
+    },
+    {
+      "status_id": "2099208596622062031",
+      "handle": "dexhorthy",
+      "url": "https://x.com/dexhorthy/status/2099208596622062031",
+      "file": "2026-09-14-dexhorthy-not-that-i-disagree-but-is-domain-specific-harness-just-a-re--2099208596622062031.json"
+    },
+    {
+      "status_id": "2099260781447496188",
+      "handle": "ethereaglehq",
+      "url": "https://x.com/ethereaglehq/status/2099260781447496188",
+      "file": "2026-09-14-ethereaglehq-andrewchen-arch-router-picking-local-vs-cloud-is-the-piece-i--2099260781447496188.json"
+    },
+    {
+      "status_id": "2099290400779317310",
+      "handle": "ethereaglehq",
+      "url": "https://x.com/ethereaglehq/status/2099290400779317310",
+      "file": "2026-09-14-ethereaglehq-andrewchen-upfront-classify-then-upgrade-if-it-gets-long-is--2099290400779317310.json"
+    },
+    {
+      "status_id": "2098666551629267324",
+      "handle": "garrytan",
+      "url": "https://x.com/garrytan/status/2098666551629267324",
+      "file": "2026-09-14-garrytan-either-you-die-a-system-of-record-or-you-live-long-enough-to--2098666551629267324.json"
+    },
+    {
+      "status_id": "2098944692247240757",
+      "handle": "grok",
+      "url": "https://x.com/grok/status/2098944692247240757",
+      "file": "2026-09-14-grok-iykshani-yifanzhang-the-recurrent-looped-transformer-rlt-has--2098944692247240757.json"
+    },
+    {
+      "status_id": "2098866608785473858",
+      "handle": "hwchase17",
+      "url": "https://x.com/hwchase17/status/2098866608785473858",
+      "file": "2026-09-14-hwchase17-in-case-you-want-to-build-a-domain-specific-harness-https-t--2098866608785473858.json"
+    },
+    {
+      "status_id": "2099207649577595286",
+      "handle": "illscience",
+      "url": "https://x.com/illscience/status/2099207649577595286",
+      "file": "2026-09-14-illscience-additionally-i-think-theres-a-lot-of-debate-about-imessage-v--2099207649577595286.json"
+    },
+    {
+      "status_id": "2099205025797144669",
+      "handle": "illscience",
+      "url": "https://x.com/illscience/status/2099205025797144669",
+      "file": "2026-09-14-illscience-had-many-conversations-this-weekend-re-instinct-muse-consume--2099205025797144669.json"
+    },
+    {
+      "status_id": "2099220613999304823",
+      "handle": "illscience",
+      "url": "https://x.com/illscience/status/2099220613999304823",
+      "file": "2026-09-14-illscience-mesutcelik-yes-this-is-a-fascinating-dynamic-they-dont-mind--2099220613999304823.json"
+    },
+    {
+      "status_id": "2099209540629893451",
+      "handle": "illscience",
+      "url": "https://x.com/illscience/status/2099209540629893451",
+      "file": "2026-09-14-illscience-treytaylorceo-yeah-i-think-the-question-though-is-when-you-a--2099209540629893451.json"
+    },
+    {
+      "status_id": "2098801944756154391",
+      "handle": "jonathan_wilke",
+      "url": "https://x.com/jonathan_wilke/status/2098801944756154391",
+      "file": "2026-09-14-jonathan_wilke-how-the-fuck-did-i-not-know-about-https-t-co-93vwcw5dip-so-m--2098801944756154391.json"
+    },
+    {
+      "status_id": "2099195114115707210",
+      "handle": "lydiahallie",
+      "url": "https://x.com/lydiahallie/status/2099195114115707210",
+      "file": "2026-09-14-lydiahallie-setting-my-subagent-model-to-opus-has-helped-me-save-so-much--2099195114115707210.json"
+    },
+    {
+      "status_id": "2099175716046643654",
+      "handle": "mardehaym",
+      "url": "https://x.com/mardehaym/status/2099175716046643654",
+      "file": "2026-09-14-mardehaym-the-model-is-the-smallest-most-swappable-part-key-principles--2099175716046643654.json"
+    },
+    {
+      "status_id": "2099103717454655771",
+      "handle": "MaxRovensky",
+      "url": "https://x.com/MaxRovensky/status/2099103717454655771",
+      "file": "2026-09-14-maxrovensky-correct-take-but-also-extremely-tech-bubbly-take-software-is--2099103717454655771.json"
+    },
+    {
+      "status_id": "2099216302334214503",
+      "handle": "mesutcelik",
+      "url": "https://x.com/mesutcelik/status/2099216302334214503",
+      "file": "2026-09-14-mesutcelik-illscience-one-point-of-friction-agents-will-remove-in-the-e--2099216302334214503.json"
+    },
+    {
+      "status_id": "2099135844061732941",
+      "handle": "NTFabiano",
+      "url": "https://x.com/NTFabiano/status/2099135844061732941",
+      "file": "2026-09-14-ntfabiano-exercise-helps-the-aging-brain-keep-growing-new-cells-age-ch--2099135844061732941.json"
+    },
+    {
+      "status_id": "2098809969252450451",
+      "handle": "omarsar0",
+      "url": "https://x.com/omarsar0/status/2098809969252450451",
+      "file": "2026-09-14-omarsar0-learn-to-build-a-harness-folks-it-s-not-surprising-to-me-tha--2098809969252450451.json"
+    },
+    {
+      "status_id": "2099208894866178204",
+      "handle": "omarsar0",
+      "url": "https://x.com/omarsar0/status/2099208894866178204",
+      "file": "2026-09-14-omarsar0-should-you-build-an-agent-harness-i-see-lots-of-opinions-abo--2099208894866178204.json"
+    },
+    {
+      "status_id": "2098480213244117065",
+      "handle": "OpenAIDevs",
+      "url": "https://x.com/OpenAIDevs/status/2098480213244117065",
+      "file": "2026-09-14-openaidevs-get-more-out-of-gpt-6-astra-by-revisiting-your-skills-agents--2098480213244117065.json"
+    },
+    {
+      "status_id": "2097967011448131640",
+      "handle": "OrcaRouter",
+      "url": "https://x.com/OrcaRouter/status/2097967011448131640",
+      "file": "2026-09-14-orcarouter-everyone-talks-about-recursive-self-improvement-but-there-s--2097967011448131640.json"
+    },
+    {
+      "status_id": "2099224260137116131",
+      "handle": "OrcaRouter",
+      "url": "https://x.com/OrcaRouter/status/2099224260137116131",
+      "file": "2026-09-14-orcarouter-rumor-is-next-gen-models-at-openai-anthropic-are-showing-eme--2099224260137116131.json"
+    },
+    {
+      "status_id": "2098922505591505139",
+      "handle": "OrcaRouter",
+      "url": "https://x.com/OrcaRouter/status/2098922505591505139",
+      "file": "2026-09-14-orcarouter-why-does-everyone-suddenly-want-to-pace-ai-recurrent-looped--2098922505591505139.json"
+    },
+    {
+      "status_id": "2098913996057502068",
+      "handle": "OrcaRouter",
+      "url": "https://x.com/OrcaRouter/status/2098913996057502068",
+      "file": "2026-09-14-orcarouter-yifanzhang-thats-not-really-new-the-interesting-problem-with--2098913996057502068.json"
+    },
+    {
+      "status_id": "2098815981787414978",
+      "handle": "poteto",
+      "url": "https://x.com/poteto/status/2098815981787414978",
+      "file": "2026-09-14-poteto-next-week-mattyp-roshan-s-and-myself-will-be-speedrunning-bu--2098815981787414978.json"
+    },
+    {
+      "status_id": "2099231450411290900",
+      "handle": "rasbt",
+      "url": "https://x.com/rasbt/status/2099231450411290900",
+      "file": "2026-09-14-rasbt-reasoning-from-scratch-round-3-this-time-i-cover-generating--2099231450411290900.json"
+    },
+    {
+      "status_id": "2099180639308169595",
+      "handle": "rasbt",
+      "url": "https://x.com/rasbt/status/2099180639308169595",
+      "file": "2026-09-14-rasbt-yifanzhang-very-interesting-article-thanks-for-sharing-is-th--2099180639308169595.json"
+    },
+    {
+      "status_id": "2098752822221365732",
+      "handle": "RiverAi7z",
+      "url": "https://x.com/RiverAi7z/status/2098752822221365732",
+      "file": "2026-09-14-riverai7z-pi-review-pi-install-git-https-t-co-ezws490o0e--2098752822221365732.json"
+    },
+    {
+      "status_id": "2098986025397977287",
+      "handle": "rohanpaul_ai",
+      "url": "https://x.com/rohanpaul_ai/status/2098986025397977287",
+      "file": "2026-09-14-rohanpaul_ai-stanford-mit-paper-on-model-harnesses-shows-that-ai-performa--2098986025397977287.json"
+    },
+    {
+      "status_id": "2098577841944207463",
+      "handle": "Ryrenz",
+      "url": "https://x.com/Ryrenz/status/2098577841944207463",
+      "file": "2026-09-14-ryrenz-claude-code-alphaxiv-openresearch-openresearch-6-github-1000--2098577841944207463.json"
+    },
+    {
+      "status_id": "2099208492217221351",
+      "handle": "shl",
+      "url": "https://x.com/shl/status/2099208492217221351",
+      "file": "2026-09-14-shl-over-10-000-github-stars-my-most-starred-repo-isnt-code-http--2099208492217221351.json"
+    },
+    {
+      "status_id": "2099180288668750246",
+      "handle": "shreyanshpatni_",
+      "url": "https://x.com/shreyanshpatni_/status/2099180288668750246",
+      "file": "2026-09-14-shreyanshpatni_-want-to-build-a-domain-specific-agent-harness-this-is-a-grea--2099180288668750246.json"
+    },
+    {
+      "status_id": "2099208649411321980",
+      "handle": "TreyTaylorCEO",
+      "url": "https://x.com/TreyTaylorCEO/status/2099208649411321980",
+      "file": "2026-09-14-treytaylorceo-illscience-agents-are-largely-extensions-of-people-in-the-co--2099208649411321980.json"
+    },
+    {
+      "status_id": "2099212116959920547",
+      "handle": "TreyTaylorCEO",
+      "url": "https://x.com/TreyTaylorCEO/status/2099212116959920547",
+      "file": "2026-09-14-treytaylorceo-illscience-super-fair-and-honestly-it-depends-on-the-core-mo--2099212116959920547.json"
+    },
+    {
+      "status_id": "2099145064450494595",
+      "handle": "undefinedKi",
+      "url": "https://x.com/undefinedKi/status/2099145064450494595",
+      "file": "2026-09-14-undefinedki-the-founder-of-an-ai-coding-tool-just-walked-through-his-ent--2099145064450494595.json"
+    },
+    {
+      "status_id": "2099170595858706830",
+      "handle": "yifanzhang_",
+      "url": "https://x.com/yifanzhang_/status/2099170595858706830",
+      "file": "2026-09-14-yifanzhang_-aradhyeagarwals-experimental-result-https-t-co-7bvvstlccw--2099170595858706830.json"
+    },
+    {
+      "status_id": "2099180888684937556",
+      "handle": "yifanzhang_",
+      "url": "https://x.com/yifanzhang_/status/2099180888684937556",
+      "file": "2026-09-14-yifanzhang_-rasbt-https-t-co-tovrlbceki--2099180888684937556.json"
+    },
+    {
+      "status_id": "2098886268033945610",
+      "handle": "yifanzhang_",
+      "url": "https://x.com/yifanzhang_/status/2098886268033945610",
+      "file": "2026-09-14-yifanzhang_-we-are-at-the-dawn-of-superintelligence-introducing-the-recu--2098886268033945610.json"
     }
   ]
 }
