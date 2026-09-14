@@ -68,3 +68,58 @@ def test_report_counts_and_states_stop():
     assert "V1_verified` (verificou): **1**" in rep
     assert "R1_wrong_location" in rep and "code / V1_verified: 1" in rep
     assert "STOP obrigatório" in rep and "Nenhuma correção" in rep
+
+
+# ── documentation-coverage guard matrix (#288 — the live-proof helper) ──────
+def test_grounding_class_buckets():
+    assert ev._grounding_class({"code": 0, "doc": 2, "other": 0}) == "doc_grounded"
+    assert ev._grounding_class({"code": 3, "doc": 1, "other": 0}) == "doc_grounded"   # mixed → doc
+    assert ev._grounding_class({"code": 3, "doc": 0, "other": 0}) == "code_only"
+    assert ev._grounding_class({"code": 0, "doc": 0, "other": 2}) == "other_only"
+    assert ev._grounding_class({"code": 0, "doc": 0, "other": 0}) == "zero"
+    assert ev._grounding_class(None) == "zero"
+
+
+def test_guard_matrix_assertions_pass_on_correct_data():
+    # the three cases that DEFINE 'proven'
+    records = [
+        {"verdict": "Exists", "grounding": {"code": 5, "doc": 0, "other": 0},
+         "documentation_covered": False, "error": None},        # code-only → gap
+        {"verdict": "Exists", "grounding": {"code": 0, "doc": 2, "other": 0},
+         "documentation_covered": True, "error": None},         # doc-backed → covered
+        {"verdict": "Partial", "grounding": {"code": 0, "doc": 1, "other": 0},
+         "documentation_covered": False, "error": None},        # Partial → gap
+        {"verdict": "Missing", "grounding": None,
+         "documentation_covered": False, "error": None},        # Missing → gap
+    ]
+    gm = ev.guard_matrix(records)
+    assert gm["assertions"]["code_only_exists_is_gap"] == (1, True)
+    assert gm["assertions"]["doc_backed_coverage_is_covered"] == (1, True)
+    assert gm["assertions"]["missing_partial_is_gap"] == (2, True)
+    assert gm["cells"][("Exists", "code_only", "gap")] == 1
+    assert gm["cells"][("Exists", "doc_grounded", "covered")] == 1
+
+
+def test_guard_matrix_flags_violation():
+    # a code-only Exists wrongly marked covered must FAIL the assertion
+    records = [{"verdict": "Exists", "grounding": {"code": 5, "doc": 0, "other": 0},
+                "documentation_covered": True, "error": None}]
+    gm = ev.guard_matrix(records)
+    assert gm["assertions"]["code_only_exists_is_gap"] == (1, False)
+
+
+def test_guard_matrix_skips_errored_records():
+    records = [{"verdict": None, "grounding": None, "documentation_covered": False,
+                "error": "GLM 500"}]
+    gm = ev.guard_matrix(records)
+    assert gm["assertions"]["code_only_exists_is_gap"] == (0, True)   # nothing to violate
+
+
+def test_report_includes_guard_matrix():
+    records = [{"concept_id": "c1", "verdict": "Exists",
+                "grounding": {"code": 5, "doc": 0, "other": 0},
+                "documentation_covered": False, "error": None, "citations": []}]
+    rep = ev._report(records, "evrv-dataset.json")
+    assert "Guardrail de cobertura de documentação" in rep
+    assert "code-only Exists/Better NÃO suprime a lacuna" in rep
+    assert "✅ PASS" in rep

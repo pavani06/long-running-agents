@@ -29,6 +29,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import grep_verify  # noqa: E402
+import landing  # noqa: E402
 import metamorphic_canon as mc  # noqa: E402
 import metamorphic_preflight as preflight  # noqa: E402
 import phase3_classify  # noqa: E402
@@ -94,16 +95,22 @@ def citation_signals(cit: dict, file_text: str | None, verify_result: dict) -> d
 
 
 def _classify(variant: str, index: dict, openai_key: str, zai_key: str, repo_root: Path):
-    """Classify one variant; return (verdict, citations, verified_list). Tolerant."""
+    """Classify one variant; return (classification, verified_list, err). Tolerant.
+
+    Runs the SAME merged guard the real pipeline runs: `mark_grounding` annotates the
+    classification with `grounding`/`code_only_grounded` from the verified citations, so
+    the returned dict carries everything `landing.is_documentation_covered` reads."""
     pattern = {"name": variant[:80], "problem": variant, "mechanism": ""}
     retriever = retrieval.make_pattern_retriever([pattern], index, openai_key, repo_root)
     try:
         cls = phase3_classify.run([pattern], zai_key, retriever=retriever)
     except (GLMError, RateLimited) as e:
-        return None, [], [], str(e)
+        return None, [], str(e)
     citations = phase3_classify.citations_of(cls)
     verified = grep_verify.verify_all(citations, repo_root)
-    return cls[0].get("verdict"), cls[0].get("evidence", []), verified, None
+    phase3_classify.mark_verified(cls, verified)
+    phase3_classify.mark_grounding(cls, verified)       # guard inputs, exactly as the pipeline
+    return cls[0], verified, None
 
 
 def run(canon_path: str) -> int:
@@ -138,8 +145,9 @@ def run(canon_path: str) -> int:
             vvec = embed_texts([v["variant"]], openai_key)[0]
             retrieved = [{"path": r["path"], "source_type": source_type(r["path"]),
                           "score": round(r["score"], 3)} for r in rank_sections(vvec, index, k=8)]
-            verdict, evidence, verified, err = _classify(
-                v["variant"], index, openai_key, zai_key, view)
+            cls0, verified, err = _classify(v["variant"], index, openai_key, zai_key, view)
+            verdict = cls0.get("verdict") if cls0 else None
+            evidence = cls0.get("evidence", []) if cls0 else []
             by_key = {(c.get("file"), c.get("line"), c.get("quote")): c for c in verified}
             cits = []
             for e in evidence:
@@ -152,6 +160,10 @@ def run(canon_path: str) -> int:
             records.append({
                 "concept_id": v["concept_id"], "expected_verdict": v["expected_verdict"],
                 "exists": v["exists"], "variant": v["variant"], "verdict": verdict,
+                # Guard fields — the merged pipeline functions run live here.
+                "grounding": cls0.get("grounding") if cls0 else None,
+                "code_only_grounded": cls0.get("code_only_grounded") if cls0 else None,
+                "documentation_covered": landing.is_documentation_covered(cls0) if cls0 else False,
                 "error": err, "retrieved_topk": retrieved, "citations": cits,
             })
 
@@ -159,6 +171,50 @@ def run(canon_path: str) -> int:
     Path(out_path).write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf-8")
     _summary(_report(records, out_path))
     return 0
+
+
+def _grounding_class(grounding: dict | None) -> str:
+    """Bucket a verdict's verified grounding for the guard matrix. Pure.
+    `doc_grounded` = ≥1 verified doc citation (mixed counts as doc); else the plane
+    that carried it, else `zero` (no verified grounding at all)."""
+    g = grounding or {}
+    if (g.get("doc") or 0) >= 1:
+        return "doc_grounded"
+    if (g.get("code") or 0) >= 1:
+        return "code_only"
+    if (g.get("other") or 0) >= 1:
+        return "other_only"
+    return "zero"
+
+
+def guard_matrix(records: list[dict]) -> dict:
+    """The documentation-coverage guard result: verdict × grounding → covered/gap,
+    plus the three PASS/FAIL assertions that define 'proven'. Pure — reads each
+    record's `verdict`/`grounding`/`documentation_covered` (set live by the guard)."""
+    cells = Counter()
+    for r in records:
+        if r.get("error"):
+            continue
+        cells[(r.get("verdict"), _grounding_class(r.get("grounding")),
+               "covered" if r.get("documentation_covered") else "gap")] += 1
+    coverage = {"Exists", "Better"}
+    ok = lambda rs, want: all(bool(r.get("documentation_covered")) is want for r in rs)
+    code_only_exists = [r for r in records if not r.get("error")
+                        and r.get("verdict") in coverage
+                        and _grounding_class(r.get("grounding")) == "code_only"]
+    doc_coverage = [r for r in records if not r.get("error")
+                    and r.get("verdict") in coverage
+                    and _grounding_class(r.get("grounding")) == "doc_grounded"]
+    missing_partial = [r for r in records if not r.get("error")
+                       and r.get("verdict") in ("Missing", "Partial")]
+    return {
+        "cells": cells,
+        "assertions": {
+            "code_only_exists_is_gap": (len(code_only_exists), ok(code_only_exists, False)),
+            "doc_backed_coverage_is_covered": (len(doc_coverage), ok(doc_coverage, True)),
+            "missing_partial_is_gap": (len(missing_partial), ok(missing_partial, False)),
+        },
+    }
 
 
 def _report(records: list[dict], out_path: str) -> str:
@@ -188,9 +244,31 @@ def _report(records: list[dict], out_path: str) -> str:
         "- `R1_wrong_location` dominante em `code` → gargalo é o **verificador** (quote±2 hostil a código); não o modelo.",
         "- `R0E_quote_absent` dominante → problema de **attribution/grounding** (o modelo cita o que não está lá).",
         "- `R0_file_missing` relevante → o modelo inventa caminhos.",
+    ]
+
+    # ── documentation-coverage guard — the live proof (#288) ──────────────────
+    gm = guard_matrix(records)
+    lines += [
+        "", "## Guardrail de cobertura de documentação (verdict × grounding → covered/gap)",
+        "_A guarda mesclada (`landing.is_documentation_covered` + `mark_grounding`) rodou ao vivo "
+        "sobre cada classificação. Cobertura exige verdict Exists/Better E ≥1 grounding doc verificado._",
+        "", "| verdict | grounding | resultado | n |", "|---|---|---|---|",
+    ]
+    for (verdict, gclass, res), n in sorted(gm["cells"].items(), key=lambda x: (str(x[0][0]), x[0][1])):
+        lines.append(f"| {verdict} | {gclass} | {res} | {n} |")
+    a = gm["assertions"]
+    def _verdict(name, key):
+        n, passed = a[key]
+        return f"- **{name}**: {'✅ PASS' if passed else '❌ FAIL'} (n={n})"
+    lines += [
+        "", "### Definição de 'proven' (asserções da corrida ao vivo)",
+        _verdict("code-only Exists/Better NÃO suprime a lacuna", "code_only_exists_is_gap"),
+        _verdict("cobertura com doc verificado É contada como documentada", "doc_backed_coverage_is_covered"),
+        _verdict("Missing/Partial permanecem lacunas", "missing_partial_is_gap"),
         "",
         "**STOP obrigatório (ADR, Princípio 3):** este passo caracteriza o instrumento e para. "
-        "Nenhuma correção nesta execução — a próxima intervenção passa por gate humano.",
+        "Nenhuma correção nesta execução — a próxima intervenção passa por gate humano. "
+        "Nenhum flip de `INDEX_TARGETS` nesta execução.",
     ]
     return "\n".join(lines)
 
