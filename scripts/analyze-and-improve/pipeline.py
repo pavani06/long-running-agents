@@ -86,18 +86,31 @@ def _collect_records(paths: list[str]) -> dict[str, list]:
     return out
 
 
+def _index_scope() -> tuple[tuple[str, ...], tuple[str, ...]]:
+    """Index targets + extensions, overridable via env (production default unchanged).
+
+    `INDEX_TARGETS` / `INDEX_EXTS` are comma-separated; unset falls back to the
+    docs-only defaults. The #288 diagnostic uses this to index code too."""
+    def _csv(name: str, default: tuple[str, ...]) -> tuple[str, ...]:
+        raw = os.environ.get(name, "").strip()
+        return tuple(x.strip() for x in raw.split(",") if x.strip()) if raw else default
+    return (_csv("INDEX_TARGETS", deltascan.DEFAULT_TARGETS),
+            _csv("INDEX_EXTS", deltascan.DEFAULT_EXTS))
+
+
 def run_index(full: bool, dist_only: bool) -> int:
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
         summary("index: OPENAI_API_KEY not set")
         return 1
 
+    targets, exts = _index_scope()
     state = load_state()
     if full or not state.get("base_sha"):
-        paths, deleted = deltascan.full_scan(REPO_ROOT), []
+        paths, deleted = deltascan.full_scan(REPO_ROOT, targets, exts), []
     else:
-        paths = deltascan.changed_files(REPO_ROOT, state["base_sha"])
-        deleted = deltascan.deleted_files(REPO_ROOT, state["base_sha"])
+        paths = deltascan.changed_files(REPO_ROOT, state["base_sha"], targets=targets, exts=exts)
+        deleted = deltascan.deleted_files(REPO_ROOT, state["base_sha"], targets=targets, exts=exts)
 
     changed = _collect_records(paths)
     to_embed = [r for recs in changed.values() for r in select_to_embed(state, recs)]

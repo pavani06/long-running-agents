@@ -37,6 +37,7 @@ import phase3_classify  # noqa: E402
 import retrieval  # noqa: E402
 from dedup import DUP_THRESHOLD  # noqa: E402
 from embed import embed_texts  # noqa: E402
+from glm import GLMError, RateLimited  # noqa: E402
 
 
 def _summary(line: str) -> None:
@@ -45,6 +46,20 @@ def _summary(line: str) -> None:
     if path:
         with open(path, "a", encoding="utf-8") as fh:
             fh.write(line + "\n")
+
+
+def safe_call(fn, default):
+    """Run one network step, tolerating a bad GLM/OpenAI reply.
+
+    A single unparseable JSON reply or a persisted rate-limit among the ~50
+    per-variant calls must NOT abort the whole run — that variant degrades to the
+    `default` (unmatched / unclassified) and is counted as an error in the report.
+    An AuthError (bad key) is NOT caught: that is fatal for every variant and
+    should stop the run. Returns (result, error_str|None)."""
+    try:
+        return fn(), None
+    except (GLMError, RateLimited) as e:
+        return default, str(e)
 
 
 def classify_variant(variant: str, index: dict, openai_key: str, zai_key: str,
@@ -104,14 +119,22 @@ def run(canon_path: str) -> int:
 
     t1_cases, t2_cases, t3_items, gate_c_cases = [], [], [], []
     per_variant = []
+    errors = 0
     for v, vvec in zip(variants, var_vecs):
         candidates = mm.rank_candidates(vvec, concept_vecs, k=rerank_k)
-        reranked = rr.rerank_candidates(v["variant"], candidates, by_id, openai_key)
-        match = mm.decide_match(reranked, min_confidence=min_conf)
+        match, rerr = safe_call(
+            lambda: mm.decide_match(
+                rr.rerank_candidates(v["variant"], candidates, by_id, openai_key),
+                min_confidence=min_conf),
+            {"concept_id": None, "granularity_relation": None})
         predicted = match["concept_id"]
 
-        cls = classify_variant(v["variant"], index, openai_key, zai_key, repo_root)
+        cls, cerr = safe_call(
+            lambda: classify_variant(v["variant"], index, openai_key, zai_key, repo_root),
+            {"verdict": None, "verified": False})
         verdict, verified = cls.get("verdict"), bool(cls.get("verified"))
+        if rerr or cerr:
+            errors += 1
 
         t1_cases.append({"true": v["concept_id"], "predicted": predicted})
         t2_cases.append({"true": v["concept_id"], "predicted": predicted,
@@ -122,7 +145,8 @@ def run(canon_path: str) -> int:
                                  "verified": verified})
         per_variant.append({"true": v["concept_id"], "predicted": predicted,
                             "granularity": match["granularity_relation"],
-                            "verdict": verdict, "verified": verified})
+                            "verdict": verdict, "verified": verified,
+                            "error": rerr or cerr})
 
     t1 = met.t1_identification(t1_cases)
     t2 = met.t2_invariance(t2_cases)
@@ -131,13 +155,13 @@ def run(canon_path: str) -> int:
     ga, gb, gc = met.gate_a(t1), met.gate_b(t2), met.gate_c(gate_c_cases)
     decision = met.poc_decision(ga, gb, gc, sanity)
 
-    _summary(_report(canon, len(variants), sanity, t1, t2, t3, t4, ga, gb, gc, decision))
+    _summary(_report(canon, len(variants), sanity, t1, t2, t3, t4, ga, gb, gc, decision, errors))
     print("\n=== per-variant (log) ===")
     print(json.dumps(per_variant, ensure_ascii=False, indent=2))
     return 0 if decision["passed"] else 1
 
 
-def _report(canon, n_run, sanity, t1, t2, t3, t4, ga, gb, gc, decision) -> str:
+def _report(canon, n_run, sanity, t1, t2, t3, t4, ga, gb, gc, decision, errors=0) -> str:
     s = mc.summary(canon)
     ok = lambda b: "PASS" if b else "FAIL"
     verdict = "✅ PROSSEGUIR (PoC segura → Tier B pode avançar)" if decision["passed"] \
@@ -146,7 +170,9 @@ def _report(canon, n_run, sanity, t1, t2, t3, t4, ga, gb, gc, decision) -> str:
         "# Metamorphic eval-harness — PoC (#288)", "",
         f"## Veredito: {verdict}", "",
         f"Canon: {s['concepts']} conceitos ({s['exists']} exist / {s['missing']} missing / "
-        f"{s['partial']} partial), {s['variants']} paráfrases · rodadas: {n_run} variantes.", "",
+        f"{s['partial']} partial), {s['variants']} paráfrases · rodadas: {n_run} variantes"
+        + (f" · ⚠️ {errors} variante(s) com erro de LLM (degradadas, não abortaram)" if errors else "")
+        + ".", "",
         "## Gates",
         f"- **Gate A (identificação)**: recall **{t1['recall']*100:.0f}%** "
         f"(≥{met.GATE_A_MIN_RECALL*100:.0f}%), false-merge **{t1['false_merge_rate']*100:.1f}%** "
