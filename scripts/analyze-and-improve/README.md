@@ -83,6 +83,10 @@ python3 -m pytest tests/unit/analyze_and_improve_phases_test.py -q   # judgment 
 python3 -m pytest tests/unit/analyze_and_improve_classify_test.py -q # Fase 3 (retrieval + grep-verify)
 python3 -m pytest tests/unit/analyze_and_improve_spine_test.py -q    # Etapa 3 (dedup + rubric + quarantine + landing)
 python3 -m pytest tests/unit/analyze_and_improve_ab_test.py -q       # Etapa 4 (A/B agreement + report)
+python3 -m pytest tests/unit/metamorphic_canon_test.py -q            # #288 canon (load/validate + real-evidence check)
+python3 -m pytest tests/unit/metamorphic_match_test.py -q            # #288 two-stage matcher
+python3 -m pytest tests/unit/metamorphic_rerank_test.py -q           # #288 reranker + sanity mini-eval
+python3 -m pytest tests/unit/metamorphic_metrics_test.py -q          # #288 T1–T4 + gates
 ```
 
 ### A/B validation (Etapa 4, #262 — Tier-B progression gate)
@@ -100,6 +104,46 @@ job's exit reflects the gate (0 = proceed, 1 = iterate). NOTE: the historical
 label-agreement criterion was **retired** as mis-specified (it compared a fresh
 transcript to a Jun-2026 curated package — too few comparable patterns); the
 real Tier-B progression gate is the metamorphic eval-harness (#288).
+
+### Metamorphic eval-harness (#288 — the Tier-B progression gate)
+
+The durable replacement for the retired A/B criterion. Instead of comparing a
+fresh run to a curated package of another source/state (which measured
+source/naming *alignment*, not *quality*), it measures **semantic invariance**:
+reformulating the same concept must not change the verdict. That is a
+self-contained metamorphic test — no historical package needed.
+
+| Module | Role | Pure? |
+|---|---|---|
+| `metamorphic_canon.yaml` | Curated Concept Canon: 10 concepts × 5 paraphrases (5 exist / 3 missing / 2 partial), each with `expected_repo_state` + real `evidence[]`, plus near-miss pairs and reranker-sanity pairs | data |
+| `metamorphic_canon.py` | Load + validate the canon (existence paired with evidence; verdict agrees with `exists`); flatten the 50 cases | `validate_structure`/`evidence_substring_ok`/`profile_text`/`all_variants` pure |
+| `metamorphic_match.py` | Two-stage matcher: stage-1 cosine rank of candidates + stage-2 decision from reranker verdicts | ✅ (`rank_candidates`/`decide_match`) |
+| `metamorphic_rerank.py` | Stage-2 reranker on **OpenAI** (≠ GLM): `same_concept` + `granularity_relation`, plus its own sanity mini-eval | `build_messages`/`parse_rerank`/`score_sanity` pure; `run*` need the key |
+| `metamorphic_metrics.py` | T1 identification · T2 invariance · T3 dedup · T4 novelty + Gates A/B/C (never a single blended score) | ✅ |
+| `metamorphic_poc.py` | Live PoC runner: wires the stages, classifies each variant independently (GLM), grep-verifies evidence, emits the gate report | `run` needs both keys |
+
+**The three non-negotiables (from the #288 grill):** (a) invariance (T2) only
+counts paired with the correction anchor — Gate C requires real repo evidence for
+every existence verdict; consistency without correction would certify the spine
+"consistently wrong". (b) The paraphrases are hand-authored (a different model
+than the GLM classifier), never GLM-generated — otherwise it measures "the model
+agrees with its own paraphrases". (c) The reranker is on the OpenAI side (≠ the
+GLM generator) and passes its own sanity mini-eval before its verdicts are
+trusted.
+
+**Gates (PoC DoD):** A (identification) recall ≥ 90% and false-merge < 5%;
+B (invariance) agreement ≥ 90% with no unexplained Exists∧Missing dispersion;
+C (evidence) every existence verdict grep-verified. Tier B (#263–#266) advances
+only if A **and** B **and** C **and** the reranker sanity all pass. The
+`expected_repo_state` is subjective, curated ground-truth and rots with the repo
+(documented maintenance cost); history becomes a regression corpus, not
+ground-truth.
+
+The live run needs the API keys (Actions secrets), so it is the
+`Metamorphic Eval (Tier B gate · #288)` workflow (`workflow_dispatch`,
+read-only). `max_variants` runs a cheap smoke of the first N cases before the
+full 50 (each run is billed: index build + ~50 independent GLM classify calls +
+the reranker). Job exit reflects the gate (0 = proceed, 1 = iterate).
 
 ## CLI
 

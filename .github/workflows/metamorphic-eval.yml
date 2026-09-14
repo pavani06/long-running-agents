@@ -1,0 +1,74 @@
+name: Metamorphic Eval (Tier B gate · #288)
+
+# The metamorphic eval-harness PoC (#288): the durable, re-pointable Tier-B
+# progression gate that replaces the retired historical A/B criterion (#262).
+# Runs the 50 curated cases (Concept Canon + T1–T4 + 2-stage reranker) live:
+# stage-1 embedding retrieval + stage-2 OpenAI reranker (≠ GLM) for identity,
+# and the GLM Fase-3 classifier + grep-verify for the verdict/evidence anchor.
+# Read-only — writes nothing to the repo. This is NOT the daily pipeline.
+#
+# Cost: each run is billed (index build + ~50 GLM classify calls + reranker).
+# Use `max_variants` for a cheap smoke of the first N cases before the full 50.
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_variants:
+        description: "Run only the first N of the 50 cases (0 = all). Use for a cheap smoke."
+        type: string
+        default: "0"
+      rerank_k:
+        description: "Stage-1 candidates handed to the stage-2 reranker per variant"
+        type: string
+        default: "2"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: metamorphic-eval
+  cancel-in-progress: false
+
+jobs:
+  metamorphic-eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --upgrade requests pyyaml
+
+      - name: Build repo semantic index (full)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/analyze-and-improve/pipeline.py index --full
+
+      - name: Run metamorphic PoC
+        id: poc
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+          # Inputs go through env (never interpolated into the script body) to
+          # avoid the GitHub Actions script-injection anti-pattern.
+          MAX_VARIANTS: ${{ github.event.inputs.max_variants }}
+          RERANK_K: ${{ github.event.inputs.rerank_k }}
+        run: |
+          set +e
+          python scripts/analyze-and-improve/metamorphic_poc.py
+          rc=$?
+          echo "POC_RC=$rc" >> "$GITHUB_OUTPUT"
+          echo "metamorphic_poc exit: $rc (0 = PROSSEGUIR, 1 = ITERAR/setup)"
+
+      - name: Decision (job status reflects the gate)
+        env:
+          POC_RC: ${{ steps.poc.outputs.POC_RC }}
+        run: |
+          if [ "$POC_RC" = "0" ]; then
+            echo "PoC HELD — Tier B may advance. See the job summary for the report."
+          else
+            echo "PoC did not hold (rc=$POC_RC) — iterate. See the job summary."
+            exit 1
+          fi
