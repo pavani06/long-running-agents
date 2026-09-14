@@ -111,6 +111,52 @@ def mark_verified(classifications: list[dict], verified_citations: list[dict]) -
     return classifications
 
 
+EXISTENCE_VERDICTS = VERDICTS - {"Missing"}   # Exists/Partial/Better assert the concept is present
+
+
+def _grounds(cit: dict) -> bool:
+    """A citation counts as grounding iff its content was actually checked: it
+    grep-verified (`ok`) AND carried a non-empty quote. Same bar as `mark_verified`
+    — a line that exists but was never content-checked is not grounding."""
+    return bool(cit.get("ok")) and bool((cit.get("quote") or "").strip())
+
+
+def mark_grounding(classifications: list[dict], verified_citations: list[dict]) -> list[dict]:
+    """Annotate each classification with the provenance of its VERIFIED grounding.
+
+    Adds two DERIVED-ONLY fields (the `verdict` is never touched, so the field is
+    byte-compatible for every existing consumer of `verdict`):
+
+    * `grounding`: {"code": nc, "doc": nd, "other": no} — counts of this verdict's
+      grep-verified, content-checked citations by `source_type`.
+    * `code_only_grounded`: True iff this is an **existence** verdict whose verified
+      grounding is **exclusively** code (≥1 verified code citation, 0 verified doc
+      citations). This is a statement about THIS RUN's evidence only — "this
+      existence verdict was grounded solely in verified code citations here." It does
+      NOT assert that the concept is implemented, nor that it is undocumented; it makes
+      no ontology claim beyond what was cited.
+
+    NON-COUPLING (extends the G1 invariant): these fields are read FROM provenance,
+    never fed back into `verdict` or `verified`. `source_type == "code"` still cannot,
+    by itself, set any verdict.
+    """
+    by_pat: dict[str, list[dict]] = {}
+    for v in verified_citations:
+        by_pat.setdefault(v.get("pattern"), []).append(v)
+    for c in classifications:
+        cits = [x for x in by_pat.get(c.get("pattern"), []) if _grounds(x)]
+        counts = {"code": 0, "doc": 0, "other": 0}
+        for x in cits:
+            st = x.get("source_type")
+            counts[st if st in counts else "other"] += 1
+        c["grounding"] = counts
+        c["code_only_grounded"] = (
+            c.get("verdict") in EXISTENCE_VERDICTS
+            and counts["code"] >= 1 and counts["doc"] == 0
+        )
+    return classifications
+
+
 def run(patterns: list[dict], api_key: str, *, retriever, client=chat_json) -> list[dict]:
     """Fase 3 with one 'ask for more' round. `retriever(need_more)->context` and
     `client` are injectable. need_more=None asks for the initial context."""

@@ -130,6 +130,104 @@ def test_pr_body_accepted():
     assert "auto-merge OFF" in body
 
 
+# ── documentation-coverage consumer guard (#288 B′) — POSITIVE-EVIDENCE ────
+# Coverage requires a coverage verdict (Exists/Better) AND ≥1 verified doc grounding.
+def test_is_documentation_covered_exists_code_only_is_a_gap():
+    # THE regression: Exists grounded only in verified code → NOT documented.
+    c = {"pattern": "cosine-dedup", "verdict": "Exists", "code_only_grounded": True,
+         "grounding": {"code": 5, "doc": 0, "other": 0}}
+    assert landing.is_documentation_covered(c) is False
+
+
+def test_is_documentation_covered_exists_doc_grounded_is_covered():
+    c = {"pattern": "P", "verdict": "Exists", "grounding": {"code": 0, "doc": 2, "other": 0}}
+    assert landing.is_documentation_covered(c) is True
+
+
+def test_is_documentation_covered_exists_mixed_grounding_is_covered():
+    # has ≥1 doc grounding alongside code → documentation evidence present → covered.
+    c = {"pattern": "P", "verdict": "Exists", "grounding": {"code": 3, "doc": 1, "other": 0}}
+    assert landing.is_documentation_covered(c) is True
+
+
+def test_is_documentation_covered_exists_zero_grounding_is_a_gap():
+    # positive-evidence: no verified grounding at all proves nothing → gap.
+    c = {"pattern": "P", "verdict": "Exists", "grounding": {"code": 0, "doc": 0, "other": 0}}
+    assert landing.is_documentation_covered(c) is False
+
+
+def test_is_documentation_covered_exists_missing_grounding_field_is_a_gap():
+    # defensive: absent grounding (never marked) must fail toward gap.
+    assert landing.is_documentation_covered({"pattern": "P", "verdict": "Exists"}) is False
+
+
+def test_is_documentation_covered_exists_other_only_is_a_gap():
+    # other-only (e.g. yaml/config) is not documentation → gap.
+    c = {"pattern": "P", "verdict": "Exists", "grounding": {"code": 0, "doc": 0, "other": 4}}
+    assert landing.is_documentation_covered(c) is False
+
+
+def test_is_documentation_covered_better_follows_exists_semantics():
+    # Better presupposes the concept exists (canon groups Exists+Better): doc-grounded
+    # Better is coverage; code-only Better is a gap — same rule as Exists.
+    doc_better = {"pattern": "P", "verdict": "Better", "grounding": {"code": 0, "doc": 1, "other": 0}}
+    code_better = {"pattern": "P", "verdict": "Better", "grounding": {"code": 2, "doc": 0, "other": 0}}
+    assert landing.is_documentation_covered(doc_better) is True
+    assert landing.is_documentation_covered(code_better) is False
+
+
+def test_is_documentation_covered_partial_is_always_a_gap():
+    # Partial ("existe parcialmente") must remain a gap even WITH doc grounding.
+    c = {"pattern": "P", "verdict": "Partial", "grounding": {"code": 0, "doc": 3, "other": 0}}
+    assert landing.is_documentation_covered(c) is False
+
+
+def test_is_documentation_covered_missing_is_a_gap():
+    assert landing.is_documentation_covered({"pattern": "k8s", "verdict": "Missing"}) is False
+
+
+def test_documentation_gaps_lists_uncovered_coverage_claims():
+    cls = [
+        {"pattern": "cosine-dedup", "verdict": "Exists",                # code-only → gap
+         "grounding": {"code": 5, "doc": 0, "other": 0}},
+        {"pattern": "other-only", "verdict": "Better",                  # other-only → gap
+         "grounding": {"code": 0, "doc": 0, "other": 2}},
+        {"pattern": "documented", "verdict": "Exists",                  # doc-grounded → covered
+         "grounding": {"code": 0, "doc": 3, "other": 0}},
+        {"pattern": "part", "verdict": "Partial",                       # not a coverage claim
+         "grounding": {"code": 0, "doc": 1, "other": 0}},
+        {"pattern": "k8s", "verdict": "Missing"},                       # control
+    ]
+    gaps = landing.documentation_gaps(cls)
+    assert [g["pattern"] for g in gaps] == ["cosine-dedup", "other-only"]
+
+
+def test_pr_body_surfaces_code_only_gap_at_consumer():
+    # The guard is wired into the actual consumer (pr_body), not left as metadata.
+    summary = {"slug": "s", "accepted": True, "reasons": [],
+               "classifications": [{"pattern": "cosine-dedup", "verdict": "Exists",
+                                    "code_only_grounded": True,
+                                    "grounding": {"code": 5, "doc": 0, "other": 0}}],
+               "evaluation": {"mean": 4.0, "passed": True},
+               "dedup": {"duplicate": False, "score": 0.3},
+               "plan": landing.LandingPlan(auto_merge=False, dry_run=True)}
+    body = landing.pr_body(summary)
+    assert "Lacuna de documentação" in body and "cosine-dedup" in body
+
+
+def test_pr_body_no_gap_section_for_doc_grounded_exists():
+    # backwards-compat: an ordinary doc-grounded Exists produces no new section.
+    summary = {"slug": "s", "accepted": True, "reasons": [],
+               "classifications": [{"pattern": "P", "verdict": "Exists",
+                                    "code_only_grounded": False,
+                                    "grounding": {"code": 0, "doc": 2, "other": 0}}],
+               "evaluation": {"mean": 4.0, "passed": True},
+               "dedup": {"duplicate": False, "score": 0.3}, "plan": None}
+    body = landing.pr_body(summary)
+    assert "Lacuna de documentação" not in body
+    assert "Exists: 1" in body   # existing coverage report unchanged
+
+
 def test_pr_body_quarantine_lists_reasons():
     summary = {"slug": "s", "accepted": False, "reasons": ["evaluator adversarial abaixo do corte"],
                "classifications": [], "evaluation": {"mean": 1.0, "passed": False},
