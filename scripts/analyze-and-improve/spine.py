@@ -14,6 +14,7 @@ import subprocess
 import time
 from pathlib import Path
 
+import aai_metrics
 import dedup
 import evaluator
 import grep_verify
@@ -104,6 +105,9 @@ def run_spine(transcript: str, slug: str, index: dict, *, openai_key: str, zai_k
     summary = {"slug": slug, "accepted": decision["accepted"], "reasons": decision["reasons"],
                "classifications": classifications, "evaluation": evaluation,
                "dedup": dup, "plan": plan}
+    # AAI_METRICS (#288 Stage A) — verdict-drift + guard baseline. Telemetry only.
+    aai_metrics.emit("classify", {"slug": slug, "scope": aai_metrics.scope_label(),
+                                  **aai_metrics.classify_fields(classifications)})
     return {"summary": summary, "extraction": extraction, "mental_model": mental_model,
             "patterns": patterns, "classifications": classifications,
             "report": report, "decision": decision,
