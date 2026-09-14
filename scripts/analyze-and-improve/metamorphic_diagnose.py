@@ -38,6 +38,7 @@ import metamorphic_canon as mc  # noqa: E402
 import phase3_classify  # noqa: E402
 import retrieval  # noqa: E402
 from embed import embed_texts  # noqa: E402
+from glm import GLMError, RateLimited  # noqa: E402
 from retrieval import rank_sections  # noqa: E402
 
 
@@ -123,9 +124,14 @@ def _summary(line: str) -> None:
             fh.write(line + "\n")
 
 
-def _classify_with(context_retriever, variant: str, zai_key: str) -> str:
+def _classify_with(context_retriever, variant: str, zai_key: str):
+    """One classification; tolerates a bad GLM reply so a single unparseable JSON
+    among the ~70 calls degrades that variant (verdict None) instead of aborting."""
     pattern = {"name": variant[:80], "problem": variant, "mechanism": ""}
-    cls = phase3_classify.run([pattern], zai_key, retriever=context_retriever)
+    try:
+        cls = phase3_classify.run([pattern], zai_key, retriever=context_retriever)
+    except (GLMError, RateLimited):
+        return None
     return cls[0].get("verdict")
 
 
