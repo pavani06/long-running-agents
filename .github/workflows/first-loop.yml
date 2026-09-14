@@ -1,0 +1,83 @@
+name: First Useful Governed Loop (#263 slice)
+
+# Proves ONE real end-to-end path of analyze-and-improve, human-gated:
+#   real source → F1/F2/F3 → one Missing → F4 creation → quarantine → gates → ONE PR.
+# NOT the daily pipeline (that is #266): one manual dispatch, one real non-benchmark
+# source, exactly one proposed canonical doc into docs/analysis/<slug>/proposed/, existing
+# content gates run against it, and a single human-review PR with auto-merge OFF. Nothing
+# is promoted to canonical/curriculum. Index is built docs-only (production default; the
+# #288 docs+code flip is NOT enabled here).
+#
+# Cost: one billed run (docs-only index build + F1/F2/F3 GLM calls + F4 GLM call + reranker
+# + one adversarial-evaluator call + one dedup embedding).
+
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: "Extract filename (empty = deterministic first non-benchmark pending)"
+        type: string
+        default: ""
+      pattern_id:
+        description: "Explicit Missing pattern to propose (empty = first eligible Missing)"
+        type: string
+        default: ""
+
+permissions:
+  contents: write        # push the proposal branch
+  pull-requests: write   # open the human-review PR
+
+concurrency:
+  group: first-loop
+  cancel-in-progress: false
+
+jobs:
+  first-loop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --upgrade requests pyyaml
+
+      - name: Build repo semantic index (full, docs-only default)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/analyze-and-improve/pipeline.py index --full
+
+      - name: Run the First Useful Governed Loop (through F4 + gates; no PR yet)
+        id: loop
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
+          # Inputs via env (never interpolated into the script) — script-injection safe.
+          SOURCE: ${{ github.event.inputs.source }}
+          PATTERN_ID: ${{ github.event.inputs.pattern_id }}
+          PR_BODY_PATH: pr-body.md
+        run: python scripts/analyze-and-improve/first_loop.py
+
+      - name: Open ONE human-review PR (auto-merge OFF)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.loop.outputs.branch }}
+          PROPOSED_PATH: ${{ steps.loop.outputs.proposed_path }}
+          PR_TITLE: ${{ steps.loop.outputs.pr_title }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add -- "$PROPOSED_PATH"
+          git commit -m "proposal(analyze-and-improve): $PR_TITLE
+
+          Proposed canonical doc created by the First Useful Governed Loop (#263 slice).
+          creation != promotion — this lives ONLY in docs/analysis/<slug>/proposed/ and is
+          NOT promoted. Human review decides promotion. auto-merge OFF.
+
+          Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
+          git push -u origin "$BRANCH"
+          # auto-merge is NOT enabled — the PR waits for a human.
+          gh pr create --base main --head "$BRANCH" --title "$PR_TITLE" --body-file pr-body.md
