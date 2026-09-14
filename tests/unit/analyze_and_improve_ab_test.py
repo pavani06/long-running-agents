@@ -69,6 +69,23 @@ def test_label_agreement_no_overlap_is_zero():
     assert a["shared"] == 0 and a["agreement"] == 0.0    # no false confidence
 
 
+def test_label_agreement_fuzzy_matches_near_names():
+    # curated "Structured Output Contract" vs GLM "Structured Output" — no exact
+    # match, but the default fuzzy matcher pairs them.
+    fresh = [{"name": "Structured Output", "verdict": "Exists"}]
+    hist = [{"name": "Structured Output Contract", "verdict": "Exists"}]
+    a = ab.label_agreement(fresh, hist)
+    assert a["shared"] == 1 and a["matched"] == 1 and a["agreement"] == 1.0
+
+
+def test_fuzzy_matcher_greedy_unique():
+    m = ab.fuzzy_matcher(threshold=0.6)
+    pairs = m(["error context hygiene", "structured output"],
+              ["error context", "structured output contract"])
+    assert pairs["error context"] == "error context hygiene"
+    assert pairs["structured output contract"] == "structured output"
+
+
 # ── decision ──────────────────────────────────────────────────────────────
 def test_decide_ab_pass():
     d = ab.decide_ab({"agreement": 0.85, "shared": 10}, True)
