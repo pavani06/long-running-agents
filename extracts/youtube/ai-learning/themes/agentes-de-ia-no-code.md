@@ -8,7 +8,7 @@ size: 58
 
 # Tema: Agentes de IA No-Code
 
-_Tutoriais para iniciantes sobre construção e automação com agentes de IA em plataformas no-code como n8n, Bolt, Lovable, Cursor e OpenAI Agent Builder._
+_Tutoriais para iniciantes sobre construção e automação de agentes de IA usando ferramentas no-code/low-code como n8n, Bolt, Cursor, Lovable e Agent Builder._
 
 **Tags dominantes:** agent-tooling, stack-tooling, agents
 

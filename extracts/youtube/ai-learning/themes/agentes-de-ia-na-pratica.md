@@ -1,14 +1,14 @@
 ---
-title: "Tema: Engenharia de Contexto e Agentes"
+title: "Tema: Agentes de IA na prática"
 type: "theme"
 source: youtube
 tags: ["context-engineering", "agent-tooling", "stack-tooling"]
 size: 63
 ---
 
-# Tema: Engenharia de Contexto e Agentes
+# Tema: Agentes de IA na prática
 
-_Domínio prático do stack de agentes de IA — Claude Code, Managed Agents, computer use e automações N8N — combinado com técnicas de engenharia de prompts e hierarquias de contexto para levar agentes a produção._
+_Uso prático de ferramentas e agentes de IA como Claude Code, ChatGPT e computer use para automatizar tarefas e negócios, apoiado em engenharia de prompts e de contexto._
 
 **Tags dominantes:** context-engineering, agent-tooling, stack-tooling
 

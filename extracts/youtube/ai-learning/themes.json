@@ -4,7 +4,7 @@
   "themes": [
     {
       "id": "t01",
-      "size": 89,
+      "size": 90,
       "members": [
         "-KfrrWRl3FA",
         "-qm0ln33G24",
@@ -37,6 +37,7 @@
         "H-oCV5brtU4",
         "Hn27upT2m_o",
         "I8VUN141MjU",
+        "JomVvNDjGb8",
         "Js1gU6L1Zi8",
         "K4s6Cgicw_A",
         "NDdc39KYqDU",
@@ -106,14 +107,14 @@
         "harness de agentes"
       ],
       "label_auto": "agents, analise, governanca",
-      "label_llm": "Futuro e Estratégia da IA Agêntica",
-      "description": "Análises de líderes e pesquisadores sobre o futuro dos agentes de IA, estratégias corporativas, governança e os impactos da próxima onda de inteligência artificial.",
-      "slug": "futuro-e-estrategia-da-ia-agentica",
-      "name": "Futuro e Estratégia da IA Agêntica"
+      "label_llm": "Futuro da IA e Agentes",
+      "description": "Entrevistas, keynotes e palestras de líderes e pesquisadores analisando a trajetória da IA — do fim do pré-treinamento à era dos agentes e da superinteligência — incluindo estratégias de big techs e impactos no mercado de trabalho.",
+      "slug": "futuro-da-ia-e-agentes",
+      "name": "Futuro da IA e Agentes"
     },
     {
       "id": "t02",
-      "size": 84,
+      "size": 83,
       "members": [
         "-3MPnUGqa68",
         "-QFHIoCo-Ko",
@@ -145,7 +146,6 @@
         "HI2q3ci3Iuc",
         "I8fs4omN1no",
         "Ib5GBkD555M",
-        "JomVvNDjGb8",
         "KHudyx5wW3U",
         "LeUUxLRdvho",
         "Lri2LNYtERM",
@@ -210,10 +210,10 @@
         "system design"
       ],
       "label_auto": "agentic-coding, context-engineering, verification",
-      "label_llm": "Agentes de Codificação na Prática",
-      "description": "Fluxos de trabalho, skills, memória contextual e evals para construir e verificar agentes de programação confiáveis em produção.",
-      "slug": "agentes-de-codificacao-na-pratica",
-      "name": "Agentes de Codificação na Prática"
+      "label_llm": "Agentic Coding Workflows",
+      "description": "Práticas de engenharia para construir e escalar agentes de codificação, incluindo skills auditáveis, evals de verificação, memória corporativa segura e fluxos agent-nativos que substituem práticas determinísticas tradicionais.",
+      "slug": "agentic-coding-workflows",
+      "name": "Agentic Coding Workflows"
     },
     {
       "id": "t03",
@@ -293,10 +293,10 @@
         "human-in-the-loop"
       ],
       "label_auto": "context-engineering, agent-tooling, stack-tooling",
-      "label_llm": "Engenharia de Contexto e Agentes",
-      "description": "Domínio prático do stack de agentes de IA — Claude Code, Managed Agents, computer use e automações N8N — combinado com técnicas de engenharia de prompts e hierarquias de contexto para levar agentes a produção.",
-      "slug": "engenharia-de-contexto-e-agentes",
-      "name": "Engenharia de Contexto e Agentes"
+      "label_llm": "Agentes de IA na prática",
+      "description": "Uso prático de ferramentas e agentes de IA como Claude Code, ChatGPT e computer use para automatizar tarefas e negócios, apoiado em engenharia de prompts e de contexto.",
+      "slug": "agentes-de-ia-na-pratica",
+      "name": "Agentes de IA na prática"
     },
     {
       "id": "t04",
@@ -372,7 +372,7 @@
       ],
       "label_auto": "agent-tooling, stack-tooling, agents",
       "label_llm": "Agentes de IA No-Code",
-      "description": "Tutoriais para iniciantes sobre construção e automação com agentes de IA em plataformas no-code como n8n, Bolt, Lovable, Cursor e OpenAI Agent Builder.",
+      "description": "Tutoriais para iniciantes sobre construção e automação de agentes de IA usando ferramentas no-code/low-code como n8n, Bolt, Cursor, Lovable e Agent Builder.",
       "slug": "agentes-de-ia-no-code",
       "name": "Agentes de IA No-Code"
     },
@@ -427,10 +427,10 @@
         "Agente como produto (every agent is a product)"
       ],
       "label_auto": "context-engineering, agents, arquitetura",
-      "label_llm": "Arquitetura e Engenharia de Agentes",
-      "description": "Como projetar agentes confiáveis em produção por meio de ciclos de vida orientados a evals, orquestração dinâmica de subagentes paralelos e engenharia de contexto para escalar além de ferramentas agênticas genéricas.",
-      "slug": "arquitetura-e-engenharia-de-agentes",
-      "name": "Arquitetura e Engenharia de Agentes"
+      "label_llm": "Deep Agents e Engenharia de Contexto",
+      "description": "Construção de agentes de IA confiáveis em produção por meio de arquiteturas de deep agents com subagentes paralelos, evals em loop fechado e gestão cuidadosa do contexto e das decisões dos agentes.",
+      "slug": "deep-agents-e-engenharia-de-contexto",
+      "name": "Deep Agents e Engenharia de Contexto"
     },
     {
       "id": "t06",
@@ -457,10 +457,10 @@
         "estratégia baseada em busca (search-based)"
       ],
       "label_auto": "process, analise, documentation-publishing",
-      "label_llm": "Playbooks de Growth e Marketing Digital",
-      "description": "Estratégias e sistemas de marketing digital e growth — de YouTube orgânico e táticas sem orçamento a zero-click e onboarding — analisados para ajudar negócios a conquistar e escalar clientes.",
-      "slug": "playbooks-de-growth-e-marketing-digital",
-      "name": "Playbooks de Growth e Marketing Digital"
+      "label_llm": "Growth e Marketing Digital",
+      "description": "Playbooks de crescimento orgânico e marketing digital — de sistemas de YouTube e produtos digitais a estratégias de empresas de IA — para conquistar clientes sem orçamento na era zero-click e dos LLMs.",
+      "slug": "growth-e-marketing-digital",
+      "name": "Growth e Marketing Digital"
     },
     {
       "id": "t07",
@@ -487,7 +487,7 @@
       ],
       "label_auto": "analise, process, decision-discipline",
       "label_llm": "Pensamento Sistêmico e Negociação",
-      "description": "Frameworks de análise e disciplina de decisão — pensamento sistêmico, mapeamento de processos e negociação baseada em princípios — para resolver problemas complexos e influenciar com clareza.",
+      "description": "Frameworks estruturados de análise — pensamento sistêmico, mapeamento de processos e princípios de negociação — para entender problemas complexos, influenciar conversas e tomar decisões disciplinadas.",
       "slug": "pensamento-sistemico-e-negociacao",
       "name": "Pensamento Sistêmico e Negociação"
     },
@@ -513,10 +513,10 @@
         "arquitetura cliente-servidor MCP (host, client, server)"
       ],
       "label_auto": "agent-tooling, arquitetura, stack-tooling",
-      "label_llm": "Protocolo MCP e Agentes",
-      "description": "Como o Model Context Protocol padroniza a descoberta e consumo de ferramentas e contexto externos por agentes de IA, substituindo integrações manuais de APIs por uma camada cliente-servidor reutilizável.",
-      "slug": "protocolo-mcp-e-agentes",
-      "name": "Protocolo MCP e Agentes"
+      "label_llm": "Protocolo MCP e Ferramentas",
+      "description": "Como o Model Context Protocol padroniza, via arquitetura cliente-servidor, a descoberta e integração de ferramentas e contexto externo para agentes de IA, do n8n à web de agentes.",
+      "slug": "protocolo-mcp-e-ferramentas",
+      "name": "Protocolo MCP e Ferramentas"
     },
     {
       "id": "t09",
@@ -541,7 +541,7 @@
       ],
       "label_auto": "stack-tooling, analise, model-selection",
       "label_llm": "Testes de Modelos Multimodais",
-      "description": "Primeiras impressões e testes práticos de modelos multimodais recentes (Gemini 2.0, Nano Banana, Sora, GPT-4o realtime), explorando APIs, geração de imagem/vídeo e interações em tempo real para aplicações de desenvolvedores.",
+      "description": "Análises e testes práticos de lançamentos multimodais de IA (Gemini 2.0/Nano Banana, Sora, GPT-4o), cobrindo APIs, geração e edição de imagens/vídeo, streaming em tempo real e dicas de adoção e escolha de modelo.",
       "slug": "testes-de-modelos-multimodais",
       "name": "Testes de Modelos Multimodais"
     }

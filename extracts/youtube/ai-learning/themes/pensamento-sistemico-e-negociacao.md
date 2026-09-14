@@ -8,7 +8,7 @@ size: 9
 
 # Tema: Pensamento Sistêmico e Negociação
 
-_Frameworks de análise e disciplina de decisão — pensamento sistêmico, mapeamento de processos e negociação baseada em princípios — para resolver problemas complexos e influenciar com clareza._
+_Frameworks estruturados de análise — pensamento sistêmico, mapeamento de processos e princípios de negociação — para entender problemas complexos, influenciar conversas e tomar decisões disciplinadas._
 
 **Tags dominantes:** analise, process, decision-discipline
 

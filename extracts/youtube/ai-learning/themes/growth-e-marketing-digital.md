@@ -1,14 +1,14 @@
 ---
-title: "Tema: Playbooks de Growth e Marketing Digital"
+title: "Tema: Growth e Marketing Digital"
 type: "theme"
 source: youtube
 tags: ["process", "analise", "documentation-publishing"]
 size: 10
 ---
 
-# Tema: Playbooks de Growth e Marketing Digital
+# Tema: Growth e Marketing Digital
 
-_Estratégias e sistemas de marketing digital e growth — de YouTube orgânico e táticas sem orçamento a zero-click e onboarding — analisados para ajudar negócios a conquistar e escalar clientes._
+_Playbooks de crescimento orgânico e marketing digital — de sistemas de YouTube e produtos digitais a estratégias de empresas de IA — para conquistar clientes sem orçamento na era zero-click e dos LLMs._
 
 **Tags dominantes:** process, analise, documentation-publishing
 

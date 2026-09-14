@@ -1,18 +1,18 @@
 ---
-title: "Tema: Agentes de Codificação na Prática"
+title: "Tema: Agentic Coding Workflows"
 type: "theme"
 source: youtube
 tags: ["agentic-coding", "context-engineering", "verification"]
-size: 84
+size: 83
 ---
 
-# Tema: Agentes de Codificação na Prática
+# Tema: Agentic Coding Workflows
 
-_Fluxos de trabalho, skills, memória contextual e evals para construir e verificar agentes de programação confiáveis em produção._
+_Práticas de engenharia para construir e escalar agentes de codificação, incluindo skills auditáveis, evals de verificação, memória corporativa segura e fluxos agent-nativos que substituem práticas determinísticas tradicionais._
 
 **Tags dominantes:** agentic-coding, context-engineering, verification
 
-## Vídeos (84)
+## Vídeos (83)
 - [[extracts/youtube/ai-learning/2026-09-11-software-fundamentals-matter-more-than-ever-matt-pocock--v4F1gFy-hqg|"Software Fundamentals Matter More Than Ever" — Matt Pocock]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-engineer-of-the-future-is-the-person-who-is-able-to-choose-what-is-worth-doi--n97BCfyFIvw|"The engineer of the future is the person who is able to choose what is worth doing." — Addy Osmani]]
 - [[extracts/youtube/ai-learning/2026-09-11-75m-founder-reveals-his-agentic-engineering-setup--QBfXiWvM0qc|$75M founder reveals his Agentic Engineering setup]]
@@ -94,6 +94,5 @@ _Fluxos de trabalho, skills, memória contextual e evals para construir e verifi
 - [[extracts/youtube/ai-learning/2026-09-11-why-the-harness-matters-more-than-the-model-yc-paper-club--n9xKblqyQ28|Why The Harness Matters More Than The Model | YC Paper Club]]
 - [[extracts/youtube/ai-learning/2026-09-11-wtf-is-loop-engineer-how-to-setup-for-real--W6x-hb44C0c|wtf is Loop Engineer & how to setup for real]]
 - [[extracts/youtube/ai-learning/2026-09-11-your-attention-is-the-bottleneck-not-your-agents-zack-proser-workos--so9l_MwS2yg|Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS]]
-- [[extracts/youtube/ai-learning/2026-09-11-your-coding-agent-should-do-ai-system-engineering-ben-burtenshaw-hugging-face--JomVvNDjGb8|Your Coding Agent Should Do AI System Engineering — Ben Burtenshaw, Hugging Face]]
 - [[extracts/youtube/ai-learning/2026-09-11-your-company-brain-will-leak-secrets-how-we-stopped-it-for-big-banks-tanmai-gopa--0uC6u0lJJl4|Your company brain will leak secrets: how we stopped it for big banks — Tanmai Gopal, PromptQL]]
 - [[extracts/youtube/ai-learning/2026-09-11-zta-zero-token-architecture-kelsey-hightower-platformcon-2026--A7WFt2JQ5sg|ZTA: Zero Token Architecture - Kelsey Hightower | PlatformCon 2026]]

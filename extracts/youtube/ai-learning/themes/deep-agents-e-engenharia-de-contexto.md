@@ -1,14 +1,14 @@
 ---
-title: "Tema: Arquitetura e Engenharia de Agentes"
+title: "Tema: Deep Agents e Engenharia de Contexto"
 type: "theme"
 source: youtube
 tags: ["context-engineering", "agents", "arquitetura"]
 size: 36
 ---
 
-# Tema: Arquitetura e Engenharia de Agentes
+# Tema: Deep Agents e Engenharia de Contexto
 
-_Como projetar agentes confiáveis em produção por meio de ciclos de vida orientados a evals, orquestração dinâmica de subagentes paralelos e engenharia de contexto para escalar além de ferramentas agênticas genéricas._
+_Construção de agentes de IA confiáveis em produção por meio de arquiteturas de deep agents com subagentes paralelos, evals em loop fechado e gestão cuidadosa do contexto e das decisões dos agentes._
 
 **Tags dominantes:** context-engineering, agents, arquitetura
 

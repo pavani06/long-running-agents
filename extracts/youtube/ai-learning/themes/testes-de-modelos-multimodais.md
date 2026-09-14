@@ -8,7 +8,7 @@ size: 7
 
 # Tema: Testes de Modelos Multimodais
 
-_Primeiras impressões e testes práticos de modelos multimodais recentes (Gemini 2.0, Nano Banana, Sora, GPT-4o realtime), explorando APIs, geração de imagem/vídeo e interações em tempo real para aplicações de desenvolvedores._
+_Análises e testes práticos de lançamentos multimodais de IA (Gemini 2.0/Nano Banana, Sora, GPT-4o), cobrindo APIs, geração e edição de imagens/vídeo, streaming em tempo real e dicas de adoção e escolha de modelo._
 
 **Tags dominantes:** stack-tooling, analise, model-selection
 

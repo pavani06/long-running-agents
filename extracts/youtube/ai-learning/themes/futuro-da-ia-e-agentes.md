@@ -1,18 +1,18 @@
 ---
-title: "Tema: Futuro e Estratégia da IA Agêntica"
+title: "Tema: Futuro da IA e Agentes"
 type: "theme"
 source: youtube
 tags: ["agents", "analise", "governanca"]
-size: 89
+size: 90
 ---
 
-# Tema: Futuro e Estratégia da IA Agêntica
+# Tema: Futuro da IA e Agentes
 
-_Análises de líderes e pesquisadores sobre o futuro dos agentes de IA, estratégias corporativas, governança e os impactos da próxima onda de inteligência artificial._
+_Entrevistas, keynotes e palestras de líderes e pesquisadores analisando a trajetória da IA — do fim do pré-treinamento à era dos agentes e da superinteligência — incluindo estratégias de big techs e impactos no mercado de trabalho._
 
 **Tags dominantes:** agents, analise, governanca
 
-## Vídeos (89)
+## Vídeos (90)
 - [[extracts/youtube/ai-learning/2026-09-11-is-there-an-ai-bubble-gavin-baker-and-david-george--5ze3ZNvOdRY|"Is there an AI bubble?” Gavin Baker and David George]]
 - [[extracts/youtube/ai-learning/2026-09-11-24h-inside-a-30m-silicon-valley-ai-startup-with-no-employees--OpsGJaijG10|24h Inside a $30M Silicon Valley AI Startup with No Employees]]
 - [[extracts/youtube/ai-learning/2026-09-11-6-government-databases-most-people-dont-know-are-public--E6Nx8cYaqUQ|6 Government Databases Most People Don’t Know Are Public]]
@@ -102,3 +102,4 @@ _Análises de líderes e pesquisadores sobre o futuro dos agentes de IA, estrat�
 - [[extracts/youtube/ai-learning/2026-09-11-why-enterprise-ai-adoption-is-slower-than-you-think-aaron-levie-box-harrison-cha--agSRMrhNTf4|Why Enterprise AI Adoption Is Slower Than You Think — Aaron Levie (Box) + Harrison Chase]]
 - [[extracts/youtube/ai-learning/2026-09-11-yann-lecun-on-what-comes-after-llms--ngBraLDqzdI|Yann LeCun on What Comes After LLMs]]
 - [[extracts/youtube/ai-learning/2026-09-11-yann-lecun-s-1b-bet-against-llms-part-1--kYkIdXwW2AE|Yann LeCun's $1B Bet Against LLMs [Part 1]]]
+- [[extracts/youtube/ai-learning/2026-09-11-your-coding-agent-should-do-ai-system-engineering-ben-burtenshaw-hugging-face--JomVvNDjGb8|Your Coding Agent Should Do AI System Engineering — Ben Burtenshaw, Hugging Face]]
