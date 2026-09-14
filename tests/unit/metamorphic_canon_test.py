@@ -9,7 +9,7 @@ sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
 
 import metamorphic_canon as mc  # noqa: E402
 
-CANON_PATH = ROOT / "scripts" / "analyze-and-improve" / "metamorphic_canon.yaml"
+CANON_PATH = ROOT / "eval" / "truth" / "metamorphic_canon.yaml"
 
 
 def _concept(**over):

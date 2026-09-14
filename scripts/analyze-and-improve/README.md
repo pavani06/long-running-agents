@@ -113,14 +113,20 @@ source/naming *alignment*, not *quality*), it measures **semantic invariance**:
 reformulating the same concept must not change the verdict. That is a
 self-contained metamorphic test — no historical package needed.
 
+The Concept Canon (the curated ground-truth) lives **outside this module**, in the
+eval-truth store `eval/truth/` (see its own README) — it is deliberately kept out
+of the system-under-test's observable universe so the classifier cannot retrieve
+its own answer key (#288 decontamination).
+
 | Module | Role | Pure? |
 |---|---|---|
-| `metamorphic_canon.yaml` | Curated Concept Canon: 10 concepts × 5 paraphrases (5 exist / 3 missing / 2 partial), each with `expected_repo_state` + real `evidence[]`, plus near-miss pairs and reranker-sanity pairs | data |
-| `metamorphic_canon.py` | Load + validate the canon (existence paired with evidence; verdict agrees with `exists`); flatten the 50 cases | `validate_structure`/`evidence_substring_ok`/`profile_text`/`all_variants` pure |
+| `metamorphic_canon.py` | Load + validate the canon (existence paired with evidence; verdict agrees with `exists`); flatten the cases | `validate_structure`/`evidence_substring_ok`/`profile_text`/`all_variants` pure |
 | `metamorphic_match.py` | Two-stage matcher: stage-1 cosine rank of candidates + stage-2 decision from reranker verdicts | ✅ (`rank_candidates`/`decide_match`) |
 | `metamorphic_rerank.py` | Stage-2 reranker on **OpenAI** (≠ GLM): `same_concept` + `granularity_relation`, plus its own sanity mini-eval | `build_messages`/`parse_rerank`/`score_sanity` pure; `run*` need the key |
 | `metamorphic_metrics.py` | T1 identification · T2 invariance · T3 dedup · T4 novelty + Gates A/B/C (never a single blended score) | ✅ |
-| `metamorphic_poc.py` | Live PoC runner: wires the stages, classifies each variant independently (GLM), grep-verifies evidence, emits the gate report | `run` needs both keys |
+| `sut_view.py` | Disposable system-under-test view — a worktree of HEAD minus `eval/truth/` handed to the existing retriever as `repo_root`, so the classifier's whole observable universe excludes eval-truth | `path_within` pure; git I/O tested over a tmp repo |
+| `metamorphic_preflight.py` | Deterministic negative gate: proves the eval-truth sentinel is unreachable in the SUT-view (grep + index + realpath boundary) and refuses to run otherwise | `sentinel_of`/`index_has_truth_paths`/`assess` pure |
+| `metamorphic_poc.py` | Live PoC runner: builds the SUT-view, runs the preflight, wires the stages, classifies each variant independently (GLM) against the view, emits the gate report | `run` needs both keys |
 
 **The three non-negotiables (from the #288 grill):** (a) invariance (T2) only
 counts paired with the correction anchor — Gate C requires real repo evidence for

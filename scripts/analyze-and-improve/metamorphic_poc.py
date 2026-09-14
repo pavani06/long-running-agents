@@ -32,9 +32,11 @@ import grep_verify  # noqa: E402
 import metamorphic_canon as mc  # noqa: E402
 import metamorphic_match as mm  # noqa: E402
 import metamorphic_metrics as met  # noqa: E402
+import metamorphic_preflight as preflight  # noqa: E402
 import metamorphic_rerank as rr  # noqa: E402
 import phase3_classify  # noqa: E402
 import retrieval  # noqa: E402
+import sut_view  # noqa: E402
 from dedup import DUP_THRESHOLD  # noqa: E402
 from embed import embed_texts  # noqa: E402
 from glm import GLMError, RateLimited  # noqa: E402
@@ -84,15 +86,19 @@ def run(canon_path: str) -> int:
         _summary("metamorphic-poc: OPENAI_API_KEY and ZAI_API_KEY both required")
         return 1
 
-    repo_root = Path(__file__).resolve().parents[2]
-    state_path = repo_root / ".runtime" / "analyze-and-improve" / "index.json"
+    real_root = Path(__file__).resolve().parents[2]
+    state_path = real_root / ".runtime" / "analyze-and-improve" / "index.json"
     if not state_path.exists():
         _summary("metamorphic-poc: index not built — run `pipeline.py index --full` first")
         return 1
     index = json.loads(state_path.read_text(encoding="utf-8"))
 
     canon = mc.load_canon(Path(canon_path))
-    evidence_problems = mc.check_evidence_on_disk(canon, repo_root)
+    sentinel = preflight.sentinel_of(canon)
+    if not sentinel:
+        _summary("metamorphic-poc: canon has no _leak_sentinel — refusing (decontamination gate)")
+        return 1
+    evidence_problems = mc.check_evidence_on_disk(canon, real_root)
     if evidence_problems:
         _summary("metamorphic-poc: canon evidence does not resolve:\n- "
                  + "\n- ".join(evidence_problems))
@@ -120,33 +126,42 @@ def run(canon_path: str) -> int:
     t1_cases, t2_cases, t3_items, gate_c_cases = [], [], [], []
     per_variant = []
     errors = 0
-    for v, vvec in zip(variants, var_vecs):
-        candidates = mm.rank_candidates(vvec, concept_vecs, k=rerank_k)
-        match, rerr = safe_call(
-            lambda: mm.decide_match(
-                rr.rerank_candidates(v["variant"], candidates, by_id, openai_key),
-                min_confidence=min_conf),
-            {"concept_id": None, "granularity_relation": None})
-        predicted = match["concept_id"]
+    # The classifier only ever sees a disposable SUT-view (HEAD minus eval/truth),
+    # so it cannot retrieve/grep its own answer key. The preflight proves the
+    # sentinel is unreachable there before a single LLM call.
+    with sut_view.session(real_root) as view:
+        fails = preflight.assert_isolated(view, index, Path(canon_path), sentinel)
+        if fails:
+            _summary("metamorphic-poc: PREFLIGHT FAILED — eval-truth reachable by the "
+                     "classifier; refusing to run:\n- " + "\n- ".join(fails))
+            return 1
+        for v, vvec in zip(variants, var_vecs):
+            candidates = mm.rank_candidates(vvec, concept_vecs, k=rerank_k)
+            match, rerr = safe_call(
+                lambda: mm.decide_match(
+                    rr.rerank_candidates(v["variant"], candidates, by_id, openai_key),
+                    min_confidence=min_conf),
+                {"concept_id": None, "granularity_relation": None})
+            predicted = match["concept_id"]
 
-        cls, cerr = safe_call(
-            lambda: classify_variant(v["variant"], index, openai_key, zai_key, repo_root),
-            {"verdict": None, "verified": False})
-        verdict, verified = cls.get("verdict"), bool(cls.get("verified"))
-        if rerr or cerr:
-            errors += 1
+            cls, cerr = safe_call(
+                lambda: classify_variant(v["variant"], index, openai_key, zai_key, view),
+                {"verdict": None, "verified": False})
+            verdict, verified = cls.get("verdict"), bool(cls.get("verified"))
+            if rerr or cerr:
+                errors += 1
 
-        t1_cases.append({"true": v["concept_id"], "predicted": predicted})
-        t2_cases.append({"true": v["concept_id"], "predicted": predicted,
-                         "verdict": verdict, "exists": v["exists"]})
-        t3_items.append({"concept_id": v["concept_id"], "vec": vvec})
-        if verdict in mc.EXISTENCE_VERDICTS:
-            gate_c_cases.append({"concept_id": v["concept_id"], "verdict": verdict,
-                                 "verified": verified})
-        per_variant.append({"true": v["concept_id"], "predicted": predicted,
-                            "granularity": match["granularity_relation"],
-                            "verdict": verdict, "verified": verified,
-                            "error": rerr or cerr})
+            t1_cases.append({"true": v["concept_id"], "predicted": predicted})
+            t2_cases.append({"true": v["concept_id"], "predicted": predicted,
+                             "verdict": verdict, "exists": v["exists"]})
+            t3_items.append({"concept_id": v["concept_id"], "vec": vvec})
+            if verdict in mc.EXISTENCE_VERDICTS:
+                gate_c_cases.append({"concept_id": v["concept_id"], "verdict": verdict,
+                                     "verified": verified})
+            per_variant.append({"true": v["concept_id"], "predicted": predicted,
+                                "granularity": match["granularity_relation"],
+                                "verdict": verdict, "verified": verified,
+                                "error": rerr or cerr})
 
     t1 = met.t1_identification(t1_cases)
     t2 = met.t2_invariance(t2_cases)
@@ -228,7 +243,7 @@ def _report(canon, n_run, sanity, t1, t2, t3, t4, ga, gb, gc, decision, errors=0
 
 def main(argv: list[str] | None = None) -> int:
     import argparse
-    default = str(Path(__file__).resolve().parent / "metamorphic_canon.yaml")
+    default = str(Path(__file__).resolve().parents[2] / "eval" / "truth" / "metamorphic_canon.yaml")
     ap = argparse.ArgumentParser(description="Metamorphic eval-harness PoC (#288)")
     ap.add_argument("canon", nargs="?", default=default,
                     help="path to the Concept Canon YAML (default: shipped canon)")
