@@ -10,9 +10,11 @@ from __future__ import annotations
 
 from retrieval import rank_sections
 
-# Provisional duplication threshold: at/above this cosine to an existing section,
-# treat a proposed artifact as already covered. Calibrated for real in #262.
-PROVISIONAL_DUP_THRESHOLD = 0.85
+# Duplication threshold: at/above this cosine to an existing section, treat a
+# proposed artifact as already covered. VALIDATED via #262 — an exact indexed
+# section (the seeded known-duplicate) scores ~1.0 and is caught; 0.85 sits well
+# above the repo's p99 (0.64), so it flags near-duplicates without false positives.
+DUP_THRESHOLD = 0.85
 
 
 def nearest(vec: list[float], index: dict) -> dict | None:
@@ -22,7 +24,7 @@ def nearest(vec: list[float], index: dict) -> dict | None:
 
 
 def is_duplicate(vec: list[float], index: dict,
-                 threshold: float = PROVISIONAL_DUP_THRESHOLD) -> dict:
+                 threshold: float = DUP_THRESHOLD) -> dict:
     """{'duplicate': bool, 'score': float, 'nearest': {id,path,heading}|None}.
 
     `duplicate` is True when the nearest section's cosine is >= threshold."""

@@ -92,10 +92,14 @@ so it runs as the `A/B Validate (Tier A · #262)` workflow (`workflow_dispatch`,
 read-only, writes nothing to the repo): it builds the index, runs `run_spine`
 for the 12-factor source, compares the fresh classification labels to the
 historical package (agreement ≥ 80%), confirms the cosine dedup catches a seeded
-duplicate, and prints the empirical distribution so the **provisional** floor
-(`floor.PROVISIONAL_FLOOR`), dedup threshold (`dedup.PROVISIONAL_DUP_THRESHOLD`)
-and evaluator cut (`evaluator.PROVISIONAL_MIN_MEAN`) can be finalized. The job's
-exit reflects the gate (0 = proceed to Tier B, 1 = iterate).
+duplicate, and prints the empirical distribution. **#262 finalized the floor
+(`floor.REPO_FLOOR = 0.535`, p90 of the repo distribution) and validated the
+dedup threshold (`dedup.DUP_THRESHOLD = 0.85`, seed caught at ~1.0)**; the
+evaluator cut (`evaluator.PROVISIONAL_MIN_MEAN`) stays provisional (n=2). The
+job's exit reflects the gate (0 = proceed, 1 = iterate). NOTE: the historical
+label-agreement criterion was **retired** as mis-specified (it compared a fresh
+transcript to a Jun-2026 curated package — too few comparable patterns); the
+real Tier-B progression gate is the metamorphic eval-harness (#288).
 
 ## CLI
 
@@ -146,15 +150,13 @@ the git delta scan flags changed **files** and a content-hash diff re-embeds
 only the changed **chunks** within them — "atualizado só nos chunks que o delta
 scan aponta".
 
-### Provisional floor (calibration is #262)
+### Repo floor (calibrated via #262)
 
 The **floor** is the cosine threshold below which two sections are treated as
-unrelated during retrieval. `floor.PROVISIONAL_FLOOR = 0.38` is a **starting
-value only**, anchored to the connections layer's cross-video floor (~0.38).
-
-The repo's section-embedding distribution differs from the videos' (denser
-shared vocabulary), so the empirical floor must be calibrated to the repo. The
-methodology, deferred to **Etapa 4 (#262)**:
+unrelated during retrieval. `floor.REPO_FLOOR = 0.535` was **calibrated via #262**
+as the p90 of the repo's empirical section-cosine distribution (p50 0.415 / p75
+0.479 / p90 0.535 / p99 0.64) — the genuinely-related tail sits above ambient
+similarity. Recompute by re-running the methodology below when the corpus shifts:
 
 1. Run `pipeline.py index --distribution` once a key is available. It embeds
    every target section and prints the pairwise-cosine distribution
