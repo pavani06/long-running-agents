@@ -26,12 +26,14 @@ import argparse
 import json
 import os
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import aai_metrics  # noqa: E402
 import deltascan  # noqa: E402
 from analysis_queue import scan_pending  # noqa: E402
 from embed import AuthError, EmbedError, embed_texts  # noqa: E402
@@ -104,6 +106,7 @@ def run_index(full: bool, dist_only: bool) -> int:
         summary("index: OPENAI_API_KEY not set")
         return 1
 
+    build_t0 = time.time()
     targets, exts = _index_scope()
     state = load_state()
     if full or not state.get("base_sha"):
@@ -143,6 +146,22 @@ def run_index(full: bool, dist_only: bool) -> int:
     merged["base_sha"] = deltascan.head_sha(REPO_ROOT)
     save_state(merged)
     summary(f"index: {len(merged['records'])} record(s) written to {STATE_PATH.relative_to(REPO_ROOT)}")
+
+    # AAI_METRICS (#288 Stage A) — churn/latency/cost baseline. Telemetry only.
+    prior = state.get("records", {})
+    embed_chars = sum(len(r.text) for r in to_embed)
+    fields = {"scope": aai_metrics.scope_label()}
+    fields.update(aai_metrics.chunk_breakdown(merged["records"]))
+    fields.update({
+        "churn_add": sum(1 for r in to_embed if r.id not in prior),
+        "churn_chg": sum(1 for r in to_embed if r.id in prior),
+        "churn_del": len(deleted),
+        "embed_chunks": len(to_embed),
+        "embed_chars": embed_chars,
+        "embed_cost_usd": aai_metrics.embed_cost_usd(embed_chars),
+        "build_s": round(time.time() - build_t0, 1),
+    })
+    aai_metrics.emit("index", fields)
     return 0
 
 
