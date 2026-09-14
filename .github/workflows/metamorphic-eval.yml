@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "gate = the 50-case PoC; diagnose = Gate-B dispersion (retrieval vs classifier)"
+        description: "gate = 50-case PoC; diagnose = Gate-B dispersion; evrv = Gate-C failure dataset"
         type: choice
-        options: ["gate", "diagnose"]
+        options: ["gate", "diagnose", "evrv"]
         default: "gate"
       max_variants:
         description: "gate mode: run only the first N of the 50 cases (0 = all). Cheap smoke."
@@ -80,24 +80,33 @@ jobs:
           MAX_VARIANTS: ${{ github.event.inputs.max_variants }}
           RERANK_K: ${{ github.event.inputs.rerank_k }}
           DIAGNOSE_CONCEPTS: ${{ github.event.inputs.concepts }}
+          EVRV_OUT: evrv-dataset.json
         run: |
           set +e
-          if [ "$MODE" = "diagnose" ]; then
-            python scripts/analyze-and-improve/metamorphic_diagnose.py
-          else
-            python scripts/analyze-and-improve/metamorphic_poc.py
-          fi
+          case "$MODE" in
+            diagnose) python scripts/analyze-and-improve/metamorphic_diagnose.py ;;
+            evrv)     python scripts/analyze-and-improve/metamorphic_evrv.py ;;
+            *)        python scripts/analyze-and-improve/metamorphic_poc.py ;;
+          esac
           rc=$?
           echo "POC_RC=$rc" >> "$GITHUB_OUTPUT"
-          echo "exit: $rc (gate: 0 = PROSSEGUIR, 1 = ITERAR/setup; diagnose: 0 = ok)"
+          echo "exit: $rc (gate: 0 = PROSSEGUIR, 1 = ITERAR/setup; diagnose/evrv: 0 = ok)"
+
+      - name: Upload E/R/V dataset (evrv mode)
+        if: ${{ github.event.inputs.mode == 'evrv' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: evrv-dataset
+          path: evrv-dataset.json
+          if-no-files-found: warn
 
       - name: Decision (job status reflects the gate)
         env:
           POC_RC: ${{ steps.poc.outputs.POC_RC }}
           MODE: ${{ github.event.inputs.mode }}
         run: |
-          if [ "$MODE" = "diagnose" ]; then
-            [ "$POC_RC" = "0" ] && echo "Diagnostic complete. See the job summary." || { echo "Diagnostic setup error (rc=$POC_RC)."; exit 1; }
+          if [ "$MODE" = "diagnose" ] || [ "$MODE" = "evrv" ]; then
+            [ "$POC_RC" = "0" ] && echo "$MODE complete. See the job summary + artifact." || { echo "$MODE setup error (rc=$POC_RC)."; exit 1; }
           elif [ "$POC_RC" = "0" ]; then
             echo "PoC HELD — Tier B may advance. See the job summary for the report."
           else
