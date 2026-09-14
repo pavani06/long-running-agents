@@ -176,6 +176,15 @@ def test_make_pattern_retriever_empty_need_more(tmp_path):
     assert calls["embed"] == 0                # need_more path doesn't embed
 
 
+def test_make_pattern_retriever_needmore_skips_dir_and_missing(tmp_path):
+    (tmp_path / "real.md").write_text("REAL CONTENT", encoding="utf-8")
+    (tmp_path / "adir").mkdir()                       # a directory the model may name
+    r = retrieval.make_pattern_retriever([{"name": "P"}], DUP_INDEX, "KEY", tmp_path,
+                                         embed_fn=lambda t, k: [[1.0, 0.0]])
+    ctx = r({"greps": [], "files": ["real.md", "adir", "nope.md"]})  # dir + missing must not crash
+    assert "REAL CONTENT" in ctx
+
+
 def test_make_pattern_retriever_initial_embeds(tmp_path):
     calls = {"embed": 0}
 
