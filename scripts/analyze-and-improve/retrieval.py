@@ -17,13 +17,30 @@ from floor import cosine
 from index_store import records_for
 
 
+def source_type(path: str) -> str:
+    """Evidence-provenance tag for a retrieved/cited path. Pure.
+
+    G1 (#288): the detection plane RECORDS where evidence came from (code vs doc)
+    so the provenance is first-class and available downstream. NON-COUPLING
+    INVARIANT: this tag is annotation only — it must NOT feed the verdict contract
+    (`build_context`, `mark_verified`, verdict parsing all ignore it). `source_type
+    == "code"` can never, by itself, determine `Exists` or add a verdict rule."""
+    p = path or ""
+    if p.endswith(".py"):
+        return "code"
+    if p.endswith(".md"):
+        return "doc"
+    return "other"
+
+
 def rank_sections(query_vec: list[float], index: dict, *, k: int = 8,
                   floor: float | None = None) -> list[dict]:
     """Top-k index sections by cosine to `query_vec`. Pure.
 
     Records without a stored vector are skipped; `floor` drops weak matches.
-    Returns [{id, path, heading, score}] sorted by score desc.
-    """
+    Returns [{id, path, heading, score, source_type}] sorted by score desc. The
+    `source_type` is provenance metadata (G1); `build_context` deliberately ignores
+    it, so annotating it does not change the classifier prompt."""
     scored: list[dict] = []
     for rid, rec in index.get("records", {}).items():
         vec = rec.get("vector")
@@ -33,7 +50,8 @@ def rank_sections(query_vec: list[float], index: dict, *, k: int = 8,
         if floor is not None and s < floor:
             continue
         scored.append({"id": rid, "path": rec.get("path"),
-                       "heading": rec.get("heading"), "score": s})
+                       "heading": rec.get("heading"), "score": s,
+                       "source_type": source_type(rec.get("path", ""))})
     scored.sort(key=lambda d: d["score"], reverse=True)
     return scored[:k]
 

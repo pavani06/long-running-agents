@@ -156,7 +156,8 @@ def test_citations_of_flattens_evidence():
     cls = [{"pattern": "P1", "evidence": [{"file": "a.md", "line": 1, "quote": "q"}]},
            {"pattern": "P2", "evidence": [{"line": 2}]}]  # no file → skipped
     cits = p3.citations_of(cls)
-    assert cits == [{"file": "a.md", "line": 1, "quote": "q", "pattern": "P1"}]
+    assert cits == [{"file": "a.md", "line": 1, "quote": "q", "pattern": "P1",
+                     "source_type": "doc"}]   # G1 provenance tag (annotation only)
 
 
 # ── mark_verified (verdict-aware policy) ──────────────────────────────────

@@ -71,13 +71,19 @@ def parse_classification(reply: dict) -> list[dict]:
 
 
 def citations_of(classifications: list[dict]) -> list[dict]:
-    """Flatten every classification's evidence into grep_verify citations."""
+    """Flatten every classification's evidence into grep_verify citations.
+
+    Each citation carries a `source_type` provenance tag (G1, #288). NON-COUPLING:
+    the tag is metadata only — `mark_verified` keys on pattern/ok/quote and ignores
+    it, so a code-sourced citation is verified by exactly the same rule as a doc one."""
+    from retrieval import source_type
     out: list[dict] = []
     for c in classifications:
         for e in c.get("evidence", []):
             if isinstance(e, dict) and e.get("file"):
                 out.append({"file": e["file"], "line": e.get("line", 0),
-                            "quote": e.get("quote", ""), "pattern": c.get("pattern")})
+                            "quote": e.get("quote", ""), "pattern": c.get("pattern"),
+                            "source_type": source_type(e["file"])})
     return out
 
 
