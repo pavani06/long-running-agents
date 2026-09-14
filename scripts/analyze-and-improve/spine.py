@@ -63,7 +63,7 @@ def validate_obsidian_ok(repo_root: Path) -> bool:
 def run_spine(transcript: str, slug: str, index: dict, *, openai_key: str, zai_key: str,
               plan: landing.LandingPlan, repo_root: Path, with_mental: bool = False,
               min_mean: float = evaluator.PROVISIONAL_MIN_MEAN,
-              dup_threshold: float = dedup.PROVISIONAL_DUP_THRESHOLD,
+              dup_threshold: float = dedup.DUP_THRESHOLD,
               run_validate: bool = True) -> dict:
     """Fases 1->0->2->3 + gates + route. Returns the landing summary + artifacts."""
     def _step(label, fn):

@@ -13,10 +13,10 @@ from __future__ import annotations
 
 import math
 
-# Provisional starting floor. Anchored to the connections layer's cross-video
-# floor (~0.38); the repo's true floor is calibrated in #262 from the empirical
-# distribution emitted by `pipeline.py --distribution` on the first indexed run.
-PROVISIONAL_FLOOR = 0.38
+# Repo retrieval floor, CALIBRATED via #262 from the empirical section-cosine
+# distribution over the full index (p50 0.415 / p75 0.479 / p90 0.535 / p99 0.64).
+# 0.535 = p90: the genuinely-related tail sits above ambient similarity.
+REPO_FLOOR = 0.535
 
 
 def _normalize(vec: list[float]) -> list[float]:

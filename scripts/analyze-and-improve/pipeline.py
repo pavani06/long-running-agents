@@ -35,7 +35,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import deltascan  # noqa: E402
 from analysis_queue import scan_pending  # noqa: E402
 from embed import AuthError, EmbedError, embed_texts  # noqa: E402
-from floor import PROVISIONAL_FLOOR, distribution  # noqa: E402
+from floor import REPO_FLOOR, distribution  # noqa: E402
 from index_store import (index_vectors, merge_index, records_for,  # noqa: E402
                          select_to_embed)
 
@@ -102,7 +102,7 @@ def run_index(full: bool, dist_only: bool) -> int:
     changed = _collect_records(paths)
     to_embed = [r for recs in changed.values() for r in select_to_embed(state, recs)]
     summary(f"index: {len(paths)} file(s) in scope, {len(to_embed)} chunk(s) to embed, "
-            f"{len(deleted)} deleted; provisional floor={PROVISIONAL_FLOOR}")
+            f"{len(deleted)} deleted; repo floor={REPO_FLOOR}")
 
     vectors: dict[str, list[float]] = {}
     if to_embed:

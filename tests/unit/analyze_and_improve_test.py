@@ -15,7 +15,7 @@ from analysis_queue import Pending, is_pending, pending_from_texts  # noqa: E402
 from chunking import Section, split_sections, strip_frontmatter  # noqa: E402
 from deltascan import DEFAULT_TARGETS, under_targets  # noqa: E402
 from embed import MAX_INPUT_CHARS, cap_input  # noqa: E402
-from floor import PROVISIONAL_FLOOR, cosine, distribution  # noqa: E402
+from floor import REPO_FLOOR, cosine, distribution  # noqa: E402
 from frontmatter import (mark_analyzed, parse_frontmatter,  # noqa: E402
                          read_analyzed, set_analyzed)
 from index_store import (Record, merge_index, records_for,  # noqa: E402
@@ -187,7 +187,7 @@ def test_distribution_shape_and_order():
 
 def test_distribution_empty():
     assert distribution([[1.0, 0.0]]) == {}                   # no pairs
-    assert 0.0 < PROVISIONAL_FLOOR < 1.0
+    assert 0.0 < REPO_FLOOR < 1.0
 
 
 # ── incremental index merge ───────────────────────────────────────────────
