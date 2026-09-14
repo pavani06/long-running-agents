@@ -51,31 +51,47 @@ def t1_identification(cases: list[dict]) -> dict:
 
 # ── T2 — verdict invariance ──────────────────────────────────────────────────
 def t2_invariance(cases: list[dict]) -> dict:
-    """cases: [{true, predicted, verdict}]. Only CORRECTLY-mapped variants
+    """cases: [{true, predicted, verdict, exists?}]. Only CORRECTLY-mapped variants
     (predicted == true) count — an invariance measured over misrouted variants is
     meaningless. agreement = variants matching their concept's modal verdict /
     considered. Groups mixing an existence verdict with Missing are flagged
-    (Exists∧Missing dispersion) — the property that fails 'consistently wrong'."""
+    (Exists∧Missing dispersion).
+
+    Condition (a): invariance alone is not enough — a spine that answers Missing
+    for EVERY paraphrase of an existing concept is invariant AND has no dispersion
+    yet is uniformly wrong. When a case carries the ground-truth `exists`, the
+    concept's modal verdict is checked against it: a modal existence verdict for an
+    absent concept, or a modal Missing for a present one, is a `correctness_flag`.
+    This is the `expected_repo_state` half of the correction anchor (the evidence
+    half is Gate C)."""
     groups: dict[str, list[str]] = {}
+    expected: dict[str, bool] = {}
     for c in cases:
         if c.get("predicted") == c.get("true") and c.get("verdict"):
             groups.setdefault(c["true"], []).append(c["verdict"])
+        if isinstance(c.get("exists"), bool):
+            expected[c["true"]] = c["exists"]
     considered = sum(len(v) for v in groups.values())
     agreeing = 0
-    per_concept, dispersion = {}, []
+    per_concept, dispersion, correctness = {}, [], []
     for cid, verdicts in groups.items():
         counts = Counter(verdicts)
         mode_n = max(counts.values())
         agreeing += mode_n
+        modal = counts.most_common(1)[0][0]
         per_concept[cid] = {"n": len(verdicts), "agreement": round(mode_n / len(verdicts), 3),
-                            "verdicts": dict(counts)}
+                            "verdicts": dict(counts), "modal": modal}
         has_exist = any(v in EXISTENCE_VERDICTS for v in verdicts)
         if has_exist and "Missing" in counts:
             dispersion.append({"concept_id": cid, "verdicts": dict(counts)})
+        if cid in expected and (modal in EXISTENCE_VERDICTS) != expected[cid]:
+            correctness.append({"concept_id": cid, "modal": modal,
+                                "expected_exists": expected[cid]})
     return {
         "considered": considered,
         "agreement": round(agreeing / considered, 3) if considered else 0.0,
         "per_concept": per_concept, "dispersion_flags": dispersion,
+        "correctness_flags": correctness,
     }
 
 
@@ -133,10 +149,17 @@ def gate_a(t1: dict) -> dict:
 
 
 def gate_b(t2: dict) -> dict:
-    passed = t2["agreement"] >= GATE_B_MIN_AGREEMENT and not t2["dispersion_flags"]
+    """Invariance passes only when it is HIGH, has no Exists∧Missing dispersion,
+    AND each concept's modal verdict matches its `expected_repo_state` — an
+    invariant-but-uniformly-wrong spine (e.g. all-Missing on a present concept)
+    must not pass (condition (a))."""
+    correctness = t2.get("correctness_flags", [])
+    passed = (t2["agreement"] >= GATE_B_MIN_AGREEMENT
+              and not t2["dispersion_flags"] and not correctness)
     return {"passed": bool(passed), "agreement": t2["agreement"],
             "min_agreement": GATE_B_MIN_AGREEMENT,
-            "dispersion_flags": t2["dispersion_flags"]}
+            "dispersion_flags": t2["dispersion_flags"],
+            "correctness_flags": correctness}
 
 
 def gate_c(existence_cases: list[dict]) -> dict:

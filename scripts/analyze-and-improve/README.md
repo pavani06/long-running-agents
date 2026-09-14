@@ -132,7 +132,10 @@ GLM generator) and passes its own sanity mini-eval before its verdicts are
 trusted.
 
 **Gates (PoC DoD):** A (identification) recall ≥ 90% and false-merge < 5%;
-B (invariance) agreement ≥ 90% with no unexplained Exists∧Missing dispersion;
+B (invariance) agreement ≥ 90%, no unexplained Exists∧Missing dispersion, and
+each concept's modal verdict matching its `expected_repo_state` (so an
+invariant-but-uniformly-wrong spine — e.g. all-Missing on a present concept — is
+caught, not certified);
 C (evidence) every existence verdict grep-verified. Tier B (#263–#266) advances
 only if A **and** B **and** C **and** the reranker sanity all pass. The
 `expected_repo_state` is subjective, curated ground-truth and rots with the repo

@@ -35,6 +35,7 @@ def test_parse_rerank_accepts_valid_reply():
 @pytest.mark.parametrize("bad", [
     {"same_concept": "yes", "confidence": 0.5, "granularity_relation": "equivalent"},
     {"same_concept": True, "confidence": 1.5, "granularity_relation": "equivalent"},
+    {"same_concept": True, "confidence": True, "granularity_relation": "equivalent"},  # bool≠number
     {"same_concept": True, "confidence": 0.5, "granularity_relation": "same-ish"},
     {"same_concept": True, "granularity_relation": "equivalent"},
 ])

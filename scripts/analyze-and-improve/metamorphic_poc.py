@@ -107,20 +107,21 @@ def run(canon_path: str) -> int:
     for v, vvec in zip(variants, var_vecs):
         candidates = mm.rank_candidates(vvec, concept_vecs, k=rerank_k)
         reranked = rr.rerank_candidates(v["variant"], candidates, by_id, openai_key)
-        decision = mm.decide_match(reranked, min_confidence=min_conf)
-        predicted = decision["concept_id"]
+        match = mm.decide_match(reranked, min_confidence=min_conf)
+        predicted = match["concept_id"]
 
         cls = classify_variant(v["variant"], index, openai_key, zai_key, repo_root)
         verdict, verified = cls.get("verdict"), bool(cls.get("verified"))
 
         t1_cases.append({"true": v["concept_id"], "predicted": predicted})
-        t2_cases.append({"true": v["concept_id"], "predicted": predicted, "verdict": verdict})
+        t2_cases.append({"true": v["concept_id"], "predicted": predicted,
+                         "verdict": verdict, "exists": v["exists"]})
         t3_items.append({"concept_id": v["concept_id"], "vec": vvec})
         if verdict in mc.EXISTENCE_VERDICTS:
             gate_c_cases.append({"concept_id": v["concept_id"], "verdict": verdict,
                                  "verified": verified})
         per_variant.append({"true": v["concept_id"], "predicted": predicted,
-                            "granularity": decision["granularity_relation"],
+                            "granularity": match["granularity_relation"],
                             "verdict": verdict, "verified": verified})
 
     t1 = met.t1_identification(t1_cases)
@@ -152,7 +153,8 @@ def _report(canon, n_run, sanity, t1, t2, t3, t4, ga, gb, gc, decision) -> str:
         f"(<{met.GATE_A_MAX_FALSE_MERGE*100:.0f}%) — {ok(ga['passed'])}",
         f"- **Gate B (invariância)**: agreement **{t2['agreement']*100:.0f}%** "
         f"(≥{met.GATE_B_MIN_AGREEMENT*100:.0f}%), dispersão Exists∧Missing: "
-        f"{len(t2['dispersion_flags'])} — {ok(gb['passed'])}",
+        f"{len(t2['dispersion_flags'])}, modal ≠ expected_repo_state: "
+        f"{len(t2['correctness_flags'])} — {ok(gb['passed'])}",
         f"- **Gate C (evidência)**: {gc['verified']}/{gc['total_existence']} vereditos de "
         f"existência com evidência verificada — {ok(gc['passed'])}",
         f"- **Reranker sanity (cond. c)**: {sanity['correct']}/{sanity['total']} "
@@ -171,6 +173,12 @@ def _report(canon, n_run, sanity, t1, t2, t3, t4, ga, gb, gc, decision) -> str:
         lines.append("### ⚠️ Dispersão Exists∧Missing (condição (a) — precisa de motivo evidencial)")
         for d in t2["dispersion_flags"]:
             lines.append(f"- `{d['concept_id']}`: {d['verdicts']}")
+        lines.append("")
+    if t2["correctness_flags"]:
+        lines.append("### ⚠️ Modal contradiz expected_repo_state (condição (a) — spine invariante-porém-errado)")
+        for c in t2["correctness_flags"]:
+            lines.append(f"- `{c['concept_id']}`: modal **{c['modal']}** vs "
+                         f"expected_exists={c['expected_exists']}")
         lines.append("")
     if gc["unverified"]:
         lines.append("### ⚠️ Vereditos de existência SEM evidência verificada (Gate C)")

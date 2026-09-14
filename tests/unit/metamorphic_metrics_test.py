@@ -46,6 +46,28 @@ def test_t2_flags_exists_missing_dispersion():
     assert t2["dispersion_flags"] and t2["dispersion_flags"][0]["concept_id"] == "A"
 
 
+def test_t2_flags_modal_verdict_contradicting_expected_repo_state():
+    # invariant AND no dispersion, but a present concept answered Missing 3/3 →
+    # the "consistently wrong" case condition (a) must catch.
+    cases = [{"true": "A", "predicted": "A", "verdict": "Missing", "exists": True}] * 3
+    t2 = met.t2_invariance(cases)
+    assert t2["agreement"] == 1.0 and t2["dispersion_flags"] == []
+    assert t2["correctness_flags"] == [{"concept_id": "A", "modal": "Missing",
+                                        "expected_exists": True}]
+
+
+def test_t2_no_correctness_flag_when_modal_matches_expected():
+    cases = [{"true": "A", "predicted": "A", "verdict": "Exists", "exists": True},
+             {"true": "M", "predicted": "M", "verdict": "Missing", "exists": False}]
+    assert met.t2_invariance(cases)["correctness_flags"] == []
+
+
+def test_t2_empty_is_zero_agreement_no_flags():
+    t2 = met.t2_invariance([])
+    assert t2["considered"] == 0 and t2["agreement"] == 0.0
+    assert t2["dispersion_flags"] == [] and t2["correctness_flags"] == []
+
+
 # ── T3 dedup invariance ─────────────────────────────────────────────────────
 def test_t3_tp_on_same_concept_fp_on_distinct():
     items = [
@@ -78,10 +100,21 @@ def test_gate_a_needs_recall_and_low_false_merge():
     assert not met.gate_a({"recall": 0.80, "false_merge_rate": 0.0})["passed"]
 
 
-def test_gate_b_needs_agreement_and_no_dispersion():
-    assert met.gate_b({"agreement": 0.95, "dispersion_flags": []})["passed"]
-    assert not met.gate_b({"agreement": 0.95, "dispersion_flags": [{"concept_id": "A"}]})["passed"]
-    assert not met.gate_b({"agreement": 0.5, "dispersion_flags": []})["passed"]
+def test_gate_b_needs_agreement_no_dispersion_and_correctness():
+    assert met.gate_b({"agreement": 0.95, "dispersion_flags": [],
+                       "correctness_flags": []})["passed"]
+    assert not met.gate_b({"agreement": 0.95, "dispersion_flags": [{"concept_id": "A"}],
+                           "correctness_flags": []})["passed"]
+    assert not met.gate_b({"agreement": 0.5, "dispersion_flags": [],
+                           "correctness_flags": []})["passed"]
+    # invariant + no dispersion but modal contradicts expected_repo_state → FAIL
+    assert not met.gate_b({"agreement": 1.0, "dispersion_flags": [],
+                           "correctness_flags": [{"concept_id": "A"}]})["passed"]
+
+
+def test_t1_and_t4_empty_inputs_do_not_divide_by_zero():
+    assert met.t1_identification([])["recall"] == 0.0
+    assert met.t4_novelty([], [])["false_merge_rate"] == 0.0
 
 
 def test_gate_c_requires_every_existence_verdict_verified():
