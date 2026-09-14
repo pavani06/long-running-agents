@@ -11,6 +11,7 @@ landing they feed are tested in their own modules.
 from __future__ import annotations
 
 import subprocess
+import time
 from pathlib import Path
 
 import dedup
@@ -65,25 +66,34 @@ def run_spine(transcript: str, slug: str, index: dict, *, openai_key: str, zai_k
               dup_threshold: float = dedup.PROVISIONAL_DUP_THRESHOLD,
               run_validate: bool = True) -> dict:
     """Fases 1->0->2->3 + gates + route. Returns the landing summary + artifacts."""
-    extraction = phase1_extract.run(transcript, zai_key)                       # Fase 1
+    def _step(label, fn):
+        t0 = time.time()
+        print(f"[spine] {label} …", flush=True)
+        out = fn()
+        print(f"[spine] {label} done in {time.time() - t0:.1f}s", flush=True)
+        return out
+
+    extraction = _step("Fase 1 (extract)", lambda: phase1_extract.run(transcript, zai_key))
     mental_model = None
     if with_mental:                                                           # Fase 0
-        mental_model = phase0_mental_model.run(None, [], zai_key)
-    patterns = phase2_patterns.run(extraction, zai_key)                        # Fase 2
+        mental_model = _step("Fase 0 (mental model)",
+                             lambda: phase0_mental_model.run(None, [], zai_key))
+    patterns = _step("Fase 2 (patterns)", lambda: phase2_patterns.run(extraction, zai_key))
     retriever = retrieval.make_pattern_retriever(patterns, index, openai_key, repo_root)
-    classifications = phase3_classify.run(patterns, zai_key, retriever=retriever)  # Fase 3
+    classifications = _step("Fase 3 (classify)",
+                            lambda: phase3_classify.run(patterns, zai_key, retriever=retriever))
 
     # Deterministic gates.
     verified = grep_verify.verify_all(phase3_classify.citations_of(classifications), repo_root)
     phase3_classify.mark_verified(classifications, verified)
     citations_ok = grep_verify.all_ok(verified)
-    dup = dedup.is_duplicate(embed_texts([dedup_text(extraction, patterns)], openai_key)[0],
-                             index, dup_threshold)
+    dup = _step("gate: dedup embed", lambda: dedup.is_duplicate(
+        embed_texts([dedup_text(extraction, patterns)], openai_key)[0], index, dup_threshold))
     validate_ok = validate_obsidian_ok(repo_root) if run_validate else True
 
     # Adversarial evaluator.
-    evaluation = evaluator.run(artifact_for_eval(extraction, patterns, classifications),
-                               openai_key, min_mean=min_mean)
+    evaluation = _step("gate: evaluator", lambda: evaluator.run(
+        artifact_for_eval(extraction, patterns, classifications), openai_key, min_mean=min_mean))
 
     report = quarantine.report_from_gates(
         validate_obsidian=validate_ok, citations_ok=citations_ok,
