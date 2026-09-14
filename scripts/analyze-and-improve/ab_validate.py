@@ -65,17 +65,75 @@ def fresh_from_classifications(classifications: list[dict]) -> list[dict]:
     return out
 
 
-def label_agreement(fresh: list[dict], historical: list[dict]) -> dict:
-    """Agreement over patterns present in BOTH packages (matched by name).
+def fuzzy_matcher(threshold: float = 0.6):
+    """Greedy hist->fresh name pairing by difflib ratio. Pure — the default matcher
+    so exact and near-identical names pair without a network call."""
+    import difflib
 
-    {shared, matched, agreement, mismatches[]}. agreement is 0 when nothing is
-    shared (no false confidence from an empty intersection)."""
+    def match(fresh_keys: list[str], hist_keys: list[str]) -> dict:
+        pairs: dict[str, str] = {}
+        used: set[str] = set()
+        for h in hist_keys:
+            best, best_r = None, threshold
+            for f in fresh_keys:
+                if f in used:
+                    continue
+                r = difflib.SequenceMatcher(None, h, f).ratio()
+                if r >= best_r:
+                    best, best_r = f, r
+            if best is not None:
+                pairs[h] = best
+                used.add(best)
+        return pairs
+
+    return match
+
+
+def embedding_matcher(openai_key: str, *, threshold: float = 0.55):
+    """Greedy hist->fresh pairing by cosine of the names' embeddings — robust to
+    paraphrase / cross-language (GLM names vs curated names). Network; used by the
+    live A/B run. Falls back to no pairing if either side is empty."""
+    from embed import embed_texts
+    from floor import cosine
+
+    def match(fresh_keys: list[str], hist_keys: list[str]) -> dict:
+        if not fresh_keys or not hist_keys:
+            return {}
+        fvecs = dict(zip(fresh_keys, embed_texts(fresh_keys, openai_key)))
+        hvecs = dict(zip(hist_keys, embed_texts(hist_keys, openai_key)))
+        pairs: dict[str, str] = {}
+        used: set[str] = set()
+        for h in hist_keys:
+            best, best_s = None, threshold
+            for f in fresh_keys:
+                if f in used:
+                    continue
+                s = cosine(hvecs[h], fvecs[f])
+                if s >= best_s:
+                    best, best_s = f, s
+            if best is not None:
+                pairs[h] = best
+                used.add(best)
+        return pairs
+
+    return match
+
+
+def label_agreement(fresh: list[dict], historical: list[dict], *, matcher=None) -> dict:
+    """Agreement over patterns matched across the two packages.
+
+    Patterns are paired by `matcher` (default: fuzzy name match) rather than exact
+    name — fresh names are GLM-generated and rarely match curated names verbatim.
+    {shared, matched, agreement, mismatches[]}. agreement is 0 when nothing pairs
+    (no false confidence from an empty intersection)."""
+    matcher = matcher or fuzzy_matcher()
     fresh_by = {normalize_name(x["name"]): x["verdict"] for x in fresh}
     hist_by = {normalize_name(x["name"]): x["verdict"] for x in historical}
-    shared = sorted(set(fresh_by) & set(hist_by))
-    matched = [k for k in shared if fresh_by[k] == hist_by[k]]
-    mismatches = [{"name": k, "fresh": fresh_by[k], "historical": hist_by[k]}
-                  for k in shared if fresh_by[k] != hist_by[k]]
+    pairs = matcher(list(fresh_by), list(hist_by))   # hist_key -> fresh_key
+    shared = sorted(pairs)
+    matched = [h for h in shared if hist_by[h] == fresh_by[pairs[h]]]
+    mismatches = [{"name": h, "fresh": fresh_by[pairs[h]], "historical": hist_by[h]}
+                  for h in shared if hist_by[h] != fresh_by[pairs[h]]]
     agreement = (len(matched) / len(shared)) if shared else 0.0
     return {"shared": len(shared), "matched": len(matched),
             "agreement": round(agreement, 3), "mismatches": mismatches}
@@ -173,11 +231,17 @@ def run(transcript_path: str, historical_yaml: str, seed_section_path: str) -> i
 
     fresh = fresh_from_classifications(result["classifications"])
     historical = historical_from_yaml(yaml.safe_load((repo_root / historical_yaml).read_text(encoding="utf-8")))
-    agreement = label_agreement(fresh, historical)
+    # Pair patterns semantically (embeddings) — GLM names rarely match curated names verbatim.
+    agreement = label_agreement(fresh, historical, matcher=embedding_matcher(openai_key))
 
-    # Seeded duplicate: embed the text of a section we KNOW is in the repo/index;
-    # the dedup gate must flag it (cosine ~1.0 against itself).
-    seed_text = (repo_root / seed_section_path).read_text(encoding="utf-8")[:2000]
+    # Seeded duplicate: embed the EXACT text of a section that is in the index
+    # (same chunking the index used), so its embedding matches the stored vector
+    # ~1.0 and the dedup gate must flag it. (Embedding the whole file mixed
+    # granularities and under-scored.)
+    from index_store import records_for
+    seed_recs = records_for(seed_section_path, (repo_root / seed_section_path).read_text(encoding="utf-8"))
+    seed_text = max((r.text for r in seed_recs), key=len) if seed_recs \
+        else (repo_root / seed_section_path).read_text(encoding="utf-8")[:2000]
     seed_vec = embed_texts([seed_text], openai_key)[0]
     dup = dedup.is_duplicate(seed_vec, index)
 
