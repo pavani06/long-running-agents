@@ -12,6 +12,7 @@ Endpoint verified for the extract layer (2026-09-12):
 from __future__ import annotations
 
 import json
+import os
 import re
 import time
 
@@ -19,6 +20,10 @@ import requests
 
 BASE_URL = "https://api.z.ai/api/coding/paas/v4"
 MODEL = "glm-5.3"
+# glm-5.3 runs reasoning by default, which dominates TTFT (~33s vs ~2s for a large
+# structured output — measured by glm_probe, #262). `low` keeps light reasoning at
+# ~14x lower TTFT, turning a ~25min spine into ~1-2min. Override via GLM_REASONING_EFFORT.
+REASONING_EFFORT = os.environ.get("GLM_REASONING_EFFORT", "low")
 
 
 class AuthError(Exception):
@@ -76,16 +81,20 @@ def content_from_sse_lines(lines) -> str:
 
 def chat_json(messages: list[dict], api_key: str, *, model: str = MODEL,
               temperature: float = 0.2, timeout: int = 180, max_retries: int = 2,
-              backoff_base: float = 4.0, sleep=time.sleep) -> dict:
+              backoff_base: float = 4.0, reasoning_effort: str | None = REASONING_EFFORT,
+              sleep=time.sleep) -> dict:
     """POST a streaming chat completion and return the reply parsed as a JSON object.
 
     Streaming (`stream: True`) is deliberate: the read timeout then applies between
     chunks (tokens keep arriving during generation) instead of to the whole body,
-    so a slow Fase-3 generation doesn't read-time-out. Raises AuthError (401/403),
-    RateLimited (429 past retries), or GLMError (other HTTP failure, empty reply,
-    or unparseable JSON)."""
+    so a slow Fase-3 generation doesn't read-time-out. `reasoning_effort` (default
+    'low') keeps glm-5.3's reasoning light — the dominant TTFT cost (#262). Raises
+    AuthError (401/403), RateLimited (429 past retries), or GLMError (other HTTP
+    failure, empty reply, or unparseable JSON)."""
     payload = {"model": model, "messages": messages,
                "temperature": temperature, "stream": True}
+    if reasoning_effort:
+        payload["reasoning_effort"] = reasoning_effort
     url = f"{BASE_URL}/chat/completions"
     last = ""
     for attempt in range(max_retries + 1):
