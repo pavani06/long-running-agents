@@ -72,14 +72,16 @@ def grep_identifiers(identifiers: list[str], repo_root: Path, *, max_hits: int =
     return hits
 
 
-# Cap each section's text in the classifier context. Unbounded section text made
-# the Fase 3 prompt huge (k sections × full body), which timed the GLM call out.
-# The head of a section carries its point; this keeps the prompt bounded.
-MAX_SECTION_CHARS = 1600
+# Cap the classifier context. Unbounded section text made the Fase 3 prompt exceed
+# the z.ai coding-plan max input length (HTTP 400 "Prompt exceeds max length", #262).
+# Per-section cap + a hard TOTAL budget keep the prompt within the limit; the head
+# of a section carries its point, which is what the classifier needs.
+MAX_SECTION_CHARS = 700
+MAX_CONTEXT_CHARS = 6000   # total budget for the assembled context string
 
 
 def build_context(dense_sections: list[dict], grep_hits: list[dict]) -> str:
-    """Format retrieved evidence for the classifier prompt. Pure."""
+    """Format retrieved evidence for the classifier prompt, within a total budget. Pure."""
     parts = ["## Seções relevantes (dense retrieval)"]
     if dense_sections:
         for s in dense_sections:
@@ -94,11 +96,12 @@ def build_context(dense_sections: list[dict], grep_hits: list[dict]) -> str:
             parts.append(f"- {h['path']}:{h['line']} — `{h['identifier']}` — {h['content'].strip()}")
     else:
         parts.append("_(nenhuma)_")
-    return "\n\n".join(parts)
+    ctx = "\n\n".join(parts)
+    return ctx[:MAX_CONTEXT_CHARS]   # hard total cap so the prompt always fits
 
 
 def make_pattern_retriever(patterns: list[dict], index: dict, openai_key: str,
-                           repo_root: Path, *, k: int = 8, embed_fn=None):
+                           repo_root: Path, *, k: int = 5, embed_fn=None):
     """A `retriever(need_more)->context` closure for Fase 3, shared by the CLI and
     the spine runner. need_more=None → dense top-k for the patterns' text + grep of
     the pattern names; otherwise grep the model-named identifiers + append the named

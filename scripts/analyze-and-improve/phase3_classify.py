@@ -37,7 +37,7 @@ _SYSTEM = (
 def build_messages(patterns: list[dict], context: str) -> list[dict]:
     """System + user for Fase 3: the candidate patterns and the retrieved context."""
     user = ("PADRÕES CANDIDATOS (da Fase 2):\n"
-            + json.dumps(patterns, ensure_ascii=False, indent=2)
+            + json.dumps(patterns, ensure_ascii=False)   # compact — keep the prompt small
             + "\n\nCONTEXTO DO REPO (busca híbrida):\n" + context)
     return [{"role": "system", "content": _SYSTEM},
             {"role": "user", "content": user}]
