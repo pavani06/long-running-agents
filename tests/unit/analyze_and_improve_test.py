@@ -123,6 +123,21 @@ def test_under_targets_dedupes():
     assert under_targets(["docs/canonical/a.md", "docs/canonical/a.md"]) == ["docs/canonical/a.md"]
 
 
+def test_under_targets_default_exts_excludes_code():
+    # production default is docs-only: a .py under a code dir is not indexed
+    assert under_targets(["scripts/analyze-and-improve/dedup.py"]) == []
+
+
+def test_under_targets_widened_exts_and_targets_include_code():
+    # #288 diagnostic scope: widen targets + exts to index code mechanisms
+    paths = ["scripts/analyze-and-improve/dedup.py", "docs/canonical/x.md",
+             "scripts/analyze-and-improve/README.md"]
+    got = under_targets(paths, targets=("docs/canonical/", "scripts/analyze-and-improve/"),
+                        exts=(".md", ".py"))
+    assert got == ["docs/canonical/x.md", "scripts/analyze-and-improve/README.md",
+                   "scripts/analyze-and-improve/dedup.py"]
+
+
 def test_default_targets_shape():
     assert "docs/canonical/" in DEFAULT_TARGETS
     assert ".opencode/skills/" in DEFAULT_TARGETS
