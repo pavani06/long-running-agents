@@ -117,7 +117,10 @@ if [ "$GH_OK" = "yes" ]; then
     case "$rb" in
       "$DEFAULT_BRANCH"|HEAD|dependabot/*) continue ;;
     esac
-    [ "$(pr_state "$rb")" = "MERGED" ] && { note "origin/$rb  ✅ MERGED — safe to delete on remote"; SAFE_REMOTE+=("$rb"); }
+    if [ "$(pr_state "$rb")" = "MERGED" ]; then
+      note "origin/$rb  ✅ MERGED — safe to delete on remote"
+      SAFE_REMOTE+=("$rb")
+    fi
   done < <(git ls-remote --heads origin 2>/dev/null | sed 's#.*refs/heads/##')
   [ "${#SAFE_REMOTE[@]}" -eq 0 ] && note "none"
 else
