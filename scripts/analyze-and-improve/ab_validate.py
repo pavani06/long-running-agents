@@ -181,7 +181,13 @@ def run(transcript_path: str, historical_yaml: str, seed_section_path: str) -> i
     seed_vec = embed_texts([seed_text], openai_key)[0]
     dup = dedup.is_duplicate(seed_vec, index)
 
-    distribution = floor_mod.distribution(index_vectors(index))
+    # The pairwise-cosine distribution is O(n^2*dim); over the whole index (10k+
+    # sections) that is billions of ops. A random sample gives the same percentiles
+    # for floor calibration at feasible cost.
+    import random
+    all_vecs = index_vectors(index)
+    sample = random.Random(0).sample(all_vecs, min(len(all_vecs), 300))
+    distribution = floor_mod.distribution(sample)
     ev_mean = (result["summary"]["evaluation"] or {}).get("mean")
     decision = decide_ab(agreement, dup["duplicate"])
     report = ab_report(agreement, dup, distribution, ev_mean, decision,
