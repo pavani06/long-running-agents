@@ -42,10 +42,14 @@ def list_models(api_key: str) -> list[str]:
         return [f"(models endpoint error: {e})"]
 
 
-def probe(prompt: str, api_key: str, *, model: str = MODEL, timeout: int = 120) -> dict:
-    """One streaming call, instrumented. Returns TTFT / total / chunks / chars."""
+def probe(prompt: str, api_key: str, *, model: str = MODEL, timeout: int = 120,
+          extra: dict | None = None) -> dict:
+    """One streaming call, instrumented. Returns TTFT / total / chunks / chars.
+    `extra` merges into the payload (to test reasoning/thinking toggles)."""
     payload = {"model": model, "messages": [{"role": "user", "content": prompt}],
                "temperature": 0.2, "stream": True}
+    if extra:
+        payload.update(extra)
     t0 = time.time()
     first = None
     chunks = 0
@@ -100,8 +104,23 @@ def main() -> int:
                   '"verdict","evidence":[{"file","line","quote"}],"rationale"}]} — '
                   "seja detalhado, ~1200 palavras."),
     ]
+    large_prompt = cases[-1][1]
     for label, prompt in cases:
         res = probe(prompt, api_key, model=model)
+        _summary(f"- **{label}**: `{json.dumps(res, ensure_ascii=False)}`")
+
+    # Isolate reasoning/prefill: same large-output prompt, different thinking toggles.
+    # If disabling reasoning collapses TTFT, that is the latency fix for Fase 3.
+    _summary("\n## Reasoning toggle no output grande (mesmo prompt)")
+    variants = [
+        ("baseline", {}),
+        ("thinking.disabled", {"thinking": {"type": "disabled"}}),
+        ("thinking.enabled", {"thinking": {"type": "enabled"}}),
+        ("reasoning_effort.low", {"reasoning_effort": "low"}),
+        ("reasoning_effort.minimal", {"reasoning_effort": "minimal"}),
+    ]
+    for label, extra in variants:
+        res = probe(large_prompt, api_key, model=model, extra=extra)
         _summary(f"- **{label}**: `{json.dumps(res, ensure_ascii=False)}`")
     return 0
 
