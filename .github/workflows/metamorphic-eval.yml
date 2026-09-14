@@ -13,14 +13,23 @@ name: Metamorphic Eval (Tier B gate · #288)
 on:
   workflow_dispatch:
     inputs:
+      mode:
+        description: "gate = the 50-case PoC; diagnose = Gate-B dispersion (retrieval vs classifier)"
+        type: choice
+        options: ["gate", "diagnose"]
+        default: "gate"
       max_variants:
-        description: "Run only the first N of the 50 cases (0 = all). Use for a cheap smoke."
+        description: "gate mode: run only the first N of the 50 cases (0 = all). Cheap smoke."
         type: string
         default: "0"
       rerank_k:
-        description: "Stage-1 candidates handed to the stage-2 reranker per variant"
+        description: "gate mode: stage-1 candidates handed to the stage-2 reranker per variant"
         type: string
         default: "2"
+      concepts:
+        description: "diagnose mode: comma-separated concept_ids to test (empty = all)"
+        type: string
+        default: ""
 
 permissions:
   contents: read
@@ -46,27 +55,36 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python scripts/analyze-and-improve/pipeline.py index --full
 
-      - name: Run metamorphic PoC
+      - name: Run metamorphic PoC / diagnostic
         id: poc
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ZAI_API_KEY: ${{ secrets.ZAI_API_KEY }}
           # Inputs go through env (never interpolated into the script body) to
           # avoid the GitHub Actions script-injection anti-pattern.
+          MODE: ${{ github.event.inputs.mode }}
           MAX_VARIANTS: ${{ github.event.inputs.max_variants }}
           RERANK_K: ${{ github.event.inputs.rerank_k }}
+          DIAGNOSE_CONCEPTS: ${{ github.event.inputs.concepts }}
         run: |
           set +e
-          python scripts/analyze-and-improve/metamorphic_poc.py
+          if [ "$MODE" = "diagnose" ]; then
+            python scripts/analyze-and-improve/metamorphic_diagnose.py
+          else
+            python scripts/analyze-and-improve/metamorphic_poc.py
+          fi
           rc=$?
           echo "POC_RC=$rc" >> "$GITHUB_OUTPUT"
-          echo "metamorphic_poc exit: $rc (0 = PROSSEGUIR, 1 = ITERAR/setup)"
+          echo "exit: $rc (gate: 0 = PROSSEGUIR, 1 = ITERAR/setup; diagnose: 0 = ok)"
 
       - name: Decision (job status reflects the gate)
         env:
           POC_RC: ${{ steps.poc.outputs.POC_RC }}
+          MODE: ${{ github.event.inputs.mode }}
         run: |
-          if [ "$POC_RC" = "0" ]; then
+          if [ "$MODE" = "diagnose" ]; then
+            [ "$POC_RC" = "0" ] && echo "Diagnostic complete. See the job summary." || { echo "Diagnostic setup error (rc=$POC_RC)."; exit 1; }
+          elif [ "$POC_RC" = "0" ]; then
             echo "PoC HELD — Tier B may advance. See the job summary for the report."
           else
             echo "PoC did not hold (rc=$POC_RC) — iterate. See the job summary."
