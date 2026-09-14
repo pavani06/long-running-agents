@@ -45,7 +45,7 @@ def test_safe_call_does_not_swallow_auth_error():
 
 def test_report_notes_degraded_variants():
     import metamorphic_canon as mc
-    canon = mc.load_canon(ROOT / "scripts" / "analyze-and-improve" / "metamorphic_canon.yaml")
+    canon = mc.load_canon(ROOT / "eval" / "truth" / "metamorphic_canon.yaml")
     t1 = {"recall": 1.0, "precision": 1.0, "false_merge": 0, "false_merge_rate": 0.0, "total": 50}
     t2 = {"agreement": 0.9, "considered": 45, "dispersion_flags": [], "correctness_flags": []}
     t3 = {"same_pairs": 100, "tp": 90, "tp_rate": 0.9, "diff_pairs": 1, "fp": 0, "fp_rate": 0.0}

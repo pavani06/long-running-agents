@@ -30,8 +30,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import grep_verify  # noqa: E402
 import metamorphic_canon as mc  # noqa: E402
+import metamorphic_preflight as preflight  # noqa: E402
 import phase3_classify  # noqa: E402
 import retrieval  # noqa: E402
+import sut_view  # noqa: E402
 from embed import embed_texts  # noqa: E402
 from glm import GLMError, RateLimited  # noqa: E402
 from retrieval import rank_sections  # noqa: E402
@@ -110,36 +112,48 @@ def run(canon_path: str) -> int:
     if not openai_key or not zai_key:
         _summary("evrv: OPENAI_API_KEY and ZAI_API_KEY both required")
         return 1
-    repo_root = Path(__file__).resolve().parents[2]
-    state_path = repo_root / ".runtime" / "analyze-and-improve" / "index.json"
+    real_root = Path(__file__).resolve().parents[2]
+    state_path = real_root / ".runtime" / "analyze-and-improve" / "index.json"
     if not state_path.exists():
         _summary("evrv: index not built — run `pipeline.py index --full` first")
         return 1
     index = json.loads(state_path.read_text(encoding="utf-8"))
     canon = mc.load_canon(Path(canon_path))
+    sentinel = preflight.sentinel_of(canon)
+    if not sentinel:
+        _summary("evrv: canon has no _leak_sentinel — refusing (decontamination gate)")
+        return 1
     variants = mc.all_variants(canon)
 
     records, file_cache = [], {}
-    for v in variants:
-        vvec = embed_texts([v["variant"]], openai_key)[0]
-        retrieved = [{"path": r["path"], "source_type": source_type(r["path"]),
-                      "score": round(r["score"], 3)} for r in rank_sections(vvec, index, k=8)]
-        verdict, evidence, verified, err = _classify(
-            v["variant"], index, openai_key, zai_key, repo_root)
-        by_key = {(c.get("file"), c.get("line"), c.get("quote")): c for c in verified}
-        cits = []
-        for e in evidence:
-            f = e.get("file", "")
-            if f not in file_cache:
-                fp = repo_root / f
-                file_cache[f] = fp.read_text(encoding="utf-8") if fp.is_file() else None
-            vr = by_key.get((e.get("file"), e.get("line"), e.get("quote")), {})
-            cits.append(citation_signals(e, file_cache[f], vr))
-        records.append({
-            "concept_id": v["concept_id"], "expected_verdict": v["expected_verdict"],
-            "exists": v["exists"], "variant": v["variant"], "verdict": verdict,
-            "error": err, "retrieved_topk": retrieved, "citations": cits,
-        })
+    # Classifier sees only the disposable SUT-view (HEAD minus eval/truth); the
+    # preflight proves the answer key is unreachable there before any LLM call.
+    with sut_view.session(real_root) as view:
+        fails = preflight.assert_isolated(view, index, Path(canon_path), sentinel)
+        if fails:
+            _summary("evrv: PREFLIGHT FAILED — eval-truth reachable; refusing:\n- "
+                     + "\n- ".join(fails))
+            return 1
+        for v in variants:
+            vvec = embed_texts([v["variant"]], openai_key)[0]
+            retrieved = [{"path": r["path"], "source_type": source_type(r["path"]),
+                          "score": round(r["score"], 3)} for r in rank_sections(vvec, index, k=8)]
+            verdict, evidence, verified, err = _classify(
+                v["variant"], index, openai_key, zai_key, view)
+            by_key = {(c.get("file"), c.get("line"), c.get("quote")): c for c in verified}
+            cits = []
+            for e in evidence:
+                f = e.get("file", "")
+                if f not in file_cache:
+                    fp = view / f
+                    file_cache[f] = fp.read_text(encoding="utf-8") if fp.is_file() else None
+                vr = by_key.get((e.get("file"), e.get("line"), e.get("quote")), {})
+                cits.append(citation_signals(e, file_cache[f], vr))
+            records.append({
+                "concept_id": v["concept_id"], "expected_verdict": v["expected_verdict"],
+                "exists": v["exists"], "variant": v["variant"], "verdict": verdict,
+                "error": err, "retrieved_topk": retrieved, "citations": cits,
+            })
 
     out_path = os.environ.get("EVRV_OUT", "evrv-dataset.json")
     Path(out_path).write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -183,7 +197,7 @@ def _report(records: list[dict], out_path: str) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     import argparse
-    default = str(Path(__file__).resolve().parent / "metamorphic_canon.yaml")
+    default = str(Path(__file__).resolve().parents[2] / "eval" / "truth" / "metamorphic_canon.yaml")
     ap = argparse.ArgumentParser(description="E/R/V dataset capture (#288)")
     ap.add_argument("canon", nargs="?", default=default)
     return run(ap.parse_args(argv).canon)

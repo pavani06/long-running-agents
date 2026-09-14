@@ -35,8 +35,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import metamorphic_canon as mc  # noqa: E402
+import metamorphic_preflight as preflight  # noqa: E402
 import phase3_classify  # noqa: E402
 import retrieval  # noqa: E402
+import sut_view  # noqa: E402
 from embed import embed_texts  # noqa: E402
 from glm import GLMError, RateLimited  # noqa: E402
 from retrieval import rank_sections  # noqa: E402
@@ -142,53 +144,65 @@ def run(canon_path: str) -> int:
         _summary("diagnose: OPENAI_API_KEY and ZAI_API_KEY both required")
         return 1
 
-    repo_root = Path(__file__).resolve().parents[2]
-    state_path = repo_root / ".runtime" / "analyze-and-improve" / "index.json"
+    real_root = Path(__file__).resolve().parents[2]
+    state_path = real_root / ".runtime" / "analyze-and-improve" / "index.json"
     if not state_path.exists():
         _summary("diagnose: index not built — run `pipeline.py index --full` first")
         return 1
     index = json.loads(state_path.read_text(encoding="utf-8"))
 
     canon = mc.load_canon(Path(canon_path))
+    sentinel = preflight.sentinel_of(canon)
+    if not sentinel:
+        _summary("diagnose: canon has no _leak_sentinel — refusing (decontamination gate)")
+        return 1
     by_id = mc.concept_by_id(canon)
     wanted = [c.strip() for c in os.environ.get("DIAGNOSE_CONCEPTS", "").split(",") if c.strip()]
     concept_ids = wanted or mc.concept_ids(canon)
 
     per_concept = []
-    for cid in concept_ids:
-        concept = by_id.get(cid)
-        if not concept:
-            continue
-        variants = concept.get("variants", [])
-        evidence_files = {e["file"] for e in concept.get("evidence", []) if e.get("file")}
+    # Classifier sees only the disposable SUT-view (HEAD minus eval/truth); the
+    # preflight proves the answer key is unreachable there before any LLM call.
+    with sut_view.session(real_root) as view:
+        fails = preflight.assert_isolated(view, index, Path(canon_path), sentinel)
+        if fails:
+            _summary("diagnose: PREFLIGHT FAILED — eval-truth reachable; refusing:\n- "
+                     + "\n- ".join(fails))
+            return 1
+        for cid in concept_ids:
+            concept = by_id.get(cid)
+            if not concept:
+                continue
+            variants = concept.get("variants", [])
+            evidence_files = {e["file"] for e in concept.get("evidence", []) if e.get("file")}
 
-        # embed variants for the retrieval-stability trace (one batch)
-        vvecs = embed_texts(variants, openai_key)
-        topk_ids = [{r["id"] for r in rank_sections(v, index, k=8)} for v in vvecs]
-        topk_paths = [{r["path"] for r in rank_sections(v, index, k=8)} for v in vvecs]
+            # embed variants for the retrieval-stability trace (one batch)
+            vvecs = embed_texts(variants, openai_key)
+            topk_ids = [{r["id"] for r in rank_sections(v, index, k=8)} for v in vvecs]
+            topk_paths = [{r["path"] for r in rank_sections(v, index, k=8)} for v in vvecs]
 
-        # VARIABLE arm — each paraphrase drives its own retrieval (the gate's behaviour)
-        variable = []
-        for v in variants:
-            ret = retrieval.make_pattern_retriever(
-                [{"name": v[:80], "problem": v, "mechanism": ""}], index, openai_key, repo_root)
-            variable.append(_classify_with(ret, v, zai_key))
+            # VARIABLE arm — each paraphrase drives its own retrieval (the gate's behaviour)
+            variable = []
+            for v in variants:
+                ret = retrieval.make_pattern_retriever(
+                    [{"name": v[:80], "problem": v, "mechanism": ""}], index, openai_key, view)
+                variable.append(_classify_with(ret, v, zai_key))
 
-        # FIXED arm — one context from the canonical_definition, shared by all 5
-        def_ret = retrieval.make_pattern_retriever(
-            [{"name": cid, "problem": concept["canonical_definition"], "mechanism": ""}],
-            index, openai_key, repo_root)
-        fixed_context = def_ret(None)
-        fixed_ret = lambda nm: fixed_context if nm is None else ""  # keep context identical, 1-shot
-        fixed = [_classify_with(fixed_ret, v, zai_key) for v in variants]
+            # FIXED arm — one context from the canonical_definition, shared by all 5
+            def_ret = retrieval.make_pattern_retriever(
+                [{"name": cid, "problem": concept["canonical_definition"], "mechanism": ""}],
+                index, openai_key, view)
+            fixed_context = def_ret(None)
+            fixed_ret = lambda nm: fixed_context if nm is None else ""  # identical context, 1-shot
+            fixed = [_classify_with(fixed_ret, v, zai_key) for v in variants]
 
-        per_concept.append({
-            "concept_id": cid, "expected_exists": bool(concept["expected_repo_state"]["exists"]),
-            "variable_verdicts": variable, "fixed_verdicts": fixed,
-            "retrieval_stability": retrieval_stability(topk_ids),
-            "evidence_recall": evidence_recall(topk_paths, evidence_files),
-            "attribution": attribute(variable, fixed),
-        })
+            per_concept.append({
+                "concept_id": cid, "expected_exists": bool(concept["expected_repo_state"]["exists"]),
+                "variable_verdicts": variable, "fixed_verdicts": fixed,
+                "retrieval_stability": retrieval_stability(topk_ids),
+                "evidence_recall": evidence_recall(topk_paths, evidence_files),
+                "attribution": attribute(variable, fixed),
+            })
 
     _summary(_report(aggregate(per_concept), per_concept))
     print("\n=== per-concept (log) ===")
@@ -224,7 +238,7 @@ def _report(agg: dict, per_concept: list[dict]) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     import argparse
-    default = str(Path(__file__).resolve().parent / "metamorphic_canon.yaml")
+    default = str(Path(__file__).resolve().parents[2] / "eval" / "truth" / "metamorphic_canon.yaml")
     ap = argparse.ArgumentParser(description="Gate-B dispersion diagnostic (#288)")
     ap.add_argument("canon", nargs="?", default=default)
     return run(ap.parse_args(argv).canon)

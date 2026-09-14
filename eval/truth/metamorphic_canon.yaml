@@ -14,6 +14,12 @@
 # curated, assumedly-subjective ground-truth with a maintenance cost.
 version: 1
 
+# Deterministic leak canary (#288 decontamination). This token lives ONLY in the
+# eval-truth store. The preflight asserts it is unreachable from the SUT-view the
+# classifier sees (grep + index + realpath boundary); if it ever appears in the
+# observable universe, eval-truth has leaked and the run must refuse to execute.
+_leak_sentinel: "EVALTRUTH-SENTINEL-7f3a9c21"
+
 concepts:
   # ── EXISTS (5) — implemented, greppable code mechanisms ───────────────────
   - concept_id: adversarial-evaluator-cross-provider
