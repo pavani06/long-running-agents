@@ -82,7 +82,7 @@ def content_from_sse_lines(lines) -> str:
 def chat_json(messages: list[dict], api_key: str, *, model: str = MODEL,
               temperature: float = 0.2, timeout: int = 180, max_retries: int = 2,
               backoff_base: float = 4.0, reasoning_effort: str | None = REASONING_EFFORT,
-              sleep=time.sleep) -> dict:
+              max_tokens: int = 8192, sleep=time.sleep) -> dict:
     """POST a streaming chat completion and return the reply parsed as a JSON object.
 
     Streaming (`stream: True`) is deliberate: the read timeout then applies between
@@ -92,7 +92,7 @@ def chat_json(messages: list[dict], api_key: str, *, model: str = MODEL,
     AuthError (401/403), RateLimited (429 past retries), or GLMError (other HTTP
     failure, empty reply, or unparseable JSON)."""
     payload = {"model": model, "messages": messages,
-               "temperature": temperature, "stream": True}
+               "temperature": temperature, "stream": True, "max_tokens": max_tokens}
     if reasoning_effort:
         payload["reasoning_effort"] = reasoning_effort
     url = f"{BASE_URL}/chat/completions"
