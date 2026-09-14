@@ -86,6 +86,7 @@ def run_spine(transcript: str, slug: str, index: dict, *, openai_key: str, zai_k
     # Deterministic gates.
     verified = grep_verify.verify_all(phase3_classify.citations_of(classifications), repo_root)
     phase3_classify.mark_verified(classifications, verified)
+    phase3_classify.mark_grounding(classifications, verified)   # derived provenance for the coverage guard
     citations_ok = grep_verify.all_ok(verified)
     dup = _step("gate: dedup embed", lambda: dedup.is_duplicate(
         embed_texts([dedup_text(extraction, patterns)], openai_key)[0], index, dup_threshold))

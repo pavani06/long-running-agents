@@ -191,6 +191,68 @@ def test_mark_verified_failing_citation_is_false():
     assert cls[0]["verified"] is False
 
 
+# ── mark_grounding (#288 B′ — code_only_grounded derivation) ──────────────
+# Cases mirror the observed behavior matrix: code-only Exists, doc-only Exists,
+# mixed Exists, and Missing controls.
+def _cit(pattern, source_type, ok=True, quote="q"):
+    return {"pattern": pattern, "source_type": source_type, "ok": ok, "quote": quote}
+
+
+def test_mark_grounding_code_only_existence_is_flagged():
+    # cosine-dedup-gate style: docs+code → Exists grounded solely in verified code
+    cls = [{"pattern": "cosine-dedup", "verdict": "Exists"}]
+    p3.mark_grounding(cls, [_cit("cosine-dedup", "code"), _cit("cosine-dedup", "code")])
+    assert cls[0]["grounding"] == {"code": 2, "doc": 0, "other": 0}
+    assert cls[0]["code_only_grounded"] is True
+
+
+def test_mark_grounding_mixed_is_not_flagged():
+    # mixed evidence (code + doc) → has documentation backing → NOT code-only
+    cls = [{"pattern": "P", "verdict": "Exists"}]
+    p3.mark_grounding(cls, [_cit("P", "code"), _cit("P", "doc")])
+    assert cls[0]["grounding"] == {"code": 1, "doc": 1, "other": 0}
+    assert cls[0]["code_only_grounded"] is False
+
+
+def test_mark_grounding_doc_only_is_not_flagged():
+    cls = [{"pattern": "P", "verdict": "Exists"}]
+    p3.mark_grounding(cls, [_cit("P", "doc")])
+    assert cls[0]["code_only_grounded"] is False
+
+
+def test_mark_grounding_missing_is_never_flagged():
+    # a Missing control (k8s/DP) makes no existence claim → never code_only_grounded
+    cls = [{"pattern": "k8s", "verdict": "Missing"}]
+    p3.mark_grounding(cls, [_cit("k8s", "code")])   # even if a stray code cit exists
+    assert cls[0]["code_only_grounded"] is False
+
+
+def test_mark_grounding_unverified_code_does_not_ground():
+    cls = [{"pattern": "P", "verdict": "Exists"}]
+    p3.mark_grounding(cls, [_cit("P", "code", ok=False)])   # failed grep-verify
+    assert cls[0]["grounding"] == {"code": 0, "doc": 0, "other": 0}
+    assert cls[0]["code_only_grounded"] is False
+
+
+def test_mark_grounding_empty_quote_code_does_not_ground():
+    cls = [{"pattern": "P", "verdict": "Better"}]
+    p3.mark_grounding(cls, [_cit("P", "code", quote="")])   # line but no content checked
+    assert cls[0]["code_only_grounded"] is False
+
+
+def test_mark_grounding_partial_existence_verdict_flagged():
+    cls = [{"pattern": "P", "verdict": "Partial"}]
+    p3.mark_grounding(cls, [_cit("P", "code")])
+    assert cls[0]["code_only_grounded"] is True   # Partial is an existence verdict
+
+
+def test_mark_grounding_does_not_touch_verdict_or_verified():
+    # DERIVED-ONLY / NON-COUPLING: verdict and verified are byte-identical after.
+    cls = [{"pattern": "P", "verdict": "Exists", "verified": True}]
+    p3.mark_grounding(cls, [_cit("P", "code")])
+    assert cls[0]["verdict"] == "Exists" and cls[0]["verified"] is True
+
+
 # ── phase3.run — one 'ask for more' round ─────────────────────────────────
 def test_run_no_ask_for_more():
     final = {"classifications": [{"pattern": "P", "verdict": "Exists", "evidence": []}]}
