@@ -123,9 +123,15 @@ def make_pattern_retriever(patterns: list[dict], index: dict, openai_key: str,
         extra = []
         for rel in need_more.get("files", []):
             fp = repo_root / rel
-            if fp.exists():
-                extra.append({"path": rel, "heading": "(arquivo pedido)", "score": 0.0,
-                              "text": fp.read_text(encoding="utf-8")[:4000]})
+            # The model can name anything here — a directory or a non-existent path.
+            # Only read real files, and never let a bad path crash the retriever.
+            if fp.is_file():
+                try:
+                    text = fp.read_text(encoding="utf-8")[:4000]
+                except OSError:
+                    continue
+                extra.append({"path": rel, "heading": "(arquivo pedido)",
+                              "score": 0.0, "text": text})
         return build_context(extra, grep)
 
     return retriever
