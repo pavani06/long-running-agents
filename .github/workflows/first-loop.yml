@@ -44,10 +44,25 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --upgrade requests pyyaml
 
-      - name: Build repo semantic index (full, docs-only default)
+      # Persist/restore the derived index across runs (native Actions cache). This is an
+      # OPTIMIZATION only, never authoritative repo state: run_id key always misses so a
+      # fresh entry is saved each run; the restore-keys prefix restores the most recent
+      # prior index. A cache miss (or corrupt state, per load_state) falls back to a full
+      # rebuild. Path is the gitignored .runtime index dir; docs-only scope is unchanged.
+      - name: Restore analyze-and-improve index cache
+        uses: actions/cache@v4
+        with:
+          path: .runtime/analyze-and-improve
+          key: aai-index-docs-${{ github.run_id }}
+          restore-keys: |
+            aai-index-docs-
+
+      - name: Build/refresh repo semantic index (docs-only; incremental if cache restored)
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python scripts/analyze-and-improve/pipeline.py index --full
+        # No --full: with a restored index (has base_sha) this takes the incremental delta
+        # path and re-embeds only changed chunks; with no/corrupt state it full-rebuilds.
+        run: python scripts/analyze-and-improve/pipeline.py index
 
       - name: Run the First Useful Governed Loop (through F4 + gates; no PR yet)
         id: loop
