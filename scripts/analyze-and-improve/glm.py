@@ -79,18 +79,25 @@ def content_from_sse_lines(lines) -> str:
     return "".join(parts)
 
 
-def chat_json(messages: list[dict], api_key: str, *, model: str = MODEL,
-              temperature: float = 0.2, timeout: int = 180, max_retries: int = 2,
-              backoff_base: float = 4.0, reasoning_effort: str | None = REASONING_EFFORT,
-              max_tokens: int = 8192, sleep=time.sleep) -> dict:
-    """POST a streaming chat completion and return the reply parsed as a JSON object.
+# One corrective re-ask when the model returns a 200 whose body is not valid JSON
+# (observed aborting Fase 2 and a First-Loop Fase 4). It reuses the caller's own
+# messages (which already carry the expected format/schema) plus this JSON-only
+# reminder — NOT a JSON-repair framework, NOT provider fallback, NOT a schema change.
+_JSON_ONLY_REMINDER = (
+    "Sua resposta anterior NÃO era um objeto JSON válido. Responda AGORA com APENAS "
+    "um único objeto JSON válido, exatamente no formato/esquema já pedido acima — sem "
+    "nenhum texto fora do JSON, sem markdown e sem cercas de código."
+)
 
-    Streaming (`stream: True`) is deliberate: the read timeout then applies between
-    chunks (tokens keep arriving during generation) instead of to the whole body,
-    so a slow Fase-3 generation doesn't read-time-out. `reasoning_effort` (default
-    'low') keeps glm-5.3's reasoning light — the dominant TTFT cost (#262). Raises
-    AuthError (401/403), RateLimited (429 past retries), or GLMError (other HTTP
-    failure, empty reply, or unparseable JSON)."""
+
+def _post_chat(messages: list[dict], api_key: str, *, model: str, temperature: float,
+               timeout: int, max_retries: int, backoff_base: float,
+               reasoning_effort: str | None, max_tokens: int, sleep) -> str:
+    """POST one streaming chat completion and return the raw reply content string.
+
+    Transport only: retries 429/5xx/network with backoff. Raises AuthError (401/403),
+    RateLimited (429 past retries), or GLMError (other HTTP failure / empty reply).
+    JSON parsing is the caller's concern (so a parse failure can be re-asked once)."""
     payload = {"model": model, "messages": messages,
                "temperature": temperature, "stream": True, "max_tokens": max_tokens}
     if reasoning_effort:
@@ -120,10 +127,45 @@ def chat_json(messages: list[dict], api_key: str, *, model: str = MODEL,
             else:
                 content = content_from_sse_lines(r.iter_lines(decode_unicode=True))
                 if content.strip():
-                    return extract_json(content)
+                    return content
                 last = "empty stream response"
         except requests.RequestException as e:
             last = f"network error: {e}"
         if attempt < max_retries:
             sleep(backoff_base * (2 ** attempt))
     raise GLMError(f"GLM failed after {max_retries + 1} attempts: {last}")
+
+
+def chat_json(messages: list[dict], api_key: str, *, model: str = MODEL,
+              temperature: float = 0.2, timeout: int = 180, max_retries: int = 2,
+              backoff_base: float = 4.0, reasoning_effort: str | None = REASONING_EFFORT,
+              max_tokens: int = 8192, sleep=time.sleep, max_json_retries: int = 1,
+              poster=_post_chat) -> dict:
+    """POST a streaming chat completion and return the reply parsed as a JSON object.
+
+    Streaming (`stream: True`) is deliberate: the read timeout then applies between
+    chunks (tokens keep arriving during generation) instead of to the whole body,
+    so a slow Fase-3 generation doesn't read-time-out. `reasoning_effort` (default
+    'low') keeps glm-5.3's reasoning light — the dominant TTFT cost (#262).
+
+    Bounded JSON-parse retry: if the 200 reply is not valid JSON, re-ask ONCE with an
+    explicit JSON-only reminder (reusing the caller's schema). `max_json_retries=1`
+    caps it at one extra request; if the re-ask is still unparseable the original hard
+    GLMError stands. Transport failures (Auth/RateLimited/other GLMError) are NOT
+    re-asked — only the unparseable-JSON case is. `poster` is injectable for tests."""
+    def _call(msgs: list[dict]) -> str:
+        return poster(msgs, api_key, model=model, temperature=temperature, timeout=timeout,
+                      max_retries=max_retries, backoff_base=backoff_base,
+                      reasoning_effort=reasoning_effort, max_tokens=max_tokens, sleep=sleep)
+
+    content = _call(messages)
+    try:
+        return extract_json(content)
+    except GLMError:
+        if max_json_retries < 1:
+            raise
+        corrective = list(messages) + [
+            {"role": "assistant", "content": content[:2000]},
+            {"role": "user", "content": _JSON_ONLY_REMINDER},
+        ]
+        return extract_json(_call(corrective))   # still bad → hard GLMError preserved
