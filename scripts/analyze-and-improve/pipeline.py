@@ -61,9 +61,19 @@ def summary(line: str) -> None:
 
 
 def load_state() -> dict:
-    if STATE_PATH.exists():
-        return json.loads(STATE_PATH.read_text(encoding="utf-8"))
-    return {"version": 1, "base_sha": None, "records": {}}
+    """Load the index state. A restored cache is an OPTIMIZATION, never authoritative:
+    a missing OR unreadable/corrupt state falls back to the empty state, which makes
+    `run_index` take the full-rebuild path (base_sha is None). So a cache miss or
+    corruption degrades to the existing rebuild behavior instead of crashing."""
+    empty = {"version": 1, "base_sha": None, "records": {}}
+    if not STATE_PATH.exists():
+        return empty
+    try:
+        state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+        return state if isinstance(state, dict) else empty
+    except (json.JSONDecodeError, OSError):
+        summary("index: state unreadable/corrupt — falling back to full rebuild")
+        return empty
 
 
 def save_state(state: dict) -> None:
