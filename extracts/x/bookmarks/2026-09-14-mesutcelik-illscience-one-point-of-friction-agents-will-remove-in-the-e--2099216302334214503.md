@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-14-illscience-had-many-conversations-this-weekend-re-instinct-muse-consume--2099205025797144669|Consumer agents e commerce]]", "[[extracts/x/bookmarks/2026-09-14-illscience-mesutcelik-yes-this-is-a-fascinating-dynamic-they-dont-mind--2099220613999304823|moats de plataformas agregadoras]]", "[[extracts/x/bookmarks/2026-09-12-kevinwhinnery-the-era-of-the-dumb-token-pipe-is-ending-agent-harness-apis--2098444890602455431|Agent harness APIs como integração]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-retailers-running-shopping-agents-on-claude-have-seen-carts--2095233746366808420|Arquitetura de agentes de comércio com Claude]]", "[[extracts/x/bookmarks/2026-09-14-treytaylorceo-illscience-agents-are-largely-extensions-of-people-in-the-co--2099208649411321980|incentivos e preferências em agentes comerciais]]", "[[extracts/x/bookmarks/2026-09-14-illscience-additionally-i-think-theres-a-lot-of-debate-about-imessage-v--2099207649577595286|iMessage vs app como interface]]"]
 ---
 
 # Agentes desintermediando marketplaces

@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: ["https://pbs.twimg.com/media/HSHAiD_a0AAhkOU.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-mem0ai-https-t-co-tcm1ujyofb--2097725977199865964|link Mem0 sem conteúdo acessível]]", "[[extracts/x/bookmarks/2026-09-12-addyosmani-https-t-co-qrftl7vgum--2077600055159357548|link sem contexto acessível]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-https-t-co-aw0w9vyrrj--2076341711580672483|Link de DAIR.ai sem contexto]]", "[[extracts/x/bookmarks/2026-09-12-sprytixl-stanford-and-anthropic-spent-3-1m-to-prove-your-agent-perfor--2078969602189746340|memória de agentes via grafos]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-https-t-co-rx3fqsosu0--2079654423828304282|Link externo sem contexto]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-https-t-co-bagbeytkga--2097369738968195513|link sem conteúdo acessível]]"]
 ---
 
 # resultado experimental de terceiros

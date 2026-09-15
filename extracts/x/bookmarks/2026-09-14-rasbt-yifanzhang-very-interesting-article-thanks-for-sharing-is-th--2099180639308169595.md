@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-14-orcarouter-why-does-everyone-suddenly-want-to-pace-ai-recurrent-looped--2098922505591505139|Recurrent Looped Transformers]]", "[[extracts/x/bookmarks/2026-09-14-yifanzhang_-we-are-at-the-dawn-of-superintelligence-introducing-the-recu--2098886268033945610|Recurrent Looped Transformer]]", "[[extracts/x/bookmarks/2026-09-14-yifanzhang_-rasbt-https-t-co-tovrlbceki--2099180888684937556|Recurrent Looped Transformer]]", "[[extracts/x/bookmarks/2026-09-14-grok-iykshani-yifanzhang-the-recurrent-looped-transformer-rlt-has--2098944692247240757|Recurrent Looped Transformer]]", "[[extracts/x/bookmarks/2026-09-12-eng_khairallah1-this-is-f-cking-gold-andrej-karpathy-joined-anthropic-five-w--2075998771415031856|LOOPS.md prompt file hype]]", "[[extracts/x/bookmarks/2026-09-14-aryan_sakhala-yifanzhang-https-t-co-r9fe8sx8jh-where-it-all-started--2098988144892797057|Transformer: atenção sem recorrência]]"]
 ---
 
 # Looped Transformer prova de conceito

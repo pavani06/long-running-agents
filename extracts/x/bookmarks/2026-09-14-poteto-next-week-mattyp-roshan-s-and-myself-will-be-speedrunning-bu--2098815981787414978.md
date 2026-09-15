@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-adiix_official-how-to-run-your-whole-grok-bot-workday-on-loops-instead-of-p--2095464614498619493|Orquestração de Grok Bot em loops]]", "[[extracts/x/bookmarks/2026-09-12-aiedge_-absolute-goldmine-of-a-website-for-all-grok-bot-users-a-reso--2097897898235269173|Grok Bot resource hub]]", "[[extracts/x/bookmarks/2026-09-12-0xmovez-spacexai-engineer-lauren-tan-at-spacexai-90-of-engineers-run--2094868247162360099|Uso de agentes GrokBot na SpaceXAI]]", "[[extracts/x/bookmarks/2026-09-12-mattyp-giving-grok-bot-a-phone-00-19-installing-dialbot-00-54-bland--2098155792327381294|Agent fazendo chamadas telefônicas]]", "[[extracts/x/bookmarks/2026-09-12-poteto-what-questions-do-you-have-about-pstack-https-t-co-lopojdztt--2098634643323142286|pstack agent workflow tool]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-coming-soon-to-mattpocock-skills-retro-gives-you-opportuniti--2098062605407461744|Skill /retro para retroativa de agentes]]"]
 ---
 
 # Speedrun de startup com Grok Bot

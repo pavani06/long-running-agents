@@ -20,8 +20,8 @@ revisit: "low"
 grounded_in: "tweet"
 links: []
 media: []
-relates-to: ["[[extracts/x/bookmarks/2026-09-12-eng_khairallah1-https-t-co-hnwk3geozx--2068620025045418032|conteúdo inacessível]]", "[[extracts/x/bookmarks/2026-09-12-nikogrupen-https-t-co-fg8fnikqv3--2097369705791307952|link sem contexto]]", "[[extracts/x/bookmarks/2026-09-12-dexhorthy-https-t-co-l0g15qt1tv--2087569590268391897|conteúdo inacessível]]", "[[extracts/x/bookmarks/2026-09-12-addyosmani-https-t-co-qrftl7vgum--2077600055159357548|link sem contexto acessível]]", "[[extracts/x/bookmarks/2026-09-12-pvncher-https-t-co-idl6i25aqu--2095991462416490862|link externo sem conteúdo]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-https-t-co-rx3fqsosu0--2079654423828304282|Link externo sem contexto]]", "[[extracts/x/bookmarks/2026-09-12-mem0ai-https-t-co-tcm1ujyofb--2097725977199865964|link Mem0 sem conteúdo acessível]]"]
 thin: true
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-eng_khairallah1-https-t-co-hnwk3geozx--2068620025045418032|conteúdo inacessível]]", "[[extracts/x/bookmarks/2026-09-12-nikogrupen-https-t-co-fg8fnikqv3--2097369705791307952|link sem contexto]]", "[[extracts/x/bookmarks/2026-09-12-dexhorthy-https-t-co-l0g15qt1tv--2087569590268391897|conteúdo inacessível]]", "[[extracts/x/bookmarks/2026-09-12-addyosmani-https-t-co-qrftl7vgum--2077600055159357548|link sem contexto acessível]]", "[[extracts/x/bookmarks/2026-09-12-pvncher-https-t-co-idl6i25aqu--2095991462416490862|link externo sem conteúdo]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-https-t-co-rx3fqsosu0--2079654423828304282|Link externo sem contexto]]", "[[extracts/x/bookmarks/2026-09-12-mem0ai-https-t-co-tcm1ujyofb--2097725977199865964|link Mem0 sem conteúdo acessível]]", "[[extracts/x/bookmarks/2026-09-14-yifanzhang_-aradhyeagarwals-experimental-result-https-t-co-7bvvstlccw--2099170595858706830|resultado experimental de terceiros]]"]
 ---
 
 # link sem conteúdo acessível
