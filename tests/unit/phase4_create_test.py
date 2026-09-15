@@ -70,6 +70,16 @@ def test_render_markdown_is_a_proposal_not_canonical():
     assert "BODY-CONTENT" in md
 
 
+def test_render_markdown_satisfies_monitored_dir_frontmatter():
+    # docs/analysis/ is a validate-obsidian MONITORED dir: aliases (present+non-empty,
+    # Check 12) and relates-to (present, Check 11) are required even in quarantine.
+    art = f4.proposed_artifact(slug="s", source_file="s--v.md", video_id="v", pattern=PATTERN,
+                               verdict="Missing", evidence=[], creation={"title": "X", "body": "B"})
+    md = f4.render_markdown(art)
+    assert "aliases:" in md and "- idempotent diff pipeline" in md   # non-empty alias
+    assert "relates-to: []" in md                                    # present, empty (uncurated)
+
+
 def test_quarantine_path_is_under_proposed(tmp_path):
     p = f4.quarantine_path(tmp_path, "2026-09-11-talk", PATTERN)
     rel = p.resolve().relative_to(tmp_path.resolve()).as_posix()
