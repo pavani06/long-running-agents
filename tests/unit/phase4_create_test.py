@@ -72,7 +72,7 @@ def test_render_markdown_is_a_valid_canonical_doc():
     assert "relates-to: []" in md                          # Check 11: present (empty, uncurated)
     assert "last_updated: '2026-09-15'" in md or "last_updated: 2026-09-15" in md
     assert "sources:" in md
-    assert "**Status:** Proposed" in md                    # honest: PR is the quarantine
+    assert "**Status:**" not in md                         # no transient lifecycle state — Git represents it
     assert "BODY-CONTENT" in md
 
 

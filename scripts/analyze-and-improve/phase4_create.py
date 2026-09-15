@@ -113,10 +113,12 @@ def render_markdown(artifact: dict) -> str:
     """Serialize the canonical-target artifact to a docs/canonical/ markdown file. Pure.
 
     Complete canonical frontmatter (title/type/aliases/tags/last_updated/relates-to/sources)
-    so it passes the docs/canonical/ CI checks, then a canonical body: a Status/Source/
-    Classification block (Status = Proposed — the PR is the quarantine) + the content. Body is
-    link-free (no `[text](x.md)` — Check 5; no `[[wikilink]]` — Check 6); `relates-to` is empty
-    (real cross-links are a review/curation act, not fabricated by F4)."""
+    so it passes the docs/canonical/ CI checks, then a canonical body: a Type/Source/
+    Classification block + the content. NO transient lifecycle Status is persisted — proposal
+    vs promotion is represented structurally by Git (open proposal PR = proposed; merged into
+    main = promoted). Body is link-free (no `[text](x.md)` — Check 5; no `[[wikilink]]` —
+    Check 6); `relates-to` is empty (real cross-links are a review/curation act, not fabricated
+    by F4)."""
     alias = (artifact.get("pattern") or artifact.get("slug") or "proposta").strip().lower()
     fm = {
         "title": artifact["title"],
@@ -130,7 +132,6 @@ def render_markdown(artifact: dict) -> str:
     lines = ["---", serialize.to_yaml(fm).rstrip(), "---", "",
              f"# {artifact['title']}", "",
              "**Type:** Canonical Pattern",
-             "**Status:** Proposed — em revisão humana (este PR é a quarentena; o merge promove)",
              f"**Source:** `{artifact['source']}` — adaptado para long-running-agents",
              f"**Classification:** Missing — ausente no repo; originado da análise da fonte "
              f"(padrão: {artifact['pattern']}).", "",
