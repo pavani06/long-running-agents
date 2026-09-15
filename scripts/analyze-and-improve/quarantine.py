@@ -32,6 +32,16 @@ def destination_subdir(accepted: bool) -> str:
     return "" if accepted else QUARANTINE_SUBDIR
 
 
+def quarantine_relpath(slug: str, intended_destination: str) -> str:
+    """The quarantine copy path for an artifact: `docs/analysis/<slug>/proposed/<dest>`.
+
+    The intended destination is mirrored verbatim under the quarantine dir, so the
+    quarantined file is self-describing and promotion is a prefix-strip move. The
+    copy lives under docs/analysis/ — it can never collide with (or contaminate)
+    the authoritative layers. Pure."""
+    return f"docs/analysis/{slug}/{QUARANTINE_SUBDIR}/{intended_destination}"
+
+
 def report_from_gates(*, validate_obsidian: bool, citations_ok: bool,
                       duplicate: bool, evaluation_passed: bool) -> dict:
     """Assemble the gate report from individual gate outcomes (note the dedup

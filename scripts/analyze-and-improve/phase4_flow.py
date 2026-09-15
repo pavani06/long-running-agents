@@ -1,0 +1,195 @@
+"""Fase 4 flow — generate → quarantine write → Etapa-3 gates → promote-on-pass → manifest.
+
+The #263 remainder composition (the full creation phase): for one source's
+classifications, `phase4_routing.plan_of_work` decides what to generate and in
+which order; each artifact is generated with full content (GLM), written to the
+quarantine dir (`docs/analysis/<slug>/proposed/<destination>` — never the
+authoritative layers), gated by the Etapa-3 lib (adversarial evaluator on OpenAI
++ cosine dedup + the repo-level validate-obsidian + the classification's
+grep-verified flag, routed fail-closed by `quarantine.decide`), and only the
+accepted ones are promoted (moved) to their authoritative destinations. The run
+is recorded in the artifacts manifest — the contract Fase 5 (#264) consumes.
+
+Governance invariants: creation != promotion (promotion here is an in-worktree
+move gated by the machine gates; landing on main stays behind a human-gated PR);
+the evaluator is a different provider from the generator; the quarantine write
+can never touch `docs/canonical/`, `curriculum/` or `.opencode/skills/`.
+
+`write_quarantined`/`promote` are thin I/O over pure path computation;
+`run_fase4` needs both keys but every external call (GLM, evaluator, embeddings,
+validate) is injectable for unit tests. Classifications must be post-
+`mark_verified` (the citations gate reads the `verified` flag, fail-closed).
+"""
+from __future__ import annotations
+
+import re
+from datetime import date
+from pathlib import Path
+
+import artifact_manifest
+import dedup
+import evaluator
+import phase4_create
+import phase4_routing
+import quarantine
+from analysis_package import package_dir
+
+_RENDERERS = {
+    "canonical": phase4_create.render_markdown,
+    "skill": phase4_create.render_skill_markdown,
+    "exercise": phase4_create.render_exercise_markdown,
+}
+_LEVEL_RE = re.compile(r"nivel-(\d+)")
+
+
+def _assert_quarantine_target(path: Path, repo_root: Path, slug: str) -> None:
+    """The quarantine write stays inside docs/analysis/<slug>/proposed/ — never an
+    authoritative layer (fail-closed containment of the un-gated creation write)."""
+    prefix = f"docs/analysis/{slug}/{quarantine.QUARANTINE_SUBDIR}/"
+    actual = path.resolve().relative_to(repo_root.resolve()).as_posix()
+    if not actual.startswith(prefix):
+        raise ValueError(f"quarantine write escaped {prefix}: {actual}")
+
+
+def write_quarantined(repo_root: Path, slug: str, artifact: dict) -> str:
+    """Write the artifact's rendered markdown under the quarantine dir; return the
+    repo-relative path (also stamped onto the artifact as `quarantine_path`)."""
+    rel = quarantine.quarantine_relpath(slug, artifact["intended_destination"])
+    path = repo_root / rel
+    _assert_quarantine_target(path, repo_root, slug)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(_RENDERERS[artifact["type"]](artifact), encoding="utf-8")
+    artifact["quarantine_path"] = rel
+    return rel
+
+
+def promote(repo_root: Path, slug: str, artifact: dict) -> str:
+    """Move an ACCEPTED artifact from quarantine to its authoritative destination.
+
+    Fail-closed: refuses an occupied destination (a generated artifact never
+    overwrites an authoritative file) and a missing quarantine copy."""
+    dest_rel = artifact["intended_destination"]
+    dest = repo_root / dest_rel
+    if dest.exists():
+        raise ValueError(f"promotion refused — destination exists: {dest_rel}")
+    src_rel = artifact.get("quarantine_path") or quarantine.quarantine_relpath(slug, dest_rel)
+    src = repo_root / src_rel
+    if not src.is_file():
+        raise ValueError(f"promotion refused — no quarantined copy at {src_rel}")
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_text(src.read_text(encoding="utf-8"), encoding="utf-8")
+    src.unlink()
+    return dest_rel
+
+
+def _level_of(level_dir: str) -> int:
+    """The numeric level of a repo level dir (`03-nivel-3-…` → 3). Fail-closed."""
+    m = _LEVEL_RE.search(level_dir)
+    if not m:
+        raise ValueError(f"cannot derive exercise level from level dir: {level_dir!r}")
+    return int(m.group(1))
+
+
+def _eval_artifact(artifact: dict, pattern: dict) -> dict:
+    """The compact artifact the adversarial evaluator scores (first-loop shape). Pure."""
+    return {"type": artifact["type"], "title": artifact["title"],
+            "content": artifact["content"], "source_pattern": pattern,
+            "phase3_verdict": artifact["phase3_verdict"]}
+
+
+def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns: list[dict],
+              extraction: dict, index: dict, *, openai_key: str, zai_key: str,
+              source_file: str, level_dir: str = phase4_create.DEFAULT_LEVEL_DIR,
+              min_mean: float = evaluator.PROVISIONAL_MIN_MEAN,
+              dup_threshold: float = dedup.DUP_THRESHOLD,
+              zai_client=None, eval_client=None, embed_fn=None, validate_fn=None,
+              today: str | None = None) -> dict:
+    """The full Fase-4 run for one source. Returns {manifest, outcomes, promoted, held}.
+
+    Every external call is injectable (`zai_client`/`eval_client`/`embed_fn`/
+    `validate_fn`; None → the module default). `validate_fn` is called once after
+    all quarantine writes; its bool feeds every artifact's gate report."""
+    import retrieval
+
+    if zai_client is None:
+        from glm import chat_json as zai_client
+    if eval_client is None:
+        from openai_chat import chat_json as eval_client
+    if embed_fn is None:
+        from embed import embed_texts as embed_fn
+    if validate_fn is None:
+        from spine import validate_obsidian_ok as validate_fn
+
+    today = today or date.today().isoformat()
+    plan = phase4_routing.plan_of_work(classifications)
+    by_name = {p.get("name"): p for p in patterns}
+    by_pattern_cls = {c.get("pattern"): c for c in classifications}
+    level = _level_of(level_dir)
+    exercises_root = repo_root / "curriculum" / level_dir / phase4_create.EXERCISES_SUBDIR
+    existing = [f.name for f in exercises_root.glob("exercise-*.md")] if exercises_root.exists() else []
+    next_number = phase4_create.next_exercise_number(existing)
+    video_id = str(extraction.get("video_id", ""))
+
+    generated: list[dict] = []
+    repo_contexts: dict[str, str] = {}
+    for item in plan:
+        pattern = by_name.get(item["pattern"], {"name": item["pattern"]})
+        cls = by_pattern_cls.get(item["pattern"], {})
+        if item["pattern"] not in repo_contexts:
+            repo_contexts[item["pattern"]] = retrieval.make_pattern_retriever(
+                [pattern], index, openai_key, repo_root, k=6, embed_fn=embed_fn)(None)
+        repo_context = repo_contexts[item["pattern"]]
+        source_context = (f"Tese: {extraction.get('thesis','')}\n"
+                          f"Trade-offs: {pattern.get('tradeoffs','')}")
+        common = dict(slug=slug, source_file=source_file, video_id=video_id,
+                      evidence=cls.get("evidence", []), source_context=source_context,
+                      repo_context=repo_context, zai_key=zai_key, today=today)
+        if item["category"] == "canonical":
+            artifact = phase4_create.create(pattern, verdict=item["verdict"],
+                                            client=zai_client, **common)
+        elif item["category"] == "skill":
+            artifact = phase4_create.create_skill(pattern, client=zai_client, **common)
+        else:
+            artifact = phase4_create.create_exercise(pattern, level=level, level_dir=level_dir,
+                                                     number=next_number, client=zai_client,
+                                                     **common)
+            next_number += 1
+        artifact["priority"] = item["priority"]
+        write_quarantined(repo_root, slug, artifact)
+        generated.append({"category": item["category"], "artifact": artifact,
+                          "classification": cls, "pattern": pattern})
+
+    validate_ok = bool(validate_fn(repo_root)) if generated else True
+
+    outcomes: list[dict] = []
+    for g in generated:
+        artifact = g["artifact"]
+        evaluation = evaluator.run(_eval_artifact(artifact, g["pattern"]), openai_key,
+                                   min_mean=min_mean, client=eval_client)
+        vec = embed_fn([artifact["title"] + "\n" + artifact["content"]], openai_key)[0]
+        dup = dedup.is_duplicate(vec, index, dup_threshold)
+        report = quarantine.report_from_gates(
+            validate_obsidian=validate_ok,
+            citations_ok=bool(g["classification"].get("verified")),
+            duplicate=dup["duplicate"], evaluation_passed=evaluation["passed"])
+        decision = quarantine.decide(report)
+        if decision["accepted"]:
+            promote(repo_root, slug, artifact)
+        outcomes.append({"category": g["category"], "artifact": artifact,
+                         "accepted": decision["accepted"], "reasons": decision["reasons"],
+                         "evaluation": evaluation, "dedup": dup})
+
+    manifest = artifact_manifest.build_manifest(
+        slug, today, classifications, outcomes,
+        planned_categories={item["category"] for item in plan})
+    out = package_dir(repo_root, slug)
+    out.mkdir(parents=True, exist_ok=True)
+    for suffix, text in (("yaml", artifact_manifest.manifest_yaml(manifest)),
+                         ("md", artifact_manifest.manifest_md(manifest))):
+        body = text if text.endswith("\n") else text + "\n"
+        (out / f"{slug}-artifacts.{suffix}").write_text(body, encoding="utf-8")
+
+    return {"manifest": manifest, "outcomes": outcomes,
+            "promoted": [o["artifact"]["intended_destination"] for o in outcomes if o["accepted"]],
+            "held": [{"path": o["artifact"]["intended_destination"], "reasons": o["reasons"]}
+                     for o in outcomes if not o["accepted"]]}

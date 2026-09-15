@@ -56,10 +56,24 @@ checks + an adversarial evaluator + quarantine + a landing library.
 | `dedup.py` | Cosine duplication check vs the Etapa-0 index (a proposed artifact at/above the threshold is held) | ✅ (`is_duplicate`/`nearest`) |
 | `openai_chat.py` | OpenAI chat client (the evaluator's transport — a *different* provider from GLM) | `extract_json` reused; HTTP not tested |
 | `evaluator.py` | Adversarial evaluator: fixed rubric (fidelity/evidence/non-duplication/format), provisional min score | `build_messages`/`parse_evaluation` pure; `run` injects client |
-| `quarantine.py` | Route accept vs `proposed/`; fail-closed gate report | ✅ |
+| `quarantine.py` | Route accept vs `proposed/`; fail-closed gate report; `quarantine_relpath` (the quarantined copy path `docs/analysis/<slug>/proposed/<dest>`) | ✅ |
 | `landing.py` | Build the PR body + rolling quarantine-Issue digest; `LandingPlan` (`auto_merge`, `dry_run`) — the library, **not** the workflow | ✅ |
 | `spine.py` | `run_spine` — chains Fases 0→3 + gates + evaluator + route + landing (the entry point #262 invokes) | `artifact_for_eval`/`dedup_text` pure; `run_spine` needs both keys |
 | `ab_validate.py` | A/B validation (Etapa 4, #262): fresh-vs-historical label agreement + seeded-duplicate check + report; suggests the calibrated floor/cut | `label_agreement`/`decide_ab`/`ab_report`/`suggest_floor` pure; `run` needs both keys |
+
+### Creation phase (Etapa 5, #263 — Fase 4 + artifact manifest)
+
+Canonical-doc creation is the proven-live First-Loop path (`first_loop.py` +
+`first-loop.yml`: one canonical doc at its destination on the proposal branch,
+PR = quarantine, human merge = promotion). The #263 remainder generalizes
+creation to all three artifact types behind the same gates:
+
+| Module | Role | Pure? |
+|---|---|---|
+| `phase4_create.py` | Fase 4 generation — canonical doc (proven path; verdict-aware for Partial P1/P2), **skill** (`.opencode/skills/<slug>/SKILL.md`) and **exercise** (`curriculum/<level>/exercises/exercise-<NN>-<slug>.md`, level/number orchestrator-decided) with full content, frontmatter-compliant renderers | `build_messages*`/`parse_*`/`render_*`/`*_destination`/`next_exercise_number` pure; `create*` inject the client |
+| `phase4_routing.py` | Priorização por classificação (Missing=P0, Partial high=P1, medium=P2, Exists/Better=skip) + roteamento de categoria (P0 → canonical+skill+exercise; P1 → canonical+exercise; P2 → canonical) + the ordered `plan_of_work` | ✅ |
+| `artifact_manifest.py` | The artifacts manifest (`<slug>-artifacts.{yaml,md}`) — the typed contract Fase 5 (#264) reads: artifacts by category with promoted/quarantined status, skipped patterns, not-applicable rows, integration map | `build_manifest`/`manifest_yaml`/`manifest_md` pure |
+| `phase4_flow.py` | The governed loop: `plan_of_work` → generation → **quarantine write** (`docs/analysis/<slug>/proposed/<dest>`, never the authoritative layers) → Etapa-3 gates (evaluator + dedup + validate + verified citations, fail-closed) → **promote-on-pass** (in-worktree move; refuses occupied destinations) → manifest | path/wiring pure parts tested; `run_fase4` needs both keys (all injectable) |
 
 **Boundaries.** The evaluator is OpenAI on purpose — a different provider from
 the GLM generator, so it never grades its own homework (`OPENAI_API_KEY`, model
@@ -83,6 +97,10 @@ python3 -m pytest tests/unit/analyze_and_improve_phases_test.py -q   # judgment 
 python3 -m pytest tests/unit/analyze_and_improve_classify_test.py -q # Fase 3 (retrieval + grep-verify)
 python3 -m pytest tests/unit/analyze_and_improve_spine_test.py -q    # Etapa 3 (dedup + rubric + quarantine + landing)
 python3 -m pytest tests/unit/analyze_and_improve_ab_test.py -q       # Etapa 4 (A/B agreement + report)
+python3 -m pytest tests/unit/phase4_routing_test.py -q               # Fase 4 (priorização + roteamento de categoria)
+python3 -m pytest tests/unit/phase4_create_test.py -q                # Fase 4 (canonical/skill/exercise creation)
+python3 -m pytest tests/unit/artifact_manifest_test.py -q            # Fase 4 (manifesto — contrato da Fase 5)
+python3 -m pytest tests/unit/phase4_flow_test.py -q                  # Fase 4 (escrita em quarentena + promoção)
 python3 -m pytest tests/unit/metamorphic_canon_test.py -q            # #288 canon (load/validate + real-evidence check)
 python3 -m pytest tests/unit/metamorphic_match_test.py -q            # #288 two-stage matcher
 python3 -m pytest tests/unit/metamorphic_rerank_test.py -q           # #288 reranker + sanity mini-eval
