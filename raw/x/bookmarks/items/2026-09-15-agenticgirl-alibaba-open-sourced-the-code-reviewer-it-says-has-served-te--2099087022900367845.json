@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-15",
+  "status_id": "2099087022900367845",
+  "handle": "agenticgirl",
+  "text": "Alibaba open-sourced the code reviewer it says has served tens of thousands of developers and found millions of defects internally. Open Code Review does not leave the whole review loop to an LLM: deterministic code handles file coverage, bundling, rule matching and comment https://t.co/u0zHPGhfBu",
+  "created_at": "2026-09-13T10:45:20.000Z",
+  "url": "https://x.com/agenticgirl/status/2099087022900367845",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HSFwnbybAAAgQ5y.jpg"
+  ]
+}
