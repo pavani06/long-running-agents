@@ -1,30 +1,27 @@
 ---
-title: "Tema: Futuro da IA e Agentes"
+title: "Tema: Futuro Estratégico dos Agentes de IA"
 type: "theme"
 source: youtube
 tags: ["agents", "analise", "governanca"]
-size: 90
+size: 85
 ---
 
-# Tema: Futuro da IA e Agentes
+# Tema: Futuro Estratégico dos Agentes de IA
 
-_Entrevistas, keynotes e palestras de líderes e pesquisadores analisando a trajetória da IA — do fim do pré-treinamento à era dos agentes e da superinteligência — incluindo estratégias de big techs e impactos no mercado de trabalho._
+_Análises de líderes e pesquisadores sobre a trajetória da IA, abordando a era do pré-treinamento, escassez de dados, adoção mainstream, agentes autônomos e visões de superinteligência._
 
 **Tags dominantes:** agents, analise, governanca
 
-## Vídeos (90)
+## Vídeos (85)
 - [[extracts/youtube/ai-learning/2026-09-11-is-there-an-ai-bubble-gavin-baker-and-david-george--5ze3ZNvOdRY|"Is there an AI bubble?” Gavin Baker and David George]]
 - [[extracts/youtube/ai-learning/2026-09-11-24h-inside-a-30m-silicon-valley-ai-startup-with-no-employees--OpsGJaijG10|24h Inside a $30M Silicon Valley AI Startup with No Employees]]
 - [[extracts/youtube/ai-learning/2026-09-11-6-government-databases-most-people-dont-know-are-public--E6Nx8cYaqUQ|6 Government Databases Most People Don’t Know Are Public]]
 - [[extracts/youtube/ai-learning/2026-09-11-agentic-ai-how-bots-came-for-our-workflows-and-drudgery-ft-working-it--e85AxYW0Qyk|Agentic AI - how bots came for our workflows and drudgery | FT Working It]]
-- [[extracts/youtube/ai-learning/2026-09-11-ai-interfaces-of-the-future-design-review--DBhSfROq3wU|AI Interfaces Of The Future | Design Review]]
 - [[extracts/youtube/ai-learning/2026-09-11-ai-mobility-the-near-future-with-carlo-van-de-weijer-singularity-university--Pya-G_Y6m7E|AI, Mobility & The Near Future with Carlo van de Weijer  | Singularity University]]
 - [[extracts/youtube/ai-learning/2026-09-11-anthropic-cpo-mike-krieger-building-ai-products-from-the-bottom-up--Js1gU6L1Zi8|Anthropic CPO Mike Krieger: Building AI Products From the Bottom Up]]
 - [[extracts/youtube/ai-learning/2026-09-11-as-tecnologias-que-vao-mudar-o-mundo-na-proxima-decada-market-makers-368--xzp1yHH_vAg|AS TECNOLOGIAS QUE VÃO MUDAR O MUNDO NA PRÓXIMA DÉCADA | Market Makers #368]]
-- [[extracts/youtube/ai-learning/2026-09-11-beyond-components-designing-generative-ui-for-mcp-apps-ruben-casas-postman--hCMrEfPG2Yg|Beyond Components: Designing Generative UI for MCP Apps — Ruben Casas, Postman]]
 - [[extracts/youtube/ai-learning/2026-09-11-building-the-real-world-infrastructure-for-ai-with-google-cisco-a16z--OsLRf6r5U9E|Building the Real-World Infrastructure for AI, with Google, Cisco & a16z]]
 - [[extracts/youtube/ai-learning/2026-09-11-creating-agents-that-co-create-karina-nguyen-openai--1XvN5EBDnDw|Creating Agents that Co-Create — Karina Nguyen, OpenAI]]
-- [[extracts/youtube/ai-learning/2026-09-11-did-openai-just-solve-hallucinations--xGO5Q94XXf0|Did OpenAI just solve hallucinations?]]
 - [[extracts/youtube/ai-learning/2026-09-11-emil-michael-the-department-of-war-is-moving-faster-than-silicon-valley-on-ai-th--tL3sXpxpCPs|Emil Michael: The Department of War Is Moving Faster Than Silicon Valley on AI | The a16z Show]]
 - [[extracts/youtube/ai-learning/2026-09-11-ex-harvard-professor-reveals-the-hidden-ai-formula-for-explosive-startup-growth--wNUIhCI_jsw|Ex-Harvard Professor Reveals the Hidden AI Formula for Explosive Startup Growth]]
 - [[extracts/youtube/ai-learning/2026-09-11-fine-tune-the-biggest-open-source-models-even-with-a-bad-pc--kxstlfc8Lw4|Fine-Tune the biggest open-source models (even with a bad PC)]]
@@ -43,7 +40,6 @@ _Entrevistas, keynotes e palestras de líderes e pesquisadores analisando a traj
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-read-like-a-pro-with-ai--VeU6gScy92s|How To Read Like A Pro (With AI)]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-scale-ai-application-inference-100x-ft-fireworks-lin-qiao--hrQy6m48F4E|How to Scale AI Application Inference 100x ft. Fireworks’ Lin Qiao]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-understand-the-next-wave-of-ai-before-everyone-else-tibo-interview--4qjEgPojjzM|How to Understand the Next Wave of AI Before Everyone Else | Tibo Interview]]
-- [[extracts/youtube/ai-learning/2026-09-11-how-to-use-ai-to-build-your-saas-startup-lovable-supabase--mJwPvyc4-rk|How to use AI to build your SaaS startup (Lovable, Supabase)]]
 - [[extracts/youtube/ai-learning/2026-09-11-ilya-sutskever-we-re-moving-from-the-age-of-scaling-to-the-age-of-research--aR20FWCCjAs|Ilya Sutskever – We're moving from the age of scaling to the age of research]]
 - [[extracts/youtube/ai-learning/2026-09-11-ilya-sutskever-sequence-to-sequence-learning-with-neural-networks-what-a-decade--1yvBqasHLZs|Ilya Sutskever: "Sequence to sequence learning with neural networks: what a decade"]]
 - [[extracts/youtube/ai-learning/2026-09-11-inside-openai-s-stargate-megafactory-with-sam-altman-the-circuit--GhIJs4zbH0o|Inside OpenAI's Stargate Megafactory with Sam Altman | The Circuit]]
@@ -67,7 +63,6 @@ _Entrevistas, keynotes e palestras de líderes e pesquisadores analisando a traj
 - [[extracts/youtube/ai-learning/2026-09-11-satya-nadella-on-ai-agents-rebuilding-the-web-the-future-of-work-and-more--_a8EnBX8DSU|Satya Nadella on AI Agents, Rebuilding the Web, the Future of Work, and more]]
 - [[extracts/youtube/ai-learning/2026-09-11-satya-nadella-how-microsoft-thinks-about-agi--8-boBsWcr5A|Satya Nadella – How Microsoft thinks about AGI]]
 - [[extracts/youtube/ai-learning/2026-09-11-satya-nadella-ai-is-the-future-of-the-firm--BKx0Dp8y-6g|Satya Nadella: AI Is the Future of the Firm]]
-- [[extracts/youtube/ai-learning/2026-09-11-seeing-the-future-from-ai-companions-to-personal-software---KfrrWRl3FA|Seeing The Future from AI Companions to Personal Software]]
 - [[extracts/youtube/ai-learning/2026-09-11-stanford-ai-club-jason-wei-on-3-key-ideas-in-ai-in-2025--b6Doq2fz81U|Stanford AI Club: Jason Wei on 3 Key Ideas in AI in 2025]]
 - [[extracts/youtube/ai-learning/2026-09-11-stanford-cs153-frontier-systems-amit-jain-from-luma-ai-on-unified-intelligence-s--6nUl_w5W9Wk|Stanford CS153 Frontier Systems | Amit Jain from Luma AI on Unified Intelligence Systems]]
 - [[extracts/youtube/ai-learning/2026-09-11-stanford-cs153-frontier-systems-andreas-blattmann-from-black-forest-labs-on-visu--CBaLU0dDEY8|Stanford CS153 Frontier Systems | Andreas Blattmann from Black Forest Labs on Visual Intelligence]]
@@ -93,8 +88,8 @@ _Entrevistas, keynotes e palestras de líderes e pesquisadores analisando a traj
 - [[extracts/youtube/ai-learning/2026-09-11-the-future-of-ai-agents-with-andrew-ng-interrupt-26--OaRhpwz_TGM|The Future of AI Agents with Andrew Ng | Interrupt 26]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-future-of-ai-agents-what-will-interrupt-2027-look-like-interrupt-26--R9K2574YEAg|The Future of AI Agents: What Will Interrupt 2027 Look Like? | Interrupt 26]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-only-trait-for-success-in-the-ai-erahow-to-build-it-carnegie-mellon-universi--xWYb7tImErI|The Only Trait for Success in the AI Era—How to Build It | Carnegie Mellon University Po-Shen Loh]]
+- [[extracts/youtube/ai-learning/2026-09-15-the-paradox-at-the-heart-of-ai-and-science-terence-tao--svl_1upFpQo|The paradox at the heart of AI and science | Terence Tao]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-thinking-game-full-documentary-tribeca-film-festival-official-selection--d95J8yzvjbQ|The Thinking Game | Full documentary | Tribeca Film Festival official selection]]
-- [[extracts/youtube/ai-learning/2026-09-11-the-weird-future-of-user-interfaces--f32W5BEzWN0|The Weird Future Of User Interfaces]]
 - [[extracts/youtube/ai-learning/2026-09-11-vertical-ai-agents-could-be-10x-bigger-than-saas--ASABxNenD_U|Vertical AI Agents Could Be 10X Bigger Than SaaS]]
 - [[extracts/youtube/ai-learning/2026-09-11-what-is-google-s-agentic-ai-strategy-explained-by-google-cloud-s-cto--3tng5VWbWXU|What is Google's Agentic AI Strategy? (Explained by Google Cloud's CTO)]]
 - [[extracts/youtube/ai-learning/2026-09-11-why-ai-is-going-vertical-again-dianne-penn-anthropic--tivaWTTVRhY|Why AI is going vertical (again) | Dianne Penn (Anthropic)]]

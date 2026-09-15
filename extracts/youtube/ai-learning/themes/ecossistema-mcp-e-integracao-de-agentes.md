@@ -1,14 +1,14 @@
 ---
-title: "Tema: Protocolo MCP e Ferramentas"
+title: "Tema: Ecossistema MCP e Integração de Agentes"
 type: "theme"
 source: youtube
 tags: ["agent-tooling", "arquitetura", "stack-tooling"]
 size: 7
 ---
 
-# Tema: Protocolo MCP e Ferramentas
+# Tema: Ecossistema MCP e Integração de Agentes
 
-_Como o Model Context Protocol padroniza, via arquitetura cliente-servidor, a descoberta e integração de ferramentas e contexto externo para agentes de IA, do n8n à web de agentes._
+_Como o Model Context Protocol padroniza a descoberta e conexão de agentes de IA a ferramentas e dados externos, desde servidores MCP em n8n até padrões emergentes como auth.md e WebMCP, incluindo adoção em escala como a da Uber._
 
 **Tags dominantes:** agent-tooling, arquitetura, stack-tooling
 

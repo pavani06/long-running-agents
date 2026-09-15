@@ -1,18 +1,18 @@
 ---
-title: "Tema: Agentes de IA na prática"
+title: "Tema: Engenharia de Agentes e Contexto"
 type: "theme"
 source: youtube
 tags: ["context-engineering", "agent-tooling", "stack-tooling"]
-size: 63
+size: 62
 ---
 
-# Tema: Agentes de IA na prática
+# Tema: Engenharia de Agentes e Contexto
 
-_Uso prático de ferramentas e agentes de IA como Claude Code, ChatGPT e computer use para automatizar tarefas e negócios, apoiado em engenharia de prompts e de contexto._
+_Tutoriais práticos sobre construção e automação de agentes de IA com Claude Code, ChatGPT, computer use e fluxos N8N, focando em engenharia de prompts, hierarquia de contexto e ferramentas de produção._
 
 **Tags dominantes:** context-engineering, agent-tooling, stack-tooling
 
-## Vídeos (63)
+## Vídeos (62)
 - [[extracts/youtube/ai-learning/2026-09-11-next-level-prompts-10-mins-into-advanced-prompting--69bH4IHZivs|"Next Level Prompts?" - 10 mins into advanced prompting]]
 - [[extracts/youtube/ai-learning/2026-09-11-5-notebooklm-hacks-that-will-blow-your-mind--Es5Qb9weRmA|5 NotebookLM Hacks That Will Blow Your Mind!]]
 - [[extracts/youtube/ai-learning/2026-09-11-5-simple-but-weird-chatgpt-5-tricks-to-get-a-10x-better-response--emV9Wo_UuGQ|5 simple (but weird) ChatGPT-5 tricks to get a 10x better response]]
@@ -27,7 +27,6 @@ _Uso prático de ferramentas e agentes de IA como Claude Code, ChatGPT e compute
 - [[extracts/youtube/ai-learning/2026-09-11-boris-cherny-we-cut-80-of-claude-codes-prompt--qyPCVqFUyDo|Boris Cherny: We Cut 80% of Claude Code’s Prompt]]
 - [[extracts/youtube/ai-learning/2026-09-11-build-a-claude-knowledge-base-that-self-improves--ib74sLgjIBM|Build A Claude Knowledge Base That Self-Improves!]]
 - [[extracts/youtube/ai-learning/2026-09-11-build-a-proactive-agent-workflow-with-claude-code--eSP7PLTXNy8|Build a proactive agent workflow with Claude Code]]
-- [[extracts/youtube/ai-learning/2026-09-11-build-an-obsidian-system-not-a-second-brain--OZ3ZNhrPbF4|Build an Obsidian SYSTEM Not a Second Brain!]]
 - [[extracts/youtube/ai-learning/2026-09-11-build-anything-with-tmux-here-s-how--z7xyZQVK4Dg|Build Anything with Tmux, Here's How]]
 - [[extracts/youtube/ai-learning/2026-09-11-build-hour-gpt-5--ITMouQ_EuXI|Build Hour: GPT-5]]
 - [[extracts/youtube/ai-learning/2026-09-11-building-ai-agents-with-claude-demo--_al9YYnF2xI|Building AI Agents with Claude! (Demo)]]
