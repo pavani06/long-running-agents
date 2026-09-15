@@ -50,8 +50,13 @@ def slugify(name: str) -> str:
     return s or "proposta"
 
 
-def build_messages(pattern: dict, source_context: str) -> list[dict]:
-    """System (task) + user (the Missing pattern + its source context). Pure."""
+def build_messages(pattern: dict, source_context: str, repo_context: str = "") -> list[dict]:
+    """System (task) + user (the Missing pattern + source context + retrieved repo context).
+
+    `repo_context` is a small top-k of repo sections (from the First-Loop retriever) used to
+    ground the "Como se aplicaria aqui" section in real artifacts. Pure. When empty, the model
+    is told to say so explicitly rather than invent a repo anchor."""
+    repo_block = (repo_context or "").strip() or "(nenhum contexto de repo recuperado)"
     user = (
         "PADRÃO AUSENTE (Fase 2, veredito Fase 3 = Missing):\n"
         f"- nome: {pattern.get('name','')}\n"
@@ -60,6 +65,11 @@ def build_messages(pattern: dict, source_context: str) -> list[dict]:
         f"- trade-offs: {pattern.get('tradeoffs','')}\n\n"
         "CONTEXTO DA FONTE (para fidelidade, não para citar como evidência do repo):\n"
         + (source_context or "")[:2000]
+        + "\n\nCONTEXTO DO REPO (seções recuperadas — use para fundamentar a seção "
+        "'Como se aplicaria aqui'):\n" + repo_block[:4000]
+        + "\n\nNa seção 'Como se aplicaria aqui', ancore em arquivos/mecanismos REAIS do repo "
+        "acima, nomeando os arquivos concretos quando houver suporte. Se NENHUMA âncora relevante "
+        "do repo for encontrada, diga isso explicitamente — não invente arquivos nem mecanismos."
     )
     return [{"role": "system", "content": _SYSTEM},
             {"role": "user", "content": user}]
@@ -158,9 +168,10 @@ def _assert_canonical_target(path: Path, repo_root: Path, rel: str) -> None:
 
 def create(pattern: dict, *, slug: str, source_file: str, video_id: str,
            evidence: list[dict], source_context: str, zai_key: str,
-           client=chat_json, today: str | None = None) -> dict:
-    """Generate the canonical-target artifact (one GLM call). `client`/`today` injectable."""
-    reply = client(build_messages(pattern, source_context), zai_key)
+           repo_context: str = "", client=chat_json, today: str | None = None) -> dict:
+    """Generate the canonical-target artifact (one GLM call). `repo_context` (a small top-k of
+    retrieved repo sections) grounds the application section; `client`/`today` injectable."""
+    reply = client(build_messages(pattern, source_context, repo_context), zai_key)
     creation = parse_creation(reply)
     return proposed_artifact(slug=slug, source_file=source_file, video_id=video_id,
                              pattern=pattern, verdict="Missing", evidence=evidence,

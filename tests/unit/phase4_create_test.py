@@ -29,6 +29,48 @@ def test_build_messages_carries_pattern_and_context():
     assert "Idempotent Diff Pipeline" in u and "hash-gated re-embed" in u and "SRC-CONTEXT" in u
 
 
+def test_build_messages_represents_repo_context_and_grounding_instruction():
+    msgs = f4.build_messages(PATTERN, "SRC", repo_context="REPO-SECTION-AGENTS.md-marker")
+    u = msgs[1]["content"]
+    assert "CONTEXTO DO REPO" in u                        # the repo-context block is present
+    assert "REPO-SECTION-AGENTS.md-marker" in u           # the retrieved context is threaded in
+    assert "Como se aplicaria aqui" in u and "ancore em arquivos/mecanismos REAIS" in u
+
+
+def test_build_messages_empty_repo_context_tells_model_to_say_so():
+    u = f4.build_messages(PATTERN, "SRC", repo_context="")[1]["content"]
+    assert "(nenhum contexto de repo recuperado)" in u    # graceful empty
+    assert "diga isso explicitamente" in u                # instructed to admit no anchor, not invent
+
+
+def test_create_threads_repo_context_into_the_prompt():
+    seen = {}
+
+    def fake_client(messages, key):
+        seen["messages"] = messages
+        return {"title": "T", "body": "B"}
+
+    art = f4.create(PATTERN, slug="s", source_file="s--v.md", video_id="v", evidence=[],
+                    source_context="SRC", repo_context="GROUNDING-FROM-RETRIEVER",
+                    zai_key="KEY", client=fake_client, today="2026-09-15")
+    assert art["type"] == "canonical"
+    joined = seen["messages"][1]["content"]
+    assert "GROUNDING-FROM-RETRIEVER" in joined           # repo_context reached the GLM prompt
+
+
+def test_create_preserves_behavior_when_repo_context_empty():
+    seen = {}
+
+    def fake_client(messages, key):
+        seen["messages"] = messages
+        return {"title": "T", "body": "B"}
+
+    art = f4.create(PATTERN, slug="s", source_file="s--v.md", video_id="v", evidence=[],
+                    source_context="SRC", zai_key="KEY", client=fake_client, today="2026-09-15")
+    assert art["type"] == "canonical" and art["title"] == "T"   # unchanged creation behavior
+    assert "(nenhum contexto de repo recuperado)" in seen["messages"][1]["content"]
+
+
 def test_parse_creation_ok():
     assert f4.parse_creation({"title": "T", "body": "B"}) == {"title": "T", "body": "B"}
 

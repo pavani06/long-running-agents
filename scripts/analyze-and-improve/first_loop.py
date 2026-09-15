@@ -180,13 +180,18 @@ def run(source_arg: str | None, pattern_id: str | None) -> int:
     by_name = {p.get("name"): p for p in patterns}
     pattern = by_name.get(missing.get("pattern"), {"name": missing.get("pattern")})
 
+    # Repo grounding for F4: reuse the existing retriever (make_pattern_retriever) for the
+    # SELECTED Missing only, small top-k. This is the fix for the recurring evidence=2/5 under-
+    # grounding — F4 gets real repo artifacts to anchor "Como se aplicaria aqui" instead of none.
+    repo_context = retrieval.make_pattern_retriever([pattern], index, openai, REPO_ROOT, k=6)(None)
+
     # F4 — create exactly ONE canonical doc at docs/canonical/<slug>.md on the proposal branch.
     source_context = (f"Tese: {extraction.get('thesis','')}\n"
                       f"Trade-offs: {pattern.get('tradeoffs','')}")
     artifact = phase4_create.create(
         pattern, slug=slug, source_file=source_file,
         video_id=str(extraction.get("video_id", "")), evidence=missing.get("evidence", []),
-        source_context=source_context, zai_key=zai)
+        source_context=source_context, repo_context=repo_context, zai_key=zai)
     proposed_path = phase4_create.write_proposed(REPO_ROOT, artifact, slug, pattern)
     _out(f"first-loop: proposed artifact written to `{proposed_path}`")
 
