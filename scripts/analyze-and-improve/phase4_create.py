@@ -103,8 +103,15 @@ def render_markdown(artifact: dict) -> str:
     A provenance frontmatter block (deliberately `type: proposed-canonical-doc`, NOT
     `analysis`/canonical — it is a proposal, not an authoritative doc) + the proposed
     content. The block carries everything the human needs to review the proposal."""
+    # `docs/analysis/` is a MONITORED dir in validate-obsidian, so even a quarantine
+    # proposal needs the baseline vault frontmatter: `aliases:` (present + non-empty,
+    # Check 12) and `relates-to:` (present, Check 11). We keep relates-to EMPTY — real
+    # cross-links are promotion-time curation, and broken-wikilink validation (Check 6)
+    # is docs/canonical/-only, so an empty list here is safe and honest for quarantine.
+    alias = (artifact.get("pattern") or artifact.get("slug") or "proposta").strip().lower()
     fm = {
         "type": artifact["type"], "status": artifact["status"],
+        "aliases": [alias], "relates-to": [],
         "created_by": artifact["created_by"], "source": artifact["source"],
         "slug": artifact["slug"], "video_id": artifact["video_id"],
         "pattern": artifact["pattern"], "phase3_verdict": artifact["phase3_verdict"],
