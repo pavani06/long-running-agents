@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://claude.ai/code/artifact/287825bc-7aad-4541-a7e7-fa4ba8d03612"]
 media: []
 thin: false
-theme: "Agent Harness e Evals"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-openaidevs-habitat-is-openai-s-online-storage-platform-that-powers-ever--2098502006935814272|Habitat: storage da OpenAI em Rust]]", "[[extracts/x/bookmarks/2026-09-12-openaidevs-while-we-ve-now-launched-a-rust-rewrite-we-re-sharing-those--2098502031338340416|Escalonando storage Python na OpenAI]]", "[[extracts/x/bookmarks/2026-09-12-ubereng-we-cut-uber-eats-search-latency-in-half-how-measure-identify--2098177194979983830|Uber Eats search latency halving]]", "[[extracts/x/bookmarks/2026-09-12-zodchiii-the-creator-of-claude-code-boris-cherny-every-night-i-have-h--2079182515462369399|Engenharia com loops de agentes]]", "[[extracts/x/bookmarks/2026-09-12-agenticgirl-ripwire-from-red-hat-emerging-technologies-is-a-remarkably-s--2096612794145911260|contexto de repositório para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-hwchase17-kai-is-very-cool-and-every-company-should-have-a-kai-this-ep--2097355841183596632|Stripe Kai: agente interno com Deep Agents]]"]
+theme: "Tooling de IA e Performance"
 ---
 
 # AI one-shot Rust rewrite performance

@@ -22,6 +22,7 @@ thin: false
 links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-illscience-had-many-conversations-this-weekend-re-instinct-muse-consume--2099205025797144669|Consumer agents e commerce]]", "[[extracts/x/bookmarks/2026-09-14-mesutcelik-illscience-one-point-of-friction-agents-will-remove-in-the-e--2099216302334214503|Agentes desintermediando marketplaces]]", "[[extracts/x/bookmarks/2026-09-14-illscience-mesutcelik-yes-this-is-a-fascinating-dynamic-they-dont-mind--2099220613999304823|moats de plataformas agregadoras]]", "[[extracts/x/bookmarks/2026-09-12-kevinwhinnery-the-era-of-the-dumb-token-pipe-is-ending-agent-harness-apis--2098444890602455431|Agent harness APIs como integração]]", "[[extracts/x/bookmarks/2026-09-15-a16z-ai-has-collapsed-the-cost-of-building-products-but-not-the-c--2099501195006238899|produto na era da IA]]", "[[extracts/x/bookmarks/2026-09-12-tferriss-the-1-most-clicked-link-in-the-latest-5-bullet-friday-editio--2097357231293358126|IA como designer de alto nível]]"]
+theme: "Impacto econômico da IA"
 ---
 
 # iMessage vs app como interface

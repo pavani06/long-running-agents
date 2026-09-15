@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Agent Harness e Evals"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-naval-the-frontier-lab-flywheel-is-to-get-the-smartest-people-to-u--2097889337073680776|Flywheel de dados dos frontier labs]]", "[[extracts/x/bookmarks/2026-09-12-0xcodez-anthropic-pays-785k-year-for-forward-deployed-engineers-in-t--2082482596135485822|Anthropic Forward Deployed Engineers]]", "[[extracts/x/bookmarks/2026-09-12-davidsenra-my-conversation-with-mati-staniszewski-mati-co-founder-of-el--2097686462523146734|Entrevista co-founder ElevenLabs]]", "[[extracts/x/bookmarks/2026-09-12-a16z-for-most-of-history-the-bottleneck-on-making-something-was-n--2076720361560003039|IA elimina gargalos de execução]]", "[[extracts/x/bookmarks/2026-09-14-omarsar0-learn-to-build-a-harness-folks-it-s-not-surprising-to-me-tha--2098809969252450451|harnesses domain-specific para agentes]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-rumor-is-next-gen-models-at-openai-anthropic-are-showing-eme--2099224260137116131|Misalignment emergente em modelos frontier]]"]
+theme: "Impacto econômico da IA"
 ---
 
 # hiring em frontier labs

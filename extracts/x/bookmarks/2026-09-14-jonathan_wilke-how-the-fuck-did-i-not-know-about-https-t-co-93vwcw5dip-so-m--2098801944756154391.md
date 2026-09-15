@@ -22,6 +22,7 @@ thin: false
 links: ["https://transitions.dev"]
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-trendtech33566-aiui-skills3-7vercellinearaiskill-ui-web-react-native-swift--2098350898732990886|UI design skills para IA]]", "[[extracts/x/bookmarks/2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098020699365355709|Skill ADHD-friendly para agentes de código]]", "[[extracts/x/bookmarks/2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447|Superpowers: metodologia para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098382953235562613|Skill de output direto para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-just-saw-a-comment-saying-that-i-ve-never-made-a-proper-over--2088290952704151671|Visão geral das 25 skills de agentes]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-atpaawej-1-learn-to-read-code-2-learn-to-use-the-terminal-3--2097611379763007870|Habilidades fundamentais para devs na era de agentes]]"]
+theme: "Claude Code e Context Engineering"
 ---
 
 # Transições UI para agentes de código

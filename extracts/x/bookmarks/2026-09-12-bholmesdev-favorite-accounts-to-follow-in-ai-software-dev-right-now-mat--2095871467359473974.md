@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Engenharia Agêntica e Memória"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-andrewyng-how-have-software-engineering-fundamentals-changed-with-agen--2093388974194872781|AI Engineering Skills para software]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-the-most-important-skills-for-using-ai-coding-agents-effecti--2095890279865721217|Skills para agentes de codificação]]", "[[extracts/x/bookmarks/2026-09-12-dexhorthy-software-factories-hands-on-with-real-builders-ai-that-works--2097373602366861631|Software factories com IA]]", "[[extracts/x/bookmarks/2026-09-12-alexfinn-everything-you-need-to-master-in-2026-to-get-rich-using-astr--2097522164316647514|Lista de habilidades de IA para 2026]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-atpaawej-1-learn-to-read-code-2-learn-to-use-the-terminal-3--2097611379763007870|Habilidades fundamentais para devs na era de agentes]]", "[[extracts/x/bookmarks/2026-09-12-xudong07452910-openai-skills-agents-md-blog-agent-engineering-astra-skill--2098655277197201752|OpenAI ensina Skills e AGENTS.md]]", "[[extracts/x/bookmarks/2026-09-12-coolcoder56-openai-software-engineer-interview-experience-https-t-co-iz8--2082707454383751305|OpenAI entrevista engenheiro de software]]"]
+theme: "Engenharia de Agentes e Loops"
 ---
 
 # contas a seguir em AI dev

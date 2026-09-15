@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HRPgKcWa0AE6WPg.jpg"]
 thin: false
-theme: "Tooling agêntico de engenharia"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-agentnativedev-so-perplexity-wrote-its-own-inference-engine-it-is-called-li--2098111913695551626|Engine de inferência Lily da Perplexity]]", "[[extracts/x/bookmarks/2026-09-14-andrewchen-vitostrokov-agreed-but-i-think-theres-two-issues-you-really--2099279190491353442|Apple M5 Ultra vs Nvidia para IA]]", "[[extracts/x/bookmarks/2026-09-14-andrewchen-current-homelab-setup-for-local-ai-experimentation-hermes-bo--2099247007454142644|Homelab para experimentação de IA local]]", "[[extracts/x/bookmarks/2026-09-12-skeptrune-sharing-a-map-of-the-most-important-skills-for-inference-eng--2098087369224405122|mapa de habilidades de inference engineering]]", "[[extracts/x/bookmarks/2026-09-12-akitaonrails-acabei-de-soltar-a-versao-2-0-do-meu-ai-memory-e-eu-acho-que--2095186765535392249|ai-memory 2.0: memória compartilhada de agentes]]", "[[extracts/x/bookmarks/2026-09-12-vaibhavsisinty-baidu-just-open-sourced-an-ocr-model-that-reads-entire-40-pa--2079000862962417996|OCR open-source da Baidu]]"]
+theme: "Tooling de IA e Performance"
 ---
 
 # Perplexity Lily inferência local

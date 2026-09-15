@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/ext_tw_video_thumb/2082194957343842304/pu/img/HYMyONcvGlzrDHUR.jpg"]
 thin: false
-theme: "Tooling agêntico de engenharia"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-ryrenz-ai-no-ai-slop-github-7700-star-7-peter-yang-creator-economy--2097944667291635819|no-ai-slop: removedor de estilo IA em textos]]", "[[extracts/x/bookmarks/2026-09-12-agenticgirl-ripwire-from-red-hat-emerging-technologies-is-a-remarkably-s--2096612794145911260|contexto de repositório para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-thesupermanmx-china-open-sourced-a-peanut-sized-ocr-that-parses-entire-100--2078774556249186345|OCR local de PDFs longos]]", "[[extracts/x/bookmarks/2026-09-12-vaibhavsisinty-baidu-just-open-sourced-an-ocr-model-that-reads-entire-40-pa--2079000862962417996|OCR open-source da Baidu]]", "[[extracts/x/bookmarks/2026-09-12-hasantoxr-you-can-now-watch-any-ai-paper-instead-of-reading-it-there-s--2097398574061670664|arXivisual: papers em vídeo animado]]", "[[extracts/x/bookmarks/2026-09-12-bakigulai-ai-agentlar-icin-ack-kaynak-palantir-yapmslar-semantica-veri--2085977214365896731|Semantica: knowledge graph e provenance para agentes]]", "[[extracts/x/bookmarks/2026-09-12-marionlepert-catching-skin-cancer-early-is-a-home-robotics-problem-melano--2082512842742489258|detecção de melanoma via robótica doméstica]]"]
+theme: "Tooling de IA e Performance"
 ---
 
 # PixelRAG: web scraping visual

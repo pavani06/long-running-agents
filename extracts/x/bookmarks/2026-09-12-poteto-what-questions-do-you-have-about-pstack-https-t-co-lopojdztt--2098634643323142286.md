@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://x.ai/bot/plugin/9717366"]
 media: []
 thin: false
-theme: "Tooling agêntico de engenharia"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-poteto-i-m-writing-a-guide-to-pstack-here-s-part-one-https-t-co-4yj--2094457600259842065|Guia da ferramenta pstack]]", "[[extracts/x/bookmarks/2026-09-12-poteto-pstack-0-15-0-is-here-this-release-contains-mainly-token-usa--2097380152703615396|pstack 0.15.0 release]]", "[[extracts/x/bookmarks/2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447|Superpowers: metodologia para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-sophiamyang-someone-please-tell-me-this-exists-a-meta-harness-kanban-boa--2098112529796878408|orquestração multi-plataforma de agentes]]", "[[extracts/x/bookmarks/2026-09-12-andrebrov-my-biggest-recent-discovery-herdrdev-this-is-wow-i-run-25-ai--2097134891833917946|Console para orquestrar agentes de código]]", "[[extracts/x/bookmarks/2026-09-12-marwan_3atef-datadog-put-agent-observability-in-your-coding-agent-and-the--2097986925088903355|Datadog Agent Observability para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-this-has-ended-up-being-better-than-expected-and-fills-an-in--2094156122441625770|AFK agent workflow vs /implement-spec]]", "[[extracts/x/bookmarks/2026-09-12-aiedge_-absolute-goldmine-of-a-website-for-all-grok-bot-users-a-reso--2097897898235269173|Grok Bot resource hub]]", "[[extracts/x/bookmarks/2026-09-14-poteto-next-week-mattyp-roshan-s-and-myself-will-be-speedrunning-bu--2098815981787414978|Speedrun de startup com Grok Bot]]", "[[extracts/x/bookmarks/2026-09-12-_guillecasaus-tu-ordenador-windows-tiene-mas-de-200-servicios-ejecutandose--2080673389497253950|otimização de serviços Windows]]"]
+theme: "Claude Code e Context Engineering"
 ---
 
 # pstack agent workflow tool

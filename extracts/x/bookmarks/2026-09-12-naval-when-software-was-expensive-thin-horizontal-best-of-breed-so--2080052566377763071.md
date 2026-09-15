@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Agent Harness e Evals"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-illscience-mesutcelik-yes-this-is-a-fascinating-dynamic-they-dont-mind--2099220613999304823|moats de plataformas agregadoras]]", "[[extracts/x/bookmarks/2026-09-14-maxrovensky-correct-take-but-also-extremely-tech-bubbly-take-software-is--2099103717454655771|Oportunidades de software fora do nicho tech]]", "[[extracts/x/bookmarks/2026-09-15-a16z-ai-has-collapsed-the-cost-of-building-products-but-not-the-c--2099501195006238899|produto na era da IA]]", "[[extracts/x/bookmarks/2026-09-14-garrytan-either-you-die-a-system-of-record-or-you-live-long-enough-to--2098666551629267324|Systems of record virando harnesses]]", "[[extracts/x/bookmarks/2026-09-12-naval-the-frontier-lab-flywheel-is-to-get-the-smartest-people-to-u--2097889337073680776|Flywheel de dados dos frontier labs]]", "[[extracts/x/bookmarks/2026-09-12-a16z-an-hour-of-agentic-computer-use-may-now-be-cheaper-than-an-h--2086906363947737406|custo de agentes vs trabalho humano]]"]
+theme: "Impacto econômico da IA"
 ---
 
 # Software barato e integração vertical

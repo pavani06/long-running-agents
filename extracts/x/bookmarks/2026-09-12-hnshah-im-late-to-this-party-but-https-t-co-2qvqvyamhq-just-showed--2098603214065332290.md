@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://cfo.ai"]
 media: []
 thin: false
-theme: "Tooling agêntico de engenharia"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-svpino-the-frontieragent-framework-is-here-star-the-repo-https-t-co--2098489264749334565|FrontierAgent: runtime de agentes e evals]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-also-see-our-open-source-reference-implementation-this-inclu--2095233747562180849|implementação de referência de agentes de comércio]]", "[[extracts/x/bookmarks/2026-09-12-xudong07452910-agent-agent-scheduler-loopx-codexclaude-codecursorpi-agent--2085526335506592087|LoopX: orquestração cross-session de agentes]]", "[[extracts/x/bookmarks/2026-09-12-akitaonrails-acabei-de-soltar-a-versao-2-0-do-meu-ai-memory-e-eu-acho-que--2095186765535392249|ai-memory 2.0: memória compartilhada de agentes]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-alper-is-right-setting-expectations-on-software-quality-earl--2097710169245323303|expectativas de qualidade com agentes de código]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-stanford-researchers-did-it-again-they-just-built-the-agent--2086079311279493389|versionamento agent-native de estado]]", "[[extracts/x/bookmarks/2026-09-12-simonw-just-noticed-the-chatgpt-desktop-app-previously-named-codex--2094864223683903800|LibreOffice embutido no ChatGPT desktop]]", "[[extracts/x/bookmarks/2026-09-12-finviz_com-introducing-the-finviz-matrix-we-created-a-tool-that-no-othe--2098168161455514035|Lançamento Finviz Matrix]]"]
+theme: "Tooling e harness de agentes"
 ---
 
 # Lançamento agent-native com demo de Excel

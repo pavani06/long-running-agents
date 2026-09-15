@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HO9Yh5MWUAE7p-b.jpg"]
 thin: false
-theme: "Ecossistema Claude e Agentic Coding"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-mattpocockuk-just-saw-a-comment-saying-that-i-ve-never-made-a-proper-over--2088290952704151671|Visão geral das 25 skills de agentes]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-coming-soon-to-mattpocock-skills-retro-gives-you-opportuniti--2098062605407461744|Skill /retro para retroativa de agentes]]", "[[extracts/x/bookmarks/2026-09-12-poteto-pstack-now-includes-2-skills-i-recommend-everyone-use-or-cop--2082874054483255805|Skill de verificação para agentes]]", "[[extracts/x/bookmarks/2026-09-12-poteto-pstack-0-15-0-is-here-this-release-contains-mainly-token-usa--2097380152703615396|pstack 0.15.0 release]]", "[[extracts/x/bookmarks/2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098020699365355709|Skill ADHD-friendly para agentes de código]]", "[[extracts/x/bookmarks/2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098382953235562613|Skill de output direto para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-txbrraa-github-acaba-de-solucionar-el-mayor-problema-del-vibe-coding--2097955506891469272|GitHub Spec Kit e spec-driven development]]", "[[extracts/x/bookmarks/2026-09-14-shl-over-10-000-github-stars-my-most-starred-repo-isnt-code-http--2099208492217221351|Milestone de estrelas no GitHub]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-15-months-later-and-i-would-probably-now-describe-the-effect--2094787007184511082|Documentação exemplar do Effect]]", "[[extracts/x/bookmarks/2026-09-12-poteto-i-m-writing-a-guide-to-pstack-here-s-part-one-https-t-co-4yj--2094457600259842065|Guia da ferramenta pstack]]"]
+theme: "Claude Code e Context Engineering"
 ---
 
 # Lançamento mattpocock/skills v1.2

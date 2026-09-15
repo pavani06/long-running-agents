@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://github.com/coldteadotai/pr-lens"]
 media: ["https://pbs.twimg.com/amplify_video_thumb/2096996668474548224/img/9h9-pMhJCjNMqVJP.jpg"]
 thin: false
-theme: "Tooling agêntico de engenharia"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-mattpocockuk-what-techniques-do-you-use-for-making-ai-authored-pr-s-easie--2096666329495257563|revisão de PRs gerados por IA]]", "[[extracts/x/bookmarks/2026-09-12-chrisshort-alibaba-open-code-review-battle-tested-at-alibaba-s-scale-hy--2098555200680218872|ferramenta de code review híbrida]]", "[[extracts/x/bookmarks/2026-09-12-steipete-hit-a-new-record-with-our-autoreview-skill-66-rounds-on-a-gn--2080899298838098034|Autoreview: code review multi-engine]]", "[[extracts/x/bookmarks/2026-09-14-riverai7z-pi-review-pi-install-git-https-t-co-ezws490o0e--2098752822221365732|Plugin de code review para Pi]]", "[[extracts/x/bookmarks/2026-09-12-0xdeliriumm-boris-cherny-lead-of-claude-code-at-anthropic-published-a-pi--2081050632727793775|pipeline de code review com agentes]]", "[[extracts/x/bookmarks/2026-09-12-wayen_ai-20-github-understand-anything--2077622505184100831|Ferramenta de compreensão de código]]", "[[extracts/x/bookmarks/2026-09-14-shl-over-10-000-github-stars-my-most-starred-repo-isnt-code-http--2099208492217221351|Milestone de estrelas no GitHub]]"]
+theme: "Code Review Agêntico"
 ---
 
 # Diagramas animados de pull requests

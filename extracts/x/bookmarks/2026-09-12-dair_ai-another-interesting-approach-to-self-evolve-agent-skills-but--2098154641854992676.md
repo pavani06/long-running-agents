@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HR4khuzbEAAdvjh.png"]
 thin: false
-theme: "Engenharia Agêntica e Memória"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-dair_ai-banger-paper-from-google-if-you-maintain-a-skill-library-for--2093324233158045788|Evolução de skills em agentes]]", "[[extracts/x/bookmarks/2026-09-12-rvaniaaaa-someone-published-the-architecture-for-an-ai-agent-that-neve--2082562583131726050|arquitetura de agente autodidata]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-anthropic-engineer-you-re-not-supposed-to-babysit-the-model--2080702441809399834|agentes paralelos em grafos]]", "[[extracts/x/bookmarks/2026-09-12-0xmovez-anthropic-engineer-80-of-our-engineers-are-using-selfimprovi--2079985963862786352|agentes auto-melhorantes orquestrados por grafos]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-great-paper-from-google-and-colleagues-it-proposes-an-intere--2094472291002589452|Degradação de agentes em tarefas long-horizon]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-everyone-talks-about-recursive-self-improvement-but-there-s--2097967011448131640|recursive self-abliteration em IA]]"]
+theme: "Engenharia de Agentes e Loops"
 ---
 
 # falhas em auto-evolução de skills de agentes

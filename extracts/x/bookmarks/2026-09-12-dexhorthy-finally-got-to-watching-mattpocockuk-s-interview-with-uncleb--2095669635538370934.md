@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Tooling agêntico de engenharia"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-mattpocockuk-what-techniques-do-you-use-for-making-ai-authored-pr-s-easie--2096666329495257563|revisão de PRs gerados por IA]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-alper-is-right-setting-expectations-on-software-quality-earl--2097710169245323303|expectativas de qualidade com agentes de código]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-12-clare_liguori-i-just-published-a-manifesto-for-all-the-developers-out-ther--2097836812958097915|frontier engineering com agentes de IA]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-ai-has-eaten-tactical-programming-so-juniors-need-strategic--2095902639158440210|desenvolvimento de juniores com IA]]", "[[extracts/x/bookmarks/2026-09-12-sumanth_077-i-built-a-self-evolving-code-review-agent-most-code-review-a--2098416224803987968|Agente de code review auto-evolutivo]]", "[[extracts/x/bookmarks/2026-09-12-dexhorthy-software-factories-hands-on-with-real-builders-ai-that-works--2097373602366861631|Software factories com IA]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-starting-to-wonder-if-the-smartest-way-to-reduce-slop-is-jus--2094500508224409852|reduzir código para reduzir slop]]"]
+theme: "Impacto econômico da IA"
 ---
 
 # entrevista Pocock e Uncle Bob sobre agentes

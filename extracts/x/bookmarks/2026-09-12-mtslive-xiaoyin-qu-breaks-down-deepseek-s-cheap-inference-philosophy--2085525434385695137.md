@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2085525378077265920/img/ryRvQ8Qzh3QYHtA9.jpg"]
 thin: false
-theme: "Macroeconomia, IA e investimentos"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-openhonor-puro-2b-is-open-beyond-the-weights-technical-report-final-in--2093994412770566256|Puro-2B: receita aberta de pré-treinamento barato]]", "[[extracts/x/bookmarks/2026-09-14-andrewchen-ethereaglehq-classifies-it-upfront-but-the-way-i-set-up-the--2099278183837397469|model selection com escalonamento]]", "[[extracts/x/bookmarks/2026-09-12-agentnativedev-so-perplexity-wrote-its-own-inference-engine-it-is-called-li--2098111913695551626|Engine de inferência Lily da Perplexity]]", "[[extracts/x/bookmarks/2026-09-12-chamath-here-is-my-ai-investing-guide-sitting-here-august-2026-my-cu--2083463694931902561|Guia de investimento em IA]]", "[[extracts/x/bookmarks/2026-09-12-keepgoings0-oalanicolas-from-my-experience-for-the-orchestrator-astra-xh--2097766199450829151|seleção de modelos por papel de agente]]", "[[extracts/x/bookmarks/2026-09-14-illscience-treytaylorceo-yeah-i-think-the-question-though-is-when-you-a--2099209540629893451|Preferências reveladas em julgamento de IA]]", "[[extracts/x/bookmarks/2026-09-12-thenarrator-a-prediction-markets-true-quality-metric-is-repricing-latenc--2082684092768751792|Métrica de qualidade em prediction markets]]", "[[extracts/x/bookmarks/2026-09-12-boringbiz_-if-you-are-looking-for-a-primer-on-leveraged-finance-restruc--2094100103740977319|Primer de leveraged finance]]", "[[extracts/x/bookmarks/2026-09-12-opapoeconomico-saiu-no-journal-of-financial-economics-o-estudo-mais-complet--2089517641320788148|Apostas esportivas e finanças domésticas]]"]
+theme: "Tooling de IA e Performance"
 ---
 
 # Economia de treinamento DeepSeek

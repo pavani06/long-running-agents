@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Agent Harness e Evals"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-12-signulll-talked-to-a-guy-from-anthropic-for-a-long-time-last-night-fa--2093042350427881973|hiring em frontier labs]]", "[[extracts/x/bookmarks/2026-09-12-clare_liguori-i-just-published-a-manifesto-for-all-the-developers-out-ther--2097836812958097915|frontier engineering com agentes de IA]]", "[[extracts/x/bookmarks/2026-09-12-ycombinator-harnesses-often-get-dismissed-as-just-scaffolding-just-promp--2096970626036855197|harness engineering em agentes de IA]]", "[[extracts/x/bookmarks/2026-09-15-a16z-ai-has-collapsed-the-cost-of-building-products-but-not-the-c--2099501195006238899|produto na era da IA]]", "[[extracts/x/bookmarks/2026-09-14-rohanpaul_ai-stanford-mit-paper-on-model-harnesses-shows-that-ai-performa--2098986025397977287|paper sobre model harnesses]]", "[[extracts/x/bookmarks/2026-09-12-naval-when-software-was-expensive-thin-horizontal-best-of-breed-so--2080052566377763071|Software barato e integração vertical]]", "[[extracts/x/bookmarks/2026-09-14-treytaylorceo-illscience-super-fair-and-honestly-it-depends-on-the-core-mo--2099212116959920547|viés político em modelos de linguagem]]", "[[extracts/x/bookmarks/2026-09-12-sitkosebastian-you-don-t-need-a-power-meter-to-know-how-many-watts-a-rider--2089763604371218674|estimativa de watts sem medidor]]"]
+theme: "Impacto econômico da IA"
 ---
 
 # Flywheel de dados dos frontier labs

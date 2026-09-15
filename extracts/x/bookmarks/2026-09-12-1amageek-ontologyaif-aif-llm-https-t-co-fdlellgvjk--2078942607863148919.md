@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HNngQd9bIAAG8mJ.png"]
 thin: false
-theme: "Engenharia Agêntica e Memória"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-mattpocockuk-i-ve-been-trying-to-use-ai-for-knowledge-work-course-plannin--2097638166232457451|IA para trabalho de conhecimento]]", "[[extracts/x/bookmarks/2026-09-12-kay2289123-ai-infra-ai-kv--2098270561151676829|Reading list de AI Infra]]", "[[extracts/x/bookmarks/2026-09-12-roundtablespace-this-guy-makes-complex-ai-agent-concepts-ridiculously-easy-t--2080975096345247876|didática de conceitos de agentes de IA]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-still-the-best-hour-on-graph-engineering-ever-recorded-andre--2082835611921138029|agentic knowledge graphs]]", "[[extracts/x/bookmarks/2026-09-12-akitaonrails-acabei-de-soltar-a-versao-2-0-do-meu-ai-memory-e-eu-acho-que--2095186765535392249|ai-memory 2.0: memória compartilhada de agentes]]", "[[extracts/x/bookmarks/2026-09-12-cwolferesearch-i-just-published-my-complete-guide-to-reinforcement-learning--2091872097723359673|Guia completo de RL para LLMs]]"]
+theme: "Tooling de IA e Performance"
 ---
 
 # AIF e ontologia para LLMs

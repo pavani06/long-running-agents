@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HPYuRyta8AAwOZH.jpg"]
 thin: false
-theme: "Agent Harness e Evals"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-andrewchen-you-want-to-spend-zero-time-on-the-left-this-is-where-ai-win--2097201160038068278|Divisão de trabalho humano-IA]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-knowledge-work-is-so-much-harder-to-automate-with-agents-tha--2096906181121818702|agents em código vs conhecimento]]", "[[extracts/x/bookmarks/2026-09-12-argona0x-whoever-leaked-this-has-bigger-balls-than-sense-two-research--2082193490956476521|confiabilidade de LLM-as-judge]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-agents-api-is-a-bigger-deal-than-it-seems-openai-s-bet-on-ma--2098524621439914375|OpenAI Agents API e harness-as-a-service]]", "[[extracts/x/bookmarks/2026-09-15-a16z-ai-has-collapsed-the-cost-of-building-products-but-not-the-c--2099501195006238899|produto na era da IA]]", "[[extracts/x/bookmarks/2026-09-12-kobeissiletter-the-ai-boom-is-creating-a-generational-divide-in-software-jo--2079307547610366340|IA e emprego jovem em software]]", "[[extracts/x/bookmarks/2026-09-12-anthropicai-anthropics-economics-team-is-sharing-a-new-model-of-how-ai-m--2097679796687769689|Cenários macroeconômicos da IA até 2030]]", "[[extracts/x/bookmarks/2026-09-14-andrewchen-vitostrokov-agreed-but-i-think-theres-two-issues-you-really--2099279190491353442|Apple M5 Ultra vs Nvidia para IA]]", "[[extracts/x/bookmarks/2026-09-12-naval-when-software-was-expensive-thin-horizontal-best-of-breed-so--2080052566377763071|Software barato e integração vertical]]"]
+theme: "Impacto econômico da IA"
 ---
 
 # custo de agentes vs trabalho humano

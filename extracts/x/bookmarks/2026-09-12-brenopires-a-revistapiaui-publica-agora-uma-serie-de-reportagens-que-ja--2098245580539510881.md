@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://piaui.uol.com.br/web/as-196-paginas-sigilo-stf-vorcaro-toffoli/"]
 media: []
 thin: false
-theme: "Macroeconomia, IA e investimentos"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-ggreenwald-mauriciomoraes-opaulomm-se-algum-dia-eu-me-pegar-defendendo--2096756333802311828|Acusações contra ministro do STF]]", "[[extracts/x/bookmarks/2026-09-12-david_agape_-mendonca-tirou-o-sigilo-da-pet-15-556-e-de-14-processos-do-m--2098255698933006755|Sigilo STF caso Master]]", "[[extracts/x/bookmarks/2026-09-12-tashecon-remarkable-how-the-economist-appears-to-have-been-captured-b--2082728912165986348|Influência russa na The Economist]]", "[[extracts/x/bookmarks/2026-09-12-anthropicai-we-re-publishing-our-most-detailed-threat-intelligence-repor--2098097512544444447|Relatório de ameaças sobre misuse de Claude]]", "[[extracts/x/bookmarks/2026-09-12-imadeiyamu-https-t-co-dskqwecp3z-great-collection-of-exceptional-writin--2076340132370583992|Índice Billion Dollar PDFs]]", "[[extracts/x/bookmarks/2026-09-12-annaeconomist-a-guide-to-warsh-s-rhetorical-techniques-since-we-ll-living--2082626169132720290|Técnicas retóricas de Kevin Warsh]]"]
+theme: "Arquitetura e avaliação de sistemas"
 ---
 
 # Relatório PF sobre Toffoli e Vorcaro
