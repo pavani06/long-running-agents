@@ -14,7 +14,18 @@ ROOT = Path(__file__).resolve().parents[2]
 # the transcripts enumerator by file path). Run this test file on its own.
 sys.path.insert(0, str(ROOT / "scripts" / "youtube-extracts"))
 
+# Issue #269: sibling pipelines ship same-basename modules (naming, store,
+# glm, ...); in a single pytest process the first import wins in sys.modules.
+# Purge pipeline-local names so the imports below resolve from this file's dir.
+for _mod in ("annotate_thin", "bookmarks", "cluster", "corpus", "embed",
+             "extracts_io", "fetch", "fm", "frontmatter_io", "gitio", "glm",
+             "graph", "label", "moc", "naming", "oauth", "pipeline", "projects",
+             "rank", "render", "serpapi", "store", "taxonomy", "thin", "youtube"):
+    sys.modules.pop(_mod, None)
+
 import glm  # noqa: E402
+import naming  # noqa: E402
+import pipeline  # noqa: E402
 from glm import ExtractError, _extract_json, _parse_reply  # noqa: E402
 from naming import extract_name_for, title_from_transcript_name, video_id_from  # noqa: E402
 from render import VideoMeta, build_note, normalize_extract  # noqa: E402
@@ -147,7 +158,6 @@ def test_store_pending_diff():
 
 # ── commit batching ─────────────────────────────────────────────────────
 def _run_with_fakes(root: Path, *, commit_batch: int, n: int):
-    import pipeline
     tdir = root / "raw" / "youtube" / "ai-learning" / "transcripts"
     tdir.mkdir(parents=True)
     ids = ["kCc8FmEb1nY", "Uvl-tRga98g", "g90sjbWrwoY", "A7WFt2JQ5sg", "HkFDWwmtZ-M"][:n]
@@ -163,11 +173,16 @@ def _run_with_fakes(root: Path, *, commit_batch: int, n: int):
     pipeline.enumerate_playlist = lambda *a, **k: []
     pipeline.fetch_extract = lambda *a, **k: dict(fake_extract)
     calls: list[str] = []
+    # pipeline lazily does `from naming import ...` at run time; by then a
+    # sibling test's naming may own sys.modules. Pin ours for the run.
+    saved_naming = sys.modules["naming"]
+    sys.modules["naming"] = naming
     try:
         rc = pipeline.run("full", 100, "yk", "zk",
                           commit_batch=commit_batch,
                           committer=lambda repo, msg: (calls.append(msg), True)[1])
     finally:
+        sys.modules["naming"] = saved_naming
         (pipeline.REPO_ROOT, pipeline.PACING_SECONDS,
          pipeline.enumerate_playlist, pipeline.fetch_extract) = orig
     written = len(list((root / "extracts" / "youtube" / "ai-learning").glob("*.md")))

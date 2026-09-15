@@ -7,6 +7,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "youtube-connections"))
 
+# Issue #269: sibling pipelines ship same-basename modules (naming, store,
+# glm, ...); in a single pytest process the first import wins in sys.modules.
+# Purge pipeline-local names so the imports below resolve from this file's dir.
+for _mod in ("annotate_thin", "bookmarks", "cluster", "corpus", "embed",
+             "extracts_io", "fetch", "fm", "frontmatter_io", "gitio", "glm",
+             "graph", "label", "moc", "naming", "oauth", "pipeline", "projects",
+             "rank", "render", "serpapi", "store", "taxonomy", "thin", "youtube"):
+    sys.modules.pop(_mod, None)
+
 from extracts_io import Extract, embed_text, parse_frontmatter  # noqa: E402
 from frontmatter_io import set_relates_to, wikilink  # noqa: E402
 from graph import build_edges, cosine_unit, distribution, neighbors  # noqa: E402
