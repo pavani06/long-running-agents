@@ -166,25 +166,29 @@ def _run_with_fakes(root: Path, *, commit_batch: int, n: int):
 
     fake_extract = {"thesis": "t", "concepts": [], "tools": [], "people": [],
                     "claims": [], "tags": [], "deep_dive": "low", "deep_dive_reason": "r"}
-    orig = (pipeline.REPO_ROOT, pipeline.PACING_SECONDS,
-            pipeline.enumerate_playlist, pipeline.fetch_extract)
-    pipeline.REPO_ROOT = root
-    pipeline.PACING_SECONDS = 0
-    pipeline.enumerate_playlist = lambda *a, **k: []
-    pipeline.fetch_extract = lambda *a, **k: dict(fake_extract)
     calls: list[str] = []
     # pipeline lazily does `from naming import ...` at run time; by then a
-    # sibling test's naming may own sys.modules. Pin ours for the run.
-    saved_naming = sys.modules["naming"]
-    sys.modules["naming"] = naming
+    # sibling test's naming may own sys.modules (or none does, if a purge ran
+    # first). Save with .get; restore presence-or-absence.
+    saved_naming = sys.modules.get("naming")
+    saved_pipeline = (pipeline.REPO_ROOT, pipeline.PACING_SECONDS,
+                      pipeline.enumerate_playlist, pipeline.fetch_extract)
     try:
+        sys.modules["naming"] = naming
+        pipeline.REPO_ROOT = root
+        pipeline.PACING_SECONDS = 0
+        pipeline.enumerate_playlist = lambda *a, **k: []
+        pipeline.fetch_extract = lambda *a, **k: dict(fake_extract)
         rc = pipeline.run("full", 100, "yk", "zk",
                           commit_batch=commit_batch,
                           committer=lambda repo, msg: (calls.append(msg), True)[1])
     finally:
-        sys.modules["naming"] = saved_naming
+        if saved_naming is None:
+            sys.modules.pop("naming", None)
+        else:
+            sys.modules["naming"] = saved_naming
         (pipeline.REPO_ROOT, pipeline.PACING_SECONDS,
-         pipeline.enumerate_playlist, pipeline.fetch_extract) = orig
+         pipeline.enumerate_playlist, pipeline.fetch_extract) = saved_pipeline
     written = len(list((root / "extracts" / "youtube" / "ai-learning").glob("*.md")))
     return rc, calls, written
 
