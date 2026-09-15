@@ -1,0 +1,10 @@
+{
+  "collected": "2026-09-15",
+  "status_id": "2099325795822956575",
+  "handle": "dani_avila7",
+  "text": "Ok, this is big!\n\nMCP now defines an extension specifically for discovering and loading Agent Skills from MCP servers\n\n(Save this, It’s worth reading how it works)\n\nThe flow is pretty simple:\n\n- MCP Server\n- Discover available Skills \n- Get Skill metadata \n- Load the SKILL.md",
+  "created_at": "2026-09-14T02:34:07.000Z",
+  "url": "https://x.com/dani_avila7/status/2099325795822956575",
+  "links": [],
+  "media": []
+}

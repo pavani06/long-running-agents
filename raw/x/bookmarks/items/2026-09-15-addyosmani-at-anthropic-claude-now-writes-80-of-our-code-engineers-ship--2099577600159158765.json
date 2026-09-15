@@ -1,0 +1,14 @@
+{
+  "collected": "2026-09-15",
+  "status_id": "2099577600159158765",
+  "handle": "addyosmani",
+  "text": "At Anthropic, Claude now writes 80% of our code. Engineers ship 8x more code per quarter. \n\nSide effect: Tests grew 10x. CI jobs up 25x in 6 months. Here's what helped us scale:\n\nhttps://t.co/WOL2r60vAE https://t.co/7vf60noTQt",
+  "created_at": "2026-09-14T19:14:42.000Z",
+  "url": "https://x.com/addyosmani/status/2099577600159158765",
+  "links": [
+    "https://claude.com/blog/agentic-coding-is-straining-ci-heres-how-we-scaled-test-impact-analysis-at-anthropic"
+  ],
+  "media": [
+    "https://pbs.twimg.com/media/HSMyfjPaUAApdN6.jpg"
+  ]
+}

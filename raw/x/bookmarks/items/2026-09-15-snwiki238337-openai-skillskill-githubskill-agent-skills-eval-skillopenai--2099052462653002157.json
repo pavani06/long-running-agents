@@ -1,0 +1,10 @@
+{
+  "collected": "2026-09-15",
+  "status_id": "2099052462653002157",
+  "handle": "snwiki238337",
+  "text": "OpenAI发布了一套方法论，主要是关于如何评测skill效果的。对于做skill的人还是值得一看，而且github也找到一个理念很相近的skill评测器：agent-skills-eval，不过是个人维护的，非官方。\n\n先定义成功，再写 skill。OpenAI把检查项分为了这四个点：\nOutcome（任务完成没）、Process（调了预期的",
+  "created_at": "2026-09-13T08:28:00.000Z",
+  "url": "https://x.com/snwiki238337/status/2099052462653002157",
+  "links": [],
+  "media": []
+}
