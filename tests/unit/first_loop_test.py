@@ -83,14 +83,14 @@ def test_pr_body_states_human_decision_and_gates():
     body = fl._pr_body(
         slug="s", source_file="s--v.md", source_rule="deterministic rule",
         missing=missing, missing_rule="first eligible Missing", pattern=pattern,
-        artifact=artifact, proposed_path="docs/analysis/s/proposed/b.md",
+        artifact=artifact, proposed_path="docs/canonical/b.md",   # canonical target on the branch
         gates={"citations_ok": True},
         evaluation={"mean": 3.5, "passed": True, "scores": {}, "rationale": "ok"},
         dup={"duplicate": False, "score": 0.4})
     assert "auto_merge=OFF" in body or "auto-merge OFF" in body
     assert "creation != promotion" in body
-    assert "docs/analysis/s/proposed/b.md" in body
-    assert "docs/canonical/b.md" in body                     # intended destination
+    assert "docs/canonical/b.md" in body                     # the canonical target file
+    assert "PR é a quarentena" in body                       # PR-is-quarantine model
+    assert "merge deste PR é a promoção" in body             # merge = promotion
     assert "O que o humano está sendo pedido a aprovar" in body
-    assert "não promove automaticamente" in body
     assert "roda no CI" in body and "Check Obsidian Conventions" in body   # actual validate-obsidian contract
