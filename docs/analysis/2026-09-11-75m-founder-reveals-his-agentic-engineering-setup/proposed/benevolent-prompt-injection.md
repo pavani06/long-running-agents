@@ -1,6 +1,9 @@
 ---
 type: proposed-canonical-doc
 status: proposed
+aliases:
+- benevolent prompt injection
+relates-to: []
 created_by: analyze-and-improve F4 (creation != promotion)
 source: 2026-09-11-75m-founder-reveals-his-agentic-engineering-setup--QBfXiWvM0qc.md
 slug: 2026-09-11-75m-founder-reveals-his-agentic-engineering-setup
