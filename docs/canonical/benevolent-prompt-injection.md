@@ -1,5 +1,5 @@
 ---
-title: Benevolent Prompt Injection (proposta)
+title: Benevolent Prompt Injection
 type: canonical
 aliases:
 - benevolent prompt injection
@@ -11,7 +11,7 @@ sources:
 - 2026-09-11-75m-founder-reveals-his-agentic-engineering-setup--QBfXiWvM0qc.md
 ---
 
-# Benevolent Prompt Injection (proposta)
+# Benevolent Prompt Injection
 
 **Type:** Canonical Pattern
 **Source:** `2026-09-11-75m-founder-reveals-his-agentic-engineering-setup--QBfXiWvM0qc.md` — adaptado para long-running-agents
@@ -42,12 +42,31 @@ A injeção é automática e obrigatória, não opcional. Com isso, toda sessão
 
 ## Como se aplicaria aqui
 
-Este repositório teria um artefato de contexto (por exemplo, em docs/canonical/ ou similar) contendo intenção, convenções e processo, e um hook de sessão que o injeta automaticamente em toda execução de agente — CI, coding assistants ou agentes locais. Recomendações de adoção:
+Este repositório já pratica a forma sempre-ligada do padrão: `AGENTS.md` é injetado como regras obrigatórias no início de toda sessão de agente (Rule 0–3 + Project Context) e aponta para guias operacionais em `.opencode/skills/`. Este padrão nomeia essa prática e a estende para injeção ciente-de-tarefa, ancorado nos mecanismos que já existem — sem implementar um novo hook nem criar arquitetura nova.
 
-1. Definir um único pacote fonte (markdown versionado), nunca contextos paralelos divergentes.
-2. Manter o pacote enxuto: intenção e regras de processo, não enciclopédia; medir consumo de tokens por sessão.
-3. Validar no CI que o pacote existe, está atualizado (staleness check) e é referenciado pelo hook.
-4. Revisar o pacote por PR como qualquer código; mudança de convenção exige atualização simultânea do pacote.
-5. Instrumentar falhas: quando o agente erra apesar da injeção, corrigir o pacote, não apenas o prompt pontual.
+**Onde o contexto de sessão/projeto já vive**
 
-Estado atual: padrão ausente — esta é uma proposta inicial para discussão via PR; nenhum artefato ou hook correspondente deve ser assumido como existente até aprovado.
+- `AGENTS.md` — regras mandatórias + Project Context, sempre carregado no começo da sessão (a injeção "sempre-ligada" que já existe hoje).
+- `.opencode/skills/` — definições de agente e skills operacionais (ex.: `.opencode/skills/karpathy-guidelines`).
+- `docs/decisions/` — ADRs aceitos (o "porquê" das decisões vigentes).
+- `docs/system-of-record.md` — precedência entre as camadas de contexto.
+- `mapa-mental-repo/` — modelos mentais por fonte (contexto destilado do corpus bruto).
+- `docs/canonical/` — padrões curados (incluindo este).
+
+**Quais artefatos um start hook benevolente consumiria**
+
+- Sempre: `AGENTS.md` (regras + Project Context).
+- Ciente-de-tarefa: os ADRs relevantes em `docs/decisions/`, os padrões relacionados em `docs/canonical/`, o skill aplicável em `.opencode/skills/` e o modelo mental da fonte em `mapa-mental-repo/`.
+
+**O que seria injetado no início da sessão/agente**
+
+As regras obrigatórias de `AGENTS.md` (já injetadas pelo harness hoje) mais o subconjunto ciente-de-tarefa: as decisões vigentes (ADRs), os padrões canônicos aplicáveis e a ordem de precedência de `docs/system-of-record.md` — para que a sessão comece sabendo o que já foi decidido e o que é aceito/rejeitado, em vez de inferir.
+
+**Que comportamento concreto do agente isso muda ou previne**
+
+- Previne re-derivar decisões já registradas em `docs/decisions/`: o agente parte dos ADRs em vez de reinventá-los.
+- Previne violar as regras de `AGENTS.md` (Rule 0 uma-tarefa-por-sessão; Rule 2 mudança-mínima; Rule 3 tocar-só-o-necessário).
+- Previne duplicar um padrão que já existe em `docs/canonical/`: reuso em vez de recriação.
+- Previne ignorar a precedência de `docs/system-of-record.md` ao resolver conflitos entre camadas.
+
+O efeito líquido: a saída da sessão parte do estado informado do repositório em vez de heurísticas genéricas — exatamente a inconsistência "de novato" descrita no Problema. A mecânica de um hook de sessão concreto (o que dispara a injeção e como) é uma decisão de implementação à parte, fora do escopo deste padrão.
