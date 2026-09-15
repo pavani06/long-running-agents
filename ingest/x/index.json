@@ -1,11 +1,11 @@
 {
   "source": "Jina Reader (r.jina.ai) + trafilatura fallback",
-  "count": 62,
+  "count": 78,
   "status_counts": {
-    "ok": 49,
+    "ok": 64,
     "failed": 7,
     "paywall": 5,
-    "unsupported": 1
+    "unsupported": 2
   },
   "items": [
     {
@@ -72,6 +72,15 @@
       "text_len": 3209
     },
     {
+      "key": "b13e3180d776",
+      "file": "arxiv-org--b13e3180d776.md",
+      "url": "https://arxiv.org/abs/2609.00065",
+      "status": "ok",
+      "final_url": "https://arxiv.org/abs/2609.00065",
+      "method": "trafilatura",
+      "text_len": 3058
+    },
+    {
       "key": "dc8e284c3c3c",
       "file": "arxiv-org--dc8e284c3c3c.md",
       "url": "https://arxiv.org/abs/2511.08567",
@@ -88,6 +97,15 @@
       "final_url": "https://arxivisual.org/abs/1706.03762",
       "method": "",
       "text_len": 0
+    },
+    {
+      "key": "4b1b3e314512",
+      "file": "assistantbenchmark-com--4b1b3e314512.md",
+      "url": "https://assistantbenchmark.com",
+      "status": "ok",
+      "final_url": "https://assistantbenchmark.com/",
+      "method": "trafilatura",
+      "text_len": 5318
     },
     {
       "key": "00462353b732",
@@ -162,6 +180,15 @@
       "text_len": 4658
     },
     {
+      "key": "8f1dbbf70c25",
+      "file": "claude-com--8f1dbbf70c25.md",
+      "url": "https://claude.com/blog/agentic-coding-is-straining-ci-heres-how-we-scaled-test-impact-analysis-at-anthropic",
+      "status": "ok",
+      "final_url": "https://claude.com/blog/agentic-coding-is-straining-ci-heres-how-we-scaled-test-impact-analysis-at-anthropic",
+      "method": "trafilatura",
+      "text_len": 9111
+    },
+    {
       "key": "87bac08c42f2",
       "file": "code-claude-com--87bac08c42f2.md",
       "url": "https://code.claude.com/docs/en/plugin-evals",
@@ -169,6 +196,15 @@
       "final_url": "https://code.claude.com/docs/en/plugin-evals",
       "method": "trafilatura",
       "text_len": 32929
+    },
+    {
+      "key": "ef5d05155d80",
+      "file": "developers-openai-com--ef5d05155d80.md",
+      "url": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
+      "status": "ok",
+      "final_url": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
+      "method": "trafilatura",
+      "text_len": 5705
     },
     {
       "key": "b3a15571332a",
@@ -189,6 +225,15 @@
       "text_len": 18621
     },
     {
+      "key": "10ba719313a0",
+      "file": "github-com--10ba719313a0.md",
+      "url": "https://github.com/anthropics/skills",
+      "status": "ok",
+      "final_url": "https://github.com/anthropics/skills",
+      "method": "trafilatura",
+      "text_len": 4353
+    },
+    {
       "key": "1587826a358a",
       "file": "github-com--1587826a358a.md",
       "url": "https://github.com/anthropics/commerce-agents",
@@ -198,6 +243,15 @@
       "text_len": 10544
     },
     {
+      "key": "1606cfe2c2a9",
+      "file": "github-com--1606cfe2c2a9.md",
+      "url": "https://github.com/TauricResearch/TradingAgents",
+      "status": "ok",
+      "final_url": "https://github.com/TauricResearch/TradingAgents",
+      "method": "trafilatura",
+      "text_len": 13478
+    },
+    {
       "key": "16169d530ca6",
       "file": "github-com--16169d530ca6.md",
       "url": "https://github.com/ayghri/i-have-adhd",
@@ -205,6 +259,33 @@
       "final_url": "https://github.com/ayghri/i-have-adhd",
       "method": "trafilatura",
       "text_len": 1449
+    },
+    {
+      "key": "1c7883835186",
+      "file": "github-com--1c7883835186.md",
+      "url": "https://github.com/earendil-works/pi-review",
+      "status": "ok",
+      "final_url": "https://github.com/earendil-works/pi-review",
+      "method": "trafilatura",
+      "text_len": 973
+    },
+    {
+      "key": "2046f5e50faf",
+      "file": "github-com--2046f5e50faf.md",
+      "url": "https://github.com/obra/superpowers",
+      "status": "ok",
+      "final_url": "https://github.com/obra/superpowers",
+      "method": "trafilatura",
+      "text_len": 9700
+    },
+    {
+      "key": "216404bf0d9b",
+      "file": "github-com--216404bf0d9b.md",
+      "url": "https://github.com/danny-avila/LibreChat",
+      "status": "ok",
+      "final_url": "https://github.com/danny-avila/LibreChat",
+      "method": "trafilatura",
+      "text_len": 9309
     },
     {
       "key": "2267a687e75f",
@@ -261,6 +342,15 @@
       "text_len": 28356
     },
     {
+      "key": "8989702180dd",
+      "file": "github-com--8989702180dd.md",
+      "url": "https://github.com/anthropics/claude-code/issues/91870#issuecomment-5666255143",
+      "status": "ok",
+      "final_url": "https://github.com/anthropics/claude-code/issues/91870#issuecomment-5666255143",
+      "method": "trafilatura",
+      "text_len": 5214
+    },
+    {
       "key": "9d0bf70f6e5a",
       "file": "github-com--9d0bf70f6e5a.md",
       "url": "https://github.com/openclaw/agent-skills/blob/main/skills/autoreview/SKILL.md",
@@ -288,6 +378,15 @@
       "text_len": 4773
     },
     {
+      "key": "b88e00bc122a",
+      "file": "github-com--b88e00bc122a.md",
+      "url": "https://github.com/upstash/context7",
+      "status": "ok",
+      "final_url": "https://github.com/upstash/context7",
+      "method": "trafilatura",
+      "text_len": 5159
+    },
+    {
       "key": "bfc01f4b86fd",
       "file": "github-com--bfc01f4b86fd.md",
       "url": "https://github.com/coldteadotai/pr-lens",
@@ -295,6 +394,15 @@
       "final_url": "https://github.com/coldteadotai/pr-lens",
       "method": "trafilatura",
       "text_len": 10211
+    },
+    {
+      "key": "c957482753b8",
+      "file": "github-com--c957482753b8.md",
+      "url": "https://github.com/yifanzhang-pro/recurrent-looped-tranformer#independent-proof-of-concept",
+      "status": "ok",
+      "final_url": "https://github.com/yifanzhang-pro/recurrent-looped-tranformer#independent-proof-of-concept",
+      "method": "trafilatura",
+      "text_len": 4865
     },
     {
       "key": "cf935b1146d5",
@@ -369,6 +477,15 @@
       "text_len": 2806
     },
     {
+      "key": "52b7efbdf6f7",
+      "file": "langchain-com--52b7efbdf6f7.md",
+      "url": "https://langchain.com/blog/how-to-build-a-custom-agent-harness",
+      "status": "ok",
+      "final_url": "https://www.langchain.com/blog/how-to-build-a-custom-agent-harness",
+      "method": "trafilatura",
+      "text_len": 5559
+    },
+    {
       "key": "eda69f380226",
       "file": "langchain-com--eda69f380226.md",
       "url": "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents",
@@ -376,6 +493,15 @@
       "final_url": "https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents",
       "method": "trafilatura",
       "text_len": 12283
+    },
+    {
+      "key": "ef5ca8bf8d2b",
+      "file": "langchain-com--ef5ca8bf8d2b.md",
+      "url": "https://www.langchain.com/blog/how-to-build-a-custom-agent-harness",
+      "status": "ok",
+      "final_url": "https://www.langchain.com/blog/how-to-build-a-custom-agent-harness",
+      "method": "trafilatura",
+      "text_len": 5559
     },
     {
       "key": "c7d3c8aeae42",
@@ -531,6 +657,15 @@
       "text_len": 321
     },
     {
+      "key": "254ce25b7762",
+      "file": "transitions-dev--254ce25b7762.md",
+      "url": "https://transitions.dev",
+      "status": "ok",
+      "final_url": "https://transitions.dev/",
+      "method": "trafilatura",
+      "text_len": 1462
+    },
+    {
       "key": "15c3f33e67f3",
       "file": "uber-com--15c3f33e67f3.md",
       "url": "https://www.uber.com/us/en/blog/uber-eats-search-pipeline/",
@@ -547,6 +682,15 @@
       "final_url": "https://x.ai/bot/plugin/9717366",
       "method": "trafilatura",
       "text_len": 304
+    },
+    {
+      "key": "4fe67a21c87c",
+      "file": "youtu-be--4fe67a21c87c.md",
+      "url": "https://youtu.be/MSbacZ99E14",
+      "status": "unsupported",
+      "final_url": "https://youtu.be/MSbacZ99E14",
+      "method": "youtube",
+      "text_len": 0
     },
     {
       "key": "26cdae1d6c0b",
