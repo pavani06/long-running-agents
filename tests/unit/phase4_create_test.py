@@ -39,68 +39,69 @@ def test_parse_creation_rejects_empty():
             f4.parse_creation(bad)
 
 
-def test_intended_destination_is_canonical_path_recorded_only():
+def test_intended_destination_is_the_canonical_write_target():
+    # This is now WHERE F4 writes on the proposal branch (promotion = human merge).
     assert f4.intended_destination(PATTERN) == "docs/canonical/idempotent-diff-pipeline.md"
 
 
-def test_proposed_artifact_retains_review_provenance():
-    art = f4.proposed_artifact(
-        slug="2026-09-11-some-talk", source_file="2026-09-11-some-talk--vid.md",
-        video_id="vid", pattern=PATTERN, verdict="Missing",
-        evidence=[{"file": "x", "line": 1, "quote": "q"}],
-        creation={"title": "Proposed X", "body": "## Problema\n..."})
-    # every human-review provenance field present
+def _artifact(**over):
+    base = dict(slug="s", source_file="s--v.md", video_id="v", pattern=PATTERN,
+                verdict="Missing", evidence=[], creation={"title": "X", "body": "B"},
+                last_updated="2026-09-15")
+    base.update(over)
+    return f4.proposed_artifact(**base)
+
+
+def test_proposed_artifact_is_canonical_type_with_provenance():
+    art = _artifact(evidence=[{"file": "x", "line": 1, "quote": "q"}],
+                    creation={"title": "Proposed X", "body": "## Problema\n..."})
     for k in ("source", "slug", "video_id", "pattern", "phase3_verdict", "evidence",
-              "intended_destination", "title", "content", "problem", "mechanism"):
+              "intended_destination", "title", "content", "problem", "mechanism", "last_updated"):
         assert k in art
-    assert art["type"] == "proposed-canonical-doc" and art["status"] == "proposed"
+    assert art["type"] == "canonical"                      # the file IS the canonical artifact
     assert art["phase3_verdict"] == "Missing"
-    assert art["intended_destination"].startswith("docs/canonical/")
+    assert art["intended_destination"] == "docs/canonical/idempotent-diff-pipeline.md"
 
 
-def test_render_markdown_is_a_proposal_not_canonical():
-    art = f4.proposed_artifact(slug="s", source_file="s--v.md", video_id="v", pattern=PATTERN,
-                               verdict="Missing", evidence=[],
-                               creation={"title": "X", "body": "BODY-CONTENT"})
+def test_render_markdown_is_a_valid_canonical_doc():
+    art = _artifact(creation={"title": "X", "body": "BODY-CONTENT"})
     md = f4.render_markdown(art)
     assert md.startswith("---\n")
-    assert "type: proposed-canonical-doc" in md          # NOT a canonical/analysis type
-    assert "PROPOSTA" in md and "não promovida" in md     # explicit non-promotion
-    assert "docs/canonical/idempotent-diff-pipeline.md" in md   # intended dest recorded
+    assert "type: canonical" in md                         # Check 1: type present
+    assert "aliases:" in md and "- idempotent diff pipeline" in md   # Check 12: non-empty
+    assert "relates-to: []" in md                          # Check 11: present (empty, uncurated)
+    assert "last_updated: '2026-09-15'" in md or "last_updated: 2026-09-15" in md
+    assert "sources:" in md
+    assert "**Status:**" not in md                         # no transient lifecycle state — Git represents it
     assert "BODY-CONTENT" in md
 
 
-def test_render_markdown_satisfies_monitored_dir_frontmatter():
-    # docs/analysis/ is a validate-obsidian MONITORED dir: aliases (present+non-empty,
-    # Check 12) and relates-to (present, Check 11) are required even in quarantine.
-    art = f4.proposed_artifact(slug="s", source_file="s--v.md", video_id="v", pattern=PATTERN,
-                               verdict="Missing", evidence=[], creation={"title": "X", "body": "B"})
+def test_render_markdown_body_is_link_free():
+    # docs/canonical/ CI flags raw md links (Check 5) and broken wikilinks (Check 6);
+    # the template must not introduce either around the model body.
+    art = _artifact(creation={"title": "T", "body": "prose only"})
     md = f4.render_markdown(art)
-    assert "aliases:" in md and "- idempotent diff pipeline" in md   # non-empty alias
-    assert "relates-to: []" in md                                    # present, empty (uncurated)
+    assert "](" not in md.split("BODY", 1)[0]              # no markdown links in our scaffold
+    assert "[[" not in md                                   # no wikilinks in our scaffold
 
 
-def test_quarantine_path_is_under_proposed(tmp_path):
-    p = f4.quarantine_path(tmp_path, "2026-09-11-talk", PATTERN)
+def test_destination_path_is_the_canonical_target(tmp_path):
+    p = f4.destination_path(tmp_path, PATTERN)
     rel = p.resolve().relative_to(tmp_path.resolve()).as_posix()
-    assert rel == "docs/analysis/2026-09-11-talk/proposed/idempotent-diff-pipeline.md"
+    assert rel == "docs/canonical/idempotent-diff-pipeline.md"
 
 
-def test_never_canonical_invariant():
-    # the guard must refuse any authoritative-layer path
+def test_assert_canonical_target_rejects_non_canonical():
     with pytest.raises(ValueError):
-        f4._assert_never_canonical(Path("/repo/docs/canonical/x.md"), Path("/repo"))
-    with pytest.raises(ValueError):
-        f4._assert_never_canonical(Path("/repo/curriculum/x.md"), Path("/repo"))
-    # a path outside proposed/ is also refused
-    with pytest.raises(ValueError):
-        f4._assert_never_canonical(Path("/repo/docs/analysis/s/x.md"), Path("/repo"))
+        f4._assert_canonical_target(Path("/repo/docs/analysis/s/x.md"), Path("/repo"),
+                                    "docs/analysis/s/x.md")
 
 
-def test_write_proposed_writes_quarantine_only(tmp_path):
-    art = f4.proposed_artifact(slug="s", source_file="s--v.md", video_id="v", pattern=PATTERN,
-                               verdict="Missing", evidence=[], creation={"title": "X", "body": "B"})
+def test_write_proposed_writes_the_canonical_target(tmp_path):
+    art = _artifact()
     rel = f4.write_proposed(tmp_path, art, "s", PATTERN)
-    assert rel == "docs/analysis/s/proposed/idempotent-diff-pipeline.md"
+    # creation writes the canonical artifact at its destination (on the branch); promotion
+    # to main is the human PR merge, not this write.
+    assert rel == "docs/canonical/idempotent-diff-pipeline.md"
     assert (tmp_path / rel).is_file()
-    assert not (tmp_path / "docs" / "canonical").exists()   # nothing written to canonical
+    assert not (tmp_path / "docs" / "analysis").exists()   # no leftover proposed/ path

@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 """First Useful Governed Loop — one real end-to-end path (#263 slice).
 
-`real source → F1/F2/F3 → one Missing → F4 creation → quarantine → gates → PR`.
+`source → analyze → Missing → F4 → docs/canonical/<slug>.md on the proposal branch →
+gates/CI → PR → REJECT/EDIT/ACCEPT → human merge = promotion`.
 
 Minimal glue over existing primitives — NOT a general orchestration framework:
 one real pending source traverses the existing analysis/classification path, exactly
 one eligible Missing is selected (explicit `--pattern-id`, else deterministic first
-eligible), F4 creates exactly ONE proposed canonical doc into quarantine, the existing
-content gates (adversarial evaluator + cosine dedup + citation grounding) run against it,
-and a single human-review PR body is assembled. auto_merge stays OFF; nothing is promoted.
-validate-obsidian runs in CI ("Check Obsidian Conventions") over the monitored `docs/analysis/`
-tree (including `proposed/`), so the F4 proposal carries the baseline frontmatter it requires
-(`aliases`, `relates-to`); full convention curation is a promotion-time step. creation != promotion.
+eligible), F4 creates exactly ONE canonical doc AT ITS DESTINATION (`docs/canonical/<slug>.md`)
+on the proposal branch, the existing content gates (adversarial evaluator + cosine dedup +
+citation grounding) run against it, and a single human-review PR body is assembled.
+creation != promotion, boundary redefined: **the PR is the quarantine** — creation is the
+branch write; promotion is the human merge to main. auto_merge stays OFF; nothing reaches main
+without a human merge. validate-obsidian runs in CI ("Check Obsidian Conventions") over
+`docs/canonical/` on the PR, so the doc carries complete canonical frontmatter/conventions.
 
 Selection is deterministic and self-reported. This script writes the proposal + a PR-body
 file and prints the facts; opening the PR is the workflow's job (this script never calls gh).
@@ -110,9 +112,8 @@ def _pr_body(*, slug, source_file, source_rule, missing, missing_rule, pattern,
         "### Missing selecionado",
         f"- **{missing.get('pattern')}** — _selecionado por:_ {missing_rule}",
         f"- Racional Fase-3: {missing.get('rationale','')}", "",
-        "### Proposta criada (quarentena)",
-        f"- `{proposed_path}`",
-        f"- Destino pretendido (se promovida): `{artifact['intended_destination']}`", "",
+        "### Artefato canônico criado (no branch — este PR é a quarentena)",
+        f"- `{proposed_path}` (destino canônico real; promovido só quando este PR for mesclado)", "",
         "### Evidência que fundamenta",
         f"- Fase-3 verdict: **{missing.get('verdict')}** (Missing = ausente no repo → sem citação de repo; "
         "fundamentado no padrão da fonte)",
@@ -127,16 +128,13 @@ def _pr_body(*, slug, source_file, source_rule, missing, missing_rule, pattern,
         f"- Dedup cosseno: {'DUPLICADO' if dup.get('duplicate') else 'não-duplicado'} "
         f"(score {dup.get('score','n/a')})",
         f"- Citação/grounding: {'ok' if gates['citations_ok'] else 'falhou'}",
-        "- validate-obsidian: **roda no CI** ('Check Obsidian Conventions') sobre `docs/analysis/` "
-        "(diretório monitorado), inclusive `proposed/`; a proposta já carrega o frontmatter-base "
-        "exigido (`aliases`, `relates-to`). A curadoria plena de convenção (links `relates-to` reais, "
-        "colocação canônica) é passo de promoção.", "",
+        "- validate-obsidian: **roda no CI** ('Check Obsidian Conventions') sobre `docs/canonical/` "
+        "neste PR; o artefato já carrega o frontmatter/convenção canônica exigida.", "",
         "### O que o humano está sendo pedido a aprovar",
-        "Promover (ou não) esta proposta de doc canônico da quarentena para o destino pretendido. "
-        "A aprovação do PR não promove automaticamente — a promoção (mover para `docs/canonical/`, "
-        "adicionar frontmatter de convenção, validate-obsidian, integração de índice) é um passo humano "
-        "separado, fora deste loop. Rejeitar = fechar o PR; a proposta permanece só na quarentena.", "",
-        "_auto_merge=OFF — merge/promção exigem ação humana._",
+        "REJECT / EDIT / ACCEPT deste artefato canônico. **O merge deste PR é a promoção** — ele move "
+        "o doc para `docs/canonical/` no `main`. Enquanto o PR estiver aberto, nada foi promovido (o PR "
+        "é a quarentena). Rejeitar = fechar o PR; nada entra no `main`.", "",
+        "_auto_merge=OFF — o merge (promoção) é um ato humano._",
     ]
     return "\n".join(lines)
 
@@ -182,7 +180,7 @@ def run(source_arg: str | None, pattern_id: str | None) -> int:
     by_name = {p.get("name"): p for p in patterns}
     pattern = by_name.get(missing.get("pattern"), {"name": missing.get("pattern")})
 
-    # F4 — create exactly ONE proposed canonical doc into quarantine.
+    # F4 — create exactly ONE canonical doc at docs/canonical/<slug>.md on the proposal branch.
     source_context = (f"Tese: {extraction.get('thesis','')}\n"
                       f"Trade-offs: {pattern.get('tradeoffs','')}")
     artifact = phase4_create.create(

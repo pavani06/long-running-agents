@@ -1,12 +1,13 @@
 name: First Useful Governed Loop (#263 slice)
 
 # Proves ONE real end-to-end path of analyze-and-improve, human-gated:
-#   real source → F1/F2/F3 → one Missing → F4 creation → quarantine → gates → ONE PR.
-# NOT the daily pipeline (that is #266): one manual dispatch, one real non-benchmark
-# source, exactly one proposed canonical doc into docs/analysis/<slug>/proposed/, existing
-# content gates run against it, and a single human-review PR with auto-merge OFF. Nothing
-# is promoted to canonical/curriculum. Index is built docs-only (production default; the
-# #288 docs+code flip is NOT enabled here).
+#   source → analyze → Missing → F4 → docs/canonical/<slug>.md on the proposal branch →
+#   gates/CI → PR → REJECT/EDIT/ACCEPT → human merge = promotion.
+# NOT the daily pipeline (that is #266): one manual dispatch, one real non-benchmark source,
+# exactly one canonical doc created AT ITS DESTINATION on the proposal branch, gates run
+# against it, and a single human-review PR with auto-merge OFF. creation != promotion — the
+# PR is the quarantine; nothing reaches main without a human merge. Index is built docs-only
+# (production default; the #288 docs+code flip is NOT enabled here).
 #
 # Cost: one billed run (docs-only index build + F1/F2/F3 GLM calls + F4 GLM call + reranker
 # + one adversarial-evaluator call + one dedup embedding).
@@ -76,9 +77,9 @@ jobs:
           git add -- "$PROPOSED_PATH"
           git commit -m "proposal(analyze-and-improve): $PR_TITLE
 
-          Proposed canonical doc created by the First Useful Governed Loop (#263 slice).
-          creation != promotion — this lives ONLY in docs/analysis/<slug>/proposed/ and is
-          NOT promoted. Human review decides promotion. auto-merge OFF.
+          Canonical doc created at docs/canonical/<slug>.md by the First Useful Governed
+          Loop (#263 slice), on this proposal branch. creation != promotion — the PR is the
+          quarantine; promotion happens ONLY when a human merges this PR to main. auto-merge OFF.
 
           Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
           git push -u origin "$BRANCH"
