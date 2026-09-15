@@ -93,4 +93,4 @@ def test_pr_body_states_human_decision_and_gates():
     assert "docs/canonical/b.md" in body                     # intended destination
     assert "O que o humano está sendo pedido a aprovar" in body
     assert "não promove automaticamente" in body
-    assert "diferido para a promoção" in body                # validate-obsidian deferred
+    assert "roda no CI" in body and "Check Obsidian Conventions" in body   # actual validate-obsidian contract
