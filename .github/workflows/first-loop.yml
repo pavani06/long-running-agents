@@ -61,6 +61,9 @@ jobs:
         run: python scripts/analyze-and-improve/first_loop.py
 
       - name: Open ONE human-review PR (auto-merge OFF)
+        # Skipped on a successful no-op run (no eligible Missing → no proposal); the loop
+        # step exits 0 and the job stays green with "analyzed; no proposal needed".
+        if: steps.loop.outputs.has_proposal == 'true'
         env:
           # Reuse the existing PAT (as x-bookmarks does) ONLY for delivery: the default
           # GITHUB_TOKEN can push the branch but is blocked by repo policy from creating

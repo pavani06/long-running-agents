@@ -5,6 +5,8 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
 
@@ -94,3 +96,74 @@ def test_pr_body_states_human_decision_and_gates():
     assert "merge deste PR é a promoção" in body             # merge = promotion
     assert "O que o humano está sendo pedido a aprovar" in body
     assert "roda no CI" in body and "Check Obsidian Conventions" in body   # actual validate-obsidian contract
+
+
+# ── run() exit semantics: no-op success vs error (#263 operational fix) ─────
+def _patch_pipeline(monkeypatch, tmp_path, *, classifications, phase1_raises=None):
+    """Drive run() offline: patch every collaborator + capture _emit_output. Returns the
+    emitted (key,value) list."""
+    monkeypatch.setenv("ZAI_API_KEY", "z")
+    monkeypatch.setenv("OPENAI_API_KEY", "o")
+    monkeypatch.setenv("PR_BODY_PATH", str(tmp_path / "pr-body.md"))
+    monkeypatch.setattr(fl, "load_state", lambda: {"records": {"a": {"path": "docs/canonical/x.md"}}})
+    monkeypatch.setattr(fl, "scan_pending", lambda d: [P("2026-09-11-real-source--vid.md")])
+    tp = tmp_path / "t.txt"
+    tp.write_text("transcript body", encoding="utf-8")
+    monkeypatch.setattr(fl, "_transcript_for", lambda f: tp)
+    monkeypatch.setattr(fl.retrieval, "make_pattern_retriever",
+                        lambda *a, **k: (lambda need_more=None: "REPO-CTX"))
+
+    def _p1(transcript, key):
+        if phase1_raises:
+            raise phase1_raises
+        return {"thesis": "T", "video_id": "v"}
+
+    monkeypatch.setattr(fl.phase1_extract, "run", _p1)
+    monkeypatch.setattr(fl.phase2_patterns, "run",
+                        lambda extraction, key: [{"name": "P", "problem": "pr",
+                                                  "mechanism": "m", "tradeoffs": "t"}])
+    monkeypatch.setattr(fl.phase3_classify, "run", lambda patterns, key, retriever: classifications)
+    monkeypatch.setattr(fl.phase3_classify, "citations_of", lambda c: [])
+    monkeypatch.setattr(fl.phase3_classify, "mark_verified", lambda c, v: c)
+    monkeypatch.setattr(fl.phase3_classify, "mark_grounding", lambda c, v: c)
+    monkeypatch.setattr(fl.grep_verify, "verify_all", lambda cits, root: [])
+    monkeypatch.setattr(fl.grep_verify, "all_ok", lambda v: True)
+    monkeypatch.setattr(fl.phase4_create, "create",
+                        lambda pattern, **k: {"type": "canonical", "title": "T", "content": "B",
+                                              "intended_destination": "docs/canonical/p.md"})
+    monkeypatch.setattr(fl.phase4_create, "write_proposed",
+                        lambda root, art, slug, pat: "docs/canonical/p.md")
+    monkeypatch.setattr(fl.evaluator, "run",
+                        lambda art, key: {"mean": 4.0, "passed": True, "scores": {}, "rationale": "ok"})
+    monkeypatch.setattr(fl, "embed_texts", lambda texts, key: [[0.1]])
+    monkeypatch.setattr(fl.dedup, "is_duplicate", lambda vec, idx: {"duplicate": False, "score": 0.5})
+    emitted = []
+    monkeypatch.setattr(fl, "_emit_output", lambda k, v: emitted.append((k, v)))
+    return emitted
+
+
+def test_run_no_eligible_missing_is_success_noop(monkeypatch, tmp_path):
+    emitted = _patch_pipeline(monkeypatch, tmp_path,
+                              classifications=[{"pattern": "P", "verdict": "Exists"}])
+    rc = fl.run(source_arg=None, pattern_id=None)
+    assert rc == 0                                              # successful no-op, not failure
+    assert ("has_proposal", "false") in emitted
+    assert not any(k == "proposed_path" for k, _ in emitted)    # no PR metadata
+    assert not (tmp_path / "pr-body.md").exists()               # no artifact / PR body written
+
+
+def test_run_eligible_missing_takes_f4_path(monkeypatch, tmp_path):
+    emitted = _patch_pipeline(
+        monkeypatch, tmp_path,
+        classifications=[{"pattern": "P", "verdict": "Missing", "evidence": [], "rationale": "r"}])
+    rc = fl.run(source_arg=None, pattern_id=None)
+    assert rc == 0
+    assert ("has_proposal", "true") in emitted
+    assert ("proposed_path", "docs/canonical/p.md") in emitted   # normal F4 path + PR metadata
+
+
+def test_run_actual_exception_still_fails(monkeypatch, tmp_path):
+    _patch_pipeline(monkeypatch, tmp_path, classifications=[],
+                    phase1_raises=RuntimeError("boom"))
+    with pytest.raises(RuntimeError):                            # a real error is NOT swallowed
+        fl.run(source_arg=None, pattern_id=None)
