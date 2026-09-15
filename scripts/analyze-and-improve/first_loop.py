@@ -9,8 +9,9 @@ one eligible Missing is selected (explicit `--pattern-id`, else deterministic fi
 eligible), F4 creates exactly ONE proposed canonical doc into quarantine, the existing
 content gates (adversarial evaluator + cosine dedup + citation grounding) run against it,
 and a single human-review PR body is assembled. auto_merge stays OFF; nothing is promoted.
-validate-obsidian is a PROMOTION-time convention gate (the #262 path runs the spine with
-run_validate=False) and is deliberately not run at creation — creation != promotion.
+validate-obsidian runs in CI ("Check Obsidian Conventions") over the monitored `docs/analysis/`
+tree (including `proposed/`), so the F4 proposal carries the baseline frontmatter it requires
+(`aliases`, `relates-to`); full convention curation is a promotion-time step. creation != promotion.
 
 Selection is deterministic and self-reported. This script writes the proposal + a PR-body
 file and prints the facts; opening the PR is the workflow's job (this script never calls gh).
@@ -126,8 +127,10 @@ def _pr_body(*, slug, source_file, source_rule, missing, missing_rule, pattern,
         f"- Dedup cosseno: {'DUPLICADO' if dup.get('duplicate') else 'não-duplicado'} "
         f"(score {dup.get('score','n/a')})",
         f"- Citação/grounding: {'ok' if gates['citations_ok'] else 'falhou'}",
-        "- validate-obsidian: _diferido para a promoção_ (gate de convenção; o caminho #262 roda com "
-        "`run_validate=False`; creation != promotion)", "",
+        "- validate-obsidian: **roda no CI** ('Check Obsidian Conventions') sobre `docs/analysis/` "
+        "(diretório monitorado), inclusive `proposed/`; a proposta já carrega o frontmatter-base "
+        "exigido (`aliases`, `relates-to`). A curadoria plena de convenção (links `relates-to` reais, "
+        "colocação canônica) é passo de promoção.", "",
         "### O que o humano está sendo pedido a aprovar",
         "Promover (ou não) esta proposta de doc canônico da quarentena para o destino pretendido. "
         "A aprovação do PR não promove automaticamente — a promoção (mover para `docs/canonical/`, "
@@ -189,7 +192,7 @@ def run(source_arg: str | None, pattern_id: str | None) -> int:
     proposed_path = phase4_create.write_proposed(REPO_ROOT, artifact, slug, pattern)
     _out(f"first-loop: proposed artifact written to `{proposed_path}`")
 
-    # Gates against the proposal (existing primitives; validate-obsidian deferred to promotion).
+    # Gates against the proposal (existing primitives; validate-obsidian runs separately in CI).
     eval_artifact = {"type": artifact["type"], "title": artifact["title"],
                      "content": artifact["content"], "source_pattern": pattern,
                      "phase3_verdict": "Missing"}
