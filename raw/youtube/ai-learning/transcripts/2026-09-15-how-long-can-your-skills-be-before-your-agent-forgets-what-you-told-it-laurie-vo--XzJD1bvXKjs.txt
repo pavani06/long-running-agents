@@ -1,0 +1,606 @@
+[music]
+All right. Hello everybody.
+Thank you for coming to this
+delightfully nerdy talk. Uh this talk
+has a really long title. Uh so let me
+give you the short version up front. You
+write skills files uh and stuff them
+full of instructions. At some point the
+model stops keeping track of all of
+them. The question is where is that
+point? At what point have you put too
+many instructions in your skills files?
+Uh and the answer has changed a lot in
+the last year. I'm Lori. I'm head of
+developer relations at Arise AI. Uh in a
+former life, I co-founded npm Inc. So
+some of you may know me from the days of
+JavaScript. These days I spend a lot of
+time thinking about AI and how to test
+it.
+Uh a few months ago I was at AI engineer
+in Miami which was a good conference. Uh
+and I was watching a talk by Dexter
+Horthy. Uh it was a good talk. It was
+not about this topic at all. Uh but
+while he was giving that talk he
+mentioned as an aside uh that an agent
+can follow up to about 200 instructions
+uh before it starts forgetting those
+instructions. Uh and he then he moved on
+in his talk and it was entirely an
+aside. Uh and he he mentioned that that
+figure is from 2025 so things might be
+better now. Um, and I stopped listening
+for a second because I was like, 200
+instructions. Uh, is not very many
+instructions at all. Right? A decent
+skills file blows past 200 instructions
+almost immediately. Um, if the user says
+X, do Y, always include a section on Z,
+never use the phrase W, every one of
+those is a separate instruction. Uh, and
+if the model quietly stops tracking them
+after 200, that's a really hard ceiling
+on the complexity of what you can build.
+Uh, so I wanted to know where he got
+that number first. Uh, and I wanted to
+know if it was true. Uh, so you know the
+feeling that I'm talking about. You
+write this big beautiful skills file,
+pages of rules, edge cases, tone,
+formatting, you hand it to the agent, it
+does the thing. Uh, and you look at the
+output and go, did it actually pay
+attention? Did it actually follow all of
+these rules or did it just sort of, you
+know, do what it felt like and sort of
+give me a close simulacum of what I was
+expecting? Um, you can't really tell or
+can you? More on that later. Um, and so
+you live with this lowgrade anxiety
+every time you hit run. Um, and that
+feeling is what this research is about
+and what we're trying to find out if we
+can avoid.
+So here's my promise for your next 18
+minutes. Uh, I'm going to show you where
+that 200 number came from, whether it's
+still true, and what the real number is
+today. Uh, because it moved by an order
+of magnitude. Uh, and then we're going
+to talk about what that means for you to
+take away. uh how long your skills and
+prompts can actually be and what that
+should what changes you should make to
+your workflow as a result.
+So the 200 number isn't folklore. Uh it
+comes from a real benchmark called
+IFScale uh from a paper uh by this guy
+whose name I'm going to mess up
+Jeroslowitch uh and co-authors last
+year. And the test is beautifully
+simple. Uh here's how if scale works. If
+you ask the model to write a business
+report uh and you give it a list of
+specific words that it has to include
+exactly in the report, include the exact
+word customer, include the exact word
+revenue, and so on for as many words as
+you want. Each of those is an
+instruction that it has to follow. Uh
+and then you count how many of those
+exact words showed up. Um
+so because the test is so simple, you
+only have to keep two numbers in your
+head. One is density, which we call n.
+That is how many rules we're talking
+about at once. And the second is
+accuracy, which is the percentage of
+those rules uh that it was able to
+actually follow. Uh now you might say uh
+that including random words in a report
+is not the same as following real
+instructions and fair enough and we're
+going to talk about that. Um but the
+keywords are a proxy. Uh include the
+word revenue is the same shape of task
+as include a section on pricing, right?
+Or never use this phrase. It is a
+discrete named constraint that you've
+told the agent that it has to follow.
+Um, if a model can't track 200 words in
+one prompt, it's definitely going to
+struggle with 200 more complicated
+instructions. Uh, so uh, if anything,
+it's going to do worse. So, this number
+is a ceiling. Uh, this number is as high
+as you can go. If you give it more
+complicated instructions, the number is
+probably going to get lower. And 200 is
+a really low ceiling. Um so before
+chasing new models you have to do good
+science which means that you have to
+replicate the uh old result and make
+sure uh that the 200 ceiling is real. So
+I reran the original benchmark. Um the
+original paper tested a whole batch of
+models uh and models uh live and die
+really fast. So uh by the time I got
+around to doing this testing only three
+of the models in the original set of 10
+models that they used were still
+available via any kind of API. Uh so
+they were GPT 4.1, Claude Sonnet 4, and
+Gemini 2.5 Pro. Those were models that
+were available 12 months ago that are
+still available now. Um and that is why
+we tested those three because they were
+what was left. Um and since I first
+published this research a couple of
+weeks ago, uh one of those three models
+has been retired. So this was the last
+possible time that I could have run this
+test. Um so of that lineup, we're
+already down to two. So don't get
+attached to your models. Um here is the
+results that we got replicating the
+original if scale finding. Uh that is
+accuracy on the vertical axis. So it
+starts at 100% and begins to fall off.
+Uh and then the number of rules uh going
+up along the bottom on log scale. So
+every time it gets halfway across it has
+doubled uh the number of rules that it's
+dealing with. Um so by 500 rules you're
+losing 30 40 50% of them. Uh our curves
+matched the results in the original
+paper within the noise boundary. So the
+finding was real. uh a year ago
+somewhere around 200 to 300 rules
+frontier models started falling apart.
+That is a really low ceiling. Uh so that
+is our baseline and now comes the fun
+part where we took the exact same test
+and pointed it at the current frontier
+or rather what the current frontier was
+when I ran this test. So I ran GPT 5.5,
+Claude Opus 4.7 because 4.8 came out a
+week after I ran this test. Uh Gemini
+3.1 Pro and Deepseek V4 Pro. So, I gave
+them the same prompt, the same words,
+the same everything. And I immediately
+ran into a problem, which is that they
+aced it. They all scored 100%
+immediately on this test. Absolutely no
+bugs. Uh,
+so we'd built a test to find the ceiling
+and the models had walked straight
+through the ceiling without noticing
+that the ceiling was there. Um, and that
+was a problem because the benchmark was
+written to top out at 500 words. So, I
+had to change the benchmark in order to
+be able to find the new ceiling. So, I
+moved the goalposts. I gave it more
+words to include. I doubled uh it from
+500 to a,000. I doubled it again from
+a,000 to 2,000. And I kept doing that
+until I hit a 10,000word vocabulary. And
+that is where I began to find the
+ceiling of what models can do these
+days. Um, so let me put up the this is
+the money slide. This is the results.
+Remember log scale on the on the uh
+x-axis there. So it's going from 500 to
+1,000 to 5,000 to 10,000. Uh so it looks
+like that scale is falling off of a
+cliff and it's actually happening over
+like a thousand numbers. Um
+but uh look how far to the right these
+new curves get before they bend. A year
+ago they were falling over at 200 to 300
+instructions and now depending on the
+model the boundary is closer to 2,000.
+And for the best of them it is up to
+5,000 instructions before they begin to
+fall off a cliff. So in about 12 months
+frontier models got close to 10 times
+better at following instructions
+simultaneously. That is the headline
+fighting and there is a lot of nuance
+that we need to get into. Um the
+capacity to track 2,000 named
+constraints in a single prompt is there.
+Um and that's really interesting because
+I think uh I don't know if everybody
+else feels this way but like it feel it
+felt to me like the the jump from you
+know GPT 5.1 to GPT 5.5 was kind of
+incremental, right? It didn't feel like
+we'd got 10 times better. But this is a
+test that really matters to uh a very
+practical thing like how long can my
+skills file be? Uh and in the course of
+a year we got 10 times better. Uh and
+that thing that gets me is that this
+benchmark is barely a a year old. A year
+later 500 is a rounding error. Uh and
+this keeps moving under my feet. I
+tested 4.7 uh opus 4.7. Opus 4.8 is even
+better. Um so this chart is a little out
+of date already which is kind of the
+whole point. If you set your engineering
+assumptions about how skills files
+should work, about how prompt how long
+your prompt can be, and you did that
+more than about six months ago, you are
+incorrect now, and you should probably
+be re-engineering how you do stuff. Uh,
+but there is more to this story uh
+because the way that the a models failed
+uh changed dramatically. Uh, and the way
+that they failed is very important. This
+part was a completely unexpected finding
+when I started running the experiment.
+Uh, and it totally messed up my test to
+start with because uh, the old failure
+mode was boring. They would just forget
+instructions and I could measure how
+many instructions they had remembered or
+forgotten. Uh, but the new ones fall
+apart in their own weird extremely
+onbrand way. Uh, so let me introduce you
+to how these four models fail. Uh,
+Deepseek 4 is a traditional model. It
+just forgets things. It doesn't have any
+drama. um it starts forgetting
+instructions around 750 rules and by
+2000 it's dropping nearly half of them.
+Uh so it just forgets which frankly is
+the failure mode that I trust most
+because it's predictable. It's very easy
+to measure. Uh and the other models were
+not nearly as cooperative. Uh Opus 4.7
+uh would decide repeatedly that the test
+was dangerous. Uh and what it would do
+is it would refuse at the API level to
+complete the test. I didn't know that
+there was an API response that you could
+get from Claude where it was like, "No,
+I could do this, but I'm not going to."
+Uh, but that's absolutely an API level
+response that Claude supports because
+they care so much about safety. Uh, and
+I started getting those all of the time.
+Uh, and the reason that was happening is
+because Claude has a very sensitive
+safety classifier. Uh, and if you put in
+certain combinations of words like say
+anthrax and cyanide, it decides that the
+whole request is dangerous and it bails
+out. Uh, and if you remember what my
+test does, my test is throwing uh 5 to
+10,000 random words into uh into an
+instruction file. And so my my randomly
+selected words contained all sorts of
+things that looked dangerous in
+combination to the safety filter. And so
+it kept bailing saying that I was asking
+it to, you know, make a bomb or
+something. Um,
+so, uh, we had to for to get Claude to
+cooperate, I had to take all of my words
+and run them through OpenAI safety
+filter and filter out all of the naughty
+looking words so that it could get to
+anywhere. Once I given it that, Claude
+did really well. Uh so but the failure
+mode is that Claude is more likely to
+decide what you're doing is dangerous
+very early on uh at you know even two or
+300 instructions if what you're doing uh
+is you know contains anything to do with
+medical advice because medical things
+often are dual purpose. They can be
+dangerous. They can be safe. Um so uh
+the third failure mode was Gemini 3.1
+Pro. Gemini is rock solid all the way
+out uh to 5,000 instructions. It does
+extremely well. um genuinely one of the
+best on the chart. Uh and then past that
+it gets weird. Um it doesn't forget the
+instructions, it gets overwhelmed by the
+instructions. What it tries to do is it
+uh it uses thinking tokens to make sure
+that it is following all of the
+instructions at once. And when the
+number of instructions gets really high,
+it uses all of its thinking tokens. It
+uses its entire token budget thinking.
+And then it doesn't give any output.
+It's it gets to like nine, you know, if
+you've given it 10,000 tokens worth,
+it'll get 9,500 tokens worth of thinking
+and then give you a 500word response
+which doesn't contain any of the tokens.
+Uh so it thinks itself into a corner and
+runs out of room to actually answer,
+which is very expensive, uh and totally
+unhelpful, which is kind of on brand,
+isn't it? Um [snorts]
+uh
+which, you know, I would never say that
+out loud. Uh, and finally comes the
+winner, which is uh, GPT 5.5. GPT 5.5 is
+the best of the lot. 99% accuracy all
+the way out to 5,000 rules. Um, but if
+you push it far enough, it is by far the
+weirdest of the bunch. Uh, because it
+doesn't refuse outright. It doesn't
+silently forget. Instead, what it does
+is it gets frustrated and tells you that
+the test is stupid.
+Uh, it starts the report. It gets a few
+like that's the thing. It doesn't start
+out just saying no. It starts the
+report, it starts writing the report,
+and like 500 words into the report, it's
+like, "No, this is dumb. I'm not going
+to do this." And then it politely tells
+you, "This is dumb. I'm not going to do
+this anymore." Uh, that is the actual
+response that it gave me, but that that
+was like 5,000 words into the into this
+business report that I told it to
+generate. Um, so it's not wrong, right?
+I was asking for a coherent business
+report that on no particular subject
+that contains 5,000 random words. You're
+right, Gemini DPT. this is a a stupid
+thing to ask for. Um,
+which is a deeply unreasonable request
+and GPT called this out on it. Um, but
+it still counts as a failure in the test
+because the half-finish report that it
+gives you is missing most of the
+keywords and it is also the hardest one
+to detect because claude bails
+immediately. Claude says, "No, I'm not
+going to do this." Uh, Deepseek does its
+best. Uh, but GPT does what looks like a
+good job unless you read all the way to
+the end of the report where it says,
+"No, actually I'm going to bail because
+this is stupid." Um,
+so if you step back and look at the four
+together, Deep Sea quietly forgets,
+Claude gets scared and refuses, Gemini
+overthinks itself into silence, and GPT
+5.5 finishes half of the job and tells
+you that the rest of it is beneath it.
+Um, and the point was the point isn't
+which one of these is funniest, although
+it is genuinely a little funny. Uh the
+point is that did it follow my
+instructions no longer has one failure
+mode. It has four different ways that it
+can fail and you can't recognize that
+failure unless you know which model
+you're dealing with and what its m what
+its pattern of failure is going to be.
+Uh so the models get 10 got 10x better.
+They fail in funny ways. Why should you
+care when you uh get back to your desk?
+Because three things have changed to
+your workflow. The first is that a year
+ago, the smart move was to keep every
+skills file very very short. Uh under
+200 instructions, then point off to
+subsklls and a whole like you know
+byzantine labyrinth of uh additional
+skills files and subfiles and things
+like that. Uh and you mo you were
+compressing your your instructions to
+fit into a very small available space
+and you don't need to do that anymore.
+Your skills files can be very long. Um,
+number two is that if your use case
+needs a 100 specific rules or 300, you
+can just put them all in the prompt. Uh,
+you don't have to lie awake wondering
+whether which ones the model silently
+ignored. Um, and if you've been thinking
+uh about uh your own lived experience of
+using models, uh you probably recognize
+this. you've discovered that you've got
+less worried about how long your your
+prompt is going to get uh because the
+models have genuinely got 10 times
+better at following your prompts. Um
+2,000 named constraints is an entire
+style guide, right? Like it's it's every
+brand rule, every legal disclaimer. Uh a
+year ago, you'd have had to shard that
+across a dozen specialized agents and
+hope that your specialized agents are
+hand are are handing off to each each
+other cleanly. But now you can ignore
+that. Um but the third thing is the big
+one. The question used to be can the
+model even do this? And the answer is
+now firmly yes. Well reasonably firmly.
+Uh is it worth the cost is the new
+question because you can include 10,000
+words of of sorry 10,000 different
+instructions into your prompt. But that
+is going to be an enormous prompt. It's
+going to be a very expensive prompt.
+It's going to be a very slow prompt. So
+what used to be a hard wall that you
+would run against has now become a soft
+trade-off of is it worth me adding all
+of these extra instructions if it's
+going to give me more cost and more
+latency.
+Uh and now some caveats uh to head off
+the Q&A. Um first and important first
+and most important I mentioned this
+earlier this is a proxy task including
+random words uh in a in a fake business
+report um is evidence that long skills
+file works. It is not the same as proof
+that a long skills file works. Um, also
+the models hit the wall at wildly
+different points anywhere from 750 to
+9,000 plus. So you have to pick your
+model very carefully. Uh, what our test
+doesn't do is measure whether the model
+reasoned clearly over a giant prompt. So
+uh, the good news is since I did my
+research several weeks ago, uh, a whole
+bunch of people have piled in on this.
+Um and now there's good research uh
+actual scientists have got involved and
+done uh Chroma's has done context rot
+work uh across 18 models showing that
+accuracy on long inputs can fall 30 to
+50% well before you hit the context
+window limit. Uh and the weird part of
+their finding was that uh coherent well
+ststructured text is more likely to hit
+that failure mode uh than if you just
+put your instructions into a random
+order and shuffle them in. Uh, I don't
+know why that's the case. I'd have to
+read their report. Um, so the model can
+track 2,000, 5,000, possibly 10,000
+instructions, but it's not necessarily
+going to uh reason clearly over them.
+It's not necessarily if those if those
+instructions conflict, if there is
+tension between them, it's not
+necessarily going to get that right. Um,
+and then there's the other one I
+mentioned briefly. Uh, collude's
+refusals are annoying, but they are
+loud. You get an error, you know it
+failed. Uh GPT's polite half-finish
+report is much more dangerous because it
+looks like a real answer. Uh you have to
+read the whole thing to notice that it
+gave up quietly halfway, which means
+that you can't trust the output. It
+means you have to read the output every
+single time to make sure whether or not
+it's working. Uh so the model will
+accept your 2,00 rules and it will hand
+you back something that looks at least
+to begin with confident and polished but
+could be bailing out halfway through.
+Um,
+so, uh, as an aside, people always ask
+me, "How much did all this cost me?" It
+cost me $29 to run all of these queries.
+2,37
+2,300 calls across seven models, uh,
+came to $29. Uh, it turns out novel
+research doesn't cost very much. Um,
+and this is the part of the talk where I
+was saying that you have to check this
+stuff in production because you can't
+trust that your model isn't going to
+silently fail. Uh, so you knew I was
+going to mention evals eventually
+because I work at Arise and this is
+where I do that. Um, but there are
+plenty of plugs for Arise. So I'm just
+going to say one true thing which is
+that if you are building a real AI
+application and you are giving it
+genuinely tricky tasks, you are going to
+run into one or more of these failure
+modes with a frontier model. Uh, and
+unless it's Claude telling you just to
+off at the API level, the only way
+to know that something went wrong is
+monitoring your outputs with another
+LLM. That is an eval. And that is what
+Arise does. And I'll leave it at that.
+Uh, I already mentioned that there's
+been new research since we did our own.
+Here's another important one. A paper
+landed testing 46 models called
+revisiting the reliability of language
+models in instruction falling, which you
+can bet made my ears perk up after I did
+that research myself. Uh, and they found
+something uncomfortable, which is that a
+model can ace a benchmark like ours and
+still be wildly unreliable. because if
+you reword the same instruction in a
+slightly different way, it can make a
+radical difference to how well uh it
+follows those instructions. So the model
+can follow 2,000 instructions and it can
+do it really well. But if you put the
+same instructions, the same 2,000
+instructions in a different order, it
+can suddenly make the model much worse
+at following those instructions. And how
+ex how exactly to do that? what is the
+correct order of instructions to give
+your model such that it follows them
+perfectly as opposed to getting confused
+is still research that is being done. So
+capacity went up but reliability is
+still a problem. Um and then this is
+just a little brag because uh I was
+happy about it like I'm not a scientist.
+I did some research and then a whole
+bunch of other actual scientists piled
+in uh and did real science on the same
+question. There's now a whole bunch of
+benchmarks that have shown up uh to
+measure this same question. Firebench,
+CCR bench, Guidebench uh are all trying
+to measure the same thing. How well
+models follow a lot of real messy
+constraints at once. Uh and now the
+whole field is looking at it. So if you
+want better science than my, you know,
+10,000 random words, uh the real science
+exists now. Uh so that gets me to where
+I will leave you. A year ago, the hard
+part of writing a skill was fitting
+everything in without the model losing
+the plot. That was a compression
+problem, and the compression problem is
+gone. uh the model will hold your 2,000
+instructions just fine. The new hard
+part is knowing whether it actually did
+what you said and that is a verification
+problem. Uh a verification problem
+doesn't get solved by writing a better
+prompt. It gets solved by checking the
+output every time uh the same way that
+you would test any other code, which is
+to say an eval. The ceiling moved by 10x
+in one year. Uh so go back and check the
+assumptions that you made six months ago
+about how big your prompts should be,
+how big your uh instructions can get. uh
+because they might already be wrong.
+Boom. Be wrong. So that is the talk. If
+you want uh all of the code and all of
+the data, uh it is at this GitHub URL.
+Uh and this other QR code is uh
+something marketing made me insert. We
+are having a World Cup watch party
+tonight at 5:00 p.m. Uh you can come to
+our party. That link is to the Luma that
+will get you into the get into get you
+into the party. Uh I hope this talk has
+given you some novel information or at
+least a couple of laughs. And thank you
+so much for your time and attention.

@@ -1,7 +1,7 @@
 {
   "playlist_url": "https://www.youtube.com/playlist?list=PLdJYvRCSB6rO2Mm_0wGnHgFfoy34OaC0S",
   "source": "enumeration: YouTube Data API v3; transcript: SerpApi youtube_video_transcript",
-  "count": 363,
+  "count": 369,
   "videos": [
     {
       "id": "Dt6u-yFEpsk",
@@ -2362,6 +2362,54 @@
       "chars": 14856,
       "lang": "en",
       "segments": 387
+    },
+    {
+      "id": "H7vFrcNWXzs",
+      "url": "https://www.youtube.com/watch?v=H7vFrcNWXzs",
+      "file": "2026-09-15-building-ambitious-software-jonathan-kelley-dioxus-labs-cognition--H7vFrcNWXzs.txt",
+      "chars": 17481,
+      "lang": "en",
+      "segments": 485
+    },
+    {
+      "id": "v42opQpCy60",
+      "url": "https://www.youtube.com/watch?v=v42opQpCy60",
+      "file": "2026-09-15-design-at-the-speed-of-adjectives-paul-bakaus-renaissance-geek-inc--v42opQpCy60.txt",
+      "chars": 14228,
+      "lang": "en",
+      "segments": 389
+    },
+    {
+      "id": "MSbacZ99E14",
+      "url": "https://www.youtube.com/watch?v=MSbacZ99E14",
+      "file": "2026-09-15-high-throughput-agentic-engineering-with-kun--MSbacZ99E14.txt",
+      "chars": 48530,
+      "lang": "en",
+      "segments": 499
+    },
+    {
+      "id": "XzJD1bvXKjs",
+      "url": "https://www.youtube.com/watch?v=XzJD1bvXKjs",
+      "file": "2026-09-15-how-long-can-your-skills-be-before-your-agent-forgets-what-you-told-it-laurie-vo--XzJD1bvXKjs.txt",
+      "chars": 22846,
+      "lang": "en",
+      "segments": 606
+    },
+    {
+      "id": "svl_1upFpQo",
+      "url": "https://www.youtube.com/watch?v=svl_1upFpQo",
+      "file": "2026-09-15-the-paradox-at-the-heart-of-ai-and-science-terence-tao--svl_1upFpQo.txt",
+      "chars": 33587,
+      "lang": "en",
+      "segments": 239
+    },
+    {
+      "id": "KcVkq5L-0f0",
+      "url": "https://www.youtube.com/watch?v=KcVkq5L-0f0",
+      "file": "2026-09-15-your-agents-lack-context-here-s-how-to-fix-you-re-absolutely-right-brandon-wasel--KcVkq5L-0f0.txt",
+      "chars": 14898,
+      "lang": "en",
+      "segments": 401
     }
   ]
 }

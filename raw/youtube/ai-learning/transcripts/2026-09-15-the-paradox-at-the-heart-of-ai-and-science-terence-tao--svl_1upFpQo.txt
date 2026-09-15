@@ -1,0 +1,583 @@
+One analogy I've given in the past is 
+that science is a little bit like going   on a hike. You've heard there's some interesting 
+waterfall, some beautiful waterfall out there. So,
+you decide to to to go hike with some friends 
+to to uh to find it, but you need to make a
+map. You got lo you get lost a little bit, 
+but maybe while getting lost, you discover   something else which is interesting, and you make 
+a note of it. On the way to to this waterfall,
+you find an even more spectacular waterfall 
+in the distance. you can't get there yet,   but maybe some future hiker [music] will figure 
+out a way to get there, too. And so there's
+there's a whole process to get to your goal, 
+which um is also very valuable. But these tools,
+these AI tools, they can be like helicopters that 
+will just fly you directly to this waterfall and   you can see it and then you fly back, but you 
+learn nothing about how to get there. You you
+you may not see any other interesting phenomena 
+than the specific thing that you asked for.
+And so even though technically you 
+achieve your goal much more efficiently,   there may be something that that is lost. My name 
+is Terence Tao. I'm a professor of mathematics at
+the University of California, Los Angeles. And 
+I have a forthcoming book, Six Math Essentials.
+Thank you for watching Big Think. If you'd 
+like to support our work, we encourage you   to join our members community. As a member, 
+you'll receive our quarterly print magazine,
+a beautifully designed collection of 
+the ideas and interviews that matter   most. Bigthink [music] is for curious people 
+who want to take deep dives into big ideas.
+To support the media you want to see in the 
+world, go to bigthink.com/membership. [music]
+And now back to the interview. How AI 
+is changing math and science forever.
+Science and mathematics has uh changed a lot over 
+the the centuries. Traditionally in science uh the
+two major paradigms were theory and experiment. 
+um like you would you would create a theory like   you know Kepler might create a theory of or how 
+planets move or Newton might create a theory of
+gravity and then there's this experimental data 
+that you would run an experiment and and see what
+happens and then you try to see if the theory and 
+the experiment fit. Math was a little different   in that it was almost entirely theory. Um there's 
+there are very very few experiments that you would
+do purely in mathematics. There were a few for 
+example Gaus famously computed the first 100,000
+prime numbers and that was a data set that he 
+used to make predictions. he predicted what we   now call the prime number theorem. But science and 
+experiment were the two major forms of science.
+Then later on simulation came along um that you 
+didn't have to run a a big expensive experiment.
+Sometimes you could just simulate uh let's say 
+um a hurricane in in a supercomput instead of
+in real life. And then later on big data came 
+along that um rather than than just do a small
+number of experiments to try to confirm or deny 
+um a specific theory, you could take megabytes
+or pabytes of data and try to discern patterns, 
+try to extract out laws from just massive data
+sets. Um and that's a more emerging type of 
+science. But now all these modes of science
+are being transformed because we now also have 
+AI to to to help us. So so in the past every one
+of these ways of doing science had to be done by 
+human scientists. You know you had to have someone   to perform the experiments or someone to do the 
+theorical calculations or run the simulations um
+or go through the data and you could use computers 
+for some of that but you have to but even then you   have to program the um the data analysis tool or 
+whatever and you still need a lot of expertise.
+You know, we have automated labs that can that can 
+perform experiments automatically. Um, you can you
+can get a coding agent to run a simulation for 
+you and you can try to to also run automated data   analysis. Um, and increasingly you can also do 
+automated theory. You can take some mathematical
+problem and ask what are the consequences of these 
+hypotheses and these axioms? What what conclusion
+should you get? These tools can now be done at 
+scale um much faster. you could potentially run
+many more theoretical analyses than than any one 
+human scientist could. On the other hand, this is
+not the only thing that we want. There's value in 
+doing things a slow way, you know. So, a scientist   who spending hours and hours working things 
+out on pen and paper uh doing the experiments
+in the field with with their bare hands and 
+actually debugging the simulations that show up,   they often learn a lot of of extra insight beyond 
+just getting the answer that they're trying to
+seek. And they can find they can discover new 
+phenomena. they can see connections, they can see   similarities to some some previous thing that's 
+been studied elsewhere in the literature and they
+can communicate what what they uh what they are 
+finding to other people. So there is this paradox   that on the one hand AI are becoming more powerful 
+and more capable um and and making fewer mistakes
+and they are ostensively achieving a lot of the 
+goals that we want we think scientists are trying
+to to to do. They're they're running experiments. 
+They're analyzing data. They're writing papers.   But it may be that it comes at the cost of the 
+AI becomes picks up some skill, but but no human
+scientist gets any better at doing the science. No 
+human can communicate exactly what just happened
+and and and why this this scientific discovery 
+is interesting, why this proof is new and and
+and and what features it has and how it connects. 
+we may have to sort of redesign our um conception
+of what science is and what we actually want out 
+of science. What exactly is science for and and
+what are we trying to do? And is there a danger 
+that we are optimizing the wrong thing when we are   pointing our AI tools at science? Modern AIs are 
+powered by a a type of algorithm known as machine
+learning which is trying to predict patterns in 
+data. So a very simple example of machine learning
+is regression. So if you have some inputs and you 
+some outputs like let's say you observe that if
+you feed um some animal more food they get they 
+get bigger right so you can plot how much food
+you give various animals and and you plot their 
+weight or something and you get some dots on on a   graph and if you're lucky they will they will fit 
+some line and then um and that line becomes your
+prediction. So then if you give this dogs this 
+so sort this much food you they would gain this
+much weight. Now in the real world um you don't 
+always get these nice linear relationships. Often
+there are many many inputs and there's many many 
+outputs and the relationship can be can be really   complicated but sometimes the data has a shape 
+and and um there we now have all kinds of clever
+ways to kind of detect this shape and try to fit 
+curves to to these input output pairs. What uh
+large language models which power chat bots and 
+things like that they're just playing the game   of naming the next word in a sentence. Roughly 
+speaking, if I say roses are red, violets are
+blank. What is the next word to fill the sentence? 
+You can probably guess the answer is blue. That's   an output. You can imagine this giant plot where 
+the inputs are all these incomplete sentences and
+the outputs are the words you want to complete and 
+you got all these dots in this high dimensional   space and you want to fit some curve to it 
+that will um try to explain what is the most
+likely word to come out. Sometimes there's more 
+than one answer. Hello, my name is. You know,   there could be many many names you could put 
+after the end of the sentence. So, you don't
+always get a single answer, but you could try to 
+get the most plausible answer. People have tried   this and and you know, the the autocomplete 
+feature on your phone does this, you know,
+like you you text something and it will suggest 
+the next word and sometimes it's kind of right,   sometimes it's silly. Once you have any kind of 
+operation like this, it creates some dynamics and
+you can just keep you know many people have just 
+played on their phone just press autocomplete over   and over again and but you get these these 
+gibberish sentences okay um you get monkeys
+typing on typewriters but the uh the magic of LLMs 
+is that if you um train these LMS on enough data
+okay so trillions and trillions of data points 
+and you you um you really try to fit as good a   curve as possible and this takes like millions and 
+millions of dollars of of computing and months and
+months of of time, then suddenly uh even when you 
+iterate, it stays coherent. It begins to sound not
+like monkeys, but it actually sounds like a human 
+uh speaking. And somehow we don't fully understand
+why that's the case. But what seems to be true is 
+that language like like English or other natural
+languages contains a lot of hidden patterns 
+that we're not consciously aware of. I mean,
+we know some of the laws of English. You know, 
+there's laws of grammar and things, but there   are there are sort of unspoken, unwritten rules 
+of of language that humans pick up. You know,
+a human child, even though they're not taught, you 
+know, what a noun is, what a verb is or whatever,   they can they can pick up what order uh English 
+words go in. And just by continual exposure to
+the language, it seems like you can teach these 
+models to also pick up patterns in language to   the point where you can give them math questions. 
+the answer to 2 plus three is and they will they
+will say five. They have been trained to to get 
+the the correct answer to to at least simple math
+questions. Once you have a little bit of ability 
+to to speak English, you can kind of go in loops
+and and sort of check your work and make fewer 
+mistakes and you can prompt these models to to to   proceed step by step and and and not say something 
+unless it's been double checked and so forth.
+And so they become a little bit smarter, quote 
+unquote, to the point where they can solve many,   many complicated tasks, but they're still just 
+guessing the next word to say. It's not really
+grounded in any deep understanding of the real 
+world. It's just that they they just have seen
+the patterns in in the English language or 
+other language that they've absorbed so well
+that they can mimic people who are speaking uh 
+in intelligent fashion and they can present as
+being intelligent long enough that they can fool 
+us, but long enough they can actually do useful   things. So you know we can now solve certain math 
+problems by asking the LM to provide a proof and
+sometimes the proof is complete rubbish but if 
+you loop it enough and you have enough checks   um you can actually uh start having a positive 
+success rate. Um so it's it's a very strange
+way of solving problems like it is it is like 
+completely orthogonal to the way we normally think
+of intelligence as being very grounded methodical 
+thinking first principles. You know, it's like
+having someone who knows a lot and is bit of 
+slightly drunk and is sort of throwing out ideas,
+but with enough guidance, uh, you you can actually 
+extract useful output. It's not the most advanced
+mathematics out there actually. Um, but you give 
+it a lot of data and a lot of time and a lot of
+other band-aids and things and it actually works 
+pretty well. I find that some of the debate on
+AI's uh role in in science and other disciplines 
+is we often default to a one-dimensional view of
+thinking like this. there's there's easy tasks 
+and and and hard tasks and very hard tasks and and
+and humans are can can do tasks up to a certain 
+level and AIs can do task to a certain level and   so which one is which one is better that's kind of 
+a one dimensional way of thinking but what I found
+uh when when sort of working with AIS and 
+and comparing their way of solving problems
+to humans way of solving problems is that they 
+are really quite complimentary human experts   um uh will will focus on depth you know so like 
+a human mathematician which will solve thousands
+and thousands of problems they can work on. But 
+they will pick one or two problems that they   think are are difficult but not so difficult 
+that they're impossible but they're difficult
+enough that the the exercise of trying to make 
+a bit of progress towards them will reveal all   kinds of insights that they can share and maybe 
+their students or some other collaborators or or
+other people can build upon what they do. When 
+we point the AIS at really difficult problems
+where none of the standard techniques apply, 
+they are still very very bad. I mean they're
+just randomly guessing but they excel at breath. 
+So if you if you point them at a thousand problems
+um of various difficulties now some may be just 
+too hard but there will be some which actually
+are within reach of existing methods and there's 
+some method out there in the literature which will   solve your problem or maybe you have to combine 
+together two separate methods and it's just that
+there there's just not enough human experts 
+to look at all these problems and the human   experts that do look at these problems they 
+may not realize that there was this obscure
+paper from a journal um in 1970 that actually 
+has the key idea that will solve this problem.
+They don't have the patience or the time to sort 
+of go through all the different combinations of   how which technique might work on which problem. 
+But the AIS, you know, they will somewhat randomly
+they will take sort of educated guesses as to what 
+techniques might work for a problem and some of   them will be stupid and but some of them might 
+work and through all these combinations we're
+finding that sometimes they can catch they can 
+catch a solution that that the rest of all the
+humans have missed. Occasionally the consensus the 
+conventional wisdom on of of the experts is wrong.
+You know that we all think that that a problem has 
+a positive answer but actually the has a negative   answer and we just didn't look at the negative 
+case too much because we thought everyone thought
+that the the answer was was true but an AI may 
+not have that preconception. So uh sometimes the
+AI just serves as an independent pair of eyes. 
+And so some problems that we thought were very   difficult had a surprisingly simple solution which 
+in retrospect we should have as maybe we should
+have gotten ourselves to. They're beginning 
+to become successful at when you point them
+at a very broad range of problems and they solve 
+some percentage of them. Like maybe you point them   at a thousand problems and they solve 5% those 
+problems. That's still 50 problems solved. you can
+already have tools that in some sense outperform 
+humans mathematicians by raw number of problems
+solved. Um now the 50 problems that get solved may 
+not be the 50 problems that you most want solved.   They could be 50 random problems. Um but still it 
+it is it is very impressive. What I think we will
+have to do as a profession is find ways to um 
+to incorporate this new capability to to solve
+some problems at broad scales um and somehow 
+figure out how to to to make that mesh with our
+existing capability to solve a few deep problems 
+very slowly. Kepler's story of how he found his
+famous laws of motion is a is a fascinating 
+one. It shows how important the process is.   Kepler learned of Capernacus' theory of the motion 
+of the planets. And Capernacus had roughly worked
+out how far the Earth was from the sun, how 
+far Mars was and so forth. And Kepler noticed   that the ratios of these um orbits looked a little 
+bit like the like certain ratios that showed him
+in geometry. And so eventually he proposed that 
+actually if you take spheres one sphere for every
+planet and he had six planets known at the time 
+that he could inscribe five platonic solids you   like a dodiced and a cube and a tetrahedrron and 
+so forth between these six spheres and he thought
+it would get a perfect fit and this explained the 
+shape of the solar system in terms of the five   solars. This was his beautiful geometric idea. 
+It was only after he managed to get his hands on
+some really high quality um observational data of 
+Tao Brahi which he had to fight for actually and
+possibly even steal and he tried to fit it his 
+theory to this this data and he found that it   didn't actually quite fit that with the precision 
+that Tao's data um offered he could not quite get
+these spheres to fit and in fact he discovered 
+from that process that the the orbit of Mars   and Earth could not be circles at all that there 
+had to be some other shape. He spent many years
+um figuring out what to do. I think I I don't know 
+how long he held on to this this theory of of the
+platonic solids and you can see in his writings 
+he tried many other things. He tried to to make   the circles off center and at some point he landed 
+on the ellipse and then suddenly everything fit.
+It does show that there is an interplay between 
+theory and experiment. You know that that you
+can pose a theory if it doesn't fit the data it's 
+it it may not be a good theory. But um it's it's
+more complicated than that too. Before Kepler, 
+one of the criticisms of Capernacus's theory was   that already Capernacus acknowledged that that his 
+measurements were worse than the best predictions
+available at the time. So the best models were 
+the geocentric models which had been developed   by the Greeks and then by the Arabs and Indians. 
+There were many many adjustments and fine-tuning
+and they had a very very precise model that could 
+predict in a very complicated way where all the   planets would be. uh and Kepler Capernacus's model 
+was worse. Just knowing agreement of data is not
+necessarily um the the only metric. It was only 
+after Kepler found his his revised model where
+the orbits were not circles but ellipses that the 
+heliocentric model became more accurate than the
+geocentric model. What this tells you is that is 
+that science is um you can't always get instant
+feedback as to whether you've solved a scientific 
+problem or not. If Kepler and and Copernicus had
+AIS and they asked them to predict a model for 
+for for the universe, it could be that the AIs
+that generated the correct ketocentric model would 
+be discarded because initially their predictions   were not as good as as as the geocentric ones. It 
+takes time to really digest all these theories and
+see how they fit with everything else that we 
+know about planets and motion and gravity and   everything. One concern actually is that AI are 
+too fast. there's a danger that these AIs will
+do what's called overfitting and and create a 
+very complicated model which is not which has   nothing to do with what's actually going on but 
+just fits your data extremely extremely well um
+but it doesn't extrapolate beyond that that that 
+data set how we incorporate AI into the scientific
+discovery process will be uh a challenge it can 
+certainly accelerate individual steps of of the
+process you know you can make experimentation 
+faster um you can you can write code faster you   can write your papers faster but size as a may not 
+necessarily accelerate just because every single
+component gets faster. There is a danger that that 
+we will optimize uh the wrong thing when we when
+we point AI at science and we will on paper get 
+all these amazing successes and but find out that
+science is not actually advancing as it in the way 
+that it used to. But we will find out it's still
+better to have these tools than not have them. 
+But we're still learning how to use them most   efficiently. Part of what we do is is we solve 
+problems and and we we try to find solutions to
+problems and and and prove things. Uh and proofs 
+go through a certain life cycle. First of all, you   have to to to generate a proof for a solution. And 
+this used to be quite hard. But but some of the
+proofs that you generate are incorrect. Um so then 
+you have to to verify them, check which one check   that is correct. Uh and that also used to be quite 
+tedious. But both of these of these tasks are
+becoming more and more automated. So we we begin 
+to see more and more proposed solutions to various
+problems and many of them are actually correct but 
+proofs are also getting longer. Uh and when when   when they're written by AIs they are often not 
+very pleasant to read. An AI generated proof might
+might spend a lot of time talking about something 
+very trivial and spend very little time talking   about the most interesting portion of of of the 
+paper. I think because the AI can't distinguish
+sort of what is hard what is difficult because by 
+brute force everything takes the same amount of   time for them. A human who has sort of naturally 
+had to struggle at the most difficult step of a
+paper would naturally spend a lot of time on that 
+step. And so you need to write out the paper in a
+proof in a way that it reads well and it can be 
+explained to other people. And then other people   have to get excited by it. they they they they 
+have to accept it as oh this is really interesting
+that this this will help me solve my own problems 
+or it really um clarifies why this phenomenon was
+true that it has to be accepted and this is where 
+we we tra traditionally have the peer review
+process where we we send papers to referees and if 
+the referees are are excited by this result then
+um the paper gets accepted but you know there 
+could be papers that are technically they are   correct and and they are readable and fine but but 
+they could answering a question that no one cares
+about. And then finally, it needs to be sort of 
+completely polished and put into textbooks and and
+taught to students. And often the first version of 
+a proof is not suitable for writing on textbooks.
+It often is is done in a very inefficient way and 
+is is not the the ordering of steps is not quite   logical. There's a certain digestion process 
+where where someone has to spend a lot of time
+thinking very hard to what is completely the the 
+right way to organize to edit the paper to sort of
+flow in the same way. a little bit like how you 
+would you would edit a documentary or a movie.   And so what we're finding is that AI tools are 
+accelerating the early stages of this process,
+but not the late stages. We're now generating 
+many proofs. We are verifying a bunch of them,
+but the pace of understanding them and putting 
+them into the final textbook form is still done by
+humans. Um and in fact we're now experiencing what 
+you might call proof indigestion where suddenly
+there's lots and lots of pending uh solutions to 
+problems that should be understood and should be
+go into textbooks but they just we're just flooded 
+now with with too many of them and we have to pick
+and we have to triage and this is something that 
+has never had to happen before. Um it used to be   that solutions came out so rarely that um if a 
+solution to a major problem got got solved. All
+the experts would sort of drop everything and read 
+it and and try to digest it as quickly as possible   because it was so rare and so valuable that it was 
+worth doing. And now we're just getting flooded
+with with all these possible solutions. I myself, 
+you know, I've had to stop trying to stay current
+with all the latest developments in in in my in 
+in my field. Sometimes there's just so much going   on. I I can't promise now to read every single 
+development that that that shows up. I mean, this
+was already beginning to be a problem even before 
+AI, but AI has really accelerated the sheer volume   of of content being generated. And so, we're going 
+to need much better curation and uh and filtering.
+It's a good problem to have. I mean, it's like 
+it's better to have a to have too much food,
+more food than you can eat than than not enough 
+food to eat. But it is still a problem. AIS have
+become increasingly capable in mathematics. 
+for people like me who have been following the   developments for the last three years. Um there's 
+been a kind of steady progression, you know,
+so four years ago they could solve middle 
+school math problems and then they could solve   high school math problems and then uh high school 
+Olympia level problems and then um some problems
+you like graduate student um level qualifying exam 
+problems and then they're starting to solve a few
+of the the minor um unsolved problems that maybe 
+someone like Paul Erdish would have proposed but
+no one really looked at. So it's a lot of low 
+hanging fruit. And then just recently there's   been one or two occasions where they they managed 
+to solve some problems that people actually really
+did try very hard to solve. Somehow collectively 
+the humans all had were taking the wrong turn and
+the AIS which had a different set of biases had 
+managed to cobble together um a solution which was
+quite clever and has been quite um has already had 
+some impact. there's been some nearby problems to   the union distance problem for instance which have 
+not also been solved by humans who have adapted
+the uh the AI's technique. I found that quite 
+exciting. Uh so I think for some my colleagues   it was very concerning especially if they hadn't 
+been following the previous developments and and
+and not realizing that this was where they were 
+at. If a colleague had only seen say what chatp
+could do in 2023 and if you asked it a difficult 
+math question then it would give you complete
+rubbish and they they are quite different now. 
+And it's still fundamentally the same technology,   but but they have found ways to reduce the 
+error rate and and become genuinely useful. Now,
+it's still unclear how replicatable this is. 
+Many of these achievements um they're done
+by private companies. They they not disclosing 
+how much resources they spent to to use. I mean,
+is it was it $100,000 a commute computer? Was it 
+a million dollars? We don't really know. And we   don't know their success rate. um was this problem 
+that they solved the only problem that they looked
+at or did they look at 10 problems? They look at 
+100 problems. While the results are impressive,   um we don't have enough data to to really gauge 
+whether this will become a completely regular
+occurrence going forward or whether it's only 
+if you spend $100,000 over several months with
+a team of 10 people that you can get results like 
+this. And maybe it's only 1% of all problems that
+we care about are immunable to this method. uh 
+yeah we don't know but there are efforts to more
+properly benchmark in a scientific way. The most 
+recent of these challenges is called the first   proof challenge. They tested the latest models 
+against a test set of 10 research level questions
+and the best models could do like five or six out 
+of 10 of these sort of medium level difficulty
+math problems which already had a solution but the 
+solution was kept secret that I think there's a   lot of routine tasks tasks that we we do every day 
+as a as a as in our research that some percentage
+of those can now be done by by AIS it could be 
+expensive many of of these tools they require
+say a couple hundred dollars to run to before 
+they can get a solution and sometimes they fail.
+They they spend all this compute and and they 
+end up with with nothing useful. We are seeing   now in programming that many expert programmers 
+are reporting that their ability to write code
+has increased by a factor of five or 10 or 100 
+with these with these tools but they are also
+they can they can feel themselves learn losing the 
+ability to code by hand and sometimes they cannot
+review the code that that that comes out of these 
+agents. There's a trade-off you know speed and is   not everything. I very much like the collaborative 
+aspect of mathematics. I didn't realize was so
+important until relatively late in my career that 
+uh like a lot of the mathematics I've learned I I
+learned after grad school by by working with uh 
+with mathematicians and and and scientists in
+different fields. I teach them what I know, they 
+teach me what what what they know and I become   much broader as as a as as a result. When you're 
+working with a collaborator that you've been
+working with a long time, um there's a point where 
+you become almost mentally attuned. Perhaps you've   been familiar, like if it's a really close friend 
+or family member that you talk to for a long time,
+sometimes you can complete each other's sentences. 
+You know what the other person's going to say? And   you can sometimes get that when you collaborate. 
+You can you can throw out an idea and before you
+even finish the sentence, the other person gets it 
+and and can run with it. People have tried to use   AIS like this and AIS they are you can't converse 
+with them. Of course they make mistakes sometimes
+they they sometimes will be psychopantic and and 
+only tell you what what you want to hear but also
+the interactions right now with these tools are 
+kind of personal like I've tried to collaborate   with people um in person and also have an AI 
+present but breaks up the rhythm. these these
+tools they don't they're not really conversational 
+like not as fluid conversation as as as as they
+are with human collaborators yet. uh maybe they 
+will get they will get there until recently they
+don't learn from your conversations you know so 
+with a collaborator when when you you know you can   resume the next day you can pick up very quickly 
+and sometimes even for a call that you haven't met
+for years you can pick up some very old threads 
+AIS have a certain amount of context and they can
+remember some things and and they can record 
+they can make notes and kind of simulate this
+memory but you can't attune uh to an AI the same 
+way that you can to a really close collaboration
+Yet I actually don't use these tools so much 
+for the actual problem solving process. I
+found to date that these tools are much better 
+at secondary tasks like like doing literature   searches or or checking a proof or writing 
+some code, proof reading uh something that I
+wrote to see if there's any opportunity to 
+make things a little bit tighter. I find,   yeah, the rhythm of of working with an AI is not 
+quite the the rhythm I I prefer working with a
+human collaborator, but that could just be the the 
+current state of current technology. Maybe in the   future AIS will be much more conversational 
+and and much more human to interact with.
+So we're at a somewhat risky point in in sort of 
+the uh the structure of of funding the scientific
+enterprise in general because on the one hand 
+these tools are allowing us to create the outputs
+of science or what seems to be the outputs of 
+science at at a much accelerated rate but it could
+come at the cost of of nurturing our seed corn for 
+the next generation of scientists. For example,   there there is a real concern that um the training 
+problems that we give our graduate students to
+work on to as as their as their first projects 
+to to get a little bit of of of recognition and
+and and career training and experience. These 
+are the types of problems which now AIs can
+um they can replicate many of the papers. But if 
+you replace the grad students by by these AIs,
+you know, the AIS will will generate these grad 
+student level papers, but then we won't get the   next generation of of of students. But if we 
+if we don't continue this process of digesting,
+you know, all this AI output to build the next 
+base of knowledge for the next generation of   humans and AIs to to build upon that, we may end 
+up stagnating as as as a a scientific society. You
+know, that we we'll be able to optimize everything 
+that we can we can do with our current technology,   but we may not actually develop really original 
+new ideas anymore. we will need to to really um
+have a much more open discussion about what 
+basic science is and what is useful for and   why it's important to still have curiositydriven 
+re research. why we still need a community of of
+of of humans to explore things sometimes slowly, 
+sometimes, you know, in in in ways that are not
+as efficient as the latest model AIS and also 
+the um the insights that that we that we we we
+gain. I think um we should share them more and we 
+should do more outreach to to the general public.
+I think the general public today, you know, they 
+can see the visible outputs of science. you know,
+they have a cell phone, they have the internet, 
+they they they have GPS or whatever. Many people,
+they they don't see the um the whole process 
+and and how a basic understanding of math and
+science actually makes the world around them a 
+lot less scary and just a a lot a lot clearer.   I think a lot of people now are just living in in 
+a state of anxiety. The world is so complicated.
+We haven't emphasized these sort of softer values 
+of science as much as sort of the hard you know   like um technological outputs and things but 
+science does add a certain amount of clarity
+to to to one's thinking and you know these are 
+valuable things and they need to be supported.
+Four times a year we print a magazine 
+worth putting your phone down for. Big   Think's premium print magazine is built with 
+custom [music] artwork and expert insight from
+the world's biggest thinkers. No AI slop, no 
+rage bait, just big ideas for curious people.
+Support the media you want to see in the [music] 
+world. Go to bigthink.com/membership to join.

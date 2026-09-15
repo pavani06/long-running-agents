@@ -1,0 +1,401 @@
+[music]
+Good afternoon. I hope you're all having
+a lovely day here at AIE. We've had
+great weather, though the UV has been
+like nine, so hopefully you put your
+sunscreen on. You're being appropriate
+adults. I'm here to talk to you about
+context engineering and I have the good
+fortune of following AJ from LinkedIn
+because he talked a lot about the system
+that we actually design and sell to
+other solutions and I'm going to give
+you a bunch of open source tools. So if
+you watch that last talk just before me
+you're going to get a bunch of tool
+chain so you can go mess around yourself
+and I'll teach you a bunch of techniques
+today. The goal of course is to fix
+you're absolutely right. I think they've
+taken that out of the prompts now so it
+just says you're right or other things
+but I'm sure you've all been there. So
+I'm Brandon. I work at Unblocked. Uh,
+yes, I have a coconut. We've been giving
+these away for fresh context, fresh
+fresh coconuts. But the thing that I
+want to talk to you about is with these
+models, especially with mytho class
+models. I think Fable 5 is coming back
+today. So they say, you can watch my
+grain call recording. Try to book this.
+We'll ignore it. But what I want you to
+do is to think about the fact that with
+these tools, AI generated code should
+feel like it was written by someone
+who's been on your team for years.
+So to get in the right headsp space for
+years, you have to consider that you
+have been the context engine. How did
+you do that?
+You built context by going to work and
+asking questions, shipping PRs and
+getting them rejected, going to
+meetings, and all this slowly over time
+built up the engine that is your brain.
+You understand how it works here. You
+know how stuff gets shipped. You were on
+call that night when you took prod down
+and why that happened. The problem is
+that these agents have this exact same
+problem. Every time you create a new
+terminal session with an agent in it,
+it's very intelligent, but it doesn't
+have any context on how your company
+operates. So, it needs to get that
+somehow. The problem is as you move
+these agents up in scale, that cost
+compounds if you get it incorrect at the
+beginning. They'll leverage off context
+and content. We're just going to fix
+this because I think people want to take
+some uh photos.
+Perfect. That context issue will
+compound. So at the far left, we all
+remember the age-old time of two years
+ago where we had tab complete models
+that were pretty cool. What happened is
+it popped up and said, "Hey, do you want
+to tab this?" And quickly in your head
+with your context, Angie goes, "No,
+that's bad." Or you went, "Oh, sweet."
+You hit tab. Nice. As we move along the
+agentic kind of adoption curve, what
+happens is you are moving into more
+situations in which you have agents
+running without a human in the loop or
+at least you wish you didn't have to be
+in the loop. What they need is some way
+to be able to ask the questions they
+need when they hit walls in order to
+write code or solve or basically fix the
+issue and ultimately output code that's
+mergeable into your codebase. especially
+with many people here who actually work
+in brownfield code bases that have been
+around for a long time that run real
+revenue across them, not just green
+field fund projects.
+So that cost of bad context compounding
+at the beginning is cheap. If you think
+like shift left, finding a defect or a
+bug, you want to find it as early as
+possible. It's the same with context
+because as you move across, you get into
+doom loops. You usually ask your agent
+to do something. It's like, "Hey, I did
+it." And you're like, "No, man." And
+then you correct and correct and
+correct. That's wasted search tokens.
+It's also wasted rework time and that is
+not acceptable with the uh tokconomics
+we have coming. And then as you move
+into parallel agents etc you start
+hitting a review tax. So these AI code
+reviewers we're trying to use but again
+key context is important there so that
+those code reviews are able to basically
+understand how the operations of the
+business are so it knows the business
+logic and more. And then finally, if
+your hope is to move all the way out of
+the loop, you're like background agents,
+get it done, make no mistakes, you
+really need to make sure that you have a
+context engine so those agents can query
+it and get all the answers they need so
+they can keep operating in an effective
+way.
+There are some common approaches that
+don't work. They're basically like a
+local maxima. Two of the ones we see the
+most with our hundreds of enterprise
+clients and mid-market size businesses
+is the curated context trap. If you've
+ever sat down and taken a virtual file
+system or maybe a local file system, you
+put some markdown files in it and you're
+like, here's all the context of this
+project. It's how it works. You then
+allow your agent to GP over that and it
+gets a bunch of good data and then it
+will perform better. The issue is first
+now you have to distribute that. So
+maybe you throw it up in GitHub and your
+team can grab it. But then the next is
+that repo is going to rot just like all
+the other docs you wrote down. and then
+who at your org is the omnipotent one
+who has the taste to curate this file or
+repo for literally everyone in the org.
+So you start to hit these issues. The
+next is the MCP plateau. This one is
+pretty clear. We have MCPs. They're
+great. You can give it to your agent and
+now it can basically get information
+from another source system. The problem
+is, of course, based on how you write
+the server description, the tool
+descriptions, your agent may never call
+it even though it should have. Or if it
+does, there's a known bias called the
+satisfaction of search bias. What that
+means is the agent when it finds the
+first piece of information that it
+thinks is correct, it goes, "Oh, I have
+what I need." And it proceeds. In most
+organizations, there's a Slack
+conversation from last night that says,
+"You should be doing A instead of doing
+B." and the agent will never find it if
+it found some architecture record. So it
+doesn't actually consider all of the
+context.
+The problem here is access to
+information is not understanding. So to
+deliver understanding to a model, you
+have to do other techniques.
+What I'm basically trying to say is what
+your agent can't see is everything below
+the waterline. It can 100% get code that
+compiles, but that code that compiles is
+taking down prod and you have a P 0 at 1
+in the morning. because it missed the
+fact that you have a certain rollout
+procedure, you're supposed to turn off a
+feature flag, whatever it might be.
+So your team needs a context engine
+because what it should do is understand
+who you are and where you work in an
+organization. So if I say to you, I want
+to get off stood up, it knows where I
+work. It knows where my git commits are.
+It knows who reviews those commits and
+it understands that my context it can
+focus me and then use that as a trigger
+point to find the rest of the
+information. It resolves conflicts as
+mentioned an old architecture diagram
+and last night's Slack convo with the
+CTO. Which one is right? You need to use
+a bunch of techniques to deter determine
+that respects permissions and
+governance. Of course, MCP allows us to
+use OOTH and other scopes and SSO, but
+if someone asks a question over here
+who's not supposed to know about secret
+project A, you need to make sure that
+doesn't leak into the response. And then
+finally, deliver the right context at
+the right time to the model in a token
+optimized way. We have multiple surface
+areas because human engineers still talk
+to unblocked all the time to get
+information they need in Slack or
+otherwise. But then you want token
+optimized responses if you're just
+speaking machine to machine in order to
+not waste a bunch of bold classes on
+your token spend.
+This is how an engine works. I'm going
+to be brief on this but basically on the
+left hand side you see all the data
+sources that are coming in. For us we
+focus on engineering teams and that's
+who uses us as well as the technically
+light teams around it like support sales
+and otherwise. You ingest all that data.
+You get real-time data from tools like
+your instant management tool chain. It
+comes into the engine. Where that engine
+is, it thinks at the bottom. I'll expand
+on that slide in a moment. But
+basically, it uses these six key
+characteristics. And then on the right,
+you output the context to the exact
+workflow in the manner that it is
+needed.
+Those six key points as mentioned
+unified system context. You have to go
+across the whole thing. at large orgs,
+companies like LinkedIn scale, workday,
+General Motors, whatever, they need this
+type of data. They need to understand
+everything that's happening. And the
+this morning actually talking about
+Fable coming out potentially later
+today. He mentioned that you need to
+actually provide a map and then let
+Fable discover the territory. The way to
+help confine that is making sure that
+these models have access to all of the
+context because they will find your
+unknown unknowns. There are definitely
+things going on in your company that
+you're just unaware of, but would be
+really helpful for the task you're
+trying to do.
+Then I'll move faster. But the targeted
+retrieval, you should be able to if you
+provide a link quickly, unfurl it, get
+that document back and move along. So
+two tasks, deep research, go long.
+That's fine. But you also need speed
+when speed is required. Conflict
+resolution. We already talked about
+that, but one thing says do A, one thing
+says do B. Who is right? Personalized
+relevance. Who am I? Where do I work?
+what am I working on? That token
+optimization, making sure the response
+is good and effective and doesn't bloat
+the window. And then permission
+enforcement, of course. OOTH, you
+shouldn't see it. You shouldn't see it.
+What we did with some tests is we
+actually ran the exact same prompt to
+the same model and one with context and
+one without. This is the wall clock time
+savings and then two hours, which was
+great. And then the tokens savings. So,
+it was a sizable task. It took about 21
+million tokens without and then 18 or
+sorry 10.8 million tokens with it. This
+is the type of experience that you
+typically see when you're using a
+context engine because the majority of
+those wasted search tokens where it has
+to gp at the beginning of every session
+to understand and discover things are no
+longer there when it's hydrated with
+context. Hydrated.
+And then as you move forward, you get
+these types of outcomes. 50% fewer
+tokens, faster triage, and the answer
+quality is actually better because it
+knew what was going on inside of the
+business.
+Now, this next part, you'll probably
+want a photo. If you don't know, you can
+actually take a picture of a QR code and
+then later in photos tap on it and then
+load the link. So, you don't need to
+float here because I'm going to give you
+three QR codes.
+This first one is for the social comment
+network. I'll pop that up so you can
+take a photo. But this is an open source
+tool that we've got that actually using
+all deterministic programming goes over
+your GitHub and understands who works on
+your team. This is my real team. We
+called Rasheen the machine because he
+ships like crazy. But on the right you
+can see who he commits, where he
+commits, who's reviewing his work. And
+then in those tabs, you can find a
+distilled experts graph. You get full
+coverage of what's going on in your
+business. And if you optionally add one
+of the API keys for either OpenAI or um
+Anthropic, it'll um determine what your
+teams are by doing some labeling for
+you. It's a really cool tool to
+understand where your team works and get
+that social network in there in order to
+focus a context engine if you're going
+to be building these tools yourself.
+The next is called the repo rules agent.
+This is a sample from our real codebase.
+I'm going to pop that up anyway, so you
+don't need to talk to the thing. But in
+short, what it does is discover all the
+places your team has written rules
+files, checks them all, and then tells
+you what severities you've given, what
+other things you've given. Should I just
+switch to this? It tells you what Whoa.
+Hey, it's good to meet you all.
+Basically, it will find all the rules
+that are inside of your repo and then
+tell you if you have duplicate issues or
+other problems and then you can GP over
+it as an index. So that index can be
+called and you can ddupe and it'll help
+improve um your retrieval of context.
+And then finally on Monday we delivered
+this workshop which was going beyond rag
+and taught how to build a relational
+context engine from scratch. So if you
+scan that you'll get the full workbook.
+It has six PRs stacked that teach you
+how to walk through doing this. But in
+short rag is an incredible technique and
+you want that. But the other half of the
+problem is what people actually ask is
+what are the open PRs that I worked on
+in the last week with authentication.
+Rag cannot answer that question alone.
+You need queries. So this shows you how
+to do a uh schemalis basically lookup
+that allows the agent to discover a
+schema and then write queries against it
+deterministically in order to get that
+type of relational data out. Very useful
+technique.
+Use cases of a context engine of course
+do go beyond code generation. This is
+you know where we live a lot. A lot of
+our customers spend their time. But it's
+amazing to see what happens when a bunch
+of other people around the business
+start picking up these tools. Customer
+success people solving tickets right at
+the time that it comes in from a
+customer. We've got sales people closing
+deals earlier in their quarter because
+they're able to just query the unblocked
+context engine on the fly while in the
+field. And so many more.
+What you can also do is if you saw that
+curve chart earlier where I talked about
+the levels, we've built a fun little
+tool where basically an LLM will quiz
+you and ask you about what's going on
+and then it will map you to exactly
+where you are and then tell you some
+techniques about how to level up through
+that if you are looking to basically
+compound your capabilities and ship with
+AI tools at scale. It's
+readiness.getblock.com.
+The gap is not intelligence any longer.
+It's context. We will continue to get
+incredible models like Mythos as it's
+been grown by Anthropic and I'm sure
+soul once I'm allowed to see it, I will
+get it. Happy Canada Day by the way. But
+what's happening is it's about the
+context you surround these models with
+in order for them to be effective and
+token efficient inside of your
+organization.
+So I have a question slide, but I'm not
+sure I'm allowed.
+Nope. So what you'll do is come meet me
+at booth P16. You can look for the
+coconut. It'll be great to hang out with
+all of you and get into details here if
+you need it. Thank you for your time.
+[applause]
+[music]
