@@ -173,8 +173,17 @@ def run(source_arg: str | None, pattern_id: str | None) -> int:
 
     missing, missing_rule = select_missing(classifications, pattern_id)
     if not missing:
-        _out(f"first-loop: {missing_rule} — no F4 creation (loop needs one eligible Missing)")
-        return 1
+        if pattern_id:
+            # An explicit --pattern-id that isn't an eligible Missing is an unsatisfiable
+            # request, not a clean "nothing to propose" — surface it as an error.
+            _out(f"first-loop: {missing_rule}")
+            return 1
+        # No eligible Missing on a deterministic run = the analysis found nothing worth
+        # proposing. That is a SUCCESSFUL no-op, not a failure: exit 0, emit no PR metadata,
+        # and the workflow's branch/commit/PR steps stay skipped (has_proposal=false).
+        _out(f"first-loop: SUCCESS — analyzed; no proposal needed ({missing_rule})")
+        _emit_output("has_proposal", "false")
+        return 0
     _out(f"first-loop: Missing selected — {missing.get('pattern')} ({missing_rule})")
 
     by_name = {p.get("name"): p for p in patterns}
@@ -216,6 +225,7 @@ def run(source_arg: str | None, pattern_id: str | None) -> int:
     _out("\n" + pr_body)
 
     branch = f"proposal/{slug}--{phase4_create.slugify(missing.get('pattern',''))}"
+    _emit_output("has_proposal", "true")
     _emit_output("proposed_path", proposed_path)
     _emit_output("pr_title", pr_title)
     _emit_output("pr_body_path", str(body_path))
