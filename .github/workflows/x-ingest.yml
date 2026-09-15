@@ -1,9 +1,6 @@
 name: X Ingest (bookmark link content)
 
 on:
-  workflow_run:
-    workflows: ["X Bookmarks (collect + version)"]
-    types: [completed]
   workflow_dispatch:
     inputs:
       mode:
@@ -18,6 +15,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: x-ingest
@@ -26,7 +24,7 @@ concurrency:
 jobs:
   ingest:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     steps:
       - uses: actions/checkout@v7
 
@@ -81,3 +79,8 @@ jobs:
             echo "pipeline exited red (rc=${PIPELINE_RC})"
             exit 1
           fi
+
+      - name: Chain to next stage
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run "X Extracts (bookmarks)" --ref main

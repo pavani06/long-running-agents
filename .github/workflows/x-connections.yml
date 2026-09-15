@@ -1,9 +1,6 @@
 name: X Connections (bookmarks)
 
 on:
-  workflow_run:
-    workflows: ["X Extracts (bookmarks)"]
-    types: [completed]
   workflow_dispatch:
     inputs:
       k:
@@ -21,6 +18,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: x-connections
@@ -29,7 +27,7 @@ concurrency:
 jobs:
   connect:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
@@ -82,3 +80,8 @@ jobs:
             echo "pipeline exited red (rc=${PIPELINE_RC})"
             exit 1
           fi
+
+      - name: Chain to next stage
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run "X Themes (bookmarks)" --ref main

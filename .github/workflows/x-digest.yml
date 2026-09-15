@@ -1,9 +1,6 @@
 name: X Digest (bookmarks)
 
 on:
-  workflow_run:
-    workflows: ["X Themes (bookmarks)"]
-    types: [completed]
   workflow_dispatch:
     inputs:
       mode:
@@ -14,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: x-digest
@@ -22,7 +20,7 @@ concurrency:
 jobs:
   digest:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
