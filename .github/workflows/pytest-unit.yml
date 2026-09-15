@@ -1,0 +1,29 @@
+name: Pytest Unit
+
+# PR gate for the aggregated tests/unit pytest suite (follow-up to #269, which
+# greened the suite in a single process before CI adoption). Fresh-runner needs
+# beyond pytest: pyyaml, requests and networkx are top-level imports reached by
+# the suite (verified: 426 passed on Python 3.12 with exactly this set).
+# Python 3.12 matches the other Python workflows; pytest is pinned to the
+# version the suite was validated against.
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pytest-unit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --upgrade pytest==9.1.0 pyyaml requests networkx
+      - name: Run unit tests
+        run: python3 -m pytest tests/unit
