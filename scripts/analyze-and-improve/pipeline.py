@@ -14,6 +14,12 @@
            package to docs/analysis/<slug>/ (mental-model, analysis, patterns).
            Fase 0 updates the mental model incrementally from the git delta scan.
 
+  integrate  Run Fase 5 (#264) for one run's manifest: recompute the four index
+           surfaces (system-of-record, curriculum INDEX/README/MASTER_PLAN) from
+           the explicit manifest path given as its argument
+           (docs/analysis/<slug>/<slug>-artifacts.yaml). Deterministic, no
+           network; only status=promoted entries mutate indexes.
+
 Environment:
   OPENAI_API_KEY   embeddings for `index`                          — required there
   ZAI_API_KEY      GLM generator for `analyze` (Fases 0-2)          — required there
@@ -313,6 +319,59 @@ def run_classify(slug: str, k: int) -> int:
     return 0
 
 
+def run_integrate(manifest_arg: str) -> int:
+    """Fase 5 (#264): recompute the four index surfaces from THIS run's manifest.
+
+    Deterministic, no network: takes the repo-relative manifest path the producer
+    emitted (`docs/analysis/<slug>/<slug>-artifacts.yaml`) — the single spelling,
+    never re-derived here and never a glob over historical v3-shaped manifests —
+    recounts the canonical count from disk, and updates only the mechanically
+    derivable projections for `status: promoted` entries. Also emits the
+    fail-closed diff gate's allowed set (promoted artifacts + manifest + authorized
+    index updates) so the workflow can enforce it."""
+    import phase5_integrate
+
+    rel = Path(os.path.normpath(manifest_arg))
+    if rel.parts[:2] != ("docs", "analysis") or not rel.name.endswith("-artifacts.yaml"):
+        summary("integrate: not a run manifest path (expected the repo-relative "
+                f"docs/analysis/<slug>/<slug>-artifacts.yaml): {manifest_arg}")
+        return 1
+    manifest_path = REPO_ROOT / rel
+    if not manifest_path.is_file():
+        summary(f"integrate: manifest not found: {rel} (run the producer first)")
+        return 1
+    try:
+        report = phase5_integrate.run(REPO_ROOT, manifest_path)
+    except ValueError as e:
+        summary(f"integrate: {e}")
+        return 1
+
+    n_promoted = sum(len(rows) for rows in report["promoted"].values())
+    if report["sor_before"] is not None:
+        summary(f"integrate: {n_promoted} promoted artifact(s); SOR canonical count "
+                f"{report['sor_before']} -> {report['sor_after']} (recount from disk, "
+                "never increment)")
+    else:
+        summary(f"integrate: {n_promoted} promoted artifact(s); no canonical promotion "
+                "this run (SOR count untouched)")
+    summary(f"integrate: {len(report['changed'])} index surface(s) updated")
+    for c in report["changed"]:
+        print(f"  - {c}")
+
+    allowed = report["allowed"]
+    print(f"INTEGRATE allowed ({len(allowed)} path(s)):")
+    for a in allowed:
+        print(f"  - {a}")
+    out = os.environ.get("GITHUB_OUTPUT")
+    if out:
+        with open(out, "a", encoding="utf-8") as fh:
+            fh.write("allowed<<EOF\n")
+            for a in allowed:
+                fh.write(a + "\n")
+            fh.write("EOF\n")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="analyze-and-improve control + judgment plane")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -329,6 +388,9 @@ def main(argv: list[str] | None = None) -> int:
     pc = sub.add_parser("classify", help="run Fase 3 (classify patterns) for a package")
     pc.add_argument("slug", help="package slug (must already have <slug>-patterns.yaml)")
     pc.add_argument("-k", type=int, default=8, help="dense top-k sections (default: 8)")
+    pi5 = sub.add_parser("integrate", help="run Fase 5 (index integration) for a run's manifest")
+    pi5.add_argument("manifest",
+                     help="repo-relative docs/analysis/<slug>/<slug>-artifacts.yaml of this run")
     args = ap.parse_args(argv)
 
     if args.cmd == "queue":
@@ -337,6 +399,8 @@ def main(argv: list[str] | None = None) -> int:
         return run_analyze(args.transcript, args.slug, args.mental_model)
     if args.cmd == "classify":
         return run_classify(args.slug, args.k)
+    if args.cmd == "integrate":
+        return run_integrate(args.manifest)
     return run_index(args.full, args.distribution)
 
 

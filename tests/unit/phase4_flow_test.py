@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 
 import pytest
+import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
@@ -173,6 +174,51 @@ def test_run_fase4_generates_all_three_categories_and_promotes_on_pass(tmp_path)
     assert (pkg / f"{PKG}-artifacts.md").is_file()
     assert result["manifest"]["gate"]["artifacts_count"] == {
         "canonical_docs": 1, "skills": 1, "exercises": 1}
+
+
+def test_run_fase4_default_reporting_follows_the_planned_classifications(tmp_path):
+    # No reporting input: a selective caller reports only on what it planned.
+    result = _run(tmp_path, eval_client=_pass_eval, classifications=[CLS[0]])
+    assert result["manifest"]["skipped"]["already_exists"] == []
+
+
+def test_run_fase4_reports_the_full_classified_universe_when_planning_is_selective(tmp_path):
+    # The First-Loop trace: 6 patterns classified (2 Exists, 1 Better, 3 Missing),
+    # exactly one Missing selected for planning.
+    reporting = [
+        CLS[0],                                                       # Missing, selected
+        {"pattern": "M2", "verdict": "Missing", "evidence": []},      # Missing, not selected
+        {"pattern": "M3", "verdict": "Missing", "evidence": []},
+        CLS[1],                                                       # Exists
+        {"pattern": "E2", "verdict": "Exists", "evidence": [{"file": "b.py", "line": 2}]},
+        {"pattern": "B1", "verdict": "Better"},
+    ]
+    result = flow.run_fase4(
+        tmp_path, PKG, [CLS[0]], PATTERNS, EXTRACTION, INDEX,
+        reporting_classifications=reporting,
+        openai_key="O", zai_key="Z", source_file="s--v.md",
+        zai_client=_fake_zai, eval_client=_pass_eval, embed_fn=_embed_orthogonal,
+        validate_fn=lambda root: True, validate_destination_fn=_destination_ok,
+        today="2026-09-15")
+    # planning stayed scoped to the one selected Missing …
+    assert sorted(result["promoted"]) == sorted([
+        "docs/canonical/x.md",
+        ".opencode/skills/x/SKILL.md",
+        "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-01-x.md",
+    ])
+    # … while the committed manifest (the Fase-5 contract) accounts for all six
+    pkg = tmp_path / "docs" / "analysis" / PKG
+    written = yaml.safe_load((pkg / f"{PKG}-artifacts.yaml").read_text(encoding="utf-8"))
+    skipped = written["skipped"]
+    assert [r["pattern"] for r in skipped["already_exists"]] == ["E", "E2"]
+    assert [r["pattern"] for r in skipped["better_implementation"]] == ["B1"]
+    assert [r["pattern"] for r in skipped["not_selected"]] == ["M2", "M3"]
+    accounted = ({e["pattern"] for rows in written["artifacts"].values() for e in rows}
+                 | {r["pattern"] for g in ("already_exists", "better_implementation",
+                                           "not_selected") for r in skipped[g]})
+    assert accounted == {c["pattern"] for c in reporting}
+    md = (pkg / f"{PKG}-artifacts.md").read_text(encoding="utf-8")
+    assert "M2" in md and "M3" in md      # the unplanned Missings reach the human merge gate
 
 
 def test_run_fase4_holds_failed_gate_in_quarantine_and_never_promotes(tmp_path):

@@ -1,7 +1,8 @@
 """Artifacts manifest — the contract Fase 5 (#264) reads as input.
 
 Typed record of one Fase-4 run (meta / artifacts{canonical_docs,skills,exercises}
-/ skipped / gate) with per-artifact status fields for the governed loop: `status`
+/ skipped{already_exists,better_implementation,not_selected,not_applicable} /
+gate) with per-artifact status fields for the governed loop: `status`
 (promoted|quarantined), `reasons` whenever a gate held the artifact or a landing
 needs qualifying, and
 `quarantine_path` — present only when a quarantined copy exists on disk, so a
@@ -42,20 +43,32 @@ def _entry(category: str, artifact: dict, status: str, reasons: list[str]) -> di
     return entry
 
 
-def _skipped_rows(classifications: list[dict]) -> dict:
-    """already_exists/better_implementation rows for verdicts that generate nothing. Pure."""
+def _skipped_rows(classifications: list[dict], planned_patterns: set[str]) -> dict:
+    """One row per classified pattern that produced no artifact this run. Pure.
+
+    `already_exists`/`better_implementation` are the verdicts routing generates
+    nothing for; `not_selected` is every other classified pattern the caller did
+    not plan (the First Loop plans exactly one Missing out of the full Fase-3
+    set). Together with the generated artifacts these groups account for the
+    whole classified universe, so the manifest never silently drops a pattern."""
     from phase4_routing import skip_reason
-    rows = {"already_exists": [], "better_implementation": []}
+    rows = {"already_exists": [], "better_implementation": [], "not_selected": []}
     for c in classifications:
-        if c.get("verdict") == "Exists":
+        verdict = c.get("verdict", "")
+        if verdict == "Exists":
             ev = "; ".join(f"{e.get('file','')}:{e.get('line','')}"
                            for e in c.get("evidence", []) if isinstance(e, dict))
             rows["already_exists"].append(
                 {"pattern": c.get("pattern", ""),
                  "evidence": ev or skip_reason("Exists")})
-        elif c.get("verdict") == "Better":
+        elif verdict == "Better":
             rows["better_implementation"].append(
                 {"pattern": c.get("pattern", ""), "reason": skip_reason("Better")})
+        elif c.get("pattern", "") not in planned_patterns:
+            rows["not_selected"].append(
+                {"pattern": c.get("pattern", ""),
+                 "reason": f"verdict {verdict or '(vazio)'} — classificado nesta execução, "
+                           "mas nenhum artefato foi planejado para ele"})
     return rows
 
 
@@ -76,6 +89,10 @@ def build_manifest(slug: str, date: str, classifications: list[dict],
                    *, complete: bool) -> dict:
     """Assemble the typed manifest. Pure.
 
+    `classifications`: the full classified universe to REPORT on — it drives the
+    skipped rows only, never what was generated, so a caller that planned a subset
+    still yields a truthful manifest: every pattern lands either in `artifacts` or
+    in one of the three `skipped` pattern groups.
     `outcomes`: [{category, artifact, accepted, reasons}] — one per generated artifact.
     `planned_categories`: the categories plan_of_work scheduled (for not_applicable).
     `complete`: whether every planned artifact reached a terminal recorded state —
@@ -87,7 +104,8 @@ def build_manifest(slug: str, date: str, classifications: list[dict],
         artifacts[key].append(_entry(key, o["artifact"],
                                      STATUS_PROMOTED if o["accepted"] else STATUS_QUARANTINED,
                                      o.get("reasons", [])))
-    skipped = _skipped_rows(classifications)
+    skipped = _skipped_rows(classifications,
+                            {e["pattern"] for rows in artifacts.values() for e in rows})
     skipped["not_applicable"] = not_applicable_rows(planned_categories)
     return {
         "meta": {
@@ -150,6 +168,7 @@ def manifest_md(manifest: dict) -> str:
     any_skipped = False
     for group, label in (("already_exists", "Already Exists"),
                          ("better_implementation", "Better Implementation"),
+                         ("not_selected", "Not selected"),
                          ("not_applicable", "Not applicable")):
         for row in manifest["skipped"][group]:
             any_skipped = True

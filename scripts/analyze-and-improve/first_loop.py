@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
-"""First Useful Governed Loop — one real end-to-end path (#263 slice).
+"""First Useful Governed Loop — one real end-to-end path (#263 slice; #264 wiring).
 
-`source → analyze → Missing → F4 → docs/canonical/<slug>.md on the proposal branch →
+`source → analyze → Missing → F4 → canonical/skill/exercise on the proposal branch →
 gates/CI → PR → REJECT/EDIT/ACCEPT → human merge = promotion`.
 
 Minimal glue over existing primitives — NOT a general orchestration framework:
 one real pending source traverses the existing analysis/classification path, exactly
 one eligible Missing is selected (explicit `--pattern-id`, else deterministic first
-eligible), F4 creates exactly ONE canonical doc AT ITS DESTINATION (`docs/canonical/<slug>.md`)
-on the proposal branch, the existing content gates (adversarial evaluator + cosine dedup +
-citation grounding) run against it, and a single human-review PR body is assembled.
+eligible), and F4 is the #263 creation engine (`phase4_flow.run_fase4`) — the single
+production F4 path since #264 swapped out the hand-rolled single-doc block. The
+engine writes each artifact into quarantine, runs the existing content gates
+(adversarial evaluator + cosine dedup + destination-scoped validation) against it,
+promotes-on-pass (in-worktree), and records the run in the artifacts manifest
+(`docs/analysis/<slug>/<slug>-artifacts.{yaml,md}`) — the producer→consumer contract
+the Fase-5 integrator (`pipeline.py integrate`) reads to recompute index projections.
 creation != promotion, boundary redefined: **the PR is the quarantine** — creation is the
 branch write; promotion is the human merge to main. auto_merge stays OFF; nothing reaches main
 without a human merge. validate-obsidian runs in CI ("Check Obsidian Conventions") over
@@ -28,7 +32,6 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import dedup
 import evaluator
 import grep_verify
 import landing
@@ -36,9 +39,9 @@ import phase1_extract
 import phase2_patterns
 import phase3_classify
 import phase4_create
+import phase4_flow
 import retrieval
 from analysis_queue import scan_pending
-from embed import embed_texts
 from pipeline import EXTRACTS_DIR, REPO_ROOT, load_state
 
 TRANSCRIPTS_DIR = REPO_ROOT / "raw" / "youtube" / "ai-learning" / "transcripts"
@@ -101,8 +104,7 @@ def _transcript_for(extract_file: str) -> Path:
 
 
 def _pr_body(*, slug, source_file, source_rule, missing, missing_rule, pattern,
-             artifact, proposed_path, gates, evaluation, dup) -> str:
-    ev = evaluation
+             result, citations_ok) -> str:
     plan = landing.LandingPlan(auto_merge=False, dry_run=False)
     lines = [
         f"## First Useful Governed Loop — proposta para revisão humana (`{slug}`)", "",
@@ -112,28 +114,59 @@ def _pr_body(*, slug, source_file, source_rule, missing, missing_rule, pattern,
         "### Missing selecionado",
         f"- **{missing.get('pattern')}** — _selecionado por:_ {missing_rule}",
         f"- Racional Fase-3: {missing.get('rationale','')}", "",
-        "### Artefato canônico criado (no branch — este PR é a quarentena)",
-        f"- `{proposed_path}` (destino canônico real; promovido só quando este PR for mesclado)", "",
+        "### Artefatos Fase 4 (engine #263 `run_fase4`; este PR é a quarentena)",
+    ]
+    for o in result["outcomes"]:
+        art = o["artifact"]
+        ev, dup = o.get("evaluation") or {}, o.get("dedup") or {}
+        status = ("promovido neste branch (aguarda merge humano)" if o["accepted"]
+                  else "**RETIDO em quarentena** — não muta índices")
+        lines.append(f"- **[{o['category']}]** `{art['intended_destination']}` — {status}")
+        if ev:
+            lines.append(f"  - evaluator adversarial: mean **{ev.get('mean','n/a')}** — "
+                         f"{'passou' if ev.get('passed') else 'reprovou'} "
+                         f"(corte {evaluator.PROVISIONAL_MIN_MEAN})")
+            lines.append(f"    - scores: {ev.get('scores')}")
+            lines.append(f"    - rationale: {str(ev.get('rationale',''))[:400]}")
+        if dup:
+            lines.append(f"  - dedup cosseno: {'DUPLICADO' if dup.get('duplicate') else 'não-duplicado'} "
+                         f"(score {dup.get('score','n/a')})")
+        for reason in o.get("reasons", []):
+            lines.append(f"  - hold/motivo: {str(reason)[:300]}")
+    lines += [
+        "",
+        "### Manifesto de artefatos (contrato produtor→consumidor)",
+        f"- `docs/analysis/{slug}/{slug}-artifacts.yaml` (+ `.md`) — diz exatamente quais "
+        "artefatos desta execução foram promovidos vs retidos, com motivos, e presta contas "
+        "do universo classificado inteiro: cada padrão da Fase 3 aparece em `artifacts` ou "
+        "em um dos grupos de `skipped` (`already_exists`, `better_implementation`, "
+        "`not_selected`).",
+        "- O grupo `not_selected` é uma adição ADITIVA ao schema do manifesto (#263), "
+        "somente-relato e default vazio — consumidores existentes não mudam. Ela entra sob a "
+        "autorização permanente da Decisão 1 do capitão: correção concreta do contrato do "
+        "manifesto vinda de evidência de integração ao vivo, não um redesenho da F4.", "",
+        "### Integração determinística dos índices (Fase 5, #264)",
+        f"- `pipeline.py integrate docs/analysis/{slug}/{slug}-artifacts.yaml` leu ESTE "
+        "manifesto (o caminho explícito desta execução, grafado uma única vez: o produtor o "
+        "emite, o workflow o repassa, o consumidor não o re-deriva) e recomputou do disco as "
+        "projeções derivadas: contagem canônica por recount (nunca incremento), "
+        "`last_updated` do SOR, a anotação fixa contagem-vs-tabela (a tabela de padrões "
+        "ativos é curadoria editorial humana — o integrador NÃO escreve linha nela) e, por "
+        "exercício promovido, a listagem em `curriculum/INDEX.md` mais as linhas de árvore "
+        "em `curriculum/README.md` e `curriculum/MASTER_PLAN.md`. Entradas `quarantined` "
+        "nunca mutam índices.", "",
         "### Evidência que fundamenta",
         f"- Fase-3 verdict: **{missing.get('verdict')}** (Missing = ausente no repo → sem citação de repo; "
         "fundamentado no padrão da fonte)",
         f"- Padrão: problema — {pattern.get('problem','')[:300]}",
-        f"- Citações Fase-3 verificadas: {gates['citations_ok']} "
-        f"({len(missing.get('evidence',[]))} citação(ões))", "",
-        "### Gates (rodados contra a proposta)",
-        f"- Adversarial evaluator: mean **{ev.get('mean','n/a')}** — "
-        f"{'passou' if ev.get('passed') else 'reprovou'} (corte {evaluator.PROVISIONAL_MIN_MEAN})",
-        f"  - scores: {ev.get('scores')}",
-        f"  - rationale: {ev.get('rationale','')[:400]}",
-        f"- Dedup cosseno: {'DUPLICADO' if dup.get('duplicate') else 'não-duplicado'} "
-        f"(score {dup.get('score','n/a')})",
-        f"- Citação/grounding: {'ok' if gates['citations_ok'] else 'falhou'}",
+        f"- Citações Fase-3 verificadas: {citations_ok} "
+        f"({len(missing.get('evidence',[]))} citação(ões))",
         "- validate-obsidian: **roda no CI** ('Check Obsidian Conventions') sobre `docs/canonical/` "
-        "neste PR; o artefato já carrega o frontmatter/convenção canônica exigida.", "",
+        "neste PR; os artefatos já carregam o frontmatter/convenção exigida.", "",
         "### O que o humano está sendo pedido a aprovar",
-        "REJECT / EDIT / ACCEPT deste artefato canônico. **O merge deste PR é a promoção** — ele move "
-        "o doc para `docs/canonical/` no `main`. Enquanto o PR estiver aberto, nada foi promovido (o PR "
-        "é a quarentena). Rejeitar = fechar o PR; nada entra no `main`.", "",
+        "REJECT / EDIT / ACCEPT destes artefatos. **O merge deste PR é a promoção** — ele move "
+        "os artefatos para seus destinos no `main`. Enquanto o PR estiver aberto, nada foi "
+        "promovido (o PR é a quarentena). Rejeitar = fechar o PR; nada entra no `main`.", "",
         "_auto_merge=OFF — o merge (promoção) é um ato humano._",
     ]
     return "\n".join(lines)
@@ -189,44 +222,37 @@ def run(source_arg: str | None, pattern_id: str | None) -> int:
     by_name = {p.get("name"): p for p in patterns}
     pattern = by_name.get(missing.get("pattern"), {"name": missing.get("pattern")})
 
-    # Repo grounding for F4: reuse the existing retriever (make_pattern_retriever) for the
-    # SELECTED Missing only, small top-k. This is the fix for the recurring evidence=2/5 under-
-    # grounding — F4 gets real repo artifacts to anchor "Como se aplicaria aqui" instead of none.
-    repo_context = retrieval.make_pattern_retriever([pattern], index, openai, REPO_ROOT, k=6)(None)
+    # F4 — the #263 creation engine, the SINGLE production F4 path since #264 (the
+    # hand-rolled single-doc block it replaces is deleted, not kept beside). Passing
+    # only the selected Missing preserves the select_missing determinism: plan_of_work
+    # on one P0 yields canonical+skill+exercise for exactly that pattern. The engine
+    # does repo-grounding per pattern, writes each artifact into quarantine
+    # (docs/analysis/<slug>/proposed/), runs the Etapa-3 gates fail-closed,
+    # promotes-on-pass (in-worktree move) and writes the artifacts manifest — the
+    # contract the Fase-5 consumer reads. The full F3 set goes in as the REPORTING
+    # input so the manifest's skipped rows cover every pattern this run classified,
+    # not just the one it planned.
+    result = phase4_flow.run_fase4(
+        REPO_ROOT, slug, [missing], patterns, extraction, index,
+        openai_key=openai, zai_key=zai, source_file=source_file,
+        reporting_classifications=classifications)
+    _out(f"first-loop: run_fase4 — {len(result['promoted'])} promoted, "
+         f"{len(result['held'])} held; manifest at docs/analysis/{slug}/{slug}-artifacts.yaml")
 
-    # F4 — create exactly ONE canonical doc at docs/canonical/<slug>.md on the proposal branch.
-    source_context = (f"Tese: {extraction.get('thesis','')}\n"
-                      f"Trade-offs: {pattern.get('tradeoffs','')}")
-    artifact = phase4_create.create(
-        pattern, slug=slug, source_file=source_file,
-        video_id=str(extraction.get("video_id", "")), evidence=missing.get("evidence", []),
-        source_context=source_context, repo_context=repo_context, zai_key=zai)
-    proposed_path = phase4_create.write_proposed(REPO_ROOT, artifact, slug, pattern)
-    _out(f"first-loop: proposed artifact written to `{proposed_path}`")
-
-    # Gates against the proposal (existing primitives; validate-obsidian runs separately in CI).
-    eval_artifact = {"type": artifact["type"], "title": artifact["title"],
-                     "content": artifact["content"], "source_pattern": pattern,
-                     "phase3_verdict": "Missing"}
-    evaluation = evaluator.run(eval_artifact, openai)
-    proposal_vec = embed_texts([artifact["title"] + "\n" + artifact["content"]], openai)[0]
-    dup = dedup.is_duplicate(proposal_vec, index)
     missing_verified = [v for v in verified if v.get("pattern") == missing.get("pattern")]
     citations_ok = grep_verify.all_ok(missing_verified)
-    gates = {"citations_ok": citations_ok}
 
     pr_title = f"[proposta] analyze-and-improve: {missing.get('pattern')} ({slug})"
     pr_body = _pr_body(slug=slug, source_file=source_file, source_rule=source_rule,
                        missing=missing, missing_rule=missing_rule, pattern=pattern,
-                       artifact=artifact, proposed_path=proposed_path, gates=gates,
-                       evaluation=evaluation, dup=dup)
+                       result=result, citations_ok=citations_ok)
     body_path = Path(os.environ.get("PR_BODY_PATH", "pr-body.md"))
     body_path.write_text(pr_body, encoding="utf-8")
     _out("\n" + pr_body)
 
     branch = f"proposal/{slug}--{phase4_create.slugify(missing.get('pattern',''))}"
     _emit_output("has_proposal", "true")
-    _emit_output("proposed_path", proposed_path)
+    _emit_output("manifest_path", f"docs/analysis/{slug}/{slug}-artifacts.yaml")
     _emit_output("pr_title", pr_title)
     _emit_output("pr_body_path", str(body_path))
     _emit_output("branch", branch)

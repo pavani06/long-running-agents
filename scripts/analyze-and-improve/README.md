@@ -63,16 +63,20 @@ checks + an adversarial evaluator + quarantine + a landing library.
 
 ### Creation phase (Etapa 5, #263 — Fase 4 + artifact manifest)
 
-Canonical-doc creation is the proven-live First-Loop path (`first_loop.py` +
-`first-loop.yml`: one canonical doc at its destination on the proposal branch,
-PR = quarantine, human merge = promotion). The #263 remainder generalizes
-creation to all three artifact types behind the same gates:
+The First-Loop (`first_loop.py` + `first-loop.yml`) is the proven-live production
+path (five canonical promotions merged pre-#264). Since #264 it drives the full
+#263 engine instead of a hand-rolled single-doc block — one production F4 path,
+not two: one real pending source traverses the analysis/classification path,
+exactly one eligible Missing is selected, and `run_fase4` creates
+canonical+skill+exercise behind the Etapa-3 gates, records the artifacts
+manifest, and the Fase-5 consumer integrates the indexes (PR = quarantine, human
+merge = promotion).
 
 | Module | Role | Pure? |
 |---|---|---|
 | `phase4_create.py` | Fase 4 generation — canonical doc (proven path; verdict-aware for Partial P1/P2), **skill** (`.opencode/skills/<slug>/SKILL.md`) and **exercise** (`curriculum/<level>/exercises/exercise-<NN>-<slug>.md`, level/number orchestrator-decided) with full content, frontmatter-compliant renderers | `build_messages*`/`parse_*`/`render_*`/`*_destination`/`next_exercise_number` pure; `create*` inject the client |
 | `phase4_routing.py` | Priorização por classificação (Missing=P0, Partial high=P1, medium=P2, Exists/Better=skip) + roteamento de categoria (P0 → canonical+skill+exercise; P1 → canonical+exercise; P2 → canonical) + the ordered `plan_of_work` | ✅ |
-| `artifact_manifest.py` | The artifacts manifest (`<slug>-artifacts.{yaml,md}`) — the typed contract Fase 5 (#264) reads: artifacts by category (canonical/skill/exercise) with promoted/quarantined status, the per-exercise curriculum `level`, skipped patterns, not-applicable rows, integration map | `build_manifest`/`manifest_yaml`/`manifest_md` pure |
+| `artifact_manifest.py` | The artifacts manifest (`<slug>-artifacts.{yaml,md}`) — the typed contract Fase 5 (#264) reads: artifacts by category (canonical/skill/exercise) with promoted/quarantined status, the per-exercise curriculum `level`, skipped patterns (`already_exists`/`better_implementation`/`not_selected` — together with `artifacts` they account for every classified pattern), not-applicable rows, integration map | `build_manifest`/`manifest_yaml`/`manifest_md` pure |
 | `phase4_flow.py` | The governed loop: `plan_of_work` → generation → **quarantine write** (`docs/analysis/<slug>/proposed/<dest>`, never the authoritative layers) → Etapa-3 gates (evaluator + dedup + validate + verified citations + the destination-scoped convention check, fail-closed) → **promote-on-pass** (in-worktree move; refuses a destination occupied by *different* content, recognises an identical one as this run's own prior landing) → manifest | path/wiring pure parts tested; `run_fase4` needs both keys (all injectable) |
 
 **Destination-scoped validation.** `validate-obsidian` scopes Checks 1/5/6 to
@@ -92,14 +96,32 @@ output — the generator prompt forbids links outright — and a human editing t
 quarantined copy can add conventional cross-links afterwards, with the PR's own
 obsidian CI as the full-context authority.
 
-**No production caller yet — deferred to #264.** `run_fase4` is the complete
-creation engine and is exercised end to end by `tests/unit/phase4_flow_test.py`,
-but nothing in `first_loop.py`, `pipeline.py` or any workflow invokes it. That is
-deliberate sequencing, not an omission: #263 delivers the engine plus the truthful
-artifact-manifest contract, and the producer/consumer wiring lands with #264
-(manifest consumption + index integration) so both sides of that contract are
-validated as one integration boundary. `first_loop.py` keeps driving the
-proven-live canonical-only path in the meantime.
+**Production wiring (#264).** `first_loop.py` replaces its former hand-rolled
+single-artifact block with one `run_fase4` call over the selected Missing (the
+hand-rolled path is deleted, not kept beside) and reads the returned
+`{manifest, outcomes, promoted, held}` for the PR body — the same engine
+`phase4_flow_test.py` exercises end to end, now with a production caller. The
+workflow's one-after-the-loop step runs the Fase-5 consumer over this run's
+manifest and commits promoted artifacts + manifest + authorized index updates on
+the same proposal branch, behind the fail-closed diff gate.
+
+### Integration phase (Etapa 6, #264 — Fase 5: índices determinísticos)
+
+The consumer side of the manifest contract — deterministic, no LLM:
+
+| Module | Role | Pure? |
+|---|---|---|
+| `phase5_integrate.py` | Fase 5 — reads ONE run's manifest by explicit path (never a glob over historical v3-shaped manifests; v3 shape fails fast), RECOUNTS the canonical count from disk (never increments — the first live run absorbs legacy count drift by construction), updates `docs/system-of-record.md` (count/`last_updated`/the fixed count-vs-table annotation — the active-patterns table is editorial `Cobre` coverage and never gets an auto-written row) and the three curriculum surfaces (INDEX listing + README/MASTER_PLAN tree lines) for `status: promoted` entries only | updaters/validators pure; `run` thin I/O |
+
+Editorial boundary: only mechanically derivable projections of authoritative
+disk state change — narrative, priorities, interpretation and human-authored
+semantics are never rewritten, and rows/listings are never fabricated for docs
+outside the run's manifest (legacy drift stays visible, surfaced to the
+operator). `allowed_paths(manifest)` is the fail-closed diff gate's allowed set:
+this run's promoted artifacts + the manifest's own two files + the index updates
+it authorizes, nothing else. Quarantined (gate-rejected) copies are deliberately
+outside it — they stay in the worktree, are never committed, and remain
+human-reviewable through the manifest as rendered in the PR body.
 
 **Exercise level (INTERIM).** `DEFAULT_LEVEL_DIR` places every generated exercise
 at curriculum level 3; there is no level routing yet. The resolved level is
@@ -112,9 +134,9 @@ via `OPENAI_EVAL_MODEL`, provisional default). `auto_merge=False` is the
 require-approval brake, usable from day 1; the **real Actions wiring**
 (open/auto-merge PR, update the rolling quarantine Issue) is **#266**, not here.
 Both the dedup threshold and the evaluator's minimum score are **provisional** —
-final calibration is **#262**. Fase 4 (creation) landed with #263 — see the
-section above; the Fases that *integrate* what it creates — 5 (índices, #264) and
-6 (splice curricular, #265) — are still out of scope here.
+final calibration is **#262**. Fase 4 (creation) landed with #263 and Fase 5
+(índices) with #264 — see the sections above; Fase 6 (splice curricular, #265)
+is still out of scope.
 
 **Dependencies:** control plane needs only `requests` (+ stdlib). The judgment
 plane's `serialize.py` needs **PyYAML** — a workflow running `analyze` must
@@ -136,6 +158,7 @@ python3 -m pytest tests/unit/phase4_routing_test.py -q               # Fase 4 (p
 python3 -m pytest tests/unit/phase4_create_test.py -q                # Fase 4 (canonical/skill/exercise creation)
 python3 -m pytest tests/unit/artifact_manifest_test.py -q            # Fase 4 (manifesto — contrato da Fase 5)
 python3 -m pytest tests/unit/phase4_flow_test.py -q                  # Fase 4 (escrita em quarentena + promoção)
+python3 -m pytest tests/unit/phase5_integrate_test.py -q             # Fase 5 (manifesto → índices, determinístico)
 python3 -m pytest tests/unit/metamorphic_canon_test.py -q            # #288 canon (load/validate + real-evidence check)
 python3 -m pytest tests/unit/metamorphic_match_test.py -q            # #288 two-stage matcher
 python3 -m pytest tests/unit/metamorphic_rerank_test.py -q           # #288 reranker + sanity mini-eval
@@ -230,6 +253,9 @@ python3 scripts/analyze-and-improve/pipeline.py analyze <transcript.txt> --menta
 # Run Fase 3 (classify a package's patterns against the repo) — needs OPENAI_API_KEY + ZAI_API_KEY
 python3 scripts/analyze-and-improve/pipeline.py classify <slug>        # reads <slug>-patterns.yaml, writes classification
 python3 scripts/analyze-and-improve/pipeline.py classify <slug> -k 12  # more dense sections in context
+
+# Run Fase 5 (integrate this run's manifest into the index surfaces) — deterministic, no keys
+python3 scripts/analyze-and-improve/pipeline.py integrate docs/analysis/<slug>/<slug>-artifacts.yaml  # recomputes indexes from that manifest
 ```
 
 **Fase 3 (classification).** Hybrid retrieval builds the context: dense top-k

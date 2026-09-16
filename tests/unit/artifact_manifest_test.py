@@ -86,6 +86,25 @@ def test_build_manifest_skipped_rows_from_verdicts():
     assert better_row["pattern"] == "B1" and "Better Implementation" in better_row["reason"]
 
 
+def test_build_manifest_records_classified_patterns_nobody_planned():
+    cls = CLS + [{"pattern": "M2", "verdict": "Missing"},
+                 {"pattern": "M3", "verdict": "Partial"}]
+    m = am.build_manifest("pkg", "2026-09-15", cls, OUTCOMES,
+                          planned_categories={"canonical", "skill", "exercise"},
+                          complete=True)
+    # X was planned (it has artifacts); M2/M3 were classified and planned for nothing
+    assert [r["pattern"] for r in m["skipped"]["not_selected"]] == ["M2", "M3"]
+    assert "Missing" in m["skipped"]["not_selected"][0]["reason"]
+    accounted = ({e["pattern"] for rows in m["artifacts"].values() for e in rows}
+                 | {r["pattern"] for g in ("already_exists", "better_implementation",
+                                           "not_selected") for r in m["skipped"][g]})
+    assert accounted == {c["pattern"] for c in cls}
+
+
+def test_build_manifest_not_selected_is_empty_when_every_pattern_was_planned():
+    assert _manifest()["skipped"]["not_selected"] == []
+
+
 def test_not_applicable_rows_when_categories_unplanned():
     rows = am.not_applicable_rows(set())
     assert {r["artifact_type"] for r in rows} == {"skills", "exercises"}
