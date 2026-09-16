@@ -2,8 +2,8 @@ name: YouTube Transcripts (AI - Learning)
 
 on:
   schedule:
-    - cron: "30 8 * * *"   # daily 05:30 America/Sao_Paulo — fetch new videos
-    - cron: "30 8 * * 0"   # Sunday 05:30 SP — also retry the known-missing
+    - cron: "27 5 * * *"   # daily 02:27 America/Sao_Paulo — fetch new videos
+    - cron: "27 5 * * 0"   # Sunday 02:27 SP — also retry the known-missing
   workflow_dispatch:
     inputs:
       mode:
