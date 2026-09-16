@@ -54,7 +54,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          python -m pip install --upgrade pytest==9.1.0 pyyaml
+          python -m pip install --upgrade pytest==9.1.0 pyyaml requests
       - name: Run the destination-gate validator integration tests
         run: |
           python3 -m pytest tests/unit/phase4_flow_test.py -m validator_integration \
