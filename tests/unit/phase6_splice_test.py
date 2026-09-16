@@ -11,11 +11,22 @@ import pytest
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
 
+# Issue #269: pipelines irmãos publicam módulos de mesmo nome (glm, embed,
+# pipeline, ...) e no mesmo processo pytest o primeiro import vence em
+# sys.modules. Expurgue esses nomes para que os imports abaixo resolvam nesta
+# pipeline, e prenda as referências aqui no topo — testes posteriores expurgam
+# sys.modules de novo antes de qualquer teste rodar.
+for _mod in ("chunking", "embed", "evaluator", "glm", "index_store",
+             "pipeline", "store"):
+    sys.modules.pop(_mod, None)
+
 import artifact_manifest as am  # noqa: E402
 from embed import AuthError as EmbedAuthError  # noqa: E402
 from embed import EmbedError  # noqa: E402
+import glm  # noqa: E402
 import index_store  # noqa: E402
 import phase6_splice as p6  # noqa: E402
+import pipeline  # noqa: E402
 from chunking import split_sections  # noqa: E402
 from index_store import records_for  # noqa: E402
 
@@ -767,9 +778,9 @@ def test_canonical_hits_outranking_curriculum_do_not_abort_selection(tmp_path):
 def test_cli_reports_provider_failures_instead_of_crashing(monkeypatch, tmp_path):
     """A rodada faz três chamadas de rede; um 401/429 do provedor é uma linha de
     summary + exit 1, como nos demais subcomandos — nunca um traceback."""
-    import glm
-    import pipeline
-
+    # run_splice importa `glm` dentro da função: prenda o módulo desta
+    # pipeline em sys.modules (vide #269) para não pegar o do vizinho.
+    monkeypatch.setitem(sys.modules, "glm", glm)
     repo = _repo(tmp_path)
     rel = f"docs/analysis/{SLUG}/{SLUG}-artifacts.yaml"
     _manifest(repo / rel, dest="docs/canonical/capability-escalation-ladder.md")
@@ -807,8 +818,9 @@ def test_file_set_gate_that_cannot_run_restores_the_file(tmp_path):
 
 def test_cli_reports_a_failing_pre_splice_snapshot(monkeypatch, tmp_path):
     """O snapshot pré-splice também é git: sua falha é summary + exit 1, não traceback."""
-    import pipeline
-
+    # run_splice importa `glm` dentro da função: prenda o módulo desta
+    # pipeline em sys.modules (vide #269) para não pegar o do vizinho.
+    monkeypatch.setitem(sys.modules, "glm", glm)
     repo = _repo(tmp_path)
     rel = f"docs/analysis/{SLUG}/{SLUG}-artifacts.yaml"
     _manifest(repo / rel, dest="docs/canonical/capability-escalation-ladder.md")
@@ -827,8 +839,6 @@ def test_cli_reports_a_failing_pre_splice_snapshot(monkeypatch, tmp_path):
 def test_git_failure_is_not_reported_as_a_content_violation(monkeypatch, tmp_path):
     """Se `git status` não roda, o conjunto vazio viraria 'arquivo-alvo não
     modificado' — uma ferramenta quebrada relatada como violação de conteúdo."""
-    import pipeline
-
     monkeypatch.setattr(pipeline, "REPO_ROOT", tmp_path)   # não é um repositório git
     with pytest.raises(ValueError, match="git status"):
         pipeline._worktree_paths()
