@@ -1,9 +1,9 @@
 """Fase 4 — creation of proposed canonical docs, skills and exercises (#263).
 
 The canonical-doc path is the First-Useful-Governed-Loop slice, proven live (five
-promotions merged): it generates ONE canonical doc and writes it at its real
-destination `docs/canonical/<slug>.md` **on the proposal branch** — creation is
-the branch write; promotion is the human PR merge (**the PR is the quarantine**).
+promotions merged): it generates ONE canonical doc targeted at its real
+destination `docs/canonical/<slug>.md` — creation is the branch write; promotion
+is the human PR merge (**the PR is the quarantine**).
 
 The #263 remainder extends generation to **skills** (`.opencode/skills/<slug>/SKILL.md`)
 and **exercises** (`curriculum/<level>/exercises/exercise-<NN>-<slug>.md`), with
@@ -13,14 +13,13 @@ never the authoritative layers) and promoted only when the Etapa-3 gates pass.
 
 `build_messages*`, `parse_*`, `slugify`, `next_exercise_number`, the `*_destination`
 helpers, `proposed_*artifact` and `render_*markdown` are pure and unit-tested;
-`create*` make one GLM call each and `write_proposed` is the canonical path's only
-disk write (guarded to the canonical target).
+`create*` make one GLM call each. This module never touches disk: since #264 there
+is one production write path and `phase4_flow` owns it.
 """
 from __future__ import annotations
 
 import re
 from datetime import date
-from pathlib import Path
 
 import serialize
 from glm import GLMError, chat_json
@@ -154,23 +153,6 @@ def render_markdown(artifact: dict) -> str:
     return "\n".join(lines)
 
 
-def destination_path(repo_root: Path, pattern: dict) -> Path:
-    """The canonical-target path `docs/canonical/<slug>.md`, written ON THE PROPOSAL BRANCH.
-    creation != promotion: writing here is creation; promotion is the human PR merge to main.
-    Guarded to exactly the canonical destination. Pure."""
-    rel = intended_destination(pattern)
-    path = repo_root / rel
-    _assert_canonical_target(path, repo_root, rel)
-    return path
-
-
-def _assert_canonical_target(path: Path, repo_root: Path, rel: str) -> None:
-    """F4 writes exactly its canonical destination and nowhere else (branch-local creation)."""
-    actual = path.resolve().relative_to(repo_root.resolve()).as_posix()
-    if actual != rel or not actual.startswith(f"{CANONICAL_DIR}/"):
-        raise ValueError(f"F4 must write its canonical target ({rel}); got {actual}")
-
-
 def create(pattern: dict, *, slug: str, source_file: str, video_id: str,
            evidence: list[dict], source_context: str, zai_key: str,
            repo_context: str = "", client=chat_json, today: str | None = None,
@@ -183,15 +165,6 @@ def create(pattern: dict, *, slug: str, source_file: str, video_id: str,
     return proposed_artifact(slug=slug, source_file=source_file, video_id=video_id,
                              pattern=pattern, verdict=verdict, evidence=evidence,
                              creation=creation, last_updated=today or date.today().isoformat())
-
-
-def write_proposed(repo_root: Path, artifact: dict, slug: str, pattern: dict) -> str:
-    """Write the canonical artifact to its destination on the proposal branch; return the
-    repo-relative path. Only disk write. (Promotion to main = human PR merge, not this.)"""
-    path = destination_path(repo_root, pattern)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(render_markdown(artifact), encoding="utf-8")
-    return path.resolve().relative_to(repo_root.resolve()).as_posix()
 
 
 SKILLS_DIR = ".opencode/skills"

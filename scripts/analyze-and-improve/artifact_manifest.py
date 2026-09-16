@@ -76,6 +76,9 @@ def build_manifest(slug: str, date: str, classifications: list[dict],
                    *, complete: bool) -> dict:
     """Assemble the typed manifest. Pure.
 
+    `classifications`: the full classified universe to REPORT on — it drives the
+    skipped rows only, never what was generated, so a caller that planned a subset
+    still yields a truthful manifest.
     `outcomes`: [{category, artifact, accepted, reasons}] — one per generated artifact.
     `planned_categories`: the categories plan_of_work scheduled (for not_applicable).
     `complete`: whether every planned artifact reached a terminal recorded state —

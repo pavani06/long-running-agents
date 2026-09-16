@@ -219,10 +219,13 @@ def run(source_arg: str | None, pattern_id: str | None) -> int:
     # does repo-grounding per pattern, writes each artifact into quarantine
     # (docs/analysis/<slug>/proposed/), runs the Etapa-3 gates fail-closed,
     # promotes-on-pass (in-worktree move) and writes the artifacts manifest — the
-    # contract the Fase-5 consumer reads (never modified here: upstream invariant).
+    # contract the Fase-5 consumer reads. The full F3 set goes in as the REPORTING
+    # input so the manifest's skipped rows cover every pattern this run classified,
+    # not just the one it planned.
     result = phase4_flow.run_fase4(
         REPO_ROOT, slug, [missing], patterns, extraction, index,
-        openai_key=openai, zai_key=zai, source_file=source_file)
+        openai_key=openai, zai_key=zai, source_file=source_file,
+        reporting_classifications=classifications)
     _out(f"first-loop: run_fase4 — {len(result['promoted'])} promoted, "
          f"{len(result['held'])} held; manifest at docs/analysis/{slug}/{slug}-artifacts.yaml")
 

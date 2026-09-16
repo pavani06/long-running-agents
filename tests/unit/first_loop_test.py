@@ -125,8 +125,8 @@ def test_pr_body_states_human_decision_and_gates():
 # ── run() exit semantics: no-op success vs error (#263 operational fix) ─────
 def _patch_pipeline(monkeypatch, tmp_path, *, classifications, phase1_raises=None,
                     fase4_result=None):
-    """Drive run() offline: patch every collaborator + capture _emit_output. Returns the
-    emitted (key,value) list."""
+    """Drive run() offline: patch every collaborator + capture _emit_output. Returns
+    (emitted (key,value) list, recorded run_fase4 calls)."""
     monkeypatch.setenv("ZAI_API_KEY", "z")
     monkeypatch.setenv("OPENAI_API_KEY", "o")
     monkeypatch.setenv("PR_BODY_PATH", str(tmp_path / "pr-body.md"))
@@ -153,18 +153,21 @@ def _patch_pipeline(monkeypatch, tmp_path, *, classifications, phase1_raises=Non
     monkeypatch.setattr(fl.phase3_classify, "mark_grounding", lambda c, v: c)
     monkeypatch.setattr(fl.grep_verify, "verify_all", lambda cits, root: [])
     monkeypatch.setattr(fl.grep_verify, "all_ok", lambda v: True)
-    monkeypatch.setattr(
-        fl.phase4_flow, "run_fase4",
-        lambda root, slug, clss, pats, extraction, index, **kw:
-            fase4_result or _fase4_result((("canonical", "docs/canonical/p.md", True),)))
+    fase4_calls = []
+
+    def _run_fase4(root, slug, clss, pats, extraction, index, **kw):
+        fase4_calls.append({"planning": clss, **kw})
+        return fase4_result or _fase4_result((("canonical", "docs/canonical/p.md", True),))
+
+    monkeypatch.setattr(fl.phase4_flow, "run_fase4", _run_fase4)
     emitted = []
     monkeypatch.setattr(fl, "_emit_output", lambda k, v: emitted.append((k, v)))
-    return emitted
+    return emitted, fase4_calls
 
 
 def test_run_no_eligible_missing_is_success_noop(monkeypatch, tmp_path):
-    emitted = _patch_pipeline(monkeypatch, tmp_path,
-                              classifications=[{"pattern": "P", "verdict": "Exists"}])
+    emitted, _ = _patch_pipeline(monkeypatch, tmp_path,
+                                 classifications=[{"pattern": "P", "verdict": "Exists"}])
     rc = fl.run(source_arg=None, pattern_id=None)
     assert rc == 0                                              # successful no-op, not failure
     assert ("has_proposal", "false") in emitted
@@ -173,7 +176,7 @@ def test_run_no_eligible_missing_is_success_noop(monkeypatch, tmp_path):
 
 
 def test_run_eligible_missing_takes_f4_path(monkeypatch, tmp_path):
-    emitted = _patch_pipeline(
+    emitted, _ = _patch_pipeline(
         monkeypatch, tmp_path,
         classifications=[{"pattern": "P", "verdict": "Missing", "evidence": [], "rationale": "r"}])
     rc = fl.run(source_arg=None, pattern_id=None)
@@ -185,13 +188,28 @@ def test_run_eligible_missing_takes_f4_path(monkeypatch, tmp_path):
 
 
 def test_run_all_held_still_opens_the_quarantine_pr(monkeypatch, tmp_path):
-    emitted = _patch_pipeline(
+    emitted, _ = _patch_pipeline(
         monkeypatch, tmp_path,
         classifications=[{"pattern": "P", "verdict": "Missing", "evidence": [], "rationale": "r"}],
         fase4_result=_fase4_result((("canonical", "docs/canonical/p.md", False),)))
     rc = fl.run(source_arg=None, pattern_id=None)
     assert rc == 0
     assert ("has_proposal", "true") in emitted   # held artifacts still get a human-review PR
+
+
+def test_run_plans_only_the_selection_but_reports_every_classification(monkeypatch, tmp_path):
+    classifications = [
+        {"pattern": "P", "verdict": "Missing", "evidence": [], "rationale": "r"},
+        {"pattern": "E", "verdict": "Exists", "evidence": [{"file": "a.py", "line": 1}]},
+        {"pattern": "B", "verdict": "Better", "evidence": []},
+    ]
+    _, calls = _patch_pipeline(monkeypatch, tmp_path, classifications=classifications)
+    assert fl.run(source_arg=None, pattern_id=None) == 0
+    call = calls[0]
+    # plan_of_work stays scoped to the one selected Missing …
+    assert [c["pattern"] for c in call["planning"]] == ["P"]
+    # … while the manifest reports on everything Fase 3 classified
+    assert call["reporting_classifications"] == classifications
 
 
 def test_run_actual_exception_still_fails(monkeypatch, tmp_path):

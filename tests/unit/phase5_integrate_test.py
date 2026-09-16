@@ -212,18 +212,23 @@ def test_update_sor_date_replaces_frontmatter_stamp():
     assert "2026-09-12" not in out
 
 
-def test_sor_row_escapes_pipes():
-    row = p5.sor_row("x.md", "Title with | pipe")
-    assert row == "| `x.md` | Title with \\| pipe |"
-
-
-def test_insert_sor_row_appends_to_active_table_only():
-    row = p5.sor_row("three.md", "Terceiro")
-    out = p5.insert_sor_row(SOR_SNIPPET, row)
+def test_ensure_sor_annotation_lands_under_the_count_claim():
+    out = p5.ensure_sor_annotation(SOR_SNIPPET)
     lines = out.split("\n")
-    i = lines.index("| `two.md` | Outro padrão |")
-    assert lines[i + 1] == "| `three.md` | Terceiro |"
-    assert "| `outra-tabela.md` | não é a tabela ativa |" in lines  # other table untouched
+    i = lines.index("Há 2 padrões canônicos ativos.")
+    assert lines[i + 1] == "" and lines[i + 2] == p5.SOR_ANNOTATION
+    assert lines[i + 3] == ""                       # blank line before the heading survives
+    assert "### Padrões canônicos ativos" in lines
+
+
+def test_ensure_sor_annotation_is_idempotent():
+    once = p5.ensure_sor_annotation(SOR_SNIPPET)
+    assert p5.ensure_sor_annotation(once) == once
+
+
+def test_ensure_sor_annotation_fails_without_the_count_claim():
+    with pytest.raises(ValueError, match="padrões canônicos ativos"):
+        p5.ensure_sor_annotation("no claim here")
 
 
 # ── curriculum INDEX listing ─────────────────────────────────────────────────
@@ -320,7 +325,10 @@ def test_run_updates_all_four_surfaces_from_disk_truth(tmp_path):
     sor = (root / "docs" / "system-of-record.md").read_text(encoding="utf-8")
     assert "Há 3 padrões canônicos ativos" in sor          # recount (2 old + 1 new), never increment
     assert "last_updated: 2026-09-16" in sor               # manifest date
-    assert "| `new.md` | New Pattern Title |" in sor        # row from on-disk frontmatter
+    assert p5.SOR_ANNOTATION in sor                        # count-vs-table distinction, stated
+    # `Cobre` is human-authored editorial coverage — the integrator never writes a row
+    assert "| `new.md` |" not in sor
+    assert sor.count("| Documento | Cobre |") == 2         # both tables left exactly as they were
     idx = (root / "curriculum" / "INDEX.md").read_text(encoding="utf-8")
     assert ("`03-nivel-3-advanced-architecture/exercises/exercise-23-new.md` "
             "(New Pattern Exercise)") in idx   # curriculum-relative, the file's convention
@@ -368,7 +376,7 @@ def test_run_fails_fast_when_promoted_path_missing_on_disk(tmp_path):
 
 def test_run_fails_fast_when_frontmatter_lacks_title(tmp_path):
     root, mp = _synth_repo(tmp_path)
-    (root / "docs" / "canonical" / "new.md").write_text(
-        "---\ntype: canonical\n---\nbody", encoding="utf-8")
+    ex = root / "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-23-new.md"
+    ex.write_text("---\ntype: exercise\nlevel: 3\n---\nbody", encoding="utf-8")
     with pytest.raises(ValueError, match="title"):
         p5.run(root, mp)

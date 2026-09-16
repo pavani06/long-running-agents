@@ -9,10 +9,9 @@ projections of authoritative disk state onto the four index surfaces named by
   - `docs/system-of-record.md`   canonical count (RECOUNT from disk, never an
                                  increment — the first live run absorbs legacy
                                  count drift by construction), `last_updated`
-                                 (the manifest's date) and one active-patterns
-                                 table row per promoted canonical doc (filename +
-                                 title read from the promoted file's own
-                                 frontmatter on disk)
+                                 (the manifest's date) and the fixed annotation
+                                 stating what the count and the active-patterns
+                                 table each represent
   - `curriculum/INDEX.md`        one exercise-listing line per promoted exercise
   - `curriculum/README.md`       one directory-tree line per promoted exercise
   - `curriculum/MASTER_PLAN.md`  one directory-tree line per promoted exercise
@@ -20,7 +19,10 @@ projections of authoritative disk state onto the four index surfaces named by
 Editorial boundary: ONLY those projections change. Narrative, priorities,
 interpretation and human-authored semantics are never rewritten, and rows/lines
 are never fabricated for docs outside the run's manifest (legacy drift stays
-VISIBLE — surfaced, not silently absorbed). `status: quarantined` entries never
+VISIBLE — surfaced, not silently absorbed). The SOR active-patterns table is one
+such human-authored surface: its `Cobre` column is editorial coverage, not a
+mechanically derivable projection, so the integrator never writes a row into it —
+the annotation says so instead of guessing. `status: quarantined` entries never
 mutate any index and are never committable: the diff gate's allowed set is this
 run's promoted artifacts + the manifest's own two files + the index updates the
 manifest authorizes, nothing else.
@@ -43,7 +45,13 @@ CURRICULUM_README_PATH = "curriculum/README.md"
 CURRICULUM_MASTER_PLAN_PATH = "curriculum/MASTER_PLAN.md"
 CANONICAL_DIR = "docs/canonical"
 
-SOR_ACTIVE_HEADING = "### Padrões canônicos ativos"
+SOR_ANNOTATION = (
+    "> A contagem acima é recomputada do disco (`docs/canonical/*.md`) a cada execução "
+    "pelo integrador determinístico da Fase 5 (#264). A tabela de padrões canônicos "
+    "ativos abaixo é curadoria editorial humana — a coluna `Cobre` descreve o que cada "
+    "doc cobre e não é auto-completada pelo pipeline —, portanto a contagem e o número "
+    "de linhas da tabela podem divergir."
+)
 _COUNT_RE = re.compile(r"Há (\d+) padrões canônicos ativos")
 _LAST_UPDATED_RE = re.compile(r"^last_updated:.*$", re.MULTILINE)
 _LEVEL_RE = re.compile(r"nivel-(\d+)")
@@ -144,31 +152,18 @@ def update_sor_date(text: str, date: str) -> str:
     return _LAST_UPDATED_RE.sub(f"last_updated: {date}", text, count=1)
 
 
-def sor_row(filename: str, title: str) -> str:
-    return f"| `{filename}` | {title.replace('|', '\\|')} |"
+def ensure_sor_annotation(text: str) -> str:
+    """Place the fixed count-vs-table annotation right after the count claim. Pure.
 
-
-def sor_row_present(text: str, filename: str) -> bool:
-    return f"| `{filename}` |" in text
-
-
-def insert_sor_row(text: str, row: str) -> str:
-    """Append `row` after the LAST row of the active-patterns table (the first
-    table under `### Padrões canônicos ativos`). Pure."""
+    Idempotent and never per-doc: an already-annotated text comes back unchanged."""
+    if SOR_ANNOTATION in text:
+        return text
     lines = text.split("\n")
-    try:
-        hi = next(i for i, l in enumerate(lines) if l.strip() == SOR_ACTIVE_HEADING)
-    except StopIteration:
-        raise ValueError(f"SOR: heading not found: {SOR_ACTIVE_HEADING!r}") from None
-    ti = hi + 1
-    while ti < len(lines) and not lines[ti].lstrip().startswith("|"):
-        ti += 1
-    if ti >= len(lines):
-        raise ValueError("SOR: active-patterns table not found")
-    end = ti + 2  # skip the header and separator rows
-    while end < len(lines) and lines[end].lstrip().startswith("|"):
-        end += 1
-    lines.insert(end, row)
+    ci = next((i for i, l in enumerate(lines) if _COUNT_RE.search(l)), None)
+    if ci is None:
+        raise ValueError("SOR: active-canonical count claim not found "
+                         "('Há N padrões canônicos ativos')")
+    lines[ci + 1:ci + 1] = ["", SOR_ANNOTATION]
     return "\n".join(lines)
 
 
@@ -273,7 +268,7 @@ def run(repo_root: Path, manifest_path: Path) -> dict:
     """Apply this run's manifest to the four index surfaces. I/O.
 
     Deterministic and idempotent: counts are RECOUNTed from disk (never
-    incremented), rows/listings already present are skipped, and only
+    incremented), listings/tree lines already present are skipped, and only
     `status: promoted` entries mutate anything."""
     manifest = load_manifest(manifest_path)
     date = manifest["meta"]["date"]
@@ -296,12 +291,8 @@ def run(repo_root: Path, manifest_path: Path) -> dict:
         after = recount_canonical(repo_root)
         text = update_sor_count(text, after)
         text = update_sor_date(text, date)
+        text = ensure_sor_annotation(text)
         report["sor_after"] = after
-        for row in promoted["canonical_docs"]:
-            filename = Path(row["path"]).name
-            if not sor_row_present(text, filename):
-                text = insert_sor_row(text, sor_row(filename,
-                                                    frontmatter_title(repo_root / row["path"])))
         if text != before:
             sor_file.write_text(text, encoding="utf-8")
             changed.append(SOR_PATH)

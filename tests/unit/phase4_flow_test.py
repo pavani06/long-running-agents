@@ -175,6 +175,30 @@ def test_run_fase4_generates_all_three_categories_and_promotes_on_pass(tmp_path)
         "canonical_docs": 1, "skills": 1, "exercises": 1}
 
 
+def test_run_fase4_default_reporting_follows_the_planned_classifications(tmp_path):
+    # No reporting input: a selective caller reports only on what it planned.
+    result = _run(tmp_path, eval_client=_pass_eval, classifications=[CLS[0]])
+    assert result["manifest"]["skipped"]["already_exists"] == []
+
+
+def test_run_fase4_reports_the_full_classified_universe_when_planning_is_selective(tmp_path):
+    result = flow.run_fase4(
+        tmp_path, PKG, [CLS[0]], PATTERNS, EXTRACTION, INDEX,
+        reporting_classifications=CLS,
+        openai_key="O", zai_key="Z", source_file="s--v.md",
+        zai_client=_fake_zai, eval_client=_pass_eval, embed_fn=_embed_orthogonal,
+        validate_fn=lambda root: True, validate_destination_fn=_destination_ok,
+        today="2026-09-15")
+    # planning stayed scoped to the one selected Missing …
+    assert sorted(result["promoted"]) == sorted([
+        "docs/canonical/x.md",
+        ".opencode/skills/x/SKILL.md",
+        "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-01-x.md",
+    ])
+    # … while the manifest still reports the pattern it never planned for
+    assert [s["pattern"] for s in result["manifest"]["skipped"]["already_exists"]] == ["E"]
+
+
 def test_run_fase4_holds_failed_gate_in_quarantine_and_never_promotes(tmp_path):
     result = _run(tmp_path, eval_client=_fail_eval)
     assert result["promoted"] == []

@@ -130,28 +130,6 @@ def test_render_markdown_body_is_link_free():
     assert "[[" not in md                                   # no wikilinks in our scaffold
 
 
-def test_destination_path_is_the_canonical_target(tmp_path):
-    p = f4.destination_path(tmp_path, PATTERN)
-    rel = p.resolve().relative_to(tmp_path.resolve()).as_posix()
-    assert rel == "docs/canonical/idempotent-diff-pipeline.md"
-
-
-def test_assert_canonical_target_rejects_non_canonical():
-    with pytest.raises(ValueError):
-        f4._assert_canonical_target(Path("/repo/docs/analysis/s/x.md"), Path("/repo"),
-                                    "docs/analysis/s/x.md")
-
-
-def test_write_proposed_writes_the_canonical_target(tmp_path):
-    art = _artifact()
-    rel = f4.write_proposed(tmp_path, art, "s", PATTERN)
-    # creation writes the canonical artifact at its destination (on the branch); promotion
-    # to main is the human PR merge, not this write.
-    assert rel == "docs/canonical/idempotent-diff-pipeline.md"
-    assert (tmp_path / rel).is_file()
-    assert not (tmp_path / "docs" / "analysis").exists()   # no leftover proposed/ path
-
-
 # ── verdict-aware canonical path (P1/P2 = Partial → reframe/naming) ───────
 def test_build_messages_partial_verdict_reframes_header():
     u = f4.build_messages(PATTERN, "SRC", verdict="Partial")[1]["content"]

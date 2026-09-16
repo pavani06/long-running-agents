@@ -136,7 +136,8 @@ def _eval_artifact(artifact: dict, pattern: dict) -> dict:
 
 def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns: list[dict],
               extraction: dict, index: dict, *, openai_key: str, zai_key: str,
-              source_file: str, level_dir: str = phase4_create.DEFAULT_LEVEL_DIR,
+              source_file: str, reporting_classifications: list[dict] | None = None,
+              level_dir: str = phase4_create.DEFAULT_LEVEL_DIR,
               min_mean: float = evaluator.PROVISIONAL_MIN_MEAN,
               dup_threshold: float = dedup.DUP_THRESHOLD,
               zai_client=None, eval_client=None, embed_fn=None, validate_fn=None,
@@ -154,6 +155,12 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
     could not run is recorded as such rather than as a content violation.
     `level_dir` is INTERIM (see `phase4_create.DEFAULT_LEVEL_DIR`): the resolved
     level is recorded per exercise in the manifest for Etapa 7 (#265).
+
+    `classifications` scopes planning and generation. A caller that deliberately
+    plans a subset (`first_loop` passes the one selected Missing) passes the full
+    classified set as `reporting_classifications` so the manifest's skipped rows
+    still describe every pattern Fase 3 judged, not just the planned one; None
+    keeps the two identical.
 
     Gating is per artifact: an unexpected failure on one (a provider outage, say)
     holds that artifact with the concrete error and the loop continues, so the
@@ -281,7 +288,9 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
                          "evaluation": evaluation, "dedup": dup})
 
     manifest = artifact_manifest.build_manifest(
-        slug, today, classifications, outcomes,
+        slug, today,
+        classifications if reporting_classifications is None else reporting_classifications,
+        outcomes,
         planned_categories={item["category"] for item in plan},
         complete=not aborted)
     out = package_dir(repo_root, slug)
