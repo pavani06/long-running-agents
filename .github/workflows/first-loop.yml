@@ -56,7 +56,9 @@ jobs:
         with:
           node-version: '20'
       - name: Install Node dependencies (F4 destination gate)
-        run: npm install
+        # `ci`, never `install`: it never rewrites package-lock.json, so a lockfile
+        # normalisation cannot trip the fail-closed diff gate and abort a billed run.
+        run: npm ci
 
       # Persist/restore the derived index across runs (native Actions cache). This is an
       # OPTIMIZATION only, never authoritative repo state: run_id key always misses so a
@@ -109,26 +111,35 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_SECRETS_PAT }}
           BRANCH: ${{ steps.loop.outputs.branch }}
           PR_TITLE: ${{ steps.loop.outputs.pr_title }}
+          SLUG: ${{ steps.loop.outputs.slug }}
           ALLOWED: ${{ steps.integrate.outputs.allowed }}
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
-          # Fail-closed diff gate (#264): the working tree may hold ONLY this run's
-          # promoted artifacts + quarantined copies + this run's manifest + the derived
-          # index updates the manifest authorizes. Anything outside holds the run.
-          # (pr-body.md is this workflow's own scratch file — never committed.)
+          # Fail-closed diff gate (#264): the commit may hold ONLY this run's promoted
+          # artifacts + this run's manifest + the derived index updates the manifest
+          # authorizes. Anything outside holds the run.
+          # Two scratch surfaces are excluded rather than gated: pr-body.md (this
+          # workflow's own file) and this run's quarantine dir (gate-rejected content —
+          # it stays in the worktree, never reaches the PR, and stays human-reviewable
+          # through the manifest rendered in the PR body), so an all-held run still
+          # opens the manifest-only PR.
           # -uall: list untracked files individually, never collapsed directories.
-          CHANGED=$(git status --porcelain -uall | cut -c4- | grep -vxF 'pr-body.md' || true)
+          QUARANTINE="docs/analysis/$SLUG/proposed/"
+          CHANGED=""
           while IFS= read -r f; do
             [ -z "$f" ] && continue
+            [ "$f" = 'pr-body.md' ] && continue
+            case "$f" in "$QUARANTINE"*) continue ;; esac
             if ! printf '%s\n' "$ALLOWED" | grep -qxF -- "$f"; then
               echo "::error::change outside the allowed set: $f"
               exit 1
             fi
-          done <<< "$CHANGED"
-          printf '%s\n' "$CHANGED" | xargs git add --
+            CHANGED="$CHANGED$f"$'\n'
+          done < <(git status --porcelain -uall | cut -c4-)
+          printf '%s' "$CHANGED" | xargs git add --
           git commit -m "proposal(analyze-and-improve): $PR_TITLE
 
           Artifacts created by run_fase4 (the #263 engine — single production F4 path,

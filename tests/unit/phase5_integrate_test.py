@@ -99,13 +99,14 @@ TREE_SNIPPET_README = """📦 root/
 ├── 04-nivel-4-koda-specific/
 """
 
-TREE_SNIPPET_NO_SOLUTIONS = """📦 root/
+TREE_SNIPPET_MASTER_PLAN = """📦 root/
 │
 ├── 03-nivel-3-advanced-architecture/
 │   ├── 01-multi-agent-systems.md
 │   ├── exercises/
 │   │   ├── exercise-01.md
-│   │   └── exercise-22-capability.md
+│   │   ├── exercise-22-capability.md
+│   │   └── solutions/
 │   └── koda-applications/
 """
 
@@ -176,16 +177,21 @@ def test_expected_index_paths_quarantined_only_is_empty():
     assert p5.expected_index_paths(m) == []
 
 
-def test_allowed_paths_promoted_quarantined_manifest_and_indexes():
+def test_allowed_paths_is_promoted_manifest_and_indexes_only():
     m = _manifest(canonical=["docs/canonical/x.md"],
                   quarantined=[("docs/canonical/held.md",
                                 "docs/analysis/s/proposed/docs/canonical/held.md")])
-    allowed = p5.allowed_paths(m)
-    assert "docs/canonical/x.md" in allowed
-    assert "docs/analysis/s/proposed/docs/canonical/held.md" in allowed
-    assert f"docs/analysis/{SLUG}/{SLUG}-artifacts.yaml" in allowed
-    assert f"docs/analysis/{SLUG}/{SLUG}-artifacts.md" in allowed
-    assert "docs/system-of-record.md" in allowed
+    assert p5.allowed_paths(m) == sorted([
+        "docs/canonical/x.md",
+        f"docs/analysis/{SLUG}/{SLUG}-artifacts.yaml",
+        f"docs/analysis/{SLUG}/{SLUG}-artifacts.md",
+        "docs/system-of-record.md"])
+
+
+def test_allowed_paths_all_held_run_commits_only_the_manifest():
+    m = _manifest(quarantined=[("docs/canonical/held.md",
+                                "docs/analysis/s/proposed/docs/canonical/held.md")])
+    assert p5.allowed_paths(m) == sorted(p5.manifest_paths(SLUG))
 
 
 # ── SOR updaters ─────────────────────────────────────────────────────────────
@@ -251,13 +257,11 @@ def test_insert_tree_exercise_before_solutions():
     assert lines[i + 2] == "│   │   │   └── solutions/"
 
 
-def test_insert_tree_exercise_no_solutions_flips_last_connector():
-    out = p5.insert_tree_exercise(TREE_SNIPPET_NO_SOLUTIONS,
-                                  "03-nivel-3-advanced-architecture", "exercise-23-new.md")
-    lines = out.split("\n")
-    assert "│   │   ├── exercise-22-capability.md" in lines
-    i = lines.index("│   │   ├── exercise-22-capability.md")
-    assert lines[i + 1] == "│   │   └── exercise-23-new.md"
+def test_insert_tree_exercise_without_solutions_fails_closed():
+    no_solutions = TREE_SNIPPET_MASTER_PLAN.replace("│   │   └── solutions/\n", "")
+    with pytest.raises(ValueError, match="solutions/"):
+        p5.insert_tree_exercise(no_solutions, "03-nivel-3-advanced-architecture",
+                                "exercise-23-new.md")
 
 
 def test_insert_tree_exercise_unknown_dir_fails():
@@ -295,7 +299,7 @@ def _synth_repo(tmp_path):
     (root / "docs" / "system-of-record.md").write_text(SOR_SNIPPET, encoding="utf-8")
     (root / "curriculum" / "INDEX.md").write_text(INDEX_SNIPPET, encoding="utf-8")
     (root / "curriculum" / "README.md").write_text(TREE_SNIPPET_README, encoding="utf-8")
-    (root / "curriculum" / "MASTER_PLAN.md").write_text(TREE_SNIPPET_NO_SOLUTIONS,
+    (root / "curriculum" / "MASTER_PLAN.md").write_text(TREE_SNIPPET_MASTER_PLAN,
                                                         encoding="utf-8")
     import yaml
     m = _manifest(canonical=["docs/canonical/new.md"],
@@ -323,7 +327,7 @@ def test_run_updates_all_four_surfaces_from_disk_truth(tmp_path):
     rdt = (root / "curriculum" / "README.md").read_text(encoding="utf-8")
     assert "│   │   │   ├── exercise-23-new.md" in rdt
     mst = (root / "curriculum" / "MASTER_PLAN.md").read_text(encoding="utf-8")
-    assert "│   │   └── exercise-23-new.md" in mst
+    assert "│   │   ├── exercise-23-new.md" in mst
     assert report["sor_before"] == 2 and report["sor_after"] == 3
     assert set(report["changed"]) == {"docs/system-of-record.md", "curriculum/INDEX.md",
                                       "curriculum/README.md", "curriculum/MASTER_PLAN.md"}

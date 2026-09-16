@@ -21,7 +21,9 @@ Editorial boundary: ONLY those projections change. Narrative, priorities,
 interpretation and human-authored semantics are never rewritten, and rows/lines
 are never fabricated for docs outside the run's manifest (legacy drift stays
 VISIBLE — surfaced, not silently absorbed). `status: quarantined` entries never
-mutate any index.
+mutate any index and are never committable: the diff gate's allowed set is this
+run's promoted artifacts + the manifest's own two files + the index updates the
+manifest authorizes, nothing else.
 
 `load_manifest` fails fast on composition mismatch (a v3 manifest has no
 per-entry `status` and no `meta.type: artifact-manifest` — a hard error, not a
@@ -46,6 +48,7 @@ _COUNT_RE = re.compile(r"Há (\d+) padrões canônicos ativos")
 _LAST_UPDATED_RE = re.compile(r"^last_updated:.*$", re.MULTILINE)
 _LEVEL_RE = re.compile(r"nivel-(\d+)")
 _TREE_DIR_RE = "([│ ]*)"
+_TREE_SOLUTIONS_RE = re.compile(r"^([│ ]*)[├└]── solutions/$")
 
 
 # ── manifest contract ────────────────────────────────────────────────────────
@@ -113,17 +116,16 @@ def expected_index_paths(manifest: dict) -> list[str]:
 
 
 def allowed_paths(manifest: dict) -> list[str]:
-    """The fail-closed diff gate's allowed set: exactly what this run's manifest
-    declares (promoted destinations + quarantined copies), the manifest's own two
-    files, and the derived index updates it authorizes. Pure."""
+    """The fail-closed diff gate's allowed set: exactly this run's promoted
+    destinations, the manifest's own two files, and the derived index updates it
+    authorizes — nothing else. Quarantined (gate-rejected) copies are never
+    committable. Pure."""
     slug = manifest["meta"]["source_slug"]
     allowed = list(manifest_paths(slug))
     for rows in manifest["artifacts"].values():
         for row in rows:
             if row["status"] == "promoted":
                 allowed.append(row["path"])
-            elif row.get("quarantine_path"):
-                allowed.append(row["quarantine_path"])
     allowed += expected_index_paths(manifest)
     return sorted(set(allowed))
 
@@ -212,10 +214,9 @@ def _tree_child_prefix(line: str) -> str:
 def insert_tree_exercise(text: str, level_dir: str, filename: str) -> str:
     """Insert `filename` into the level's `exercises/` subtree. Pure.
 
-    Primary path: immediately before the `└── solutions/` line (the shape both
-    real trees use), keeping the previous last exercise a `├──` sibling. Without a
-    solutions entry, the block's last child is flipped from `└──` to `├──` and
-    the new line becomes the last child."""
+    Immediately before the block's `solutions/` line (the shape both real trees
+    use), keeping the previous last exercise a `├──` sibling. Any other shape
+    fails closed."""
     lines = text.split("\n")
     dir_re = re.compile(rf"^{_TREE_DIR_RE}[├└]── {re.escape(level_dir)}/$")
     di = next((i for i, l in enumerate(lines) if dir_re.match(l)), None)
@@ -231,23 +232,12 @@ def insert_tree_exercise(text: str, level_dir: str, filename: str) -> str:
     block_end = ex + 1
     while block_end < len(lines) and lines[block_end].startswith(child_prefix):
         block_end += 1
-    sol = next((i for i in range(ex + 1, block_end)
-                if _tree_content(lines[i]) == "solutions/"), None)
-    if sol is not None:
-        m = re.match(r"^([│ ]*)└── ", lines[sol])
-        lines.insert(sol, f"{m.group(1)}├── {filename}")
-        return "\n".join(lines)
-    last = block_end - 1
-    if last <= ex:
-        raise ValueError(f"tree: exercises/ block under {level_dir!r} is empty")
-    line = lines[last]
-    m = re.match(r"^([│ ]*)([├└])── ", line)
-    if m.group(2) == "└":
-        lines[last] = f"{m.group(1)}├── {_tree_content(line)}"
-        lines.insert(last + 1, f"{m.group(1)}└── {filename}")
-    else:
-        lines.insert(last + 1, f"{m.group(1)}├── {filename}")
-    return "\n".join(lines)
+    for i in range(ex + 1, block_end):
+        m = _TREE_SOLUTIONS_RE.match(lines[i])
+        if m:
+            lines.insert(i, f"{m.group(1)}├── {filename}")
+            return "\n".join(lines)
+    raise ValueError(f"tree: exercises/ block under {level_dir!r} has no solutions/ entry")
 
 
 # ── disk truth ───────────────────────────────────────────────────────────────

@@ -118,8 +118,10 @@ disk state change — narrative, priorities, interpretation and human-authored
 semantics are never rewritten, and rows/listings are never fabricated for docs
 outside the run's manifest (legacy drift stays visible, surfaced to the
 operator). `allowed_paths(manifest)` is the fail-closed diff gate's allowed set:
-this run's promoted artifacts + quarantined copies + the manifest's own two
-files + the index updates it authorizes, nothing else.
+this run's promoted artifacts + the manifest's own two files + the index updates
+it authorizes, nothing else. Quarantined (gate-rejected) copies are deliberately
+outside it — they stay in the worktree, are never committed, and remain
+human-reviewable through the manifest as rendered in the PR body.
 
 **Exercise level (INTERIM).** `DEFAULT_LEVEL_DIR` places every generated exercise
 at curriculum level 3; there is no level routing yet. The resolved level is
