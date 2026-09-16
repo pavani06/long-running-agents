@@ -108,7 +108,12 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
 
     Every external call is injectable (`zai_client`/`eval_client`/`embed_fn`/
     `validate_fn`; None → the module default). `validate_fn` is called once after
-    all quarantine writes; its bool feeds every artifact's gate report."""
+    all quarantine writes; its bool feeds every artifact's gate report. Because
+    that repo-wide run cannot see the canonical-/curriculum-scoped checks while
+    the artifact sits in quarantine, each artifact is additionally validated at
+    its intended destination (`phase4_create.destination_violations`) before it
+    can be promoted. `level_dir` is INTERIM (see `phase4_create.DEFAULT_LEVEL_DIR`):
+    the resolved level is recorded per exercise in the manifest for Etapa 7 (#265)."""
     import retrieval
 
     if zai_client is None:
@@ -131,6 +136,7 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
     video_id = str(extraction.get("video_id", ""))
 
     generated: list[dict] = []
+    claimed: dict[str, str] = {}
     repo_contexts: dict[str, str] = {}
     for item in plan:
         pattern = by_name.get(item["pattern"], {"name": item["pattern"]})
@@ -148,35 +154,61 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
             artifact = phase4_create.create(pattern, verdict=item["verdict"],
                                             client=zai_client, **common)
         elif item["category"] == "skill":
-            artifact = phase4_create.create_skill(pattern, client=zai_client, **common)
+            artifact = phase4_create.create_skill(pattern, verdict=item["verdict"],
+                                                  client=zai_client, **common)
         else:
-            artifact = phase4_create.create_exercise(pattern, level=level, level_dir=level_dir,
+            artifact = phase4_create.create_exercise(pattern, verdict=item["verdict"],
+                                                     level=level, level_dir=level_dir,
                                                      number=next_number, client=zai_client,
                                                      **common)
             next_number += 1
         artifact["priority"] = item["priority"]
-        write_quarantined(repo_root, slug, artifact)
-        generated.append({"category": item["category"], "artifact": artifact,
-                          "classification": cls, "pattern": pattern})
+        entry = {"category": item["category"], "artifact": artifact,
+                 "classification": cls, "pattern": pattern}
+        dest = artifact["intended_destination"]
+        # Two patterns can slugify to the same destination; the later one must be
+        # held, never overwrite the earlier one's quarantined copy (which would
+        # promote the wrong content under the earlier artifact's passing gates).
+        if dest in claimed:
+            entry["collision"] = (f"colisão de destino — {dest} já reivindicado pelo "
+                                  f"padrão {claimed[dest]!r} neste plano")
+        else:
+            claimed[dest] = item["pattern"]
+            write_quarantined(repo_root, slug, artifact)
+        generated.append(entry)
 
-    validate_ok = bool(validate_fn(repo_root)) if generated else True
+    validate_ok = bool(validate_fn(repo_root)) if claimed else True
 
     outcomes: list[dict] = []
     for g in generated:
         artifact = g["artifact"]
+        if g.get("collision"):
+            outcomes.append({"category": g["category"], "artifact": artifact,
+                             "accepted": False, "reasons": [g["collision"]],
+                             "evaluation": None, "dedup": None})
+            continue
         evaluation = evaluator.run(_eval_artifact(artifact, g["pattern"]), openai_key,
                                    min_mean=min_mean, client=eval_client)
         vec = embed_fn([artifact["title"] + "\n" + artifact["content"]], openai_key)[0]
         dup = dedup.is_duplicate(vec, index, dup_threshold)
+        violations = phase4_create.destination_violations(
+            artifact["intended_destination"], _RENDERERS[artifact["type"]](artifact),
+            exists=lambda rel: (repo_root / rel).exists())
         report = quarantine.report_from_gates(
-            validate_obsidian=validate_ok,
+            validate_obsidian=validate_ok, destination_valid=not violations,
             citations_ok=bool(g["classification"].get("verified")),
             duplicate=dup["duplicate"], evaluation_passed=evaluation["passed"])
         decision = quarantine.decide(report)
-        if decision["accepted"]:
-            promote(repo_root, slug, artifact)
+        accepted, reasons = decision["accepted"], decision["reasons"] + violations
+        if accepted:
+            try:
+                promote(repo_root, slug, artifact)
+            except ValueError as exc:
+                # A fail-closed promotion refusal holds THIS artifact; the run
+                # still finishes and records it (manifest = the Fase-5 contract).
+                accepted, reasons = False, reasons + [str(exc)]
         outcomes.append({"category": g["category"], "artifact": artifact,
-                         "accepted": decision["accepted"], "reasons": decision["reasons"],
+                         "accepted": accepted, "reasons": reasons,
                          "evaluation": evaluation, "dedup": dup})
 
     manifest = artifact_manifest.build_manifest(

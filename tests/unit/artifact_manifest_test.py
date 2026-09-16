@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
 
 import artifact_manifest as am  # noqa: E402
+import serialize  # noqa: E402
 
 PROMOTED_CANONICAL = {"type": "canonical", "pattern": "X", "phase3_verdict": "Missing",
                       "priority": "P0", "intended_destination": "docs/canonical/x.md"}
@@ -43,8 +44,8 @@ def test_build_manifest_schema_and_counts():
     m = _manifest()
     assert m["meta"] == {"type": "artifact-manifest", "date": "2026-09-15", "source_slug": "pkg",
                          "classification_file": "docs/analysis/pkg/pkg-classification.yaml"}
-    assert m["gate"]["artifacts_count"] == {"canonical_docs": 1, "skills": 1,
-                                            "exercises": 1, "examples": 0}
+    assert m["gate"]["artifacts_count"] == {"canonical_docs": 1, "skills": 1, "exercises": 1}
+    assert set(m["artifacts"]) == {"canonical_docs", "skills", "exercises"}
     assert m["gate"]["phase4_complete"] is True
 
 
@@ -58,6 +59,8 @@ def test_build_manifest_records_status_and_hold_reasons():
     assert skill["reasons"] == ["evaluator adversarial abaixo do corte"]
     [exercise] = m["artifacts"]["exercises"]
     assert exercise["status"] == am.STATUS_PROMOTED
+    # the curriculum level is recorded per exercise (Etapa 7 / #265 re-routing input)
+    assert exercise["level"] == 3
 
 
 def test_build_manifest_skipped_rows_from_verdicts():
@@ -80,11 +83,11 @@ def test_manifest_yaml_round_trips():
 
 
 def test_manifest_md_frontmatter_is_analysis_compliant():
-    md = am.manifest_md(_manifest())
-    assert md.startswith("---\n")
-    assert "type: analysis" in md
-    assert "date: '2026-09-15'" in md or "date: 2026-09-15" in md
-    assert "aliases:" in md and "relates-to:" in md
+    fm, _ = serialize.split_frontmatter(am.manifest_md(_manifest()))
+    assert fm["type"] == "analysis"                       # Check 2: type present
+    assert str(fm["date"]) == "2026-09-15"
+    assert fm["aliases"] and isinstance(fm["aliases"], list)   # Check 12: non-empty
+    assert fm["relates-to"] == []                         # Check 11: present
 
 
 def test_manifest_md_carries_summary_and_integration_map():
@@ -93,6 +96,9 @@ def test_manifest_md_carries_summary_and_integration_map():
     assert "docs/canonical/x.md" in md
     assert "quarentena" in md                      # the held artifact is flagged for review
     assert "E1" in md and "B1" in md               # skipped patterns surface in the .md
+    # the same artifact type is named identically in both tables
+    assert "| canonical | `docs/canonical/x.md` | promoted |" in md
+    assert "canonical_doc" not in md
 
 
 def test_manifest_md_empty_skipped_is_graceful():

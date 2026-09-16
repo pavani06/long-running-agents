@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
 
 import phase4_flow as flow  # noqa: E402
+import serialize  # noqa: E402
 
 PATTERN = {"name": "X", "problem": "p", "mechanism": "m", "tradeoffs": "t"}
 PKG = "2026-09-15-pkg"
@@ -59,9 +60,11 @@ def test_quarantined_markdown_is_validator_compliant(tmp_path):
                        ("exercise", "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-12-x.md")]:
         art = _artifact(kind, dest)
         rel = flow.write_quarantined(tmp_path, PKG, art)
-        text = (tmp_path / rel).read_text(encoding="utf-8")
-        assert text.startswith("---\n") and "type:" in text
-        assert "aliases:" in text and "relates-to:" in text
+        fm, _ = serialize.split_frontmatter((tmp_path / rel).read_text(encoding="utf-8"))
+        assert fm is not None, kind
+        assert fm.get("type"), kind                     # Check 2: type present
+        assert fm.get("aliases"), kind                  # Check 12: non-empty
+        assert "relates-to" in fm, kind                 # Check 11: present
 
 
 # ── promotion ──────────────────────────────────────────────────────────────
@@ -149,7 +152,7 @@ def test_run_fase4_generates_all_three_categories_and_promotes_on_pass(tmp_path)
     assert (pkg / f"{PKG}-artifacts.yaml").is_file()
     assert (pkg / f"{PKG}-artifacts.md").is_file()
     assert result["manifest"]["gate"]["artifacts_count"] == {
-        "canonical_docs": 1, "skills": 1, "exercises": 1, "examples": 0}
+        "canonical_docs": 1, "skills": 1, "exercises": 1}
 
 
 def test_run_fase4_holds_failed_gate_in_quarantine_and_never_promotes(tmp_path):
@@ -189,3 +192,90 @@ def test_run_fase4_no_eligible_work_writes_empty_manifest(tmp_path):
     assert result["promoted"] == [] and result["held"] == []
     assert result["manifest"]["gate"]["artifacts_count"]["canonical_docs"] == 0
     assert (tmp_path / "docs" / "analysis" / PKG / f"{PKG}-artifacts.yaml").is_file()
+
+
+# ── destination-scoped validation runs BEFORE promotion ────────────────────
+def _zai_with_canonical_body(body: str):
+    def client(messages, key):
+        system = messages[0]["content"]
+        if "skill de implementação" in system:
+            return {"name": "X", "description": "triggers", "body": "## What I Do\nB"}
+        if "exercício hands-on" in system:
+            return {"title": "Exercício X", "body": "prólogo + asserts"}
+        return {"title": "Doc X", "body": body}
+    return client
+
+
+def _run_with(tmp_path, zai_client):
+    return flow.run_fase4(
+        tmp_path, PKG, CLS, PATTERNS, EXTRACTION, INDEX,
+        openai_key="O", zai_key="Z", source_file="s--v.md",
+        zai_client=zai_client, eval_client=_pass_eval, embed_fn=_embed_orthogonal,
+        validate_fn=lambda root: True, today="2026-09-15")
+
+
+def test_run_fase4_holds_canonical_doc_that_violates_a_canonical_scoped_check(tmp_path):
+    """A raw markdown link only violates validate-obsidian at docs/canonical/ — the
+    quarantined copy never trips it, so the gate must run at the destination."""
+    result = _run_with(tmp_path, _zai_with_canonical_body("veja [o doc](outro.md)"))
+    assert "docs/canonical/x.md" not in result["promoted"]
+    assert not (tmp_path / "docs" / "canonical").exists()
+    [held] = [h for h in result["held"] if h["path"] == "docs/canonical/x.md"]
+    assert "convenções obsidian no destino falharam" in held["reasons"]
+    assert any("link markdown cru" in r for r in held["reasons"])
+    # the clean skill/exercise from the same run still promote
+    assert ".opencode/skills/x/SKILL.md" in result["promoted"]
+
+
+def test_run_fase4_promotes_a_clean_canonical_doc(tmp_path):
+    result = _run_with(tmp_path, _zai_with_canonical_body("apenas prosa mecanicista."))
+    assert "docs/canonical/x.md" in result["promoted"]
+    assert (tmp_path / "docs" / "canonical" / "x.md").is_file()
+
+
+# ── fail-closed promotion refusals are contained ──────────────────────────
+def test_run_fase4_occupied_destination_holds_only_that_artifact(tmp_path):
+    canonical = tmp_path / "docs" / "canonical"
+    canonical.mkdir(parents=True)
+    (canonical / "x.md").write_text("authoritative", encoding="utf-8")
+    result = _run(tmp_path, eval_client=_pass_eval)
+    assert (canonical / "x.md").read_text(encoding="utf-8") == "authoritative"
+    [held] = [h for h in result["held"] if h["path"] == "docs/canonical/x.md"]
+    assert any("promotion refused" in r for r in held["reasons"])
+    # the run still finishes: the other artifacts promote and the manifest is written
+    assert ".opencode/skills/x/SKILL.md" in result["promoted"]
+    assert (tmp_path / "docs" / "analysis" / PKG / f"{PKG}-artifacts.yaml").is_file()
+
+
+# ── quarantine path collisions ────────────────────────────────────────────
+def test_run_fase4_holds_the_later_artifact_on_a_destination_collision(tmp_path):
+    """Two pattern names slugifying to the same destination must not overwrite each
+    other's quarantined copy (which would promote the wrong content)."""
+    cls = [{"pattern": "Sub-Agents", "verdict": "Partial", "value": "medium",
+            "evidence": [], "verified": True},
+           {"pattern": "Sub Agents", "verdict": "Partial", "value": "medium",
+            "evidence": [], "verified": True}]
+    patterns = [{"name": "Sub-Agents", "problem": "p", "mechanism": "m", "tradeoffs": "t"},
+                {"name": "Sub Agents", "problem": "p2", "mechanism": "m2", "tradeoffs": "t2"}]
+
+
+    def echoing_zai(messages, key):
+        user = messages[1]["content"]
+        name = "Sub-Agents" if "nome: Sub-Agents" in user else "Sub Agents"
+        return {"title": f"Doc {name}", "body": f"corpo de {name}"}
+
+    result = flow.run_fase4(
+        tmp_path, PKG, cls, patterns, EXTRACTION, INDEX,
+        openai_key="O", zai_key="Z", source_file="s--v.md",
+        zai_client=echoing_zai, eval_client=_pass_eval, embed_fn=_embed_orthogonal,
+        validate_fn=lambda root: True, today="2026-09-15")
+    assert result["promoted"] == ["docs/canonical/sub-agents.md"]
+    [held] = result["held"]
+    assert held["path"] == "docs/canonical/sub-agents.md"
+    assert any("colisão de destino" in r for r in held["reasons"])
+    # the promoted file is the FIRST pattern's content, and nothing is left behind
+    promoted_text = (tmp_path / "docs" / "canonical" / "sub-agents.md").read_text(encoding="utf-8")
+    assert "corpo de Sub-Agents" in promoted_text and "corpo de Sub Agents" not in promoted_text
+    assert list((tmp_path / "docs" / "analysis" / PKG / "proposed").rglob("*.md")) == []
+    assert [r["pattern"] for r in result["manifest"]["artifacts"]["canonical_docs"]] == \
+        ["Sub-Agents", "Sub Agents"]

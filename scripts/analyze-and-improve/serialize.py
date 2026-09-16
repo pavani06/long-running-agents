@@ -14,6 +14,24 @@ def to_yaml(obj) -> str:
     return yaml.safe_dump(obj, sort_keys=False, allow_unicode=True, default_flow_style=False)
 
 
+def split_frontmatter(text: str) -> tuple[dict | None, str]:
+    """Split a markdown document into (parsed frontmatter, body). Pure.
+
+    Returns `(None, text)` when the document has no `---` block opening line 1 —
+    the same shape the obsidian validator treats as "missing frontmatter"."""
+    lines = (text or "").split("\n")
+    if not lines or lines[0].strip() != "---":
+        return None, text or ""
+    for i in range(1, len(lines)):
+        if lines[i].strip() == "---":
+            try:
+                loaded = yaml.safe_load("\n".join(lines[1:i]))
+            except yaml.YAMLError:
+                return None, "\n".join(lines[i + 1:])
+            return (loaded if isinstance(loaded, dict) else {}), "\n".join(lines[i + 1:])
+    return None, text
+
+
 def _bullets(items) -> str:
     return "\n".join(f"- {it}" for it in items) if items else "_(nenhum)_"
 

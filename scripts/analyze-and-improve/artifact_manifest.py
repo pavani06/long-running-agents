@@ -1,11 +1,14 @@
 """Artifacts manifest — the contract Fase 5 (#264) reads as input.
 
-Typed record of one Fase-4 run, following the v3 skill's manifest schema
-(meta / artifacts{canonical_docs,skills,exercises,examples} / skipped / gate)
-with additive per-artifact status fields for the governed loop: `status`
+Typed record of one Fase-4 run (meta / artifacts{canonical_docs,skills,exercises}
+/ skipped / gate) with per-artifact status fields for the governed loop: `status`
 (promoted|quarantined), `quarantine_path` and `reasons` when a gate held the
-artifact. `build_manifest` and `manifest_md` are pure and unit-tested; writing
-the files is the flow's job (analysis_package conventions).
+artifact. Exercises additionally carry `level`, the curriculum level they were
+placed at — INTERIM while there is no level routing (see
+`phase4_create.DEFAULT_LEVEL_DIR`); Etapa 7 (#265) must decide whether and how to
+own that routing, and this field is its re-routing input. `build_manifest` and
+`manifest_md` are pure and unit-tested; writing the files is the flow's job
+(analysis_package conventions).
 """
 from __future__ import annotations
 
@@ -15,6 +18,7 @@ STATUS_PROMOTED = "promoted"
 STATUS_QUARANTINED = "quarantined"
 
 _CATEGORY_KEYS = {"canonical": "canonical_docs", "skill": "skills", "exercise": "exercises"}
+_MD_LABELS = {"canonical_docs": "canonical", "skills": "skill", "exercises": "exercise"}
 
 
 def _entry(category: str, artifact: dict, status: str, reasons: list[str]) -> dict:
@@ -27,6 +31,8 @@ def _entry(category: str, artifact: dict, status: str, reasons: list[str]) -> di
     }
     if category == "canonical_docs":
         entry["priority"] = artifact.get("priority", "")
+    if category == "exercises":
+        entry["level"] = artifact.get("level", "")
     if status == STATUS_QUARANTINED:
         entry["quarantine_path"] = artifact.get("quarantine_path", "")
         entry["reasons"] = reasons
@@ -68,7 +74,7 @@ def build_manifest(slug: str, date: str, classifications: list[dict],
 
     `outcomes`: [{category, artifact, accepted, reasons}] — one per generated artifact.
     `planned_categories`: the categories plan_of_work scheduled (for not_applicable)."""
-    artifacts: dict[str, list] = {"canonical_docs": [], "skills": [], "exercises": [], "examples": []}
+    artifacts: dict[str, list] = {"canonical_docs": [], "skills": [], "exercises": []}
     for o in outcomes:
         key = _CATEGORY_KEYS[o["category"]]
         artifacts[key].append(_entry(key, o["artifact"],
@@ -121,7 +127,7 @@ def manifest_md(manifest: dict) -> str:
             row = by_pattern.setdefault(e["pattern"], {"cls": e["classification"],
                                                         "prio": e.get("priority", "—"),
                                                         "cats": [], "held": False})
-            row["cats"].append(key[:-1] if key != "canonical_docs" else "canonical")
+            row["cats"].append(_MD_LABELS[key])
             if e.get("status") == STATUS_QUARANTINED:
                 row["held"] = True
     for i, (pattern, row) in enumerate(by_pattern.items(), 1):
@@ -132,7 +138,7 @@ def manifest_md(manifest: dict) -> str:
               "| Artifact | Path | Status |", "|---|---|---|"]
     for key in ("canonical_docs", "skills", "exercises"):
         for e in manifest["artifacts"][key]:
-            lines.append(f"| {key[:-1]} | `{e['path']}` | {e['status']} |")
+            lines.append(f"| {_MD_LABELS[key]} | `{e['path']}` | {e['status']} |")
     lines += ["", "## Skipped", ""]
     any_skipped = False
     for group, label in (("already_exists", "Already Exists"),

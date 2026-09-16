@@ -211,11 +211,14 @@ _SKILL_SYSTEM = (
 
 
 def build_skill_messages(pattern: dict, source_context: str,
-                         repo_context: str = "") -> list[dict]:
-    """System + user for skill generation (same shape as the canonical builder). Pure."""
+                         repo_context: str = "", verdict: str = "Missing") -> list[dict]:
+    """System + user for skill generation (same shape as the canonical builder). Pure.
+
+    `verdict` is the Fase-3 classification verdict for this pattern; it is a
+    classification field, never a key of the Fase-2 pattern dict."""
     repo_block = (repo_context or "").strip() or "(nenhum contexto de repo recuperado)"
     user = (
-        f"PADRÃO (Fase 2, veredito Fase 3 = {pattern.get('verdict', 'Missing')}):\n"
+        f"PADRÃO (Fase 2, veredito Fase 3 = {verdict}):\n"
         f"- nome: {pattern.get('name','')}\n"
         f"- problema: {pattern.get('problem','')}\n"
         f"- mecanismo: {pattern.get('mechanism','')}\n"
@@ -278,18 +281,25 @@ def proposed_skill_artifact(*, slug: str, source_file: str, video_id: str, patte
 def render_skill_markdown(artifact: dict) -> str:
     """Serialize the skill artifact to a SKILL.md file. Pure.
 
-    Frontmatter follows the repo's skill convention (name/description) plus the
+    Frontmatter follows the layer's dominant schema (name/description/license/
+    compatibility/metadata — carried by 34 of the 38 hand-written skills) plus the
     quarantine-compliance fields (`type`/`aliases`/`relates-to` — the quarantined
     copy lives under docs/analysis/, where the obsidian validator requires them;
-    extra keys are inert at the .opencode/skills/ destination). Body is link-free."""
+    extra keys are inert at the .opencode/skills/ destination). `name` is the
+    slug of the pattern, byte-equal to the skill's own directory as every
+    existing skill has it; the model's short name stays the human title. Body is
+    link-free."""
     alias = (artifact.get("pattern") or artifact.get("slug") or "skill").strip().lower()
     fm = {
-        "name": artifact["name"],
+        "name": slugify(artifact.get("pattern") or artifact.get("name", "")),
         "description": artifact["description"],
+        "license": "MIT",
+        "compatibility": "opencode",
         "type": "skill",
         "aliases": [alias],
         "relates-to": [],
-        "metadata": {"source": artifact["source"], "created_by": "analyze-and-improve F4"},
+        "metadata": {"title": artifact["name"], "source": artifact["source"],
+                     "created_by": "analyze-and-improve F4"},
     }
     return "\n".join(["---", serialize.to_yaml(fm).rstrip(), "---", "",
                       artifact["content"], ""])
@@ -298,12 +308,13 @@ def render_skill_markdown(artifact: dict) -> str:
 def create_skill(pattern: dict, *, slug: str, source_file: str, video_id: str,
                  evidence: list[dict], source_context: str, zai_key: str,
                  repo_context: str = "", client=chat_json,
-                 today: str | None = None) -> dict:
-    """Generate the skill artifact (one GLM call). `client`/`today` injectable."""
-    reply = client(build_skill_messages(pattern, source_context, repo_context), zai_key)
+                 today: str | None = None, verdict: str = "Missing") -> dict:
+    """Generate the skill artifact (one GLM call). `client`/`today` injectable.
+    `verdict` is the Fase-3 classification verdict carried into prompt and manifest."""
+    reply = client(build_skill_messages(pattern, source_context, repo_context, verdict), zai_key)
     creation = parse_skill(reply)
     return proposed_skill_artifact(slug=slug, source_file=source_file, video_id=video_id,
-                                   pattern=pattern, verdict="Missing", evidence=evidence,
+                                   pattern=pattern, verdict=verdict, evidence=evidence,
                                    creation=creation,
                                    last_updated=today or date.today().isoformat())
 
@@ -311,8 +322,11 @@ def create_skill(pattern: dict, *, slug: str, source_file: str, video_id: str,
 # ── Exercises (#263 remainder) ─────────────────────────────────────────────────
 
 EXERCISES_SUBDIR = "exercises"
-# Default placement for generated exercises (caller-overridable; recorded in the
-# manifest). Historical F4 exercises for Missing/Partial-High landed at this level.
+# INTERIM default placement for generated exercises — caller-overridable, and the
+# resolved level is recorded per exercise in the artifact manifest. There is no
+# level routing yet: Etapa 7 (#265, curriculum integration) must decide whether
+# and how to own it, using the manifest's per-exercise `level` field as the
+# re-routing input. Until then every generated exercise lands at level 3.
 DEFAULT_LEVEL_DIR = "03-nivel-3-advanced-architecture"
 
 _EXERCISE_SYSTEM = (
@@ -331,11 +345,14 @@ _EXERCISE_SYSTEM = (
 
 
 def build_exercise_messages(pattern: dict, source_context: str,
-                            repo_context: str = "") -> list[dict]:
-    """System + user for exercise generation (same shape as the canonical builder). Pure."""
+                            repo_context: str = "", verdict: str = "Missing") -> list[dict]:
+    """System + user for exercise generation (same shape as the canonical builder). Pure.
+
+    `verdict` is the Fase-3 classification verdict for this pattern; it is a
+    classification field, never a key of the Fase-2 pattern dict."""
     repo_block = (repo_context or "").strip() or "(nenhum contexto de repo recuperado)"
     user = (
-        f"PADRÃO (Fase 2, veredito Fase 3 = {pattern.get('verdict', 'Missing')}):\n"
+        f"PADRÃO (Fase 2, veredito Fase 3 = {verdict}):\n"
         f"- nome: {pattern.get('name','')}\n"
         f"- problema: {pattern.get('problem','')}\n"
         f"- mecanismo: {pattern.get('mechanism','')}\n"
@@ -436,13 +453,73 @@ def create_exercise(pattern: dict, *, slug: str, source_file: str, video_id: str
                     evidence: list[dict], source_context: str, zai_key: str,
                     level: int, level_dir: str, number: int,
                     repo_context: str = "", client=chat_json,
-                    today: str | None = None) -> dict:
+                    today: str | None = None, verdict: str = "Missing") -> dict:
     """Generate the exercise artifact (one GLM call). `client`/`today` injectable.
-    Level/number/filename are orchestrator-decided (v3 rule): the model never picks them."""
-    reply = client(build_exercise_messages(pattern, source_context, repo_context), zai_key)
+    Level/number/filename are orchestrator-decided (v3 rule): the model never picks them.
+    `verdict` is the Fase-3 classification verdict carried into prompt and manifest."""
+    reply = client(build_exercise_messages(pattern, source_context, repo_context, verdict), zai_key)
     creation = parse_exercise(reply)
     return proposed_exercise_artifact(slug=slug, source_file=source_file, video_id=video_id,
-                                      pattern=pattern, verdict="Missing", evidence=evidence,
+                                      pattern=pattern, verdict=verdict, evidence=evidence,
                                       creation=creation,
                                       last_updated=today or date.today().isoformat(),
                                       level=level, level_dir=level_dir, number=number)
+
+
+# ── Destination-scoped convention checks (pre-promotion gate) ─────────────────
+
+_RAW_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+\.md)\)")
+_WIKILINK_RE = re.compile(r"\[\[([^\]|#]+)")
+_DIRECT_CANONICAL_RE = re.compile(r"^docs/canonical/[^/]+\.md$")
+
+
+def _prose_lines(body: str):
+    """Body lines outside code fences and inline-code markers (validator Check 5 scoping)."""
+    in_fence = False
+    for line in body.split("\n"):
+        stripped = line.strip()
+        if stripped.startswith("```"):
+            in_fence = not in_fence
+            continue
+        if in_fence or stripped.startswith("`"):
+            continue
+        yield line
+
+
+def destination_violations(destination: str, text: str, exists=lambda rel: False) -> list[str]:
+    """The obsidian-convention violations `text` WOULD have at `destination`. Pure.
+
+    The repo validator scopes its canonical checks to `docs/canonical/<file>.md`
+    (Check 1 frontmatter type, Check 5 raw markdown links, Check 6 broken
+    wikilinks) and Check 9 to `curriculum/`, so a copy sitting in the quarantine
+    dir is never subject to them. This mirrors those destination-scoped rules over
+    the proposed content so the gate runs BEFORE promotion, without ever writing
+    into an authoritative layer. `exists` resolves wikilink targets (repo-relative).
+    An unmonitored destination (e.g. `.opencode/skills/`) has no violations."""
+    canonical = bool(_DIRECT_CANONICAL_RE.match(destination))
+    curriculum = destination.startswith("curriculum/")
+    if not (canonical or curriculum):
+        return []
+    fm, body = serialize.split_frontmatter(text)
+    if fm is None:
+        return [f"{destination}: frontmatter YAML ausente"]
+    problems = []
+    if not fm.get("type"):
+        problems.append(f"{destination}: frontmatter sem 'type'")
+    if curriculum and not fm.get("tags"):
+        problems.append(f"{destination}: frontmatter sem 'tags'")
+    if "relates-to" not in fm:
+        problems.append(f"{destination}: frontmatter sem 'relates-to'")
+    if not fm.get("aliases"):
+        problems.append(f"{destination}: frontmatter sem 'aliases'")
+    if canonical:
+        for line in _prose_lines(body):
+            problems += [f"{destination}: link markdown cru para {url}"
+                         for url in _RAW_LINK_RE.findall(line) if "://" not in url]
+            for target in _WIKILINK_RE.findall(line):
+                target = target.strip()
+                if not target or "://" in target:
+                    continue
+                if not (exists(target) or exists(target + ".md")):
+                    problems.append(f"{destination}: wikilink quebrado [[{target}]]")
+    return problems

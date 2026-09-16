@@ -12,6 +12,7 @@ QUARANTINE_SUBDIR = "proposed"
 # Each gate maps to the human-readable reason emitted when it fails.
 _GATES = {
     "validate_obsidian": "validate-obsidian falhou",
+    "destination_valid": "convenções obsidian no destino falharam",
     "citations_ok": "grep-verify de citações falhou",
     "not_duplicate": "duplicação por cosseno acima do limiar",
     "evaluation_passed": "evaluator adversarial abaixo do corte",
@@ -43,11 +44,17 @@ def quarantine_relpath(slug: str, intended_destination: str) -> str:
 
 
 def report_from_gates(*, validate_obsidian: bool, citations_ok: bool,
-                      duplicate: bool, evaluation_passed: bool) -> dict:
+                      duplicate: bool, evaluation_passed: bool,
+                      destination_valid: bool = True) -> dict:
     """Assemble the gate report from individual gate outcomes (note the dedup
-    inversion: a duplicate FAILS the not_duplicate gate)."""
+    inversion: a duplicate FAILS the not_duplicate gate).
+
+    `destination_valid` is the destination-scoped convention check the repo-wide
+    validator cannot run while the artifact is quarantined; it defaults to True
+    for callers whose artifact has no authoritative destination to check."""
     return {
         "validate_obsidian": validate_obsidian,
+        "destination_valid": destination_valid,
         "citations_ok": citations_ok,
         "not_duplicate": not duplicate,
         "evaluation_passed": evaluation_passed,

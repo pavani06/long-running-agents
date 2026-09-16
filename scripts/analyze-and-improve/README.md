@@ -72,8 +72,20 @@ creation to all three artifact types behind the same gates:
 |---|---|---|
 | `phase4_create.py` | Fase 4 generation — canonical doc (proven path; verdict-aware for Partial P1/P2), **skill** (`.opencode/skills/<slug>/SKILL.md`) and **exercise** (`curriculum/<level>/exercises/exercise-<NN>-<slug>.md`, level/number orchestrator-decided) with full content, frontmatter-compliant renderers | `build_messages*`/`parse_*`/`render_*`/`*_destination`/`next_exercise_number` pure; `create*` inject the client |
 | `phase4_routing.py` | Priorização por classificação (Missing=P0, Partial high=P1, medium=P2, Exists/Better=skip) + roteamento de categoria (P0 → canonical+skill+exercise; P1 → canonical+exercise; P2 → canonical) + the ordered `plan_of_work` | ✅ |
-| `artifact_manifest.py` | The artifacts manifest (`<slug>-artifacts.{yaml,md}`) — the typed contract Fase 5 (#264) reads: artifacts by category with promoted/quarantined status, skipped patterns, not-applicable rows, integration map | `build_manifest`/`manifest_yaml`/`manifest_md` pure |
-| `phase4_flow.py` | The governed loop: `plan_of_work` → generation → **quarantine write** (`docs/analysis/<slug>/proposed/<dest>`, never the authoritative layers) → Etapa-3 gates (evaluator + dedup + validate + verified citations, fail-closed) → **promote-on-pass** (in-worktree move; refuses occupied destinations) → manifest | path/wiring pure parts tested; `run_fase4` needs both keys (all injectable) |
+| `artifact_manifest.py` | The artifacts manifest (`<slug>-artifacts.{yaml,md}`) — the typed contract Fase 5 (#264) reads: artifacts by category (canonical/skill/exercise) with promoted/quarantined status, the per-exercise curriculum `level`, skipped patterns, not-applicable rows, integration map | `build_manifest`/`manifest_yaml`/`manifest_md` pure |
+| `phase4_flow.py` | The governed loop: `plan_of_work` → generation → **quarantine write** (`docs/analysis/<slug>/proposed/<dest>`, never the authoritative layers) → Etapa-3 gates (evaluator + dedup + validate + verified citations + the destination-scoped convention check, fail-closed) → **promote-on-pass** (in-worktree move; refuses occupied destinations) → manifest | path/wiring pure parts tested; `run_fase4` needs both keys (all injectable) |
+
+**Destination-scoped validation.** `validate-obsidian` scopes Checks 1/5/6 to
+`docs/canonical/<file>.md` and Check 9 to `curriculum/`, so a quarantined copy
+never triggers them. `phase4_create.destination_violations` re-applies those rules
+to the proposed content *at its intended destination* — purely, without writing
+anywhere — and feeds the `destination_valid` gate, so a canonical doc with a raw
+markdown link or a broken wikilink is held instead of promoted.
+
+**Exercise level (INTERIM).** `DEFAULT_LEVEL_DIR` places every generated exercise
+at curriculum level 3; there is no level routing yet. The resolved level is
+recorded per exercise in the manifest, and Etapa 7 (#265) must decide whether and
+how to own the routing using that field as its re-routing input.
 
 **Boundaries.** The evaluator is OpenAI on purpose — a different provider from
 the GLM generator, so it never grades its own homework (`OPENAI_API_KEY`, model

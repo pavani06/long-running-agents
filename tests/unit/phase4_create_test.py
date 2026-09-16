@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
 
 import phase4_create as f4  # noqa: E402
+import serialize  # noqa: E402
 from glm import GLMError  # noqa: E402
 
 PATTERN = {"name": "Idempotent Diff Pipeline", "problem": "reprocessing wastes cost",
@@ -108,12 +109,12 @@ def test_proposed_artifact_is_canonical_type_with_provenance():
 def test_render_markdown_is_a_valid_canonical_doc():
     art = _artifact(creation={"title": "X", "body": "BODY-CONTENT"})
     md = f4.render_markdown(art)
-    assert md.startswith("---\n")
-    assert "type: canonical" in md                         # Check 1: type present
-    assert "aliases:" in md and "- idempotent diff pipeline" in md   # Check 12: non-empty
-    assert "relates-to: []" in md                          # Check 11: present (empty, uncurated)
-    assert "last_updated: '2026-09-15'" in md or "last_updated: 2026-09-15" in md
-    assert "sources:" in md
+    fm, _ = serialize.split_frontmatter(md)
+    assert fm["type"] == "canonical"                       # Check 1: type present
+    assert fm["aliases"] == ["idempotent diff pipeline"]   # Check 12: non-empty
+    assert fm["relates-to"] == []                          # Check 11: present (empty, uncurated)
+    assert str(fm["last_updated"]) == "2026-09-15"
+    assert fm["sources"] == ["s--v.md"]
     assert "**Status:**" not in md                         # no transient lifecycle state — Git represents it
     assert "BODY-CONTENT" in md
 
@@ -209,10 +210,16 @@ def _skill_artifact(**over):
 
 def test_render_skill_markdown_frontmatter_and_body():
     md = f4.render_skill_markdown(_skill_artifact())
-    assert md.startswith("---\n")
-    for key in ("name:", "description:", "type: skill", "aliases:", "relates-to:"):
-        assert key in md
-    assert "## What I Do" in md
+    fm, body = serialize.split_frontmatter(md)
+    # the layer's dominant schema (34/38 siblings): name/description/license/compatibility
+    assert fm["name"] == "idempotent-diff-pipeline"     # byte-equal to the skill directory
+    assert fm["name"] == f4.skill_destination(PATTERN).split("/")[-2]
+    assert fm["description"] == "triggers"
+    assert fm["license"] == "MIT" and fm["compatibility"] == "opencode"
+    assert fm["metadata"]["title"] == "Idempotent Diff Pipeline"   # model's name kept as title
+    # quarantine-compliance keys (the copy lives under docs/analysis/)
+    assert fm["type"] == "skill" and fm["aliases"] and fm["relates-to"] == []
+    assert "## What I Do" in body
     assert "[[" not in md and "](" not in md           # link-free scaffold
 
 
@@ -269,10 +276,12 @@ def _exercise_artifact(**over):
 
 def test_render_exercise_markdown_frontmatter_and_body():
     md = f4.render_exercise_markdown(_exercise_artifact())
-    assert md.startswith("---\n")
-    for key in ("title:", "type: exercise", "level: 3", "aliases:", "relates-to:", "tags:"):
-        assert key in md
-    assert "# Exercício X" in md and "prólogo" in md
+    fm, body = serialize.split_frontmatter(md)
+    assert fm["title"] == "Exercício X"
+    assert fm["type"] == "exercise" and fm["level"] == 3     # Check 9: type present
+    assert fm["tags"] and fm["aliases"]                      # Check 9/12
+    assert fm["relates-to"] == []                            # Check 11
+    assert "# Exercício X" in body and "prólogo" in body
     assert "[[" not in md
 
 
@@ -284,3 +293,73 @@ def test_create_exercise_stamps_orchestrator_decided_placement():
                              today="2026-09-15")
     assert art["type"] == "exercise" and art["level"] == 3 and art["number"] == 8
     assert art["intended_destination"].endswith("/exercises/exercise-08-idempotent-diff-pipeline.md")
+
+
+# ── verdict threading into skills/exercises ────────────────────────────────
+def test_skill_and_exercise_prompts_carry_the_classification_verdict():
+    # `verdict` is a Fase-3 classification field, never a key of the pattern dict
+    assert "veredito Fase 3 = Partial" in \
+        f4.build_skill_messages(PATTERN, "SRC", verdict="Partial")[1]["content"]
+    assert "veredito Fase 3 = Partial" in \
+        f4.build_exercise_messages(PATTERN, "SRC", verdict="Partial")[1]["content"]
+
+
+def test_create_skill_and_exercise_stamp_the_verdict():
+    skill = f4.create_skill(PATTERN, slug="s", source_file="s--v.md", video_id="v", evidence=[],
+                            source_context="SRC", zai_key="K", verdict="Partial",
+                            client=lambda m, k: {"name": "N", "description": "D", "body": "B"},
+                            today="2026-09-15")
+    exercise = f4.create_exercise(PATTERN, slug="s", source_file="s--v.md", video_id="v",
+                                  evidence=[], source_context="SRC", zai_key="K", level=3,
+                                  level_dir="03-nivel-3-advanced-architecture", number=1,
+                                  verdict="Partial", today="2026-09-15",
+                                  client=lambda m, k: {"title": "T", "body": "B"})
+    assert skill["phase3_verdict"] == "Partial" and exercise["phase3_verdict"] == "Partial"
+
+
+# ── destination-scoped convention checks (pre-promotion gate) ──────────────
+CANONICAL_DEST = "docs/canonical/idempotent-diff-pipeline.md"
+
+
+def test_destination_violations_accepts_a_clean_canonical_doc():
+    md = f4.render_markdown(_artifact(creation={"title": "X", "body": "apenas prosa."}))
+    assert f4.destination_violations(CANONICAL_DEST, md) == []
+
+
+def test_destination_violations_rejects_a_raw_markdown_link():
+    md = f4.render_markdown(_artifact(creation={"title": "X", "body": "veja [o doc](outro.md)"}))
+    problems = f4.destination_violations(CANONICAL_DEST, md)
+    assert any("link markdown cru" in p for p in problems)
+
+
+def test_destination_violations_ignores_links_inside_code_fences():
+    body = "```\nveja [o doc](outro.md)\n```"
+    md = f4.render_markdown(_artifact(creation={"title": "X", "body": body}))
+    assert f4.destination_violations(CANONICAL_DEST, md) == []
+
+
+def test_destination_violations_rejects_only_unresolvable_wikilinks():
+    md = f4.render_markdown(_artifact(creation={"title": "X", "body": "veja [[outro]]"}))
+    assert any("wikilink quebrado" in p for p in f4.destination_violations(CANONICAL_DEST, md))
+    assert f4.destination_violations(CANONICAL_DEST, md,
+                                     exists=lambda rel: rel == "outro.md") == []
+
+
+def test_destination_violations_requires_canonical_frontmatter():
+    assert f4.destination_violations(CANONICAL_DEST, "sem frontmatter") == \
+        [f"{CANONICAL_DEST}: frontmatter YAML ausente"]
+    no_type = "---\ntitle: X\naliases: [a]\nrelates-to: []\n---\n\nprosa"
+    assert any("sem 'type'" in p for p in f4.destination_violations(CANONICAL_DEST, no_type))
+
+
+def test_destination_violations_requires_curriculum_tags():
+    dest = "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-01-x.md"
+    assert f4.destination_violations(
+        dest, f4.render_exercise_markdown(_exercise_artifact())) == []
+    no_tags = "---\ntitle: X\ntype: exercise\naliases: [a]\nrelates-to: []\n---\n\nprosa"
+    assert any("sem 'tags'" in p for p in f4.destination_violations(dest, no_tags))
+
+
+def test_destination_violations_skips_unmonitored_destinations():
+    # .opencode/skills/ is outside the validator's monitored dirs — nothing to check
+    assert f4.destination_violations(".opencode/skills/x/SKILL.md", "qualquer [x](y.md)") == []
