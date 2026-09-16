@@ -125,8 +125,8 @@ human-reviewable through the manifest as rendered in the PR body.
 
 **Exercise level (INTERIM).** `DEFAULT_LEVEL_DIR` places every generated exercise
 at curriculum level 3; there is no level routing yet. The resolved level is
-recorded per exercise in the manifest, and Etapa 7 (#265) must decide whether and
-how to own the routing using that field as its re-routing input.
+recorded per exercise in the manifest, and Etapa 7 (#265) consumes that field as
+its routing input — see the curriculum phase below.
 
 ### Curriculum phase (Etapa 7, #265 — Fase 6: splice curricular por seção)
 
@@ -140,12 +140,14 @@ mismatch fails closed) — no second level classifier, no correction layer. The
 top-level `curriculum/*.md` surfaces (INDEX/README/MASTER_PLAN, owned by Fase 5)
 are never splice targets, and neither is the promoted entry's own file. A section
 beyond the module's max splice-eligible size fails closed (it is never truncated
-into the prompt), and so does a splice whose resulting section (heading + body)
-would pass that same cap — one rule, one constant, so the phase never writes a
-section it would refuse to splice next run. The evaluator is given the promoted
-source and the section being rewritten, so `fidelity` is scored against the real
-source. A replacement that shrinks the section body past the documented fraction is
-held in quarantine.
+into the prompt), and so does a splice whose resulting section (heading + blank
+separator + body, the same unit the cap measures) would pass that same cap — one
+rule, one constant, so the phase never writes a section it would refuse to
+splice next run. The applied splice keeps the blank line between the heading and
+its body, so the human-reviewed diff shows the enrichment and nothing else. The
+evaluator is given the promoted source and the section being rewritten, so
+`fidelity` is scored against the real source. A replacement that shrinks the
+section body past the documented fraction is held in quarantine.
 
 **Rerun semantics.** The splice applies once per index state. Rerunning `splice`
 over the CACHED index never double-applies: a byte-identical replacement is a
