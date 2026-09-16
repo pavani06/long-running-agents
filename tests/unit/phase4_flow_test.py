@@ -366,13 +366,14 @@ def test_run_fase4_holds_the_later_artifact_on_a_destination_collision(tmp_path)
 
 
 # ── partial failure and retry (the manifest never lies about a landing) ─────
-def _run_with_eval(tmp_path, eval_client, classifications=CLS, patterns=PATTERNS):
+def _run_with_eval(tmp_path, eval_client, classifications=CLS, patterns=PATTERNS,
+                   today="2026-09-15"):
     return flow.run_fase4(
         tmp_path, PKG, classifications, patterns, EXTRACTION, INDEX,
         openai_key="O", zai_key="Z", source_file="s--v.md",
         zai_client=_fake_zai, eval_client=eval_client, embed_fn=_embed_orthogonal,
         validate_fn=lambda root: True, validate_destination_fn=_destination_ok,
-        today="2026-09-15")
+        today=today)
 
 
 def test_run_fase4_contains_a_provider_failure_and_still_writes_the_manifest(tmp_path):
@@ -429,6 +430,50 @@ def test_run_fase4_rerun_does_not_duplicate_an_exercise_into_the_curriculum(tmp_
     assert row["path"] == f"{EXERCISES}/exercise-01-x.md"
     assert row["status"] == "promoted"
     assert flow.ALREADY_AT_DESTINATION in row["reasons"]
+
+
+def test_run_fase4_rerun_on_a_later_day_still_recognises_its_own_landing(tmp_path):
+    """Only the canonical renderer stamps `last_updated: <today>`, so a re-run on any
+    later day differs from its own promoted file by exactly that line. It is the same
+    landing, and the Fase-5 contract must not call a live authoritative file held."""
+    _run_with_eval(tmp_path, _pass_eval, today="2026-09-15")
+    live = tmp_path / "docs" / "canonical" / "x.md"
+    day_one = live.read_text(encoding="utf-8")
+    assert "last_updated: '2026-09-15'" in day_one
+
+    later = _run_with_eval(tmp_path, _pass_eval, today="2026-09-20")
+    assert later["held"] == []
+    for key in ("canonical_docs", "skills", "exercises"):
+        [row] = later["manifest"]["artifacts"][key]
+        assert row["status"] == "promoted", key
+        assert flow.ALREADY_AT_DESTINATION in row["reasons"], key
+        assert "quarantine_path" not in row, key
+    # the authoritative file is left exactly as day one wrote it — no rewrite
+    assert live.read_text(encoding="utf-8") == day_one
+    assert sorted(p.name for p in (tmp_path / EXERCISES).glob("*.md")) == ["exercise-01-x.md"]
+    assert list((tmp_path / "docs" / "analysis" / PKG / "proposed").rglob("*.md")) == []
+
+
+def test_run_fase4_rerun_with_a_changed_body_is_still_refused(tmp_path):
+    """Normalising the date must not blunt the gate: a real content change at an
+    occupied destination is still a fail-closed refusal."""
+    _run_with_eval(tmp_path, _pass_eval, today="2026-09-15")
+
+    def different_zai(messages, key):
+        reply = _fake_zai(messages, key)
+        if "body" in reply and "Problema" in reply["body"]:
+            reply["body"] = "## Problema\nCORPO DIFERENTE"
+        return reply
+
+    later = flow.run_fase4(
+        tmp_path, PKG, CLS, PATTERNS, EXTRACTION, INDEX,
+        openai_key="O", zai_key="Z", source_file="s--v.md",
+        zai_client=different_zai, eval_client=_pass_eval, embed_fn=_embed_orthogonal,
+        validate_fn=lambda root: True, validate_destination_fn=_destination_ok,
+        today="2026-09-20")
+    [held] = [h for h in later["held"] if h["path"] == "docs/canonical/x.md"]
+    assert any("promotion refused" in r for r in held["reasons"])
+    assert "CORPO DIFERENTE" not in (tmp_path / "docs/canonical/x.md").read_text(encoding="utf-8")
 
 
 def test_run_fase4_numbers_a_genuinely_new_exercise_after_the_existing_ones(tmp_path):

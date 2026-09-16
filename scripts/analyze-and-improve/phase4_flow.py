@@ -42,6 +42,12 @@ from analysis_package import package_dir
 
 _LEVEL_RE = re.compile(r"nivel-(\d+)")
 ALREADY_AT_DESTINATION = "conteúdo idêntico já no destino, promovido numa execução anterior"
+_LAST_UPDATED_RE = re.compile(r"^last_updated:.*$", re.MULTILINE)
+
+
+def _comparable(text: str) -> str:
+    """`text` with the frontmatter's volatile `last_updated` stamp neutralised. Pure."""
+    return _LAST_UPDATED_RE.sub("last_updated: <normalizado>", text, count=1)
 
 
 def _assert_quarantine_target(path: Path, repo_root: Path, slug: str) -> None:
@@ -69,8 +75,12 @@ def promote(repo_root: Path, slug: str, artifact: dict) -> str | None:
     """Move an ACCEPTED artifact from quarantine to its authoritative destination.
 
     Returns None for a normal move, or `ALREADY_AT_DESTINATION` when the
-    destination already holds byte-identical content — a re-run over a source a
-    previous run already promoted, which is the same landing, not a refusal.
+    destination already holds the same content — a re-run over a source a previous
+    run already promoted, which is the same landing, not a refusal. The comparison
+    neutralises the canonical frontmatter's `last_updated` stamp on both sides:
+    that field is the run's own date, so without it a re-run on any later day
+    would read its own landing as a conflict. The destination file is left exactly
+    as it is — a re-run never rewrites an authoritative file.
 
     Fail-closed: refuses a destination occupied by DIFFERENT content (a generated
     artifact never overwrites an authoritative file) and a missing quarantine
@@ -83,7 +93,7 @@ def promote(repo_root: Path, slug: str, artifact: dict) -> str | None:
         raise ValueError(f"promotion refused — no quarantined copy at {src_rel}")
     content = src.read_text(encoding="utf-8")
     if dest.exists():
-        if dest.read_text(encoding="utf-8") != content:
+        if _comparable(dest.read_text(encoding="utf-8")) != _comparable(content):
             raise ValueError(f"promotion refused — destination exists: {dest_rel}")
         src.unlink()
         return ALREADY_AT_DESTINATION
@@ -206,8 +216,6 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
                 next_number += 1
             else:
                 artifact["intended_destination"] = landed
-                artifact["number"] = phase4_create.next_exercise_number(
-                    [Path(landed).name]) - 1
         artifact["priority"] = item["priority"]
         entry = {"category": item["category"], "artifact": artifact,
                  "classification": cls, "pattern": pattern}
