@@ -8,7 +8,7 @@ size: 64
 
 # Tema: Tutoriais de ferramentas de agentes
 
-_Guias introdutórios passo a passo para iniciantes construírem apps e agentes de IA com plataformas no-code e vibe-coding como n8n, Bolt, Cursor, Lovable, Windsurf e os modelos Gemini._
+_Guias introdutórios passo a passo para iniciantes construírem apps e agentes de IA com plataformas como n8n, Cursor, Bolt, Lovable, Windsurf e modelos Gemini/OpenAI._
 
 **Tags dominantes:** agent-tooling, stack-tooling, agents
 

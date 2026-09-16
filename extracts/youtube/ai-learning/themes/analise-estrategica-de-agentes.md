@@ -1,14 +1,14 @@
 ---
-title: "Tema: Futuro Estratégico dos Agentes de IA"
+title: "Tema: Análise Estratégica de Agentes"
 type: "theme"
 source: youtube
 tags: ["agents", "analise", "governanca"]
 size: 85
 ---
 
-# Tema: Futuro Estratégico dos Agentes de IA
+# Tema: Análise Estratégica de Agentes
 
-_Análises de líderes e pesquisadores sobre a trajetória da IA, abordando a era do pré-treinamento, escassez de dados, adoção mainstream, agentes autônomos e visões de superinteligência._
+_Palestras, entrevistas e keynotes de líderes e pesquisadores que analisam a trajetória da IA — dados, scaling, agentes e governança — e projetam o futuro estratégico da área._
 
 **Tags dominantes:** agents, analise, governanca
 

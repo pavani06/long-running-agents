@@ -1,18 +1,18 @@
 ---
-title: "Tema: Engenharia de Agentes e Contexto"
+title: "Tema: Agentes, Contexto e Ferramentas"
 type: "theme"
 source: youtube
 tags: ["context-engineering", "agent-tooling", "stack-tooling"]
-size: 62
+size: 63
 ---
 
-# Tema: Engenharia de Agentes e Contexto
+# Tema: Agentes, Contexto e Ferramentas
 
-_Tutoriais práticos sobre construção e automação de agentes de IA com Claude Code, ChatGPT, computer use e fluxos N8N, focando em engenharia de prompts, hierarquia de contexto e ferramentas de produção._
+_Vídeos práticos sobre construção e operação de agentes de IA (Claude Code, managed agents, computer use, n8n), com foco em engenharia de contexto, prompting avançado e empilhamento de ferramentas de automação._
 
 **Tags dominantes:** context-engineering, agent-tooling, stack-tooling
 
-## Vídeos (62)
+## Vídeos (63)
 - [[extracts/youtube/ai-learning/2026-09-11-next-level-prompts-10-mins-into-advanced-prompting--69bH4IHZivs|"Next Level Prompts?" - 10 mins into advanced prompting]]
 - [[extracts/youtube/ai-learning/2026-09-11-5-notebooklm-hacks-that-will-blow-your-mind--Es5Qb9weRmA|5 NotebookLM Hacks That Will Blow Your Mind!]]
 - [[extracts/youtube/ai-learning/2026-09-11-5-simple-but-weird-chatgpt-5-tricks-to-get-a-10x-better-response--emV9Wo_UuGQ|5 simple (but weird) ChatGPT-5 tricks to get a 10x better response]]
@@ -46,6 +46,7 @@ _Tutoriais práticos sobre construção e automação de agentes de IA com Claud
 - [[extracts/youtube/ai-learning/2026-09-11-gpt-6-astra-fable-5-1-god-mode--KgKA0A3qlz0|GPT 6 Astra + Fable 5.1 = GOD MODE]]
 - [[extracts/youtube/ai-learning/2026-09-11-head-of-claude-code-on-the-future-of-work-and-productivity--kRgdkOw82F0|Head of Claude Code on the future of work and productivity]]
 - [[extracts/youtube/ai-learning/2026-09-11-headroom-a-context-optimization-layer-for-llm-applications-tejas-chopra-netflix--UOWSHg18cL0|Headroom: A Context Optimization Layer for LLM Applications - Tejas Chopra, Netflix, Inc.]]
+- [[extracts/youtube/ai-learning/2026-09-15-high-throughput-agentic-engineering-with-kun--MSbacZ99E14|High Throughput Agentic Engineering with Kun]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-did-we-make-deepseek-outperform-opus-4-7--f61DCDwvFis|how did we make deepseek outperform opus 4.7?]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-founders-build-on-claude-managed-agents--hm8NzEd5io0|How founders build on Claude Managed Agents]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-lovable-self-improves-every-hour-benjamin-verbeek-lovable--KA5kPbdkK2E|How Lovable self-improves every hour — Benjamin Verbeek, Lovable]]

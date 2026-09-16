@@ -1,14 +1,14 @@
 ---
-title: "Tema: Evals, verificação e calibração"
+title: "Tema: Avaliação e verificação de LLMs"
 type: "theme"
 source: youtube
 tags: ["evals", "verification", "analise"]
 size: 3
 ---
 
-# Tema: Evals, verificação e calibração
+# Tema: Avaliação e verificação de LLMs
 
-_Como avaliar e verificar saídas de LLMs e agentes de forma confiável, do gargalo de verificação de instruções e recompensas contra reward hacking até mitigar alucinações com calibração e abstenção._
+_Análises sobre como medir e verificar o comportamento de modelos e agentes, incluindo limites de seguimento de instruções, design de funções de recompensa contra reward hacking e causas estruturais de alucinações._
 
 **Tags dominantes:** evals, verification, analise
 

@@ -1,6 +1,6 @@
 {
   "resolution": 1.0,
-  "count": 8,
+  "count": 9,
   "themes": [
     {
       "id": "t01",
@@ -24,11 +24,12 @@
         "A7WFt2JQ5sg",
         "AbZODZ_4VaM",
         "AyV0hum_hA8",
+        "B9h9ovW5H9U",
         "BEKc4P87XKo",
         "C842vFY5kRo",
         "C_GG5g38vLU",
+        "D6XWu54oG4g",
         "D7_ipDqhtwk",
-        "DAC3YQgLv5E",
         "EcqMYoIV57A",
         "F3lL98Pj90o",
         "F4a8aMLb678",
@@ -39,21 +40,21 @@
         "HI2q3ci3Iuc",
         "I8fs4omN1no",
         "Ib5GBkD555M",
+        "J0hj0ms2ddo",
         "KHudyx5wW3U",
         "KcVkq5L-0f0",
         "LeUUxLRdvho",
         "Lri2LNYtERM",
-        "MSbacZ99E14",
-        "O7u6myBRsns",
         "OZ3ZNhrPbF4",
         "Q7l8YGiMgUw",
         "QBfXiWvM0qc",
         "QrMcNe2jjt8",
+        "Sir59K8ZDPU",
         "SrvKmhJRlKI",
-        "Su8r4YKX_ls",
         "U3bZavG8qQY",
         "UNzCG3lw6O0",
         "UWjh5Z4s8jY",
+        "U_YyqxUBNiQ",
         "Ubwb6NzegyA",
         "UzMNBN6xLLA",
         "VktrqzQgytY",
@@ -64,6 +65,7 @@
         "ZqGSg4b_cZA",
         "_B4Pv9ttFgY",
         "_ehJyfHg1Vk",
+        "abvQEhvRI_c",
         "am_oeAoUhew",
         "bRnoEpoK5m4",
         "c8bE0cj7vHY",
@@ -80,7 +82,6 @@
         "lUhXa8GiXns",
         "mR-WAvEPRwE",
         "mWvtOHlZM-I",
-        "mjTgkm-h__M",
         "n97BCfyFIvw",
         "n9xKblqyQ28",
         "nQwJVHCtDDY",
@@ -90,7 +91,6 @@
         "pqlWNihgdjI",
         "rmvDxxNubIg",
         "so9l_MwS2yg",
-        "t0GiTyz4syY",
         "u6jJcIFDLE4",
         "uMvTAF280so",
         "ulNsa0sD8N0",
@@ -99,8 +99,8 @@
         "v4F1gFy-hqg",
         "vy7o1g2iHY8",
         "wApaJjvNZFs",
-        "wSuQQYv-E64",
         "whue9_YquGA",
+        "xIt_mTQp6mY",
         "xUnRQ9vLXxo",
         "xgkjtF89-44",
         "xxfMT-bPEmU"
@@ -115,10 +115,10 @@
         "system design"
       ],
       "label_auto": "context-engineering, agentic-coding, verification",
-      "label_llm": "Agentes de Codificação em Produção",
-      "description": "Como estruturar o trabalho de agentes de codificação com práticas de engenharia de software, skills, contexto seguro e evals para verificação antes de escalar.",
-      "slug": "agentes-de-codificacao-em-producao",
-      "name": "Agentes de Codificação em Produção"
+      "label_llm": "Agentic Coding: Skills & Evals",
+      "description": "Práticas agent-nativas de codificação que combinam skills em markdown, evals e verificação, engenharia de contexto e memória segura para construir, auditar e operar agentes de IA em produção e em escala.",
+      "slug": "agentic-coding-skills-evals",
+      "name": "Agentic Coding: Skills & Evals"
     },
     {
       "id": "t02",
@@ -220,10 +220,10 @@
         "harness de agentes"
       ],
       "label_auto": "agents, analise, governanca",
-      "label_llm": "Futuro Estratégico dos Agentes de IA",
-      "description": "Análises de líderes e pesquisadores sobre a trajetória da IA, abordando a era do pré-treinamento, escassez de dados, adoção mainstream, agentes autônomos e visões de superinteligência.",
-      "slug": "futuro-estrategico-dos-agentes-de-ia",
-      "name": "Futuro Estratégico dos Agentes de IA"
+      "label_llm": "Análise Estratégica de Agentes",
+      "description": "Palestras, entrevistas e keynotes de líderes e pesquisadores que analisam a trajetória da IA — dados, scaling, agentes e governança — e projetam o futuro estratégico da área.",
+      "slug": "analise-estrategica-de-agentes",
+      "name": "Análise Estratégica de Agentes"
     },
     {
       "id": "t03",
@@ -305,13 +305,13 @@
       ],
       "label_auto": "agent-tooling, stack-tooling, agents",
       "label_llm": "Tutoriais de ferramentas de agentes",
-      "description": "Guias introdutórios passo a passo para iniciantes construírem apps e agentes de IA com plataformas no-code e vibe-coding como n8n, Bolt, Cursor, Lovable, Windsurf e os modelos Gemini.",
+      "description": "Guias introdutórios passo a passo para iniciantes construírem apps e agentes de IA com plataformas como n8n, Cursor, Bolt, Lovable, Windsurf e modelos Gemini/OpenAI.",
       "slug": "tutoriais-de-ferramentas-de-agentes",
       "name": "Tutoriais de ferramentas de agentes"
     },
     {
       "id": "t04",
-      "size": 62,
+      "size": 63,
       "members": [
         "0tLHVyd7WtM",
         "19HDQ9HppOA",
@@ -340,6 +340,7 @@
         "KA5kPbdkK2E",
         "KgKA0A3qlz0",
         "LoMOPj-lO8U",
+        "MSbacZ99E14",
         "S-sYlFiGFv8",
         "T9aRN5JkmL8",
         "UOWSHg18cL0",
@@ -386,38 +387,33 @@
         "human-in-the-loop"
       ],
       "label_auto": "context-engineering, agent-tooling, stack-tooling",
-      "label_llm": "Engenharia de Agentes e Contexto",
-      "description": "Tutoriais práticos sobre construção e automação de agentes de IA com Claude Code, ChatGPT, computer use e fluxos N8N, focando em engenharia de prompts, hierarquia de contexto e ferramentas de produção.",
-      "slug": "engenharia-de-agentes-e-contexto",
-      "name": "Engenharia de Agentes e Contexto"
+      "label_llm": "Agentes, Contexto e Ferramentas",
+      "description": "Vídeos práticos sobre construção e operação de agentes de IA (Claude Code, managed agents, computer use, n8n), com foco em engenharia de contexto, prompting avançado e empilhamento de ferramentas de automação.",
+      "slug": "agentes-contexto-e-ferramentas",
+      "name": "Agentes, Contexto e Ferramentas"
     },
     {
       "id": "t05",
-      "size": 31,
+      "size": 26,
       "members": [
         "0vBKv9yAQi4",
         "31GUkCBD-Uc",
         "5AkdMangfNk",
         "5_LLMZfKI6w",
-        "B9h9ovW5H9U",
         "Bugs0dVcNI8",
-        "D6XWu54oG4g",
         "DrTdD-ttjCY",
         "GbzEDgcuGJU",
         "HdafI0t3sEY",
-        "J0hj0ms2ddo",
         "LdQpoK2TzSo",
         "MY9F9K7wWX4",
+        "O7u6myBRsns",
         "ObTPqBGsEbA",
-        "Sir59K8ZDPU",
         "TRjq7t2Ms5I",
-        "U_YyqxUBNiQ",
         "VKFKyrrK-Iw",
         "XNX-1h2K-9U",
         "YqjR4vQwbTc",
         "ZIt_R8GwP7s",
         "ZRM_TfEZcIo",
-        "abvQEhvRI_c",
         "b2GqTDWtg6s",
         "cHVQj7w9TD4",
         "gTeujlv8qK0",
@@ -437,34 +433,30 @@
         "Agente como produto (every agent is a product)"
       ],
       "label_auto": "context-engineering, agents, agent-tooling",
-      "label_llm": "Agentes de IA em Produção",
-      "description": "Construindo e orquestrando agentes confiáveis em escala, abordando ciclos de vida de desenvolvimento, evals em loop fechado, subagentes dinâmicos paralelos, arquiteturas multiagente e context engineering com grafos de decisão.",
-      "slug": "agentes-de-ia-em-producao",
-      "name": "Agentes de IA em Produção"
+      "label_llm": "Agentes em Produção em Escala",
+      "description": "Práticas de engenharia, avaliação e orquestração (deep agents, subagentes paralelos, evals em loop fechado) para construir e implantar agentes de IA confiáveis em ambiente corporativo de grande porte.",
+      "slug": "agentes-em-producao-em-escala",
+      "name": "Agentes em Produção em Escala"
     },
     {
       "id": "t06",
-      "size": 19,
+      "size": 15,
       "members": [
         "-5PZj_Wshk0",
         "-KfrrWRl3FA",
         "4bZUZeeiacU",
-        "6IE2UygjcQw",
         "6qAB6aUMIeA",
         "AtZiJzQSH7k",
         "DBhSfROq3wU",
         "MBxhzARQNeo",
         "Qsq-Sj_rojU",
         "RPVxwzJtp4o",
-        "RfTalFEeKKE",
         "f32W5BEzWN0",
         "fBfY7tWCecU",
         "g90sjbWrwoY",
         "hCMrEfPG2Yg",
         "mJwPvyc4-rk",
-        "ohiK708oMd4",
-        "rCmvMDrCWjs",
-        "uOcKF-aLHyw"
+        "ohiK708oMd4"
       ],
       "top_tags": [
         "process",
@@ -476,13 +468,42 @@
         "estratégia baseada em busca (search-based)"
       ],
       "label_auto": "process, analise, agents",
-      "label_llm": "Playbooks de Growth e IA",
-      "description": "Análises de processos e sistemas de growth, marketing digital, influência e negociação, combinadas com visões sobre o futuro dos agentes e interfaces de IA.",
-      "slug": "playbooks-de-growth-e-ia",
-      "name": "Playbooks de Growth e IA"
+      "label_llm": "Growth, Marketing e Agentes de IA",
+      "description": "Estratégias e playbooks de marketing digital e crescimento para negócios e criadores, análise de produtos de IA em escala e o futuro das interfaces agentivas e do trabalho criativo.",
+      "slug": "growth-marketing-e-agentes-de-ia",
+      "name": "Growth, Marketing e Agentes de IA"
     },
     {
       "id": "t07",
+      "size": 9,
+      "members": [
+        "6IE2UygjcQw",
+        "DAC3YQgLv5E",
+        "RfTalFEeKKE",
+        "Su8r4YKX_ls",
+        "mjTgkm-h__M",
+        "rCmvMDrCWjs",
+        "t0GiTyz4syY",
+        "uOcKF-aLHyw",
+        "wSuQQYv-E64"
+      ],
+      "top_tags": [
+        "analise",
+        "process",
+        "decision-discipline"
+      ],
+      "top_concepts": [
+        "controle de conversa",
+        "perguntas abertas vs. fechadas"
+      ],
+      "label_auto": "analise, process, decision-discipline",
+      "label_llm": "Pensamento Sistêmico e Negociação",
+      "description": "Frameworks de análise como pensamento em sistemas, mapeamento de processos e princípios Harvard de negociação para tomar decisões disciplinadas e influenciar conversas com eficácia.",
+      "slug": "pensamento-sistemico-e-negociacao",
+      "name": "Pensamento Sistêmico e Negociação"
+    },
+    {
+      "id": "t08",
       "size": 7,
       "members": [
         "-gtlrI1TqZE",
@@ -503,13 +524,13 @@
         "arquitetura cliente-servidor MCP (host, client, server)"
       ],
       "label_auto": "agent-tooling, arquitetura, stack-tooling",
-      "label_llm": "Ecossistema MCP e Integração de Agentes",
-      "description": "Como o Model Context Protocol padroniza a descoberta e conexão de agentes de IA a ferramentas e dados externos, desde servidores MCP em n8n até padrões emergentes como auth.md e WebMCP, incluindo adoção em escala como a da Uber.",
-      "slug": "ecossistema-mcp-e-integracao-de-agentes",
-      "name": "Ecossistema MCP e Integração de Agentes"
+      "label_llm": "MCP e Integração de Agentes",
+      "description": "Como o Model Context Protocol padroniza a conexão entre agentes de IA e ferramentas, dados e serviços externos, de servidores MCP em n8n a escala na Uber e padrões emergentes como WebMCP e auth.md.",
+      "slug": "mcp-e-integracao-de-agentes",
+      "name": "MCP e Integração de Agentes"
     },
     {
-      "id": "t08",
+      "id": "t09",
       "size": 3,
       "members": [
         "XzJD1bvXKjs",
@@ -526,10 +547,10 @@
         "densidade de instruções (n) vs acurácia"
       ],
       "label_auto": "evals, verification, analise",
-      "label_llm": "Evals, verificação e calibração",
-      "description": "Como avaliar e verificar saídas de LLMs e agentes de forma confiável, do gargalo de verificação de instruções e recompensas contra reward hacking até mitigar alucinações com calibração e abstenção.",
-      "slug": "evals-verificacao-e-calibracao",
-      "name": "Evals, verificação e calibração"
+      "label_llm": "Avaliação e verificação de LLMs",
+      "description": "Análises sobre como medir e verificar o comportamento de modelos e agentes, incluindo limites de seguimento de instruções, design de funções de recompensa contra reward hacking e causas estruturais de alucinações.",
+      "slug": "avaliacao-e-verificacao-de-llms",
+      "name": "Avaliação e verificação de LLMs"
     }
   ]
 }
