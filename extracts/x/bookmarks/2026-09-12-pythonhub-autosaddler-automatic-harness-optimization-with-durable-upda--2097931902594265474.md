@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://github.com/microsoft/AutoSaddler"]
 media: []
 thin: false
-theme: "Tooling e harness de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-sumanth_077-bytedance-dropped-a-banger-paper-on-self-evolving-agent-harn--2098053941800100294|HarnessDev: self-evolving agent harnesses]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-harness-of-harness-exciting-new-research-on-coding-agents-th--2095172426925801608|Harness-of-Harness: agentes de código autônomos]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-find-the-whole-collection-here-https-t-co-hskmmhjf1l--2097449134202503657|Harness engineering evolução curada]]", "[[extracts/x/bookmarks/2026-09-12-svpino-the-frontieragent-framework-is-here-star-the-repo-https-t-co--2098489264749334565|FrontierAgent: runtime de agentes e evals]]", "[[extracts/x/bookmarks/2026-09-14-shreyanshpatni_-want-to-build-a-domain-specific-agent-harness-this-is-a-grea--2099180288668750246|Construção de harness para agentes]]", "[[extracts/x/bookmarks/2026-09-14-hwchase17-in-case-you-want-to-build-a-domain-specific-harness-https-t--2098866608785473858|Harnesses customizados para agentes]]", "[[extracts/x/bookmarks/2026-09-12-dabit3-fusion-is-the-most-efficient-frontier-harness-for-gpt-6-astr--2098557144580735156|Harness Fusion para modelos frontier]]", "[[extracts/x/bookmarks/2026-09-16-dair_ai-is-bash-all-you-need-interesting-paper-from-microsoft-if-you--2099925472629150164|Comparando interfaces de ferramentas para agentes]]", "[[extracts/x/bookmarks/2026-09-12-maxforai-nvidia-harness-sol-pi-nvlabs-sol-pi-scaling-auto-research-lo--2098050525279478059|NVIDIA open-sources SoL-Pi agent harness]]"]
+theme: "Harness Engineering de Agentes"
 ---
 
 # Otimização automática de agent harness

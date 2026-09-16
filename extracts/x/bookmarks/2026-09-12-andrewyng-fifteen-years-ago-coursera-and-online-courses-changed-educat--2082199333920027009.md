@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Engenharia de Agentes e Loops"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-alex_verem-mit-published-a-brutally-honest-report-on-what-ai-is-doing-t--2098880333676761514|Relatório MIT sobre IA e aprendizado estudantil]]", "[[extracts/x/bookmarks/2026-09-12-dkare1009-andrew-ng-just-dropped-a-3-hour-course-on-how-to-become-an-a--2082141532669333653|curso AI Engineering de Andrew Ng]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-demis-hassabis-in-the-near-future-one-person-who-knows-ai-wi--2079915295230038426|IA e produtividade individual]]", "[[extracts/x/bookmarks/2026-09-12-swapnakpanda-stanford-s-free-courses-on-ai-amp-ml-cs221-artificial-intell--2080877747338113444|Cursos gratuitos de Stanford em IA/ML]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-how-have-software-engineering-fundamentals-changed-with-agen--2093388974194872781|AI Engineering Skills para software]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-with-ai-engineering-skills-you-actively-shape-the-build-you--2098459474608672916|AI engineering key skills]]", "[[extracts/x/bookmarks/2026-09-12-ia_quijote-guarda-esta-clase-magistral-de-1-hora-se-llama-how-to-speak--2079254281274740959|Clássica aula de comunicação do MIT]]", "[[extracts/x/bookmarks/2026-09-12-expemillyweb3-a-father-asked-karpathy-what-to-teach-his-8-year-old-before--2080691057906323907|educação infantil pré-AGI segundo Karpathy]]"]
+theme: "Engenharia de agentes"
 ---
 
 # Personalização do aprendizado com IA

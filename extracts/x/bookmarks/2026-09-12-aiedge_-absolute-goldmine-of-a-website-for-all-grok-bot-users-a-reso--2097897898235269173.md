@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://www.grokhub.io/"]
 media: ["https://pbs.twimg.com/amplify_video_thumb/2097897866857693184/img/u6HlGpwPtDjfS0FE.jpg"]
 thin: false
-theme: "Tooling e harness de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-benln-new-grok-bot-guides-added-includes-bot-for-engineering-suppo--2099849826120683967|Grok Bot usage guides]]", "[[extracts/x/bookmarks/2026-09-16-grok-try-grok-bot-https-t-co-fo8jkd1aeq--2099876446864867561|Lançamento do Grok Bot (agentes computer-use)]]", "[[extracts/x/bookmarks/2026-09-16-grok-to-enter-you-must-have-a-grok-bot-account-and-quote-the-orig--2099876433006919946|Concurso de bots do Grok]]", "[[extracts/x/bookmarks/2026-09-15-mattyp-each-day-grok-bot-looks-at-my-x-bookmarks-for-things-i-find--2099482348010328185|pipeline automatizado de demos com agentes]]", "[[extracts/x/bookmarks/2026-09-16-grok-were-inviting-one-grok-bot-user-to-a-starship-launch-you-cou--2099876430561632548|Concurso Grok Bot Starship]]", "[[extracts/x/bookmarks/2026-09-14-poteto-next-week-mattyp-roshan-s-and-myself-will-be-speedrunning-bu--2098815981787414978|Speedrun de startup com Grok Bot]]"]
+theme: "Agentes autônomos e orquestração"
 ---
 
 # Grok Bot resource hub

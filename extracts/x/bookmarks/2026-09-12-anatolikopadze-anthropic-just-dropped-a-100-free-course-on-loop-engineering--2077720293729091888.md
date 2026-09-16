@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2077718717241192449/img/bY7AEKM0YssFS-LP.jpg"]
 thin: false
-theme: "Engenharia de Agentes e Loops"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-eng_khairallah1-this-is-f-cking-gold-andrej-karpathy-joined-anthropic-five-w--2075998771415031856|LOOPS.md prompt file hype]]", "[[extracts/x/bookmarks/2026-09-12-0xmovez-anthropic-engineer-80-of-our-engineers-are-using-selfimprovi--2079985963862786352|agentes auto-melhorantes orquestrados por grafos]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-google-just-dropped-a-1-hour-course-on-agentic-engineering-f--2076366894655848871|Curso Google de engenharia agêntica]]", "[[extracts/x/bookmarks/2026-09-12-zodchiii-the-creator-of-claude-code-boris-cherny-every-night-i-have-h--2079182515462369399|Engenharia com loops de agentes]]", "[[extracts/x/bookmarks/2026-09-12-leoxbtt-jensen-huang-acaba-de-matar-el-prompt-engineering-el-ceo-de--2082694020698935359|loops vs prompt engineering]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-anthropic-engineer-you-re-not-supposed-to-babysit-the-model--2080702441809399834|agentes paralelos em grafos]]", "[[extracts/x/bookmarks/2026-09-12-mihail_eric-im-excited-to-finally-announce-the-newest-edition-my-stanfor--2095166860740174273|Stanford course The Modern Software Developer]]"]
+theme: "Engenharia de agentes"
 ---
 
 # Curso gratuito de loops agênticos

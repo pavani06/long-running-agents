@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://github.com/cursor/plugins/blob/main/pstack/skills/create-verification-skill/SKILL.md", "https://github.com/cursor/plugins/blob/main/pstack/skills/maintain-verification-skill/SKILL.md"]
 media: []
 thin: false
-theme: "Claude Code e Context Engineering"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447|Superpowers: metodologia para coding agents]]", "[[extracts/x/bookmarks/2026-09-15-snwiki238337-openai-skillskill-githubskill-agent-skills-eval-skillopenai--2099052462653002157|Metodologia de avaliação de skills (OpenAI)]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-coming-soon-to-mattpocock-skills-retro-gives-you-opportuniti--2098062605407461744|Skill /retro para retroativa de agentes]]", "[[extracts/x/bookmarks/2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098382953235562613|Skill de output direto para coding agents]]", "[[extracts/x/bookmarks/2026-09-15-trending_repos-trending-repository-of-the-week-i-have-adhd-a-skill-to-stop--2099469831879737663|Skill ADHD-friendly para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-mattpocock-skills-v1-2-is-out-we-re-now-the-19th-most-starre--2084985277102031137|Lançamento mattpocock/skills v1.2]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-vibed-out-an-app-today-and-i-haven-t-looked-at-the-internals--2086838432102228008|Correção de arquitetura pós-vibe-coding]]"]
+theme: "Agentes para engenharia de código"
 ---
 
 # Skill de verificação para agentes

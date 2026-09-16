@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HRNBGrHaQAEgb2Y.jpg"]
 thin: false
-theme: "Engenharia de Agentes e Loops"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-anatolikopadze-google-just-dropped-a-1-hour-course-on-agentic-engineering-f--2076366894655848871|Curso Google de engenharia agêntica]]", "[[extracts/x/bookmarks/2026-09-12-dkare1009-andrew-ng-just-dropped-a-3-hour-course-on-how-to-become-an-a--2082141532669333653|curso AI Engineering de Andrew Ng]]", "[[extracts/x/bookmarks/2026-09-12-swapnakpanda-stanford-s-free-courses-on-ai-amp-ml-cs221-artificial-intell--2080877747338113444|Cursos gratuitos de Stanford em IA/ML]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-how-have-software-engineering-fundamentals-changed-with-agen--2093388974194872781|AI Engineering Skills para software]]", "[[extracts/x/bookmarks/2026-09-12-0xcodez-andrew-ng-just-released-a-1-hour-course-on-building-agentic--2079234800766816633|curso de agentic knowledge graphs]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-anthropic-just-dropped-a-100-free-course-on-loop-engineering--2077720293729091888|Curso gratuito de loops agênticos]]"]
+theme: "Engenharia de agentes"
 ---
 
 # Stanford course The Modern Software Developer

@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://tidd.ly/3QR44pK"]
 media: ["https://pbs.twimg.com/media/HOU70Z5bIAECcgs.jpg"]
 thin: false
-theme: "Tooling de IA e Performance"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-dwrowland-in-2022-i-wrote-a-thread-called-how-to-prepare-for-utmb-that--2093248985435705642|preparação para o UTMB]]", "[[extracts/x/bookmarks/2026-09-12-sitkosebastian-you-don-t-need-a-power-meter-to-know-how-many-watts-a-rider--2089763604371218674|estimativa de watts sem medidor]]", "[[extracts/x/bookmarks/2026-09-12-doctorinigo-very-excited-to-share-these-results-from-our-work-with-bioli--2096296686750666868|Biossensor contínuo de lactato]]", "[[extracts/x/bookmarks/2026-09-12-eng_khairallah1-this-is-f-cking-gold-how-to-build-your-first-ai-agent-full-g--2079305065991385235|guia construção do primeiro agente de IA]]", "[[extracts/x/bookmarks/2026-09-12-cwolferesearch-getting-ready-to-publish-my-complete-guide-to-rl-for-llms-to--2091570446164733962|RLHF e pós-treinamento de LLMs]]", "[[extracts/x/bookmarks/2026-09-12-cwolferesearch-i-just-published-my-complete-guide-to-reinforcement-learning--2091872097723359673|Guia completo de RL para LLMs]]", "[[extracts/x/bookmarks/2026-09-12-doctorinigo-a-representation-of-the-lactate-shuttle-lactate-produced-by--2084362367500955826|Lactate Shuttle em fisiologia muscular]]", "[[extracts/x/bookmarks/2026-09-12-sandcresearch-cold-water-immersion-has-historically-been-used-to-speed-rec--2084202666058481781|Imersão em água fria e recuperação]]"]
+theme: "Fundamentos de treino e avaliação"
 ---
 
 # Altitude training guide

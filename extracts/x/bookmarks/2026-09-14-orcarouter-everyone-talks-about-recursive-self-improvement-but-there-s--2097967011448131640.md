@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HR1539aakAA57XQ.jpg"]
-theme: "Arquitetura e avaliação de sistemas"
 relates-to: ["[[extracts/x/bookmarks/2026-09-15-askalphaxiv-the-last-ai-built-by-humans-toward-genuine-recursive-self-im--2099090716186038640|auto-aperfeiçoamento recursivo em IA]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-another-interesting-approach-to-self-evolve-agent-skills-but--2098154641854992676|falhas em auto-evolução de skills de agentes]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-rumor-is-next-gen-models-at-openai-anthropic-are-showing-eme--2099224260137116131|Misalignment emergente em modelos frontier]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-yifanzhang-thats-not-really-new-the-interesting-problem-with--2098913996057502068|Observabilidade em modelos com recurrent depth]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-why-does-everyone-suddenly-want-to-pace-ai-recurrent-looped--2098922505591505139|Recurrent Looped Transformers]]", "[[extracts/x/bookmarks/2026-09-12-eya0-every-ai-accountant-fails-the-same-way-fluent-confident-unve--2097801524579864803|Agentes de IA contáveis verificáveis]]", "[[extracts/x/bookmarks/2026-09-16-hnshah-we-are-going-to-spend-years-watching-people-optimize-systems--2099951637997539746|Otimização de sistemas obsoletos]]"]
+theme: "Fundamentos de treino e avaliação"
 ---
 
 # recursive self-abliteration em IA
