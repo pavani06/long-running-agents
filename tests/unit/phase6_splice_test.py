@@ -239,6 +239,14 @@ class TestModelBoundary:
         with pytest.raises(ValueError, match="fence não fechado"):
             p6.parse_replacement({"body": "Exemplo:\n\n```python\nx = 1"})
 
+    def test_body_above_the_section_cap_is_rejected(self):
+        """Mesmo limite que decide quais seções são elegíveis: o splice não pode
+        fabricar uma seção que a própria fase recusaria na próxima rodada."""
+        at_cap = "x" * p6._MAX_SECTION_CHARS
+        assert p6.parse_replacement({"body": at_cap}) == at_cap
+        with pytest.raises(ValueError, match="acima do limite"):
+            p6.parse_replacement({"body": "x" * (p6._MAX_SECTION_CHARS + 1)})
+
 
 # ---------------------------------------------------------------- E2E (fakes)
 
@@ -489,6 +497,20 @@ def test_oversized_section_aborts(tmp_path):
 
     with pytest.raises(ValueError, match="grande demais"):
         _run(repo, manifest)
+    assert target.read_text(encoding="utf-8") == before
+
+
+def test_oversized_replacement_aborts(tmp_path):
+    """Um corpo acima do limite de seção falha fechado antes do splice: o currículo
+    fica intocado e nenhuma seção nova ultrapassa o limite de elegibilidade."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+
+    with pytest.raises(ValueError, match="acima do limite"):
+        _run(repo, manifest, splice_body=" ".join([BODY] * 40))
     assert target.read_text(encoding="utf-8") == before
 
 

@@ -33,10 +33,12 @@ index/worktree hash mismatch. After a full re-index the spliced section is
 current again, so the same section can be selected and enriched a second time —
 that is a fresh splice behind the same human PR gate, not a silent one.
 
-Size bounds: a section beyond `_MAX_SECTION_CHARS` is not splice material and
-fails closed (the section is never truncated into the prompt), and a replacement
-that shrinks the body past `_MIN_BODY_RATIO` is held in quarantine, so a short
-summary can never silently delete curriculum.
+Size bounds, symmetric around one constant: a section beyond
+`_MAX_SECTION_CHARS` is not splice material and fails closed (the section is
+never truncated into the prompt), and so does a replacement body beyond that same
+cap — the phase can never manufacture a section it would itself refuse next run.
+A replacement that shrinks the body past `_MIN_BODY_RATIO` is held in quarantine,
+so a short summary can never silently delete curriculum.
 
 Pure parts (unit-tested): section localization, splice application, both diff
 gates, prompt assembly, replacement parsing. `run` needs both keys but every
@@ -68,7 +70,9 @@ _MAX_KNOWLEDGE_CHARS = 4000
 # never shown. A section bigger than this therefore fails closed instead: with the
 # knowledge cap above, the prompt stays around 12k chars, the same "stay inside
 # the provider's input limit" rationale. The repo has a handful of 40-77k-char
-# sections; they are not section-splice material.
+# sections; they are not section-splice material. The SAME cap bounds the
+# replacement body: one rule, one constant, so a splice can never manufacture a
+# section that the next run would itself refuse to splice.
 _MAX_SECTION_CHARS = 8000
 
 # An in-place revision is additive: the new body may be tightened, but a body
@@ -264,11 +268,16 @@ def parse_replacement(reply: dict) -> str:
     The body is spliced between known section limits, so it must not carry
     structure the code owns: an ATX heading outside a fence would create or
     destroy a section boundary inside the spliced range (re-chunking the file on
-    the next run), and frontmatter belongs to the file, not to a section."""
+    the next run), and frontmatter belongs to the file, not to a section. Nor may
+    it exceed `_MAX_SECTION_CHARS`, the same cap that decides which sections are
+    splice-eligible — the phase never produces a section it would later refuse."""
     body = reply.get("body")
     if not isinstance(body, str) or not body.strip():
         raise ValueError("splice: 'body' deve ser string não vazia")
     body = body.strip()
+    if len(body) > _MAX_SECTION_CHARS:
+        raise ValueError(f"splice: corpo de {len(body)} chars acima do limite de "
+                         f"{_MAX_SECTION_CHARS} para uma seção")
     if body.startswith("---"):
         raise ValueError("splice: 'body' não pode abrir com frontmatter")
     in_fence = False
