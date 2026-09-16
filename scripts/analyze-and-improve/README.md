@@ -125,8 +125,36 @@ human-reviewable through the manifest as rendered in the PR body.
 
 **Exercise level (INTERIM).** `DEFAULT_LEVEL_DIR` places every generated exercise
 at curriculum level 3; there is no level routing yet. The resolved level is
-recorded per exercise in the manifest, and Etapa 7 (#265) must decide whether and
-how to own the routing using that field as its re-routing input.
+recorded per exercise in the manifest, and Etapa 7 (#265) consumes that field as
+its routing input — see the curriculum phase below.
+
+### Curriculum phase (Etapa 7, #265 — Fase 6: splice curricular por seção)
+
+| Module | Role | Pure? |
+|---|---|---|
+| `phase6_splice.py` | Fase 6 — for ONE promoted manifest entry: code localizes the exact curriculum section via the retrieval index (heading + line range, aligned with the indexed chunk's hash; best in-scope match above `floor.REPO_FLOOR`, never the entry's own file), the model sees ONLY that bounded section and returns ONLY a replacement body, code applies the splice at the known limits; deterministic gates (diff localized to the section range; exactly the target file changed — `docs/canonical/` untouched, no new curriculum files) + the #261 machine gate (evaluator + dedup + destination-scoped validate-obsidian) routed fail-closed by `quarantine.decide`: accepted → in-worktree edit behind a human PR, rejected → `docs/analysis/<slug>/proposed/`; rerun over the cached index never double-applies (detected skip or fail-closed hash mismatch) | `locate_section`/`locate_by_id`/`apply_splice`/`localized_diff_ok`/`changed_paths_ok`/`build_messages`/`parse_replacement` pure; `run` injects client/embed/evaluator/validator |
+
+Exercise routing is scoped to the level directory the entry's own manifest path
+names, with the manifest `level` field as the consistency check (path/level
+mismatch fails closed) — no second level classifier, no correction layer. The
+top-level `curriculum/*.md` surfaces (INDEX/README/MASTER_PLAN, owned by Fase 5)
+are never splice targets, and neither is the promoted entry's own file. A section
+beyond the module's max splice-eligible size fails closed (it is never truncated
+into the prompt), and so does a splice whose resulting section (heading + blank
+separator + body, the same unit the cap measures) would pass that same cap — one
+rule, one constant, so the phase never writes a section it would refuse to
+splice next run. The applied splice keeps the blank line between the heading and
+its body, so the human-reviewed diff shows the enrichment and nothing else. The
+evaluator is given the promoted source and the section being rewritten, so
+`fidelity` is scored against the real source. A replacement that shrinks the
+section body past the documented fraction is held in quarantine.
+
+**Rerun semantics.** The splice applies once per index state. Rerunning `splice`
+over the CACHED index never double-applies: a byte-identical replacement is a
+detected skip, anything else fails closed on the index/file hash mismatch. After
+a full `index --full` the section is current again, so the same section can be
+enriched a second time — a fresh splice behind the same human PR gate, not a
+silent one.
 
 **Boundaries.** The evaluator is OpenAI on purpose — a different provider from
 the GLM generator, so it never grades its own homework (`OPENAI_API_KEY`, model
@@ -134,9 +162,9 @@ via `OPENAI_EVAL_MODEL`, provisional default). `auto_merge=False` is the
 require-approval brake, usable from day 1; the **real Actions wiring**
 (open/auto-merge PR, update the rolling quarantine Issue) is **#266**, not here.
 Both the dedup threshold and the evaluator's minimum score are **provisional** —
-final calibration is **#262**. Fase 4 (creation) landed with #263 and Fase 5
-(índices) with #264 — see the sections above; Fase 6 (splice curricular, #265)
-is still out of scope.
+final calibration is **#262**. Fase 4 (creation) landed with #263, Fase 5
+(índices) with #264 and Fase 6 (splice curricular) with #265 — see the sections
+above; what remains out of scope here is the Actions wiring (#266).
 
 **Dependencies:** control plane needs only `requests` (+ stdlib). The judgment
 plane's `serialize.py` needs **PyYAML** — a workflow running `analyze` must
@@ -159,6 +187,7 @@ python3 -m pytest tests/unit/phase4_create_test.py -q                # Fase 4 (c
 python3 -m pytest tests/unit/artifact_manifest_test.py -q            # Fase 4 (manifesto — contrato da Fase 5)
 python3 -m pytest tests/unit/phase4_flow_test.py -q                  # Fase 4 (escrita em quarentena + promoção)
 python3 -m pytest tests/unit/phase5_integrate_test.py -q             # Fase 5 (manifesto → índices, determinístico)
+python3 -m pytest tests/unit/phase6_splice_test.py -q                # Fase 6 (splice por seção — localização, splice, gates)
 python3 -m pytest tests/unit/metamorphic_canon_test.py -q            # #288 canon (load/validate + real-evidence check)
 python3 -m pytest tests/unit/metamorphic_match_test.py -q            # #288 two-stage matcher
 python3 -m pytest tests/unit/metamorphic_rerank_test.py -q           # #288 reranker + sanity mini-eval
@@ -256,6 +285,9 @@ python3 scripts/analyze-and-improve/pipeline.py classify <slug> -k 12  # more de
 
 # Run Fase 5 (integrate this run's manifest into the index surfaces) — deterministic, no keys
 python3 scripts/analyze-and-improve/pipeline.py integrate docs/analysis/<slug>/<slug>-artifacts.yaml  # recomputes indexes from that manifest
+
+# Run Fase 6 (section splice for ONE promoted entry) — needs both keys + a built index
+python3 scripts/analyze-and-improve/pipeline.py splice docs/analysis/<slug>/<slug>-artifacts.yaml  # primeira entrada promovida
 ```
 
 **Fase 3 (classification).** Hybrid retrieval builds the context: dense top-k

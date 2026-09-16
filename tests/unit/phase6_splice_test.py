@@ -1,0 +1,946 @@
+#!/usr/bin/env python3
+"""Unit tests for Fase 6 (#265): section splice over the manifest boundary.
+Pure parts (localização de seção, splice, gates de diff) + run() com fakes
+injetados sobre repo sintético; sem rede, sem GLM/OpenAI reais."""
+import json
+import sys
+from pathlib import Path
+
+import pytest
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
+
+# Issue #269: pipelines irmãos publicam módulos de mesmo nome (glm, embed,
+# pipeline, ...) e no mesmo processo pytest o primeiro import vence em
+# sys.modules. Expurgue esses nomes para que os imports abaixo resolvam nesta
+# pipeline, e prenda as referências aqui no topo — testes posteriores expurgam
+# sys.modules de novo antes de qualquer teste rodar.
+for _mod in ("chunking", "embed", "evaluator", "glm", "index_store",
+             "pipeline", "store"):
+    sys.modules.pop(_mod, None)
+
+import artifact_manifest as am  # noqa: E402
+from embed import AuthError as EmbedAuthError  # noqa: E402
+from embed import EmbedError  # noqa: E402
+import glm  # noqa: E402
+import index_store  # noqa: E402
+import phase6_splice as p6  # noqa: E402
+import pipeline  # noqa: E402
+from chunking import split_sections  # noqa: E402
+from index_store import records_for  # noqa: E402
+
+DOC = """---
+title: Lição
+type: curriculum-lesson
+tags: []
+---
+
+# Lição
+
+Intro da lição.
+
+## Alavanca
+
+Corpo da alavanca.
+
+```python
+# não é heading
+x = 1
+```
+
+## ROI
+
+Corpo do ROI.
+
+## Alavanca
+
+Segunda alavanca (ordinal 1).
+
+Última seção sem heading seguinte.
+"""
+
+
+def _lines(text: str) -> list[str]:
+    return text.split("\n")
+
+
+class TestLocateSection:
+    def test_range_basics(self):
+        rng = p6.locate_section(DOC, "ROI")
+        lines = _lines(DOC)
+        assert lines[rng.start] == "## ROI"
+        body = "\n".join(lines[rng.start + 1:rng.end])
+        assert body.strip() == "Corpo do ROI."
+
+    def test_fence_protects_heading(self):
+        rng = p6.locate_section(DOC, "Alavanca", ordinal=0)
+        nxt = p6.locate_section(DOC, "ROI")
+        # a seção "Alavanca" (ordinal 0) atravessa o fence e termina no "## ROI"
+        assert rng.end == nxt.start
+
+    def test_duplicate_heading_ordinal(self):
+        first = p6.locate_section(DOC, "Alavanca", ordinal=0)
+        second = p6.locate_section(DOC, "Alavanca", ordinal=1)
+        assert first.start < second.start
+        assert second.end == len(_lines(DOC))  # vai até o EOF
+
+    def test_not_found_fails_closed(self):
+        with pytest.raises(ValueError, match="section not found"):
+            p6.locate_section(DOC, "Inexistente")
+
+    def test_frontmatter_coordinates(self):
+        rng = p6.locate_section(DOC, "Alavanca", ordinal=0)
+        lines = _lines(DOC)
+        assert lines[rng.start] == "## Alavanca"
+        assert lines[0] == "---"  # coordenadas incluem o frontmatter
+
+
+class TestLocateById:
+    def test_alignment_with_chunker_for_every_section(self):
+        for rec in records_for("curriculum/x/lição.md", DOC):
+            if rec.level == 0:
+                continue
+            rng, text, fresh = p6.locate_by_id(DOC, "curriculum/x/lição.md", rec.id,
+                                               indexed_hash=rec.hash)
+            assert fresh is True
+            lines = _lines(DOC)
+            assert lines[rng.start] == f"{'#' * rec.level} {rec.heading}"
+            assert "\n".join(lines[rng.start:rng.end]).strip("\n") == rec.text
+            assert text == rec.text
+
+    def test_unknown_record_fails_closed(self):
+        with pytest.raises(ValueError, match="index record not in current file"):
+            p6.locate_by_id(DOC, "curriculum/x/lição.md",
+                            "curriculum/x/lição.md#2-nao-existe", indexed_hash="abc")
+
+    def test_stale_index_is_reported_not_swallowed(self):
+        """O hit ranqueado descreve o conteúdo INDEXADO; se o arquivo mudou desde o
+        último índice, a localização é marcada como desatualizada."""
+        rec = [r for r in records_for("curriculum/x/lição.md", DOC) if r.heading == "ROI"][0]
+        edited = DOC.replace("Corpo do ROI.", "Corpo do ROI, revisado fora do pipeline.")
+        _rng, _text, fresh = p6.locate_by_id(edited, "curriculum/x/lição.md", rec.id,
+                                             indexed_hash=rec.hash)
+        assert fresh is False
+
+
+class TestApplySplice:
+    def test_replaces_body_only(self):
+        rng = p6.locate_section(DOC, "ROI")
+        updated, status = p6.apply_splice(DOC, rng, "Novo corpo do ROI.")
+        assert status == "changed"
+        lines = _lines(updated)
+        assert lines[rng.start] == "## ROI"
+        assert "Novo corpo do ROI." in updated
+        assert "Corpo do ROI." not in updated
+        # fora da seção, byte a byte
+        assert updated.split("## Alavanca")[0] == DOC.split("## Alavanca")[0]
+
+    def test_blank_separator_after_the_heading_survives(self):
+        rng = p6.locate_section(DOC, "ROI")
+        updated, _ = p6.apply_splice(DOC, rng, "Novo corpo do ROI.")
+        assert "## ROI\n\nNovo corpo do ROI." in updated
+
+    def test_missing_separator_is_normalized_once(self):
+        text = "# T\n\n## A\ncorpo\n\n## B\nb\n"
+        once, status = p6.apply_splice(text, p6.locate_section(text, "A"), "novo")
+        assert status == "changed" and "## A\n\nnovo\n" in once
+        twice, status2 = p6.apply_splice(once, p6.locate_section(once, "A"), "novo")
+        assert status2 == "unchanged" and twice == once
+
+    def test_idempotent_rerun_is_detected_noop(self):
+        rng = p6.locate_section(DOC, "ROI")
+        once, _ = p6.apply_splice(DOC, rng, "Corpo estável.")
+        rng2 = p6.locate_section(once, "ROI")
+        twice, status = p6.apply_splice(once, rng2, "Corpo estável.")
+        assert status == "unchanged"
+        assert twice == once
+
+    def test_trailing_blanks_survive(self):
+        text = "# T\n\n## A\ncorpo\n\n\n## B\nb\n"
+        rng = p6.locate_section(text, "A")
+        updated, status = p6.apply_splice(text, rng, "novo")
+        assert status == "changed"
+        assert "\n\n\n## B\n" in updated  # os blanks antes do próximo heading ficam
+
+
+class TestDiffGates:
+    def test_localized_ok(self):
+        rng = p6.locate_section(DOC, "ROI")
+        updated, _ = p6.apply_splice(DOC, rng, "novo corpo")
+        b0, b1 = p6.body_range(rng, _lines(DOC))
+        ok, violations = p6.localized_diff_ok(DOC, updated, b0, b1)
+        assert ok and violations == []
+
+    def test_append_at_the_end_of_the_body_stays_inside_the_section(self):
+        """Regressão: um parágrafo aditivo no FIM do corpo deixa tudo fora da seção
+        byte-idêntico. O veredito não pode depender de como um algoritmo de diff
+        escolhe alinhar a inserção na borda do corpo."""
+        rng = p6.locate_section(DOC, "ROI")
+        lines = _lines(DOC)
+        b0, b1 = p6.body_range(rng, lines)
+        original_body = "\n".join(lines[b0:b1]).strip("\n")
+        updated, status = p6.apply_splice(
+            DOC, rng, f"{original_body}\n\nNota de integração aditiva.")
+
+        assert status == "changed"
+        assert _lines(updated)[:b0] == lines[:b0]
+        assert _lines(updated)[len(_lines(updated)) - (len(lines) - b1):] == lines[b1:]
+        ok, violations = p6.localized_diff_ok(DOC, updated, b0, b1)
+        assert ok and violations == []
+
+    def test_localized_catches_edit_after_the_section(self):
+        tampered = DOC.replace("Segunda alavanca (ordinal 1).", "Reescrita depois da seção.")
+        rng = p6.locate_section(DOC, "ROI")
+        b0, b1 = p6.body_range(rng, _lines(DOC))
+        ok, violations = p6.localized_diff_ok(DOC, tampered, b0, b1)
+        assert not ok
+        assert any("fora da seção" in v for v in violations)
+
+    def test_localized_catches_out_of_range(self):
+        tampered = DOC.replace("Intro da lição.", "Intro alterada.")
+        rng = p6.locate_section(DOC, "ROI")
+        b0, b1 = p6.body_range(rng, _lines(DOC))
+        ok, violations = p6.localized_diff_ok(DOC, tampered, b0, b1)
+        assert not ok
+        assert any("fora da seção" in v for v in violations)
+
+    def test_body_preserved_ok(self):
+        original = "corpo original com bastante conteúdo para ser encurtado"
+        ok, violations = p6.body_preserved_ok(original, original + " e mais um pouco")
+        assert ok and violations == []
+        ok, violations = p6.body_preserved_ok(original, "resumo")
+        assert not ok
+        assert any("encurtado" in v for v in violations)
+
+    def test_changed_paths_ok(self):
+        ok, _ = p6.changed_paths_ok(["curriculum/03/x/lesson.md"], "curriculum/03/x/lesson.md")
+        assert ok
+        for changed in (["docs/canonical/foo.md"],
+                        ["curriculum/03/x/lesson.md", "curriculum/03/x/new.md"],
+                        ["docs/canonical/foo.md", "outro.md"]):
+            ok, violations = p6.changed_paths_ok(changed, "curriculum/03/x/lesson.md")
+            assert not ok and violations
+
+
+class TestScope:
+    def test_exercise_scope_comes_from_its_own_path(self):
+        path = "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-09-x.md"
+        assert p6.splice_scope(path, 3) == "curriculum/03-nivel-3-advanced-architecture/"
+
+    def test_level_disagreeing_with_path_fails_closed(self):
+        path = "curriculum/03-nivel-3-operational/exercises/exercise-09-x.md"
+        with pytest.raises(ValueError, match="diverge"):
+            p6.splice_scope(path, 2)
+
+    def test_exercise_without_level_fails_closed(self):
+        path = "curriculum/03-nivel-3-operational/exercises/exercise-09-x.md"
+        for missing in (None, ""):
+            with pytest.raises(ValueError, match="sem level"):
+                p6.splice_scope(path, missing)
+
+    def test_canonical_entry_scopes_to_the_whole_curriculum(self):
+        assert p6.splice_scope("docs/canonical/x.md", None) == "curriculum/"
+
+    def test_phase5_owned_surfaces_are_not_targets(self):
+        for surface in ("curriculum/INDEX.md", "curriculum/README.md",
+                        "curriculum/MASTER_PLAN.md", "curriculum/GLOSSARY.md"):
+            assert not p6.eligible_target(surface, "curriculum/", exclude="")
+        assert p6.eligible_target("curriculum/01-nivel-1-fundamentals/01-a.md",
+                                  "curriculum/", exclude="")
+
+    def test_the_entrys_own_file_is_not_a_target(self):
+        own = "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-09-x.md"
+        scope = "curriculum/03-nivel-3-advanced-architecture/"
+        assert not p6.eligible_target(own, scope, exclude=own)
+        assert p6.eligible_target("curriculum/03-nivel-3-advanced-architecture/05-l.md",
+                                  scope, exclude=own)
+
+
+class TestModelBoundary:
+    def test_bounded_input_has_section_and_knowledge_only(self):
+        msgs = p6.build_messages("ROI", "Corpo do ROI.", "Fonte promovida.", path="c/l.md")
+        user = msgs[-1]["content"]
+        assert "Corpo do ROI." in user
+        assert "Fonte promovida." in user
+        assert "Intro da lição." not in user  # o arquivo inteiro nunca vai
+
+    def test_parse_replacement(self):
+        assert p6.parse_replacement({"body": " novo\n"}) == "novo"
+        with pytest.raises(ValueError):
+            p6.parse_replacement({"body": "  "})
+        with pytest.raises(ValueError):
+            p6.parse_replacement({"other": 1})
+
+    def test_body_with_heading_is_rejected(self):
+        with pytest.raises(ValueError, match="heading ATX"):
+            p6.parse_replacement({"body": "texto\n\n## Nova subseção\n\nmais"})
+
+    def test_heading_inside_fence_is_allowed(self):
+        body = "exemplo:\n\n```md\n## isto é código\n```\n\nfim"
+        assert p6.parse_replacement({"body": body}) == body
+
+    def test_body_opening_with_frontmatter_is_rejected(self):
+        with pytest.raises(ValueError, match="frontmatter"):
+            p6.parse_replacement({"body": "---\ntitle: x\n---\n\ncorpo"})
+
+    def test_unclosed_fence_is_rejected(self):
+        with pytest.raises(ValueError, match="fence não fechado"):
+            p6.parse_replacement({"body": "Exemplo:\n\n```python\nx = 1"})
+
+
+# ---------------------------------------------------------------- E2E (fakes)
+
+SLUG = "2026-09-16-src"
+CANONICAL = ("---\ntitle: Capability Escalation Ladder\ntype: canonical\n---\n"
+             "# Capability Escalation Ladder\n\n"
+             "## Problema\n\n Quando um agente falha, ordenar escalation por custo de teste.\n"
+             "## Solução\n\n Rung por rung até o vencedor economico, nunca o primeiro que passa.\n")
+BODY = ("Quando a tarefa reprova no eval, suba a escada em ordem de custo de teste: "
+        "prompt, budget, depois decomposição — o rung vencedor é o economico. "
+        "A escada capability escalation ladder ordena os degraus por custo de teste; "
+        "o oposto de remove sem fallback. "
+        "Referência: docs/canonical/capability-escalation-ladder.md.")
+ROI_BODY = "ROI corrente da escada de escalation: capability, ladder e rung sem custo."
+LESSON = ("---\ntitle: Harness Evolution\ntype: curriculum-lesson\ntags: []\n---\n"
+          "# Harness Evolution\n\n## Visão Geral\n\nFases do harness.\n\n"
+          f"## ROI de um Componente\n\n{ROI_BODY}\n\n"
+          "## Fase 4: REMOVE\n\nRemoção segura.\n")
+# Mesma lição, mas sem nenhuma seção próxima do conhecimento promovido: a melhor
+# correspondência no escopo fica abaixo do piso de similaridade do repo.
+WEAK_LESSON = LESSON.replace(ROI_BODY, "ROI corrente do componente.")
+
+
+def _embed_fn():
+    vocab = ["escalation", "harness", "roi", "remove", "capability", "ladder",
+             "eval", "budget", "trace", "fallback", "rung", "economic"]
+
+    def embed(texts, _key):
+        out = []
+        for t in texts:
+            toks = [w.strip(".,:;!?()[]\"'") for w in t.lower().split()]
+            out.append([float(toks.count(w)) for w in vocab])
+        return out
+    return embed
+
+
+def _repo(tmp_path: Path, *, lesson: str = LESSON, extra_level2: bool = False) -> Path:
+    (tmp_path / "docs" / "canonical").mkdir(parents=True)
+    (tmp_path / "docs" / "canonical" / "capability-escalation-ladder.md").write_text(CANONICAL)
+    level3 = tmp_path / "curriculum" / "03-nivel-3-advanced-architecture"
+    level3.mkdir(parents=True)
+    (level3 / "05-harness-evolution.md").write_text(lesson)
+    if extra_level2:
+        level2 = tmp_path / "curriculum" / "02-nivel-2-practical-patterns"
+        level2.mkdir(parents=True)
+        (level2 / "04-trace-reading.md").write_text(lesson)   # decoy idêntico
+    return tmp_path
+
+
+def _index(repo: Path, embed) -> dict:
+    index: dict = {}
+    for md in (sorted(repo.glob("curriculum/*/*.md")) + sorted(repo.glob("curriculum/*/*/*.md"))
+               + sorted(repo.glob("curriculum/*.md")) + sorted(repo.glob("docs/canonical/*.md"))):
+        rel = md.relative_to(repo).as_posix()
+        recs = records_for(rel, md.read_text(encoding="utf-8"))
+        vecs = {r.id: v for r, v in zip(recs, embed([r.text for r in recs], "k"))}
+        index = index_store.merge_index(index, {rel: recs}, [], vecs)
+    return index
+
+
+def _manifest(path: Path, *, category: str = "canonical", dest: str,
+              level=None) -> Path:
+    artifact = {"intended_destination": dest, "pattern": "Capability Escalation Ladder",
+                "phase3_verdict": "Missing", "title": "Capability Escalation Ladder",
+                "content": CANONICAL}
+    if category == "exercise":
+        artifact["level"] = level
+    manifest = am.build_manifest(
+        SLUG, "2026-09-16",
+        [{"pattern": "Capability Escalation Ladder", "verdict": "Missing", "evidence": []}],
+        [{"category": category, "artifact": artifact, "accepted": True, "reasons": []}],
+        {category}, complete=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(am.manifest_yaml(manifest), encoding="utf-8")
+    return path
+
+
+def _run(repo: Path, manifest: Path, *, splice_body: str = BODY, eval_ok: bool = True,
+         changed: list[str] | None = None, index: dict | None = None,
+         eval_calls: list | None = None, changed_fn=None, **kw):
+    """`changed` is what git would report as the splice's own worktree delta;
+    absent a path scenario, a splice changes exactly the file it wrote."""
+    calls: list[list[dict]] = []
+
+    def fake_splice(messages, _key):
+        calls.append(messages)
+        return {"body": splice_body}
+
+    def fake_eval(messages, _key):
+        if eval_calls is not None:
+            eval_calls.append(messages)
+        scores = {"fidelity": 5, "evidence": 5, "non_duplication": 5, "format": 5} \
+            if eval_ok else {"fidelity": 0, "evidence": 0, "non_duplication": 0, "format": 0}
+        return {"scores": scores, "rationale": "ok" if eval_ok else "ruim"}
+
+    embed = _embed_fn()
+    out = p6.run(repo, manifest, zai_key="z", openai_key="o",
+                 index=_index(repo, embed) if index is None else index,
+                 changed_paths_fn=(changed_fn if changed_fn is not None else
+                                   (lambda target: [target] if changed is None else changed)),
+                 embed_fn=embed, splice_client=fake_splice, eval_client=fake_eval,
+                 validate_fn=lambda _root: True,
+                 validate_destination_fn=lambda _r, _d, _t: {"available": True, "violations": []},
+                 **kw)
+    return out, calls
+
+
+def test_end_to_end_applied(tmp_path):
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+
+    out, calls = _run(repo, manifest, changed=[target.relative_to(repo).as_posix()])
+
+    assert out["status"] == "applied"
+    assert out["decision"]["accepted"] is True
+    assert out["target"].endswith("05-harness-evolution.md")
+    assert "ROI de um Componente" in out["section"]["heading"]
+    # input limitado ao modelo: só a seção, nunca o arquivo inteiro
+    user = calls[0][-1]["content"]
+    assert "ROI corrente" in user and "Remoção segura." not in user
+    # splice exato: corpo novo dentro da seção; tudo fora dela byte-idêntico
+    after = target.read_text(encoding="utf-8")
+    assert f"## ROI de um Componente\n\n{BODY}" in after and ROI_BODY not in after
+    head = before[:before.index("## ROI de um Componente")]
+    assert after.startswith(head)
+    tail = before[before.index("## Fase 4: REMOVE"):]
+    assert after[after.index("## Fase 4: REMOVE"):] == tail
+    # gates
+    assert out["diff"]["localized_ok"] is True
+    assert out["evaluation"]["passed"] is True
+
+
+def test_reapplying_the_same_body_is_a_detected_noop(tmp_path):
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+
+    first, _ = _run(repo, manifest)
+    assert first["status"] == "applied"
+    snapshot = target.read_bytes()
+
+    second, _ = _run(repo, manifest)
+    assert second["status"] == "skipped"
+    assert "rerun idempotente" in second["reason"]
+    assert target.read_bytes() == snapshot
+
+
+def test_cached_index_rerun_never_double_applies(tmp_path):
+    """O rerun real usa o índice em cache (`load_state`), que ainda descreve a seção
+    PRÉ-splice. Garantia: uma única aplicação por estado do índice — reaplicar o
+    mesmo corpo é um skip detectado, e qualquer outro corpo falha fechado no hash;
+    em nenhum caso há um segundo splice silencioso."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    cached = _index(repo, _embed_fn())
+
+    first, _ = _run(repo, manifest, index=cached)
+    assert first["status"] == "applied"
+    snapshot = target.read_bytes()
+
+    second, _ = _run(repo, manifest, index=cached)
+
+    assert second["status"] == "skipped"
+    assert target.read_bytes() == snapshot
+
+    with pytest.raises(ValueError, match="desatualizado"):
+        _run(repo, manifest, index=cached, splice_body=BODY + " Outra redação.")
+    assert target.read_bytes() == snapshot
+
+
+def test_drift_since_the_index_fails_closed(tmp_path):
+    """Qualquer outra divergência entre índice e arquivo (edição fora do pipeline)
+    para o splice: o vetor ranqueado descreve um conteúdo que não está mais lá."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    cached = _index(repo, _embed_fn())
+    target.write_text(LESSON.replace(ROI_BODY, "Reescrito à mão fora do pipeline."))
+    before = target.read_text(encoding="utf-8")
+
+    with pytest.raises(ValueError, match="desatualizado"):
+        _run(repo, manifest, index=cached)
+    assert target.read_text(encoding="utf-8") == before
+
+
+def test_weak_best_match_aborts(tmp_path):
+    """Gap analysis por retrieval: sem nenhuma seção do escopo acima do piso do repo,
+    o splice não escolhe um destino qualquer."""
+    repo = _repo(tmp_path, lesson=WEAK_LESSON)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    before = (repo / "curriculum" / "03-nivel-3-advanced-architecture"
+              / "05-harness-evolution.md").read_text(encoding="utf-8")
+
+    with pytest.raises(ValueError, match="piso de similaridade"):
+        _run(repo, manifest)
+    assert (repo / "curriculum" / "03-nivel-3-advanced-architecture"
+            / "05-harness-evolution.md").read_text(encoding="utf-8") == before
+
+
+def test_promoted_entry_own_file_is_never_the_target(tmp_path):
+    """O exercício promovido já vive no diretório do seu nível e é a FONTE do splice:
+    ele não pode ser escolhido como destino de si mesmo."""
+    repo = _repo(tmp_path)
+    ex_rel = ("curriculum/03-nivel-3-advanced-architecture/exercises/"
+              "exercise-09-capability-escalation-ladder.md")
+    (repo / ex_rel).parent.mkdir(parents=True)
+    (repo / ex_rel).write_text(
+        "---\ntitle: Exercise\ntype: exercise\ntags: []\nlevel: 3\n---\n"
+        "# Exercise\n\n## Tarefa\n\nOrdene capability escalation ladder e rung "
+        "por custo de teste.\n")
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         category="exercise", level=3, dest=ex_rel)
+    ex_before = (repo / ex_rel).read_text(encoding="utf-8")
+
+    out, _ = _run(repo, manifest)
+
+    assert out["target"] == ("curriculum/03-nivel-3-advanced-architecture/"
+                            "05-harness-evolution.md")
+    assert out["status"] == "applied"
+    assert (repo / ex_rel).read_text(encoding="utf-8") == ex_before
+
+
+def test_index_record_for_deleted_file_fails_closed(tmp_path):
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    cached = _index(repo, _embed_fn())
+    (repo / "curriculum" / "03-nivel-3-advanced-architecture"
+     / "05-harness-evolution.md").unlink()
+
+    with pytest.raises(ValueError, match="arquivo inexistente"):
+        _run(repo, manifest, index=cached)
+
+
+def test_oversized_section_aborts(tmp_path):
+    """Uma seção enorme não é material de splice: o prompt levaria a seção INTEIRA
+    (nunca truncada), então o phase falha fechado antes de chamar o modelo."""
+    big = LESSON.replace(ROI_BODY, " ".join([ROI_BODY] * 150))
+    repo = _repo(tmp_path, lesson=big)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+
+    with pytest.raises(ValueError, match="grande demais"):
+        _run(repo, manifest)
+    assert target.read_text(encoding="utf-8") == before
+
+
+HEADING_LINE = "## ROI de um Componente"
+
+
+def _filler(n: int) -> str:
+    """Texto do mesmo vocabulário da fonte com exatamente n chars, sem espaço nas
+    pontas (o parser faz strip, e estes testes medem o limite no char)."""
+    text = ((BODY + " ") * (n // len(BODY) + 2))[:n]
+    return (text[:-1] + "x") if text[-1:].isspace() else text
+
+
+def test_replacement_at_the_resulting_section_cap_applies(tmp_path):
+    """O limite mede a SEÇÃO resultante (heading + linha em branco + corpo), a mesma
+    unidade que decide elegibilidade — exatamente no limite ainda passa."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    body = _filler(p6._MAX_SECTION_CHARS - len(HEADING_LINE) - 2)
+
+    out, _ = _run(repo, manifest, splice_body=body)
+
+    assert out["status"] == "applied"
+    spliced = [r for r in records_for(out["target"], target.read_text(encoding="utf-8"))
+               if r.heading == "ROI de um Componente"][0]
+    assert len(spliced.text) == p6._MAX_SECTION_CHARS
+
+
+def test_replacement_past_the_resulting_section_cap_aborts(tmp_path):
+    """Um char além do limite falha fechado: a fase nunca fabrica uma seção que ela
+    mesma recusaria como alvo na próxima rodada."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+    body = _filler(p6._MAX_SECTION_CHARS - len(HEADING_LINE) - 1)
+
+    with pytest.raises(ValueError, match="seção resultante grande demais"):
+        _run(repo, manifest, splice_body=body)
+    assert target.read_text(encoding="utf-8") == before
+
+
+def test_eval_artifact_carries_the_promoted_source_and_the_section(tmp_path):
+    """O critério `fidelity` do avaliador só é verificável com a fonte à vista: o
+    artefato avaliado carrega a fonte promovida (limitada) e a seção original."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    eval_calls: list = []
+
+    out, _ = _run(repo, manifest, eval_calls=eval_calls)
+
+    assert out["status"] == "applied"
+    artifact = json.loads(eval_calls[0][-1]["content"].split("\n", 1)[1])
+    assert artifact["promoted_source"] == CANONICAL[:p6._MAX_KNOWLEDGE_CHARS]
+    assert artifact["original_section"] == f"{HEADING_LINE}\n\n{ROI_BODY}"
+    assert artifact["content"] == BODY
+
+
+def test_drastically_shorter_replacement_is_held(tmp_path):
+    """Um resumo curto no lugar do corpo da seção é perda de conteúdo, não revisão."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+
+    out, _ = _run(repo, manifest, splice_body="Resumo.")
+
+    assert out["status"] == "quarantined"
+    assert any("encurtado" in r for r in out["reasons"])
+    assert target.read_text(encoding="utf-8") == before
+
+
+def test_gate_rejection_goes_to_quarantine(tmp_path):
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+
+    out, _ = _run(repo, manifest, eval_ok=False)
+
+    assert out["status"] == "quarantined"
+    assert out["decision"]["accepted"] is False
+    assert target.read_text(encoding="utf-8") == before  # currículo intocado
+    qp = repo / out["quarantine_path"]
+    assert qp.is_file()
+    assert out["quarantine_path"].startswith(f"docs/analysis/{SLUG}/proposed/curriculum/")
+    assert BODY in qp.read_text(encoding="utf-8")
+
+
+def test_out_of_scope_diff_is_held(tmp_path):
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target_rel = "curriculum/03-nivel-3-advanced-architecture/05-harness-evolution.md"
+
+    out, _ = _run(repo, manifest, changed=[target_rel, "docs/canonical/other.md"])
+    assert out["status"] == "quarantined"
+    assert any("docs/canonical/" in r for r in out["reasons"])
+
+
+def test_exercise_level_routes_by_manifest_field(tmp_path):
+    repo = _repo(tmp_path, extra_level2=True)
+    ex = ("---\ntitle: Exercise\ntype: exercise\ntags: []\nlevel: 2\n---\n"
+          "# Exercise\n\n## Tarefa\n\nOrdene escalation por custo de teste.\n")
+    ex2 = repo / "curriculum" / "02-nivel-2-practical-patterns" / "exercises"
+    ex2.mkdir(parents=True)
+    (ex2 / "exercise-09-capability-escalation-ladder.md").write_text(ex)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         category="exercise", level=2,
+                         dest="curriculum/02-nivel-2-practical-patterns/exercises/"
+                              "exercise-09-capability-escalation-ladder.md")
+
+    out, _ = _run(repo, manifest)
+
+    assert out["level"] == 2  # o level do manifesto, verbatim
+    assert out["target"].startswith("curriculum/02-nivel-2-practical-patterns/")
+    assert out["status"] == "applied"
+
+
+def test_level_without_dir_fails_closed(tmp_path):
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         category="exercise", level=9,
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    with pytest.raises(ValueError, match="manifest level 9"):
+        _run(repo, manifest)
+
+
+def test_level_3_routes_to_the_dir_its_path_names(tmp_path):
+    """O repo tem mais de um diretório por nível (03-nivel-3-advanced-architecture e
+    03-nivel-3-operational): o destino é o que o caminho da própria entrada nomeia."""
+    repo = _repo(tmp_path)
+    operational = repo / "curriculum" / "03-nivel-3-operational"
+    operational.mkdir(parents=True)
+    (operational / "05-harness-evolution.md").write_text(LESSON)
+    ex_dir = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "exercises"
+    ex_dir.mkdir(parents=True)
+    (ex_dir / "exercise-09-capability-escalation-ladder.md").write_text(
+        "---\ntitle: Exercise\ntype: exercise\ntags: []\nlevel: 3\n---\n"
+        "# Exercise\n\n## Tarefa\n\nOrdene escalation por custo de teste.\n")
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         category="exercise", level=3,
+                         dest="curriculum/03-nivel-3-advanced-architecture/exercises/"
+                              "exercise-09-capability-escalation-ladder.md")
+
+    out, _ = _run(repo, manifest)
+
+    assert out["level"] == 3
+    assert out["target"].startswith("curriculum/03-nivel-3-advanced-architecture/")
+    assert out["status"] == "applied"
+
+
+def test_phase5_owned_index_surface_is_never_the_target(tmp_path):
+    """curriculum/INDEX.md é reescrito deterministicamente pela Fase 5: mesmo
+    ranqueando acima das lições, nunca pode ser o alvo do splice."""
+    repo = _repo(tmp_path)
+    (repo / "curriculum" / "INDEX.md").write_text(
+        "---\ntitle: INDEX\ntype: curriculum-index\ntags: []\n---\n\n# INDEX\n\n"
+        "## Nível 3\n\ncapability escalation ladder rung eval budget escalation\n")
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    before = (repo / "curriculum" / "INDEX.md").read_text(encoding="utf-8")
+
+    out, _ = _run(repo, manifest)
+
+    assert out["target"] == ("curriculum/03-nivel-3-advanced-architecture/"
+                            "05-harness-evolution.md")
+    assert out["status"] == "applied"
+    assert (repo / "curriculum" / "INDEX.md").read_text(encoding="utf-8") == before
+
+
+def test_revision_of_the_target_section_is_not_a_duplicate_of_itself(tmp_path):
+    """Enriquecer a seção alvo reformula o próprio texto indexado dela: o gate de
+    dedup compara contra o RESTO do índice, nunca contra o registro da seção que
+    está sendo revisada."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+
+    revised = ROI_BODY.replace("ROI corrente", "ROI, corrente,")
+
+    out, _ = _run(repo, manifest, splice_body=revised)
+
+    assert out["dedup"]["duplicate"] is False
+    assert out["status"] == "applied"
+    assert revised in target.read_text(encoding="utf-8")
+
+
+def test_rewrite_duplicating_another_section_is_quarantined(tmp_path):
+    """A isenção vale só para a seção revisada: duplicar OUTRA seção indexada
+    continua barrando o splice (fail-closed)."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+
+    out, _ = _run(repo, manifest,
+                  splice_body="Remoção segura: remove o componente, remove o fallback, remove o resto.")
+
+    assert out["dedup"]["duplicate"] is True
+    assert out["dedup"]["nearest"]["heading"] == "Fase 4: REMOVE"
+    assert out["status"] == "quarantined"
+    assert any("duplicação" in r for r in out["reasons"])
+    assert target.read_text(encoding="utf-8") == before
+
+
+def test_canonical_hits_outranking_curriculum_do_not_abort_selection(tmp_path):
+    """O conhecimento promovido vem de docs/canonical/, que está no mesmo índice:
+    seções canônicas dominam o topo do ranking global. A seleção é feita DENTRO do
+    escopo curricular, então isso não pode derrubar o splice."""
+    repo = _repo(tmp_path)
+    decoys = "\n".join(f"## Capability Escalation Ladder {i}\n\n"
+                       "capability escalation ladder rung eval budget\n" for i in range(20))
+    (repo / "docs" / "canonical" / "escalation-notes.md").write_text(
+        "---\ntitle: Notas\ntype: canonical\n---\n\n# Notas\n\n" + decoys)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+
+    out, _ = _run(repo, manifest)
+
+    assert out["target"] == ("curriculum/03-nivel-3-advanced-architecture/"
+                            "05-harness-evolution.md")
+    assert out["status"] == "applied"
+
+
+def test_cli_reports_provider_failures_instead_of_crashing(monkeypatch, tmp_path):
+    """A rodada faz três chamadas de rede; um 401/429 do provedor é uma linha de
+    summary + exit 1, como nos demais subcomandos — nunca um traceback."""
+    # run_splice importa `glm` dentro da função: prenda o módulo desta
+    # pipeline em sys.modules (vide #269) para não pegar o do vizinho.
+    monkeypatch.setitem(sys.modules, "glm", glm)
+    repo = _repo(tmp_path)
+    rel = f"docs/analysis/{SLUG}/{SLUG}-artifacts.yaml"
+    _manifest(repo / rel, dest="docs/canonical/capability-escalation-ladder.md")
+    monkeypatch.setattr(pipeline, "REPO_ROOT", repo)
+    monkeypatch.setattr(pipeline, "load_state", lambda: {"records": {"x": {}}})
+    monkeypatch.setattr(pipeline, "_worktree_paths", set)
+    monkeypatch.setenv("OPENAI_API_KEY", "o")
+    monkeypatch.setenv("ZAI_API_KEY", "z")
+
+    for exc in (glm.AuthError("GLM HTTP 401"), glm.RateLimited("429"),
+                glm.GLMError("boom"), EmbedAuthError("OpenAI HTTP 401"),
+                EmbedError("embed falhou")):
+        def explode(*_a, _e=exc, **_kw):
+            raise _e
+        monkeypatch.setattr(p6, "run", explode)
+        assert pipeline.run_splice(rel) == 1
+
+
+def test_file_set_gate_that_cannot_run_restores_the_file(tmp_path):
+    """O gate de conjunto de arquivos não tem modo fail-open: se a ferramenta não
+    roda, o arquivo volta aos bytes pré-splice antes do erro subir."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+
+    def boom(_target):
+        raise ValueError("git status falhou (128): fatal: not a git repository")
+
+    with pytest.raises(ValueError, match="git status falhou"):
+        _run(repo, manifest, changed_fn=boom)
+    assert target.read_text(encoding="utf-8") == before
+
+
+def test_cli_reports_a_failing_pre_splice_snapshot(monkeypatch, tmp_path):
+    """O snapshot pré-splice também é git: sua falha é summary + exit 1, não traceback."""
+    # run_splice importa `glm` dentro da função: prenda o módulo desta
+    # pipeline em sys.modules (vide #269) para não pegar o do vizinho.
+    monkeypatch.setitem(sys.modules, "glm", glm)
+    repo = _repo(tmp_path)
+    rel = f"docs/analysis/{SLUG}/{SLUG}-artifacts.yaml"
+    _manifest(repo / rel, dest="docs/canonical/capability-escalation-ladder.md")
+    monkeypatch.setattr(pipeline, "REPO_ROOT", repo)
+    monkeypatch.setattr(pipeline, "load_state", lambda: {"records": {"x": {}}})
+    monkeypatch.setenv("OPENAI_API_KEY", "o")
+    monkeypatch.setenv("ZAI_API_KEY", "z")
+
+    def boom():
+        raise ValueError("git status falhou (128): fatal: not a git repository")
+
+    monkeypatch.setattr(pipeline, "_worktree_paths", boom)
+    assert pipeline.run_splice(rel) == 1
+
+
+def test_git_failure_is_not_reported_as_a_content_violation(monkeypatch, tmp_path):
+    """Se `git status` não roda, o conjunto vazio viraria 'arquivo-alvo não
+    modificado' — uma ferramenta quebrada relatada como violação de conteúdo."""
+    monkeypatch.setattr(pipeline, "REPO_ROOT", tmp_path)   # não é um repositório git
+    with pytest.raises(ValueError, match="git status"):
+        pipeline._worktree_paths()
+
+
+def test_real_repo_sections_localize():
+    """A maquinaria localiza QUALQUER registro indexado de um arquivo real do repo,
+    sem drift — estrutural, não acoplado ao conteúdo (que a própria Fase 6 reescreve)."""
+    rel = "curriculum/03-nivel-3-advanced-architecture/05-harness-evolution.md"
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    lines = text.split("\n")
+    recs = [r for r in records_for(rel, text) if r.level > 0]
+    assert recs
+    for rec in recs:
+        rng, sec_text, fresh = p6.locate_by_id(text, rel, rec.id, indexed_hash=rec.hash)
+        assert fresh is True
+        assert lines[rng.start] == f"{'#' * rec.level} {rec.heading}"
+        assert sec_text == rec.text
+
+
+def test_additive_end_of_section_append_lands(tmp_path):
+    """Regressão de ponta a ponta: um parágrafo aditivo separado por linha em branco
+    no FIM do corpo da seção é um enriquecimento legítimo — ele é aplicado (fica
+    atrás do gate humano do PR), não posto em quarentena, e nada fora da seção muda."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+    appended = ("Nota de integração: a escada de escalation ordena os rungs por custo "
+                "de teste, do prompt ao budget até a decomposição.")
+
+    out, _ = _run(repo, manifest, splice_body=f"{ROI_BODY}\n\n{appended}")
+
+    assert out["status"] == "applied"
+    assert out["diff"]["localized_ok"] is True
+    assert out["diff"]["violations"] == []
+    after = target.read_text(encoding="utf-8")
+    assert f"## ROI de um Componente\n\n{ROI_BODY}\n\n{appended}\n" in after
+    assert after.startswith(before[:before.index("## ROI de um Componente")])
+    assert (after[after.index("## Fase 4: REMOVE"):]
+            == before[before.index("## Fase 4: REMOVE"):])
+
+
+def test_model_is_handed_only_the_target_section_never_the_file(tmp_path):
+    """Fronteira controlada por código: o input do modelo carrega a seção escolhida
+    verbatim e nada mais do arquivo — nem frontmatter, nem as outras seções."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    file_text = target.read_text(encoding="utf-8")
+
+    out, calls = _run(repo, manifest)
+
+    assert len(calls) == 1
+    prompt = "\n".join(m["content"] for m in calls[0])
+    section = f"{HEADING_LINE}\n\n{ROI_BODY}"
+    assert section in prompt and section in file_text   # fatia verbatim do arquivo
+    for outside in ("type: curriculum-lesson", "# Harness Evolution",
+                    "## Visão Geral", "Fases do harness.",
+                    "## Fase 4: REMOVE", "Remoção segura."):
+        assert outside not in prompt
+    assert out["status"] == "applied"
+
+
+def test_whole_document_rewrite_is_refused_before_anything_is_written(tmp_path):
+    """Um modelo que devolve o documento inteiro (frontmatter, headings inventados)
+    é recusado na leitura da resposta: nada é escrito e nada vai para quarentena."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_bytes()
+    proposed = repo / "docs" / "analysis" / SLUG / "proposed"
+
+    with pytest.raises(ValueError, match="frontmatter"):
+        _run(repo, manifest, splice_body=LESSON)
+    assert target.read_bytes() == before
+    assert not proposed.exists()
+
+    with pytest.raises(ValueError, match="heading ATX"):
+        _run(repo, manifest, splice_body=f"{ROI_BODY}\n\n## Seção Inventada\n\nTexto novo.")
+    assert target.read_bytes() == before
+    assert not proposed.exists()
+
+
+def test_manifest_level_disagreeing_with_its_own_dir_fails_closed(tmp_path):
+    """O level do manifesto é a checagem de consistência autoritativa: se ele diverge
+    do diretório de nível que o próprio caminho da entrada nomeia, o splice para."""
+    repo = _repo(tmp_path)
+    ex_rel = ("curriculum/03-nivel-3-advanced-architecture/exercises/"
+              "exercise-09-capability-escalation-ladder.md")
+    (repo / ex_rel).parent.mkdir(parents=True)
+    (repo / ex_rel).write_text(
+        "---\ntitle: Exercise\ntype: exercise\ntags: []\nlevel: 2\n---\n"
+        "# Exercise\n\n## Tarefa\n\nOrdene escalation por custo de teste.\n")
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         category="exercise", level=2, dest=ex_rel)
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_bytes()
+
+    with pytest.raises(ValueError, match="diverge do diretório"):
+        _run(repo, manifest)
+    assert target.read_bytes() == before
