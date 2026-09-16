@@ -1,7 +1,7 @@
 {
   "playlist_url": "https://www.youtube.com/playlist?list=PLdJYvRCSB6rO2Mm_0wGnHgFfoy34OaC0S",
   "source": "enumeration: YouTube Data API v3; transcript: SerpApi youtube_video_transcript",
-  "count": 369,
+  "count": 370,
   "videos": [
     {
       "id": "Dt6u-yFEpsk",
@@ -2410,6 +2410,14 @@
       "chars": 14898,
       "lang": "en",
       "segments": 401
+    },
+    {
+      "id": "xIt_mTQp6mY",
+      "url": "https://www.youtube.com/watch?v=xIt_mTQp6mY",
+      "file": "2026-09-16-loop-engineering-from-first-principles-kyle-mistele-humanlayer--xIt_mTQp6mY.txt",
+      "chars": 18435,
+      "lang": "en",
+      "segments": 491
     }
   ]
 }
