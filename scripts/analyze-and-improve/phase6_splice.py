@@ -25,10 +25,18 @@ Target selection is retrieval-driven gap analysis: the best section INSIDE the
 entry's curriculum scope, above the repo's calibrated similarity floor
 (`floor.REPO_FLOOR`) — an unrelated destination fails closed instead of landing.
 
-Idempotent rerun: a replacement identical to the current section body is a
-clean detectable skip (`status: "skipped"`), not a rewrite — including over a
-cached index that still describes the pre-splice section. Any OTHER drift
-between the index and the file on disk fails closed.
+Rerun semantics — single application per index state, not unconditional
+idempotence: over the CACHED index (the operator rerunning `splice` right after
+one landed) the run never double-applies, because a byte-identical replacement is
+a detected no-op (`status: "skipped"`) and anything else fails closed on the
+index/worktree hash mismatch. After a full re-index the spliced section is
+current again, so the same section can be selected and enriched a second time —
+that is a fresh splice behind the same human PR gate, not a silent one.
+
+Size bounds: a section beyond `_MAX_SECTION_CHARS` is not splice material and
+fails closed (the section is never truncated into the prompt), and a replacement
+that shrinks the body past `_MIN_BODY_RATIO` is held in quarantine, so a short
+summary can never silently delete curriculum.
 
 Pure parts (unit-tested): section localization, splice application, both diff
 gates, prompt assembly, replacement parsing. `run` needs both keys but every
@@ -54,6 +62,20 @@ from index_store import records_for
 # The bounded-knowledge cap mirrors retrieval.MAX_SECTION_CHARS/MAX_CONTEXT_CHARS:
 # the generator prompt must stay well inside the provider's input limit.
 _MAX_KNOWLEDGE_CHARS = 4000
+
+# The section itself goes into the prompt IN FULL — the model rewrites exactly
+# what it sees, so truncating it would make the splice replace text the model was
+# never shown. A section bigger than this therefore fails closed instead: with the
+# knowledge cap above, the prompt stays around 12k chars, the same "stay inside
+# the provider's input limit" rationale. The repo has a handful of 40-77k-char
+# sections; they are not section-splice material.
+_MAX_SECTION_CHARS = 8000
+
+# An in-place revision is additive: the new body may be tightened, but a body
+# below this fraction of the original is content LOSS (e.g. the model answering a
+# huge section with a short summary), not a revision. Deterministic, so it holds
+# the proposal in quarantine instead of landing it.
+_MIN_BODY_RATIO = 0.5
 
 _CITATION = re.compile(r"[\w./-]+\.(?:md|py|ts|js|yaml|yml|json):\d+")
 
@@ -186,6 +208,16 @@ def localized_diff_ok(original: str, updated: str, b0: int, b1: int) -> tuple[bo
         if i1 < b0 or i2 > b1:
             violations.append(f"diff fora da seção: linhas {i1 + 1}..{i2} ({tag})")
     return not violations, violations
+
+
+def body_preserved_ok(original_body: str, body: str) -> tuple[bool, list[str]]:
+    """The content-preservation gate: the replacement may not shrink the section
+    body below `_MIN_BODY_RATIO` of what was there. Pure."""
+    floor_chars = int(len(original_body.strip()) * _MIN_BODY_RATIO)
+    if len(body.strip()) < floor_chars:
+        return False, [f"corpo encurtado além do limite: {len(body.strip())} chars < "
+                       f"{floor_chars} ({_MIN_BODY_RATIO:.0%} do original)"]
+    return True, []
 
 
 def changed_paths_ok(changed: list[str], target: str) -> tuple[bool, list[str]]:
@@ -381,6 +413,10 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
         indexed_hash=str(index.get("records", {}).get(str(hit["id"]), {}).get("hash", "")))
     lines = file_text.split("\n")
     b0, b1 = body_range(rng, lines)
+    if len(section_text) > _MAX_SECTION_CHARS:
+        raise ValueError(f"seção grande demais para splice: {rng.heading!r} em "
+                         f"{target_rel} ({len(section_text)} chars > "
+                         f"{_MAX_SECTION_CHARS})")
 
     messages = build_messages(rng.heading, section_text, source_text, path=target_rel)
     body = parse_replacement(splice_client(messages, zai_key))
@@ -399,14 +435,11 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
         raise ValueError(f"índice desatualizado vs arquivo atual: {hit['id']}")
 
     localized_ok, diff_violations = localized_diff_ok(file_text, updated, b0, b1)
+    preserved_ok, size_violations = body_preserved_ok("\n".join(lines[b0:b1]), body)
     evaluation = evaluator.run(
         {"type": "curriculum_section_splice", "title": rng.heading, "content": body,
          "source_pattern": entry, "phase3_verdict": str(entry.get("classification", ""))},
-        openai_key, min_mean=min_mean, client=eval_client,
-        scope_note=(f"O artefato é uma REVISÃO IN-PLACE da seção {rng.heading!r} em "
-                    f"{target_rel}. Em 'non_duplication', reescrever o conteúdo atual "
-                    "DESSA seção não é duplicação; recriar o que qualquer OUTRA parte "
-                    "do repo já cobre continua sendo."))
+        openai_key, min_mean=min_mean, client=eval_client)
     vec = embed_fn([f"{rng.heading}\n{body}"], openai_key)[0]
     others = _index_scoped(index, lambda rid, _rec: rid != str(hit["id"]))
     dup = dedup.is_duplicate(vec, others, dup_threshold)
@@ -420,7 +453,7 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
         duplicate=dup["duplicate"], evaluation_passed=evaluation["passed"])
     decision = quarantine.decide(report)
 
-    accepted = decision["accepted"] and localized_ok
+    accepted = decision["accepted"] and localized_ok and preserved_ok
     path_violations: list[str] = []
     if accepted:
         target.write_text(updated, encoding="utf-8")
@@ -429,7 +462,8 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
             target.write_text(file_text, encoding="utf-8")
             accepted = False
 
-    reasons = decision["reasons"] + violations + diff_violations + path_violations
+    reasons = (decision["reasons"] + violations + diff_violations + size_violations
+               + path_violations)
     if accepted:
         status = "applied"
         quarantine_path = None

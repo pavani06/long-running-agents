@@ -11,6 +11,8 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
 
 import artifact_manifest as am  # noqa: E402
+from embed import AuthError as EmbedAuthError  # noqa: E402
+from embed import EmbedError  # noqa: E402
 import index_store  # noqa: E402
 import phase6_splice as p6  # noqa: E402
 from chunking import split_sections  # noqa: E402
@@ -153,6 +155,14 @@ class TestDiffGates:
         ok, violations = p6.localized_diff_ok(DOC, tampered, b0, b1)
         assert not ok
         assert any("fora da seção" in v for v in violations)
+
+    def test_body_preserved_ok(self):
+        original = "corpo original com bastante conteúdo para ser encurtado"
+        ok, violations = p6.body_preserved_ok(original, original + " e mais um pouco")
+        assert ok and violations == []
+        ok, violations = p6.body_preserved_ok(original, "resumo")
+        assert not ok
+        assert any("encurtado" in v for v in violations)
 
     def test_changed_paths_ok(self):
         ok, _ = p6.changed_paths_ok(["curriculum/03/x/lesson.md"], "curriculum/03/x/lesson.md")
@@ -360,7 +370,7 @@ def test_end_to_end_applied(tmp_path):
     assert out["evaluation"]["passed"] is True
 
 
-def test_idempotent_rerun_skips(tmp_path):
+def test_reapplying_the_same_body_is_a_detected_noop(tmp_path):
     repo = _repo(tmp_path)
     manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
                          dest="docs/canonical/capability-escalation-ladder.md")
@@ -376,9 +386,11 @@ def test_idempotent_rerun_skips(tmp_path):
     assert target.read_bytes() == snapshot
 
 
-def test_idempotent_rerun_over_cached_index_skips(tmp_path):
+def test_cached_index_rerun_never_double_applies(tmp_path):
     """O rerun real usa o índice em cache (`load_state`), que ainda descreve a seção
-    PRÉ-splice: mesmo com o hash divergente, reaplicar o mesmo corpo é um skip."""
+    PRÉ-splice. Garantia: uma única aplicação por estado do índice — reaplicar o
+    mesmo corpo é um skip detectado, e qualquer outro corpo falha fechado no hash;
+    em nenhum caso há um segundo splice silencioso."""
     repo = _repo(tmp_path)
     manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
                          dest="docs/canonical/capability-escalation-ladder.md")
@@ -392,6 +404,10 @@ def test_idempotent_rerun_over_cached_index_skips(tmp_path):
     second, _ = _run(repo, manifest, index=cached)
 
     assert second["status"] == "skipped"
+    assert target.read_bytes() == snapshot
+
+    with pytest.raises(ValueError, match="desatualizado"):
+        _run(repo, manifest, index=cached, splice_body=BODY + " Outra redação.")
     assert target.read_bytes() == snapshot
 
 
@@ -459,6 +475,36 @@ def test_index_record_for_deleted_file_fails_closed(tmp_path):
 
     with pytest.raises(ValueError, match="arquivo inexistente"):
         _run(repo, manifest, index=cached)
+
+
+def test_oversized_section_aborts(tmp_path):
+    """Uma seção enorme não é material de splice: o prompt levaria a seção INTEIRA
+    (nunca truncada), então o phase falha fechado antes de chamar o modelo."""
+    big = LESSON.replace(ROI_BODY, " ".join([ROI_BODY] * 150))
+    repo = _repo(tmp_path, lesson=big)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+
+    with pytest.raises(ValueError, match="grande demais"):
+        _run(repo, manifest)
+    assert target.read_text(encoding="utf-8") == before
+
+
+def test_drastically_shorter_replacement_is_held(tmp_path):
+    """Um resumo curto no lugar do corpo da seção é perda de conteúdo, não revisão."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+
+    out, _ = _run(repo, manifest, splice_body="Resumo.")
+
+    assert out["status"] == "quarantined"
+    assert any("encurtado" in r for r in out["reasons"])
+    assert target.read_text(encoding="utf-8") == before
 
 
 def test_gate_rejection_goes_to_quarantine(tmp_path):
@@ -615,6 +661,29 @@ def test_canonical_hits_outranking_curriculum_do_not_abort_selection(tmp_path):
     assert out["target"] == ("curriculum/03-nivel-3-advanced-architecture/"
                             "05-harness-evolution.md")
     assert out["status"] == "applied"
+
+
+def test_cli_reports_provider_failures_instead_of_crashing(monkeypatch, tmp_path):
+    """A rodada faz três chamadas de rede; um 401/429 do provedor é uma linha de
+    summary + exit 1, como nos demais subcomandos — nunca um traceback."""
+    import glm
+    import pipeline
+
+    repo = _repo(tmp_path)
+    rel = f"docs/analysis/{SLUG}/{SLUG}-artifacts.yaml"
+    _manifest(repo / rel, dest="docs/canonical/capability-escalation-ladder.md")
+    monkeypatch.setattr(pipeline, "REPO_ROOT", repo)
+    monkeypatch.setattr(pipeline, "load_state", lambda: {"records": {"x": {}}})
+    monkeypatch.setenv("OPENAI_API_KEY", "o")
+    monkeypatch.setenv("ZAI_API_KEY", "z")
+
+    for exc in (glm.AuthError("GLM HTTP 401"), glm.RateLimited("429"),
+                glm.GLMError("boom"), EmbedAuthError("OpenAI HTTP 401"),
+                EmbedError("embed falhou")):
+        def explode(*_a, _e=exc, **_kw):
+            raise _e
+        monkeypatch.setattr(p6, "run", explode)
+        assert pipeline.run_splice(rel) == 1
 
 
 def test_real_repo_sections_localize():

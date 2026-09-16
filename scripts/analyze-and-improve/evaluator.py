@@ -38,16 +38,10 @@ _SYSTEM = (
 )
 
 
-def build_messages(artifact: dict, *, scope_note: str | None = None) -> list[dict]:
-    """System (rubric) + user (the artifact to score, as JSON).
-
-    `scope_note` narrows the rubric's frame for callers whose artifact is not
-    net-new (an in-place revision restates the very section it replaces, which
-    `non_duplication` would otherwise read as re-creating repo coverage). It
-    scopes a criterion; it never relaxes one."""
-    system = _SYSTEM if scope_note is None else f"{_SYSTEM}\nEscopo desta avaliação: {scope_note}"
+def build_messages(artifact: dict) -> list[dict]:
+    """System (rubric) + user (the artifact to score, as JSON)."""
     user = "ARTEFATO A AVALIAR:\n" + json.dumps(artifact, ensure_ascii=False, indent=2)
-    return [{"role": "system", "content": system},
+    return [{"role": "system", "content": _SYSTEM},
             {"role": "user", "content": user}]
 
 
@@ -73,7 +67,7 @@ def parse_evaluation(reply: dict, *, min_mean: float = PROVISIONAL_MIN_MEAN) -> 
 
 
 def run(artifact: dict, api_key: str, *, min_mean: float = PROVISIONAL_MIN_MEAN,
-        client=chat_json, scope_note: str | None = None) -> dict:
+        client=chat_json) -> dict:
     """Evaluate one artifact: one OpenAI call, validated. `client` is injectable."""
-    reply = client(build_messages(artifact, scope_note=scope_note), api_key)
+    reply = client(build_messages(artifact), api_key)
     return parse_evaluation(reply, min_mean=min_mean)

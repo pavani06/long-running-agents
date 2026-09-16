@@ -407,6 +407,8 @@ def run_splice(manifest_arg: str) -> int:
     localized+additive diff gate plus the #261 machine gate decide landing
     (worktree) vs quarantine. Needs both keys and a built index (`index --full`)."""
     import phase6_splice
+    from glm import AuthError as GLMAuthError
+    from glm import GLMError, RateLimited
 
     rel = Path(os.path.normpath(manifest_arg))
     if rel.parts[:2] != ("docs", "analysis") or not rel.name.endswith("-artifacts.yaml"):
@@ -440,7 +442,7 @@ def run_splice(manifest_arg: str) -> int:
         out = phase6_splice.run(REPO_ROOT, manifest_path, zai_key=zai_key,
                                 openai_key=openai_key, index=index,
                                 changed_paths_fn=changed_paths)
-    except ValueError as e:
+    except (ValueError, GLMAuthError, RateLimited, GLMError, AuthError, EmbedError) as e:
         summary(f"splice: {e}")
         return 1
 

@@ -132,15 +132,23 @@ how to own the routing using that field as its re-routing input.
 
 | Module | Role | Pure? |
 |---|---|---|
-| `phase6_splice.py` | Fase 6 — for ONE promoted manifest entry: code localizes the exact curriculum section via the retrieval index (heading + line range, aligned with the indexed chunk's hash; best in-scope match above `floor.REPO_FLOOR`, never the entry's own file), the model sees ONLY that bounded section and returns ONLY a replacement body, code applies the splice at the known limits; deterministic gates (diff localized to the section range; exactly the target file changed — `docs/canonical/` untouched, no new curriculum files) + the #261 machine gate (evaluator + dedup + destination-scoped validate-obsidian) routed fail-closed by `quarantine.decide`: accepted → in-worktree edit behind a human PR, rejected → `docs/analysis/<slug>/proposed/`; rerun over an already-spliced section is a detected skip | `locate_section`/`locate_by_id`/`apply_splice`/`localized_diff_ok`/`changed_paths_ok`/`build_messages`/`parse_replacement` pure; `run` injects client/embed/evaluator/validator |
+| `phase6_splice.py` | Fase 6 — for ONE promoted manifest entry: code localizes the exact curriculum section via the retrieval index (heading + line range, aligned with the indexed chunk's hash; best in-scope match above `floor.REPO_FLOOR`, never the entry's own file), the model sees ONLY that bounded section and returns ONLY a replacement body, code applies the splice at the known limits; deterministic gates (diff localized to the section range; exactly the target file changed — `docs/canonical/` untouched, no new curriculum files) + the #261 machine gate (evaluator + dedup + destination-scoped validate-obsidian) routed fail-closed by `quarantine.decide`: accepted → in-worktree edit behind a human PR, rejected → `docs/analysis/<slug>/proposed/`; rerun over the cached index never double-applies (detected skip or fail-closed hash mismatch) | `locate_section`/`locate_by_id`/`apply_splice`/`localized_diff_ok`/`changed_paths_ok`/`build_messages`/`parse_replacement` pure; `run` injects client/embed/evaluator/validator |
 
 Exercise routing is scoped to the level directory the entry's own manifest path
 names, with the manifest `level` field as the consistency check (path/level
 mismatch fails closed) — no second level classifier, no correction layer. The
 top-level `curriculum/*.md` surfaces (INDEX/README/MASTER_PLAN, owned by Fase 5)
-are never splice targets, and neither is the promoted entry's own file. A rerun
-that reproduces the current section body is a skip even over a cached index;
-any other index/worktree drift fails closed.
+are never splice targets, and neither is the promoted entry's own file. A section
+beyond the module's max splice-eligible size fails closed (it is never truncated
+into the prompt), and a replacement that shrinks the section body past the
+documented fraction is held in quarantine.
+
+**Rerun semantics.** The splice applies once per index state. Rerunning `splice`
+over the CACHED index never double-applies: a byte-identical replacement is a
+detected skip, anything else fails closed on the index/file hash mismatch. After
+a full `index --full` the section is current again, so the same section can be
+enriched a second time — a fresh splice behind the same human PR gate, not a
+silent one.
 
 **Boundaries.** The evaluator is OpenAI on purpose — a different provider from
 the GLM generator, so it never grades its own homework (`OPENAI_API_KEY`, model
