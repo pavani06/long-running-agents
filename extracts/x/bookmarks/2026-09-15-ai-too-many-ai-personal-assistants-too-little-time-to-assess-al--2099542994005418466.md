@@ -1,0 +1,46 @@
+---
+title: "Benchmark de assistentes pessoais de IA"
+type: "extract"
+source: "x"
+status_id: "2099542994005418466"
+handle: "ai"
+url: "https://x.com/ai/status/2099542994005418466"
+created_at: "2026-09-14T16:57:12.000Z"
+extracted: "2026-09-16"
+model: "glm-5.3"
+extract_version: 2
+item: "[[raw/x/bookmarks/items/2026-09-15-ai-too-many-ai-personal-assistants-too-little-time-to-assess-al--2099542994005418466.json]]"
+tags: ["evals", "agents", "analise", "model-selection"]
+topic: "Benchmark de assistentes pessoais de IA"
+summary: "Scorecard comparando 71 assistentes pessoais de IA em 15 dimensões (escala única, média parcial até o teste completo); nenhum concluído, com Muse (9.1) e Instinct (8.4) liderando e uma biblioteca de prompts práticos de alto valor."
+key_points: ["71 assistentes avaliados em 15 dimensões com escala 0–10; nenhum concluiu todos os testes, 21 estão em progresso (média parcial) e 23 pendentes — nenhum score é definitivo ainda.", "Ranking parcial: Muse lidera com 9.1 (7/15 dimensões testadas, resposta em 7s), seguido por Instinct (8.4, 11/15, 18s) e szn (8.0, 11/15); medianas de tempo de resposta são rastreadas como métrica.", "Grok Bot (7.3) se destaca em casos reais: varrer e-mail atrás de cobranças, conciliar com CSV do banco/cartão e orquestrar 'exército' multi-agente (Research, Options, Book, Killer) para trades.", "A lista de 11 prompts do Instinct (@noahrshinn) mostra casos de uso concretos e monetizáveis: apelações de contas médicas, auditoria de reembolsos Amazon, compensação por atraso de voo (US$ 1.200 recuperados), cancelamento de assinaturas, propriedades não resgatadas — todos com ponto de aprovação humana antes de agir.", "Metodologia transparente: score global é média corrida que se move conforme novos testes aterrissam, com N/A para dimensões não aplicáveis e distinção clara entre testado/pendente."]
+entities: ["Muse", "Instinct", "szn", "Pally", "Ollie", "Tomo", "Grok Bot", "Caddy", "Shuffle", "Noah Shinn"]
+content_type: "data"
+revisit: "high"
+grounded_in: "article"
+thin: false
+links: ["https://assistantbenchmark.com"]
+media: ["https://pbs.twimg.com/media/HSMTI7caIAEFqmb.jpg"]
+---
+
+# Benchmark de assistentes pessoais de IA
+
+**@ai** · [2099542994005418466](https://x.com/ai/status/2099542994005418466) · `data`
+
+## Resumo
+Scorecard comparando 71 assistentes pessoais de IA em 15 dimensões (escala única, média parcial até o teste completo); nenhum concluído, com Muse (9.1) e Instinct (8.4) liderando e uma biblioteca de prompts práticos de alto valor.
+
+## Pontos-chave
+- 71 assistentes avaliados em 15 dimensões com escala 0–10; nenhum concluiu todos os testes, 21 estão em progresso (média parcial) e 23 pendentes — nenhum score é definitivo ainda.
+- Ranking parcial: Muse lidera com 9.1 (7/15 dimensões testadas, resposta em 7s), seguido por Instinct (8.4, 11/15, 18s) e szn (8.0, 11/15); medianas de tempo de resposta são rastreadas como métrica.
+- Grok Bot (7.3) se destaca em casos reais: varrer e-mail atrás de cobranças, conciliar com CSV do banco/cartão e orquestrar 'exército' multi-agente (Research, Options, Book, Killer) para trades.
+- A lista de 11 prompts do Instinct (@noahrshinn) mostra casos de uso concretos e monetizáveis: apelações de contas médicas, auditoria de reembolsos Amazon, compensação por atraso de voo (US$ 1.200 recuperados), cancelamento de assinaturas, propriedades não resgatadas — todos com ponto de aprovação humana antes de agir.
+- Metodologia transparente: score global é média corrida que se move conforme novos testes aterrissam, com N/A para dimensões não aplicáveis e distinção clara entre testado/pendente.
+
+## Links
+- https://assistantbenchmark.com
+
+## Entidades
+Muse, Instinct, szn, Pally, Ollie, Tomo, Grok Bot, Caddy, Shuffle, Noah Shinn
+
+> **Revisit:** `high` · **fonte:** `article`
