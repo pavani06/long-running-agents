@@ -87,7 +87,8 @@ class TestLocateById:
         for rec in records_for("curriculum/x/lição.md", DOC):
             if rec.level == 0:
                 continue
-            rng, text = p6.locate_by_id(DOC, "curriculum/x/lição.md", rec.id)
+            rng, text = p6.locate_by_id(DOC, "curriculum/x/lição.md", rec.id,
+                                        indexed_hash=rec.hash)
             lines = _lines(DOC)
             assert lines[rng.start] == f"{'#' * rec.level} {rec.heading}"
             assert "\n".join(lines[rng.start:rng.end]).strip("\n") == rec.text
@@ -95,7 +96,16 @@ class TestLocateById:
 
     def test_unknown_record_fails_closed(self):
         with pytest.raises(ValueError, match="index record not in current file"):
-            p6.locate_by_id(DOC, "curriculum/x/lição.md", "curriculum/x/lição.md#2-nao-existe")
+            p6.locate_by_id(DOC, "curriculum/x/lição.md",
+                            "curriculum/x/lição.md#2-nao-existe", indexed_hash="abc")
+
+    def test_stale_index_hash_fails_closed(self):
+        """O hit ranqueado descreve o conteúdo INDEXADO; se o arquivo mudou desde o
+        último índice, a seção localizada não é a que o vetor representa."""
+        rec = [r for r in records_for("curriculum/x/lição.md", DOC) if r.heading == "ROI"][0]
+        edited = DOC.replace("Corpo do ROI.", "Corpo do ROI, revisado fora do pipeline.")
+        with pytest.raises(ValueError, match="desatualizado"):
+            p6.locate_by_id(edited, "curriculum/x/lição.md", rec.id, indexed_hash=rec.hash)
 
 
 class TestApplySplice:
@@ -152,6 +162,32 @@ class TestDiffGates:
             assert not ok and violations
 
 
+class TestScope:
+    def test_exercise_scope_comes_from_its_own_path(self):
+        path = "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-09-x.md"
+        assert p6.splice_scope(path, 3) == "curriculum/03-nivel-3-advanced-architecture/"
+
+    def test_level_disagreeing_with_path_fails_closed(self):
+        path = "curriculum/03-nivel-3-operational/exercises/exercise-09-x.md"
+        with pytest.raises(ValueError, match="diverge"):
+            p6.splice_scope(path, 2)
+
+    def test_exercise_without_level_fails_closed(self):
+        path = "curriculum/03-nivel-3-operational/exercises/exercise-09-x.md"
+        for missing in (None, ""):
+            with pytest.raises(ValueError, match="sem level"):
+                p6.splice_scope(path, missing)
+
+    def test_canonical_entry_scopes_to_the_whole_curriculum(self):
+        assert p6.splice_scope("docs/canonical/x.md", None) == "curriculum/"
+
+    def test_phase5_owned_surfaces_are_not_targets(self):
+        for surface in ("curriculum/INDEX.md", "curriculum/README.md",
+                        "curriculum/MASTER_PLAN.md", "curriculum/GLOSSARY.md"):
+            assert not p6.eligible_target(surface, "curriculum/")
+        assert p6.eligible_target("curriculum/01-nivel-1-fundamentals/01-a.md", "curriculum/")
+
+
 class TestModelBoundary:
     def test_bounded_input_has_section_and_knowledge_only(self):
         msgs = p6.build_messages("ROI", "Corpo do ROI.", "Fonte promovida.", path="c/l.md")
@@ -178,6 +214,10 @@ class TestModelBoundary:
     def test_body_opening_with_frontmatter_is_rejected(self):
         with pytest.raises(ValueError, match="frontmatter"):
             p6.parse_replacement({"body": "---\ntitle: x\n---\n\ncorpo"})
+
+    def test_unclosed_fence_is_rejected(self):
+        with pytest.raises(ValueError, match="fence não fechado"):
+            p6.parse_replacement({"body": "Exemplo:\n\n```python\nx = 1"})
 
 
 # ---------------------------------------------------------------- E2E (fakes)
@@ -225,7 +265,8 @@ def _repo(tmp_path: Path, *, lesson: str = LESSON, extra_level2: bool = False) -
 
 def _index(repo: Path, embed) -> dict:
     index: dict = {}
-    for md in sorted(repo.glob("curriculum/*/*.md")) + sorted(repo.glob("docs/canonical/*.md")):
+    for md in (sorted(repo.glob("curriculum/*/*.md")) + sorted(repo.glob("curriculum/*.md"))
+               + sorted(repo.glob("docs/canonical/*.md"))):
         rel = md.relative_to(repo).as_posix()
         recs = records_for(rel, md.read_text(encoding="utf-8"))
         vecs = {r.id: v for r, v in zip(recs, embed([r.text for r in recs], "k"))}
@@ -376,6 +417,49 @@ def test_level_without_dir_fails_closed(tmp_path):
         _run(repo, manifest)
 
 
+def test_level_3_routes_to_the_dir_its_path_names(tmp_path):
+    """O repo tem mais de um diretório por nível (03-nivel-3-advanced-architecture e
+    03-nivel-3-operational): o destino é o que o caminho da própria entrada nomeia."""
+    repo = _repo(tmp_path)
+    operational = repo / "curriculum" / "03-nivel-3-operational"
+    operational.mkdir(parents=True)
+    (operational / "05-harness-evolution.md").write_text(LESSON)
+    ex_dir = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "exercises"
+    ex_dir.mkdir(parents=True)
+    (ex_dir / "exercise-09-capability-escalation-ladder.md").write_text(
+        "---\ntitle: Exercise\ntype: exercise\ntags: []\nlevel: 3\n---\n"
+        "# Exercise\n\n## Tarefa\n\nOrdene escalation por custo de teste.\n")
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         category="exercise", level=3,
+                         dest="curriculum/03-nivel-3-advanced-architecture/exercises/"
+                              "exercise-09-capability-escalation-ladder.md")
+
+    out, _ = _run(repo, manifest)
+
+    assert out["level"] == 3
+    assert out["target"].startswith("curriculum/03-nivel-3-advanced-architecture/")
+    assert out["status"] == "applied"
+
+
+def test_phase5_owned_index_surface_is_never_the_target(tmp_path):
+    """curriculum/INDEX.md é reescrito deterministicamente pela Fase 5: mesmo
+    ranqueando acima das lições, nunca pode ser o alvo do splice."""
+    repo = _repo(tmp_path)
+    (repo / "curriculum" / "INDEX.md").write_text(
+        "---\ntitle: INDEX\ntype: curriculum-index\ntags: []\n---\n\n# INDEX\n\n"
+        "## Nível 3\n\ncapability escalation ladder rung eval budget escalation\n")
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    before = (repo / "curriculum" / "INDEX.md").read_text(encoding="utf-8")
+
+    out, _ = _run(repo, manifest)
+
+    assert out["target"] == ("curriculum/03-nivel-3-advanced-architecture/"
+                            "05-harness-evolution.md")
+    assert out["status"] == "applied"
+    assert (repo / "curriculum" / "INDEX.md").read_text(encoding="utf-8") == before
+
+
 def test_revision_of_the_target_section_is_not_a_duplicate_of_itself(tmp_path):
     """Enriquecer a seção alvo reformula o próprio texto indexado dela: o gate de
     dedup compara contra o RESTO do índice, nunca contra o registro da seção que
@@ -438,6 +522,6 @@ def test_real_repo_section_localizes(tmp_path):
     recs = records_for(rel, text)
     roi = [r for r in recs if r.heading == "Como Calcular o ROI de um Componente"]
     assert len(roi) == 1
-    rng, sec_text = p6.locate_by_id(text, rel, roi[0].id)
-    assert 500 < rng.start < 600          # a seção real fica perto da linha 568
+    rng, sec_text = p6.locate_by_id(text, rel, roi[0].id, indexed_hash=roi[0].hash)
+    assert text.split("\n")[rng.start] == f"{'#' * roi[0].level} {roi[0].heading}"
     assert "ROI = (Erros Prevenidos" in sec_text
