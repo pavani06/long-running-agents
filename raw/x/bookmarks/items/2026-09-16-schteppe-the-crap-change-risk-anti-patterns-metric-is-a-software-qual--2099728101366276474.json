@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-16",
+  "status_id": "2099728101366276474",
+  "handle": "schteppe",
+  "text": "The CRAP (Change Risk Anti-Patterns) metric is a software quality measurement that combines code complexity and automated test coverage to calculate the risk of modifying a function or method.\n\nCRAP(m) = comp(m)^2 * (1 - cov(m))^3 + comp(m)\n\nhttps://t.co/NcmE4TOug3",
+  "created_at": "2026-09-15T05:12:45.000Z",
+  "url": "https://x.com/schteppe/status/2099728101366276474",
+  "links": [
+    "https://testing.googleblog.com/2011/02/this-code-is-crap.html"
+  ],
+  "media": []
+}

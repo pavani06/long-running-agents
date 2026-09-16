@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-16",
+  "status_id": "2099859946053533933",
+  "handle": "mattpocockuk",
+  "text": "/retro will now aggressively look for opportunities to turn fuzzy rules into deterministic checks\n\nIt'll propose custom lint rules, pre-commit hooks, or CI workflows.\n\nFound an error? Do a /retro, and make it impossible next time\n\nhttps://t.co/7PJwGitH3G",
+  "created_at": "2026-09-15T13:56:39.000Z",
+  "url": "https://x.com/mattpocockuk/status/2099859946053533933",
+  "links": [
+    "https://github.com/mattpocock/skills/pull/1083"
+  ],
+  "media": []
+}

@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-16",
+  "status_id": "2094713437930787192",
+  "handle": "TheHackersNews",
+  "text": "🚨 Attackers stole a METR API key and used it for three weeks, consuming credits worth about $600,000.\n\nA fail-open bug disabled Google authentication on a public agent dashboard. The attacker prompted an agent to reveal the key and added SSH persistence.\n\nHow the exposed app was https://t.co/5NQfXrbDtQ",
+  "created_at": "2026-09-01T09:06:16.000Z",
+  "url": "https://x.com/TheHackersNews/status/2094713437930787192",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HRHqvMKbEAATASs.jpg"
+  ]
+}
