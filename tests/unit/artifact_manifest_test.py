@@ -39,7 +39,8 @@ CLS = [
 
 def _manifest():
     return am.build_manifest("pkg", "2026-09-15", CLS, OUTCOMES,
-                             planned_categories={"canonical", "skill", "exercise"})
+                             planned_categories={"canonical", "skill", "exercise"},
+                             complete=True)
 
 
 def test_build_manifest_schema_and_counts():
@@ -49,6 +50,10 @@ def test_build_manifest_schema_and_counts():
     assert m["gate"]["artifacts_count"] == {"canonical_docs": 1, "skills": 1, "exercises": 1}
     assert set(m["artifacts"]) == {"canonical_docs", "skills", "exercises"}
     assert m["gate"]["phase4_complete"] is True
+    incomplete = am.build_manifest("pkg", "2026-09-15", CLS, OUTCOMES,
+                                   planned_categories={"canonical", "skill", "exercise"},
+                                   complete=False)
+    assert incomplete["gate"]["phase4_complete"] is False
 
 
 def test_build_manifest_records_status_and_hold_reasons():
@@ -64,8 +69,9 @@ def test_build_manifest_records_status_and_hold_reasons():
     [row] = am.build_manifest("pkg", "2026-09-15", [], [
         {"category": "skill", "artifact": no_copy, "accepted": False,
          "reasons": ["colisão de destino"]}],
-        planned_categories={"skill"})["artifacts"]["skills"]
+        planned_categories={"skill"}, complete=True)["artifacts"]["skills"]
     assert row["status"] == am.STATUS_QUARANTINED and "quarantine_path" not in row
+    assert "reasons" not in canonical            # a plain landing needs no qualifier
     [exercise] = m["artifacts"]["exercises"]
     assert exercise["status"] == am.STATUS_PROMOTED
     # the curriculum level is recorded per exercise (Etapa 7 / #265 re-routing input)
@@ -112,6 +118,7 @@ def test_manifest_md_carries_summary_and_integration_map():
 
 def test_manifest_md_empty_skipped_is_graceful():
     m = am.build_manifest("pkg", "2026-09-15", [{"pattern": "X", "verdict": "Missing"}],
-                          OUTCOMES[:1], planned_categories={"canonical", "skill", "exercise"})
+                          OUTCOMES[:1], planned_categories={"canonical", "skill", "exercise"},
+                          complete=True)
     md = am.manifest_md(m)
     assert "_(nenhum padrão ignorado)_" in md

@@ -2,7 +2,8 @@
 
 Typed record of one Fase-4 run (meta / artifacts{canonical_docs,skills,exercises}
 / skipped / gate) with per-artifact status fields for the governed loop: `status`
-(promoted|quarantined), `reasons` when a gate held the artifact, and
+(promoted|quarantined), `reasons` whenever a gate held the artifact or a landing
+needs qualifying, and
 `quarantine_path` — present only when a quarantined copy exists on disk, so a
 consumer never resolves a path to a file that was never written. Exercises additionally carry `level`, the curriculum level they were
 placed at — INTERIM while there is no level routing (see
@@ -34,9 +35,9 @@ def _entry(category: str, artifact: dict, status: str, reasons: list[str]) -> di
         entry["priority"] = artifact.get("priority", "")
     if category == "exercises":
         entry["level"] = artifact.get("level", "")
-    if status == STATUS_QUARANTINED:
-        if artifact.get("quarantine_path"):
-            entry["quarantine_path"] = artifact["quarantine_path"]
+    if status == STATUS_QUARANTINED and artifact.get("quarantine_path"):
+        entry["quarantine_path"] = artifact["quarantine_path"]
+    if reasons:
         entry["reasons"] = reasons
     return entry
 
@@ -71,11 +72,15 @@ def not_applicable_rows(planned_categories: set[str]) -> list[dict]:
 
 
 def build_manifest(slug: str, date: str, classifications: list[dict],
-                   outcomes: list[dict], planned_categories: set[str]) -> dict:
+                   outcomes: list[dict], planned_categories: set[str],
+                   *, complete: bool) -> dict:
     """Assemble the typed manifest. Pure.
 
     `outcomes`: [{category, artifact, accepted, reasons}] — one per generated artifact.
-    `planned_categories`: the categories plan_of_work scheduled (for not_applicable)."""
+    `planned_categories`: the categories plan_of_work scheduled (for not_applicable).
+    `complete`: whether every planned artifact reached a terminal recorded state —
+    it becomes `gate.phase4_complete`, so a run an unexpected error interrupted
+    never claims a finished phase to Fase 5."""
     artifacts: dict[str, list] = {"canonical_docs": [], "skills": [], "exercises": []}
     for o in outcomes:
         key = _CATEGORY_KEYS[o["category"]]
@@ -94,7 +99,7 @@ def build_manifest(slug: str, date: str, classifications: list[dict],
         "artifacts": artifacts,
         "skipped": skipped,
         "gate": {
-            "phase4_complete": True,
+            "phase4_complete": complete,
             "artifacts_count": {k: len(v) for k, v in artifacts.items()},
         },
     }

@@ -74,9 +74,8 @@ def test_quarantined_markdown_is_validator_compliant(tmp_path):
 def test_promote_moves_accepted_artifact(tmp_path):
     art = _artifact("canonical", "docs/canonical/x.md")
     flow.write_quarantined(tmp_path, PKG, art)
-    dest = flow.promote(tmp_path, PKG, art)
-    assert dest == "docs/canonical/x.md"
-    assert (tmp_path / dest).is_file()
+    assert flow.promote(tmp_path, PKG, art) is None           # a plain move, no qualifier
+    assert (tmp_path / "docs/canonical/x.md").is_file()
     assert not (tmp_path / art["quarantine_path"]).exists()   # moved, not copied
 
 
@@ -90,6 +89,19 @@ def test_promote_refuses_occupied_destination(tmp_path):
         flow.promote(tmp_path, PKG, art)
     assert dest.read_text(encoding="utf-8") == "authoritative"   # untouched
     assert (tmp_path / art["quarantine_path"]).is_file()          # copy intact
+
+
+def test_promote_is_idempotent_when_the_destination_holds_the_same_content(tmp_path):
+    """A re-run over a source a prior run already promoted is the same landing, not
+    a refusal — the manifest must not call a live file quarantined."""
+    art = _artifact("canonical", "docs/canonical/x.md")
+    flow.write_quarantined(tmp_path, PKG, art)
+    flow.promote(tmp_path, PKG, art)
+    again = _artifact("canonical", "docs/canonical/x.md")
+    flow.write_quarantined(tmp_path, PKG, again)
+    assert flow.promote(tmp_path, PKG, again) == flow.ALREADY_AT_DESTINATION
+    assert (tmp_path / "docs/canonical/x.md").is_file()
+    assert not (tmp_path / again["quarantine_path"]).exists()
 
 
 def test_promote_refuses_missing_quarantine_copy(tmp_path):
@@ -351,3 +363,60 @@ def test_run_fase4_holds_the_later_artifact_on_a_destination_collision(tmp_path)
     assert [promoted_row["pattern"], held_row["pattern"]] == ["Sub-Agents", "Sub Agents"]
     # a hold with no quarantined copy must not claim one in the Fase-5 contract
     assert "quarantine_path" not in held_row
+
+
+# ── partial failure and retry (the manifest never lies about a landing) ─────
+def _run_with_eval(tmp_path, eval_client, classifications=CLS, patterns=PATTERNS):
+    return flow.run_fase4(
+        tmp_path, PKG, classifications, patterns, EXTRACTION, INDEX,
+        openai_key="O", zai_key="Z", source_file="s--v.md",
+        zai_client=_fake_zai, eval_client=eval_client, embed_fn=_embed_orthogonal,
+        validate_fn=lambda root: True, validate_destination_fn=_destination_ok,
+        today="2026-09-15")
+
+
+def test_run_fase4_contains_a_provider_failure_and_still_writes_the_manifest(tmp_path):
+    """A transient provider error on one artifact must not abandon the run: that
+    artifact is held with the error, the rest land, and the manifest says the
+    phase did not complete."""
+    def flaky_eval(messages, key):
+        if "Exercício X" in str(messages):
+            raise RuntimeError("openai: connection reset")
+        return _pass_eval(messages, key)
+
+    result = _run_with_eval(tmp_path, flaky_eval)
+    assert "docs/canonical/x.md" in result["promoted"]
+    assert ".opencode/skills/x/SKILL.md" in result["promoted"]
+    exercise = "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-01-x.md"
+    [held] = [h for h in result["held"] if h["path"] == exercise]
+    assert any("connection reset" in r for r in held["reasons"])
+    assert result["manifest"]["gate"]["phase4_complete"] is False
+    assert (tmp_path / "docs" / "analysis" / PKG / f"{PKG}-artifacts.yaml").is_file()
+    [row] = result["manifest"]["artifacts"]["exercises"]
+    assert row["status"] == "quarantined" and row["reasons"]
+
+
+def test_run_fase4_rerun_over_already_promoted_content_records_it_promoted(tmp_path):
+    """The regression: run 1 promotes, run 2 regenerates the same content and must
+    NOT record the live file as quarantined for Fase 5 to skip."""
+    first = _run_with_eval(tmp_path, _pass_eval)
+    assert "docs/canonical/x.md" in first["promoted"]
+    second = _run_with_eval(tmp_path, _pass_eval)
+    assert "docs/canonical/x.md" in second["promoted"]
+    assert second["held"] == []
+    assert second["manifest"]["gate"]["phase4_complete"] is True
+    [row] = second["manifest"]["artifacts"]["canonical_docs"]
+    assert row["status"] == "promoted"
+    assert flow.ALREADY_AT_DESTINATION in row["reasons"]
+
+
+def test_run_fase4_rerun_with_different_content_at_the_destination_stays_held(tmp_path):
+    """A destination occupied by DIFFERENT content is still a fail-closed refusal."""
+    canonical = tmp_path / "docs" / "canonical"
+    canonical.mkdir(parents=True)
+    (canonical / "x.md").write_text("authoritative", encoding="utf-8")
+    result = _run_with_eval(tmp_path, _pass_eval)
+    assert (canonical / "x.md").read_text(encoding="utf-8") == "authoritative"
+    [held] = [h for h in result["held"] if h["path"] == "docs/canonical/x.md"]
+    assert any("promotion refused" in r for r in held["reasons"])
+    assert result["manifest"]["gate"]["phase4_complete"] is True   # a refusal is terminal

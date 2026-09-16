@@ -36,6 +36,7 @@ import quarantine
 from analysis_package import package_dir
 
 _LEVEL_RE = re.compile(r"nivel-(\d+)")
+ALREADY_AT_DESTINATION = "conteúdo idêntico já no destino, promovido numa execução anterior"
 
 
 def _assert_quarantine_target(path: Path, repo_root: Path, slug: str) -> None:
@@ -59,23 +60,32 @@ def write_quarantined(repo_root: Path, slug: str, artifact: dict) -> str:
     return rel
 
 
-def promote(repo_root: Path, slug: str, artifact: dict) -> str:
+def promote(repo_root: Path, slug: str, artifact: dict) -> str | None:
     """Move an ACCEPTED artifact from quarantine to its authoritative destination.
 
-    Fail-closed: refuses an occupied destination (a generated artifact never
-    overwrites an authoritative file) and a missing quarantine copy."""
+    Returns None for a normal move, or `ALREADY_AT_DESTINATION` when the
+    destination already holds byte-identical content — a re-run over a source a
+    previous run already promoted, which is the same landing, not a refusal.
+
+    Fail-closed: refuses a destination occupied by DIFFERENT content (a generated
+    artifact never overwrites an authoritative file) and a missing quarantine
+    copy."""
     dest_rel = artifact["intended_destination"]
     dest = repo_root / dest_rel
-    if dest.exists():
-        raise ValueError(f"promotion refused — destination exists: {dest_rel}")
     src_rel = artifact.get("quarantine_path") or quarantine.quarantine_relpath(slug, dest_rel)
     src = repo_root / src_rel
     if not src.is_file():
         raise ValueError(f"promotion refused — no quarantined copy at {src_rel}")
+    content = src.read_text(encoding="utf-8")
+    if dest.exists():
+        if dest.read_text(encoding="utf-8") != content:
+            raise ValueError(f"promotion refused — destination exists: {dest_rel}")
+        src.unlink()
+        return ALREADY_AT_DESTINATION
     dest.parent.mkdir(parents=True, exist_ok=True)
-    dest.write_text(src.read_text(encoding="utf-8"), encoding="utf-8")
+    dest.write_text(content, encoding="utf-8")
     src.unlink()
-    return dest_rel
+    return None
 
 
 def _level_of(level_dir: str) -> int:
@@ -112,7 +122,13 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
     concrete violations are carried into the hold reasons, and a validator that
     could not run is recorded as such rather than as a content violation.
     `level_dir` is INTERIM (see `phase4_create.DEFAULT_LEVEL_DIR`): the resolved
-    level is recorded per exercise in the manifest for Etapa 7 (#265)."""
+    level is recorded per exercise in the manifest for Etapa 7 (#265).
+
+    Gating is per artifact: an unexpected failure on one (a provider outage, say)
+    holds that artifact with the concrete error and the loop continues, so the
+    manifest is always written — with `gate.phase4_complete` false to say the run
+    did not finish cleanly. Generation failures still abort before any promotion
+    happens, leaving no manifest at all rather than an untruthful one."""
     import retrieval
 
     if zai_client is None:
@@ -181,6 +197,7 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
     validate_ok = bool(validate_fn(repo_root)) if claimed else True
 
     outcomes: list[dict] = []
+    aborted = False
     for g in generated:
         artifact = g["artifact"]
         if g.get("collision"):
@@ -188,35 +205,49 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
                              "accepted": False, "reasons": [g["collision"]],
                              "evaluation": None, "dedup": None})
             continue
-        evaluation = evaluator.run(_eval_artifact(artifact, g["pattern"]), openai_key,
-                                   min_mean=min_mean, client=eval_client)
-        vec = embed_fn([artifact["title"] + "\n" + artifact["content"]], openai_key)[0]
-        dup = dedup.is_duplicate(vec, index, dup_threshold)
-        checked = validate_destination_fn(
-            repo_root, artifact["intended_destination"], phase4_create.render(artifact))
-        violations = list(checked["violations"])
-        report = quarantine.report_from_gates(
-            validate_obsidian=validate_ok,
-            destination_validated=bool(checked["available"]),
-            destination_valid=not violations,
-            citations_ok=bool(g["classification"].get("verified")),
-            duplicate=dup["duplicate"], evaluation_passed=evaluation["passed"])
-        decision = quarantine.decide(report)
-        accepted, reasons = decision["accepted"], decision["reasons"] + violations
-        if accepted:
-            try:
-                promote(repo_root, slug, artifact)
-            except ValueError as exc:
-                # A fail-closed promotion refusal holds THIS artifact; the run
-                # still finishes and records it (manifest = the Fase-5 contract).
-                accepted, reasons = False, reasons + [str(exc)]
+        try:
+            evaluation = evaluator.run(_eval_artifact(artifact, g["pattern"]), openai_key,
+                                       min_mean=min_mean, client=eval_client)
+            vec = embed_fn([artifact["title"] + "\n" + artifact["content"]], openai_key)[0]
+            dup = dedup.is_duplicate(vec, index, dup_threshold)
+            checked = validate_destination_fn(
+                repo_root, artifact["intended_destination"], phase4_create.render(artifact))
+            violations = list(checked["violations"])
+            report = quarantine.report_from_gates(
+                validate_obsidian=validate_ok,
+                destination_validated=bool(checked["available"]),
+                destination_valid=not violations,
+                citations_ok=bool(g["classification"].get("verified")),
+                duplicate=dup["duplicate"], evaluation_passed=evaluation["passed"])
+            decision = quarantine.decide(report)
+            accepted, reasons = decision["accepted"], decision["reasons"] + violations
+            if accepted:
+                try:
+                    note = promote(repo_root, slug, artifact)
+                except ValueError as exc:
+                    # A fail-closed promotion refusal holds THIS artifact; the run
+                    # still finishes and records it (manifest = the Fase-5 contract).
+                    accepted, reasons = False, reasons + [str(exc)]
+                else:
+                    reasons = reasons + [note] if note else reasons
+        except Exception as exc:
+            # An unexpected failure (a provider call, the filesystem) holds THIS
+            # artifact and marks the run incomplete, so the manifest is still
+            # written and never claims a phase that did not finish.
+            aborted = True
+            outcomes.append({"category": g["category"], "artifact": artifact,
+                             "accepted": False,
+                             "reasons": [f"erro inesperado no gating: {exc!r}"],
+                             "evaluation": None, "dedup": None})
+            continue
         outcomes.append({"category": g["category"], "artifact": artifact,
                          "accepted": accepted, "reasons": reasons,
                          "evaluation": evaluation, "dedup": dup})
 
     manifest = artifact_manifest.build_manifest(
         slug, today, classifications, outcomes,
-        planned_categories={item["category"] for item in plan})
+        planned_categories={item["category"] for item in plan},
+        complete=not aborted and len(outcomes) == len(plan))
     out = package_dir(repo_root, slug)
     out.mkdir(parents=True, exist_ok=True)
     for suffix, text in (("yaml", artifact_manifest.manifest_yaml(manifest)),
