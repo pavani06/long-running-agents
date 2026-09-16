@@ -144,9 +144,9 @@ via `OPENAI_EVAL_MODEL`, provisional default). `auto_merge=False` is the
 require-approval brake, usable from day 1; the **real Actions wiring**
 (open/auto-merge PR, update the rolling quarantine Issue) is **#266**, not here.
 Both the dedup threshold and the evaluator's minimum score are **provisional** —
-final calibration is **#262**. Fase 4 (creation) landed with #263 and Fase 5
-(índices) with #264 — see the sections above; Fase 6 (splice curricular, #265)
-is still out of scope.
+final calibration is **#262**. Fase 4 (creation) landed with #263, Fase 5
+(índices) with #264 and Fase 6 (splice curricular) with #265 — see the sections
+above; what remains out of scope here is the Actions wiring (#266).
 
 **Dependencies:** control plane needs only `requests` (+ stdlib). The judgment
 plane's `serialize.py` needs **PyYAML** — a workflow running `analyze` must
@@ -269,7 +269,7 @@ python3 scripts/analyze-and-improve/pipeline.py classify <slug> -k 12  # more de
 python3 scripts/analyze-and-improve/pipeline.py integrate docs/analysis/<slug>/<slug>-artifacts.yaml  # recomputes indexes from that manifest
 
 # Run Fase 6 (section splice for ONE promoted entry) — needs both keys + a built index
-python3 scripts/analyze-and-improve/pipeline.py splice docs/analysis/<slug>/<slug>-artifacts.yaml  [--entry N]
+python3 scripts/analyze-and-improve/pipeline.py splice docs/analysis/<slug>/<slug>-artifacts.yaml  # primeira entrada promovida
 ```
 
 **Fase 3 (classification).** Hybrid retrieval builds the context: dense top-k

@@ -372,8 +372,34 @@ def run_integrate(manifest_arg: str) -> int:
     return 0
 
 
-def run_splice(manifest_arg: str, entry_index: int) -> int:
-    """Fase 6 (#265): one section splice for one promoted manifest entry.
+def _worktree_paths() -> set[str]:
+    """Repo-relative paths git reports as dirty.
+
+    `-z` so paths are never quoted or escaped, `-uall` so an untracked directory
+    is expanded into its files instead of collapsing to one directory entry, and
+    rename/copy entries contribute both sides."""
+    import subprocess
+    out = subprocess.run(
+        ["git", "-C", str(REPO_ROOT), "status", "--porcelain", "-z", "-uall"],
+        capture_output=True, text=True).stdout
+    fields = [f for f in out.split("\0") if f]
+    paths: set[str] = set()
+    i = 0
+    while i < len(fields):
+        entry = fields[i]
+        i += 1
+        if len(entry) < 4:
+            continue
+        code, path = entry[:2], entry[3:]
+        paths.add(path)
+        if ("R" in code or "C" in code) and i < len(fields):
+            paths.add(fields[i])
+            i += 1
+    return paths
+
+
+def run_splice(manifest_arg: str) -> int:
+    """Fase 6 (#265): one section splice for this run's first promoted entry.
 
     Code selects the exact curriculum section via the retrieval index (heading +
     line range), the model sees only that bounded section and returns only a
@@ -401,16 +427,19 @@ def run_splice(manifest_arg: str, entry_index: int) -> int:
         summary("splice: empty index — run `index --full` first")
         return 1
 
-    import subprocess
-    status = subprocess.run(
-        ["git", "-C", str(REPO_ROOT), "status", "--porcelain"],
-        capture_output=True, text=True).stdout
-    changed = [line[3:] for line in status.splitlines() if line.strip()]
+    before = _worktree_paths()
+
+    def changed_paths(target: str) -> list[str]:
+        """What the splice itself changed: the worktree delta it produced over the
+        pre-splice snapshot (so this run's earlier docs/analysis/ writes are not
+        attributed to it), plus the target when it was already dirty."""
+        after = _worktree_paths()
+        return sorted((after - before) | (after & {target}))
 
     try:
         out = phase6_splice.run(REPO_ROOT, manifest_path, zai_key=zai_key,
                                 openai_key=openai_key, index=index,
-                                changed_paths=changed, entry_index=entry_index)
+                                changed_paths_fn=changed_paths)
     except ValueError as e:
         summary(f"splice: {e}")
         return 1
@@ -446,8 +475,6 @@ def main(argv: list[str] | None = None) -> int:
     pi6 = sub.add_parser("splice", help="run Fase 6 (#265: section splice) for a run's manifest")
     pi6.add_argument("manifest",
                      help="repo-relative docs/analysis/<slug>/<slug>-artifacts.yaml of this run")
-    pi6.add_argument("--entry", type=int, default=0,
-                     help="index of the promoted entry to splice (default: 0)")
     args = ap.parse_args(argv)
 
     if args.cmd == "queue":
@@ -459,7 +486,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "integrate":
         return run_integrate(args.manifest)
     if args.cmd == "splice":
-        return run_splice(args.manifest, args.entry)
+        return run_splice(args.manifest)
     return run_index(args.full, args.distribution)
 
 

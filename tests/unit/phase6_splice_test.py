@@ -167,6 +167,18 @@ class TestModelBoundary:
         with pytest.raises(ValueError):
             p6.parse_replacement({"other": 1})
 
+    def test_body_with_heading_is_rejected(self):
+        with pytest.raises(ValueError, match="heading ATX"):
+            p6.parse_replacement({"body": "texto\n\n## Nova subseção\n\nmais"})
+
+    def test_heading_inside_fence_is_allowed(self):
+        body = "exemplo:\n\n```md\n## isto é código\n```\n\nfim"
+        assert p6.parse_replacement({"body": body}) == body
+
+    def test_body_opening_with_frontmatter_is_rejected(self):
+        with pytest.raises(ValueError, match="frontmatter"):
+            p6.parse_replacement({"body": "---\ntitle: x\n---\n\ncorpo"})
+
 
 # ---------------------------------------------------------------- E2E (fakes)
 
@@ -213,7 +225,7 @@ def _repo(tmp_path: Path, *, lesson: str = LESSON, extra_level2: bool = False) -
 
 def _index(repo: Path, embed) -> dict:
     index: dict = {}
-    for md in sorted(repo.glob("curriculum/*/*.md")):
+    for md in sorted(repo.glob("curriculum/*/*.md")) + sorted(repo.glob("docs/canonical/*.md")):
         rel = md.relative_to(repo).as_posix()
         recs = records_for(rel, md.read_text(encoding="utf-8"))
         vecs = {r.id: v for r, v in zip(recs, embed([r.text for r in recs], "k"))}
@@ -239,7 +251,9 @@ def _manifest(path: Path, *, category: str = "canonical", dest: str,
 
 
 def _run(repo: Path, manifest: Path, *, splice_body: str = BODY, eval_ok: bool = True,
-         **kw):
+         changed: list[str] | None = None, **kw):
+    """`changed` is what git would report as the splice's own worktree delta;
+    absent a path scenario, a splice changes exactly the file it wrote."""
     calls: list[list[dict]] = []
 
     def fake_splice(messages, _key):
@@ -253,6 +267,7 @@ def _run(repo: Path, manifest: Path, *, splice_body: str = BODY, eval_ok: bool =
 
     embed = _embed_fn()
     out = p6.run(repo, manifest, zai_key="z", openai_key="o", index=_index(repo, embed),
+                 changed_paths_fn=lambda target: [target] if changed is None else changed,
                  embed_fn=embed, splice_client=fake_splice, eval_client=fake_eval,
                  validate_fn=lambda _root: True,
                  validate_destination_fn=lambda _r, _d, _t: {"available": True, "violations": []},
@@ -267,7 +282,7 @@ def test_end_to_end_applied(tmp_path):
     target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
     before = target.read_text(encoding="utf-8")
 
-    out, calls = _run(repo, manifest, changed_paths=[target.relative_to(repo).as_posix()])
+    out, calls = _run(repo, manifest, changed=[target.relative_to(repo).as_posix()])
 
     assert out["status"] == "applied"
     assert out["decision"]["accepted"] is True
@@ -328,7 +343,7 @@ def test_out_of_scope_diff_is_held(tmp_path):
                          dest="docs/canonical/capability-escalation-ladder.md")
     target_rel = "curriculum/03-nivel-3-advanced-architecture/05-harness-evolution.md"
 
-    out, _ = _run(repo, manifest, changed_paths=[target_rel, "docs/canonical/other.md"])
+    out, _ = _run(repo, manifest, changed=[target_rel, "docs/canonical/other.md"])
     assert out["status"] == "quarantined"
     assert any("docs/canonical/" in r for r in out["reasons"])
 
@@ -359,6 +374,60 @@ def test_level_without_dir_fails_closed(tmp_path):
                          dest="docs/canonical/capability-escalation-ladder.md")
     with pytest.raises(ValueError, match="manifest level 9"):
         _run(repo, manifest)
+
+
+def test_revision_of_the_target_section_is_not_a_duplicate_of_itself(tmp_path):
+    """Enriquecer a seção alvo reformula o próprio texto indexado dela: o gate de
+    dedup compara contra o RESTO do índice, nunca contra o registro da seção que
+    está sendo revisada."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+
+    out, _ = _run(repo, manifest, splice_body="ROI corrente, sem a escada de escalation.")
+
+    assert out["dedup"]["duplicate"] is False
+    assert out["status"] == "applied"
+    assert "ROI corrente, sem a escada de escalation." in target.read_text(encoding="utf-8")
+
+
+def test_rewrite_duplicating_another_section_is_quarantined(tmp_path):
+    """A isenção vale só para a seção revisada: duplicar OUTRA seção indexada
+    continua barrando o splice (fail-closed)."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+
+    out, _ = _run(repo, manifest,
+                  splice_body="Remoção segura: remove o componente, remove o fallback, remove o resto.")
+
+    assert out["dedup"]["duplicate"] is True
+    assert out["dedup"]["nearest"]["heading"] == "Fase 4: REMOVE"
+    assert out["status"] == "quarantined"
+    assert any("duplicação" in r for r in out["reasons"])
+    assert target.read_text(encoding="utf-8") == before
+
+
+def test_canonical_hits_outranking_curriculum_do_not_abort_selection(tmp_path):
+    """O conhecimento promovido vem de docs/canonical/, que está no mesmo índice:
+    seções canônicas dominam o topo do ranking global. A seleção é feita DENTRO do
+    escopo curricular, então isso não pode derrubar o splice."""
+    repo = _repo(tmp_path)
+    decoys = "\n".join(f"## Capability Escalation Ladder {i}\n\n"
+                       "capability escalation ladder rung eval budget\n" for i in range(20))
+    (repo / "docs" / "canonical" / "escalation-notes.md").write_text(
+        "---\ntitle: Notas\ntype: canonical\n---\n\n# Notas\n\n" + decoys)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+
+    out, _ = _run(repo, manifest)
+
+    assert out["target"] == ("curriculum/03-nivel-3-advanced-architecture/"
+                            "05-harness-evolution.md")
+    assert out["status"] == "applied"
 
 
 def test_real_repo_section_localizes(tmp_path):

@@ -33,7 +33,6 @@ from __future__ import annotations
 import difflib
 import re
 from dataclasses import dataclass
-from datetime import date
 from pathlib import Path
 
 import artifact_manifest
@@ -41,7 +40,7 @@ import dedup
 import evaluator
 import quarantine
 import phase5_integrate
-from chunking import _FENCE, _HEADING, split_sections  # same heading semantics as the index
+from chunking import _FENCE, _HEADING  # same heading semantics as the index
 from index_store import records_for
 
 # The bounded-knowledge cap mirrors retrieval.MAX_SECTION_CHARS/MAX_CONTEXT_CHARS:
@@ -212,11 +211,33 @@ def build_messages(heading: str, section_text: str, knowledge: str, *,
 
 
 def parse_replacement(reply: dict) -> str:
-    """Validate the model's replacement body. Pure."""
+    """Validate the model's replacement body. Pure.
+
+    The body is spliced between known section limits, so it must not carry
+    structure the code owns: an ATX heading outside a fence would create or
+    destroy a section boundary inside the spliced range (re-chunking the file on
+    the next run), and frontmatter belongs to the file, not to a section."""
     body = reply.get("body")
     if not isinstance(body, str) or not body.strip():
         raise ValueError("splice: 'body' deve ser string não vazia")
-    return body.strip()
+    body = body.strip()
+    if body.startswith("---"):
+        raise ValueError("splice: 'body' não pode abrir com frontmatter")
+    in_fence = False
+    for line in body.split("\n"):
+        if _FENCE.match(line):
+            in_fence = not in_fence
+            continue
+        if not in_fence and _HEADING.match(line):
+            raise ValueError(f"splice: 'body' não pode conter heading ATX: {line.strip()!r}")
+    return body
+
+
+def _index_scoped(index: dict, keep) -> dict:
+    """The index narrowed to the records `keep` accepts, as an index dict the
+    ranking/dedup helpers consume unchanged. Pure."""
+    return {**index, "records": {rid: rec for rid, rec in index.get("records", {}).items()
+                                 if keep(rid, rec)}}
 
 
 def level_dir(repo_root: Path, level: int) -> str:
@@ -256,19 +277,19 @@ def _promoted_entries(manifest: dict) -> list[dict]:
 
 
 def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
-        index: dict, embed_fn=None, splice_client=None, eval_client=None,
-        validate_fn=None, validate_destination_fn=None,
+        index: dict, changed_paths_fn, embed_fn=None, splice_client=None,
+        eval_client=None, validate_fn=None, validate_destination_fn=None,
         min_mean: float = evaluator.PROVISIONAL_MIN_MEAN,
-        dup_threshold: float = dedup.DUP_THRESHOLD, entry_index: int = 0,
-        changed_paths: list[str] | None = None,
-        today: str | None = None) -> dict:
-    """One section splice for one promoted manifest entry.
+        dup_threshold: float = dedup.DUP_THRESHOLD) -> dict:
+    """One section splice for the first promoted manifest entry.
 
-    Every external call is injectable (None → the module default). `changed_paths`
-    is the caller's worktree diff (`git status` relative paths); None skips the
-    file-set gate (unit tests drive it explicitly). Returns the outcome record
-    with the full proof chain: entry → target file/section → bounded input →
-    replacement → diff gate → evaluation/dedup/decision → status."""
+    Every external call is injectable (None → the module default) except
+    `changed_paths_fn(target) -> [repo-relative path]`, which is required: the
+    file-set gate has no fail-open mode. It is called AFTER the splice is written
+    so it reports what the splice itself changed in the worktree; a failing
+    file-set gate restores the file and routes to quarantine. Returns the outcome
+    record with the full proof chain: entry → target file/section → bounded input
+    → replacement → diff gate → evaluation/dedup/decision → status."""
     import retrieval
 
     if splice_client is None:
@@ -285,10 +306,9 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
     manifest = phase5_integrate.load_manifest(manifest_path)
     slug = manifest["meta"]["source_slug"]
     entries = _promoted_entries(manifest)
-    if entry_index >= len(entries):
-        raise ValueError(f"manifest has {len(entries)} promoted curriculum entry(ies); "
-                         f"entry_index={entry_index}")
-    entry = entries[entry_index]
+    if not entries:
+        raise ValueError("manifest has no promoted curriculum entry to splice")
+    entry = entries[0]
     level = entry.get("level")   # exercises: the manifest's own level, verbatim
 
     source_path = str(entry.get("path", ""))
@@ -299,15 +319,13 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
     query = f"{entry.get('pattern', '')}\n{source_text[:600]}"
 
     qvec = embed_fn([query], openai_key)[0]
-    ranked = retrieval.rank_sections(qvec, index, k=16)
-    if level is not None:
-        scope = level_dir(repo_root, int(level))   # manifest level, verbatim
-        ranked = [r for r in ranked if str(r.get("path", "")).startswith(scope + "/")]
-    else:
-        ranked = [r for r in ranked if str(r.get("path", "")).startswith("curriculum/")]
+    scope = (level_dir(repo_root, int(level)) + "/"   # manifest level, verbatim
+             if level is not None else "curriculum/")
+    in_scope = _index_scoped(index, lambda _rid, rec: (
+        str(rec.get("path", "")).startswith(scope) and int(rec.get("level") or 0) > 0))
+    ranked = retrieval.rank_sections(qvec, in_scope, k=1)
     if not ranked:
-        raise ValueError("retrieval: nenhuma seção de currículo acima do piso "
-                         "para este item promovido")
+        raise ValueError(f"retrieval: nenhuma seção de currículo indexada em {scope}")
     hit = ranked[0]
 
     target_rel = str(hit["path"])
@@ -332,17 +350,17 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
         return outcome
 
     localized_ok, diff_violations = localized_diff_ok(file_text, updated, b0, b1)
-    if changed_paths is None:
-        paths_ok, path_violations = True, []
-    else:
-        paths_ok, path_violations = changed_paths_ok(changed_paths, target_rel)
-    gate_ok = localized_ok and paths_ok
     evaluation = evaluator.run(
         {"type": "curriculum_section_splice", "title": rng.heading, "content": body,
          "source_pattern": entry, "phase3_verdict": str(entry.get("classification", ""))},
-        openai_key, min_mean=min_mean, client=eval_client)
+        openai_key, min_mean=min_mean, client=eval_client,
+        scope_note=(f"O artefato é uma REVISÃO IN-PLACE da seção {rng.heading!r} em "
+                    f"{target_rel}. Em 'non_duplication', reescrever o conteúdo atual "
+                    "DESSA seção não é duplicação; recriar o que qualquer OUTRA parte "
+                    "do repo já cobre continua sendo."))
     vec = embed_fn([f"{rng.heading}\n{body}"], openai_key)[0]
-    dup = dedup.is_duplicate(vec, index, dup_threshold)
+    others = _index_scoped(index, lambda rid, _rec: rid != str(hit["id"]))
+    dup = dedup.is_duplicate(vec, others, dup_threshold)
     checked = validate_destination_fn(repo_root, target_rel, updated)
     violations = list(checked["violations"])
     report = quarantine.report_from_gates(
@@ -353,10 +371,17 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
         duplicate=dup["duplicate"], evaluation_passed=evaluation["passed"])
     decision = quarantine.decide(report)
 
-    gate_violations = diff_violations + path_violations
-    reasons = decision["reasons"] + violations + gate_violations
-    if decision["accepted"] and gate_ok:
+    accepted = decision["accepted"] and localized_ok
+    path_violations: list[str] = []
+    if accepted:
         target.write_text(updated, encoding="utf-8")
+        paths_ok, path_violations = changed_paths_ok(changed_paths_fn(target_rel), target_rel)
+        if not paths_ok:
+            target.write_text(file_text, encoding="utf-8")
+            accepted = False
+
+    reasons = decision["reasons"] + violations + diff_violations + path_violations
+    if accepted:
         status = "applied"
         quarantine_path = None
     else:
