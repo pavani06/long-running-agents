@@ -437,16 +437,16 @@ def run_splice(manifest_arg: str) -> int:
         summary("splice: empty index — run `index --full` first")
         return 1
 
-    before = _worktree_paths()
-
-    def changed_paths(target: str) -> list[str]:
-        """What the splice itself changed: the worktree delta it produced over the
-        pre-splice snapshot (so this run's earlier docs/analysis/ writes are not
-        attributed to it), plus the target when it was already dirty."""
-        after = _worktree_paths()
-        return sorted((after - before) | (after & {target}))
-
     try:
+        before = _worktree_paths()
+
+        def changed_paths(target: str) -> list[str]:
+            """What the splice itself changed: the worktree delta it produced over
+            the pre-splice snapshot (so this run's earlier docs/analysis/ writes are
+            not attributed to it), plus the target when it was already dirty."""
+            after = _worktree_paths()
+            return sorted((after - before) | (after & {target}))
+
         out = phase6_splice.run(REPO_ROOT, manifest_path, zai_key=zai_key,
                                 openai_key=openai_key, index=index,
                                 changed_paths_fn=changed_paths)

@@ -364,7 +364,9 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
     `changed_paths_fn(target) -> [repo-relative path]`, which is required: the
     file-set gate has no fail-open mode. It is called AFTER the splice is written
     so it reports what the splice itself changed in the worktree; a failing
-    file-set gate restores the file and routes to quarantine. Returns the outcome
+    file-set gate restores the file and routes to quarantine, and a gate that
+    cannot run at all restores the file before propagating — the worktree is
+    never left spliced with this gate unverified. Returns the outcome
     record with the full proof chain: entry → target file/section → bounded input
     → replacement → diff gate → evaluation/dedup/decision → status."""
     import retrieval
@@ -466,7 +468,12 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
     path_violations: list[str] = []
     if accepted:
         target.write_text(updated, encoding="utf-8")
-        paths_ok, path_violations = changed_paths_ok(changed_paths_fn(target_rel), target_rel)
+        try:
+            changed = changed_paths_fn(target_rel)
+        except Exception:
+            target.write_text(file_text, encoding="utf-8")
+            raise
+        paths_ok, path_violations = changed_paths_ok(changed, target_rel)
         if not paths_ok:
             target.write_text(file_text, encoding="utf-8")
             accepted = False

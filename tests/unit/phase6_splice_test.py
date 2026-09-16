@@ -331,7 +331,7 @@ def _manifest(path: Path, *, category: str = "canonical", dest: str,
 
 def _run(repo: Path, manifest: Path, *, splice_body: str = BODY, eval_ok: bool = True,
          changed: list[str] | None = None, index: dict | None = None,
-         eval_calls: list | None = None, **kw):
+         eval_calls: list | None = None, changed_fn=None, **kw):
     """`changed` is what git would report as the splice's own worktree delta;
     absent a path scenario, a splice changes exactly the file it wrote."""
     calls: list[list[dict]] = []
@@ -350,7 +350,8 @@ def _run(repo: Path, manifest: Path, *, splice_body: str = BODY, eval_ok: bool =
     embed = _embed_fn()
     out = p6.run(repo, manifest, zai_key="z", openai_key="o",
                  index=_index(repo, embed) if index is None else index,
-                 changed_paths_fn=lambda target: [target] if changed is None else changed,
+                 changed_paths_fn=(changed_fn if changed_fn is not None else
+                                   (lambda target: [target] if changed is None else changed)),
                  embed_fn=embed, splice_client=fake_splice, eval_client=fake_eval,
                  validate_fn=lambda _root: True,
                  validate_destination_fn=lambda _r, _d, _t: {"available": True, "violations": []},
@@ -760,6 +761,42 @@ def test_cli_reports_provider_failures_instead_of_crashing(monkeypatch, tmp_path
             raise _e
         monkeypatch.setattr(p6, "run", explode)
         assert pipeline.run_splice(rel) == 1
+
+
+def test_file_set_gate_that_cannot_run_restores_the_file(tmp_path):
+    """O gate de conjunto de arquivos não tem modo fail-open: se a ferramenta não
+    roda, o arquivo volta aos bytes pré-splice antes do erro subir."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+
+    def boom(_target):
+        raise ValueError("git status falhou (128): fatal: not a git repository")
+
+    with pytest.raises(ValueError, match="git status falhou"):
+        _run(repo, manifest, changed_fn=boom)
+    assert target.read_text(encoding="utf-8") == before
+
+
+def test_cli_reports_a_failing_pre_splice_snapshot(monkeypatch, tmp_path):
+    """O snapshot pré-splice também é git: sua falha é summary + exit 1, não traceback."""
+    import pipeline
+
+    repo = _repo(tmp_path)
+    rel = f"docs/analysis/{SLUG}/{SLUG}-artifacts.yaml"
+    _manifest(repo / rel, dest="docs/canonical/capability-escalation-ladder.md")
+    monkeypatch.setattr(pipeline, "REPO_ROOT", repo)
+    monkeypatch.setattr(pipeline, "load_state", lambda: {"records": {"x": {}}})
+    monkeypatch.setenv("OPENAI_API_KEY", "o")
+    monkeypatch.setenv("ZAI_API_KEY", "z")
+
+    def boom():
+        raise ValueError("git status falhou (128): fatal: not a git repository")
+
+    monkeypatch.setattr(pipeline, "_worktree_paths", boom)
+    assert pipeline.run_splice(rel) == 1
 
 
 def test_git_failure_is_not_reported_as_a_content_violation(monkeypatch, tmp_path):
