@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-14-omarsar0-should-you-build-an-agent-harness-i-see-lots-of-opinions-abo--2099208894866178204|construção de agent harness]]", "[[extracts/x/bookmarks/2026-09-14-omarsar0-learn-to-build-a-harness-folks-it-s-not-surprising-to-me-tha--2098809969252450451|harnesses domain-specific para agentes]]", "[[extracts/x/bookmarks/2026-09-14-hwchase17-in-case-you-want-to-build-a-domain-specific-harness-https-t--2098866608785473858|Harnesses customizados para agentes]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-highly-recommended-model-harness-co-optimization-is-where-yo--2097790938911498494|model-harness co-optimization]]", "[[extracts/x/bookmarks/2026-09-14-shreyanshpatni_-want-to-build-a-domain-specific-agent-harness-this-is-a-grea--2099180288668750246|Construção de harness para agentes]]", "[[extracts/x/bookmarks/2026-09-14-mardehaym-the-model-is-the-smallest-most-swappable-part-key-principles--2099175716046643654|harness engineering principles]]", "[[extracts/x/bookmarks/2026-09-12-guanlan-exo-harness-now-runs-natively-on-runta-in-frontierharness-ev--2098103620080369854|Exo Harness custo por tarefa]]"]
 ---
 
 # harness próprio vs. pronto

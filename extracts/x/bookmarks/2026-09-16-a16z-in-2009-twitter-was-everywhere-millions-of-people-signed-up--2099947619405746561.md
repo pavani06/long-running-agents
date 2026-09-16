@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSSDOzvbwAA6ZFt.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-16-hnshah-the-more-i-think-about-this-the-more-every-looks-like-a-prev--2099917915382509880|Desenvolvimento de produtos com software barato]]", "[[extracts/x/bookmarks/2026-09-12-tferriss-the-1-most-clicked-link-in-the-latest-5-bullet-friday-editio--2097357231293358126|IA como designer de alto nível]]", "[[extracts/x/bookmarks/2026-09-15-a16z-ai-has-collapsed-the-cost-of-building-products-but-not-the-c--2099501195006238899|produto na era da IA]]", "[[extracts/x/bookmarks/2026-09-14-illscience-additionally-i-think-theres-a-lot-of-debate-about-imessage-v--2099207649577595286|iMessage vs app como interface]]", "[[extracts/x/bookmarks/2026-09-12-davidsenra-every-company-says-they-have-forward-deployed-engineers-now--2097720691596591345|Forward-Deployed Engineers]]", "[[extracts/x/bookmarks/2026-09-12-davidsenra-my-conversation-with-mati-staniszewski-mati-co-founder-of-el--2097686462523146734|Entrevista co-founder ElevenLabs]]"]
 ---
 
 # Redesign de onboarding do Twitter

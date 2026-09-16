@@ -21,6 +21,7 @@ grounded_in: "article"
 thin: false
 links: ["https://x.ai/bot/marketplace/bots/haggle-bot"]
 media: ["https://pbs.twimg.com/media/HSRBomnWMAAX2To.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-16-grok-outbound-prospector-built-icp-matched-prospect-lists-researc--2099876439663243402|Agente de outbound prospecting com spec]]", "[[extracts/x/bookmarks/2026-09-16-grok-try-grok-bot-https-t-co-fo8jkd1aeq--2099876446864867561|Lançamento do Grok Bot (agentes computer-use)]]", "[[extracts/x/bookmarks/2026-09-16-grok-seo-amp-aeo-desk-automated-keyword-research-into-writer-read--2099876443761111255|Agente de SEO/AEO para briefs de conteúdo]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-16-gergelyorosz-here-s-what-openai-s-agentic-software-factory-looks-like-tod--2099945497377091902|Fábrica de software agêntica da OpenAI]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-retailers-running-shopping-agents-on-claude-have-seen-carts--2095233746366808420|Arquitetura de agentes de comércio com Claude]]", "[[extracts/x/bookmarks/2026-09-12-hnshah-im-late-to-this-party-but-https-t-co-2qvqvyamhq-just-showed--2098603214065332290|Lançamento agent-native com demo de Excel]]"]
 ---
 
 # Agente de negociação de gastos SaaS

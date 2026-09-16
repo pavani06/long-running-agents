@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2099874824596189184/img/YXLlLwt8YD7QdWoK.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-16-grok-to-enter-you-must-have-a-grok-bot-account-and-quote-the-orig--2099876433006919946|Concurso de bots do Grok]]", "[[extracts/x/bookmarks/2026-09-14-poteto-next-week-mattyp-roshan-s-and-myself-will-be-speedrunning-bu--2098815981787414978|Speedrun de startup com Grok Bot]]", "[[extracts/x/bookmarks/2026-09-16-benln-new-grok-bot-guides-added-includes-bot-for-engineering-suppo--2099849826120683967|Grok Bot usage guides]]", "[[extracts/x/bookmarks/2026-09-16-grok-try-grok-bot-https-t-co-fo8jkd1aeq--2099876446864867561|Lançamento do Grok Bot (agentes computer-use)]]", "[[extracts/x/bookmarks/2026-09-12-aiedge_-absolute-goldmine-of-a-website-for-all-grok-bot-users-a-reso--2097897898235269173|Grok Bot resource hub]]", "[[extracts/x/bookmarks/2026-09-12-0xmovez-spacexai-engineer-lauren-tan-at-spacexai-90-of-engineers-run--2094868247162360099|Uso de agentes GrokBot na SpaceXAI]]"]
 ---
 
 # Concurso Grok Bot Starship
