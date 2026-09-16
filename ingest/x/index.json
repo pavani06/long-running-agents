@@ -1,9 +1,9 @@
 {
   "source": "Jina Reader (r.jina.ai) + trafilatura fallback",
-  "count": 78,
+  "count": 93,
   "status_counts": {
-    "ok": 64,
-    "failed": 7,
+    "ok": 74,
+    "failed": 12,
     "paywall": 5,
     "unsupported": 2
   },
@@ -306,6 +306,24 @@
       "text_len": 20125
     },
     {
+      "key": "32869c1da4b6",
+      "file": "github-com--32869c1da4b6.md",
+      "url": "https://github.com/gnekt/My-Brain-Is-Full-Crew",
+      "status": "ok",
+      "final_url": "https://github.com/gnekt/My-Brain-Is-Full-Crew",
+      "method": "trafilatura",
+      "text_len": 25499
+    },
+    {
+      "key": "367e8a44006a",
+      "file": "github-com--367e8a44006a.md",
+      "url": "https://github.com/vercel-labs/ag",
+      "status": "failed",
+      "final_url": "https://github.com/vercel-labs/ag",
+      "method": "",
+      "text_len": 0
+    },
+    {
       "key": "458b21aa11f2",
       "file": "github-com--458b21aa11f2.md",
       "url": "https://github.com/microsoft/AutoSaddler",
@@ -349,6 +367,15 @@
       "final_url": "https://github.com/anthropics/claude-code/issues/91870#issuecomment-5666255143",
       "method": "trafilatura",
       "text_len": 5214
+    },
+    {
+      "key": "9b608c242c83",
+      "file": "github-com--9b608c242c83.md",
+      "url": "https://github.com/mattpocock/ski",
+      "status": "failed",
+      "final_url": "https://github.com/mattpocock/ski",
+      "method": "",
+      "text_len": 0
     },
     {
       "key": "9d0bf70f6e5a",
@@ -414,6 +441,33 @@
       "text_len": 12726
     },
     {
+      "key": "d1bc78db5cdb",
+      "file": "github-com--d1bc78db5cdb.md",
+      "url": "https://github.com/obra/superpowe",
+      "status": "failed",
+      "final_url": "https://github.com/obra/superpowe",
+      "method": "",
+      "text_len": 0
+    },
+    {
+      "key": "d726b6e64d38",
+      "file": "github-com--d726b6e64d38.md",
+      "url": "https://github.com/mattpocock/skills/pull/1083",
+      "status": "ok",
+      "final_url": "https://github.com/mattpocock/skills/pull/1083",
+      "method": "trafilatura",
+      "text_len": 2866
+    },
+    {
+      "key": "faaed7c91783",
+      "file": "github-com--faaed7c91783.md",
+      "url": "https://github.com/supabase/agent",
+      "status": "failed",
+      "final_url": "https://github.com/supabase/agent",
+      "method": "",
+      "text_len": 0
+    },
+    {
       "key": "3116996862d8",
       "file": "goo-gle--3116996862d8.md",
       "url": "https://goo.gle/4xNKTNH",
@@ -430,6 +484,15 @@
       "final_url": "https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/?utm_source=twitter&utm_medium=social&utm_campaign=social_post&utm_content=gr-acct",
       "method": "trafilatura",
       "text_len": 7393
+    },
+    {
+      "key": "fa8676ba8eff",
+      "file": "goo-gle--fa8676ba8eff.md",
+      "url": "https://goo.gle/4xuV3lB",
+      "status": "ok",
+      "final_url": "https://research.google/blog/bypassing-inference-bottlenecks-accelerating-complex-ai-search-with-retrieve-for-train/?utm_source=twitter&utm_medium=social&utm_campaign=social_post&utm_content=gr-acct",
+      "method": "trafilatura",
+      "text_len": 11940
     },
     {
       "key": "5df0e232996f",
@@ -502,6 +565,15 @@
       "final_url": "https://www.langchain.com/blog/how-to-build-a-custom-agent-harness",
       "method": "trafilatura",
       "text_len": 5559
+    },
+    {
+      "key": "557dcb769a02",
+      "file": "newsletter-pragmaticengineer-com--557dcb769a02.md",
+      "url": "https://newsletter.pragmaticengineer.com/p/openai-software-factory",
+      "status": "ok",
+      "final_url": "https://newsletter.pragmaticengineer.com/p/openai-software-factory",
+      "method": "trafilatura",
+      "text_len": 20719
     },
     {
       "key": "c7d3c8aeae42",
@@ -630,6 +702,15 @@
       "text_len": 5993
     },
     {
+      "key": "208e4f2cfb12",
+      "file": "shadcncraft-com--208e4f2cfb12.md",
+      "url": "https://shadcncraft.com/apps/sales-marketing-dashboard",
+      "status": "ok",
+      "final_url": "https://shadcncraft.com/apps/sales-marketing-dashboard",
+      "method": "trafilatura",
+      "text_len": 1843
+    },
+    {
       "key": "2ed54a20b866",
       "file": "simonwillison-net--2ed54a20b866.md",
       "url": "https://simonwillison.net/2026/Sep/12/openai-agents-rubygems/",
@@ -646,6 +727,15 @@
       "final_url": "https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/",
       "method": "trafilatura",
       "text_len": 11069
+    },
+    {
+      "key": "18e9ffeb6bac",
+      "file": "testing-googleblog-com--18e9ffeb6bac.md",
+      "url": "https://testing.googleblog.com/2011/02/this-code-is-crap.html",
+      "status": "failed",
+      "final_url": "https://testing.googleblog.com/2011/02/this-code-is-crap.html",
+      "method": "",
+      "text_len": 0
     },
     {
       "key": "527bf000c8ef",
@@ -673,6 +763,51 @@
       "final_url": "https://www.uber.com/us/en/blog/uber-eats-search-pipeline/",
       "method": "trafilatura",
       "text_len": 16778
+    },
+    {
+      "key": "b582897e379f",
+      "file": "x-ai--b582897e379f.md",
+      "url": "https://x.ai/bot/guides",
+      "status": "ok",
+      "final_url": "https://x.ai/bot/guides",
+      "method": "trafilatura",
+      "text_len": 658
+    },
+    {
+      "key": "b6196264dfb8",
+      "file": "x-ai--b6196264dfb8.md",
+      "url": "https://x.ai/bot/marketplace/bots/haggle-bot",
+      "status": "ok",
+      "final_url": "https://x.ai/bot/marketplace/bots/haggle-bot",
+      "method": "trafilatura",
+      "text_len": 6313
+    },
+    {
+      "key": "c1939f4cfa21",
+      "file": "x-ai--c1939f4cfa21.md",
+      "url": "https://x.ai/bot/marketplace/bots/seo-aeo-desk",
+      "status": "ok",
+      "final_url": "https://x.ai/bot/marketplace/bots/seo-aeo-desk",
+      "method": "trafilatura",
+      "text_len": 2213
+    },
+    {
+      "key": "d45e6cc9bb31",
+      "file": "x-ai--d45e6cc9bb31.md",
+      "url": "https://x.ai/bot",
+      "status": "ok",
+      "final_url": "https://x.ai/bot",
+      "method": "trafilatura",
+      "text_len": 3774
+    },
+    {
+      "key": "f66bce1d008d",
+      "file": "x-ai--f66bce1d008d.md",
+      "url": "https://x.ai/bot/marketplace/bots/pg",
+      "status": "ok",
+      "final_url": "https://x.ai/bot/marketplace/bots/pg",
+      "method": "trafilatura",
+      "text_len": 2705
     },
     {
       "key": "f78221bbc352",
