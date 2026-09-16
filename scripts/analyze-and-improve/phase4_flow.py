@@ -16,6 +16,11 @@ move gated by the machine gates; landing on main stays behind a human-gated PR);
 the evaluator is a different provider from the generator; the quarantine write
 can never touch `docs/canonical/`, `curriculum/` or `.opencode/skills/`.
 
+No production path invokes `run_fase4` yet, deliberately: #263 delivers the
+creation engine and the truthful manifest contract, and the producer/consumer
+wiring lands with #264 (manifest consumption + index integration) so both sides
+of the contract are validated as one integration boundary.
+
 `write_quarantined`/`promote` are thin I/O over pure path computation;
 `run_fase4` needs both keys but every external call (GLM, evaluator, embeddings,
 validate) is injectable for unit tests. Classifications must be post-
@@ -85,6 +90,23 @@ def promote(repo_root: Path, slug: str, artifact: dict) -> str | None:
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(content, encoding="utf-8")
     src.unlink()
+    return None
+
+
+def _same_exercise_already_promoted(exercises_root: Path, repo_root: Path,
+                                    rendered: str) -> str | None:
+    """The repo-relative path of an exercise in this level that already holds exactly
+    `rendered`, or None. I/O.
+
+    Exercise filenames carry an allocated number, so a re-run over a source a prior
+    run already promoted would otherwise take the next free number and write a
+    byte-identical duplicate into curriculum/. Matching by content routes the
+    artifact at the file it already landed as, where `promote` recognises it."""
+    if not exercises_root.is_dir():
+        return None
+    for path in sorted(exercises_root.glob("exercise-*.md")):
+        if path.read_text(encoding="utf-8") == rendered:
+            return path.resolve().relative_to(repo_root.resolve()).as_posix()
     return None
 
 
@@ -178,7 +200,14 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
                                                      level=level, level_dir=level_dir,
                                                      number=next_number, client=zai_client,
                                                      **common)
-            next_number += 1
+            landed = _same_exercise_already_promoted(
+                exercises_root, repo_root, phase4_create.render(artifact))
+            if landed is None:
+                next_number += 1
+            else:
+                artifact["intended_destination"] = landed
+                artifact["number"] = phase4_create.next_exercise_number(
+                    [Path(landed).name]) - 1
         artifact["priority"] = item["priority"]
         entry = {"category": item["category"], "artifact": artifact,
                  "classification": cls, "pattern": pattern}
@@ -247,7 +276,7 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
     manifest = artifact_manifest.build_manifest(
         slug, today, classifications, outcomes,
         planned_categories={item["category"] for item in plan},
-        complete=not aborted and len(outcomes) == len(plan))
+        complete=not aborted)
     out = package_dir(repo_root, slug)
     out.mkdir(parents=True, exist_ok=True)
     for suffix, text in (("yaml", artifact_manifest.manifest_yaml(manifest)),

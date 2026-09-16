@@ -396,6 +396,9 @@ def test_run_fase4_contains_a_provider_failure_and_still_writes_the_manifest(tmp
     assert row["status"] == "quarantined" and row["reasons"]
 
 
+EXERCISES = "curriculum/03-nivel-3-advanced-architecture/exercises"
+
+
 def test_run_fase4_rerun_over_already_promoted_content_records_it_promoted(tmp_path):
     """The regression: run 1 promotes, run 2 regenerates the same content and must
     NOT record the live file as quarantined for Fase 5 to skip."""
@@ -405,9 +408,37 @@ def test_run_fase4_rerun_over_already_promoted_content_records_it_promoted(tmp_p
     assert "docs/canonical/x.md" in second["promoted"]
     assert second["held"] == []
     assert second["manifest"]["gate"]["phase4_complete"] is True
-    [row] = second["manifest"]["artifacts"]["canonical_docs"]
+    for key in ("canonical_docs", "skills", "exercises"):
+        [row] = second["manifest"]["artifacts"][key]
+        assert row["status"] == "promoted", key
+        assert flow.ALREADY_AT_DESTINATION in row["reasons"], key
+
+
+def test_run_fase4_rerun_does_not_duplicate_an_exercise_into_the_curriculum(tmp_path):
+    """Exercise filenames carry an allocated number, so a re-run would otherwise take
+    the next free number and write a byte-identical second copy into curriculum/."""
+    first = _run_with_eval(tmp_path, _pass_eval)
+    assert f"{EXERCISES}/exercise-01-x.md" in first["promoted"]
+    second = _run_with_eval(tmp_path, _pass_eval)
+    # the authoritative layer still holds exactly one exercise, the original one
+    assert [p.name for p in sorted((tmp_path / EXERCISES).glob("*.md"))] == \
+        ["exercise-01-x.md"]
+    assert second["promoted"].count(f"{EXERCISES}/exercise-01-x.md") == 1
+    assert not any("exercise-02" in path for path in second["promoted"])
+    [row] = second["manifest"]["artifacts"]["exercises"]
+    assert row["path"] == f"{EXERCISES}/exercise-01-x.md"
     assert row["status"] == "promoted"
     assert flow.ALREADY_AT_DESTINATION in row["reasons"]
+
+
+def test_run_fase4_numbers_a_genuinely_new_exercise_after_the_existing_ones(tmp_path):
+    """Content matching must not stop a DIFFERENT exercise from getting its own slot."""
+    exercises = tmp_path / EXERCISES
+    exercises.mkdir(parents=True)
+    (exercises / "exercise-01-other.md").write_text("outro exercício", encoding="utf-8")
+    result = _run_with_eval(tmp_path, _pass_eval)
+    assert f"{EXERCISES}/exercise-02-x.md" in result["promoted"]
+    assert (exercises / "exercise-01-other.md").read_text(encoding="utf-8") == "outro exercício"
 
 
 def test_run_fase4_rerun_with_different_content_at_the_destination_stays_held(tmp_path):

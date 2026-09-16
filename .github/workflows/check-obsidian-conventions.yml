@@ -7,8 +7,12 @@ on:
       - '**.canvas'
       - 'scripts/validate-obsidian.ts'
       - 'package.json'
-      - 'scripts/analyze-and-improve/spine.py'
+      # The destination-gate job validates what these renderers emit, so a change
+      # to any of them must be able to fail it.
+      - 'scripts/analyze-and-improve/**'
       - 'tests/unit/phase4_flow_test.py'
+      - 'tests/unit/markdown_frontmatter.py'
+      - 'pytest.ini'
       - '.github/workflows/check-obsidian-conventions.yml'
       # Auto-generated extracts live outside the validator's scope.
       - '!extracts/**'
@@ -18,8 +22,12 @@ on:
       - '**.canvas'
       - 'scripts/validate-obsidian.ts'
       - 'package.json'
-      - 'scripts/analyze-and-improve/spine.py'
+      # The destination-gate job validates what these renderers emit, so a change
+      # to any of them must be able to fail it.
+      - 'scripts/analyze-and-improve/**'
       - 'tests/unit/phase4_flow_test.py'
+      - 'tests/unit/markdown_frontmatter.py'
+      - 'pytest.ini'
       - '.github/workflows/check-obsidian-conventions.yml'
       - '!extracts/**'
   workflow_dispatch:

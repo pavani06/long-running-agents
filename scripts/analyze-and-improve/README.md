@@ -92,6 +92,15 @@ output — the generator prompt forbids links outright — and a human editing t
 quarantined copy can add conventional cross-links afterwards, with the PR's own
 obsidian CI as the full-context authority.
 
+**No production caller yet — deferred to #264.** `run_fase4` is the complete
+creation engine and is exercised end to end by `tests/unit/phase4_flow_test.py`,
+but nothing in `first_loop.py`, `pipeline.py` or any workflow invokes it. That is
+deliberate sequencing, not an omission: #263 delivers the engine plus the truthful
+artifact-manifest contract, and the producer/consumer wiring lands with #264
+(manifest consumption + index integration) so both sides of that contract are
+validated as one integration boundary. `first_loop.py` keeps driving the
+proven-live canonical-only path in the meantime.
+
 **Exercise level (INTERIM).** `DEFAULT_LEVEL_DIR` places every generated exercise
 at curriculum level 3; there is no level routing yet. The resolved level is
 recorded per exercise in the manifest, and Etapa 7 (#265) must decide whether and
