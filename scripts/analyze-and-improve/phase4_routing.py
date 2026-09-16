@@ -68,7 +68,7 @@ def plan_of_work(classifications: list[dict]) -> list[dict]:
                                                 c.get("value", "high")), 99)
 
     planned: list[dict] = []
-    for category in ("canonical", "skill", "exercise"):
+    for category in CATEGORIES:
         eligible = [c for c in classifications
                     if category in categories_for(
                         priority_for(c.get("verdict", ""), c.get("value", "high")))]

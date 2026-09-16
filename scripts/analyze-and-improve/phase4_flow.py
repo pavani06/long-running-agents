@@ -5,7 +5,8 @@ classifications, `phase4_routing.plan_of_work` decides what to generate and in
 which order; each artifact is generated with full content (GLM), written to the
 quarantine dir (`docs/analysis/<slug>/proposed/<destination>` — never the
 authoritative layers), gated by the Etapa-3 lib (adversarial evaluator on OpenAI
-+ cosine dedup + the repo-level validate-obsidian + the classification's
++ cosine dedup + the repo-level validate-obsidian + the same validator re-run
+over the artifact at its intended destination + the classification's
 grep-verified flag, routed fail-closed by `quarantine.decide`), and only the
 accepted ones are promoted (moved) to their authoritative destinations. The run
 is recorded in the artifacts manifest — the contract Fase 5 (#264) consumes.
@@ -34,11 +35,6 @@ import phase4_routing
 import quarantine
 from analysis_package import package_dir
 
-_RENDERERS = {
-    "canonical": phase4_create.render_markdown,
-    "skill": phase4_create.render_skill_markdown,
-    "exercise": phase4_create.render_exercise_markdown,
-}
 _LEVEL_RE = re.compile(r"nivel-(\d+)")
 
 
@@ -58,7 +54,7 @@ def write_quarantined(repo_root: Path, slug: str, artifact: dict) -> str:
     path = repo_root / rel
     _assert_quarantine_target(path, repo_root, slug)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(_RENDERERS[artifact["type"]](artifact), encoding="utf-8")
+    path.write_text(phase4_create.render(artifact), encoding="utf-8")
     artifact["quarantine_path"] = rel
     return rel
 
@@ -103,17 +99,18 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
               min_mean: float = evaluator.PROVISIONAL_MIN_MEAN,
               dup_threshold: float = dedup.DUP_THRESHOLD,
               zai_client=None, eval_client=None, embed_fn=None, validate_fn=None,
-              today: str | None = None) -> dict:
+              validate_destination_fn=None, today: str | None = None) -> dict:
     """The full Fase-4 run for one source. Returns {manifest, outcomes, promoted, held}.
 
     Every external call is injectable (`zai_client`/`eval_client`/`embed_fn`/
-    `validate_fn`; None → the module default). `validate_fn` is called once after
-    all quarantine writes; its bool feeds every artifact's gate report. Because
-    that repo-wide run cannot see the canonical-/curriculum-scoped checks while
-    the artifact sits in quarantine, each artifact is additionally validated at
-    its intended destination (`phase4_create.destination_violations`) before it
-    can be promoted. `level_dir` is INTERIM (see `phase4_create.DEFAULT_LEVEL_DIR`):
-    the resolved level is recorded per exercise in the manifest for Etapa 7 (#265)."""
+    `validate_fn`/`validate_destination_fn`; None → the module default).
+    `validate_fn` is called once after all quarantine writes; its bool feeds every
+    artifact's gate report. Because that repo-wide run cannot see the canonical-/
+    curriculum-scoped checks while the artifact sits in quarantine, each artifact
+    is additionally validated by the same validator at its intended destination
+    (`spine.validate_destination_ok`, fail-closed) before it can be promoted.
+    `level_dir` is INTERIM (see `phase4_create.DEFAULT_LEVEL_DIR`): the resolved
+    level is recorded per exercise in the manifest for Etapa 7 (#265)."""
     import retrieval
 
     if zai_client is None:
@@ -124,6 +121,8 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
         from embed import embed_texts as embed_fn
     if validate_fn is None:
         from spine import validate_obsidian_ok as validate_fn
+    if validate_destination_fn is None:
+        from spine import validate_destination_ok as validate_destination_fn
 
     today = today or date.today().isoformat()
     plan = phase4_routing.plan_of_work(classifications)
@@ -191,15 +190,14 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
                                    min_mean=min_mean, client=eval_client)
         vec = embed_fn([artifact["title"] + "\n" + artifact["content"]], openai_key)[0]
         dup = dedup.is_duplicate(vec, index, dup_threshold)
-        violations = phase4_create.destination_violations(
-            artifact["intended_destination"], _RENDERERS[artifact["type"]](artifact),
-            exists=lambda rel: (repo_root / rel).exists())
+        destination_ok = bool(validate_destination_fn(
+            repo_root, artifact["intended_destination"], phase4_create.render(artifact)))
         report = quarantine.report_from_gates(
-            validate_obsidian=validate_ok, destination_valid=not violations,
+            validate_obsidian=validate_ok, destination_valid=destination_ok,
             citations_ok=bool(g["classification"].get("verified")),
             duplicate=dup["duplicate"], evaluation_passed=evaluation["passed"])
         decision = quarantine.decide(report)
-        accepted, reasons = decision["accepted"], decision["reasons"] + violations
+        accepted, reasons = decision["accepted"], list(decision["reasons"])
         if accepted:
             try:
                 promote(repo_root, slug, artifact)

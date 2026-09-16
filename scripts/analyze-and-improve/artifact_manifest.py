@@ -2,8 +2,9 @@
 
 Typed record of one Fase-4 run (meta / artifacts{canonical_docs,skills,exercises}
 / skipped / gate) with per-artifact status fields for the governed loop: `status`
-(promoted|quarantined), `quarantine_path` and `reasons` when a gate held the
-artifact. Exercises additionally carry `level`, the curriculum level they were
+(promoted|quarantined), `reasons` when a gate held the artifact, and
+`quarantine_path` — present only when a quarantined copy exists on disk, so a
+consumer never resolves a path to a file that was never written. Exercises additionally carry `level`, the curriculum level they were
 placed at — INTERIM while there is no level routing (see
 `phase4_create.DEFAULT_LEVEL_DIR`); Etapa 7 (#265) must decide whether and how to
 own that routing, and this field is its re-routing input. `build_manifest` and
@@ -34,7 +35,8 @@ def _entry(category: str, artifact: dict, status: str, reasons: list[str]) -> di
     if category == "exercises":
         entry["level"] = artifact.get("level", "")
     if status == STATUS_QUARANTINED:
-        entry["quarantine_path"] = artifact.get("quarantine_path", "")
+        if artifact.get("quarantine_path"):
+            entry["quarantine_path"] = artifact["quarantine_path"]
         entry["reasons"] = reasons
     return entry
 

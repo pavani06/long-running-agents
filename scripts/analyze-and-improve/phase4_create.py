@@ -466,60 +466,13 @@ def create_exercise(pattern: dict, *, slug: str, source_file: str, video_id: str
                                       level=level, level_dir=level_dir, number=number)
 
 
-# ── Destination-scoped convention checks (pre-promotion gate) ─────────────────
-
-_RAW_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+\.md)\)")
-_WIKILINK_RE = re.compile(r"\[\[([^\]|#]+)")
-_DIRECT_CANONICAL_RE = re.compile(r"^docs/canonical/[^/]+\.md$")
-
-
-def _prose_lines(body: str):
-    """Body lines outside code fences and inline-code markers (validator Check 5 scoping)."""
-    in_fence = False
-    for line in body.split("\n"):
-        stripped = line.strip()
-        if stripped.startswith("```"):
-            in_fence = not in_fence
-            continue
-        if in_fence or stripped.startswith("`"):
-            continue
-        yield line
+_RENDERERS = {
+    "canonical": render_markdown,
+    "skill": render_skill_markdown,
+    "exercise": render_exercise_markdown,
+}
 
 
-def destination_violations(destination: str, text: str, exists=lambda rel: False) -> list[str]:
-    """The obsidian-convention violations `text` WOULD have at `destination`. Pure.
-
-    The repo validator scopes its canonical checks to `docs/canonical/<file>.md`
-    (Check 1 frontmatter type, Check 5 raw markdown links, Check 6 broken
-    wikilinks) and Check 9 to `curriculum/`, so a copy sitting in the quarantine
-    dir is never subject to them. This mirrors those destination-scoped rules over
-    the proposed content so the gate runs BEFORE promotion, without ever writing
-    into an authoritative layer. `exists` resolves wikilink targets (repo-relative).
-    An unmonitored destination (e.g. `.opencode/skills/`) has no violations."""
-    canonical = bool(_DIRECT_CANONICAL_RE.match(destination))
-    curriculum = destination.startswith("curriculum/")
-    if not (canonical or curriculum):
-        return []
-    fm, body = serialize.split_frontmatter(text)
-    if fm is None:
-        return [f"{destination}: frontmatter YAML ausente"]
-    problems = []
-    if not fm.get("type"):
-        problems.append(f"{destination}: frontmatter sem 'type'")
-    if curriculum and not fm.get("tags"):
-        problems.append(f"{destination}: frontmatter sem 'tags'")
-    if "relates-to" not in fm:
-        problems.append(f"{destination}: frontmatter sem 'relates-to'")
-    if not fm.get("aliases"):
-        problems.append(f"{destination}: frontmatter sem 'aliases'")
-    if canonical:
-        for line in _prose_lines(body):
-            problems += [f"{destination}: link markdown cru para {url}"
-                         for url in _RAW_LINK_RE.findall(line) if "://" not in url]
-            for target in _WIKILINK_RE.findall(line):
-                target = target.strip()
-                if not target or "://" in target:
-                    continue
-                if not (exists(target) or exists(target + ".md")):
-                    problems.append(f"{destination}: wikilink quebrado [[{target}]]")
-    return problems
+def render(artifact: dict) -> str:
+    """Serialize an artifact to its destination markdown, by artifact `type`. Pure."""
+    return _RENDERERS[artifact["type"]](artifact)

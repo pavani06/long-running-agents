@@ -11,6 +11,7 @@ sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
 
 import phase4_flow as flow  # noqa: E402
 import serialize  # noqa: E402
+import spine  # noqa: E402
 
 PATTERN = {"name": "X", "problem": "p", "mechanism": "m", "tradeoffs": "t"}
 PKG = "2026-09-15-pkg"
@@ -126,12 +127,17 @@ PATTERNS = [PATTERN, {"name": "E", "problem": "pe", "mechanism": "me", "tradeoff
 EXTRACTION = {"thesis": "t", "video_id": "v"}
 
 
+def _destination_ok(repo_root, destination, text):
+    return True
+
+
 def _run(tmp_path, *, eval_client, classifications=CLS):
     return flow.run_fase4(
         tmp_path, PKG, classifications, PATTERNS, EXTRACTION, INDEX,
         openai_key="O", zai_key="Z", source_file="s--v.md",
         zai_client=_fake_zai, eval_client=eval_client, embed_fn=_embed_orthogonal,
-        validate_fn=lambda root: True, today="2026-09-15")
+        validate_fn=lambda root: True, validate_destination_fn=_destination_ok,
+        today="2026-09-15")
 
 
 def test_run_fase4_generates_all_three_categories_and_promotes_on_pass(tmp_path):
@@ -195,56 +201,82 @@ def test_run_fase4_no_eligible_work_writes_empty_manifest(tmp_path):
 
 
 # ── destination-scoped validation runs BEFORE promotion ────────────────────
-def _zai_with_canonical_body(body: str):
-    def client(messages, key):
-        system = messages[0]["content"]
-        if "skill de implementação" in system:
-            return {"name": "X", "description": "triggers", "body": "## What I Do\nB"}
-        if "exercício hands-on" in system:
-            return {"title": "Exercício X", "body": "prólogo + asserts"}
-        return {"title": "Doc X", "body": body}
-    return client
-
-
-def _run_with(tmp_path, zai_client):
+def _run_with_destination_gate(tmp_path, validate_destination_fn):
     return flow.run_fase4(
         tmp_path, PKG, CLS, PATTERNS, EXTRACTION, INDEX,
         openai_key="O", zai_key="Z", source_file="s--v.md",
-        zai_client=zai_client, eval_client=_pass_eval, embed_fn=_embed_orthogonal,
-        validate_fn=lambda root: True, today="2026-09-15")
+        zai_client=_fake_zai, eval_client=_pass_eval, embed_fn=_embed_orthogonal,
+        validate_fn=lambda root: True,
+        validate_destination_fn=validate_destination_fn, today="2026-09-15")
 
 
-def test_run_fase4_holds_canonical_doc_that_violates_a_canonical_scoped_check(tmp_path):
-    """A raw markdown link only violates validate-obsidian at docs/canonical/ — the
-    quarantined copy never trips it, so the gate must run at the destination."""
-    result = _run_with(tmp_path, _zai_with_canonical_body("veja [o doc](outro.md)"))
+def test_run_fase4_validates_each_artifact_at_its_intended_destination(tmp_path):
+    seen = []
+
+    def spy(repo_root, destination, text):
+        seen.append((destination, text))
+        return True
+
+    _run_with_destination_gate(tmp_path, spy)
+    # the validator sees the destination path, not the quarantine path, and the
+    # rendered content that would land there
+    assert sorted(d for d, _ in seen) == sorted([
+        "docs/canonical/x.md", ".opencode/skills/x/SKILL.md",
+        "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-01-x.md"])
+    assert all(not d.startswith("docs/analysis/") for d, _ in seen)
+    assert all(t.startswith("---\n") for _, t in seen)
+
+
+def test_run_fase4_holds_the_artifact_its_destination_validation_rejects(tmp_path):
+    """The canonical-scoped checks only fire at docs/canonical/ — a doc they reject
+    must be held, never promoted on the strength of the quarantine-path run."""
+    result = _run_with_destination_gate(
+        tmp_path, lambda root, dest, text: not dest.startswith("docs/canonical/"))
     assert "docs/canonical/x.md" not in result["promoted"]
     assert not (tmp_path / "docs" / "canonical").exists()
     [held] = [h for h in result["held"] if h["path"] == "docs/canonical/x.md"]
     assert "convenções obsidian no destino falharam" in held["reasons"]
-    assert any("link markdown cru" in r for r in held["reasons"])
-    # the clean skill/exercise from the same run still promote
+    # the artifacts it accepts still promote
     assert ".opencode/skills/x/SKILL.md" in result["promoted"]
 
 
-def test_run_fase4_promotes_a_clean_canonical_doc(tmp_path):
-    result = _run_with(tmp_path, _zai_with_canonical_body("apenas prosa mecanicista."))
-    assert "docs/canonical/x.md" in result["promoted"]
-    assert (tmp_path / "docs" / "canonical" / "x.md").is_file()
+def test_run_fase4_blocks_promotion_when_the_validator_cannot_run(tmp_path):
+    """Fail-closed: the default gate runs the real validator, which is absent from
+    this bare tmp repo, so nothing may be promoted."""
+    result = flow.run_fase4(
+        tmp_path, PKG, CLS, PATTERNS, EXTRACTION, INDEX,
+        openai_key="O", zai_key="Z", source_file="s--v.md",
+        zai_client=_fake_zai, eval_client=_pass_eval, embed_fn=_embed_orthogonal,
+        validate_fn=lambda root: True, today="2026-09-15")
+    assert result["promoted"] == []
+    assert all("convenções obsidian no destino falharam" in h["reasons"]
+               for h in result["held"])
+    assert not (tmp_path / "docs" / "canonical").exists()
 
 
-# ── fail-closed promotion refusals are contained ──────────────────────────
-def test_run_fase4_occupied_destination_holds_only_that_artifact(tmp_path):
-    canonical = tmp_path / "docs" / "canonical"
-    canonical.mkdir(parents=True)
-    (canonical / "x.md").write_text("authoritative", encoding="utf-8")
-    result = _run(tmp_path, eval_client=_pass_eval)
-    assert (canonical / "x.md").read_text(encoding="utf-8") == "authoritative"
-    [held] = [h for h in result["held"] if h["path"] == "docs/canonical/x.md"]
-    assert any("promotion refused" in r for r in held["reasons"])
-    # the run still finishes: the other artifacts promote and the manifest is written
-    assert ".opencode/skills/x/SKILL.md" in result["promoted"]
-    assert (tmp_path / "docs" / "analysis" / PKG / f"{PKG}-artifacts.yaml").is_file()
+# ── the destination gate delegates to the real validator ───────────────────
+VALIDATOR_AVAILABLE = (ROOT / "scripts" / "validate-obsidian.ts").is_file() and \
+    (ROOT / "node_modules" / "@pavani_org" / "obsidian-eval").is_dir()
+
+
+def test_validate_destination_ok_fails_closed_without_the_validator(tmp_path):
+    assert spine.validate_destination_ok(
+        tmp_path, "docs/canonical/x.md", "---\ntype: canonical\n---\n") is False
+
+
+@pytest.mark.skipif(not VALIDATOR_AVAILABLE, reason="validate-obsidian.ts deps not installed")
+@pytest.mark.parametrize("body,expected", [("apenas prosa.", True),
+                                           ("veja [o doc](outro.md)", False)])
+def test_validate_destination_ok_runs_the_real_validator(body, expected):
+    """A raw markdown link is a violation only at docs/canonical/ (Check 5); the
+    verdict must come from validate-obsidian.ts itself, not a Python copy of it."""
+    import phase4_create
+    art = {"type": "canonical", "pattern": "X", "phase3_verdict": "Missing",
+           "title": "T", "content": body, "source": "s--v.md",
+           "last_updated": "2026-09-15", "intended_destination": "docs/canonical/x.md"}
+    assert spine.validate_destination_ok(
+        ROOT, "docs/canonical/x.md", phase4_create.render(art)) is expected
+
 
 
 # ── quarantine path collisions ────────────────────────────────────────────
@@ -268,7 +300,8 @@ def test_run_fase4_holds_the_later_artifact_on_a_destination_collision(tmp_path)
         tmp_path, PKG, cls, patterns, EXTRACTION, INDEX,
         openai_key="O", zai_key="Z", source_file="s--v.md",
         zai_client=echoing_zai, eval_client=_pass_eval, embed_fn=_embed_orthogonal,
-        validate_fn=lambda root: True, today="2026-09-15")
+        validate_fn=lambda root: True, validate_destination_fn=_destination_ok,
+        today="2026-09-15")
     assert result["promoted"] == ["docs/canonical/sub-agents.md"]
     [held] = result["held"]
     assert held["path"] == "docs/canonical/sub-agents.md"
@@ -277,5 +310,7 @@ def test_run_fase4_holds_the_later_artifact_on_a_destination_collision(tmp_path)
     promoted_text = (tmp_path / "docs" / "canonical" / "sub-agents.md").read_text(encoding="utf-8")
     assert "corpo de Sub-Agents" in promoted_text and "corpo de Sub Agents" not in promoted_text
     assert list((tmp_path / "docs" / "analysis" / PKG / "proposed").rglob("*.md")) == []
-    assert [r["pattern"] for r in result["manifest"]["artifacts"]["canonical_docs"]] == \
-        ["Sub-Agents", "Sub Agents"]
+    promoted_row, held_row = result["manifest"]["artifacts"]["canonical_docs"]
+    assert [promoted_row["pattern"], held_row["pattern"]] == ["Sub-Agents", "Sub Agents"]
+    # a hold with no quarantined copy must not claim one in the Fase-5 contract
+    assert "quarantine_path" not in held_row

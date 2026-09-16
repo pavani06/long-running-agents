@@ -317,49 +317,7 @@ def test_create_skill_and_exercise_stamp_the_verdict():
     assert skill["phase3_verdict"] == "Partial" and exercise["phase3_verdict"] == "Partial"
 
 
-# ── destination-scoped convention checks (pre-promotion gate) ──────────────
-CANONICAL_DEST = "docs/canonical/idempotent-diff-pipeline.md"
-
-
-def test_destination_violations_accepts_a_clean_canonical_doc():
-    md = f4.render_markdown(_artifact(creation={"title": "X", "body": "apenas prosa."}))
-    assert f4.destination_violations(CANONICAL_DEST, md) == []
-
-
-def test_destination_violations_rejects_a_raw_markdown_link():
-    md = f4.render_markdown(_artifact(creation={"title": "X", "body": "veja [o doc](outro.md)"}))
-    problems = f4.destination_violations(CANONICAL_DEST, md)
-    assert any("link markdown cru" in p for p in problems)
-
-
-def test_destination_violations_ignores_links_inside_code_fences():
-    body = "```\nveja [o doc](outro.md)\n```"
-    md = f4.render_markdown(_artifact(creation={"title": "X", "body": body}))
-    assert f4.destination_violations(CANONICAL_DEST, md) == []
-
-
-def test_destination_violations_rejects_only_unresolvable_wikilinks():
-    md = f4.render_markdown(_artifact(creation={"title": "X", "body": "veja [[outro]]"}))
-    assert any("wikilink quebrado" in p for p in f4.destination_violations(CANONICAL_DEST, md))
-    assert f4.destination_violations(CANONICAL_DEST, md,
-                                     exists=lambda rel: rel == "outro.md") == []
-
-
-def test_destination_violations_requires_canonical_frontmatter():
-    assert f4.destination_violations(CANONICAL_DEST, "sem frontmatter") == \
-        [f"{CANONICAL_DEST}: frontmatter YAML ausente"]
-    no_type = "---\ntitle: X\naliases: [a]\nrelates-to: []\n---\n\nprosa"
-    assert any("sem 'type'" in p for p in f4.destination_violations(CANONICAL_DEST, no_type))
-
-
-def test_destination_violations_requires_curriculum_tags():
-    dest = "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-01-x.md"
-    assert f4.destination_violations(
-        dest, f4.render_exercise_markdown(_exercise_artifact())) == []
-    no_tags = "---\ntitle: X\ntype: exercise\naliases: [a]\nrelates-to: []\n---\n\nprosa"
-    assert any("sem 'tags'" in p for p in f4.destination_violations(dest, no_tags))
-
-
-def test_destination_violations_skips_unmonitored_destinations():
-    # .opencode/skills/ is outside the validator's monitored dirs — nothing to check
-    assert f4.destination_violations(".opencode/skills/x/SKILL.md", "qualquer [x](y.md)") == []
+def test_render_dispatches_by_artifact_type():
+    assert f4.render(_artifact()) == f4.render_markdown(_artifact())
+    assert f4.render(_skill_artifact()) == f4.render_skill_markdown(_skill_artifact())
+    assert f4.render(_exercise_artifact()) == f4.render_exercise_markdown(_exercise_artifact())

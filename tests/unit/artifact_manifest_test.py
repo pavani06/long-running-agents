@@ -57,6 +57,13 @@ def test_build_manifest_records_status_and_hold_reasons():
     assert skill["status"] == am.STATUS_QUARANTINED
     assert skill["quarantine_path"].startswith("docs/analysis/pkg/proposed/")
     assert skill["reasons"] == ["evaluator adversarial abaixo do corte"]
+    # a hold with no copy on disk omits the key rather than pointing at the repo root
+    no_copy = dict(HELD_SKILL); no_copy.pop("quarantine_path")
+    [row] = am.build_manifest("pkg", "2026-09-15", [], [
+        {"category": "skill", "artifact": no_copy, "accepted": False,
+         "reasons": ["colisão de destino"]}],
+        planned_categories={"skill"})["artifacts"]["skills"]
+    assert row["status"] == am.STATUS_QUARANTINED and "quarantine_path" not in row
     [exercise] = m["artifacts"]["exercises"]
     assert exercise["status"] == am.STATUS_PROMOTED
     # the curriculum level is recorded per exercise (Etapa 7 / #265 re-routing input)

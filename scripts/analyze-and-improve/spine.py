@@ -10,7 +10,9 @@ landing they feed are tested in their own modules.
 """
 from __future__ import annotations
 
+import shutil
 import subprocess
+import tempfile
 import time
 from pathlib import Path
 
@@ -59,6 +61,40 @@ def validate_obsidian_ok(repo_root: Path) -> bool:
         ["npx", "tsx", "scripts/validate-obsidian.ts"],
         cwd=str(repo_root), capture_output=True, text=True,
     ).returncode == 0
+
+
+def validate_destination_ok(repo_root: Path, destination: str, text: str) -> bool:
+    """Run the repo's own doc validator over PROPOSED content laid out at its
+    authoritative `destination`, in a throwaway validation root; True on exit 0 (I/O).
+
+    `validate-obsidian.ts` scopes its canonical checks to `docs/canonical/<file>.md`
+    and its curriculum checks to `curriculum/`, so content held in the quarantine
+    dir never trips them. The root is a temp dir holding a copy of the validator
+    plus the proposed file at `destination`, with the run scoped to that path — the
+    conventions come from the validator itself, so there is no second copy to drift
+    from it. Nothing is written into an authoritative layer. Fail-closed: False
+    whenever the validator reports violations OR cannot be run at all."""
+    script = repo_root / "scripts" / "validate-obsidian.ts"
+    if not script.is_file():
+        return False
+    root = Path(tempfile.mkdtemp(prefix=".validate-destination-", dir=str(repo_root)))
+    try:
+        target = (root / destination).resolve()
+        if not target.is_relative_to(root.resolve()):
+            return False
+        (root / "scripts").mkdir()
+        shutil.copyfile(script, root / "scripts" / "validate-obsidian.ts")
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(text, encoding="utf-8")
+        return subprocess.run(
+            ["npx", "tsx", "scripts/validate-obsidian.ts", "--no-cache",
+             "--paths", destination],
+            cwd=str(root), capture_output=True, text=True, timeout=300,
+        ).returncode == 0
+    except (OSError, subprocess.SubprocessError):
+        return False
+    finally:
+        shutil.rmtree(root, ignore_errors=True)
 
 
 def run_spine(transcript: str, slug: str, index: dict, *, openai_key: str, zai_key: str,
