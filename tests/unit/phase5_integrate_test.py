@@ -339,9 +339,10 @@ def test_run_is_idempotent_on_rerun(tmp_path):
     first = {p: (root / p).read_text(encoding="utf-8") for p in
              ("docs/system-of-record.md", "curriculum/INDEX.md",
               "curriculum/README.md", "curriculum/MASTER_PLAN.md")}
-    p5.run(root, mp)
+    report = p5.run(root, mp)
     for p, text in first.items():
         assert (root / p).read_text(encoding="utf-8") == text
+    assert report["changed"] == []   # nothing moved, so nothing is reported as updated
 
 
 def test_run_quarantined_only_never_mutates_indexes(tmp_path):

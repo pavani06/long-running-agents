@@ -16,10 +16,9 @@ move gated by the machine gates; landing on main stays behind a human-gated PR);
 the evaluator is a different provider from the generator; the quarantine write
 can never touch `docs/canonical/`, `curriculum/` or `.opencode/skills/`.
 
-No production path invokes `run_fase4` yet, deliberately: #263 delivers the
-creation engine and the truthful manifest contract, and the producer/consumer
-wiring lands with #264 (manifest consumption + index integration) so both sides
-of the contract are validated as one integration boundary.
+`first_loop.py` is the single production caller since #264 landed the
+producer/consumer wiring (manifest consumption + index integration), so both
+sides of the contract are validated as one integration boundary.
 
 `write_quarantined`/`promote` are thin I/O over pure path computation;
 `run_fase4` needs both keys but every external call (GLM, evaluator, embeddings,

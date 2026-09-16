@@ -85,7 +85,10 @@ def _fase4_result(dests=(("canonical", "docs/canonical/b.md", True),)):
                          "artifact": {"type": category, "title": "T", "content": "B",
                                       "intended_destination": dest},
                          "accepted": accepted, "reasons": [] if accepted else ["dedup"],
-                         "evaluation": {"mean": 3.5, "passed": True, "scores": {}, "rationale": "ok"},
+                         "evaluation": {"mean": 3.5, "passed": True,
+                                        "scores": {"fidelity": 4, "evidence": 3,
+                                                   "non_duplication": 4, "format": 3},
+                                        "rationale": "fundamenta o ACCEPT"},
                          "dedup": {"duplicate": False, "score": 0.4}})
     return {"manifest": {}, "outcomes": outcomes,
             "promoted": [d for _, d, a in dests if a],
@@ -111,7 +114,12 @@ def test_pr_body_states_human_decision_and_gates():
     assert "O que o humano está sendo pedido a aprovar" in body
     assert "roda no CI" in body and "Check Obsidian Conventions" in body   # actual validate-obsidian contract
     assert "docs/analysis/s/s-artifacts.yaml" in body        # the manifest contract
-    assert "pipeline.py integrate" in body                   # the Fase-5 consumer
+    # the Fase-5 consumer, driven by this run's explicit manifest path
+    assert "pipeline.py integrate docs/analysis/s/s-artifacts.yaml" in body
+    # the adversarial evaluator's substantive ACCEPT/REJECT evidence, not a bare mean
+    assert f"corte {fl.evaluator.PROVISIONAL_MIN_MEAN}" in body
+    assert "'fidelity': 4" in body and "'non_duplication': 4" in body
+    assert "fundamenta o ACCEPT" in body
 
 
 # ── run() exit semantics: no-op success vs error (#263 operational fix) ─────

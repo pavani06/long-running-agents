@@ -93,12 +93,12 @@ jobs:
 
       - name: Integrate indexes from this run's manifest (Fase 5, #264)
         id: integrate
-        # Deterministic consumer: reads THIS run's manifest by explicit path
-        # (docs/analysis/<slug>/<slug>-artifacts.yaml, never a glob) and recomputes the
-        # four index surfaces from disk truth — promoted entries only; quarantined
-        # entries never mutate indexes. Emits the diff gate's allowed set.
+        # Deterministic consumer: reads THIS run's manifest by the explicit path the
+        # producer emitted (never a glob, never re-derived) and recomputes the four
+        # index surfaces from disk truth — promoted entries only; quarantined entries
+        # never mutate indexes. Emits the diff gate's allowed set.
         if: steps.loop.outputs.has_proposal == 'true'
-        run: python scripts/analyze-and-improve/pipeline.py integrate "${{ steps.loop.outputs.slug }}"
+        run: python scripts/analyze-and-improve/pipeline.py integrate "${{ steps.loop.outputs.manifest_path }}"
 
       - name: Open ONE human-review PR (auto-merge OFF)
         # Skipped on a successful no-op run (no eligible Missing → no proposal); the loop

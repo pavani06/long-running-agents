@@ -255,7 +255,7 @@ python3 scripts/analyze-and-improve/pipeline.py classify <slug>        # reads <
 python3 scripts/analyze-and-improve/pipeline.py classify <slug> -k 12  # more dense sections in context
 
 # Run Fase 5 (integrate this run's manifest into the index surfaces) — deterministic, no keys
-python3 scripts/analyze-and-improve/pipeline.py integrate <slug>       # reads <slug>-artifacts.yaml, recomputes indexes
+python3 scripts/analyze-and-improve/pipeline.py integrate docs/analysis/<slug>/<slug>-artifacts.yaml  # recomputes indexes from that manifest
 ```
 
 **Fase 3 (classification).** Hybrid retrieval builds the context: dense top-k

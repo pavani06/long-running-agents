@@ -289,7 +289,8 @@ def run(repo_root: Path, manifest_path: Path) -> dict:
 
     if promoted["canonical_docs"]:
         sor_file = repo_root / SOR_PATH
-        text = sor_file.read_text(encoding="utf-8")
+        before = sor_file.read_text(encoding="utf-8")
+        text = before
         claimed = _COUNT_RE.search(text)
         report["sor_before"] = int(claimed.group(1)) if claimed else None
         after = recount_canonical(repo_root)
@@ -301,8 +302,9 @@ def run(repo_root: Path, manifest_path: Path) -> dict:
             if not sor_row_present(text, filename):
                 text = insert_sor_row(text, sor_row(filename,
                                                     frontmatter_title(repo_root / row["path"])))
-        sor_file.write_text(text, encoding="utf-8")
-        changed.append(SOR_PATH)
+        if text != before:
+            sor_file.write_text(text, encoding="utf-8")
+            changed.append(SOR_PATH)
 
     for row in promoted["exercises"]:
         rel = row["path"]

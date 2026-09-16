@@ -16,8 +16,9 @@
 
   integrate  Run Fase 5 (#264) for one run's manifest: recompute the four index
            surfaces (system-of-record, curriculum INDEX/README/MASTER_PLAN) from
-           docs/analysis/<slug>/<slug>-artifacts.yaml by explicit path. Deterministic,
-           no network; only status=promoted entries mutate indexes.
+           the explicit manifest path given as its argument
+           (docs/analysis/<slug>/<slug>-artifacts.yaml). Deterministic, no
+           network; only status=promoted entries mutate indexes.
 
 Environment:
   OPENAI_API_KEY   embeddings for `index`                          — required there
@@ -318,22 +319,26 @@ def run_classify(slug: str, k: int) -> int:
     return 0
 
 
-def run_integrate(slug: str) -> int:
+def run_integrate(manifest_arg: str) -> int:
     """Fase 5 (#264): recompute the four index surfaces from THIS run's manifest.
 
-    Deterministic, no network: reads `docs/analysis/<slug>/<slug>-artifacts.yaml` by
-    explicit path (never a glob over historical v3-shaped manifests), recounts the
-    canonical count from disk, and updates only the mechanically derivable
-    projections for `status: promoted` entries. Also emits the fail-closed diff
-    gate's allowed set (promoted artifacts + manifest + authorized index updates)
-    so the workflow can enforce it."""
+    Deterministic, no network: takes the repo-relative manifest path the producer
+    emitted (`docs/analysis/<slug>/<slug>-artifacts.yaml`) — the single spelling,
+    never re-derived here and never a glob over historical v3-shaped manifests —
+    recounts the canonical count from disk, and updates only the mechanically
+    derivable projections for `status: promoted` entries. Also emits the
+    fail-closed diff gate's allowed set (promoted artifacts + manifest + authorized
+    index updates) so the workflow can enforce it."""
     import phase5_integrate
-    from analysis_package import package_dir
 
-    manifest_path = package_dir(REPO_ROOT, slug) / f"{slug}-artifacts.yaml"
-    if not manifest_path.exists():
-        summary(f"integrate: manifest not found: {manifest_path.relative_to(REPO_ROOT)} "
-                "(run the producer first)")
+    rel = Path(os.path.normpath(manifest_arg))
+    if rel.parts[:2] != ("docs", "analysis") or not rel.name.endswith("-artifacts.yaml"):
+        summary("integrate: not a run manifest path (expected the repo-relative "
+                f"docs/analysis/<slug>/<slug>-artifacts.yaml): {manifest_arg}")
+        return 1
+    manifest_path = REPO_ROOT / rel
+    if not manifest_path.is_file():
+        summary(f"integrate: manifest not found: {rel} (run the producer first)")
         return 1
     try:
         report = phase5_integrate.run(REPO_ROOT, manifest_path)
@@ -384,7 +389,8 @@ def main(argv: list[str] | None = None) -> int:
     pc.add_argument("slug", help="package slug (must already have <slug>-patterns.yaml)")
     pc.add_argument("-k", type=int, default=8, help="dense top-k sections (default: 8)")
     pi5 = sub.add_parser("integrate", help="run Fase 5 (index integration) for a run's manifest")
-    pi5.add_argument("slug", help="package slug (must already have <slug>-artifacts.yaml)")
+    pi5.add_argument("manifest",
+                     help="repo-relative docs/analysis/<slug>/<slug>-artifacts.yaml of this run")
     args = ap.parse_args(argv)
 
     if args.cmd == "queue":
@@ -394,7 +400,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "classify":
         return run_classify(args.slug, args.k)
     if args.cmd == "integrate":
-        return run_integrate(args.slug)
+        return run_integrate(args.manifest)
     return run_index(args.full, args.distribution)
 
 

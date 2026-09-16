@@ -32,6 +32,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import evaluator
 import grep_verify
 import landing
 import phase1_extract
@@ -123,7 +124,10 @@ def _pr_body(*, slug, source_file, source_rule, missing, missing_rule, pattern,
         lines.append(f"- **[{o['category']}]** `{art['intended_destination']}` — {status}")
         if ev:
             lines.append(f"  - evaluator adversarial: mean **{ev.get('mean','n/a')}** — "
-                         f"{'passou' if ev.get('passed') else 'reprovou'}")
+                         f"{'passou' if ev.get('passed') else 'reprovou'} "
+                         f"(corte {evaluator.PROVISIONAL_MIN_MEAN})")
+            lines.append(f"    - scores: {ev.get('scores')}")
+            lines.append(f"    - rationale: {str(ev.get('rationale',''))[:400]}")
         if dup:
             lines.append(f"  - dedup cosseno: {'DUPLICADO' if dup.get('duplicate') else 'não-duplicado'} "
                          f"(score {dup.get('score','n/a')})")
@@ -135,10 +139,12 @@ def _pr_body(*, slug, source_file, source_rule, missing, missing_rule, pattern,
         f"- `docs/analysis/{slug}/{slug}-artifacts.yaml` (+ `.md`) — diz exatamente quais "
         "artefatos desta execução foram promovidos vs retidos, com motivos.", "",
         "### Integração determinística dos índices (Fase 5, #264)",
-        "- `pipeline.py integrate <slug>` leu ESTE manifesto (por caminho explícito) e "
-        "recomputou do disco as projeções derivadas: contagem canônica por recount (nunca "
-        "incremento), `last_updated` do SOR, linha da tabela de padrões ativos e listagens "
-        "de exercícios. Entradas `quarantined` nunca mutam índices.", "",
+        f"- `pipeline.py integrate docs/analysis/{slug}/{slug}-artifacts.yaml` leu ESTE "
+        "manifesto (o caminho explícito desta execução, grafado uma única vez: o produtor o "
+        "emite, o workflow o repassa, o consumidor não o re-deriva) e recomputou do disco as "
+        "projeções derivadas: contagem canônica por recount (nunca incremento), "
+        "`last_updated` do SOR, linha da tabela de padrões ativos e listagens de exercícios. "
+        "Entradas `quarantined` nunca mutam índices.", "",
         "### Evidência que fundamenta",
         f"- Fase-3 verdict: **{missing.get('verdict')}** (Missing = ausente no repo → sem citação de repo; "
         "fundamentado no padrão da fonte)",
