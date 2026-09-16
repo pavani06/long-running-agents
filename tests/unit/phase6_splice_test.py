@@ -87,8 +87,9 @@ class TestLocateById:
         for rec in records_for("curriculum/x/lição.md", DOC):
             if rec.level == 0:
                 continue
-            rng, text = p6.locate_by_id(DOC, "curriculum/x/lição.md", rec.id,
-                                        indexed_hash=rec.hash)
+            rng, text, fresh = p6.locate_by_id(DOC, "curriculum/x/lição.md", rec.id,
+                                               indexed_hash=rec.hash)
+            assert fresh is True
             lines = _lines(DOC)
             assert lines[rng.start] == f"{'#' * rec.level} {rec.heading}"
             assert "\n".join(lines[rng.start:rng.end]).strip("\n") == rec.text
@@ -99,13 +100,14 @@ class TestLocateById:
             p6.locate_by_id(DOC, "curriculum/x/lição.md",
                             "curriculum/x/lição.md#2-nao-existe", indexed_hash="abc")
 
-    def test_stale_index_hash_fails_closed(self):
+    def test_stale_index_is_reported_not_swallowed(self):
         """O hit ranqueado descreve o conteúdo INDEXADO; se o arquivo mudou desde o
-        último índice, a seção localizada não é a que o vetor representa."""
+        último índice, a localização é marcada como desatualizada."""
         rec = [r for r in records_for("curriculum/x/lição.md", DOC) if r.heading == "ROI"][0]
         edited = DOC.replace("Corpo do ROI.", "Corpo do ROI, revisado fora do pipeline.")
-        with pytest.raises(ValueError, match="desatualizado"):
-            p6.locate_by_id(edited, "curriculum/x/lição.md", rec.id, indexed_hash=rec.hash)
+        _rng, _text, fresh = p6.locate_by_id(edited, "curriculum/x/lição.md", rec.id,
+                                             indexed_hash=rec.hash)
+        assert fresh is False
 
 
 class TestApplySplice:
@@ -184,8 +186,16 @@ class TestScope:
     def test_phase5_owned_surfaces_are_not_targets(self):
         for surface in ("curriculum/INDEX.md", "curriculum/README.md",
                         "curriculum/MASTER_PLAN.md", "curriculum/GLOSSARY.md"):
-            assert not p6.eligible_target(surface, "curriculum/")
-        assert p6.eligible_target("curriculum/01-nivel-1-fundamentals/01-a.md", "curriculum/")
+            assert not p6.eligible_target(surface, "curriculum/", exclude="")
+        assert p6.eligible_target("curriculum/01-nivel-1-fundamentals/01-a.md",
+                                  "curriculum/", exclude="")
+
+    def test_the_entrys_own_file_is_not_a_target(self):
+        own = "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-09-x.md"
+        scope = "curriculum/03-nivel-3-advanced-architecture/"
+        assert not p6.eligible_target(own, scope, exclude=own)
+        assert p6.eligible_target("curriculum/03-nivel-3-advanced-architecture/05-l.md",
+                                  scope, exclude=own)
 
 
 class TestModelBoundary:
@@ -229,12 +239,17 @@ CANONICAL = ("---\ntitle: Capability Escalation Ladder\ntype: canonical\n---\n"
              "## Solução\n\n Rung por rung até o vencedor economico, nunca o primeiro que passa.\n")
 BODY = ("Quando a tarefa reprova no eval, suba a escada em ordem de custo de teste: "
         "prompt, budget, depois decomposição — o rung vencedor é o economico. "
-        "A escada de escalation ordena capability por custo de teste; o oposto de "
-        "remove sem fallback. Referência: docs/canonical/capability-escalation-ladder.md.")
+        "A escada capability escalation ladder ordena os degraus por custo de teste; "
+        "o oposto de remove sem fallback. "
+        "Referência: docs/canonical/capability-escalation-ladder.md.")
+ROI_BODY = "ROI corrente da escada de escalation: capability, ladder e rung sem custo."
 LESSON = ("---\ntitle: Harness Evolution\ntype: curriculum-lesson\ntags: []\n---\n"
           "# Harness Evolution\n\n## Visão Geral\n\nFases do harness.\n\n"
-          "## ROI de um Componente\n\nROI corrente sem a escada de escalation.\n\n"
+          f"## ROI de um Componente\n\n{ROI_BODY}\n\n"
           "## Fase 4: REMOVE\n\nRemoção segura.\n")
+# Mesma lição, mas sem nenhuma seção próxima do conhecimento promovido: a melhor
+# correspondência no escopo fica abaixo do piso de similaridade do repo.
+WEAK_LESSON = LESSON.replace(ROI_BODY, "ROI corrente do componente.")
 
 
 def _embed_fn():
@@ -265,8 +280,8 @@ def _repo(tmp_path: Path, *, lesson: str = LESSON, extra_level2: bool = False) -
 
 def _index(repo: Path, embed) -> dict:
     index: dict = {}
-    for md in (sorted(repo.glob("curriculum/*/*.md")) + sorted(repo.glob("curriculum/*.md"))
-               + sorted(repo.glob("docs/canonical/*.md"))):
+    for md in (sorted(repo.glob("curriculum/*/*.md")) + sorted(repo.glob("curriculum/*/*/*.md"))
+               + sorted(repo.glob("curriculum/*.md")) + sorted(repo.glob("docs/canonical/*.md"))):
         rel = md.relative_to(repo).as_posix()
         recs = records_for(rel, md.read_text(encoding="utf-8"))
         vecs = {r.id: v for r, v in zip(recs, embed([r.text for r in recs], "k"))}
@@ -292,7 +307,7 @@ def _manifest(path: Path, *, category: str = "canonical", dest: str,
 
 
 def _run(repo: Path, manifest: Path, *, splice_body: str = BODY, eval_ok: bool = True,
-         changed: list[str] | None = None, **kw):
+         changed: list[str] | None = None, index: dict | None = None, **kw):
     """`changed` is what git would report as the splice's own worktree delta;
     absent a path scenario, a splice changes exactly the file it wrote."""
     calls: list[list[dict]] = []
@@ -307,7 +322,8 @@ def _run(repo: Path, manifest: Path, *, splice_body: str = BODY, eval_ok: bool =
         return {"scores": scores, "rationale": "ok" if eval_ok else "ruim"}
 
     embed = _embed_fn()
-    out = p6.run(repo, manifest, zai_key="z", openai_key="o", index=_index(repo, embed),
+    out = p6.run(repo, manifest, zai_key="z", openai_key="o",
+                 index=_index(repo, embed) if index is None else index,
                  changed_paths_fn=lambda target: [target] if changed is None else changed,
                  embed_fn=embed, splice_client=fake_splice, eval_client=fake_eval,
                  validate_fn=lambda _root: True,
@@ -334,7 +350,7 @@ def test_end_to_end_applied(tmp_path):
     assert "ROI corrente" in user and "Remoção segura." not in user
     # splice exato: corpo novo dentro da seção; tudo fora dela byte-idêntico
     after = target.read_text(encoding="utf-8")
-    assert BODY in after and "ROI corrente sem a escada" not in after
+    assert BODY in after and ROI_BODY not in after
     head = before[:before.index("## ROI de um Componente")]
     assert after.startswith(head)
     tail = before[before.index("## Fase 4: REMOVE"):]
@@ -358,6 +374,91 @@ def test_idempotent_rerun_skips(tmp_path):
     assert second["status"] == "skipped"
     assert "rerun idempotente" in second["reason"]
     assert target.read_bytes() == snapshot
+
+
+def test_idempotent_rerun_over_cached_index_skips(tmp_path):
+    """O rerun real usa o índice em cache (`load_state`), que ainda descreve a seção
+    PRÉ-splice: mesmo com o hash divergente, reaplicar o mesmo corpo é um skip."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    cached = _index(repo, _embed_fn())
+
+    first, _ = _run(repo, manifest, index=cached)
+    assert first["status"] == "applied"
+    snapshot = target.read_bytes()
+
+    second, _ = _run(repo, manifest, index=cached)
+
+    assert second["status"] == "skipped"
+    assert target.read_bytes() == snapshot
+
+
+def test_drift_since_the_index_fails_closed(tmp_path):
+    """Qualquer outra divergência entre índice e arquivo (edição fora do pipeline)
+    para o splice: o vetor ranqueado descreve um conteúdo que não está mais lá."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    cached = _index(repo, _embed_fn())
+    target.write_text(LESSON.replace(ROI_BODY, "Reescrito à mão fora do pipeline."))
+    before = target.read_text(encoding="utf-8")
+
+    with pytest.raises(ValueError, match="desatualizado"):
+        _run(repo, manifest, index=cached)
+    assert target.read_text(encoding="utf-8") == before
+
+
+def test_weak_best_match_aborts(tmp_path):
+    """Gap analysis por retrieval: sem nenhuma seção do escopo acima do piso do repo,
+    o splice não escolhe um destino qualquer."""
+    repo = _repo(tmp_path, lesson=WEAK_LESSON)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    before = (repo / "curriculum" / "03-nivel-3-advanced-architecture"
+              / "05-harness-evolution.md").read_text(encoding="utf-8")
+
+    with pytest.raises(ValueError, match="piso de similaridade"):
+        _run(repo, manifest)
+    assert (repo / "curriculum" / "03-nivel-3-advanced-architecture"
+            / "05-harness-evolution.md").read_text(encoding="utf-8") == before
+
+
+def test_promoted_entry_own_file_is_never_the_target(tmp_path):
+    """O exercício promovido já vive no diretório do seu nível e é a FONTE do splice:
+    ele não pode ser escolhido como destino de si mesmo."""
+    repo = _repo(tmp_path)
+    ex_rel = ("curriculum/03-nivel-3-advanced-architecture/exercises/"
+              "exercise-09-capability-escalation-ladder.md")
+    (repo / ex_rel).parent.mkdir(parents=True)
+    (repo / ex_rel).write_text(
+        "---\ntitle: Exercise\ntype: exercise\ntags: []\nlevel: 3\n---\n"
+        "# Exercise\n\n## Tarefa\n\nOrdene capability escalation ladder e rung "
+        "por custo de teste.\n")
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         category="exercise", level=3, dest=ex_rel)
+    ex_before = (repo / ex_rel).read_text(encoding="utf-8")
+
+    out, _ = _run(repo, manifest)
+
+    assert out["target"] == ("curriculum/03-nivel-3-advanced-architecture/"
+                            "05-harness-evolution.md")
+    assert out["status"] == "applied"
+    assert (repo / ex_rel).read_text(encoding="utf-8") == ex_before
+
+
+def test_index_record_for_deleted_file_fails_closed(tmp_path):
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    cached = _index(repo, _embed_fn())
+    (repo / "curriculum" / "03-nivel-3-advanced-architecture"
+     / "05-harness-evolution.md").unlink()
+
+    with pytest.raises(ValueError, match="arquivo inexistente"):
+        _run(repo, manifest, index=cached)
 
 
 def test_gate_rejection_goes_to_quarantine(tmp_path):
@@ -469,11 +570,13 @@ def test_revision_of_the_target_section_is_not_a_duplicate_of_itself(tmp_path):
                          dest="docs/canonical/capability-escalation-ladder.md")
     target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
 
-    out, _ = _run(repo, manifest, splice_body="ROI corrente, sem a escada de escalation.")
+    revised = ROI_BODY.replace("ROI corrente", "ROI, corrente,")
+
+    out, _ = _run(repo, manifest, splice_body=revised)
 
     assert out["dedup"]["duplicate"] is False
     assert out["status"] == "applied"
-    assert "ROI corrente, sem a escada de escalation." in target.read_text(encoding="utf-8")
+    assert revised in target.read_text(encoding="utf-8")
 
 
 def test_rewrite_duplicating_another_section_is_quarantined(tmp_path):
@@ -514,14 +617,16 @@ def test_canonical_hits_outranking_curriculum_do_not_abort_selection(tmp_path):
     assert out["status"] == "applied"
 
 
-def test_real_repo_section_localizes(tmp_path):
-    """A maquinaria localiza a seção real alvo do slice no arquivo real do repo."""
-    real = ROOT / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
-    text = real.read_text(encoding="utf-8")
+def test_real_repo_sections_localize():
+    """A maquinaria localiza QUALQUER registro indexado de um arquivo real do repo,
+    sem drift — estrutural, não acoplado ao conteúdo (que a própria Fase 6 reescreve)."""
     rel = "curriculum/03-nivel-3-advanced-architecture/05-harness-evolution.md"
-    recs = records_for(rel, text)
-    roi = [r for r in recs if r.heading == "Como Calcular o ROI de um Componente"]
-    assert len(roi) == 1
-    rng, sec_text = p6.locate_by_id(text, rel, roi[0].id, indexed_hash=roi[0].hash)
-    assert text.split("\n")[rng.start] == f"{'#' * roi[0].level} {roi[0].heading}"
-    assert "ROI = (Erros Prevenidos" in sec_text
+    text = (ROOT / rel).read_text(encoding="utf-8")
+    lines = text.split("\n")
+    recs = [r for r in records_for(rel, text) if r.level > 0]
+    assert recs
+    for rec in recs:
+        rng, sec_text, fresh = p6.locate_by_id(text, rel, rec.id, indexed_hash=rec.hash)
+        assert fresh is True
+        assert lines[rng.start] == f"{'#' * rec.level} {rec.heading}"
+        assert sec_text == rec.text

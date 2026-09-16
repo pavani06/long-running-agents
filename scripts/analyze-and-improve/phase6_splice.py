@@ -21,8 +21,14 @@ level directory the entry's own path names, with the manifest `level` field as
 the authoritative consistency check (mismatch → fail closed). There is no second
 level classifier and no correction layer.
 
+Target selection is retrieval-driven gap analysis: the best section INSIDE the
+entry's curriculum scope, above the repo's calibrated similarity floor
+(`floor.REPO_FLOOR`) — an unrelated destination fails closed instead of landing.
+
 Idempotent rerun: a replacement identical to the current section body is a
-clean detectable skip (`status: "skipped"`), not a rewrite.
+clean detectable skip (`status: "skipped"`), not a rewrite — including over a
+cached index that still describes the pre-splice section. Any OTHER drift
+between the index and the file on disk fails closed.
 
 Pure parts (unit-tested): section localization, splice application, both diff
 gates, prompt assembly, replacement parsing. `run` needs both keys but every
@@ -42,6 +48,7 @@ import evaluator
 import quarantine
 import phase5_integrate
 from chunking import _FENCE, _HEADING  # same heading semantics as the index
+from floor import REPO_FLOOR
 from index_store import records_for
 
 # The bounded-knowledge cap mirrors retrieval.MAX_SECTION_CHARS/MAX_CONTEXT_CHARS:
@@ -117,23 +124,22 @@ def locate_section(file_text: str, heading: str, *, ordinal: int = 0) -> Section
 
 
 def locate_by_id(file_text: str, path: str, record_id: str, *,
-                 indexed_hash: str) -> tuple[SectionRange, str]:
+                 indexed_hash: str) -> tuple[SectionRange, str, bool]:
     """Localize the exact indexed record in the CURRENT file content.
 
     Walks `records_for` (the index's own construction) so the id match is exact
-    — duplicate headings get the right ordinal by construction — checks the
-    current chunk's hash against the one the INDEX stored for that record, and
-    asserts the localized lines equal that chunk. So a hit whose vector describes
-    a stale version of the file fails closed instead of driving a splice, and the
-    retrieval hit and the splice bounds can never drift apart. Returns
-    (range, section_text). Pure."""
+    — duplicate headings get the right ordinal by construction — and asserts the
+    localized lines equal that chunk, so the retrieval hit and the splice bounds
+    can never drift apart. Returns (range, section_text, index_fresh), where
+    `index_fresh` says whether the chunk still hashes to what the INDEX stored:
+    a hit whose vector describes a stale version of the file must not drive a
+    splice, and the caller owns that call because one stale case — a rerun over
+    an already-spliced section — is the documented idempotent skip. Pure."""
     recs = records_for(path, file_text)
     idx = next((i for i, r in enumerate(recs) if r.id == record_id), None)
     if idx is None:
         raise ValueError(f"index record not in current file: {record_id}")
     rec = recs[idx]
-    if rec.hash != indexed_hash:
-        raise ValueError(f"índice desatualizado vs arquivo atual: {record_id}")
     if rec.level == 0:
         raise ValueError("preamble has no heading to splice at")
     ordinal = sum(1 for r in recs[:idx] if r.heading == rec.heading)
@@ -142,7 +148,7 @@ def locate_by_id(file_text: str, path: str, record_id: str, *,
     chunk = "\n".join(lines[rng.start:rng.end]).strip("\n")
     if chunk != rec.text:
         raise ValueError(f"localization drift vs index record: {record_id}")
-    return rng, rec.text
+    return rng, rec.text, rec.hash == indexed_hash
 
 
 def body_range(rng: SectionRange, lines: list[str]) -> tuple[int, int]:
@@ -276,14 +282,17 @@ def splice_scope(entry_path: str, level) -> str:
     return f"curriculum/{m.group(1)}/"
 
 
-def eligible_target(path: str, scope: str) -> bool:
+def eligible_target(path: str, scope: str, *, exclude: str) -> bool:
     """Whether an indexed section's file may be spliced. Pure.
 
     Inside the entry's scope, and inside a curriculum SUBdirectory: the top-level
     `curriculum/*.md` surfaces (INDEX/README/MASTER_PLAN are rewritten
     deterministically by Fase 5; GLOSSARY/FAQ/QUICK_START/… are hand-curated
-    indexes) have their own owner and are never section-splice targets."""
-    return path.startswith(scope) and "/" in path[len("curriculum/"):]
+    indexes) have their own owner and are never section-splice targets. `exclude`
+    is the promoted entry's own path: an exercise already sitting in its level
+    directory is the SOURCE of this splice, never its destination."""
+    return (path.startswith(scope) and "/" in path[len("curriculum/"):]
+            and path != exclude)
 
 
 def _citations_ok(body: str, repo_root: Path) -> bool:
@@ -354,16 +363,20 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
     qvec = embed_fn([query], openai_key)[0]
     scope = splice_scope(source_path, level)
     in_scope = _index_scoped(index, lambda _rid, rec: (
-        eligible_target(str(rec.get("path", "")), scope) and int(rec.get("level") or 0) > 0))
-    ranked = retrieval.rank_sections(qvec, in_scope, k=1)
+        eligible_target(str(rec.get("path", "")), scope, exclude=source_path)
+        and int(rec.get("level") or 0) > 0))
+    ranked = retrieval.rank_sections(qvec, in_scope, k=1, floor=REPO_FLOOR)
     if not ranked:
-        raise ValueError(f"retrieval: nenhuma seção de currículo indexada em {scope}")
+        raise ValueError(f"retrieval: nenhuma seção de currículo em {scope} acima do "
+                         f"piso de similaridade ({REPO_FLOOR})")
     hit = ranked[0]
 
     target_rel = str(hit["path"])
     target = repo_root / target_rel
+    if not target.is_file():
+        raise ValueError(f"índice aponta para arquivo inexistente: {target_rel}")
     file_text = target.read_text(encoding="utf-8")
-    rng, section_text = locate_by_id(
+    rng, section_text, index_fresh = locate_by_id(
         file_text, target_rel, str(hit["id"]),
         indexed_hash=str(index.get("records", {}).get(str(hit["id"]), {}).get("hash", "")))
     lines = file_text.split("\n")
@@ -382,6 +395,8 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
         outcome.update({"status": "skipped",
                         "reason": "seção já contém este enriquecimento (rerun idempotente)"})
         return outcome
+    if not index_fresh:
+        raise ValueError(f"índice desatualizado vs arquivo atual: {hit['id']}")
 
     localized_ok, diff_violations = localized_diff_ok(file_text, updated, b0, b1)
     evaluation = evaluator.run(
