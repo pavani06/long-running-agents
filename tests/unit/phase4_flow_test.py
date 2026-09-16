@@ -294,6 +294,7 @@ def _canonical_markdown(body: str) -> str:
         "last_updated": "2026-09-15", "intended_destination": "docs/canonical/x.md"})
 
 
+@pytest.mark.validator_integration
 @pytest.mark.skipif(not VALIDATOR_AVAILABLE, reason="validate-obsidian.ts deps not installed")
 def test_validate_destination_accepts_clean_generated_prose():
     assert spine.validate_destination(
@@ -301,6 +302,7 @@ def test_validate_destination_accepts_clean_generated_prose():
             "available": True, "violations": []}
 
 
+@pytest.mark.validator_integration
 @pytest.mark.skipif(not VALIDATOR_AVAILABLE, reason="validate-obsidian.ts deps not installed")
 @pytest.mark.parametrize("body,check", [("veja [o doc](outro.md)", "raw-links"),
                                         ("veja [[agent-loop]]", "broken-wikilinks")])

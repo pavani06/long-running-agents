@@ -105,16 +105,14 @@ def validate_destination(repo_root: Path, destination: str, text: str) -> dict:
              "--paths", destination],
             cwd=str(root), capture_output=True, text=True, timeout=300)
         report = json.loads(done.stdout)
-        items = report["items"]
-    except (OSError, subprocess.SubprocessError, ValueError, KeyError, TypeError):
+        violations = [f"{i['file']}:{i['line']} — {i['message']} ({i['checkName']})"
+                      for i in report["items"] if i["severity"] == "error"]
+    except (OSError, subprocess.SubprocessError, ValueError,
+            KeyError, IndexError, TypeError):
         return {"available": False, "violations": []}
     finally:
         shutil.rmtree(root, ignore_errors=True)
-    return {"available": True,
-            "violations": [f"{i.get('file')}:{i.get('line')} — {i.get('message')} "
-                           f"({i.get('checkName')})"
-                           for i in items if i.get("severity") == "error"]}
-
+    return {"available": True, "violations": violations}
 
 
 def run_spine(transcript: str, slug: str, index: dict, *, openai_key: str, zai_key: str,
