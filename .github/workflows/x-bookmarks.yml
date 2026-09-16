@@ -2,7 +2,7 @@ name: X Bookmarks (collect + version)
 
 on:
   schedule:
-    - cron: "45 8 * * *"   # daily 05:45 America/Sao_Paulo — after youtube-transcripts
+    - cron: "42 5 * * *"   # daily 02:42 America/Sao_Paulo — after youtube-transcripts
   workflow_dispatch:
     inputs:
       mode:
