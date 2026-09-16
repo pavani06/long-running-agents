@@ -73,7 +73,7 @@ creation to all three artifact types behind the same gates:
 | `phase4_create.py` | Fase 4 generation — canonical doc (proven path; verdict-aware for Partial P1/P2), **skill** (`.opencode/skills/<slug>/SKILL.md`) and **exercise** (`curriculum/<level>/exercises/exercise-<NN>-<slug>.md`, level/number orchestrator-decided) with full content, frontmatter-compliant renderers | `build_messages*`/`parse_*`/`render_*`/`*_destination`/`next_exercise_number` pure; `create*` inject the client |
 | `phase4_routing.py` | Priorização por classificação (Missing=P0, Partial high=P1, medium=P2, Exists/Better=skip) + roteamento de categoria (P0 → canonical+skill+exercise; P1 → canonical+exercise; P2 → canonical) + the ordered `plan_of_work` | ✅ |
 | `artifact_manifest.py` | The artifacts manifest (`<slug>-artifacts.{yaml,md}`) — the typed contract Fase 5 (#264) reads: artifacts by category (canonical/skill/exercise) with promoted/quarantined status, the per-exercise curriculum `level`, skipped patterns, not-applicable rows, integration map | `build_manifest`/`manifest_yaml`/`manifest_md` pure |
-| `phase4_flow.py` | The governed loop: `plan_of_work` → generation → **quarantine write** (`docs/analysis/<slug>/proposed/<dest>`, never the authoritative layers) → Etapa-3 gates (evaluator + dedup + validate + verified citations + the destination-scoped convention check, fail-closed) → **promote-on-pass** (in-worktree move; refuses occupied destinations) → manifest | path/wiring pure parts tested; `run_fase4` needs both keys (all injectable) |
+| `phase4_flow.py` | The governed loop: `plan_of_work` → generation → **quarantine write** (`docs/analysis/<slug>/proposed/<dest>`, never the authoritative layers) → Etapa-3 gates (evaluator + dedup + validate + verified citations + the destination-scoped convention check, fail-closed) → **promote-on-pass** (in-worktree move; refuses a destination occupied by *different* content, recognises an identical one as this run's own prior landing) → manifest | path/wiring pure parts tested; `run_fase4` needs both keys (all injectable) |
 
 **Destination-scoped validation.** `validate-obsidian` scopes Checks 1/5/6 to
 `docs/canonical/<file>.md` and Check 9 to `curriculum/`, so a quarantined copy
@@ -112,13 +112,17 @@ via `OPENAI_EVAL_MODEL`, provisional default). `auto_merge=False` is the
 require-approval brake, usable from day 1; the **real Actions wiring**
 (open/auto-merge PR, update the rolling quarantine Issue) is **#266**, not here.
 Both the dedup threshold and the evaluator's minimum score are **provisional** —
-final calibration is **#262**. Fases that create/mutate the product (4–7) are out
-of scope for this Tier-A slice.
+final calibration is **#262**. Fase 4 (creation) landed with #263 — see the
+section above; the Fases that *integrate* what it creates — 5 (índices, #264) and
+6 (splice curricular, #265) — are still out of scope here.
 
 **Dependencies:** control plane needs only `requests` (+ stdlib). The judgment
 plane's `serialize.py` needs **PyYAML** — a workflow running `analyze` must
 `pip install requests pyyaml`. `queue`/`index` do not import PyYAML (the
-judgment-plane imports are lazy).
+judgment-plane imports are lazy). Fase 4's destination gate additionally shells
+out to `npx tsx scripts/validate-obsidian.ts`, so a job running `run_fase4`
+needs Node + `npm install`; without them the gate is fail-closed (`available`
+false → held, never reported as a content violation).
 
 Tests — run in isolation (the repo's convention for its pipeline tests):
 
@@ -137,6 +141,11 @@ python3 -m pytest tests/unit/metamorphic_match_test.py -q            # #288 two-
 python3 -m pytest tests/unit/metamorphic_rerank_test.py -q           # #288 reranker + sanity mini-eval
 python3 -m pytest tests/unit/metamorphic_metrics_test.py -q          # #288 T1–T4 + gates
 ```
+
+`phase4_flow_test.py`'s `validator_integration` tests (see the marker in
+`pytest.ini`) run the real `validate-obsidian.ts` and therefore **skip** without
+`npm install`; the `Check Obsidian Conventions` workflow is where they are
+required to actually execute.
 
 ### A/B validation (Etapa 4, #262 — Tier-B progression gate)
 
