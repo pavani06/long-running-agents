@@ -158,7 +158,7 @@ python3 -m pytest tests/unit/phase4_routing_test.py -q               # Fase 4 (p
 python3 -m pytest tests/unit/phase4_create_test.py -q                # Fase 4 (canonical/skill/exercise creation)
 python3 -m pytest tests/unit/artifact_manifest_test.py -q            # Fase 4 (manifesto — contrato da Fase 5)
 python3 -m pytest tests/unit/phase4_flow_test.py -q                  # Fase 4 (escrita em quarentena + promoção)
-python3 -m pytest tests/unit/phase5_integrate_test.py -q              # Fase 5 (manifesto → índices, determinístico)
+python3 -m pytest tests/unit/phase5_integrate_test.py -q             # Fase 5 (manifesto → índices, determinístico)
 python3 -m pytest tests/unit/metamorphic_canon_test.py -q            # #288 canon (load/validate + real-evidence check)
 python3 -m pytest tests/unit/metamorphic_match_test.py -q            # #288 two-stage matcher
 python3 -m pytest tests/unit/metamorphic_rerank_test.py -q           # #288 reranker + sanity mini-eval

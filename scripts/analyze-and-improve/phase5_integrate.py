@@ -30,7 +30,8 @@ manifest authorizes, nothing else.
 `load_manifest` fails fast on composition mismatch (a v3 manifest has no
 per-entry `status` and no `meta.type: artifact-manifest` — a hard error, not a
 best-effort parse). Every pure updater is unit-tested; `run` is the thin I/O
-shell the `pipeline.py integrate <slug>` verb drives.
+shell the `pipeline.py integrate docs/analysis/<slug>/<slug>-artifacts.yaml`
+verb drives.
 """
 from __future__ import annotations
 

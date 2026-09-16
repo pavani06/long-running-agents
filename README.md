@@ -64,7 +64,7 @@ Um programa completo de 12 semanas, estruturado em 4 níveis de profundidade cre
 
 ### Referenciar — os padrões canônicos
 
-`docs/canonical/` contém **176 padrões canônicos de arquitetura agentica** -- extraídos de análises de sistemas em produção, da talk "12-Factor Agents" (Dex Horthy, AI Engineer 2025) e de múltiplas fontes externas processadas pelo pipeline `analyze-and-improve`. Cada padrão documenta um problema, o mecanismo de solução e os trade-offs. A lista completa está em [[docs/system-of-record|system of record]].
+`docs/canonical/` contém os **padrões canônicos de arquitetura agentica** -- extraídos de análises de sistemas em produção, da talk "12-Factor Agents" (Dex Horthy, AI Engineer 2025) e de múltiplas fontes externas processadas pelo pipeline `analyze-and-improve`. Cada padrão documenta um problema, o mecanismo de solução e os trade-offs. A contagem ativa e a lista completa estão em [[docs/system-of-record|system of record]] -- a contagem é recomputada do disco pelo integrador determinístico da Fase 5; a tabela de padrões ativos permanece curadoria editorial humana.
 
 Destaques para builders de negócio:
 
