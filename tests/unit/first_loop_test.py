@@ -116,6 +116,11 @@ def test_pr_body_states_human_decision_and_gates():
     assert "docs/analysis/s/s-artifacts.yaml" in body        # the manifest contract
     # the Fase-5 consumer, driven by this run's explicit manifest path
     assert "pipeline.py integrate docs/analysis/s/s-artifacts.yaml" in body
+    # what run() actually recomputes — the active-patterns table is NOT one of them
+    assert "anotação fixa contagem-vs-tabela" in body
+    assert "curriculum/MASTER_PLAN.md" in body
+    assert "linha da tabela de padrões ativos e listagens" not in body
+    assert "not_selected" in body            # the manifest accounts for every classification
     # the adversarial evaluator's substantive ACCEPT/REJECT evidence, not a bare mean
     assert f"corte {fl.evaluator.PROVISIONAL_MIN_MEAN}" in body
     assert "'fidelity': 4" in body and "'non_duplication': 4" in body

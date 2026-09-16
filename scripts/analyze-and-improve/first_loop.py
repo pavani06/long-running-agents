@@ -137,14 +137,24 @@ def _pr_body(*, slug, source_file, source_rule, missing, missing_rule, pattern,
         "",
         "### Manifesto de artefatos (contrato produtor→consumidor)",
         f"- `docs/analysis/{slug}/{slug}-artifacts.yaml` (+ `.md`) — diz exatamente quais "
-        "artefatos desta execução foram promovidos vs retidos, com motivos.", "",
+        "artefatos desta execução foram promovidos vs retidos, com motivos, e presta contas "
+        "do universo classificado inteiro: cada padrão da Fase 3 aparece em `artifacts` ou "
+        "em um dos grupos de `skipped` (`already_exists`, `better_implementation`, "
+        "`not_selected`).",
+        "- O grupo `not_selected` é uma adição ADITIVA ao schema do manifesto (#263), "
+        "somente-relato e default vazio — consumidores existentes não mudam. Ela entra sob a "
+        "autorização permanente da Decisão 1 do capitão: correção concreta do contrato do "
+        "manifesto vinda de evidência de integração ao vivo, não um redesenho da F4.", "",
         "### Integração determinística dos índices (Fase 5, #264)",
         f"- `pipeline.py integrate docs/analysis/{slug}/{slug}-artifacts.yaml` leu ESTE "
         "manifesto (o caminho explícito desta execução, grafado uma única vez: o produtor o "
         "emite, o workflow o repassa, o consumidor não o re-deriva) e recomputou do disco as "
         "projeções derivadas: contagem canônica por recount (nunca incremento), "
-        "`last_updated` do SOR, linha da tabela de padrões ativos e listagens de exercícios. "
-        "Entradas `quarantined` nunca mutam índices.", "",
+        "`last_updated` do SOR, a anotação fixa contagem-vs-tabela (a tabela de padrões "
+        "ativos é curadoria editorial humana — o integrador NÃO escreve linha nela) e, por "
+        "exercício promovido, a listagem em `curriculum/INDEX.md` mais as linhas de árvore "
+        "em `curriculum/README.md` e `curriculum/MASTER_PLAN.md`. Entradas `quarantined` "
+        "nunca mutam índices.", "",
         "### Evidência que fundamenta",
         f"- Fase-3 verdict: **{missing.get('verdict')}** (Missing = ausente no repo → sem citação de repo; "
         "fundamentado no padrão da fonte)",
