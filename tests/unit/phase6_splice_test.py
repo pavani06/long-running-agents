@@ -161,6 +161,31 @@ class TestDiffGates:
         ok, violations = p6.localized_diff_ok(DOC, updated, b0, b1)
         assert ok and violations == []
 
+    def test_append_at_the_end_of_the_body_stays_inside_the_section(self):
+        """Regressão: um parágrafo aditivo no FIM do corpo deixa tudo fora da seção
+        byte-idêntico. O veredito não pode depender de como um algoritmo de diff
+        escolhe alinhar a inserção na borda do corpo."""
+        rng = p6.locate_section(DOC, "ROI")
+        lines = _lines(DOC)
+        b0, b1 = p6.body_range(rng, lines)
+        original_body = "\n".join(lines[b0:b1]).strip("\n")
+        updated, status = p6.apply_splice(
+            DOC, rng, f"{original_body}\n\nNota de integração aditiva.")
+
+        assert status == "changed"
+        assert _lines(updated)[:b0] == lines[:b0]
+        assert _lines(updated)[len(_lines(updated)) - (len(lines) - b1):] == lines[b1:]
+        ok, violations = p6.localized_diff_ok(DOC, updated, b0, b1)
+        assert ok and violations == []
+
+    def test_localized_catches_edit_after_the_section(self):
+        tampered = DOC.replace("Segunda alavanca (ordinal 1).", "Reescrita depois da seção.")
+        rng = p6.locate_section(DOC, "ROI")
+        b0, b1 = p6.body_range(rng, _lines(DOC))
+        ok, violations = p6.localized_diff_ok(DOC, tampered, b0, b1)
+        assert not ok
+        assert any("fora da seção" in v for v in violations)
+
     def test_localized_catches_out_of_range(self):
         tampered = DOC.replace("Intro da lição.", "Intro alterada.")
         rng = p6.locate_section(DOC, "ROI")
@@ -822,3 +847,90 @@ def test_real_repo_sections_localize():
         assert fresh is True
         assert lines[rng.start] == f"{'#' * rec.level} {rec.heading}"
         assert sec_text == rec.text
+
+
+def test_additive_end_of_section_append_lands(tmp_path):
+    """Regressão de ponta a ponta: um parágrafo aditivo separado por linha em branco
+    no FIM do corpo da seção é um enriquecimento legítimo — ele é aplicado (fica
+    atrás do gate humano do PR), não posto em quarentena, e nada fora da seção muda."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_text(encoding="utf-8")
+    appended = ("Nota de integração: a escada de escalation ordena os rungs por custo "
+                "de teste, do prompt ao budget até a decomposição.")
+
+    out, _ = _run(repo, manifest, splice_body=f"{ROI_BODY}\n\n{appended}")
+
+    assert out["status"] == "applied"
+    assert out["diff"]["localized_ok"] is True
+    assert out["diff"]["violations"] == []
+    after = target.read_text(encoding="utf-8")
+    assert f"## ROI de um Componente\n\n{ROI_BODY}\n\n{appended}\n" in after
+    assert after.startswith(before[:before.index("## ROI de um Componente")])
+    assert (after[after.index("## Fase 4: REMOVE"):]
+            == before[before.index("## Fase 4: REMOVE"):])
+
+
+def test_model_is_handed_only_the_target_section_never_the_file(tmp_path):
+    """Fronteira controlada por código: o input do modelo carrega a seção escolhida
+    verbatim e nada mais do arquivo — nem frontmatter, nem as outras seções."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    file_text = target.read_text(encoding="utf-8")
+
+    out, calls = _run(repo, manifest)
+
+    assert len(calls) == 1
+    prompt = "\n".join(m["content"] for m in calls[0])
+    section = f"{HEADING_LINE}\n\n{ROI_BODY}"
+    assert section in prompt and section in file_text   # fatia verbatim do arquivo
+    for outside in ("type: curriculum-lesson", "# Harness Evolution",
+                    "## Visão Geral", "Fases do harness.",
+                    "## Fase 4: REMOVE", "Remoção segura."):
+        assert outside not in prompt
+    assert out["status"] == "applied"
+
+
+def test_whole_document_rewrite_is_refused_before_anything_is_written(tmp_path):
+    """Um modelo que devolve o documento inteiro (frontmatter, headings inventados)
+    é recusado na leitura da resposta: nada é escrito e nada vai para quarentena."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_bytes()
+    proposed = repo / "docs" / "analysis" / SLUG / "proposed"
+
+    with pytest.raises(ValueError, match="frontmatter"):
+        _run(repo, manifest, splice_body=LESSON)
+    assert target.read_bytes() == before
+    assert not proposed.exists()
+
+    with pytest.raises(ValueError, match="heading ATX"):
+        _run(repo, manifest, splice_body=f"{ROI_BODY}\n\n## Seção Inventada\n\nTexto novo.")
+    assert target.read_bytes() == before
+    assert not proposed.exists()
+
+
+def test_manifest_level_disagreeing_with_its_own_dir_fails_closed(tmp_path):
+    """O level do manifesto é a checagem de consistência autoritativa: se ele diverge
+    do diretório de nível que o próprio caminho da entrada nomeia, o splice para."""
+    repo = _repo(tmp_path)
+    ex_rel = ("curriculum/03-nivel-3-advanced-architecture/exercises/"
+              "exercise-09-capability-escalation-ladder.md")
+    (repo / ex_rel).parent.mkdir(parents=True)
+    (repo / ex_rel).write_text(
+        "---\ntitle: Exercise\ntype: exercise\ntags: []\nlevel: 2\n---\n"
+        "# Exercise\n\n## Tarefa\n\nOrdene escalation por custo de teste.\n")
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         category="exercise", level=2, dest=ex_rel)
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    before = target.read_bytes()
+
+    with pytest.raises(ValueError, match="diverge do diretório"):
+        _run(repo, manifest)
+    assert target.read_bytes() == before

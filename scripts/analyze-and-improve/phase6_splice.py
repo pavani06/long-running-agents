@@ -7,8 +7,8 @@ chunk), the model sees ONLY that bounded section and returns ONLY a replacement
 body, and CODE applies the splice at the known limits. The model never chooses
 file boundaries and never rewrites a whole curriculum document.
 
-Deterministic gate: the diff must be localized (every changed line inside the
-section body range) and additive in the issue's sense (only the target file
+Deterministic gate: the diff must be localized (everything outside the section
+body range survives byte-identically) and additive in the issue's sense (only the target file
 changed; `docs/canonical/` untouched; no new curriculum files). Promotion still
 passes the Etapa-3 machine gate (#261 lib: adversarial evaluator + cosine dedup
 + destination-scoped validate-obsidian), routed fail-closed by
@@ -53,7 +53,6 @@ the Fase 3/4/5 convention.
 """
 from __future__ import annotations
 
-import difflib
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -199,17 +198,23 @@ def apply_splice(file_text: str, rng: SectionRange, body: str) -> tuple[str, str
 
 
 def localized_diff_ok(original: str, updated: str, b0: int, b1: int) -> tuple[bool, list[str]]:
-    """The diff gate: every changed line must lie inside the body range
-    [b0, b1). Pure."""
+    """The diff gate: everything OUTSIDE the body range [b0, b1) must survive
+    byte-identically, checked as a prefix/suffix comparison. Pure.
+
+    `apply_splice` replaces exactly that range, so this asserts exactly that
+    invariant — position-independently. Re-deriving the change positions with a
+    diff algorithm instead would make the verdict depend on how the algorithm
+    chooses to align an edit at the body's edge: an enrichment appended at the
+    end of the body can be aligned one line past the section, which is a legal
+    alignment of an identical result and not an out-of-section change."""
     a = original.split("\n")
     b = updated.split("\n")
-    sm = difflib.SequenceMatcher(a=a, b=b, autojunk=False)
+    suffix = len(a) - b1
     violations: list[str] = []
-    for tag, i1, i2, _j1, _j2 in sm.get_opcodes():
-        if tag == "equal":
-            continue
-        if i1 < b0 or i2 > b1:
-            violations.append(f"diff fora da seção: linhas {i1 + 1}..{i2} ({tag})")
+    if a[:b0] != b[:b0]:
+        violations.append(f"diff fora da seção: conteúdo antes da linha {b0 + 1} mudou")
+    if suffix > len(b) - b0 or a[b1:] != b[len(b) - suffix:]:
+        violations.append(f"diff fora da seção: conteúdo a partir da linha {b1 + 1} mudou")
     return not violations, violations
 
 
