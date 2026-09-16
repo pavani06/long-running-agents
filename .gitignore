@@ -55,3 +55,6 @@ supabase/.combined-migration.sql
 .smart-env
 # OneDrive sync artifacts
 .tmp.driveupload/
+
+# Agent runtime session state (firstmate/opencode workers)
+.omo/run-continuation/
