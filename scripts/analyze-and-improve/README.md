@@ -140,9 +140,11 @@ mismatch fails closed) — no second level classifier, no correction layer. The
 top-level `curriculum/*.md` surfaces (INDEX/README/MASTER_PLAN, owned by Fase 5)
 are never splice targets, and neither is the promoted entry's own file. A section
 beyond the module's max splice-eligible size fails closed (it is never truncated
-into the prompt), and so does a replacement body beyond that same cap — one rule,
-one constant, so the phase never writes a section it would refuse to splice next
-run. A replacement that shrinks the section body past the documented fraction is
+into the prompt), and so does a splice whose resulting section (heading + body)
+would pass that same cap — one rule, one constant, so the phase never writes a
+section it would refuse to splice next run. The evaluator is given the promoted
+source and the section being rewritten, so `fidelity` is scored against the real
+source. A replacement that shrinks the section body past the documented fraction is
 held in quarantine.
 
 **Rerun semantics.** The splice applies once per index state. Rerunning `splice`

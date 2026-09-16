@@ -2,6 +2,7 @@
 """Unit tests for Fase 6 (#265): section splice over the manifest boundary.
 Pure parts (localização de seção, splice, gates de diff) + run() com fakes
 injetados sobre repo sintético; sem rede, sem GLM/OpenAI reais."""
+import json
 import sys
 from pathlib import Path
 
@@ -239,14 +240,6 @@ class TestModelBoundary:
         with pytest.raises(ValueError, match="fence não fechado"):
             p6.parse_replacement({"body": "Exemplo:\n\n```python\nx = 1"})
 
-    def test_body_above_the_section_cap_is_rejected(self):
-        """Mesmo limite que decide quais seções são elegíveis: o splice não pode
-        fabricar uma seção que a própria fase recusaria na próxima rodada."""
-        at_cap = "x" * p6._MAX_SECTION_CHARS
-        assert p6.parse_replacement({"body": at_cap}) == at_cap
-        with pytest.raises(ValueError, match="acima do limite"):
-            p6.parse_replacement({"body": "x" * (p6._MAX_SECTION_CHARS + 1)})
-
 
 # ---------------------------------------------------------------- E2E (fakes)
 
@@ -325,7 +318,8 @@ def _manifest(path: Path, *, category: str = "canonical", dest: str,
 
 
 def _run(repo: Path, manifest: Path, *, splice_body: str = BODY, eval_ok: bool = True,
-         changed: list[str] | None = None, index: dict | None = None, **kw):
+         changed: list[str] | None = None, index: dict | None = None,
+         eval_calls: list | None = None, **kw):
     """`changed` is what git would report as the splice's own worktree delta;
     absent a path scenario, a splice changes exactly the file it wrote."""
     calls: list[list[dict]] = []
@@ -334,7 +328,9 @@ def _run(repo: Path, manifest: Path, *, splice_body: str = BODY, eval_ok: bool =
         calls.append(messages)
         return {"body": splice_body}
 
-    def fake_eval(_messages, _key):
+    def fake_eval(messages, _key):
+        if eval_calls is not None:
+            eval_calls.append(messages)
         scores = {"fidelity": 5, "evidence": 5, "non_duplication": 5, "format": 5} \
             if eval_ok else {"fidelity": 0, "evidence": 0, "non_duplication": 0, "format": 0}
         return {"scores": scores, "rationale": "ok" if eval_ok else "ruim"}
@@ -500,18 +496,63 @@ def test_oversized_section_aborts(tmp_path):
     assert target.read_text(encoding="utf-8") == before
 
 
-def test_oversized_replacement_aborts(tmp_path):
-    """Um corpo acima do limite de seção falha fechado antes do splice: o currículo
-    fica intocado e nenhuma seção nova ultrapassa o limite de elegibilidade."""
+HEADING_LINE = "## ROI de um Componente"
+
+
+def _filler(n: int) -> str:
+    """Texto do mesmo vocabulário da fonte com exatamente n chars, sem espaço nas
+    pontas (o parser faz strip, e estes testes medem o limite no char)."""
+    text = ((BODY + " ") * (n // len(BODY) + 2))[:n]
+    return (text[:-1] + "x") if text[-1:].isspace() else text
+
+
+def test_replacement_at_the_resulting_section_cap_applies(tmp_path):
+    """O limite mede a SEÇÃO resultante (linha de heading + corpo), a mesma unidade
+    que decide elegibilidade — exatamente no limite ainda passa."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
+    body = _filler(p6._MAX_SECTION_CHARS - len(HEADING_LINE) - 1)
+
+    out, _ = _run(repo, manifest, splice_body=body)
+
+    assert out["status"] == "applied"
+    spliced = [r for r in records_for(out["target"], target.read_text(encoding="utf-8"))
+               if r.heading == "ROI de um Componente"][0]
+    assert len(spliced.text) == p6._MAX_SECTION_CHARS
+
+
+def test_replacement_past_the_resulting_section_cap_aborts(tmp_path):
+    """Um char além do limite falha fechado: a fase nunca fabrica uma seção que ela
+    mesma recusaria como alvo na próxima rodada."""
     repo = _repo(tmp_path)
     manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
                          dest="docs/canonical/capability-escalation-ladder.md")
     target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
     before = target.read_text(encoding="utf-8")
+    body = _filler(p6._MAX_SECTION_CHARS - len(HEADING_LINE))
 
-    with pytest.raises(ValueError, match="acima do limite"):
-        _run(repo, manifest, splice_body=" ".join([BODY] * 40))
+    with pytest.raises(ValueError, match="seção resultante grande demais"):
+        _run(repo, manifest, splice_body=body)
     assert target.read_text(encoding="utf-8") == before
+
+
+def test_eval_artifact_carries_the_promoted_source_and_the_section(tmp_path):
+    """O critério `fidelity` do avaliador só é verificável com a fonte à vista: o
+    artefato avaliado carrega a fonte promovida (limitada) e a seção original."""
+    repo = _repo(tmp_path)
+    manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
+                         dest="docs/canonical/capability-escalation-ladder.md")
+    eval_calls: list = []
+
+    out, _ = _run(repo, manifest, eval_calls=eval_calls)
+
+    assert out["status"] == "applied"
+    artifact = json.loads(eval_calls[0][-1]["content"].split("\n", 1)[1])
+    assert artifact["promoted_source"] == CANONICAL[:p6._MAX_KNOWLEDGE_CHARS]
+    assert artifact["original_section"] == f"{HEADING_LINE}\n\n{ROI_BODY}"
+    assert artifact["content"] == BODY
 
 
 def test_drastically_shorter_replacement_is_held(tmp_path):

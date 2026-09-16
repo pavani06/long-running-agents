@@ -33,12 +33,17 @@ index/worktree hash mismatch. After a full re-index the spliced section is
 current again, so the same section can be selected and enriched a second time —
 that is a fresh splice behind the same human PR gate, not a silent one.
 
-Size bounds, symmetric around one constant: a section beyond
-`_MAX_SECTION_CHARS` is not splice material and fails closed (the section is
-never truncated into the prompt), and so does a replacement body beyond that same
-cap — the phase can never manufacture a section it would itself refuse next run.
-A replacement that shrinks the body past `_MIN_BODY_RATIO` is held in quarantine,
-so a short summary can never silently delete curriculum.
+Size bounds, symmetric around one constant and measured on the same unit (the
+section = heading line + body): a section beyond `_MAX_SECTION_CHARS` is not
+splice material and fails closed (it is never truncated into the prompt), and so
+does a splice whose RESULTING section would pass that cap — the phase can never
+manufacture a section it would itself refuse next run. A replacement that shrinks
+the body past `_MIN_BODY_RATIO` is held in quarantine, so a short summary can
+never silently delete curriculum.
+
+The adversarial evaluator is given the promoted source and the section it is
+rewriting, so the rubric's fidelity criterion is scored against the real source
+rather than against the rewrite alone.
 
 Pure parts (unit-tested): section localization, splice application, both diff
 gates, prompt assembly, replacement parsing. `run` needs both keys but every
@@ -268,16 +273,11 @@ def parse_replacement(reply: dict) -> str:
     The body is spliced between known section limits, so it must not carry
     structure the code owns: an ATX heading outside a fence would create or
     destroy a section boundary inside the spliced range (re-chunking the file on
-    the next run), and frontmatter belongs to the file, not to a section. Nor may
-    it exceed `_MAX_SECTION_CHARS`, the same cap that decides which sections are
-    splice-eligible — the phase never produces a section it would later refuse."""
+    the next run), and frontmatter belongs to the file, not to a section."""
     body = reply.get("body")
     if not isinstance(body, str) or not body.strip():
         raise ValueError("splice: 'body' deve ser string não vazia")
     body = body.strip()
-    if len(body) > _MAX_SECTION_CHARS:
-        raise ValueError(f"splice: corpo de {len(body)} chars acima do limite de "
-                         f"{_MAX_SECTION_CHARS} para uma seção")
     if body.startswith("---"):
         raise ValueError("splice: 'body' não pode abrir com frontmatter")
     in_fence = False
@@ -429,6 +429,10 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
 
     messages = build_messages(rng.heading, section_text, source_text, path=target_rel)
     body = parse_replacement(splice_client(messages, zai_key))
+    spliced_chars = len(lines[rng.start]) + 1 + len(body)
+    if spliced_chars > _MAX_SECTION_CHARS:
+        raise ValueError(f"seção resultante grande demais: {rng.heading!r} em "
+                         f"{target_rel} ({spliced_chars} chars > {_MAX_SECTION_CHARS})")
     updated, status = apply_splice(file_text, rng, body)
 
     outcome: dict = {
@@ -447,7 +451,9 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
     preserved_ok, size_violations = body_preserved_ok("\n".join(lines[b0:b1]), body)
     evaluation = evaluator.run(
         {"type": "curriculum_section_splice", "title": rng.heading, "content": body,
-         "source_pattern": entry, "phase3_verdict": str(entry.get("classification", ""))},
+         "source_pattern": entry, "phase3_verdict": str(entry.get("classification", "")),
+         "promoted_source": source_text[:_MAX_KNOWLEDGE_CHARS],
+         "original_section": section_text},
         openai_key, min_mean=min_mean, client=eval_client)
     vec = embed_fn([f"{rng.heading}\n{body}"], openai_key)[0]
     others = _index_scoped(index, lambda rid, _rec: rid != str(hit["id"]))
