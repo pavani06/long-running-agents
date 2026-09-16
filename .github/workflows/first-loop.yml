@@ -1,16 +1,20 @@
 name: First Useful Governed Loop (#263 slice)
 
 # Proves ONE real end-to-end path of analyze-and-improve, human-gated:
-#   source → analyze → Missing → F4 → docs/canonical/<slug>.md on the proposal branch →
-#   gates/CI → PR → REJECT/EDIT/ACCEPT → human merge = promotion.
+#   source → analyze → Missing → F4 (run_fase4, #264 wiring) → artifacts + manifest on the
+#   proposal branch → Fase-5 index integration → gates/CI → PR → REJECT/EDIT/ACCEPT →
+#   human merge = promotion.
 # NOT the daily pipeline (that is #266): one manual dispatch, one real non-benchmark source,
-# exactly one canonical doc created AT ITS DESTINATION on the proposal branch, gates run
-# against it, and a single human-review PR with auto-merge OFF. creation != promotion — the
-# PR is the quarantine; nothing reaches main without a human merge. Index is built docs-only
-# (production default; the #288 docs+code flip is NOT enabled here).
+# exactly one eligible Missing selected, and the #263 creation engine (run_fase4) creates
+# canonical+skill+exercise behind the Etapa-3 gates, records the artifacts manifest, and the
+# deterministic Fase-5 consumer recomputes the four index surfaces from it — behind a
+# fail-closed diff gate (this run's promoted artifacts + manifest + authorized index updates,
+# nothing else). creation != promotion — the PR is the quarantine; nothing reaches main
+# without a human merge. Index is built docs-only (production default; the #288 docs+code
+# flip is NOT enabled here).
 #
-# Cost: one billed run (docs-only index build + F1/F2/F3 GLM calls + F4 GLM call + reranker
-# + one adversarial-evaluator call + one dedup embedding).
+# Cost: one billed run (docs-only index build + F1/F2/F3 GLM calls + F4 GLM calls
+# + reranker + adversarial-evaluator + dedup embeddings, per artifact).
 
 on:
   workflow_dispatch:
@@ -44,6 +48,16 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --upgrade requests pyyaml
 
+      # run_fase4's gates shell out to `npx tsx scripts/validate-obsidian.ts`, which
+      # needs node_modules (@pavani_org/obsidian-eval, yaml) — without them the
+      # destination gate is fail-closed and would hold every artifact. Mirrors
+      # check-obsidian-conventions.yml.
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '20'
+      - name: Install Node dependencies (F4 destination gate)
+        run: npm install
+
       # Persist/restore the derived index across runs (native Actions cache). This is an
       # OPTIMIZATION only, never authoritative repo state: run_id key always misses so a
       # fresh entry is saved each run; the restore-keys prefix restores the most recent
@@ -75,6 +89,15 @@ jobs:
           PR_BODY_PATH: pr-body.md
         run: python scripts/analyze-and-improve/first_loop.py
 
+      - name: Integrate indexes from this run's manifest (Fase 5, #264)
+        id: integrate
+        # Deterministic consumer: reads THIS run's manifest by explicit path
+        # (docs/analysis/<slug>/<slug>-artifacts.yaml, never a glob) and recomputes the
+        # four index surfaces from disk truth — promoted entries only; quarantined
+        # entries never mutate indexes. Emits the diff gate's allowed set.
+        if: steps.loop.outputs.has_proposal == 'true'
+        run: python scripts/analyze-and-improve/pipeline.py integrate "${{ steps.loop.outputs.slug }}"
+
       - name: Open ONE human-review PR (auto-merge OFF)
         # Skipped on a successful no-op run (no eligible Missing → no proposal); the loop
         # step exits 0 and the job stays green with "analyzed; no proposal needed".
@@ -85,19 +108,34 @@ jobs:
           # PRs. Passed via env (never echoed/logged); value never printed.
           GH_TOKEN: ${{ secrets.GH_SECRETS_PAT }}
           BRANCH: ${{ steps.loop.outputs.branch }}
-          PROPOSED_PATH: ${{ steps.loop.outputs.proposed_path }}
           PR_TITLE: ${{ steps.loop.outputs.pr_title }}
+          ALLOWED: ${{ steps.integrate.outputs.allowed }}
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
-          git add -- "$PROPOSED_PATH"
+          # Fail-closed diff gate (#264): the working tree may hold ONLY this run's
+          # promoted artifacts + quarantined copies + this run's manifest + the derived
+          # index updates the manifest authorizes. Anything outside holds the run.
+          # (pr-body.md is this workflow's own scratch file — never committed.)
+          # -uall: list untracked files individually, never collapsed directories.
+          CHANGED=$(git status --porcelain -uall | cut -c4- | grep -vxF 'pr-body.md' || true)
+          while IFS= read -r f; do
+            [ -z "$f" ] && continue
+            if ! printf '%s\n' "$ALLOWED" | grep -qxF -- "$f"; then
+              echo "::error::change outside the allowed set: $f"
+              exit 1
+            fi
+          done <<< "$CHANGED"
+          printf '%s\n' "$CHANGED" | xargs git add --
           git commit -m "proposal(analyze-and-improve): $PR_TITLE
 
-          Canonical doc created at docs/canonical/<slug>.md by the First Useful Governed
-          Loop (#263 slice), on this proposal branch. creation != promotion — the PR is the
-          quarantine; promotion happens ONLY when a human merges this PR to main. auto-merge OFF.
+          Artifacts created by run_fase4 (the #263 engine — single production F4 path,
+          #264) on this proposal branch, plus this run's artifacts manifest and the
+          derived-index updates the Fase-5 integrator recomputed from it. creation !=
+          promotion — the PR is the quarantine; promotion happens ONLY when a human
+          merges this PR to main. auto-merge OFF.
 
           Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
           git push -u origin "$BRANCH"

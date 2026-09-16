@@ -78,28 +78,45 @@ def test_transcript_for_maps_extract_md_to_transcript_txt():
 
 
 # ── PR body carries what the human must review ────────────────────────────
+def _fase4_result(dests=(("canonical", "docs/canonical/b.md", True),)):
+    outcomes = []
+    for category, dest, accepted in dests:
+        outcomes.append({"category": category,
+                         "artifact": {"type": category, "title": "T", "content": "B",
+                                      "intended_destination": dest},
+                         "accepted": accepted, "reasons": [] if accepted else ["dedup"],
+                         "evaluation": {"mean": 3.5, "passed": True, "scores": {}, "rationale": "ok"},
+                         "dedup": {"duplicate": False, "score": 0.4}})
+    return {"manifest": {}, "outcomes": outcomes,
+            "promoted": [d for _, d, a in dests if a],
+            "held": [{"path": d, "reasons": ["dedup"]} for _, d, a in dests if not a]}
+
+
 def test_pr_body_states_human_decision_and_gates():
     missing = {"pattern": "B", "verdict": "Missing", "rationale": "why", "evidence": []}
     pattern = {"name": "B", "problem": "prob", "mechanism": "mech", "tradeoffs": "to"}
-    artifact = {"intended_destination": "docs/canonical/b.md"}
     body = fl._pr_body(
         slug="s", source_file="s--v.md", source_rule="deterministic rule",
         missing=missing, missing_rule="first eligible Missing", pattern=pattern,
-        artifact=artifact, proposed_path="docs/canonical/b.md",   # canonical target on the branch
-        gates={"citations_ok": True},
-        evaluation={"mean": 3.5, "passed": True, "scores": {}, "rationale": "ok"},
-        dup={"duplicate": False, "score": 0.4})
+        result=_fase4_result((("canonical", "docs/canonical/b.md", True),
+                              ("skill", ".opencode/skills/b/SKILL.md", False))),
+        citations_ok=True)
     assert "auto_merge=OFF" in body or "auto-merge OFF" in body
     assert "creation != promotion" in body
-    assert "docs/canonical/b.md" in body                     # the canonical target file
+    assert "docs/canonical/b.md" in body                     # the promoted destination
+    assert ".opencode/skills/b/SKILL.md" in body             # the held destination too
+    assert "RETIDO em quarentena" in body                    # held status is visible
     assert "PR é a quarentena" in body                       # PR-is-quarantine model
     assert "merge deste PR é a promoção" in body             # merge = promotion
     assert "O que o humano está sendo pedido a aprovar" in body
     assert "roda no CI" in body and "Check Obsidian Conventions" in body   # actual validate-obsidian contract
+    assert "docs/analysis/s/s-artifacts.yaml" in body        # the manifest contract
+    assert "pipeline.py integrate" in body                   # the Fase-5 consumer
 
 
 # ── run() exit semantics: no-op success vs error (#263 operational fix) ─────
-def _patch_pipeline(monkeypatch, tmp_path, *, classifications, phase1_raises=None):
+def _patch_pipeline(monkeypatch, tmp_path, *, classifications, phase1_raises=None,
+                    fase4_result=None):
     """Drive run() offline: patch every collaborator + capture _emit_output. Returns the
     emitted (key,value) list."""
     monkeypatch.setenv("ZAI_API_KEY", "z")
@@ -128,15 +145,10 @@ def _patch_pipeline(monkeypatch, tmp_path, *, classifications, phase1_raises=Non
     monkeypatch.setattr(fl.phase3_classify, "mark_grounding", lambda c, v: c)
     monkeypatch.setattr(fl.grep_verify, "verify_all", lambda cits, root: [])
     monkeypatch.setattr(fl.grep_verify, "all_ok", lambda v: True)
-    monkeypatch.setattr(fl.phase4_create, "create",
-                        lambda pattern, **k: {"type": "canonical", "title": "T", "content": "B",
-                                              "intended_destination": "docs/canonical/p.md"})
-    monkeypatch.setattr(fl.phase4_create, "write_proposed",
-                        lambda root, art, slug, pat: "docs/canonical/p.md")
-    monkeypatch.setattr(fl.evaluator, "run",
-                        lambda art, key: {"mean": 4.0, "passed": True, "scores": {}, "rationale": "ok"})
-    monkeypatch.setattr(fl, "embed_texts", lambda texts, key: [[0.1]])
-    monkeypatch.setattr(fl.dedup, "is_duplicate", lambda vec, idx: {"duplicate": False, "score": 0.5})
+    monkeypatch.setattr(
+        fl.phase4_flow, "run_fase4",
+        lambda root, slug, clss, pats, extraction, index, **kw:
+            fase4_result or _fase4_result((("canonical", "docs/canonical/p.md", True),)))
     emitted = []
     monkeypatch.setattr(fl, "_emit_output", lambda k, v: emitted.append((k, v)))
     return emitted
@@ -148,7 +160,7 @@ def test_run_no_eligible_missing_is_success_noop(monkeypatch, tmp_path):
     rc = fl.run(source_arg=None, pattern_id=None)
     assert rc == 0                                              # successful no-op, not failure
     assert ("has_proposal", "false") in emitted
-    assert not any(k == "proposed_path" for k, _ in emitted)    # no PR metadata
+    assert not any(k == "manifest_path" for k, _ in emitted)    # no PR metadata
     assert not (tmp_path / "pr-body.md").exists()               # no artifact / PR body written
 
 
@@ -159,7 +171,19 @@ def test_run_eligible_missing_takes_f4_path(monkeypatch, tmp_path):
     rc = fl.run(source_arg=None, pattern_id=None)
     assert rc == 0
     assert ("has_proposal", "true") in emitted
-    assert ("proposed_path", "docs/canonical/p.md") in emitted   # normal F4 path + PR metadata
+    assert ("manifest_path",
+            "docs/analysis/2026-09-11-real-source/2026-09-11-real-source-artifacts.yaml") in emitted
+    assert ("branch", "proposal/2026-09-11-real-source--p") in emitted
+
+
+def test_run_all_held_still_opens_the_quarantine_pr(monkeypatch, tmp_path):
+    emitted = _patch_pipeline(
+        monkeypatch, tmp_path,
+        classifications=[{"pattern": "P", "verdict": "Missing", "evidence": [], "rationale": "r"}],
+        fase4_result=_fase4_result((("canonical", "docs/canonical/p.md", False),)))
+    rc = fl.run(source_arg=None, pattern_id=None)
+    assert rc == 0
+    assert ("has_proposal", "true") in emitted   # held artifacts still get a human-review PR
 
 
 def test_run_actual_exception_still_fails(monkeypatch, tmp_path):
