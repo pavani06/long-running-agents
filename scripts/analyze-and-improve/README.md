@@ -77,12 +77,20 @@ creation to all three artifact types behind the same gates:
 
 **Destination-scoped validation.** `validate-obsidian` scopes Checks 1/5/6 to
 `docs/canonical/<file>.md` and Check 9 to `curriculum/`, so a quarantined copy
-never triggers them. `spine.validate_destination_ok` runs *the same validator*
-over a throwaway root holding the proposed file at its intended destination — the
-conventions stay owned by `scripts/validate-obsidian.ts`, with no second copy to
-drift from it, and no authoritative layer is written. It feeds the
-`destination_valid` gate and is fail-closed: if the validator reports violations
-or cannot run at all, the artifact is held instead of promoted.
+never triggers them. `spine.validate_destination` runs *the same validator* over a
+throwaway root holding the proposed file at its intended destination — the rules
+stay owned by `scripts/validate-obsidian.ts`, with no second copy to drift from
+it, and no authoritative layer is written. It is fail-closed on two distinct
+gates: `destination_valid` (the validator's own violations, carried verbatim into
+the manifest's hold reasons) and `destination_validated` (the validator could not
+run at all — held, but never reported as a content violation).
+
+The root carries the repo's *rules* but not its *vault*: it holds only the
+proposed file, so Check 6 reads every wikilink as broken and the verdict is
+stricter than the repo-wide run. That is deliberate for generated pre-review
+output — the generator prompt forbids links outright — and a human editing the
+quarantined copy can add conventional cross-links afterwards, with the PR's own
+obsidian CI as the full-context authority.
 
 **Exercise level (INTERIM).** `DEFAULT_LEVEL_DIR` places every generated exercise
 at curriculum level 3; there is no level routing yet. The resolved level is

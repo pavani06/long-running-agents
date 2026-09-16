@@ -10,6 +10,7 @@ landing they feed are tested in their own modules.
 """
 from __future__ import annotations
 
+import json
 import shutil
 import subprocess
 import tempfile
@@ -63,38 +64,57 @@ def validate_obsidian_ok(repo_root: Path) -> bool:
     ).returncode == 0
 
 
-def validate_destination_ok(repo_root: Path, destination: str, text: str) -> bool:
+def validate_destination(repo_root: Path, destination: str, text: str) -> dict:
     """Run the repo's own doc validator over PROPOSED content laid out at its
-    authoritative `destination`, in a throwaway validation root; True on exit 0 (I/O).
+    authoritative `destination`, in a throwaway validation root (I/O).
+
+    Returns `{"available": bool, "violations": [str]}` — `available` False means the
+    validator could not be run at all (missing toolchain), which is NOT a statement
+    about the content; `violations` are the validator's own error items. Callers
+    fail closed on both, but must report them as different things.
 
     `validate-obsidian.ts` scopes its canonical checks to `docs/canonical/<file>.md`
     and its curriculum checks to `curriculum/`, so content held in the quarantine
-    dir never trips them. The root is a temp dir holding a copy of the validator
-    plus the proposed file at `destination`, with the run scoped to that path — the
-    conventions come from the validator itself, so there is no second copy to drift
-    from it. Nothing is written into an authoritative layer. Fail-closed: False
-    whenever the validator reports violations OR cannot be run at all."""
-    script = repo_root / "scripts" / "validate-obsidian.ts"
-    if not script.is_file():
-        return False
+    dir never trips them. The root holds a copy of the validator plus the proposed
+    file at `destination`, and the run is scoped to that path, so the rules come
+    from the validator itself with no second copy to drift from it. The root is
+    created INSIDE `repo_root` because that is what lets node resolve `tsx` and
+    `@pavani_org/obsidian-eval` from the repo's own `node_modules` by ordinary
+    upward traversal; `.validate-destination-*/` is gitignored so a hard kill
+    between mkdtemp and cleanup can never leak committable content.
+
+    The root deliberately carries NO vault context: the rules are the repo's, but
+    the graph they resolve against holds only this one file, so every wikilink
+    reads as broken and the verdict is stricter than the repo-wide run. That is
+    the intended contract for GENERATED pre-review output — the generator prompt
+    forbids links outright — and the human quarantine edit can add conventional
+    cross-links afterwards, with the PR's own obsidian CI as the full-context
+    authority."""
     root = Path(tempfile.mkdtemp(prefix=".validate-destination-", dir=str(repo_root)))
     try:
         target = (root / destination).resolve()
         if not target.is_relative_to(root.resolve()):
-            return False
+            return {"available": False, "violations": []}
         (root / "scripts").mkdir()
-        shutil.copyfile(script, root / "scripts" / "validate-obsidian.ts")
+        shutil.copyfile(repo_root / "scripts" / "validate-obsidian.ts",
+                        root / "scripts" / "validate-obsidian.ts")
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text, encoding="utf-8")
-        return subprocess.run(
-            ["npx", "tsx", "scripts/validate-obsidian.ts", "--no-cache",
+        done = subprocess.run(
+            ["npx", "tsx", "scripts/validate-obsidian.ts", "--json", "--no-cache",
              "--paths", destination],
-            cwd=str(root), capture_output=True, text=True, timeout=300,
-        ).returncode == 0
-    except (OSError, subprocess.SubprocessError):
-        return False
+            cwd=str(root), capture_output=True, text=True, timeout=300)
+        report = json.loads(done.stdout)
+        items = report["items"]
+    except (OSError, subprocess.SubprocessError, ValueError, KeyError, TypeError):
+        return {"available": False, "violations": []}
     finally:
         shutil.rmtree(root, ignore_errors=True)
+    return {"available": True,
+            "violations": [f"{i.get('file')}:{i.get('line')} — {i.get('message')} "
+                           f"({i.get('checkName')})"
+                           for i in items if i.get("severity") == "error"]}
+
 
 
 def run_spine(transcript: str, slug: str, index: dict, *, openai_key: str, zai_key: str,

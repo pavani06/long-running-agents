@@ -108,7 +108,9 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
     artifact's gate report. Because that repo-wide run cannot see the canonical-/
     curriculum-scoped checks while the artifact sits in quarantine, each artifact
     is additionally validated by the same validator at its intended destination
-    (`spine.validate_destination_ok`, fail-closed) before it can be promoted.
+    (`spine.validate_destination`, fail-closed) before it can be promoted; its
+    concrete violations are carried into the hold reasons, and a validator that
+    could not run is recorded as such rather than as a content violation.
     `level_dir` is INTERIM (see `phase4_create.DEFAULT_LEVEL_DIR`): the resolved
     level is recorded per exercise in the manifest for Etapa 7 (#265)."""
     import retrieval
@@ -122,7 +124,7 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
     if validate_fn is None:
         from spine import validate_obsidian_ok as validate_fn
     if validate_destination_fn is None:
-        from spine import validate_destination_ok as validate_destination_fn
+        from spine import validate_destination as validate_destination_fn
 
     today = today or date.today().isoformat()
     plan = phase4_routing.plan_of_work(classifications)
@@ -190,14 +192,17 @@ def run_fase4(repo_root: Path, slug: str, classifications: list[dict], patterns:
                                    min_mean=min_mean, client=eval_client)
         vec = embed_fn([artifact["title"] + "\n" + artifact["content"]], openai_key)[0]
         dup = dedup.is_duplicate(vec, index, dup_threshold)
-        destination_ok = bool(validate_destination_fn(
-            repo_root, artifact["intended_destination"], phase4_create.render(artifact)))
+        checked = validate_destination_fn(
+            repo_root, artifact["intended_destination"], phase4_create.render(artifact))
+        violations = list(checked["violations"])
         report = quarantine.report_from_gates(
-            validate_obsidian=validate_ok, destination_valid=destination_ok,
+            validate_obsidian=validate_ok,
+            destination_validated=bool(checked["available"]),
+            destination_valid=not violations,
             citations_ok=bool(g["classification"].get("verified")),
             duplicate=dup["duplicate"], evaluation_passed=evaluation["passed"])
         decision = quarantine.decide(report)
-        accepted, reasons = decision["accepted"], list(decision["reasons"])
+        accepted, reasons = decision["accepted"], decision["reasons"] + violations
         if accepted:
             try:
                 promote(repo_root, slug, artifact)

@@ -8,9 +8,11 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from markdown_frontmatter import split_frontmatter  # noqa: E402
 
 import phase4_create as f4  # noqa: E402
-import serialize  # noqa: E402
 from glm import GLMError  # noqa: E402
 
 PATTERN = {"name": "Idempotent Diff Pipeline", "problem": "reprocessing wastes cost",
@@ -109,7 +111,7 @@ def test_proposed_artifact_is_canonical_type_with_provenance():
 def test_render_markdown_is_a_valid_canonical_doc():
     art = _artifact(creation={"title": "X", "body": "BODY-CONTENT"})
     md = f4.render_markdown(art)
-    fm, _ = serialize.split_frontmatter(md)
+    fm, _ = split_frontmatter(md)
     assert fm["type"] == "canonical"                       # Check 1: type present
     assert fm["aliases"] == ["idempotent diff pipeline"]   # Check 12: non-empty
     assert fm["relates-to"] == []                          # Check 11: present (empty, uncurated)
@@ -210,7 +212,7 @@ def _skill_artifact(**over):
 
 def test_render_skill_markdown_frontmatter_and_body():
     md = f4.render_skill_markdown(_skill_artifact())
-    fm, body = serialize.split_frontmatter(md)
+    fm, body = split_frontmatter(md)
     # the layer's dominant schema (34/38 siblings): name/description/license/compatibility
     assert fm["name"] == "idempotent-diff-pipeline"     # byte-equal to the skill directory
     assert fm["name"] == f4.skill_destination(PATTERN).split("/")[-2]
@@ -276,7 +278,7 @@ def _exercise_artifact(**over):
 
 def test_render_exercise_markdown_frontmatter_and_body():
     md = f4.render_exercise_markdown(_exercise_artifact())
-    fm, body = serialize.split_frontmatter(md)
+    fm, body = split_frontmatter(md)
     assert fm["title"] == "Exercício X"
     assert fm["type"] == "exercise" and fm["level"] == 3     # Check 9: type present
     assert fm["tags"] and fm["aliases"]                      # Check 9/12

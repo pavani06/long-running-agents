@@ -8,9 +8,11 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from markdown_frontmatter import split_frontmatter  # noqa: E402
 
 import phase4_flow as flow  # noqa: E402
-import serialize  # noqa: E402
 import spine  # noqa: E402
 
 PATTERN = {"name": "X", "problem": "p", "mechanism": "m", "tradeoffs": "t"}
@@ -61,7 +63,7 @@ def test_quarantined_markdown_is_validator_compliant(tmp_path):
                        ("exercise", "curriculum/03-nivel-3-advanced-architecture/exercises/exercise-12-x.md")]:
         art = _artifact(kind, dest)
         rel = flow.write_quarantined(tmp_path, PKG, art)
-        fm, _ = serialize.split_frontmatter((tmp_path / rel).read_text(encoding="utf-8"))
+        fm, _ = split_frontmatter((tmp_path / rel).read_text(encoding="utf-8"))
         assert fm is not None, kind
         assert fm.get("type"), kind                     # Check 2: type present
         assert fm.get("aliases"), kind                  # Check 12: non-empty
@@ -128,7 +130,7 @@ EXTRACTION = {"thesis": "t", "video_id": "v"}
 
 
 def _destination_ok(repo_root, destination, text):
-    return True
+    return {"available": True, "violations": []}
 
 
 def _run(tmp_path, *, eval_client, classifications=CLS):
@@ -215,7 +217,7 @@ def test_run_fase4_validates_each_artifact_at_its_intended_destination(tmp_path)
 
     def spy(repo_root, destination, text):
         seen.append((destination, text))
-        return True
+        return {"available": True, "violations": []}
 
     _run_with_destination_gate(tmp_path, spy)
     # the validator sees the destination path, not the quarantine path, and the
@@ -229,29 +231,48 @@ def test_run_fase4_validates_each_artifact_at_its_intended_destination(tmp_path)
 
 def test_run_fase4_holds_the_artifact_its_destination_validation_rejects(tmp_path):
     """The canonical-scoped checks only fire at docs/canonical/ — a doc they reject
-    must be held, never promoted on the strength of the quarantine-path run."""
-    result = _run_with_destination_gate(
-        tmp_path, lambda root, dest, text: not dest.startswith("docs/canonical/"))
+    must be held, never promoted on the strength of the quarantine-path run, and the
+    validator's own violation text must reach the manifest."""
+    violation = "docs/canonical/x.md:9 — raw markdown link (raw-links)"
+    result = _run_with_destination_gate(tmp_path, lambda root, dest, text: {
+        "available": True,
+        "violations": [violation] if dest.startswith("docs/canonical/") else []})
     assert "docs/canonical/x.md" not in result["promoted"]
     assert not (tmp_path / "docs" / "canonical").exists()
     [held] = [h for h in result["held"] if h["path"] == "docs/canonical/x.md"]
     assert "convenções obsidian no destino falharam" in held["reasons"]
+    assert violation in held["reasons"]
+    [row] = result["manifest"]["artifacts"]["canonical_docs"]
+    assert row["status"] == "quarantined" and violation in row["reasons"]
     # the artifacts it accepts still promote
     assert ".opencode/skills/x/SKILL.md" in result["promoted"]
 
 
-def test_run_fase4_blocks_promotion_when_the_validator_cannot_run(tmp_path):
-    """Fail-closed: the default gate runs the real validator, which is absent from
-    this bare tmp repo, so nothing may be promoted."""
+def test_run_fase4_unavailable_validator_is_not_reported_as_a_content_violation(tmp_path):
+    """Fail-closed, but the manifest must not claim the content breaks conventions
+    when the toolchain simply could not run."""
+    result = _run_with_destination_gate(
+        tmp_path, lambda root, dest, text: {"available": False, "violations": []})
+    assert result["promoted"] == []
+    for held in result["held"]:
+        assert "validador de destino indisponível — conteúdo não verificado" in held["reasons"]
+        assert "convenções obsidian no destino falharam" not in held["reasons"]
+    assert not (tmp_path / "docs" / "canonical").exists()
+
+
+def test_run_fase4_blocks_promotion_when_the_real_validator_cannot_run(tmp_path):
+    """The default gate shells out to the real validator, absent from this bare tmp
+    repo, so nothing may be promoted."""
     result = flow.run_fase4(
         tmp_path, PKG, CLS, PATTERNS, EXTRACTION, INDEX,
         openai_key="O", zai_key="Z", source_file="s--v.md",
         zai_client=_fake_zai, eval_client=_pass_eval, embed_fn=_embed_orthogonal,
         validate_fn=lambda root: True, today="2026-09-15")
     assert result["promoted"] == []
-    assert all("convenções obsidian no destino falharam" in h["reasons"]
+    assert all("validador de destino indisponível — conteúdo não verificado" in h["reasons"]
                for h in result["held"])
     assert not (tmp_path / "docs" / "canonical").exists()
+    assert list(tmp_path.glob(".validate-destination-*")) == []   # root cleaned up
 
 
 # ── the destination gate delegates to the real validator ───────────────────
@@ -259,23 +280,37 @@ VALIDATOR_AVAILABLE = (ROOT / "scripts" / "validate-obsidian.ts").is_file() and 
     (ROOT / "node_modules" / "@pavani_org" / "obsidian-eval").is_dir()
 
 
-def test_validate_destination_ok_fails_closed_without_the_validator(tmp_path):
-    assert spine.validate_destination_ok(
-        tmp_path, "docs/canonical/x.md", "---\ntype: canonical\n---\n") is False
+def test_validate_destination_reports_unavailable_without_the_validator(tmp_path):
+    assert spine.validate_destination(
+        tmp_path, "docs/canonical/x.md", "---\ntype: canonical\n---\n") == {
+            "available": False, "violations": []}
+
+
+def _canonical_markdown(body: str) -> str:
+    import phase4_create
+    return phase4_create.render({
+        "type": "canonical", "pattern": "X", "phase3_verdict": "Missing",
+        "title": "T", "content": body, "source": "s--v.md",
+        "last_updated": "2026-09-15", "intended_destination": "docs/canonical/x.md"})
 
 
 @pytest.mark.skipif(not VALIDATOR_AVAILABLE, reason="validate-obsidian.ts deps not installed")
-@pytest.mark.parametrize("body,expected", [("apenas prosa.", True),
-                                           ("veja [o doc](outro.md)", False)])
-def test_validate_destination_ok_runs_the_real_validator(body, expected):
-    """A raw markdown link is a violation only at docs/canonical/ (Check 5); the
-    verdict must come from validate-obsidian.ts itself, not a Python copy of it."""
-    import phase4_create
-    art = {"type": "canonical", "pattern": "X", "phase3_verdict": "Missing",
-           "title": "T", "content": body, "source": "s--v.md",
-           "last_updated": "2026-09-15", "intended_destination": "docs/canonical/x.md"}
-    assert spine.validate_destination_ok(
-        ROOT, "docs/canonical/x.md", phase4_create.render(art)) is expected
+def test_validate_destination_accepts_clean_generated_prose():
+    assert spine.validate_destination(
+        ROOT, "docs/canonical/x.md", _canonical_markdown("apenas prosa.")) == {
+            "available": True, "violations": []}
+
+
+@pytest.mark.skipif(not VALIDATOR_AVAILABLE, reason="validate-obsidian.ts deps not installed")
+@pytest.mark.parametrize("body,check", [("veja [o doc](outro.md)", "raw-links"),
+                                        ("veja [[agent-loop]]", "broken-wikilinks")])
+def test_validate_destination_rejects_links_in_generated_canonical_bodies(body, check):
+    """Raw links and wikilinks are violations only at docs/canonical/ (Checks 5/6).
+    The wikilink verdict is deliberately stricter than the repo-wide run: the root
+    carries no vault context, and generated pre-review content must not link at all."""
+    outcome = spine.validate_destination(ROOT, "docs/canonical/x.md", _canonical_markdown(body))
+    assert outcome["available"] is True
+    assert any(check in v for v in outcome["violations"]), outcome["violations"]
 
 
 

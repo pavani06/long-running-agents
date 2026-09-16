@@ -7,9 +7,11 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "analyze-and-improve"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from markdown_frontmatter import split_frontmatter  # noqa: E402
 
 import artifact_manifest as am  # noqa: E402
-import serialize  # noqa: E402
 
 PROMOTED_CANONICAL = {"type": "canonical", "pattern": "X", "phase3_verdict": "Missing",
                       "priority": "P0", "intended_destination": "docs/canonical/x.md"}
@@ -90,7 +92,7 @@ def test_manifest_yaml_round_trips():
 
 
 def test_manifest_md_frontmatter_is_analysis_compliant():
-    fm, _ = serialize.split_frontmatter(am.manifest_md(_manifest()))
+    fm, _ = split_frontmatter(am.manifest_md(_manifest()))
     assert fm["type"] == "analysis"                       # Check 2: type present
     assert str(fm["date"]) == "2026-09-15"
     assert fm["aliases"] and isinstance(fm["aliases"], list)   # Check 12: non-empty
