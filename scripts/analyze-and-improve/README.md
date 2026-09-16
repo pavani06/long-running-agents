@@ -128,6 +128,16 @@ at curriculum level 3; there is no level routing yet. The resolved level is
 recorded per exercise in the manifest, and Etapa 7 (#265) must decide whether and
 how to own the routing using that field as its re-routing input.
 
+### Curriculum phase (Etapa 7, #265 — Fase 6: splice curricular por seção)
+
+| Module | Role | Pure? |
+|---|---|---|
+| `phase6_splice.py` | Fase 6 — for ONE promoted manifest entry: code localizes the exact curriculum section via the retrieval index (heading + line range, provably aligned with the indexed chunk), the model sees ONLY that bounded section and returns ONLY a replacement body, code applies the splice at the known limits; deterministic gates (diff localized to the section range; exactly the target file changed — `docs/canonical/` untouched, no new curriculum files) + the #261 machine gate (evaluator + dedup + destination-scoped validate-obsidian) routed fail-closed by `quarantine.decide`: accepted → in-worktree edit behind a human PR, rejected → `docs/analysis/<slug>/proposed/`; rerun over an already-spliced section is a detected skip | `locate_section`/`locate_by_id`/`apply_splice`/`localized_diff_ok`/`changed_paths_ok`/`build_messages`/`parse_replacement` pure; `run` injects client/embed/evaluator/validator |
+
+Exercise routing reads the manifest's `level` field verbatim (an exercise entry's
+retrieval is scoped to that level's directory) — no second level classifier, no
+correction layer.
+
 **Boundaries.** The evaluator is OpenAI on purpose — a different provider from
 the GLM generator, so it never grades its own homework (`OPENAI_API_KEY`, model
 via `OPENAI_EVAL_MODEL`, provisional default). `auto_merge=False` is the
@@ -159,6 +169,7 @@ python3 -m pytest tests/unit/phase4_create_test.py -q                # Fase 4 (c
 python3 -m pytest tests/unit/artifact_manifest_test.py -q            # Fase 4 (manifesto — contrato da Fase 5)
 python3 -m pytest tests/unit/phase4_flow_test.py -q                  # Fase 4 (escrita em quarentena + promoção)
 python3 -m pytest tests/unit/phase5_integrate_test.py -q             # Fase 5 (manifesto → índices, determinístico)
+python3 -m pytest tests/unit/phase6_splice_test.py -q                # Fase 6 (splice por seção — localização, splice, gates)
 python3 -m pytest tests/unit/metamorphic_canon_test.py -q            # #288 canon (load/validate + real-evidence check)
 python3 -m pytest tests/unit/metamorphic_match_test.py -q            # #288 two-stage matcher
 python3 -m pytest tests/unit/metamorphic_rerank_test.py -q           # #288 reranker + sanity mini-eval
@@ -256,6 +267,9 @@ python3 scripts/analyze-and-improve/pipeline.py classify <slug> -k 12  # more de
 
 # Run Fase 5 (integrate this run's manifest into the index surfaces) — deterministic, no keys
 python3 scripts/analyze-and-improve/pipeline.py integrate docs/analysis/<slug>/<slug>-artifacts.yaml  # recomputes indexes from that manifest
+
+# Run Fase 6 (section splice for ONE promoted entry) — needs both keys + a built index
+python3 scripts/analyze-and-improve/pipeline.py splice docs/analysis/<slug>/<slug>-artifacts.yaml  [--entry N]
 ```
 
 **Fase 3 (classification).** Hybrid retrieval builds the context: dense top-k

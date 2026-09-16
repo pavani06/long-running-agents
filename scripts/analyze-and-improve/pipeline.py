@@ -372,6 +372,58 @@ def run_integrate(manifest_arg: str) -> int:
     return 0
 
 
+def run_splice(manifest_arg: str, entry_index: int) -> int:
+    """Fase 6 (#265): one section splice for one promoted manifest entry.
+
+    Code selects the exact curriculum section via the retrieval index (heading +
+    line range), the model sees only that bounded section and returns only a
+    replacement body, code applies the splice at the known limits, and the
+    localized+additive diff gate plus the #261 machine gate decide landing
+    (worktree) vs quarantine. Needs both keys and a built index (`index --full`)."""
+    import phase6_splice
+
+    rel = Path(os.path.normpath(manifest_arg))
+    if rel.parts[:2] != ("docs", "analysis") or not rel.name.endswith("-artifacts.yaml"):
+        summary("splice: not a run manifest path (expected the repo-relative "
+                f"docs/analysis/<slug>/<slug>-artifacts.yaml): {manifest_arg}")
+        return 1
+    manifest_path = REPO_ROOT / rel
+    if not manifest_path.is_file():
+        summary(f"splice: manifest not found: {rel} (run the producer first)")
+        return 1
+    openai_key = os.environ.get("OPENAI_API_KEY")
+    zai_key = os.environ.get("ZAI_API_KEY")
+    if not openai_key or not zai_key:
+        summary("splice: OPENAI_API_KEY and ZAI_API_KEY both required")
+        return 1
+    index = load_state()
+    if not index.get("records"):
+        summary("splice: empty index — run `index --full` first")
+        return 1
+
+    import subprocess
+    status = subprocess.run(
+        ["git", "-C", str(REPO_ROOT), "status", "--porcelain"],
+        capture_output=True, text=True).stdout
+    changed = [line[3:] for line in status.splitlines() if line.strip()]
+
+    try:
+        out = phase6_splice.run(REPO_ROOT, manifest_path, zai_key=zai_key,
+                                openai_key=openai_key, index=index,
+                                changed_paths=changed, entry_index=entry_index)
+    except ValueError as e:
+        summary(f"splice: {e}")
+        return 1
+
+    summary(f"splice: {out['status']} — {out['target']} :: {out['section']['heading']} "
+            f"(linhas {out['section']['start'] + 1}..{out['section']['end']})")
+    for r in out.get("reasons", []):
+        print(f"  - {r}")
+    if out.get("quarantine_path"):
+        print(f"  - quarentena: {out['quarantine_path']}")
+    return 0 if out["status"] in ("applied", "skipped") else 1
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="analyze-and-improve control + judgment plane")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -391,6 +443,11 @@ def main(argv: list[str] | None = None) -> int:
     pi5 = sub.add_parser("integrate", help="run Fase 5 (index integration) for a run's manifest")
     pi5.add_argument("manifest",
                      help="repo-relative docs/analysis/<slug>/<slug>-artifacts.yaml of this run")
+    pi6 = sub.add_parser("splice", help="run Fase 6 (#265: section splice) for a run's manifest")
+    pi6.add_argument("manifest",
+                     help="repo-relative docs/analysis/<slug>/<slug>-artifacts.yaml of this run")
+    pi6.add_argument("--entry", type=int, default=0,
+                     help="index of the promoted entry to splice (default: 0)")
     args = ap.parse_args(argv)
 
     if args.cmd == "queue":
@@ -401,6 +458,8 @@ def main(argv: list[str] | None = None) -> int:
         return run_classify(args.slug, args.k)
     if args.cmd == "integrate":
         return run_integrate(args.manifest)
+    if args.cmd == "splice":
+        return run_splice(args.manifest, args.entry)
     return run_index(args.full, args.distribution)
 
 
