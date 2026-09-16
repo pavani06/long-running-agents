@@ -377,12 +377,20 @@ def _worktree_paths() -> set[str]:
 
     `-z` so paths are never quoted or escaped, `-uall` so an untracked directory
     is expanded into its files instead of collapsing to one directory entry, and
-    rename/copy entries contribute both sides."""
+    rename/copy entries contribute both sides. A git that could not run at all is
+    raised as such: an empty answer would otherwise reach the file-set gate as
+    "the target was not modified", reporting a broken tool as a content violation."""
     import subprocess
-    out = subprocess.run(
-        ["git", "-C", str(REPO_ROOT), "status", "--porcelain", "-z", "-uall"],
-        capture_output=True, text=True).stdout
-    fields = [f for f in out.split("\0") if f]
+    try:
+        done = subprocess.run(
+            ["git", "-C", str(REPO_ROOT), "status", "--porcelain", "-z", "-uall"],
+            capture_output=True, text=True)
+    except OSError as e:
+        raise ValueError(f"git status não pôde ser executado: {e}") from e
+    if done.returncode != 0:
+        raise ValueError(f"git status falhou ({done.returncode}): "
+                         f"{done.stderr.strip() or 'sem stderr'}")
+    fields = [f for f in done.stdout.split("\0") if f]
     paths: set[str] = set()
     i = 0
     while i < len(fields):

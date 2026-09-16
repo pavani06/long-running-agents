@@ -125,6 +125,18 @@ class TestApplySplice:
         # fora da seção, byte a byte
         assert updated.split("## Alavanca")[0] == DOC.split("## Alavanca")[0]
 
+    def test_blank_separator_after_the_heading_survives(self):
+        rng = p6.locate_section(DOC, "ROI")
+        updated, _ = p6.apply_splice(DOC, rng, "Novo corpo do ROI.")
+        assert "## ROI\n\nNovo corpo do ROI." in updated
+
+    def test_missing_separator_is_normalized_once(self):
+        text = "# T\n\n## A\ncorpo\n\n## B\nb\n"
+        once, status = p6.apply_splice(text, p6.locate_section(text, "A"), "novo")
+        assert status == "changed" and "## A\n\nnovo\n" in once
+        twice, status2 = p6.apply_splice(once, p6.locate_section(once, "A"), "novo")
+        assert status2 == "unchanged" and twice == once
+
     def test_idempotent_rerun_is_detected_noop(self):
         rng = p6.locate_section(DOC, "ROI")
         once, _ = p6.apply_splice(DOC, rng, "Corpo estável.")
@@ -364,7 +376,7 @@ def test_end_to_end_applied(tmp_path):
     assert "ROI corrente" in user and "Remoção segura." not in user
     # splice exato: corpo novo dentro da seção; tudo fora dela byte-idêntico
     after = target.read_text(encoding="utf-8")
-    assert BODY in after and ROI_BODY not in after
+    assert f"## ROI de um Componente\n\n{BODY}" in after and ROI_BODY not in after
     head = before[:before.index("## ROI de um Componente")]
     assert after.startswith(head)
     tail = before[before.index("## Fase 4: REMOVE"):]
@@ -507,13 +519,13 @@ def _filler(n: int) -> str:
 
 
 def test_replacement_at_the_resulting_section_cap_applies(tmp_path):
-    """O limite mede a SEÇÃO resultante (linha de heading + corpo), a mesma unidade
-    que decide elegibilidade — exatamente no limite ainda passa."""
+    """O limite mede a SEÇÃO resultante (heading + linha em branco + corpo), a mesma
+    unidade que decide elegibilidade — exatamente no limite ainda passa."""
     repo = _repo(tmp_path)
     manifest = _manifest(repo / "docs" / "analysis" / SLUG / f"{SLUG}-artifacts.yaml",
                          dest="docs/canonical/capability-escalation-ladder.md")
     target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
-    body = _filler(p6._MAX_SECTION_CHARS - len(HEADING_LINE) - 1)
+    body = _filler(p6._MAX_SECTION_CHARS - len(HEADING_LINE) - 2)
 
     out, _ = _run(repo, manifest, splice_body=body)
 
@@ -531,7 +543,7 @@ def test_replacement_past_the_resulting_section_cap_aborts(tmp_path):
                          dest="docs/canonical/capability-escalation-ladder.md")
     target = repo / "curriculum" / "03-nivel-3-advanced-architecture" / "05-harness-evolution.md"
     before = target.read_text(encoding="utf-8")
-    body = _filler(p6._MAX_SECTION_CHARS - len(HEADING_LINE))
+    body = _filler(p6._MAX_SECTION_CHARS - len(HEADING_LINE) - 1)
 
     with pytest.raises(ValueError, match="seção resultante grande demais"):
         _run(repo, manifest, splice_body=body)
@@ -737,6 +749,7 @@ def test_cli_reports_provider_failures_instead_of_crashing(monkeypatch, tmp_path
     _manifest(repo / rel, dest="docs/canonical/capability-escalation-ladder.md")
     monkeypatch.setattr(pipeline, "REPO_ROOT", repo)
     monkeypatch.setattr(pipeline, "load_state", lambda: {"records": {"x": {}}})
+    monkeypatch.setattr(pipeline, "_worktree_paths", set)
     monkeypatch.setenv("OPENAI_API_KEY", "o")
     monkeypatch.setenv("ZAI_API_KEY", "z")
 
@@ -747,6 +760,16 @@ def test_cli_reports_provider_failures_instead_of_crashing(monkeypatch, tmp_path
             raise _e
         monkeypatch.setattr(p6, "run", explode)
         assert pipeline.run_splice(rel) == 1
+
+
+def test_git_failure_is_not_reported_as_a_content_violation(monkeypatch, tmp_path):
+    """Se `git status` não roda, o conjunto vazio viraria 'arquivo-alvo não
+    modificado' — uma ferramenta quebrada relatada como violação de conteúdo."""
+    import pipeline
+
+    monkeypatch.setattr(pipeline, "REPO_ROOT", tmp_path)   # não é um repositório git
+    with pytest.raises(ValueError, match="git status"):
+        pipeline._worktree_paths()
 
 
 def test_real_repo_sections_localize():

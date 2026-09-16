@@ -34,7 +34,8 @@ current again, so the same section can be selected and enriched a second time �
 that is a fresh splice behind the same human PR gate, not a silent one.
 
 Size bounds, symmetric around one constant and measured on the same unit (the
-section = heading line + body): a section beyond `_MAX_SECTION_CHARS` is not
+section = heading line + blank separator + body): a section beyond
+`_MAX_SECTION_CHARS` is not
 splice material and fails closed (it is never truncated into the prompt), and so
 does a splice whose RESULTING section would pass that cap — the phase can never
 manufacture a section it would itself refuse next run. A replacement that shrinks
@@ -62,7 +63,7 @@ import dedup
 import evaluator
 import quarantine
 import phase5_integrate
-from chunking import _FENCE, _HEADING  # same heading semantics as the index
+from chunking import _FENCE, _HEADING, strip_frontmatter  # same semantics as the index
 from floor import REPO_FLOOR
 from index_store import records_for
 
@@ -111,17 +112,9 @@ class SectionRange:
 def _body_start_line(text: str) -> int:
     """0-based line index of the first line after the frontmatter (0 if none).
 
-    Mirrors `chunking.strip_frontmatter` exactly so file coordinates and the
-    chunker's body agree."""
-    if not text.startswith("---"):
-        return 0
-    end = text.find("\n---", 3)
-    if end == -1:
-        return 0
-    nl = text.find("\n", end + 1)
-    if nl == -1:
-        return 0
-    return text.count("\n", 0, nl + 1)
+    Derived from `chunking.strip_frontmatter`: the chunker owns where a file's
+    body begins, so file coordinates and the indexed body cannot drift apart."""
+    return text.count("\n", 0, len(text) - len(strip_frontmatter(text)))
 
 
 def locate_section(file_text: str, heading: str, *, ordinal: int = 0) -> SectionRange:
@@ -194,12 +187,13 @@ def body_range(rng: SectionRange, lines: list[str]) -> tuple[int, int]:
 
 def apply_splice(file_text: str, rng: SectionRange, body: str) -> tuple[str, str]:
     """Replace the section BODY (the heading line is code-owned) at the known
-    limits. Returns (updated_text, status) with status "changed" | "unchanged";
-    re-applying the same body over an already-spliced file is a detected no-op.
-    Pure."""
+    limits, keeping the blank line that separates a heading from its body so the
+    human-reviewed diff shows the enrichment and nothing else. Returns
+    (updated_text, status) with status "changed" | "unchanged"; re-applying the
+    same body over an already-spliced file is a detected no-op. Pure."""
     lines = file_text.split("\n")
     b0, b1 = body_range(rng, lines)
-    new_section = [lines[rng.start]] + body.strip("\n").split("\n")
+    new_section = [lines[rng.start], ""] + body.strip("\n").split("\n")
     updated = "\n".join(lines[:rng.start] + new_section + lines[b1:])
     return updated, ("changed" if updated != file_text else "unchanged")
 
@@ -429,7 +423,7 @@ def run(repo_root: Path, manifest_path: Path, *, zai_key: str, openai_key: str,
 
     messages = build_messages(rng.heading, section_text, source_text, path=target_rel)
     body = parse_replacement(splice_client(messages, zai_key))
-    spliced_chars = len(lines[rng.start]) + 1 + len(body)
+    spliced_chars = len(lines[rng.start]) + 2 + len(body)
     if spliced_chars > _MAX_SECTION_CHARS:
         raise ValueError(f"seção resultante grande demais: {rng.heading!r} em "
                          f"{target_rel} ({spliced_chars} chars > {_MAX_SECTION_CHARS})")
