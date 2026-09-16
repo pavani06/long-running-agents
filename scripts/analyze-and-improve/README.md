@@ -56,10 +56,55 @@ checks + an adversarial evaluator + quarantine + a landing library.
 | `dedup.py` | Cosine duplication check vs the Etapa-0 index (a proposed artifact at/above the threshold is held) | ✅ (`is_duplicate`/`nearest`) |
 | `openai_chat.py` | OpenAI chat client (the evaluator's transport — a *different* provider from GLM) | `extract_json` reused; HTTP not tested |
 | `evaluator.py` | Adversarial evaluator: fixed rubric (fidelity/evidence/non-duplication/format), provisional min score | `build_messages`/`parse_evaluation` pure; `run` injects client |
-| `quarantine.py` | Route accept vs `proposed/`; fail-closed gate report | ✅ |
+| `quarantine.py` | Route accept vs `proposed/`; fail-closed gate report; `quarantine_relpath` (the quarantined copy path `docs/analysis/<slug>/proposed/<dest>`) | ✅ |
 | `landing.py` | Build the PR body + rolling quarantine-Issue digest; `LandingPlan` (`auto_merge`, `dry_run`) — the library, **not** the workflow | ✅ |
 | `spine.py` | `run_spine` — chains Fases 0→3 + gates + evaluator + route + landing (the entry point #262 invokes) | `artifact_for_eval`/`dedup_text` pure; `run_spine` needs both keys |
 | `ab_validate.py` | A/B validation (Etapa 4, #262): fresh-vs-historical label agreement + seeded-duplicate check + report; suggests the calibrated floor/cut | `label_agreement`/`decide_ab`/`ab_report`/`suggest_floor` pure; `run` needs both keys |
+
+### Creation phase (Etapa 5, #263 — Fase 4 + artifact manifest)
+
+Canonical-doc creation is the proven-live First-Loop path (`first_loop.py` +
+`first-loop.yml`: one canonical doc at its destination on the proposal branch,
+PR = quarantine, human merge = promotion). The #263 remainder generalizes
+creation to all three artifact types behind the same gates:
+
+| Module | Role | Pure? |
+|---|---|---|
+| `phase4_create.py` | Fase 4 generation — canonical doc (proven path; verdict-aware for Partial P1/P2), **skill** (`.opencode/skills/<slug>/SKILL.md`) and **exercise** (`curriculum/<level>/exercises/exercise-<NN>-<slug>.md`, level/number orchestrator-decided) with full content, frontmatter-compliant renderers | `build_messages*`/`parse_*`/`render_*`/`*_destination`/`next_exercise_number` pure; `create*` inject the client |
+| `phase4_routing.py` | Priorização por classificação (Missing=P0, Partial high=P1, medium=P2, Exists/Better=skip) + roteamento de categoria (P0 → canonical+skill+exercise; P1 → canonical+exercise; P2 → canonical) + the ordered `plan_of_work` | ✅ |
+| `artifact_manifest.py` | The artifacts manifest (`<slug>-artifacts.{yaml,md}`) — the typed contract Fase 5 (#264) reads: artifacts by category (canonical/skill/exercise) with promoted/quarantined status, the per-exercise curriculum `level`, skipped patterns, not-applicable rows, integration map | `build_manifest`/`manifest_yaml`/`manifest_md` pure |
+| `phase4_flow.py` | The governed loop: `plan_of_work` → generation → **quarantine write** (`docs/analysis/<slug>/proposed/<dest>`, never the authoritative layers) → Etapa-3 gates (evaluator + dedup + validate + verified citations + the destination-scoped convention check, fail-closed) → **promote-on-pass** (in-worktree move; refuses a destination occupied by *different* content, recognises an identical one as this run's own prior landing) → manifest | path/wiring pure parts tested; `run_fase4` needs both keys (all injectable) |
+
+**Destination-scoped validation.** `validate-obsidian` scopes Checks 1/5/6 to
+`docs/canonical/<file>.md` and Check 9 to `curriculum/`, so a quarantined copy
+never triggers them. `spine.validate_destination` runs *the same validator* over a
+throwaway root holding the proposed file at its intended destination — the rules
+stay owned by `scripts/validate-obsidian.ts`, with no second copy to drift from
+it, and no authoritative layer is written. It is fail-closed on two distinct
+gates: `destination_valid` (the validator's own violations, carried verbatim into
+the manifest's hold reasons) and `destination_validated` (the validator could not
+run at all — held, but never reported as a content violation).
+
+The root carries the repo's *rules* but not its *vault*: it holds only the
+proposed file, so Check 6 reads every wikilink as broken and the verdict is
+stricter than the repo-wide run. That is deliberate for generated pre-review
+output — the generator prompt forbids links outright — and a human editing the
+quarantined copy can add conventional cross-links afterwards, with the PR's own
+obsidian CI as the full-context authority.
+
+**No production caller yet — deferred to #264.** `run_fase4` is the complete
+creation engine and is exercised end to end by `tests/unit/phase4_flow_test.py`,
+but nothing in `first_loop.py`, `pipeline.py` or any workflow invokes it. That is
+deliberate sequencing, not an omission: #263 delivers the engine plus the truthful
+artifact-manifest contract, and the producer/consumer wiring lands with #264
+(manifest consumption + index integration) so both sides of that contract are
+validated as one integration boundary. `first_loop.py` keeps driving the
+proven-live canonical-only path in the meantime.
+
+**Exercise level (INTERIM).** `DEFAULT_LEVEL_DIR` places every generated exercise
+at curriculum level 3; there is no level routing yet. The resolved level is
+recorded per exercise in the manifest, and Etapa 7 (#265) must decide whether and
+how to own the routing using that field as its re-routing input.
 
 **Boundaries.** The evaluator is OpenAI on purpose — a different provider from
 the GLM generator, so it never grades its own homework (`OPENAI_API_KEY`, model
@@ -67,13 +112,17 @@ via `OPENAI_EVAL_MODEL`, provisional default). `auto_merge=False` is the
 require-approval brake, usable from day 1; the **real Actions wiring**
 (open/auto-merge PR, update the rolling quarantine Issue) is **#266**, not here.
 Both the dedup threshold and the evaluator's minimum score are **provisional** —
-final calibration is **#262**. Fases that create/mutate the product (4–7) are out
-of scope for this Tier-A slice.
+final calibration is **#262**. Fase 4 (creation) landed with #263 — see the
+section above; the Fases that *integrate* what it creates — 5 (índices, #264) and
+6 (splice curricular, #265) — are still out of scope here.
 
 **Dependencies:** control plane needs only `requests` (+ stdlib). The judgment
 plane's `serialize.py` needs **PyYAML** — a workflow running `analyze` must
 `pip install requests pyyaml`. `queue`/`index` do not import PyYAML (the
-judgment-plane imports are lazy).
+judgment-plane imports are lazy). Fase 4's destination gate additionally shells
+out to `npx tsx scripts/validate-obsidian.ts`, so a job running `run_fase4`
+needs Node + `npm install`; without them the gate is fail-closed (`available`
+false → held, never reported as a content violation).
 
 Tests — run in isolation (the repo's convention for its pipeline tests):
 
@@ -83,11 +132,20 @@ python3 -m pytest tests/unit/analyze_and_improve_phases_test.py -q   # judgment 
 python3 -m pytest tests/unit/analyze_and_improve_classify_test.py -q # Fase 3 (retrieval + grep-verify)
 python3 -m pytest tests/unit/analyze_and_improve_spine_test.py -q    # Etapa 3 (dedup + rubric + quarantine + landing)
 python3 -m pytest tests/unit/analyze_and_improve_ab_test.py -q       # Etapa 4 (A/B agreement + report)
+python3 -m pytest tests/unit/phase4_routing_test.py -q               # Fase 4 (priorização + roteamento de categoria)
+python3 -m pytest tests/unit/phase4_create_test.py -q                # Fase 4 (canonical/skill/exercise creation)
+python3 -m pytest tests/unit/artifact_manifest_test.py -q            # Fase 4 (manifesto — contrato da Fase 5)
+python3 -m pytest tests/unit/phase4_flow_test.py -q                  # Fase 4 (escrita em quarentena + promoção)
 python3 -m pytest tests/unit/metamorphic_canon_test.py -q            # #288 canon (load/validate + real-evidence check)
 python3 -m pytest tests/unit/metamorphic_match_test.py -q            # #288 two-stage matcher
 python3 -m pytest tests/unit/metamorphic_rerank_test.py -q           # #288 reranker + sanity mini-eval
 python3 -m pytest tests/unit/metamorphic_metrics_test.py -q          # #288 T1–T4 + gates
 ```
+
+`phase4_flow_test.py`'s `validator_integration` tests (see the marker in
+`pytest.ini`) run the real `validate-obsidian.ts` and therefore **skip** without
+`npm install`; the `Check Obsidian Conventions` workflow is where they are
+required to actually execute.
 
 ### A/B validation (Etapa 4, #262 — Tier-B progression gate)
 

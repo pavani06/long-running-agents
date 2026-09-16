@@ -10,7 +10,10 @@ landing they feed are tested in their own modules.
 """
 from __future__ import annotations
 
+import json
+import shutil
 import subprocess
+import tempfile
 import time
 from pathlib import Path
 
@@ -59,6 +62,57 @@ def validate_obsidian_ok(repo_root: Path) -> bool:
         ["npx", "tsx", "scripts/validate-obsidian.ts"],
         cwd=str(repo_root), capture_output=True, text=True,
     ).returncode == 0
+
+
+def validate_destination(repo_root: Path, destination: str, text: str) -> dict:
+    """Run the repo's own doc validator over PROPOSED content laid out at its
+    authoritative `destination`, in a throwaway validation root (I/O).
+
+    Returns `{"available": bool, "violations": [str]}` — `available` False means the
+    validator could not be run at all (missing toolchain), which is NOT a statement
+    about the content; `violations` are the validator's own error items. Callers
+    fail closed on both, but must report them as different things.
+
+    `validate-obsidian.ts` scopes its canonical checks to `docs/canonical/<file>.md`
+    and its curriculum checks to `curriculum/`, so content held in the quarantine
+    dir never trips them. The root holds a copy of the validator plus the proposed
+    file at `destination`, and the run is scoped to that path, so the rules come
+    from the validator itself with no second copy to drift from it. The root is
+    created INSIDE `repo_root` because that is what lets node resolve `tsx` and
+    `@pavani_org/obsidian-eval` from the repo's own `node_modules` by ordinary
+    upward traversal; `.validate-destination-*/` is gitignored so a hard kill
+    between mkdtemp and cleanup can never leak committable content.
+
+    The root deliberately carries NO vault context: the rules are the repo's, but
+    the graph they resolve against holds only this one file, so every wikilink
+    reads as broken and the verdict is stricter than the repo-wide run. That is
+    the intended contract for GENERATED pre-review output — the generator prompt
+    forbids links outright — and the human quarantine edit can add conventional
+    cross-links afterwards, with the PR's own obsidian CI as the full-context
+    authority."""
+    root = Path(tempfile.mkdtemp(prefix=".validate-destination-", dir=str(repo_root)))
+    try:
+        target = (root / destination).resolve()
+        if not target.is_relative_to(root.resolve()):
+            return {"available": False, "violations": []}
+        (root / "scripts").mkdir()
+        shutil.copyfile(repo_root / "scripts" / "validate-obsidian.ts",
+                        root / "scripts" / "validate-obsidian.ts")
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(text, encoding="utf-8")
+        done = subprocess.run(
+            ["npx", "tsx", "scripts/validate-obsidian.ts", "--json", "--no-cache",
+             "--paths", destination],
+            cwd=str(root), capture_output=True, text=True, timeout=300)
+        report = json.loads(done.stdout)
+        violations = [f"{i['file']}:{i['line']} — {i['message']} ({i['checkName']})"
+                      for i in report["items"] if i["severity"] == "error"]
+    except (OSError, subprocess.SubprocessError, ValueError,
+            KeyError, IndexError, TypeError):
+        return {"available": False, "violations": []}
+    finally:
+        shutil.rmtree(root, ignore_errors=True)
+    return {"available": True, "violations": violations}
 
 
 def run_spine(transcript: str, slug: str, index: dict, *, openai_key: str, zai_key: str,
