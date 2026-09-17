@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2100232693002731520/img/tHtoBiOnVy3NLKLE.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-14-hwchase17-in-case-you-want-to-build-a-domain-specific-harness-https-t--2098866608785473858|Harnesses customizados para agentes]]", "[[extracts/x/bookmarks/2026-09-14-shreyanshpatni_-want-to-build-a-domain-specific-agent-harness-this-is-a-grea--2099180288668750246|Construção de harness para agentes]]", "[[extracts/x/bookmarks/2026-09-12-hwchase17-harnesses-should-make-context-engineering-easy-forking-subag--2097410530717704546|Forking de subagentes em deepagents]]", "[[extracts/x/bookmarks/2026-09-14-mardehaym-the-model-is-the-smallest-most-swappable-part-key-principles--2099175716046643654|harness engineering principles]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-harness-of-harness-exciting-new-research-on-coding-agents-th--2095172426925801608|Harness-of-Harness: agentes de código autônomos]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-find-the-whole-collection-here-https-t-co-hskmmhjf1l--2097449134202503657|Harness engineering evolução curada]]", "[[extracts/x/bookmarks/2026-09-12-aicamila_-context-window-management-and-optimization-for-agents-agents--2076155135366135903|Context window management para agentes]]"]
 ---
 
 # Context engineering em agent harnesses

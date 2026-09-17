@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-claudedevs-mcp-2026-07-28-is-live-and-it-s-the-largest-update-to-the-pr--2082164248697069935|MCP 2026-07-28 stateless release]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-stateful-vs-stateless-mcp-core-anthropic-s-biggest-mcp-updat--2082454281630961687|Stateful vs. Stateless MCP]]", "[[extracts/x/bookmarks/2026-09-16-trq212-i-was-not-expecting-things-to-go-this-way-but-i-think-mcps-a--2099958388230873165|MCP vs CLI para integrações de agentes]]", "[[extracts/x/bookmarks/2026-09-16-rhyssullivan-total-mcp-victory-some-quick-misc-thoughts-about-why-mcp-is--2099970035137794430|MCP versus CLIs para agentes]]", "[[extracts/x/bookmarks/2026-09-16-rhyssullivan-trq212-the-one-remaining-issue-i-have-with-mcp-is-piping-loc--2099966630206009449|MCP vs CLIs para agentes]]", "[[extracts/x/bookmarks/2026-09-16-tobi-trq212-i-think-this-is-true-as-long-as-the-models-can-use-th--2100055404650573833|MCP acessível via REPL para agentes]]", "[[extracts/x/bookmarks/2026-09-16-trq212-rin-cale-thats-what-the-deferred-tools-is-for-it-s-basically--2099959418909851997|MCP deferred tools e progressive disclosure]]"]
 ---
 
 # Maturidade do protocolo MCP

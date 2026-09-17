@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: false
 links: ["https://testing.googleblog.com/2011/02/this-code-is-crap.html"]
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-mattpocockuk-starting-to-wonder-if-the-smartest-way-to-reduce-slop-is-jus--2094500508224409852|reduzir código para reduzir slop]]", "[[extracts/x/bookmarks/2026-09-12-mihail_eric-line-by-line-code-review-will-soon-disappear-the-future-is-a--2098097592001548319|revisão de código risco-gateada]]", "[[extracts/x/bookmarks/2026-09-12-chrisshort-alibaba-open-code-review-battle-tested-at-alibaba-s-scale-hy--2098555200680218872|ferramenta de code review híbrida]]", "[[extracts/x/bookmarks/2026-09-12-ibesh_tech-bcherny-the-review-bar-should-follow-blast-radius-not-who-wr--2098218598997336384|Code review e blast radius]]", "[[extracts/x/bookmarks/2026-09-15-addyosmani-at-anthropic-claude-now-writes-80-of-our-code-engineers-ship--2099577600159158765|Escalando CI/test selection para agentic coding]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-what-techniques-do-you-use-for-making-ai-authored-pr-s-easie--2096666329495257563|revisão de PRs gerados por IA]]"]
 ---
 
 # Métrica CRAP de risco de mudança
