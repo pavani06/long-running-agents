@@ -1,18 +1,18 @@
 ---
-title: "Tema: Agentes, Contexto e Ferramentas"
+title: "Tema: Agentes, Prompts e Automação"
 type: "theme"
 source: youtube
 tags: ["context-engineering", "agent-tooling", "stack-tooling"]
-size: 63
+size: 66
 ---
 
-# Tema: Agentes, Contexto e Ferramentas
+# Tema: Agentes, Prompts e Automação
 
-_Vídeos práticos sobre construção e operação de agentes de IA (Claude Code, managed agents, computer use, n8n), com foco em engenharia de contexto, prompting avançado e empilhamento de ferramentas de automação._
+_Uso prático do ecossistema de agentes Claude (Claude Code, Managed Agents, computer use) combinado com prompting avançado, engenharia de contexto em camadas e automação de fluxos (N8N, ChatGPT) para trabalho autônomo e produção._
 
 **Tags dominantes:** context-engineering, agent-tooling, stack-tooling
 
-## Vídeos (63)
+## Vídeos (66)
 - [[extracts/youtube/ai-learning/2026-09-11-next-level-prompts-10-mins-into-advanced-prompting--69bH4IHZivs|"Next Level Prompts?" - 10 mins into advanced prompting]]
 - [[extracts/youtube/ai-learning/2026-09-11-5-notebooklm-hacks-that-will-blow-your-mind--Es5Qb9weRmA|5 NotebookLM Hacks That Will Blow Your Mind!]]
 - [[extracts/youtube/ai-learning/2026-09-11-5-simple-but-weird-chatgpt-5-tricks-to-get-a-10x-better-response--emV9Wo_UuGQ|5 simple (but weird) ChatGPT-5 tricks to get a 10x better response]]
@@ -41,6 +41,7 @@ _Vídeos práticos sobre construção e operação de agentes de IA (Claude Code
 - [[extracts/youtube/ai-learning/2026-09-11-coding-with-openai-o1-in-cursor-can-we-replace-claude-3-5-now--wwC86t5k77Y|Coding With OpenAI-o1 in Cursor - Can We Replace Claude 3.5 Now?]]
 - [[extracts/youtube/ai-learning/2026-09-11-conductor-ceo-charlie-holtz-walks-us-through-his-ai-coding-setup--fQmlML9Lay4|Conductor CEO Charlie Holtz Walks Us Through His AI Coding Setup]]
 - [[extracts/youtube/ai-learning/2026-09-11-field-guide-to-fable-thariq-shihipar-anthropic--9fubhllmsBU|Field Guide to Fable — Thariq Shihipar, Anthropic]]
+- [[extracts/youtube/ai-learning/2026-09-11-getting-started-with-omnigent-the-coding-agent-meta-harness--AyV0hum_hA8|Getting Started with Omnigent | The Coding Agent Meta-Harness]]
 - [[extracts/youtube/ai-learning/2026-09-13-github-top-trending-tool-just-fixed-the-ai-agents-biggest-problem--cyIWQHYoUg8|Github Top Trending Tool Just Fixed The AI Agent’s Biggest Problem]]
 - [[extracts/youtube/ai-learning/2026-09-11-google-s-9-hour-ai-prompt-engineering-course-in-20-minutes--p09yRj47kNM|Google's 9 Hour AI Prompt Engineering Course In 20 Minutes]]
 - [[extracts/youtube/ai-learning/2026-09-11-gpt-6-astra-fable-5-1-god-mode--KgKA0A3qlz0|GPT 6 Astra + Fable 5.1 = GOD MODE]]
@@ -49,6 +50,7 @@ _Vídeos práticos sobre construção e operação de agentes de IA (Claude Code
 - [[extracts/youtube/ai-learning/2026-09-15-high-throughput-agentic-engineering-with-kun--MSbacZ99E14|High Throughput Agentic Engineering with Kun]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-did-we-make-deepseek-outperform-opus-4-7--f61DCDwvFis|how did we make deepseek outperform opus 4.7?]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-founders-build-on-claude-managed-agents--hm8NzEd5io0|How founders build on Claude Managed Agents]]
+- [[extracts/youtube/ai-learning/2026-09-11-how-i-automate-my-own-job-at-hugging-face-using-agents-niels-rogge-hugging-face--FLUoowDJg4I|How I automate my own job at Hugging Face using agents — Niels Rogge, Hugging Face]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-lovable-self-improves-every-hour-benjamin-verbeek-lovable--KA5kPbdkK2E|How Lovable self-improves every hour — Benjamin Verbeek, Lovable]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-the-claude-code-team-uses-claude-code--S-sYlFiGFv8|How the Claude Code team uses Claude Code]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-get-ahead-of-99-of-people-with-ai--0tLHVyd7WtM|How to Get Ahead of 99% of People (with AI)]]
@@ -75,4 +77,5 @@ _Vídeos práticos sobre construção e operação de agentes de IA (Claude Code
 - [[extracts/youtube/ai-learning/2026-09-11-the-prompting-playbook--G2B0YWuJUgI|The prompting playbook]]
 - [[extracts/youtube/ai-learning/2026-09-11-this-claude-code-x-obsidian-agentic-os-will-be-the-new-meta--njHuj8OxIVI|This Claude Code x Obsidian Agentic OS Will Be The New Meta]]
 - [[extracts/youtube/ai-learning/2026-09-11-this-open-source-repo-just-solved-claude-code-s-1-problem--ChskqGovoHg|This Open Source Repo Just Solved Claude Code's #1 Problem]]
+- [[extracts/youtube/ai-learning/2026-09-11-unlock-autonomous-ai-agents-with-auth-md-michael-grinich-mcp-night-agent-mode-ke--Dqp_b8GHLXU|Unlock Autonomous AI Agents with auth.md, Michael Grinich | MCP Night: Agent Mode Keynote]]
 - [[extracts/youtube/ai-learning/2026-09-11-we-cut-94-of-ai-coding-tokens-with-a-local-code-index-rajkumar-sakthivel-tesco--dRmWYHuIJxM|We Cut 94% of AI Coding Tokens With a Local Code Index - Rajkumar Sakthivel, Tesco]]

@@ -1,25 +1,27 @@
 ---
-title: "Tema: Análise Estratégica de Agentes"
+title: "Tema: Futuro e Estratégia dos Agentes"
 type: "theme"
 source: youtube
 tags: ["agents", "analise", "governanca"]
-size: 85
+size: 97
 ---
 
-# Tema: Análise Estratégica de Agentes
+# Tema: Futuro e Estratégia dos Agentes
 
-_Palestras, entrevistas e keynotes de líderes e pesquisadores que analisam a trajetória da IA — dados, scaling, agentes e governança — e projetam o futuro estratégico da área._
+_Palestras, entrevistas e keynotes de líderes da indústria analisando a evolução da IA agêntica, das estratégias corporativas à governança e ao impacto no trabalho e na economia._
 
 **Tags dominantes:** agents, analise, governanca
 
-## Vídeos (85)
+## Vídeos (97)
 - [[extracts/youtube/ai-learning/2026-09-11-is-there-an-ai-bubble-gavin-baker-and-david-george--5ze3ZNvOdRY|"Is there an AI bubble?” Gavin Baker and David George]]
 - [[extracts/youtube/ai-learning/2026-09-11-24h-inside-a-30m-silicon-valley-ai-startup-with-no-employees--OpsGJaijG10|24h Inside a $30M Silicon Valley AI Startup with No Employees]]
 - [[extracts/youtube/ai-learning/2026-09-11-6-government-databases-most-people-dont-know-are-public--E6Nx8cYaqUQ|6 Government Databases Most People Don’t Know Are Public]]
 - [[extracts/youtube/ai-learning/2026-09-11-agentic-ai-how-bots-came-for-our-workflows-and-drudgery-ft-working-it--e85AxYW0Qyk|Agentic AI - how bots came for our workflows and drudgery | FT Working It]]
+- [[extracts/youtube/ai-learning/2026-09-11-ai-interfaces-of-the-future-design-review--DBhSfROq3wU|AI Interfaces Of The Future | Design Review]]
 - [[extracts/youtube/ai-learning/2026-09-11-ai-mobility-the-near-future-with-carlo-van-de-weijer-singularity-university--Pya-G_Y6m7E|AI, Mobility & The Near Future with Carlo van de Weijer  | Singularity University]]
 - [[extracts/youtube/ai-learning/2026-09-11-anthropic-cpo-mike-krieger-building-ai-products-from-the-bottom-up--Js1gU6L1Zi8|Anthropic CPO Mike Krieger: Building AI Products From the Bottom Up]]
 - [[extracts/youtube/ai-learning/2026-09-11-as-tecnologias-que-vao-mudar-o-mundo-na-proxima-decada-market-makers-368--xzp1yHH_vAg|AS TECNOLOGIAS QUE VÃO MUDAR O MUNDO NA PRÓXIMA DÉCADA | Market Makers #368]]
+- [[extracts/youtube/ai-learning/2026-09-17-balaji-srinivasan-on-the-future-of-ai-the-a16z-show--oheUsh7VtKY|Balaji Srinivasan on The Future of AI | The a16z Show]]
 - [[extracts/youtube/ai-learning/2026-09-11-building-the-real-world-infrastructure-for-ai-with-google-cisco-a16z--OsLRf6r5U9E|Building the Real-World Infrastructure for AI, with Google, Cisco & a16z]]
 - [[extracts/youtube/ai-learning/2026-09-11-creating-agents-that-co-create-karina-nguyen-openai--1XvN5EBDnDw|Creating Agents that Co-Create — Karina Nguyen, OpenAI]]
 - [[extracts/youtube/ai-learning/2026-09-11-emil-michael-the-department-of-war-is-moving-faster-than-silicon-valley-on-ai-th--tL3sXpxpCPs|Emil Michael: The Department of War Is Moving Faster Than Silicon Valley on AI | The a16z Show]]
@@ -34,7 +36,10 @@ _Palestras, entrevistas e keynotes de líderes e pesquisadores que analisam a tr
 - [[extracts/youtube/ai-learning/2026-09-11-how-ai-is-reinventing-software-business-models-ft-bret-taylor-of-sierra--xlQB_0Nzoog|How AI is Reinventing Software Business Models ft. Bret Taylor of Sierra]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-brian-chesky-is-redesigning-airbnb-for-the-ai-era--eURcW5_uS60|How Brian Chesky Is Redesigning Airbnb for the AI Era]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-companies-are-building-their-own-intelligence-sonya-huang-sequoia-capital--bMMv0bZzONg|How Companies Are Building Their Own Intelligence | Sonya Huang, Sequoia Capital]]
+- [[extracts/youtube/ai-learning/2026-09-17-how-decagon-runs-90-of-its-agents-on-open-source-models--cO1f2wOxSH4|How Decagon Runs 90% of Its Agents on Open-Source Models]]
+- [[extracts/youtube/ai-learning/2026-09-11-how-google-deepmind-runs-agents-at-scale-kp-sawhney-ian-ballantyne-google-deepmi--7gujZrJ9L5I|How Google DeepMind Runs Agents at Scale — KP Sawhney & Ian Ballantyne, Google DeepMind]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-kepler-built-verifiable-ai-for-financial-services-vinoo-ganesh--Tt2kX2sgQio|How Kepler Built Verifiable AI for Financial Services — Vinoo Ganesh]]
+- [[extracts/youtube/ai-learning/2026-09-17-how-open-source-became-ai-s-backbone-inferact-with-a16z--78-6dUROziQ|How Open Source Became AI's Backbone | Inferact with a16z]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-build-a-remarkable-brand-in-the-age-of-ai-seth-godin--zFHzTy7XLbM|How to Build a Remarkable Brand in the Age of AI | Seth Godin]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-master-ai-powered-creativity-in-just-13-minutes-jeremy-utley--wv779vmyPVY|How to Master AI Powered Creativity in Just 13 Minutes | Jeremy Utley]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-read-like-a-pro-with-ai--VeU6gScy92s|How To Read Like A Pro (With AI)]]
@@ -43,6 +48,7 @@ _Palestras, entrevistas e keynotes de líderes e pesquisadores que analisam a tr
 - [[extracts/youtube/ai-learning/2026-09-11-ilya-sutskever-we-re-moving-from-the-age-of-scaling-to-the-age-of-research--aR20FWCCjAs|Ilya Sutskever – We're moving from the age of scaling to the age of research]]
 - [[extracts/youtube/ai-learning/2026-09-11-ilya-sutskever-sequence-to-sequence-learning-with-neural-networks-what-a-decade--1yvBqasHLZs|Ilya Sutskever: "Sequence to sequence learning with neural networks: what a decade"]]
 - [[extracts/youtube/ai-learning/2026-09-11-inside-openai-s-stargate-megafactory-with-sam-altman-the-circuit--GhIJs4zbH0o|Inside OpenAI's Stargate Megafactory with Sam Altman | The Circuit]]
+- [[extracts/youtube/ai-learning/2026-09-11-inside-stanford-s-elite-student-hackathon-full-documentary-on-treehacks-2026--wApaJjvNZFs|Inside Stanford's Elite Student Hackathon (Full Documentary on TreeHacks 2026)]]
 - [[extracts/youtube/ai-learning/2026-09-11-inside-the-mind-of-anthropic-ceo-dario-amodei-the-circuit-extended-interview--x2VHFgyawPE|Inside the Mind of Anthropic CEO Dario Amodei | The Circuit | Extended Interview]]
 - [[extracts/youtube/ai-learning/2026-09-11-intro-to-fine-tuning-large-language-models--H-oCV5brtU4|Intro to Fine-Tuning Large Language Models]]
 - [[extracts/youtube/ai-learning/2026-09-11-jamie-dimon-talks-trump-ai-and-americas-future-on-the-axios-show-full-interview--AwXmUXpjNw4|Jamie Dimon talks Trump, AI and America’s future on The Axios Show | Full Interview]]
@@ -50,6 +56,7 @@ _Palestras, entrevistas e keynotes de líderes e pesquisadores que analisam a tr
 - [[extracts/youtube/ai-learning/2026-09-11-jensen-huang-why-companies-need-open-agent-systems--Yy3JH6dDugc|Jensen Huang: Why companies need open agent systems]]
 - [[extracts/youtube/ai-learning/2026-09-11-larry-ellison-keynote-on-oracle-s-vision-and-strategy-oracle-ai-world-2025--4eCFmbX5rAQ|Larry Ellison Keynote on Oracle's Vision and Strategy: Oracle AI World 2025]]
 - [[extracts/youtube/ai-learning/2026-09-11-let-s-build-gpt-from-scratch-in-code-spelled-out--kCc8FmEb1nY|Let's build GPT: from scratch, in code, spelled out.]]
+- [[extracts/youtube/ai-learning/2026-09-17-lighthouse-or-landgrab-how-to-pick-your-ai-sales-strategy--aakZLqxRQfo|Lighthouse or Landgrab? How to Pick Your AI Sales Strategy]]
 - [[extracts/youtube/ai-learning/2026-09-11-mental-models-that-change-how-you-think-bill-gurley--yBBhd0-Os74|Mental Models That Change How You Think | Bill Gurley]]
 - [[extracts/youtube/ai-learning/2026-09-11-microsoft-ceo-satya-nadella-on-the-future-of-ai--w87UvmMcmW4|Microsoft CEO Satya Nadella on the Future of AI]]
 - [[extracts/youtube/ai-learning/2026-09-11-nvidia-ceo-jensen-huang-rebuilding-industrial-power-ai-factories-the-return-of-u--nkhrEnuZi20|NVIDIA CEO Jensen Huang | Rebuilding Industrial Power: AI Factories & the Return of US Manufacturing]]
@@ -63,6 +70,7 @@ _Palestras, entrevistas e keynotes de líderes e pesquisadores que analisam a tr
 - [[extracts/youtube/ai-learning/2026-09-11-satya-nadella-on-ai-agents-rebuilding-the-web-the-future-of-work-and-more--_a8EnBX8DSU|Satya Nadella on AI Agents, Rebuilding the Web, the Future of Work, and more]]
 - [[extracts/youtube/ai-learning/2026-09-11-satya-nadella-how-microsoft-thinks-about-agi--8-boBsWcr5A|Satya Nadella – How Microsoft thinks about AGI]]
 - [[extracts/youtube/ai-learning/2026-09-11-satya-nadella-ai-is-the-future-of-the-firm--BKx0Dp8y-6g|Satya Nadella: AI Is the Future of the Firm]]
+- [[extracts/youtube/ai-learning/2026-09-11-seeing-the-future-from-ai-companions-to-personal-software---KfrrWRl3FA|Seeing The Future from AI Companions to Personal Software]]
 - [[extracts/youtube/ai-learning/2026-09-11-stanford-ai-club-jason-wei-on-3-key-ideas-in-ai-in-2025--b6Doq2fz81U|Stanford AI Club: Jason Wei on 3 Key Ideas in AI in 2025]]
 - [[extracts/youtube/ai-learning/2026-09-11-stanford-cs153-frontier-systems-amit-jain-from-luma-ai-on-unified-intelligence-s--6nUl_w5W9Wk|Stanford CS153 Frontier Systems | Amit Jain from Luma AI on Unified Intelligence Systems]]
 - [[extracts/youtube/ai-learning/2026-09-11-stanford-cs153-frontier-systems-andreas-blattmann-from-black-forest-labs-on-visu--CBaLU0dDEY8|Stanford CS153 Frontier Systems | Andreas Blattmann from Black Forest Labs on Visual Intelligence]]
@@ -72,6 +80,7 @@ _Palestras, entrevistas e keynotes de líderes e pesquisadores que analisam a tr
 - [[extracts/youtube/ai-learning/2026-09-11-stanford-cs153-frontier-systems-mati-staniszewski-from-elevenlabs-on-the-future--vfF011ko89o|Stanford CS153 Frontier Systems | Mati Staniszewski from ElevenLabs on The Future of Voice Systems]]
 - [[extracts/youtube/ai-learning/2026-09-11-stanford-cs153-frontier-systems-nikhyl-singhal-from-skip-on-product-management-i--BQrJ4lHAjhc|Stanford CS153 Frontier Systems | Nikhyl Singhal from Skip on Product Management in the AI Era]]
 - [[extracts/youtube/ai-learning/2026-09-11-stanford-cs153-frontier-systems-scale-agi-and-the-future-of-everything--F_7M4Hc-usM|Stanford CS153 Frontier Systems | Scale, AGI, and the Future of Everything]]
+- [[extracts/youtube/ai-learning/2026-09-11-stanford-cs153-frontier-systems-the-ai-native-company-how-one-founder-becomes-a--Lri2LNYtERM|Stanford CS153 Frontier Systems | The AI Native Company: How One Founder Becomes a 1000x Engineer]]
 - [[extracts/youtube/ai-learning/2026-09-11-stanford-cs230-autumn-2025-lecture-1-introduction-to-deep-learning--_NLHFoVNlbg|Stanford CS230 | Autumn 2025 | Lecture 1: Introduction to Deep Learning]]
 - [[extracts/youtube/ai-learning/2026-09-11-stanford-cs25-transformers-united-v6-i-from-language-models-to-native-multimodal--NDdc39KYqDU|Stanford CS25: Transformers United V6 I From Language Models to Native Multimodal Intelligence]]
 - [[extracts/youtube/ai-learning/2026-09-11-stanford-cs336-language-modeling-from-scratch-spring-2026-lecture-10-inference--EfM546A79aM|Stanford CS336 Language Modeling from Scratch | Spring 2026 | Lecture 10: Inference]]
@@ -89,12 +98,15 @@ _Palestras, entrevistas e keynotes de líderes e pesquisadores que analisam a tr
 - [[extracts/youtube/ai-learning/2026-09-11-the-future-of-ai-agents-what-will-interrupt-2027-look-like-interrupt-26--R9K2574YEAg|The Future of AI Agents: What Will Interrupt 2027 Look Like? | Interrupt 26]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-only-trait-for-success-in-the-ai-erahow-to-build-it-carnegie-mellon-universi--xWYb7tImErI|The Only Trait for Success in the AI Era—How to Build It | Carnegie Mellon University Po-Shen Loh]]
 - [[extracts/youtube/ai-learning/2026-09-15-the-paradox-at-the-heart-of-ai-and-science-terence-tao--svl_1upFpQo|The paradox at the heart of AI and science | Terence Tao]]
+- [[extracts/youtube/ai-learning/2026-09-17-the-search-engine-for-the-agentic-web-will-bryk-exa--59AA5kIoqjA|The Search Engine for the Agentic Web — Will Bryk, Exa]]
+- [[extracts/youtube/ai-learning/2026-09-17-the-state-of-ai-models-moats-and-the-consumer-renaissance--zEZ0rQ8Ef-Y|The State of AI: Models, Moats, and the Consumer Renaissance]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-thinking-game-full-documentary-tribeca-film-festival-official-selection--d95J8yzvjbQ|The Thinking Game | Full documentary | Tribeca Film Festival official selection]]
 - [[extracts/youtube/ai-learning/2026-09-11-vertical-ai-agents-could-be-10x-bigger-than-saas--ASABxNenD_U|Vertical AI Agents Could Be 10X Bigger Than SaaS]]
 - [[extracts/youtube/ai-learning/2026-09-11-what-is-google-s-agentic-ai-strategy-explained-by-google-cloud-s-cto--3tng5VWbWXU|What is Google's Agentic AI Strategy? (Explained by Google Cloud's CTO)]]
+- [[extracts/youtube/ai-learning/2026-09-17-why-ai-agents-could-finally-reinvent-the-credit-card--J3pegsM5drk|Why AI Agents Could Finally Reinvent the Credit Card]]
 - [[extracts/youtube/ai-learning/2026-09-11-why-ai-is-going-vertical-again-dianne-penn-anthropic--tivaWTTVRhY|Why AI is going vertical (again) | Dianne Penn (Anthropic)]]
 - [[extracts/youtube/ai-learning/2026-09-11-why-are-palantir-and-openai-scared-of-alex-bores-the-ezra-klein-show--znKb71kLG5c|Why Are Palantir and OpenAI Scared of Alex Bores? | The Ezra Klein Show]]
 - [[extracts/youtube/ai-learning/2026-09-11-why-enterprise-ai-adoption-is-slower-than-you-think-aaron-levie-box-harrison-cha--agSRMrhNTf4|Why Enterprise AI Adoption Is Slower Than You Think — Aaron Levie (Box) + Harrison Chase]]
+- [[extracts/youtube/ai-learning/2026-09-17-why-the-next-generation-of-enterprise-software-looks-nothing-like-salesforce--K5yGLO8c6T0|Why the Next Generation of Enterprise Software Looks Nothing Like Salesforce]]
 - [[extracts/youtube/ai-learning/2026-09-11-yann-lecun-on-what-comes-after-llms--ngBraLDqzdI|Yann LeCun on What Comes After LLMs]]
 - [[extracts/youtube/ai-learning/2026-09-11-yann-lecun-s-1b-bet-against-llms-part-1--kYkIdXwW2AE|Yann LeCun's $1B Bet Against LLMs [Part 1]]]
-- [[extracts/youtube/ai-learning/2026-09-11-your-coding-agent-should-do-ai-system-engineering-ben-burtenshaw-hugging-face--JomVvNDjGb8|Your Coding Agent Should Do AI System Engineering — Ben Burtenshaw, Hugging Face]]

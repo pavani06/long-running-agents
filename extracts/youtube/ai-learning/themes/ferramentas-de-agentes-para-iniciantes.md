@@ -1,14 +1,14 @@
 ---
-title: "Tema: Tutoriais de ferramentas de agentes"
+title: "Tema: Ferramentas de agentes para iniciantes"
 type: "theme"
 source: youtube
 tags: ["agent-tooling", "stack-tooling", "agents"]
 size: 64
 ---
 
-# Tema: Tutoriais de ferramentas de agentes
+# Tema: Ferramentas de agentes para iniciantes
 
-_Guias introdutórios passo a passo para iniciantes construírem apps e agentes de IA com plataformas como n8n, Cursor, Bolt, Lovable, Windsurf e modelos Gemini/OpenAI._
+_Tutoriais introdutórios sobre plataformas no-code e low-code (n8n, Bolt, Lovable, Cursor, Gemini, OpenAI) para construir agentes de IA, apps e workflows sem conhecimento avançado de programação._
 
 **Tags dominantes:** agent-tooling, stack-tooling, agents
 
@@ -40,7 +40,6 @@ _Guias introdutórios passo a passo para iniciantes construírem apps e agentes 
 - [[extracts/youtube/ai-learning/2026-09-11-google-gemini-2-0-is-amazing-realtime-stream-tested-multimodal-api--38N8pgnNANQ|Google Gemini 2.0 is AMAZING - Realtime Stream TESTED | Multimodal API]]
 - [[extracts/youtube/ai-learning/2026-09-11-gpt-builder-2-0-upgrade-custom-gpt-with-parallel-function-calling-advanced-gpts--kBFjvQxKnOs|GPT Builder 2.0 🚀 UPGRADE Custom GPT with Parallel Function Calling 🤯 Advanced GPTs Tutorial]]
 - [[extracts/youtube/ai-learning/2026-09-11-gpt4v-puppeteer-ai-agent-browse-web-like-human--IXRkmqEYGZA|GPT4V + Puppeteer = AI agent browse web like human? 🤖]]
-- [[extracts/youtube/ai-learning/2026-09-11-how-i-automate-my-own-job-at-hugging-face-using-agents-niels-rogge-hugging-face--FLUoowDJg4I|How I automate my own job at Hugging Face using agents — Niels Rogge, Hugging Face]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-i-use-ai-agents-to-make-money-vibe-marketing-tutorial--PduJ0P6r_8o|How I use AI agents to make money (Vibe Marketing Tutorial)]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-build-a-startup-team-of-ai-agents-n8n-openai-feedhive--Hm0DZtiKUI8|How To Build a Startup Team of AI Agents (n8n, OpenAI, FeedHive)]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-build-deep-research-google-docs-ai-agents-full-tutorial--yQ4F553zhQw|How to Build Deep Research Google Docs AI AGENTS - Full Tutorial]]
@@ -51,6 +50,7 @@ _Guias introdutórios passo a passo para iniciantes construírem apps e agentes 
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-create-any-n8n-workflow-using-chatgpt--lZuxqbw8IX4|How to create any n8n workflow using ChatGPT]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-generate-yourself-literally-anywhere-flux-lora-tutorial--sNpQ9ULDMoo|How To Generate Yourself LITERALLY Anywhere - Flux LoRA Tutorial]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-sell-ai-workflows-without-starting-an-agency--QIsJe-nZ5XE|How to Sell AI Workflows (Without Starting an Agency)]]
+- [[extracts/youtube/ai-learning/2026-09-11-how-to-use-ai-to-build-your-saas-startup-lovable-supabase--mJwPvyc4-rk|How to use AI to build your SaaS startup (Lovable, Supabase)]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-use-cursor-agent-for-beginners--2gBcO3ht0ws|How to use Cursor Agent for beginners]]
 - [[extracts/youtube/ai-learning/2026-09-11-i-built-a-4589-website-in-minutes-with-bolt-new-and-cursor-ai--KqiQ4kC8OJI|I Built a $4589 Website in Minutes with Bolt.new and Cursor AI!]]
 - [[extracts/youtube/ai-learning/2026-09-11-i-built-a-marketing-team-with-1-ai-agent-and-no-code-free-n8n-template--ldETapkr8Hg|I Built a Marketing Team with 1 AI Agent and No Code (free n8n template)]]
