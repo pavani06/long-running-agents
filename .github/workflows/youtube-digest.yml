@@ -8,9 +8,11 @@ on:
         type: choice
         options: ["daily", "bootstrap"]
         default: "daily"
-  workflow_run:
-    workflows: ["YouTube Themes (AI - Learning)"]
-    types: [completed]
+
+# Triggered by youtube-themes.yml via gh workflow run at the end of its job.
+# A plain workflow_run trigger does NOT work here: GitHub Actions only chains
+# up to ~3 workflow_run levels, and this workflow is the 4th
+# (transcripts -> extracts -> connections -> themes -> digest).
 
 permissions:
   contents: write
