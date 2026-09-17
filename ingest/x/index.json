@@ -1,10 +1,10 @@
 {
   "source": "Jina Reader (r.jina.ai) + trafilatura fallback",
-  "count": 93,
+  "count": 101,
   "status_counts": {
-    "ok": 74,
+    "ok": 81,
     "failed": 12,
-    "paywall": 5,
+    "paywall": 6,
     "unsupported": 2
   },
   "items": [
@@ -207,6 +207,15 @@
       "text_len": 5705
     },
     {
+      "key": "aeac2247153e",
+      "file": "discord-com--aeac2247153e.md",
+      "url": "https://discord.com/invite/9Wb8MEpXRs",
+      "status": "paywall",
+      "final_url": "https://discord.com/invite/9Wb8MEpXRs",
+      "method": "trafilatura",
+      "text_len": 46
+    },
+    {
       "key": "b3a15571332a",
       "file": "eutoday-net--b3a15571332a.md",
       "url": "https://eutoday.net/an-open-letter-to-arkady-ostrovsky-of-the-economist-by-victor-rud/",
@@ -214,6 +223,15 @@
       "final_url": "https://eutoday.net/an-open-letter-to-arkady-ostrovsky-of-the-economist-by-victor-rud/",
       "method": "trafilatura",
       "text_len": 20239
+    },
+    {
+      "key": "80612c2a5639",
+      "file": "executor-sh--80612c2a5639.md",
+      "url": "https://executor.sh",
+      "status": "ok",
+      "final_url": "https://executor.sh/",
+      "method": "trafilatura",
+      "text_len": 2851
     },
     {
       "key": "100723b5206a",
@@ -297,6 +315,15 @@
       "text_len": 5559
     },
     {
+      "key": "239feae36314",
+      "file": "github-com--239feae36314.md",
+      "url": "https://github.com/milind-soni/OpenMausBot",
+      "status": "ok",
+      "final_url": "https://github.com/milind-soni/OpenMausBot",
+      "method": "trafilatura",
+      "text_len": 16879
+    },
+    {
       "key": "2d456bd9848b",
       "file": "github-com--2d456bd9848b.md",
       "url": "https://github.com/tencent/AI-Infra-Guard",
@@ -333,6 +360,15 @@
       "text_len": 11336
     },
     {
+      "key": "6426decba2ef",
+      "file": "github-com--6426decba2ef.md",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "status": "ok",
+      "final_url": "https://github.com/cloudflare/security-audit-skill",
+      "method": "trafilatura",
+      "text_len": 6516
+    },
+    {
       "key": "65f8a2e3eddb",
       "file": "github-com--65f8a2e3eddb.md",
       "url": "https://github.com/openai/codex-security",
@@ -358,6 +394,15 @@
       "final_url": "https://github.com/jordan-gibbs/hyperresearch",
       "method": "trafilatura",
       "text_len": 28356
+    },
+    {
+      "key": "7ed0ce602288",
+      "file": "github-com--7ed0ce602288.md",
+      "url": "https://github.com/monid-ai/monid",
+      "status": "ok",
+      "final_url": "https://github.com/monid-ai/monid",
+      "method": "trafilatura",
+      "text_len": 8312
     },
     {
       "key": "8989702180dd",
@@ -441,6 +486,15 @@
       "text_len": 12726
     },
     {
+      "key": "d00d272b2b99",
+      "file": "github-com--d00d272b2b99.md",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "status": "ok",
+      "final_url": "https://github.com/Panniantong/Agent-Reach",
+      "method": "trafilatura",
+      "text_len": 8861
+    },
+    {
       "key": "d1bc78db5cdb",
       "file": "github-com--d1bc78db5cdb.md",
       "url": "https://github.com/obra/superpowe",
@@ -457,6 +511,15 @@
       "final_url": "https://github.com/mattpocock/skills/pull/1083",
       "method": "trafilatura",
       "text_len": 2866
+    },
+    {
+      "key": "f7cfdfd7bcc3",
+      "file": "github-com--f7cfdfd7bcc3.md",
+      "url": "https://github.com/alibaba/open-code-review",
+      "status": "ok",
+      "final_url": "https://github.com/alibaba/open-code-review",
+      "method": "trafilatura",
+      "text_len": 8033
     },
     {
       "key": "faaed7c91783",
@@ -565,6 +628,15 @@
       "final_url": "https://www.langchain.com/blog/how-to-build-a-custom-agent-harness",
       "method": "trafilatura",
       "text_len": 5559
+    },
+    {
+      "key": "8356199c8c98",
+      "file": "martinfowler-com--8356199c8c98.md",
+      "url": "https://martinfowler.com/articles/never-send-slides/nail-your-narrative.html",
+      "status": "ok",
+      "final_url": "https://martinfowler.com/articles/never-send-slides/nail-your-narrative.html",
+      "method": "trafilatura",
+      "text_len": 15613
     },
     {
       "key": "557dcb769a02",
