@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Impacto econômico da IA"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-tashecon-remarkable-how-the-economist-appears-to-have-been-captured-b--2082728912165986348|Influência russa na The Economist]]", "[[extracts/x/bookmarks/2026-09-12-boringbiz_-if-you-are-looking-for-a-primer-on-leveraged-finance-restruc--2094100103740977319|Primer de leveraged finance]]", "[[extracts/x/bookmarks/2026-09-15-kevinnbass-i-have-conducted-an-audit-of-anthropic-s-finances-what-i-hav--2099621874279817638|Captura regulatória na Anthropic]]", "[[extracts/x/bookmarks/2026-09-12-mindarchx-a-dead-mit-professor-accidentally-destroyed-the-25-billion-e--2097762463072612533|Palestra MIT sobre comunicação executiva]]", "[[extracts/x/bookmarks/2026-09-12-imadeiyamu-https-t-co-dskqwecp3z-great-collection-of-exceptional-writin--2076340132370583992|Índice Billion Dollar PDFs]]", "[[extracts/x/bookmarks/2026-09-12-zostaff-ray-dalio-founder-of-bridgewater-associates-150b-on-diary-of--2076695008824955216|Concentração de vencedores e perdedores]]", "[[extracts/x/bookmarks/2026-09-12-ggreenwald-mauriciomoraes-opaulomm-se-algum-dia-eu-me-pegar-defendendo--2096756333802311828|Acusações contra ministro do STF]]"]
+theme: "IA, execução e vencedores"
 ---
 
 # Técnicas retóricas de Kevin Warsh

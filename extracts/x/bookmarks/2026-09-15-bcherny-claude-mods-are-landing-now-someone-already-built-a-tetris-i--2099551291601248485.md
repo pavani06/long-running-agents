@@ -21,8 +21,8 @@ grounded_in: "article"
 thin: false
 links: ["https://github.com/anthropics/claude-code/issues/91870#issuecomment-5666255143"]
 media: ["https://pbs.twimg.com/tweet_video_thumb/HSMaUpXbwAAvdSL.jpg"]
-theme: "Agentic Coding com Claude"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-bcherny-your-input-needed-would-you-use-this-this-is-an-early-look-a--2095590515765060076|Function Hooks no Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-leoxbtt-bro-el-ingeniero-que-creo-claude-code-solto-un-video-de-28-m--2082108948505674112|Uso avançado do Claude Code]]", "[[extracts/x/bookmarks/2026-09-17-claudedevs-claude-design-claude-slides-and-claude-docs-also-work-inside--2100270861555228770|Apps Claude dentro do Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-new-in-claude-code-claude-plugin-eval-see-what-value-your-pl--2098500999656923145|Claude Code plugin evals]]", "[[extracts/x/bookmarks/2026-09-12-rohanpaul_ai-claude-code-creator-boris-cherny-bcherny-for-people-who-aren--2082695402953031825|Podar configuração do Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-evals-call-the-model-so-they-use-tokens-and-results-vary-pil--2098501003666702344|Evals de plugins no Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-zodchiii-moonshot-just-cloned-claude-code-and-made-it-free-it-s-calle--2078222648539271430|Lançamento do Kimi Code CLI]]"]
+theme: "Claude Code e Coding Agêntico"
 ---
 
 # Claude Mods: function hooks no Claude Code

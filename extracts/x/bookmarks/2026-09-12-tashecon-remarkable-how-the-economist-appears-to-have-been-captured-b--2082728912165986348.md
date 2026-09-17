@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://eutoday.net/an-open-letter-to-arkady-ostrovsky-of-the-economist-by-victor-rud/"]
 media: []
 thin: false
-theme: "Impacto econômico da IA"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-annaeconomist-a-guide-to-warsh-s-rhetorical-techniques-since-we-ll-living--2082626169132720290|Técnicas retóricas de Kevin Warsh]]", "[[extracts/x/bookmarks/2026-09-15-kevinnbass-i-have-conducted-an-audit-of-anthropic-s-finances-what-i-hav--2099621874279817638|Captura regulatória na Anthropic]]", "[[extracts/x/bookmarks/2026-09-12-simonw-wow-turns-out-another-openai-agent-swarm-was-busy-spamming-a--2098573718142452055|Ataque de agentes OpenAI ao RubyGems]]", "[[extracts/x/bookmarks/2026-09-12-prosyn-amid-reports-of-mass-lay-https-t-co-ot2ngxlflm--2082797844889485453|Bolha da IA e finanças]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-rumor-is-next-gen-models-at-openai-anthropic-are-showing-eme--2099224260137116131|Misalignment emergente em modelos frontier]]", "[[extracts/x/bookmarks/2026-09-14-treytaylorceo-illscience-agents-are-largely-extensions-of-people-in-the-co--2099208649411321980|incentivos e preferências em agentes comerciais]]", "[[extracts/x/bookmarks/2026-09-12-ggreenwald-mauriciomoraes-opaulomm-se-algum-dia-eu-me-pegar-defendendo--2096756333802311828|Acusações contra ministro do STF]]", "[[extracts/x/bookmarks/2026-09-12-brenopires-a-revistapiaui-publica-agora-uma-serie-de-reportagens-que-ja--2098245580539510881|Relatório PF sobre Toffoli e Vorcaro]]", "[[extracts/x/bookmarks/2026-09-12-jesusferna7026-yesterday-i-highlighted-the-distributional-concerns-raised-b--2079197849502294287|Envelhecimento populacional e distribuição]]"]
+theme: "IA, execução e vencedores"
 ---
 
 # Influência russa na The Economist

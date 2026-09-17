@@ -21,8 +21,8 @@ grounded_in: "article"
 thin: false
 links: ["https://transitions.dev"]
 media: []
-theme: "Agentic Coding com Claude"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-trendtech33566-aiui-skills3-7vercellinearaiskill-ui-web-react-native-swift--2098350898732990886|UI design skills para IA]]", "[[extracts/x/bookmarks/2026-09-15-trending_repos-trending-repository-of-the-week-i-have-adhd-a-skill-to-stop--2099469831879737663|Skill ADHD-friendly para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098020699365355709|Skill ADHD-friendly para agentes de código]]", "[[extracts/x/bookmarks/2026-09-16-roundtablespace-10-agent-skills-with-3-49m-combined-downloads-01-grill-with--2099752946858639609|Agent skills mais baixadas]]", "[[extracts/x/bookmarks/2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447|Superpowers: metodologia para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098382953235562613|Skill de output direto para coding agents]]"]
+theme: "Claude Code e Coding Agêntico"
 ---
 
 # Transições UI para agentes de código

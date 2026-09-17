@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "Fundamentos de treino e avaliação"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-orcarouter-everyone-talks-about-recursive-self-improvement-but-there-s--2097967011448131640|recursive self-abliteration em IA]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-yifanzhang-thats-not-really-new-the-interesting-problem-with--2098913996057502068|Observabilidade em modelos com recurrent depth]]", "[[extracts/x/bookmarks/2026-09-12-0xmovez-anthropic-engineer-80-of-our-engineers-are-using-selfimprovi--2079985963862786352|agentes auto-melhorantes orquestrados por grafos]]", "[[extracts/x/bookmarks/2026-09-12-simonw-wow-turns-out-another-openai-agent-swarm-was-busy-spamming-a--2098573718142452055|Ataque de agentes OpenAI ao RubyGems]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-why-does-everyone-suddenly-want-to-pace-ai-recurrent-looped--2098922505591505139|Recurrent Looped Transformers]]", "[[extracts/x/bookmarks/2026-09-12-ycombinator-harnesses-often-get-dismissed-as-just-scaffolding-just-promp--2096970626036855197|harness engineering em agentes de IA]]", "[[extracts/x/bookmarks/2026-09-15-kevinnbass-i-have-conducted-an-audit-of-anthropic-s-finances-what-i-hav--2099621874279817638|Captura regulatória na Anthropic]]", "[[extracts/x/bookmarks/2026-09-14-treytaylorceo-illscience-super-fair-and-honestly-it-depends-on-the-core-mo--2099212116959920547|viés político em modelos de linguagem]]", "[[extracts/x/bookmarks/2026-09-12-tashecon-remarkable-how-the-economist-appears-to-have-been-captured-b--2082728912165986348|Influência russa na The Economist]]"]
+theme: "IA, execução e vencedores"
 ---
 
 # Misalignment emergente em modelos frontier

@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Agentes para engenharia de código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-marwan_3atef-datadog-put-agent-observability-in-your-coding-agent-and-the--2097986925088903355|Datadog Agent Observability para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-chatgpt-now-everyone-can-put-data-to-work-were-introducing-a-new-dat--2098065296968011853|Data agent no ChatGPT Work]]", "[[extracts/x/bookmarks/2026-09-16-ctatedev-introducing-vercel-labs-tools-for-devs-in-the-ai-era-agent-b--2099621387732140540|Vercel Labs ferramentas IA]]", "[[extracts/x/bookmarks/2026-09-16-trq212-i-was-not-expecting-things-to-go-this-way-but-i-think-mcps-a--2099958388230873165|MCP vs CLI para integrações de agentes]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-karpathys-agentic-engineering-finally-has-proper-devtools-wh--2098398242727940442|DevTools para engenharia agêntica]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-17-chromiumdev-10-000-installs-and-counting-we-created-modern-web-guidance--2100291127005856239|Web guidance para agentes]]", "[[extracts/x/bookmarks/2026-09-15-sumanth_077-microsoft-open-sourced-an-ai-engineer-coach-ai-engineer-coac--2098785284745990298|Microsoft AI Engineer Coach]]"]
+theme: "Tooling Agêntico para Código"
 ---
 
 # Data Agent Kit no IDE

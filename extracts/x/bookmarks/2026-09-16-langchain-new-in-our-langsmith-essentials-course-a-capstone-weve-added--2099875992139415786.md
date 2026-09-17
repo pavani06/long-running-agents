@@ -22,6 +22,7 @@ thin: false
 links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-marwan_3atef-datadog-put-agent-observability-in-your-coding-agent-and-the--2097986925088903355|Datadog Agent Observability para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-mihail_eric-im-excited-to-finally-announce-the-newest-edition-my-stanfor--2095166860740174273|Stanford course The Modern Software Developer]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-karpathys-agentic-engineering-finally-has-proper-devtools-wh--2098398242727940442|DevTools para engenharia agêntica]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-finally-an-open-source-runtime-security-layer-for-your-agent--2098042808221511836|runtime security layer para agentes]]", "[[extracts/x/bookmarks/2026-09-14-shreyanshpatni_-want-to-build-a-domain-specific-agent-harness-this-is-a-grea--2099180288668750246|Construção de harness para agentes]]", "[[extracts/x/bookmarks/2026-09-14-hwchase17-in-case-you-want-to-build-a-domain-specific-harness-https-t--2098866608785473858|Harnesses customizados para agentes]]"]
+theme: "Evals e Infra de Agentes"
 ---
 
 # Capstone no curso LangSmith Essentials

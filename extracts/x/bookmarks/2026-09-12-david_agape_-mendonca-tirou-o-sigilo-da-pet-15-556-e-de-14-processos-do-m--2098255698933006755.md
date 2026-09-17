@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: ["https://portal.stf.jus.br/processos/detalhe.asp?incidente=7473347", "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7450195", "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7473336", "https://portal.stf.jus.br/processos/detalhe.asp?incidente=7498168"]
 media: ["https://pbs.twimg.com/media/HR6AK-EXYAMicz5.png"]
 thin: false
-theme: "Impacto econômico da IA"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-brenopires-a-revistapiaui-publica-agora-uma-serie-de-reportagens-que-ja--2098245580539510881|Relatório PF sobre Toffoli e Vorcaro]]", "[[extracts/x/bookmarks/2026-09-12-ggreenwald-mauriciomoraes-opaulomm-se-algum-dia-eu-me-pegar-defendendo--2096756333802311828|Acusações contra ministro do STF]]", "[[extracts/x/bookmarks/2026-09-12-imadeiyamu-https-t-co-dskqwecp3z-great-collection-of-exceptional-writin--2076340132370583992|Índice Billion Dollar PDFs]]", "[[extracts/x/bookmarks/2026-09-15-kevinnbass-i-have-conducted-an-audit-of-anthropic-s-finances-what-i-hav--2099621874279817638|Captura regulatória na Anthropic]]", "[[extracts/x/bookmarks/2026-09-12-cwolferesearch-really-awesome-mopd-reading-list-here-is-also-another-well-w--2095256315476000817|MOPD reading list]]", "[[extracts/x/bookmarks/2026-09-16-thehackersnews-attackers-stole-a-metr-api-key-and-used-it-for-three-weeks-c--2094713437930787192|Vazamento de chave API da METR]]"]
+theme: "IA, execução e vencedores"
 ---
 
 # Sigilo STF caso Master

@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2082451799387361280/img/MNNknWSolW-6CeEP.jpg"]
 thin: false
-theme: "Agentic Coding com Claude"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-claudedevs-mcp-2026-07-28-is-live-and-it-s-the-largest-update-to-the-pr--2082164248697069935|MCP 2026-07-28 stateless release]]", "[[extracts/x/bookmarks/2026-09-16-mitsuhiko-trq212-mcp-today-is-a-massive-improvement-over-where-it-star--2099960203131171301|Maturidade do protocolo MCP]]", "[[extracts/x/bookmarks/2026-09-16-trq212-i-was-not-expecting-things-to-go-this-way-but-i-think-mcps-a--2099958388230873165|MCP vs CLI para integrações de agentes]]", "[[extracts/x/bookmarks/2026-09-15-dani_avila7-ok-this-is-big-mcp-now-defines-an-extension-specifically-for--2099325795822956575|Extensão MCP para Agent Skills]]", "[[extracts/x/bookmarks/2026-09-16-rhyssullivan-total-mcp-victory-some-quick-misc-thoughts-about-why-mcp-is--2099970035137794430|MCP versus CLIs para agentes]]", "[[extracts/x/bookmarks/2026-09-16-tobi-trq212-i-think-this-is-true-as-long-as-the-models-can-use-th--2100055404650573833|MCP acessível via REPL para agentes]]"]
+theme: "Evals e Infra de Agentes"
 ---
 
 # Stateful vs. Stateless MCP

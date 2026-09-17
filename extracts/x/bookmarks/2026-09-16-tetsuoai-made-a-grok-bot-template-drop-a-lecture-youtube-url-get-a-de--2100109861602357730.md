@@ -22,6 +22,7 @@ thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSUWYn-bwAAd4xM.jpg", "https://pbs.twimg.com/media/HSUWZ1Va8AEASt8.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-15-mattyp-each-day-grok-bot-looks-at-my-x-bookmarks-for-things-i-find--2099482348010328185|pipeline automatizado de demos com agentes]]", "[[extracts/x/bookmarks/2026-09-16-benln-new-grok-bot-guides-added-includes-bot-for-engineering-suppo--2099849826120683967|Grok Bot usage guides]]", "[[extracts/x/bookmarks/2026-09-12-coreyhainesco-i-made-a-skill-that-watches-videos-for-me-watch-video-youtub--2083953532903059846|AI skill para assistir vídeos]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-google-just-dropped-a-1-hour-course-on-agentic-engineering-f--2076366894655848871|Curso Google de engenharia agêntica]]", "[[extracts/x/bookmarks/2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447|Superpowers: metodologia para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-googleresearch-introducing-toolgrad-an-efficient-framework-for-generating-t--2098183830968705163|ToolGrad: geração de datasets de tool-use]]"]
+theme: "Orquestração Multiagente Grok Bot"
 ---
 
 # Agente que converte aulas em cheat sheets

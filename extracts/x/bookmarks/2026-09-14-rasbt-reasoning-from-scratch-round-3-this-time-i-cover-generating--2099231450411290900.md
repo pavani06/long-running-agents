@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2099200754993295360/img/O9TgrxbUCayWoZzj.jpg"]
-theme: "Fundamentos de treino e avaliação"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-tydsh-a-novel-way-to-do-rl-in-llm-post-training-inspired-by-our-pr--2080881800877134004|Dinâmica de aprendizado do RLVR]]", "[[extracts/x/bookmarks/2026-09-12-argona0x-whoever-leaked-this-has-bigger-balls-than-sense-two-research--2082193490956476521|confiabilidade de LLM-as-judge]]", "[[extracts/x/bookmarks/2026-09-12-theprimeagen-something-that-has-greatly-improved-the-reliability-of-the-c--2081066227619836308|técnica de confiabilidade em código via LLM]]", "[[extracts/x/bookmarks/2026-09-12-cwolferesearch-why-is-evaluating-agents-so-difficult-relative-to-evaluating--2083588813675274301|Dificuldade de avaliar agentes vs LLMs]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-yifanzhang-thats-not-really-new-the-interesting-problem-with--2098913996057502068|Observabilidade em modelos com recurrent depth]]", "[[extracts/x/bookmarks/2026-09-12-eya0-every-ai-accountant-fails-the-same-way-fluent-confident-unve--2097801524579864803|Agentes de IA contáveis verificáveis]]"]
+theme: "IA, execução e vencedores"
 ---
 
 # Verificadores para avaliação e RLVR

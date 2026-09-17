@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2079000840921366528/img/R5yXw8xXXRyFeTWD.jpg"]
 thin: false
-theme: "Agentes para engenharia de código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-thesupermanmx-china-open-sourced-a-peanut-sized-ocr-that-parses-entire-100--2078774556249186345|OCR local de PDFs longos]]", "[[extracts/x/bookmarks/2026-09-12-openhonor-puro-2b-is-open-beyond-the-weights-technical-report-final-in--2093994412770566256|Puro-2B: receita aberta de pré-treinamento barato]]", "[[extracts/x/bookmarks/2026-09-15-agenticgirl-alibaba-open-sourced-the-code-reviewer-it-says-has-served-te--2099087022900367845|Open-source code reviewer do Alibaba]]", "[[extracts/x/bookmarks/2026-09-12-qwendevs-alibabas-zvec-team-open-sourced-zg-a-local-search-tool-for-d--2095157452904018263|busca local para agentes de IA]]", "[[extracts/x/bookmarks/2026-09-12-chrisshort-alibaba-open-code-review-battle-tested-at-alibaba-s-scale-hy--2098555200680218872|ferramenta de code review híbrida]]", "[[extracts/x/bookmarks/2026-09-12-josesilesdata-el-web-scraping-ha-muerto-han-creado-pixelrag-un-sistema-ope--2082194990592069660|PixelRAG: web scraping visual]]"]
+theme: "Tooling Agêntico para Código"
 ---
 
 # OCR open-source da Baidu

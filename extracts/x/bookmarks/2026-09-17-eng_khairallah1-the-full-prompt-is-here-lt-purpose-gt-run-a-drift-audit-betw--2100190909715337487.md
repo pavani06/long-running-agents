@@ -22,6 +22,7 @@ thin: false
 links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-17-eng_khairallah1-send-this-prompt-to-gpt-astra-it-might-just-change-your-life--2100187890999263603|AGENTS.md desatualizado em codebases]]", "[[extracts/x/bookmarks/2026-09-12-rlancemartin-i-recently-added-this-command-to-the-claude-api-skill-run-it--2095170001175199771|Comando prompt-audit para Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-sumanth_077-i-built-a-self-evolving-code-review-agent-most-code-review-a--2098416224803987968|Agente de code review auto-evolutivo]]", "[[extracts/x/bookmarks/2026-09-12-glaucia_lemos86-caraca-absurdo-isso-aqui-segui-o-conselho-do-pvncher-em-pedi--2096649629068624378|Revisão de artefatos de contexto entre modelos]]", "[[extracts/x/bookmarks/2026-09-12-steipete-hit-a-new-record-with-our-autoreview-skill-66-rounds-on-a-gn--2080899298838098034|Autoreview: code review multi-engine]]", "[[extracts/x/bookmarks/2026-09-16-mattpocockuk-retro-will-now-aggressively-look-for-opportunities-to-turn-f--2099859946053533933|Fuzzy rules viram checks determinísticos]]", "[[extracts/x/bookmarks/2026-09-12-bzuer_-victorosaraiva-pergunto-quem-e-jefferson-silva-quem-usa-hewl--2095704063081849159|verificação de metadados de documento]]"]
+theme: "Memória e Contexto de Agentes"
 ---
 
 # Drift audit entre docs e código

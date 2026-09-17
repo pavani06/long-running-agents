@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HRjLIATWQAEHh6d.png"]
 thin: false
-theme: "Agentes para engenharia de código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-openaidevs-get-more-out-of-gpt-6-astra-by-revisiting-your-skills-agents--2098480213244117065|Instruções e skills para GPT-6 Astra]]", "[[extracts/x/bookmarks/2026-09-17-eng_khairallah1-send-this-prompt-to-gpt-astra-it-might-just-change-your-life--2100187890999263603|AGENTS.md desatualizado em codebases]]", "[[extracts/x/bookmarks/2026-09-12-theprimeagen-something-that-has-greatly-improved-the-reliability-of-the-c--2081066227619836308|técnica de confiabilidade em código via LLM]]", "[[extracts/x/bookmarks/2026-09-12-sumanth_077-i-built-a-self-evolving-code-review-agent-most-code-review-a--2098416224803987968|Agente de code review auto-evolutivo]]", "[[extracts/x/bookmarks/2026-09-12-steipete-hit-a-new-record-with-our-autoreview-skill-66-rounds-on-a-gn--2080899298838098034|Autoreview: code review multi-engine]]", "[[extracts/x/bookmarks/2026-09-17-eng_khairallah1-the-full-prompt-is-here-lt-purpose-gt-run-a-drift-audit-betw--2100190909715337487|Drift audit entre docs e código]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-if-you-re-looking-for-someone-to-blame-for-opus-5-loving-the--2095554201136791656|origem do termo seam]]"]
+theme: "Memória e Contexto de Agentes"
 ---
 
 # Revisão de artefatos de contexto entre modelos

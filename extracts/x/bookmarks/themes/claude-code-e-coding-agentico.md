@@ -1,31 +1,36 @@
 ---
-title: "Tema: Agentic Coding com Claude"
+title: "Tema: Claude Code e Coding Agêntico"
 type: "theme"
 source: x
 tags: ["agent-tooling", "agents", "agentic-coding"]
-size: 74
+size: 87
 ---
 
-# Tema: Agentic Coding com Claude
+# Tema: Claude Code e Coding Agêntico
 
-_Ferramentas, técnicas e lançamentos em torno do Claude Code e agentes de programação, cobrindo prompt engineering, Skills, CLIs concorrentes e o ecossistema da Anthropic._
+_Lançamentos, tutoriais e técnicas de configuração e uso do Claude Code e ferramentas correlatas de codificação com agentes de IA, incluindo modelos Claude, CLIs alternativas e workflows de contexto._
 
 **Tags dominantes:** agent-tooling, agents, agentic-coding
 
-## Bookmarks (74)
+## Bookmarks (87)
+- [[extracts/x/bookmarks/2026-09-16-roundtablespace-10-agent-skills-with-3-49m-combined-downloads-01-grill-with--2099752946858639609|Agent skills mais baixadas]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-our-ci-team-s-on-call-first-responder-is-claude-tag-it-reads--2097437571634639035|Agente Claude on-call para incidentes]]
 - [[extracts/x/bookmarks/2026-09-12-tom_doerr-hyperresearch-turns-claude-code-into-a-research-agent-that-i--2097841937642332595|Agente de pesquisa profunda para Claude Code]]
 - [[extracts/x/bookmarks/2026-09-12-andrewcurran_-a-man-in-australia-asked-his-agent-claude-running-on-opencla--2086567854850384054|agente explora vulnerabilidade em agendamento]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-we-re-open-sourcing-claude-commerce-agents-this-is-a-bluepri--2095233745167282602|agentes de comércio open-source]]
 - [[extracts/x/bookmarks/2026-09-12-coreyhainesco-i-made-a-skill-that-watches-videos-for-me-watch-video-youtub--2083953532903059846|AI skill para assistir vídeos]]
+- [[extracts/x/bookmarks/2026-09-12-askalphaxiv-introducing-deepseek-v4-1-flash-for-understanding-research-p--2098309348858704095|alphaXiv AI paper Q&A]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-we-ve-added-ant-apply-to-the-ant-cli-now-you-can-declare-cla--2095651107645145538|ant apply: agentes como código]]
+- [[extracts/x/bookmarks/2026-09-17-claudedevs-claude-design-claude-slides-and-claude-docs-also-work-inside--2100270861555228770|Apps Claude dentro do Claude Code]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-retailers-running-shopping-agents-on-claude-have-seen-carts--2095233746366808420|Arquitetura de agentes de comércio com Claude]]
-- [[extracts/x/bookmarks/2026-09-12-zostaff-a-jane-street-engineer-in-a-talk-on-how-an-exchange-is-actua--2081088443698868526|arquitetura de exchanges financeiras]]
+- [[extracts/x/bookmarks/2026-09-16-undefinedki-this-is-a-goldmine-anthropic-just-published-the-full-archite--2099839040241516872|arquitetura de agentes de comércio em produção]]
 - [[extracts/x/bookmarks/2026-09-12-realfxw-multi-agent-victor-dibia-designing-multiagent-systems-picoag--2097956088792396200|Arquitetura multi-agente do zero]]
+- [[extracts/x/bookmarks/2026-09-12-simonw-wow-turns-out-another-openai-agent-swarm-was-busy-spamming-a--2098573718142452055|Ataque de agentes OpenAI ao RubyGems]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-read-the-full-announcement-https-t-co-cdudn3gvhd--2095233748719817153|Blueprint de agentes de comércio com Claude]]
 - [[extracts/x/bookmarks/2026-09-12-polydao-claude-obsidian-loop-engineering-a-vault-that-runs-itself-th--2098288931620184216|Claude + Obsidian vault como estado do agente]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-claude-code-can-design-now-the-new-design-skill-research-pre--2089471692762673408|Claude Code /design skill]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-new-in-claude-code-claude-plugin-eval-see-what-value-your-pl--2098500999656923145|Claude Code plugin evals]]
+- [[extracts/x/bookmarks/2026-09-17-bcherny-also-today-claude-docs-claude-slides-and-claude-design-are-i--2100260544087535639|Claude Docs, Slides e Design nativos]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-we-sat-down-with-the-founders-of-wisprflow-useactively-and-p--2097415273645228460|Claude Managed Agents em produção]]
 - [[extracts/x/bookmarks/2026-09-15-bcherny-claude-mods-are-landing-now-someone-already-built-a-tetris-i--2099551291601248485|Claude Mods: function hooks no Claude Code]]
 - [[extracts/x/bookmarks/2026-09-12-trq212-we-heard-feedback-that-it-s-hard-to-know-if-your-skills-are--2098531560643539440|Claude plugin evals]]
@@ -33,29 +38,30 @@ _Ferramentas, técnicas e lançamentos em torno do Claude Code e agentes de prog
 - [[extracts/x/bookmarks/2026-09-12-pawelhuryn-opus-5-is-way-better-than-4-8-but-cutting-80-of-its-instruct--2086732722261643450|CLAUDE.md blocks for Opus 5]]
 - [[extracts/x/bookmarks/2026-09-12-rlancemartin-i-recently-added-this-command-to-the-claude-api-skill-run-it--2095170001175199771|Comando prompt-audit para Claude Code]]
 - [[extracts/x/bookmarks/2026-09-12-voxyz_ai-a-lot-of-people-have-asked-how-to-configure-this-cost-effici--2098033757504634982|Configuração de agent tree com Codex]]
+- [[extracts/x/bookmarks/2026-09-17-coreyganim-i-m-making-8-000-a-month-building-claude-skills-for-other-pe--2099848332692623870|Consultoria de Claude Skills para negócios]]
 - [[extracts/x/bookmarks/2026-09-14-illscience-had-many-conversations-this-weekend-re-instinct-muse-consume--2099205025797144669|Consumer agents e commerce]]
 - [[extracts/x/bookmarks/2026-09-12-karpathy-one-pattern-i-find-useful-for-working-with-llms-is-a-nice-lo--2079610838143623371|contexto via voz para LLMs]]
 - [[extracts/x/bookmarks/2026-09-12-levelsio-this-finally-stopped-claude-s-crazy-pursuit-of-talking-more--2086046112142545061|Controlar estilo do Claude via memória]]
+- [[extracts/x/bookmarks/2026-09-16-tom_doerr-manages-your-obsidian-vault-with-a-crew-of-8-ai-agents-and-1--2099928503487517062|Crew de agentes AI para Obsidian]]
 - [[extracts/x/bookmarks/2026-09-12-david_tornai-people-are-using-notebooklm-to-mass-produce-specialized-clau--2093337464215932962|Criar Claude Skills com NotebookLM]]
-- [[extracts/x/bookmarks/2026-09-12-marwan_3atef-datadog-put-agent-observability-in-your-coding-agent-and-the--2097986925088903355|Datadog Agent Observability para coding agents]]
-- [[extracts/x/bookmarks/2026-09-15-addyosmani-at-anthropic-claude-now-writes-80-of-our-code-engineers-ship--2099577600159158765|Escalando CI/test selection para agentic coding]]
+- [[extracts/x/bookmarks/2026-09-16-obsdmd-you-can-finally-edit-any-markdown-file-without-moving-it-int--2099930667769610431|Edição de Markdown fora do vault no Obsidian]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-start-in-your-plugin-s-folder-and-run-claude-plugin-eval-ini--2098501001447870499|Eval de plugins Claude Code]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-evals-call-the-model-so-they-use-tokens-and-results-vary-pil--2098501003666702344|Evals de plugins no Claude Code]]
 - [[extracts/x/bookmarks/2026-09-12-daniel_mac8-fable-advisor-now-uses-opus-5-as-orchestrator-opus-5-shines--2081056595555868752|fable-advisor com Opus 5 como orquestrador]]
+- [[extracts/x/bookmarks/2026-09-12-mattpocockuk-wayfinder-lets-you-plan-your-most-ambitious-projects-ever-yo--2082774006189449355|Ferramenta agêntica de planejamento de projetos]]
 - [[extracts/x/bookmarks/2026-09-12-alex_frantic-how-to-graph-max-with-codex-and-5-6-sol-1-draw-a-graph-liter--2080776965070496115|Fluxo desenho-para-código com Codex]]
-- [[extracts/x/bookmarks/2026-09-15-shanyanggm-github-1-tradingagents-ai-agent-https-t-co-nz1jbk3dkr-2-libr--2098941338297458746|Framework multi-agente de trading LLM]]
 - [[extracts/x/bookmarks/2026-09-12-bcherny-your-input-needed-would-you-use-this-this-is-an-early-look-a--2095590515765060076|Function Hooks no Claude Code]]
+- [[extracts/x/bookmarks/2026-09-12-txbrraa-github-acaba-de-solucionar-el-mayor-problema-del-vibe-coding--2097955506891469272|GitHub Spec Kit e spec-driven development]]
 - [[extracts/x/bookmarks/2026-09-12-natebjones-psa-if-you-are-tired-of-claude-lish-or-chat-lish-tell-your-a--2089457435459404093|guia de estilo para IA]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-also-see-our-open-source-reference-implementation-this-inclu--2095233747562180849|implementação de referência de agentes de comércio]]
 - [[extracts/x/bookmarks/2026-09-14-treytaylorceo-illscience-agents-are-largely-extensions-of-people-in-the-co--2099208649411321980|incentivos e preferências em agentes comerciais]]
-- [[extracts/x/bookmarks/2026-09-14-openaidevs-get-more-out-of-gpt-6-astra-by-revisiting-your-skills-agents--2098480213244117065|Instruções e skills para GPT-6 Astra]]
 - [[extracts/x/bookmarks/2026-09-12-zodchiii-moonshot-just-cloned-claude-code-and-made-it-free-it-s-calle--2078222648539271430|Lançamento do Kimi Code CLI]]
 - [[extracts/x/bookmarks/2026-09-12-felixrieseberg-today-we-re-releasing-fable-5-1-and-mythos-5-1-while-the-mod--2094849655167471773|Lançamento Fable 5.1 e Mythos 5.1]]
-- [[extracts/x/bookmarks/2026-09-12-claudedevs-mcp-2026-07-28-is-live-and-it-s-the-largest-update-to-the-pr--2082164248697069935|MCP 2026-07-28 stateless release]]
+- [[extracts/x/bookmarks/2026-09-12-mattpocockuk-mattpocock-skills-v1-2-is-out-we-re-now-the-19th-most-starre--2084985277102031137|Lançamento mattpocock/skills v1.2]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-new-in-claude-code-your-sessions-can-now-message-each-other--2085817074816070014|Mensageria entre sessões no Claude Code]]
 - [[extracts/x/bookmarks/2026-09-14-andrewchen-ethereaglehq-classifies-it-upfront-but-the-way-i-set-up-the--2099278183837397469|model selection com escalonamento]]
-- [[extracts/x/bookmarks/2026-09-12-ryrenz-ai-no-ai-slop-github-7700-star-7-peter-yang-creator-economy--2097944667291635819|no-ai-slop: removedor de estilo IA em textos]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-here-s-how-our-team-uses-claude-tag-for-on-call-when-an-aler--2098508880921899197|On-call automation with Claude]]
+- [[extracts/x/bookmarks/2026-09-14-ryrenz-claude-code-alphaxiv-openresearch-openresearch-6-github-1000--2098577841944207463|OpenResearch: agente de pesquisa científica]]
 - [[extracts/x/bookmarks/2026-09-14-addyosmani-get-more-out-of-your-fable-usage-by-using-opus-for-subagents--2099210491059122471|Opus como modelo de subagents]]
 - [[extracts/x/bookmarks/2026-09-12-mattpocockuk-if-you-re-looking-for-someone-to-blame-for-opus-5-loving-the--2095554201136791656|origem do termo seam]]
 - [[extracts/x/bookmarks/2026-09-12-voxyz_ai-codex-tip-a-cost-efficient-luna-sol-agent-tree-orchestrated--2097814698204832116|orquestração de agentes com Codex]]
@@ -66,24 +72,31 @@ _Ferramentas, técnicas e lançamentos em torno do Claude Code e agentes de prog
 - [[extracts/x/bookmarks/2026-09-12-alex_prompter-chatgpt-wants-access-to-your-gmail-slack-and-drive-so-it-can--2097035352707858528|prompt anti-escrita-IA genérica]]
 - [[extracts/x/bookmarks/2026-09-12-omarsar0-a-few-days-ago-anthropic-shared-this-brilliant-prompt-i-was--2097059598960132110|Prompt de escrita da Anthropic]]
 - [[extracts/x/bookmarks/2026-09-12-trevin-using-fable-5-1-add-this-to-your-claude-md-file-to-help-its--2095410064492507274|Prompting Claude Fable 5.1]]
+- [[extracts/x/bookmarks/2026-09-12-poteto-pstack-0-15-0-is-here-this-release-contains-mainly-token-usa--2097380152703615396|pstack 0.15.0 release]]
 - [[extracts/x/bookmarks/2026-09-12-anthropicai-we-re-publishing-our-most-detailed-threat-intelligence-repor--2098097512544444447|Relatório de ameaças sobre misuse de Claude]]
+- [[extracts/x/bookmarks/2026-09-12-dair_ai-it-s-well-known-that-agents-hack-benchmark-rewards-the-usual--2098592449568591902|reward hacking em benchmarks de agentes]]
 - [[extracts/x/bookmarks/2026-09-14-lydiahallie-setting-my-subagent-model-to-opus-has-helped-me-save-so-much--2099195114115707210|Roteamento de modelo para subagentes]]
 - [[extracts/x/bookmarks/2026-09-14-ethereaglehq-andrewchen-arch-router-picking-local-vs-cloud-is-the-piece-i--2099260781447496188|roteamento de modelos local vs cloud]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-before-creating-a-session-and-sending-it-events-took-separat--2080009527467114737|Seeding de eventos na criação de sessão]]
 - [[extracts/x/bookmarks/2026-09-12-keepgoings0-oalanicolas-from-my-experience-for-the-orchestrator-astra-xh--2097766199450829151|seleção de modelos por papel de agente]]
 - [[extracts/x/bookmarks/2026-09-12-claudedevs-two-fresh-updates-to-claude-managed-agents-first-we-ve-added--2098120133549895978|Session viewer no ant CLI]]
 - [[extracts/x/bookmarks/2026-09-12-undefinedki-spotify-just-published-the-internal-setup-their-engineers-us--2095942506433089832|Setup Claude Code no Spotify]]
-- [[extracts/x/bookmarks/2026-09-12-anatolikopadze-anthropic-engineer-you-re-not-supposed-to-prompt-claude-you--2080286550005358977|Sistemas que se auto-promptam em agentes]]
+- [[extracts/x/bookmarks/2026-09-12-mattpocockuk-coming-soon-to-mattpocock-skills-retro-gives-you-opportuniti--2098062605407461744|Skill /retro para retroativa de agentes]]
 - [[extracts/x/bookmarks/2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098020699365355709|Skill ADHD-friendly para agentes de código]]
 - [[extracts/x/bookmarks/2026-09-15-trending_repos-trending-repository-of-the-week-i-have-adhd-a-skill-to-stop--2099469831879737663|Skill ADHD-friendly para coding agents]]
 - [[extracts/x/bookmarks/2026-09-12-daniel_mac8-oh-boy-this-is-amazingly-cool-very-happy-i-found-this-diagra--2097795113237762544|Skill de design de diagramas para agentes de código]]
 - [[extracts/x/bookmarks/2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098382953235562613|Skill de output direto para coding agents]]
+- [[extracts/x/bookmarks/2026-09-17-mstryoda_-cloudflare-ai-agentlar-icin-security-skill-yaynlams-direkt-y--2099560068362441009|Skill de segurança da Cloudflare]]
+- [[extracts/x/bookmarks/2026-09-12-poteto-pstack-now-includes-2-skills-i-recommend-everyone-use-or-cop--2082874054483255805|Skill de verificação para agentes]]
 - [[extracts/x/bookmarks/2026-09-12-dani_avila7-anthropic-shipped-a-skill-called-discernment-nudge-that-does--2090266638356566321|Skill discernment-nudge da Anthropic]]
-- [[extracts/x/bookmarks/2026-09-12-akshay_pachaar-stateful-vs-stateless-mcp-core-anthropic-s-biggest-mcp-updat--2082454281630961687|Stateful vs. Stateless MCP]]
+- [[extracts/x/bookmarks/2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447|Superpowers: metodologia para coding agents]]
 - [[extracts/x/bookmarks/2026-09-12-trq212-we-removed-80-of-the-claude-code-system-prompt-for-our-newes--2080710971228918066|System prompts e CLAUDE.md para Claude Code]]
 - [[extracts/x/bookmarks/2026-09-14-jonathan_wilke-how-the-fuck-did-i-not-know-about-https-t-co-93vwcw5dip-so-m--2098801944756154391|Transições UI para agentes de código]]
 - [[extracts/x/bookmarks/2026-09-12-trendtech33566-aiui-skills3-7vercellinearaiskill-ui-web-react-native-swift--2098350898732990886|UI design skills para IA]]
 - [[extracts/x/bookmarks/2026-09-12-leoxbtt-bro-el-ingeniero-que-creo-claude-code-solto-un-video-de-28-m--2082108948505674112|Uso avançado do Claude Code]]
 - [[extracts/x/bookmarks/2026-09-12-milesdeutscher-this-is-the-one-github-repo-that-everyone-needs-to-save-the--2079048927593275868|Vault Obsidian de Claude Skills]]
 - [[extracts/x/bookmarks/2026-09-12-pankajkumar_dev-opus-5-leaks-opus-5-is-targeting-a-launch-by-the-end-of-this--2075945480463466519|Vazamento Claude Opus 5]]
+- [[extracts/x/bookmarks/2026-09-16-thehackersnews-attackers-stole-a-metr-api-key-and-used-it-for-three-weeks-c--2094713437930787192|Vazamento de chave API da METR]]
+- [[extracts/x/bookmarks/2026-09-12-mattpocockuk-just-saw-a-comment-saying-that-i-ve-never-made-a-proper-over--2088290952704151671|Visão geral das 25 skills de agentes]]
+- [[extracts/x/bookmarks/2026-09-17-chromiumdev-10-000-installs-and-counting-we-created-modern-web-guidance--2100291127005856239|Web guidance para agentes]]
 - [[extracts/x/bookmarks/2026-09-12-eng_khairallah1-anthropic-just-showed-a-27-minute-workshop-on-how-to-actuall--2076525778477461623|Workshop de prompt engineering para Claude]]

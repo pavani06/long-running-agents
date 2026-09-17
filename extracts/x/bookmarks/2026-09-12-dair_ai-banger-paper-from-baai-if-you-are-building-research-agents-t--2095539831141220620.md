@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HRTaXqLbAAAgTne.jpg"]
 thin: false
-theme: "Engenharia de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-dair_ai-banger-paper-from-google-if-you-maintain-a-skill-library-for--2093324233158045788|Evolução de skills em agentes]]", "[[extracts/x/bookmarks/2026-09-15-snwiki238337-openai-skillskill-githubskill-agent-skills-eval-skillopenai--2099052462653002157|Metodologia de avaliação de skills (OpenAI)]]", "[[extracts/x/bookmarks/2026-09-15-timothykassis-scientific-agent-skills-a-library-of-procedural-knowledge-fo--2098833771407843787|Biblioteca de habilidades procedurais para agentes científicos]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-the-most-important-skills-for-using-ai-coding-agents-effecti--2095890279865721217|Skills para agentes de codificação]]", "[[extracts/x/bookmarks/2026-09-12-xudong07452910-openai-skills-agents-md-blog-agent-engineering-astra-skill--2098655277197201752|OpenAI ensina Skills e AGENTS.md]]", "[[extracts/x/bookmarks/2026-09-12-ycombinator-harnesses-often-get-dismissed-as-just-scaffolding-just-promp--2096970626036855197|harness engineering em agentes de IA]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-banger-paper-from-the-qwen-team-if-you-evaluate-agents-on-an--2094872928240447665|Benchmark longitudinal de agentes e-commerce]]"]
+theme: "Memória e Contexto de Agentes"
 ---
 
 # Skills para research agents

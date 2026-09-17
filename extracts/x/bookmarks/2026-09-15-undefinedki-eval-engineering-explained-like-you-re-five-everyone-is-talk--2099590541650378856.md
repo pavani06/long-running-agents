@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSM-d9oWkAA4JAU.jpg"]
-theme: "Harness Engineering de Agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-elune0x-10-agent-evals-every-ai-engineer-should-know-1-golden-set-a--2080710242929697122|agent evals e golden set]]", "[[extracts/x/bookmarks/2026-09-15-snwiki238337-openai-skillskill-githubskill-agent-skills-eval-skillopenai--2099052462653002157|Metodologia de avaliação de skills (OpenAI)]]", "[[extracts/x/bookmarks/2026-09-17-langchain-voice-agents-are-becoming-a-bigger-part-of-customer-and-oper--2099845326928515142|Evals de voice agents em produção]]", "[[extracts/x/bookmarks/2026-09-12-cwolferesearch-why-is-evaluating-agents-so-difficult-relative-to-evaluating--2083588813675274301|Dificuldade de avaliar agentes vs LLMs]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-writing-for-agents-helps-but-not-without-human-oversight-har--2095895922576085034|Escrita para agentes e supervisão humana]]", "[[extracts/x/bookmarks/2026-09-12-ycombinator-harnesses-often-get-dismissed-as-just-scaffolding-just-promp--2096970626036855197|harness engineering em agentes de IA]]"]
+theme: "Evals e Infra de Agentes"
 ---
 
 # Eval engineering para agentes

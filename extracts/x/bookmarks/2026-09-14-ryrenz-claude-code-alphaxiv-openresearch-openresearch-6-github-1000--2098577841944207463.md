@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "Agentes para engenharia de código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-tom_doerr-hyperresearch-turns-claude-code-into-a-research-agent-that-i--2097841937642332595|Agente de pesquisa profunda para Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-askalphaxiv-introducing-deepseek-v4-1-flash-for-understanding-research-p--2098309348858704095|alphaXiv AI paper Q&A]]", "[[extracts/x/bookmarks/2026-09-12-0xdeliriumm-boris-cherny-lead-of-claude-code-at-anthropic-published-a-pi--2081050632727793775|pipeline de code review com agentes]]", "[[extracts/x/bookmarks/2026-09-16-tom_doerr-manages-your-obsidian-vault-with-a-crew-of-8-ai-agents-and-1--2099928503487517062|Crew de agentes AI para Obsidian]]", "[[extracts/x/bookmarks/2026-09-16-ctatedev-introducing-vercel-labs-tools-for-devs-in-the-ai-era-agent-b--2099621387732140540|Vercel Labs ferramentas IA]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-we-re-open-sourcing-claude-commerce-agents-this-is-a-bluepri--2095233745167282602|agentes de comércio open-source]]", "[[extracts/x/bookmarks/2026-09-12-zodchiii-moonshot-just-cloned-claude-code-and-made-it-free-it-s-calle--2078222648539271430|Lançamento do Kimi Code CLI]]"]
+theme: "Claude Code e Coding Agêntico"
 ---
 
 # OpenResearch: agente de pesquisa científica

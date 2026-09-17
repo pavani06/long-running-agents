@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HP9LXQiasAAoPxJ.jpg"]
 thin: false
-theme: "Agentic Coding com Claude"
 relates-to: ["[[extracts/x/bookmarks/2026-09-17-claudedevs-claude-design-claude-slides-and-claude-docs-also-work-inside--2100270861555228770|Apps Claude dentro do Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-daniel_mac8-oh-boy-this-is-amazingly-cool-very-happy-i-found-this-diagra--2097795113237762544|Skill de design de diagramas para agentes de código]]", "[[extracts/x/bookmarks/2026-09-17-bcherny-also-today-claude-docs-claude-slides-and-claude-design-are-i--2100260544087535639|Claude Docs, Slides e Design nativos]]", "[[extracts/x/bookmarks/2026-09-12-rlancemartin-i-recently-added-this-command-to-the-claude-api-skill-run-it--2095170001175199771|Comando prompt-audit para Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-trq212-we-removed-80-of-the-claude-code-system-prompt-for-our-newes--2080710971228918066|System prompts e CLAUDE.md para Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-trendtech33566-aiui-skills3-7vercellinearaiskill-ui-web-react-native-swift--2098350898732990886|UI design skills para IA]]", "[[extracts/x/bookmarks/2026-09-12-dani_avila7-anthropic-shipped-a-skill-called-discernment-nudge-that-does--2090266638356566321|Skill discernment-nudge da Anthropic]]", "[[extracts/x/bookmarks/2026-09-12-zodchiii-moonshot-just-cloned-claude-code-and-made-it-free-it-s-calle--2078222648539271430|Lançamento do Kimi Code CLI]]"]
+theme: "Claude Code e Coding Agêntico"
 ---
 
 # Claude Code /design skill

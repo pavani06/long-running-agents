@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Agentic Coding com Claude"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-liambraus-esto-es-una-locura-jack-dorsey-ex-ceo-de-twitter-acaba-de-la--2099852769389604973|Framework gratuito de agentes de IA]]", "[[extracts/x/bookmarks/2026-09-12-alex_prompter-chatgpt-wants-access-to-your-gmail-slack-and-drive-so-it-can--2097035352707858528|prompt anti-escrita-IA genérica]]", "[[extracts/x/bookmarks/2026-09-12-tferriss-the-1-most-clicked-link-in-the-latest-5-bullet-friday-editio--2097357231293358126|IA como designer de alto nível]]", "[[extracts/x/bookmarks/2026-09-17-milindlabs-some-people-are-already-saying-this-is-better-than-grok-bot--2099819771151933539|alternativa open-source ao Grok]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-a-few-days-ago-anthropic-shared-this-brilliant-prompt-i-was--2097059598960132110|Prompt de escrita da Anthropic]]", "[[extracts/x/bookmarks/2026-09-16-ctatedev-introducing-vercel-labs-tools-for-devs-in-the-ai-era-agent-b--2099621387732140540|Vercel Labs ferramentas IA]]", "[[extracts/x/bookmarks/2026-09-12-josesilesdata-el-web-scraping-ha-muerto-han-creado-pixelrag-un-sistema-ope--2082194990592069660|PixelRAG: web scraping visual]]", "[[extracts/x/bookmarks/2026-09-14-shl-over-10-000-github-stars-my-most-starred-repo-isnt-code-http--2099208492217221351|Milestone de estrelas no GitHub]]"]
+theme: "Tooling Agêntico para Código"
 ---
 
 # no-ai-slop: removedor de estilo IA em textos

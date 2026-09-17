@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "Impacto econômico da IA"
 relates-to: ["[[extracts/x/bookmarks/2026-09-15-a16z-ai-has-collapsed-the-cost-of-building-products-but-not-the-c--2099501195006238899|produto na era da IA]]", "[[extracts/x/bookmarks/2026-09-12-naval-when-software-was-expensive-thin-horizontal-best-of-breed-so--2080052566377763071|Software barato e integração vertical]]", "[[extracts/x/bookmarks/2026-09-16-gergelyorosz-here-s-what-openai-s-agentic-software-factory-looks-like-tod--2099945497377091902|Fábrica de software agêntica da OpenAI]]", "[[extracts/x/bookmarks/2026-09-14-maxrovensky-correct-take-but-also-extremely-tech-bubbly-take-software-is--2099103717454655771|Oportunidades de software fora do nicho tech]]", "[[extracts/x/bookmarks/2026-09-16-hnshah-every-idea-can-become-a-demo-now-the-pms-work-is-deciding-wh--2099742761083981837|Papel do PM na era da IA]]", "[[extracts/x/bookmarks/2026-09-16-ctatedev-introducing-vercel-labs-tools-for-devs-in-the-ai-era-agent-b--2099621387732140540|Vercel Labs ferramentas IA]]", "[[extracts/x/bookmarks/2026-09-16-a16z-in-2009-twitter-was-everywhere-millions-of-people-signed-up--2099947619405746561|Redesign de onboarding do Twitter]]", "[[extracts/x/bookmarks/2026-09-16-paulg-a-founder-of-a-startup-i-funded-had-these-brass-plaques-made--2099851107799388525|Divisão de papéis entre cofundadores]]", "[[extracts/x/bookmarks/2026-09-12-hliriani-yesterday-we-announced-our-series-a-to-reimagine-crm-as-a-bu--2098162367075164170|CRM como business world model]]"]
+theme: "IA, execução e vencedores"
 ---
 
 # Desenvolvimento de produtos com software barato

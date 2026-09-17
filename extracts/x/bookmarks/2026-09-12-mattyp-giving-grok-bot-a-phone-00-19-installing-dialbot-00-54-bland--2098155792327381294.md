@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HR4k35OaYAADBqb.jpg"]
 thin: false
-theme: "Agentes autônomos e orquestração"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-benln-new-grok-bot-guides-added-includes-bot-for-engineering-suppo--2099849826120683967|Grok Bot usage guides]]", "[[extracts/x/bookmarks/2026-09-16-grok-try-grok-bot-https-t-co-fo8jkd1aeq--2099876446864867561|Lançamento do Grok Bot (agentes computer-use)]]", "[[extracts/x/bookmarks/2026-09-17-langchain-voice-agents-are-becoming-a-bigger-part-of-customer-and-oper--2099845326928515142|Evals de voice agents em produção]]", "[[extracts/x/bookmarks/2026-09-15-mattyp-each-day-grok-bot-looks-at-my-x-bookmarks-for-things-i-find--2099482348010328185|pipeline automatizado de demos com agentes]]", "[[extracts/x/bookmarks/2026-09-17-ericosiu-if-youre-building-out-your-marketing-team-this-might-save-yo--2099921191536411129|Bots de marketing prontos no Skills Dojo]]", "[[extracts/x/bookmarks/2026-09-12-adiix_official-how-to-run-your-whole-grok-bot-workday-on-loops-instead-of-p--2095464614498619493|Orquestração de Grok Bot em loops]]"]
+theme: "Orquestração Multiagente Grok Bot"
 ---
 
 # Agent fazendo chamadas telefônicas

@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSC91w8bwAELtrN.jpg"]
-theme: "Fundamentos de treino e avaliação"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-orcarouter-why-does-everyone-suddenly-want-to-pace-ai-recurrent-looped--2098922505591505139|Recurrent Looped Transformers]]", "[[extracts/x/bookmarks/2026-09-14-grok-iykshani-yifanzhang-the-recurrent-looped-transformer-rlt-has--2098944692247240757|Recurrent Looped Transformer]]", "[[extracts/x/bookmarks/2026-09-14-yifanzhang_-rasbt-https-t-co-tovrlbceki--2099180888684937556|Recurrent Looped Transformer]]", "[[extracts/x/bookmarks/2026-09-14-rasbt-yifanzhang-very-interesting-article-thanks-for-sharing-is-th--2099180639308169595|Looped Transformer prova de conceito]]", "[[extracts/x/bookmarks/2026-09-14-aryan_sakhala-yifanzhang-https-t-co-r9fe8sx8jh-where-it-all-started--2098988144892797057|Transformer: atenção sem recorrência]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-yifanzhang-thats-not-really-new-the-interesting-problem-with--2098913996057502068|Observabilidade em modelos com recurrent depth]]", "[[extracts/x/bookmarks/2026-09-14-antoniolupetti-a-mathematical-explanation-of-transformers-is-a-recent-paper--2098759228269682727|Fundamentos matemáticos dos Transformers]]"]
+theme: "IA, execução e vencedores"
 ---
 
 # Recurrent Looped Transformer

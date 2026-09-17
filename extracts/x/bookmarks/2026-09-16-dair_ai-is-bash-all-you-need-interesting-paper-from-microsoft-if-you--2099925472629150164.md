@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSRvFnzaQAEytDJ.png"]
-theme: "Harness Engineering de Agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-rhyssullivan-trq212-the-one-remaining-issue-i-have-with-mcp-is-piping-loc--2099966630206009449|MCP vs CLIs para agentes]]", "[[extracts/x/bookmarks/2026-09-16-rhyssullivan-total-mcp-victory-some-quick-misc-thoughts-about-why-mcp-is--2099970035137794430|MCP versus CLIs para agentes]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-the-bitter-lesson-of-tool-calling-tool-calling-is-a-design-c--2086846794840019178|Comparação de métodos de tool calling]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-an-anatomy-of-cli-coding-agent-trajectories-bookmark-it-when--2076699431207154069|análise de trajetórias de agentes de código]]", "[[extracts/x/bookmarks/2026-09-16-trq212-i-was-not-expecting-things-to-go-this-way-but-i-think-mcps-a--2099958388230873165|MCP vs CLI para integrações de agentes]]", "[[extracts/x/bookmarks/2026-09-12-svpino-the-frontieragent-framework-is-here-star-the-repo-https-t-co--2098489264749334565|FrontierAgent: runtime de agentes e evals]]", "[[extracts/x/bookmarks/2026-09-16-tobi-trq212-i-think-this-is-true-as-long-as-the-models-can-use-th--2100055404650573833|MCP acessível via REPL para agentes]]"]
+theme: "Evals e Infra de Agentes"
 ---
 
 # Comparando interfaces de ferramentas para agentes

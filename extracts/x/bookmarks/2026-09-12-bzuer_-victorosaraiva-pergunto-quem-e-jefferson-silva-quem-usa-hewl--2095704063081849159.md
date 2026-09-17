@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HRVvvD1akAA9Q-l.jpg"]
 thin: false
-theme: "Impacto econômico da IA"
 relates-to: ["[[extracts/x/bookmarks/2026-09-17-eng_khairallah1-the-full-prompt-is-here-lt-purpose-gt-run-a-drift-audit-betw--2100190909715337487|Drift audit entre docs e código]]", "[[extracts/x/bookmarks/2026-09-15-kevinnbass-i-have-conducted-an-audit-of-anthropic-s-finances-what-i-hav--2099621874279817638|Captura regulatória na Anthropic]]", "[[extracts/x/bookmarks/2026-09-16-thehackersnews-attackers-stole-a-metr-api-key-and-used-it-for-three-weeks-c--2094713437930787192|Vazamento de chave API da METR]]", "[[extracts/x/bookmarks/2026-09-12-eya0-every-ai-accountant-fails-the-same-way-fluent-confident-unve--2097801524579864803|Agentes de IA contáveis verificáveis]]", "[[extracts/x/bookmarks/2026-09-17-eng_khairallah1-send-this-prompt-to-gpt-astra-it-might-just-change-your-life--2100187890999263603|AGENTS.md desatualizado em codebases]]", "[[extracts/x/bookmarks/2026-09-12-andrewcurran_-a-man-in-australia-asked-his-agent-claude-running-on-opencla--2086567854850384054|agente explora vulnerabilidade em agendamento]]"]
+theme: "IA, execução e vencedores"
 ---
 
 # verificação de metadados de documento

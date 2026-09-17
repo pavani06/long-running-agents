@@ -22,6 +22,7 @@ thin: false
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2099593954157068288/img/5NSqO_p5ABkmx7TL.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-ksimback-nous-hermes-is-going-to-crush-it-in-the-enterprise-heres-why--2099818862342492418|Nous Hermes no enterprise]]", "[[extracts/x/bookmarks/2026-09-17-jacquelinesyc19-a-few-weeks-ago-i-wrote-that-our-whole-team-at-artie-uses-he--2100262432413528336|Hermes como harness de agentes por equipe]]", "[[extracts/x/bookmarks/2026-09-17-hermeswatcher-hermes-can-now-log-itself-into-websites-without-ever-seeing--2100040889003585940|Login autônomo do Hermes em sites]]", "[[extracts/x/bookmarks/2026-09-12-witcheer-a-hermes-agent-community-member-built-a-kit-that-changes-two--2098361620493660493|kit para bots no Hermes Desktop]]", "[[extracts/x/bookmarks/2026-09-12-witcheer-a-hermes-agent-community-member-built-a-layer-that-sits-on-t--2098020649662816503|Roteamento e memória no Hermes Agent]]", "[[extracts/x/bookmarks/2026-09-12-robotbird01-harness-pi-agent-skill-https-t-co-6eqhirel54--2098044628058689738|Arquitetura de plataforma harness empresarial]]"]
+theme: "Harness Engineering de Agentes"
 ---
 
 # Lançamento Hermes Agent para empresas

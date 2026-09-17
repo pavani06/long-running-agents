@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HPMf1H7XsAAyIXt.jpg"]
 thin: false
-theme: "Agentic Coding com Claude"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-trq212-we-removed-80-of-the-claude-code-system-prompt-for-our-newes--2080710971228918066|System prompts e CLAUDE.md para Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-leoxbtt-bro-el-ingeniero-que-creo-claude-code-solto-un-video-de-28-m--2082108948505674112|Uso avançado do Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-natebjones-psa-if-you-are-tired-of-claude-lish-or-chat-lish-tell-your-a--2089457435459404093|guia de estilo para IA]]", "[[extracts/x/bookmarks/2026-09-12-undefinedki-spotify-just-published-the-internal-setup-their-engineers-us--2095942506433089832|Setup Claude Code no Spotify]]", "[[extracts/x/bookmarks/2026-09-12-david_tornai-people-are-using-notebooklm-to-mass-produce-specialized-clau--2093337464215932962|Criar Claude Skills com NotebookLM]]", "[[extracts/x/bookmarks/2026-09-12-rohanpaul_ai-claude-code-creator-boris-cherny-bcherny-for-people-who-aren--2082695402953031825|Podar configuração do Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-karpathy-one-pattern-i-find-useful-for-working-with-llms-is-a-nice-lo--2079610838143623371|contexto via voz para LLMs]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-if-you-re-looking-for-someone-to-blame-for-opus-5-loving-the--2095554201136791656|origem do termo seam]]"]
+theme: "Claude Code e Coding Agêntico"
 ---
 
 # Controlar estilo do Claude via memória

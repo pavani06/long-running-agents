@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2082192803342221312/img/J_Ut3iGXJN_Xcqzv.jpg"]
 thin: false
-theme: "Fundamentos de treino e avaliação"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-xudong07452910-netflix-llm-as-a-judge-netflix-judge-judge-rart-judge--2095444189743902927|LLM-as-a-Judge em produção na Netflix]]", "[[extracts/x/bookmarks/2026-09-12-cwolferesearch-why-is-evaluating-agents-so-difficult-relative-to-evaluating--2083588813675274301|Dificuldade de avaliar agentes vs LLMs]]", "[[extracts/x/bookmarks/2026-09-14-illscience-treytaylorceo-yeah-i-think-the-question-though-is-when-you-a--2099209540629893451|Preferências reveladas em julgamento de IA]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-the-bitter-lesson-of-tool-calling-tool-calling-is-a-design-c--2086846794840019178|Comparação de métodos de tool calling]]", "[[extracts/x/bookmarks/2026-09-12-a16z-an-hour-of-agentic-computer-use-may-now-be-cheaper-than-an-h--2086906363947737406|custo de agentes vs trabalho humano]]", "[[extracts/x/bookmarks/2026-09-12-eya0-every-ai-accountant-fails-the-same-way-fluent-confident-unve--2097801524579864803|Agentes de IA contáveis verificáveis]]", "[[extracts/x/bookmarks/2026-09-14-rasbt-reasoning-from-scratch-round-3-this-time-i-cover-generating--2099231450411290900|Verificadores para avaliação e RLVR]]", "[[extracts/x/bookmarks/2026-09-14-treytaylorceo-illscience-super-fair-and-honestly-it-depends-on-the-core-mo--2099212116959920547|viés político em modelos de linguagem]]", "[[extracts/x/bookmarks/2026-09-12-dan_jeffries1-tell-me-you-have-zero-devops-skills-without-telling-me-you-g--2098411466697097235|Comparação LLM e malware]]", "[[extracts/x/bookmarks/2026-09-12-ggreenwald-mauriciomoraes-opaulomm-se-algum-dia-eu-me-pegar-defendendo--2096756333802311828|Acusações contra ministro do STF]]"]
+theme: "IA, execução e vencedores"
 ---
 
 # confiabilidade de LLM-as-judge

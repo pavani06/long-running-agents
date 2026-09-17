@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2095773010792005632/img/Li9xjFMcIec-B09l.jpg"]
 thin: false
-theme: "Engenharia de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-zostaff-this-paper-completely-changed-how-i-think-about-agent-memory--2078944176457359536|Arquitetura de memória para agentes]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-good-work-on-improving-memory-for-long-horizon-agents-they-s--2097555607389896732|Memória para agentes longos]]", "[[extracts/x/bookmarks/2026-09-12-sprytixl-stanford-and-anthropic-spent-3-1m-to-prove-your-agent-perfor--2078969602189746340|memória de agentes via grafos]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-banger-paper-from-google-if-you-maintain-a-skill-library-for--2093324233158045788|Evolução de skills em agentes]]", "[[extracts/x/bookmarks/2026-09-12-roundtablespace-supermemory-is-1st-on-every-major-ai-memory-benchmark-95-rec--2097335398536212741|memória persistente para agentes de IA]]", "[[extracts/x/bookmarks/2026-09-12-eya0-every-ai-accountant-fails-the-same-way-fluent-confident-unve--2097801524579864803|Agentes de IA contáveis verificáveis]]"]
+theme: "Memória e Contexto de Agentes"
 ---
 
 # Mapa de lacunas de conhecimento em agentes

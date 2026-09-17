@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2095231624053219328/img/vb_u5Aj_IDsHxvvP.jpg"]
 thin: false
-theme: "Agentic Coding com Claude"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-claudedevs-read-the-full-announcement-https-t-co-cdudn3gvhd--2095233748719817153|Blueprint de agentes de comércio com Claude]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-also-see-our-open-source-reference-implementation-this-inclu--2095233747562180849|implementação de referência de agentes de comércio]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-retailers-running-shopping-agents-on-claude-have-seen-carts--2095233746366808420|Arquitetura de agentes de comércio com Claude]]", "[[extracts/x/bookmarks/2026-09-16-undefinedki-this-is-a-goldmine-anthropic-just-published-the-full-archite--2099839040241516872|arquitetura de agentes de comércio em produção]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-we-sat-down-with-the-founders-of-wisprflow-useactively-and-p--2097415273645228460|Claude Managed Agents em produção]]", "[[extracts/x/bookmarks/2026-09-12-realfxw-multi-agent-victor-dibia-designing-multiagent-systems-picoag--2097956088792396200|Arquitetura multi-agente do zero]]", "[[extracts/x/bookmarks/2026-09-14-illscience-had-many-conversations-this-weekend-re-instinct-muse-consume--2099205025797144669|Consumer agents e commerce]]", "[[extracts/x/bookmarks/2026-09-14-ryrenz-claude-code-alphaxiv-openresearch-openresearch-6-github-1000--2098577841944207463|OpenResearch: agente de pesquisa científica]]", "[[extracts/x/bookmarks/2026-09-12-hasantoxr-stop-renting-a-chatbot-and-calling-it-your-companys-brain-ut--2095111361181405259|modelo de conhecimento corporativo open-source]]"]
+theme: "Claude Code e Coding Agêntico"
 ---
 
 # agentes de comércio open-source

@@ -21,8 +21,8 @@ grounded_in: "article"
 thin: false
 links: ["https://x.ai/bot/marketplace/bots/seo-aeo-desk"]
 media: ["https://pbs.twimg.com/media/HSRB0vVWAAA9Gia.jpg"]
-theme: "Agentes autônomos e orquestração"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-grok-outbound-prospector-built-icp-matched-prospect-lists-researc--2099876439663243402|Agente de outbound prospecting com spec]]", "[[extracts/x/bookmarks/2026-09-16-grok-haggle-bot-audited-125-vendor-contracts-reached-out-to-the-v--2099876435737325724|Agente de negociação de gastos SaaS]]", "[[extracts/x/bookmarks/2026-09-16-tom_doerr-manages-your-obsidian-vault-with-a-crew-of-8-ai-agents-and-1--2099928503487517062|Crew de agentes AI para Obsidian]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-retailers-running-shopping-agents-on-claude-have-seen-carts--2095233746366808420|Arquitetura de agentes de comércio com Claude]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-17-ericosiu-if-youre-building-out-your-marketing-team-this-might-save-yo--2099921191536411129|Bots de marketing prontos no Skills Dojo]]"]
+theme: "Orquestração Multiagente Grok Bot"
 ---
 
 # Agente de SEO/AEO para briefs de conteúdo

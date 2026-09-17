@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Agentes autônomos e orquestração"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-nousresearch-hermes-agent-is-open-for-business-nous-portal-now-lets-you-i--2099599032037388404|Lançamento Hermes Agent para empresas]]", "[[extracts/x/bookmarks/2026-09-12-witcheer-a-hermes-agent-community-member-built-a-layer-that-sits-on-t--2098020649662816503|Roteamento e memória no Hermes Agent]]", "[[extracts/x/bookmarks/2026-09-17-milindlabs-grok-bot-check-it-out-here-https-t-co-ujtre6f8mz-post-your-f--2099824976325157319|OpenMausBot: agentes em app de mensagens]]", "[[extracts/x/bookmarks/2026-09-12-andrebrov-my-biggest-recent-discovery-herdrdev-this-is-wow-i-run-25-ai--2097134891833917946|Console para orquestrar agentes de código]]", "[[extracts/x/bookmarks/2026-09-17-jacquelinesyc19-a-few-weeks-ago-i-wrote-that-our-whole-team-at-artie-uses-he--2100262432413528336|Hermes como harness de agentes por equipe]]", "[[extracts/x/bookmarks/2026-09-17-hermeswatcher-hermes-can-now-log-itself-into-websites-without-ever-seeing--2100040889003585940|Login autônomo do Hermes em sites]]"]
+theme: "Harness Engineering de Agentes"
 ---
 
 # kit para bots no Hermes Desktop

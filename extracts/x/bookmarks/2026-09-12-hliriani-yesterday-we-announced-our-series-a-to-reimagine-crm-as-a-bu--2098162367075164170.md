@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Impacto econômico da IA"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-shadcncraft-bring-customer-information-and-health-scores-into-the-same-a--2099827633722905050|consolidação de dados de clientes e health scores]]", "[[extracts/x/bookmarks/2026-09-12-hasantoxr-stop-renting-a-chatbot-and-calling-it-your-companys-brain-ut--2095111361181405259|modelo de conhecimento corporativo open-source]]", "[[extracts/x/bookmarks/2026-09-14-garrytan-either-you-die-a-system-of-record-or-you-live-long-enough-to--2098666551629267324|Systems of record virando harnesses]]", "[[extracts/x/bookmarks/2026-09-16-hnshah-the-more-i-think-about-this-the-more-every-looks-like-a-prev--2099917915382509880|Desenvolvimento de produtos com software barato]]", "[[extracts/x/bookmarks/2026-09-14-maxrovensky-correct-take-but-also-extremely-tech-bubbly-take-software-is--2099103717454655771|Oportunidades de software fora do nicho tech]]", "[[extracts/x/bookmarks/2026-09-17-coreyganim-i-m-making-8-000-a-month-building-claude-skills-for-other-pe--2099848332692623870|Consultoria de Claude Skills para negócios]]"]
+theme: "IA, execução e vencedores"
 ---
 
 # CRM como business world model
