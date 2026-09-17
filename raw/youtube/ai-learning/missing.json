@@ -1,5 +1,5 @@
 {
-  "count": 10,
+  "count": 14,
   "videos": [
     {
       "id": "-ubIUNA-zRA",
@@ -22,9 +22,29 @@
       "url": "https://www.youtube.com/watch?v=E9gaQHrw_rg"
     },
     {
+      "id": "ShuJ_CN6zr4",
+      "reason": "sem transcript",
+      "url": "https://www.youtube.com/watch?v=ShuJ_CN6zr4"
+    },
+    {
       "id": "Uvl-tRga98g",
       "reason": "sem transcript",
       "url": "https://www.youtube.com/watch?v=Uvl-tRga98g"
+    },
+    {
+      "id": "bSG9wUYaHWU",
+      "reason": "sem transcript",
+      "url": "https://www.youtube.com/watch?v=bSG9wUYaHWU"
+    },
+    {
+      "id": "dvVbA9OcBqs",
+      "reason": "sem transcript",
+      "url": "https://www.youtube.com/watch?v=dvVbA9OcBqs"
+    },
+    {
+      "id": "dvt_74kV-RM",
+      "reason": "sem transcript",
+      "url": "https://www.youtube.com/watch?v=dvt_74kV-RM"
     },
     {
       "id": "foxeK2AXfHQ",

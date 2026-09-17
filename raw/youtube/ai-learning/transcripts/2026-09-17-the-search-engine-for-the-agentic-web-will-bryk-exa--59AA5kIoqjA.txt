@@ -1,0 +1,140 @@
+[music]
+How's everybody doing? Good. All right.
+Pretty crazy times we live in. Oh, my microphone. Um, okay. I am very excited to tell you all about perfect search
+built for AI agents. Uh, and I'm going to say a lot of crazy things in this talk, so bear with me. uh they are all true and I will tell you what is exa uh
+the story of exa so how we got here and then where we're going okay cool if you take away anything from
+this talk it is this uh slide uh this is showing web searches per day over the past 30 years uh from humans and AIS
+obviously it was all humans until around uh 2020s and now we're in 2026 and actually this year we expect the number
+of searches from AI systems to exceed that of humans. Pretty crazy. And then in the next few years, it should be a thousand times more. So AI, AI systems,
+AI products, whatever AI system you use, sum together will will search a thousand times more than humans. That's pretty uh pretty crazy world that that we're
+getting into. And the entire ecosystem of search is changing because of it.
+So Exa is the search engine for AI agents. You know, we were the first ones to be like we were the first search engine for AI and now things are getting
+uh kind of wild. uh we now serve over 5,000 companies over 400,000 developers.
+I see some customers in the audience. Uh we serve you know very diverse set of agents from coding agents like cursor.
+So if you use cursor at some point the cursor agent decides to search for the latest technical documentation or the news it'll be using ex under the hood.
+We serve go to market agents like HubSpot. So uh we help uh their users get you know really high quality lists of companies to sell to. We serve all
+sorts of financial agents. Uh I was in New York a few weeks ago and pretty much everyone there is now building financial agents and they need the best financial data. Um yeah and really just a huge
+diversity of agents from uh from labs to to to YC startups.
+Okay, but how do we get here? So what's the why of EXO that to me that's always been the most important and there are a lot of ways to say the problem but the short way is just misinformed anarchy.
+This is what we're trying to avoid. We want to create the opposite of this. Uh so what what does this mean? Well, this is the internet or it's a visual depiction of the internet. You know, you
+got a bunch of pages, you got blog posts, you got company websites, you got images, you got tweets, you got all sorts of things. Uh, and the web is
+really really big, right? This is showing a few thousand pages. The web is, you know, on the order of a trillion pages. So, uh, you know, a million times
+bigger than this. And it contains a huge amount of the world's information. Uh and that means that you know if this is just readily available you could find if
+you could go to any link and just get all the world's information then I'm sure we all walk around with like deep understanding of everything right obviously not uh it's messy uh and so uh
+it's crazy and it can't fit in our heads. So we need information tools that could help synthesize this or filter it into the the things you need to know.
+And you know we have a tool called Google and it's a pretty solid tool. It could get you things like the Costco homepage or information about Taylor Swift or whatever you want to search,
+but it's not perfect, right? And I love this example where you type shirts without stripes. Uh, and if you notice, you get shirts with stripes. Why is it doing that? Well, it's not it's not
+trying to be a database of the world's information that gives you exactly what you want. It's kind of like a recommendation engine. Um, and you can see this with more examples. Um, so find
+me everyone in Singapore who works on AI search and any blog post or research paper they've written. I bet you've never typed in anything like this to Google because you know it's not going to work, right? you're going to get like
+uh links and documents that contain some of those words, but not like actually a database result of all, you know, 412
+people who match and and it gets pretty serious, right? Like I'm a citizen. I'm trying to be informed about what's going on in the world. I want to find the most
+important US news across all media or, you know, US news articles, whatever it is. You just don't trust Google to give you that, right? It's just going to get it's just going to recommend some
+things. It's it's almost akin to like social media in the sense. It's kind of like a recommendation engine. Okay.
+So that means that no one really has a complete understanding of anything. I actually when I walk around like SF or wherever I'm walking around, I see
+people I often think like no one knows what's going on in the world. Everyone's like this. Uh including myself, you know. Uh you could imagine uh this person on the right on their phone like
+trying to find a new job. They're looking for biotech companies to work for. Uh are they going to get like all the possible biotech companies that match? No. Uh so there there's always
+going to be like this unknown of what's out there. or uh you know maybe this other person with the headphones uh maybe they're trying to yeah try they want to understand what's going on uh in
+in in in in some region of the world they're just not going to have a deep understanding they can't not only can they not find the information they might not be able to trust the information so
+we basically are in a world where we live without this like key information infrastructure that is so critical and I think this is extremely important so important that if we don't fix this
+problem I believe we get a world that looks like this a dystopia I'm not kidding uh this is AI generated uh version of San San Francisco in 2035.
+Um, and it's basically a world where no one no person really understands what's going on. If people don't understand what's going on, then as we have this crazy AI technology that we all are
+talking about today that's coming and the world is getting way more powerful.
+There's going to be conflict and all these things. If if people don't know what's going on in the world, this is very bad. Like we will be manipulated.
+We will make really bad decisions as individuals and as a society. And I think this if we, you know, if we could fix this problem, it'll be way better.
+Um, and when I think about all the possible problems that there are that are really important and neglected, to me, like solving information is the most important neglected problem. Okay, so
+that's the why of XA. Uh, quick story of how we got here. So, I I I've been thinking about this problem for a very long time, way before even 2021 when we
+started, uh, even since high school. Uh, but I think what was really cool is that in 2021, it suddenly became possible in our eyes to build a new type of search
+engine because transformers had gotten really good. So this is a time when like GB3 had recently come out. GB3 was like magical. You know, you you type in a paragraph of text and it fully
+understands you. At the same time, you know, as we saw with Google, it's like it doesn't fully understand you. And so what if you could combine uh the power
+of GB3 with a search engine and maybe you could have perfect search over the world's information. And actually the thought experiment that always drove me was like, you know, if we take a query,
+a complex query, and a document, and we run GB3 over it, and we say, does this match? It'll be it'll do a really good job of saying, does it match? Now do that over a trillion documents for every
+search and you get a perfect search engine or near perfect. Uh the problem is that would cost like $10 million per search. So it really becomes an interesting optimization problem. How do you like billionx or trillionx reduce
+the cost of that? So that's kind of like the ideas that started Exa is actually the first day of Exa 2021. It's actually by the way our 5y year anniversary as of
+uh as of as of yesterday. So um yeah been a great time. Um yeah I wish I took a better selfie here but this was the
+first first day. Um and uh and uh it exo is basically built on the idea that look like uh traditional search engines they
+use keywords. Keywords are are very efficient and and they get you they can handle simple queries. But if you want to handle more complex queries, you just
+need to to to use neural networks and particularly embeddings are a way of like encoding. You can't run like I said like a neural network over every
+document uh for every query. But you can pre-process every document into some sort of structure like an embedding. Uh and then you could use and then that that captures a lot of the intelligence
+of neural network and then you could use those embeddings. Of course embeddings have al their own problems and often you want to combine embeddings and keywords but certainly embeddings are a big part
+of of the picture and that's how you can handle shirts without stripes. We can handle those kind of clear. Uh another way of saying it is just stack more layers. Um very bitter lesson pill. This
+is we are very early on to being uh bitter lesson. I don't know if you know this meme. If you don't it probably looks really weird. [laughter] Okay. Um but anyway, so we were very
+brutal left field. So we did some crazy things, right? We we raised a couple million dollars. We spent half of it on a GPU cluster. That was crazy at the time. Um we did a huge amount of
+research for for for really years just heads down and and we did a lot of we were very new to search to be honest like we're just really obsessed with the problem and so we invented a lot of new
+stuff that I still haven't seen uh uh even today. Um and so just yeah history of Exo. So 2022 so this is like a year
+and a half after starting uh we we were called Metaphor at the time. Um some of you might know it. uh we launched our first uh search engine to to the world.
+Um and it was pretty exciting like it was a new way of doing search. A lot of people were really excited about it. The next big thing that happened two weeks later was CHPT came out. Uh and that
+really changed the world. Uh and like this is what San Francisco looked like at the time if you remember. Um and this is the exit team at the time. Uh all right.
+Um, but uh everything was saved when we got this uh this this message message on on Twitter from this person whatever uh
+who wanted an API access to our search engine. And that was really weird because we were never thinking that oh this is going to be an API. We were just trying to build a better search engine in Google. We'll figure out how to make
+money later. Uh then someone asked us for an API. We were like no we don't have an API. Sorry. Uh but then like we started getting uh more requests for API
+access including uh you know my roommate uh who lived downstairs. And then we very quickly realized wait a sec like there's a business model like okay well
+what we realized was AIS need search because like the the argument is basically look even GB5 gigantic model it's tiny in comparison to the internet
+right so like these systems always need to search you're never going to have GB 6 GB 7 it's not going to be able to like just know everything about the world it needs to be connected to a retrieval
+engine uh and and that was a really interesting insight because the these things now need a search API uh right and so we pretty quickly realized okay wait AI is going to search the web in In
+fact, they're going to search the web way more than humans. Um, and they're going to search in very different ways. Um, so, uh, this is
+example of what humans, uh, this looks like when humans search, right? They search simple queries. This is what Google was made for, like SpaceX news.
+It's good at that. Um, but an AI system is very different, right? It kind of looks like this information guzzler creature that's like insane and and like
+it would be crazy if the same search engine that was optimal for humans was also optimal for these AI systems. So anyway, uh, you know, we realized, okay,
+uh, if we build a search, uh, API for these AI agents, uh, or it wasn't called AI agents at the time, it was just AIS for LM. Uh, then, uh, that we could make
+money from that. Uh, that's a nice business model, and we think it's going to grow really fast. Uh, and also the beautiful thing is it matches our initial our our mission, which is
+perfect search, right? Like AI systems really want perfect search. They don't want SEO. Uh, they don't want ads. They just want almost like a database of the
+world's information, which is what we were always trying to build. So we built the first search for LMS and yeah actually like in 2023 we said soon AIs will search more than humans. Uh you
+know uh three years later it's now happening. Um okay. Yeah. And so then next couple years we we built a lot of really crazy stuff. Uh it's way more
+complex than just embedding search. It combines all sorts of systems some of which are included here. And now you know we're a much bigger team. Um and
+that's how we got here. Okay cool. So just a quick like what can you do with EXA and then I'll talk about where where we're going how we're going to get the
+perfect search. So the present so right now yeah we're the highest quality information for AI agents. Um and you could do all sorts of things. So for
+example uh a lot of people like really complex queries. Uh so you want to find every startup funded by YC work and AI give me their batch and status. You
+could do that with Exa. Uh, and you could make this like arbitrarily complex like a lot of people don't aren't aware of this, but you could just use Exa and
+just find really like any uh list of companies, people, uh, like like blog posts, news articles that you want. Uh,
+it will take some time. So, it'll take, you know, maybe not seconds, might take minutes, but you'll get the information you want. At the same time, we also have
+the fastest search API in the world. So, we have a 200 millisecond search endpoint, and that's what it feels like.
+So, it's super fast. It's way too fast for humans, right? But we're not serving humans. uh we're serving AI systems and so like for example we serve some voice agents and uh if you're a voice agent
+and you talk to the voice agent and it wants to do a search underneath the hood uh you know every millisecond counts you wanted to do a search really fast so that it could go you know process it
+with an LLM and then output the best uh audio back to the customer.
+We also have cool things like uh super efficient token extraction. So everyone's talking about uh the compute crunch and how everyone's spending way
+too much uh on LM. Well, actually could help there. Uh because you know when the LM makes a query, it wants to get the just the information it needs, just the
+tokens it needs. And so we take uh the documents, we give you 10 documents and then we'll give you only the most important like 100 tokens from those documents. And that will save you a lot of downstream LLM costs.
+We also, you know, some people they don't necessarily want uh, you know, snippets from each document. They actually want structured output. So hey uh you like let's say you're building a
+recruiting AI agent and you want to find you know all the engineers who recently left their uh big lab job. Give me like
+uh you know uh the the most cited uh uh paper that they've written. Give me the the college they went to and and the year they graduated. We'll just give you
+that as structured output. It makes it really easy.
+And yeah, I think uh one takeaway here is we're not building one search engine. Like perfect search is not one thing.
+It's actually we have 5,000 search engines for each of our 5,000 customers, right? uh we want to build our system so it's super flexible because we want
+every business to be super optimized and that's I think a beautiful thing because like we don't want to declare what is the perfect search we want you to almost you know tell us what exactly do you
+want do you want super fast do you want uh you know the highest possible quality even though it takes minutes do you want to search only over these thousand domains do you want to never search over
+those thousand domains do you want to search over within this time window do you want to never get product pages some people ask us for that like so there's all sorts of things that you could do
+with X it's very flexible customizable And yeah, I mean our our search quality is really good for these AI agents
+because we've spent years, you know, doing research uh into how do you build a new type of search engine for agents.
+Uh it's even better than Google which was built for humans, which which makes sense.
+Okay, a cool thing that we released recently uh was exon. Uh so, you know, agents, they don't really care whether the information is from the public web
+or from private data sources. They just want the truth, right? And so it's always been obvious to us that you know we want to assemble all the world's information. It's perfect search over
+all the world's information not just the web. And so now we have a system where uh data providers can actually uh partner with Exa so that developers can then get the data from those providers.
+So we're basically creating like a new market a new economy for the for agents uh where you know if you have high
+valuable data you could get paid uh from all the developers who want their agents to access that data. So we're creating this beautiful marketplace. I think it's really cool. It's like a it's like a
+free market like the uh the data providers can decide how much they think their content is worth and then developers can decide what data they
+want and then you could do cool things like this uh research AI info companies monthly website visitors similar web. Oh
+went too fast but you could get like basically this is combining uh information from the public web and also information from similar web uh which is not publicly available. So you can do
+queries like that right now. Okay. So that's where XA is right now. But the future has always been super exciting to me and and the goal has always been
+perfect information and now we know it's for AI agents. So instead of a world like this, no bad.
+Uh we want the we want search to kind of feel like this. It's actually really hard to to describe what perfect information feels like. Uh best way you
+could say is like literally any information query you have it just works no matter how complex that is. Um, another way you could think about it is
+like it's as if you did a year of research in a second. So imagine no matter what you're looking for, whether it's people or or companies or news, imagine you you spent a whole year, you
+spent all of 2026 just doing research for it. You get that in a second. That that should give you a sense of what perfect uh information feels like. And you do that for every search, all the,
+you know, crazy number of searches that AI agents are going to make. And so yeah, we want to move really fast at Exo. like we're we're moving extremely
+like basically every basically a quarter or two quarters now we have as much progress as we did the past 5 years and it keeps being like that it's exponential growth and so yeah our
+ambitions for 2027 are pretty crazy uh we want uh the world to be like this where everyone walks around with like deep understanding of what's going on I think it's particularly important
+because you know things like the 2028 presidential election are coming out are coming soon and I would love for you know the entire world to have access to
+nearperfect information so that everyone is very informed going into that election you kind of can feel the gravity
+[laughter]
+of what we're doing here of of perfect information. I encourage others to try to do it too. Um it's very important for the world. It's like key information. It's key infrastructure.
+And yeah, you have to like that that slide I showed at the beginning, it's not the whole picture, right? If you play it out, we're talking a thousand times more searches from AI systems than
+humans. This you can't even capture that on a graph. Like this is not that's like 20 times a thousand times be all the way up there like top of a building or something, right? So it's crazy what's
+coming and it's really happening. Um basically like you know humans on average search a few times a day on Google but when everyone has you know AI
+assistants and every software product you use has AIs in it every interaction you're doing it's going to be grounding itself in in search so it's going to be a huge number of searches and if each of
+those searches are you know as as true as possible as near perfect uh then then then the world looks like this in 2035.
+Um yeah I I do think that if I do think we're basically our our future is limited by ourselves. Like we're basically getting into a world where our
+technology is so good. It's really just a matter of like can we coordinate and just decide together that like on sensible things, right? Like if you look at San Francisco, there's amazing things
+happening here and there's really stupid things happening here at the same time.
+Like that's that's just coordination problems and coordination comes from the information we consume. Uh so that's what we're working on. You all have a role to play in also getting to this
+world. Uh so thank you all for for for working on whatever passion you're working on and thanks for listening to me. All right. Thank you. [applause]
+[music]

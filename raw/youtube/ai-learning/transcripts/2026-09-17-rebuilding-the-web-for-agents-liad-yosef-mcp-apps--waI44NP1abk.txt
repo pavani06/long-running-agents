@@ -1,0 +1,155 @@
+[music]
+Hi everyone.
+Uh hello. Hello. So we're going to talk a little bit about the agentic web and more specifically what it means and how
+do we make the web ready for agents. Um one disclaimer um I built this talk yesterday so it might be outdated
+because uh things are moving really really fast in this uh in this space and um I think I need to introduce myself just to um to get some context. So I'm
+the co-creator and maintainer of a spec called MCP apps. MCP apps that's the underlying spec be behind uh CHP apps
+cloud apps copilot GitHub every chatbased app that you so that you see is based on the spec MCP apps in the MCP
+committee I'm also the co-founder of a company called Aura where we research the agentic human interactions and I
+built and led the agentic storefronts in Shopify so the topic of agentic web is really close to my heart um and a a
+little bit primer about MCP apps if you're not familiar. Um MCP apps are actually this is actually the spec that paved the way to Agentic Web. So MCP
+apps were released as a spec and as a standard few months ago um with the support of Claude first as the first client and then all clients followed.
+And if you play with any chatbased app and you pulled any uh visualization and interaction UI layer from an MCP server,
+you probably used MCP apps. And the good thing about MCP apps is that everybody
+wins because if the servers or the providers can send UI chunks into the
+chats, then the apps gain their brand and identity. they get they get to keep their UI and not being reduced to a
+database or just textbased uh information.
+The users gain the trust and familiarity because if you uh ask JGPT, hey, book some hotels for me and you see Booking.com, then you know it's
+Booking.com, right? You know who you're interacting with and the host or the chats gain uh access to the world of
+capabilities. Um you know, a few months ago people ask, yeah, why won't OpenAI just build everything out of scratch?
+But open eye will not negotiate uh deals with hotels or support users that want to change seat in a venue. Um we need
+those services and MCP apps actually solve for this uh for this last mile interaction.
+Yeah. So um uh this is the this is the benefit that we get and MCP apps solved our last mile of
+interaction. Right. So what does it mean the last mile? Last mile is as agents become better, as models become better, they can do things more autonomously,
+but we are still in the end of the chain as humans. We still need to be able to choose the hotel or to view a 3D model
+or to choose a seat at the venue. all those last mile of interaction and that can change and um this is an example
+from uh um oh sorry yeah so this is from like cloud um APR on MCPF this is how it
+looks like right so when you um when you're embedding apps inside chats you get this unified experience of how UI
+feels inside the same context of a chat and as you can see in the same conversation you get data from booking you get data from all trails you can get
+data from everything you um uh you want to interact with. Right? So this is this is already happening. MCP apps is
+already widely supported across every uh chat agent except Gemini, but that's coming. Um and this is already
+happening. And the interesting part is that it brings us to what we call the agentic web. So
+what's what is the agentic web? The agentic web is not a web of agents. Uh it's not the web as we know it today.
+It's a it's a shift. It's a change. It's a a change in in the way that we see websites and the way that we see
+browsers. Because up until now, we spent 20 years, two decades perfecting
+this experience. Meaning that if I want to somehow um do a project or fulfill a task or plan an anniversary, I have to
+open tabs in my browser and I have to go through these tabs and I have to convey my intent differently to each of those
+services, right? Meaning that if I just want to plan an anniversary, then I need to learn
+Google's UI and Amazon's UI and booking UI and the other booking UI and the other Amazon UI. All that just convey
+the same intent to those interfaces and every company perfected this user flow.
+But we don't need to do it anymore, right? We can just take these interfaces and break them into atoms because we
+don't need I don't need 99% of bookings dashboard. I don't need 99% of Airbnb's dashboard. I definitely don't need Jira's dashboard. But I do want to
+convey my intent to those services. So why can't I let my personal assistant use that? So if I have a personal
+assistant, I can just take these atoms and it composes these atoms and say, "Yeah, I see that you have an anniversary coming. This is this is the
+view from Google that says that you have an anniversary coming." So I can book I can I can buy things for you. I can book your hotel. Now Claude knows me. So it
+it knows that I prefer to book hotels in uh in the nature, right? So it knows to pull the map from booking. I don't need
+to think about it. And what booking and Amazon and Google benefits from this is that they have this integration layer that they don't they don't need to
+develop because cloud has the context on for me, right? So booking doesn't need to develop integration with my calendar.
+Amazon doesn't need to develop integration with booking. So it's a win-win. This is the view that we're uh aiming for. And this is very different
+from what the things are going which is this which is basically browsing into
+different services just to stare at different text boxes that ask what I want to do there. But no one is going to do that in few in a year. No one is
+going to um browse to Amazon's agents and and Etsy's agents and Expedia's agent. I don't want to do that. I have my own personal assistant. I don't want
+I don't want to use your agent. I want to use my agent. Okay. Now, if we think about it, it means that websites as the
+source of truth are something that's going to go away because why would they need the website? Why would I need to
+open the tab? Why would they need the information that the website is working really hard to convey to me? And the immediate response to that is that yeah,
+we have browser agents. We have computer user agents. have very smart agents or assistants that can browse the web for us. But that doesn't make sense because
+that that's that's a faster horses solution. Why would I let an agent that doesn't know anything about the human
+perception limitations work with uh filters and pagenations and sorting and all of those UIs that we spent decades
+perfecting for us um just for it to fulfill its task. So Google has a um Google is very bullish on the other end
+of the spectrum which is co- browsing and and websites and they have a protocol called or standard called WebMCP. WebMCP says okay instead of the
+agent taking screenshots of the websites and trying to figure out what's happening let's have the website expose some tools in the website JavaScript tools and the agent will walk with it.
+And you can see here an example of Gemini in Chrome that um buys stuff for me or uh finds uh deals for me as I
+browse the web, which is very nice, but it's very simple. What happens if we push Salesforce dashboard to Gemini on
+Chrome? Why would I want that? Why would I want to browse to Salesforce dashboard with Gemini to click buttons for me in a dashboard that I don't even want to use?
+I mean, this is definitely not what we want.
+And the shift is that assistants are becoming our entry point to the web, right? We see it everywhere. Every major
+lab wants its app to be the everything app. And the shift is happening. And friends of mine that connect Jira's MCP
+to their IDs, they don't go to Jira's website anymore. Right? And my mother uses CHP for everything. If she could book a doctor's appointment using Chip,
+she won't go to that clinic's website anymore. and you have a long tail of websites that no one is going to see because it's much easier for me to connect to them using my personal
+assistant. So websites will become obsolete, browsers will become obsolete, and personal assistant will become our only gate to the web. And I know what it
+sounds like. It sounds like old men yelling at a lit literal cloud, right? I mean, um, yeah, they're not going to go
+completely obsolete, but we see it with the younger generation today. My 9-year-old goes to Chpt. It doesn't go to Google
+when it when it wants to search for stuff. I was uh I was traveling to Georgia, the country in Eastern Europe, and there was an older lady there that
+asked me to take a picture of her, like 70 year old, and on her phone, she had three apps, WhatsApp, camera, and Chip.
+That's it. The shift is happening. Um, and very smart people like David Ker from Sentry said a year ago, I will take
+this bet against anyone who thinks websites are going to be obsolete in 25 years. That was one year ago. Few days
+ago, David Kramer published designing for agents which says we have to recognize that interaction with products at century will no longer be exclusively
+through our web application and we have to design for API first as a surface. So everything is going headless. Salesforce
+recently went headless which is very important because Salesforce main differentiator from its competitors is its UI. It's the way that it conveys
+everything to the user. But it went headless. Cloudflow went headless.
+Sentry went headless. Um this is a a tweet by Cloudfl CEO saying that agents traffic surpassed uh human traffic in
+the web. And we have this spectrum of interaction because if I if my agent is autonomous, I don't need this last mile of UI, right? If I have an open claw, I
+just send and I just say yeah organize my emails. It comes back said good. But if I want to book a hotel for my honeymoon, I probably need this less
+mile of interaction. So we call it the nearly headless web, right? It's not completely headless. Um the agents will
+interact with your web head with your um website headlessly, but then it will bring back these UI resources for you.
+So user experience as we know it is being split. Now it's the agent experience of your website plus how a
+user experiences the agent that experiences your website. But 90% is going to rely on agent experiences which
+means your website needs to be agent ready for everything. It needs to be agent ready for your agent. If I'm
+booking I need to make bookings data ready for bookings agent. I need to make it ready for my customers chpt or my customers open claw and I need I need to
+be ready for my human customer who doesn't have an agent but still wants to browse to booking.com right so I need to to be agent ready and what we find found
+out is that agent ready means a lot of things so we heard a lot about AEO SEO geo how to get discovered but discover
+discovery is only the first the first step because once an agent knows about you it still needs to know what you are and how to interact with you and how
+authenticate to you and how to headlessly pay you, right? And actually when when we built uh it's an anecdote, but when we built analytics for our
+product, we asked Cloud Code, what's the best analytic service? And it recommended Postto, which is an analytic service. And we said no, we prefer Mixpanel because we know Mixpanel. We
+worked with Mixpanel for a decade, we know how to work with it. And Cloud Code insisted on Postto because it said Postto has better MCP and API and I can
+integrate to it better. So we don't have brand loyalty, right? We went with postto hog if that's what cloud code recommend but it made us think about mixpan mixpan spent a decade perfecting
+their UIX and developer experience we just left it just because cloud code prefers posto and it will always happen her for example if it uses your product
+and it needs to spin up a browser to use your product it will remember that and next time it won't go to your product anymore right so at aura which is an
+agentic web research lab we started researching uh we raised some raised some capital and we started researching what does it mean for the web to be
+ready for agents and we have these um readiness benchmarks which is interesting so you can run it's free you
+can go to aura.ai AI you can run any website you get this score and benchmarks according to a lot of protocols and best practices and you
+have agentic feedback. So the agent actually returns the feedback about your uh your website
+and we have this leaderboard of how companies and products rank according to this benchmark and we started mapping the web and everything was nice.
+But we hit one insight or one uh unexpected
+result. We found out anyone here heard about lm.txt txt lm.txt that's like the de facto standard
+to be agent ready. You say yeah if you if your website publish an lm.txt agent know how to interact with you um and you have o.md and pricing.mmd and x42 and a
+lot of standards and we found out that almost 50% of the website that we tested that we ran published lms.txt
+but none of the agents that we ran on this website actually used llm.txt txt.
+Actually, almost all the agents went straight to the docs page and then the homepage. And the 40% that did use
+lm.txt use it only because the docs pointed out that there's a file called nmst txt that they need to to use. So
+then it hit us. We said it doesn't make a lot of sense for us as humans to define to agents what they need. No one
+is doing it anymore. Even OpenAI, they don't publish best practices for tools anymore because they say that every time they publish best practices, the models
+become better and these practices become obsolete. Six months ago, the best practice for an MCP server was yeah uh have three paragraph descriptions so
+agents will know how to interact with you and now three lines are enough. So best practices become we need the agents to define what the agent need, right? We
+need agents feedback on this website. So we built Aura's journey and Aura's journey that's a really cool that's also
+free. You can go to journey.ora.ai and you can run on any website any intent with any agent and see the path of the
+agent as it tries to interact with the website. So for example atio.com choose cl codec code and we run it on
+the website and you can see in real time how the agent goes and what it tries to look for in the website and we we did it
+tens of thousands of times just to understand what agents really look for when they look when when they try to interact with with websites.
+And the cool thing is not running just one harness is running multiple harnesses. You see here cloud code and Eve which is
+Versel's harness um and CH GPT on the same website with the same intent. Okay. So this is cloud code. This is haiku.
+This is Eve. See how different the agent journey looks like. And this is CHP. So
+CHP could find results better. See you can just see the the the journey across across the website. And we need to
+understand why. We need to understand why does it happen? Why websites publish o.md files but agent don't look for o.md
+files and what do they look for? So in aura um you can actually uh go to any business business business question. So
+for any domain you have like business goals or or questions and you can see the paths that the agents are taking.
+And the uh interesting part of it is that okay now we know how agents interact with website. What's the next
+big big milestone for the agentic web and for those of you who heard the the previous talk? Um it's discovery, right?
+But it's not the discovery that we think of. It's not SEO, it's not GEO, it's not AEO because we have to remember that
+every revolution came with its discovery layer, right? The web revolution came with search, um mobile came with app stores, social came with feeds.
+What is the discovery layer for aic resources? What is the discovery layer for MCPS? What is the discovery layer for open API.json? What do we even look
+for? I mean, maybe Airbnb has a better MCP than than Booking.com, but Booking.com has better API than Airbnb.
+So, how do we do it? Um, web search, classic web search, it's not enough because um it it's based on human SEO
+and human uh page rank and it's not flexible enough. custom registries like per agents or per chats, they're not
+enough because they're closed and they're uh um and and they require every app to to submit itself to these reg registries and a central registry like
+an MCP registry. That's not enough because who will do the curation? What's the governance model? How do we decide which resource comes to that registry?
+There are emerging standards around it.
+There's AI catalog.json JSON which is a standard by entropic openai, Google, MCP and A2A which standardizes how a website
+exposes itself to agents and there's the agentic resource discovery standard which is by all these companies and more
+which is basically standardized how uh a discovery layer or or a directory uh expose itself to agents. So we built or
+directory right because we're a research lab for the agentic web. We built this and in or directory we take all the domains that we scanned or scanned the
+results and we put it in a directory that agents can actually query right um we expose the AI catalog.json JSON
+files. So you can see here for example for monday.com you can see that we generate this JSON file that basically tells agents yeah
+this is the MCP server for Monday this is the API server from monday.com and you can just the agent can just query that right so for every domain it can
+just goes to go to aic catalog.json JSON and we expose the registry the directory itself. So for every entry on the
+directory we can uh we can tell the agent yeah for example versel these are the agentic resources um and this is and this is how
+you access them and obviously this directory is fully ard or aentic resource discovery compliant. So any agent can just query that directory with any with any query. Right?
+So this is uh this is aura. directory uh if you want to take a look all of it is part of the aura multiverse journey directory and the ranker. And we found
+out some very other interesting insights. For example being agent ready and being human accessible is very
+similar because LLMs when they come to your website they're like um users or people with vision disabilities. they
+don't see your website. They need other signals to understand how to walk with your website. And making your website human accessible helps agent accessibility and vice vice versa.
+So to wrap up, these are MCP apps. This is what I've been working on in the past few months. And this was the last piece
+for the agentic web. This actually brought the agentic web. And now agents start to roam the web. And agents need different things. They need different
+roads. They need different infras. But we don't want to rebuild the web for agents. We we want to make the web agent accessible. So let's just make sure the
+web is prepared for when agents are coming. Thank you very much.
+[applause]

@@ -1,0 +1,134 @@
+[music]
+Okay. So, hi everyone. I'm going to give the quickest introduction to myself. I'm Ben Clavier. I worked at Mix Bread where we do retrieval. I'm French and I live
+in Tokyo. And today I'm going to talk talk to you [clears throat] about the fact that agents should do knowledge work. And so we should design them like knowledge workers. Like we should design
+them like knowledge agents and not coding agents. And I'm going to explain the difference and why I think that's important. It's a bit of a hot tech talk but let's start now.
+So the first thing is like first agents gave us fun trivia and I'm talking like early agents 2022 agents back when all
+you had was you know rag but agents couldn't even the tool call back then.
+So all you had is like you had an if statement. You did search. You got like cool you could talk to your PDF. That was the very first form of agentic work.
+It was not very useful. We're not going to talk about that for long. What came next was programming agents and that's been all the rage. Like once agents
+started being able to search actually properly search actually properly understand things car tasks out call tools we started designing coding agents
+and coding agents are a big thing. I don't think there's anyone in this room that does not use coding agents. would use code, codeex, etc. And that's a form
+of knowledge work. But agents were not knowledge workers at the time. Like agents were coding agents. And now they're becoming knowledge worker. And
+by knowledge worker, I mean that knowledge work is a big supererset. And kind of every workflow you've thought of before is a form of knowledge agents just because of the nature of knowledge.
+So it's like if you have an agent that's a lawyer that's looking for legal documents, if you go financial agent, if you're looking for you know medication
+information like you've got a lot of people on Twitter that try to do those self diagnosis and you've got just a lot of medical usage. All of that is coding
+agents for getting an agent. It's trying to find say knowledge agents. is trying to find knowledge, trying to make use of knowledge and coding is part of that of
+course and even the small rag bit that we talked about like in the first slide is part of that but that's a very very small proportion of the actual full
+thing like there's so much more to knowledge than any one domain and what even is knowledge work because
+I'm saying that it's important they do knowledge work coding is knowledge work and I think there's two ways to define it in my opinion one of them is
+knowledge work is work Your main input is information. Like your main input is not an actual physical material. It's not something that you can touch. It's
+knowledge is information. And the nature of knowledge work is that you process this information which is by nature very
+ambiguous, very diffuse. And the main output you get from that is something actionable. It's a judgment. It's a decision. It's some if it's a lawyer,
+you're going to get, you know, their findings on your case and they might plead for you. you're going to get an actual actionable thinking item like something still not tangible but that exists as knowledge.
+There's also a topological definition which makes sense here is that if you need search it's a knowledge problem and
+if it's a knowledge problem you need search. So it's very easy self-defined and in the real world that's basically most of the work that we see in the
+service economy is a form of knowledge work like lawyers knowledge workers academics knowledge workers actuaries knowledge workers software engineers
+researchers also knowledge workers and the fact that there's so much knowledge work in society has contributed to like a never improving
+structuring of knowledge work like there's actually very very well definfined workflows for how we should do knowledge work for how knowledge works in itself and how we evolve that.
+But so far, agentics kind of focused on the special case and I try to generalize from it. And that special case is coding and software engineering.
+And the thing is code is knowledge, but not all knowledge is code. And code is a very very unique form of knowledge because it has very durable cues like on
+in a codebase there's going to be a lot of references to like an identifier or a file or a path. And okay when we vibe
+code that can change but most of the time it's not going to change all that much like all the things are like very very durable. Then you've got that
+surface obviously is like now and grapable like there's keywords there's method definition there's a lot of things that by definition you can grab
+in code and the task and this one's actually very important and we don't talk about it a lot but people are like oh why is ge good enough for programming
+or why can an agent do programming and then you're telling me it can do like deep research for a legal question and one of those is because we don't realize
+it but like when we interact with coding agents we are giving them extremely in our task like we're not actually expecting that much from them like
+everything is always kind of about a feature about like a given ticket like there's a task at hand you're not going to tell the agent like discover a new
+programming paradigm and then implement it in this new app I don't know what's going to do good luck but in know that's often the case like first of all you
+don't have those double cues like the meaning is always implicit and more importantly the same clue can mean a lot of different things we don't
+have function definitions in knowledge work like if receive 30 days. If your agent's looking for 30 days, is it a deadline? Is it a grace period? Is it a
+retention rule? Is it even in the same domain? Like are you searching for 30 days on the contract and you're getting medication? There's a lot of contextual
+information. Yeah. But more importantly, the search starts from an intent. Like even if you're doing again legal example, if you're asking about like a
+specific rule that you want to apply to a specific domain, you're going to need to look at the international norms that apply and then do they apply in this case. there's a lot of conditional
+information that is not predefined in the task like that's all up for the agent to find and so non-code knowledge is very contextual and meaning driven
+which is much harder than code and that's led to the fact that none of what I'm saying is new like people have
+been doing knowledge work for a very very long time and that's resulted in like two endless loops you have a tool loop which is at the start we were we
+were like talking then at some point some guy was like we write stuff down.
+Then in Alexandria, we had the pin case which was the curator of the library of Alexandria came up with an idea that maybe we should have a way to catalog
+all of the books we have. Then we developed writing. Then we developed bibliographies. Then we ended up with like the current version of the like
+Dewey system for libraries and nowadays we have search engines. But we also had an organization loop which is joint but
+also disjoint from the tool one which is it used to be the one gifted expert like we've all heard of the polymath of the past the person who just knew everything
+about one domain or all domains and you just went to them if you had information but that doesn't scale. So we ended up with like monasteries which were like
+guardians of knowledge and then we had universities and then we ended up creating the bureaucracies and now we ended up creating the modern organization of work where we have very
+specialized firms like at hospitals you've got the doctor you've got the senior doctor you've got the nurse practitioner the nurses the healthcare assistants and all of them kind of like
+specialize on different levels of tasks and that's a really good form of optimization but the thing is that it's actually just
+the one loop like I'm showing two loops here but they're actually just the one loop which is we have new knowledge and new knowledge means that we need better
+tools and better tools mean that we end up creating new workflows new roles like we need people that are trained to use those tools people that understand what
+the new tool does if you have a guy that knows how to go to the library and you're like okay use Google you need the knowledge of what Google is like that
+person needs to be taught that's a search engine you can just type stuff in it there's no need to physically go there and that means you retrain you get new knowledge workers who are more efficient so they create more knowledge
+so we need new tools and so on and so on. So both the tool loop and the organizational loop are actually just this one selfoptimizing loop that kind of like triggers the other endlessly.
+And the thing about like tooling and optimization is that they're not neutral add-ons. Like I said that we keep optimizing tools and things come up and we create new things out of those tools.
+But that's never actually a neutral thing. Like tooling is not just oh my search is 5% better. the fact that we have a tool or the fact that we don't
+have a tool is what decide if a task not if the task is possible because you can do things without the right tool but if the task is actually scalable and can be carried out cheaply because something
+being cheap means it can scale and it's like yes of course if you go to the library of Alexandria before the pakis you can find your manuscript somewhere
+like wherever you're looking for it there it's probably going to take two three weeks so you're going to really really really need that knowledge but if there's a library catalog it's going to
+take you 10 minutes and now like it's way easier to just oh okay I need to know something more about this so I'm going to search for it likewise if you
+have a map directory or if you even have a map in the first place which in itself is a tool for information then exploring the world is a much better idea like
+you're not going to rely on randomly discovering America on your way to the indies you know like you know where you're going and likewise if you have
+like a multimodel search platform then you can search millions of PDF in a way that we couldn't before so now there's a lot of use cases where you were like oh it's in the archives I'm not going to
+touch that that become actually useful and in practice this kind of looks like that and I'm getting into the more
+technical stuff here which is on a simple deep research task. So this is the browse comp plus leaderboard which is made to evaluate the quality of
+search tools on a very bonded deep research task. You have 200,000 documents and you have like specific queries. [clears throat] Bio talked about this this morning and it's a
+really useful benchmark to like analyze queries.
+And what we see that like okay a bad tool. So that's a thing that people often rant about. You'll see that there's two BM25 here. There's two like
+optimized and unoptimized. And that's because quite often people will tell you BM25 is not great. And the reason they'll tell you BM25 is not great is
+because there's not one BM25. There's hundreds of them. It's a way to do lexical search. You should always optimize your baselines. You should always like optimize what you're
+betting. And so what you see here is like a badly optimized tool is useless.
+Like 60% accuracy. You're not going to trust someone that's right 60% of the time. You're just going to do it yourself. When you start optimizing the tools, you can see we go up to 70 80.
+And then the best the actual best is the hybrid harness that gets to 98. But that's maybe not the most interesting part because we start kind of plateauing
+at one point like the jump from 889.8 to 90.2 is in run variance that don't matter. What matters here however is
+that 90.2% accuracy. You reach it with 20% fewer tool calls. And that's huge because in practice that's 20% fewer
+tokens, 20% like fewer resources that you use. That's basically 20% free cash.
+And if you compare it to the unoptimized baseline, you're spending like 5% of what you were spending in the first place. So the tool is actually what
+makes the task worth doing. Nobody would keep using that tool. If it takes 25 calls, but if it takes eight calls, you're like, "Oh yeah, cool. That's a
+workflow I can introduce." And the second part which goes with tooling and I think it's just as important because Bruscom plus in the
+previous slide is interesting, but it's easy. It's 100,000 documents. It's just text. It's just the one question. It's not really that open-ended. It's just a
+bit convoluted. But when you're actually doing like real life knowledge work, there's that workflow that you see that I try to doodle, which is you have a
+client, they come to the big shot, they come to the lawyer, that's the partner of the agency, and they're like, "Okay, this is my situation. That's my problem." And they meet together, but
+then what the partner does is they're not going to be the ones doing all the legal research. They're not going to be the ones like doing every single step of
+the problem. What they'll do is kind of understand that like okay this person is has this problem that's going to cause them that those are the facts. I need
+the relevant laws with this that and so on aspects and then they've got party goals. They've got assistants and the assistants are going to be doing this research. They're going to be using like
+the sales of tools they've been trained to use and they're going to produce memo and not and then they're going to give that back to the big shots that maybe they'll [clears throat] research like
+one clarification point but they mostly rely on what their searcher agents if you want like the assistants have found for them and that's the respond that
+you're going to get and that's echoing the point I made before which is in code when you're using cloud code you're kind of doing that work yourself you've already broken down the query you know
+like you know what you want to do you've got a linear artic you've got something that you're giving the agent in the real or you've got a client that's got a very open-ended problem and you need to break
+it down yourself and your agent needs to break it down itself and then needs to use sub agents that do this research
+and this is how better tools and organization work together because this one is MQA which is another form of knowledge benchmark
+QA [clears throat] is something that hugging face and snowflake jointly released and it's PDF based and enterprise task it's got PDFs and it's
+got OCR OCR versions of the PDF and the current state of The board really show that like both tools and organizations
+are necessary and you can see that in the fact that with BM25 however optimized it gets the human
+in Gemini 3 reach the same ceiling and that doesn't mean that Gemini 3 is as good as a human that means that even the
+human cannot get the right information given unlimited searches with PM25. So you have the tool setting and you need better tools to go forward. That's the like tool optimization part of the loop.
+Thankfully, we've got better tools. You know, we've got we've got models that can handle PDS. We've got vision. We don't need to rely on OCR text.
+And what we see with that is that we get another jump which is Gina and the mixbride search tool which is fully multimodel. So, it can read the PDF, you get the tables, you get all that nice
+stuff in your search and that gets us a big jump in accuracy. But the interesting part is that like that
+doesn't work. the well that don't work that does work but that don't work as well as we would like because why is my agent getting 88.9 if the human is
+getting 99.4 for like that's 10% I'm leaving on the table here. But that I don't understand that's an agent. It gets I think 10 turns in the benchmark.
+So it's a fully agentic system. It gets to think about its results and yet it's missing performance. And that's where we introduced the mixbr agent which is
+exactly that breaking down of work we saw earlier where we basically tell the the main agent once answering the question being like okay that's that's a
+big topic there is like thousands of PDFs. You're not going to like search yourself. Just please break down the problem for me. Please write queries about the aspects that you think are important to answer the actual query.
+And we get searcher that go off on their own and they find the right results and they bring you like a little memo to your agent and then your agent actually answers that. And that gets the accuracy
+up by 3.5 points. And that don't sound like a lot, but I like to think of it as like an oracle gap. And the oracle gap is the difference between perfect
+documents and your search system. And the oracle gap here is about about 10 points before using the agents and it
+goes down to six points after using the agent. So that means that we have about a 40% reduction in mistakes. Like the gap between humans and agents goes down
+by 40% just by like having a better architecture to search through it.
+And I think this is the end of my slide because I'm running out of time and that's perfect. That's my takeaway slide. And what I want you to like get
+from this talk is that we know how to design better knowledge work for humans and AI agents really benefit from this pattern like we have designed this. We
+know how to do this. Humans have worked on this for centuries. Like [snorts] people have always needed more knowledge. The empires used to have librarians. We have parallel. We've got
+legal firms. We know exactly how legal the legal industry has figured out. The medical industry has figured it out. And none of it looks like programming.
+Programming has a very different system because it's a very specific use case and we should really learn from the knowledge wall to know how to design
+agent that will do work for knowledge wall and then you must not like overfeit on tools because tools don't exist as a
+way to do things by themselves. Tools exist as a way to overcome ceilings. You want a better tool when you see that you're hitting a ceiling that your performance is not where you want it to
+be. So we design better tools to overcome that savings and more importantly the tools need to be co-designed with the agents like the
+agents need to know how to use tools because one thing you will often see is agents will try to write grape queries because grapes everywhere in the
+training data BM25 is everywhere in the query in the data and that's not always what you need. Sometimes you need semantic search over a PDF and you can't
+grab a PDF you can BM25 a PDF you need to like write a better query. So it's very important that your agentic harnesses or even your agentic models
+know that they have got more than one tools and it's about primitives grabs a primitive. PM25 is a primitive and semantic search is a primitive and all
+of those need to be like very well trained like the models need to know about all of them. And the last one is that the right orchestration of search
+will get you much better results because context is a finite resource and even if we get to a model that's got like 100
+million token context a that's going to cost you a lot of money and b that's still nothing you're not even getting half of like one state's legal code let
+alone the US let alone international law let alone specialist course etc. So you need to have a way to break down your task and you need to have your
+orchestrator, your main agents and people that can actually organize the knowledge for them.
+And yeah, so we've got two minutes for questions.
+[applause]
+Thank you.

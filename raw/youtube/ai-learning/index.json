@@ -1,7 +1,7 @@
 {
   "playlist_url": "https://www.youtube.com/playlist?list=PLdJYvRCSB6rO2Mm_0wGnHgFfoy34OaC0S",
   "source": "enumeration: YouTube Data API v3; transcript: SerpApi youtube_video_transcript",
-  "count": 370,
+  "count": 384,
   "videos": [
     {
       "id": "Dt6u-yFEpsk",
@@ -2418,6 +2418,118 @@
       "chars": 18435,
       "lang": "en",
       "segments": 491
+    },
+    {
+      "id": "khVX_BUnEwU",
+      "url": "https://www.youtube.com/watch?v=khVX_BUnEwU",
+      "file": "2026-09-17-active-graph-agent-runtime-babyagi-4-yohei-nakajima-untapped-capital--khVX_BUnEwU.txt",
+      "chars": 19536,
+      "lang": "en",
+      "segments": 519
+    },
+    {
+      "id": "fjF8EKnxKCU",
+      "url": "https://www.youtube.com/watch?v=fjF8EKnxKCU",
+      "file": "2026-09-17-agents-without-code-skills-yaml-and-filesystems-replaced-python-philipp-schmid-g--fjF8EKnxKCU.txt",
+      "chars": 17738,
+      "lang": "en",
+      "segments": 474
+    },
+    {
+      "id": "oheUsh7VtKY",
+      "url": "https://www.youtube.com/watch?v=oheUsh7VtKY",
+      "file": "2026-09-17-balaji-srinivasan-on-the-future-of-ai-the-a16z-show--oheUsh7VtKY.txt",
+      "chars": 66917,
+      "lang": "en",
+      "segments": 631
+    },
+    {
+      "id": "cO1f2wOxSH4",
+      "url": "https://www.youtube.com/watch?v=cO1f2wOxSH4",
+      "file": "2026-09-17-how-decagon-runs-90-of-its-agents-on-open-source-models--cO1f2wOxSH4.txt",
+      "chars": 85779,
+      "lang": "en",
+      "segments": 777
+    },
+    {
+      "id": "78-6dUROziQ",
+      "url": "https://www.youtube.com/watch?v=78-6dUROziQ",
+      "file": "2026-09-17-how-open-source-became-ai-s-backbone-inferact-with-a16z--78-6dUROziQ.txt",
+      "chars": 45632,
+      "lang": "en",
+      "segments": 443
+    },
+    {
+      "id": "XqEr7hk89HY",
+      "url": "https://www.youtube.com/watch?v=XqEr7hk89HY",
+      "file": "2026-09-17-how-whatnot-s-live-shopping-beats-traditional-e-commerce--XqEr7hk89HY.txt",
+      "chars": 44174,
+      "lang": "en",
+      "segments": 408
+    },
+    {
+      "id": "O84lhGc1OOI",
+      "url": "https://www.youtube.com/watch?v=O84lhGc1OOI",
+      "file": "2026-09-17-if-we-want-them-to-do-knowledge-work-design-them-as-knowledge-agents-benjamin-cl--O84lhGc1OOI.txt",
+      "chars": 19765,
+      "lang": "en",
+      "segments": 134
+    },
+    {
+      "id": "aakZLqxRQfo",
+      "url": "https://www.youtube.com/watch?v=aakZLqxRQfo",
+      "file": "2026-09-17-lighthouse-or-landgrab-how-to-pick-your-ai-sales-strategy--aakZLqxRQfo.txt",
+      "chars": 53196,
+      "lang": "en",
+      "segments": 436
+    },
+    {
+      "id": "UE8jx4dvlSQ",
+      "url": "https://www.youtube.com/watch?v=UE8jx4dvlSQ",
+      "file": "2026-09-17-openclaw-claude-code-and-the-future-of-software-peter-yang-on-the-a16z-show--UE8jx4dvlSQ.txt",
+      "chars": 37478,
+      "lang": "en",
+      "segments": 1148
+    },
+    {
+      "id": "waI44NP1abk",
+      "url": "https://www.youtube.com/watch?v=waI44NP1abk",
+      "file": "2026-09-17-rebuilding-the-web-for-agents-liad-yosef-mcp-apps--waI44NP1abk.txt",
+      "chars": 18953,
+      "lang": "en",
+      "segments": 155
+    },
+    {
+      "id": "59AA5kIoqjA",
+      "url": "https://www.youtube.com/watch?v=59AA5kIoqjA",
+      "file": "2026-09-17-the-search-engine-for-the-agentic-web-will-bryk-exa--59AA5kIoqjA.txt",
+      "chars": 21635,
+      "lang": "en",
+      "segments": 140
+    },
+    {
+      "id": "zEZ0rQ8Ef-Y",
+      "url": "https://www.youtube.com/watch?v=zEZ0rQ8Ef-Y",
+      "file": "2026-09-17-the-state-of-ai-models-moats-and-the-consumer-renaissance--zEZ0rQ8Ef-Y.txt",
+      "chars": 42274,
+      "lang": "en",
+      "segments": 359
+    },
+    {
+      "id": "J3pegsM5drk",
+      "url": "https://www.youtube.com/watch?v=J3pegsM5drk",
+      "file": "2026-09-17-why-ai-agents-could-finally-reinvent-the-credit-card--J3pegsM5drk.txt",
+      "chars": 64501,
+      "lang": "en",
+      "segments": 582
+    },
+    {
+      "id": "K5yGLO8c6T0",
+      "url": "https://www.youtube.com/watch?v=K5yGLO8c6T0",
+      "file": "2026-09-17-why-the-next-generation-of-enterprise-software-looks-nothing-like-salesforce--K5yGLO8c6T0.txt",
+      "chars": 54500,
+      "lang": "en",
+      "segments": 434
     }
   ]
 }

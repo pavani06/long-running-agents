@@ -1,0 +1,519 @@
+[music]
+Hi everybody. Thanks for coming. I'm
+excited to be here. AI engineer
+worldfare has been so fun meeting
+everybody. Um, but I'm here to talk
+about active graph, which is my new
+open-source experimental approach to
+building agents, which looks a little
+bit different than maybe you've been
+building agents. Uh, it's definitely
+experimental. The idea is more to give
+you inspire you with some potentially
+new ideas. Um, agents are awesome, but
+longunning agents break. And if they're
+so awesome, why am I still building
+them? Why they should build themselves?
+Let's build the simplest thing that can
+build itself has basically been kind of
+my research team for the last three
+years since I did Baby AGI back in March
+of 2023. So that's over three years ago.
+If you were there at the time, it was
+crazy. It went wild. like uh was covered
+by media. People thought it was going to
+work. It didn't work at all. Um
+[laughter]
+over the course of three years, I've
+done nine iterations of Baby AGI with
+less fanfare, but you know, every time
+just experimenting on like how do we get
+autonomous agents to actually work
+usually with the theme of
+self-improvement. Uh if you go to baby
+AGI wiki, you can see earlier
+experiments. Um in in this process, I
+kept coming up to graphs and I've had a
+couple of projects. Earlier I did a one
+called Instagraph in Minecraft that was
+like preg graph rag rag. I did some code
+graphs, function graphs, log graphs and
+since then it seems like a lot of people
+have started using graphs to build
+agents. Um and so in addition to that
+I've actually gotten to invest in a in a
+good number of you know aentic companies
+some of which you I'm sure you recognize
+through my funds Untapped capital and I
+also have an agent fund. Uh but yeah
+that's that's me. Yohay VC by day
+builder by night. You might recognize
+this face more than this face. Um,
+active graph is an events sourced graph
+runtime for building auditable agents.
+Um, I have a paper that was my first
+archive paper called the log is the
+agent, but I'm here to explain it. Um,
+so today most people build agents around
+the LLM. You start with the LLM, you add
+a response API, you give it tools, you
+add memory, and then you make sure you
+log everything correctly, which can give
+you, you know, all the benefits that
+active graph will give you. But active
+graph asks what if you built around the
+log. Now what does that mean? Um means
+not everything the agent does but more
+importantly every change to the agent
+right nobody here is using the same
+agent they were using a year ago and the
+agent you're going to use a year from
+now is going to be different. And a lot
+of people what the agent does and how
+the agent changes are tracked in two
+different places. But I'm saying let's
+flatten that down into a single
+immutable event log. And this is the
+ground truth of the agent. And this
+projects a sort of graph. This is the
+state of the agent. And what I mean by
+that is, for example, a prompt can be
+edited multiple times, but you might
+have, you know, a master prompt that
+gets used when you're, you know, when
+you query the graph. And then on top of
+this, you attach something that I'm
+calling behaviors. Behaviors are uh
+reacts to graph changes.
+And then they emit events, which then in
+turn updates the state of the agent,
+which might trigger new behaviors. Um,
+LLMs don't talk to each other in active
+graph. They all communicate through this
+shared state and that's what makes it a
+little bit different. Behaviors can be
+deterministic or they can include LLMs
+which is which is how you build this
+agent. And you get this beautiful typed
+event log. That's the source of truth
+about everything the agent did and
+everything every change that's happened
+which means oh actually oh shoot I I
+jumped ahead. So in addition to that
+there's a concept called policies which
+determine how the graph can be modified.
+come back to it. But for example, things
+like a source article that you found in
+research, you might be fine with adding,
+but if you're changing a prompt, maybe
+you want human in the loop. Or uh if
+you're changing a fact, you might want
+to make sure there's no contradicting
+facts. So there's these thing called
+policies. And again, it shows some code
+uh code examples, but yeah, in the end,
+you get this beautiful typed event log
+which gives you replays, it gives you
+rollbacks, and it gives you forks. And
+this becomes natively when you start
+building agents with active graph. So
+this is the kind of LLM ccentric versus
+log centric way of building agents that
+I'm going to be talking about or showing
+you code for. And and I'll uh I'll
+specify that this is not a harness. It's
+it's a runtime and you can actually
+rebuild most of the common harnesses on
+top of it. You're just forcing every
+single communication to communicate
+through the shared state. [snorts]
+So uh at the highest level, right, when
+you're building with agents, messages
+feels like the kind of core unit that
+you're seeing often, but we're going to
+replace that with logs. Logs are going
+to be the core unit you're going to
+build around. That's what you're going
+to be reading. That's what you're going
+to be looking at. [snorts] These are
+typed logs. Again, immutable, clean. You
+can't edit the graph. These are just
+kind of basic rules. Just emit events.
+You can have the add object, which is an
+event emitting. But yes, you can query
+over the graph. And again, I'm flying
+through some of this because I want to
+get to the fun parts. And all this is in
+the documentation.
+Behaviors listen to graph changes and
+emit events. So, this is a behavior uh
+called a planner that triggers on a goal
+created, right? Okay. And then it uh
+adds an object adds two task objects and
+a relationship object. Research write
+memo um two tasks. And then actually
+behaviors can actually live on edges as
+something called relation behavior. This
+one has an unblock relation. So
+basically when the research is done, you
+can write the memo, right? Um
+and behavior subscriptions can be pretty
+complex. They can be graph queries. So
+this one says on object created if the
+if the object type is a claim uh and
+this claim contradicts another claim
+we're going to trigger the contradiction
+detector. And these can be more complex
+than this. It can have you know uh
+confidence percentages baked into it. Um
+and and then on top of that there's
+another concept called views. Uh context
+management can be done programmatically
+as basically a graph query. It's it's
+you basically grab a subset of the graph
+which makes it available to that
+behavior. You can still do other types
+of context uh context management, but I
+felt like this kind of graph query as
+context management just felt really
+elegant. Candidly, I'm not the one
+writing the code, but AI seems to be
+pretty good at figuring out how to do
+it.
+Um, and you know, earlier I talked about
+policies. So, some graph changes require
+a proposed patch before approval. Again,
+this is how you these these policies
+kind of give it the control on what it's
+allowed to change by itself, what uh
+what kind of changes require certain
+tests. Um, and I'll give a few examples
+in a bit. Um, or if you want human in
+the loop, right? And you have these kind
+of policies that that determine or
+define uh what the uh what these rules
+are. And when you bring it all together,
+you get these kind of object schemas,
+tools, deterministic behavior, LLM
+behaviors can be assembled into
+something called a pack, right, with a
+pack policy. And that's how you build
+harness on top of active graph. And
+these and all of this together is and
+I'll have a couple examples later um are
+modular and they can be combined. Uh but
+you're not just adding skills. It is
+much more complex to build actually
+pretty unintuitive. I would never write
+code myself with active graph, but again
+AI seems really good at it.
+Um, and just on like event types are
+fixed. You can add custom events.
+Objects are userdefined. I only added
+that because someone asked me that
+question when I was showing them these
+slides, but I think that makes sense. So
+the old way you got the while not done
+if loop. The new way or at least my new
+way. Uh, you have a whole bunch of
+behaviors that don't talk to each other
+that just monitor the state. So it's
+it's it's inspired by uh Blackboard
+architecture from the 70s or 80s or more
+recently Kofka. Whole bunch of
+microworkers communicating through a
+shared state. One of the challenges at
+least back when about Blackboard was
+around was that it was really
+unintuitive to write and the workers
+were very slim and deterministic. But
+now AI writes the code and the workers
+can be very powerful because they have
+reasoning capability.
+This is a react agent on active graph.
+React agent was one of the earlier agent
+kind of architectures. As you can see
+it's it look it actually works the same
+way but on goal created you add a
+thought on thought created you trigger
+the reason function. So again, this is
+just to show that you can build any
+harness on top of acttograph. It does
+look different um because they're not
+communicating with each other. [snorts]
+And so to see if how well this can work,
+I've been running a lot of experiments.
+Um the first one I did was can I use the
+log itself as memory. So this is not
+pure vector rag. It's actually
+leveraging the structured log. So it
+knows which which message was before
+what plus uh ve uh plus embedding the
+actual messages within the log. Uh I did
+this on long meal. I embedded the query.
+There was no semantic uh ingestion, no
+fact extraction, no entity extraction,
+but I just embedded the query, looked
+for relevant messages, grabbed a couple
+messages before and after, made sure it
+fit into the context, and it actually
+did pretty well on long eval, right?
+Like a lot of the data in your memory is
+actually overlaps with the memory uh the
+data in your log. Actually having them
+the same actually kind of makes sense
+and make sure they don't separate. Um I
+did try another couple other experiments
+on adding kind of semantic congestion to
+improve the score. was able to do it but
+candidly um I could put more effort in
+to try to increase that but I jumped on
+to the next experiment actually but in
+that process one of the biggest fun
+surprises was I don't know if you've run
+long membr like 500 questions and then
+one of the runs uh my API key ran out
+like 350 I was like oh shoot okay so I
+updated the API key said okay let's
+let's rerun it again and it just like
+rolled back one and was like all right
+we'll just start from you know question
+number 353 and I don't know if you have
+but like I've built a lot of agents that
+like where the API key did broke or
+something and I had to rerun the long
+agent from the beginning and that just
+has not been my experience since
+building with active raph uh which was a
+very fun surprise.
+uh I built a couple reference agents uh
+right like now I have this runtime let's
+see what I can build I asked replet to
+build a coding agent on top of active
+graph and and as a result it came with
+you know event log graph and again I'll
+say this you can do this with you know
+things like lang thing is I don't I
+didn't have to think about it I just had
+to ask my coding agent to use active
+graph and this event log and graph came
+natively same thing with research agent
+I just said just build a deep research
+agent on active graph and it came with
+this beautiful you know had a event
+event log log and a graph of like where
+the evidence came from, what contradicts
+each other. And again, I didn't have to
+think about it. I just asked my agent to
+build a research agent on top of actraph
+and this is what it ended up looking
+like. [snorts] Um, and then I realized,
+okay, how do we get this closer to like
+an open claw or her? So, I I played
+around. I have this thing called active
+graph packs, which is a core pack, a
+tool pack, a secret pack, a memory pack,
+an identity pack, a communication pack,
+a chat pack. packs. Now you get to kind
+of get the idea of how I'm trying to
+build agents on top of active graph. And
+each of these packs have object types
+and behaviors. Again, feel probably
+feels very different from the way you're
+building agents, but I I feel like it's
+actually pretty elegant. You can just
+take a memory pack and replace it with
+another another memory pack, right? Um
+and and it's not like skills, but like
+the objects and the rules and all of
+them are uh bundled as a pack. And you
+and you attach these packs together to
+create your agent.
+Um and then I jumped into the the what I
+really wanted to do was start playing
+with self-improvement loops. Um I did a
+project called regimes. I did uh uh that
+was paper number two. Um this one was a
+really controlled self modification. Uh
+cloud code called it regime to scene.
+But basically we classified the type of
+failure and then based on the failure it
+classified it was allowed to edit a
+specific part of the agent. Again I did
+this on long mem eval. The loop was I
+think doing about 20 questions looking
+at the answer in questions seeing where
+it failed trying to self-modify
+trying that on 50 different questions
+see if the accuracy actually went up and
+only if it went up it would accept it.
+So that was kind of the proposal patch
+that started happening where it would do
+after it proposed a change to itself.
+Right? This is essentially the agent
+forking itself, proposing a change,
+doing a static gate check, a sandbox
+gate check, and then making sure it
+actually impacted the result and only
+then accepted a change. And for these
+loops, it would loop like eight or 13
+times, but only accept four or five of
+those patches. And it actually did have,
+you know, modest but like statistically
+significant improvement on long mem eval
+squares. Uh, and and not only did it
+know what worked, but it also knew what
+didn't work.
+Um at this point I was like okay can I
+can I get active graph to just research
+acttograph for me. So I built lab uh
+acttograph lab which is reading all the
+blog posts. So everything I've shared
+has a blog or a github repo and this lab
+is reading all that to come up with new
+ideas asking me if it can run it. And if
+I say yes it'll run the experiment um
+and then it'll write a blog post about
+it. It actually did find an error in its
+own code asked me if it could if it
+could fix it. It wrote the PR and then I
+just merged it. Um, so it's it's early,
+but it's starting to work. The lab is
+self-improving. Um, it also figured out
+that um, it looked at active graph packs
+and was able to just install a pack into
+itself and then wrote a blog post saying
+packs are modular between repos. I was
+like, I didn't know that. That's great.
+Um, and then I got distracted when I saw
+this Pokemon trading card meme
+competition on Kaggle. As you can see,
+I'm all over the place. Um, but uh, you
+have to submit this deck in a
+deterministic agent, not with with an
+LLM, and they compete in this ELO style
+competition. So, my decks are, you know,
+every hour they're battling a new
+competitor and their score goes up or
+down. Um, and I felt like this was a
+pretty good uh test for seeing if
+Acttograph could help me increase my
+score. And I use, you know, cloud code
+and replet. And we did about 80
+different passes to like try different
+things and and increase our score. Yeah,
+it might not make sense to you if you
+don't play Pokemon, but these things
+like, let's try adding a couple energy
+cards seems like a very casual ask. Um,
+and my agent probably because I think
+because I'm using active graph would
+say, "Okay, sounds great. Let's run 200
+simulated games against three reference
+agents and then if the win rate
+increases by x% and there's a, you know,
+whatever Wilson score above 90
+something, then we'll accept that as a
+change." And I basically did this like
+80 times and each time they came with
+this like beautiful report of like why
+it worked, what it did, and what the
+verdict was. So out of those 80 passes,
+it probably uh accepted about 20 to 30
+and the score did slowly improve. I'm
+still at like 27%. So I don't know if I
+can get higher than that. But um what
+was most interesting is how how well the
+agent understood experiments we've tried
+before that didn't work. And that was
+very different experience for me because
+I've done a lot of yolo agents where you
+just like keep trying things and then it
+works. You're like yeah but then I don't
+know the stuff that we tried that didn't
+work. But now when I'm building with
+acttograph, it tracks all the things
+that didn't work because it's forced
+because I have this policy that says
+here are the ch here here's what we have
+to do before we accept a change.
+Um
+so some of the pleasant surprises most
+of which I mentioned but AI does seem
+better at architecting this than LLM
+based agents. This is just my personal
+experience and you know some some people
+you'll have to try it yourself to see
+but if you think about it LLM based
+agents are like three years old but if
+you look at again Kafka Blackboard this
+like microworker communicating through a
+shared state there's decades of
+conversations about how to make that
+work better and my hypothesis is that
+that's in the training data and there's
+just much less training data around how
+to build LLM agents
+um debugging shifted from session logs
+to active DB Again, I didn't know it
+would, but now, you know, when my coding
+agent was debugging, it just started
+quering the DB instead of the session
+logs because it's everything is already
+logged very cleanly and typed and it
+knows exactly how it's logged. Packs can
+be loaded easily from other repos
+surprise. I thought I had to do extra
+work to make that happen, but just
+worked. Um, no more starting long runs
+over from the beginning, and I know what
+didn't work, which are some of the
+things I shared.
+Um, here's where I might lose some
+serious researchers, at least in the
+language I use. I don't actually know
+how to train models or anything. So,
+I'll caveat that. But I'm building this.
+I'm starting to really think that
+longunning agents need not just a world
+a world model like a predictive world
+model, but what I might call an
+experiential world model, right? The
+predictive world model feels more like
+the priors, right? Okay. And then if you
+think about the hippocampus actually, it
+also does work like an immut like an
+immutable state uh event log that
+projects a state and then it feeds some
+of that state back into your priors
+through replays, dreaming and sleep. And
+so, you know, I feel like some some
+discussions kind of suggests that as
+models get better, like the harness
+disappears. But I'm starting to think
+that's not true. I think we need both.
+Um is is kind of the new hypothesis
+that's growing as I as I've been playing
+with active graph. And if you think
+about like you or me, like you or me,
+like we're not our reasoning capability,
+right? We we're closer to our our our
+beliefs, our knowledge and behaviors
+that are derived from our actual life
+experience. And if that's the case and
+we're going to, you know, build agents
+inspired by ourselves, then then maybe
+our agent should be treated that way,
+too. Maybe the identity of the agent is
+is derived from its own log.
+Um, I would love for you to try it. You
+can just go just say look up active
+graph and build me something I would
+like to your favorite agent who knows
+you better than I do. Uh and have it
+explain if it's uh uh if it was helpful
+or not. Um
+let me know if you try it or hate it or
+building something relevant. Thanks for
+listening.
+[music]
