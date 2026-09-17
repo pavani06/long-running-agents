@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-17",
+  "status_id": "2100235516918849661",
+  "handle": "omarsar0",
+  "text": "Banger paper from NVIDIA.\n\nIt's on the topic of choosing which models go into a multi-agent system.\n\nThe team compared eight selection strategies, based on size, accuracy, answer diversity and error diversity, across routing, majority vote and LLM-as-judge setups on hard science https://t.co/1r6ApI6WVL",
+  "created_at": "2026-09-16T14:49:02.000Z",
+  "url": "https://x.com/omarsar0/status/2100235516918849661",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HSWJElgbEAAxRfb.jpg"
+  ]
+}

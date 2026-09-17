@@ -1,6 +1,6 @@
 {
   "source": "X API v2 GET /2/users/:id/bookmarks (OAuth2 user-context)",
-  "count": 428,
+  "count": 462,
   "items": [
     {
       "status_id": "2079234800766816633",
@@ -2569,6 +2569,210 @@
       "handle": "undefinedKi",
       "url": "https://x.com/undefinedKi/status/2099839040241516872",
       "file": "2026-09-16-undefinedki-this-is-a-goldmine-anthropic-just-published-the-full-archite--2099839040241516872.json"
+    },
+    {
+      "status_id": "2100139401842250163",
+      "handle": "_avichawla",
+      "url": "https://x.com/_avichawla/status/2100139401842250163",
+      "file": "2026-09-17-_avichawla-layers-of-observability-in-ai-systems-explained-visually-if--2100139401842250163.json"
+    },
+    {
+      "status_id": "2100260544087535639",
+      "handle": "bcherny",
+      "url": "https://x.com/bcherny/status/2100260544087535639",
+      "file": "2026-09-17-bcherny-also-today-claude-docs-claude-slides-and-claude-design-are-i--2100260544087535639.json"
+    },
+    {
+      "status_id": "2100291127005856239",
+      "handle": "ChromiumDev",
+      "url": "https://x.com/ChromiumDev/status/2100291127005856239",
+      "file": "2026-09-17-chromiumdev-10-000-installs-and-counting-we-created-modern-web-guidance--2100291127005856239.json"
+    },
+    {
+      "status_id": "2100270861555228770",
+      "handle": "ClaudeDevs",
+      "url": "https://x.com/ClaudeDevs/status/2100270861555228770",
+      "file": "2026-09-17-claudedevs-claude-design-claude-slides-and-claude-docs-also-work-inside--2100270861555228770.json"
+    },
+    {
+      "status_id": "2099848332692623870",
+      "handle": "coreyganim",
+      "url": "https://x.com/coreyganim/status/2099848332692623870",
+      "file": "2026-09-17-coreyganim-i-m-making-8-000-a-month-building-claude-skills-for-other-pe--2099848332692623870.json"
+    },
+    {
+      "status_id": "2100187890999263603",
+      "handle": "eng_khairallah1",
+      "url": "https://x.com/eng_khairallah1/status/2100187890999263603",
+      "file": "2026-09-17-eng_khairallah1-send-this-prompt-to-gpt-astra-it-might-just-change-your-life--2100187890999263603.json"
+    },
+    {
+      "status_id": "2100190909715337487",
+      "handle": "eng_khairallah1",
+      "url": "https://x.com/eng_khairallah1/status/2100190909715337487",
+      "file": "2026-09-17-eng_khairallah1-the-full-prompt-is-here-lt-purpose-gt-run-a-drift-audit-betw--2100190909715337487.json"
+    },
+    {
+      "status_id": "2099921191536411129",
+      "handle": "ericosiu",
+      "url": "https://x.com/ericosiu/status/2099921191536411129",
+      "file": "2026-09-17-ericosiu-if-youre-building-out-your-marketing-team-this-might-save-yo--2099921191536411129.json"
+    },
+    {
+      "status_id": "2100040889003585940",
+      "handle": "HermesWatcher",
+      "url": "https://x.com/HermesWatcher/status/2100040889003585940",
+      "file": "2026-09-17-hermeswatcher-hermes-can-now-log-itself-into-websites-without-ever-seeing--2100040889003585940.json"
+    },
+    {
+      "status_id": "2099861544481731058",
+      "handle": "hyperparticle",
+      "url": "https://x.com/hyperparticle/status/2099861544481731058",
+      "file": "2026-09-17-hyperparticle-we-sent-a-swarm-of-ai-agents-to-solve-karpathys-nanochat-ben--2099861544481731058.json"
+    },
+    {
+      "status_id": "2099960192125325488",
+      "handle": "itsPaulAi",
+      "url": "https://x.com/itsPaulAi/status/2099960192125325488",
+      "file": "2026-09-17-itspaulai-wow-so-google-has-just-open-sourced-a-tool-to-automate-any-t--2099960192125325488.json"
+    },
+    {
+      "status_id": "2100262432413528336",
+      "handle": "JacquelineSYC19",
+      "url": "https://x.com/JacquelineSYC19/status/2100262432413528336",
+      "file": "2026-09-17-jacquelinesyc19-a-few-weeks-ago-i-wrote-that-our-whole-team-at-artie-uses-he--2100262432413528336.json"
+    },
+    {
+      "status_id": "2099928522521244073",
+      "handle": "JoshARosen",
+      "url": "https://x.com/JoshARosen/status/2099928522521244073",
+      "file": "2026-09-17-josharosen-https-t-co-yaihshgvff--2099928522521244073.json"
+    },
+    {
+      "status_id": "2100235963339313648",
+      "handle": "LangChain",
+      "url": "https://x.com/LangChain/status/2100235963339313648",
+      "file": "2026-09-17-langchain-the-biggest-challenge-facing-an-agent-harness-is-context-eng--2100235963339313648.json"
+    },
+    {
+      "status_id": "2099845326928515142",
+      "handle": "LangChain",
+      "url": "https://x.com/LangChain/status/2099845326928515142",
+      "file": "2026-09-17-langchain-voice-agents-are-becoming-a-bigger-part-of-customer-and-oper--2099845326928515142.json"
+    },
+    {
+      "status_id": "2099881486501523540",
+      "handle": "martinfowler",
+      "url": "https://x.com/martinfowler/status/2099881486501523540",
+      "file": "2026-09-17-martinfowler-new-post-sumeet-gayathri-moghe-finds-many-folks-building-pre--2099881486501523540.json"
+    },
+    {
+      "status_id": "2100178563362074889",
+      "handle": "mattpocockuk",
+      "url": "https://x.com/mattpocockuk/status/2100178563362074889",
+      "file": "2026-09-17-mattpocockuk-a-great-idea-i-m-stealing-from-dexhorthy-when-you-first-star--2100178563362074889.json"
+    },
+    {
+      "status_id": "2099824976325157319",
+      "handle": "milindlabs",
+      "url": "https://x.com/milindlabs/status/2099824976325157319",
+      "file": "2026-09-17-milindlabs-grok-bot-check-it-out-here-https-t-co-ujtre6f8mz-post-your-f--2099824976325157319.json"
+    },
+    {
+      "status_id": "2099819771151933539",
+      "handle": "milindlabs",
+      "url": "https://x.com/milindlabs/status/2099819771151933539",
+      "file": "2026-09-17-milindlabs-some-people-are-already-saying-this-is-better-than-grok-bot--2099819771151933539.json"
+    },
+    {
+      "status_id": "2099560068362441009",
+      "handle": "mstrYoda_",
+      "url": "https://x.com/mstrYoda_/status/2099560068362441009",
+      "file": "2026-09-17-mstryoda_-cloudflare-ai-agentlar-icin-security-skill-yaynlams-direkt-y--2099560068362441009.json"
+    },
+    {
+      "status_id": "2099995262802641129",
+      "handle": "nateberkopec",
+      "url": "https://x.com/nateberkopec/status/2099995262802641129",
+      "file": "2026-09-17-nateberkopec-for-the-last-3-months-i-ve-been-telling-all-my-clients-to-mo--2099995262802641129.json"
+    },
+    {
+      "status_id": "2100235516918849661",
+      "handle": "omarsar0",
+      "url": "https://x.com/omarsar0/status/2100235516918849661",
+      "file": "2026-09-17-omarsar0-banger-paper-from-nvidia-it-s-on-the-topic-of-choosing-which--2100235516918849661.json"
+    },
+    {
+      "status_id": "2100080746056777899",
+      "handle": "omarsar0",
+      "url": "https://x.com/omarsar0/status/2100080746056777899",
+      "file": "2026-09-17-omarsar0-banger-report-from-salesforce-pretty-interesting-to-see-more--2100080746056777899.json"
+    },
+    {
+      "status_id": "2099970990935867485",
+      "handle": "omarsar0",
+      "url": "https://x.com/omarsar0/status/2099970990935867485",
+      "file": "2026-09-17-omarsar0-i-agree-mcp-is-clearly-better-than-cli-for-most-integrations--2099970990935867485.json"
+    },
+    {
+      "status_id": "2099898254905549220",
+      "handle": "OpenRouter",
+      "url": "https://x.com/OpenRouter/status/2099898254905549220",
+      "file": "2026-09-17-openrouter-openrouter-users-spent-more-on-openai-models-than-on-anthrop--2099898254905549220.json"
+    },
+    {
+      "status_id": "2100331009015480519",
+      "handle": "shengkunye",
+      "url": "https://x.com/shengkunye/status/2100331009015480519",
+      "file": "2026-09-17-shengkunye-repo-here-https-t-co-piqc19b4jk--2100331009015480519.json"
+    },
+    {
+      "status_id": "2100330818958975088",
+      "handle": "shengkunye",
+      "url": "https://x.com/shengkunye/status/2100330818958975088",
+      "file": "2026-09-17-shengkunye-we-just-killed-monid-ourselves-monid-is-now-open-source-the--2100330818958975088.json"
+    },
+    {
+      "status_id": "2099865807136428489",
+      "handle": "Sumanth_077",
+      "url": "https://x.com/Sumanth_077/status/2099865807136428489",
+      "file": "2026-09-17-sumanth_077-https-t-co-8j8vxf4r9u--2099865807136428489.json"
+    },
+    {
+      "status_id": "2100171874986766588",
+      "handle": "techNmak",
+      "url": "https://x.com/techNmak/status/2100171874986766588",
+      "file": "2026-09-17-technmak-a-118k-star-github-repo-is-built-around-one-painfully-obviou--2100171874986766588.json"
+    },
+    {
+      "status_id": "2099859887102558507",
+      "handle": "TeddyinMedia",
+      "url": "https://x.com/TeddyinMedia/status/2099859887102558507",
+      "file": "2026-09-17-teddyinmedia-your-ai-agent-can-now-collect-data-from-almost-any-website-x--2099859887102558507.json"
+    },
+    {
+      "status_id": "2100145701548331448",
+      "handle": "thisdudelikesAI",
+      "url": "https://x.com/thisdudelikesAI/status/2100145701548331448",
+      "file": "2026-09-17-thisdudelikesai-if-you-re-serious-about-running-llms-locally-save-these-10-g--2100145701548331448.json"
+    },
+    {
+      "status_id": "2100194977523331489",
+      "handle": "trending_repos",
+      "url": "https://x.com/trending_repos/status/2100194977523331489",
+      "file": "2026-09-17-trending_repos-trending-repository-of-the-day-open-code-review-fast-efficie--2100194977523331489.json"
+    },
+    {
+      "status_id": "2100198837319012712",
+      "handle": "Voxyz_ai",
+      "url": "https://x.com/Voxyz_ai/status/2100198837319012712",
+      "file": "2026-09-17-voxyz_ai-after-yesterdays-grok-bot-galaxy-day-1-these-are-the-four-us--2100198837319012712.json"
+    },
+    {
+      "status_id": "2099931652524810457",
+      "handle": "Voxyz_ai",
+      "url": "https://x.com/Voxyz_ai/status/2099931652524810457",
+      "file": "2026-09-17-voxyz_ai-i-think-codexs-mobile-remote-mode-is-seriously-underrated-i--2099931652524810457.json"
     }
   ]
 }

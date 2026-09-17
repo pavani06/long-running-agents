@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-17",
+  "status_id": "2100139401842250163",
+  "handle": "_avichawla",
+  "text": "Layers of observability in AI systems, explained visually:\n\nIf an LLM app is serving real users, its input and output are not enough to debug it.\n\nConsider a RAG pipeline where a query passes through embedding, retrieval, context assembly, and generation.\n\nEvery operation adds https://t.co/ccR2oYIRyF https://t.co/Ai85Xc36Ds",
+  "created_at": "2026-09-16T08:27:06.000Z",
+  "url": "https://x.com/_avichawla/status/2100139401842250163",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/tweet_video_thumb/HSUxpRHbMAAdUki.jpg"
+  ]
+}

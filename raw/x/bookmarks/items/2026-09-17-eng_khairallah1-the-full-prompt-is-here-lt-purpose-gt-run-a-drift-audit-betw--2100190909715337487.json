@@ -1,0 +1,10 @@
+{
+  "collected": "2026-09-17",
+  "status_id": "2100190909715337487",
+  "handle": "eng_khairallah1",
+  "text": "The full prompt is here:\n\n&lt;purpose&gt;\nRun a drift audit between what this project claims and what it does.\nFind instructions and documentation the code no longer obeys.\nAudit only. Change nothing.\n&lt;/purpose&gt;\n\n&lt;focus&gt;\nEvery stale claim is an instruction my agent follows into the",
+  "created_at": "2026-09-16T11:51:47.000Z",
+  "url": "https://x.com/eng_khairallah1/status/2100190909715337487",
+  "links": [],
+  "media": []
+}

@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-17",
+  "status_id": "2099861544481731058",
+  "handle": "hyperparticle",
+  "text": "We sent a swarm of AI agents to solve Karpathy’s NanoChat benchmark, and they crushed SoTA in 3 days.\n\nWe built our own harness on top of a graph database to do auto-autoresearch, each iteration learning from mistakes to do research better.\nThe team wrote &gt;15,000 entries. 🧵 https://t.co/tqlsCv5Qvp",
+  "created_at": "2026-09-15T14:03:00.000Z",
+  "url": "https://x.com/hyperparticle/status/2099861544481731058",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2099673096366260224/img/1QxFu1MxtL7PUfmI.jpg"
+  ]
+}

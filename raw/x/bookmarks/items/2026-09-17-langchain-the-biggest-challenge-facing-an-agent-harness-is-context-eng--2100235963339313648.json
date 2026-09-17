@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-17",
+  "status_id": "2100235963339313648",
+  "handle": "LangChain",
+  "text": "The biggest challenge facing an agent harness is context engineering, or what information an agent gets, and when.\n\nThe longer the task, the harder it is to keep the context window from overloading.\n\nDeep Agents ships with this built in: filesystems, subagents, and skills, https://t.co/5PuoxwjnMF",
+  "created_at": "2026-09-16T14:50:48.000Z",
+  "url": "https://x.com/LangChain/status/2100235963339313648",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2100232693002731520/img/tHtoBiOnVy3NLKLE.jpg"
+  ]
+}
