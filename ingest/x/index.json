@@ -1,10 +1,10 @@
 {
   "source": "Jina Reader (r.jina.ai) + trafilatura fallback",
-  "count": 101,
+  "count": 108,
   "status_counts": {
-    "ok": 81,
-    "failed": 12,
-    "paywall": 6,
+    "ok": 86,
+    "failed": 13,
+    "paywall": 7,
     "unsupported": 2
   },
   "items": [
@@ -414,6 +414,15 @@
       "text_len": 5214
     },
     {
+      "key": "9957fd5473a4",
+      "file": "github-com--9957fd5473a4.md",
+      "url": "https://github.com/k-dense-ai/claude-scientific-writer/blob/main/skills/scientific-slides/SKILL.md",
+      "status": "failed",
+      "final_url": "https://github.com/k-dense-ai/claude-scientific-writer/blob/main/skills/scientific-slides/SKILL.md",
+      "method": "",
+      "text_len": 0
+    },
+    {
       "key": "9b608c242c83",
       "file": "github-com--9b608c242c83.md",
       "url": "https://github.com/mattpocock/ski",
@@ -432,6 +441,15 @@
       "text_len": 11556
     },
     {
+      "key": "9d5a49d26c98",
+      "file": "github-com--9d5a49d26c98.md",
+      "url": "https://github.com/Gabberflast/academic-pptx-skill",
+      "status": "ok",
+      "final_url": "https://github.com/Gabberflast/academic-pptx-skill",
+      "method": "trafilatura",
+      "text_len": 2720
+    },
+    {
       "key": "ab781712d254",
       "file": "github-com--ab781712d254.md",
       "url": "https://github.com/anthropics/claude-code/issues/91870",
@@ -448,6 +466,15 @@
       "final_url": "https://github.com/cursor/plugins/blob/main/pstack/skills/maintain-verification-skill/SKILL.md",
       "method": "trafilatura",
       "text_len": 4773
+    },
+    {
+      "key": "ae00933b2a49",
+      "file": "github-com--ae00933b2a49.md",
+      "url": "https://github.com/devagrawal09/jev-review",
+      "status": "ok",
+      "final_url": "https://github.com/devagrawal09/jev-review",
+      "method": "trafilatura",
+      "text_len": 3025
     },
     {
       "key": "b88e00bc122a",
@@ -574,6 +601,15 @@
       "final_url": "https://hackernoon.com/what-happens-to-your-engineering-platform-when-ai-raises-the-baseline",
       "method": "trafilatura",
       "text_len": 17814
+    },
+    {
+      "key": "2844ea58b24b",
+      "file": "hermes-agent-nousresearch-com--2844ea58b24b.md",
+      "url": "https://hermes-agent.nousresearch.com/docs/plugins",
+      "status": "paywall",
+      "final_url": "https://hermes-agent.nousresearch.com/docs/plugins",
+      "method": "trafilatura",
+      "text_len": 113
     },
     {
       "key": "3ab263af469a",
@@ -828,6 +864,24 @@
       "text_len": 1462
     },
     {
+      "key": "642a1494ec3f",
+      "file": "typesafe-ai--642a1494ec3f.md",
+      "url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+      "status": "ok",
+      "final_url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+      "method": "trafilatura",
+      "text_len": 13408
+    },
+    {
+      "key": "e9d972301399",
+      "file": "typesafe-ai--e9d972301399.md",
+      "url": "https://typesafe.ai/",
+      "status": "ok",
+      "final_url": "https://typesafe.ai/",
+      "method": "trafilatura",
+      "text_len": 3531
+    },
+    {
       "key": "15c3f33e67f3",
       "file": "uber-com--15c3f33e67f3.md",
       "url": "https://www.uber.com/us/en/blog/uber-eats-search-pipeline/",
@@ -835,6 +889,15 @@
       "final_url": "https://www.uber.com/us/en/blog/uber-eats-search-pipeline/",
       "method": "trafilatura",
       "text_len": 16778
+    },
+    {
+      "key": "19c86f9f82f7",
+      "file": "vercel-com--19c86f9f82f7.md",
+      "url": "https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway",
+      "status": "ok",
+      "final_url": "https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway",
+      "method": "trafilatura",
+      "text_len": 2444
     },
     {
       "key": "b582897e379f",
