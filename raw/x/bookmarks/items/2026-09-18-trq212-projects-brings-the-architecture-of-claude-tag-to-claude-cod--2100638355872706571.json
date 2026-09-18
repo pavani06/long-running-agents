@@ -1,0 +1,10 @@
+{
+  "collected": "2026-09-18",
+  "status_id": "2100638355872706571",
+  "handle": "trq212",
+  "text": "Projects brings the architecture of Claude Tag to Claude Code.\n\nIt has one agent per project that manages memory and spins off subagents for tasks. \n\nYou can ask it to be proactive, to do things on a schedule, etc.\n\nIt feels a lot nicer than a bunch of sessions, try it out! https://t.co/qzyEgLUyN4",
+  "created_at": "2026-09-17T17:29:46.000Z",
+  "url": "https://x.com/trq212/status/2100638355872706571",
+  "links": [],
+  "media": []
+}

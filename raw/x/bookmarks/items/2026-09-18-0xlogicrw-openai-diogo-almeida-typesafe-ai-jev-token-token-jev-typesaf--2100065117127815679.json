@@ -1,0 +1,10 @@
+{
+  "collected": "2026-09-18",
+  "status_id": "2100065117127815679",
+  "handle": "0xLogicrw",
+  "text": "前 OpenAI 研究员 Diogo Almeida 创办的 TypeSafe AI 推出新模型 Jev。它有点像一个能读懂自然语言的超级分类器，不生成文本，只返回选项、分数和概率，专门给软件做判断。\n\n普通大模型需要一个 token 一个 token 往外生成，Jev 则可以并行给出多个结果。TypeSafe 还用新的 RLCD https://t.co/p2IvDgkZSH",
+  "created_at": "2026-09-16T03:31:55.000Z",
+  "url": "https://x.com/0xLogicrw/status/2100065117127815679",
+  "links": [],
+  "media": []
+}

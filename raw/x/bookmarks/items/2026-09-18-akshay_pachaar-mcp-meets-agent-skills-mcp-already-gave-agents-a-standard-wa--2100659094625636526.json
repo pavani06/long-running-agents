@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-18",
+  "status_id": "2100659094625636526",
+  "handle": "akshay_pachaar",
+  "text": "MCP meets agent skills\n\nMCP already gave agents a standard way to connect to tools, resources, and external systems.\n\nNow it also defines a standard way to discover and load Agent Skills directly from MCP servers.\n\nThe flow is simple:\n\n→ connect to MCP server\n→ discover https://t.co/fWudI0ALBw",
+  "created_at": "2026-09-17T18:52:11.000Z",
+  "url": "https://x.com/akshay_pachaar/status/2100659094625636526",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HScKUDba8AASJjV.jpg"
+  ]
+}

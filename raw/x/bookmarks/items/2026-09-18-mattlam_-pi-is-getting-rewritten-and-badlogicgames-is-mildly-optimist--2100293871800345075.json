@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-18",
+  "status_id": "2100293871800345075",
+  "handle": "mattlam_",
+  "text": "Pi is getting rewritten, and @badlogicgames is mildly optimistic!! I posted about the upcoming changes before, but some other points to highlight:\n- durable tasks: saving what is running, state, dependencies and recovery\n- shared task scheduling between extensions\n- flexible https://t.co/J4na5d0lVS https://t.co/NViIntEc1s",
+  "created_at": "2026-09-16T18:40:55.000Z",
+  "url": "https://x.com/mattlam_/status/2100293871800345075",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HSW8tlmWUAAsxa7.png"
+  ]
+}

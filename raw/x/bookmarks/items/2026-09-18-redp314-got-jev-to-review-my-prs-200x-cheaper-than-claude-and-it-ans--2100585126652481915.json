@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-18",
+  "status_id": "2100585126652481915",
+  "handle": "redp314",
+  "text": "got Jev to review my PRs. ~200x cheaper than Claude and it answers in half a second\n\n6 real PRs in the video. $0.00007 each. 1,000 PRs = 7 cents vs ~$14.50 on Opus 5\n\npaste a diff → ONE call to @typesafeai → 14 typed checks come back as probabilities:\nhardcoded secret, sql https://t.co/ChZ4HG54GF",
+  "created_at": "2026-09-17T13:58:15.000Z",
+  "url": "https://x.com/redp314/status/2100585126652481915",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2100585029533372416/img/ZcrsntW2yWgtB_HD.jpg"
+  ]
+}

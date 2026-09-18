@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-18",
+  "status_id": "2100648731003724156",
+  "handle": "hnshah",
+  "text": "I watched @matt_silberman show how he uses Grok Bot for marketing ops this morning and one setup really stuck with me.\n\nHe has a Bot watching his inboxes, calendar and work chat. It figures out what actually needs attention and passes that context to another Bot. That one turns https://t.co/Y51aHUtIXf",
+  "created_at": "2026-09-17T18:11:00.000Z",
+  "url": "https://x.com/hnshah/status/2100648731003724156",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HSb2-RzagAA6Hdq.jpg"
+  ]
+}

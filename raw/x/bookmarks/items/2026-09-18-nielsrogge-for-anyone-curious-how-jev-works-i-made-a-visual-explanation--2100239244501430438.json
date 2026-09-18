@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-18",
+  "status_id": "2100239244501430438",
+  "handle": "NielsRogge",
+  "text": "For anyone curious how Jev works, I made a visual explanation using @claudeai :)\n\nThis is based on the Qwen2.5-RLCD model which @harshagundal released on @huggingface \n\nThe idea is to replace autoregressive LLM generation by a single Transformer decoder (of a pre-trained LLM), https://t.co/UF5zPnEch3 https://t.co/hNcmkkYNvK",
+  "created_at": "2026-09-16T15:03:51.000Z",
+  "url": "https://x.com/NielsRogge/status/2100239244501430438",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HSWLYi3WcAAOPBs.jpg"
+  ]
+}

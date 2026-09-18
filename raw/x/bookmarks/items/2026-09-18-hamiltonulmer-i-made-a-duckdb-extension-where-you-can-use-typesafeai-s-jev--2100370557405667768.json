@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-18",
+  "status_id": "2100370557405667768",
+  "handle": "hamiltonulmer",
+  "text": "I made a DuckDB extension where you can use @typesafeai 's Jev to do quick classification of rows in any csv/parquet file or duckdb table\n\nabout 10sec for 1k rows ~ better than using an LLM, way more ergonomic than a classifier\n\ngame-changing for data analysis! https://t.co/ljB6hoQJFh",
+  "created_at": "2026-09-16T23:45:38.000Z",
+  "url": "https://x.com/hamiltonulmer/status/2100370557405667768",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HSYD5B1bsAAWqeg.jpg"
+  ]
+}

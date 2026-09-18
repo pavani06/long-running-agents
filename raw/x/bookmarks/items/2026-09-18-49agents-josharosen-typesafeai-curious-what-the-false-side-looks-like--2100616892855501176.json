@@ -1,0 +1,10 @@
+{
+  "collected": "2026-09-18",
+  "status_id": "2100616892855501176",
+  "handle": "49agents",
+  "text": "@JoshARosen @typesafeai curious what the false side looks like in practice. a slow agent and a stuck one both log nothing for 10 minutes, so do you diff the last tool call or just watch the file tree for changes.",
+  "created_at": "2026-09-17T16:04:29.000Z",
+  "url": "https://x.com/49agents/status/2100616892855501176",
+  "links": [],
+  "media": []
+}
