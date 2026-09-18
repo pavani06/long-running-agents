@@ -64,7 +64,13 @@ jobs:
             exit 0
           fi
           git commit -m "data(youtube): update ai-learning themes ($(TZ=America/Sao_Paulo date +%F))"
-          git push
+          for attempt in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push && exit 0
+            echo "push attempt ${attempt} rejected; rebased, retrying"
+            sleep 5
+          done
+          echo "push failed after retries"
+          exit 1
 
       - name: Fail if pipeline went red
         run: |
