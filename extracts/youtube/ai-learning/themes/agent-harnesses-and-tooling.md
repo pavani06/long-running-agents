@@ -1,23 +1,20 @@
 ---
-title: "Tema: Agentes, Prompts e Automação"
+title: "Tema: Agent Harnesses and Tooling"
 type: "theme"
 source: youtube
 tags: ["context-engineering", "agent-tooling", "stack-tooling"]
-size: 66
+size: 63
 ---
 
-# Tema: Agentes, Prompts e Automação
+# Tema: Agent Harnesses and Tooling
 
-_Uso prático do ecossistema de agentes Claude (Claude Code, Managed Agents, computer use) combinado com prompting avançado, engenharia de contexto em camadas e automação de fluxos (N8N, ChatGPT) para trabalho autônomo e produção._
+_Tutoriais e frameworks práticos para construir e operar agentes de IA usando harnesses como Claude Code, Managed Agents e computer use, com foco em engenharia de contexto, prompting avançado e automação de workflows._
 
 **Tags dominantes:** context-engineering, agent-tooling, stack-tooling
 
-## Vídeos (66)
+## Vídeos (63)
 - [[extracts/youtube/ai-learning/2026-09-11-next-level-prompts-10-mins-into-advanced-prompting--69bH4IHZivs|"Next Level Prompts?" - 10 mins into advanced prompting]]
-- [[extracts/youtube/ai-learning/2026-09-11-5-notebooklm-hacks-that-will-blow-your-mind--Es5Qb9weRmA|5 NotebookLM Hacks That Will Blow Your Mind!]]
 - [[extracts/youtube/ai-learning/2026-09-11-5-simple-but-weird-chatgpt-5-tricks-to-get-a-10x-better-response--emV9Wo_UuGQ|5 simple (but weird) ChatGPT-5 tricks to get a 10x better response]]
-- [[extracts/youtube/ai-learning/2026-09-11-7-mind-blowing-new-use-cases-for-chatgpt-in-2025-big-changes-ahead--8IUkOAvMP-M|7 Mind-Blowing NEW Use Cases For ChatGPT in 2025 (Big Changes Ahead)]]
-- [[extracts/youtube/ai-learning/2026-09-11-9-usos-do-notebooklm-que-vao-explodir-sua-cabeca-incrivel--WFD2wMiduIE|9 USOS do NotebookLM que vão EXPLODIR SUA CABEÇA (INCRÍVEL!!!)]]
 - [[extracts/youtube/ai-learning/2026-09-11-ai-prompt-engineering-a-deep-dive--T9aRN5JkmL8|AI prompt engineering: A deep dive]]
 - [[extracts/youtube/ai-learning/2026-09-11-anthropic-just-dropped-the-biggest-claude-code-update-yet--B-YQANvDOq0|Anthropic Just Dropped the Biggest Claude Code Update Yet]]
 - [[extracts/youtube/ai-learning/2026-09-11-anthropic-s-applied-ai-team-on-the-evolution-of-agentic-surfaces--K0X9QDRkIdg|Anthropic's Applied AI team on the Evolution of Agentic Surfaces]]
@@ -31,10 +28,10 @@ _Uso prático do ecossistema de agentes Claude (Claude Code, Managed Agents, com
 - [[extracts/youtube/ai-learning/2026-09-11-build-hour-gpt-5--ITMouQ_EuXI|Build Hour: GPT-5]]
 - [[extracts/youtube/ai-learning/2026-09-11-building-ai-agents-with-claude-demo--_al9YYnF2xI|Building AI Agents with Claude! (Demo)]]
 - [[extracts/youtube/ai-learning/2026-09-11-building-with-claude-managed-agents-and-asana-ai-teammates--BrpB-h1e--k|Building with Claude Managed Agents and Asana AI teammates]]
-- [[extracts/youtube/ai-learning/2026-09-11-chatgpt-for-business-updates--9lSRViLugE0|ChatGPT for Business Updates]]
 - [[extracts/youtube/ai-learning/2026-09-11-claude-3-7-is-pure-insanity--afN8U7kAiLc|Claude 3.7 is pure insanity]]
 - [[extracts/youtube/ai-learning/2026-09-11-claude-code-best-practices-code-w-claude--gv0WHhKelSE|Claude Code best practices | Code w/ Claude]]
 - [[extracts/youtube/ai-learning/2026-09-11-claude-codes-new-intent-md-what-is-it--LoMOPj-lO8U|Claude Codes New INTENT.MD, What is It?]]
+- [[extracts/youtube/ai-learning/2026-09-18-claude-cowork-and-chat-are-now-one-claude--qMUf-jwSpMo|Claude Cowork and chat are now one Claude]]
 - [[extracts/youtube/ai-learning/2026-09-11-claude-fable-5-use-cases-you-must-do-now-or-lose-thousands-in-1-week--lplVBFr0Ndc|Claude Fable 5 Use Cases You Must Do NOW (Or Lose Thousands in 1 Week)]]
 - [[extracts/youtube/ai-learning/2026-09-11-claude-mcp-how-to-modify-your-servers-to-the-next-level--aIAxWr5ix1o|Claude MCP - How To Modify Your Servers To The Next Level]]
 - [[extracts/youtube/ai-learning/2026-09-11-code-with-claude-opening-keynote--EvtPBaaykdo|Code with Claude Opening Keynote]]
@@ -62,11 +59,11 @@ _Uso prático do ecossistema de agentes Claude (Claude Code, Managed Agents, com
 - [[extracts/youtube/ai-learning/2026-09-11-i-tried-100-claude-code-skills-these-6-are-the-best--eRS3CmvrOvA|I Tried 100+ Claude Code Skills. These 6 Are The Best]]
 - [[extracts/youtube/ai-learning/2026-09-11-inside-clay-s-eval-stack-300m-agent-runs-one-langsmith-pipeline--Uny6LpmjraI|Inside Clay's Eval Stack: 300M Agent Runs, One LangSmith Pipeline]]
 - [[extracts/youtube/ai-learning/2026-09-11-integre-o-claude-cowork-com-seu-banco-openfinance-pj-ou-pf--i_AjyQmYvbE|INTEGRE o CLAUDE COWORK com SEU BANCO (OpenFinance - PJ ou PF)]]
-- [[extracts/youtube/ai-learning/2026-09-11-learn-80-of-notebooklm-in-under-13-minutes--EOmgC3-hznM|Learn 80% of NotebookLM in Under 13 Minutes!]]
 - [[extracts/youtube/ai-learning/2026-09-11-loop-engineering-to-graph-engineering--BOOfy3Yshtw|Loop Engineering to Graph Engineering]]
 - [[extracts/youtube/ai-learning/2026-09-11-master-the-perfect-chatgpt-prompt-formula-in-just-8-minutes--jC4v5AS4RIM|Master the Perfect ChatGPT Prompt Formula (in just 8 minutes)!]]
 - [[extracts/youtube/ai-learning/2026-09-11-mastering-claude-code-in-30-minutes--6eBSHbLKuN0|Mastering Claude Code in 30 minutes]]
 - [[extracts/youtube/ai-learning/2026-09-11-openai-just-destroyed-ai-coding-codex-2-0--C06FBVXMLCY|OpenAI just destroyed AI coding… Codex 2.0]]
+- [[extracts/youtube/ai-learning/2026-09-18-projects-are-now-a-conversation-with-claude--5qt_aGyAsKk|Projects are now a conversation with Claude]]
 - [[extracts/youtube/ai-learning/2026-09-11-prompting-101-code-w-claude--ysPbXH0LpIE|Prompting 101 | Code w/ Claude]]
 - [[extracts/youtube/ai-learning/2026-09-11-ship-your-first-managed-agent--19HDQ9HppOA|Ship your first Managed Agent]]
 - [[extracts/youtube/ai-learning/2026-09-11-state-of-the-art-prompting-for-ai-agents--DL82mGde6wo|State-Of-The-Art Prompting For AI Agents]]

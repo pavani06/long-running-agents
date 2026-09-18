@@ -1,18 +1,18 @@
 ---
-title: "Tema: Deep Agents e Orquestração"
+title: "Tema: Deep Agents e Orquestração de Subagentes"
 type: "theme"
 source: youtube
 tags: ["context-engineering", "agent-tooling", "agent-loop"]
-size: 19
+size: 18
 ---
 
-# Tema: Deep Agents e Orquestração
+# Tema: Deep Agents e Orquestração de Subagentes
 
-_Arquiteturas de agentes profundos que combinam subagentes paralelos, harnesses como LangGraph, engenharia de contexto e ontologias para executar tarefas complexas de forma confiável em produção._
+_Arquiteturas e ferramentas para agentes profundos em produção — subagentes dinâmicos paralelos, orquestração com LangGraph, ontologias e context graphs com traces de decisão para execução confiável de tarefas longas e complexas._
 
 **Tags dominantes:** context-engineering, agent-tooling, agent-loop
 
-## Vídeos (19)
+## Vídeos (18)
 - [[extracts/youtube/ai-learning/2026-09-17-active-graph-agent-runtime-babyagi-4-yohei-nakajima-untapped-capital--khVX_BUnEwU|Active Graph Agent Runtime (BabyAGI 4) — Yohei Nakajima, Untapped Capital]]
 - [[extracts/youtube/ai-learning/2026-09-17-agents-without-code-skills-yaml-and-filesystems-replaced-python-philipp-schmid-g--fjF8EKnxKCU|Agents Without Code: Skills, YAML, and Filesystems Replaced Python — Philipp Schmid, Google DeepMind]]
 - [[extracts/youtube/ai-learning/2026-09-11-context-graphs-for-explainable-decision-aware-ai-agents-andreas-kollegger-zaid-z--abvQEhvRI_c|Context Graphs for Explainable, Decision-Aware AI Agents — Andreas Kollegger & Zaid Zaim, Neo4j]]
@@ -24,7 +24,6 @@ _Arquiteturas de agentes profundos que combinam subagentes paralelos, harnesses 
 - [[extracts/youtube/ai-learning/2026-09-11-introducing-openwiki-an-open-source-agent-for-repo-documentation--nIVu3zfYprI|Introducing OpenWiki, an open source agent for repo documentation]]
 - [[extracts/youtube/ai-learning/2026-09-11-ontology-in-ai-the-hidden-skill-that-makes-architecture-and-your-career-work--J0hj0ms2ddo|Ontology in AI: The Hidden Skill That Makes Architecture and Your Career Work]]
 - [[extracts/youtube/ai-learning/2026-09-11-ontology-vs-graph-db-why-use-them-together-talkit-global-191-infasis-pwc-consult--U_YyqxUBNiQ|Ontology vs. Graph DB: Why Use Them Together? [TalkIT Global 191, Infasis, PwC Consulting]]]
-- [[extracts/youtube/ai-learning/2026-09-11-performance-monitor-is-going-enterprise--ZIt_R8GwP7s|Performance Monitor is Going Enterprise]]
 - [[extracts/youtube/ai-learning/2026-09-11-pi-architecture-explained-agent-loop-tools-tui-and-more--gTeujlv8qK0|PI Architecture EXPLAINED | Agent Loop, Tools, TUI and More]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-agent-development-lifecycle-build-test-deploy-monitor-interrupt-26--jWy39wavbjY|The Agent Development Lifecycle: Build, Test, Deploy, Monitor | Interrupt 26]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-agent-for-your-agent--VKFKyrrK-Iw|The Agent for Your Agent.]]

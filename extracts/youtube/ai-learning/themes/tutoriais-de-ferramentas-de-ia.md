@@ -1,25 +1,31 @@
 ---
-title: "Tema: Ferramentas de agentes para iniciantes"
+title: "Tema: Tutoriais de ferramentas de IA"
 type: "theme"
 source: youtube
-tags: ["agent-tooling", "stack-tooling", "agents"]
-size: 64
+tags: ["agent-tooling", "stack-tooling", "process"]
+size: 83
 ---
 
-# Tema: Ferramentas de agentes para iniciantes
+# Tema: Tutoriais de ferramentas de IA
 
-_Tutoriais introdutórios sobre plataformas no-code e low-code (n8n, Bolt, Lovable, Cursor, Gemini, OpenAI) para construir agentes de IA, apps e workflows sem conhecimento avançado de programação._
+_Guias introdutórios passo a passo para plataformas de construção de agentes e apps com IA (n8n, Bolt, Cursor, Gemini, Lovable), capacitando iniciantes e não-desenvolvedores a criar workflows e aplicações com pouco ou nenhum código._
 
-**Tags dominantes:** agent-tooling, stack-tooling, agents
+**Tags dominantes:** agent-tooling, stack-tooling, process
 
-## Vídeos (64)
+## Vídeos (83)
 - [[extracts/youtube/ai-learning/2026-09-11-research-agent-3-0-build-a-group-of-ai-researchers-here-is-how--AVInhYBUnKs|"Research agent 3.0 - Build a group of AI researchers" - Here is how]]
 - [[extracts/youtube/ai-learning/2026-09-11-10-insane-ai-agent-use-cases-in-n8n-steal-these--Dt6u-yFEpsk|10 Insane AI Agent Use Cases in n8n! (steal these)]]
 - [[extracts/youtube/ai-learning/2026-09-11-2025-ai-agent-masterclass-learn-how-to-build-anything-with-llms--HkFDWwmtZ-M|2025 AI AGENT Masterclass - Learn How To Build ANYTHING With LLMs]]
+- [[extracts/youtube/ai-learning/2026-09-11-24h-inside-a-30m-silicon-valley-ai-startup-with-no-employees--OpsGJaijG10|24h Inside a $30M Silicon Valley AI Startup with No Employees]]
 - [[extracts/youtube/ai-learning/2026-09-11-26-key-takeaways-from-building-150-agents-in-9-months--jmeGqDu4tPU|26 Key Takeaways from Building 150+ Agents in 9 months]]
 - [[extracts/youtube/ai-learning/2026-09-11-3-ai-workflows-step-by-step-beginner-s-guide-to-n8n--06Beyp_iDL0|3 AI Workflows Step-by-Step (Beginner's Guide to n8n)]]
 - [[extracts/youtube/ai-learning/2026-09-11-4-agentic-frameworks-for-more-efficient-workflows-in-n8n--nSQnJoqK4DQ|4 Agentic Frameworks for More Efficient Workflows in n8n]]
+- [[extracts/youtube/ai-learning/2026-09-11-5-brand-new-digital-marketing-strategies-for-2025-biggest-change-yet--4bZUZeeiacU|5 BRAND NEW Digital Marketing Strategies for 2025 (BIGGEST Change Yet!)]]
+- [[extracts/youtube/ai-learning/2026-09-11-5-notebooklm-hacks-that-will-blow-your-mind--Es5Qb9weRmA|5 NotebookLM Hacks That Will Blow Your Mind!]]
 - [[extracts/youtube/ai-learning/2026-09-11-5-simple-ai-agents-you-must-have-beginners-guide--WLvQCIUWebs|5 simple AI Agents you must have - beginners guide]]
+- [[extracts/youtube/ai-learning/2026-09-11-7-mind-blowing-new-use-cases-for-chatgpt-in-2025-big-changes-ahead--8IUkOAvMP-M|7 Mind-Blowing NEW Use Cases For ChatGPT in 2025 (Big Changes Ahead)]]
+- [[extracts/youtube/ai-learning/2026-09-11-7-tiny-digital-products-guaranteed-to-sell-in-2025--ohiK708oMd4|7 TINY Digital Products Guaranteed To Sell in 2025]]
+- [[extracts/youtube/ai-learning/2026-09-11-9-usos-do-notebooklm-que-vao-explodir-sua-cabeca-incrivel--WFD2wMiduIE|9 USOS do NotebookLM que vão EXPLODIR SUA CABEÇA (INCRÍVEL!!!)]]
 - [[extracts/youtube/ai-learning/2026-09-11-automate-complex-workflows-with-openai-o3--ydJNqND6N_Y|Automate complex workflows with OpenAI o3]]
 - [[extracts/youtube/ai-learning/2026-09-11-automatize-todo-o-seu-trabalho-com-a-ia-project-mariner-do-google-incrivel--E0Jbaikf0o4|AUTOMATIZE TODO O SEU TRABALHO com a IA “Project Mariner” do GOOGLE - INCRÍVEL!]]
 - [[extracts/youtube/ai-learning/2026-09-11-bolt-tutorial-for-beginners-with-the-bolt-ceo-eric-simons--1SfUMQ1yTY8|Bolt tutorial for beginners with the Bolt CEO Eric Simons]]
@@ -31,7 +37,9 @@ _Tutoriais introdutórios sobre plataformas no-code e low-code (n8n, Bolt, Lovab
 - [[extracts/youtube/ai-learning/2026-09-11-build-anything-with-lovable-n8n-ai-agents-no-code--EN0-KNqs6aA|Build Anything With Lovable + n8n AI Agents (No-Code)]]
 - [[extracts/youtube/ai-learning/2026-09-11-build-everything-with-ai-agents-here-s-how--XVO3zsHdvio|Build Everything with AI Agents: Here's How]]
 - [[extracts/youtube/ai-learning/2026-09-11-build-n8n-agents-into-full-stack-apps-heres-how--UaJSXjNX3wo|Build n8n agents into full-stack apps, here’s how]]
+- [[extracts/youtube/ai-learning/2026-09-11-building-gtm-ai-agents-lessons-from-deploying-to-6-000-users-sait-izmit-snowflak--DrTdD-ttjCY|Building GTM AI Agents: Lessons from Deploying to 6,000 Users — Sait Izmit, Snowflake]]
 - [[extracts/youtube/ai-learning/2026-09-11-building-the-universal-ai-automation-layer-ft-n8n-ceo-jan-oberhauser--RUHU-w4Lz1I|Building the Universal AI Automation Layer ft n8n CEO Jan Oberhauser]]
+- [[extracts/youtube/ai-learning/2026-09-11-chatgpt-for-business-updates--9lSRViLugE0|ChatGPT for Business Updates]]
 - [[extracts/youtube/ai-learning/2026-09-11-como-automatizei-um-escritorio-de-advocacia-com-6-agentes-i-a--bFnY2tONtSs|Como Automatizei um Escritório de Advocacia com 6 Agentes I.A]]
 - [[extracts/youtube/ai-learning/2026-09-11-could-a-swarm-of-autonomous-ai-agents-be-the-ultimate-business-asset-stage-1--UL55C80TEb8|Could a Swarm of Autonomous AI Agents be the Ultimate Business Asset? - Stage 1]]
 - [[extracts/youtube/ai-learning/2026-09-11-create-anything-with-nano-banana-pro-heres-how--2VktR2fAmF0|Create Anything with Nano Banana Pro, Here’s How]]
@@ -40,6 +48,7 @@ _Tutoriais introdutórios sobre plataformas no-code e low-code (n8n, Bolt, Lovab
 - [[extracts/youtube/ai-learning/2026-09-11-google-gemini-2-0-is-amazing-realtime-stream-tested-multimodal-api--38N8pgnNANQ|Google Gemini 2.0 is AMAZING - Realtime Stream TESTED | Multimodal API]]
 - [[extracts/youtube/ai-learning/2026-09-11-gpt-builder-2-0-upgrade-custom-gpt-with-parallel-function-calling-advanced-gpts--kBFjvQxKnOs|GPT Builder 2.0 🚀 UPGRADE Custom GPT with Parallel Function Calling 🤯 Advanced GPTs Tutorial]]
 - [[extracts/youtube/ai-learning/2026-09-11-gpt4v-puppeteer-ai-agent-browse-web-like-human--IXRkmqEYGZA|GPT4V + Puppeteer = AI agent browse web like human? 🤖]]
+- [[extracts/youtube/ai-learning/2026-09-11-grant-lee-building-gammas-ai-presentation-company-to-100-million-users--fBfY7tWCecU|Grant Lee: Building Gamma’s AI Presentation Company to 100 Million Users]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-i-use-ai-agents-to-make-money-vibe-marketing-tutorial--PduJ0P6r_8o|How I use AI agents to make money (Vibe Marketing Tutorial)]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-build-a-startup-team-of-ai-agents-n8n-openai-feedhive--Hm0DZtiKUI8|How To Build a Startup Team of AI Agents (n8n, OpenAI, FeedHive)]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-build-deep-research-google-docs-ai-agents-full-tutorial--yQ4F553zhQw|How to Build Deep Research Google Docs AI AGENTS - Full Tutorial]]
@@ -48,17 +57,22 @@ _Tutoriais introdutórios sobre plataformas no-code e low-code (n8n, Bolt, Lovab
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-build-your-entire-ai-workforce-in-one-afternoon-live-demo--oulVKbk0umo|How to Build Your Entire AI Workforce in One Afternoon (Live Demo)]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-create-agent-swarms-with-the-new-openai-assistants-api--8fMnAZI1bdA|How to Create Agent Swarms With the NEW OpenAI Assistants API]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-create-any-n8n-workflow-using-chatgpt--lZuxqbw8IX4|How to create any n8n workflow using ChatGPT]]
+- [[extracts/youtube/ai-learning/2026-09-11-how-to-do-digital-marketing-with-0--AtZiJzQSH7k|How to do Digital Marketing with $0]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-generate-yourself-literally-anywhere-flux-lora-tutorial--sNpQ9ULDMoo|How To Generate Yourself LITERALLY Anywhere - Flux LoRA Tutorial]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-sell-ai-workflows-without-starting-an-agency--QIsJe-nZ5XE|How to Sell AI Workflows (Without Starting an Agency)]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-use-ai-to-build-your-saas-startup-lovable-supabase--mJwPvyc4-rk|How to use AI to build your SaaS startup (Lovable, Supabase)]]
 - [[extracts/youtube/ai-learning/2026-09-11-how-to-use-cursor-agent-for-beginners--2gBcO3ht0ws|How to use Cursor Agent for beginners]]
+- [[extracts/youtube/ai-learning/2026-09-17-how-whatnot-s-live-shopping-beats-traditional-e-commerce--XqEr7hk89HY|How Whatnot's Live Shopping Beats Traditional E-Commerce]]
 - [[extracts/youtube/ai-learning/2026-09-11-i-built-a-4589-website-in-minutes-with-bolt-new-and-cursor-ai--KqiQ4kC8OJI|I Built a $4589 Website in Minutes with Bolt.new and Cursor AI!]]
 - [[extracts/youtube/ai-learning/2026-09-11-i-built-a-marketing-team-with-1-ai-agent-and-no-code-free-n8n-template--ldETapkr8Hg|I Built a Marketing Team with 1 AI Agent and No Code (free n8n template)]]
 - [[extracts/youtube/ai-learning/2026-09-11-i-built-the-ultimate-team-of-ai-agents-in-n8n-with-no-code-free-template--9FuNtfsnRNo|I Built the Ultimate Team of AI Agents in n8n With No Code (Free Template)]]
 - [[extracts/youtube/ai-learning/2026-09-11-i-got-a-private-lesson-on-google-s-new-nano-banana-ai-model--3Zvk4AMCrG8|I got a private lesson on Google's NEW Nano Banana AI Model]]
+- [[extracts/youtube/ai-learning/2026-09-11-i-studied-1-460-onboarding-flows-here-s-what-i-found--Qsq-Sj_rojU|I Studied 1,460 Onboarding Flows. Here's What I Found.]]
 - [[extracts/youtube/ai-learning/2026-09-11-i-tested-bolt-and-lovable-here-s-what-s-best-for-your-project--_PgBDk_GhPo|I Tested Bolt and Lovable Here's What's Best for Your Project]]
 - [[extracts/youtube/ai-learning/2026-09-11-intro-to-agent-builder--44eFf-tRiSg|Intro to Agent Builder]]
 - [[extracts/youtube/ai-learning/2026-09-11-is-this-the-best-vibe-coding-platform-lovable-ai--3eDrAHjSqXo|Is this the Best Vibe Coding Platform? (Lovable AI)]]
+- [[extracts/youtube/ai-learning/2026-09-11-learn-80-of-notebooklm-in-under-13-minutes--EOmgC3-hznM|Learn 80% of NotebookLM in Under 13 Minutes!]]
+- [[extracts/youtube/ai-learning/2026-09-17-lighthouse-or-landgrab-how-to-pick-your-ai-sales-strategy--aakZLqxRQfo|Lighthouse or Landgrab? How to Pick Your AI Sales Strategy]]
 - [[extracts/youtube/ai-learning/2026-09-11-n8n-full-tutorial-building-ai-agents-in-2025-for-beginners--ZbIVOy_GPyQ|N8N Full Tutorial: Building AI Agents in 2025 for Beginners!]]
 - [[extracts/youtube/ai-learning/2026-09-11-n8n-6-exemplos-praticos-ia-chatbots-c-hugo-autotic--DgAu_oJ2-TA|N8N: 6 exemplos práticos (IA & Chatbots) c/ Hugo Autotic]]
 - [[extracts/youtube/ai-learning/2026-09-11-novo-agente-com-passos-infinitos-destronou-manus-flowith-perplexity-labs--plbXQ2SbAMg|NOVO AGENTE com Passos INFINITOS Destronou MANUS? (FLOWITH + Perplexity Labs)]]
@@ -69,11 +83,16 @@ _Tutoriais introdutórios sobre plataformas no-code e low-code (n8n, Bolt, Lovab
 - [[extracts/youtube/ai-learning/2026-09-11-steal-this-ai-agent-idea-today-big-opportunity--lZsZX5p6eHQ|Steal This AI AGENT Idea Today - BIG OPPORTUNITY!]]
 - [[extracts/youtube/ai-learning/2026-09-11-stop-hallucinations-best-n8n-ai-agent-settings-explained--pR51uBNb5es|Stop Hallucinations! Best n8n AI Agent Settings Explained]]
 - [[extracts/youtube/ai-learning/2026-09-11-stop-using-basic-n8n-nodes-these-10-will-change-everything--szGFppZgSI0|STOP Using Basic n8n Nodes! These 10 Will Change Everything]]
+- [[extracts/youtube/ai-learning/2026-09-18-testei-o-novo-plugin-data-agent-do-chatgpt-3-casos-de-uso-de-analise-de-dados--L8BHZLdhtEY|Testei o NOVO PLUGIN DATA AGENT do ChatGPT: 3 Casos de Uso de Análise de dados]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-best-and-worst-ai-website-builders-godaddy-mixo-10web-elementor-etc--Wfk_zhfIn4U|The Best and Worst AI Website Builders (godaddy, mixo, 10Web, elementor, etc)]]
+- [[extracts/youtube/ai-learning/2026-09-11-the-death-of-the-personal-brand-the-future-of-creative-work--RPVxwzJtp4o|The Death Of The Personal Brand (& The Future Of Creative Work)]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-easiest-way-to-use-community-nodes-in-n8n--WI8ikp5YyRw|The Easiest Way to Use Community Nodes in n8n]]
+- [[extracts/youtube/ai-learning/2026-09-11-the-exact-system-to-go-from-0-800-000-on-youtube---5PZj_Wshk0|The EXACT System To Go From $0-$800,000 On YouTube]]
+- [[extracts/youtube/ai-learning/2026-09-11-the-new-ai-growth-playbook-for-2026-how-lovable-hit-200m-arr-in-one-year--6qAB6aUMIeA|The new AI growth playbook for 2026 | How Lovable hit $200M ARR in one year]]
 - [[extracts/youtube/ai-learning/2026-09-11-this-ai-agent-can-do-basically-everything-agent-zero--kTs3kDlKc8w|This AI Agent can do basically everything - Agent Zero]]
 - [[extracts/youtube/ai-learning/2026-09-11-top-4-must-have-ai-agents-for-beginners-easy-setup-guide--4keUCOVpsxQ|Top 4 Must-Have AI Agents for Beginners – Easy Setup Guide]]
-- [[extracts/youtube/ai-learning/2026-09-11-vector-embeddings-tutorial-code-your-own-ai-assistant-with-gpt-4-api-langchain-n--yfHHvmaMkcA|Vector Embeddings Tutorial – Code Your Own AI Assistant with GPT-4 API + LangChain + NLP]]
 - [[extracts/youtube/ai-learning/2026-09-11-we-ve-been-building-ai-agents-wrong-until-now--pC17ge_2n0Q|We've Been Building AI Agents WRONG Until Now]]
 - [[extracts/youtube/ai-learning/2026-09-11-web-scraping-has-never-been-easier-use-google-gemini-2-0--8oD7juOSEN0|Web Scraping Has Never Been Easier  - Use Google Gemini 2.0]]
 - [[extracts/youtube/ai-learning/2026-09-11-windsurf-ai-made-me-rank-1-instantly-free-tool--5XaXLLA4gK0|Windsurf AI Made Me Rank #1 Instantly (FREE TOOL!) 🚀]]
+- [[extracts/youtube/ai-learning/2026-09-11-youtube-is-now-on-easy-mode-for-business-owners-2025-algorithm--g90sjbWrwoY|YouTube is now on EASY MODE for business owners (2025 algorithm)]]
+- [[extracts/youtube/ai-learning/2026-09-11-zero-click-marketing-how-founders-win-when-google-social-llms-stop-sending-traff--MBxhzARQNeo|Zero-Click Marketing: How Founders Win When Google, Social & LLMs Stop Sending Traffic]]

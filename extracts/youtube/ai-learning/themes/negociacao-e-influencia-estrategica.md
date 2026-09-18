@@ -1,14 +1,14 @@
 ---
-title: "Tema: Negociação e Persuasão Estruturada"
+title: "Tema: Negociação e Influência Estratégica"
 type: "theme"
 source: youtube
 tags: ["process", "analise", "decision-discipline"]
 size: 4
 ---
 
-# Tema: Negociação e Persuasão Estruturada
+# Tema: Negociação e Influência Estratégica
 
-_Frameworks de negociação e comunicação persuasiva — do modelo Harvard de princípios ao uso estratégico de perguntas e à arte de pedir — para obter acordos win-win e influenciar conversas com disciplina._
+_Princípios e técnicas de negociação, comunicação persuasiva e disciplina decisória — de perguntas de controle ao método Harvard — para obter acordos win-win e influenciar pessoas de forma estruturada._
 
 **Tags dominantes:** process, analise, decision-discipline
 

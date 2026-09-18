@@ -1,18 +1,18 @@
 ---
-title: "Tema: Agentic Coding com Evals"
+title: "Tema: Ciclo de Vida e Evals de Agentes"
 type: "theme"
 source: youtube
-tags: ["context-engineering", "verification", "agentic-coding"]
-size: 99
+tags: ["context-engineering", "process", "verification"]
+size: 107
 ---
 
-# Tema: Agentic Coding com Evals
+# Tema: Ciclo de Vida e Evals de Agentes
 
-_Estruturar agentes de codificação com skills, memória organizacional e contexto bem definidos, garantindo qualidade e confiabilidade por meio de evals e loops fechados de verificação._
+_Práticas de engenharia — workflows estruturados, gestão de contexto e avaliação sistemática (evals) — para desenvolver, testar e operar agentes de codificação com disciplina e segurança._
 
-**Tags dominantes:** context-engineering, verification, agentic-coding
+**Tags dominantes:** context-engineering, process, verification
 
-## Vídeos (99)
+## Vídeos (107)
 - [[extracts/youtube/ai-learning/2026-09-11-software-fundamentals-matter-more-than-ever-matt-pocock--v4F1gFy-hqg|"Software Fundamentals Matter More Than Ever" — Matt Pocock]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-engineer-of-the-future-is-the-person-who-is-able-to-choose-what-is-worth-doi--n97BCfyFIvw|"The engineer of the future is the person who is able to choose what is worth doing." — Addy Osmani]]
 - [[extracts/youtube/ai-learning/2026-09-11-75m-founder-reveals-his-agentic-engineering-setup--QBfXiWvM0qc|$75M founder reveals his Agentic Engineering setup]]
@@ -27,6 +27,7 @@ _Estruturar agentes de codificação com skills, memória organizacional e conte
 - [[extracts/youtube/ai-learning/2026-09-11-agentic-engineering-working-with-ai-not-just-using-it-brendan-o-leary--BEKc4P87XKo|Agentic Engineering: Working With AI, Not Just Using It — Brendan O'Leary]]
 - [[extracts/youtube/ai-learning/2026-09-11-agentic-evaluations-at-scale-for-everybody-nicholas-kang-michael-aaron-google-de--Ubwb6NzegyA|Agentic Evaluations at Scale, For Everybody — Nicholas Kang & Michael Aaron, Google DeepMind]]
 - [[extracts/youtube/ai-learning/2026-09-11-ai-in-the-sdlc-rethinking-ai-coding-tools-ai-agents--4wMRXmLpdA8|AI in the SDLC: Rethinking AI Coding Tools & AI Agents]]
+- [[extracts/youtube/ai-learning/2026-09-11-ai-tools-for-forward-deployed-engineering-vasuman-moza-varick-agents--l0FLhNqBOic|AI tools for Forward Deployed Engineering — Vasuman Moza, Varick Agents]]
 - [[extracts/youtube/ai-learning/2026-09-11-anthropic-workshop-build-agents-that-run-for-hours-ash-prabaker-andrew-wilson--mR-WAvEPRwE|Anthropic Workshop: Build Agents That Run for Hours — Ash Prabaker & Andrew Wilson]]
 - [[extracts/youtube/ai-learning/2026-09-11-bdd-adr-prd-wtf-capturing-decisions-for-humans-and-ai-alike-michal-cichra-safe-i--504PvfXou5Y|BDD, ADR, PRD, WTF: Capturing Decisions for Humans and AI Alike — Michal Cichra, Safe Intelligence]]
 - [[extracts/youtube/ai-learning/2026-09-11-beyond-the-prompt-goodbye-slop-welcome-determinism-david-khourshid--uMvTAF280so|Beyond the Prompt: "Goodbye slop; welcome determinism" David Khourshid]]
@@ -71,6 +72,7 @@ _Estruturar agentes de codificação com skills, memória organizacional e conte
 - [[extracts/youtube/ai-learning/2026-09-11-i-stopped-using-grill-me-for-coding-heres-what-i-use-instead--6BB6exR8Zd8|I stopped using /grill-me for coding. Here’s what I use instead:]]
 - [[extracts/youtube/ai-learning/2026-09-17-if-we-want-them-to-do-knowledge-work-design-them-as-knowledge-agents-benjamin-cl--O84lhGc1OOI|If we want them to do Knowledge Work, design them as Knowledge Agents — Benjamin Clavié, Mixedbread]]
 - [[extracts/youtube/ai-learning/2026-09-11-inside-cogent-s-three-agent-architecture-for-autonomous-defense-geng-sng-co-foun--D6XWu54oG4g|Inside Cogent's three-agent architecture for autonomous defense | Geng Sng (Co-founder, Cogent)]]
+- [[extracts/youtube/ai-learning/2026-09-18-introduction-to-prioritisation-going-beyond-frameworks-free-spreadsheet--cGIojZawDsM|Introduction to Prioritisation: Going Beyond Frameworks (Free Spreadsheet)]]
 - [[extracts/youtube/ai-learning/2026-09-11-is-this-the-only-skill-left--7zCsfe57tpU|Is this the only skill left?]]
 - [[extracts/youtube/ai-learning/2026-09-11-l8-principal-s-agentic-engineering-setup-just-copy-him--8ZgpAXe5V5w|L8 Principal's Agentic Engineering Setup (just copy him)]]
 - [[extracts/youtube/ai-learning/2026-09-11-l8-principal-s-agentic-engineering-workflow--iQyg-KypKAA|L8 Principal's Agentic Engineering Workflow]]
@@ -82,11 +84,14 @@ _Estruturar agentes de codificação com skills, memória organizacional e conte
 - [[extracts/youtube/ai-learning/2026-09-11-openwiki-brains-general-purpose-memory-for-agents--sBg90v2qfas|OpenWiki Brains, general-purpose memory for agents]]
 - [[extracts/youtube/ai-learning/2026-09-11-pstack-is-agent-overkill-use-it-anyway--lUhXa8GiXns|Pstack Is Agent Overkill. Use It Anyway!]]
 - [[extracts/youtube/ai-learning/2026-09-11-ryan-lopopolo-harness-engineering-how-to-build-software-when-humans-steer-and-ag--c8bE0cj7vHY|Ryan Lopopolo - Harness Engineering: How to Build Software When Humans Steer and Agents Execute]]
+- [[extracts/youtube/ai-learning/2026-09-11-scaling-agents-for-gen-ai-products-anju-kambadur-bloomberg-head-of-ai-engineerin--b2GqTDWtg6s|Scaling Agents for Gen AI Products - Anju Kambadur, Bloomberg Head of AI Engineering]]
 - [[extracts/youtube/ai-learning/2026-09-11-so-i-tried-matt-s-skills--0oXOOlqVu5M|So I tried Matt's skills...]]
 - [[extracts/youtube/ai-learning/2026-09-11-system-design-course-apis-databases-caching-cdns-load-balancing-production-infra--C842vFY5kRo|System Design Course – APIs, Databases, Caching, CDNs, Load Balancing & Production Infra]]
 - [[extracts/youtube/ai-learning/2026-09-11-system-design-explained-apis-databases-caching-cdns-load-balancing-production-in--oYxTTirKY8M|System Design Explained: APIs, Databases, Caching, CDNs, Load Balancing & Production Infra]]
 - [[extracts/youtube/ai-learning/2026-09-11-systems-thinking-for-leaders-designing-solutions-that-work--wSuQQYv-E64|Systems Thinking for Leaders: Designing Solutions That Work]]
+- [[extracts/youtube/ai-learning/2026-09-11-the-agent-development-life-cycle-zack-reneau-wedeen-sierra--0vBKv9yAQi4|The Agent Development Life Cycle — Zack Reneau-Wedeen, Sierra]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-art-of-loop-engineering-how-to-build-agents-that-improve-over-time--jPPiZ22DY3g|The Art of Loop Engineering: How to Build Agents That Improve Over Time]]
+- [[extracts/youtube/ai-learning/2026-09-11-the-enterprise-ai-stack-behind-stripes-company-brain-kai--AbZODZ_4VaM|The enterprise AI stack behind Stripe’s company brain “Kai”]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-era-of-compound-engineering-kieran-klaassen-every-cora--_ehJyfHg1Vk|The Era of Compound Engineering — Kieran Klaassen, Every/Cora]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-golden-age-of-ai-engineering-alexander-embiricos-romain-huet-peter-steinberg--pMggiOb18tc|The Golden Age of AI Engineering — Alexander Embiricos & Romain Huet & Peter Steinberger, OpenAI]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-java-story-the-official-documentary--ZqGSg4b_cZA|The Java Story  |  The Official Documentary]]
@@ -94,12 +99,14 @@ _Estruturar agentes de codificação com skills, memória organizacional e conte
 - [[extracts/youtube/ai-learning/2026-09-11-the-multi-agent-architecture-that-actually-ships-luke-alvoeiro-factory--ow1we5PzK-o|The Multi-Agent Architecture That Actually Ships — Luke Alvoeiro, Factory]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-new-code-sean-grove-openai--8rABwKRsec4|The New Code — Sean Grove, OpenAI]]
 - [[extracts/youtube/ai-learning/2026-09-11-the-pipeline-is-dead-iris-ten-teije-sky-valley-ambient-computing--bRnoEpoK5m4|The Pipeline Is Dead - Iris ten Teije, Sky Valley Ambient Computing]]
+- [[extracts/youtube/ai-learning/2026-09-11-the-production-ai-playbook-deploying-agents-at-enterprise-scale-sandipan-bhaumik--ObTPqBGsEbA|The Production AI Playbook: Deploying Agents at Enterprise Scale — Sandipan Bhaumik, Databricks]]
 - [[extracts/youtube/ai-learning/2026-09-11-tool-skill-or-subagent-decomposing-an-agent-that-outgrew-its-prompt--mWvtOHlZM-I|Tool, skill, or subagent? Decomposing an agent that outgrew its prompt]]
 - [[extracts/youtube/ai-learning/2026-09-11-turn-10-994-notes-into-memory-paul-iusztin-decoding-ai-louis-francois-bouchard-t--ZRM_TfEZcIo|Turn 10,994 Notes Into Memory - Paul Iusztin, Decoding AI & Louis-François Bouchard, Towards AI]]
 - [[extracts/youtube/ai-learning/2026-09-11-understanding-is-the-new-bottleneck-geoffrey-litt-notion--WkBPX-oDMnA|Understanding is the new bottleneck — Geoffrey Litt, Notion]]
 - [[extracts/youtube/ai-learning/2026-09-11-what-is-systems-thinking--Su8r4YKX_ls|What is Systems Thinking?]]
 - [[extracts/youtube/ai-learning/2026-09-11-when-to-build-your-own-agent-harness-harrison-chase-langchain--HI2q3ci3Iuc|When to Build Your Own Agent Harness | Harrison Chase, LangChain]]
 - [[extracts/youtube/ai-learning/2026-09-11-why-senior-engineers-struggle-to-build-ai-agents-philipp-schmid-google-deepmind--3_gYbhABcAE|Why (Senior) Engineers Struggle to Build AI Agents — Philipp Schmid, Google DeepMind]]
+- [[extracts/youtube/ai-learning/2026-09-11-why-enterprise-ai-adoption-is-slower-than-you-think-aaron-levie-box-harrison-cha--agSRMrhNTf4|Why Enterprise AI Adoption Is Slower Than You Think — Aaron Levie (Box) + Harrison Chase]]
 - [[extracts/youtube/ai-learning/2026-09-11-why-every-small-business-needs-to-use-this-method--DAC3YQgLv5E|Why Every Small Business Needs to Use This Method]]
 - [[extracts/youtube/ai-learning/2026-09-11-why-more-context-makes-your-agent-dumber-and-what-to-do-about-it-nupur-sharma-qo--EcqMYoIV57A|Why More Context Makes Your Agent Dumber and What to Do About It — Nupur Sharma, Qodo]]
 - [[extracts/youtube/ai-learning/2026-09-11-why-netflix-is-betting-on-systems-thinkersnot-specialistsin-the-ai-era-elizabeth--t0GiTyz4syY|Why Netflix is betting on systems thinkers—not specialists—in the AI era | Elizabeth Stone (CPTO)]]
@@ -107,6 +114,7 @@ _Estruturar agentes de codificação com skills, memória organizacional e conte
 - [[extracts/youtube/ai-learning/2026-09-11-why-the-frontrunners-say-coding-is-solved-but-engineering-is-not--Q7l8YGiMgUw|Why the Frontrunners Say Coding Is Solved BUT Engineering is Not]]
 - [[extracts/youtube/ai-learning/2026-09-11-why-the-harness-matters-more-than-the-model-yc-paper-club--n9xKblqyQ28|Why The Harness Matters More Than The Model | YC Paper Club]]
 - [[extracts/youtube/ai-learning/2026-09-11-why-we-killed-our-multi-agent-pipeline-subbiah-sethuraman-and-abhilash-asokan-zs--u6jJcIFDLE4|Why We Killed Our Multi-Agent Pipeline — Subbiah Sethuraman and Abhilash Asokan, ZS Associates]]
+- [[extracts/youtube/ai-learning/2026-09-11-why-your-enterprise-tech-stack-isnt-ready-for-ai-agents-christopher-lovejoy-saul--mav15aW9lLM|Why Your Enterprise Tech Stack Isn’t Ready for AI Agents — Christopher Lovejoy & Saul Howard]]
 - [[extracts/youtube/ai-learning/2026-09-11-wtf-is-loop-engineer-how-to-setup-for-real--W6x-hb44C0c|wtf is Loop Engineer & how to setup for real]]
 - [[extracts/youtube/ai-learning/2026-09-15-your-agents-lack-context-here-s-how-to-fix-you-re-absolutely-right-brandon-wasel--KcVkq5L-0f0|Your agents lack context: Here's how to fix "You're absolutely right!" — Brandon Waselnuk, Unblocked]]
 - [[extracts/youtube/ai-learning/2026-09-11-your-attention-is-the-bottleneck-not-your-agents-zack-proser-workos--so9l_MwS2yg|Your Attention Is the Bottleneck, Not Your Agents — Zack Proser, WorkOS]]
