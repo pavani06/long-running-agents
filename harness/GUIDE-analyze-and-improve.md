@@ -570,6 +570,14 @@ ls docs/analysis/2026-06-11-patterns-for-ai-agents/
 
 ## 8.5. O Artifacts Manifest
 
+> **LEGACY (v3, contrato humano-orquestrado):** esta seção descreve o manifesto
+> v3, gerado manualmente pelo orquestrador humano descrito no restante deste
+> guia. O pipeline v4 (`analyze-and-improve` Etapa 5) rejeita manifestos nesse
+> formato — `phase5_integrate.py` falha rápido diante de um shape v3. O dono
+> atual do contrato de manifesto é `scripts/analyze-and-improve/README.md`
+> (`artifact_manifest.py`). Mantida aqui apenas para histórico e para uso
+> humano-orquestrado.
+
 A partir de 2026-06-14, o output da Phase 4 mudou: em vez de um único `integration-roadmap.md`, o orquestrador gera um **artifacts manifest** — um par de arquivos `.yaml` + `.md` que serve como contrato entre a Phase 4 (geração de artefatos) e a Phase 5 (integração nos índices).
 
 **O que é**: Um manifesto que lista todos os artefatos concretos gerados na Phase 4 (canonical docs, skills, exercises), mapeia cada um para os índices que a Phase 5 deve atualizar (Integration Map), e documenta padrões não gerados (skipped) com justificativa.

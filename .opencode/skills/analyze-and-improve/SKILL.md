@@ -894,6 +894,13 @@ Antes de delegar a Phase 5, o orquestrador DEVE gerar o artifacts manifest (aç�
 
 O manifesto é o contrato que a Phase 5 lê como input. Sem ele, a Phase 5 não sabe o que integrar.
 
+> **LEGACY (v3, human-orchestrated contract):** os schemas abaixo descrevem o
+> manifesto v3, gerado manualmente pelo orquestrador humano. O pipeline v4
+> (`analyze-and-improve` Etapa 5) rejeita manifestos nesse formato — `phase5_integrate.py`
+> falha rápido diante de um shape v3. O dono atual do contrato de manifesto é
+> `scripts/analyze-and-improve/README.md` (`artifact_manifest.py`). Mantido aqui
+> apenas para histórico e para uso humano-orquestrado.
+
 ### Schema do Artifacts Manifest YAML
 
 ```yaml
