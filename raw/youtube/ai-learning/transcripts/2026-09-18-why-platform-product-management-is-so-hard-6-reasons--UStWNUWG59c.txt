@@ -1,0 +1,828 @@
+So, here's a hill that I'm willing to
+die on. It's the fact that platform
+product management is harder. There's no
+ifs or buts about it for me and I want
+to explain why. I've coached product
+managers, product teams all around the
+world, product managers from companies
+you'll recognize like Stack Overflow,
+Miro, Trip Adviser, and many more that
+you wouldn't. And one thing is clear,
+platform product management is really
+hard. In this video, I want to break
+down six interrelated reasons why it is
+harder. If you're a platform product
+manager, I'm hoping this will help you
+understand your job a lot better. And if
+you're not a platform product manager
+and you're curious as to why your
+platform PM peers always seem to be
+having a hard time, then this video is
+for you. And hopefully it will explain
+why that is. So I want to get into the
+first reason and what that is is the
+fact that you don't have this direct
+line. So right, if we think about a
+product, right, and then you have users
+of that product. This is a very basic
+product, right? Like BTOC has this and
+often inside BTOC and those people are
+also their customers being the people
+who use it and then the people who pay
+for it. Right? Now in platform product
+management you have these products exist
+but then you as a platform exist over
+here somewhere. Right? So what you need
+to do is you're building something that
+this team or product then leverages in
+order to serve these customers. So now
+you're like once removed and this
+becomes hard because you don't need to
+just understand what this team is all
+about. You need to also understand their
+end customers, what jobs to be done are
+happening over there and how your
+product helps enable them to best serve
+those people. And now this is
+fundamental and really important because
+if you don't nail this and this is why
+I'm starting here, you'll forever be an
+order taker. Because if you can't
+understand this chain of events, the
+only thing that you can do is just wait
+to be told by this team what they need
+and then you basically become that
+backlog manager where you just take the
+queue from all these teams, you know,
+take a ticket type thing, right? Your
+sole job then in that is to take
+people's orders and then fulfill those
+orders. That is not the most effective
+way in my opinion to drive great
+outcomes and get the best out of a
+platform. And if I was a platform
+product manager, I'd be pretty miserable
+if I was in that situation. So what you
+want to do, and this is why this whole
+chain of events is important, is you
+want to try to understand these end
+customers. Now, you don't need to
+understand them to the level of depth as
+the PM and the team and the designer and
+the trio on this product, how well they
+know it, but you need to know it well
+enough that you can start to anticipate
+needs and start to be proactive. Right?
+So, this starts to shift you away from
+this reactive work, right? This is
+reactive
+and it starts to shift you towards being
+proactive and you starting to be able to
+go to these people and you know there
+could be multiple teams here. It's not
+always one, right? Because that's the
+point of a platform. And you being able
+to go to them and say, "Hey, we have
+this new capability and here's the types
+of problems that this new capability can
+solve." And whenever you're ready to
+start using that new capability, totally
+up to you when you want to use it, but
+the capability is there when you need
+it. And what this starts to do is starts
+to decouple this relationship. So they
+are no longer waiting on you to do
+things and you're starting to get ahead
+of the curve and you're starting to
+actually have things like a vision for
+the for the um platform. And sorry
+that's a very very thick um star, but
+you can start to have a vision and a
+strategy
+and you can start to piece all of this
+together and start to be more proactive
+towards that. And what this looks like
+in practice. So, I want to get tangible
+here so you can start to understand what
+this looks like in practice. So, let me
+draw this another way. You've got a
+platform and that platform services
+multiple product lines, let's just say,
+right? And each of them have different
+customers and some of them might have
+similar customers because there's
+overlap because we're a very large
+company. Um, and some of them might have
+different customers. So, let me just
+label this, right? So, we got platform
+down here and this isn't mine. I've I've
+heard this be used from other people,
+but another way that I like to think
+about this or frame this is these
+products customering products or
+sometimes we like to call them customerf
+facing and then I like to think of
+platform work as customer enabling
+products. So you can think of this as
+the difference between one is customer
+serving or facing facing and the other
+is enabling. So we're enabling those
+people to be able to serve. And then
+what we ultimately have at the top is is
+your customers slash users at the top.
+Platform product management becomes hard
+because what you want to do is you
+actually want to invest in understanding
+these people's needs and you want to
+invest in these people. So you've got
+two layers in the cake that you need to
+deal with. And what I can do as a
+platform product manager is I can start
+to piece together. Oh, these people have
+this need and these people have this
+need and oh, by the way, these people
+don't have that need, but these needs
+could be solved in the same way. Oh,
+that's interesting. Okay. Okay. Here's
+another need that everyone has. Okay.
+How can we solve that in a way that it
+kind of goes across everyone? So, what
+you're trying to do is try and
+understand those multiple different user
+segments. So, this is point number two
+of why it's hard. So point number two is
+that you now have multiple segments and
+quite a complex map of customer
+opportunities that you need to serve and
+at the same time you need to understand
+u all of these people. So this team,
+this team and this team and this team
+and you need to understand how they use
+your platform in order to serve those
+needs. So you kind of need to understand
+this stack and you've got many multiple
+players going on here. You got multiple
+different customer segments, but then
+you've also got this dynamic which is
+the whole point of up here where you
+also have you need to understand the
+people using your stuff here. So most of
+the time these people are like engineers
+and more and more today with AI now it's
+starting to be like AI agents. So how do
+I help a coding agents understand how to
+use our stuff as best as possible? And
+this is a whole another ball game of
+like creating context and documentation
+and and and things like that, right? So
+you need to piece all of that together.
+So you need to balance all of these
+needs. Now what this comes with as well
+is often these people will also have
+some of these teams will have different
+stakeholders and they'll have different
+people's opinions. So another thing that
+makes this really really hard is you've
+also got to balance that and manage
+that. So the role gets very complicated
+because very quickly you get many
+different types of um end users that is
+many different types of users. So people
+who use your platform i.e. the other
+teams and the engineers inside that team
+and and AI coding agents. Now you also
+end up having very quickly a lot of
+different stakeholders. Now just
+touching on stakeholders quickly I did
+do a video I'll throw it up here around
+stakeholder management and stakeholder
+mapping. My favorite stakeholder mapping
+technique. So if you do want some more
+help about mapping out all of those
+stakeholders go check that out. By the
+way I've used that technique multiple
+times on platform products. That is
+number two of how it gets uh much more
+difficult as a result of all of this.
+Another challenge that this creates is
+if you have this chain, what this also
+means is that
+your outcomes. So if we think about the
+customer outcomes over here is much more
+lagging because you can do a bunch of
+stuff and like I said sometimes you will
+even be proactive here. So you might do
+a bunch of things that very few teams
+are using yet. So there's a lag here.
+There's a lag between the time you build
+it and the time it gets used by a team.
+And then there's a lag between the time
+that they start using it and the time
+that they deploy it into customers hands
+and we actually get some type of
+measurable customer outcome there. This
+also means you need to have this chain
+of events as success metrics. So what
+you want to do is you want to be able to
+measure and still define that ultimate
+outcome, right? So what is the thing
+that you're helping these teams enable
+and hopefully there's alignment there,
+right? Like hopefully this is like a
+group OKR that you know this team and
+you can all be aligned on right on the
+same thing. But you also need to then
+measure things here, right? You need
+metrics here. How many people are using
+it? How are they using it? Are they
+happy with using it? Is it easy to use?
+Is it is it hard to use? You may need
+something between here as well. Uh and
+then you need to piece this whole puzzle
+together. So somebody in the product
+mentorship. So for those who don't know,
+I run a product mentorship. So basically
+a bunch of senior product managers and
+product leaders are in there and I work
+with them one-on-one and inside groups
+around these types of challenges and
+helping them be better. One of the
+product managers in there, she owns a
+platform. So she's 100% in this
+situation. And something that we've been
+working together over the last six
+months on is success metrics because it
+is so hard. And to give a tangible
+example of this, this might be something
+as simple as saying like 40% of eligible
+teams, so teams that we think could use
+this and are would get benefit off it
+have adopted it. And yes, that's a real
+like almost vanity type metric because
+it's like, well, just because they've
+adopted it, is it actually driving any
+outcome yet? But we need some type of
+leading indicator that we can measure in
+the near term and then we can basically
+then have the follow-up to say okay
+those teams who have adopted it. So this
+is where it gets tricky. We now need to
+have a snapshot in time. So we need a
+before adoption and then we need to
+track after. And this is something that
+we've been working with. We've been we
+took a snapshot a benchmark which was
+three months leading up to when they
+adopted it. And then we have a roll in
+three month average that we look at some
+types of outcomes. So some of the things
+that to give the tangibles examples. So
+her her platform is around developer
+experience. It's around things like
+observability around things like helping
+them do better with incident management
+that type of stuff. So one of the
+metrics we have over here is things like
+mean time to resolve which is like a
+really common dora type metric which is
+like how long does it take us to resolve
+an incident when it happened. So, we
+take a three-month average or which we
+took a three-month average before they
+started using it and then we started to
+track the teams that had adopted it and
+we also track track this to see if the
+adoption can increase over time and we
+then do a rolling average to show
+whether the meantime to resolve is
+actually starting to trend down. And
+then we can have this hypothesis that
+basically says we believe because we can
+see a correlation between the teams that
+have adopted it and a reduction in
+meantime to resolve. But like I said,
+this is a roll in three-month average.
+So it takes 6, 9, 12 months to even see
+that metric move. In the meantime, you
+need to report to senior leadership. So
+you need to have stuff like this that
+you can actually report to. So that's
+another thing of how it gets hard. And
+kind of going further down on this this
+path here, this platform work is kind of
+the unsexy and invisible work. So it's
+not like there's a UI that you can point
+to. Not always. Sometimes there's a
+dashboard, that type of stuff, but
+you're kind of looking at APIs and JSONs
+files and that type of stuff. And as a
+result of it, it is very abstract. It's
+very hard for certain stakeholders to
+get their head around it. And this is a
+fourth reason of why it gets so hard is
+because it is this abstract thing that I
+can't just like pull a pull a prototype
+together and be like, hey, this is what
+we're doing. It also becomes hard when
+you're sitting with customers and you're
+trying to prototype. So, I had this
+conversation yesterday with that product
+manager because she's getting more into
+like claude code and trying to get more
+up up to speed with AI and she's like,
+I've been looking at like Replet and
+like Claude design, but I'm just not
+sure how I would use those tools to
+prototype. So, we had this big
+conversation about like what are some of
+the ways that you would use it to
+prototype? Because it's not so simple as
+like I will whip up a UI or a design,
+but some of the things you could do is
+you could use code, claude code in
+particular, codeex, whatever you want to
+use. You could get it to mock up a JSON.
+You could explain what you're trying to
+achieve and you can be like, "Here's
+what the JSON file would look like." And
+then you could put that, you could go
+use a test app with some engineers. How
+does this work? Is this confusing? Does
+this make sense? You could get it to
+generate some initial documentation,
+right? And you could see again test
+that. Um, other prototypes we went
+through were like dashboards, right?
+Maybe we could get Claude design to mock
+up what a dashboard could look like, a
+reporting dashboard that you could show,
+you know, engineering managers and and
+get their feedback on. But you can see
+how this becomes a lot more about
+adapting what you know. It's not so
+straightforward. And hence why she had
+that question cuz she was like, "Okay, I
+kind of like get that I need a prototype
+and I get that these tools can help me,
+but how do I prototype in this world? I
+own a platform. I don't really own like
+a UI, right? There's nothing really to
+show other than maybe some dashboards
+and stuff." Um, other things that we did
+talk about were like solution concepts
+on a page, right? You could get it to
+mock up what this like just kind of
+explaining what this could look like or
+even like a storyboard. But that's kind
+of the world that you're in when it
+comes to things like prototyping. And as
+a result of all this, you need to also
+get better at storytelling. And this is
+something that her and I have been
+working on and this is a top topic for
+us that we've been working on together
+in the product mentorship is that you
+start to realize that the product can't
+just speak for itself. There's no like
+here's a prototype and you show some
+screens and you show show some users
+using it and you know like everyone in
+the room can grasp the concept like ah I
+get it right like I can see it. There's
+there's none of that. So, you need to
+get much better at storytelling and
+trying to explain what it is and what
+the benefit is and why it's so hard and
+why it's not so straightforward and and
+all of those types of things. Which
+means that another reason why I talk
+about this chain, I talk about why it's
+so important to not just understand the
+internal teams because this is where
+most teams stop. You need to also
+understand um those end customers as
+well. And the more that you can do that,
+the more you can have good stories in
+your arsenal where you can pull out and
+say this is what customers are trying to
+achieve. This is how that team would
+would try and solve it and here's how
+the platform kind of fits into it,
+right? Like you can start to piece that
+together. And when you can draw that
+line to something that is actually
+visual and something that is end
+customer focused, again, that's going to
+just help and make that storytelling
+better. But you've got to do a much
+better job of storytelling and it just
+becomes an absolute crucial skill that
+you need to start to build and just to
+tell a story. Um I had to present to an
+executive board uh the just earlier this
+week for a client around some of the AI
+platform work that we're doing. And when
+I say platform in this sense, we're
+building AI internal products and some
+of it will be platform. Some of it does
+have a UI and it will, you know,
+internal users will use it. But as a
+result, a lot of the work that we do on
+the AI front is like platform work. It's
+really invisible and you don't see it.
+If you're building agents, there's a lot
+of invisible work. Like you don't see
+what's going on there. And we're doing
+like fine-tuning and evals and rag and
+that type of stuff. And again, that's
+stuff that's not visible. and and when
+when we move accuracy and we improve the
+quality off the agent, it's very hard to
+just show that because it's just
+spitting out JSON files. So, it's not so
+easy to demo that to an executive board,
+right? That most of the people around
+the room aren't technical. So, I had to
+present and I had to do a lot of
+storytelling to help explain to them
+what it is that we're trying to do, why
+it's fundamentally different and and the
+benefits of it and the challenges of it
+and everything like that. So another
+thing that makes this a lot harder as
+well is that as I mentioned here we
+talked about adoption right? So we
+talked about that adoption metric.
+Internal products are in the same boat
+here where we are building something for
+internal staff and you could try to
+mandate and a lot of companies do this.
+You could try and mandate adoption can
+be like too bad everyone has to adopt
+it. And what I've always found is
+mandate and adoption doesn't work. you
+just annoy people and they get very
+unhappy and they don't use it or they
+find workarounds or they just end up
+doing everything in a spreadsheet and
+they just kind of like begrudgingly do
+it right. That's not successful product
+management. We don't want people to you
+be forced to use our tools, right? Like
+that's that's not the goal here.
+Internal adoption is hard. It's hard to
+force it and it's hard to get people to
+to adopt things just like with old
+products, right? And you will constantly
+have this push from the internal
+stakeholders in the company to try and
+push people to adopt your product like
+ASAP, right? And to they will want to
+just mandate it. But there's a concept
+known as the diffusion of innovation
+which has this kind of like bell curve
+which basically shows that like you've
+got innovators and early adopters and
+then you start to have like the
+majority, early majority, late majority
+and then you have like lagards who get
+forced to use it. And this is kind of
+like how things work from an adoption
+point of view. And one of the things
+that you want to try to balance is that
+force and adoption pushes you all the
+way up into the latter parts cuz there's
+no doubt you're going to have late
+majority lagards some early majority
+people inside your company. Your
+company's going to be largely
+representative of this unless you're
+like a startup or a small company. But
+if you're a larger company, which most
+platforms exist in larger companies
+because there's no point in investing in
+a platform if you're a really really
+small company, unless you have a
+platform product, but if you have a
+platform product, the same deal all
+applies here, right? The everything
+still applies. The end users are just
+your customers users, if that makes
+sense. But the thing that you want to do
+here, and this is where the internal
+adoption thing becomes a tricky dynamic.
+When you ship something to the market,
+this happens naturally because you can't
+force customers to adopt your product.
+So what often happens is the first lot
+of people who adopted are early adopters
+and innovators. These people are people
+who are quite forgiving. They give you
+really rich feedback. They're used to
+stuff breaking and not being stable and
+not being the best. And these people
+become a really good testing ground and
+feedback source in order to improve your
+product to find things like product
+market fit, right? PMF. And then once
+you have PMF, you'll start to scale and
+grow. And when you do that, you'll start
+to move into places like the early
+majority, right? That's what will happen
+as you grow. But what you have done
+organically because it's a market
+dynamic, it's a user behavior, a
+customer behavior is you've you've
+leveraged those early adopters and
+innovators. This is if you've done your
+job well, but this is what you should
+do. Bread and butter product management.
+This is um you've leveraged them in
+order to improve your product. You've
+found product market fit through them
+and now you're scaling and organically
+growing, but the people who are adopting
+your product are largely happy and
+satisfied with it because you have
+iterated and improved it. The danger of
+internal products is you're just going
+to force everyone to adopt it, which
+means you're going to jump over to here
+somewhere and those people are not going
+to be forgiven. They're going to be very
+unhappy because there's going to be
+missing functionality. it's going to be
+hard to use. It's going to be all of
+those types of things, right? So,
+internal products have this, but
+platforms are in the exact same
+position. So, you've kind of got to
+resist this urge. And what you want to
+do is try to apply the same techniques,
+principles, and tools that you have in
+your toolkit for when you ship B TOC
+products or even B2B products to the
+market and you want to apply it
+internally. But this becomes harder to
+do because you're going to have all
+these pressures elsewhere. So, for
+example, what you want to do is you want
+to find these people in the company. You
+want to seek these people out. They
+might be specific teams and you want to
+use them as like your pilot group or
+your early adopters and you want to go
+through the same thing. You want to go
+from here to then like a beta and then
+you want to be able to get enough, you
+know, feedback that you then scale it
+across the organization. And that's why
+you start to have things like what I had
+back here about that 40% adoption
+because then you can start to dial that
+up over time. And this becomes more
+difficult to do because it's just
+different. It's just a different dynamic
+when you're doing as a side a company.
+Sometimes people don't want to talk to
+you. You're trying to convince them that
+this is a good idea. You want to get
+them on the pilot. You want to get them
+on the beta. This is just a different
+thing that you need to do. So, you can't
+force internal adoption or at least you
+shouldn't enforce internal adoption. You
+definitely can, but you want to be
+mindful about doing that and you want to
+resist the urge and you want to make
+sure you're still doing techniques and
+stuff like this to in order to kind of
+scale it through the company. So, that's
+another thing that makes it really
+really hard. And then the last thing
+that makes this hard is you then get
+into a position where you have because
+because you're going to grow this
+platform. You're going to extend it. And
+then you're going to get into a position
+where you have a platform that's used by
+multiple teams and you're extending and
+improving it. And that might mean that
+you start to have challenges around
+versioning, backwards compatibility, all
+that type of stuff. Because some of
+these teams might move on to new tech
+stacks. This team might be on version
+two. you've now built version four, they
+don't really want to update to version
+four yet. So then you need to maintain
+version four and version two, etc.,
+etc., right? There there's like all of
+these other dynamics that happen. And by
+the way, you want to do this type of
+stuff. This is one of the most important
+things. You want to decouple, right? You
+want to decouple. You don't want to be
+dependent on each others. As soon as you
+get into a position where all of this is
+dependent on each others, you will be in
+a world of hurt as a platform product
+manager. This will be a bit of a pain
+that you'll incur that will hopefully be
+less than the alternative because the
+alternative is we are moving to version
+4. Now everyone has to update which
+means that you're now in this big like
+enterprise
+sync planning dependency nightmare where
+you need to go around to every single
+team that uses your platform. You need
+to tell them, hey, we're rolling out
+this new version on this date. You need
+to be ready for it. And then we have to
+go and line them up and we need to make
+sure that they're ready for them. And
+then if one person can't be ready in
+time, you don't need to hold the whole
+thing back because you can't release
+because then it'll break everything and
+you just end up in this coupled
+dependency Tetris nightmare. So I want
+you to avoid that. And what that means
+is you want to decouple this. But this
+also means you're going to incur other
+pain which is backwards compatibility,
+version controlling, and you need to
+start to manage like how many versions
+do I let things get out of sync. Here's
+a tip for effective platform product
+management. And like I said, I can't go
+completely deep into this cuz this will
+be like a whole 2our video on itself.
+And maybe maybe I'll end up doing it
+anyways if enough people tell me that
+would be useful. How many do you get out
+of sync? Do you do V2, V3, and V4? And
+that's your window. You'll only ever
+have three versions running at once or
+is it longer or is it less? What is
+better for you to do is to give them a
+window of opportunity to upgrade rather
+than giving everybody the same date. So
+if I tell everyone that version 4 is
+coming, this means that version two will
+be sunseted in 6 months. So they now
+have a six-month window to get of
+version two and hopefully onto version
+four or five or whatever version is
+latest at that point in time. But what
+you do is you stop having to make sure
+everybody's aligned and we do this big
+bang thing and we can decouple it and we
+can um actually give people a window of
+opportunity. So, we can say, you know
+what, if you've got really important
+things to do this quarter and those
+things are not like you just need to do
+that and you can't fit this work in,
+that's fine. You've got another two
+quarters to kind of pick it up. Um, but
+then it's on you like you've got to
+prioritize and then you've got to kind
+of manage things that way. But again,
+this also is part of parcel and why it's
+so hard is because you've got all of
+these internal people too that you need
+to manage around it. So there's just a
+lot of you know and the other challenge
+too is that they're like your peers
+right so like you don't really have any
+power over them and you don't have any
+authority and also they can escalate
+right and they can complain to their
+bosses and it can kind of come back to
+you so it's a very tricky situation to
+be in as a result of all of that right
+um I mentioned storytelling obviously
+becomes very important but as other kind
+of like more human skills or or things
+to keep in mind that this means that the
+ambiguity and the complexity just goes
+through the roof
+So for the product leaders out there,
+this is the reason why I say it's
+harder. And if it's harder, what this
+means from a resourcing people, team
+dynamic point of view is you want to put
+your more senior people on these things.
+As a product leader, I would would not
+put a junior person on a platform. It's
+far too complex with them. On a
+platform, you need to not only know the
+basics, but you need to now adapt the
+basics, right? Like I've talked about
+some of the basics that you adapt. Even
+even something like customer interviews.
+Now I need to interview engineers and
+and I need to interview my peers. I need
+to go interview teams. Like that's a
+different dynamic than interviewing
+customers. Totally different dynamic,
+right? Plus I got this massively complex
+set of users between users on my
+platform and end users that are things
+that you know are our ultimate end
+customers inside the organization. I'm
+trying to balance all of their needs and
+all of their expectations. I'm trying to
+look for opportunities where the
+platform would fit into it. I'm trying
+to be proactive. and try to have a
+strategy on something that's ambiguous
+and not tangible. And storytelling,
+stakeholder management all gets more
+complex. You got more stakeholders to
+manage. You you need to get better at
+storytelling. So, if you're not even if
+you haven't even mastered the basics of
+storytelling, being thrown on a platform
+is super hard. Not to mention that
+things become much more techy, right?
+Like we're talking about APIs and JSON
+files and that type of stuff. We're not
+talking about things like a UI and
+buttons and and features and that type
+of stuff. So just fundamentally very
+different. And as a result of all of
+that, you've got to be really good at
+the basics. And then you've got to adapt
+the basics to this context. And for
+anyone who's growing in their careers,
+this is also something that sets the
+more senior people apart from the more
+junior people is more senior people are
+able to adapt their skills to the
+context, right? So you start to get more
+exposure to different contexts from B to
+C to now, you know, platform type stuff
+to internal products. you start to learn
+how to adapt this and like I said it's
+got a lot of attributes that other
+products have. So if anything, if I had
+the opportunity to move, like if we were
+a really big enterprise, I would be
+trying to upskill my junior people by
+putting them on something more
+straightforward like a B TOC mature
+product. I try to move them maybe into a
+growth space in that space or a zero to
+one. Then I'll try to move them into
+more complex things like internal
+products, maybe even B2B if we also have
+B2B products out there. A lot of large
+enterprises, totally true. They've got a
+lot of both. or you put them on the B
+TOC side of the B2B product, right? So
+you put them on the user side, not on
+like having to deal with the buyer
+dynamic and stuff like that. You just
+give them a very defined space that's
+very user focused. And then I want to
+graduate them towards something like
+platform product management because at
+that stage they've been exposed to what
+internal products are like. They've been
+exposed to dealing with internal users
+and and trying to adapt product the
+product craft to internal products. Then
+they've been exposed to having this
+complexity of multiple different user
+segments, right? and I can warm them up
+to the the the
+complexity um of platform product
+management because platform product
+management now starts to have all of
+those dynamics tied into one. Hopefully
+that was useful for you. Hopefully that
+gives you an idea of some of the
+dynamics of why platform product
+management is a lot harder. Hopefully
+that also helps you if you're a platform
+product manager think about some things
+differently. Uh if you're interested,
+let me know. I'm happy to do like a
+longer video or do some type of master
+class around platform product
+management. Maybe I'll do it as a live
+stream even. I think that'll be super
+cool because then we can kind of talk
+about it. Speaking of live streams, I'm
+going to throw up two of my most popular
+live streams up here so you can go check
+them out if you're interested in it.
+Keep an eye out for future live streams.
+I would love you to join us live as
+well. This can be a future topic. Let me
+know in the comments. And as always, I
+appreciate all of the support. I'll see
+you at the next one.

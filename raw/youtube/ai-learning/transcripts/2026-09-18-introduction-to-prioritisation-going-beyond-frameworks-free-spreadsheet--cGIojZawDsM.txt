@@ -1,0 +1,445 @@
+So if you feel like prioritization is hard, this is the number one scenario that I run into. If you're stuck with
+stakeholders are coming at you with all these ideas and the solution to it is not a framework cuz you can throw rice
+against all of this. You just might end up making the wrong calls like we kind of sketched out up here, right?
+[music] So, I pulled this together and this is
+just a mega spreadsheet of prioritization frameworks. I'll make this available. I'll put a link down below so you can go access it. But
+basically, I went through all the prioritization frameworks I could think of. Then I started looking at like prioritization adjacent methods as well.
+I call them adjacent methods because believe it or not, Kano model is not a prioritization framework. is actually a
+feature categorization framework or you could use as like a job to be done framework but it's more features but it
+can help you prioritize is really the way kano work but anyways I kind of went through all of these and then I started
+synthesizing them so I started mapping them going okay what components what makes up these frameworks and JSON
+frameworks and then from there I started to categorize them and what I found was really there was kind of like uh how
+many is this like seven I think yeah seven kind of different dimensions which can all be laded up into four top
+dimensions. So let's talk about them. We tend to have some type of effort or ease, right? So is it easy to do or is
+it hard to do? Kind of two lenses to the same thing. That's kind of the first dimension you see a lot. Now on the flip side, we have a value variations. We
+have value. Lots of frameworks call out value. But some call out impact instead of value. I'm going to zoom into that
+one a little bit later in this video because I think the there is a delineation in my mind around impact and
+and value that I think is very very important. But then you've also got like other dimensions around value which are
+like things like reach which is in rice. So that's like how many customers does it impact or scale like how how how big
+or of a scale is this? And I see these as value variations because if it impacts more people that tends to mean
+that it's more valuable because there's more people that we can solve it for or if it has more of a reach or more scale
+then it tends to be more valuable. We didn't have like time elements, right? Which tends to like lead lead itself
+more towards like urgency. Like you can see over here with cross the delay, you got like time criticality, right? So
+these tend to be just dimensions around time. Like is this urgent? Is it not?
+That's side the fence. And then we have categories around risk. We have confidence and evidence. So if we have
+more confidence about something or if we have more evidence around something, we tend to have lower risk. And if we have
+lower of those things then risk tends to be higher. And then sometimes we just call out risk like how risky is this
+right? So like you have risk reduction here as an example inside inside cost of delay. The reason why I point this out is because if you actually think about
+prioritization prioritization inevitably demanding off you to combine multiple of
+those dimensions at once and it's not going to be the same across multiple things. Let's take the most common type
+of thing. It's some type of new feature, right? A new customerf facing feature. We would probably definitely say there's
+some type of impact to it, some type of, you know, value that we expect to get out of it. Some type of change in user
+behavior that we expect um it to drive. Uh we'll probably also safely say that there is a cost component to it, right?
+So there's like effort, you know, it could be, you know, one month to deliver type thing. And then we get to urgency.
+Now maybe this new feature isn't urgent at all. Like urgency is just not relevant here as an example. Um that's
+fine. Okay, we could release this feature at any given time. It's not a big deal. You might have another feature
+just to kind of paint a different one. And we'll call this one feature A. Then we'll call this one feature B.
+This might actually have an urgency around it. This might have like a window of opportunity that you want to get to, like a first mover advantage to the
+market, but it could also be the fact that maybe this feature solves a really big problem for customers and that is
+actually churning. So we actually have churn right now and this is focused on solving that. So if for every month we
+don't deliver this second feature, we might be burning, you know, or losing a
+certain amount of customers. On top of that, we also might have confidence and risk here. Let's just say for both of these, they're quite low risk, I should
+say. So we'll say high confidence, I should just say. We'll switch it to high because they're both quite known things.
+They're like we're solving things that we already know how to do it, right? Like this is a known problem, no customer, etc. Side the fence. So you
+can see how these two against each others. If we just did Rice as an example. So let's just um map this out
+above it. So Rice for those who aren't familiar with it very popular prioritization framework comes from
+intercom and it's really very much used for more customerf facing uh features.
+So confidence is part of it too. I use Rice as an example because Rice has very good coverage over these four
+components. What it misses is urgency. So if we only looked at Rice and we deleted this, you might look at these
+two and you might conclude that they're the same. or let's just say that feature A is going to give a little bit more
+impact than feature B. Cool. You look at this, you prioritize feature A as number
+one and feature B is number two. Now, if we then brought urgency into the equation, it now changes the dynamic.
+Yes, feature A is going to give us more money, but how much more money is that versus how much are we going to lose there? Which brings in a new dimension
+which is cost of delay. I illustrate this because now we've introduced cost of delay here. Cost of delay in itself
+is also a prioritization method. We could look at these two features through the lens of cost of delay and say which
+one has a bigger cost of delay. And if you did do that and looked at it through a cost of delay lens, you would probably
+likely flip this, right? You would then do feature B first as opposed to feature
+A. And what I hopefully am illustrating here is how the fact that one, you can
+sometimes be apples to oranges between them. Um, two, not all of these
+dimensions are going to actually be relevant all the time. And three, trying to have one prioritization method,
+whether that's rice or cost of delay actually doesn't work. You are going to end up in these cases where actually we
+need to look at it through different lenses. Now to throw in one more example around this. Now imagine that we have
+this big infrastructure or found we'll just call foundational, right? Okay, we're doing some foundational work
+around that. The foundational work in itself is technically low value in itself although it unlocks a lot and
+it's also very high effort. Risk is probably on the medium side although you
+know depends on what we want to say and now urgency around this it might not and this is another important concept.
+Urgency might be low to begin with right so like doing this at the start this big foundational thing might be really low
+at the start but over time urgency can increase. This is just really true that
+sometimes it's not urgent now, but it will be urgent in the future. The longer we wait and the more we kick the can
+down the road, the more urgent this becomes. And it also becomes more urgent because that cost of delay also changes
+over time as well. In this case, again, trying to compare all of these against each others, just scoring everything
+based on like a rice scorecard or something is not going to give you the most accurate picture of what to do. In
+fact, if you did rice all the time, this foundational thing would probably always be kicked down the road. And even one
+day when it's a really high urgency around that and like it's a burn-in platform type thing, it's probably still
+not going to get prioritized. And I see this happen a lot in organizations, maybe it's happened in yours where we
+have like, you know, value over effort or even rice. We're using these types of methods and we neglect something like
+urgency. It means that these foundational things, these tech depth things tend to be kicked down the road. We tend to not look at them because
+we're not taking a holistic enough lens to prioritization. I can give you a whole bunch of other examples around it.
+I actually did a live stream talking about some of these concepts, talking about these four. You can I'll chuck it.
+I think it'll come up here. I'll chuck it up the top there that you can go check that live stream out if you're
+watching on something else. Um it'll be down in the description, but go check it I actually use some real examples from
+some coaching sessions and some clients that I have around how urgency can change over time and how basically real
+examples of how this kind of works. But the first concept I really want to kind of just give you here is the fact that
+prioritization comes down to these four lenses. [music]
+So for me I don't see this as a framework. This is not a framework to me. This is a mental model. So this is
+for you to think about prioritization as these four components. And this isn't to
+say that you have to ditch rice cuz it's not good enough or you need to ditch cost of delay cuz it's also not good
+enough. No, no framework is good enough. If you go back to that spreadsheet, no framework covers everything. That's just
+like the fact. You can try to create a framework that does if you really want to, but I also think that doesn't work.
+And that's why I'm not trying to create a framework here. I'm not trying to create a new prioritization framework. To be honest, I think we have enough frameworks. We don't need we don't need
+me adding to the the noise of frameworks. Instead, what I find is that
+this is a mental model. So, what I want you to do is think about prioritization through these lenses. Look at what
+you're trying to prioritize and work out what is the more important dimension here. Okay. So, now let's break these
+down, right? So, let's talk about these four. The reason why these exist and I think about them as a mental model is
+because you need to be taking these into account when you're looking at stuff. And again, they're not always going to
+be weighed evenly. In fact, I'm going to use this example over here as a real
+example to kind of illustrate what I mean by confidence. So, let's take two
+opportunities into account. One of them is moving into a whole new market. One
+of them is improving the current experience. If we want to move into a new market, often we think about often
+when we look at these things, we're like, "Oh my god, this new market's going to be amazing. It's going to unlock a truck ton of value, right? And
+improving what we have can probably give us a lot of value. There was some very clear problems that we could solve, but
+not as much." Now, we often look at these and let's just actually say what often happens is we underestimate the
+new opportunity. So we can say like yeah this is going to be like 2 months and this one's going to be we'll say this
+one's 3 months. I'll explain why I'm going to do that in a second. Now we're going to ignore urgency for a second
+here and we'll just go to confidence. Confidence is a really important dimension here. If we think about a spectrum from known to unknown. The
+improve in the current experience is on the known side and the new market opportunity is on the unknown side. Now
+the reason why this is on the unknown side is because this would have been a whole new product for a new market and
+technically there are some rules around this where technically you don't want to be doing new product in new market
+because it's just too far away from your current business. This is one of the reasons why you try to avoid these things. But okay, for the purposes of
+this that's actually what they're weighing up and let's ignore that rule of thumb. But this is the reason why that rule of thumb exists. I'm going to
+kind of like break down why that rule of thumb exists. And if you're wondering, what you should do is normally you want to make adjacent steps. So this is a
+little bit of a sidebar, but I just talked about it. So some of you might be thinking, well, what should I do if I shouldn't be building new products for
+new markets, you should do side steps. So I want to take an existing product and move it into a new market or expand
+my product offering to my existing market. So new products to existing market or existing product to new
+market. That's only one. That's not doing both. Doing both is two. And that's bad. No, no, because it's really
+really hard because there's a lot of unknown. So, let's look at this. So, new product to new market completely
+unknown. Cool. This one is known. The problems that known creates and this is
+another reason why I find without confidence a lot of prioritization metrics or frameworks fall apart is if
+it's known to us, then we know all of the problems and we know how hard it is.
+Like we know these two things. So when we look at things like value and we look
+at effort, we tend to be more realistic with it. We tend to go, "Ah, this isn't going to be as valuable as we think it
+is, and it's probably going to be harder than we think as well because we've done this before and we know that we've run
+into a bunch of issues." The challenge over here is there is a lot of optimism bias, right? And I'm an optimistic
+person. I I have optimism bias, but the what optimism bias turns into, and I heard this phrase, and if somebody can
+work out who said this and let me know, it'll be great because I've heard it at a few different places, and it sticks
+with me really well, is there's a concept known as, I like this framing. It's not a concept. The framing is
+ignorance tax. So, the unknown and optimism bias tends to turn into ignorance tax. So, what we do on this
+side of the fence is we think that it's all amazing. This is like shiny object syndrome, right? We think it's amazing.
+The impact is going to be like boom and it's going to be super easy. How many times have you fallen for this, right?
+Like this seems Why don't we just do that? That just seems so much easier. Why don't we do that and that would be
+better? Like we should just move into that market. The problem with it is we don't know all of the problems that you
+would have and we and we tend to overestimate what we think we'll actually get in return. And when reality
+hits is when we pay the ignorance tax. So reality ends up hitting us and we end
+up going, "Oh actually it wasn't as easy as we thought and it was a lot harder." So what ends up happening is
+these numbers actually tend to go like this and this tends to go to like 6 months, right? Is what ends up
+happening. But let's just assume that it's like that cuz you know we haven't we haven't actually paid the ignorance
+tax and you know we've got shiny object syndrome. So again if we just did value over effort we would have you know
+prioritized a new market opportunity. But if we actually are realistic when it comes to confidence, we will say that
+this is low confidence and we would say that this one is high confidence. And what ends up happening here is that
+rebalances the whole playing field because now we can use this as a modifier. So the way that this works in
+Rice as an example, if you want to think about this from a framework perspective, is Rice kind of gets you to put this in
+like 0.1 or or8 and stuff like that, which is really like percentages. So if you were like 30% on this and you turn
+these into numbers, I should say, you would then modify by making reducing it down to 30% of what the numbers would
+actually say. So if I just give some basic example of this, if we just made this 100, whatever 100 means, but 100
+divided by two would be like 50. 50 * 30 would be like 15, right? So now we have
+15. And then if this is like high and it's like 80 cuz we can't be 100%. Then,
+and this is like I should make this really easy math for myself. 75 divided by 3 is like 25. 25 by 80 is like what's
+that? 25. My brain just went blank on that
+one. 25 by 80 is like 20, right? So, we end up with 15 and 20, which then means this one now suddenly wins and goes to
+the top. So, this is why confidence is really important. And I also think confidence is a way of derisking because
+basically this ignorance tax is risk. The risk is that we think that this is an amazing thing but it turns out to not
+be such an amazing thing or the risk is that this turns out to be harder than we thought it was. Or the risk is we build
+something that nobody wants. Right? So that's another reason why you do discovery. And another reason why I really like confidence and thinking
+about risk in terms of that. If you're interested in discovery, I did a video on it. I got a discovery course. I'll
+throw some links around on those things. Check those out. But I frame inside all of them. I talk about how discovery is a
+d-risking activity because it absolutely is. That is this last one with confidence and risk. And that's how you think about it. And that's why it's such
+an important dimension. Now, there are times where maybe confidence doesn't really matter because we are looking at,
+you know, two opportunities that we have like the same amount of information on. So, it doesn't really matter too much
+here. In this case, however, it is something that fundamentally changes how you end up prioritizing. So as we move
+out, I think about urgency as exactly as the term suggests, but urgency can come in many different forms. So these are
+some of those real examples in that live stream that I talked about before that I shared. Let's take these two, right? One of them was a new opportunity. One of
+them was about making it easier for customers to migrate across to them, right? So one's like a whole new opportunity, capture a new part of the
+market, and this one is like how do we make it easier for people to move from our competitors to us. This one had a
+window of opportunity. And for this business, this was a seasonal business. So the way I would sketch this out is if
+you think about the calendar year, you got like January through to December. If
+you're a seasonal business, and this is another reason why urgency is like an important concept to take into account
+and again another reason why I don't want to turn it into a framework. It's very contextual. If you're a seasonal business, this is super applicable to
+you. If you're not a seasonal business, not so applicable to you. But there is going to be points in the season that
+are kind of like peak seasons. Let's just take um like Black Friday as an example, which uh from an e-commerce
+point of view, I believe it's their biggest day of the year. So you got Black Friday. This means work that So if
+you've got a whole bunch of ideas of things that you could do, so new features, that type of stuff, stuff that
+is going to be related. So let me just like so work that is going to help drive
+sales on Black Friday. So these things these things are going to be have more
+urgency over something that you could do afterwards. Your prioritization in terms of urgency starts to revolve around the
+events in the year even. And when you take urgency into account, you'll need to take this into account and you'll
+need to ask yourself what is actually urgent right now for Black Friday compared to what is not urgent. And these things can have the same value,
+right? These things can have the exact same value. But if one thing can wait and the other thing can't, then you do
+the other one first. This may seem like a simple concept, right? This might seem like a no-brainer, but again, when we're
+doing like value over effort matrix, we're often not taking these things into account, and we're basically just saying, well, this thing is more
+valuable than this thing. And then the problem with that is if we don't get it done before Black Friday, we miss out on
+this value. Sure, we got this value, but wouldn't it be better if over time we actually got that amount of value? Like,
+it probably would be better. There's some nuance in that. But yeah, that's how I think about that one. You can go
+look at our live stream for more real examples, but I just wanted to like illustrate that even more. Cost of delay is a form of urgency. Like how much are
+we losing or is it costing us every single month that we we delay doing something? Urgency can also come if
+you're a, as we mentioned before, if you're a seasonal business, there are moments inside the year that are more
+important than others that you might want to sequence some activities that happen before that versus another. cost
+of delay can also come in some of the unlock costs. So if you start looking at foundational work every single month
+that we kick the can down the road and we don't get to some other features or solving some other problems that we can
+quantify like let's say we can quantify those problems then there's a cost of delay there as well. So there's an
+urgency around that. Like how long can we wait until we don't do those things? And then there's also urgency in other
+dimensions. First mover advantages, tech debt, like how slow is it making us, which is kind of a cost of delay. Like
+you think about a water leak. A water leak might not be that urgent to begin with, but as time goes on and it gets
+worse and worse and worse, it becomes more urgent over time. So that's urgency in that an important dimension. Not
+always going to be applicable. And then we have cost and then we have impact or value. Now cost is pretty self-explanatory. We tend to know what
+cost is. We tend to quantify it. I actually like to also include cost to do
+discovery in this as well and just be a little bit more holistic cuz there's also maintenance cost, right? Like if we
+have to support this, how expensive is it to support? Something that we don't take into consideration enough. By the
+way, often we cut scope and we we kind of go, "Oh, we can do a manual to begin with and we can do this and we can do
+that." And absolutely do that. I think you absolutely should, but you need to be taking those things into account. You
+can't have to hire 10 new staff to support this new thing that you've rolled out and then not address that
+because and not even take that into consideration when you're prioritizing. So you need to kind of take those things
+into consideration otherwise you know we're not actually getting the value that we expected to get out of it. Now I want to talk about value deeper here
+because this also relates into the second thing that I want to talk about around prioritization that I just see
+get missed all the time. [music]
+They prefer impact over value because more often than not when companies say that they have a prioritization problem,
+they don't have a prioritization problem. They have a strategy problem. So, let me sketch this out for you and explain what I mean by you've probably
+seen like variations of like a strategy stack that has I might do a few more
+layers that I normally draw here just to just to illustrate this a bit more. So you might have seen you know pyramids
+like this that has like vision at the top then we have like strategy then we have like road map we might have OKRs
+inside of it you know what we'll do it this way we'll do road map there and then we'll kind of do OKRs so we have OKRs we have outcomes then we have road
+map we have this kind of stack what often happens inside organizations is that this layer here so if I had to
+erase this line this strategy piece is missing and sometimes OKRs and outcomes
+are even missing and the problem that this creates is that it is a pretty big jump to go from your road map up to your
+vision. And when there's a gap here, it means that you have a bunch of good ideas. So basically, once you get down
+to road map and backlog level, right down here is where you have that big kind of like laundry list of like all
+the things that you would like to do. This can be hundreds of items long. It can be really, really long. And more
+often than not, it is really long. And when you don't have these layers in between, you don't have anything to
+anchor that really long list of things against. So what you get stuck with is really this backlog of hundreds of items
+long and someone's telling you to hey stack rank it, right? I got this really early in my career. So the first product
+roll I had was like a product owner role and I had a really long backlog. We're doing like scrum and stuff. Like I'm
+looking at this backlog. It's 200 items long and the advice that people are telling me all around me, the agile
+coaches, those types of people. Nothing against those people. There's some lovely coaches out there that are really, really smart and great at their
+jobs, but I'm just being told like just prioritize based on value. I'm like, okay, what do you mean by value? Right?
+Like that makes sense. Like sure, I walk away from the conversation. I'm like, sweet, thanks. Prioritize based on value. I get back to my desk and like
+open Jira and I'm like, value, value. And then I'm back in the situation that we talked about before. I'm here. I'm
+like, okay, value. Okay, I'm looking at these different features. Then I'm looking at like this foundational thing that's like I think we should do this.
+This is really really important, but like I'm like, it's not very val like it's not very valuable. How do I rationalize value here? And then maybe
+sometimes you start to play like I refer to this as like CFO accounting. Like they always like move numbers around a
+spreadsheet to try and like, you know, we've reduced we saved cost by x amount. It's like you haven't really saved cost.
+you just kind of moved things around and made it seem like we saved cost, but really you didn't actually remove any people or like remove any cost. You're
+just like, "Hey, we saved x people of x amount of time." It's kind of made up, right? But anyways, I'm looking at this, I'm like, "Value. What do we mean by
+value?" Right? And it's not helpful when it's hundreds of items long. So that's like problem number one. The next problem is the fact that the list is
+just really, really long and we don't really have anything to be like, "Okay, how do we filter out of it?" So your
+strategy becomes that filter. And your strategy should be the thing that drives
+your OKRs. It should work its way down. And I mentioned this before, but a lot of companies, they do do OKRs, but they
+don't have strategy. And what ends up happening is those OKRs are just really goals, and they tend to be like revenue
+goals and or or something worse. They're things like customer experience or NPS,
+right? And if you look at your backlog, you're like, well, all of this can be NPS, so like it doesn't really help me
+say no to anything. Um, so I guess yes to everything and then we work out which
+one has the biggest impact to MPS, right? Not super helpful. So what I've
+found is that to begin with value is contextual and value needs to be
+defined. And the way that you define value is by defining these things vision, strategy, OKRs. And let me give
+you a tangible example going back up to these features. And I'm working through this right now with a client, right? This is a very common thing that we're
+always doing. right now with a client. we are technically doing something down here and I had to go and have a very
+uncomfortable conversation in front of the whole sea suite with the CFO basically grilling me and the team about
+like why are we doing this when it gives us a very little amount of impact in fact the impact that we think that this
+will unlock this financial year is $100,000 and when you are a billion
+dollar company $100,000 is not a lot of money and you're basically like the team's costing two $2.5 million a year
+why would we spend $2.5 million for $100,000 this year, why don't we just spend it on something else? Now, there
+is a strategy behind this. That is why you would spend the money, not because it's going to give you a payback
+straight away. If you've ever built software, and this is why product companies raise capital to begin with,
+because it is expensive to do things, you tend to lose money in the short term. You tend to kind of come back out
+the other side. That's why you have capital investment. So, what are we doing? We're doing a capital investment.
+We are doing a bunch of foundational work that is going to unlock bigger value later on. So, if I had to draw the
+value curve, it's going to look something a bit more like this where
+yes, he is totally right. We're going to be like $100,000 this year and like we we're like going in the red for how much
+money we're spending, but then we will start to and we should, if I do my job
+right, we'll start to hockey stick and then at that stage this will start to come back up and then this will start to go like that, right? From a, you know,
+cost ROI point of view. So, yes, we're going in the red and this is very bad drawing. I'm sorry, I draw him with my
+mouse on my laptop, but that is how it ends up starting to look. So, yes,
+$100,000 this year, but we're doing some foundational things that are going to unlock all of this other stuff later on.
+And the strategy is the fact that if we don't do these things, nothing else matters. You can look at your road map
+and all the things that are later that's like, well, why don't we do this and that and that? This would be super way more valuable. Why aren't we doing that?
+Cuz it's way more valuable. These were literally the questions that the executives were throwing at me. And the answer to that is like we can't do any
+of that unless we do this first thing. This first thing is the unlock to everything without giving it all away. Um it's we're building like AI type
+stuff, but like a lot of it is actually setting the foundations around building infrastructure for agents. But not just
+that, it's also about data, right? Because agents are only as good as the data that we can give it and the context we can give it. So we need to clean all
+of that up. It's kind of like house cleaning is what we're kind of doing and getting it in a position where we can actually do something. So all the other
+stuff down there doesn't really matter because if the data is not all set up properly then like can't do anything
+right. So value is actually contextual and it gets defined inside of your strategy and your your vision. And then
+I mentioned before that you want to translate strategy to outcomes. When you do that your outcomes can be then a
+really good filter for your backlog. So then the way that I see this playing out and this is going to look a lot like an
+opportunity solution tree. All it is is really like how product work works. And
+it's one of the reasons why opportunity solution trees are such a popular framework. If you think about it this way, you've got your vision. Then we
+have our strategy. And like I said, value definition starts up here, right? So when we think about value, we're kind
+of up here and then we're kind of working our way down is how I think about this, right? So it starts up there and it works down. Our strategy
+translates into into outcomes, OKRs. So, we tend to have we then have a bunch of
+OKRs. So, then we have a bunch of OKRs. And oh my god, my OCD is going to drive me nuts here. There we go. That's
+better, right? So, so value definition starts up there. OKRs. And then underneath these OKRs, you're going to
+have a bunch of opportunities, right? Customer opportunities. And this brings me to my next important thing around
+this [music]
+is that prioritization actually happens in layers. It's not something that just happens at the backlog level, which is
+one of the reasons why trying to prioritize down here is really, really hard, right? It is near impossible. This
+is how my experience, and you guys can tell me if it's wrong, if I only have these two, it is near impossible to
+prioritize effectively there because all you've left with is this list of hundreds of items long and you're like,
+I don't know what's better than the other. and you're basically trying to compare apples to oranges constantly and
+you have no filter that helps you solve that. So if you feel like prioritization is hard, this is the number one scenario
+that I run into. If you're feeling like that prioritization is hard, you're stuck with this really long road map,
+this all these ideas, stakeholders are coming at you with all these ideas and you're trying to balance everything and
+make trade-offs and it feels really really hard. More often than not, this is the world that you're in and the
+solution to it is not a framework because you can throw rice against all of this. You just might end up making the wrong calls like we kind of sketched
+out up here, right? You the solve to this problem is to work back up the chain. So, here's where I start and this
+is why I start sketching this out. What you want to do is if you've got a bunch of solutions and it's probably the place
+that you're in, right? Got a bunch of solutions. What you want to do is ask
+yourself, what is the actual problems that these solutions solve? Right? Like this is kind of like product management 101, but it's important if you can kind
+of work your way back up the chain, you can go, well, what is that opportunity layer that we're trying to solve? And
+what you tend to find, and I've done this activity before, and let me just map this out here. I've literally done this before where we've had like a whole
+bunch of things. And this is I'm sharing this because this is practical because I do this in my coaching sessions all the time. I'm like, what customer pain
+points, needs, opportunities are we actually solving with these? And when you map this out, sometimes what you tend to find is you end up like this.
+This is like opportunity A and then this is like opportunity B and then these are
+like opportunity C, right? So like these three, this one is kind of standalone and then there's these two. What you can
+do from here, you can take this further. I'm going to take this further, but like even just doing this, you have gone from
+six solutions to three things. So then what you can do is you can say you've
+gone from trying to prioritize here and this suck in because you're like cuz it's not six, it's actually like 60 or
+600 to prioritize in here. This is much more manageable. And what you're trying to do is to go, okay, which one of
+these? And let's say that you pick this one. Okay, cool. Solve this solution first. Okay, what opportunity is next?
+Oh, this one's next. Okay, once we've done that, then you can dive down and go, okay, which out of these three is
+the best? And then you're just prioritizing three things, not 600 things. So this is what I mean by
+prioritization happens in layers. So I want to work you back up the chain because working back up the chain is
+useful if you're stuck down here. And then I'm going to keep explaining the chain to explain the full mental model.
+Then once you have this, if you really want to, you can go up another level and say, okay, what outcomes do these
+ultimately drive? And what you might find is this is like outcome A and this is like outcome B,
+right? So this drives these two here and then this one here. Okay, cool. Even
+more manageable. Let's prioritize these. Right? So rather than trying to prioritize this, you can prioritize at
+this level. And and here's here's a here's a super good hack trick technique. If you've got all of these
+competing stakeholders and they all have different priorities, moving up this chain is one of the ways that you can
+help tackle that and resolve it because when you're down here, you're just arguing over everyone's opinion and
+everyone wants their idea, right? But if you can move yourself up and the further you can move up, the better. But
+sometimes you won't be able to get to this layer. You might have to settle for this layer. But before we even got to
+outcome, as we moved up, we realized there was an extra layer in here, which was actually a segmentation layer, which
+these two was a sort certain user segment and this was like another user segment. And what we did was we
+basically went back to the leaders and was like, um, who are we targeting here?
+Because actually all of this work as a team, we're fundamentally trying to tackle two fundamentally different user
+segments that yes can both drive the same outcome, but we're a really small team and we can't be doing both at the
+same time. Which segment should we focus on first? Drive that decision. And what you're actually doing there when you drive that decision is strategy. That's
+a choice. Strategy is a choice to focus on this user segment over this user segment. This is good product practice
+and product management 101, but I'm just piecing it all together because it impacts prioritization. If you don't
+have this, prioritization will feel hard and it'll be impossible and you'll just go through framework after framework
+after framework and you'll have these big spreadsheets with all of these complex formulas and you'll have to
+basically go out of that and use those numbers in the spreadsheet to try and manage your day. Not effective product
+management. This is how you get out of it. As a result of all that, prioritization happens in layers because the reality too is it actually looks
+more like this. You have multiple outcomes that you can do and each outcomes drives different segments. So
+what you want to do is move yourself up and actually say what are we actually focused on? We are going to be focused
+on outcome A. Okay, cool. Which user segment? Okay, this user segment. Okay, which opportunity? Cool. Opportunity A.
+All right. Then you get down to these two solutions. And again, like I said, this is where your life becomes much
+more manageable because now I'm only trying to prioritize between two different solutions than um a whole
+bunch of them. And by the way, if you're all the way down to like two different solutions for one opportunity perspective, you could like AB test
+them. You could user test them. You could basically let the data kind of decide. Like you don't even have to prioritize down to that level. You can
+kind of just let data decide. When I say value gets defined at the top and works its way down. This is what I mean. And
+if you're down here, you need to work your way up. But if you're not and you're clean sheet or trying to do, you
+know, you're starting something new and you want to start it all from a really good position from the get- go, start up
+the top here. Define that that endstate vision. Define the strategy. Break the strategy down into outcomes. Prioritize
+those outcomes. Prioritize the opportunities and prioritize the solution. Prioritization very much
+happens in layers. And by the way, as you work your way through these layers, you can still use these four different
+lenses, right? like you can still use this is still applicable as you go down it when you're looking at outcomes you
+can say okay which outcome's going to have the biggest impact which one do I think is easier or harder to solve which
+one do I have more confidence around actually solving or actually having good data to say that yes we have a churn
+problem or yes that's a problem that we need to solve and which one's more urgent like is this one a leaking bucket
+that we need to solve now or is this one not and so every single one of those layers you can still use these lenses on
+it All right. So, four lenses to prioritization. Very, very important to
+take them into account. Remember, ignorance tax. Prioritize in layers. Value definition starts at the top and
+it works its way down. And if you're stuck there, you can start at the bottom and work your way up. Now, let's talk about where some of those prioritization
+frameworks actually fit. [music]
+The way I think of it is, and this is how I I use it. So this is how I effectively prioritize and this is how
+if we work together. Um so I have a product mentorship if you're interested. I work with companies as well. So if you're a product leader, you want me to
+come work with your team, work with the company, hit me up. Uh but if you are individual and you want to join, I've
+got a product mentorship. You can go check that out and we can kind of work together on this type of stuff. Stuff that I always work with. If we were to
+work together on this, this is how I tackle it and how I approach it. And this is what's worked for me after
+learning all of this. This is basically like me wrapping up effective prioritization. So, I need to have a
+strategy. I need to have a vision. If I don't have a strategy, at the very least, I need a strategy more so than a vision. But you need a vision to kind of
+know what the strategy is going to look like. But at the very least, I want to have a lightweight version of a strategy and turn them into some, you know,
+milestone OKR type stuff. Lens number one that I need to do is I need to start up there. Where frameworks are useful
+are along these layers. So, let's go up here. So, if I wanted to do like an impact over effort
+or like a bang forbuck and ROI type calculation up here is pretty good, right? As you're working through your
+strategy, you're going to be working through choices inside of your strategy. As you work through those choices, you're going to compare them to each
+others. Which one's going to have a bigger impact and which one's not? And by the way, as I work through this, I'm going to add confidence in there. So,
+maybe actually the lenses that I want to prioritize here might be an ROI plus confidence type thing. And if you went
+back to a whole bunch of like frameworks around that, there are some that have that, right? So like bang for buck kind
+of ticks some of those boxes. Rice kind of ticks some of those boxes. You could create your own custom scorecard around
+that if you want to. Value over effort matrix kind of ticks those boxes, too. Ice definitely ticks those boxes. So ICE
+being impact, confidence, and ease as scores. You can use those frameworks at those levels. So, as I'm working through
+my strategy and I'm making choices, I'm using frameworks to help me make those types of choices. I'm basically looking
+at it. And what I'm doing, too, as I'm doing that is I'm absolutely having data drive those decisions. So, if I'm trying
+to pick between choice A and choice B, I want to look at the data, see how the data supports one choice over the other.
+Do I have more confidence in another choice? Going to allow those things to help me prioritize and make choices because ultimately it's part of your
+strategy. You're going to same deal when we get to the OKR layer. We're going to do the same. Then as we get down to the
+opportunity level, ice works pretty well here. Rice works pretty well here.
+Impact over effort works really well here. I had a coaching call yesterday where we talked about this where we
+actually talked about um doing um jobs to be done um scoring. It's basically
+job importance versus satisfaction is the framework. And you could use that as a means to basically prioritize
+opportunities especially if you are doing opportunities from a job to be done framework lens. Right? So if you
+are using that framework, you know, customer jobs, then absolutely use that to help prioritize your opportunities.
+So once I've picked that OKR and I've used some of these frameworks to help me do that, I'm then prioritizing
+opportunities. And I might use job to be done, I might use rice, I might use something else. I give you a little bit of a tip here with rice and ice. So at
+the opportunity level, so let's just talk about rice for a second. So rice stands for reach, impact,
+confidence, and then e um effort and ice is pretty much the same just without the
+reach. So effort at an opportunity level can sometimes be quite hard to do because we don't actually know what the
+solution is going to be yet. So it's very hard to do effort. So what you can do if you want to prioritize at this level is just use those three. The other
+thing that you can do is you can replace um effort for like complexity is one of
+the things that I do, right? Right. And then I call this Rick R I C. So you can replace it or ick Ic is a bit weird but
+anyways you can replace it with something like complexity if you want to. And this is another reason why I am
+much more of a fan of focusing on first principles than frameworks because once you understand how prioritization works
+and you understand that it breaks down into these four components then you can start to modify things right because you
+understand how they work. So you can say, well really all I need to do is have a lens on effort. And a lens on
+effort doesn't need to be effort or ease or like how how hard is this actually going to be. It could be something like
+a proxy like complexity. Like I think complexity is a pretty good proxy when you don't know what the solution would be. So the question you're asking
+yourself is not necessarily how hard is this to solve. You're asking yourself like how complex do I think this problem space is? And that tends to have an
+impact onto the solution. You could find a really easy solution to a very complex problem. It's 100% the case. But at this
+point in time, you're just trying to prioritize. You're not trying to prioritize solutions. You're trying to prioritize which opportunity to focus on
+first, right? And that's a very important distinction because once you get down to the solution level, then yeah, sure. If we find a very easy
+solution to that complex problem, then sweet. Let's pick that one. Like, let's go with that. And then again, when you
+get down to the bottom, these two work very very well. Value over effort works very very well. Eisenhower matrix works
+very well. But you can use a whole bunch of frameworks down here. And in fact, sometimes if you get down to this level,
+there's often just a clear winner. If you do discovery really well and you're actually doing solution testing, then
+you've probably put some of these solutions in front of your customers already. And you probably got a pretty good idea based on that data point of
+which solution is going to resonate. So you can just be like, we're going with that solution. We don't really need a prioritization framework down at that
+level. Like we're going with that. And this is where, you know, when people say you don't need a prioritization
+framework, you need a strategy and they say things like your strategy is how you prioritize. And I've been once to say
+that, a person to say that as well. And this is kind of what we mean by it is because when you have a strategy like
+drawing a line through all of this becomes very very like logical because
+when you have the strategy you go well of course we need to do that outcome first and of course we need to solve that customer problem first and then you
+just work out which solution is the best one forwards and if you do discovery really well the one to proceed with will be very very obvious right you just let
+data kind of um go and this is where people can seem like they don't use prioritization frameworks But really
+behind the scenes they are behind the scenes these four components are going
+through their head. And this is the reason why I like impact over the term value because at the end of the day
+value is contextual. Value is how you define it. And value is going to be
+defined based on your strategy. What you think is valuable versus what somebody else thinks is valuable can be two very
+different things. One last example on that exact one. I had a client in the
+past basically they believed and this was their strategy. They were trying to be the most accurate tax solution in
+their chosen market, right? And they believed a lot of their competitors were kind of basically doing cheaper ways of
+doing things that yes delivered a better customer experience because if we can dial down the accuracy, we can make the
+experience easier because we can kind of skip steps. But they saw that not as a good thing as a bad thing. and their
+whole strategy was to be at the most accurate and that was the play that they wanted to do. Yes, they could have cut
+some steps out. Yes, those steps could have probably increased more conversion and get a better satisfaction, but that
+would be at the detriment of their accuracy. And if they have that is one
+of their principles, if that is their competitive advantage, if that is their whole strategy, then again, you just
+look at that and say, "No, we wouldn't do that." Like, okay, customers have complained about that, but we can't change that. like we can't get rid of it
+because because of it and then you just work within the constraints you go well how do I make this a little bit easier within within the constraint that we
+have but that's why I like impact because it's really much like impact to you and your goals and your strategy and
+what you want to achieve. So that's why I like impact because otherwise value is really like very arbitrary at the end of
+the day. The way that you do that impact and you define it is by having all of these layers, right? My point being is
+that like when you get to this point, you can kind of use the framework that works for you. And I actually think that
+works a lot better because sometimes, again, let's look at opportunities, maybe cost of delay is actually the most
+appropriate thing here because you've got that urgency that you need to take into account. And what you'll find is
+that you'll use cost of delay one day to try and prioritize between these two things. And then the next day, you might
+be doing some jobs to be done scoring because they're just fundamentally different things. like last week or last
+month, I was trying to prioritize between these two different foundational infrastructure kind of tech depth
+improvements. Cost of delay was way more applicable there. Now that we fixed all that tech depth stuff and we've got that
+foundation, I'm now looking at the things that it unlocks. And now what I really want to do is take a customer lens and I want to go, okay, what are
+all the jobs to be done here and let's score them. Let's find the underserved ones and let's work out where do we
+start. For me, this is more about a mental model to help you pick the right tool for the job. So, as a very quick
+crash course introduction into prioritization, I hope this helps you understand that
+prioritization is much more than frameworks. I'm going to chuck up two next videos to go check out. I'm going
+to put one about building strategy. So, if the strategy is the piece of the puzzle that is missing for you, I'll chuck that one up there. And I'll also
+throw up that live stream that I mentioned before. And on that point, we can wrap the video here. Let me know if you want to dive into anything further
+in the comments if you have any questions. I appreciate the support and thanks for watching.

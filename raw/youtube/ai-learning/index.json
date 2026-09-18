@@ -1,7 +1,7 @@
 {
   "playlist_url": "https://www.youtube.com/playlist?list=PLdJYvRCSB6rO2Mm_0wGnHgFfoy34OaC0S",
   "source": "enumeration: YouTube Data API v3; transcript: SerpApi youtube_video_transcript",
-  "count": 384,
+  "count": 395,
   "videos": [
     {
       "id": "Dt6u-yFEpsk",
@@ -2530,6 +2530,94 @@
       "chars": 54500,
       "lang": "en",
       "segments": 434
+    },
+    {
+      "id": "DJ82fSTQQRc",
+      "url": "https://www.youtube.com/watch?v=DJ82fSTQQRc",
+      "file": "2026-09-18-8-habits-of-highly-effective-product-leaders--DJ82fSTQQRc.txt",
+      "chars": 19012,
+      "lang": "en",
+      "segments": 499
+    },
+    {
+      "id": "qMUf-jwSpMo",
+      "url": "https://www.youtube.com/watch?v=qMUf-jwSpMo",
+      "file": "2026-09-18-claude-cowork-and-chat-are-now-one-claude--qMUf-jwSpMo.txt",
+      "chars": 1225,
+      "lang": "en",
+      "segments": 10
+    },
+    {
+      "id": "dFoKMO5C16w",
+      "url": "https://www.youtube.com/watch?v=dFoKMO5C16w",
+      "file": "2026-09-18-how-product-strategy-discovery-and-okrs-all-fit-together--dFoKMO5C16w.txt",
+      "chars": 18955,
+      "lang": "en",
+      "segments": 498
+    },
+    {
+      "id": "cGIojZawDsM",
+      "url": "https://www.youtube.com/watch?v=cGIojZawDsM",
+      "file": "2026-09-18-introduction-to-prioritisation-going-beyond-frameworks-free-spreadsheet--cGIojZawDsM.txt",
+      "chars": 51546,
+      "lang": "en",
+      "segments": 445
+    },
+    {
+      "id": "5qt_aGyAsKk",
+      "url": "https://www.youtube.com/watch?v=5qt_aGyAsKk",
+      "file": "2026-09-18-projects-are-now-a-conversation-with-claude--5qt_aGyAsKk.txt",
+      "chars": 85,
+      "lang": "en",
+      "segments": 8
+    },
+    {
+      "id": "r9OwPx_HoV0",
+      "url": "https://www.youtube.com/watch?v=r9OwPx_HoV0",
+      "file": "2026-09-18-stop-chunking-like-it-s-2022-yuval-belfer-ai21-labs--r9OwPx_HoV0.txt",
+      "chars": 14486,
+      "lang": "en",
+      "segments": 389
+    },
+    {
+      "id": "L8BHZLdhtEY",
+      "url": "https://www.youtube.com/watch?v=L8BHZLdhtEY",
+      "file": "2026-09-18-testei-o-novo-plugin-data-agent-do-chatgpt-3-casos-de-uso-de-analise-de-dados--L8BHZLdhtEY.txt",
+      "chars": 28679,
+      "lang": "en",
+      "segments": 754
+    },
+    {
+      "id": "yslXlV2BP_Y",
+      "url": "https://www.youtube.com/watch?v=yslXlV2BP_Y",
+      "file": "2026-09-18-the-state-of-startups-in-2026--yslXlV2BP_Y.txt",
+      "chars": 37705,
+      "lang": "en",
+      "segments": 286
+    },
+    {
+      "id": "K3Ul-DTn5Bc",
+      "url": "https://www.youtube.com/watch?v=K3Ul-DTn5Bc",
+      "file": "2026-09-18-two-fundamental-shifts-ai-is-having-on-product-management--K3Ul-DTn5Bc.txt",
+      "chars": 9546,
+      "lang": "en",
+      "segments": 250
+    },
+    {
+      "id": "cJ0EOzey--o",
+      "url": "https://www.youtube.com/watch?v=cJ0EOzey--o",
+      "file": "2026-09-18-what-s-next-after-rlhf-diogo-almeida-typesafe-ai--cJ0EOzey--o.txt",
+      "chars": 16966,
+      "lang": "en",
+      "segments": 454
+    },
+    {
+      "id": "UStWNUWG59c",
+      "url": "https://www.youtube.com/watch?v=UStWNUWG59c",
+      "file": "2026-09-18-why-platform-product-management-is-so-hard-6-reasons--UStWNUWG59c.txt",
+      "chars": 31582,
+      "lang": "en",
+      "segments": 828
     }
   ]
 }

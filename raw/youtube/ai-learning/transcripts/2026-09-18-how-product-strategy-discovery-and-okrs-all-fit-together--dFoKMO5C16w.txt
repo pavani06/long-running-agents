@@ -1,0 +1,498 @@
+I want this video to be a little bit of
+an advanced product management masterass
+and the reason for that is because
+everything is so intertwined together
+and we don't talk enough about how all
+the puzzle pieces fit together. So when
+you define measures of success on a
+feature that's not independent of things
+like your OKRs and your strategy. So I
+want to talk about how all of this fits
+together and the healthy tension that's
+between it. My goal is by the end of
+this video you have a better
+understanding of how everything links
+together. You will improve your craft as
+a product manager and you'll be more
+effective. And yes, before somebody says
+anything, none of this changes in the AI
+era. Everything I'm going to take you
+through is the fundamentals. The only
+thing that does change is maybe how
+rapidly and how quickly you can move
+through all of this. So, let's start at
+a very high level. In a way when we
+think about product and we think about
+what we're doing, we kind of have a
+vision right in mind and we're trying to
+navigate towards that vision. The
+challenge that we have is that it's not
+a straight linear line. That's not how
+product works. In fact, at the start
+there's many different ways that we can
+achieve that vision. So there's a lot of
+variance. And what we actually want to
+do is over time kind of narrow ourselves
+down. And part of us making choices in
+how we achieve that vision is strategy.
+So our product strategy is going to make
+some very intentional choices around
+that. I'm not going to deep dive into
+product strategy, but I'll throw some
+videos up here and links down in the
+description. Done a lot of content
+around product strategy so you can learn
+more there. And then we also do
+discovery to help feed into that as
+well. And in a way that this kind of
+actually looks in practice is much more
+like navigating, right? Like we kind of
+go over here and then we go over here
+and then we go over here, then we go
+this way and then maybe we go backwards
+a little bit and then we go over here,
+then we go over here and then eventually
+one day we make it to our vision, right?
+And we realize it and at a macro level
+we are making some strategic choices and
+we are using discovery to help us
+navigate inside these little minor
+things, right? So we take our strategy
+so really high level and what we want to
+do is we want to try and model our
+strategy into milestones and one of the
+ways that we do that is by having these
+outcomes right and this is important
+because it's not about what we do it's
+about the outcomes that we achieve. We
+can build a whole bunch of stuff but how
+do we know if the things that we're
+building and the things that we're doing
+is making us head in the right
+direction? How do we know that we're
+doing this? That we're heading in the
+right direction. As a result of that,
+these milestones tend to be kind of very
+high level. They tend to be things like
+activation. An example of this would be
+like we believe that if we can increase
+activation, we will get more return in
+users and our flywheel will start to you
+know work better, etc., etc., right?
+That's kind of the choices that's
+happening at the strategy layer. So then
+you say, well, the first thing we need
+to do is actually increase our
+activation. That becomes an OKR. Now
+from there there's a bunch of
+opportunities that exist that could help
+us achieve that activation right so
+these opportunities should be more from
+a customer user perspective and they
+should be like well if we solve this
+customer problem it's going to help us
+increase activation right now the
+challenge that we have here is often
+this is where things break down right
+inside organizations and my point about
+it it's not mutually exclusive so if we
+do a bunch of stuff so let's say that we
+pick this opportunity and we're like
+okay we're going to solve it in these
+ways and usually this could be multiple
+things multiple initiatives multiple
+projects this could even be multiple
+teams working on a higher level goal
+right that's very common as well these
+outcomes are higher level and we have
+multiple teams working towards it now if
+all we do is measure this OKR then how
+do I know whether each of these were
+actually successful or not and here's a
+real scenario that happens all the time
+that is really important that we have
+this drill down level. Let's say that
+actually this did bad. It actually went
+in the negative. This did bad too. But
+then this one went this one did well and
+it was in the positive. But if we had to
+average all of this out, we actually
+didn't achieve our OKR, our score. If we
+actually looked at it, we didn't do
+well. Now, if we don't have this finer
+level of metrics and detail and
+information, then how do I know to
+double down on this one? and probably
+start to investigate what what we should
+fix or ditch or move away from these
+ones. Without that level of information,
+we don't have it. So, here's how
+everything starts to connect. When you
+do work being these being solutions, we
+should have measures of success on them.
+So, each item of work that we do should
+have some type of measure of success.
+That measure of success will be a
+leading indicator to solving some type
+of customer opportunity which will be a
+leading indicator to achieving some type
+of outcome. Here's how I think about
+that along a spectrum. So you might have
+heard the concept of leading versus
+lagging indicators. I'm going to put
+leading over here and then lagging over
+here. often the higher level you go. So
+something like activation
+you could actually argue like revenues
+even more lagging than that it's going
+to sit more on the lagging side of the
+fence which means that our feedback
+cycle around it is actually quite slow.
+So this is also important because if I
+if I only measure activation my feedback
+cycles like every month sometimes every
+three months even it's a slow feedback
+cycle but the truth is we're doing heaps
+of work down this end right we're doing
+experiments we're doing assumptions
+tests right we're also delivering like
+MVPs and you know V1s and we're you know
+solutions
+and those solutions are trying to solve
+customer opport opportunities, which
+should be a change in user behavior. We
+should be able to measure that change in
+user behavior, right? So, I'm just going
+to write that. We can measure that
+change in user behavior. So,
+opportunities are 100% measurable. In
+fact, they're often the easiest thing to
+measure because it's like here's a
+customer need or pain point. We can just
+measure our how effective we are at
+actually solving that need or resolving
+that painoint, right? So there should be
+some type of tangible change in user
+behavior there that tends to drive some
+type of business outcome that sits up
+here. But all of this is interlin. If
+you only have OKRs up here, you don't
+see how all of this ladders together. So
+we need to tie it all together. And
+maybe this is very obvious to you, but
+we need to make sure it is really tight.
+And again, the faster we can move, so AI
+is impacting up here. We can move faster
+and faster. this becomes even more
+important because as soon as there's a
+break in the chain, we lose that
+feedback cycle and we lose our ability
+to effectively know whether we're
+heading in the right direction or not.
+So I just talked about measures of
+success, right? So measures of success,
+this is more at this level. So we should
+have not just an OKR, we should have
+measures of success on the solutions
+that we're delivering and we should also
+be able to measure a change in behavior.
+So now we have one metric, two metric,
+three, right? And then if we get lower
+level and we're in discovery and we're
+running these experiments and we're
+running these tests, each of these
+should also have some type of measure on
+it, right? And they should be our way of
+measuring whether the experiments or the
+test were successful. And that is a
+leading indicator and a data point that
+tells us whether we can proceed to
+actually build in something. And if we
+build something then we need to have a
+measure of success on that and then we
+should be measuring whether that is
+actually changing user behavior and then
+whether that's actually achieving our
+OKR. So visualize this another way. This
+is where Theresa Torres's opportunity
+solution tree is a really awesome way to
+visualize all of this. So she has well
+not OKR but she has like outcome at the
+top right. So outcome and then she talks
+about that outcome being broken down
+into opportunities. So opportunity 1,
+opportunity 2, opportunity 3,
+opportunity 4, etc. Right? So this is
+like I'll get rid of this one to draw
+it. So these should be user or customer
+opportunities. And then you start to
+talk about having potential solutions to
+that. So solution options. So these are
+like solutions. And then you start to
+have assumptions tests from the back of
+it. Right? So we have these assumptions,
+assumptions, assumption, assumption. And
+then we start to have tests. Another
+word to think about that is experiments.
+So this shows it all linking together.
+The important part, and I've coached a
+lot of teams and I see this breakdown
+happen, is we're pretty good at having
+the outcome up there. Maybe we have like
+a measure of success on the solution,
+but we kind of miss these layers. And
+these layers are important because again
+I want to go okay are these helping me
+say whether we should do this solution
+or whether we should pivot to a new
+solution or whether we should just bin
+the whole direction. Right? We need that
+feedback loop. If we proceed with a
+solution we are making the assumption
+that this solution is going to help
+solve this customer pain point or
+opportunity. These two things can be
+decoupled. Right? What I mean by that is
+you can deliver a solution that doesn't
+actually solve that pain point, need or
+opportunity. This happens a lot.
+Sometimes we just miss the mark with our
+solutions and we need to iterate on it
+and improve it. So we need to measure
+those two things independently. And then
+I also want to be able to say you know
+whether
+this opportunity has helped us achieve
+our outcome whether solving it because
+what happens as we go up this chain is
+you can be like tick tick okay we
+deliver these things. is delivering all
+this awesome impact and then you could
+still say oh but it didn't actually help
+us change this user behavior and by the
+way our outcome is not not actually
+solved equally sometimes layers get
+skipped we still achieve our outcome
+even though we didn't get this change in
+user behavior and then if we have this
+data we can start to interrogate it
+what's more common is this where we
+didn't achieve our OKR but everything
+else is good right we ticked it
+If that's the case, then our assumption
+that we had before, our hypothesis, I
+should say, our hypothesis that this
+customer opportunity was the biggest
+bang for buck to help us achieve this
+outcome might not have been correct. And
+this is our feedback cycle to say we
+might have been wrong with that
+hypothesis. We need to pivot to another
+opportunity. And then again, we solve
+that opportunity. Also, sometimes we
+just don't completely achieve the
+outcome. So maybe we're like 50%. So
+we're in a better position than we were
+before, but we still haven't achieved
+that outcome. Well, great. We've we know
+that we've exhausted everything here.
+We've ticked it all off. Cool. Let's
+pivot to the next one and start that
+whole process and cycle again. And as we
+make that shift, that's a prioritization
+decision. And that will kick off a whole
+new bunch of discovery work. So this is
+how you then also prioritize your
+discovery. You should have an
+opportunity backlog which should be this
+and that opportunity backlog you
+prioritize and that then drives
+discovery work and then your discovery
+work drives the delivery work those
+solutions that you actually then
+deliver. So can you see how all of this
+starts to link together. So you want to
+have your ability to have this drill
+down between each of them. I should be
+able to interrogate at each of these
+layers when I look at something that
+we've built. It should have clear
+measures of success on it. I should be
+able to then look at whether I have
+actually achieved those measures of
+success or not. And give a tangible
+example of what this looks like. This
+could be things like adoption of that
+feature. This could be like customer
+ease score of that feature. This could
+be very specific task success metrics,
+right? Like are you actually making your
+way through this feature? Are you
+actually, you know, doing what you're
+supposed to do? And then we can start to
+go up a level and say, okay, the problem
+that we expected that feature to solve,
+have we actually seen that change in
+user behavior? And then we can start to
+measure there. And then when we go up
+again, we should be able to measure the
+actual outcome that we're trying to
+achieve and its key results. And we can
+start to see whether those things are
+driving that thing at the top. And this
+is another important part. It's very
+hard to work out actual causation
+between all of these. So, we've got all
+these layers, right? How do I know that
+there's actual causation between it?
+It's very hard to do that in product
+work. It's very complex. There's
+multiple dimensions. There's even things
+outside of your control, right? Things
+that are outside the product or, you
+know, the users are having a bad day or
+something like that. So, if we can't get
+perfect causation, then I want to have
+as much data points as possible to try
+and work out some type of correlation.
+If I can see that we've done three
+things and I can measure the success of
+those things in isolation right and I
+can see that one of them is performing
+better than the others and then I can
+see that we are achieving the change in
+user behavior because I'm measuring that
+as well then whilst I don't have perfect
+causation I can at least deduce that
+maybe the feature that's doing very well
+that people are using a lot and people
+are liking is the main thing that is
+actually driving that change in user
+behavior and if that's what the data
+says then I can double down on it right
+and then I can see again if I double
+down on it I have other metrics around
+that and I can see whether that actually
+helped again and if it helped again
+awesome then again I've got stronger
+data points and signals around this
+correlation around it right so that's
+kind of what you are trying to drive
+towards and one of the kind of like
+macro things I want to talk about here
+is that we want to think about velocity
+as not just speed, right? Like if if you
+take velocity in the physics sense, they
+talk about velocity as speed plus
+direction. And this is goes back to my
+point about the whole AI thing. AI is
+going to help us do speed very very
+well. But if we don't have a tight grasp
+on how everything connects together and
+how the dots connect and everything that
+I just talked about here, we can't know
+whether we are actually moving fast in
+the right direction or not. And the most
+common scenario that I see around this
+is back to what I said before where we
+have these OKRs and that's the thing
+that we measure and then we have all of
+this work and we're building and
+delivering all this work but we have no
+idea at an individual level which ones
+of these items of work, these solutions,
+these opportunities, whatever they are
+cuz some companies are still very
+mature. they some of these things are
+still opportunities that they're
+solving, but we haven't gone down to
+that granular level of data and
+measurement. So, I don't actually know
+the OKR does poorly, right? It performs
+poorly. How do I know which one is
+driving that? How do I know which one to
+kill and which one to pivot? The
+assumption that we end up making is none
+of it worked. And that's again not
+always true. Sometimes some of this
+worked. It's just outsized by the ones
+that have created some type of
+disproportionate negative impact. So,
+velocity, speed, plus direction.
+Everything I've taken you through is the
+direction piece of the puzzle. We need
+to be able to link everything together.
+And yes, this might feel like a lot of
+different measures and a lot of things
+moving parts to keep track of. It's
+super important to do that because of
+this. That is your direction. As a
+product manager, think of it as your
+compass. This is how I know everything
+we're doing from this experiment is
+heading us in the right direction. That
+helps us achieve this picture that I
+drew up here. If you don't have that,
+you're kind of blind or you're half
+guessing. So, I think all of this is
+really important. And again, I think
+this is even more important in the AI
+era because everything's speeding up.
+Speed in the wrong direction is not
+helpful. We need to be going fast in the
+right direction. AI can help you do it.
+Uh, I'm going to do another video. It
+might be out already. If it is, I'll
+link up the top and I'll put a link down
+in the description or comments below.
+You know, I've been using AI more for
+this. I have a hypothesis tracker. I
+have an agent that that tracks those
+hypotheses and looks at the data. So,
+I've got some of this on autopilot where
+this works kind of being tracked for me
+and it's helping me keep on top of it.
+Uh, so you can definitely use AI to help
+you do that and it's going to help speed
+things up on this side of the fence,
+help you measure direction better, but
+you've kind of got to still do the work
+and you've got to have this mental model
+and this understanding to piece
+everything together because AI is not
+going to piece this together for you.
+You need to piece it together. You need
+to do the work around this. So, you've
+got to break things up in this way.
+Anyways, that's all I wanted to do this
+video on. If you're interested in deep
+diving more into product strategy or
+discovery, I mentioned a few other
+videos. got a bunch on this channel. I
+also have a product strategy course and
+a discovery course. If you want more
+help linking all the dots together and
+you actually want to sit down and have
+an actual one-on-one with me around
+that, consider joining the product
+mentorship. That is what I do in the
+product mentorship. I'll throw a link
+down below as well around that. We can
+also get you set up with that whole AI
+thing as well. More and more I am
+sharing and working with product
+managers in the product mentorship
+around AI and getting themselves set up.
+So definitely go check those things out
+if you're interested in investing into
+your own career and doing that. What you
+should watch next, I'm going to leave it
+up to YouTube to decide and I'll throw
+some videos up here which YouTube will
+reckon is the best videos for you to go
+watch. So go check them out. And if you
+have any questions on any of these, any
+comments, throw them below in the
+comments. I'm happy to answer them.
+Thanks for watching. I appreciate the
+support. Say it to the next one.

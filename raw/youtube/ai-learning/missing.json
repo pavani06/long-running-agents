@@ -1,5 +1,5 @@
 {
-  "count": 14,
+  "count": 15,
   "videos": [
     {
       "id": "-ubIUNA-zRA",
@@ -20,6 +20,11 @@
       "id": "E9gaQHrw_rg",
       "reason": "sem transcript",
       "url": "https://www.youtube.com/watch?v=E9gaQHrw_rg"
+    },
+    {
+      "id": "GJtLi3zxg7g",
+      "reason": "sem transcript",
+      "url": "https://www.youtube.com/watch?v=GJtLi3zxg7g"
     },
     {
       "id": "ShuJ_CN6zr4",

@@ -1,0 +1,250 @@
+This is one of two absolutely
+fundamental shifts that has this
+knock-on impact to to how you change the
+way that you work
+[music]
+historically up until AI agents and
+maybe this is still how you work. You we
+kind of have human and then we kind of
+have the computer. I'm going to draw ah
+that was very bad. And you interacted
+with it. And the fundamental shift that
+happens here that he's referring to is
+that we are actually starting to have
+the shift that starts to happen is we
+start to have this layer in between
+which is like I'll just write what he
+said hundreds of agents right um I don't
+have hundreds of agents there's there's
+reasons why most people don't we'll talk
+about that I definitely want to talk
+about that but we start to have this AI
+layer that sits in between so what this
+means is that we and this is why it's a
+fundamental shift is because you you
+start to move away from
+like you want to do something some type
+of action and rather than going straight
+to like let me open it up or whatever it
+is you start to think how can I get AI
+to do it on my behalf. Later on in that
+video he talks about how talks about how
+like he doesn't touch source code
+anymore and how they kind of started to
+rethink this and I think about it this
+way as well. So like source code is down
+here and I'm going to contextualize this
+to product people because it doesn't
+have to be source code. This is kind of
+true across anything in a way or most
+things not everything we can talk about
+that. So rather than human interacting
+with source code, human interacts with
+AI which which interacts with source
+code and then vice versa. Now let me
+contextualize this. I'll give you some
+real examples for me. Shannon asked what
+tools because um and I can give you a
+shout out um because I messaged her the
+other day to use user snap which is her
+her product and um for one of the needs
+that I have. So yes, so Shannon, yes,
+you can have that shout out and user
+snap, but it's a good example, right? So
+I needed to capture I need to capture
+user feedback. So this is an example. So
+we'll do user snap. You you nice nice
+plug. Um
+so so wh um so I need to what what what
+is that for? And and this was on my list
+anyways. So this is for for me it's
+going to be user feedback, right? User
+snap is a great tool for that. But one
+of the setups I'll definitely have is
+that I don't necessarily need to go
+Yeah, exactly. I don't need to go
+straight to user snap. They have an MCP
+as Shannon is saying and the AI will
+talk to it and then it will talk to me.
+And that's super useful for me because
+uh one of the the difference too is like
+rather than me going to it to look at
+data and stuff, I can just pull data and
+I can just and I can make it push data
+to me as well. If I have an agent, and
+this is the point about building these
+little bots here. How do you draw a
+robot? Like, is it like that's my robot
+drawing? Um, but you can have this like
+bot here that will constantly monitor
+the feedback as an example for you. And
+then I don't need notifications or
+anything because it can just monitor the
+feedback. And then when there are
+interesting trends or insights or new
+feedback comes through, I can get it to
+push it to me. And I can also get it to
+take actions on my behalf. And you can
+also get it to enrich the data. So I got
+a bunch of agents that do stuff like
+that. But like you can imagine you have
+multiple data sources and it can
+basically start to cross reference all
+those things. And they're all things
+that you would have had had to do
+manually. But this is why this is a
+fundamental shift that I wanted to start
+with is because it actually changes the
+way that you think about how do you
+approach work. One of the shifts that
+this makes is that we actually need to
+all act more like managers. And some of
+the skills that you have as managers
+also are very transferable to here and
+this new era and and it's it's new
+skills that you need to acquire if you
+don't have and those who do have it do
+do very well in that regards. So here's
+just one last example on this one to
+make this real. Jira and Confluence and
+those types of things like my my clients
+use use those tools predominantly. Some
+some of them use linear but I I have
+notion behind behind it for me but I
+rarely open these tools and if anyone
+came to the live stream I did the other
+like a couple of weeks ago where we went
+through design tools and stuff you would
+see all of this in action. So you can go
+see that. It's over on YouTube if you
+want to rewatch it. But you can see
+exactly what I'm talking about here in
+action where you are interacting in that
+stream. I used Claude, but you're
+interacting with Claude and Claude's
+interacting with Figma. It's inter it's
+pulling data for Confluence and Jira and
+it's interacting with Figma. So you have
+this again it's this abstraction layer
+and you kind of sit in between but then
+you start to manage all of these agents.
+So that's the first kind of real big
+kind of shift that I wanted to touch on.
+So the second shift that starts to
+happen here is that AI is actually very
+good at essentially coding.
+When coding is no longer the bottleneck,
+what changes? And so on the cloud code
+team, coding is really the slow part
+anymore. And so like that's why all the
+upstream and all the downstream kind of
+like processes we felt like we've had to
+change a little bit. So if you think
+about this, what Fiona is referring to
+here is that there's a lot of upstream
+and there's a lot of downstream stuff.
+And if I had to like plot some of this
+out, some of it is strategy and vision,
+right? Some of it is things like
+discovery. Some of it is planning. She
+refers to that in the in that video.
+Some of it can be design right in there.
+Design. And then some of the downstream
+stuff is testing and verification, which
+she talks about in there. It can be
+deployment. It can be um marketing.
+It could be you know release stuff
+launch etc. Right? So the way I
+thought about or have been thinking
+about this is in the past if you had to
+map these things out maybe you spent a
+couple of days on strategy or a couple
+of weeks. So this is like weeks like one
+one to three weeks discovery is probably
+the same one to three weeks. Planning
+was probably like one to three days.
+coding was then something that was like
+months or weeks to months, right? And
+then you have then you have all these
+other things. This was probably like
+days as well, days, etc. Maybe some of
+these were a bit longer weeks, right?
+But my point being is that the longest
+thing was this, but the majority like
+the the hump that you have would be in
+the middle. And one of the things that
+is starting to happen is that this is
+being inverted. So it's actually
+starting to look more like this where
+the higher level stuff is over there
+because if Codeex or Claude or any LLM
+Gemini etc Kimmy K3 or whatever if if
+they can produce a lot in a very short
+period of time um like in minutes to
+hours right um maybe hours to days for
+something really long but this inverts
+the thing it inverts it a lot now this
+is a fundamental shift Because what this
+means is the unit of work chunks up. The
+way I think about this is in the past we
+used to like spec out a feature. We
+still do but bear with me. Um we used to
+take a feature and then we used to try
+and break it down and we'll work out
+like what are the thin slices right like
+what is the MVP and then how do we what
+are the iterations. What we normally end
+up doing is those things turn into like
+user stories. User stories then turn
+into like tasks. And really what we're
+often looking for is we're looking for a
+unit of work that will span hours
+to a few days. The thing that this does
+to us and gets compounded by this with
+like our ability to have you know agents
+go and do multiple like kind of you know
+fan out so to speak is that the unit of
+work chunks up rather than tasks taking
+you know one to three days as an example
+a feature can now take one to three days
+now spec driven development I get I've
+been asked so much about like isn't that
+waterfall. Aren't we just going back to
+waterfall? There's some elements of that
+that are kind of true in that regards.
+You know, they use analogies like it's
+very similar to like an intern. It's you
+kind of need to, you know, you kind of
+need to spell it out. You kind of need
+to give it the context. You kind of need
+to give it, you know, all this extra
+stuff because it will make mistakes
+because it's, you know, we're getting
+better with the the models, but yeah, it
+might make mistakes as a result of that.
+then yeah, your spec needs to be kind of
+bit more waterfally in the sense that it
+needs to kind of spell everything out.
+But what's not changing is the fact that
+we're trying to go through this feedback
+cycle. So if you go again, you go back
+to like first principles, we're trying
+to go through a build, measure, learn
+cycle and we're doing it in days and
+we're still working in iterations and
+we're still in fact what I'm seeing
+these companies and even the companies
+that I work with that are more advanced
+with AI, they're iterating more than
+ever. they're actually doing more
+because if coding becomes really cheap
+then we can actually iterate even faster
+and it may feel like waterfall because
+we're building a whole feature but it's
+not necessarily it will be if we
+overcook it. So there's still like some
+of those principles still apply but yeah
+um it's still within those those
+parameters. Uh and then also the agent
+side defense of having multiple kind of
+work from

@@ -1,0 +1,754 @@
+O novo agente de dados do Chart GPT tá
+incrível e a gente testou. Foram três
+casos de uso que você vai poder replicar
+no seu dia a dia. Se você ainda não
+conhece esse recurso, então fique até o
+final porque você vai saber como
+instalar, como trabalhar e quais
+resultados obter para melhorar as suas
+análises, tanto no seu trabalho, nos
+seus estudos e melhorar ainda mais os
+seus resultados com inteligência
+artificial. Bom, se você ainda não me
+conhece, muito prazer. Sou Antônio
+Benatti, especialista em inteligência de
+dados. E aqui no canal a gente mostra
+como você pode utilizar inteligência
+artificial no seu dia a dia para fazer
+análise de dados, gerar relatórios,
+construir dashboards e muito mais. Então
+vamos lá ver como esse novo recurso, o
+data agent do Chat GPT, pode te ajudar
+nessa jornada. Vamos lá. Muito bem,
+antes da gente colocar a mão na massa e
+de fato, vamos entender rapidamente o
+que é este agente de dados, né, ou o
+data agent que a Open AI lançou na
+semana passada, algo super recente e que
+impacta diretamente o nosso mercado de
+análise de dados. Então aqui eles
+comentam, né, que agora todo mundo pode
+colocar os dados para trabalhar. Conheça
+o novo agente de dados e transforme os
+dados da sua empresa em respostas,
+painéis interativos, ações, apenas
+perguntando. Então eles comentam aqui,
+né, quais ferramentas de integração
+estão incluídas aí nessa nova
+funcionalidade, incluindo aqui, ó, big
+query, data bricks, mongo db e por aí
+vai. Bom, aqui você pode dar uma olhada
+nos casos de uso, né? Eles deixaram
+embedado aqui no site, né? Você pode ver
+os dashboards aqui que eles já
+construíram utilizando esse novo plugin.
+Mas uma coisa que eu achei interessante
+é esse aqui, ó. O agente de dados também
+pode criar e interagir com painéis no
+Omni, Oracle BI, Power BI, Tablô e por
+aí vai. Ou seja, aqui você tem
+basicamente duas alternativas, né?
+Trabalhar com o painel já existente, né?
+conectando ali no chat GPT o teu Power
+BI, por exemplo, ou pedindo para ele
+construir, né, um painel no Power BI
+utilizando esse novo plugin. Então fica
+aí essa outra dica bem interessante para
+você testar. Bom, vale a pena dar uma
+navegada aqui e a gente vai já entender
+como que ele funciona. Então aqui mesmo
+nessa página, ó, eu vou clicar aqui em
+instalar o agente de dados. Eu estou
+dentro de um usuário, né, de login onde
+eu tenho o chat GPT, tá gente? Então, já
+cliquei aqui e aí ele já vai carregar o
+data analytics. Pode haver uma certa
+confusão, inclusive comigo também
+aconteceu isso porque no lançamento eles
+falam muito em data agent, né? E aqui
+quando eu tava e olhando e analisando o
+plugin, pelo menos nesse momento tá se
+chamando Data Analytics, mas eu fiz
+algumas pesquisas inclusive dentro do
+chat GPT e trata-se da mesma coisa, tá
+pessoal? Inclusive aqui você pode dar
+uma navegada no plugin mesmo, tá? Eu já
+tô conectado ao chat GPT, por isso que
+ele abriu. Pode ser que no seu caso ele
+peça aí para você fazer o login. Mas
+aqui, ó, quando ele lista as habilidades
+desse plugin, porque o plugin nada mais
+é do que a junção de várias habilidades
+para que você tenha recursos mais
+avançados utilizando o plugin. Você pode
+desenvolver um plugin, você pode criar
+um plugin do zero ou você pode utilizar
+plugins que as empresas, né, como a Open
+AI, a Antropic, a Google, elas
+disponibilizam nas ferramentas, tá?
+Então aqui, por exemplo, em habilidades,
+a gente tem uma delas que é a análise de
+data quality. Então este plugin do data
+analytics ou data agent, ele já tem uma
+habilidade, ele já tem uma caixinha aqui
+na cabeça dele que é destinada à análise
+de qualidade dos dados, né? Então aqui
+tem toda a descrição como se fosse uma
+skill mesmo. É uma skill na verdade, né?
+eh, para ele agir nesse sentido. Por
+isso que é tão interessante trabalhar
+com os plugins, que se torna um trabalho
+muito mais robusto. Ah, mas eu poderia
+fazer a mesma análise só utilizando o
+chat? Poderia. Então, voltando para cá,
+você vai ter várias habilidades
+indexadas aqui. Vamos ver aqui, ó. Se
+você clicar em mais, você tem KPI
+reporting, diagnóstico de métricas,
+visualização de dados. Então, então se
+você tivesse que construir todas essas
+skills para colocar no mesmo plugin ou
+usar skills separadas, você teria muito
+mais trabalho. Aqui já vem tudo
+prontinho, tá muito, muito interessante.
+Vale analisar aqui essas skills para
+você ter também conhecimento do que este
+plugin, né, esta nova funcionalidade é
+capaz de fazer e você ficar ainda mais
+experte aí no uso do chat GPT de uma
+maneira profissional. Aqui também eles
+falam, ó, se a memória estiver ativada
+nas configurações do Chat GPT, os dados
+do aplicativo poderão ser usados para
+fornecer proativamente informações ou
+sugestões úteis. Então, nas preferências
+do chat GPT nas configurações, você pode
+desligar essa opção, tá? Inclusive, eu
+já mostrei isso num shorts. Pode
+procurar aqui no vídeo que você vai ver
+como funciona isso. Tem mais delongas,
+então vamos lá. Aqui em cima você pode
+clicar em instalar plugin. Então cliquei
+aqui instalar plugin. Ele já disse que
+foi instalado. Aqui você pode conectar
+outras ferramentas, tá pessoal? Então já
+vou clicar aqui, ó, testar no chat.
+Então ele já abriu aqui o chat GPT para
+nós. Veja que eu tô na opção work aqui,
+ó, já automaticamente, tá? Aqui ele já
+invocou o plugin. Lembrando, para
+invocar um plugin, você vem no @, ó,
+dataanalytics, tá vendo? E aí você já
+pode selecionar. Então, a gente vai
+fazer o primeiro teste aqui utilizando
+uma planilha que eu tenho no meu Google
+Drive. Aqui eu tenho dados fictícios de
+uma campanha, né, por exemplo, onde eu
+tô rodando em alguns canais digitais
+aqui, mas eu tenho o número de sessões
+que eu tive no site, pedidos, a receita,
+desconto aplicado e por aí vai. Então, o
+primeiro passo que eu vou fazer aqui é
+conectar o meu Google Drive pra gente
+poder trabalhar com o plugin, tá gente?
+Então, eu vou vir aqui, Google Drive, tá
+vendo? Não tenho ele conectado. Vou
+conectar. Olha só. Conectar os plugins
+do Google. OK. Conectar. Aí ele vai
+talvez pedir algumas autorizações e aí
+você vai avançando. Vou selecionar tudo
+aqui. Depois você pode desabilitar, tá
+gente? Tranquilo? Pronto, ele já está
+conectado. Agora sim a gente pode
+invocar a skill e fazer a nossa primeira
+análise. Bom, então aqui eu já vou
+colocar um prompt que eu tenho separado,
+que é o seguinte, ó. Eu vou pedir para
+ele usar a planilha base demo data agent
+800, que é a planilha que eu tenho aqui
+no drive, tá vendo? Então eu vou
+referenciar essa planilha para garantir
+que ele utilize os dados corretos, tá? E
+eu quero a seguinte análise, eu quero
+que ele compare então dois períodos eh e
+também performance da campanha e também
+a questão de vendas aqui ao mesmo tempo,
+tá? Então eu coloquei aqui para ele
+mostrar as sessões, os pedidos. Depois
+eu quero que ele responda algumas
+perguntas, né? O desempenho melhorou ou
+piorou? Qual foi a principal mudança?
+Bom, antes de eu dar o play, repara que
+eu tô utilizando aqui o modelo terra,
+tá? De um esforço alto. Por que que eu
+quis destacar isso aqui? Como a gente já
+tá trabalhando com um plugin, que em
+tese ele tem várias skills que tornam
+ele muito mais habilidoso e e muito mais
+eh inteligente, não necessariamente para
+uma análise relativamente simples como
+essa, eu preciso utilizar o melhor
+modelo atual do da Open AI, que é o
+Astra, né? Então eu vou utilizar nesse
+caso o Terra no esforço alto, porque em
+tese eu já tenho uma baita de uma skill
+ali, um baita de um plugin na verdade,
+né, para me ajudar a trabalhar com isso.
+Então eu vou rodar ele aqui e aí a gente
+vai ver o que que vai acontecer.
+Enquanto ele roda, pessoal, essa tela
+aqui é legal para vocês darem print e
+depois é ter aí como apoio para mostrar
+o que que é esse data agent na prática.
+Então você vai fazer uma pergunta, né,
+uma pergunta de negócio, por exemplo,
+porque as vendas caíram. Então esse
+agente vai receber o contexto também,
+porque ele vai tá acessando as
+informações, né? E aí ele vai ter uma
+abordagem de um analista de dados mesmo.
+Ele já tá preparado para isso por conta
+de todas aquelas skills que ele traz com
+ele mesmo, tá? Então ele vai dar uma
+analisada em quais dados importam, qual
+métrica que vale, como os dados se
+conectam, o que incluir ou excluir para
+fazer o tipo de análise, né? Então ele
+vai fazer a organização e investigação
+num passo a passo mesmo para que depois
+ele te traga uma resposta, né, para te
+gerar ação. Então ele vai trabalhar
+dessa maneira e investigativa e já vai
+separar para você exatamente o que você
+precisa com base na tua pergunta para
+gerar uma ação. Bom, isso aqui não
+necessariamente é uma novidade, mas como
+o plugin ele tá destinado para isso,
+facilitem muito o nosso processo no dia
+a dia, né? Porque você não tem que
+colocar prompts eh muito específicos,
+você não tem que criar várias skills
+para isso. Então ele já vem como se
+fosse um pacote pré-formatado mesmo para
+você simplesmente usar, tá bom? Bom, ele
+tá trabalhando aqui, ele já identificou
+a planilha, inclusive aqui do lado a
+gente consegue ver eh as fontes, né, que
+ele tá utilizando. Então ele foi no
+Google Drive, ele buscou o arquivo e
+encontrou a minha planilha. Eh, ela tem
+800 registros e aí ele já tá fazendo os
+cálculos para responder as perguntas que
+eu tenho aqui. Então, só pra gente
+confirmar, olha só, a gente tem uma
+contagem aqui de 800 registros mesmo, tá
+bom, gente? Então vamos aguardar ele
+terminar e ver o resultado final aqui
+deste primeiro caso de uso. Muito bem,
+ele terminou de rodar, ele levou 2
+minutos e 40 segundos, fez todas as
+validações, né, primeiro e aí ele me
+trouxe uma tabelinha aqui com a variação
+entre as semanas de análise que eu pedi,
+tá vendo? E ele trouxe a variação das
+sessões, né, onde eu cresci 23%, pedidos
+onde eu cai 14, taxa de conversão, onde
+caiu aí quase um ponto percentual e a
+receita líquida também que caiu quase
+15%. Aí ele me trouxe uma visualização
+aqui comparando a semana dois com a um
+neste gráfico que ficou interessante,
+né? Porque aqui eu já tenho o KPI e já
+tenho aqui a variação, né? Então as
+sessões foi eh o único Kippi que variou
+positivamente, o resto caiu tudo. Então
+aqui numa visualização eu já mato essas
+análises. Então ele já colocou aqui, ó,
+que piorou porque houve mais tráfego,
+mas menos pedidos e menor receita.
+também trouxe aqui, a principal mudança
+foi a queda de conversão. Então ele
+detalhou aí onde que a gente teve essa
+essa queda, né, qual canal, né, que
+trouxe mais sessões, mas somente cinco
+pedidos, que no caso é o pedid social.
+Sua conversão caiu de 2,21 para 1%. E
+maior atenção aqui, ó, pid social no
+mobile, as sessões subiram enquanto que
+os pedidos praticamente ficaram
+estáveis. Bom, muito bem, gente. Agora a
+gente vai fazer o caso dois. Caso de uso
+dois, que ao invés de eu trabalhar com
+uma planilha no meu Google Drive, eu vou
+trabalhar com o banco de dados. Então,
+neste meu caso, eu vou trabalhar com
+Supabase, eu vou mostrar aqui para
+vocês, mas poderia ser uma outra
+ferramenta, né? Então, inclusive aqui no
+site do da Open AI, né, do aplicativo
+novo, então inclusive aqui no site, né,
+da Open AI do novo plugin data agent,
+eles comentam, né, conecte aos dados e
+ao contexto que a sua empresa confia. E
+aqui eles dão alguns exemplos, né? Por
+exemplo, o Google Pig Query, o Dada
+Bricks, o Mongo DB e por aí vai. No meu
+caso, eu vou utilizar o Supase, onde eu
+tenho a mesma tabela aqui, tá vendo? São
+as mesmas informações do exercício que a
+gente fez anterior, só pra gente ver
+como que o chat GPT vai acessar essas
+informações, trazer a análise e
+construir o dashboard visual pra gente
+poder atualizar os dados em tempo real,
+tá bom? Então eu vou trabalhar com o
+Supaso, inclusive, deixa eu botar aqui
+pro chat GPT. inclusive vai te ajudar
+caso você queira fazer uma experiência,
+né, testar, porque o Big Query ele só
+está no plano avançado, tá? Deixa eu
+entrar aqui, ó, em plugins de novo. Se
+eu digitar aqui Big Query, ele não vai
+estar habilitado para eu trabalhar, tá
+vendo? Ele vai ter um cadeadinho aqui,
+porque ele não tá no meu plano, não tá
+disponível. Eu tenho o plano plus aqui
+do chat GPT, tá? Porém, o Supaso
+conectar, tá vendo? Então eu vou clicar
+aqui, vou pedir para instalar o plugin,
+continuar no chat GPT. Daí você vai
+fazendo as autenticações, tá? Tudo que
+ele pedir e aí ele já vai conectar. No
+meu caso, eu tô com o mesmo user, então
+fica mais fácil. Vou autorizar aqui.
+Muito bem. Então ele já tá habilitado.
+Olha só. Vou clicar aqui em testar no
+chat. Voltei aqui, ó. Ele já colocou
+aqui como o conector, tá vendo? Mas eu
+vou deletar porque agora eu quero
+trabalhar com o data analytics e o
+Supase, tá? Super base aqui, ó. Tá
+vendo? Agora eu vou pedir aqui no prompt
+para que ele faça a análise que eu
+preciso. Ó, use como fonte a tabela base
+demo data agent 800, que é a mesma que
+eu tenho aqui, tá? No Supabase do meu
+projeto Supase. Quero criar um dashboard
+interativo de performance de marketing
+para um gerente de marketing, como se eu
+tivesse fazendo o trabalho aqui pro meu
+gerente, no caso. Daí eu quero que ele
+coloque esse skip. O dashboard deve
+permitir analisar o desempenho por
+período, canal, região, porque ele já
+coloca os filtros, né, e os principais
+KPIS, tá? Sessões, pedidos, taxa de
+conversão, Ras e por aí vai. E o que eu
+gosto de colocar nos prompts são as
+perguntas de negócio. Inclusive todos
+esses prompts que eu tô utilizando aqui,
+eu vou deixar lá na área de membros para
+que você possa baixar e replicar. E a
+base de dados que eu tô usando aqui
+também, eu vou deixar disponível lá para
+você fazer o download de forma gratuita
+e poder replicar esse exercício, né? Aí
+você pode colocar no seu portfólio, pode
+fazer os outros testes, né? Então fica
+aí à vontade para poder trabalhar. Então
+aqui eu coloco três perguntas de
+negócio: como o desempenho evoluiu?
+Quais canais apresentam maior ou menor
+eficiência? Quais dispositivos ou
+regiões têm aumento de tráfego, mas não
+está convertendo em pedidos porque eu
+preciso, né, otimizar aí e os meus
+resultados, tá? Coloco algumas outras
+questões aqui e os insightes, né, mais
+objetivos também para eu já ter acesso a
+essas informações, tá bom? Então eu vou
+pedir para ele rodar. Já tô com o agente
+aqui e também a conexão com o Supase. Ó,
+olha só, vamos dar uma olhadinha rápida
+no que ele tá trabalhando. E isso aqui é
+legal pra gente destacar. Lembra que a
+gente tá com um cara aqui muito
+importante que é o plugin do data agent,
+tá gente? Então, olha só que legal, ele
+identificou aqui o projeto lá no no
+Supase e já identificou ali algumas
+colunas, entre elas a coluna de data.
+Quem aí nunca teve problema com
+formatação de data? Então aqui no
+superabase eu subi de propósito para ver
+que que ele ia fazer. Então aqui na
+data, tá vendo? Eu tô como como formato
+de texto. Que que ele tá fazendo? Ele já
+identificou, ó. Agora estou verificando
+o formato nulos, duplicidade,
+consistência matemática para evitar
+distorões. Então ele colocou aqui, ó,
+que a data está armazenada como texto,
+já identificou isso e já está
+corrigindo. Por isso que este agente
+aqui e ele é super habilidoso, inclusive
+ele tem as questões de qualidade dos
+dados. Lembra que a gente mostrou no
+início do vídeo? Se você não lembra,
+volta lá para você ver. Ele tem várias
+habilidades e aí ele consegue trabalhar
+de forma autônoma nesses casos aqui
+também. Vamos ver como é que ele termina
+e qual que vai ser o próximo passo aqui.
+Vamos lá. Bom, perfeito, terminou. Ele
+levou 16 minutos. Óbvio que eu dei um
+corte aqui nesse vídeo, né? Mas em 16
+minutos ele acessou a minha base de
+dados, ele entendeu as minhas perguntas
+de negócio, ele validou as informações,
+ele fez o ETL e a transformação dos
+dados e desenvolveu todo o dashboard em
+16 minutos. Às vezes parece muita coisa
+16 minutos, mas vai lá você fazer tudo
+isso em 16 minutos de forma correta, que
+é o que a gente vai ver se ele fez
+mesmo. Mas vamos lá. Que que ele fez
+aqui? Então ele acessou o Supase e
+também acessou uma outra ferramenta que
+é o sites. Por isso que ele consegue
+desenvolver os dashboards. Então ele
+colocou aqui, né, que ele publicou e o
+dashboard, todos os registros, o que que
+ele fez aqui de transformação. Já trouxe
+os insightes principais também. Ele já
+trouxe aqui um botãozinho de atualizar o
+dashboard semanalmente. Então isso aqui
+na verdade uma função do chat GPT, né,
+que você pode fazer automações. Ele já
+trouxe essa opção aqui pra gente e o
+dashboard aqui que a gente vai abrir.
+Então se eu clicar aqui, ele já vai
+abrir o canva aqui do lado pra gente
+poder fazer algumas validações. Então
+ele trouxe pra mim aqui todos os
+filtros, os principais filtros, o título
+do dashboard, os cards, né, com o total
+de sessões, total de pedidos, taxa de
+conversão, gráficos aqui embaixo, né?
+Então ele trouxe aqui no gráfico de
+linha tanto a receita líquida quanto o
+custo de mídia, né? Que a gente pode ir
+passando o mouse aqui e já tem aqui a
+tool tip que a gente pode observar os
+resultados, tá? Vou clicar aqui em
+visitar, tá? Quando eu clico em visitar,
+ele vai abrir o link aqui já pra gente
+poder analisar melhor. Então aqui
+embaixo eu tenho esses gráficos de ROAS,
+né, por canal. Então eu vejo que o PID
+Search ele tem um ROAS maior do que o
+PID Social. Aqui eu tenho o gap entre
+crescimento e pedidos de sessões. Então
+veja que ele desenhou muito com base ali
+nas minhas perguntas de negócio. Eu não
+fui muito específico em relação a
+gráficos que eu queria. Não sei se vocês
+repararam isso no prompt. Eu poderia ter
+sido, mas eu apenas informei o tipo de
+dado que eu tinha e quais perguntas eu
+queria responder, porque eu tô simulando
+aqui como se eu fosse realmente o
+gerente, né, querendo saber os
+resultados. Não tô me colocando
+necessariamente na posição de um
+analista expert em visualização de
+dados. Poderia mudar o prompt um
+pouquinho para essa finalidade, tá?
+Então aqui ele já colocou esses gaps,
+né, onde eu tô perdendo mais em relação
+à sessão. E aqui é uma tabela em apoio,
+né, de performance por campanha. Então,
+rapidamente eu consigo saber que essa
+campanha aqui, conteúdo SEO, que vem do
+canal orgânico, tá me gerando aqui
+tantas sessões, tantos pedidos. A
+conversão tá legal aqui, né? 2,7%,
+custo zero. Já que na Sprint X launch,
+né, que é uma campanha de mídia paga, eu
+tenho o total de sessões aqui. Já minha
+conversão tá mais baixa, 1.3, por aí
+vai, tem outras informações e os
+insightes objetivos aqui, tá vendo?
+Então ele já trouxe, né, que entre a
+semana de 17 a 23 e a de 31 a 6, eh, as
+sessões cresceram enquanto os pedidos
+caíram, né? Então, foi aquela primeira
+análise que a gente fez no caso um.
+Então, a conversão recuou, o padrão
+mostra a associação entre mais tráfego e
+menor eficiência. precisa dar uma olhada
+nisso. Entre os canais de mídia paga,
+PID Search apresentou maior ruas no
+período. E por fim, aqui o maior
+descompasso tá na região Sudeste, é na
+versão mobile. Aqui a gente vê que as
+sessões subiram 65%, mas os pedidos
+caeram 21%. Algo indica que a
+experiência do usuário não tá boa aqui,
+né? E depois ele colocou por no final
+uma metodologia, né? Qualidade e
+critérios que ele adotou para criar o
+dashboard. Bem interessante, tá? Então
+aqui você tem os filtros, né?
+funcionais. Então você pode clicar aqui,
+ele vai carregar todos. Poderia ter sido
+um pouco mais específico na região, na
+questão dos filtros também, tá gente?
+Mas já tá aqui bem construído. Você pode
+editar também, né? Então, por exemplo,
+se eu quisesse colocar aqui V2, por
+exemplo, então eu possoeditar e salvar
+as mudanças, tá bom? Voltando aqui,
+lembra que a gente tá dentro de uma
+ferramenta que ele utilizou, que é a
+ferramenta de sites. Você poderia usar
+essa ferramenta para outros objetivos,
+construir sites mesmo, aplicativos e
+tudo mais. Então ele utilizou por ele
+mesmo essa ferramenta para desenvolver o
+dashboard aqui. Então foi uma
+inteligência já e uma automação do
+próprio modelo. Então aqui você pode
+compartilhar também, vem aqui no
+compartilhar, você pode digitar o e-mail
+da pessoa ou compartilhar para todos,
+né? Qualquer pessoa com esse link, tá?
+Então, se eu salvar aqui, se eu levar
+para cá, isso aqui é um outro usuário,
+tá gente? E ele abre normalmente, tá?
+Com todas as funcionalidades de filtro,
+tudo funcionando, tá bom? Então você
+consegue compartilhar também isso aí.
+Lembrando, né, que se você quiser
+atualizar o dashboard, você vem, clica
+aqui e aí ele já eh te faz algumas
+perguntas quando que vai ser atualizado.
+Daí ele cria essa automação. Como ele tá
+plugado diretamente lá no Supas, à
+medida que a minha base lá, os novos
+dados vão chegando ali, ele já vai
+atualizando automaticamente. E aí para
+fechar esse caso dois, que que eu queria
+mostrar para vocês é enviar um relatório
+por e-mail, tá? Então, se eu tenho
+conector Gmail aqui, eu posso pedir para
+ele gere um relatório com as principais
+informações
+em formato HTML no corpo do e-mail. Não
+vou ser muito específico aqui, mas eu
+poderia destrinchar um pouco mais,
+colocar algumas e questões visuais, o
+que que eu queria, mas para otimizar o
+tempo aqui, só vou mostrar para vocês
+essa possibilidade. Então eu coloco o
+conector Gmail aqui bonitinho, né? Já
+conectei antes com a minha conta. Vou
+pedir para ele gerar um relatório. Olha
+só, gente, ele acabou de criar o
+rascunho aqui, ó, 16 e 16. Tá vendo?
+Deixa eu aumentar aqui para vocês darem
+uma olhada. Então, ele criou aqui um
+header bem legal, né? Obviamente que ele
+colocou o assunto. Esse relatório resume
+os principais indicadores, colocou os
+cards aqui. Ficou esteticamente até bem
+bem bacana, né? Eu não tinha pedido nada
+para ele criar visualmente, mas lembra
+que a gente tá utilizando o plugin que
+tem visualização de dados ali como
+habilidade. Então ele colocou as
+conclusões, validação dos dados e
+colocou aqui. Não tá funcionando aqui
+porque tá no rascunho, né? Mas olha só,
+ele colocou aqui o link do dashboard,
+né? Então se eu clicar aqui, o
+destinatário poderia acessar os nossos
+resultados. Pra gente ter certeza que os
+dados estão eh qualificados. Olha só que
+legal, eu posso vir aqui nos três
+pontinhos, clicar em view data source e
+aqui ele te dá o SQL query que ele
+gerou, tá vendo, ó? Então, se eu copiar
+aqui, eu posso ir lá no Supase. Deixa eu
+criar aqui, ó. Vou venho aqui na nas
+queries, né? E posso dar um run. E aí eu
+posso validar as informações que estão
+no dashboard, tá vendo? Então fica esse
+registro de mais um caso de uso para
+você também poder utilizar aí. Bom,
+vimos como esse agente pode trabalhar
+com planilhas, com banco de dados e
+agora a gente vai ver como ele pode
+trabalhar com o Power BI. Existe um
+recurso aqui no chat GPT que a gente
+pode combinar essas duas coisas, o
+agente, né, o data agent, o novo plugin
+e o Power BI. O plugin do Power BI
+também para ele ler os para ele ler o
+dashboard e nos fazer as análises. Aí a
+gente fecha aqui o terceiro caso de uso.
+Se tá gostando, deixa o seu like, deixa
+o seu hype aqui também, que ajuda muito
+o canal. pra gente alcançar mais pessoas
+para verem essas aplicações bem bacanas
+em termos de análise de dados. Vamos lá
+ver esse caso três com Power BI. Vamos
+lá. Muito bem, gente. Então aqui, ó, eu
+já tô com com o plugin do Data
+Analytics, né, habilitado. Agora eu vou
+vir aqui em plugins. Deixa eu mostrar
+para vocês. Olha só, novos, novos e
+imperdíveis, ó. Temos o data aqui e
+também temos o Microsoft Power BI. Bom,
+aqui você pode dar uma olhada, né, para
+ver o que que esse plugin traz, né, as
+especificações e tudo mais. Mas aqui já
+dá para ter uma noção, né? Olha só,
+quando você usa o plugin, você pode
+pedir para ele explicar o que que o
+report do Power BI tá trazendo de
+informação, incluindo filtros, né,
+especificações, gráficos ou até mesmo os
+próprios dados com as análises. Então,
+vou clicar aqui, ó, abrir no aplicativo
+desktop. Então, ele abriu aqui já na
+sessão de plugins, tá vendo? Eh, eu já
+tinha baixado o aplicativo do Chat GPT
+antes, tá gente? Daí você vem aqui, ó,
+simplesmente instalar plugin. Plugin
+Microsoft PowerB instalado. Testar
+agora. Bom, aqui ele já instalou,
+pessoal. Aí, só lembrando, deixa eu
+voltar lá. Quando você tiver no chat PT
+online, tá? Aqui eles dizem, né? Ele não
+funciona na versão web, tá? Então, só na
+versão desktop mesmo. Por isso que ele
+te encaminha pro aplicativo do Chat GPT
+Desktop, tá? Então, se você não tiver
+instalado, já faça isso para que você
+não fique perdendo tempo aí, tá bom? Mas
+vamos voltar lá. Ele já tá conectado
+aqui. Agora eu vou pedir para ele
+analisar. Agora unido a este plugin, eu
+vou chamar o data. E aí eu vou pedir
+para ele analisar este Power BI que está
+aberto aqui para mim. É um Power BI com
+análises de logística. Inclusive, a
+gente tem um vídeo no canal onde eu
+desenvolvi este Power BI aqui, esse
+relatório utilizando inteligência
+artificial, tá gente? Então esse aqui é
+um é um recurso bem bacana com HTML aqui
+que tem os filtros todos funcionais.
+Vale a pena dar uma olhada, caso você,
+né, não conheça o canal. A gente tem
+vários vídeos aqui mostrando como
+utilizar IA é no Power BI para
+desenvolver relatórios, gráficos e
+análises como essas aqui, tá bom? Fica a
+dica. Então eu vou pedir para ele fazer
+uma análise com base nesse relatório
+aqui, tá bom? Então eu vou deixar o
+Power BI lá aberto. Aí eu trouxe o meu
+prompt para cá, ó. Bem simples. Analise
+o relatório de logística que está aberto
+no Power BI. Considere os filtros
+atualmente aplicados e me responda essas
+perguntas, tá? Listei quatro perguntas
+aqui para ele me responder. Quais são os
+principais Kipiais monitorados? Quais
+indicadores apresentam pior desempenho?
+Quais regiões ou transportadoras mais
+contribu para problemas encontrados?
+Qual deveria ser o principal prioridade
+da liderança? baseia-se na resposta no
+relatório e nos dados disponíveis do
+PowerBI. Ainda não altere o relatório,
+porque ele poderia também alterar, tá?
+Então vou deixar isso bem explícito aqui
+para ele. Tô trabalhando com o modelo
+terra aqui e agora a gente vai dar o
+play. Bom, gente, dividi aqui a tela,
+tá? pra gente ter uma melhor
+visualização. Chat de PT do lado
+esquerdo e o nosso PowerB do lado
+direito. Ele já mencionou aqui que ele
+conseguiu eh encontrar o modelo
+semântico do relatório logística Brasil
+e ele já tá condensando aqui as
+análises, tá? Vamos lá ver que que ele
+vai dizer pra gente. Então ele que que
+tá acontecendo, gente, aqui ele tá lendo
+o modelo semântico do Powerbi. Não é que
+ele tá dando screenshot na tela, não tá?
+eh, ele conseguiu acessar então o
+modelo, o relatório que a gente tava
+aberto e conseguiu fazer algumas
+validações aqui. Então ele já destacou
+aqui qual é o pior desempenho, né? Então
+o nosso TIF, que é eh a principal
+métrica ali de logística, né, que nos
+traz a performance ali de entrega eh dos
+produtos, ele nos deu aqui que tem 115
+pedidos em atraso entre os 950 pedidos
+elegíveis. eh, já colocou aqui que a
+média de atraso é de 3,6 dias. E os
+principais contribuintes, né, para essa
+informação aqui de atraso é a região
+norte, que tem o pior, a pior taxa de
+atraso, né, o pior tif aqui, e também a
+transportadora North Flags Log, que
+também tem a pior taxa em termos de
+Itif. Então, se eu voltar lá no Power
+BI, eu tenho aqui que o outif médio de
+fato é 87%,
+né? A questão da logística aqui, ó, eu
+tenho o atraso médio entre os pedidos é
+de 3,6 dias, conforme ele disse pra
+gente, o Norte tem a pior performance e
+a Nort Flex eh log também tem a pior
+performance. Então foi o que ele
+identificou. Então daria, né, para gerar
+um relatório, daria para gerar um
+e-mail, daria para editar esse próprio
+dashboard ou criar um novo a partir
+dessas informações. Aí vai depender
+muito do teu caso de uso, tá gente? Mas
+aqui eu queria destacar essa questão,
+né, que a gente utilizou aqui o plugin
+do Power BI e também o nosso agente de
+dados. OK? Bom, com isso a gente
+finaliza os três casos de uso para você
+ter uma ideia aí do potencial e como às
+vezes parece uma besteira, mas nos ajuda
+muito na questão de análise e otimização
+desse processo. E aí, curtiu esses três
+casos de uso? O novo plugin do Chat GPT
+já está disponível. Basta você acessar
+aí na sua conta e começar a trabalhar
+com ele. Pode ser que ele gaste um pouco
+mais de tokens, pode ser que ele demore
+um pouco mais para responder, porque ele
+realmente tem mais potência e ele vai te
+trazer também mais qualidade por conta
+disso. Todo o material, tanto os prompts
+quanto a base de dados, vai est
+disponível lá na nossa área de membros.
+Basta ir lá e baixar de forma gratuita.
+Se você quer aplicar o uso de
+inteligência artificial na sua empresa,
+integrar dados, desenvolver visuais,
+entre em contato com a nossa
+consultoria. A gente vai poder te ajudar
+nessa jornada. Então eu vou ficando por
+aqui e até o próximo vídeo.

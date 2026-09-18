@@ -1,0 +1,389 @@
+[music]
+Hi everybody. Uh thank you for coming
+today. Uh welcome to a talk about
+nothing. Sorry, a talk about retrieval.
+Uh my name is Yuval. I work at AI21
+which is essentially an AI research lab.
+And today I want to talk to you about
+something that most people don't want to
+talk about which is chunking. And I hope
+to convince you by the end that chunking
+isn't dead and there is something to do
+with that. And really if you are at Axe
+LinkedIn wherever you probably seen that
+rug is dead right I think people also
+killed MCP lately and Rag is dead again.
+Long live identic retrieval, identic
+search and there is come a time where
+you have to ask yourself how many times
+can Rag die right and even when someone
+says well ra isn't dead like Jerry the
+CEO of Llama index they still have to
+kill something and apparently this
+something is chunking like don't invest
+in it don't do it and this is the reason
+that People said that chunking is dead
+because everybody's using agentic search
+now, right? You have gs, you have ls,
+you have finds. All of these are great,
+but these are still not enough if you
+have a lot of data and you have various
+amount of queries.
+Just the second. Okay. And I think that
+the main reason that a lot of people
+don't like to talk about chunking, it's
+because it's not the fun part, right? In
+every rag or files system we have two
+stages. The first stage is the like the
+boring one as you may the one you do in
+the beginning you have a lot of data you
+have to pre-process it you have to
+decide on the chunk size and then you
+have to store everything in a vector DB
+the other part is the retrieval part
+essentially the the one that happens per
+query this is something which is much
+easier to do right it's much easier to
+optimize you can use all your queries
+and then you can play with the max k uh
+top k sorry you can uh play with a
+hybrid search maybe those kind of things
+much more fun to do retrieval tuning
+right h so I will claim that if we have
+to kill something if something has to be
+dead then it's probably retrieval tuning
+and yes agentic search probably killed
+that
+and but still agentic search even if we
+can accept the fact that it killed
+retrieval tuning it's still not good
+enough when you have a lot of right
+scale a lot of data it costs a lot of
+money I don't think I have to mention
+that anymore token maxing is like
+something that everybody's talking about
+and the thing underneath which is if the
+data itself is not ordered in a right
+way in your folders in your directories
+you still get something which is
+inefficient so let's try to think of a
+like a timely example right the FIFA
+World Cup is now. And let's imagine that
+we have a data set that contains of all
+the FIFA World Cup. So every directory
+is the let's say the 98 one, the 2002
+one and so on and so on. But if your
+query asks
+how which team won the most World Cups,
+you can't just go to a folder and ask
+that. You have to go to every folder,
+see who won, and then aggregate this
+together, which is very inefficient.
+The answer by the way is Brazil. I hope
+at least according to
+yeah according to the time that this uh
+conversation is happening.
+So retrieval didn't actually die. Okay,
+we're not killing anything in this
+lecture. It is got devoted into
+plumbing. And I think that everybody who
+worked on any rug system know the
+feeling. day one or week one or maybe
+even month one if you're very thorough.
+You're picking some sort of a chunk
+size. Let's say 512
+and maybe you're probably putting some
+overlap right 10 20% so on indexing
+everything and forget all about it. And
+you can right we talk a lot about the
+fixed chunking strategies where if your
+chunk something which is too big right
+so you get the whole picture which is
+nice but you're losing a lot of the
+nuance and all the chunks will not get
+meaningful embeddings where if you will
+choose your chunks to be too small
+you're getting the big picture lost and
+really it won't be as efficient. So what
+this tells us is that chunking is
+essentially a lossy compression. No
+matter what we're doing, we're losing
+something. And I will I will claim that
+there is no right chunk size. And a lot
+of you who worked on data will say, "No,
+but we have this corpus. We have this
+data set and we really used and we
+optimized our system to work very very
+well on this data." And we thought so
+too. We had a lot of experience with it
+with a lot of different types of agents
+and systems and workflows that you can
+really and right you think about
+benchmarks how easy it is to overfit
+your model to a benchmark but not with
+rug it doesn't happen there and you
+cannot really optimize it per data set
+and I will claim that it is query
+dependent and how can I be so sure how
+can I claim such a thing because we ran
+experiments and we tested And now I'm
+going to present it to you. So what we
+did instead of saying what is the best
+chunk size per data let's find out let's
+let's actually take a data set and
+duplicate this data set several times.
+In this case six times in every
+duplication in every instance the chunk
+size is different. So we have a database
+with a chunk size of 2,00 a database
+with a chunk size of 1,000 and so on and
+so on.
+And we did it with several data sets. So
+QM sum which is a meeting transcript
+data set, narrative QA which is question
+answering on novels and Seinfeld data
+set which is a trivia about nothing. Not
+really. It's a trivia trivia questions
+about the transcripts of Seinfeld. It's
+a kind of a trolling data set that we
+built uh in-house. We also published it
+if anybody wants the link at the end.
+And we tested on all of them to see what
+happens. And first of all, we just
+wanted to see for every data set which
+chunk size is the best. And what we're
+seeing here is an example from the
+Seinfold data set where essentially two
+queries which are different by nature
+get different results uh based on the
+chunk size. So the first question what
+is the name for Jerry's favorite church?
+You can see this is a very focused
+question very specific question. The
+answer to it is probably very contained
+and this is something that a smaller
+chunk size will do best in. And you can
+see uh rank one versus rank below 50. uh
+between 100 tokens fixed at chunk size
+to 100 whereas a question like who does
+Jerry describe as his nemesis and pure
+evil which I'm not even that big of a
+Seinfeld fan and I know it's Newman but
+if you look at the transcript it's not
+something you can find that easily and
+you can see that it really changes right
+if you use small chunk size you will not
+get the answer
+and what we did to really after we ran
+all of these things and we've noticed
+that we said what if we had an oracle or
+a genie if you want that can tell us for
+every query what is the best chunk size
+to do retrieval for this essentially is
+the Oracle experiment this is what we
+wanted to know to see the potential this
+is not right we already have the answers
+so we're not actually building a system
+here we just want to see what is the
+potential that we have here and what you
+can see here. Okay, in this uh graph all
+the blue, first of all, the yaxis is the
+recall. Higher is better. The x-axis is
+the number of retrieved chunks. So, it's
+recall at K versus K. You can see all
+the blue lines probably
+indistinguishable, but each of them is
+the performance for a fixed chunk size,
+whereas the orange one is the oracle
+line. This is for every query, we took
+the best one out of these. And you can
+see it happens across several data sets.
+In a lot of them, you can actually see
+that the blue lines inter intersect with
+each other. Meaning that indeed for a
+lot of the data sets, no chunk size
+actually dominates. And what's more
+interesting is that there's a lot of
+potential. The gap which you can see
+between the orange line and all the blue
+lines is big. And when I say big, it's
+something like 20 to 40%
+just from doing strategy on chunking and
+very simple strategy may I add. And this
+is like that this gap this is what the
+choice of 512 or a thousand or whatever
+right this number is just arbitrary.
+this is what it costs you.
+And I think that the problem here is
+like it's a bit tricky because it's kind
+of like an information problem that we
+don't have the information that we need
+at every stage. And what do I mean by
+that? If I'm looking at the indexing
+part where I do have control over the
+chunk size, I don't know what the
+queries will be. I can guess, I can
+maybe estimate, I I can try but I don't
+know what the queries will be. So I
+cannot adjust my chunk size accordingly.
+And the retrieval part where I do have
+my queries, I cannot control the chunk
+size, right? It's already fixed and I
+obviously will not do the entire process
+per query from the beginning.
+So we looked at prior works such as
+notably entropic contextual retrieval
+where they en enrich every chunk and
+others that essentially try to improve
+the latent space of every chunk. But
+this is not the direction that we went.
+All of them just stayed in the model of
+let's work with a fixed chunk size.
+Whereas we took a different approach and
+we said why commit to one where we can
+commit to several and we call it the
+multiscale indexing essentially we're
+just doing what we've seen before. So
+we're checking the database. We
+duplicate it and chunk it uh with
+several
+chunk chunk sizes or window sizes and
+then sorry um and then this is what
+happens at the indexing and then at
+retrieval time we are querying all of
+them. So if we had n
+duplicates of database n window sizes we
+now have to run six different retrieval
+calls per query. Sorry, six is n.
+And how do we combine them? We obviously
+cannot use the oracle, right? The oracle
+is something that we have just for
+potential. In real life, we don't know
+the answer. Uh but what we can do is to
+find some sort of merging algorithm. Now
+you would say when we look at it like
+this, what can be the issue? the fact
+that we have n ranking but the rankings
+are for chunks and chunks with different
+sizes are not really comparable right so
+instead we opted to do something which
+is pretty popular these days and a lot
+of the rug systems actually work like
+this that instead of just retrieving the
+chunk when we're getting a chunk we're
+retrieving the entire document right
+when context window grows we want to
+give more and more context and now in
+this case we have n right n uh rankings
+of the same documents because there are
+not chunks anymore and this we can
+compare and in this case you can think
+of retrieval as essentially just voting
+right so it's not pure ranking we don't
+have round ranking and then we're doing
+it rerank we're having n different ranks
+of the relevant documents and we want to
+aggregate them all into one
+that's why we are using something called
+rf receive reciprocal rank fusion, okay,
+which is pretty much a simple formula.
+We tried several things. This worked the
+best. And as you can see, it's not a
+model. It's not something that you have
+to do specifically like especially this
+is just a simple script that takes
+really no time. And this is how the full
+uh how the full system looks like. So we
+have the indexing end times. Then uh we
+query each query from every database and
+we're using RRF to combine them all
+and the results you can guess that
+they're good otherwise I would not uh
+standing here and uh being way too much
+uh
+confident right but you can see we
+tested across several data sets QM sam
+narrative QA Seinfeld and also Finance
+Bench we took all of them and it matches
+the best or bits the best fixed size.
+Let's see it in a graph. It's a bit hard
+to see here, so I'll walk it slowly.
+Every row here is a chunk size. So you
+can see 50, 100, and so on. The bottom
+row is our method. This one, the one
+that you do from all of them and then
+combine. And the every column is recall
+at something. So recall at one two three
+up until 10. What you can see here is
+that two things right. First of all that
+across like recall at whatever h our
+method still wins which you can think is
+very easy but the fact that you have to
+combine all of them is not very it's not
+something which is very trivial and also
+you can see that the quality actually
+increases the heat map where you can see
+it become much greener and again this
+was just something that I wanted to show
+in large here you can see all four of
+the data sets where we do achieve better
+results results u really quite like 20
+30 40% even in a lot of the things h
+also there are results that I did not
+show you here uh which are on MTB um you
+can see in our blog I will put the link
+later we're getting there also a lot of
+improvements somewhere between 10 to 40%
+depending on the data set
+now I'm I'm not naive I'm not going to
+claim here that this costs nothing
+obviously There is a cost, right? No
+free lunches. Everything has to come
+with something. And yes, this costs with
+extra memory. It costs something between
+two to five to all of one, right? A
+constant of additional memory where you
+have to keep all of those uh all those
+copies of the database. However, if you
+think about it latency wise, it doesn't
+really affect that because you can do
+all the retrieval partly
+and also the RRF part doesn't really
+take a lot of time.
+I will say that this was a very nice
+research project that we did and we got
+really really cool results. There are
+things to do right there are places to
+improve. There are future work to do.
+More precisely, we want to understand
+how many chunk sizes do we want and and
+which right the fact that we worked with
+50, 100, 200 and so on was pretty
+arbitrary to be honest. So, we do need
+to figure out how to compute this and
+how to know how many copies exactly do
+you need. Also go beyond RF, right? the
+fact that we're using RF is because it
+worked the best from the methods that we
+used, but it doesn't mean that there is
+no better method.
+And if I need to leave you with
+something, I would say that agents
+didn't kill retrieval.
+Nothing died. Come on. It's just
+infrastructure. And the part the bad bad
+part is that it's infrastructure from
+2022. And with really simple simple
+methods, you can take your rag system or
+anything that has to do with storing
+data and then retrieve it with 20 to 40%
+again without any
+something too sophisticated.
+So if you uh want to hear more about
+read more about it, you can read the
+blog. There is also an example code
+there and the Seinfeld data set. And
+that's it. I'm Yuval. Thank you so much.
+May here.
+[applause]
+[music]
