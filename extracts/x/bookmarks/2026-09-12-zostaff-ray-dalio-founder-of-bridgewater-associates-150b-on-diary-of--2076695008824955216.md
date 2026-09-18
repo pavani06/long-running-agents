@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2076694255368642560/img/qdCkYc2gX7nB_9LM.jpg"]
 thin: false
-theme: "IA, execução e vencedores"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-anthropicai-anthropics-economics-team-is-sharing-a-new-model-of-how-ai-m--2097679796687769689|Cenários macroeconômicos da IA até 2030]]", "[[extracts/x/bookmarks/2026-09-12-prosyn-amid-reports-of-mass-lay-https-t-co-ot2ngxlflm--2082797844889485453|Bolha da IA e finanças]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-demis-hassabis-in-the-near-future-one-person-who-knows-ai-wi--2079915295230038426|IA e produtividade individual]]", "[[extracts/x/bookmarks/2026-09-14-andrewchen-you-want-to-spend-zero-time-on-the-left-this-is-where-ai-win--2097201160038068278|Divisão de trabalho humano-IA]]", "[[extracts/x/bookmarks/2026-09-12-chamath-here-is-my-ai-investing-guide-sitting-here-august-2026-my-cu--2083463694931902561|Guia de investimento em IA]]", "[[extracts/x/bookmarks/2026-09-12-imadeiyamu-https-t-co-dskqwecp3z-great-collection-of-exceptional-writin--2076340132370583992|Índice Billion Dollar PDFs]]", "[[extracts/x/bookmarks/2026-09-12-annaeconomist-a-guide-to-warsh-s-rhetorical-techniques-since-we-ll-living--2082626169132720290|Técnicas retóricas de Kevin Warsh]]", "[[extracts/x/bookmarks/2026-09-12-jesusferna7026-yesterday-i-highlighted-the-distributional-concerns-raised-b--2079197849502294287|Envelhecimento populacional e distribuição]]"]
+theme: "IA e dinâmica de vencedores"
 ---
 
 # Concentração de vencedores e perdedores

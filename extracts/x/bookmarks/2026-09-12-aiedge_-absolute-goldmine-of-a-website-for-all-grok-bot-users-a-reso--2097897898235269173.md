@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://www.grokhub.io/"]
 media: ["https://pbs.twimg.com/amplify_video_thumb/2097897866857693184/img/u6HlGpwPtDjfS0FE.jpg"]
 thin: false
-theme: "Orquestração Multiagente Grok Bot"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-benln-new-grok-bot-guides-added-includes-bot-for-engineering-suppo--2099849826120683967|Grok Bot usage guides]]", "[[extracts/x/bookmarks/2026-09-16-grok-try-grok-bot-https-t-co-fo8jkd1aeq--2099876446864867561|Lançamento do Grok Bot (agentes computer-use)]]", "[[extracts/x/bookmarks/2026-09-17-milindlabs-some-people-are-already-saying-this-is-better-than-grok-bot--2099819771151933539|alternativa open-source ao Grok]]", "[[extracts/x/bookmarks/2026-09-18-hnshah-i-watched-matt-silberman-show-how-he-uses-grok-bot-for-marke--2100648731003724156|Setup multi-bot para marketing ops]]", "[[extracts/x/bookmarks/2026-09-17-voxyz_ai-after-yesterdays-grok-bot-galaxy-day-1-these-are-the-four-us--2100198837319012712|Casos de uso para times de bots Grok]]", "[[extracts/x/bookmarks/2026-09-16-grok-to-enter-you-must-have-a-grok-bot-account-and-quote-the-orig--2099876433006919946|Concurso de bots do Grok]]", "[[extracts/x/bookmarks/2026-09-16-grok-were-inviting-one-grok-bot-user-to-a-starship-launch-you-cou--2099876430561632548|Concurso Grok Bot Starship]]", "[[extracts/x/bookmarks/2026-09-18-nousresearch-hermes-agent-now-has-a-plugin-catalog-starting-with-4-offici--2100266421020152114|Hermes Agent Plugin Catalog]]"]
+theme: "Orquestração e tooling de agentes"
 ---
 
 # Grok Bot resource hub

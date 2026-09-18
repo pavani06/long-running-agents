@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Claude Code e Coding Agêntico"
 relates-to: ["[[extracts/x/bookmarks/2026-09-15-voxyz_ai-my-claude-quota-just-reset-so-i-can-use-fable-again-if-you-w--2099242720732512603|Otimização de cota e custos Claude]]", "[[extracts/x/bookmarks/2026-09-18-completeskeptic-we-believe-that-the-future-is-code-ai-so-made-workflow-evals--2099925685720760404|Anúncio do modelo Jev]]", "[[extracts/x/bookmarks/2026-09-12-felixrieseberg-today-we-re-releasing-fable-5-1-and-mythos-5-1-while-the-mod--2094849655167471773|Lançamento Fable 5.1 e Mythos 5.1]]", "[[extracts/x/bookmarks/2026-09-12-pankajkumar_dev-opus-5-leaks-opus-5-is-targeting-a-launch-by-the-end-of-this--2075945480463466519|Vazamento Claude Opus 5]]", "[[extracts/x/bookmarks/2026-09-12-marwan_3atef-cloudflare-ai-gateway-custom-costs-finally-understand-prompt--2098027728624570486|Cloudflare AI Gateway custo com prompt caching]]", "[[extracts/x/bookmarks/2026-09-17-coreyganim-i-m-making-8-000-a-month-building-claude-skills-for-other-pe--2099848332692623870|Consultoria de Claude Skills para negócios]]"]
+theme: "Ecossistema Claude e Agent Tooling"
 ---
 
 # Preço permanente do Claude Sonnet 5

@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2079048906084868096/img/W2pV1ot5dSkzFjl3.jpg"]
 thin: false
-theme: "Claude Code e Coding Agêntico"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-polydao-claude-obsidian-loop-engineering-a-vault-that-runs-itself-th--2098288931620184216|Claude + Obsidian vault como estado do agente]]", "[[extracts/x/bookmarks/2026-09-16-tom_doerr-manages-your-obsidian-vault-with-a-crew-of-8-ai-agents-and-1--2099928503487517062|Crew de agentes AI para Obsidian]]", "[[extracts/x/bookmarks/2026-09-18-kmsleepy-aiskill-mdskill-md-https-t-co-ciiqpio01k-https-t-co-blzcsi94--2100110652153197036|Claude Skill para slides acadêmicos]]", "[[extracts/x/bookmarks/2026-09-12-david_tornai-people-are-using-notebooklm-to-mass-produce-specialized-clau--2093337464215932962|Criar Claude Skills com NotebookLM]]", "[[extracts/x/bookmarks/2026-09-12-tom_doerr-hyperresearch-turns-claude-code-into-a-research-agent-that-i--2097841937642332595|Agente de pesquisa profunda para Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-trending_repos-trending-repository-of-the-day-i-have-adhd-a-skill-to-stop-y--2098382953235562613|Skill de output direto para coding agents]]", "[[extracts/x/bookmarks/2026-09-16-obsdmd-you-can-finally-edit-any-markdown-file-without-moving-it-int--2099930667769610431|Edição de Markdown fora do vault no Obsidian]]"]
+theme: "Ecossistema Claude e Agent Tooling"
 ---
 
 # Vault Obsidian de Claude Skills

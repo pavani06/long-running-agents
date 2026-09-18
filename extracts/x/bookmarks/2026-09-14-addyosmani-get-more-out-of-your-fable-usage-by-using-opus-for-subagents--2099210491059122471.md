@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSHj3x2akAAGO2o.jpg"]
-theme: "Claude Code e Coding Agêntico"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-lydiahallie-setting-my-subagent-model-to-opus-has-helped-me-save-so-much--2099195114115707210|Roteamento de modelo para subagentes]]", "[[extracts/x/bookmarks/2026-09-12-daniel_mac8-fable-advisor-now-uses-opus-5-as-orchestrator-opus-5-shines--2081056595555868752|fable-advisor com Opus 5 como orquestrador]]", "[[extracts/x/bookmarks/2026-09-12-keepgoings0-oalanicolas-from-my-experience-for-the-orchestrator-astra-xh--2097766199450829151|seleção de modelos por papel de agente]]", "[[extracts/x/bookmarks/2026-09-15-voxyz_ai-my-claude-quota-just-reset-so-i-can-use-fable-again-if-you-w--2099242720732512603|Otimização de cota e custos Claude]]", "[[extracts/x/bookmarks/2026-09-12-voxyz_ai-codex-tip-a-cost-efficient-luna-sol-agent-tree-orchestrated--2097814698204832116|orquestração de agentes com Codex]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-retailers-running-shopping-agents-on-claude-have-seen-carts--2095233746366808420|Arquitetura de agentes de comércio com Claude]]", "[[extracts/x/bookmarks/2026-09-14-andrewchen-ethereaglehq-classifies-it-upfront-but-the-way-i-set-up-the--2099278183837397469|model selection com escalonamento]]", "[[extracts/x/bookmarks/2026-09-12-addyosmani-how-do-you-hold-the-bar-on-production-agent-code-1-agree-on--2098662421644853433|padrão de qualidade em código de agentes]]", "[[extracts/x/bookmarks/2026-09-17-omarsar0-banger-paper-from-nvidia-it-s-on-the-topic-of-choosing-which--2100235516918849661|seleção de modelos para sistemas multi-agentes]]"]
+theme: "Ecossistema Claude e Agent Tooling"
 ---
 
 # Opus como modelo de subagents

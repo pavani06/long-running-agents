@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "IA, execução e vencedores"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-kay2289123-ai-infra-ai-kv--2098270561151676829|Reading list de AI Infra]]", "[[extracts/x/bookmarks/2026-09-15-suraj_sharma14-as-an-ai-infrastructure-engineer-you-must-build-these-projec--2099113368942465438|Projetos de infraestrutura de inferência]]", "[[extracts/x/bookmarks/2026-09-17-thisdudelikesai-if-you-re-serious-about-running-llms-locally-save-these-10-g--2100145701548331448|Repositórios GitHub para LLMs locais]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-12-suraj_sharma14-as-an-ai-engineer-you-must-build-these-projects-systems-that--2098026202464243908|Projetos práticos para AI Engineers]]", "[[extracts/x/bookmarks/2026-09-12-cwolferesearch-getting-ready-to-publish-my-complete-guide-to-rl-for-llms-to--2091570446164733962|RLHF e pós-treinamento de LLMs]]", "[[extracts/x/bookmarks/2026-09-12-cwolferesearch-really-awesome-mopd-reading-list-here-is-also-another-well-w--2095256315476000817|MOPD reading list]]", "[[extracts/x/bookmarks/2026-09-18-judegomila-i-ve-attempted-to-map-everything-in-oncology-in-a-public-web--2100293405834453355|Mapa open-source da oncologia]]"]
+theme: "Confiabilidade e avaliação de agentes"
 ---
 
 # Repositório-guia de MLOps

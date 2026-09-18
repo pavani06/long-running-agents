@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2100040789963554816/img/3En1YFl-9wSQ5LlM.jpg"]
-theme: "Harness Engineering de Agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-nousresearch-hermes-agent-is-open-for-business-nous-portal-now-lets-you-i--2099599032037388404|Lançamento Hermes Agent para empresas]]", "[[extracts/x/bookmarks/2026-09-12-witcheer-a-hermes-agent-community-member-built-a-kit-that-changes-two--2098361620493660493|kit para bots no Hermes Desktop]]", "[[extracts/x/bookmarks/2026-09-18-dankrieg-introducing-ihermes-a-personal-ai-assistant-powered-by-herme--2100260309336535218|Lançamento do assistente iHermes]]", "[[extracts/x/bookmarks/2026-09-17-jacquelinesyc19-a-few-weeks-ago-i-wrote-that-our-whole-team-at-artie-uses-he--2100262432413528336|Hermes como harness de agentes por equipe]]", "[[extracts/x/bookmarks/2026-09-18-nousresearch-hermes-agent-now-has-a-plugin-catalog-starting-with-4-offici--2100266421020152114|Hermes Agent Plugin Catalog]]", "[[extracts/x/bookmarks/2026-09-12-witcheer-a-hermes-agent-community-member-built-a-layer-that-sits-on-t--2098020649662816503|Roteamento e memória no Hermes Agent]]"]
+theme: "Agent Harness Engineering"
 ---
 
 # Login autônomo do Hermes em sites

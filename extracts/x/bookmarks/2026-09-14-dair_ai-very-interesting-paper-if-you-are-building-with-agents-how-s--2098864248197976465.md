@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSCp6O4aIAAQ791.jpg"]
-theme: "Evals e Infra de Agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-andrewcurran_-a-man-in-australia-asked-his-agent-claude-running-on-opencla--2086567854850384054|agente explora vulnerabilidade em agendamento]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-12-kevinwhinnery-the-era-of-the-dumb-token-pipe-is-ending-agent-harness-apis--2098444890602455431|Agent harness APIs como integração]]", "[[extracts/x/bookmarks/2026-09-17-teddyinmedia-your-ai-agent-can-now-collect-data-from-almost-any-website-x--2099859887102558507|Agent Reach: acesso web para agentes]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-writing-for-agents-helps-but-not-without-human-oversight-har--2095895922576085034|Escrita para agentes e supervisão humana]]", "[[extracts/x/bookmarks/2026-09-12-roundtablespace-this-guy-makes-complex-ai-agent-concepts-ridiculously-easy-t--2080975096345247876|didática de conceitos de agentes de IA]]"]
+theme: "Ecossistema Claude e Agent Tooling"
 ---
 
 # Controle de acesso para agentes de IA

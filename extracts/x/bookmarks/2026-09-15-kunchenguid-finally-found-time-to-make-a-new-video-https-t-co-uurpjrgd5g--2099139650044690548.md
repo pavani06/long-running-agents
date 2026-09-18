@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: ["https://youtu.be/MSbacZ99E14"]
 media: ["https://pbs.twimg.com/amplify_video_thumb/2099131134877765632/img/T3KPAFAQsKOJ8Fcj.jpg"]
-theme: "Memória e Contexto de Agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-anatolikopadze-anthropic-engineer-you-re-not-supposed-to-babysit-the-model--2080702441809399834|agentes paralelos em grafos]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-google-just-dropped-a-1-hour-course-on-agentic-engineering-f--2076366894655848871|Curso Google de engenharia agêntica]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-just-saw-a-comment-saying-that-i-ve-never-made-a-proper-over--2088290952704151671|Visão geral das 25 skills de agentes]]", "[[extracts/x/bookmarks/2026-09-12-zodchiii-the-creator-of-claude-code-boris-cherny-every-night-i-have-h--2079182515462369399|Engenharia com loops de agentes]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-anthropic-engineer-you-re-not-supposed-to-prompt-claude-you--2080286550005358977|Sistemas que se auto-promptam em agentes]]", "[[extracts/x/bookmarks/2026-09-12-leoxbtt-bro-el-ingeniero-que-creo-claude-code-solto-un-video-de-28-m--2082108948505674112|Uso avançado do Claude Code]]"]
+theme: "Loops agênticos e arquitetura de memória"
 ---
 
 # agentic engineering multi-tasking

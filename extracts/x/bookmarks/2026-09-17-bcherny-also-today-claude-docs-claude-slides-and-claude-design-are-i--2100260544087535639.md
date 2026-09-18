@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "Claude Code e Coding Agêntico"
 relates-to: ["[[extracts/x/bookmarks/2026-09-17-claudedevs-claude-design-claude-slides-and-claude-docs-also-work-inside--2100270861555228770|Apps Claude dentro do Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-claude-code-can-design-now-the-new-design-skill-research-pre--2089471692762673408|Claude Code /design skill]]", "[[extracts/x/bookmarks/2026-09-18-claudedevs-today-we-re-rolling-out-projects-in-claude-code-on-desktop-a--2100633571543367691|Projects no Claude Code]]", "[[extracts/x/bookmarks/2026-09-18-kmsleepy-aiskill-mdskill-md-https-t-co-ciiqpio01k-https-t-co-blzcsi94--2100110652153197036|Claude Skill para slides acadêmicos]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-read-the-full-announcement-https-t-co-cdudn3gvhd--2095233748719817153|Blueprint de agentes de comércio com Claude]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-new-in-claude-code-your-sessions-can-now-message-each-other--2085817074816070014|Mensageria entre sessões no Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-two-fresh-updates-to-claude-managed-agents-first-we-ve-added--2098120133549895978|Session viewer no ant CLI]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-before-creating-a-session-and-sending-it-events-took-separat--2080009527467114737|Seeding de eventos na criação de sessão]]"]
+theme: "Ecossistema Claude e Agent Tooling"
 ---
 
 # Claude Docs, Slides e Design nativos

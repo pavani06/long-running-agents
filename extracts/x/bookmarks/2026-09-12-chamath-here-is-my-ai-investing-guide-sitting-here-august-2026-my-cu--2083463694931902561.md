@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HOnzL7mWEAALj_i.jpg"]
 thin: false
-theme: "IA, execução e vencedores"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-prosyn-amid-reports-of-mass-lay-https-t-co-ot2ngxlflm--2082797844889485453|Bolha da IA e finanças]]", "[[extracts/x/bookmarks/2026-09-15-chadwahl-what-operating-a-sovereign-ai-stack-looks-like-nvidia-palant--2099510309991948550|Sovereign AI stack NVIDIA + Palantir]]", "[[extracts/x/bookmarks/2026-09-12-kay2289123-ai-infra-ai-kv--2098270561151676829|Reading list de AI Infra]]", "[[extracts/x/bookmarks/2026-09-12-a16z-for-most-of-history-the-bottleneck-on-making-something-was-n--2076720361560003039|IA elimina gargalos de execução]]", "[[extracts/x/bookmarks/2026-09-18-jainarvind-enterprise-ai-should-understand-what-a-company-knows-and-how--2100385275608268849|Inteligência operacional para enterprise AI]]", "[[extracts/x/bookmarks/2026-09-15-a16z-ai-has-collapsed-the-cost-of-building-products-but-not-the-c--2099501195006238899|produto na era da IA]]", "[[extracts/x/bookmarks/2026-09-12-mtslive-xiaoyin-qu-breaks-down-deepseek-s-cheap-inference-philosophy--2085525434385695137|Economia de treinamento DeepSeek]]", "[[extracts/x/bookmarks/2026-09-12-zostaff-ray-dalio-founder-of-bridgewater-associates-150b-on-diary-of--2076695008824955216|Concentração de vencedores e perdedores]]", "[[extracts/x/bookmarks/2026-09-12-boringbiz_-if-you-are-looking-for-a-primer-on-leveraged-finance-restruc--2094100103740977319|Primer de leveraged finance]]", "[[extracts/x/bookmarks/2026-09-12-duquesadetax-to-vendo-muita-gente-feliz-com-o-adiamento-do-split-obrigato--2094413457407819979|Split payment na reforma tributária]]"]
+theme: "Confiabilidade e avaliação de agentes"
 ---
 
 # Guia de investimento em IA

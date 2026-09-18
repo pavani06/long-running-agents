@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Tooling Agêntico para Código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447|Superpowers: metodologia para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-addyosmani-how-do-you-hold-the-bar-on-production-agent-code-1-agree-on--2098662421644853433|padrão de qualidade em código de agentes]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-how-have-software-engineering-fundamentals-changed-with-agen--2093388974194872781|AI Engineering Skills para software]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-just-saw-a-comment-saying-that-i-ve-never-made-a-proper-over--2088290952704151671|Visão geral das 25 skills de agentes]]", "[[extracts/x/bookmarks/2026-09-14-undefinedki-the-founder-of-an-ai-coding-tool-just-walked-through-his-ent--2099145064450494595|Setup de agentes de código]]", "[[extracts/x/bookmarks/2026-09-12-clare_liguori-i-just-published-a-manifesto-for-all-the-developers-out-ther--2097836812958097915|frontier engineering com agentes de IA]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-one-thing-that-scares-me-about-coding-with-ai-is-that-it-s-h--2097967205216379355|erros estratégicos no coding com IA]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-my-ide-is-discord-https-t-co-xsihrc2kle--2087555290174566491|Discord como IDE]]"]
+theme: "Tooling para agentes de código"
 ---
 
 # Habilidades fundamentais para devs na era de agentes

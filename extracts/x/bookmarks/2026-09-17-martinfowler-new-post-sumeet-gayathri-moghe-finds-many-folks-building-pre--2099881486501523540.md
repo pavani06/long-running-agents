@@ -21,8 +21,8 @@ grounded_in: "article"
 thin: false
 links: ["https://martinfowler.com/articles/never-send-slides/nail-your-narrative.html"]
 media: []
-theme: "IA, execução e vencedores"
 relates-to: ["[[extracts/x/bookmarks/2026-09-18-kmsleepy-aiskill-mdskill-md-https-t-co-ciiqpio01k-https-t-co-blzcsi94--2100110652153197036|Claude Skill para slides acadêmicos]]", "[[extracts/x/bookmarks/2026-09-16-hnshah-every-idea-can-become-a-demo-now-the-pms-work-is-deciding-wh--2099742761083981837|Papel do PM na era da IA]]", "[[extracts/x/bookmarks/2026-09-12-tferriss-the-1-most-clicked-link-in-the-latest-5-bullet-friday-editio--2097357231293358126|IA como designer de alto nível]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-anthropic-engineer-you-re-not-supposed-to-prompt-claude-you--2080286550005358977|Sistemas que se auto-promptam em agentes]]", "[[extracts/x/bookmarks/2026-09-12-mindarchx-a-dead-mit-professor-accidentally-destroyed-the-25-billion-e--2097762463072612533|Palestra MIT sobre comunicação executiva]]", "[[extracts/x/bookmarks/2026-09-12-david_tornai-people-are-using-notebooklm-to-mass-produce-specialized-clau--2093337464215932962|Criar Claude Skills com NotebookLM]]", "[[extracts/x/bookmarks/2026-09-12-ia_quijote-guarda-esta-clase-magistral-de-1-hora-se-llama-how-to-speak--2079254281274740959|Clássica aula de comunicação do MIT]]"]
+theme: "IA e dinâmica de vencedores"
 ---
 
 # Narrativa antes dos slides

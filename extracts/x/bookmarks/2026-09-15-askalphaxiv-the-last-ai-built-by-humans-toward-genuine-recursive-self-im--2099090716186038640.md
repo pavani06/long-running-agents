@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSDupSua8AATOCw.jpg"]
-theme: "Memória e Contexto de Agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-orcarouter-everyone-talks-about-recursive-self-improvement-but-there-s--2097967011448131640|recursive self-abliteration em IA]]", "[[extracts/x/bookmarks/2026-09-12-rvaniaaaa-someone-published-the-architecture-for-an-ai-agent-that-neve--2082562583131726050|arquitetura de agente autodidata]]", "[[extracts/x/bookmarks/2026-09-18-anthropicai-ai-systems-are-getting-more-powerful-and-they-re-increasingl--2100684274114699295|Métricas de IA construindo IA]]", "[[extracts/x/bookmarks/2026-09-12-0xmovez-anthropic-engineer-80-of-our-engineers-are-using-selfimprovi--2079985963862786352|agentes auto-melhorantes orquestrados por grafos]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-another-interesting-approach-to-self-evolve-agent-skills-but--2098154641854992676|falhas em auto-evolução de skills de agentes]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-find-the-whole-collection-here-https-t-co-hskmmhjf1l--2097449134202503657|Harness engineering evolução curada]]"]
+theme: "Loops agênticos e arquitetura de memória"
 ---
 
 # auto-aperfeiçoamento recursivo em IA

@@ -21,8 +21,8 @@ grounded_in: "article"
 thin: false
 links: ["https://shadcncraft.com/apps/sales-marketing-dashboard"]
 media: []
-theme: "Dashboards de Vendas shadcn/ui"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-shadcncraft-build-your-next-dashboard-faster-our-sales-amp-marketing-das--2099827615934943627|Dashboard de vendas e marketing]]", "[[extracts/x/bookmarks/2026-09-16-shadcncraft-see-which-channels-bring-traffic-where-visitors-convert-and--2099827619655233988|dashboards de analytics de marketing]]", "[[extracts/x/bookmarks/2026-09-16-shadcncraft-compare-campaign-performance-without-building-the-interface--2099827623165935635|shadcn/ui dashboard blocks]]", "[[extracts/x/bookmarks/2026-09-16-shadcncraft-give-your-leads-a-dedicated-workspace-start-with-the-matchin--2099827630161936671|Template de workspace para leads]]", "[[extracts/x/bookmarks/2026-09-16-shadcncraft-manage-your-sales-pipeline-in-a-full-kanban-workspace-drag-a--2099827626718499205|Kanban para pipeline de vendas]]", "[[extracts/x/bookmarks/2026-09-12-trendtech33566-aiui-skills3-7vercellinearaiskill-ui-web-react-native-swift--2098350898732990886|UI design skills para IA]]", "[[extracts/x/bookmarks/2026-09-16-shadcncraft-bring-customer-information-and-health-scores-into-the-same-a--2099827633722905050|consolidação de dados de clientes e health scores]]"]
+theme: "Dashboards de Vendas shadcn/ui"
 ---
 
 # Sales & Marketing Dashboard shadcn/ui

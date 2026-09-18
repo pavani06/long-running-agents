@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HNrEhMUXIAAXfP6.jpg"]
 thin: false
-theme: "IA, execução e vencedores"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-anthropicai-anthropics-economics-team-is-sharing-a-new-model-of-how-ai-m--2097679796687769689|Cenários macroeconômicos da IA até 2030]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-ai-has-eaten-tactical-programming-so-juniors-need-strategic--2095902639158440210|desenvolvimento de juniores com IA]]", "[[extracts/x/bookmarks/2026-09-12-prosyn-amid-reports-of-mass-lay-https-t-co-ot2ngxlflm--2082797844889485453|Bolha da IA e finanças]]", "[[extracts/x/bookmarks/2026-09-12-a16z-an-hour-of-agentic-computer-use-may-now-be-cheaper-than-an-h--2086906363947737406|custo de agentes vs trabalho humano]]", "[[extracts/x/bookmarks/2026-09-12-openai-now-available-chatgpt-for-financial-services-this-is-a-tailo--2098118191029624911|ChatGPT para serviços financeiros]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-14-alex_verem-mit-published-a-brutally-honest-report-on-what-ai-is-doing-t--2098880333676761514|Relatório MIT sobre IA e aprendizado estudantil]]", "[[extracts/x/bookmarks/2026-09-12-jesusferna7026-yesterday-i-highlighted-the-distributional-concerns-raised-b--2079197849502294287|Envelhecimento populacional e distribuição]]"]
+theme: "Confiabilidade e avaliação de agentes"
 ---
 
 # IA e emprego jovem em software

@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Tooling Agêntico para Código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-17-technmak-a-118k-star-github-repo-is-built-around-one-painfully-obviou--2100171874986766588|Grafo de conhecimento do codebase]]", "[[extracts/x/bookmarks/2026-09-12-ohansemmanuel-mermaid-diagrams-are-the-floor-every-pr-at-coldteaai-ships-w--2096996689680978148|Diagramas animados de pull requests]]", "[[extracts/x/bookmarks/2026-09-12-chrisshort-alibaba-open-code-review-battle-tested-at-alibaba-s-scale-hy--2098555200680218872|ferramenta de code review híbrida]]", "[[extracts/x/bookmarks/2026-09-17-trending_repos-trending-repository-of-the-day-open-code-review-fast-efficie--2100194977523331489|Open Code Review da Alibaba]]", "[[extracts/x/bookmarks/2026-09-12-alex_frantic-how-to-graph-max-with-codex-and-5-6-sol-1-draw-a-graph-liter--2080776965070496115|Fluxo desenho-para-código com Codex]]", "[[extracts/x/bookmarks/2026-09-12-andrebrov-my-biggest-recent-discovery-herdrdev-this-is-wow-i-run-25-ai--2097134891833917946|Console para orquestrar agentes de código]]", "[[extracts/x/bookmarks/2026-09-18-judegomila-i-ve-attempted-to-map-everything-in-oncology-in-a-public-web--2100293405834453355|Mapa open-source da oncologia]]", "[[extracts/x/bookmarks/2026-09-14-shl-over-10-000-github-stars-my-most-starred-repo-isnt-code-http--2099208492217221351|Milestone de estrelas no GitHub]]"]
+theme: "Tooling para agentes de código"
 ---
 
 # Ferramenta de compreensão de código

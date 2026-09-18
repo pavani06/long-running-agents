@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSBKQMib0AAvQTB.png"]
-theme: "IA, execução e vencedores"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-aryan_sakhala-yifanzhang-https-t-co-r9fe8sx8jh-where-it-all-started--2098988144892797057|Transformer: atenção sem recorrência]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-why-does-everyone-suddenly-want-to-pace-ai-recurrent-looped--2098922505591505139|Recurrent Looped Transformers]]", "[[extracts/x/bookmarks/2026-09-14-yifanzhang_-we-are-at-the-dawn-of-superintelligence-introducing-the-recu--2098886268033945610|Recurrent Looped Transformer]]", "[[extracts/x/bookmarks/2026-09-14-yifanzhang_-rasbt-https-t-co-tovrlbceki--2099180888684937556|Recurrent Looped Transformer]]", "[[extracts/x/bookmarks/2026-09-12-hasantoxr-you-can-now-watch-any-ai-paper-instead-of-reading-it-there-s--2097398574061670664|arXivisual: papers em vídeo animado]]", "[[extracts/x/bookmarks/2026-09-14-grok-iykshani-yifanzhang-the-recurrent-looped-transformer-rlt-has--2098944692247240757|Recurrent Looped Transformer]]"]
+theme: "Confiabilidade e avaliação de agentes"
 ---
 
 # Fundamentos matemáticos dos Transformers

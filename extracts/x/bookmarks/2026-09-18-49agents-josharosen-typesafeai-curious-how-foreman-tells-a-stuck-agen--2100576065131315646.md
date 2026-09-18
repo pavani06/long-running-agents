@@ -22,6 +22,7 @@ thin: false
 links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-18-49agents-josharosen-typesafeai-curious-what-the-false-side-looks-like--2100616892855501176|detecção de agentes travados vs lentos]]", "[[extracts/x/bookmarks/2026-09-18-josharosen-49agents-typesafeai-the-current-approach-is-fairly-simple-in--2100576462684201446|Detecção de stuck em agentes]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-karpathys-agentic-engineering-finally-has-proper-devtools-wh--2098398242727940442|DevTools para engenharia agêntica]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-an-anatomy-of-cli-coding-agent-trajectories-bookmark-it-when--2076699431207154069|análise de trajetórias de agentes de código]]", "[[extracts/x/bookmarks/2026-09-18-josharosen-i-just-open-sourced-foreman-a-software-factory-foreman-built--2100573432089866717|Foreman: supervisor de coding agents]]", "[[extracts/x/bookmarks/2026-09-12-sophiamyang-someone-please-tell-me-this-exists-a-meta-harness-kanban-boa--2098112529796878408|orquestração multi-plataforma de agentes]]"]
+theme: "Loops agênticos e arquitetura de memória"
 ---
 
 # Monitoramento de agentes travados

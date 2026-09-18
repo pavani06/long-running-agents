@@ -8,7 +8,7 @@ size: 6
 
 # Tema: Dashboards de Vendas shadcn/ui
 
-_Templates e blocos prontos em Next.js, shadcn/ui e Figma para montar dashboards de vendas, marketing analytics e pipelines de leads._
+_Templates e blocos reutilizáveis em shadcn/ui, Next.js e Figma para montar dashboards de vendas e marketing, incluindo Kanban de pipeline, gestão de leads e analytics de campanhas._
 
 **Tags dominantes:** stack-tooling, startups, analise
 

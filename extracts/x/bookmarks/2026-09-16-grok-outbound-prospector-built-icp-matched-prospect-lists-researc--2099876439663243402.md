@@ -21,8 +21,8 @@ grounded_in: "article"
 thin: false
 links: ["https://x.ai/bot/marketplace/bots/pg"]
 media: ["https://pbs.twimg.com/media/HSRBvXRXEAAdSUJ.jpg"]
-theme: "Orquestração Multiagente Grok Bot"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-grok-haggle-bot-audited-125-vendor-contracts-reached-out-to-the-v--2099876435737325724|Agente de negociação de gastos SaaS]]", "[[extracts/x/bookmarks/2026-09-16-grok-seo-amp-aeo-desk-automated-keyword-research-into-writer-read--2099876443761111255|Agente de SEO/AEO para briefs de conteúdo]]", "[[extracts/x/bookmarks/2026-09-18-hnshah-i-watched-matt-silberman-show-how-he-uses-grok-bot-for-marke--2100648731003724156|Setup multi-bot para marketing ops]]", "[[extracts/x/bookmarks/2026-09-12-witcheer-a-hermes-agent-community-member-built-a-layer-that-sits-on-t--2098020649662816503|Roteamento e memória no Hermes Agent]]", "[[extracts/x/bookmarks/2026-09-15-mattyp-each-day-grok-bot-looks-at-my-x-bookmarks-for-things-i-find--2099482348010328185|pipeline automatizado de demos com agentes]]", "[[extracts/x/bookmarks/2026-09-12-adiix_official-how-to-run-your-whole-grok-bot-workday-on-loops-instead-of-p--2095464614498619493|Orquestração de Grok Bot em loops]]"]
+theme: "Orquestração e tooling de agentes"
 ---
 
 # Agente de outbound prospecting com spec

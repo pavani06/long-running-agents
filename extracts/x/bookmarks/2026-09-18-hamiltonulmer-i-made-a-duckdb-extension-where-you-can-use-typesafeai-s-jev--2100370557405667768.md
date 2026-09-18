@@ -22,6 +22,7 @@ thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSYD5B1bsAAWqeg.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-18-0xlogicrw-openai-diogo-almeida-typesafe-ai-jev-token-token-jev-typesaf--2100065117127815679|Jev: modelo classificador da TypeSafe AI]]", "[[extracts/x/bookmarks/2026-09-18-hot_town-jev-is-here-how-is-different-from-an-llm-how-does-it-work-un--2100570516612382787|Jev: o que é e quando usar]]", "[[extracts/x/bookmarks/2026-09-18-nielsrogge-for-anyone-curious-how-jev-works-i-made-a-visual-explanation--2100239244501430438|Jev: decodificação não-autorregressiva em LLMs]]", "[[extracts/x/bookmarks/2026-09-18-manthanguptaa-jev-is-one-of-the-more-interesting-model-launches-i-have-see--2100466984605417923|Lançamento do modelo Jev]]", "[[extracts/x/bookmarks/2026-09-18-josharosen-george-sequeira-typesafeai-its-jev-the-super-fast-new-decisi--2100670955831824554|Modelo de decisão Jev avaliando outputs]]", "[[extracts/x/bookmarks/2026-09-18-completeskeptic-extraordinary-claims-require-extraordinary-evidence-so-check--2099925690682630371|Modelos estruturados para automação]]"]
+theme: "Confiabilidade e avaliação de agentes"
 ---
 
 # Extensão DuckDB para classificação com Jev

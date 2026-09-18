@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2099468862152384512/img/Bsxg2uexMBszdrz0.jpg"]
-theme: "Orquestração Multiagente Grok Bot"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-0xmovez-spacexai-engineer-lauren-tan-at-spacexai-90-of-engineers-run--2094868247162360099|Uso de agentes GrokBot na SpaceXAI]]", "[[extracts/x/bookmarks/2026-09-12-adiix_official-how-to-run-your-whole-grok-bot-workday-on-loops-instead-of-p--2095464614498619493|Orquestração de Grok Bot em loops]]", "[[extracts/x/bookmarks/2026-09-18-hnshah-i-watched-matt-silberman-show-how-he-uses-grok-bot-for-marke--2100648731003724156|Setup multi-bot para marketing ops]]", "[[extracts/x/bookmarks/2026-09-16-grok-try-grok-bot-https-t-co-fo8jkd1aeq--2099876446864867561|Lançamento do Grok Bot (agentes computer-use)]]", "[[extracts/x/bookmarks/2026-09-16-benln-new-grok-bot-guides-added-includes-bot-for-engineering-suppo--2099849826120683967|Grok Bot usage guides]]", "[[extracts/x/bookmarks/2026-09-17-voxyz_ai-after-yesterdays-grok-bot-galaxy-day-1-these-are-the-four-us--2100198837319012712|Casos de uso para times de bots Grok]]", "[[extracts/x/bookmarks/2026-09-16-grok-to-enter-you-must-have-a-grok-bot-account-and-quote-the-orig--2099876433006919946|Concurso de bots do Grok]]"]
+theme: "Orquestração e tooling de agentes"
 ---
 
 # Orquestração multiagente com GrokBot

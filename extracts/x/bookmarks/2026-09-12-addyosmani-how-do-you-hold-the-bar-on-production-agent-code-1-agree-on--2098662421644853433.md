@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Tooling Agêntico para Código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-mattpocockuk-alper-is-right-setting-expectations-on-software-quality-earl--2097710169245323303|expectativas de qualidade com agentes de código]]", "[[extracts/x/bookmarks/2026-09-17-mattpocockuk-a-great-idea-i-m-stealing-from-dexhorthy-when-you-first-star--2100178563362074889|software factory incremental com agentes]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-atpaawej-1-learn-to-read-code-2-learn-to-use-the-terminal-3--2097611379763007870|Habilidades fundamentais para devs na era de agentes]]", "[[extracts/x/bookmarks/2026-09-12-clare_liguori-i-just-published-a-manifesto-for-all-the-developers-out-ther--2097836812958097915|frontier engineering com agentes de IA]]", "[[extracts/x/bookmarks/2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447|Superpowers: metodologia para coding agents]]", "[[extracts/x/bookmarks/2026-09-14-addyosmani-get-more-out-of-your-fable-usage-by-using-opus-for-subagents--2099210491059122471|Opus como modelo de subagents]]", "[[extracts/x/bookmarks/2026-09-12-alperortac-pro-tip-for-anyone-using-grill-me-tell-the-agent-fyi-we-dont--2097661439901048852|Ajustando rigor do agente no /grill-me]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-starting-to-wonder-if-the-smartest-way-to-reduce-slop-is-jus--2094500508224409852|reduzir código para reduzir slop]]", "[[extracts/x/bookmarks/2026-09-16-trq212-tobi-i-agree-in-theory-in-practice-i-ve-just-found-codemode--2100086429850436064|Codemode na prática]]"]
+theme: "Tooling para agentes de código"
 ---
 
 # padrão de qualidade em código de agentes

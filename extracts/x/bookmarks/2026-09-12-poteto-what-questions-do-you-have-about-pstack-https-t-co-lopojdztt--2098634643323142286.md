@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://x.ai/bot/plugin/9717366"]
 media: []
 thin: false
-theme: "Orquestração Multiagente Grok Bot"
 relates-to: ["[[extracts/x/bookmarks/2026-09-15-robshocks-1-000-prs-a-month-what-does-that-agent-workflow-look-like-a--2097381547493978562|Agentic coding workflow (PStack)]]", "[[extracts/x/bookmarks/2026-09-12-poteto-i-m-writing-a-guide-to-pstack-here-s-part-one-https-t-co-4yj--2094457600259842065|Guia da ferramenta pstack]]", "[[extracts/x/bookmarks/2026-09-12-poteto-pstack-0-15-0-is-here-this-release-contains-mainly-token-usa--2097380152703615396|pstack 0.15.0 release]]", "[[extracts/x/bookmarks/2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447|Superpowers: metodologia para coding agents]]", "[[extracts/x/bookmarks/2026-09-15-mattyp-each-day-grok-bot-looks-at-my-x-bookmarks-for-things-i-find--2099482348010328185|pipeline automatizado de demos com agentes]]", "[[extracts/x/bookmarks/2026-09-12-sophiamyang-someone-please-tell-me-this-exists-a-meta-harness-kanban-boa--2098112529796878408|orquestração multi-plataforma de agentes]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-this-has-ended-up-being-better-than-expected-and-fills-an-in--2094156122441625770|AFK agent workflow vs /implement-spec]]", "[[extracts/x/bookmarks/2026-09-12-_guillecasaus-tu-ordenador-windows-tiene-mas-de-200-servicios-ejecutandose--2080673389497253950|otimização de serviços Windows]]"]
+theme: "Tooling para agentes de código"
 ---
 
 # pstack agent workflow tool

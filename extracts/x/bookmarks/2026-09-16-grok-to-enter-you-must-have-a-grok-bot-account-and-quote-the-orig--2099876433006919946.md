@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "Orquestração Multiagente Grok Bot"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-grok-were-inviting-one-grok-bot-user-to-a-starship-launch-you-cou--2099876430561632548|Concurso Grok Bot Starship]]", "[[extracts/x/bookmarks/2026-09-14-poteto-next-week-mattyp-roshan-s-and-myself-will-be-speedrunning-bu--2098815981787414978|Speedrun de startup com Grok Bot]]", "[[extracts/x/bookmarks/2026-09-16-grok-try-grok-bot-https-t-co-fo8jkd1aeq--2099876446864867561|Lançamento do Grok Bot (agentes computer-use)]]", "[[extracts/x/bookmarks/2026-09-16-benln-new-grok-bot-guides-added-includes-bot-for-engineering-suppo--2099849826120683967|Grok Bot usage guides]]", "[[extracts/x/bookmarks/2026-09-12-aiedge_-absolute-goldmine-of-a-website-for-all-grok-bot-users-a-reso--2097897898235269173|Grok Bot resource hub]]", "[[extracts/x/bookmarks/2026-09-15-dmytroo_eth-spacexai-engineer-lauren-tan-on-why-most-users-barely-scratc--2099469355578696032|Orquestração multiagente com GrokBot]]"]
+theme: "Orquestração e tooling de agentes"
 ---
 
 # Concurso de bots do Grok
