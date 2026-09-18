@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-18-49agents-josharosen-typesafeai-curious-how-foreman-tells-a-stuck-agen--2100576065131315646|Monitoramento de agentes travados]]", "[[extracts/x/bookmarks/2026-09-18-49agents-josharosen-typesafeai-curious-what-the-false-side-looks-like--2100616892855501176|detecção de agentes travados vs lentos]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-an-anatomy-of-cli-coding-agent-trajectories-bookmark-it-when--2076699431207154069|análise de trajetórias de agentes de código]]", "[[extracts/x/bookmarks/2026-09-12-sophiamyang-someone-please-tell-me-this-exists-a-meta-harness-kanban-boa--2098112529796878408|orquestração multi-plataforma de agentes]]", "[[extracts/x/bookmarks/2026-09-14-ethereaglehq-andrewchen-upfront-classify-then-upgrade-if-it-gets-long-is--2099290400779317310|gatilhos de complexidade em agentes]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-harness-of-harness-exciting-new-research-on-coding-agents-th--2095172426925801608|Harness-of-Harness: agentes de código autônomos]]"]
 ---
 
 # Detecção de stuck em agentes

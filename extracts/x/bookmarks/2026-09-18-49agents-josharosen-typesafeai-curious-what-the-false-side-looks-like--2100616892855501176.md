@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-18-49agents-josharosen-typesafeai-curious-how-foreman-tells-a-stuck-agen--2100576065131315646|Monitoramento de agentes travados]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-an-anatomy-of-cli-coding-agent-trajectories-bookmark-it-when--2076699431207154069|análise de trajetórias de agentes de código]]", "[[extracts/x/bookmarks/2026-09-18-josharosen-49agents-typesafeai-the-current-approach-is-fairly-simple-in--2100576462684201446|Detecção de stuck em agentes]]", "[[extracts/x/bookmarks/2026-09-14-ethereaglehq-andrewchen-upfront-classify-then-upgrade-if-it-gets-long-is--2099290400779317310|gatilhos de complexidade em agentes]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-finally-an-open-source-runtime-security-layer-for-your-agent--2098042808221511836|runtime security layer para agentes]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-karpathys-agentic-engineering-finally-has-proper-devtools-wh--2098398242727940442|DevTools para engenharia agêntica]]"]
 ---
 
 # detecção de agentes travados vs lentos

@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSZeDLvbUAAo33S.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-18-0xlogicrw-openai-diogo-almeida-typesafe-ai-jev-token-token-jev-typesaf--2100065117127815679|Jev: modelo classificador da TypeSafe AI]]", "[[extracts/x/bookmarks/2026-09-18-agtpinsights-typesafe-ai-just-launched-jev-today-here-s-what-you-need-to--2099946094570733605|Lançamento do modelo Jev pela TypeSafe AI]]", "[[extracts/x/bookmarks/2026-09-17-teddyinmedia-your-ai-agent-can-now-collect-data-from-almost-any-website-x--2099859887102558507|Agent Reach: acesso web para agentes]]", "[[extracts/x/bookmarks/2026-09-18-hot_town-jev-is-here-how-is-different-from-an-llm-how-does-it-work-un--2100570516612382787|Jev: o que é e quando usar]]", "[[extracts/x/bookmarks/2026-09-16-ctatedev-introducing-vercel-labs-tools-for-devs-in-the-ai-era-agent-b--2099621387732140540|Vercel Labs ferramentas IA]]", "[[extracts/x/bookmarks/2026-09-16-roundtablespace-10-agent-skills-with-3-49m-combined-downloads-01-grill-with--2099752946858639609|Agent skills mais baixadas]]"]
 ---
 
 # Curadoria de projetos para API Jev

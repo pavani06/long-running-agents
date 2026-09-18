@@ -21,6 +21,7 @@ grounded_in: "article"
 thin: false
 links: ["https://hermes-agent.nousresearch.com/docs/plugins"]
 media: ["https://pbs.twimg.com/amplify_video_thumb/2100265865476186113/img/F_2kIRHGLd11NC8q.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-16-nousresearch-hermes-agent-is-open-for-business-nous-portal-now-lets-you-i--2099599032037388404|Lançamento Hermes Agent para empresas]]", "[[extracts/x/bookmarks/2026-09-17-jacquelinesyc19-a-few-weeks-ago-i-wrote-that-our-whole-team-at-artie-uses-he--2100262432413528336|Hermes como harness de agentes por equipe]]", "[[extracts/x/bookmarks/2026-09-12-witcheer-a-hermes-agent-community-member-built-a-kit-that-changes-two--2098361620493660493|kit para bots no Hermes Desktop]]", "[[extracts/x/bookmarks/2026-09-17-hermeswatcher-hermes-can-now-log-itself-into-websites-without-ever-seeing--2100040889003585940|Login autônomo do Hermes em sites]]", "[[extracts/x/bookmarks/2026-09-12-aiedge_-absolute-goldmine-of-a-website-for-all-grok-bot-users-a-reso--2097897898235269173|Grok Bot resource hub]]", "[[extracts/x/bookmarks/2026-09-16-roundtablespace-10-agent-skills-with-3-49m-combined-downloads-01-grill-with--2099752946858639609|Agent skills mais baixadas]]"]
 ---
 
 # Hermes Agent Plugin Catalog

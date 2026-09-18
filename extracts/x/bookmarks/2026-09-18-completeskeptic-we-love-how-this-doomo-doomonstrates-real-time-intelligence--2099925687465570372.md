@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2099924592534183936/img/hBGk8j8MRxBgPyg9.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-14-andrewchen-current-homelab-setup-for-local-ai-experimentation-hermes-bo--2099247007454142644|Homelab para experimentação de IA local]]", "[[extracts/x/bookmarks/2026-09-18-completeskeptic-extraordinary-claims-require-extraordinary-evidence-so-check--2099925690682630371|Modelos estruturados para automação]]", "[[extracts/x/bookmarks/2026-09-14-andrewchen-vitostrokov-agreed-but-i-think-theres-two-issues-you-really--2099279190491353442|Apple M5 Ultra vs Nvidia para IA]]", "[[extracts/x/bookmarks/2026-09-12-a16z-an-hour-of-agentic-computer-use-may-now-be-cheaper-than-an-h--2086906363947737406|custo de agentes vs trabalho humano]]", "[[extracts/x/bookmarks/2026-09-15-suraj_sharma14-as-an-ai-infrastructure-engineer-you-must-build-these-projec--2099113368942465438|Projetos de infraestrutura de inferência]]", "[[extracts/x/bookmarks/2026-09-18-completeskeptic-after-co-inventing-chatgpt-i-kept-asking-myself-why-have-sup--2099925682726002904|Lançamento do modelo Jev (RLCD)]]"]
 ---
 
 # Demo de Doom em tempo real com IA

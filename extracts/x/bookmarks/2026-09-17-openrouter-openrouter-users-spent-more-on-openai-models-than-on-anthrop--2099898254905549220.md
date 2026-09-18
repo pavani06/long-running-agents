@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSRWU0GbMAMskPw.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-17-shengkunye-we-just-killed-monid-ourselves-monid-is-now-open-source-the--2100330818958975088|Monid: OpenRouter para tools de agentes]]", "[[extracts/x/bookmarks/2026-09-14-ethereaglehq-andrewchen-arch-router-picking-local-vs-cloud-is-the-piece-i--2099260781447496188|roteamento de modelos local vs cloud]]", "[[extracts/x/bookmarks/2026-09-14-andrewchen-ethereaglehq-classifies-it-upfront-but-the-way-i-set-up-the--2099278183837397469|model selection com escalonamento]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-rumor-is-next-gen-models-at-openai-anthropic-are-showing-eme--2099224260137116131|Misalignment emergente em modelos frontier]]", "[[extracts/x/bookmarks/2026-09-18-alexfinn-in-case-local-ai-models-are-banned-it-s-critical-you-start-e--2100369670952137067|modelos locais de IA]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-agents-api-is-a-bigger-deal-than-it-seems-openai-s-bet-on-ma--2098524621439914375|OpenAI Agents API e harness-as-a-service]]", "[[extracts/x/bookmarks/2026-09-14-treytaylorceo-illscience-super-fair-and-honestly-it-depends-on-the-core-mo--2099212116959920547|viés político em modelos de linguagem]]", "[[extracts/x/bookmarks/2026-09-12-opapoeconomico-saiu-no-journal-of-financial-economics-o-estudo-mais-complet--2089517641320788148|Apostas esportivas e finanças domésticas]]"]
 ---
 
 # share de gastos LLM OpenRouter

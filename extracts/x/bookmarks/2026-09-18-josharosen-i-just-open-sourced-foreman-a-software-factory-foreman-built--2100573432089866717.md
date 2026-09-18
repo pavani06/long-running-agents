@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-andrebrov-my-biggest-recent-discovery-herdrdev-this-is-wow-i-run-25-ai--2097134891833917946|Console para orquestrar agentes de código]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-harness-of-harness-exciting-new-research-on-coding-agents-th--2095172426925801608|Harness-of-Harness: agentes de código autônomos]]", "[[extracts/x/bookmarks/2026-09-16-gergelyorosz-here-s-what-openai-s-agentic-software-factory-looks-like-tod--2099945497377091902|Fábrica de software agêntica da OpenAI]]", "[[extracts/x/bookmarks/2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447|Superpowers: metodologia para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-svpino-the-frontieragent-framework-is-here-star-the-repo-https-t-co--2098489264749334565|FrontierAgent: runtime de agentes e evals]]", "[[extracts/x/bookmarks/2026-09-18-49agents-josharosen-typesafeai-curious-how-foreman-tells-a-stuck-agen--2100576065131315646|Monitoramento de agentes travados]]", "[[extracts/x/bookmarks/2026-09-18-george_sequeira-josharosen-typesafeai-the-drift-verification-split-is-a-usef--2100642769832231072|Verificação determinística vs. juiz-modelo em agentes]]"]
 ---
 
 # Foreman: supervisor de coding agents
