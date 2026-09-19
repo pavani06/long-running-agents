@@ -1,11 +1,11 @@
 {
   "source": "Jina Reader (r.jina.ai) + trafilatura fallback",
-  "count": 108,
+  "count": 114,
   "status_counts": {
-    "ok": 86,
+    "ok": 90,
     "failed": 13,
-    "paywall": 7,
-    "unsupported": 2
+    "paywall": 8,
+    "unsupported": 3
   },
   "items": [
     {
@@ -360,6 +360,15 @@
       "text_len": 11336
     },
     {
+      "key": "5d1053d9f00a",
+      "file": "github-com--5d1053d9f00a.md",
+      "url": "https://github.com/tamaratran/fast-jev-compaction",
+      "status": "ok",
+      "final_url": "https://github.com/tamaratran/fast-jev-compaction",
+      "method": "trafilatura",
+      "text_len": 8128
+    },
+    {
       "key": "6426decba2ef",
       "file": "github-com--6426decba2ef.md",
       "url": "https://github.com/cloudflare/security-audit-skill",
@@ -403,6 +412,15 @@
       "final_url": "https://github.com/monid-ai/monid",
       "method": "trafilatura",
       "text_len": 8312
+    },
+    {
+      "key": "87de4bcdb293",
+      "file": "github-com--87de4bcdb293.md",
+      "url": "https://github.com/anthropics/claude-code/tree/main/mods/agents-md",
+      "status": "ok",
+      "final_url": "https://github.com/anthropics/claude-code/tree/main/mods/agents-md",
+      "method": "trafilatura",
+      "text_len": 11488
     },
     {
       "key": "8989702180dd",
@@ -837,6 +855,15 @@
       "text_len": 11069
     },
     {
+      "key": "ba99d13962aa",
+      "file": "support-claude-com--ba99d13962aa.md",
+      "url": "https://support.claude.com/en/articles/16761192-preserved-thinking-changing-how-the-messages-api-handles-thinking-blocks-to-protect-against-distillation",
+      "status": "ok",
+      "final_url": "https://support.claude.com/en/articles/16761192-preserved-thinking-changing-how-the-messages-api-handles-thinking-blocks-to-protect-against-distillation",
+      "method": "trafilatura",
+      "text_len": 5088
+    },
+    {
       "key": "18e9ffeb6bac",
       "file": "testing-googleblog-com--18e9ffeb6bac.md",
       "url": "https://testing.googleblog.com/2011/02/this-code-is-crap.html",
@@ -846,6 +873,15 @@
       "text_len": 0
     },
     {
+      "key": "c272c22e0653",
+      "file": "thepromptwarrior-com--c272c22e0653.md",
+      "url": "https://thepromptwarrior.com/subscribe",
+      "status": "paywall",
+      "final_url": "https://www.thepromptwarrior.com/subscribe",
+      "method": "trafilatura",
+      "text_len": 119
+    },
+    {
       "key": "527bf000c8ef",
       "file": "tidd-ly--527bf000c8ef.md",
       "url": "https://tidd.ly/3QR44pK",
@@ -853,6 +889,15 @@
       "final_url": "https://link.springer.com/book/10.1007/978-981-95-8992-0?sv1=affiliate&sv_campaign_id=2938963&awc=26429_1789301078_c6fb8a6a47f2c5be2d599b6a512fbd98&utm_medium=affiliate&utm_source=awin&utm_campaign=CONR_BOOKS_ECOM_GL_PBOK_06YUE_GL_ALWYS_DEEPLINK&utm_content=textlink&utm_term=2938963",
       "method": "trafilatura",
       "text_len": 321
+    },
+    {
+      "key": "b0d276b21853",
+      "file": "together-ai--b0d276b21853.md",
+      "url": "https://www.together.ai/blog/together-ai-expands-fine-tuning-service-with-more-models-live-metrics-and-finer-controls",
+      "status": "ok",
+      "final_url": "https://www.together.ai/blog/together-ai-expands-fine-tuning-service-with-more-models-live-metrics-and-finer-controls",
+      "method": "trafilatura",
+      "text_len": 12778
     },
     {
       "key": "254ce25b7762",
@@ -959,6 +1004,15 @@
       "url": "https://youtu.be/MSbacZ99E14",
       "status": "unsupported",
       "final_url": "https://youtu.be/MSbacZ99E14",
+      "method": "youtube",
+      "text_len": 0
+    },
+    {
+      "key": "a5a92d76f7d4",
+      "file": "youtu-be--a5a92d76f7d4.md",
+      "url": "https://youtu.be/Ib5GBkD555M?is=c5imuk3HIVcKFNal",
+      "status": "unsupported",
+      "final_url": "https://youtu.be/Ib5GBkD555M?is=c5imuk3HIVcKFNal",
       "method": "youtube",
       "text_len": 0
     },
