@@ -18,6 +18,7 @@ claims: ["Use Jev como motor de decisão paralelo (roteamento de tickets, classi
 deep_dive: "medium"
 deep_dive_reason: "O vídeo apresenta uma distinção arquitetural genuinamente nova (RLCD, modelo de decisão vs chat) com tradeoffs e padrões de uso acionáveis, mas é majoritariamente promocional e baseado em demos, sem profundidade de implementação em harness, evals ou context-engineering."
 relates-to: ["[[extracts/youtube/ai-learning/2026-09-18-what-s-next-after-rlhf-diogo-almeida-typesafe-ai--cJ0EOzey--o|What's Next After RLHF? — Diogo Almeida, TypeSafe AI]]", "[[extracts/youtube/ai-learning/2026-09-11-how-to-understand-the-next-wave-of-ai-before-everyone-else-tibo-interview--4qjEgPojjzM|How to Understand the Next Wave of AI Before Everyone Else | Tibo Interview]]", "[[extracts/youtube/ai-learning/2026-09-11-l8-principal-s-agentic-engineering-setup-just-copy-him--8ZgpAXe5V5w|L8 Principal's Agentic Engineering Setup (just copy him)]]", "[[extracts/youtube/ai-learning/2026-09-15-high-throughput-agentic-engineering-with-kun--MSbacZ99E14|High Throughput Agentic Engineering with Kun]]", "[[extracts/youtube/ai-learning/2026-09-11-gpt-6-astra-fable-5-1-god-mode--KgKA0A3qlz0|GPT 6 Astra + Fable 5.1 = GOD MODE]]", "[[extracts/youtube/ai-learning/2026-09-11-the-best-ai-agents-are-simpler-than-you-think--uCKhOmth2ms|The best AI agents are simpler than you think]]"]
+theme: "Análises do Futuro da IA"
 ---
 
 # We need to talk about Jev...

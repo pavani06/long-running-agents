@@ -1,14 +1,14 @@
 ---
-title: "Tema: Tutoriais de ferramentas de IA"
+title: "Tema: Tutoriais de Ferramentas de IA"
 type: "theme"
 source: youtube
 tags: ["agent-tooling", "stack-tooling", "process"]
 size: 83
 ---
 
-# Tema: Tutoriais de ferramentas de IA
+# Tema: Tutoriais de Ferramentas de IA
 
-_Guias introdutórios passo a passo para plataformas de construção de agentes e apps com IA (n8n, Bolt, Cursor, Gemini, Lovable), capacitando iniciantes e não-desenvolvedores a criar workflows e aplicações com pouco ou nenhum código._
+_Guias práticos e introdutórios para construir com plataformas e agentes de IA (n8n, Bolt, Cursor, Gemini, Lovable, Windsurf), cobrindo workflows passo a passo, APIs e vibe coding para iniciantes e não-desenvolvedores._
 
 **Tags dominantes:** agent-tooling, stack-tooling, process
 
