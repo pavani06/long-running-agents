@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-19-moritzkremb-3-draw-on-canvas-with-your-voice-https-t-co-wdotltqukp--2100895929884926431|Desenho por voz no canvas]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-7-browser-use-https-t-co-59a2fek8jp--2100895995974541697|Browser-use para agentes web]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-full-jev-tutorial-what-it-is-how-you-can-build-with-it-and-w--2100715237267660873|Tutorial da ferramenta Jev]]", "[[extracts/x/bookmarks/2026-09-16-ctatedev-introducing-vercel-labs-tools-for-devs-in-the-ai-era-agent-b--2099621387732140540|Vercel Labs ferramentas IA]]", "[[extracts/x/bookmarks/2026-09-12-mem0ai-https-t-co-tcm1ujyofb--2097725977199865964|link Mem0 sem conteúdo acessível]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-karpathys-agentic-engineering-finally-has-proper-devtools-wh--2098398242727940442|DevTools para engenharia agêntica]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-1-keystroke-oracle-https-t-co-gypqzichxp--2100895906103206250|Keystroke oracle]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-8-trading-bot-https-t-co-dipkbcocqc--2100896007743795542|Trading bot]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-10-qa-testing-https-t-co-mhpcvincpi--2100896031370338661|QA testing]]"]
 ---
 
 # navegador controlado por voz

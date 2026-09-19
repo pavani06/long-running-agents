@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2100654321792684032/img/cXvU50KmCe6QFu86.jpg"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-19-moritzkremb-p-s-i-ll-be-testing-jev-extensively-this-week-and-figuring-o--2100895941717070056|Testes da ferramenta Jev]]", "[[extracts/x/bookmarks/2026-09-18-completeskeptic-we-believe-that-the-future-is-code-ai-so-made-workflow-evals--2099925685720760404|Anúncio do modelo Jev]]", "[[extracts/x/bookmarks/2026-09-18-0xlogicrw-jev-waitlist-api-awesome-jev-jev-1-jev-ultrafast-browser-use--2100478725393686556|Curadoria de projetos para API Jev]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-full-jev-tutorial-what-it-is-how-you-can-build-with-it-and-w--2100715237267660873|Tutorial da ferramenta Jev]]", "[[extracts/x/bookmarks/2026-09-19-tamarajtran-found-the-perfect-use-case-for-typesafeai-jev-instant-compac--2100694549362553153|compaction instantânea de contexto em agentes]]", "[[extracts/x/bookmarks/2026-09-19-ctatedev-every-agent-harness-can-now-use-jev-npm-install-g-ai-cli-ask--2100584917092409479|Jev CLI para agent harnesses]]", "[[extracts/x/bookmarks/2026-09-12-_guillecasaus-tu-ordenador-windows-tiene-mas-de-200-servicios-ejecutandose--2080673389497253950|otimização de serviços Windows]]", "[[extracts/x/bookmarks/2026-09-12-finviz_com-introducing-the-finviz-matrix-we-created-a-tool-that-no-othe--2098168161455514035|Lançamento Finviz Matrix]]"]
 ---
 
 # análise de anúncios com agente

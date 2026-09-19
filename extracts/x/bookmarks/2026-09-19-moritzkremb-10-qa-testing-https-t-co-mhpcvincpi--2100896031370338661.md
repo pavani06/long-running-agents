@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-mattpocockuk-atpaawej-1-learn-to-read-code-2-learn-to-use-the-terminal-3--2097611379763007870|Habilidades fundamentais para devs na era de agentes]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-p-s-i-ll-be-testing-jev-extensively-this-week-and-figuring-o--2100895941717070056|Testes da ferramenta Jev]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-7-browser-use-https-t-co-59a2fek8jp--2100895995974541697|Browser-use para agentes web]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-8-trading-bot-https-t-co-dipkbcocqc--2100896007743795542|Trading bot]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-5-browser-controlled-with-voice-https-t-co-xtkjaj22pm--2100895965494575424|navegador controlado por voz]]", "[[extracts/x/bookmarks/2026-09-12-elune0x-10-agent-evals-every-ai-engineer-should-know-1-golden-set-a--2080710242929697122|agent evals e golden set]]"]
 ---
 
 # QA testing

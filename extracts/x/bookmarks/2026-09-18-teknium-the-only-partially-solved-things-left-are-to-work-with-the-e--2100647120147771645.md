@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-18-teknium-the-first-step-of-this-is-removing-all-the-bundled-memory-pr--2100645510856298543|Desacoplamento de provedores de memória]]", "[[extracts/x/bookmarks/2026-09-18-teknium-this-will-be-our-test-run-of-pulling-integrations-out-of-the--2100645958447186331|Integrações fora do core codebase]]", "[[extracts/x/bookmarks/2026-09-12-akitaonrails-acabei-de-soltar-a-versao-2-0-do-meu-ai-memory-e-eu-acho-que--2095186765535392249|ai-memory 2.0: memória compartilhada de agentes]]", "[[extracts/x/bookmarks/2026-09-18-mattlam_-pi-is-getting-rewritten-and-badlogicgames-is-mildly-optimist--2100293871800345075|Reescrita do agente Pi]]", "[[extracts/x/bookmarks/2026-09-18-teknium-now-that-we-have-a-plugins-catalog-and-months-ago-made-all-i--2100646469015609779|Catálogo de plugins do Hermes]]", "[[extracts/x/bookmarks/2026-09-18-teknium-the-biggest-issue-with-independent-plugins-for-everything-wa--2100646667259449653|Plugins API discoverability]]"]
 ---
 
 # Migração de memory providers para plugin

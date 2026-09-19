@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-18-teknium-the-first-step-of-this-is-removing-all-the-bundled-memory-pr--2100645510856298543|Desacoplamento de provedores de memória]]", "[[extracts/x/bookmarks/2026-09-18-teknium-honchodotdev-mem0ai-some-confusion-on-what-leaning-into-bein--2100647460217729401|Arquitetura de agente: core enxuto]]", "[[extracts/x/bookmarks/2026-09-18-teknium-now-that-we-have-a-plugins-catalog-and-months-ago-made-all-i--2100646469015609779|Catálogo de plugins do Hermes]]", "[[extracts/x/bookmarks/2026-09-18-teknium-the-only-partially-solved-things-left-are-to-work-with-the-e--2100647120147771645|Migração de memory providers para plugin]]", "[[extracts/x/bookmarks/2026-09-18-akshay_pachaar-mcp-meets-agent-skills-mcp-already-gave-agents-a-standard-wa--2100659094625636526|Descoberta de Agent Skills via MCP]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-agents-api-is-a-bigger-deal-than-it-seems-openai-s-bet-on-ma--2098524621439914375|OpenAI Agents API e harness-as-a-service]]"]
 ---
 
 # Plugins API discoverability

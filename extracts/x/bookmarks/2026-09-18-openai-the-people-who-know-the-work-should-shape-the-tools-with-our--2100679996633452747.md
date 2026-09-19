@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-18-openai-astra-for-law-will-initially-be-offered-to-selected-firms-th--2100680000072773702|OpenAI Astra for Law]]", "[[extracts/x/bookmarks/2026-09-18-openai-astra-for-law-frontier-intelligence-built-for-your-practice--2100679992720142459|OpenAI Astra for Law]]", "[[extracts/x/bookmarks/2026-09-18-openai-astra-for-law-pairs-gpt-6-astra-with-instructions-for-legal--2100679994305630562|OpenAI Astra for Law]]", "[[extracts/x/bookmarks/2026-09-18-openai-were-also-launching-26-partner-built-plugins-and-47-communit--2100679997862330735|Plugins jurídicos no ChatGPT]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-16-gergelyorosz-here-s-what-openai-s-agentic-software-factory-looks-like-tod--2099945497377091902|Fábrica de software agêntica da OpenAI]]"]
 ---
 
 # Ferramentas jurídicas com IA por escritórios

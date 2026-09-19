@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-17-claudedevs-claude-design-claude-slides-and-claude-docs-also-work-inside--2100270861555228770|Apps Claude dentro do Claude Code]]", "[[extracts/x/bookmarks/2026-09-17-bcherny-also-today-claude-docs-claude-slides-and-claude-design-are-i--2100260544087535639|Claude Docs, Slides e Design nativos]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-claude-code-can-design-now-the-new-design-skill-research-pre--2089471692762673408|Claude Code /design skill]]", "[[extracts/x/bookmarks/2026-09-18-kmsleepy-aiskill-mdskill-md-https-t-co-ciiqpio01k-https-t-co-blzcsi94--2100110652153197036|Claude Skill para slides acadêmicos]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-new-in-claude-code-your-sessions-can-now-message-each-other--2085817074816070014|Mensageria entre sessões no Claude Code]]", "[[extracts/x/bookmarks/2026-09-18-trq212-projects-brings-the-architecture-of-claude-tag-to-claude-cod--2100638355872706571|agente por projeto no Claude Code]]", "[[extracts/x/bookmarks/2026-09-17-martinfowler-new-post-sumeet-gayathri-moghe-finds-many-folks-building-pre--2099881486501523540|Narrativa antes dos slides]]"]
 ---
 
 # Docs e slides como artifacts no Claude Code

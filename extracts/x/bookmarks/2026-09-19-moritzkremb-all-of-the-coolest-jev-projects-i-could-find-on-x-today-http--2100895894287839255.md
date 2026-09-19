@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: ["https://pbs.twimg.com/media/HSfhrsxbMAEdHxj.png"]
+relates-to: ["[[extracts/x/bookmarks/2026-09-18-0xlogicrw-jev-waitlist-api-awesome-jev-jev-1-jev-ultrafast-browser-use--2100478725393686556|Curadoria de projetos para API Jev]]", "[[extracts/x/bookmarks/2026-09-18-hot_town-jev-is-here-how-is-different-from-an-llm-how-does-it-work-un--2100570516612382787|Jev: o que é e quando usar]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-full-jev-tutorial-what-it-is-how-you-can-build-with-it-and-w--2100715237267660873|Tutorial da ferramenta Jev]]", "[[extracts/x/bookmarks/2026-09-12-bholmesdev-favorite-accounts-to-follow-in-ai-software-dev-right-now-mat--2095871467359473974|contas a seguir em AI dev]]", "[[extracts/x/bookmarks/2026-09-18-dillon_mulroy-i-think-jev-is-resonating-with-devs-so-well-b-c-it-unlocks-s--2100427432918462897|Jev como primitiva para compor IA]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-p-s-i-ll-be-testing-jev-extensively-this-week-and-figuring-o--2100895941717070056|Testes da ferramenta Jev]]"]
 ---
 
 # Curadoria de projetos Jev

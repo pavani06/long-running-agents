@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-12-mem0ai-https-t-co-tcm1ujyofb--2097725977199865964|link Mem0 sem conteúdo acessível]]", "[[extracts/x/bookmarks/2026-09-12-roundtablespace-this-guy-makes-complex-ai-agent-concepts-ridiculously-easy-t--2080975096345247876|didática de conceitos de agentes de IA]]", "[[extracts/x/bookmarks/2026-09-15-langchain-https-t-co-8enevogalt--2099543591139819742|link LangChain sem conteúdo]]", "[[extracts/x/bookmarks/2026-09-12-andrewcurran_-a-man-in-australia-asked-his-agent-claude-running-on-opencla--2086567854850384054|agente explora vulnerabilidade em agendamento]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-5-browser-controlled-with-voice-https-t-co-xtkjaj22pm--2100895965494575424|navegador controlado por voz]]", "[[extracts/x/bookmarks/2026-09-15-mem0ai-https-t-co-9neuxbzzku--2099563486275854485|Link do Mem0 sem conteúdo acessível]]"]
 ---
 
 # Keystroke oracle

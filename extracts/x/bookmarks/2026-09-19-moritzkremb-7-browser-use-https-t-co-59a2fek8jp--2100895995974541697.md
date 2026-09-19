@@ -21,6 +21,7 @@ grounded_in: "tweet"
 thin: true
 links: []
 media: []
+relates-to: ["[[extracts/x/bookmarks/2026-09-19-moritzkremb-5-browser-controlled-with-voice-https-t-co-xtkjaj22pm--2100895965494575424|navegador controlado por voz]]", "[[extracts/x/bookmarks/2026-09-17-teddyinmedia-your-ai-agent-can-now-collect-data-from-almost-any-website-x--2099859887102558507|Agent Reach: acesso web para agentes]]", "[[extracts/x/bookmarks/2026-09-18-0xlogicrw-jev-waitlist-api-awesome-jev-jev-1-jev-ultrafast-browser-use--2100478725393686556|Curadoria de projetos para API Jev]]", "[[extracts/x/bookmarks/2026-09-16-ctatedev-introducing-vercel-labs-tools-for-devs-in-the-ai-era-agent-b--2099621387732140540|Vercel Labs ferramentas IA]]", "[[extracts/x/bookmarks/2026-09-17-chromiumdev-10-000-installs-and-counting-we-created-modern-web-guidance--2100291127005856239|Web guidance para agentes]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-karpathys-agentic-engineering-finally-has-proper-devtools-wh--2098398242727940442|DevTools para engenharia agêntica]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-10-qa-testing-https-t-co-mhpcvincpi--2100896031370338661|QA testing]]"]
 ---
 
 # Browser-use para agentes web
