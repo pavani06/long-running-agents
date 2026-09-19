@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-19",
+  "status_id": "2100426999546184123",
+  "handle": "nutlope",
+  "text": "I used Jev to classify 1,018 AI research papers.\n\nThe result: $0.08 total cost and 256ms median end-to-end latency per paper.\n\nThe pipeline was:\n\n1. Summarize each paper with DeepSeek V4 Flash\n2. Send the title + summary + 24 possible topics to Jev\n3. Use Jev to classify each https://t.co/BuF6dnPPK8",
+  "created_at": "2026-09-17T03:29:55.000Z",
+  "url": "https://x.com/nutlope/status/2100426999546184123",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2100425141947604992/img/AITyHwcOWq1jw-3Z.jpg"
+  ]
+}

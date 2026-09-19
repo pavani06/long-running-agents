@@ -1,0 +1,12 @@
+{
+  "collected": "2026-09-19",
+  "status_id": "2098444999541010741",
+  "handle": "togethercompute",
+  "text": "together fine-tuning now supports glm-5.3, kimi k2.7-code + more\n\nwe also added live run metrics, experiment comparisons, early stopping, dataset previews + finer training controls\n\nprices are down 30–70% on selected models\n\nread more on what's new 👇\nhttps://t.co/Dx5HXFSDBm",
+  "created_at": "2026-09-11T16:14:09.000Z",
+  "url": "https://x.com/togethercompute/status/2098444999541010741",
+  "links": [
+    "https://www.together.ai/blog/together-ai-expands-fine-tuning-service-with-more-models-live-metrics-and-finer-controls"
+  ],
+  "media": []
+}

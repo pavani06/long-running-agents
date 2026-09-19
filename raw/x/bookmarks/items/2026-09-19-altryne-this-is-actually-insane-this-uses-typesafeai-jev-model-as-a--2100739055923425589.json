@@ -1,0 +1,13 @@
+{
+  "collected": "2026-09-19",
+  "status_id": "2100739055923425589",
+  "handle": "altryne",
+  "text": "This is actually insane. This uses @typesafeai Jev model, as a plugin in Claude to review all the un-nesseasary tool calls, and it takes 1s to run! \n\nLike, literally, 1 second to take my Claude session from nearly 1M to ... 86K tokens! 😮\n\nAsk your claude to install it and be https://t.co/fnQv066QPn https://t.co/SM9ib3kopC",
+  "created_at": "2026-09-18T00:09:55.000Z",
+  "url": "https://x.com/altryne/status/2100739055923425589",
+  "links": [],
+  "media": [
+    "https://pbs.twimg.com/media/HSdTBk8bAAAPtk8.png",
+    "https://pbs.twimg.com/media/HSdTCa_a0AAKYLw.png"
+  ]
+}

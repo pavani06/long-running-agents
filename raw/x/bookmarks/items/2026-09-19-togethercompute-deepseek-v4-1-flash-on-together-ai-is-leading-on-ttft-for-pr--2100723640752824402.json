@@ -1,0 +1,10 @@
+{
+  "collected": "2026-09-19",
+  "status_id": "2100723640752824402",
+  "handle": "togethercompute",
+  "text": "deepseek v4.1 flash on together ai is leading on ttft for pre-warmed queries\n\nfor agent workflows, that startup time shows up again on every model turn, so shaving it down matters more as the loop gets longer\n\nwe’ve been pushing hard on the serving path to keep that overhead as https://t.co/ShNUSXvyLn",
+  "created_at": "2026-09-17T23:08:40.000Z",
+  "url": "https://x.com/togethercompute/status/2100723640752824402",
+  "links": [],
+  "media": []
+}

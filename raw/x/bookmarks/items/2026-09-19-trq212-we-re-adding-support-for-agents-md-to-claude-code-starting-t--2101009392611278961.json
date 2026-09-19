@@ -1,0 +1,10 @@
+{
+  "collected": "2026-09-19",
+  "status_id": "2101009392611278961",
+  "handle": "trq212",
+  "text": "We're adding support for AGENTS.md to Claude Code. \n\nStarting today in version 2.1.277, if there is no CLAUDE.md in a folder, Claude will check for and use AGENTS.md.\n\nYou can toggle this behavior in /config.",
+  "created_at": "2026-09-18T18:04:08.000Z",
+  "url": "https://x.com/trq212/status/2101009392611278961",
+  "links": [],
+  "media": []
+}
