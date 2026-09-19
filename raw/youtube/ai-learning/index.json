@@ -1,7 +1,7 @@
 {
   "playlist_url": "https://www.youtube.com/playlist?list=PLdJYvRCSB6rO2Mm_0wGnHgFfoy34OaC0S",
   "source": "enumeration: YouTube Data API v3; transcript: SerpApi youtube_video_transcript",
-  "count": 395,
+  "count": 399,
   "videos": [
     {
       "id": "Dt6u-yFEpsk",
@@ -2618,6 +2618,38 @@
       "chars": 31582,
       "lang": "en",
       "segments": 828
+    },
+    {
+      "id": "1a1VXDdIyrk",
+      "url": "https://www.youtube.com/watch?v=1a1VXDdIyrk",
+      "file": "2026-09-19-agent-harness-explained-in-8min--1a1VXDdIyrk.txt",
+      "chars": 8971,
+      "lang": "en",
+      "segments": 237
+    },
+    {
+      "id": "ZELPNFXJ4_o",
+      "url": "https://www.youtube.com/watch?v=ZELPNFXJ4_o",
+      "file": "2026-09-19-ai-model-vs-agentic-harness-what-actually-drives-ai--ZELPNFXJ4_o.txt",
+      "chars": 6893,
+      "lang": "en",
+      "segments": 96
+    },
+    {
+      "id": "XN3xNJvWXsc",
+      "url": "https://www.youtube.com/watch?v=XN3xNJvWXsc",
+      "file": "2026-09-19-essential-skills-for-becoming-an-ai-engineer-rag-ai-agents-more--XN3xNJvWXsc.txt",
+      "chars": 9796,
+      "lang": "en",
+      "segments": 114
+    },
+    {
+      "id": "2z-7pIj57f8",
+      "url": "https://www.youtube.com/watch?v=2z-7pIj57f8",
+      "file": "2026-09-19-we-need-to-talk-about-jev--2z-7pIj57f8.txt",
+      "chars": 11489,
+      "lang": "en",
+      "segments": 95
     }
   ]
 }

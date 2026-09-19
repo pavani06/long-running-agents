@@ -1,0 +1,237 @@
+Asian harness is just one of those terms
+that is so confusing to understand
+because of how broad and also specific
+the term harnessing actually is. A
+common rhetoric out there is that
+harness refers to an environment for the
+agent. But that still doesn't really
+help us understand what it is and what
+it isn't. How exactly is harness
+engineering different from prompt
+engineering and context engineering?
+Welcome to Caleb Bright's code where
+every second counts. Quick shout out to
+cursor. More on them later. To put it
+simply, harness engineering actually
+existed before the term harness was
+coined around early 2026. Shortly after
+the release of Chachibd in 2022, we were
+dealing mostly in the context window of
+4,000 tokens. And this small context
+window really limited our ability to do
+anything substantial with it. And we
+could build an agent around this. But
+what we found is that simple prompting
+chachi to get what we want to do just
+wasn't good enough. So the question
+started to emerge on how to recycle this
+small memory space to effectively do
+more with less. So we quickly expanded
+from prompt engineering to context
+engineering by using various techniques
+like tool calling, MCP and rag for the
+purpose of managing the context window
+more efficiently. Tool calling allowed
+us to explore the repository and read
+only specific files that are relevant to
+the task at hand and creating actions
+externally. MCP allowed vendor specific
+features to be added on top of the
+model. And finally, rag allowed custom
+databases to be connected for an
+ondemand data to be available at any
+time. All these techniques gave birth to
+a new era of agents, mostly in coding
+agents. Cursor, Windsurf, Klein, Rue,
+and Ader are all examples of early
+players that adopted tool calling for
+context engineering. And they were
+really good tools that got the job done.
+And while all of this work was
+undergoing, the underlying models
+actually evolved and context window
+started to grow as well, which meant
+that coding agents started to be able to
+do longer duration tasks. And that's
+exactly what we were seeing. People
+started to ask these coding agents to
+work on features and bug fixes at a
+bigger and bigger scope. And suddenly
+context engineering that autonomously
+loaded proper context and take necessary
+actions gave these coding agents more
+and more ability to work on more complex
+tasks. But even this had its own limits
+because as the duration of tasks got
+longer and we asked the coding agent
+some incredibly long tasks like clone an
+entire website, a simple prompt
+engineering will give you a very sketchy
+website because it can only respond in
+one shot. And even with context
+engineering, the result you got was not
+that great given the huge scope of the
+task. Not because context engineering
+was necessarily bad, but because you
+have symptoms like this where the
+website will be partially finished and
+some buttons would just not work and
+features aren't really tested all the
+way through. And one major issue with
+context engineering was that we
+typically use context summarization to
+essentially keep shrinking down the
+context as it was topping up. So if the
+task that we gave to an agent took let's
+say 12 hours as the context window
+started to fill up it would summarize
+its context to shrink it and continue
+working on them without having to run
+out of context window. So effectively
+the agent was bound by its own ability
+to properly summarize its previous work.
+And that's why you see tasks that are
+either half completed or not even
+attempted at all. If context started to
+fill up mid task, it would summarize and
+assume the task is already finished in
+some instances or oversimplified the
+task and assume some features are
+completed and verified when it really
+wasn't. So, as much as this elastic way
+of self-managing the context window gave
+the appearance of ability to work on
+longer range tasks, it really wasn't all
+that effective. Now, this narrative I'm
+putting out here is an overview of what
+happened in the past. meaning people had
+been experimenting with different ways
+to get around this problem by
+implementing sub agents for hierarchical
+context management or even swarms of
+agents where you deploy multiple agents
+with their own context window. So we
+were already converging towards a point
+of harnessing the underlying agent. And
+as you can see having a better
+orchestration layer and having a better
+execution environment and better context
+management are all ingredients that we
+needed to master for harnessing the
+agent. And this is when the concept of
+harnessing an agent or agent harness
+started to emerge and officially coined
+the term in early 2026. And while you
+can certainly make the argument that
+harnessing is a buzzword, it does
+capture the essence of something
+transformative that was happening in the
+AI industry. So the question is, how is
+harnessing an agent really different
+from what we've seen before? But first,
+a quick word from cursor. I'm always
+trying to build on my websites, but not
+only do I have multiple devices that I
+have to keep track of, but I also want
+to keep working on them on my browser or
+my phone without having to set up the
+entire project on my devices. I use
+cursor for that reason. For example, I
+can see that the models tab on my
+website is already behind in information
+since OpenAI released newer models
+since. So, I can just spin up cursor
+locally to keep this up to date. And
+while the agent is working on that, I
+can concurrently fix different features
+at the same time, spawning multiple
+agents with their own context as needed.
+Pretty cool. But I want to raise a bar.
+With cloud agents, I can actually have
+this entire thing run on cloud instead
+of my desktop, which means I can just
+close cursor and the job will continue
+on without my machine and create a pull
+request once it's done. Pretty cool, but
+I want to raise a bar again. I can
+integrate with Slack to send my feature
+request to cursor and it'll also run the
+cloud agent to get the job done and ping
+me once it's done with a PR. Pretty
+cool, but now I want to raise a bar
+again. Now I want to take this website
+and somewhat run it autonomously because
+I don't want to manually check for new
+information. I can add automation in the
+cloud to check daily for new model
+releases and cursor now keeps my website
+up to date autonomously. One of the most
+critical changes that happened with the
+rise of hardness engineering was the
+idea of loops. By stepping away one
+layer above context engineering and
+essentially looping the agent in a loop
+where at each iteration they have a
+fresh clean set of context but under a
+strict rule of how the agent should
+start and finish its task. We started to
+see an incredible result by putting the
+agent under this very environment. One
+of the primary example is Ralph which
+took over the internet given how
+effective it was but more importantly
+just how simple the architecture was
+underneath. One clarification to be made
+here is that harness engineering doesn't
+necessarily deprecate context
+engineering and it certainly doesn't
+deprecate prompt engineering. If you
+peek below open-source coding agents
+like Klein, you see that their system
+prompt is still largely driven by a
+well-written prompt. So prompt
+engineering is still used but a much
+smaller component in comparison to the
+system as a whole. So prompt engineering
+reminds the coding agents who the agent
+is and gives them the persona of a
+coding agents. And the layer above that
+is context management and context
+engineering. So harness engineering
+effectively leverages both prompt and
+context engineering. It's a shift away
+from relying on these two approaches,
+but a paradigm change on the environment
+that puts the agent into series of steps
+where typically you start by generating
+a large requirement file and then
+looping each task and selecting only one
+task to be completed from the document
+and it tests and document each steps.
+And this loop continues on iteration
+after iteration until the entire step is
+finished. And at each iteration they're
+given a fresh set of prompt and fresh
+set of context. You see this kind of
+architecture mirrored in Ralph's
+documentation as well where first starts
+with creating a production requirement
+document which gets outlined into a JSON
+file and it goes into a loop
+implementing feature after feature until
+completion. And you can see just how
+simple this entire architecture is when
+you look at how small the repository
+really is. Same thing for Enthropic's
+simple demonstration of harnessing when
+we look at their repository. Similar
+story here, lightweight and simple
+environment. In fact, many coding agents
+now have already adopted this harnessing
+layer directly inside the application.
+Although each of them implemented their
+own way of harnessing their agents.
+That's why you're seeing so many
+companies talking about harnessing layer
+these days because of how effective it
+really

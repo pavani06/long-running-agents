@@ -1,0 +1,114 @@
+If you want to become an AI engineer, well, you might not need a computer science degree,
+but what you do need are the right skills and to understand the fundamentals.
+And today, I'm going to break down what an AI Engineer actually is,
+the skill stack that you need to learn, and three projects that'll help demonstrate your skills to potential employers.
+And a few years ago, the path into tech was pretty straightforward, right?
+You would get a degree, go do some internships, grind coding challenges, and hope for a call back from a job employer, right?
+But things have changed recently.
+AI coding tools have made it easy to generate code, which means the code itself isn't the hard part anymore, but the hard is judgment.
+So being able to make the right decisions for situations like how to structure applications, knowing what to build.
+And specifically why one approach would be another.
+And that's something that a class can't always teach you, but you can definitely learn by building.
+So the question is, what do you actually need to learn to become an AI engineer?
+And how can you demonstrate that to employers?
+First off, the term is quite new.
+An AI engineer is not a machine learning researcher.
+That's a researcher who trains foundational models from scratch.
+They publish papers about those models and the new architectures that they're working on.
+And this position typically requires deep math and usually an advanced degree.
+On the other hand, an AI engineer is different.
+You're building with models that already exist.
+And for example, those could be the models like Frontier or Open Source that have been developed by those researchers,
+but you take that model and wire it into a system that does useful work.
+So for example, that means connecting a model to data.
+That means perhaps giving access to tools and outside external information,
+giving it memory loops and guard rails and many other capabilities that can turn a model into a solution that someone can actually use.
+So if ML researchers are the ones building the engine, then AI engineers are the ones building the car.
+And right now with the influx of models, we desperately need more folks who can build these cars and AI solutions for organizations.
+Now with the foundations though, I typically think of this as three tiers and this order really matters, I'll explain why.
+Because with this foundation at the bottom, what people sometimes do is they skip the foundation here and they go straight into.
+Building agents or deploying them before they can handle data and understand the intricacies of infrastructure.
+So they spend a lot of time relearning the basics.
+So tier one is your foundations.
+This is the stuff that's not specific to AI, but you absolutely can't build without it.
+For example, using Python, right?
+So Python, you don't have to be a wizard, but you just have to have to fluent enough to read code and understand what your AI agent is writing, right?
+Because...
+A lot of machine learning libraries and AI packages will be using Python underneath the hood, for example, PyTorch and TensorFlow.
+So being able to understand it as a language is quite important.
+Now, on the other hand, since you're gonna be working and building out projects and directories, and you need to share that with others,
+understanding Git as a tool is really important, and being able work with command line utilities or CLIs as well is quite important.
+And you'll notice that with a lot of these AI tools, they're all using Linux underneath the hood.
+So the combination of these three from Git to CLIs to Linux is quite important to be able to use the operating system where your AI agents will be deployed.
+And finally, we have the ability to understand APIs or application programming interfaces.
+And this is how you connect two different pieces of software to each other, right?
+And understanding how they work is gonna be really crucial for a lot of use cases with AI because you're gonna be making calls to models programmatically,
+you're going to be handling the responses, dealing with rate limits and much more.
+And so every AI product and solution you'll eventually build is a fundamentally well-structured API calls from your application to the model,
+to different tools and services and back and forth.
+So this is the foundation.
+So tier two is where we learn about these specific AI engineering skills,
+For example, understanding what embeddings are for our data sources and being able to do vector search.
+And the reason why you need to know about this is because this allows us to provide grounded information
+into the context window of an LLM in order to get accurate responses back.
+And with embeddings, what we can do is we can help this machine system understand meaning instead of just matching keywords.
+So what we do is we convert text from types of formats like PDFs and other data formats to numerical vectors.
+And we search them by similarity.
+Say for example, how similar that the word Kubernetes is to words like containers and orchestration.
+So in this three space, we can get relevant results back for different types of topics that we wanna search on.
+And the reason why this is important is because of retrieval, augmented generation, or RAG.
+RAG allows us to give a model accurate results back
+for specific information that might be company policies or legal documents instead of just hallucinating them because it wasn't trained on that information.
+So the way that it typically works is in a pipeline.
+Documents come into the pipeline, they get chunked in fixed sizes that will fit in whatever data source we'll be using,
+they're embedded into those vectors or numerical representations to be searched and stored in that database.
+Now, at the same time, when someone's asking a question about specific company data or personal information,
+what we do is we take that question and we add in relevant retrieved information from that database or vector source and feed that both the relevant information and the question.
+Into the context window of our large language model.
+Then we get that result back, which has been grounded in that factual information, but also in natural language for us.
+And almost every company experimenting with AI wants some version of RAG, or Retrieval Augmented Generation,
+even if you're not using embeddings or working with another form of storage.
+Now, third is agents and tool use.
+And you've probably heard a lot about this.
+If you're watching our channel, because this is what's so popular right now, because agents allow us to go from answering questions to actually doing things.
+And again, this is probably the most in-demand applied AI skill right now.
+And a quick distinction, a workflow typically follows a predefined path.
+So you have step A, step B, and step C because of different actions that are happening.
+But with an agent, it's a little bit different.
+An agent can dynamically decide what to do next.
+So it can call tools that it needs to use.
+It can observe those results.
+And based on that, go in a loop and make those decisions.
+And building these loops is what's really important because one who can do this reliably and at scale, well, that's a good AI engineer.
+And finally, tier three, which is getting things shipped and deployed.
+Because to create real value, things need to get off of our laptop and into the hands of real users.
+And that means understanding deployment and basic operations.
+So what skills do you need?
+Well, first off is containerization.
+You need to be able to containerize or package up your AI agent and even the model too sometimes
+to be about to deploy this to different environments across the hybrid cloud.
+So containerization and Kubernetes are really important.
+Second is observability.
+So when a model call is being made and that...
+Agent maybe is using different databases and going back and forth to collect data, we need to understand why the agent made that final decision.
+And being able to observe all of those different functions is really important to transparency and trust behind AI.
+Next is monitoring, making sure that, you know, you're not spending too much on your token bills and everything is kept safe, especially from a security standpoint.
+And much, much more in the realm of deployment.
+Now, thankfully, these AI dev tools can make you dramatically faster in this area, too, whether you're deploying your application on something like bare metal,
+so totally disconnected from the real world, or maybe in cloud via some type of hosted service, where you're deployment across the world.
+Now, with these top two tiers, what I see in most use cases for AI and production right now,
+is one, RAG, so knowledge systems that are powering HR services, hospitals, online chatbots,
+allowing users to be able to ask questions to their businesses that they use or within organizations and get back that grounded data from those searches.
+Second off is with agents and tools.
+Being able to use an agent that can query a database, visualize data.
+And be able to do things that typically a subject matter expert only could.
+And then finally is helping with deployed applications.
+So helping engineers get their code shipped in hours and not weeks using these AI tools.
+Those are three of the most common use cases that I see with AI right now.
+And I encourage you to build in those specific areas with your own personal interest because that'll be huge for your career and experience in AI engineering.
+But now you know what AI engineers do, right?
+They build systems around language models using these three tiers of skills.
+And you can start building today too.
+So thanks so much for watching.
+If you enjoyed the video, please be sure to leave a like and we'll catch you in the next one.
+Bye.

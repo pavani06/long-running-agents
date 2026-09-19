@@ -1,0 +1,95 @@
+There's a new AI taking the internet by storm right now and it is so fast. Watch this.
+That is not sped up. That is actually real time. This is Jev. And this is the guy who just launched it. He co-invented
+a little product called chat GPT and now has released something that is completely different from the architecture of chatpt and made it
+hundreds of times faster than traditional large language models. I mean the speed is truly insane to watch.
+But there were tradeoffs. And so I'm going to tell you about Jev. I'm going to tell you what it's good for, what it's not as good for. And then I'm going
+to show you some incredible demos. And here's the thing that I want you to keep in mind. Jev is so efficient, they actually made it free. You get unlimited
+output tokens absolutely free. And the input tokens, what you actually prompt it with, they are fractions of a penny.
+So this is substantially cheaper than anything else on the market. Let me tell you about it. Here's the tweet. Nearly at 30 million views. After co-inventing
+Chai GPT, I kept asking myself, why have superhuman chat models not led to AGI?
+I've spent the last two years in stealth building a new way to train models. RLCD that is different from RLHF,
+reinforcement learning with human feedback. This is reinforcement learning for calibrated decisions. Up to 200
+times faster and up to 400 times cheaper when output tokens are so cheap they
+just made them free. This model is not a chat model though. It is a decision model, but it is a generalized decision
+model. You can give it any decision that you need to have made and it will make it and it'll make thousands of them in
+seconds. And here's a benchmark. This is type safe over here. Basically on par with Luna and Terra and Sonnet 5, above
+Opus 5, above Soul, but a fraction of a penny. And in fact, it is so fast and I'm trying to convey how fast it is. It
+can play Doom in real time. It is making all of the decisions inside the loop of the actual Doom software. It is looking
+at what's happening and making decisions of what to do in absolute real time. Here's another example of browser use.
+And again, it is so fast. And what it's doing is clicking through the browser in something called a wiki race. basically trying to click from wiki page to wiki page and eventually finding something.
+Watch how fast it is. So we have Jev in the top left, 5.6 Terra top right, Haiku 4.5, and Sonnet 5 in the bottom right.
+So watch how fast it goes. 3 2 1 And look at that. It finished three hops in
+faster than you can even see it. Here's another race. Ready? Let's see if we can even see how fast it goes. There it goes. Five hops in half of a second.
+Let's see how long the other ones took.
+4 seconds, 5 seconds, and 5 seconds. So, a fraction of the time. Let me show you a few examples of how you can use Jev.
+And these are basic examples, and then I'm going to show you more complicated examples in incredible demos. So, you can kind of think of it as a decision
+engine. You can give it an input, whether it's a state or a bunch of information, and have it make decisions.
+and not only one decision and not sequentially but hundreds or thousands of decisions in parallel. Here's an
+example. So this is for support ticket routing. I was charged twice and need this fixed today. They're on the pro plan and their account age is 420 days.
+Okay. So here are the questions. What type of support request is this? Does this need urgent handling and rate
+support priority? And we give it the options to choose from. It looks at the input and decides the output. And all of
+this is happening again in like milliseconds. And they're saying or their motto is we're building prod not
+God. A direct shot at enthropic. There are a few other properties about Jev that make it incredibly special. So, one
+of the problems with using reinforcement learning with human feedback is models are optimized for humans and humans make
+mistakes. And so that leads to traditional large language models hallucinating, something we're all familiar with. Now, the rate of
+hallucination over the last 3 years has dropped significantly. But for some use cases, any hallucination is
+catastrophic. Think about critical use cases where decisions are being made where lives are on the line. Healthcare,
+military targeting, even traffic. But with Jev, it is so reliable. They are claiming zero hallucinations. And this
+type of speed is incredible, especially for businesses where they have to make thousands of decisions per second on a
+wide variety of things. And one of the ways to pipe all of those decisions to be made into a model like Jev is with the sponsor of today's video, Zapier.
+Now, imagine this. With Zapier, you take all of your emails or you take all of your customer service requests and then
+you plug Jev into Zapier and now you're paying a fraction of the price and 100x 200x the speed to make decisions within
+one of your Zapier workflows. Zapier allows you to connect over 9,000 different applications in different
+ways, build entire automated workflows, all with artificial intelligence. And so you can easily plug in the obvious ones like cloud and cloud code and chat GBT.
+You can do Gmail and calendar and whatever your customer support software is. And again, now plug in Jev to it.
+Pay a fraction of the price. get speeds where your customers are going to absolutely love the response rate. And
+it's already used and trusted by the world's biggest companies like Nvidia and Shopify, Meta, Cursor, Samsung, and
+so many more. So, go check it out. Huge fan. Click the link down below to let them know I sent you. Now, let me keep telling you about Jev. All right. So,
+here's a little demo I made to show off Jev's decision-making. So I actually used Astra in codeex to build this world because that is not what Jev is for.
+It's not necessarily for building code from scratch. Now there are aspects of the code building workflow that you can
+offload to Jev, but for this I built it with Astra. And what you're seeing is a little town and all of these little
+characters in the town are powered by artificial intelligence. Specifically, they're powered by Jev. And so I can
+give them a prompt. They will all make a decision about how to react to the prompt in less than a second. So let's
+watch. We have a fire sale at the bakery. Everything must go. I'm going to click broadcast. So6 seconds, 50
+different decisions about what each of these people are going to do. 39 of them decided to just keep doing what they're doing. Six decided to investigate, four to join in, and one to warn others.
+Okay, that was a pretty benign prompt, but what if I did something more aggressive? So, everyone who doesn't go
+to the fountain will be bitten by a poisonous snake. Let's see what they decide. And here we go. We can see almost all of them, I guess some of them
+are not afraid of poisonous snakes, but almost all of them are moving towards the fountain. I love that so many of them are just like, I'm going to carry
+on doing what I'm doing. Here's another one. There are 150,000 Skittles here.
+all the different colors and one by one powered by Jev the chopsticks are picking them out of the pile and sorting
+them into one of these five color buckets. You can actually see it zoomed in right here. You can see each skittle
+being picked by these chopsticks one by one. And again, this is being done by Jev, but at this speed it looks like a
+normal large language model. Now, what if we increase the speed to maximum? Watch how fast it goes.
+Look at this. It is actually working. It is actually picking up each Skittles one by one. It's making the decision in
+parallel. So potentially thousands at the same time, but it is still telling the chopstick one by one where to grab which Skittles, which bucket. All right,
+so I have a few thoughts about this and then I'm going to show you some incredible demos that I found on the internet. Now, number one, this is a completely new architecture for
+artificial intelligence. It is much more structured. It is much more about decision-making. It is not a chat model.
+So, you're not going to be using it for coding from the ground up. You're not really going to be using it for interactive chat sessions. It is much
+more here's a question I have or here's a thousand questions I have. Answer them as quickly as you can. So, although it's
+not for every single use case, there are a lot of use cases that can benefit from the speed, the cost, and the
+reliability. Having 0% hallucination is a major value to many different
+industries. Now, they specifically called out, for example, that Jev is not going to be nearly as good at playing chess than a chat GPT or a Claude model.
+And in fact, this guy right here put them head-to-head. So, here's Jev playing Fable and here's Jev playing GPT6 Astra. And let's see what happens.
+So on the bottom, Astra won.
+Interestingly, check this out. Look, Fable is about to run out of time. So Jev actually won against Fable. And
+that's important because it was actually the time constraint that made Fable lose. Although the game looks like it was more or less over because there was
+only two pawns and two kings left. So very interesting to see this. So versus Fable, Fable outplayed Jev and by move
+29 it was plus 16 in material and even promoted a second queen, but it kept burning 6 to 15 seconds per move on
+analysis and Jev answered it in 2.6 seconds. So Jev could potentially win at bullet chess almost every time simply
+due to flagging, which is when you cause the other player to run out of time.
+Here's Riley Brown who built a model router. So take a prompt and route it to the best, most efficient, cheapest model
+possible. And Jev is the perfect model to have in between as the model router, deciding which model should this prompt
+go to. It's not actually going to answer the question, but it'll route it to the appropriate model. Here's one by Kitsy.
+Introducing unclutter, a smart ad plus slot blocker with dev. Basically, auto remove advertising and slot from web
+pages. and it does so in a fraction of a second. If you want to try this out, I'll drop a link down below. I'm going to go install it right now. I mean, it's
+free. You just have to bring your own key. You're going to pay Jev a few cents maybe per month. It's like it's going to be nothing. And it's open source. And
+then possibly the coolest demo. We have this guy Justin Schroeder who rebuilt Tesla full self-driving in Jev in less
+than an hour. So you can see he created this world probably using codecs or claude, but the actual decisions being
+made of where to go based on all the information that the Tesla car is actually giving the model is being made by Jev in real time. And so you can see
+here it goes. It's going forward, straight, ease left, ease right. You know, it's a little wonky at times, but
+for essentially building this in an hour, it's actually quite impressive.
+Okay, so it sees this stop sign. Okay, it's going to stop and then it's going to continue. Here's another example of
+it controlling a game in real time. This is from Alex from our team and I'll drop his X profile below if you want to
+follow him. This is Jev controlling Melee. Look at this. Real time. Unreal.
+So cool. So, I think Jev looks incredible and I think we're just starting to understand how to use it.
+And the more demos we see, the more people get their hands on it, the more we're going to understand how valuable speed is going to

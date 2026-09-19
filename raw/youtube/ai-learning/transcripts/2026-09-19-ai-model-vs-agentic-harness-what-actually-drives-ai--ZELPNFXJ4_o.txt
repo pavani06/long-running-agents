@@ -1,0 +1,96 @@
+You might have noticed that two AI products can feel completely different
+even when they're running the same underlying model, like how the same model could be a basic back and forth chatbot.
+But if you put it inside a developer tool with access to files and a terminal it can suddenly work for hours on a software task.
+So..
+So what accounts for the difference?
+Well it comes down to AI model and agentic harness.
+And let's start with AI model because what that is is pretty simple.
+We all know what these AI models are.
+Things like ChatGPT or maybe Claude.
+So when we talk about a model we really mean the actual artificial neural network
+and what those models can't really do on their own is well reach out into the world.
+They can't open a file or run a piece of code natively.
+They can't really browse the web either.
+So on their own...
+These AI models are essentially, well, a brain in a jar.
+They're capable, but they're trapped.
+They're trapped in that jar.
+Now, benchmark gaps between the top labs have narrowed to within a few points of each other on most evals,
+so when one AI product clearly outperforms another, the brain itself, by which I mean the the AI model,
+that usually isn't the explanation. It's what's wrapped around the brain and that wrapping has a name.
+When we take a model and we wrap it we are calling this thing that wraps it the agentic harness.
+And then if we think of an AI agent overall that encompasses both of these things.
+So essentially an AI agent consists of the AI model and the agentic harness.
+That's the tools the model uses, the way it remembers things, the loop that it keeps
+running, the the rules about what it's allowed to do, all of that stuff lives inside the agentic harness.
+So let's get inside that harness and what's inside is essentially three components.
+We've got tools we've got memory and we've got the agentics loops.
+Let's take a look at these one at a time.. we'll start with tools.
+So through tools the model can do things out in the world for example, one of the
+things it can do is it has access to files so it can read and write to them.
+Another thing we can do with tools is run code and that code might run in a sandbox as well.
+We can go and get information on the internet and we can also often actually drive a computer screen itself.
+This is called computer use.
+And here the model can move a cursor around and operate any software similar to the way that a person would do it.
+Now, many of these capabilities are actually built into the harness directly.
+For anything else already on the machine, well, a harness usually gives the model access to the command line,
+so it can just run whatever software is already installed, which is really the same way that a developer would do it.
+And then for connecting to external services that don't live on the machines,
+so maybe a corporate database or a third party app, there's a standard called MCP, Model Context Protocol,
+and a tool built for MCP can plug into any harness that supports it without being rebuilt each time.
+So that's tools.
+What about memory?
+Well, models have a fixed context window which is basically their working memory
+and once the conversation ends that working memory is wiped clean.
+But the harness can help persist things.
+For example it can persist instruction files.
+So things like an agents.md file which sits in a project folder and gets loaded
+into the model's context at the start of every session.
+How the model knows the codebase's conventions or what libraries to use.
+Now within a session when the context window starts filling up the harness runs
+another process where it compacts that context window. So it summarizes what
+happened earlier so the important parts stay around but stuff like redundant tool outputs all that stuff kind of It's pruned out.
+And then rather than dumping an entire code base into the model's context all at
+once, the harness lets the model perform a search.
+So we can search the project sometimes with grep-like text search, sometimes
+with semantic search or code indexes, and then just kind of pull in only the pieces it needs.
+That's memory.
+And then there is the agentic loop.
+Now this is where the harness and the model work together to achieve a goal.
+So the model decides on a next step to achieve that goal.
+That's the plan stage.
+And then the harness takes that plan and actually performs an action on it.
+When that action is performed we get some results.
+The model observes those results and then the loop repeats around and around.
+Sometimes just for a seconds, sometimes for hours.
+And in addition to this cycle, modern harnesses run verification continuously all the way through the loop.
+The model runs tests as it goes, maybe it takes screenshots of what it's built, and
+sometimes even spins up a separate model to act as a reviewer.
+So verification is pretty cool, running these tests and checking the outputs and taking a peek at screenshots.
+And a model that double checks itself might run a lot longer without going off the rails.
+So that's tools, memory, the agentic loop.
+Once a harness has all three of these running together the kinds of things AI
+can actually do start looking very different from anything an AI model can do on its own.
+So I think we should also ask why should we care about this distinction AI model and agentic harness?
+Well because once we can see the model and the harness as separate things,
+I think a lot of what's been going on in AI starts to make a bit more sense.
+Because most of the capability gains we've seen lately they've come actually from the harness getting better
+by which I mean better tools and memory handling and smarter agentic loops with verification,
+and of course with every new version the models have improved as well.
+So when somebody asks is AI good at something?
+Like is AI good at writing code or is AI good as a customer support chatbot?
+I think the more useful version of that question is to better define what we mean by AI and specifically we mean two things.
+We mean which AI model are we going to use in this scenario,
+but also if this is an agent we need to ask which harness are we are going to us with that AI model as well.
+Because the model can be brilliant in one harness and get stuck in another.
+And...
+The line between these two things is also a bit fluid because capabilities that used to live entirely in the harness,
+like long horizon planning or self-verification,
+they're starting to be trained directly into the models and things that used, to be
+model behavior like consistency over a long task, are increasingly shaped by harness conventions and project files.
+Which brings us back to that brain in a jar.
+The brain itself, the AI model continues to get smarter.
+There's no doubt about that, but you know what?
+It's not just the model getting smarter.
+It's just the brain.
+It's also the jar, the agentic harness.
