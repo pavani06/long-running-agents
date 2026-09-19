@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HOVPq3BW0AAELGz.jpg"]
 thin: false
-theme: "Tooling para agentes de código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-17-eng_khairallah1-send-this-prompt-to-gpt-astra-it-might-just-change-your-life--2100187890999263603|AGENTS.md desatualizado em codebases]]", "[[extracts/x/bookmarks/2026-09-12-daradoescode-new-agents-md-after-theo-s-stream-td-https-t-co-pkqqjcgm5l--2082696597528592594|agents.md para agentes de código]]", "[[extracts/x/bookmarks/2026-09-12-natebjones-psa-if-you-are-tired-of-claude-lish-or-chat-lish-tell-your-a--2089457435459404093|guia de estilo para IA]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-writing-for-agents-helps-but-not-without-human-oversight-har--2095895922576085034|Escrita para agentes e supervisão humana]]", "[[extracts/x/bookmarks/2026-09-12-xudong07452910-openai-skills-agents-md-blog-agent-engineering-astra-skill--2098655277197201752|OpenAI ensina Skills e AGENTS.md]]", "[[extracts/x/bookmarks/2026-09-14-openaidevs-get-more-out-of-gpt-6-astra-by-revisiting-your-skills-agents--2098480213244117065|Instruções e skills para GPT-6 Astra]]"]
+theme: "Codificação Agêntica e Code Review"
 ---
 
 # Simplified Technical English em AGENTS.md

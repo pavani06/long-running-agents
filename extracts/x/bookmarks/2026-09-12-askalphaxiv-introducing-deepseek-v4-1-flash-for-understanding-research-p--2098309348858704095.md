@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://alphaXiv.org"]
 media: ["https://pbs.twimg.com/amplify_video_thumb/2098309061972516864/img/DP_6eFpfjjzQ25aD.jpg"]
 thin: false
-theme: "Ecossistema Claude e Agent Tooling"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-ryrenz-claude-code-alphaxiv-openresearch-openresearch-6-github-1000--2098577841944207463|OpenResearch: agente de pesquisa científica]]", "[[extracts/x/bookmarks/2026-09-12-hasantoxr-you-can-now-watch-any-ai-paper-instead-of-reading-it-there-s--2097398574061670664|arXivisual: papers em vídeo animado]]", "[[extracts/x/bookmarks/2026-09-19-nutlope-i-used-jev-to-classify-1-018-ai-research-papers-the-result-0--2100426999546184123|classificação barata de papers com LLM]]", "[[extracts/x/bookmarks/2026-09-12-tom_doerr-hyperresearch-turns-claude-code-into-a-research-agent-that-i--2097841937642332595|Agente de pesquisa profunda para Claude Code]]", "[[extracts/x/bookmarks/2026-09-17-trending_repos-trending-repository-of-the-day-open-code-review-fast-efficie--2100194977523331489|Open Code Review da Alibaba]]", "[[extracts/x/bookmarks/2026-09-18-completeskeptic-extraordinary-claims-require-extraordinary-evidence-so-check--2099925690682630371|Modelos estruturados para automação]]", "[[extracts/x/bookmarks/2026-09-16-obsdmd-you-can-finally-edit-any-markdown-file-without-moving-it-int--2099930667769610431|Edição de Markdown fora do vault no Obsidian]]"]
+theme: "Tooling e infra de agentes"
 ---
 
 # alphaXiv AI paper Q&A

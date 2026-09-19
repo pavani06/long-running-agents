@@ -22,6 +22,7 @@ thin: false
 links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-illscience-additionally-i-think-theres-a-lot-of-debate-about-imessage-v--2099207649577595286|iMessage vs app como interface]]", "[[extracts/x/bookmarks/2026-09-18-dankrieg-introducing-ihermes-a-personal-ai-assistant-powered-by-herme--2100260309336535218|Lançamento do assistente iHermes]]", "[[extracts/x/bookmarks/2026-09-17-milindlabs-grok-bot-check-it-out-here-https-t-co-ujtre6f8mz-post-your-f--2099824976325157319|OpenMausBot: agentes em app de mensagens]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-6-email-classifier-https-t-co-so7gq4itsq--2100895984108913030|Classificador de e-mails com agentes]]", "[[extracts/x/bookmarks/2026-09-16-tom_doerr-manages-your-obsidian-vault-with-a-crew-of-8-ai-agents-and-1--2099928503487517062|Crew de agentes AI para Obsidian]]", "[[extracts/x/bookmarks/2026-09-12-marwan_3atef-google-cloud-put-data-agent-kit-in-the-ide-and-the-pitch-is--2097976275373531523|Data Agent Kit no IDE]]"]
+theme: "Tooling e infra de agentes"
 ---
 
 # Agente único para mensagens e email

@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://simonwillison.net/2026/Sep/12/openai-agents-rubygems/"]
 media: []
 thin: false
-theme: "Ecossistema Claude e Agent Tooling"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-andrewcurran_-a-man-in-australia-asked-his-agent-claude-running-on-opencla--2086567854850384054|agente explora vulnerabilidade em agendamento]]", "[[extracts/x/bookmarks/2026-09-16-gergelyorosz-here-s-what-openai-s-agentic-software-factory-looks-like-tod--2099945497377091902|Fábrica de software agêntica da OpenAI]]", "[[extracts/x/bookmarks/2026-09-16-thehackersnews-attackers-stole-a-metr-api-key-and-used-it-for-three-weeks-c--2094713437930787192|Vazamento de chave API da METR]]", "[[extracts/x/bookmarks/2026-09-18-trending_repos-trending-repository-of-the-day-security-audit-skill-a-coding--2100557033829261738|auditoria de segurança multi-agente]]", "[[extracts/x/bookmarks/2026-09-12-yenkel-great-to-see-the-muse-team-took-security-seriously-https-t-c--2097428458120835085|Arquitetura de segurança de agentes pessoais]]", "[[extracts/x/bookmarks/2026-09-16-tom_doerr-manages-your-obsidian-vault-with-a-crew-of-8-ai-agents-and-1--2099928503487517062|Crew de agentes AI para Obsidian]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-it-s-well-known-that-agents-hack-benchmark-rewards-the-usual--2098592449568591902|reward hacking em benchmarks de agentes]]", "[[extracts/x/bookmarks/2026-09-12-anthropicai-we-re-publishing-our-most-detailed-threat-intelligence-repor--2098097512544444447|Relatório de ameaças sobre misuse de Claude]]", "[[extracts/x/bookmarks/2026-09-18-openai-we-re-sharing-our-new-framework-for-tracking-investigating-a--2100344867507327087|framework de disclosure de misalignment]]", "[[extracts/x/bookmarks/2026-09-12-tashecon-remarkable-how-the-economist-appears-to-have-been-captured-b--2082728912165986348|Influência russa na The Economist]]"]
+theme: "Tooling e infra de agentes"
 ---
 
 # Ataque de agentes OpenAI ao RubyGems

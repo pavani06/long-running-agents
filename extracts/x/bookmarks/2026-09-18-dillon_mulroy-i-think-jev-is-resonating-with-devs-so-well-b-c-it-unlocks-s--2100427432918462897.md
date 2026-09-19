@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "Confiabilidade e avaliação de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-18-0xlogicrw-openai-diogo-almeida-typesafe-ai-jev-token-token-jev-typesaf--2100065117127815679|Jev: modelo classificador da TypeSafe AI]]", "[[extracts/x/bookmarks/2026-09-18-manthanguptaa-jev-is-one-of-the-more-interesting-model-launches-i-have-see--2100466984605417923|Lançamento do modelo Jev]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-full-jev-tutorial-what-it-is-how-you-can-build-with-it-and-w--2100715237267660873|Tutorial da ferramenta Jev]]", "[[extracts/x/bookmarks/2026-09-18-hot_town-jev-is-here-how-is-different-from-an-llm-how-does-it-work-un--2100570516612382787|Jev: o que é e quando usar]]", "[[extracts/x/bookmarks/2026-09-19-alexlavaee-jev-explained-in-under-10-min-what-it-is-how-parallel-constr--2100687082188677231|Constrained decoding paralelo (Jev)]]", "[[extracts/x/bookmarks/2026-09-18-agtpinsights-typesafe-ai-just-launched-jev-today-here-s-what-you-need-to--2099946094570733605|Lançamento do modelo Jev pela TypeSafe AI]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-all-of-the-coolest-jev-projects-i-could-find-on-x-today-http--2100895894287839255|Curadoria de projetos Jev]]", "[[extracts/x/bookmarks/2026-09-19-ctatedev-every-agent-harness-can-now-use-jev-npm-install-g-ai-cli-ask--2100584917092409479|Jev CLI para agent harnesses]]"]
+theme: "Treinamento de modelos e atletas"
 ---
 
 # Jev como primitiva para compor IA

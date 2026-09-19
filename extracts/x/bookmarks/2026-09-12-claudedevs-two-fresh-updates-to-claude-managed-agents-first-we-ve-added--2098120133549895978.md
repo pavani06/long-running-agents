@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2098119797238095878/img/RPvOF8kcDumfcKOe.jpg"]
 thin: false
-theme: "Ecossistema Claude e Agent Tooling"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-claudedevs-we-ve-added-ant-apply-to-the-ant-cli-now-you-can-declare-cla--2095651107645145538|ant apply: agentes como código]]", "[[extracts/x/bookmarks/2026-09-12-marwan_3atef-datadog-put-agent-observability-in-your-coding-agent-and-the--2097986925088903355|Datadog Agent Observability para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-new-in-claude-code-your-sessions-can-now-message-each-other--2085817074816070014|Mensageria entre sessões no Claude Code]]", "[[extracts/x/bookmarks/2026-09-18-claudedevs-today-we-re-rolling-out-projects-in-claude-code-on-desktop-a--2100633571543367691|Projects no Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-before-creating-a-session-and-sending-it-events-took-separat--2080009527467114737|Seeding de eventos na criação de sessão]]", "[[extracts/x/bookmarks/2026-09-18-trq212-projects-brings-the-architecture-of-claude-tag-to-claude-cod--2100638355872706571|agente por projeto no Claude Code]]"]
+theme: "Tooling e infra de agentes"
 ---
 
 # Session viewer no ant CLI

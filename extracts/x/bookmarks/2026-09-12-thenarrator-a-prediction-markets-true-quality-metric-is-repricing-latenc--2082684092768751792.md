@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Ecossistema Claude e Agent Tooling"
 relates-to: ["[[extracts/x/bookmarks/2026-09-15-shanyanggm-github-1-tradingagents-ai-agent-https-t-co-nz1jbk3dkr-2-libr--2098941338297458746|Framework multi-agente de trading LLM]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-banger-paper-from-the-qwen-team-if-you-evaluate-agents-on-an--2094872928240447665|Benchmark longitudinal de agentes e-commerce]]", "[[extracts/x/bookmarks/2026-09-12-zostaff-a-jane-street-engineer-in-a-talk-on-how-an-exchange-is-actua--2081088443698868526|arquitetura de exchanges financeiras]]", "[[extracts/x/bookmarks/2026-09-18-zachlloydtweets-if-you-want-to-get-the-most-out-of-a-software-factory-you-ne--2100621254579433575|LLM-as-a-judge para avaliar agentes de código]]", "[[extracts/x/bookmarks/2026-09-12-eya0-every-ai-accountant-fails-the-same-way-fluent-confident-unve--2097801524579864803|Agentes de IA contáveis verificáveis]]", "[[extracts/x/bookmarks/2026-09-12-mtslive-xiaoyin-qu-breaks-down-deepseek-s-cheap-inference-philosophy--2085525434385695137|Economia de treinamento DeepSeek]]"]
+theme: "Tooling e infra de agentes"
 ---
 
 # Métrica de qualidade em prediction markets

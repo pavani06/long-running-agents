@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"]
 media: ["https://pbs.twimg.com/media/HRuQEBBWsAAJluw.jpg"]
 thin: false
-theme: "Ecossistema Claude e Agent Tooling"
 relates-to: ["[[extracts/x/bookmarks/2026-09-18-trending_repos-trending-repository-of-the-day-security-audit-skill-a-coding--2100557033829261738|auditoria de segurança multi-agente]]", "[[extracts/x/bookmarks/2026-09-12-robotbird01-harness-pi-agent-skill-https-t-co-6eqhirel54--2098044628058689738|Arquitetura de plataforma harness empresarial]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-finally-an-open-source-runtime-security-layer-for-your-agent--2098042808221511836|runtime security layer para agentes]]", "[[extracts/x/bookmarks/2026-09-16-tom_doerr-manages-your-obsidian-vault-with-a-crew-of-8-ai-agents-and-1--2099928503487517062|Crew de agentes AI para Obsidian]]", "[[extracts/x/bookmarks/2026-09-14-shreyanshpatni_-want-to-build-a-domain-specific-agent-harness-this-is-a-grea--2099180288668750246|Construção de harness para agentes]]", "[[extracts/x/bookmarks/2026-09-16-gergelyorosz-here-s-what-openai-s-agentic-software-factory-looks-like-tod--2099945497377091902|Fábrica de software agêntica da OpenAI]]", "[[extracts/x/bookmarks/2026-09-12-simonw-wow-turns-out-another-openai-agent-swarm-was-busy-spamming-a--2098573718142452055|Ataque de agentes OpenAI ao RubyGems]]", "[[extracts/x/bookmarks/2026-09-16-thehackersnews-attackers-stole-a-metr-api-key-and-used-it-for-three-weeks-c--2094713437930787192|Vazamento de chave API da METR]]"]
+theme: "Tooling e infra de agentes"
 ---
 
 # Arquitetura de segurança de agentes pessoais

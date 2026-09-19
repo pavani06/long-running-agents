@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://goo.gle/4xNKTNH"]
 media: ["https://pbs.twimg.com/media/HR4-_mXbYAAtbYn.jpg"]
 thin: false
-theme: "Confiabilidade e avaliação de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-18-completeskeptic-extraordinary-claims-require-extraordinary-evidence-so-check--2099925690682630371|Modelos estruturados para automação]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-the-bitter-lesson-of-tool-calling-tool-calling-is-a-design-c--2086846794840019178|Comparação de métodos de tool calling]]", "[[extracts/x/bookmarks/2026-09-16-googleresearch-introducing-retrieve-for-train-a-framework-that-accelerates--2099951761985601580|Retrieve-for-Train: difusão para retrieval]]", "[[extracts/x/bookmarks/2026-09-16-gergelyorosz-here-s-what-openai-s-agentic-software-factory-looks-like-tod--2099945497377091902|Fábrica de software agêntica da OpenAI]]", "[[extracts/x/bookmarks/2026-09-12-openhonor-puro-2b-is-open-beyond-the-weights-technical-report-final-in--2093994412770566256|Puro-2B: receita aberta de pré-treinamento barato]]", "[[extracts/x/bookmarks/2026-09-12-pythonhub-soup-fine-tune-and-post-train-llms-in-one-command-no-ssh-no--2092662174443249870|Ferramenta CLI de fine-tuning de LLMs]]", "[[extracts/x/bookmarks/2026-09-12-fazle_karim1-googleresearch-i-wonder-how-it-would-do-on-this-research-of--2094501145536315670|GlucoFM: foundation model para CGM]]"]
+theme: "Treinamento de modelos e atletas"
 ---
 
 # ToolGrad: geração de datasets de tool-use

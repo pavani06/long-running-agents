@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HOC_7ymbgAAy6p6.png"]
 thin: false
-theme: "Loops agênticos e arquitetura de memória"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-dkare1009-andrew-ng-just-dropped-a-3-hour-course-on-how-to-become-an-a--2082141532669333653|curso AI Engineering de Andrew Ng]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-google-just-dropped-a-1-hour-course-on-agentic-engineering-f--2076366894655848871|Curso Google de engenharia agêntica]]", "[[extracts/x/bookmarks/2026-09-12-kay2289123-ai-infra-ai-kv--2098270561151676829|Reading list de AI Infra]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-how-have-software-engineering-fundamentals-changed-with-agen--2093388974194872781|AI Engineering Skills para software]]", "[[extracts/x/bookmarks/2026-09-12-_yusufknl-as-someone-who-s-been-shipping-llms-since-the-gpt-2-days-thi--2078877591923036378|Aula de cross-entropy em LLMs]]", "[[extracts/x/bookmarks/2026-09-12-mihail_eric-im-excited-to-finally-announce-the-newest-edition-my-stanfor--2095166860740174273|Stanford course The Modern Software Developer]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-fifteen-years-ago-coursera-and-online-courses-changed-educat--2082199333920027009|Personalização do aprendizado com IA]]", "[[extracts/x/bookmarks/2026-09-14-alex_verem-mit-published-a-brutally-honest-report-on-what-ai-is-doing-t--2098880333676761514|Relatório MIT sobre IA e aprendizado estudantil]]"]
+theme: "Engenharia de Loops Agênticos"
 ---
 
 # Cursos gratuitos de Stanford em IA/ML

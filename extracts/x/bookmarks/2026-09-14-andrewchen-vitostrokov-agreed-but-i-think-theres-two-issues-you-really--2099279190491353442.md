@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "Confiabilidade e avaliação de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-andrewchen-current-homelab-setup-for-local-ai-experimentation-hermes-bo--2099247007454142644|Homelab para experimentação de IA local]]", "[[extracts/x/bookmarks/2026-09-12-agentnativedev-so-perplexity-wrote-its-own-inference-engine-it-is-called-li--2098111913695551626|Engine de inferência Lily da Perplexity]]", "[[extracts/x/bookmarks/2026-09-12-aravsrinivas-we-re-open-sourcing-lily-perplexity-s-local-inference-engine--2095264908762140823|Perplexity Lily inferência local]]", "[[extracts/x/bookmarks/2026-09-19-signulll-jev-class-of-models-have-no-generative-decoder-loop-have-bou--2101062047350096040|Modelos JEV on-device]]", "[[extracts/x/bookmarks/2026-09-18-completeskeptic-extraordinary-claims-require-extraordinary-evidence-so-check--2099925690682630371|Modelos estruturados para automação]]", "[[extracts/x/bookmarks/2026-09-12-a16z-an-hour-of-agentic-computer-use-may-now-be-cheaper-than-an-h--2086906363947737406|custo de agentes vs trabalho humano]]", "[[extracts/x/bookmarks/2026-09-18-completeskeptic-we-love-how-this-doomo-doomonstrates-real-time-intelligence--2099925687465570372|Demo de Doom em tempo real com IA]]"]
+theme: "Treinamento de modelos e atletas"
 ---
 
 # Apple M5 Ultra vs Nvidia para IA

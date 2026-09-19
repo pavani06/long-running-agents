@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSVdvsMXAAAcX5e.jpg"]
-theme: "Tooling para agentes de código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-daradoescode-new-agents-md-after-theo-s-stream-td-https-t-co-pkqqjcgm5l--2082696597528592594|agents.md para agentes de código]]", "[[extracts/x/bookmarks/2026-09-14-openaidevs-get-more-out-of-gpt-6-astra-by-revisiting-your-skills-agents--2098480213244117065|Instruções e skills para GPT-6 Astra]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-if-you-give-me-a-drawer-i-will-eventually-fill-it-with-cable--2097238983226868194|Entropia de arquivos markdown por agentes]]", "[[extracts/x/bookmarks/2026-09-17-eng_khairallah1-the-full-prompt-is-here-lt-purpose-gt-run-a-drift-audit-betw--2100190909715337487|Drift audit entre docs e código]]", "[[extracts/x/bookmarks/2026-09-12-benjaminsehl-adding-to-every-agents-md-file-for-the-rest-of-time-h-t-rich--2082158002958741746|Simplified Technical English em AGENTS.md]]", "[[extracts/x/bookmarks/2026-09-12-xudong07452910-openai-skills-agents-md-blog-agent-engineering-astra-skill--2098655277197201752|OpenAI ensina Skills e AGENTS.md]]", "[[extracts/x/bookmarks/2026-09-12-glaucia_lemos86-caraca-absurdo-isso-aqui-segui-o-conselho-do-pvncher-em-pedi--2096649629068624378|Revisão de artefatos de contexto entre modelos]]", "[[extracts/x/bookmarks/2026-09-12-agenticgirl-ripwire-from-red-hat-emerging-technologies-is-a-remarkably-s--2096612794145911260|contexto de repositório para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-bzuer_-victorosaraiva-pergunto-quem-e-jefferson-silva-quem-usa-hewl--2095704063081849159|verificação de metadados de documento]]"]
+theme: "Codificação Agêntica e Code Review"
 ---
 
 # AGENTS.md desatualizado em codebases

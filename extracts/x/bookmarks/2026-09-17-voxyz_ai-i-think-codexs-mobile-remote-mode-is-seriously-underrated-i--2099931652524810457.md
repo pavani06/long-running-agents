@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "Tooling para agentes de código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-gergelyorosz-here-s-what-openai-s-agentic-software-factory-looks-like-tod--2099945497377091902|Fábrica de software agêntica da OpenAI]]", "[[extracts/x/bookmarks/2026-09-12-alex_frantic-how-to-graph-max-with-codex-and-5-6-sol-1-draw-a-graph-liter--2080776965070496115|Fluxo desenho-para-código com Codex]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-agents-api-is-a-bigger-deal-than-it-seems-openai-s-bet-on-ma--2098524621439914375|OpenAI Agents API e harness-as-a-service]]", "[[extracts/x/bookmarks/2026-09-12-svpino-i-ve-been-trying-codex-to-analyze-a-dataset-and-honestly-i-v--2098489252707541305|Codex para análise de dados]]", "[[extracts/x/bookmarks/2026-09-17-itspaulai-wow-so-google-has-just-open-sourced-a-tool-to-automate-any-t--2099960192125325488|ARTEMIS: automação mobile por agentes]]", "[[extracts/x/bookmarks/2026-09-12-stevendcoffey-today-we-re-launching-the-agents-api-a-brand-new-way-to-buil--2098130889486274820|OpenAI Agents API launch]]"]
+theme: "Agentes autônomos de engenharia"
 ---
 
 # Codex mobile remote mode

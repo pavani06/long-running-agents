@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "Confiabilidade e avaliação de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-anatolikopadze-anthropic-engineer-you-re-not-supposed-to-babysit-the-model--2080702441809399834|agentes paralelos em grafos]]", "[[extracts/x/bookmarks/2026-09-15-undefinedki-eval-engineering-explained-like-you-re-five-everyone-is-talk--2099590541650378856|Eval engineering para agentes]]", "[[extracts/x/bookmarks/2026-09-12-eya0-every-ai-accountant-fails-the-same-way-fluent-confident-unve--2097801524579864803|Agentes de IA contáveis verificáveis]]", "[[extracts/x/bookmarks/2026-09-12-cwolferesearch-why-is-evaluating-agents-so-difficult-relative-to-evaluating--2083588813675274301|Dificuldade de avaliar agentes vs LLMs]]", "[[extracts/x/bookmarks/2026-09-12-witcheer-a-hermes-agent-community-member-built-a-layer-that-sits-on-t--2098020649662816503|Roteamento e memória no Hermes Agent]]", "[[extracts/x/bookmarks/2026-09-18-josharosen-i-just-open-sourced-foreman-a-software-factory-foreman-built--2100573432089866717|Foreman: supervisor de coding agents]]", "[[extracts/x/bookmarks/2026-09-14-rasbt-reasoning-from-scratch-round-3-this-time-i-cover-generating--2099231450411290900|Verificadores para avaliação e RLVR]]", "[[extracts/x/bookmarks/2026-09-14-illscience-treytaylorceo-yeah-i-think-the-question-though-is-when-you-a--2099209540629893451|Preferências reveladas em julgamento de IA]]", "[[extracts/x/bookmarks/2026-09-12-bzuer_-victorosaraiva-pergunto-quem-e-jefferson-silva-quem-usa-hewl--2095704063081849159|verificação de metadados de documento]]"]
+theme: "Engenharia de Loops Agênticos"
 ---
 
 # Verificação determinística vs. juiz-modelo em agentes

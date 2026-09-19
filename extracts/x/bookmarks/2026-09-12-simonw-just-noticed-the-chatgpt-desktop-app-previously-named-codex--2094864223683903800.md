@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HRJztBsbIAAHRok.jpg"]
 thin: false
-theme: "Orquestração e tooling de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-simonw-here-s-my-attempt-at-explaining-what-chatgpt-work-can-actual--2094214737957691854|Capacidades do ChatGPT Work]]", "[[extracts/x/bookmarks/2026-09-12-openai-now-available-chatgpt-for-financial-services-this-is-a-tailo--2098118191029624911|ChatGPT para serviços financeiros]]", "[[extracts/x/bookmarks/2026-09-17-milindlabs-some-people-are-already-saying-this-is-better-than-grok-bot--2099819771151933539|alternativa open-source ao Grok]]", "[[extracts/x/bookmarks/2026-09-16-gergelyorosz-here-s-what-openai-s-agentic-software-factory-looks-like-tod--2099945497377091902|Fábrica de software agêntica da OpenAI]]", "[[extracts/x/bookmarks/2026-09-12-chatgpt-now-everyone-can-put-data-to-work-were-introducing-a-new-dat--2098065296968011853|Data agent no ChatGPT Work]]", "[[extracts/x/bookmarks/2026-09-17-milindlabs-grok-bot-check-it-out-here-https-t-co-ujtre6f8mz-post-your-f--2099824976325157319|OpenMausBot: agentes em app de mensagens]]"]
+theme: "Agentes autônomos de engenharia"
 ---
 
 # LibreOffice embutido no ChatGPT desktop

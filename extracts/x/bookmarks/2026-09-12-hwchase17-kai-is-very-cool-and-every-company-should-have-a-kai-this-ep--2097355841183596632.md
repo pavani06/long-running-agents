@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://www.langchain.com/blog/how-stripe-built-their-knowledge-ai-platform-on-deep-agents"]
 media: []
 thin: false
-theme: "Agent Harness Engineering"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-16-gergelyorosz-here-s-what-openai-s-agentic-software-factory-looks-like-tod--2099945497377091902|Fábrica de software agêntica da OpenAI]]", "[[extracts/x/bookmarks/2026-09-14-shreyanshpatni_-want-to-build-a-domain-specific-agent-harness-this-is-a-grea--2099180288668750246|Construção de harness para agentes]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-retailers-running-shopping-agents-on-claude-have-seen-carts--2095233746366808420|Arquitetura de agentes de comércio com Claude]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-we-sat-down-with-the-founders-of-wisprflow-useactively-and-p--2097415273645228460|Claude Managed Agents em produção]]", "[[extracts/x/bookmarks/2026-09-14-hwchase17-in-case-you-want-to-build-a-domain-specific-harness-https-t--2098866608785473858|Harnesses customizados para agentes]]", "[[extracts/x/bookmarks/2026-09-17-jacquelinesyc19-a-few-weeks-ago-i-wrote-that-our-whole-team-at-artie-uses-he--2100262432413528336|Hermes como harness de agentes por equipe]]", "[[extracts/x/bookmarks/2026-09-12-ubereng-we-cut-uber-eats-search-latency-in-half-how-measure-identify--2098177194979983830|Uber Eats search latency halving]]", "[[extracts/x/bookmarks/2026-09-17-omarsar0-banger-report-from-salesforce-pretty-interesting-to-see-more--2100080746056777899|Modelo agente empresarial Koa (Salesforce)]]"]
+theme: "Agentes autônomos de engenharia"
 ---
 
 # Stripe Kai: agente interno com Deep Agents

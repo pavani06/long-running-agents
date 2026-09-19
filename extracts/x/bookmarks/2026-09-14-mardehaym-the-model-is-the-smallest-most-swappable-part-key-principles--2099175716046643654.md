@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "Agent Harness Engineering"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-hwchase17-in-case-you-want-to-build-a-domain-specific-harness-https-t--2098866608785473858|Harnesses customizados para agentes]]", "[[extracts/x/bookmarks/2026-09-12-ycombinator-harnesses-often-get-dismissed-as-just-scaffolding-just-promp--2096970626036855197|harness engineering em agentes de IA]]", "[[extracts/x/bookmarks/2026-09-14-shreyanshpatni_-want-to-build-a-domain-specific-agent-harness-this-is-a-grea--2099180288668750246|Construção de harness para agentes]]", "[[extracts/x/bookmarks/2026-09-14-omarsar0-should-you-build-an-agent-harness-i-see-lots-of-opinions-abo--2099208894866178204|construção de agent harness]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-highly-recommended-model-harness-co-optimization-is-where-yo--2097790938911498494|model-harness co-optimization]]", "[[extracts/x/bookmarks/2026-09-14-rohanpaul_ai-stanford-mit-paper-on-model-harnesses-shows-that-ai-performa--2098986025397977287|paper sobre model harnesses]]", "[[extracts/x/bookmarks/2026-09-17-langchain-the-biggest-challenge-facing-an-agent-harness-is-context-eng--2100235963339313648|Context engineering em agent harnesses]]", "[[extracts/x/bookmarks/2026-09-15-omarsar0-if-you-build-your-own-harness-you-can-drive-that-cost-down-e--2099548107327275488|harness próprio vs. pronto]]"]
+theme: "Agentes autônomos de engenharia"
 ---
 
 # harness engineering principles

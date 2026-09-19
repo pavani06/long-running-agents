@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSSDOzvbwAA6ZFt.jpg"]
-theme: "IA e dinâmica de vencedores"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-hnshah-the-more-i-think-about-this-the-more-every-looks-like-a-prev--2099917915382509880|Desenvolvimento de produtos com software barato]]", "[[extracts/x/bookmarks/2026-09-16-paulg-a-founder-of-a-startup-i-funded-had-these-brass-plaques-made--2099851107799388525|Divisão de papéis entre cofundadores]]", "[[extracts/x/bookmarks/2026-09-12-tferriss-the-1-most-clicked-link-in-the-latest-5-bullet-friday-editio--2097357231293358126|IA como designer de alto nível]]", "[[extracts/x/bookmarks/2026-09-16-shadcncraft-bring-customer-information-and-health-scores-into-the-same-a--2099827633722905050|consolidação de dados de clientes e health scores]]", "[[extracts/x/bookmarks/2026-09-15-a16z-ai-has-collapsed-the-cost-of-building-products-but-not-the-c--2099501195006238899|produto na era da IA]]", "[[extracts/x/bookmarks/2026-09-14-illscience-additionally-i-think-theres-a-lot-of-debate-about-imessage-v--2099207649577595286|iMessage vs app como interface]]"]
+theme: "IA, execução e produtividade"
 ---
 
 # Redesign de onboarding do Twitter

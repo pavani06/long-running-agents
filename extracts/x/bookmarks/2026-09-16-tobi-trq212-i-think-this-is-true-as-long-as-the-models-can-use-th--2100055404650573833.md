@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "MCP e interfaces de ferramentas"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-trq212-i-was-not-expecting-things-to-go-this-way-but-i-think-mcps-a--2099958388230873165|MCP vs CLI para integrações de agentes]]", "[[extracts/x/bookmarks/2026-09-16-rhyssullivan-trq212-the-one-remaining-issue-i-have-with-mcp-is-piping-loc--2099966630206009449|MCP vs CLIs para agentes]]", "[[extracts/x/bookmarks/2026-09-16-rhyssullivan-total-mcp-victory-some-quick-misc-thoughts-about-why-mcp-is--2099970035137794430|MCP versus CLIs para agentes]]", "[[extracts/x/bookmarks/2026-09-17-omarsar0-i-agree-mcp-is-clearly-better-than-cli-for-most-integrations--2099970990935867485|MCP versus CLI em harnesses]]", "[[extracts/x/bookmarks/2026-09-16-trq212-rin-cale-thats-what-the-deferred-tools-is-for-it-s-basically--2099959418909851997|MCP deferred tools e progressive disclosure]]", "[[extracts/x/bookmarks/2026-09-18-akshay_pachaar-mcp-meets-agent-skills-mcp-already-gave-agents-a-standard-wa--2100659094625636526|Descoberta de Agent Skills via MCP]]", "[[extracts/x/bookmarks/2026-09-16-trq212-tobi-i-agree-in-theory-in-practice-i-ve-just-found-codemode--2100086429850436064|Codemode na prática]]"]
+theme: "Evals e tooling de agentes"
 ---
 
 # MCP acessível via REPL para agentes

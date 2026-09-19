@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Tooling para agentes de código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-17-milindlabs-some-people-are-already-saying-this-is-better-than-grok-bot--2099819771151933539|alternativa open-source ao Grok]]", "[[extracts/x/bookmarks/2026-09-17-teddyinmedia-your-ai-agent-can-now-collect-data-from-almost-any-website-x--2099859887102558507|Agent Reach: acesso web para agentes]]", "[[extracts/x/bookmarks/2026-09-16-ctatedev-introducing-vercel-labs-tools-for-devs-in-the-ai-era-agent-b--2099621387732140540|Vercel Labs ferramentas IA]]", "[[extracts/x/bookmarks/2026-09-12-pythonhub-tencent-opensource-ai-red-teaming-platform-a-full-stack-ai-r--2092420578875527174|Plataforma open-source de AI red teaming]]", "[[extracts/x/bookmarks/2026-09-16-tom_doerr-manages-your-obsidian-vault-with-a-crew-of-8-ai-agents-and-1--2099928503487517062|Crew de agentes AI para Obsidian]]", "[[extracts/x/bookmarks/2026-09-17-trending_repos-trending-repository-of-the-day-open-code-review-fast-efficie--2100194977523331489|Open Code Review da Alibaba]]", "[[extracts/x/bookmarks/2026-09-12-vaibhavsisinty-baidu-just-open-sourced-an-ocr-model-that-reads-entire-40-pa--2079000862962417996|OCR open-source da Baidu]]"]
+theme: "Codificação Agêntica e Code Review"
 ---
 
 # busca local para agentes de IA

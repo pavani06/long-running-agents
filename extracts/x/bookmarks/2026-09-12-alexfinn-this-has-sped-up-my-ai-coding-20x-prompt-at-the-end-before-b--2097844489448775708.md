@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Confiabilidade e avaliação de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-12-theprimeagen-something-that-has-greatly-improved-the-reliability-of-the-c--2081066227619836308|técnica de confiabilidade em código via LLM]]", "[[extracts/x/bookmarks/2026-09-12-clare_liguori-i-just-published-a-manifesto-for-all-the-developers-out-ther--2097836812958097915|frontier engineering com agentes de IA]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-a-few-days-ago-anthropic-shared-this-brilliant-prompt-i-was--2097059598960132110|Prompt de escrita da Anthropic]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-ai-has-eaten-tactical-programming-so-juniors-need-strategic--2095902639158440210|desenvolvimento de juniores com IA]]", "[[extracts/x/bookmarks/2026-09-18-completeskeptic-extraordinary-claims-require-extraordinary-evidence-so-check--2099925690682630371|Modelos estruturados para automação]]"]
+theme: "Agentes autônomos de engenharia"
 ---
 
 # Planejamento por interrogatório em AI coding

@@ -22,6 +22,7 @@ thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSbG2YLWkAAPqmU.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-18-vercel_dev-jev-from-typesafeai-is-on-ai-gateway-build-agents-that-decid--2100378959653507175|Jev: decisões tipadas para agentes]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-full-jev-tutorial-what-it-is-how-you-can-build-with-it-and-w--2100715237267660873|Tutorial da ferramenta Jev]]", "[[extracts/x/bookmarks/2026-09-18-0xlogicrw-openai-diogo-almeida-typesafe-ai-jev-token-token-jev-typesaf--2100065117127815679|Jev: modelo classificador da TypeSafe AI]]", "[[extracts/x/bookmarks/2026-09-18-dillon_mulroy-i-think-jev-is-resonating-with-devs-so-well-b-c-it-unlocks-s--2100427432918462897|Jev como primitiva para compor IA]]", "[[extracts/x/bookmarks/2026-09-18-0xlogicrw-jev-waitlist-api-awesome-jev-jev-1-jev-ultrafast-browser-use--2100478725393686556|Curadoria de projetos para API Jev]]", "[[extracts/x/bookmarks/2026-09-18-hot_town-jev-is-here-how-is-different-from-an-llm-how-does-it-work-un--2100570516612382787|Jev: o que é e quando usar]]", "[[extracts/x/bookmarks/2026-09-18-themattberman-jev-is-insane-in-40-seconds-it-broke-down-724-live-ads-from--2100654891756589230|análise de anúncios com agente]]"]
+theme: "Treinamento de modelos e atletas"
 ---
 
 # Jev CLI para agent harnesses

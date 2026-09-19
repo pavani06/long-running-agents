@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HPXwfImWQAAf5mv.png"]
 thin: false
-theme: "Tooling para agentes de código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-mattpocockuk-one-thing-that-scares-me-about-coding-with-ai-is-that-it-s-h--2097967205216379355|erros estratégicos no coding com IA]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-coming-soon-to-mattpocock-skills-retro-gives-you-opportuniti--2098062605407461744|Skill /retro para retroativa de agentes]]", "[[extracts/x/bookmarks/2026-09-12-steipete-hit-a-new-record-with-our-autoreview-skill-66-rounds-on-a-gn--2080899298838098034|Autoreview: code review multi-engine]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-what-techniques-do-you-use-for-making-ai-authored-pr-s-easie--2096666329495257563|revisão de PRs gerados por IA]]", "[[extracts/x/bookmarks/2026-09-18-dexhorthy-cool-product-out-of-riffing-w-mattpocockuk-this-week-decided--2100558413314859118|Skill open-source para PRs de agentes]]", "[[extracts/x/bookmarks/2026-09-12-poteto-pstack-now-includes-2-skills-i-recommend-everyone-use-or-cop--2082874054483255805|Skill de verificação para agentes]]", "[[extracts/x/bookmarks/2026-09-12-thsottiaux-hi-astra-users-a-reset-and-a-quick-update-on-quality-issues--2098612714704891959|Correções de qualidade no Astra]]"]
+theme: "Codificação Agêntica e Code Review"
 ---
 
 # Correção de arquitetura pós-vibe-coding

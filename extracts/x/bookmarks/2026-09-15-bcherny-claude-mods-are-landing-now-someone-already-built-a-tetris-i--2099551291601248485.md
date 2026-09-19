@@ -21,8 +21,8 @@ grounded_in: "article"
 thin: false
 links: ["https://github.com/anthropics/claude-code/issues/91870#issuecomment-5666255143"]
 media: ["https://pbs.twimg.com/tweet_video_thumb/HSMaUpXbwAAvdSL.jpg"]
-theme: "Ecossistema Claude e Agent Tooling"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-bcherny-your-input-needed-would-you-use-this-this-is-an-early-look-a--2095590515765060076|Function Hooks no Claude Code]]", "[[extracts/x/bookmarks/2026-09-12-leoxbtt-bro-el-ingeniero-que-creo-claude-code-solto-un-video-de-28-m--2082108948505674112|Uso avançado do Claude Code]]", "[[extracts/x/bookmarks/2026-09-19-tamarajtran-run-fast-jev-compaction-https-t-co-htdjnjnlaa--2100694552369897539|Compacção de contexto verbatim para Claude Code]]", "[[extracts/x/bookmarks/2026-09-17-claudedevs-claude-design-claude-slides-and-claude-docs-also-work-inside--2100270861555228770|Apps Claude dentro do Claude Code]]", "[[extracts/x/bookmarks/2026-09-18-trq212-projects-brings-the-architecture-of-claude-tag-to-claude-cod--2100638355872706571|agente por projeto no Claude Code]]", "[[extracts/x/bookmarks/2026-09-18-claudedevs-today-we-re-rolling-out-projects-in-claude-code-on-desktop-a--2100633571543367691|Projects no Claude Code]]"]
+theme: "Tooling e infra de agentes"
 ---
 
 # Claude Mods: function hooks no Claude Code

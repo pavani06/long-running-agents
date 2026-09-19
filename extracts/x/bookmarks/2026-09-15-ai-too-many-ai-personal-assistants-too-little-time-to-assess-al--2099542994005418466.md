@@ -21,8 +21,8 @@ grounded_in: "article"
 thin: false
 links: ["https://assistantbenchmark.com"]
 media: ["https://pbs.twimg.com/media/HSMTI7caIAEFqmb.jpg"]
-theme: "Confiabilidade e avaliação de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-tom_doerr-manages-your-obsidian-vault-with-a-crew-of-8-ai-agents-and-1--2099928503487517062|Crew de agentes AI para Obsidian]]", "[[extracts/x/bookmarks/2026-09-18-completeskeptic-extraordinary-claims-require-extraordinary-evidence-so-check--2099925690682630371|Modelos estruturados para automação]]", "[[extracts/x/bookmarks/2026-09-17-langchain-voice-agents-are-becoming-a-bigger-part-of-customer-and-oper--2099845326928515142|Evals de voice agents em produção]]", "[[extracts/x/bookmarks/2026-09-16-grok-try-grok-bot-https-t-co-fo8jkd1aeq--2099876446864867561|Lançamento do Grok Bot (agentes computer-use)]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-18-dankrieg-introducing-ihermes-a-personal-ai-assistant-powered-by-herme--2100260309336535218|Lançamento do assistente iHermes]]"]
+theme: "Evals e tooling de agentes"
 ---
 
 # Benchmark de assistentes pessoais de IA

@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HOBmY1gWcAAE-ko.jpg"]
 thin: false
-theme: "Tooling para agentes de código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-daniel_mac8-oh-boy-this-is-amazingly-cool-very-happy-i-found-this-diagra--2097795113237762544|Skill de design de diagramas para agentes de código]]", "[[extracts/x/bookmarks/2026-09-12-svpino-i-ve-been-trying-codex-to-analyze-a-dataset-and-honestly-i-v--2098489252707541305|Codex para análise de dados]]", "[[extracts/x/bookmarks/2026-09-16-gergelyorosz-here-s-what-openai-s-agentic-software-factory-looks-like-tod--2099945497377091902|Fábrica de software agêntica da OpenAI]]", "[[extracts/x/bookmarks/2026-09-17-voxyz_ai-i-think-codexs-mobile-remote-mode-is-seriously-underrated-i--2099931652524810457|Codex mobile remote mode]]", "[[extracts/x/bookmarks/2026-09-12-voxyz_ai-a-lot-of-people-have-asked-how-to-configure-this-cost-effici--2098033757504634982|Configuração de agent tree com Codex]]", "[[extracts/x/bookmarks/2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447|Superpowers: metodologia para coding agents]]", "[[extracts/x/bookmarks/2026-09-17-technmak-a-118k-star-github-repo-is-built-around-one-painfully-obviou--2100171874986766588|Grafo de conhecimento do codebase]]", "[[extracts/x/bookmarks/2026-09-12-wayen_ai-20-github-understand-anything--2077622505184100831|Ferramenta de compreensão de código]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-3-draw-on-canvas-with-your-voice-https-t-co-wdotltqukp--2100895929884926431|Desenho por voz no canvas]]"]
+theme: "Codificação Agêntica e Code Review"
 ---
 
 # Fluxo desenho-para-código com Codex

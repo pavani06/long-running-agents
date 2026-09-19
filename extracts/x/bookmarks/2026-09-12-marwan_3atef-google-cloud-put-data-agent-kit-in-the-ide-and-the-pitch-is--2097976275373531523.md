@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "MCP e interfaces de ferramentas"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-marwan_3atef-datadog-put-agent-observability-in-your-coding-agent-and-the--2097986925088903355|Datadog Agent Observability para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-chatgpt-now-everyone-can-put-data-to-work-were-introducing-a-new-dat--2098065296968011853|Data agent no ChatGPT Work]]", "[[extracts/x/bookmarks/2026-09-18-akshay_pachaar-mcp-meets-agent-skills-mcp-already-gave-agents-a-standard-wa--2100659094625636526|Descoberta de Agent Skills via MCP]]", "[[extracts/x/bookmarks/2026-09-16-ctatedev-introducing-vercel-labs-tools-for-devs-in-the-ai-era-agent-b--2099621387732140540|Vercel Labs ferramentas IA]]", "[[extracts/x/bookmarks/2026-09-16-trq212-i-was-not-expecting-things-to-go-this-way-but-i-think-mcps-a--2099958388230873165|MCP vs CLI para integrações de agentes]]", "[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-karpathys-agentic-engineering-finally-has-proper-devtools-wh--2098398242727940442|DevTools para engenharia agêntica]]", "[[extracts/x/bookmarks/2026-09-19-signulll-all-of-my-imessages-amp-email-now-run-through-a-single-agent--2100728355414737351|Agente único para mensagens e email]]"]
+theme: "Evals e tooling de agentes"
 ---
 
 # Data Agent Kit no IDE

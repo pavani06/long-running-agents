@@ -21,8 +21,8 @@ grounded_in: "article"
 thin: false
 links: ["https://hermes-agent.nousresearch.com/docs/plugins"]
 media: ["https://pbs.twimg.com/amplify_video_thumb/2100265865476186113/img/F_2kIRHGLd11NC8q.jpg"]
-theme: "Agent Harness Engineering"
 relates-to: ["[[extracts/x/bookmarks/2026-09-18-teknium-now-that-we-have-a-plugins-catalog-and-months-ago-made-all-i--2100646469015609779|Catálogo de plugins do Hermes]]", "[[extracts/x/bookmarks/2026-09-16-nousresearch-hermes-agent-is-open-for-business-nous-portal-now-lets-you-i--2099599032037388404|Lançamento Hermes Agent para empresas]]", "[[extracts/x/bookmarks/2026-09-17-jacquelinesyc19-a-few-weeks-ago-i-wrote-that-our-whole-team-at-artie-uses-he--2100262432413528336|Hermes como harness de agentes por equipe]]", "[[extracts/x/bookmarks/2026-09-12-witcheer-a-hermes-agent-community-member-built-a-kit-that-changes-two--2098361620493660493|kit para bots no Hermes Desktop]]", "[[extracts/x/bookmarks/2026-09-17-hermeswatcher-hermes-can-now-log-itself-into-websites-without-ever-seeing--2100040889003585940|Login autônomo do Hermes em sites]]", "[[extracts/x/bookmarks/2026-09-19-johnhu81-tiagerbao-claude-code-to-hermes-communication-already-exist--2100872531481940085|Integração Claude Code com Hermes]]"]
+theme: "Seleção e roteamento de modelos para agentes"
 ---
 
 # Hermes Agent Plugin Catalog

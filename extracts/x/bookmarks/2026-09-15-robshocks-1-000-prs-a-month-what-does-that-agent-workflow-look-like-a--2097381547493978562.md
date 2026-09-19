@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2097378077538127872/img/-GaBvs_2poDLWf_5.jpg"]
-theme: "Tooling para agentes de código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-poteto-what-questions-do-you-have-about-pstack-https-t-co-lopojdztt--2098634643323142286|pstack agent workflow tool]]", "[[extracts/x/bookmarks/2026-09-16-gergelyorosz-here-s-what-openai-s-agentic-software-factory-looks-like-tod--2099945497377091902|Fábrica de software agêntica da OpenAI]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447|Superpowers: metodologia para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-clare_liguori-i-just-published-a-manifesto-for-all-the-developers-out-ther--2097836812958097915|frontier engineering com agentes de IA]]", "[[extracts/x/bookmarks/2026-09-15-addyosmani-at-anthropic-claude-now-writes-80-of-our-code-engineers-ship--2099577600159158765|Escalando CI/test selection para agentic coding]]", "[[extracts/x/bookmarks/2026-09-12-poteto-i-m-writing-a-guide-to-pstack-here-s-part-one-https-t-co-4yj--2094457600259842065|Guia da ferramenta pstack]]"]
+theme: "Agentes autônomos de engenharia"
 ---
 
 # Agentic coding workflow (PStack)

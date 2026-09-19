@@ -22,6 +22,7 @@ thin: false
 links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-18-teknium-the-first-step-of-this-is-removing-all-the-bundled-memory-pr--2100645510856298543|Desacoplamento de provedores de memória]]", "[[extracts/x/bookmarks/2026-09-18-mattlam_-pi-is-getting-rewritten-and-badlogicgames-is-mildly-optimist--2100293871800345075|Reescrita do agente Pi]]", "[[extracts/x/bookmarks/2026-09-12-robotbird01-harness-pi-agent-skill-https-t-co-6eqhirel54--2098044628058689738|Arquitetura de plataforma harness empresarial]]", "[[extracts/x/bookmarks/2026-09-16-tom_doerr-manages-your-obsidian-vault-with-a-crew-of-8-ai-agents-and-1--2099928503487517062|Crew de agentes AI para Obsidian]]", "[[extracts/x/bookmarks/2026-09-18-teknium-the-biggest-issue-with-independent-plugins-for-everything-wa--2100646667259449653|Plugins API discoverability]]", "[[extracts/x/bookmarks/2026-09-18-trq212-projects-brings-the-architecture-of-claude-tag-to-claude-cod--2100638355872706571|agente por projeto no Claude Code]]", "[[extracts/x/bookmarks/2026-09-18-teknium-now-that-we-have-a-plugins-catalog-and-months-ago-made-all-i--2100646469015609779|Catálogo de plugins do Hermes]]", "[[extracts/x/bookmarks/2026-09-18-teknium-this-will-be-our-test-run-of-pulling-integrations-out-of-the--2100645958447186331|Integrações fora do core codebase]]"]
+theme: "Tooling e infra de agentes"
 ---
 
 # Arquitetura de agente: core enxuto

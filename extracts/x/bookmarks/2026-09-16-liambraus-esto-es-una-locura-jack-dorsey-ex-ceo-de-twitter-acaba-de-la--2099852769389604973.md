@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2099852210410487808/img/BDFTrm9oNQm03fha.jpg"]
-theme: "Orquestração e tooling de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-eng_khairallah1-this-is-f-cking-gold-how-to-build-your-first-ai-agent-full-g--2079305065991385235|guia construção do primeiro agente de IA]]", "[[extracts/x/bookmarks/2026-09-15-shanyanggm-github-1-tradingagents-ai-agent-https-t-co-nz1jbk3dkr-2-libr--2098941338297458746|Framework multi-agente de trading LLM]]", "[[extracts/x/bookmarks/2026-09-17-milindlabs-some-people-are-already-saying-this-is-better-than-grok-bot--2099819771151933539|alternativa open-source ao Grok]]", "[[extracts/x/bookmarks/2026-09-18-completeskeptic-extraordinary-claims-require-extraordinary-evidence-so-check--2099925690682630371|Modelos estruturados para automação]]", "[[extracts/x/bookmarks/2026-09-12-stevendcoffey-today-we-re-launching-the-agents-api-a-brand-new-way-to-buil--2098130889486274820|OpenAI Agents API launch]]", "[[extracts/x/bookmarks/2026-09-16-ctatedev-introducing-vercel-labs-tools-for-devs-in-the-ai-era-agent-b--2099621387732140540|Vercel Labs ferramentas IA]]", "[[extracts/x/bookmarks/2026-09-12-ryrenz-ai-no-ai-slop-github-7700-star-7-peter-yang-creator-economy--2097944667291635819|no-ai-slop: removedor de estilo IA em textos]]", "[[extracts/x/bookmarks/2026-09-12-openaidevs-python-allowed-for-rapid-prototyping-of-our-platform-to-supp--2098502018998649036|Python em escala na OpenAI]]", "[[extracts/x/bookmarks/2026-09-14-shl-over-10-000-github-stars-my-most-starred-repo-isnt-code-http--2099208492217221351|Milestone de estrelas no GitHub]]"]
+theme: "Tooling e infra de agentes"
 ---
 
 # Framework gratuito de agentes de IA

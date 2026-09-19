@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSW70HwakAAzdh7.jpg", "https://pbs.twimg.com/media/HSW8LAwa4AAiomY.jpg", "https://pbs.twimg.com/media/HSW8OPvaUAEs2fp.jpg", "https://pbs.twimg.com/media/HSW8RTMbUAA9W8D.jpg"]
-theme: "Confiabilidade e avaliação de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-marionlepert-catching-skin-cancer-early-is-a-home-robotics-problem-melano--2082512842742489258|detecção de melanoma via robótica doméstica]]", "[[extracts/x/bookmarks/2026-09-12-wayen_ai-20-github-understand-anything--2077622505184100831|Ferramenta de compreensão de código]]", "[[extracts/x/bookmarks/2026-09-12-imadeiyamu-https-t-co-dskqwecp3z-great-collection-of-exceptional-writin--2076340132370583992|Índice Billion Dollar PDFs]]", "[[extracts/x/bookmarks/2026-09-12-hasantoxr-stop-renting-a-chatbot-and-calling-it-your-companys-brain-ut--2095111361181405259|modelo de conhecimento corporativo open-source]]", "[[extracts/x/bookmarks/2026-09-17-technmak-a-118k-star-github-repo-is-built-around-one-painfully-obviou--2100171874986766588|Grafo de conhecimento do codebase]]", "[[extracts/x/bookmarks/2026-09-12-_vmlops-most-people-learn-ml-few-learn-how-to-run-ml-in-production-t--2094421798326800432|Repositório-guia de MLOps]]"]
+theme: "Treinamento de modelos e atletas"
 ---
 
 # Mapa open-source da oncologia

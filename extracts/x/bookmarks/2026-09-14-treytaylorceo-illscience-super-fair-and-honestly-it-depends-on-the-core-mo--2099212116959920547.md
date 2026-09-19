@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "Confiabilidade e avaliação de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-14-illscience-treytaylorceo-yeah-i-think-the-question-though-is-when-you-a--2099209540629893451|Preferências reveladas em julgamento de IA]]", "[[extracts/x/bookmarks/2026-09-12-argona0x-whoever-leaked-this-has-bigger-balls-than-sense-two-research--2082193490956476521|confiabilidade de LLM-as-judge]]", "[[extracts/x/bookmarks/2026-09-14-andrewchen-ethereaglehq-classifies-it-upfront-but-the-way-i-set-up-the--2099278183837397469|model selection com escalonamento]]", "[[extracts/x/bookmarks/2026-09-17-openrouter-openrouter-users-spent-more-on-openai-models-than-on-anthrop--2099898254905549220|share de gastos LLM OpenRouter]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-rumor-is-next-gen-models-at-openai-anthropic-are-showing-eme--2099224260137116131|Misalignment emergente em modelos frontier]]", "[[extracts/x/bookmarks/2026-09-18-alexfinn-in-case-local-ai-models-are-banned-it-s-critical-you-start-e--2100369670952137067|modelos locais de IA]]"]
+theme: "Seleção e roteamento de modelos para agentes"
 ---
 
 # viés político em modelos de linguagem

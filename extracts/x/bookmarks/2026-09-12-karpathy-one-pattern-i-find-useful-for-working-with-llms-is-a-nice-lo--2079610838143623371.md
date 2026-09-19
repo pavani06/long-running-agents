@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Confiabilidade e avaliação de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-theprimeagen-something-that-has-greatly-improved-the-reliability-of-the-c--2081066227619836308|técnica de confiabilidade em código via LLM]]", "[[extracts/x/bookmarks/2026-09-12-david_tornai-people-are-using-notebooklm-to-mass-produce-specialized-clau--2093337464215932962|Criar Claude Skills com NotebookLM]]", "[[extracts/x/bookmarks/2026-09-12-alex_prompter-chatgpt-wants-access-to-your-gmail-slack-and-drive-so-it-can--2097035352707858528|prompt anti-escrita-IA genérica]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-i-ve-been-trying-to-use-ai-for-knowledge-work-course-plannin--2097638166232457451|IA para trabalho de conhecimento]]", "[[extracts/x/bookmarks/2026-09-17-langchain-voice-agents-are-becoming-a-bigger-part-of-customer-and-oper--2099845326928515142|Evals de voice agents em produção]]", "[[extracts/x/bookmarks/2026-09-19-tamarajtran-found-the-perfect-use-case-for-typesafeai-jev-instant-compac--2100694549362553153|compaction instantânea de contexto em agentes]]"]
+theme: "Codificação Agêntica e Code Review"
 ---
 
 # contexto via voz para LLMs

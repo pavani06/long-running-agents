@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "IA e dinâmica de vencedores"
 relates-to: ["[[extracts/x/bookmarks/2026-09-15-a16z-ai-has-collapsed-the-cost-of-building-products-but-not-the-c--2099501195006238899|produto na era da IA]]", "[[extracts/x/bookmarks/2026-09-14-andrewchen-you-want-to-spend-zero-time-on-the-left-this-is-where-ai-win--2097201160038068278|Divisão de trabalho humano-IA]]", "[[extracts/x/bookmarks/2026-09-16-hnshah-every-idea-can-become-a-demo-now-the-pms-work-is-deciding-wh--2099742761083981837|Papel do PM na era da IA]]", "[[extracts/x/bookmarks/2026-09-12-anatolikopadze-demis-hassabis-in-the-near-future-one-person-who-knows-ai-wi--2079915295230038426|IA e produtividade individual]]", "[[extracts/x/bookmarks/2026-09-12-prosyn-amid-reports-of-mass-lay-https-t-co-ot2ngxlflm--2082797844889485453|Bolha da IA e finanças]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-ai-has-eaten-tactical-programming-so-juniors-need-strategic--2095902639158440210|desenvolvimento de juniores com IA]]", "[[extracts/x/bookmarks/2026-09-12-chamath-here-is-my-ai-investing-guide-sitting-here-august-2026-my-cu--2083463694931902561|Guia de investimento em IA]]", "[[extracts/x/bookmarks/2026-09-16-hnshah-we-are-going-to-spend-years-watching-people-optimize-systems--2099951637997539746|Otimização de sistemas obsoletos]]", "[[extracts/x/bookmarks/2026-09-12-signulll-talked-to-a-guy-from-anthropic-for-a-long-time-last-night-fa--2093042350427881973|hiring em frontier labs]]", "[[extracts/x/bookmarks/2026-09-14-maxrovensky-correct-take-but-also-extremely-tech-bubbly-take-software-is--2099103717454655771|Oportunidades de software fora do nicho tech]]", "[[extracts/x/bookmarks/2026-09-12-marionlepert-catching-skin-cancer-early-is-a-home-robotics-problem-melano--2082512842742489258|detecção de melanoma via robótica doméstica]]"]
+theme: "IA, execução e produtividade"
 ---
 
 # IA elimina gargalos de execução

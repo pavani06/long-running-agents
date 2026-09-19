@@ -22,6 +22,7 @@ thin: false
 links: []
 media: ["https://pbs.twimg.com/media/HSiEZBvaYAEwRbp.jpg"]
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-omarsar0-find-the-whole-collection-here-https-t-co-hskmmhjf1l--2097449134202503657|Harness engineering evolução curada]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-harness-engineering-is-a-top-skill-right-now-this-new-meta-p--2098426608793362916|Harness engineering e Auto-RecSys]]", "[[extracts/x/bookmarks/2026-09-12-sumanth_077-bytedance-dropped-a-banger-paper-on-self-evolving-agent-harn--2098053941800100294|HarnessDev: self-evolving agent harnesses]]", "[[extracts/x/bookmarks/2026-09-12-pythonhub-autosaddler-automatic-harness-optimization-with-durable-upda--2097931902594265474|Otimização automática de agent harness]]", "[[extracts/x/bookmarks/2026-09-14-rohanpaul_ai-stanford-mit-paper-on-model-harnesses-shows-that-ai-performa--2098986025397977287|paper sobre model harnesses]]", "[[extracts/x/bookmarks/2026-09-12-ycombinator-harnesses-often-get-dismissed-as-just-scaffolding-just-promp--2096970626036855197|harness engineering em agentes de IA]]", "[[extracts/x/bookmarks/2026-09-12-openhonor-puro-2b-is-open-beyond-the-weights-technical-report-final-in--2093994412770566256|Puro-2B: receita aberta de pré-treinamento barato]]", "[[extracts/x/bookmarks/2026-09-12-maxforai-nvidia-harness-sol-pi-nvlabs-sol-pi-scaling-auto-research-lo--2098050525279478059|NVIDIA open-sources SoL-Pi agent harness]]"]
+theme: "Agentes autônomos de engenharia"
 ---
 
 # SoL-Pi: harness de agente auto-evolutivo

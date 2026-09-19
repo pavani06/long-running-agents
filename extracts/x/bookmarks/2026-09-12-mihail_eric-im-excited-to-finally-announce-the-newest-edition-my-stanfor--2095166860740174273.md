@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HRNBGrHaQAEgb2Y.jpg"]
 thin: false
-theme: "Loops agênticos e arquitetura de memória"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-anatolikopadze-google-just-dropped-a-1-hour-course-on-agentic-engineering-f--2076366894655848871|Curso Google de engenharia agêntica]]", "[[extracts/x/bookmarks/2026-09-12-dkare1009-andrew-ng-just-dropped-a-3-hour-course-on-how-to-become-an-a--2082141532669333653|curso AI Engineering de Andrew Ng]]", "[[extracts/x/bookmarks/2026-09-12-swapnakpanda-stanford-s-free-courses-on-ai-amp-ml-cs221-artificial-intell--2080877747338113444|Cursos gratuitos de Stanford em IA/ML]]", "[[extracts/x/bookmarks/2026-09-16-langchain-new-in-our-langsmith-essentials-course-a-capstone-weve-added--2099875992139415786|Capstone no curso LangSmith Essentials]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-how-have-software-engineering-fundamentals-changed-with-agen--2093388974194872781|AI Engineering Skills para software]]", "[[extracts/x/bookmarks/2026-09-16-tspy-karpathy-anthropic-1-agents-2-loops-3-harness-4-self-improvi--2099891676609470543|Palestra de Karpathy sobre agents e harness]]"]
+theme: "Engenharia de Loops Agênticos"
 ---
 
 # Stanford course The Modern Software Developer

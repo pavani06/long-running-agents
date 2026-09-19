@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://claude.com/blog/bringing-mcp-2026-07-28-to-claude"]
 media: []
 thin: false
-theme: "MCP e interfaces de ferramentas"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-akshay_pachaar-stateful-vs-stateless-mcp-core-anthropic-s-biggest-mcp-updat--2082454281630961687|Stateful vs. Stateless MCP]]", "[[extracts/x/bookmarks/2026-09-18-akshay_pachaar-mcp-meets-agent-skills-mcp-already-gave-agents-a-standard-wa--2100659094625636526|Descoberta de Agent Skills via MCP]]", "[[extracts/x/bookmarks/2026-09-15-dani_avila7-ok-this-is-big-mcp-now-defines-an-extension-specifically-for--2099325795822956575|Extensão MCP para Agent Skills]]", "[[extracts/x/bookmarks/2026-09-16-mitsuhiko-trq212-mcp-today-is-a-massive-improvement-over-where-it-star--2099960203131171301|Maturidade do protocolo MCP]]", "[[extracts/x/bookmarks/2026-09-16-trq212-i-was-not-expecting-things-to-go-this-way-but-i-think-mcps-a--2099958388230873165|MCP vs CLI para integrações de agentes]]", "[[extracts/x/bookmarks/2026-09-16-rhyssullivan-total-mcp-victory-some-quick-misc-thoughts-about-why-mcp-is--2099970035137794430|MCP versus CLIs para agentes]]"]
+theme: "Evals e tooling de agentes"
 ---
 
 # MCP 2026-07-28 stateless release

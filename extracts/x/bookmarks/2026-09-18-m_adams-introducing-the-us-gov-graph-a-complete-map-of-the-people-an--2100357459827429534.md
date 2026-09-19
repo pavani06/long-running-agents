@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2100356804207427585/img/jN7A_AxMifIT1ZFM.jpg"]
-theme: "Loops agênticos e arquitetura de memória"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-bakigulai-ai-agentlar-icin-ack-kaynak-palantir-yapmslar-semantica-veri--2085977214365896731|Semantica: knowledge graph e provenance para agentes]]", "[[extracts/x/bookmarks/2026-09-15-chadwahl-what-operating-a-sovereign-ai-stack-looks-like-nvidia-palant--2099510309991948550|Sovereign AI stack NVIDIA + Palantir]]", "[[extracts/x/bookmarks/2026-09-18-anthropicai-ai-systems-are-getting-more-powerful-and-they-re-increasingl--2100684274114699295|Métricas de IA construindo IA]]", "[[extracts/x/bookmarks/2026-09-12-openai-now-available-chatgpt-for-financial-services-this-is-a-tailo--2098118191029624911|ChatGPT para serviços financeiros]]", "[[extracts/x/bookmarks/2026-09-12-leopardracer-the-2-2m-anthropic-engineer-who-built-this-graph-system-just--2080980071813177629|sistema de orquestração multi-agente em grafo]]", "[[extracts/x/bookmarks/2026-09-18-openai-we-re-sharing-our-new-framework-for-tracking-investigating-a--2100344867507327087|framework de disclosure de misalignment]]", "[[extracts/x/bookmarks/2026-09-15-kevinnbass-i-have-conducted-an-audit-of-anthropic-s-finances-what-i-hav--2099621874279817638|Captura regulatória na Anthropic]]", "[[extracts/x/bookmarks/2026-09-12-david_agape_-mendonca-tirou-o-sigilo-da-pet-15-556-e-de-14-processos-do-m--2098255698933006755|Sigilo STF caso Master]]"]
+theme: "Engenharia de Loops Agênticos"
 ---
 
 # Mapeamento do governo americano com IA

@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Tooling para agentes de código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-roundtablespace-10-agent-skills-with-3-49m-combined-downloads-01-grill-with--2099752946858639609|Agent skills mais baixadas]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-how-have-software-engineering-fundamentals-changed-with-agen--2093388974194872781|AI Engineering Skills para software]]", "[[extracts/x/bookmarks/2026-09-16-tom_doerr-manages-your-obsidian-vault-with-a-crew-of-8-ai-agents-and-1--2099928503487517062|Crew de agentes AI para Obsidian]]", "[[extracts/x/bookmarks/2026-09-12-andrewyng-the-most-important-skills-for-using-ai-coding-agents-effecti--2095890279865721217|Skills para agentes de codificação]]", "[[extracts/x/bookmarks/2026-09-12-dexhorthy-software-factories-hands-on-with-real-builders-ai-that-works--2097373602366861631|Software factories com IA]]", "[[extracts/x/bookmarks/2026-09-12-alexfinn-everything-you-need-to-master-in-2026-to-get-rich-using-astr--2097522164316647514|Lista de habilidades de IA para 2026]]", "[[extracts/x/bookmarks/2026-09-19-moritzkremb-all-of-the-coolest-jev-projects-i-could-find-on-x-today-http--2100895894287839255|Curadoria de projetos Jev]]", "[[extracts/x/bookmarks/2026-09-15-dair_ai-the-top-ai-papers-of-the-week-september-7-13-stair-parser-fr--2099168415487287613|Top AI papers weekly roundup]]"]
+theme: "Engenharia de Loops Agênticos"
 ---
 
 # contas a seguir em AI dev

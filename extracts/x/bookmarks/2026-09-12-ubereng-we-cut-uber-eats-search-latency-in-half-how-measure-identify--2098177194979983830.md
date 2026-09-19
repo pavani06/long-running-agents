@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://www.uber.com/us/en/blog/uber-eats-search-pipeline/"]
 media: []
 thin: false
-theme: "Reescritas Rust e performance em produção"
 relates-to: ["[[extracts/x/bookmarks/2026-09-15-addyosmani-at-anthropic-claude-now-writes-80-of-our-code-engineers-ship--2099577600159158765|Escalando CI/test selection para agentic coding]]", "[[extracts/x/bookmarks/2026-09-12-hackernoon-ai-is-raising-the-baseline-for-software-engineering-this-art--2082839180736889054|AI e plataformas de engenharia]]", "[[extracts/x/bookmarks/2026-09-16-gergelyorosz-here-s-what-openai-s-agentic-software-factory-looks-like-tod--2099945497377091902|Fábrica de software agêntica da OpenAI]]", "[[extracts/x/bookmarks/2026-09-12-openaidevs-while-we-ve-now-launched-a-rust-rewrite-we-re-sharing-those--2098502031338340416|Escalonando storage Python na OpenAI]]", "[[extracts/x/bookmarks/2026-09-12-claudedevs-retailers-running-shopping-agents-on-claude-have-seen-carts--2095233746366808420|Arquitetura de agentes de comércio com Claude]]", "[[extracts/x/bookmarks/2026-09-12-hwchase17-kai-is-very-cool-and-every-company-should-have-a-kai-this-ep--2097355841183596632|Stripe Kai: agente interno com Deep Agents]]", "[[extracts/x/bookmarks/2026-09-12-dhh-fable-one-shotted-a-rust-rewrite-of-the-terminaltexteffects--2086590006898958752|AI one-shot Rust rewrite performance]]", "[[extracts/x/bookmarks/2026-09-19-eriksreinfelds-omg-togethercompute-i-love-you-this-is-time-to-first-token-f--2100218519636037929|Benchmark TTFT DeepSeek v4.1 Flash]]", "[[extracts/x/bookmarks/2026-09-12-marwan_3atef-cloudflare-ai-gateway-custom-costs-finally-understand-prompt--2098027728624570486|Cloudflare AI Gateway custo com prompt caching]]"]
+theme: "Agentes autônomos de engenharia"
 ---
 
 # Uber Eats search latency halving

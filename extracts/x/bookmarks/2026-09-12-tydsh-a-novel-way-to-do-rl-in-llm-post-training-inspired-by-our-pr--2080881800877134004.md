@@ -21,8 +21,8 @@ grounded_in: "article"
 links: ["https://arxiv.org/abs/2511.08567"]
 media: []
 thin: false
-theme: "Confiabilidade e avaliação de agentes"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-googleresearch-introducing-retrieve-for-train-a-framework-that-accelerates--2099951761985601580|Retrieve-for-Train: difusão para retrieval]]", "[[extracts/x/bookmarks/2026-09-14-yifanzhang_-rasbt-https-t-co-tovrlbceki--2099180888684937556|Recurrent Looped Transformer]]", "[[extracts/x/bookmarks/2026-09-12-cwolferesearch-getting-ready-to-publish-my-complete-guide-to-rl-for-llms-to--2091570446164733962|RLHF e pós-treinamento de LLMs]]", "[[extracts/x/bookmarks/2026-09-14-rasbt-reasoning-from-scratch-round-3-this-time-i-cover-generating--2099231450411290900|Verificadores para avaliação e RLVR]]", "[[extracts/x/bookmarks/2026-09-14-orcarouter-yifanzhang-thats-not-really-new-the-interesting-problem-with--2098913996057502068|Observabilidade em modelos com recurrent depth]]", "[[extracts/x/bookmarks/2026-09-12-cwolferesearch-i-just-published-my-complete-guide-to-reinforcement-learning--2091872097723359673|Guia completo de RL para LLMs]]", "[[extracts/x/bookmarks/2026-09-12-_avichawla-why-kv-cache-stores-k-and-v-vectors-but-never-q-a-popular-te--2093962020962083139|KV cache sem Q em LLMs]]", "[[extracts/x/bookmarks/2026-09-12-bradschoenfeld-why-do-some-people-gain-more-muscle-than-others-last-year-i--2096961137031975189|variabilidade individual na hipertrofia]]"]
+theme: "Treinamento de modelos e atletas"
 ---
 
 # Dinâmica de aprendizado do RLVR

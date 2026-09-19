@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "IA e dinâmica de vencedores"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-naval-when-software-was-expensive-thin-horizontal-best-of-breed-so--2080052566377763071|Software barato e integração vertical]]", "[[extracts/x/bookmarks/2026-09-16-hnshah-the-more-i-think-about-this-the-more-every-looks-like-a-prev--2099917915382509880|Desenvolvimento de produtos com software barato]]", "[[extracts/x/bookmarks/2026-09-14-illscience-mesutcelik-yes-this-is-a-fascinating-dynamic-they-dont-mind--2099220613999304823|moats de plataformas agregadoras]]", "[[extracts/x/bookmarks/2026-09-12-a16z-for-most-of-history-the-bottleneck-on-making-something-was-n--2076720361560003039|IA elimina gargalos de execução]]", "[[extracts/x/bookmarks/2026-09-12-hliriani-yesterday-we-announced-our-series-a-to-reimagine-crm-as-a-bu--2098162367075164170|CRM como business world model]]", "[[extracts/x/bookmarks/2026-09-15-a16z-ai-has-collapsed-the-cost-of-building-products-but-not-the-c--2099501195006238899|produto na era da IA]]"]
+theme: "IA, execução e produtividade"
 ---
 
 # Oportunidades de software fora do nicho tech

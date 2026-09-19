@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "Agent Harness Engineering"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-nousresearch-hermes-agent-is-open-for-business-nous-portal-now-lets-you-i--2099599032037388404|Lançamento Hermes Agent para empresas]]", "[[extracts/x/bookmarks/2026-09-12-omarsar0-agents-api-is-a-bigger-deal-than-it-seems-openai-s-bet-on-ma--2098524621439914375|OpenAI Agents API e harness-as-a-service]]", "[[extracts/x/bookmarks/2026-09-18-teknium-we-are-going-to-lean-into-making-hermes-more-like-pi-and-les--2100645382552428963|Posicionamento do modelo Hermes]]", "[[extracts/x/bookmarks/2026-09-17-jacquelinesyc19-a-few-weeks-ago-i-wrote-that-our-whole-team-at-artie-uses-he--2100262432413528336|Hermes como harness de agentes por equipe]]", "[[extracts/x/bookmarks/2026-09-12-robotbird01-harness-pi-agent-skill-https-t-co-6eqhirel54--2098044628058689738|Arquitetura de plataforma harness empresarial]]", "[[extracts/x/bookmarks/2026-09-18-dankrieg-introducing-ihermes-a-personal-ai-assistant-powered-by-herme--2100260309336535218|Lançamento do assistente iHermes]]", "[[extracts/x/bookmarks/2026-09-14-illscience-mesutcelik-yes-this-is-a-fascinating-dynamic-they-dont-mind--2099220613999304823|moats de plataformas agregadoras]]", "[[extracts/x/bookmarks/2026-09-12-naval-when-software-was-expensive-thin-horizontal-best-of-breed-so--2080052566377763071|Software barato e integração vertical]]"]
+theme: "Agentes autônomos de engenharia"
 ---
 
 # Nous Hermes no enterprise

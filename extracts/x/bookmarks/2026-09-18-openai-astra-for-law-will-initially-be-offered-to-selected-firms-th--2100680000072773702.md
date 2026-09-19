@@ -22,6 +22,7 @@ thin: false
 links: []
 media: []
 relates-to: ["[[extracts/x/bookmarks/2026-09-18-openai-astra-for-law-frontier-intelligence-built-for-your-practice--2100679992720142459|OpenAI Astra for Law]]", "[[extracts/x/bookmarks/2026-09-18-openai-astra-for-law-pairs-gpt-6-astra-with-instructions-for-legal--2100679994305630562|OpenAI Astra for Law]]", "[[extracts/x/bookmarks/2026-09-18-openai-the-people-who-know-the-work-should-shape-the-tools-with-our--2100679996633452747|Ferramentas jurídicas com IA por escritórios]]", "[[extracts/x/bookmarks/2026-09-12-openai-now-available-chatgpt-for-financial-services-this-is-a-tailo--2098118191029624911|ChatGPT para serviços financeiros]]", "[[extracts/x/bookmarks/2026-09-18-openai-were-also-launching-26-partner-built-plugins-and-47-communit--2100679997862330735|Plugins jurídicos no ChatGPT]]", "[[extracts/x/bookmarks/2026-09-12-stevendcoffey-today-we-re-launching-the-agents-api-a-brand-new-way-to-buil--2098130889486274820|OpenAI Agents API launch]]"]
+theme: "Agentes autônomos de engenharia"
 ---
 
 # OpenAI Astra for Law

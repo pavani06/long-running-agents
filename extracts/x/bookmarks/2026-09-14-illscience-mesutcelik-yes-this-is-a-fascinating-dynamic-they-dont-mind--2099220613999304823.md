@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: []
-theme: "IA e dinâmica de vencedores"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-naval-when-software-was-expensive-thin-horizontal-best-of-breed-so--2080052566377763071|Software barato e integração vertical]]", "[[extracts/x/bookmarks/2026-09-14-mesutcelik-illscience-one-point-of-friction-agents-will-remove-in-the-e--2099216302334214503|Agentes desintermediando marketplaces]]", "[[extracts/x/bookmarks/2026-09-14-illscience-had-many-conversations-this-weekend-re-instinct-muse-consume--2099205025797144669|Consumer agents e commerce]]", "[[extracts/x/bookmarks/2026-09-16-ksimback-nous-hermes-is-going-to-crush-it-in-the-enterprise-heres-why--2099818862342492418|Nous Hermes no enterprise]]", "[[extracts/x/bookmarks/2026-09-15-a16z-ai-has-collapsed-the-cost-of-building-products-but-not-the-c--2099501195006238899|produto na era da IA]]", "[[extracts/x/bookmarks/2026-09-14-illscience-additionally-i-think-theres-a-lot-of-debate-about-imessage-v--2099207649577595286|iMessage vs app como interface]]", "[[extracts/x/bookmarks/2026-09-14-maxrovensky-correct-take-but-also-extremely-tech-bubbly-take-software-is--2099103717454655771|Oportunidades de software fora do nicho tech]]", "[[extracts/x/bookmarks/2026-09-12-duquesadetax-to-vendo-muita-gente-feliz-com-o-adiamento-do-split-obrigato--2094413457407819979|Split payment na reforma tributária]]"]
+theme: "IA, execução e produtividade"
 ---
 
 # moats de plataformas agregadoras

@@ -21,8 +21,8 @@ grounded_in: "tweet"
 thin: false
 links: []
 media: ["https://pbs.twimg.com/amplify_video_thumb/2099822003696128000/img/Ksfndr5iUzQ1RgkD.jpg"]
-theme: "Dashboards de Vendas shadcn/ui"
 relates-to: ["[[extracts/x/bookmarks/2026-09-16-shadcncraft-give-your-leads-a-dedicated-workspace-start-with-the-matchin--2099827630161936671|Template de workspace para leads]]", "[[extracts/x/bookmarks/2026-09-16-shadcncraft-seven-pages-plus-23-reusable-shadcn-ui-blocks-figma-and-reac--2099827636419891559|Sales & Marketing Dashboard shadcn/ui]]", "[[extracts/x/bookmarks/2026-09-16-iamncdai-love-this-kanban-so-many-small-details-thoughtfully-crafted--2099902335715848548|Elogio a quadro Kanban]]", "[[extracts/x/bookmarks/2026-09-16-shadcncraft-build-your-next-dashboard-faster-our-sales-amp-marketing-das--2099827615934943627|Dashboard de vendas e marketing]]", "[[extracts/x/bookmarks/2026-09-16-shadcncraft-see-which-channels-bring-traffic-where-visitors-convert-and--2099827619655233988|dashboards de analytics de marketing]]", "[[extracts/x/bookmarks/2026-09-16-shadcncraft-compare-campaign-performance-without-building-the-interface--2099827623165935635|shadcn/ui dashboard blocks]]"]
+theme: "Dashboards de vendas e marketing"
 ---
 
 # Kanban para pipeline de vendas

@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: ["https://pbs.twimg.com/media/HM_8Fn4akAAOukO.jpg"]
 thin: false
-theme: "Loops agênticos e arquitetura de memória"
 relates-to: ["[[extracts/x/bookmarks/2026-09-19-moritzkremb-2-instant-compaction-https-t-co-rewiuarc0m--2100895917956284706|Instant compaction em agentes]]", "[[extracts/x/bookmarks/2026-09-17-langchain-the-biggest-challenge-facing-an-agent-harness-is-context-eng--2100235963339313648|Context engineering em agent harnesses]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-great-paper-from-google-and-colleagues-it-proposes-an-intere--2094472291002589452|Degradação de agentes em tarefas long-horizon]]", "[[extracts/x/bookmarks/2026-09-12-dair_ai-good-work-on-improving-memory-for-long-horizon-agents-they-s--2097555607389896732|Memória para agentes longos]]", "[[extracts/x/bookmarks/2026-09-19-tamarajtran-found-the-perfect-use-case-for-typesafeai-jev-instant-compac--2100694549362553153|compaction instantânea de contexto em agentes]]", "[[extracts/x/bookmarks/2026-09-19-grok-pumuonx-theo-tamarajtran-theo-is-right-on-the-core-issues-th--2100825243669409961|poda de contexto vs compaction nativa]]", "[[extracts/x/bookmarks/2026-09-12-quxiaoyin-if-you-left-your-coding-agent-alone-for-more-than-1h-don-t-h--2085408811104534754|expiração de cache de prompt em agentes de código]]", "[[extracts/x/bookmarks/2026-09-19-tamarajtran-theo-thats-not-specific-to-jev-compaction-summarize-based-co--2100773452475183219|context compaction limitations]]"]
+theme: "Engenharia de Loops Agênticos"
 ---
 
 # Context window management para agentes

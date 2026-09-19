@@ -21,8 +21,8 @@ grounded_in: "tweet"
 links: []
 media: []
 thin: false
-theme: "Tooling para agentes de código"
 relates-to: ["[[extracts/x/bookmarks/2026-09-12-addyosmani-how-do-you-hold-the-bar-on-production-agent-code-1-agree-on--2098662421644853433|padrão de qualidade em código de agentes]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-knowledge-work-is-so-much-harder-to-automate-with-agents-tha--2096906181121818702|agents em código vs conhecimento]]", "[[extracts/x/bookmarks/2026-09-17-mattpocockuk-a-great-idea-i-m-stealing-from-dexhorthy-when-you-first-star--2100178563362074889|software factory incremental com agentes]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-writing-for-agents-helps-but-not-without-human-oversight-har--2095895922576085034|Escrita para agentes e supervisão humana]]", "[[extracts/x/bookmarks/2026-09-14-cyrilxbt-every-department-installable-developers-superpowers-https-t--2098652326248493447|Superpowers: metodologia para coding agents]]", "[[extracts/x/bookmarks/2026-09-12-alperortac-pro-tip-for-anyone-using-grill-me-tell-the-agent-fyi-we-dont--2097661439901048852|Ajustando rigor do agente no /grill-me]]", "[[extracts/x/bookmarks/2026-09-12-dexhorthy-finally-got-to-watching-mattpocockuk-s-interview-with-uncleb--2095669635538370934|entrevista Pocock e Uncle Bob sobre agentes]]", "[[extracts/x/bookmarks/2026-09-16-trq212-tobi-i-agree-in-theory-in-practice-i-ve-just-found-codemode--2100086429850436064|Codemode na prática]]", "[[extracts/x/bookmarks/2026-09-12-mattpocockuk-15-months-later-and-i-would-probably-now-describe-the-effect--2094787007184511082|Documentação exemplar do Effect]]"]
+theme: "Agentes autônomos de engenharia"
 ---
 
 # expectativas de qualidade com agentes de código
